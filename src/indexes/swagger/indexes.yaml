@@ -124,6 +124,7 @@ definitions:
         example: Active
       memory_quota:
         type: integer
+        format: int64
         description: Memory quota assigned to the Index service on this node by user configuration (bytes).
         example: 536870912
         default: 268435456
@@ -140,6 +141,10 @@ definitions:
         type: integer
         description: Amount of memory used by the Index service on this node (bytes).
         example: 360192000
+      total_indexer_gc_pause_ns:
+        type: integer
+        description: The total time the indexer has spent in GC pause since last startup (ns).
+        example: 309778455
 
   Index:
     type: object
@@ -152,6 +157,9 @@ definitions:
       avg_drain_rate:
         type: integer
         description: Average number of items flushed from memory to disk storage per second.
+      avg_item_size:
+        type: integer
+        description: Average size of the keys.
       avg_scan_latency:
         type: integer
         description: Average time to serve a scan request (nanoseconds).
@@ -171,15 +179,15 @@ definitions:
         type: integer
         description: The size of indexable data that is maintained for the index or partition (bytes).
         example: 95728
+      disk_size:
+        type: integer
+        description: Total disk file size consumed by the index or partition.
+        example: 889054
       docid_count:
         type: integer
         description: |
           (Array indexes only.)
           The number of documents currently indexed.
-      disk_size:
-        type: integer
-        description: Total disk file size consumed by the index or partition.
-        example: 889054
       frag_percent:
         type: integer
         description: |
@@ -201,6 +209,7 @@ definitions:
         example: 2155
       last_known_scan_time:
         type: integer
+        format: int64
         description: |
           Time of the last scan request received for this index (Unix timestamp in nanoseconds).
           This may be useful for determining whether this index is currently unused.
