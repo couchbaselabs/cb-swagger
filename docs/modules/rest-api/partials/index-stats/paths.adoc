@@ -66,7 +66,7 @@ __optional__|A nested object containing statistics for an entire index.
 [options="header", cols=".^3a,.^4a"]
 |===
 |Type|Name
-|**basic**|**<<_default,Default>>**
+|**basic**|**<<_cluster_read_bucket_index_list,Cluster Read & Bucket Index List>>**
 |===
 
 
@@ -237,7 +237,7 @@ Returns statistics for all indexes within a bucket, scope, or collection.
 |Type|Name|Description|Schema|Default
 |**Path**|**keyspace** +
 __required__|The name of a keyspace.
-This must contain a bucket name, optionally which may be followed by an optional scope name and an optional collection name, separated by dots.
+This must contain a bucket name, which may be followed by an optional scope name and an optional collection name, separated by dots.
 For example, `bucket.scope.collection`.
 
 
@@ -253,8 +253,8 @@ __optional__|Whether empty, null, or zero statistics should be omitted from the 
 [NOTE]
 ====
 If the <<_get_keyspace_stats_parameters,keyspace>> path parameter specifies just a bucket name, the response contains statistics for all indexes in all collections in all scopes within that bucket.
-If the <<_get_keyspace_stats_parameters,keyspace>> path parameter specifies a bucket name and a scope name, the response contains statistics for all indexes in all collections within that scope.
-Similarly, if the <<_get_keyspace_stats_parameters,keyspace>> path parameter specifies a bucket name, a scope name, and a collection, the response contains statistics for all indexes in that collection.
+If this parameter specifies a bucket name and a scope name, the response contains statistics for all indexes in all collections within that scope.
+Similarly, if this parameter specifies a bucket name, a scope name, and a collection, the response contains statistics for all indexes in that collection.
 
 To get statistics for the indexes in the default collection in the default scope within a bucket only, you must specify the scope and collection explicitly.
 For example, `bucket._default._default`.
@@ -293,7 +293,7 @@ __required__|A nested object containing statistics for an entire index.
 [options="header", cols=".^3a,.^4a"]
 |===
 |Type|Name
-|**basic**|**<<_default,Default>>**
+|**basic**|**<<_bucket_index_list,Bucket Index List>>**
 |===
 
 
@@ -421,7 +421,7 @@ Returns statistics for an index.
 |Type|Name|Description|Schema|Default
 |**Path**|**keyspace** +
 __required__|The name of a keyspace.
-This must contain a bucket name, optionally which may be followed by an optional scope name and an optional collection name, separated by dots.
+This must contain a bucket name, which may be followed by an optional scope name and an optional collection name, separated by dots.
 For example, `bucket.scope.collection`.
 
 
@@ -492,7 +492,7 @@ __optional__|A nested object containing statistics.
 [options="header", cols=".^3a,.^4a"]
 |===
 |Type|Name
-|**basic**|**<<_default,Default>>**
+|**basic**|**<<_bucket_index_list,Bucket Index List>>**
 |===
 
 
