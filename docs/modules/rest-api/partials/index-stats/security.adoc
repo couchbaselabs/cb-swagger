@@ -10,20 +10,20 @@ The Index Statistics API supports admin credentials.
 Credentials can be passed via HTTP headers (HTTP basic authentication).
 
 
-[[_cluster_read_bucket_index_list]]
-=== Cluster Read & Bucket Index List
-To <<_get_node_stats,get statistics for an Index node>>, users must have the Query System Catalog RBAC role.
+[[_node_statistics]]
+=== Node Statistics
+To get <<_node,Node statistics>>, users must have the Query System Catalog RBAC role.
 
 [%hardbreaks]
 __Type__ : basic
 
 
-[[_bucket_index_list]]
-=== Bucket Index List
-To <<_get_keyspace_stats,get statistics for all indexes in a bucket, scope, or collection>>, users must have the Query System Catalog RBAC role, or an RBAC role with index list permissions on that bucket, scope, or collection.
+[[_index_statistics]]
+=== Index Statistics
+To get <<_index,Index statistics>> for all indexes in a bucket, scope, or collection, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on that bucket, scope, or collection.
 
 
-To <<_get_index_stats,get statistics for an index>>, users must have the Query System Catalog RBAC role, or an RBAC role with index list permissions on the bucket, scope, and collection containing that index.
+To get <<_index,Index statistics>> for an individual index, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on the bucket, scope, and collection containing that index.
 
 [%hardbreaks]
 __Type__ : basic
