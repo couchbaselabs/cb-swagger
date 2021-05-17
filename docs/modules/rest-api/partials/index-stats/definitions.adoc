@@ -55,8 +55,9 @@ __optional__|Current state of the Index service on this node. +
 **Example** : `"Active"`|enum (Active, Pause, Warmup)
 |**memory_quota** +
 __optional__|Memory quota assigned to the Index service on this node by user configuration (bytes). +
+**Default** : `268435456` +
 **Maximum value** : `1099511992567` +
-**Example** : `536870912`|integer
+**Example** : `536870912`|integer (int64)
 |**memory_total_storage** +
 __optional__|[.edition]#{enterprise}#
 
@@ -66,6 +67,9 @@ This also accounts for memory fragmentation. +
 |**memory_used** +
 __optional__|Amount of memory used by the Index service on this node (bytes). +
 **Example** : `360192000`|integer
+|**total_indexer_gc_pause_ns** +
+__optional__|The total time the indexer has spent in GC pause since last startup (ns). +
+**Example** : `309778455`|integer
 |===
 
 
@@ -80,6 +84,8 @@ __optional__|(Array indexes only.)
 The average number of items indexed per document.|integer
 |**avg_drain_rate** +
 __optional__|Average number of items flushed from memory to disk storage per second.|integer
+|**avg_item_size** +
+__optional__|Average size of the keys.|integer
 |**avg_scan_latency** +
 __optional__|Average time to serve a scan request (nanoseconds).|integer
 |**cache_hit_percent** +
@@ -93,12 +99,12 @@ __optional__|Accesses to this index data from disk.|integer
 |**data_size** +
 __optional__|The size of indexable data that is maintained for the index or partition (bytes). +
 **Example** : `95728`|integer
-|**docid_count** +
-__optional__|(Array indexes only.)
-The number of documents currently indexed.|integer
 |**disk_size** +
 __optional__|Total disk file size consumed by the index or partition. +
 **Example** : `889054`|integer
+|**docid_count** +
+__optional__|(Array indexes only.)
+The number of documents currently indexed.|integer
 |**frag_percent** +
 __optional__|Percentage fragmentation of the index.
 
@@ -118,7 +124,7 @@ __optional__|Time of the last scan request received for this index (Unix timesta
 This may be useful for determining whether this index is currently unused.
 
 [NOTE]
-This statistic is persisted to disk every 15 minutes, so it is preserved when the indexer restarts.|integer
+This statistic is persisted to disk every 15 minutes, so it is preserved when the indexer restarts.|integer (int64)
 |**num_docs_indexed** +
 __optional__|Number of documents indexed by the indexer since last startup.|integer
 |**num_docs_pending** +

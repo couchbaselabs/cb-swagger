@@ -6,16 +6,30 @@
 [[_securityscheme]]
 == Security
 
-[[_default]]
-=== Default
 The Index Statistics API supports admin credentials.
 Credentials can be passed via HTTP headers (HTTP basic authentication).
 
-Users must have Cluster Read and Bucket INDEX List privileges.
-Refer to xref:learn:security/roles.adoc[Roles] for more details.
+
+[[_node_statistics]]
+=== Node Statistics
+To get <<_node,Node statistics>>, users must have the Query System Catalog RBAC role.
 
 [%hardbreaks]
 __Type__ : basic
+
+
+[[_index_statistics]]
+=== Index Statistics
+To get <<_index,Index statistics>> for all indexes in a bucket, scope, or collection, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on that bucket, scope, or collection.
+
+
+To get <<_index,Index statistics>> for an individual index, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on the bucket, scope, and collection containing that index.
+
+[%hardbreaks]
+__Type__ : basic
+
+
+Refer to xref:learn:security/roles.adoc[Roles] for more details.
 
 
 
