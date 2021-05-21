@@ -1,10 +1,10 @@
-The example below queries all links in the `travel-sample.inventory` scope.
+The example below queries the `myAwsLink` link in the `travel-sample.inventory` scope.
 
 *Curl request*
 
 ``` shell
-$ curl -v -u Administrator:password \
-       http://localhost:8095/analytics/link?scope='`travel-sample`.inventory'
+curl -v -u Administrator:password \
+     http://localhost:8095/analytics/link/travel-sample%2Finventory/myAwsLink
 ```
 
-NOTE: The `scope` value is wrapped in single quotes to escape the backticks.
+NOTE: The dot separator within the scope name is converted to a slash (`/`), which is then URL-encoded as `%2F`.

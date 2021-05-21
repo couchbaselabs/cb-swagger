@@ -1,25 +1,21 @@
-The example below deletes the link named `myCbLink` from the `travel-sample.inventory` scope.
+The example below deletes the link named `myCbLink` from the `Default` scope.
 
 *Curl request*
 
 ``` shell
-$ curl -v -u Administrator:password \
-       -X DELETE http://localhost:8095/analytics/link \
-       -d scope='`travel-sample`.inventory' \
-       -d name=myCbLink
+curl -v -u Administrator:password \
+     -X DELETE \
+     http://localhost:8095/analytics/link/Default/myCbLink
 ```
-
-NOTE: The `scope` value is wrapped in single quotes to escape the backticks.
 
 The example below deletes the link named `myAwsLink` from the `travel-sample.inventory` scope.
 
 *Curl request*
 
 ``` shell
-$ curl -v -u Administrator:password \
-       -X DELETE http://localhost:8095/analytics/link \
-       -d scope='`travel-sample`.inventory' \
-       -d name=myAwsLink
+curl -v -u Administrator:password \
+     -X DELETE \
+     http://localhost:8095/analytics/link/travel-sample%2Finventory/myAwsLink
 ```
 
-NOTE: The `scope` value is wrapped in single quotes to escape the backticks.
+NOTE: The dot separator within the scope name is converted to a slash (`/`), which is then URL-encoded as `%2F`.
