@@ -1,6 +1,5 @@
 **Table of Contents**
 
-* [Create Link](#create-link)
-* [Query Links](#query-links)
-* [Edit Link](#edit-link)
-* [Delete Link](#delete-link)
+* [Single Links](#single-links_resource)
+* [Multiple Links](#multiple-links_resource)
+* [Legacy Methods](#legacy-methods_resource)
