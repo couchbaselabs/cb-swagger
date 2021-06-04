@@ -6,7 +6,7 @@ The library contains two functions, `add` and `sub`.
 [source,shell]
 ----
 curl -X POST \
-http://evaluator:8093/evaluator/v1/libraries/math \
+http://localhost:8093/evaluator/v1/libraries/math \
 -u Administrator:password \
 -H 'content-type: application/json' \
 -d 'function add(a, b) { let data = a + b; return data; }
@@ -21,7 +21,7 @@ Request {counter:example}: Add a function called `mul` to the library, leaving t
 [source,shell]
 ----
 curl -X POST \
-http://evaluator:8093/evaluator/v1/libraries/math \
+http://localhost:8093/evaluator/v1/libraries/math \
 -u Administrator:password \
 -H 'content-type: application/json' \
 -d 'function add(a, b) { let data = a + b; return data; }
@@ -37,7 +37,7 @@ Request {counter:example}: Edit the function called `sub` to use a helper functi
 [source,shell]
 ----
 curl -X POST \
-http://evaluator:8093/evaluator/v1/libraries/math \
+http://localhost:8093/evaluator/v1/libraries/math \
 -u Administrator:password \
 -H 'content-type: application/json' \
 -d 'function add(a, b) { let data = a + b; return data; }
@@ -54,7 +54,7 @@ Request {counter:example}: Remove the function called `sub` and the helper funct
 [source,shell]
 ----
 curl -X POST \
-http://evaluator:8093/evaluator/v1/libraries/math \
+http://localhost:8093/evaluator/v1/libraries/math \
 -u Administrator:password \
 -H 'content-type: application/json' \
 -d 'function add(a, b) { let data = a + b; return data; }
