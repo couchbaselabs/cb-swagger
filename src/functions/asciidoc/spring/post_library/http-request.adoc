@@ -1,0 +1,63 @@
+====
+Request {counter:example}: Create or update a library called `math`.
+The library contains two functions, `add` and `sub`.
+
+.Curl request
+[source,shell]
+----
+curl -X POST \
+http://localhost:8093/evaluator/v1/libraries/math \
+-u Administrator:password \
+-H 'content-type: application/json' \
+-d 'function add(a, b) { let data = a + b; return data; }
+    function sub(a, b) { let data = a - b; return data; }'
+----
+====
+
+====
+Request {counter:example}: Add a function called `mul` to the library, leaving the other functions unchanged.
+
+.Curl request
+[source,shell]
+----
+curl -X POST \
+http://localhost:8093/evaluator/v1/libraries/math \
+-u Administrator:password \
+-H 'content-type: application/json' \
+-d 'function add(a, b) { let data = a + b; return data; }
+    function sub(a, b) { let data = a - b; return data; }
+    function mul(a, b) { let data = a * b; return data; }'
+----
+====
+
+====
+Request {counter:example}: Edit the function called `sub` to use a helper function called `helper`, leaving the other functions unchanged.
+
+.Curl request
+[source,shell]
+----
+curl -X POST \
+http://localhost:8093/evaluator/v1/libraries/math \
+-u Administrator:password \
+-H 'content-type: application/json' \
+-d 'function add(a, b) { let data = a + b; return data; }
+    function mul(a, b) { let data = a * b; return data; }
+    function sub(a, b) { return helper(a, b); }
+    function helper(a, b) { return a - b; }'
+----
+====
+
+====
+Request {counter:example}: Remove the function called `sub` and the helper function called `helper`, leaving the other functions unchanged.
+
+.Curl request
+[source,shell]
+----
+curl -X POST \
+http://localhost:8093/evaluator/v1/libraries/math \
+-u Administrator:password \
+-H 'content-type: application/json' \
+-d 'function add(a, b) { let data = a + b; return data; }
+    function mul(a, b) { let data = a * b; return data; }'
+----
+====
