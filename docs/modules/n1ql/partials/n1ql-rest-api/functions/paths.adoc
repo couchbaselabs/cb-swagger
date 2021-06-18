@@ -33,6 +33,8 @@ Returns all libraries and functions.
 |**200**|An object with multiple properties, each giving information about a single library.|<<_libraries,Libraries>>
 |**404**|Not found.
 The path may be missing its trailing slash.|No Content
+|**406**|Not acceptable.
+The path may not conform to the schema.|string
 |===
 
 
@@ -104,6 +106,8 @@ __required__|The name of a library.|string
 |**200**|An object with a single property, giving information about the specified library.|<<_libraries,Libraries>>
 |**404**|Not found.
 The library name in the path may be incorrect.|string
+|**406**|Not acceptable.
+The path may not conform to the schema.|string
 |===
 
 
@@ -185,6 +189,8 @@ __required__|The JavaScript code for all functions in the library.|string
 |**200**|The operation was successful.|string
 |**400**|Bad request.
 The body of the request may be incorrect.|string
+|**406**|Not acceptable.
+The path may not conform to the schema.|string
 |===
 
 
@@ -293,6 +299,8 @@ __required__|The name of a library.|string
 |**200**|The operation was successful.|string
 |**404**|Not found.
 The library name in the path may be incorrect.|string
+|**406**|Not acceptable.
+The path may not conform to the schema.|string
 |===
 
 
