@@ -82,7 +82,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 __optional__|[[queryCleanupWindow]]
 [.edition]#{enterprise}#
 
-Specifies how frequently the Query service checks its subset of xref:learn:data/transactions.adoc#understanding-transactions[active transaction records] for cleanup.
+Specifies how frequently the Query service checks its subset of xref:learn:data/transactions.adoc#additional-storage-use[active transaction records] for cleanup.
 Decreasing this setting causes expiration transactions to be found more swiftly, with the tradeoff of increasing the number of reads per second used for the scanning process.
 
 The value for this setting is a string.
@@ -205,7 +205,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 __optional__|[[queryNumAtrs]]
 [.edition]#{enterprise}#
 
-Specifies the total number of xref:learn:data/transactions.adoc#understanding-transactions[active transaction records] for all Query nodes in the cluster.
+Specifies the total number of xref:learn:data/transactions.adoc#additional-storage-use[active transaction records] for all Query nodes in the cluster.
 
 The {numatrs-srv}[node-level] `numatrs` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
