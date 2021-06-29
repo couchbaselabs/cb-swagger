@@ -1084,7 +1084,7 @@ definitions:
           [[atrcollection-srv]]
           [.edition]#{enterprise}#
 
-          Specifies the collection where xref:learn:data/transactions.adoc#understanding-transactions[active transaction records] are stored.
+          Specifies the collection where xref:learn:data/transactions.adoc#additional-storage-use[active transaction records] are stored.
           The collection must be present.
           If not specified, the active transaction record is stored in the default collection in the default scope in the bucket containing the first mutated document within the transaction.
 
@@ -1136,7 +1136,7 @@ definitions:
           [[cleanupwindow]]
           [.edition]#{enterprise}#
 
-          Specifies how frequently the Query service checks its subset of xref:learn:data/transactions.adoc#understanding-transactions[active transaction records] for cleanup.
+          Specifies how frequently the Query service checks its subset of xref:learn:data/transactions.adoc#additional-storage-use[active transaction records] for cleanup.
           Decreasing this setting causes expiration transactions to be found more swiftly, with the tradeoff of increasing the number of reads per second used for the scanning process.
 
           The value for this setting is a string.
@@ -1426,7 +1426,7 @@ definitions:
           [[numatrs-srv]]
           [.edition]#{enterprise}#
 
-          Specifies the total number of xref:learn:data/transactions.adoc#understanding-transactions[active transaction records].
+          Specifies the total number of xref:learn:data/transactions.adoc#additional-storage-use[active transaction records].
 
           The {queryNumAtrs}[cluster-level] `queryNumAtrs` setting specifies this property for the whole cluster.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
