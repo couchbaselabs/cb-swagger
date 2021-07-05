@@ -281,6 +281,13 @@ DELETE /evaluator/v1/libraries/{library}
 Deletes the specified library entirely.
 
 
+[NOTE]
+====
+Before you can delete a library, you must first drop all N1QL external user-defined functions which point to any of the JavaScript functions within that library.
+For further details, refer to xref:n1ql:n1ql-language-reference/dropfunction.adoc[DROP FUNCTION].
+====
+
+
 ==== Parameters
 
 [options="header", cols=".^2a,.^3a,.^9a,.^4a"]
