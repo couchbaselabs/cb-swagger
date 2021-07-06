@@ -1,0 +1,1 @@
+NOTE: The structure and content of query plans is expected to change as development of the query processor progresses.
