@@ -1,4 +1,4 @@
-**Table of Contents**
+This section describes the operations available with this REST API.
 
 * [View Service-Level Parameters](#view-service-level-parameters)
 * [Modify Service-Level Parameters](#modify-service-level-parameters)
