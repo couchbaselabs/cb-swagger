@@ -539,14 +539,18 @@ definitions:
     type: object
     discriminator: type
     required:
-      - dataverse
+      - scope
       - name
       - type
     properties:
-      dataverse:
+      scope:
         type: string
-        description: The name of the Analytics scope containing the link.
-        example: travel-sample.inventory
+        description: >
+          The name of the Analytics scope containing the link.
+
+
+          The scope name may contain one or two identifiers, separated by a slash (/).
+        example: travel-sample/inventory
       name:
         type: string
         description: The name of the link.
