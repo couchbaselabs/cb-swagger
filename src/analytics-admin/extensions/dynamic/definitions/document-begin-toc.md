@@ -1,0 +1,1 @@
+This section describes the properties returned by these REST APIs.

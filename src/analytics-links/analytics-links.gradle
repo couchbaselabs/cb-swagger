@@ -5,7 +5,8 @@ convertSwagger2markup {
     outputDir file("${AnalyticsLinksBuildDir}")
     config = ['swagger2markup.markupLanguage' : 'MARKDOWN',
               'swagger2markup.generatedExamplesEnabled' : false,
-              'swagger2markup.pathsGroupedBy' : 'AS_IS',
+              'swagger2markup.pathsGroupedBy' : 'TAGS',
+              'swagger2markup.tagOrderBy' : 'AS_IS',
               'swagger2markup.operationOrderBy' : 'NATURAL',
               'swagger2markup.definitionOrderBy' : 'AS_IS',
               'swagger2markup.parameterOrderBy' : 'AS_IS',

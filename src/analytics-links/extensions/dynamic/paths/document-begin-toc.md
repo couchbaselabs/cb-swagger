@@ -1,6 +1,6 @@
-**Table of Contents**
+This section describes the operations available with this REST API.
+The operations are grouped in the following categories.
 
-* [Create Link](#create-link)
-* [Query Links](#query-links)
-* [Edit Link](#edit-link)
-* [Delete Link](#delete-link)
+* [Single Links](#single-links)
+* [Multiple Links](#multiple-links)
+* [Legacy Methods](#legacy-methods)

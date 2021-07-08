@@ -1,8 +1,10 @@
-The example below queries all links in the `Default` dataverse.
+The example below queries the `myAwsLink` link in the `travel-sample.inventory` scope.
 
 *Curl request*
 
 ``` shell
-$ curl -v -u Administrator:password \
-       http://localhost:8095/analytics/link?dataverse=Default
+curl -v -u Administrator:password \
+     http://localhost:8095/analytics/link/travel-sample%2Finventory/myAwsLink
 ```
+
+NOTE: The dot separator within the scope name is converted to a slash (`/`), which is then URL-encoded as `%2F`.

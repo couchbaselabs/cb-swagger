@@ -19,12 +19,23 @@ produces:
 consumes:
   - application/x-www-form-urlencoded
 
+tags:
+  - name: Single Links
+    description: Operations for single links.
+  - name: Multiple Links
+    description: Operations for multiple links.
+  - name: Legacy Methods
+    description: Operations provided for backward compatibility.
+
 paths:
   /analytics/link:
     post:
-      operationId: post_link
-      summary: Create Link
-      description: Creates a link.
+      operationId: post_alt
+      deprecated: true
+      summary: Create Link (Alternative)
+      description: An alternative endpoint for [creating a link](#create-link), provided for backward compatibility.
+      tags:
+        - Legacy Methods
       parameters:
         - $ref: "#/parameters/CommonDataverse"
         - $ref: "#/parameters/CommonName"
@@ -51,32 +62,183 @@ paths:
         "500":
           $ref: '#/responses/InternalServerError'
     get:
-      operationId: get_link
-      summary: Query Links
-      description: Returns information about the specified link or links.
+      operationId: get_all
+      summary: Query All Links
+      description: Returns information about all links in all Analytics scopes.
+      tags:
+        - Multiple Links
       parameters:
         - name: dataverse
           type: string
           in: query
           required: false
           description: >
-            The name of the dataverse containing the link.
-            If this parameter is omitted, all dataverses are queried for links.
+            The name of an Analytics scope.
+            When this parameter is included, the request only returns information about links in the specified scope.
+
+
+            With this parameter, the scope name may only contain a single identifier.
+
+
+            This parameter is provided for backward compatibility.
+            Note that it is deprecated, and will be removed in a future release.
         - name: name
           type: string
           in: query
           required: false
           description: >
-            The name of the link.
-            If this parameter is specified, the dataverse name must be specified also.
-            If this parameter is omitted, all links will be retrieved from the specified dataverses.
+            The name of a link.
+            When this parameter is included, the request only returns information about the specified link.
+            If specified, the `dataverse` parameter must be specified also.
+
+
+            This parameter is provided for backward compatibility.
+            Note that it is deprecated, and will be removed in a future release.
+        - $ref: "#/parameters/CommonTypeQuery"
+      security:
+        - Analytics Manage: []
+      responses:
+        "200":
+          description: >
+            Success.
+            Returns an array of objects, each of which contains information about a link.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Links'
+        "400":
+          $ref: '#/responses/BadRequest'
+        "500":
+          $ref: '#/responses/InternalServerError'
+    put:
+      operationId: put_alt
+      deprecated: true
+      summary: Edit Link (Alternative)
+      description: >
+        An alternative endpoint for [editing a link](#edit-link), provided for backward compatibility.
+        The link name, type, and scope name cannot be modified.
+      tags:
+        - Legacy Methods
+      parameters:
+        - $ref: "#/parameters/CommonDataverse"
+        - $ref: "#/parameters/CommonName"
+        - $ref: "#/parameters/CommonTypeEdit"
+        - $ref: "#/parameters/CouchbaseHostname"
+        - $ref: "#/parameters/CouchbaseEncryption"
+        - $ref: "#/parameters/CouchbaseUsername"
+        - $ref: "#/parameters/CouchbasePassword"
+        - $ref: "#/parameters/CouchbaseCertificate"
+        - $ref: "#/parameters/CouchbaseClientCertificate"
+        - $ref: "#/parameters/CouchbaseClientKey"
+        - $ref: "#/parameters/S3AccessKeyID"
+        - $ref: "#/parameters/S3SecretAccessKey"
+        - $ref: "#/parameters/S3SessionToken"
+        - $ref: "#/parameters/S3Region"
+        - $ref: "#/parameters/S3ServiceEndpoint"
+      security:
+        - Analytics Manage: []
+      responses:
+        "200":
+          $ref: '#/responses/OK'
+        "400":
+          $ref: '#/responses/BadRequest'
+        "500":
+          $ref: '#/responses/InternalServerError'
+    delete:
+      deprecated: true
+      operationId: delete_alt
+      summary: Delete Link (Alternative)
+      description: >
+        An alternative endpoint for [deleting a link](#delete-link), provided for backward compatibility.
+        The link cannot be deleted if any other entities are using it, such as an Analytics collection.
+        The entities using the link need to be disconnected from the link, otherwise, the delete operation fails.
+      tags:
+        - Legacy Methods
+      parameters:
+        - $ref: "#/parameters/CommonDataverse"
+        - $ref: "#/parameters/CommonName"
+      security:
+        - Analytics Manage: []
+      responses:
+        "200":
+          $ref: '#/responses/OK'
+        "400":
+          $ref: '#/responses/BadRequest'
+        "500":
+          $ref: '#/responses/InternalServerError'
+  /analytics/link/{scope}:
+    get:
+      operationId: get_scope
+      summary: Query Scope Links
+      description: Returns information about all links in the specified Analytics scope.
+      tags:
+        - Multiple Links
+      parameters:
+        - $ref: "#/parameters/CommonScope"
+        - $ref: "#/parameters/CommonTypeQuery"
+      security:
+        - Analytics Manage: []
+      responses:
+        "200":
+          description: >
+            Success.
+            Returns an array of objects, each of which contains information about a link.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Links'
+        "400":
+          $ref: '#/responses/BadRequest'
+        "500":
+          $ref: '#/responses/InternalServerError'
+  /analytics/link/{scope}/{name}:
+    post:
+      operationId: post_link
+      summary: Create Link
+      description: Creates a link in the specified Analytics scope.
+      tags:
+        - Single Links
+      parameters:
+        - $ref: "#/parameters/CommonScope"
+        - $ref: "#/parameters/CommonLink"
+        - $ref: "#/parameters/CommonType"
+        - $ref: "#/parameters/CouchbaseHostname"
+        - $ref: "#/parameters/CouchbaseEncryption"
+        - $ref: "#/parameters/CouchbaseUsername"
+        - $ref: "#/parameters/CouchbasePassword"
+        - $ref: "#/parameters/CouchbaseCertificate"
+        - $ref: "#/parameters/CouchbaseClientCertificate"
+        - $ref: "#/parameters/CouchbaseClientKey"
+        - $ref: "#/parameters/S3AccessKeyID"
+        - $ref: "#/parameters/S3SecretAccessKey"
+        - $ref: "#/parameters/S3SessionToken"
+        - $ref: "#/parameters/S3Region"
+        - $ref: "#/parameters/S3ServiceEndpoint"
+      security:
+        - Analytics Manage: []
+      responses:
+        "200":
+          $ref: '#/responses/OK'
+        "400":
+          $ref: '#/responses/BadRequest'
+        "500":
+          $ref: '#/responses/InternalServerError'
+    get:
+      operationId: get_link
+      summary: Query Link
+      description: Returns information about a link in the specified Analytics scope.
+      tags:
+        - Single Links
+      parameters:
+        - $ref: "#/parameters/CommonScope"
+        - $ref: "#/parameters/CommonLink"
         - name: type
           type: string
           in: query
           required: false
           description: >
             The type of the link.
-            If this parameter is omitted, all link types are retrieved, excluding the `Local` link.
+            If this parameter is specified, the value must match the type that was set when the link was created.
           enum:
             - S3
             - couchbase
@@ -99,21 +261,14 @@ paths:
       operationId: put_link
       summary: Edit Link
       description: >
-        Edits an existing link with the provided information.
-        The link name, type, and dataverse name cannot be modified.
+        Edits an existing link in the specified Analytics scope.
+        The link name, type, and scope name cannot be modified.
+      tags:
+        - Single Links
       parameters:
-        - $ref: "#/parameters/CommonDataverse"
-        - $ref: "#/parameters/CommonName"
-        - name: type
-          type: string
-          in: formData
-          required: false
-          description: >
-            The type of the link.
-            If this parameter is specified, the value must match the type that was set when the link was created.
-          enum:
-            - s3
-            - couchbase
+        - $ref: "#/parameters/CommonScope"
+        - $ref: "#/parameters/CommonLink"
+        - $ref: "#/parameters/CommonTypeEdit"
         - $ref: "#/parameters/CouchbaseHostname"
         - $ref: "#/parameters/CouchbaseEncryption"
         - $ref: "#/parameters/CouchbaseUsername"
@@ -139,12 +294,14 @@ paths:
       operationId: delete_link
       summary: Delete Link
       description: >
-        Deletes a link using the provided parameters.
-        The link cannot be deleted if any other entities, such as datasets, are using it.
+        Deletes a link in the specified Analytics scope.
+        The link cannot be deleted if any other entities are using it, such as an Analytics collection.
         The entities using the link need to be disconnected from the link, otherwise, the delete operation fails.
+      tags:
+        - Single Links
       parameters:
-        - $ref: "#/parameters/CommonDataverse"
-        - $ref: "#/parameters/CommonName"
+        - $ref: "#/parameters/CommonScope"
+        - $ref: "#/parameters/CommonLink"
       security:
         - Analytics Manage: []
       responses:
@@ -156,12 +313,35 @@ paths:
           $ref: '#/responses/InternalServerError'
 
 parameters:
+  CommonScope:
+    name: scope
+    type: string
+    in: path
+    required: true
+    description: >
+      The name of the Analytics scope.
+
+
+      With this parameter, the scope name may contain one or two identifiers, separated by a slash (/).
+      You must URL-encode this parameter to escape any special characters.
+
+  CommonLink:
+    name: name
+    type: string
+    in: path
+    required: true
+    description: The name of the link.
+
   CommonDataverse:
     name: dataverse
     type: string
     in: formData
     required: true
-    description: The name of the dataverse containing the link.
+    description: >
+      The name of the Analytics scope containing the link.
+
+
+      With this parameter, the scope name may only contain a single identifier.
 
   CommonName:
     name: name
@@ -180,6 +360,30 @@ parameters:
 
       `couchbase`: A link to a remote Couchbase cluster.
       `s3`: A link to the Amazon S3 service.
+    enum:
+      - s3
+      - couchbase
+
+  CommonTypeEdit:
+    name: type
+    type: string
+    in: formData
+    required: false
+    description: >
+      The type of the link.
+      If this parameter is specified, the value must match the type that was set when the link was created.
+    enum:
+      - s3
+      - couchbase
+
+  CommonTypeQuery:
+    name: type
+    type: string
+    in: query
+    required: false
+    description: >
+      The type of the link.
+      If this parameter is omitted, all link types are retrieved, excluding the `Local` link.
     enum:
       - s3
       - couchbase
@@ -335,14 +539,18 @@ definitions:
     type: object
     discriminator: type
     required:
-      - dataverse
+      - scope
       - name
       - type
     properties:
-      dataverse:
+      scope:
         type: string
-        description: The name of the dataverse containing the link.
-        example: Default
+        description: >
+          The name of the Analytics scope containing the link.
+
+
+          The scope name may contain one or two identifiers, separated by a slash (/).
+        example: travel-sample/inventory
       name:
         type: string
         description: The name of the link.

@@ -1,4 +1,4 @@
-**Table of Contents**
+This section describes the operations available with these REST APIs.
 
 * [Request Cancellation](#request-cancellation)
 * [Cluster Restart](#cluster-restart)
