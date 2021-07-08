@@ -9,7 +9,6 @@
   "clientCertificate" : null,
   "clientKey" : null,
   "clusterCompatibility" : 393221,
-  "dataverse" : "Default",
   "encryption" : "none",
   "name" : "myCbLink",
   "nodes" : [ {
@@ -25,6 +24,7 @@
     }
   } ],
   "password" : "<redacted sensitive entry>",
+  "scope" : "Default",
   "type" : "couchbase",
   "username" : "remote.user",
   "uuid" : "6331e2a390125b662f7bcfd63ecb3a73"
