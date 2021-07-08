@@ -191,7 +191,7 @@ paths:
           $ref: '#/responses/BadRequest'
         "500":
           $ref: '#/responses/InternalServerError'
-  /analytics/link/{scope}/{link}:
+  /analytics/link/{scope}/{name}:
     post:
       operationId: post_link
       summary: Create Link
@@ -326,7 +326,7 @@ parameters:
       You must URL-encode this parameter to escape any special characters.
 
   CommonLink:
-    name: link
+    name: name
     type: string
     in: path
     required: true
