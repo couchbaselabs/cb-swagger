@@ -1562,6 +1562,9 @@ definitions:
         description: |
           [[servicers]]
           The number of service threads for the query.
+          The default is 4 times the number of cores on the query node.
+
+          Note that the overall node memory quota is this setting multiplied by the `memory-quota` setting.
       timeout:
         type: integer
         format: int64
