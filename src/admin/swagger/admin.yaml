@@ -1386,7 +1386,8 @@ definitions:
         example: 4
         description: |
           [[memory-quota-srv]]
-          Specifies the maximum document memory consumption for each request on this node, in MB.
+          Specifies the maximum amount of memory a request may use on this node, in MB.
+          Note that the overall node memory quota is this setting multiplied by the `servicers` setting.
 
           Specify `0` (the default value) to disable.
           When disabled, there is no quota.
