@@ -1408,7 +1408,7 @@ definitions:
         description: |
           [[memory-quota-srv]]
           Specifies the maximum amount of memory a request may use on this node, in MB.
-          Note that the overall node memory quota is this setting multiplied by the `servicers` setting.
+          Note that the overall node memory quota is this setting multiplied by the <<servicers,node-level>> `servicers` setting.
 
           Specify `0` (the default value) to disable.
           When disabled, there is no quota.
@@ -1585,7 +1585,7 @@ definitions:
           The number of service threads for the query.
           The default is 4 times the number of cores on the query node.
 
-          Note that the overall node memory quota is this setting multiplied by the `memory-quota` setting.
+          Note that the overall node memory quota is this setting multiplied by the <<memory-quota-srv,node-level>> `memory-quota` setting.
       timeout:
         type: integer
         format: int64
