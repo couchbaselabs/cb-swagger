@@ -114,11 +114,19 @@ __optional__|The time taken from when the request was acknowledged by the servic
 It includes the time taken by the service to schedule the request.|string (duration)
 |**errorCount** +
 __optional__|Total number of errors encountered while executing the query.|integer
+|**memoryQuota** +
+__optional__|The memory quota for the request, in MB.
+This property is only returned if a memory quota is set for the query.|integer
+|**node** +
+__optional__|IP address and port number of the node where the query is executed.|string
 |**phaseCounts** +
 __optional__|Count of documents processed at selective phases involved in the query execution.
 Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#profile[Attribute Profile in Query Response] for more details and examples.|object
 |**phaseOperators** +
 __optional__|Indicates the number of each kind of query operators involved in different phases of the query processing.
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#profile[Attribute Profile in Query Response] for more details and examples.|object
+|**phaseTimes** +
+__optional__|Cumulative execution times for various phases involved in the query execution.
 Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#profile[Attribute Profile in Query Response] for more details and examples.|object
 |**remoteAddr** +
 __optional__|IP address and port number of the client application, from where the query is received.|string
@@ -138,6 +146,11 @@ __optional__|Total amount of calendar time taken to complete the query.|string (
 __optional__|The state of the query execution, such as completed, running, cancelled.|string
 |**statement** +
 __optional__|The N1QL query statement being executed.|string
+|**useCBO** +
+__optional__|Whether the cost-based optimizer is enabled for the query.|boolean
+|**usedMemory** +
+__optional__|The amount of document memory used to execute the request.
+This property is only returned if a memory quota is set for the query.|integer
 |**userAgent** +
 __optional__|Name of the client application or program that issued the query.|string
 |**users** +
@@ -647,7 +660,8 @@ Refer to xref:n1ql:n1ql-language-reference/index-partitioning.adoc#max-paralleli
 **Example** : `0`|integer (int32)
 |**memory-quota** +
 __optional__|[[memory-quota-srv]]
-Specifies the maximum document memory consumption for each request on this node, in MB.
+Specifies the maximum amount of memory a request may use on this node, in MB.
+Note that the overall node memory quota is this setting multiplied by the <<servicers,node-level>> `servicers` setting.
 
 Specify `0` (the default value) to disable.
 When disabled, there is no quota.
@@ -786,7 +800,10 @@ The minimum of that and the node-level `scan-cap` setting is applied. +
 **Example** : `1024`|integer (int32)
 |**servicers** +
 __optional__|[[servicers]]
-The number of service threads for the query. +
+The number of service threads for the query.
+The default is 4 times the number of cores on the query node.
+
+Note that the overall node memory quota is this setting multiplied by the <<memory-quota-srv,node-level>> `memory-quota` setting. +
 **Default** : `32` +
 **Example** : `8`|integer (int32)
 |**timeout** +

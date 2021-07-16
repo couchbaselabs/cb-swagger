@@ -602,6 +602,14 @@ definitions:
       errorCount:
         type: integer
         description: Total number of errors encountered while executing the query.
+      memoryQuota:
+        type: integer
+        description: |
+          The memory quota for the request, in MB.
+          This property is only returned if a memory quota is set for the query.
+      node:
+        type: string
+        description: IP address and port number of the node where the query is executed.
       phaseCounts:
         type: object
         description: |
@@ -611,6 +619,11 @@ definitions:
         type: object
         description: |
           Indicates the number of each kind of query operators involved in different phases of the query processing.
+          Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#profile[Attribute Profile in Query Response] for more details and examples.
+      phaseTimes:
+        type: object
+        description: |
+          Cumulative execution times for various phases involved in the query execution.
           Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#profile[Attribute Profile in Query Response] for more details and examples.
       remoteAddr:
         type: string
@@ -642,6 +655,14 @@ definitions:
       statement:
         type: string
         description: The N1QL query statement being executed.
+      useCBO:
+        type: boolean
+        description: Whether the cost-based optimizer is enabled for the query.
+      usedMemory:
+        type: integer
+        description: |
+          The amount of document memory used to execute the request.
+          This property is only returned if a memory quota is set for the query.
       userAgent:
         type: string
         description: Name of the client application or program that issued the query.
@@ -1386,7 +1407,8 @@ definitions:
         example: 4
         description: |
           [[memory-quota-srv]]
-          Specifies the maximum document memory consumption for each request on this node, in MB.
+          Specifies the maximum amount of memory a request may use on this node, in MB.
+          Note that the overall node memory quota is this setting multiplied by the <<servicers,node-level>> `servicers` setting.
 
           Specify `0` (the default value) to disable.
           When disabled, there is no quota.
@@ -1561,6 +1583,9 @@ definitions:
         description: |
           [[servicers]]
           The number of service threads for the query.
+          The default is 4 times the number of cores on the query node.
+
+          Note that the overall node memory quota is this setting multiplied by the <<memory-quota-srv,node-level>> `memory-quota` setting.
       timeout:
         type: integer
         format: int64
