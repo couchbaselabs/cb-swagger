@@ -1,0 +1,158 @@
+swagger: '2.0'
+info:
+  title: Analytics Library REST API
+  version: '0.1'
+  description: >
+    The Analytics Library REST API is provided by the Analytics service.
+
+    This API enables you to manage the libraries that are used to create N1QL
+    for Analytics user-defined functions.
+
+
+    The API schemes and host URLs are as follows:
+
+
+    * `+http://localhost:8095/+`
+
+    * `+https://localhost:18095/+` (for secure access)
+
+
+    Note that this API is only available on the loopback interface of a node
+    running the Analytics service.
+produces:
+  - application/json
+consumes:
+  - multipart/form-data
+paths:
+  /analytics/library/:
+    get:
+      operationId: get_collection
+      summary: Read All Libraries
+      description: Returns all libraries and functions.
+      security:
+        - Default: []
+      responses:
+        '200':
+          description: >-
+            An object with multiple properties, each giving information about a
+            single library.
+          schema:
+            $ref: '#/definitions/Libraries'
+        '404':
+          description: |
+            Not found.
+            The path may be missing its trailing slash.
+        '406':
+          $ref: '#/responses/NotAcceptable'
+  '/analytics/library/{scope}/{library}':
+    parameters:
+      - $ref: '#/parameters/PathLibrary'
+      - $ref: '#/parameters/PathScope'
+    post:
+      operationId: post_library
+      summary: Create or Update a Library
+      description: |
+        Creates the specified library and its associated functions.
+        If the specified library exists, the existing library is overwritten.
+      parameters:
+        - $ref: '#/parameters/BodyLibrary'
+        - $ref: '#/parameters/BodyType'
+      security:
+        - Default: []
+      responses:
+        '200':
+          $ref: '#/responses/OK'
+        '400':
+          $ref: '#/responses/BadRequest'
+        '406':
+          $ref: '#/responses/NotAcceptable'
+    delete:
+      operationId: delete_library
+      summary: Delete a Library
+      description: Deletes the specified library entirely.
+      security:
+        - Default: []
+      responses:
+        '200':
+          $ref: '#/responses/OK'
+        '404':
+          $ref: '#/responses/LibraryNotFound'
+        '406':
+          $ref: '#/responses/NotAcceptable'
+parameters:
+  PathLibrary:
+    name: library
+    type: string
+    in: path
+    required: true
+    description: The name of a library.
+  PathScope:
+    name: scope
+    type: string
+    in: path
+    required: true
+    description: The scope containing the library.
+  BodyLibrary:
+    in: formData
+    type: file
+    name: data
+    required: true
+    description: 'The library and all its dependencies, packaged by shiv.'
+  BodyType:
+    in: formData
+    type: string
+    name: type
+    required: true
+    description: The language of the library.
+    enum:
+      - python
+definitions:
+  Library:
+    type: object
+    title: Library
+    properties:
+      scope:
+        type: string
+        description: The name of the scope containing the library
+        example: travel-sample/inventory
+      hash_md5:
+        type: string
+        description: A MD5 hash of the library residing on the server
+      name:
+        type: string
+        description: The name of the library
+        example: mylib
+  Libraries:
+    type: array
+    title: Library Definition
+    items:
+      $ref: '#/definitions/Library'
+responses:
+  OK:
+    description: The operation was successful.
+    schema:
+      type: string
+  LibraryNotFound:
+    description: |
+      Not found.
+      The library name in the path may be incorrect.
+    schema:
+      type: string
+  BadRequest:
+    description: |
+      Bad request.
+      The body of the request may be incorrect.
+    schema:
+      type: string
+  NotAcceptable:
+    description: |
+      Not acceptable.
+      The path may not conform to the schema.
+    schema:
+      type: string
+securityDefinitions:
+  Default:
+    type: basic
+    description: |
+      The Library API supports only admin credentials.
+      Credentials can be passed via HTTP headers (HTTP basic authentication).
