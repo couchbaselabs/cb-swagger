@@ -30,7 +30,7 @@ paths:
       summary: Read All Libraries
       description: Returns all libraries and functions.
       security:
-        - Default: []
+        - Analytics Admin: []
       responses:
         '200':
           description: >-
@@ -42,8 +42,8 @@ paths:
           description: |
             Not found.
             The path may be missing its trailing slash.
-        '406':
-          $ref: '#/responses/NotAcceptable'
+        '500':
+          $ref: '#/responses/InternalServerError'
   '/analytics/library/{scope}/{library}':
     parameters:
       - $ref: '#/parameters/PathLibrary'
@@ -58,27 +58,28 @@ paths:
         - $ref: '#/parameters/BodyLibrary'
         - $ref: '#/parameters/BodyType'
       security:
-        - Default: []
+        - Full Admin: []
       responses:
         '200':
           $ref: '#/responses/OK'
         '400':
           $ref: '#/responses/BadRequest'
-        '406':
-          $ref: '#/responses/NotAcceptable'
+        '500':
+          $ref: '#/responses/InternalServerError'
     delete:
       operationId: delete_library
       summary: Delete a Library
       description: Deletes the specified library entirely.
       security:
-        - Default: []
+        - Full Admin: []
       responses:
         '200':
           $ref: '#/responses/OK'
         '404':
           $ref: '#/responses/LibraryNotFound'
-        '406':
-          $ref: '#/responses/NotAcceptable'
+        '500':
+          $ref: '#/responses/InternalServerError'
+
 parameters:
   PathLibrary:
     name: library
@@ -127,11 +128,22 @@ definitions:
     title: Library Definition
     items:
       $ref: '#/definitions/Library'
+  OK:
+    type: object
+  Errors:
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: string
+        description: An error message.
+
 responses:
   OK:
     description: The operation was successful.
     schema:
-      type: string
+      $ref: "#/definitions/OK"
   LibraryNotFound:
     description: |
       Not found.
@@ -139,20 +151,41 @@ responses:
     schema:
       type: string
   BadRequest:
-    description: |
+    description: >
       Bad request.
-      The body of the request may be incorrect.
+      A parameter has an incorrect value.
     schema:
-      type: string
-  NotAcceptable:
-    description: |
-      Not acceptable.
-      The path may not conform to the schema.
+      $ref: "#/definitions/Errors"
+  InternalServerError:
+    description: >
+      Internal Server Error.
+      Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments.
     schema:
-      type: string
+      $ref: "#/definitions/Errors"
+
 securityDefinitions:
-  Default:
+  Full Admin:
     type: basic
     description: |
-      The Library API supports only admin credentials.
+      Modifiction to the Analytics Library REST API requires `cluster.admin.diag!write'
       Credentials can be passed via HTTP headers (HTTP basic authentication).
+
+      Users must have one of the following RBAC roles:
+
+      * Full Admin
+
+      Refer to [Roles](../learn/security/roles.html) for more details.
+
+  Analytics Admin:
+    type: basic
+    description: |
+      The Analytics Library REST API supports HTTP basic authentication.
+      Credentials can be passed via HTTP headers.
+
+      Users must have one of the following RBAC roles:
+
+      * Full Admin
+      * Cluster Admin
+      * Analytics Admin
+
+      Refer to [Roles](../learn/security/roles.html) for more details.
