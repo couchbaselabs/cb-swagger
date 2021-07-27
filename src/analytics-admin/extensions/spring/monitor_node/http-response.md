@@ -2,9 +2,9 @@
 
 ``` json
 {
-  "Default" : {
-    "GleambookMessages" : 0,
-    "GleambookUsers" : 0
+  "Commerce": {
+    "orders": 0,
+    "customers": 0
   }
 }
 ```
