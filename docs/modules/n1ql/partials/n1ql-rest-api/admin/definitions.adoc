@@ -452,8 +452,6 @@ __optional__|The standard deviation.|number
 |Name|Description|Schema
 |**atrcollection** +
 __optional__|[[atrcollection-srv]]
-[.edition]#{enterprise}#
-
 Specifies the collection where xref:learn:data/transactions.adoc#additional-storage-use[active transaction records] are stored.
 The collection must be present.
 If not specified, the active transaction record is stored in the default collection in the default scope in the bucket containing the first mutated document within the transaction.
@@ -474,8 +472,6 @@ Refer to xref:n1ql:n1ql-language-reference/prepare.adoc#auto-prepare[Auto-Prepar
 **Example** : `true`|boolean
 |**cleanupclientattempts** +
 __optional__|[[cleanupclientattempts]]
-[.edition]#{enterprise}#
-
 When enabled, the Query service preferentially aims to clean up just transactions that it has created, leaving transactions for the distributed cleanup process only when it is forced to.
 
 The {queryCleanupClientAttempts}[cluster-level] `queryCleanupClientAttempts` setting specifies this property for the whole cluster.
@@ -484,8 +480,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 **Example** : `false`|boolean
 |**cleanuplostattempts** +
 __optional__|[[cleanuplostattempts]]
-[.edition]#{enterprise}#
-
 When enabled, the Query service takes part in the distributed cleanup process, and cleans up expired transactions created by any client.
 
 The {queryCleanupLostAttempts}[cluster-level] `queryCleanupLostAttempts` setting specifies this property for the whole cluster.
@@ -494,8 +488,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 **Example** : `false`|boolean
 |**cleanupwindow** +
 __optional__|[[cleanupwindow]]
-[.edition]#{enterprise}#
-
 Specifies how frequently the Query service checks its subset of xref:learn:data/transactions.adoc#additional-storage-use[active transaction records] for cleanup.
 Decreasing this setting causes expiration transactions to be found more swiftly, with the tradeoff of increasing the number of reads per second used for the scanning process.
 
@@ -703,8 +695,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 **Default** : `76`|integer (int32)
 |**numatrs** +
 __optional__|[[numatrs-srv]]
-[.edition]#{enterprise}#
-
 Specifies the total number of xref:learn:data/transactions.adoc#additional-storage-use[active transaction records].
 
 The {queryNumAtrs}[cluster-level] `queryNumAtrs` setting specifies this property for the whole cluster.
@@ -825,8 +815,6 @@ The minimum of that and the node-level `timeout` setting is applied. +
 **Example** : `500000000`|integer (int64)
 |**txtimeout** +
 __optional__|[[txtimeout-srv]]
-[.edition]#{enterprise}#
-
 Maximum time to spend on a transaction before timing out (ns).
 This setting only applies to requests containing the `BEGIN TRANSACTION` statement, or to requests where the {tximplicit}[tximplicit] parameter is set.
 For all other requests, it is ignored.
