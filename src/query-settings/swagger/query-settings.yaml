@@ -101,8 +101,6 @@ definitions:
         example: false
         description: |
           [[queryCleanupClientAttempts]]
-          [.edition]#{enterprise}#
-
           When enabled, the Query service preferentially aims to clean up just transactions that it has created, leaving transactions for the distributed cleanup process only when it is forced to.
 
           The {cleanupclientattempts}[node-level] `cleanupclientattempts` setting specifies this property for a single node.
@@ -113,8 +111,6 @@ definitions:
         example: false
         description: |
           [[queryCleanupLostAttempts]]
-          [.edition]#{enterprise}#
-
           When enabled, the Query service takes part in the distributed cleanup process, and cleans up expired transactions created by any client.
 
           The {cleanuplostattempts}[node-level] `cleanuplostattempts` setting specifies this property for a single node.
@@ -126,8 +122,6 @@ definitions:
         example: 30s
         description: |
           [[queryCleanupWindow]]
-          [.edition]#{enterprise}#
-
           Specifies how frequently the Query service checks its subset of xref:learn:data/transactions.adoc#additional-storage-use[active transaction records] for cleanup.
           Decreasing this setting causes expiration transactions to be found more swiftly, with the tradeoff of increasing the number of reads per second used for the scanning process.
 
@@ -272,8 +266,6 @@ definitions:
         example: 512
         description: |
           [[queryNumAtrs]]
-          [.edition]#{enterprise}#
-
           Specifies the total number of xref:learn:data/transactions.adoc#additional-storage-use[active transaction records] for all Query nodes in the cluster.
 
           The {numatrs-srv}[node-level] `numatrs` setting specifies this property for a single node.
@@ -366,8 +358,6 @@ definitions:
         example: "0.5s"
         description: |
           [[queryTxTimeout]]
-          [.edition]#{enterprise}#
-
           Maximum time to spend on a transaction before timing out.
           This setting only applies to requests containing the `BEGIN TRANSACTION` statement, or to requests where the {tximplicit}[tximplicit] parameter is set.
           For all other requests, it is ignored.
