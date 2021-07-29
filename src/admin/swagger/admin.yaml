@@ -1103,8 +1103,6 @@ definitions:
         example: pass:c[default:`travel-sample`.transaction.test]
         description: |
           [[atrcollection-srv]]
-          [.edition]#{enterprise}#
-
           Specifies the collection where xref:learn:data/transactions.adoc#additional-storage-use[active transaction records] are stored.
           The collection must be present.
           If not specified, the active transaction record is stored in the default collection in the default scope in the bucket containing the first mutated document within the transaction.
@@ -1130,8 +1128,6 @@ definitions:
         example: false
         description: |
           [[cleanupclientattempts]]
-          [.edition]#{enterprise}#
-
           When enabled, the Query service preferentially aims to clean up just transactions that it has created, leaving transactions for the distributed cleanup process only when it is forced to.
 
           The {queryCleanupClientAttempts}[cluster-level] `queryCleanupClientAttempts` setting specifies this property for the whole cluster.
@@ -1142,8 +1138,6 @@ definitions:
         example: false
         description: |
           [[cleanuplostattempts]]
-          [.edition]#{enterprise}#
-
           When enabled, the Query service takes part in the distributed cleanup process, and cleans up expired transactions created by any client.
 
           The {queryCleanupLostAttempts}[cluster-level] `queryCleanupLostAttempts` setting specifies this property for the whole cluster.
@@ -1155,8 +1149,6 @@ definitions:
         example: 30s
         description: |
           [[cleanupwindow]]
-          [.edition]#{enterprise}#
-
           Specifies how frequently the Query service checks its subset of xref:learn:data/transactions.adoc#additional-storage-use[active transaction records] for cleanup.
           Decreasing this setting causes expiration transactions to be found more swiftly, with the tradeoff of increasing the number of reads per second used for the scanning process.
 
@@ -1446,8 +1438,6 @@ definitions:
         type: string
         description: |
           [[numatrs-srv]]
-          [.edition]#{enterprise}#
-
           Specifies the total number of xref:learn:data/transactions.adoc#additional-storage-use[active transaction records].
 
           The {queryNumAtrs}[cluster-level] `queryNumAtrs` setting specifies this property for the whole cluster.
@@ -1613,8 +1603,6 @@ definitions:
         example: 500000000
         description: |
           [[txtimeout-srv]]
-          [.edition]#{enterprise}#
-
           Maximum time to spend on a transaction before timing out (ns).
           This setting only applies to requests containing the `BEGIN TRANSACTION` statement, or to requests where the {tximplicit}[tximplicit] parameter is set.
           For all other requests, it is ignored.
