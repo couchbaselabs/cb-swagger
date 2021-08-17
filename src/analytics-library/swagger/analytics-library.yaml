@@ -160,26 +160,15 @@ responses:
 securityDefinitions:
   Full Admin:
     type: basic
-    description: |
-      Modifiction to the Analytics Library REST API requires `cluster.admin.diag!write'
-      Credentials can be passed via HTTP headers (HTTP basic authentication).
-
-      Users must have one of the following RBAC roles:
-
-      * Full Admin
-
-      Refer to [Roles](../learn/security/roles.html) for more details.
+    description: >
+      To [Create or Update a Library](#post_library) or [Delete a Library](#delete_library),
+      users must have the Full Admin RBAC role.
 
   Analytics Admin:
     type: basic
     description: |
-      The Analytics Library REST API supports HTTP basic authentication.
-      Credentials can be passed via HTTP headers.
-
-      Users must have one of the following RBAC roles:
+      To [Read All Libraries](#get_collection), users must have one of the following RBAC roles:
 
       * Full Admin
       * Cluster Admin
       * Analytics Admin
-
-      Refer to [Roles](../learn/security/roles.html) for more details.
