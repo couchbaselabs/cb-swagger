@@ -2,27 +2,24 @@ swagger: '2.0'
 info:
   title: Analytics Library REST API
   version: '0.1'
-  description: >
+  description: |
     The Analytics Library REST API is provided by the Analytics service.
-
-    This API enables you to manage the libraries that are used to create N1QL
-    for Analytics user-defined functions.
-
+    This API enables you to manage the libraries that are used to create N1QL for Analytics user-defined functions.
 
     The API schemes and host URLs are as follows:
 
-
-    * `+http://localhost:8095/+`
-
-    * `+https://localhost:18095/+` (for secure access)
-
+    * `http://localhost:8095/`
+    * `https://localhost:18095/` (for secure access)
 
     Note that this API is only available on the loopback interface of a node
     running the Analytics service.
+
 produces:
   - application/json
+
 consumes:
   - multipart/form-data
+
 paths:
   /analytics/library/:
     get:
@@ -41,19 +38,19 @@ paths:
             items:
               $ref: '#/definitions/Libraries'
         '404':
-          description: |
+          description: >
             Not found.
             The path may be missing its trailing slash.
         '500':
           $ref: '#/responses/InternalServerError'
-  '/analytics/library/{scope}/{library}':
+  /analytics/library/{scope}/{library}:
     parameters:
       - $ref: '#/parameters/PathLibrary'
       - $ref: '#/parameters/PathScope'
     post:
       operationId: post_library
       summary: Create or Update a Library
-      description: |
+      description: >
         Creates the specified library and its associated functions.
         If the specified library exists, the existing library is overwritten.
       parameters:
@@ -100,7 +97,7 @@ parameters:
     type: file
     name: data
     required: true
-    description: 'The library and all its dependencies, packaged by shiv.'
+    description: The library and all its dependencies, packaged by shiv.
   BodyType:
     in: formData
     type: string
@@ -109,6 +106,7 @@ parameters:
     description: The language of the library.
     enum:
       - python
+
 definitions:
   Libraries:
     type: object
@@ -139,7 +137,7 @@ responses:
     schema:
       type: object
   LibraryNotFound:
-    description: |
+    description: >
       Not found.
       The library name in the path may be incorrect.
     schema:
