@@ -91,7 +91,12 @@ parameters:
     type: string
     in: path
     required: true
-    description: The scope containing the library.
+    description: >
+      The name of the Analytics scope containing the library.
+
+
+      The scope name may contain one or two identifiers, separated by a slash (/).
+      You must URL-encode this parameter to escape any special characters.
   BodyLibrary:
     in: formData
     type: file
@@ -113,7 +118,11 @@ definitions:
     properties:
       scope:
         type: string
-        description: The name of the scope containing the library.
+        description: >
+          The name of the Analytics scope containing the library.
+
+
+          The scope name may contain one or two identifiers, separated by a slash (/).
         example: travel-sample/inventory
       hash_md5:
         type: string
@@ -150,7 +159,7 @@ responses:
       $ref: "#/definitions/Errors"
   InternalServerError:
     description: >
-      Internal Server Error.
+      Internal server error.
       Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments.
     schema:
       $ref: "#/definitions/Errors"
