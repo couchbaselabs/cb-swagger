@@ -33,11 +33,13 @@ paths:
         - Analytics Admin: []
       responses:
         '200':
-          description: >-
-            An object with multiple properties, each giving information about a
-            single library.
+          description: >
+            Success.
+            Returns an array of objects, each of which contains information about a single library.
           schema:
-            $ref: '#/definitions/Libraries'
+            type: array
+            items:
+              $ref: '#/definitions/Libraries'
         '404':
           description: |
             Not found.
@@ -108,28 +110,20 @@ parameters:
     enum:
       - python
 definitions:
-  Library:
+  Libraries:
     type: object
-    title: Library
     properties:
       scope:
         type: string
-        description: The name of the scope containing the library
+        description: The name of the scope containing the library.
         example: travel-sample/inventory
       hash_md5:
         type: string
-        description: A MD5 hash of the library residing on the server
+        description: A MD5 hash of the library residing on the server.
       name:
         type: string
-        description: The name of the library
+        description: The name of the library.
         example: mylib
-  Libraries:
-    type: array
-    title: Library Definition
-    items:
-      $ref: '#/definitions/Library'
-  OK:
-    type: object
   Errors:
     type: object
     required:
@@ -143,7 +137,7 @@ responses:
   OK:
     description: The operation was successful.
     schema:
-      $ref: "#/definitions/OK"
+      type: object
   LibraryNotFound:
     description: |
       Not found.
