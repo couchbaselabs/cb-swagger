@@ -4,6 +4,6 @@ The example below fetches all defined libraries.
 
 ``` shell
 curl -X GET \
-http://localhost:8095/analytics/library \
+http://localhost:8095/analytics/library/ \
 -u Administrator:password
 ```
