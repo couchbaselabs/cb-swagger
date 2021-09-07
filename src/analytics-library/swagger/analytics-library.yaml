@@ -1,0 +1,181 @@
+swagger: '2.0'
+info:
+  title: Analytics Library REST API
+  version: '0.1'
+  description: |
+    The Analytics Library REST API is provided by the Analytics service.
+    This API enables you to manage the libraries that are used to create N1QL for Analytics user-defined functions.
+
+    The API schemes and host URLs are as follows:
+
+    * `http://localhost:8095/`
+    * `https://localhost:18095/` (for secure access)
+
+    Note that this API is only available on the loopback interface of a node
+    running the Analytics service.
+
+produces:
+  - application/json
+
+consumes:
+  - multipart/form-data
+
+paths:
+  /analytics/library/:
+    get:
+      operationId: get_collection
+      summary: Read All Libraries
+      description: Returns all libraries and functions.
+      security:
+        - Analytics Admin: []
+      responses:
+        '200':
+          description: >
+            Success.
+            Returns an array of objects, each of which contains information about a single library.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Libraries'
+        '404':
+          description: >
+            Not found.
+            The path may be missing its trailing slash.
+        '500':
+          $ref: '#/responses/InternalServerError'
+  /analytics/library/{scope}/{library}:
+    parameters:
+      - $ref: '#/parameters/PathLibrary'
+      - $ref: '#/parameters/PathScope'
+    post:
+      operationId: post_library
+      summary: Create or Update a Library
+      description: >
+        Creates the specified library and its associated functions.
+        If the specified library exists, the existing library is overwritten.
+      parameters:
+        - $ref: '#/parameters/BodyLibrary'
+        - $ref: '#/parameters/BodyType'
+      security:
+        - Full Admin: []
+      responses:
+        '200':
+          $ref: '#/responses/OK'
+        '400':
+          $ref: '#/responses/BadRequest'
+        '500':
+          $ref: '#/responses/InternalServerError'
+    delete:
+      operationId: delete_library
+      summary: Delete a Library
+      description: Deletes the specified library entirely.
+      security:
+        - Full Admin: []
+      responses:
+        '200':
+          $ref: '#/responses/OK'
+        '404':
+          $ref: '#/responses/LibraryNotFound'
+        '500':
+          $ref: '#/responses/InternalServerError'
+
+parameters:
+  PathLibrary:
+    name: library
+    type: string
+    in: path
+    required: true
+    description: The name of a library.
+  PathScope:
+    name: scope
+    type: string
+    in: path
+    required: true
+    description: >
+      The name of the Analytics scope containing the library.
+
+
+      The scope name may contain one or two identifiers, separated by a slash (/).
+      You must URL-encode this parameter to escape any special characters.
+  BodyLibrary:
+    in: formData
+    type: file
+    name: data
+    required: true
+    description: The library and all its dependencies, packaged by shiv.
+  BodyType:
+    in: formData
+    type: string
+    name: type
+    required: true
+    description: The language of the library.
+    enum:
+      - python
+
+definitions:
+  Libraries:
+    type: object
+    properties:
+      scope:
+        type: string
+        description: >
+          The name of the Analytics scope containing the library.
+
+
+          The scope name may contain one or two identifiers, separated by a slash (/).
+        example: travel-sample/inventory
+      hash_md5:
+        type: string
+        description: A MD5 hash of the library residing on the server.
+      name:
+        type: string
+        description: The name of the library.
+        example: mylib
+  Errors:
+    type: object
+    required:
+      - error
+    properties:
+      error:
+        type: string
+        description: An error message.
+
+responses:
+  OK:
+    description: The operation was successful.
+    schema:
+      type: object
+  LibraryNotFound:
+    description: >
+      Not found.
+      The library name in the path may be incorrect.
+    schema:
+      type: string
+  BadRequest:
+    description: >
+      Bad request.
+      A parameter has an incorrect value.
+    schema:
+      $ref: "#/definitions/Errors"
+  InternalServerError:
+    description: >
+      Internal server error.
+      Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments.
+    schema:
+      $ref: "#/definitions/Errors"
+
+securityDefinitions:
+  Full Admin:
+    type: basic
+    description: >
+      To [Create or Update a Library](#post_library) or [Delete a Library](#delete_library),
+      users must have the Full Admin RBAC role.
+
+  Analytics Admin:
+    type: basic
+    description: |
+      To [Read All Libraries](#get_collection), users must have one of the following RBAC roles:
+
+      * Full Admin
+      * Cluster Admin
+      * Analytics Admin
