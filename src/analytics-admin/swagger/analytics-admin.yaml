@@ -86,6 +86,25 @@ paths:
         "404":
           $ref: '#/responses/NotFound'
 
+  /analytics/status/ingestion:
+    get:
+      operationId: ingestion_status
+      summary: Ingestion Status
+      description: Shows the progress of ingestion by the Analytics service, for each Analytics collection.
+      security:
+        - Analytics Manage / Analytics Select: []
+      responses:
+        "200":
+          description: >
+            Success.
+            Returns an object containing one or more nested dataverse objects, one for each available dataverse.
+          schema:
+            $ref: "#/definitions/Ingestion"
+        "401":
+          $ref: '#/responses/Unauthorized'
+        "404":
+          $ref: '#/responses/NotFound'
+
   /analytics/node/agg/stats/remaining:
     get:
       operationId: monitor_node
@@ -95,7 +114,8 @@ paths:
         Shows the number of mutations in the DCP queue that have not yet been ingested by the Analytics service, for each Analytics collection.
 
 
-        NOTE: This endpoint may not return meaningful results in Couchbase Server 7.0 and later: the reported number of mutations may be different to the actual number of mutations in the Analytics collection.
+        NOTE: This endpoint may not return meaningful results in Couchbase Server 7.0 and later.
+        The reported number of mutations may be different to the actual number of mutations in the Analytics collection.
         For this reason, this endpoint has been deprecated, and you should use the [Ingestion Status](#ingestion-status) endpoint instead.
       security:
         - Analytics Manage / Analytics Select: []
@@ -112,6 +132,100 @@ paths:
           $ref: '#/responses/NotFound'
 
 definitions:
+  Ingestion:
+    description: An object containing a single links property.
+    type: object
+    properties:
+      links:
+        type: array
+        description: An array of objects, each giving information about a single linked Analytics scope.
+        items:
+          type: object
+          title: Links
+          properties:
+            name:
+              type: string
+              description: The name of the link.
+            scope:
+              type: string
+              description: The name of the Analytics scope.
+            status:
+              type: string
+              description: The status of the Analytics scope.
+              enum:
+                - healthy
+                - stopped
+                - unhealthy
+                - suspended
+            state:
+              type: array
+              description: >
+                An array of objects, each giving the ingestion state of one or more Analytics collections.
+
+
+                Analytics collections which have the same ingestion state within this linked Analytics scope are aggregated together.
+              items:
+                type: object
+                title: States
+                required:
+                  - timestamp
+                  - progress
+                  - scopes
+                properties:
+                  timestamp:
+                    type: integer
+                    description: The time since epoch that this sample was calculated, in milliseconds.
+                    example: 1631273689161
+                  progress:
+                    type: integer
+                    description: The percentage (fraction from 0 to 1) of ingestion progress at the current time.
+                    minimum: 0
+                    maximum: 1
+                    example: 0
+                  timeLag:
+                    type: integer
+                    description: >
+                      The estimated time that the ingestion lags behind the Data service, in milliseconds.
+                      Only displayed for Analytics collections which are not fully ingested.
+                    example: 9744
+                  itemsProcessed:
+                    type: integer
+                    description: >
+                      The number of items ingested since last connect; that is, the total number of mutations and deletions processed.
+                      Only displayed for Analytics collections which are not fully ingested.
+
+
+                      Note that this value is reset on connect, so it may appear to go backwards.
+                    example: 12301
+                  seqnoAdvances:
+                    type: integer
+                    description: >
+                      The change in sequence number (seqno) since last connect.
+                      Only displayed for Analytics collections which are not fully ingested.
+                    example: 61
+                  scopes:
+                    type: array
+                    description: An array of objects, each one giving information about a single Analytics scope.
+                    items:
+                      type: object
+                      title: Scopes
+                      properties:
+                        name:
+                          type: string
+                          description: The name of the Analytics scope.
+                          example: travel-sample/inventory
+                        collections:
+                          type: array
+                          description: An array of objects, each one giving information about a single Analytics collection.
+                          items:
+                            type: object
+                            title: Collections
+                            properties:
+                              name:
+                                type: string
+                                description: The name of the Analytics collection.
+                                example: route
+
   Mutations:
     description: An object containing one or more nested scope objects, one for each available Analytics scope.
     type: object
