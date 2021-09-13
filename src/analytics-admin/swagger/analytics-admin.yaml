@@ -89,8 +89,14 @@ paths:
   /analytics/node/agg/stats/remaining:
     get:
       operationId: monitor_node
+      deprecated: true
       summary: Pending Mutations
-      description: Shows the number of mutations in the DCP queue that have not yet been ingested by the Analytics service, for each dataset.
+      description: >
+        Shows the number of mutations in the DCP queue that have not yet been ingested by the Analytics service, for each Analytics collection.
+
+
+        NOTE: This endpoint may not return meaningful results in Couchbase Server 7.0 and later: the reported number of mutations may be different to the actual number of mutations in the Analytics collection.
+        For this reason, this endpoint has been deprecated, and you should use the [Ingestion Status](#ingestion-status) endpoint instead.
       security:
         - Analytics Manage / Analytics Select: []
       responses:
@@ -99,30 +105,30 @@ paths:
             Success.
             Returns an object containing one or more nested dataverse objects, one for each available dataverse.
           schema:
-            $ref: "#/definitions/Dataverses"
+            $ref: "#/definitions/Mutations"
         "401":
           $ref: '#/responses/Unauthorized'
         "404":
           $ref: '#/responses/NotFound'
 
 definitions:
-  Dataverses:
-    description: An object containing one or more nested dataverse objects, one for each available dataverse.
+  Mutations:
+    description: An object containing one or more nested scope objects, one for each available Analytics scope.
     type: object
-    title: Dataverses
+    title: Mutations
     properties:
-      _dataverse_:
+      _scope_:
         type: object
         description: >
-          A nested object containing one or more dataset properties, one for each dataset in the dataverse.
-          The name of the object is the name of the dataverse.
-        title: Datasets
+          An object containing one or more collection properties, one for each Analytics collection in the Analytics scope.
+          The name of the object is the name of the Analytics scope.
+        title: Collections
         properties:
-          _dataset_:
+          _collection_:
             type: integer
             description: >
               The number of mutations in the DCP queue that have not yet been ingested.
-              The name of the property is the name of the dataset.
+              The name of the property is the name of the Analytics collection.
 
 responses:
   Unauthorized:
