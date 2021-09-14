@@ -97,7 +97,7 @@ paths:
         "200":
           description: >
             Success.
-            Returns an object containing one or more nested dataverse objects, one for each available dataverse.
+            Returns an object giving the ingestion status of each Analytics collection.
           schema:
             $ref: "#/definitions/Ingestion"
         "401":
@@ -123,7 +123,7 @@ paths:
         "200":
           description: >
             Success.
-            Returns an object containing one or more nested dataverse objects, one for each available dataverse.
+            Returns an object giving the number of pending mutations for each Analytics collection.
           schema:
             $ref: "#/definitions/Mutations"
         "401":
@@ -146,12 +146,15 @@ definitions:
             name:
               type: string
               description: The name of the link.
+              example: Local
             scope:
               type: string
               description: The name of the Analytics scope.
+              example: travel-sample/inventory
             status:
               type: string
               description: The status of the Analytics scope.
+              example: healthy
               enum:
                 - healthy
                 - stopped
@@ -163,7 +166,7 @@ definitions:
                 An array of objects, each giving the ingestion state of one or more Analytics collections.
 
 
-                Analytics collections which have the same ingestion state within this linked Analytics scope are aggregated together.
+                Analytics collections which have the same ingestion state within this Analytics scope are aggregated together.
               items:
                 type: object
                 title: States
@@ -186,22 +189,22 @@ definitions:
                     type: integer
                     description: >
                       The estimated time that the ingestion lags behind the Data service, in milliseconds.
-                      Only displayed for Analytics collections which are not fully ingested.
+                      Only displayed for Analytics collections that are not fully ingested.
                     example: 9744
                   itemsProcessed:
                     type: integer
                     description: >
                       The number of items ingested since last connect; that is, the total number of mutations and deletions processed.
-                      Only displayed for Analytics collections which are not fully ingested.
+                      Only displayed for Analytics collections that are not fully ingested.
 
 
-                      Note that this value is reset on connect, so it may appear to go backwards.
+                      Note that this value is reset on connect, so it may appear to get smaller.
                     example: 12301
                   seqnoAdvances:
                     type: integer
                     description: >
                       The change in sequence number (seqno) since last connect.
-                      Only displayed for Analytics collections which are not fully ingested.
+                      Only displayed for Analytics collections that are not fully ingested.
                     example: 61
                   scopes:
                     type: array
