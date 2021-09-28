@@ -1,0 +1,38 @@
+[#models]
+== Definitions
+
+{{! Table of contents }}
+This section describes the properties returned by this REST API.
+
+{{#models}}
+{{#model}}
+* <<{{classname}}>>
+{{/model}}
+{{/models}}
+
+{{! Body }}
+{{#models}}
+    {{#model}}
+
+[#{{classname}}]
+=== {{title}}
+
+{{unescapedDescription}}
+
+[.fields-{{classname}}]
+[cols="2,1,2,4,1"]
+|===         
+| Field Name| Required| Type| Description| Format
+
+{{#vars}}
+| {{baseName}} 
+| {{#required}}✓{{/required}} 
+| {{dataType}} {{#isContainer}} of <<{{complexType}}>>{{/isContainer}} 
+a| {{{description}}}
+| {{{dataFormat}}} {{#isEnum}}enum ({{#_enum}}{{^-last}}{{this}}, {{/-last}}{{#-last}}{{this}}{{/-last}}{{/_enum}}){{/isEnum}}
+
+{{/vars}}
+|===
+
+    {{/model}}
+{{/models}}

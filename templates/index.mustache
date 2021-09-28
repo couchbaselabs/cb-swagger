@@ -1,0 +1,170 @@
+= {{{appName}}}
+{{#headerAttributes}} 
+{{infoEmail}}
+:keywords: openapi, rest, {{appName}} 
+:specDir: {{specDir}}
+:snippetDir: {{snippetDir}}
+:generator-template: v1 2019-12-20
+:info-url: {{infoUrl}}
+:app-name: {{appName}}
+{{/headerAttributes}}
+
+{{#useIntroduction}}
+== Overview
+
+{{/useIntroduction}}
+{{^useIntroduction}}
+[abstract]
+.Abstract
+{{/useIntroduction}}
+{{{appDescription}}}
+
+{{#version}}
+=== Version information
+[%hardbreaks]
+__Version__ : {{{version}}}
+{{/version}}
+
+{{#host}}
+=== Host information
+[%hardbreaks]
+__Host__ : {{{host}}}
+{{/host}}
+
+{{#specinclude}}intro.adoc{{/specinclude}}
+
+== Resources
+
+{{! Table of contents for endpoints }}
+This section describes the operations available with this REST API.
+The operations are grouped in the following categories.
+
+{{#apiInfo}}
+{{#apis}}
+{{#operations}}
+* <<{{baseName}}>>
+{{/operations}}
+{{/apis}}
+{{/apiInfo}}
+
+{{! Endpoint body }}
+{{#apiInfo}}
+{{#apis}}
+{{#operations}}
+
+[.{{baseName}}]
+=== {{baseName}}
+
+{{! Table of contents for operations }}
+
+**{toc-title}**
+{{! TODO: tag description }}
+
+{{#operation}}
+* <<{{nickname}}>>
+{{/operation}}
+
+{{! Operation body }}
+
+{{#operation}}
+
+[#{{nickname}}]
+{{#useMethodAndPath}}
+==== {{httpMethod}} {{path}}
+
+{{summary}}
+
+{{/useMethodAndPath}}
+{{^useMethodAndPath}}
+==== {{summary}}
+....
+{{httpMethod}} {{path}}
+....
+{{/useMethodAndPath}}
+
+===== Description 
+
+{{{notes}}}
+
+{{#specinclude}}/{{nickname}}/operation-parameters-end-note.adoc{{/specinclude}}
+{{! TODO: Add more includes for other extension points }}
+
+{{> params}}
+
+{{#hasProduces}}
+===== Produces
+
+{{#produces}}
+* {{{mediaType}}}
+{{/produces}}
+{{/hasProduces}}
+
+{{#hasConsumes}}
+===== Consumes
+
+{{#consumes}}
+* {{{mediaType}}}
+{{/consumes}}
+{{/hasConsumes}}
+
+===== Responses
+
+[cols="2,3,1"]
+|===         
+| HTTP Code | Description | Schema 
+
+{{#responses}}
+
+| {{code}}
+a| {{{message}}}
+| {{^simpleType}}{{dataType}}[<<{{baseType}}>>]{{/simpleType}} {{#simpleType}}<<{{dataType}}>>{{/simpleType}}
+
+{{/responses}}
+|===         
+
+{{! TODO: Authentication }}
+
+{{^skipExamples}}
+===== Samples
+
+{{#snippetinclude}}{{nickname}}/http-request.adoc{{/snippetinclude}}
+{{#snippetinclude}}{{nickname}}/http-response.adoc{{/snippetinclude}}
+
+{{#snippetlink}}* wiremock data, {{path}}/{{httpMethod}}/{{httpMethod}}.json{{/snippetlink}}
+{{/skipExamples}}
+
+ifdef::internal-generation[]
+===== Implementation
+{{#specinclude}}{{path}}/{{httpMethod}}/implementation.adoc{{/specinclude}}
+
+endif::internal-generation[]
+
+{{/operation}}
+{{/operations}}
+{{/apis}}
+{{/apiInfo}}
+
+{{> model}}
+
+{{#hasAuthMethods}}
+[[_securityscheme]]
+== Security
+
+{{#authMethods}}
+{{#isBasic}}
+{{#isBasicBasic}}
+[[{{{name}}}]]
+=== {{{name}}}
+
+{{! TODO: Security description }}
+
+[%hardbreaks]
+__Type__ : basic
+{{/isBasicBasic}}
+{{#isBasicBearer}}* *Bearer* Authentication {{/isBasicBearer}}
+{{/isBasic}}
+{{#isOAuth}}* *OAuth*  AuthorizationUrl: _{{authorizationUrl}}_, TokenUrl:   _{{tokenUrl}}_ {{/isOAuth}}
+{{#isApiKey}}* *APIKey* KeyParamName:     _{{keyParamName}}_,     KeyInQuery: _{{isKeyInQuery}}_, KeyInHeader: _{{isKeyInHeader}}_{{/isApiKey}}
+{{/authMethods}}
+
+{{/hasAuthMethods}}
