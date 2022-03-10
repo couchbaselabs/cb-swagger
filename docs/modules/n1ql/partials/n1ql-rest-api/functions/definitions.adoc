@@ -44,8 +44,35 @@ ifdef::basebackend-html[]
 endif::[]
 
 
+**{toc-title}**
+
+* <<_libraries>>
+* <<_functions>>
+
+
 [[_libraries]]
 === Libraries
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**name** +
+__required__|The name of a library. +
+**Example** : `"math"`|string
+|**bucket** +
+__required__|For scope libraries, the bucket in which the library is stored. For global libraries, this string is empty. +
+**Example** : `"travel-sample"`|string
+|**scope** +
+__required__|For scope libraries, the scope in which the library is stored. For global libraries, this string is empty. +
+**Example** : `"inventory"`|string
+|**code** +
+__required__|The JavaScript code for all functions in the library. +
+**Example** : `"function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"`|string
+|===
+
+
+[[_functions]]
+=== Functions
 
 [options="header", cols=".^3a,.^11a,.^4a"]
 |===
