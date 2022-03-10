@@ -56,8 +56,8 @@ paths:
         By default, this operation returns all global libraries and functions, and all scope libraries and functions.
         To return all the libraries and functions in a single scope, specify a bucket and scope.
       security:
-        - Manage Global Libraries: []
-        - Manage Scope Libraries: []
+        - Global: []
+        - Scope: []
       responses:
         "200":
           description: An array of objects, each giving information about a single library.
@@ -83,8 +83,8 @@ paths:
         By default, this operation returns a global library.
         For a scope library, you must specify the bucket and scope.
       security:
-        - Manage Global Libraries: []
-        - Manage Scope Libraries: []
+        - Global: []
+        - Scope: []
       responses:
         "200":
           description: An object with a single property, giving information about the specified library.
@@ -107,8 +107,8 @@ paths:
       parameters:
         - $ref: "#/parameters/BodyLibrary"
       security:
-        - Manage Global Libraries: []
-        - Manage Scope Libraries: []
+        - Global: []
+        - Scope: []
       responses:
         "200":
           $ref: "#/responses/OK"
@@ -129,8 +129,8 @@ paths:
         By default, this operation deletes a global library.
         For a scope library, you must specify the bucket and scope.
       security:
-        - Manage Global Libraries: []
-        - Manage Scope Libraries: []
+        - Global: []
+        - Scope: []
       responses:
         "200":
           $ref: "#/responses/OK"
@@ -243,14 +243,14 @@ responses:
       type: string
 
 securityDefinitions:
-  Manage Global Libraries:
+  Global:
     type: basic
     description: |
       To manage global libraries, users must have the *Manage Global External Functions* RBAC role.
 
       This role enables you to create, read, update, or delete any global library, but does not give you access to any scope libraries.
 
-  Manage Scope Libraries:
+  Scope:
     type: basic
     description: |
       To manage scope libraries, users must have the *Manage Scope External Functions* RBAC role, with permissions on the specified bucket and scope.
