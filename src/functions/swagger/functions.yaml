@@ -29,9 +29,6 @@ consumes:
 #   - http
 #   - https
 
-security:
-  - Default: []
-
 paths:
   /evaluator/v1/libraries:
     get:
@@ -44,14 +41,14 @@ paths:
           required: false
           description: >
             For scope libraries only.
-            The bucket from which to get libraries.
+            The bucket from which to fetch libraries.
         - name: scope
           type: string
           in: query
           required: false
           description: >
             For scope libraries only.
-            The scope from which to get libraries.
+            The scope from which to fetch libraries.
       description: >
         Returns all libraries and functions.
 
@@ -59,7 +56,8 @@ paths:
         By default, this operation returns all global libraries and functions, and all scope libraries and functions.
         To return all the libraries and functions in a single scope, specify a bucket and scope.
       security:
-        - Default: []
+        - Manage Global Libraries: []
+        - Manage Scope Libraries: []
       responses:
         "200":
           description: An array of objects, each giving information about a single library.
@@ -85,7 +83,8 @@ paths:
         By default, this operation returns a global library.
         For a scope library, you must specify the bucket and scope.
       security:
-        - Default: []
+        - Manage Global Libraries: []
+        - Manage Scope Libraries: []
       responses:
         "200":
           description: An object with a single property, giving information about the specified library.
@@ -108,7 +107,8 @@ paths:
       parameters:
         - $ref: "#/parameters/BodyLibrary"
       security:
-        - Default: []
+        - Manage Global Libraries: []
+        - Manage Scope Libraries: []
       responses:
         "200":
           $ref: "#/responses/OK"
@@ -129,7 +129,8 @@ paths:
         By default, this operation deletes a global library.
         For a scope library, you must specify the bucket and scope.
       security:
-        - Default: []
+        - Manage Global Libraries: []
+        - Manage Scope Libraries: []
       responses:
         "200":
           $ref: "#/responses/OK"
@@ -242,8 +243,17 @@ responses:
       type: string
 
 securityDefinitions:
-  Default:
+  Manage Global Libraries:
     type: basic
-    description: >
-      The Functions API supports admin credentials.
-      Credentials can be passed via HTTP headers (HTTP basic authentication).
+    description: |
+      To manage global libraries, users must have the *Manage Global External Functions* RBAC role.
+
+      This role enables you to create, read, update, or delete any global library, but does not give you access to any scope libraries.
+
+  Manage Scope Libraries:
+    type: basic
+    description: |
+      To manage scope libraries, users must have the *Manage Scope External Functions* RBAC role, with permissions on the specified bucket and scope.
+
+      This role enables you to create, read, update, or delete any library in the scope to which you have access, but does not give you access to any other scope libraries.
+      In addition, this role enables you to read any global library, but not to create, update, or delete them.
