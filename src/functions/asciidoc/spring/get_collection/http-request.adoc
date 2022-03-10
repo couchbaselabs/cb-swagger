@@ -1,3 +1,4 @@
+[[collection-example-1,request {counter:xref}]]
 ====
 Request {counter:example}: Fetch all defined libraries.
 
@@ -5,7 +6,20 @@ Request {counter:example}: Fetch all defined libraries.
 [source,shell]
 ----
 curl -X GET \
-http://localhost:8093/evaluator/v1/libraries/ \
+"http://localhost:8093/evaluator/v1/libraries" \
+-u Administrator:password
+----
+====
+
+[[collection-example-2,request {counter:xref}]]
+====
+Request {counter:example}: Fetch all defined libraries in the specified scope.
+
+.Curl request
+[source,shell]
+----
+curl -X GET \
+"http://localhost:8093/evaluator/v1/libraries?bucket=travel-sample&scope=inventory" \
 -u Administrator:password
 ----
 ====

@@ -1,11 +1,25 @@
+[[delete-example-1,request {counter:xref}]]
 ====
-Request {counter:example}: Delete the `math` library entirely.
+Request {counter:example}: Delete a global library entirely.
 
 .Curl request
 [source,shell]
 ----
 curl -X DELETE \
-http://localhost:8093/evaluator/v1/libraries/math \
+"http://localhost:8093/evaluator/v1/libraries/math" \
+-u Administrator:password
+----
+====
+
+[[delete-example-2,request {counter:xref}]]
+====
+Request {counter:example}: Delete a scope library entirely.
+
+.Curl request
+[source,shell]
+----
+curl -X DELETE \
+"http://localhost:8093/evaluator/v1/libraries/science?bucket=travel-sample&scope=inventory" \
 -u Administrator:password
 ----
 ====
