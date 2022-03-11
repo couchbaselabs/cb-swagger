@@ -40,20 +40,20 @@ paths:
           in: query
           required: false
           description: >
-            For scope libraries only.
+            For scoped libraries only.
             The bucket from which to fetch libraries.
         - name: scope
           type: string
           in: query
           required: false
           description: >
-            For scope libraries only.
+            For scoped libraries only.
             The scope from which to fetch libraries.
       description: >
         Returns all libraries and functions.
 
 
-        By default, this operation returns all global libraries and functions, and all scope libraries and functions.
+        By default, this operation returns all global libraries and functions, and all scoped libraries and functions.
         To return all the libraries and functions in a single scope, specify a bucket and scope.
       security:
         - Global: []
@@ -81,7 +81,7 @@ paths:
 
 
         By default, this operation returns a global library.
-        For a scope library, you must specify the bucket and scope.
+        For a scoped library, you must specify the bucket and scope.
       security:
         - Global: []
         - Scope: []
@@ -103,7 +103,7 @@ paths:
 
 
         By default, this operation creates or updates a global library.
-        For a scope library, you must specify the bucket and scope.
+        For a scoped library, you must specify the bucket and scope.
       parameters:
         - $ref: "#/parameters/BodyLibrary"
       security:
@@ -127,7 +127,7 @@ paths:
         Deletes the specified library entirely.
 
         By default, this operation deletes a global library.
-        For a scope library, you must specify the bucket and scope.
+        For a scoped library, you must specify the bucket and scope.
       security:
         - Global: []
         - Scope: []
@@ -153,7 +153,7 @@ parameters:
     in: query
     required: false
     description: >
-      For scope libraries only.
+      For scoped libraries only.
       The bucket in which the library is stored.
     
   QueryScope: &queryScope
@@ -162,7 +162,7 @@ parameters:
     in: query
     required: false
     description: >
-      For scope libraries only.
+      For scoped libraries only.
       The scope in which the library is stored.
 
   BodyLibrary:
@@ -186,13 +186,13 @@ definitions:
       bucket:
         type: string
         description: >
-          For scope libraries, the bucket in which the library is stored.
+          For scoped libraries, the bucket in which the library is stored.
           For global libraries, this string is empty.
         example: travel-sample
       scope:
         type: string
         description: >
-          For scope libraries, the scope in which the library is stored.
+          For scoped libraries, the scope in which the library is stored.
           For global libraries, this string is empty.
         example: inventory
       code:
@@ -248,12 +248,12 @@ securityDefinitions:
     description: |
       To manage global libraries, users must have the *Manage Global External Functions* RBAC role.
 
-      This role enables you to create, read, update, or delete any global library, but does not give you access to any scope libraries.
+      This role enables you to create, read, update, or delete any global library, but does not give you access to any scoped libraries.
 
   Scope:
     type: basic
     description: |
-      To manage scope libraries, users must have the *Manage Scope External Functions* RBAC role, with permissions on the specified bucket and scope.
+      To manage scoped libraries, users must have the *Manage Scope External Functions* RBAC role, with permissions on the specified bucket and scope.
 
-      This role enables you to create, read, update, or delete any library in the scope to which you have access, but does not give you access to any other scope libraries.
+      This role enables you to create, read, update, or delete any library in the scope to which you have access, but does not give you access to any other scoped libraries.
       In addition, this role enables you to read any global library, but not to create, update, or delete them.
