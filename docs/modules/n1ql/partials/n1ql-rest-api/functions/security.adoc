@@ -6,13 +6,32 @@
 [[_securityscheme]]
 == Security
 
-[[_default]]
-=== Default
 The Functions API supports admin credentials.
 Credentials can be passed via HTTP headers (HTTP basic authentication).
 
+
+[[_global]]
+=== Global
+To manage global libraries, users must have the _Manage Global External Functions_ RBAC role.
+
+This role enables you to create, read, update, or delete any global library, but does not give you access to any scoped libraries.
+
 [%hardbreaks]
 __Type__ : basic
+
+
+[[_scope]]
+=== Scope
+To manage scoped libraries, users must have the _Manage Scope External Functions_ RBAC role, with permissions on the specified bucket and scope.
+
+This role enables you to create, read, update, or delete any library in the scope to which you have access, but does not give you access to any other scoped libraries.
+In addition, this role enables you to read any global library, but not to create, update, or delete them.
+
+[%hardbreaks]
+__Type__ : basic
+
+
+Refer to xref:learn:security/roles.adoc[Roles] for more details.
 
 
 

@@ -1,11 +1,39 @@
 ====
+Result of <<collection-example-1>>.
 
 .Response 200
 [source,json]
 ----
-{
-  "math": "function add(a, b) { return a + b; } function mul(a, b) { return a * b; }",
-  "science": "function f2c(f) { return (5/9)*(f-32); }"
-}
+[
+  {
+    "name": "math",
+    "bucket": "",
+    "scope": "",
+    "code": "function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"
+  },
+  {
+    "name": "science",
+    "bucket": "travel-sample",
+    "scope": "inventory",
+    "code": "function f2c(f) { return (5/9)*(f-32); }"
+  }
+]
+----
+====
+
+====
+Result of <<collection-example-2>>.
+
+.Response 200
+[source,json]
+----
+[
+  {
+    "name": "science",
+    "bucket": "travel-sample",
+    "scope": "inventory",
+    "code": "function f2c(f) { return (5/9)*(f-32); }"
+  }
+]
 ----
 ====

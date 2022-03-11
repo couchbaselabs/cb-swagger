@@ -17,12 +17,33 @@
 [[_get_collection]]
 === Read All Libraries
 ....
-GET /evaluator/v1/libraries/
+GET /evaluator/v1/libraries
 ....
 
 
 ==== Description
 Returns all libraries and functions.
+
+By default, this operation returns all global libraries and functions, and all scoped libraries and functions. To return all the libraries and functions in a single scope, specify a bucket and scope.
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**bucket** +
+__optional__|For scoped libraries only. The bucket from which to fetch libraries.|string
+|**Query**|**scope** +
+__optional__|For scoped libraries only. The scope from which to fetch libraries.|string
+|===
+
+
+[NOTE]
+====
+To fetch libraries from a scope, you must specify both the `bucket` and `scope` parameters.
+You cannot specify one without the other.
+====
 
 
 ==== Responses
@@ -30,11 +51,8 @@ Returns all libraries and functions.
 [options="header", cols=".^2a,.^14a,.^4a"]
 |===
 |HTTP Code|Description|Schema
-|**200**|An object with multiple properties, each giving information about a single library.|<<_libraries,Libraries>>
-|**404**|Not found.
-The path may be missing its trailing slash.|No Content
-|**406**|Not acceptable.
-The path may not conform to the schema.|string
+|**200**|An array of objects, each giving information about a single library.|< <<_libraries,Libraries>> > array
+|**400**|Bad request. The path may not conform to the schema.|string
 |===
 
 
@@ -43,12 +61,14 @@ The path may not conform to the schema.|string
 [options="header", cols=".^3a,.^4a"]
 |===
 |Type|Name
-|**basic**|**<<_default,Default>>**
+|**basic**|**<<_global,Global>>**
+|**basic**|**<<_scope,Scope>>**
 |===
 
 
 ==== Example HTTP request
 
+[[collection-example-1,request {counter:xref}]]
 ====
 Request {counter:example}: Fetch all defined libraries.
 
@@ -56,7 +76,20 @@ Request {counter:example}: Fetch all defined libraries.
 [source,shell]
 ----
 curl -X GET \
-http://localhost:8093/evaluator/v1/libraries/ \
+"http://localhost:8093/evaluator/v1/libraries" \
+-u Administrator:password
+----
+====
+
+[[collection-example-2,request {counter:xref}]]
+====
+Request {counter:example}: Fetch all defined libraries in the specified scope.
+
+.Curl request
+[source,shell]
+----
+curl -X GET \
+"http://localhost:8093/evaluator/v1/libraries?bucket=travel-sample&scope=inventory" \
 -u Administrator:password
 ----
 ====
@@ -65,14 +98,42 @@ http://localhost:8093/evaluator/v1/libraries/ \
 ==== Example HTTP response
 
 ====
+Result of <<collection-example-1>>.
 
 .Response 200
 [source,json]
 ----
-{
-  "math": "function add(a, b) { return a + b; } function mul(a, b) { return a * b; }",
-  "science": "function f2c(f) { return (5/9)*(f-32); }"
-}
+[
+  {
+    "name": "math",
+    "bucket": "",
+    "scope": "",
+    "code": "function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"
+  },
+  {
+    "name": "science",
+    "bucket": "travel-sample",
+    "scope": "inventory",
+    "code": "function f2c(f) { return (5/9)*(f-32); }"
+  }
+]
+----
+====
+
+====
+Result of <<collection-example-2>>.
+
+.Response 200
+[source,json]
+----
+[
+  {
+    "name": "science",
+    "bucket": "travel-sample",
+    "scope": "inventory",
+    "code": "function f2c(f) { return (5/9)*(f-32); }"
+  }
+]
 ----
 ====
 
@@ -87,6 +148,8 @@ GET /evaluator/v1/libraries/{library}
 ==== Description
 Returns a library with all its functions.
 
+By default, this operation returns a global library. For a scoped library, you must specify the bucket and scope.
+
 
 ==== Parameters
 
@@ -95,7 +158,18 @@ Returns a library with all its functions.
 |Type|Name|Description|Schema
 |**Path**|**library** +
 __required__|The name of a library.|string
+|**Query**|**bucket** +
+__optional__|For scoped libraries only. The bucket in which the library is stored.|string
+|**Query**|**scope** +
+__optional__|For scoped libraries only. The scope in which the library is stored.|string
 |===
+
+
+[NOTE]
+====
+To read a scoped library, you must specify both the `bucket` and `scope` parameters.
+You cannot specify one without the other.
+====
 
 
 ==== Responses
@@ -103,11 +177,9 @@ __required__|The name of a library.|string
 [options="header", cols=".^2a,.^14a,.^4a"]
 |===
 |HTTP Code|Description|Schema
-|**200**|An object with a single property, giving information about the specified library.|<<_libraries,Libraries>>
-|**404**|Not found.
-The library name in the path may be incorrect.|string
-|**406**|Not acceptable.
-The path may not conform to the schema.|string
+|**200**|An object with a single property, giving information about the specified library.|<<_functions,Functions>>
+|**400**|Bad request. The path may not conform to the schema.|string
+|**404**|Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly.|string
 |===
 
 
@@ -116,20 +188,35 @@ The path may not conform to the schema.|string
 [options="header", cols=".^3a,.^4a"]
 |===
 |Type|Name
-|**basic**|**<<_default,Default>>**
+|**basic**|**<<_global,Global>>**
+|**basic**|**<<_scope,Scope>>**
 |===
 
 
 ==== Example HTTP request
 
+[[library-example-1,request {counter:xref}]]
 ====
-Request {counter:example}: Get all functions in the library `math`.
+Request {counter:example}: Get all functions in the specified global library.
 
 .Curl request
 [source,shell]
 ----
 curl -X GET \
-http://localhost:8093/evaluator/v1/libraries/math \
+"http://localhost:8093/evaluator/v1/libraries/math" \
+-u Administrator:password
+----
+====
+
+[[library-example-2,request {counter:xref}]]
+====
+Request {counter:example}: Get all functions in the specified scoped library.
+
+.Curl request
+[source,shell]
+----
+curl -X GET \
+"http://localhost:8093/evaluator/v1/libraries/science?bucket=travel-sample&scope=inventory" \
 -u Administrator:password
 ----
 ====
@@ -138,12 +225,25 @@ http://localhost:8093/evaluator/v1/libraries/math \
 ==== Example HTTP response
 
 ====
+Result of <<library-example-1>>.
 
 .Response 200
 [source,json]
 ----
 {
   "math": "function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"
+}
+----
+====
+
+====
+Result of <<library-example-2>>.
+
+.Response 200
+[source,json]
+----
+{
+  "science": "function f2c(f) { return (5/9)*(f-32); }"
 }
 ----
 ====
@@ -157,8 +257,9 @@ POST /evaluator/v1/libraries/{library}
 
 
 ==== Description
-Creates the specified library and its associated functions.
-If the specified library exists, the existing library is overwritten.
+Creates the specified library and its associated functions. If the specified library exists, the existing library is overwritten.
+
+By default, this operation creates or updates a global library. For a scoped library, you must specify the bucket and scope.
 
 
 [NOTE]
@@ -176,9 +277,20 @@ If the specified library exists, the existing library is overwritten.
 |Type|Name|Description|Schema
 |**Path**|**library** +
 __required__|The name of a library.|string
+|**Query**|**bucket** +
+__optional__|For scoped libraries only. The bucket in which the library is stored.|string
+|**Query**|**scope** +
+__optional__|For scoped libraries only. The scope in which the library is stored.|string
 |**Body**|**functions** +
 __required__|The JavaScript code for all functions in the library.|string
 |===
+
+
+[NOTE]
+====
+To create or update a scoped library, you must specify both the `bucket` and `scope` parameters.
+You cannot specify one without the other.
+====
 
 
 ==== Responses
@@ -187,10 +299,8 @@ __required__|The JavaScript code for all functions in the library.|string
 |===
 |HTTP Code|Description|Schema
 |**200**|The operation was successful.|string
-|**400**|Bad request.
-The body of the request may be incorrect.|string
-|**406**|Not acceptable.
-The path may not conform to the schema.|string
+|**400**|Bad request. The body of the request may be incorrect, or the path may not conform to the schema.|string
+|**404**|Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly.|string
 |===
 
 
@@ -199,21 +309,23 @@ The path may not conform to the schema.|string
 [options="header", cols=".^3a,.^4a"]
 |===
 |Type|Name
-|**basic**|**<<_default,Default>>**
+|**basic**|**<<_global,Global>>**
+|**basic**|**<<_scope,Scope>>**
 |===
 
 
 ==== Example HTTP request
 
+[[post-example-1,request {counter:xref}]]
 ====
-Request {counter:example}: Create or update a library called `math`.
+Request {counter:example}: Create or update a global library called `math`.
 The library contains two functions, `add` and `sub`.
 
 .Curl request
 [source,shell]
 ----
 curl -X POST \
-http://localhost:8093/evaluator/v1/libraries/math \
+"http://localhost:8093/evaluator/v1/libraries/math" \
 -u Administrator:password \
 -H 'content-type: application/json' \
 -d 'function add(a, b) { let data = a + b; return data; }
@@ -221,14 +333,15 @@ http://localhost:8093/evaluator/v1/libraries/math \
 ----
 ====
 
+[[post-example-2,request {counter:xref}]]
 ====
-Request {counter:example}: Add a function called `mul` to the library, leaving the other functions unchanged.
+Request {counter:example}: Add a function called `mul` to the global library, leaving the other functions unchanged.
 
 .Curl request
 [source,shell]
 ----
 curl -X POST \
-http://localhost:8093/evaluator/v1/libraries/math \
+"http://localhost:8093/evaluator/v1/libraries/math" \
 -u Administrator:password \
 -H 'content-type: application/json' \
 -d 'function add(a, b) { let data = a + b; return data; }
@@ -237,6 +350,7 @@ http://localhost:8093/evaluator/v1/libraries/math \
 ----
 ====
 
+[[post-example-3,request {counter:xref}]]
 ====
 Request {counter:example}: Edit the function called `sub` to use a helper function called `helper`, leaving the other functions unchanged.
 
@@ -244,7 +358,7 @@ Request {counter:example}: Edit the function called `sub` to use a helper functi
 [source,shell]
 ----
 curl -X POST \
-http://localhost:8093/evaluator/v1/libraries/math \
+"http://localhost:8093/evaluator/v1/libraries/math" \
 -u Administrator:password \
 -H 'content-type: application/json' \
 -d 'function add(a, b) { let data = a + b; return data; }
@@ -254,6 +368,7 @@ http://localhost:8093/evaluator/v1/libraries/math \
 ----
 ====
 
+[[post-example-4,request {counter:xref}]]
 ====
 Request {counter:example}: Remove the function called `sub` and the helper function called `helper`, leaving the other functions unchanged.
 
@@ -261,11 +376,27 @@ Request {counter:example}: Remove the function called `sub` and the helper funct
 [source,shell]
 ----
 curl -X POST \
-http://localhost:8093/evaluator/v1/libraries/math \
+"http://localhost:8093/evaluator/v1/libraries/math" \
 -u Administrator:password \
 -H 'content-type: application/json' \
 -d 'function add(a, b) { let data = a + b; return data; }
     function mul(a, b) { let data = a * b; return data; }'
+----
+====
+
+[[post-example-5,request {counter:xref}]]
+====
+Request {counter:example}: Create or update a scoped library called `science`.
+The library contains one function, `f2c`.
+
+.Curl request
+[source,shell]
+----
+curl -X POST \
+"http://localhost:8093/evaluator/v1/libraries/science?bucket=travel-sample&scope=inventory" \
+-u Administrator:password \
+-H 'content-type: application/json' \
+-d 'function f2c(f) { return (5/9)*(f-32); }'
 ----
 ====
 
@@ -279,6 +410,9 @@ DELETE /evaluator/v1/libraries/{library}
 
 ==== Description
 Deletes the specified library entirely.
+
+By default, this operation deletes a global library.
+For a scoped library, you must specify the bucket and scope.
 
 
 [NOTE]
@@ -295,7 +429,18 @@ For further details, refer to xref:n1ql:n1ql-language-reference/dropfunction.ado
 |Type|Name|Description|Schema
 |**Path**|**library** +
 __required__|The name of a library.|string
+|**Query**|**bucket** +
+__optional__|For scoped libraries only. The bucket in which the library is stored.|string
+|**Query**|**scope** +
+__optional__|For scoped libraries only. The scope in which the library is stored.|string
 |===
+
+
+[NOTE]
+====
+To delete a scoped library, you must specify both the `bucket` and `scope` parameters.
+You cannot specify one without the other.
+====
 
 
 ==== Responses
@@ -304,10 +449,8 @@ __required__|The name of a library.|string
 |===
 |HTTP Code|Description|Schema
 |**200**|The operation was successful.|string
-|**404**|Not found.
-The library name in the path may be incorrect.|string
-|**406**|Not acceptable.
-The path may not conform to the schema.|string
+|**400**|Bad request. The path may not conform to the schema.|string
+|**404**|Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly.|string
 |===
 
 
@@ -316,20 +459,35 @@ The path may not conform to the schema.|string
 [options="header", cols=".^3a,.^4a"]
 |===
 |Type|Name
-|**basic**|**<<_default,Default>>**
+|**basic**|**<<_global,Global>>**
+|**basic**|**<<_scope,Scope>>**
 |===
 
 
 ==== Example HTTP request
 
+[[delete-example-1,request {counter:xref}]]
 ====
-Request {counter:example}: Delete the `math` library entirely.
+Request {counter:example}: Delete a global library entirely.
 
 .Curl request
 [source,shell]
 ----
 curl -X DELETE \
-http://localhost:8093/evaluator/v1/libraries/math \
+"http://localhost:8093/evaluator/v1/libraries/math" \
+-u Administrator:password
+----
+====
+
+[[delete-example-2,request {counter:xref}]]
+====
+Request {counter:example}: Delete a scoped library entirely.
+
+.Curl request
+[source,shell]
+----
+curl -X DELETE \
+"http://localhost:8093/evaluator/v1/libraries/science?bucket=travel-sample&scope=inventory" \
 -u Administrator:password
 ----
 ====

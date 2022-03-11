@@ -1,12 +1,13 @@
+[[post-example-1,request {counter:xref}]]
 ====
-Request {counter:example}: Create or update a library called `math`.
+Request {counter:example}: Create or update a global library called `math`.
 The library contains two functions, `add` and `sub`.
 
 .Curl request
 [source,shell]
 ----
 curl -X POST \
-http://localhost:8093/evaluator/v1/libraries/math \
+"http://localhost:8093/evaluator/v1/libraries/math" \
 -u Administrator:password \
 -H 'content-type: application/json' \
 -d 'function add(a, b) { let data = a + b; return data; }
@@ -14,14 +15,15 @@ http://localhost:8093/evaluator/v1/libraries/math \
 ----
 ====
 
+[[post-example-2,request {counter:xref}]]
 ====
-Request {counter:example}: Add a function called `mul` to the library, leaving the other functions unchanged.
+Request {counter:example}: Add a function called `mul` to the global library, leaving the other functions unchanged.
 
 .Curl request
 [source,shell]
 ----
 curl -X POST \
-http://localhost:8093/evaluator/v1/libraries/math \
+"http://localhost:8093/evaluator/v1/libraries/math" \
 -u Administrator:password \
 -H 'content-type: application/json' \
 -d 'function add(a, b) { let data = a + b; return data; }
@@ -30,6 +32,7 @@ http://localhost:8093/evaluator/v1/libraries/math \
 ----
 ====
 
+[[post-example-3,request {counter:xref}]]
 ====
 Request {counter:example}: Edit the function called `sub` to use a helper function called `helper`, leaving the other functions unchanged.
 
@@ -37,7 +40,7 @@ Request {counter:example}: Edit the function called `sub` to use a helper functi
 [source,shell]
 ----
 curl -X POST \
-http://localhost:8093/evaluator/v1/libraries/math \
+"http://localhost:8093/evaluator/v1/libraries/math" \
 -u Administrator:password \
 -H 'content-type: application/json' \
 -d 'function add(a, b) { let data = a + b; return data; }
@@ -47,6 +50,7 @@ http://localhost:8093/evaluator/v1/libraries/math \
 ----
 ====
 
+[[post-example-4,request {counter:xref}]]
 ====
 Request {counter:example}: Remove the function called `sub` and the helper function called `helper`, leaving the other functions unchanged.
 
@@ -54,10 +58,26 @@ Request {counter:example}: Remove the function called `sub` and the helper funct
 [source,shell]
 ----
 curl -X POST \
-http://localhost:8093/evaluator/v1/libraries/math \
+"http://localhost:8093/evaluator/v1/libraries/math" \
 -u Administrator:password \
 -H 'content-type: application/json' \
 -d 'function add(a, b) { let data = a + b; return data; }
     function mul(a, b) { let data = a * b; return data; }'
+----
+====
+
+[[post-example-5,request {counter:xref}]]
+====
+Request {counter:example}: Create or update a scoped library called `science`.
+The library contains one function, `f2c`.
+
+.Curl request
+[source,shell]
+----
+curl -X POST \
+"http://localhost:8093/evaluator/v1/libraries/science?bucket=travel-sample&scope=inventory" \
+-u Administrator:password \
+-H 'content-type: application/json' \
+-d 'function f2c(f) { return (5/9)*(f-32); }'
 ----
 ====
