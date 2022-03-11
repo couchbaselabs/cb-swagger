@@ -24,7 +24,7 @@ GET /evaluator/v1/libraries
 ==== Description
 Returns all libraries and functions.
 
-By default, this operation returns all global libraries and functions, and all scope libraries and functions. To return all the libraries and functions in a single scope, specify a bucket and scope.
+By default, this operation returns all global libraries and functions, and all scoped libraries and functions. To return all the libraries and functions in a single scope, specify a bucket and scope.
 
 
 ==== Parameters
@@ -33,9 +33,9 @@ By default, this operation returns all global libraries and functions, and all s
 |===
 |Type|Name|Description|Schema
 |**Query**|**bucket** +
-__optional__|For scope libraries only. The bucket from which to fetch libraries.|string
+__optional__|For scoped libraries only. The bucket from which to fetch libraries.|string
 |**Query**|**scope** +
-__optional__|For scope libraries only. The scope from which to fetch libraries.|string
+__optional__|For scoped libraries only. The scope from which to fetch libraries.|string
 |===
 
 
@@ -148,7 +148,7 @@ GET /evaluator/v1/libraries/{library}
 ==== Description
 Returns a library with all its functions.
 
-By default, this operation returns a global library. For a scope library, you must specify the bucket and scope.
+By default, this operation returns a global library. For a scoped library, you must specify the bucket and scope.
 
 
 ==== Parameters
@@ -159,15 +159,15 @@ By default, this operation returns a global library. For a scope library, you mu
 |**Path**|**library** +
 __required__|The name of a library.|string
 |**Query**|**bucket** +
-__optional__|For scope libraries only. The bucket in which the library is stored.|string
+__optional__|For scoped libraries only. The bucket in which the library is stored.|string
 |**Query**|**scope** +
-__optional__|For scope libraries only. The scope in which the library is stored.|string
+__optional__|For scoped libraries only. The scope in which the library is stored.|string
 |===
 
 
 [NOTE]
 ====
-To read a scope library, you must specify both the `bucket` and `scope` parameters.
+To read a scoped library, you must specify both the `bucket` and `scope` parameters.
 You cannot specify one without the other.
 ====
 
@@ -210,7 +210,7 @@ curl -X GET \
 
 [[library-example-2,request {counter:xref}]]
 ====
-Request {counter:example}: Get all functions in the specified scope library.
+Request {counter:example}: Get all functions in the specified scoped library.
 
 .Curl request
 [source,shell]
@@ -259,7 +259,7 @@ POST /evaluator/v1/libraries/{library}
 ==== Description
 Creates the specified library and its associated functions. If the specified library exists, the existing library is overwritten.
 
-By default, this operation creates or updates a global library. For a scope library, you must specify the bucket and scope.
+By default, this operation creates or updates a global library. For a scoped library, you must specify the bucket and scope.
 
 
 [NOTE]
@@ -278,9 +278,9 @@ By default, this operation creates or updates a global library. For a scope libr
 |**Path**|**library** +
 __required__|The name of a library.|string
 |**Query**|**bucket** +
-__optional__|For scope libraries only. The bucket in which the library is stored.|string
+__optional__|For scoped libraries only. The bucket in which the library is stored.|string
 |**Query**|**scope** +
-__optional__|For scope libraries only. The scope in which the library is stored.|string
+__optional__|For scoped libraries only. The scope in which the library is stored.|string
 |**Body**|**functions** +
 __required__|The JavaScript code for all functions in the library.|string
 |===
@@ -288,7 +288,7 @@ __required__|The JavaScript code for all functions in the library.|string
 
 [NOTE]
 ====
-To create or update a scope library, you must specify both the `bucket` and `scope` parameters.
+To create or update a scoped library, you must specify both the `bucket` and `scope` parameters.
 You cannot specify one without the other.
 ====
 
@@ -386,7 +386,7 @@ curl -X POST \
 
 [[post-example-5,request {counter:xref}]]
 ====
-Request {counter:example}: Create or update a scope library called `science`.
+Request {counter:example}: Create or update a scoped library called `science`.
 The library contains one function, `f2c`.
 
 .Curl request
@@ -412,7 +412,7 @@ DELETE /evaluator/v1/libraries/{library}
 Deletes the specified library entirely.
 
 By default, this operation deletes a global library.
-For a scope library, you must specify the bucket and scope.
+For a scoped library, you must specify the bucket and scope.
 
 
 [NOTE]
@@ -430,15 +430,15 @@ For further details, refer to xref:n1ql:n1ql-language-reference/dropfunction.ado
 |**Path**|**library** +
 __required__|The name of a library.|string
 |**Query**|**bucket** +
-__optional__|For scope libraries only. The bucket in which the library is stored.|string
+__optional__|For scoped libraries only. The bucket in which the library is stored.|string
 |**Query**|**scope** +
-__optional__|For scope libraries only. The scope in which the library is stored.|string
+__optional__|For scoped libraries only. The scope in which the library is stored.|string
 |===
 
 
 [NOTE]
 ====
-To delete a scope library, you must specify both the `bucket` and `scope` parameters.
+To delete a scoped library, you must specify both the `bucket` and `scope` parameters.
 You cannot specify one without the other.
 ====
 
@@ -481,7 +481,7 @@ curl -X DELETE \
 
 [[delete-example-2,request {counter:xref}]]
 ====
-Request {counter:example}: Delete a scope library entirely.
+Request {counter:example}: Delete a scoped library entirely.
 
 .Curl request
 [source,shell]

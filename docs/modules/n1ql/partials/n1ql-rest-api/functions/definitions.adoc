@@ -39,6 +39,12 @@ ifdef::basebackend-html[]
   div.sect2 > h3#tags ~ *{
     display: none;
   }
+
+  /* Hide content of uri-scheme section */
+  div.sect2 > h3#uri-scheme,
+  div.sect2 > h3#uri-scheme ~ *{
+    display: none;
+  }
 </style>
 ++++
 endif::[]
@@ -60,10 +66,10 @@ endif::[]
 __required__|The name of a library. +
 **Example** : `"math"`|string
 |**bucket** +
-__required__|For scope libraries, the bucket in which the library is stored. For global libraries, this string is empty. +
+__required__|For scoped libraries, the bucket in which the library is stored. For global libraries, this string is empty. +
 **Example** : `"travel-sample"`|string
 |**scope** +
-__required__|For scope libraries, the scope in which the library is stored. For global libraries, this string is empty. +
+__required__|For scoped libraries, the scope in which the library is stored. For global libraries, this string is empty. +
 **Example** : `"inventory"`|string
 |**code** +
 __required__|The JavaScript code for all functions in the library. +
