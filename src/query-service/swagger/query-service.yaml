@@ -549,14 +549,14 @@ definitions:
           Before processing the request, a current vector is obtained.
           The vector is used as a lower bound for the statements in the request.
           If there are DML statements in the request, RYOW is also applied within the request.
+          +
+          If `request_plus` is specified in a query that runs during a failover of an index node, the query waits until the rebalance operation completes and the index data has rebalanced before returning a result.
 
           `statement_plus`::
           This implements strong consistency per statement.
           Before processing each statement, a current vector is obtained and used as a lower bound for that statement.
 
           Values are case-insensitive.
-
-          If r`equest_plus` is specified in a query that runs during a failover of an index node, the query waits until the rebalance operation completes and the index data has rebalanced before returning a result.
 
           For multi-statement requests, the default behavior is RYOW within each request.
           If you want to disable RYOW within a request, add a separate `request_consistency` parameter that can be set to `not_bounded`.
@@ -568,6 +568,7 @@ definitions:
         example: at_plus
       scan_vector:
         type: object
+        x-type: array
         description: |
           [[scan_vector]]
           _Required_ if `scan_consistency` is `at_plus` and `scan_vectors` not provided.
@@ -596,6 +597,7 @@ definitions:
             - VB19ID
       scan_vectors:
         type: object
+        x-type: array
         description: |
           [[scan_vectors]]
           _Required_ if `scan_consistency` is `at_plus` and `scan_vector` not provided.
@@ -1001,4 +1003,4 @@ securityDefinitions:
     type: basic
     description: >
       Specify user names and passwords via the `creds` request parameter.
-      The is the only method that can provide multiple credentials for a request.
+      This is the only method that can provide multiple credentials for a request.
