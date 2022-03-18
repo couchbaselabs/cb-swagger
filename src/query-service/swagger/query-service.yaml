@@ -308,6 +308,28 @@ definitions:
         enum: ["JSON", "XML", "CSV", "TSV"]
         default: JSON
         example: XML
+      kvtimeout:
+        type: string
+        description: |
+          [[kvtimeout]]
+          The maximum time to wait for a KV operation before timing out.
+          Only applies to statements within a transaction, or to non-transactional statements when the `durability_level` is set.
+
+          The value for this parameter is a string.
+          Its format includes an amount and a mandatory unit, e.g. `10ms` (10 milliseconds) or `0.5s` (half a second).
+          Valid units are:
+
+          * `ns` (nanoseconds)
+          * `us` (microseconds)
+          * `ms` (milliseconds)
+          * `s` (seconds)
+          * `m` (minutes)
+          * `h` (hours)
+
+          Specify a duration of `0` or a negative duration to disable.
+          When disabled, no timeout is applied and the KV operation runs for however long it takes.
+        default: 2.5s
+        example: 10ms
       max_parallelism:
         type: integer
         format: int32
@@ -348,28 +370,6 @@ definitions:
           When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
         default: 0
         example: 4
-      kvtimeout:
-        type: string
-        description: |
-          [[kvtimeout]]
-          The maximum time to wait for a KV operation before timing out.
-          Only applies to statements within a transaction, or to non-transactional statements when the `durability_level` is set.
-
-          The value for this parameter is a string.
-          Its format includes an amount and a mandatory unit, e.g. `10ms` (10 milliseconds) or `0.5s` (half a second).
-          Valid units are:
-
-          * `ns` (nanoseconds)
-          * `us` (microseconds)
-          * `ms` (milliseconds)
-          * `s` (seconds)
-          * `m` (minutes)
-          * `h` (hours)
-
-          Specify a duration of `0` or a negative duration to disable.
-          When disabled, no timeout is applied and the KV operation runs for however long it takes.
-        default: 2.5s
-        example: 10ms
       metrics:
         type: boolean
         description: |
