@@ -118,9 +118,9 @@ The request-level parameter overrides the node-level setting. +
 |**creds** +
 __optional__|[[creds]]
 Specifies the login credentials.
-The format is an identity and password.
 The Query API supports two types of identity: local (or bucket) and admin.
 
+The format is an identity and password.
 You can specify credentials for multiple identities.
 
 If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored. +
@@ -563,8 +563,15 @@ Named parameters apply to `prepared` also.
 Refer to {section_srh_tlm_n1b}[] for details.|string (any JSON value)
 |===
 
+
+// end::settings[]
+
+
 [[_credentials]]
-**Credentials**
+=== Credentials
+
+// tag::credentials[]
+
 
 [options="header", cols=".^3a,.^11a,.^4a"]
 |===
@@ -576,7 +583,7 @@ __optional__|A password for authentication.|string
 |===
 
 
-// end::settings[]
+// end::credentials[]
 
 
 [[_response_body]]

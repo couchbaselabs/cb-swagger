@@ -253,23 +253,13 @@ definitions:
       creds:
         type: array
         items:
-          type: object
-          title: Credentials
-          properties:
-            user:
-              type: string
-              description: >
-                An identity for authentication.
-                Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
-            pass:
-              type: string
-              description: A password for authentication.
+          $ref: "#/definitions/Credentials"
         description: |
           [[creds]]
           Specifies the login credentials.
-          The format is an identity and password.
           The Query API supports two types of identity: local (or bucket) and admin.
 
+          The format is an identity and password.
           You can specify credentials for multiple identities.
 
           If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored.
@@ -795,6 +785,19 @@ definitions:
           Named parameters apply to `prepared` also.
 
           Refer to {section_srh_tlm_n1b}[] for details.
+
+  Credentials:
+    type: object
+    title: Credentials
+    properties:
+      user:
+        type: string
+        description: >
+          An identity for authentication.
+          Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
+      pass:
+        type: string
+        description: A password for authentication.
 
   Response Body:
     type: object
