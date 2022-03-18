@@ -275,7 +275,9 @@ definitions:
           The level of {durability}[durability] for mutations produced by the request.
 
           If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the {tximplicit}[tximplicit] parameter set to `true`, the durability level is specified for all mutations within that transaction.
-          For all other statements it is ignored.
+
+          In Couchbase Server 7.1 and later, durability is also supported for non-transactional DML statements.
+          In this case, the `kvtimeout` parameter is used as the durability timeout.
 
           If not specified, the default durability level is `"majority"`.
           Set the durability level to `"none"` or `""` to specify no durability.
@@ -351,7 +353,7 @@ definitions:
         description: |
           [[kvtimeout]]
           The maximum time to wait for a KV operation before timing out.
-          Only applies to statements within a transaction.
+          Only applies to statements within a transaction, or to non-transactional statements when the `durability_level` is set.
 
           The value for this parameter is a string.
           Its format includes an amount and a mandatory unit, e.g. `10ms` (10 milliseconds) or `0.5s` (half a second).
