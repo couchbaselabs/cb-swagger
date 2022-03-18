@@ -1,0 +1,38 @@
+
+// This file is created automatically by Swagger2Markup.
+// DO NOT EDIT! Refer to https://github.com/couchbaselabs/cb-swagger
+
+
+[[_securityscheme]]
+== Security
+
+The Query Service API accepts credentials via HTTP basic authentication header, or via the `creds` request parameter.
+If a request contains both HTTP basic authentication header and a `creds` parameter, the `creds` parameter is ignored and only the HTTP basic authentication header is used for authenticating.
+
+
+[[_header]]
+=== Header
+Specify a user name and password via HTTP headers.
+This method can only be used to provide a single credential.
+
+[%hardbreaks]
+__Type__ : basic
+
+
+[[_parameter]]
+=== Parameter
+Specify user names and passwords via the `creds` request parameter. The is the only method that can provide multiple credentials for a request.
+
+[%hardbreaks]
+__Type__ : basic
+
+
+### RBAC Role
+// Use Markdown-style headings to avoid offset
+
+Users must have the relevant _Administrative_ or _Query & Index_ RBAC roles, depending on the types of query they intend to run.
+In addition, users must have permissions on the required buckets, scopes, and collections, where appropriate.
+Refer to xref:learn:security/roles.adoc[Roles] for more details.
+
+
+

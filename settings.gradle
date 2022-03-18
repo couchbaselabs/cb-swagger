@@ -1,9 +1,11 @@
 rootProject.name = 'cb-swagger'
-include 'admin', 'query-settings', 'functions', 'indexes', 'analytics-service', 'analytics-config', 'analytics-admin', 'analytics-links', 'analytics-library'
+include 'admin', 'query-settings', 'query-service', 'functions', 'indexes', 'analytics-service', 'analytics-config', 'analytics-admin', 'analytics-links', 'analytics-library'
 project(':admin').projectDir = new File (settingsDir, 'src/admin')
 project(':admin').buildFileName = 'admin.gradle'
 project(':query-settings').projectDir = new File (settingsDir, 'src/query-settings')
 project(':query-settings').buildFileName = 'query-settings.gradle'
+project(':query-service').projectDir = new File (settingsDir, 'src/query-service')
+project(':query-service').buildFileName = 'query-service.gradle'
 project(':functions').projectDir = new File (settingsDir, 'src/functions')
 project(':functions').buildFileName = 'functions.gradle'
 project(':indexes').projectDir = new File (settingsDir, 'src/indexes')

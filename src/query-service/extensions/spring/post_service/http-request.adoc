@@ -1,0 +1,28 @@
+[[example-1]]
+====
+POST request with parameters as form data
+
+.Curl request
+[source,sh]
+----
+curl -v http://localhost:8093/query/service \
+     -d 'statement=SELECT name FROM `travel-sample`.inventory.hotel LIMIT 1;' \
+     -u Administrator:password
+----
+====
+
+[[example-2]]
+====
+POST request with parameters in JSON format
+
+.Curl request
+[source,sh]
+----
+curl http://localhost:8093/query/service \
+    -H 'Content-Type: application/json' \
+    -d '{ "statement": "SELECT name FROM travel-sample`.inventory.hotel LIMIT 1;" }' \
+    -u Administrator:password
+----
+====
+
+For further examples, refer to {section_srh_tlm_n1b}[].
