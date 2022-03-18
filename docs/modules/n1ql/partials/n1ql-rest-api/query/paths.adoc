@@ -1,0 +1,193 @@
+
+// This file is created automatically by Swagger2Markup.
+// DO NOT EDIT! Refer to https://github.com/couchbaselabs/cb-swagger
+
+
+[[_paths]]
+== Paths
+
+This section describes the operations available with this REST API.
+
+**{toc-title}**
+
+* <<_post_service>>
+* <<_get_service>>
+
+
+[[_post_service]]
+=== Query Service
+....
+POST /query/service
+....
+
+
+==== Description
+Enables you to execute a N1QL statement. This method allows you to run queries and modifying statements, and specify query parameters.
+
+
+==== Parameters
+
+For POST requests, you can specify form data parameters using the `application/x-www-form-urlencoded` MIME type.
+Alternatively, you can specify parameters in the request body using the `application/json` MIME type with the `Content-Type` header.
+
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**Parameters** +
+__required__|An object specifying one or more query parameters.|<<_request_parameters,Request Parameters>>
+|===
+
+
+==== Responses
+
+This section describes the response HTTP status codes.
+
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|The operation was successful.|<<_response_body,Response Body>>
+|**400**|Bad Request. The request cannot be processed for one of the following reasons:
+
+
+  * The statement contains a N1QL syntax error.
+
+
+  * The request has a missing or unrecognized HTTP parameter.
+
+
+  * The request is badly formatted (for example, the request body contains a JSON syntax error).|No Content
+|**401**|Unauthorized. The credentials provided with the request are missing or invalid.|No Content
+|**403**|Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement.|No Content
+|**404**|Not found. The statement in the request references an invalid namespace or keyspace.|No Content
+|**405**|Method not allowed. The statement in the request references an invalid namespace or keyspace.|No Content
+|**409**|Conflict. There is an attempt to create an object (keyspace or index) that already exists.|No Content
+|**410**|Gone. The server is shutting down gracefully. Previously made requests are being completed, but no new requests are being accepted.|No Content
+|**500**|Internal server error. There was an unforeseen problem processing the request.|No Content
+|**503**|Service unavailable. There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible.|No Content
+|===
+
+
+==== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_header,Header>>**
+|**basic**|**<<_parameter,Parameter>>**
+|===
+
+
+==== Example HTTP request
+
+[[example-1]]
+====
+POST request with parameters as form data
+
+.Curl request
+[source,sh]
+----
+curl -v http://localhost:8093/query/service \
+     -d 'statement=SELECT name FROM `travel-sample`.inventory.hotel LIMIT 1;' \
+     -u Administrator:password
+----
+====
+
+[[example-2]]
+====
+POST request with parameters in JSON format
+
+.Curl request
+[source,sh]
+----
+curl http://localhost:8093/query/service \
+    -H 'Content-Type: application/json' \
+    -d '{ "statement": "SELECT name FROM travel-sample`.inventory.hotel LIMIT 1;" }' \
+    -u Administrator:password
+----
+====
+
+For further examples, refer to {section_srh_tlm_n1b}[].
+
+
+[[_get_service]]
+=== Read-Only Query Service
+....
+GET /query/service
+....
+
+
+==== Description
+Enables you to execute a N1QL statement. This method allows you to run queries and modifying statements, and specify query parameters. It does not allow you to run modifying statements.
+
+This endpoint is intended for situations where use of the `POST` method is restricted.
+
+
+#### Parameters
+// Use Markdown-style headings to avoid offset
+
+For GET requests, you specify the parameters in the query URL in URL-encoded format.
+For URL-encoded parameters, the format is consistent with the syntax for variables according to the RFC 6570.
+
+For a table of parameters that can be passed in a GET request to the `/query/service` endpoint, refer to <<_request_parameters>>.
+
+
+==== Responses
+
+This section describes the response HTTP status codes.
+
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|The operation was successful.|<<_response_body,Response Body>>
+|**400**|Bad Request. The request cannot be processed for one of the following reasons:
+
+
+  * The statement contains a N1QL syntax error.
+
+
+  * The request has a missing or unrecognized HTTP parameter.
+
+
+  * The request is badly formatted (for example, the request body contains a JSON syntax error).|No Content
+|**401**|Unauthorized. The credentials provided with the request are missing or invalid.|No Content
+|**403**|Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement.|No Content
+|**404**|Not found. The statement in the request references an invalid namespace or keyspace.|No Content
+|**405**|Method not allowed. The statement in the request references an invalid namespace or keyspace.|No Content
+|**409**|Conflict. There is an attempt to create an object (keyspace or index) that already exists.|No Content
+|**410**|Gone. The server is shutting down gracefully. Previously made requests are being completed, but no new requests are being accepted.|No Content
+|**500**|Internal server error. There was an unforeseen problem processing the request.|No Content
+|**503**|Service unavailable. There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible.|No Content
+|===
+
+
+==== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_header,Header>>**
+|**basic**|**<<_parameter,Parameter>>**
+|===
+
+
+==== Example HTTP request
+
+[[example-3]]
+====
+GET request with query parameters
+
+.Curl request
+[source,sh]
+----
+curl -v http://localhost:8093/query/service?statement=SELECT%20name%20FROM%20%60travel-sample%60.inventory.hotel%20LIMIT%201%3B \
+     -u Administrator:password
+----
+====
+
+For further examples, refer to {section_srh_tlm_n1b}[].
+
+
+
