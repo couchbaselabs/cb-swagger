@@ -436,6 +436,20 @@ definitions:
 
           If both `prepared` and `statement` are present and non-empty, an error is returned.
         example: "[127.0.0.1:8091]pricy_hotel"
+      preserve_expiry:
+        type: boolean
+        description: |
+          [[preserve_expiry]]
+          In Couchbase Server 7.1 and later, specifies whether documents should keep their current expiration setting when modified by a DML statement.
+
+          If `true`, documents will keep any existing expiration setting when modified by a DML statement.
+          If the DML statement explicitly specifies the document expiration, the statement overrides this parameter, and the expiration is changed.
+
+          If `false`, document expiration is set to 0 when modified by a DML statement, unless the DML statement explicitly specifies the document expiration.
+
+          Not supported for statements in a transaction.
+        default: false
+        example: true
       pretty:
         type: boolean
         description: |
