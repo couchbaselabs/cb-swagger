@@ -180,7 +180,8 @@ definitions:
                     description: The time since epoch that this sample was calculated, in milliseconds.
                     example: 1631273689161
                   progress:
-                    type: integer
+                    type: number
+                    format: double
                     description: The percentage (fraction from 0 to 1) of ingestion progress at the current time.
                     minimum: 0
                     maximum: 1
@@ -212,6 +213,9 @@ definitions:
                     items:
                       type: object
                       title: State Scopes
+                      required:
+                        - name
+                        - collections
                       properties:
                         name:
                           type: string
@@ -223,6 +227,8 @@ definitions:
                           items:
                             type: object
                             title: State Collections
+                            required:
+                              - name
                             properties:
                               name:
                                 type: string
@@ -238,7 +244,8 @@ definitions:
         type: object
         description: >
           An object containing one or more collection properties, one for each Analytics collection in the Analytics scope.
-          The name of the object is the name of the Analytics scope.
+          The name of the object is the name of the Analytics scope, in display form.
+        x-example: "`travel-sample`.inventory"
         title: Collections
         properties:
           _collection_:
