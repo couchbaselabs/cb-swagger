@@ -70,7 +70,7 @@ Result of <<node-example-1>>.
       "scan_bytes_read": 0,
       "total_scan_duration": 0
    },
-   ...
+   // ...
    }
 }
 ----
@@ -87,7 +87,8 @@ Result of <<node-example-2>>.
       "indexer_state": "Active",
       "memory_quota": 536870912,
       "memory_total_storage": 14708736,
-      "memory_used": 376973312
+      "memory_used": 376973312,
+      "total_indexer_gc_pause_ns": 72809334
    },
    "travel-sample:def_airportname": {
       "avg_item_size": 73,
@@ -109,7 +110,46 @@ Result of <<node-example-2>>.
       "memory_used": 16330,
       "recs_on_disk": 7380
    },
-   ...
+   // ...
+}
+----
+====
+
+====
+Result of <<node-example-3>>.
+
+.Response 200
+[source,json]
+----
+{
+   "10862128657611330848": {
+      "avg_item_size": 73,
+      "data_size": 514623,
+      "disk_size": 872448,
+      "frag_percent": 56,
+      "initial_build_progress": 100,
+      "items_count": 1968,
+      "memory_used": 3498,
+      "recs_on_disk": 1968
+   },
+   "1358505159407317360": {
+      "avg_item_size": 59,
+      "data_size": 1083447,
+      "disk_size": 1138688,
+      "frag_percent": 56,
+      "initial_build_progress": 100,
+      "items_count": 7380,
+      "memory_used": 16330,
+      "recs_on_disk": 7380
+   },
+   // ...
+   "indexer": {
+      "indexer_state": "Active",
+      "memory_quota": 536870912,
+      "memory_total_storage": 14708736,
+      "memory_used": 376973312,
+      "total_indexer_gc_pause_ns": 72809334
+   }
 }
 ----
 ====
