@@ -2,10 +2,10 @@ The example below creates a Couchbase link named `myCbLink` in the `Default` sco
 
 *Curl request*
 
-``` shell
+``` sh
 curl -v -u Administrator:password \
      -X POST \
-     http://localhost:8095/analytics/link/Default/myCbLink \
+     "http://localhost:8095/analytics/link/Default/myCbLink" \
      -d type=couchbase \
      -d hostname=remoteHostName:8091 \
      -d encryption=none \
@@ -15,14 +15,26 @@ curl -v -u Administrator:password \
 
 NOTE: The `username` and `password` parameters are URL-encoded to escape any special characters.
 
+The example below creates a Microsoft Azure Blob link named `myBlobLink` in the `Default` scope, with anonymous authentication.
+
+*Curl request*
+
+``` sh
+curl -v -u Administrator:password \
+     -X POST \
+     "http://localhost:8095/analytics/link/Default/myBlobLink" \
+     -d type=azureblob \
+     -d endpoint=my.endpoint.uri
+```
+
 The example below creates an Amazon S3 link named `myAwsLink` in the `travel-sample.inventory` scope.
 
 *Curl request*
 
-``` shell
+``` sh
 curl -v -u Administrator:password \
      -X POST \
-     http://localhost:8095/analytics/link/travel-sample%2Finventory/myAwsLink \
+     "http://localhost:8095/analytics/link/travel-sample%2Finventory/myAwsLink" \
      -d type=s3 \
      -d region=us-east-1 \
      -d accessKeyId=myAccessKey \
@@ -36,10 +48,10 @@ The example below creates an Amazon S3 link named `myTempLink` with temporary cr
 
 *Curl request*
 
-``` shell
+``` sh
 curl -v -u Administrator:password \
      -X POST \
-     http://localhost:8095/analytics/link/travel-sample%2Finventory/myTempLink \
+     "http://localhost:8095/analytics/link/travel-sample%2Finventory/myTempLink" \
      -d type=s3 \
      -d region=eu-west-1 \
      -d accessKeyId=myTempAccessKey \
