@@ -45,13 +45,23 @@ paths:
         - $ref: "#/parameters/CouchbaseUsername"
         - $ref: "#/parameters/CouchbasePassword"
         - $ref: "#/parameters/CouchbaseCertificate"
-        - $ref: "#/parameters/CouchbaseClientCertificate"
+        - $ref: "#/parameters/CommonClientCertificate"
         - $ref: "#/parameters/CouchbaseClientKey"
         - $ref: "#/parameters/S3AccessKeyID"
         - $ref: "#/parameters/S3SecretAccessKey"
         - $ref: "#/parameters/S3SessionToken"
         - $ref: "#/parameters/S3Region"
         - $ref: "#/parameters/S3ServiceEndpoint"
+        - $ref: '#/parameters/AzureEndpoint'
+        - $ref: '#/parameters/AzureAccountName'
+        - $ref: '#/parameters/AzureAccountKey'
+        - $ref: '#/parameters/AzureSharedAccessSignature'
+        - $ref: '#/parameters/AzureManagedIdentityId'
+        - $ref: '#/parameters/AzureClientId'
+        - $ref: '#/parameters/AzureTenantId'
+        - $ref: '#/parameters/AzureClientSecret'
+      # - $ref: '#/parameters/AzureClientCertificate'
+        - $ref: '#/parameters/AzureClientCertificatePassword'
       security:
         - Analytics Manage: []
       responses:
@@ -128,13 +138,23 @@ paths:
         - $ref: "#/parameters/CouchbaseUsername"
         - $ref: "#/parameters/CouchbasePassword"
         - $ref: "#/parameters/CouchbaseCertificate"
-        - $ref: "#/parameters/CouchbaseClientCertificate"
+        - $ref: "#/parameters/CommonClientCertificate"
         - $ref: "#/parameters/CouchbaseClientKey"
         - $ref: "#/parameters/S3AccessKeyID"
         - $ref: "#/parameters/S3SecretAccessKey"
         - $ref: "#/parameters/S3SessionToken"
         - $ref: "#/parameters/S3Region"
         - $ref: "#/parameters/S3ServiceEndpoint"
+        - $ref: '#/parameters/AzureEndpoint'
+        - $ref: '#/parameters/AzureAccountName'
+        - $ref: '#/parameters/AzureAccountKey'
+        - $ref: '#/parameters/AzureSharedAccessSignature'
+        - $ref: '#/parameters/AzureManagedIdentityId'
+        - $ref: '#/parameters/AzureClientId'
+        - $ref: '#/parameters/AzureTenantId'
+        - $ref: '#/parameters/AzureClientSecret'
+      # - $ref: '#/parameters/AzureClientCertificate'
+        - $ref: '#/parameters/AzureClientCertificatePassword'
       security:
         - Analytics Manage: []
       responses:
@@ -207,13 +227,23 @@ paths:
         - $ref: "#/parameters/CouchbaseUsername"
         - $ref: "#/parameters/CouchbasePassword"
         - $ref: "#/parameters/CouchbaseCertificate"
-        - $ref: "#/parameters/CouchbaseClientCertificate"
+        - $ref: "#/parameters/CommonClientCertificate"
         - $ref: "#/parameters/CouchbaseClientKey"
         - $ref: "#/parameters/S3AccessKeyID"
         - $ref: "#/parameters/S3SecretAccessKey"
         - $ref: "#/parameters/S3SessionToken"
         - $ref: "#/parameters/S3Region"
         - $ref: "#/parameters/S3ServiceEndpoint"
+        - $ref: '#/parameters/AzureEndpoint'
+        - $ref: '#/parameters/AzureAccountName'
+        - $ref: '#/parameters/AzureAccountKey'
+        - $ref: '#/parameters/AzureSharedAccessSignature'
+        - $ref: '#/parameters/AzureManagedIdentityId'
+        - $ref: '#/parameters/AzureClientId'
+        - $ref: '#/parameters/AzureTenantId'
+        - $ref: '#/parameters/AzureClientSecret'
+      # - $ref: '#/parameters/AzureClientCertificate'
+        - $ref: '#/parameters/AzureClientCertificatePassword'
       security:
         - Analytics Manage: []
       responses:
@@ -240,8 +270,9 @@ paths:
             The type of the link.
             If this parameter is specified, the value must match the type that was set when the link was created.
           enum:
-            - S3
             - couchbase
+            - S3
+            - azureblob
       security:
         - Analytics Manage: []
       responses:
@@ -274,13 +305,23 @@ paths:
         - $ref: "#/parameters/CouchbaseUsername"
         - $ref: "#/parameters/CouchbasePassword"
         - $ref: "#/parameters/CouchbaseCertificate"
-        - $ref: "#/parameters/CouchbaseClientCertificate"
+        - $ref: "#/parameters/CommonClientCertificate"
         - $ref: "#/parameters/CouchbaseClientKey"
         - $ref: "#/parameters/S3AccessKeyID"
         - $ref: "#/parameters/S3SecretAccessKey"
         - $ref: "#/parameters/S3SessionToken"
         - $ref: "#/parameters/S3Region"
         - $ref: "#/parameters/S3ServiceEndpoint"
+        - $ref: '#/parameters/AzureEndpoint'
+        - $ref: '#/parameters/AzureAccountName'
+        - $ref: '#/parameters/AzureAccountKey'
+        - $ref: '#/parameters/AzureSharedAccessSignature'
+        - $ref: '#/parameters/AzureManagedIdentityId'
+        - $ref: '#/parameters/AzureClientId'
+        - $ref: '#/parameters/AzureTenantId'
+        - $ref: '#/parameters/AzureClientSecret'
+      # - $ref: '#/parameters/AzureClientCertificate'
+        - $ref: '#/parameters/AzureClientCertificatePassword'
       security:
         - Analytics Manage: []
       responses:
@@ -360,9 +401,11 @@ parameters:
 
       `couchbase`: A link to a remote Couchbase cluster.
       `s3`: A link to the Amazon S3 service.
+      `azureblob`: A link to Azure Blob Storage.
     enum:
-      - s3
       - couchbase
+      - s3
+      - azureblob
 
   CommonTypeEdit:
     name: type
@@ -373,8 +416,9 @@ parameters:
       The type of the link.
       If this parameter is specified, the value must match the type that was set when the link was created.
     enum:
-      - s3
       - couchbase
+      - s3
+      - azureblob
 
   CommonTypeQuery:
     name: type
@@ -385,8 +429,29 @@ parameters:
       The type of the link.
       If this parameter is omitted, all link types are retrieved, excluding the `Local` link.
     enum:
-      - s3
       - couchbase
+      - s3
+      - azureblob
+
+  # FIXME: In OpenAPI 3.0, replace the following with separate parameters for Couchbase and Azure.
+
+  CommonClientCertificate:
+    name: clientCertificate
+    type: string
+    in: formData
+    required: false
+    description: >
+      For Couchbase links, this is the content of the client certificate.
+      Required for links with full encryption if using a client key.
+
+      <hr>
+
+      For Azure Blob links, this is the client certificate for the registered application.
+      Used for Azure Active Directory client certificate authentication.
+
+      <hr>
+
+      You should URL-encode this parameter to escape any special characters.
 
   S3AccessKeyID:
     name: accessKeyId
@@ -440,6 +505,133 @@ parameters:
     description: >
       For S3 links only.
       The Amazon S3 service endpoint.
+
+  AzureEndpoint:
+    name: endpoint
+    type: string
+    in: formData
+    required: true
+    description: >
+      For Azure Blob links only.
+      The endpoint URI.
+
+  AzureAccountName:
+    name: accountName
+    type: string
+    in: formData
+    required: false
+    description: >
+      For Azure Blob links only.
+      The account name.
+      Used for shared key authentication.
+
+
+      You should URL-encode this parameter to escape any special characters.
+
+  AzureAccountKey:
+    name: accountKey
+    type: string
+    in: formData
+    required: false
+    description: >
+      For Azure Blob links only.
+      The account key.
+      Used for shared key authentication.
+
+
+      You should URL-encode this parameter to escape any special characters.
+
+  AzureSharedAccessSignature:
+    name: sharedAccessSignature
+    type: string
+    in: formData
+    required: false
+    description: >
+      For Azure Blob links only.
+      A token that can be used for authentication.
+      Used for shared access signature authentication.
+
+
+      You should URL-encode this parameter to escape any special characters.
+
+  AzureManagedIdentityId:
+    name: managedIdentityId
+    type: string
+    in: formData
+    required: false
+    description: >
+      For Azure Blob links only.
+      The managed identity ID.
+      Used for Azure Active Directory managed identity authentication.
+      Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.
+
+
+      You should URL-encode this parameter to escape any special characters.
+
+  AzureClientId:
+    name: clientId
+    type: string
+    in: formData
+    required: false
+    description: >
+      For Azure Blob links only.
+      The client ID for the registered application.
+      Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+
+      You should URL-encode this parameter to escape any special characters.
+
+  AzureTenantId:
+    name: tenantId
+    type: string
+    in: formData
+    required: false
+    description: >
+      For Azure Blob links only.
+      The tenant ID where the registered application is created.
+      Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+
+      You should URL-encode this parameter to escape any special characters.
+
+  AzureClientSecret:
+    name: clientSecret
+    type: string
+    in: formData
+    required: false
+    description: >
+      For Azure Blob links only.
+      The client secret for the registered application.
+      Used for Azure Active Directory client secret authentication.
+
+
+      You should URL-encode this parameter to escape any special characters.
+
+  # AzureClientCertificate:
+  #   name: clientCertificate
+  #   type: string
+  #   in: formData
+  #   required: false
+  #   description: >
+  #     For Azure Blob links only.
+  #     The client certificate for the registered application.
+  #     Used for Azure Active Directory client certificate authentication.
+  #
+  #
+  #     You should URL-encode this parameter to escape any special characters.
+
+  AzureClientCertificatePassword:
+    name: clientCertificatePassword
+    type: string
+    in: formData
+    required: false
+    description: >
+      For Azure Blob links only.
+      The client certificate password for the registered application.
+      Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
+
+
+      You should URL-encode this parameter to escape any special characters.
 
   CouchbaseHostname:
     name: hostname
@@ -507,18 +699,18 @@ parameters:
 
       You should URL-encode this parameter to escape any special characters.
 
-  CouchbaseClientCertificate:
-    name: clientCertificate
-    type: string
-    in: formData
-    required: false
-    description: >
-      For Couchbase links only.
-      The content of the client certificate.
-      Required for links with full encryption if using a client key.
-
-
-      You should URL-encode this parameter to escape any special characters.
+  # CouchbaseClientCertificate:
+  #   name: clientCertificate
+  #   type: string
+  #   in: formData
+  #   required: false
+  #   description: >
+  #     For Couchbase links only.
+  #     The content of the client certificate.
+  #     Required for links with full encryption if using a client key.
+  #
+  #
+  #     You should URL-encode this parameter to escape any special characters.
 
   CouchbaseClientKey:
     name: clientKey
@@ -562,11 +754,13 @@ definitions:
 
           `couchbase`: A link to a remote Couchbase cluster.
           `s3`: A link to the Amazon S3 service.
+          `azureblob`: A link to Microsoft Azure Blob storage.
 
-          Different properties are returned, depending on the link type: refer to [Couchbase](#couchbase) or [S3](#s3).
+          Different properties are returned, depending on the link type: refer to [Couchbase](#couchbase), [S3](#s3), or [Azure](#azure).
         enum:
           - s3
           - couchbase
+          - azureblob
 
   Couchbase:
     description: These properties are returned for remote Couchbase links.
@@ -735,7 +929,7 @@ definitions:
             description: >
               For S3 links only.
               The Amazon S3 session token.
-              Indicates that the link has temporary access, and that that the `accessKeyId` and `secretAccessKey` are temporary credentials.
+              Indicates that the link has temporary access, and that the `accessKeyId` and `secretAccessKey` are temporary credentials.
               This is redacted for the sake of security.
             example: <redacted sensitive entry>
           serviceEndpoint:
@@ -743,7 +937,88 @@ definitions:
             description: >
               Amazon S3 service endpoint.
               If not set, this property returns `null`.
-            example: myEndpointUri
+            example: my.endpoint.uri
+
+  Azure:
+    description: These properties are returned for Azure Blob links.
+    allOf:
+      - $ref: "#/definitions/Links"
+      - type: object
+        required:
+          - endpoint
+        properties:
+          accountKey:
+            type: string
+            description: >
+              The account key.
+              Used for shared key authentication.
+              This is redacted for the sake of security.
+              If not set, this property returns `null`.
+            example: <redacted sensitive entry>
+          accountName:
+            type: string
+            description: >
+              The account name.
+              Used for shared key authentication.
+              If not set, this property returns `null`.
+            example: myAccountName
+          clientCertificate:
+            type: string
+            description: >
+              The client certificate for the registered application.
+              Used for Azure Active Directory client certificate authentication.
+              This is redacted for the sake of security.
+              If not set, this property returns `null`.
+            example: <redacted sensitive entry>
+          clientCertificatePassword:
+            type: string
+            description: >
+              The client certificate password for the registered application.
+              Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
+              This is redacted for the sake of security.
+              If not set, this property returns `null`.
+            example: <redacted sensitive entry>
+          clientId:
+            type: string
+            description: >
+              The client ID for the registered application.
+              Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+              If not set, this property returns `null`.
+            example: myClientID
+          clientSecret:
+            type: string
+            description: >
+              The client secret for the registered application.
+              Used for Azure Active Directory client secret authentication.
+              This is redacted for the sake of security.
+              If not set, this property returns `null`.
+            example: <redacted sensitive entry>
+          endpoint:
+            type: string
+            description: The endpoint URI.
+            example: my.endpoint.uri
+          managedIdentityId:
+            type: string
+            description: >
+              The managed identity ID.
+              Used for Azure Active Directory managed identity authentication.
+              If not set, this property returns `null`.
+            example: myManagedIdentityID
+          sharedAccessSignature:
+            type: string
+            description: >
+              A token that can be used for authentication.
+              Used for shared access signature authentication.
+              This is redacted for the sake of security.
+              If not set, this property returns `null`.
+            example: <redacted sensitive entry>
+          tenantId:
+            type: string
+            description: >
+              The tenant ID where the registered application is created.
+              Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+              If not set, this property returns `null`.
+            example: myTenantID
 
   Errors:
     type: object
