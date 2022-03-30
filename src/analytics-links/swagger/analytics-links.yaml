@@ -560,7 +560,7 @@ parameters:
     description: >
       For Azure Blob links only.
       The managed identity ID.
-      Used for Azure Active Directory managed identity authentication.
+      Used for managed identity authentication.
       Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.
 
 
@@ -754,10 +754,10 @@ definitions:
           `s3`: A link to the Amazon S3 service.
           `azureblob`: A link to Microsoft Azure Blob storage.
 
-          Different properties are returned, depending on the link type: refer to [Couchbase](#couchbase), [S3](#s3), or [Azure](#azure).
+          Different properties are returned, depending on the link type: refer to [Couchbase](#couchbase), [S3](#s3), or [Azure Blob](#azure-blob).
         enum:
-          - s3
           - couchbase
+          - s3
           - azureblob
 
   Couchbase:
@@ -937,7 +937,7 @@ definitions:
               If not set, this property returns `null`.
             example: my.endpoint.uri
 
-  Azure:
+  Azure Blob:
     description: These properties are returned for Azure Blob links.
     allOf:
       - $ref: "#/definitions/Links"
@@ -999,7 +999,7 @@ definitions:
             type: string
             description: >
               The managed identity ID.
-              Used for Azure Active Directory managed identity authentication.
+              Used for managed identity authentication.
               If not set, this property returns `null`.
             example: myManagedIdentityID
           sharedAccessSignature:
