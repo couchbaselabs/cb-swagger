@@ -2,9 +2,9 @@ The example below queries the `myAwsLink` link in the `travel-sample.inventory` 
 
 *Curl request*
 
-``` shell
+``` sh
 curl -v -u Administrator:password \
-     http://localhost:8095/analytics/link/travel-sample%2Finventory/myAwsLink
+     "http://localhost:8095/analytics/link/travel-sample%2Finventory/myAwsLink"
 ```
 
 NOTE: The dot separator within the scope name is converted to a slash (`/`), which is then URL-encoded as `%2F`.

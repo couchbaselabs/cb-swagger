@@ -2,7 +2,7 @@ The example below queries all links in the `Default` scope.
 
 *Curl request*
 
-``` shell
+``` sh
 curl -v -u Administrator:password \
-     http://localhost:8095/analytics/link/Default
+     "http://localhost:8095/analytics/link/Default"
 ```
