@@ -1,0 +1,1 @@
+NOTE: A rebalance is required for a new `numReplicas` value to take effect.
