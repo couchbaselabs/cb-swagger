@@ -1,5 +1,5 @@
 rootProject.name = 'cb-swagger'
-include 'admin', 'query-settings', 'query-service', 'functions', 'indexes', 'analytics-service', 'analytics-config', 'analytics-admin', 'analytics-links', 'analytics-library'
+include 'admin', 'query-settings', 'query-service', 'functions', 'indexes', 'analytics-service', 'analytics-config', 'analytics-admin', 'analytics-links', 'analytics-library', 'analytics-settings'
 project(':admin').projectDir = new File (settingsDir, 'src/admin')
 project(':admin').buildFileName = 'admin.gradle'
 project(':query-settings').projectDir = new File (settingsDir, 'src/query-settings')
@@ -14,6 +14,8 @@ project(':analytics-service').projectDir = new File (settingsDir, 'src/analytics
 project(':analytics-service').buildFileName = 'analytics-service.gradle'
 project(':analytics-config').projectDir = new File (settingsDir, 'src/analytics-config')
 project(':analytics-config').buildFileName = 'analytics-config.gradle'
+project(':analytics-settings').projectDir = new File (settingsDir, 'src/analytics-settings')
+project(':analytics-settings').buildFileName = 'analytics-settings.gradle'
 project(':analytics-admin').projectDir = new File (settingsDir, 'src/analytics-admin')
 project(':analytics-admin').buildFileName = 'analytics-admin.gradle'
 project(':analytics-links').projectDir = new File (settingsDir, 'src/analytics-links')
