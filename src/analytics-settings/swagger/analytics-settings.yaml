@@ -1,0 +1,111 @@
+swagger: '2.0'
+info:
+  title: Analytics Settings REST API
+  version: '7.1'
+  description: |
+    The Analytics Settings REST API is provided by the Analytics service.
+    This API enables you to view or set cluster-level Analytics settings.
+
+    The API schemes and host URLs are as follows:
+
+    * `http://node:8091/`
+    * `https://node:18091/` (for secure access)
+
+    where `node` is the host name or IP address of a node running the Analytics service.
+
+    Note that the port numbers for this REST API are different to the port numbers used by the other Analytics REST APIs.
+
+produces:
+  - application/json
+
+consumes:
+  - application/x-www-form-urlencoded
+
+paths:
+  /settings/analytics:
+    get:
+      operationId: get_settings
+      summary: Get Cluster Settings
+      description: >
+        Retrieves cluster-level Analytics settings.
+        Note that only one setting is available: `numReplicas`.
+      security:
+        - Cluster Read / Pools Read: []
+      responses:
+        "200":
+          $ref: '#/responses/OK'
+        "400":
+          $ref: '#/responses/BadRequest'
+        "401":
+          $ref: '#/responses/Unauthorized'
+    post:
+      operationId: post_settings
+      summary: Set Cluster Settings
+      description: >
+        Sets cluster-level Analytics settings.
+        Note that only one setting is available: `numReplicas`.
+      parameters:
+        - name: numReplicas
+          in: formData
+          type: integer
+          minimum: 0
+          maximum: 3
+          description: Specifies the number of replicas for Analytics.
+      security:
+        - Cluster Read / Pools Read: []
+      responses:
+        "200":
+          $ref: '#/responses/OK'
+        "400":
+          $ref: '#/responses/BadRequest'
+        "401":
+          $ref: '#/responses/Unauthorized'
+
+definitions:
+  Settings:
+    type: object
+    required:
+      - numReplicas
+    properties:
+      numReplicas:
+        type: integer
+        minimum: 0
+        maximum: 3
+        description: Specifies the number of replicas for Analytics.
+        example: 3
+
+responses:
+  OK:
+    description: The operation was successful.
+    schema:
+      $ref: "#/definitions/Settings"
+
+  BadRequest:
+    description: >
+      Bad request.
+      A parameter has an incorrect value.
+    schema:
+      type: object
+
+  Unauthorized:
+    description: >
+      Unauthorized.
+      The user name or password may be incorrect.
+    schema:
+      type: object
+
+securityDefinitions:
+  Cluster Read / Pools Read:
+    type: basic
+    description: |
+      The Analytics Settings REST API supports HTTP basic authentication.
+      Credentials can be passed via HTTP headers.
+
+      Users must have one of the following RBAC roles:
+
+      * Full Admin
+      * Cluster Admin
+      * Read-Only Admin
+      * Analytics Admin
+
+      Refer to [Roles](../learn/security/roles.html) for more details.
