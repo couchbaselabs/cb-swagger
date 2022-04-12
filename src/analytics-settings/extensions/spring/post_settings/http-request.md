@@ -1,0 +1,9 @@
+The example below changes the current number of Analytics replicas to 2.
+
+*Curl request*
+
+``` bash
+curl -X POST -u Administrator:password \
+http://localhost:8091/settings/analytics \
+-d numReplicas=2
+```
