@@ -1,6 +1,7 @@
 This section describes the operations available with these REST APIs.
 
 * [Request Cancellation](#request-cancellation)
+* [Cluster Status](#cluster-status)
 * [Cluster Restart](#cluster-restart)
 * [Node Restart](#node-restart)
 * [Ingestion Status](#ingestion-status)

@@ -48,6 +48,25 @@ paths:
             Not found.
             The path may be incorrect, or there is no active request with the specified identifier.
 
+  /analytics/cluster:
+    get:
+      operationId: cluster_status
+      summary: Cluster Status
+      description: Shows various details about the current status of the Analytics Service, such as the service state, the state of each node partition, and the replicas of each partition.
+      security:
+        - Cluster Read / Pools Read: []
+      responses:
+        "200":
+          description: >
+            Success.
+            Returns an object giving the current status of the Analytics Service.
+          schema:
+            $ref: "#/definitions/Status"
+        "401":
+          $ref: '#/responses/Unauthorized'
+        "404":
+          $ref: '#/responses/NotFound'
+
   /analytics/cluster/restart:
     post:
       operationId: restart_cluster
@@ -132,6 +151,200 @@ paths:
           $ref: '#/responses/NotFound'
 
 definitions:
+  Status:
+    description: An object giving information about the status of the Analytics service.
+    type: object
+    properties:
+      authorizedNodes:
+        type: array
+        description: An array of strings, each of which is the ID of an authorized Analytics node.
+        items:
+          type: string
+        example:
+          - 86586a966202b5aa4aed31633f330aba
+          - 948fb3af810a9b7bc6c76e2a69ba35d9
+      ccNodeId:
+        type: string
+        description: The ID of the cluster controller node.
+        example: 86586a966202b5aa4aed31633f330aba
+      nodeConfigUri:
+        type: string
+        description: The path of the Analytics Node Configuration REST API.
+        example: /analytics/config/node
+      nodeDiagnosticsUri:
+        type: string
+        description: >
+          The path of the Analytics Node Diagnostics REST API.
+          For internal use only.
+        example: /analytics/node/diagnostics
+      nodeRestartUri:
+        type: string
+        description: The path of the Analytics Node Restart REST API.
+        example: /analytics/node/restart
+      nodeServiceUri:
+        type: string
+        description: The path of the Analytics Query Service REST API.
+        example: /analytics/service
+      serviceConfigUri:
+        type: string
+        description: The path of the Analytics Service Configuration REST API.
+        example: /analytics/config/service
+      serviceDiagnosticsUri:
+        type: string
+        description:  >
+          The full URI of the Analytics Service Diagnostics REST API.
+          For internal use only.
+        example: http://localhost:8095/analytics/cluster/diagnostics
+      serviceRestartUri:
+        type: string
+        description: The full URI of the Analytics Cluster Restart REST API.
+        example: http://localhost:8095/analytics/cluster/restart
+      state:
+        type: string
+        enum:
+          - ACTIVE
+          - REBALANCE_REQUIRED
+          - UNUSABLE
+          - SHUTTING_DOWN
+        description: The state of the Analytics Service.
+        example: ACTIVE
+      nodes:
+        type: array
+        description: An array of objects, each giving information about one Analytics node.
+        items:
+          type: object
+          title: Nodes
+          properties:
+            apiBase:
+              type: string
+              description: The URI scheme, host, and port for HTTP access to Analytics REST APIs on this node.
+              example: http://192.168.8.101:8095
+            apiBaseHttps:
+              type: string
+              description: The URI scheme, host, and port for secure HTTPS access to Analytics REST APIs on this node.
+              example: https://192.168.8.101:18095
+            nodeId:
+              type: string
+              description: The ID of the node.
+              example: 86586a966202b5aa4aed31633f330aba
+            nodeName:
+              type: string
+              description: The name or IP address of the node, including the cluster administration port.
+              example: 192.168.8.101:8091
+      partitions:
+        type: array
+        description: An array of objects, each giving information about one Analytics partition.
+        items:
+          type: object
+          title: Partitions
+          properties:
+            active:
+              type: boolean
+              description: Indicates whether this partition is active.
+              example: true
+            activeNodeId:
+              type: string
+              description: The ID of the node where this partition is currently active.
+              example: 86586a966202b5aa4aed31633f330aba
+            iodeviceNum:
+              type: integer
+              description: The number of the IO Device where this partition is located.
+              example: 0
+            nodeId:
+              type: string
+              description: The ID of the node where this partition originated.
+              example: 86586a966202b5aa4aed31633f330aba
+            partitionId:
+              type: integer
+              description: The ID of this partition.
+              example: 0
+            path:
+              type: string
+              description: The path of the IO Device where this partition is located.
+              example: /data/@analytics/v_iodevice_0
+            pendingActivation:
+              type: boolean
+              description: Indicates whether this partition is waiting to become active.
+              example: false
+      partitionsTopology:
+        type: object
+        description: An object giving information about the partition topology.
+        title: Partition Topology
+        properties:
+          balanced:
+            type: boolean
+            description: Indicates whether the Analytics nodes are balanced.
+            example: true
+          ccNodeId:
+            type: string
+            description: The ID of the cluster controller node.
+            example: 86586a966202b5aa4aed31633f330aba
+          metadataPartition:
+            type: integer
+            description: The ID of the metadata partition.
+            example: -1
+          numReplicas:
+            type: integer
+            description: The number of Analytics replicas.
+            example: 1
+          revision:
+            type: integer
+            description: The revision number of the partition topology.
+            example: 1
+          version:
+            type: integer
+            description: The version number of the partition topology.
+            example: 1
+          partitions:
+            type: array
+            description: An array of objects, each giving information about the state of one Analytics partition.
+            items:
+              type: object
+              title: Partition States
+              properties:
+                id:
+                  type: integer
+                  description: The partition ID.
+                  example: 0
+                master:
+                  type: string
+                  description: The ID of the node where the partition is currently active.
+                  example: 86586a966202b5aa4aed31633f330aba
+                origin:
+                  type: string
+                  description: The ID of the node where the partition originated.
+                  example: 86586a966202b5aa4aed31633f330aba
+                replicas:
+                  type: array
+                  description: An array of objects, each giving information about the state of one Analytics replica.
+                  items:
+                    type: object
+                    title: Replicas
+                    properties:
+                      location:
+                        type: string
+                        description: The name or IP address of the node where this replica is located, including the Analytics replication port.
+                        example: 192.168.8.102:9120
+                      nodeId:
+                        type: string
+                        description: The ID of the node where this replica is located.
+                        example: 948fb3af810a9b7bc6c76e2a69ba35d9
+                      status:
+                        type: string
+                        enum:
+                          - IN_SYNC
+                          - CATCHING_UP
+                          - DISCONNECTED
+                        description: The synchronization status of the replica.
+                        example: IN_SYNC
+                      syncProgress:
+                        type: number
+                        format: double
+                        description: The percentage (fraction from 0 to 1) of synchronization progress for this replica at the current time.
+                        minimum: 0
+                        maximum: 1
+                        example: 1
+
   Ingestion:
     description: An object containing a single links property.
     type: object
@@ -282,6 +495,16 @@ securityDefinitions:
       * Analytics Manager
       * Analytics Reader
       * Analytics Select
+      * Analytics Admin
+
+  Cluster Read / Pools Read:
+    type: basic
+    description: |
+      For the [Cluster Status](#cluster-status) operation, users must have one of the following access roles:
+
+      * Full Admin
+      * Cluster Admin
+      * Read-Only Admin
       * Analytics Admin
 
   Analytics Manage:

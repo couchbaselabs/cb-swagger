@@ -1,0 +1,8 @@
+The example below retrieves the current number of Analytics replicas.
+
+*Curl request*
+
+``` bash
+curl -X GET -u Administrator:password \
+http://localhost:8091/settings/analytics
+```
