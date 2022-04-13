@@ -244,7 +244,7 @@ definitions:
               example: true
             activeNodeId:
               type: string
-              description: The ID of the node where the active partition is located.
+              description: The ID of the node where this partition is currently active.
               example: 86586a966202b5aa4aed31633f330aba
             iodeviceNum:
               type: integer
@@ -252,7 +252,7 @@ definitions:
               example: 0
             nodeId:
               type: string
-              description: The ID of the node where this partition is located.
+              description: The ID of the node where this partition originated.
               example: 86586a966202b5aa4aed31633f330aba
             partitionId:
               type: integer
@@ -264,7 +264,7 @@ definitions:
               example: /data/@analytics/v_iodevice_0
             pendingActivation:
               type: boolean
-              description: Indicates whether this node is waiting to become active.
+              description: Indicates whether this partition is waiting to become active.
               example: false
       partitionsTopology:
         type: object
@@ -308,11 +308,11 @@ definitions:
                   example: 0
                 master:
                   type: string
-                  description: The ID of the node where the active partition is located.
+                  description: The ID of the node where the partition is currently active.
                   example: 86586a966202b5aa4aed31633f330aba
                 origin:
                   type: string
-                  description: The ID of the node where the partition is located.
+                  description: The ID of the node where the partition originated.
                   example: 86586a966202b5aa4aed31633f330aba
                 replicas:
                   type: array
