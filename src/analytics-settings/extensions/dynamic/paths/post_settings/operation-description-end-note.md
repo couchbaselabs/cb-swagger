@@ -1,4 +1,4 @@
-You can also retrieve the number of Analytic replicas using the [Couchbase Web Console][1] or the [CLI][2].
+You can also set the number of Analytic replicas using the [Couchbase Web Console][1] or the [CLI][2].
 For further details about Analytics replicas, refer to [Rebalance][3] and [Hard Failover][4].
 
 [1]: ../manage/manage-settings/general-settings.html#analytics-replicas

@@ -12,7 +12,7 @@ info:
     * `https://node:18091/` (for secure access)
 
     where `node` is the host name or IP address of a node running the Analytics service.
-    Note that the port numbers for this REST API are different to the port numbers used by the other Analytics REST APIs.
+    (Note that the port numbers for this REST API are different to the port numbers used by the other Analytics REST APIs.)
 
 produces:
   - application/json
@@ -24,7 +24,7 @@ paths:
   /settings/analytics:
     get:
       operationId: get_settings
-      summary: Get Analytics Settings
+      summary: View Analytics Settings
       description: >
         Retrieves cluster-level Analytics settings.
         Note that only one setting is available: `numReplicas`.
@@ -37,7 +37,7 @@ paths:
           $ref: '#/responses/Unauthorized'
     post:
       operationId: post_settings
-      summary: Set Analytics Settings
+      summary: Modify Analytics Settings
       description: >
         Sets cluster-level Analytics settings.
         Note that only one setting is available: `numReplicas`.
