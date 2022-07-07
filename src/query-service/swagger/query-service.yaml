@@ -55,6 +55,8 @@ paths:
           $ref: '#/responses/Conflict'
         "410":
           $ref: '#/responses/Gone'
+        "413":
+          $ref: '#/responses/PayloadTooLarge'
         "500":
           $ref: '#/responses/InternalServerError'
         "503":
@@ -89,6 +91,8 @@ paths:
           $ref: '#/responses/Conflict'
         "410":
           $ref: '#/responses/Gone'
+        "413":
+          $ref: '#/responses/PayloadTooLarge'
         "500":
           $ref: '#/responses/InternalServerError'
         "503":
@@ -152,6 +156,11 @@ responses:
     description: >
       Internal server error.
       There was an unforeseen problem processing the request.
+
+  PayloadTooLarge:
+    description: >
+      Payload too large.
+      The query is too large for the Query Service to process.
 
   ServiceUnavailable:
     description: >
