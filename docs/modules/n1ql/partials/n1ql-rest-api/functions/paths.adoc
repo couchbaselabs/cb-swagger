@@ -73,7 +73,7 @@ You cannot specify one without the other.
 Request {counter:example}: Fetch all defined libraries.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 curl -X GET \
 "http://localhost:8093/evaluator/v1/libraries" \
@@ -86,7 +86,7 @@ curl -X GET \
 Request {counter:example}: Fetch all defined libraries in the specified scope.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 curl -X GET \
 "http://localhost:8093/evaluator/v1/libraries?bucket=travel-sample&scope=inventory" \
@@ -200,7 +200,7 @@ You cannot specify one without the other.
 Request {counter:example}: Get all functions in the specified global library.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 curl -X GET \
 "http://localhost:8093/evaluator/v1/libraries/math" \
@@ -213,7 +213,7 @@ curl -X GET \
 Request {counter:example}: Get all functions in the specified scoped library.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 curl -X GET \
 "http://localhost:8093/evaluator/v1/libraries/science?bucket=travel-sample&scope=inventory" \
@@ -322,7 +322,7 @@ Request {counter:example}: Create or update a global library called `math`.
 The library contains two functions, `add` and `sub`.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 curl -X POST \
 "http://localhost:8093/evaluator/v1/libraries/math" \
@@ -338,7 +338,7 @@ curl -X POST \
 Request {counter:example}: Add a function called `mul` to the global library, leaving the other functions unchanged.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 curl -X POST \
 "http://localhost:8093/evaluator/v1/libraries/math" \
@@ -355,7 +355,7 @@ curl -X POST \
 Request {counter:example}: Edit the function called `sub` to use a helper function called `helper`, leaving the other functions unchanged.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 curl -X POST \
 "http://localhost:8093/evaluator/v1/libraries/math" \
@@ -373,7 +373,7 @@ curl -X POST \
 Request {counter:example}: Remove the function called `sub` and the helper function called `helper`, leaving the other functions unchanged.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 curl -X POST \
 "http://localhost:8093/evaluator/v1/libraries/math" \
@@ -390,7 +390,7 @@ Request {counter:example}: Create or update a scoped library called `science`.
 The library contains one function, `f2c`.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 curl -X POST \
 "http://localhost:8093/evaluator/v1/libraries/science?bucket=travel-sample&scope=inventory" \
@@ -471,7 +471,7 @@ You cannot specify one without the other.
 Request {counter:example}: Delete a global library entirely.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 curl -X DELETE \
 "http://localhost:8093/evaluator/v1/libraries/math" \
@@ -484,7 +484,7 @@ curl -X DELETE \
 Request {counter:example}: Delete a scoped library entirely.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 curl -X DELETE \
 "http://localhost:8093/evaluator/v1/libraries/science?bucket=travel-sample&scope=inventory" \

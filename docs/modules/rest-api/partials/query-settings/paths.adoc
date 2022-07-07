@@ -49,7 +49,7 @@ Returns all cluster-level query settings, including the CURL access settings.
 The example below gets the current cluster-level query settings.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 curl -v -u Administrator:password \
 http://localhost:8091/settings/querySettings
@@ -140,7 +140,7 @@ __optional__|An object specifying cluster-level query settings.|<<_settings,Sett
 The example below changes the temp file directory to `/tmp` and the temp file size to 2048 MB.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 include::rest-api:example$query-settings-post-settings.sh[]
 ----
@@ -194,7 +194,7 @@ Returns the cluster-level CURL access settings only.
 The example below gets the current cluster-level CURL access settings.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 curl -v -u Administrator:password \
 http://localhost:8091/settings/querySettings/curlWhitelist
@@ -264,7 +264,7 @@ __optional__|An object determining which URLs may be accessed by the `CURL()` fu
 The example below specifies that `+++https://company1.com+++` is allowed, and `+++https://company2.com+++` is disallowed.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
 include::rest-api:example$query-settings-post-access.sh[]
 ----
