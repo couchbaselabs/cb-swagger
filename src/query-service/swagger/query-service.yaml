@@ -1009,7 +1009,9 @@ securityDefinitions:
       This method can only be used to provide a single credential.
 
   Parameter:
-    type: basic
+    type: apiKey
+    name: creds
+    in: query
     description: >
       Specify user names and passwords via the `creds` request parameter.
       This is the only method that can provide multiple credentials for a request.
