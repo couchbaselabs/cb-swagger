@@ -656,7 +656,17 @@ definitions:
           Any valid N1QL statement for a POST request, or a read-only N1QL statement (SELECT, EXPLAIN) for a GET request.
 
           If both `prepared` and `statement` are present and non-empty, an error is returned.
-        example: SELECT * FROM &grave;travel-sample&grave;.inventory.hotel LIMIT 1;
+
+          '''
+
+          [.status]#Couchbase Server 7.1.1#
+
+          When specifying the request parameters as form data, the statement may not contain an unescaped semicolon (`;`).
+          If it does, the Query Service responds with error 1040.
+          To avoid this, either URL-encode the semicolon as `%3B`, or just omit the semicolon if possible.
+
+          This restriction does not apply when specifying the request parameters in JSON format.
+        example: SELECT * FROM &grave;travel-sample&grave;.inventory.hotel LIMIT 1
       timeout:
         type: string
         format: duration
