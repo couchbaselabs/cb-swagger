@@ -242,8 +242,12 @@ definitions:
         default: 4096
       jvmArgs:
         description: >
-          JVM args to pass to the Analytics Driver.
+          JVM arguments to pass to the Analytics Driver.
           The default is undefined (null).
+
+
+          Note that JVM arguments are generally not secure, and are exposed by [cbcollect_info](../cli/cbcollect-info-tool.html).
+          To pass arguments opaquely, you may use [Java command-line argument files](https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-4856361B-8BFD-4964-AE84-121F5F6CF111).
         type: string
         default: null
       logLevel:
@@ -357,12 +361,16 @@ definitions:
     properties:
       jvmArgs:
         description: >
-          JVM args to pass to the Analytics Driver.
+          JVM arguments to pass to the Analytics Driver.
+          The default is undefined (null).
+
+
           Node-specific JVM arguments are appended to service-level JVM arguments.
           If the same JVM argument appears in both the service-level arguments and the node-specific arguments, the node-specific argument takes priority.
 
 
-          The default is undefined (null).
+          Note that JVM arguments are generally not secure, and are exposed by [cbcollect_info](../cli/cbcollect-info-tool.html).
+          To pass arguments opaquely, you may use [Java command-line argument files](https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-4856361B-8BFD-4964-AE84-121F5F6CF111).
         type: string
         default: null
       storageBuffercacheSize:
