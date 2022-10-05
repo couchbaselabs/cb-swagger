@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   title: Query Service REST API
-  version: '7.1'
+  version: '7.2'
   description: |
     The Query Service REST API is provided by the Query service.
     This API enables you to run N1QL queries and set request-level parameters.
@@ -285,7 +285,7 @@ definitions:
 
           If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the {tximplicit}[tximplicit] parameter set to `true`, the durability level is specified for all mutations within that transaction.
 
-          In Couchbase Server 7.1 and later, durability is also supported for non-transactional DML statements.
+          Durability is also supported for non-transactional DML statements.
           In this case, the `kvtimeout` parameter is used as the durability timeout.
 
           If not specified, the default durability level is `"majority"`.
@@ -449,7 +449,7 @@ definitions:
         type: boolean
         description: |
           [[preserve_expiry]]
-          In Couchbase Server 7.1 and later, specifies whether documents should keep their current expiration setting when modified by a DML statement.
+          Specifies whether documents should keep their current expiration setting when modified by a DML statement.
 
           If `true`, documents will keep any existing expiration setting when modified by a DML statement.
           If the DML statement explicitly specifies the document expiration, the statement overrides this parameter, and the expiration is changed.
@@ -658,8 +658,6 @@ definitions:
           If both `prepared` and `statement` are present and non-empty, an error is returned.
 
           '''
-
-          [.status]#Couchbase Server 7.1.1#
 
           When specifying the request parameters as form data, the statement may not contain an unescaped semicolon (`;`).
           If it does, the Query Service responds with error 1040.
