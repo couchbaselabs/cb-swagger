@@ -11,7 +11,7 @@ info:
     * `+http://node:8093/+`
     * `+https://node:18093/+` (for secure access)
 
-    where [.var]`node` is the host name or IP address of a computer running the N1QL query engine.
+    where [.var]`node` is the host name or IP address of a computer running the Query service.
 
 produces:
   - application/json
@@ -654,7 +654,7 @@ definitions:
         description: The state of the query execution, such as completed, running, cancelled.
       statement:
         type: string
-        description: The N1QL query statement being executed.
+        description: The query statement being executed.
       useCBO:
         type: boolean
         description: Whether the cost-based optimizer is enabled for the query.
@@ -699,7 +699,7 @@ definitions:
           This may be a UUID that was assigned automatically, or a name that was user-specified when the statement was created.
       statement:
         type: string
-        description: The text of the N1QL query.
+        description: The text of the query.
       uses:
         type: integer
         description: The count of times the prepared statement has been executed.
@@ -834,17 +834,17 @@ definitions:
       request.per.sec.1min:
         type: number
         description: |
-          Number of N1QL requests processed per second.
+          Number of query requests processed per second.
           1-minute exponentially weighted moving average.
       request.per.sec.5min:
         type: number
         description: |
-          Number of N1QL requests processed per second.
+          Number of query requests processed per second.
           5-minute exponentially weighted moving average.
       request.per.sec.15min:
         type: number
         description: |
-          Number of N1QL requests processed per second.
+          Number of query requests processed per second.
           15-minute exponentially weighted moving average.
       request_time.mean:
         type: string
@@ -889,7 +889,7 @@ definitions:
         description: Total number of active requests.
       at_plus.count:
         type: integer
-        description: Total number of N1QL requests with `at_plus` index consistency.
+        description: Total number of query requests with `at_plus` index consistency.
       audit_actions.count:
         type: integer
         description: |
@@ -913,7 +913,7 @@ definitions:
         description: Total number of DELETE operations.
       errors.count:
         type: integer
-        description: The total number of N1QL errors returned so far.
+        description: The total number of query errors returned so far.
       index_scans.count:
         type: integer
         description: Total number of secondary index scans.
@@ -941,17 +941,17 @@ definitions:
       request_timer.15m.rate:
         type: number
         description: |
-          Number of N1QL requests processed per second.
+          Number of query requests processed per second.
           15-minute exponentially weighted moving average.
       request_timer.1m.rate:
         type: number
         description: |
-          Number of N1QL requests processed per second.
+          Number of query requests processed per second.
           1-minute exponentially weighted moving average.
       request_timer.5m.rate:
         type: number
         description: |
-          Number of N1QL requests processed per second.
+          Number of query requests processed per second.
           5-minute exponentially weighted moving average.
       request_timer.75%:
         type: number
@@ -975,7 +975,7 @@ definitions:
           The 99.9th percentile.
       request_timer.count:
         type: integer
-        description: Total number of N1QL requests.
+        description: Total number of query requests.
       request_timer.max:
         type: integer
         description: |
@@ -989,7 +989,7 @@ definitions:
       request_timer.mean.rate:
         type: number
         description: |
-          Number of N1QL requests processed per second.
+          Number of query requests processed per second.
           Mean rate since the query service started.
       request_timer.median:
         type: number
@@ -1008,7 +1008,7 @@ definitions:
           The standard deviation.
       requests.count:
         type: integer
-        description: Total number of N1QL requests.
+        description: Total number of query requests.
       requests_1000ms.count:
         type: integer
         description: Number of queries that take longer than 1000ms.
@@ -1029,7 +1029,7 @@ definitions:
         description: Total size of data returned by the query engine (bytes).
       scan_plus.count:
         type: integer
-        description: Total number of N1QL requests with `request_plus` index consistency.
+        description: Total number of query requests with `request_plus` index consistency.
       selects.count:
         type: integer
         description: Total number of SELECT requests.
@@ -1038,13 +1038,13 @@ definitions:
         description: Time to execute all queries (ns).
       unbounded.count:
         type: integer
-        description: Total number of N1QL requests with `not_bounded` index consistency.
+        description: Total number of query requests with `not_bounded` index consistency.
       updates.count:
         type: integer
         description: Total number of UPDATE requests.
       warnings.count:
         type: integer
-        description: The total number of N1QL warnings returned so far.
+        description: The total number of query warnings returned so far.
 
   Metrics:
     type: object
@@ -1451,7 +1451,7 @@ definitions:
         default: 76
         description: |
           [[n1ql-feat-ctrl]]
-          N1QL feature control.
+          {sqlpp} feature control.
           This setting is provided for technical support only.
 
           The {queryN1qlFeatCtrl}[cluster-level] `queryN1qlFeatCtrl` setting specifies this property for the whole cluster.

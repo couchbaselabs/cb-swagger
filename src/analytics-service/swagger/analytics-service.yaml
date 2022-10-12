@@ -26,7 +26,7 @@ paths:
       operationId: post_service
       summary: Query Service
       description: >
-        Enables you to execute a N1QL for Analytics statement.
+        Enables you to execute a SQL\+\+ for Analytics statement.
         This method allows you to run queries and modifying statements, and specify query parameters.
       parameters:
         - in: body
@@ -48,7 +48,7 @@ paths:
       operationId: get_service
       summary: Read-Only Query Service
       description: >
-        Enables you to execute a N1QL for Analytics statement.
+        Enables you to execute a SQL\+\+ for Analytics statement.
         This method only allows you to run queries and specify query parameters.
         It does not allow you to run modifying statements.
 
@@ -111,7 +111,7 @@ definitions:
     properties:
       statement: &statement
         type: string
-        description: Specifies at least one valid N1QL for Analytics statement to run.
+        description: Specifies at least one valid SQL\+\+ for Analytics statement to run.
       client_context_id: &client_context_id
         type: string
         description: >

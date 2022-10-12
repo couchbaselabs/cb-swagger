@@ -1,5 +1,5 @@
 The example below uses a URL-encoded query parameter.
-The N1QL statement is `SELECT "hello, beer!" AS greeting`.
+The SQL\+\+ statement is `SELECT "hello, beer!" AS greeting`.
 
 *Curl request*
 
