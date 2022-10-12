@@ -93,7 +93,7 @@ Refer to {prepare-auto-execute}[Auto-Execute] for more information. +
 |**client_context_id** +
 __optional__|[[client_context_id]]
 A piece of data supplied by the client that is echoed in the response, if present.
-N1QL is agnostic about the content of this parameter; it is just echoed in the response.
+{sqlpp} is agnostic about the content of this parameter; it is just echoed in the response.
 
 * Maximum allowed size is 64 characters; all others will be cut.
 * If it contains an escape character `/` or quote `"`, it will be rejected as error code 1110.|string
@@ -259,7 +259,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 __optional__|[[prepared]]
 _Required_ if `statement` not provided.
 
-The name of the prepared N1QL statement to be executed.
+The name of the prepared {sqlpp} statement to be executed.
 Refer to {execute}[EXECUTE] for examples.
 
 If both `prepared` and `statement` are present and non-empty, an error is returned. +
@@ -439,7 +439,7 @@ Include a header for the results schema in the response. +
 __optional__|[[statement]]
 _Required_ if `prepared` not provided.
 
-Any valid N1QL statement for a POST request, or a read-only N1QL statement (SELECT, EXPLAIN) for a GET request.
+Any valid {sqlpp} statement for a POST request, or a read-only {sqlpp} statement (SELECT, EXPLAIN) for a GET request.
 
 If both `prepared` and `statement` are present and non-empty, an error is returned.
 
@@ -656,7 +656,7 @@ __required__|A message describing the error or warning in detail. This property 
 __optional__|Unique name that has a 1:1 mapping to the code. Uniquely identifies the condition. This property is helpful for pattern matching and can have meaning, making it more memorable than the code. The name should be fully qualified. +
 **Example** : `"indexing.scan.io_failure"`|string
 |**sev** +
-__optional__|One of the following N1QL severity levels, listed in order of severity:
+__optional__|One of the following {sqlpp} severity levels, listed in order of severity:
 
  1. Severe
  2. Error

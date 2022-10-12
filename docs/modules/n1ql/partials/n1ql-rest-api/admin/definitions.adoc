@@ -145,7 +145,7 @@ __optional__|Total amount of calendar time taken to complete the query.|string (
 |**state** +
 __optional__|The state of the query execution, such as completed, running, cancelled.|string
 |**statement** +
-__optional__|The N1QL query statement being executed.|string
+__optional__|The query statement being executed.|string
 |**useCBO** +
 __optional__|Whether the cost-based optimizer is enabled for the query.|boolean
 |**usedMemory** +
@@ -216,7 +216,7 @@ It is only returned when retrieving a specific prepared statement, not when retr
 __required__|The name of the prepared statement.
 This may be a UUID that was assigned automatically, or a name that was user-specified when the statement was created.|string
 |**statement** +
-__required__|The text of the N1QL query.|string
+__required__|The text of the query.|string
 |**uses** +
 __required__|The count of times the prepared statement has been executed.|integer
 |===
@@ -258,13 +258,13 @@ __optional__|Total number of active requests.|integer
 |**request.completed.count** +
 __optional__|Total number of completed requests.|integer
 |**request.per.sec.15min** +
-__optional__|Number of N1QL requests processed per second.
+__optional__|Number of query requests processed per second.
 15-minute exponentially weighted moving average.|number
 |**request.per.sec.1min** +
-__optional__|Number of N1QL requests processed per second.
+__optional__|Number of query requests processed per second.
 1-minute exponentially weighted moving average.|number
 |**request.per.sec.5min** +
-__optional__|Number of N1QL requests processed per second.
+__optional__|Number of query requests processed per second.
 5-minute exponentially weighted moving average.|number
 |**request.prepared.percent** +
 __optional__|Percentage of requests that are prepared statements.|integer
@@ -301,7 +301,7 @@ __optional__|The version of the query engine.|string
 |**active_requests.count** +
 __optional__|Total number of active requests.|integer
 |**at_plus.count** +
-__optional__|Total number of N1QL requests with `at_plus` index consistency.|integer
+__optional__|Total number of query requests with `at_plus` index consistency.|integer
 |**audit_actions.count** +
 __optional__|The total number of audit records sent to the server.
 Some requests cause more than one audit record to be emitted.
@@ -317,7 +317,7 @@ __optional__|Total number of cancelled requests.|integer
 |**deletes.count** +
 __optional__|Total number of DELETE operations.|integer
 |**errors.count** +
-__optional__|The total number of N1QL errors returned so far.|integer
+__optional__|The total number of query errors returned so far.|integer
 |**index_scans.count** +
 __optional__|Total number of secondary index scans.|integer
 |**inserts.count** +
@@ -335,13 +335,13 @@ __optional__|Total number of queued requests.|integer
 |**request_time.count** +
 __optional__|Total end-to-end time to process all queries (ns).|integer
 |**request_timer.15m.rate** +
-__optional__|Number of N1QL requests processed per second.
+__optional__|Number of query requests processed per second.
 15-minute exponentially weighted moving average.|number
 |**request_timer.1m.rate** +
-__optional__|Number of N1QL requests processed per second.
+__optional__|Number of query requests processed per second.
 1-minute exponentially weighted moving average.|number
 |**request_timer.5m.rate** +
-__optional__|Number of N1QL requests processed per second.
+__optional__|Number of query requests processed per second.
 5-minute exponentially weighted moving average.|number
 |**request_timer.75%** +
 __optional__|End-to-end time to process a query (ns).
@@ -356,7 +356,7 @@ The 99th percentile.|number
 __optional__|End-to-end time to process a query (ns).
 The 99.9th percentile.|number
 |**request_timer.count** +
-__optional__|Total number of N1QL requests.|integer
+__optional__|Total number of query requests.|integer
 |**request_timer.max** +
 __optional__|End-to-end time to process a query (ns).
 The maximum value.|integer
@@ -364,7 +364,7 @@ The maximum value.|integer
 __optional__|End-to-end time to process a query (ns).
 The mean value.|number
 |**request_timer.mean.rate** +
-__optional__|Number of N1QL requests processed per second.
+__optional__|Number of query requests processed per second.
 Mean rate since the query service started.|number
 |**request_timer.median** +
 __optional__|End-to-end time to process a query (ns).
@@ -376,7 +376,7 @@ The minimum value.|integer
 __optional__|End-to-end time to process a query (ns).
 The standard deviation.|number
 |**requests.count** +
-__optional__|Total number of N1QL requests.|integer
+__optional__|Total number of query requests.|integer
 |**requests_1000ms.count** +
 __optional__|Number of queries that take longer than 1000ms.|integer
 |**requests_250ms.count** +
@@ -390,17 +390,17 @@ __optional__|Total number of results (documents) returned by the query engine.|i
 |**result_size.count** +
 __optional__|Total size of data returned by the query engine (bytes).|integer
 |**scan_plus.count** +
-__optional__|Total number of N1QL requests with `request_plus` index consistency.|integer
+__optional__|Total number of query requests with `request_plus` index consistency.|integer
 |**selects.count** +
 __optional__|Total number of SELECT requests.|integer
 |**service_time.count** +
 __optional__|Time to execute all queries (ns).|integer
 |**unbounded.count** +
-__optional__|Total number of N1QL requests with `not_bounded` index consistency.|integer
+__optional__|Total number of query requests with `not_bounded` index consistency.|integer
 |**updates.count** +
 __optional__|Total number of UPDATE requests.|integer
 |**warnings.count** +
-__optional__|The total number of N1QL warnings returned so far.|integer
+__optional__|The total number of query warnings returned so far.|integer
 |===
 
 
@@ -687,7 +687,7 @@ This setting is provided for technical support only. +
 **Default** : `false`|boolean
 |**n1ql-feat-ctrl** +
 __optional__|[[n1ql-feat-ctrl]]
-N1QL feature control.
+{sqlpp} feature control.
 This setting is provided for technical support only.
 
 The {queryN1qlFeatCtrl}[cluster-level] `queryN1qlFeatCtrl` setting specifies this property for the whole cluster.
