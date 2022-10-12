@@ -4,7 +4,7 @@ info:
   version: '7.2'
   description: |
     The Query Service REST API is provided by the Query service.
-    This API enables you to run N1QL queries and set request-level parameters.
+    This API enables you to run {sqlpp} queries and set request-level parameters.
 
     The API schemes and host URLs are as follows:
 
@@ -26,7 +26,7 @@ paths:
       operationId: post_service
       summary: Query Service
       description: >
-        Enables you to execute a N1QL statement.
+        Enables you to execute a {sqlpp} statement.
         This method allows you to run queries and modifying statements, and specify query parameters.
       parameters:
         - in: body
@@ -65,7 +65,7 @@ paths:
       operationId: get_service
       summary: Read-Only Query Service
       description: >
-        Enables you to execute a N1QL statement.
+        Enables you to execute a {sqlpp} statement.
         This method allows you to run queries and modifying statements, and specify query parameters.
         It does not allow you to run modifying statements.
 
@@ -112,7 +112,7 @@ responses:
       The request cannot be processed for one of the following reasons:
 
 
-        * The statement contains a N1QL syntax error.
+        * The statement contains a {sqlpp} syntax error.
 
 
         * The request has a missing or unrecognized HTTP parameter.
@@ -232,7 +232,7 @@ definitions:
         description: |
           [[client_context_id]]
           A piece of data supplied by the client that is echoed in the response, if present.
-          N1QL is agnostic about the content of this parameter; it is just echoed in the response.
+          {sqlpp} is agnostic about the content of this parameter; it is just echoed in the response.
 
           * Maximum allowed size is 64 characters; all others will be cut.
           * If it contains an escape character `/` or quote `"`, it will be rejected as error code 1110.
@@ -440,7 +440,7 @@ definitions:
           [[prepared]]
           _Required_ if `statement` not provided.
 
-          The name of the prepared N1QL statement to be executed.
+          The name of the prepared {sqlpp} statement to be executed.
           Refer to {execute}[EXECUTE] for examples.
 
           If both `prepared` and `statement` are present and non-empty, an error is returned.
@@ -653,7 +653,7 @@ definitions:
           [[statement]]
           _Required_ if `prepared` not provided.
 
-          Any valid N1QL statement for a POST request, or a read-only N1QL statement (SELECT, EXPLAIN) for a GET request.
+          Any valid {sqlpp} statement for a POST request, or a read-only {sqlpp} statement (SELECT, EXPLAIN) for a GET request.
 
           If both `prepared` and `statement` are present and non-empty, an error is returned.
 
@@ -927,7 +927,7 @@ definitions:
       sev:
         type: integer
         description: |
-          One of the following N1QL severity levels, listed in order of severity:
+          One of the following {sqlpp} severity levels, listed in order of severity:
 
            1. Severe
            2. Error
