@@ -38,6 +38,8 @@ ifdef::basebackend-html[]
 endif::[]
 
 
+This section describes the properties returned by this REST API.
+
 **{toc-title}**
 
 * <<_node>>
@@ -108,8 +110,7 @@ The number of documents currently indexed.|integer
 |**frag_percent** +
 __optional__|Percentage fragmentation of the index.
 
-[TIP]
-At small index sizes of less than a hundred kB, the static overhead of the index disk file will inflate the index fragmentation percentage.|integer
+TIP: At small index sizes of less than a hundred kB, the static overhead of the index disk file will inflate the index fragmentation percentage.|integer
 |**initial_build_progress** +
 __optional__|Percentage initial build progress for the index.
 When initial build is completed, the value is `100`.
@@ -123,8 +124,7 @@ __optional__|The number of items currently indexed. +
 __optional__|Time of the last scan request received for this index (Unix timestamp in nanoseconds).
 This may be useful for determining whether this index is currently unused.
 
-[NOTE]
-This statistic is persisted to disk every 15 minutes, so it is preserved when the indexer restarts.|integer (int64)
+NOTE: This statistic is persisted to disk every 15 minutes, so it is preserved when the indexer restarts.|integer (int64)
 |**num_docs_indexed** +
 __optional__|Number of documents indexed by the indexer since last startup.|integer
 |**num_docs_pending** +
@@ -164,7 +164,7 @@ Percentage of the data held in memory. +
 |**scan_bytes_read** +
 __optional__|Number of bytes read by a scan since last startup.|integer
 |**total_scan_duration** +
-__optional__|Total time spent by the indexer in scanning rows since last startup.|integer
+__optional__|Total time spent by the indexer in scanning rows since last startup (nanoseconds).|integer
 |===
 
 
