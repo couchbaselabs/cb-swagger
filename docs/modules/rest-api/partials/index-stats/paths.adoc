@@ -6,6 +6,8 @@
 [[_paths]]
 == Paths
 
+This section describes the operations available with this REST API.
+
 **{toc-title}**
 
 * <<_get_node_stats>>
@@ -42,7 +44,7 @@ __optional__|Whether empty, null, or zero statistics should be omitted from the 
 |===
 |HTTP Code|Description|Schema
 |**200**|Success.
-Returns an object containing a nested `indexer` object, and usually one or more nested `__keyspace:index__` objects -- one for each index found on the specified node.|<<_node_and_indexes,Node and Indexes>>
+Returns an object containing a nested `indexer` object, and usually one or more nested `<keyspace>:<index>` objects &mdash; one for each index found on the specified node.|<<_node_and_indexes,Node and Indexes>>
 |===
 
 [[_node_and_indexes]]
@@ -53,11 +55,11 @@ Returns an object containing a nested `indexer` object, and usually one or more 
 |Name|Description|Schema
 |**indexer** +
 __required__|A nested object containing statistics for the current index node.|<<_node,Node>>
-|**__keyspace:index__** +
+|**<keyspace>:<index>** +
 __optional__|A nested object containing statistics for an entire index.
 
-* `__keyspace__` is the bucket, scope, and collection containing the index.
-* `__index__` is the name of the index.|<<_index,Index>>
+* `<keyspace>` is the bucket, scope, and collection containing the index.
+* `<index>` is the name of the index.|<<_index,Index>>
 |===
 
 
@@ -268,7 +270,7 @@ For example, `bucket._default._default`.
 |===
 |HTTP Code|Description|Schema
 |**200**|Success.
-Returns an object containing one or more nested `__keyspace:index__` objects -- one for each index found within the specified bucket, scope, or collection.|<<_indexes,Indexes>>
+Returns an object containing one or more nested `<keyspace>:<index>` objects &mdash; one for each index found within the specified bucket, scope, or collection.|<<_indexes,Indexes>>
 |**404**|Not found.
 Returns the complete specified keyspace name, and the specified index name if provided.
 
@@ -281,11 +283,11 @@ The keyspace name may be incorrect, the keyspace may contain no indexes, the ind
 [options="header", cols=".^3a,.^11a,.^4a"]
 |===
 |Name|Description|Schema
-|**__keyspace:index__** +
+|**<keyspace>:<index>** +
 __required__|A nested object containing statistics for an entire index.
 
-* `__keyspace__` is the bucket, scope, and collection containing the index.
-* `__index__` is the name of the index.|<<_index,Index>>
+* `<keyspace>` is the bucket, scope, and collection containing the index.
+* `<index>` is the name of the index.|<<_index,Index>>
 |===
 
 
@@ -460,9 +462,9 @@ It is not possible to specify an individual index partition in the path.
 |===
 |HTTP Code|Description|Schema
 |**200**|Success.
-Returns an object containing one nested `__keyspace:index__` object.
+Returns an object containing one nested `<keyspace>:<index>` object.
 
-If the <<_get_index_stats_parameters,partition>> query parameter was set to `true`, the returned object also contains one or more `Partition-__num__` objects -- one for each index partition found on the specified node.|<<_index_and_partitions,Index and Partitions>>
+If the <<_get_index_stats_parameters,partition>> query parameter was set to `true`, the returned object also contains one or more `Partition-<num>` objects &mdash; one for each index partition found on the specified node.|<<_index_and_partitions,Index and Partitions>>
 |**404**|Not found.
 Returns the complete specified keyspace name, and the specified index name if provided.
 
@@ -475,16 +477,16 @@ The keyspace name may be incorrect, the keyspace may contain no indexes, the ind
 [options="header", cols=".^3a,.^11a,.^4a"]
 |===
 |Name|Description|Schema
-|**__keyspace:index__** +
+|**<keyspace>:<index>** +
 __required__|A nested object containing statistics for an entire index.
 
-* `__keyspace__` is the bucket, scope, and collection containing the index.
-* `__index__` is the name of the index.|<<_index,Index>>
-|**Partition-__num__** +
+* `<keyspace>` is the bucket, scope, and collection containing the index.
+* `<index>` is the name of the index.|<<_index,Index>>
+|**Partition-<num>** +
 __optional__|A nested object containing statistics.
 
-* If the index is partitioned, this object contains statistics for one index partition, where `__num__` is the partition number.
-* If the index is not partitioned, this object contains statistics for the entire index, and `__num__` is `0`.|<<_index,Index>>
+* If the index is partitioned, this object contains statistics for one index partition, where `<num>` is the partition number.
+* If the index is not partitioned, this object contains statistics for the entire index, and `<num>` is `0`.|<<_index,Index>>
 |===
 
 
