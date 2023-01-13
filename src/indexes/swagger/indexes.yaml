@@ -6,12 +6,12 @@ info:
     The Index Statistics REST API is provided by the Index service.
     This API enables you to get Index service statistics.
 
-    The API schemes and host URLs are as follows:{blank}
+    The API schemes and host URLs are as follows:
 
-    * `+http://node:9102/+`
-    * `+https://node:19102/+` (for secure access)
+    * `http://node:9102/`
+    * `https://node:19102/` (for secure access)
 
-    where [.var]`node` is the host name or IP address of a computer running the index service.
+    where `node` is the host name or IP address of a computer running the index service.
 
 produces:
   - application/json
@@ -194,8 +194,7 @@ definitions:
         description: |
           Percentage fragmentation of the index.
           
-          [TIP]
-          At small index sizes of less than a hundred kB, the static overhead of the index disk file will inflate the index fragmentation percentage.
+          TIP: At small index sizes of less than a hundred kB, the static overhead of the index disk file will inflate the index fragmentation percentage.
       initial_build_progress:
         type: integer
         description: |
@@ -215,8 +214,7 @@ definitions:
           Time of the last scan request received for this index (Unix timestamp in nanoseconds).
           This may be useful for determining whether this index is currently unused.
 
-          [NOTE]
-          This statistic is persisted to disk every 15 minutes, so it is preserved when the indexer restarts.
+          NOTE: This statistic is persisted to disk every 15 minutes, so it is preserved when the indexer restarts.
       num_docs_indexed:
         type: integer
         description: Number of documents indexed by the indexer since last startup.
@@ -288,7 +286,7 @@ responses:
   Node:
     description: |
       Success.
-      Returns an object containing a nested `indexer` object, and usually one or more nested `__keyspace:index__` objects -- one for each index found on the specified node.
+      Returns an object containing a nested `indexer` object, and usually one or more nested `<keyspace>:<index>` objects &mdash; one for each index found on the specified node.
     schema:
       type: object
       title: Node and Indexes
@@ -298,57 +296,57 @@ responses:
         indexer:
           description: A nested object containing statistics for the current index node.
           $ref: "#/definitions/Node"
-        __keyspace:index__:
+        <keyspace>:<index>:
           description: |
             A nested object containing statistics for an entire index.
             
-            * `__keyspace__` is the bucket, scope, and collection containing the index.
-            * `__index__` is the name of the index.
+            * `<keyspace>` is the bucket, scope, and collection containing the index.
+            * `<index>` is the name of the index.
           $ref: "#/definitions/Index"
 
   Keyspace:
     description: |
       Success.
-      Returns an object containing one or more nested `__keyspace:index__` objects -- one for each index found within the specified bucket, scope, or collection.
+      Returns an object containing one or more nested `<keyspace>:<index>` objects &mdash; one for each index found within the specified bucket, scope, or collection.
     schema:
       type: object
       title: Indexes
       required:
-        - __keyspace:index__
+        - <keyspace>:<index>
       properties:
-        __keyspace:index__:
+        <keyspace>:<index>:
           description: |
             A nested object containing statistics for an entire index.
             
-            * `__keyspace__` is the bucket, scope, and collection containing the index.
-            * `__index__` is the name of the index.
+            * `<keyspace>` is the bucket, scope, and collection containing the index.
+            * `<index>` is the name of the index.
           $ref: "#/definitions/Index"
 
   Index:
     description: |
       Success.
-      Returns an object containing one nested `__keyspace:index__` object.
+      Returns an object containing one nested `<keyspace>:<index>` object.
 
-      If the <<_get_index_stats_parameters,partition>> query parameter was set to `true`, the returned object also contains one or more `Partition-__num__` objects -- one for each index partition found on the specified node.
+      If the <<_get_index_stats_parameters,partition>> query parameter was set to `true`, the returned object also contains one or more `Partition-<num>` objects &mdash; one for each index partition found on the specified node.
     schema:
       type: object
       title: Index and Partitions
       required:
-        - __keyspace:index__
+        - <keyspace>:<index>
       properties:
-        __keyspace:index__:
+        <keyspace>:<index>:
           description: |
             A nested object containing statistics for an entire index.
             
-            * `__keyspace__` is the bucket, scope, and collection containing the index.
-            * `__index__` is the name of the index.
+            * `<keyspace>` is the bucket, scope, and collection containing the index.
+            * `<index>` is the name of the index.
           $ref: "#/definitions/Index"
-        Partition-__num__:
+        Partition-<num>:
           description: |
             A nested object containing statistics.
             
-            * If the index is partitioned, this object contains statistics for one index partition, where `__num__` is the partition number.
-            * If the index is not partitioned, this object contains statistics for the entire index, and `__num__` is `0`.
+            * If the index is partitioned, this object contains statistics for one index partition, where `<num>` is the partition number.
+            * If the index is not partitioned, this object contains statistics for the entire index, and `<num>` is `0`.
           $ref: "#/definitions/Index"
 
 securityDefinitions:
