@@ -1,0 +1,1616 @@
+openapi: '3.1.0'
+x-stoplight:
+  id: 7qw1goqcnwdw5
+info:
+  title: Couchbase Capella Data API
+  description: This documentation describes the Capella REST Data API
+  version: 0.4.0
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  summary: Couchbase Capella Data API
+servers:
+  - url: 'https://dapi.couchbase.live/'
+    description: Capella Data API Endpoint URL
+tags:
+  - name: Documents
+    description: Retrieve and modify individual documents
+  - name: Bulk Documents
+    description: Retrieve and modify bulk or multi documents
+  - name: Subdocuments
+    description: Retrieve and modify sections of individual documents
+  - name: Queries
+    description: Perform queries over a range of documents and indexes
+  - name: Metadata
+    description: Fetches metadata for various resources
+  - name: Specification
+    description: Open API speficiation
+security:
+  - bearerAuth: []
+paths:
+  /v1/spec:
+    get:
+      summary: Get Specification
+      tags:
+        - Specification
+      responses:
+        '200':
+          description: Specification file
+      operationId: get-v1-spec
+      description: Get the specification open api document
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Accept
+          description: 'spec file type - [text/html], application/yaml, application/json'
+      security: []
+  /v1/buckets:
+    get:
+      summary: List Databases or Buckets
+      responses:
+        '200':
+          description: List of databases or buckets
+          content:
+            application/json:
+              schema:
+                type: object
+                x-examples:
+                  example-1:
+                    buckets:
+                      - Name: api-test
+                        FlushEnabled: false
+                        ReplicaIndexDisabled: false
+                        RAMQuotaMB: 1024
+                        NumReplicas: 1
+                        BucketType: membase
+                        EvictionPolicy: valueOnly
+                        MaxTTL: 0
+                        MaxExpiry: 0
+                        CompressionMode: passive
+                        MinimumDurabilityLevel: 1
+                        StorageBackend: couchstore
+                      - Name: travel-sample
+                        FlushEnabled: false
+                        ReplicaIndexDisabled: true
+                        RAMQuotaMB: 200
+                        NumReplicas: 0
+                        BucketType: membase
+                        EvictionPolicy: valueOnly
+                        MaxTTL: 0
+                        MaxExpiry: 0
+                        CompressionMode: passive
+                        MinimumDurabilityLevel: 1
+                        StorageBackend: couchstore
+                properties:
+                  buckets:
+                    type: array
+                    items:
+                      type: object
+              examples:
+                example-1:
+                  value:
+                    buckets:
+                      - Name: api-test
+                        FlushEnabled: false
+                        ReplicaIndexDisabled: false
+                        RAMQuotaMB: 1024
+                        NumReplicas: 1
+                        BucketType: membase
+                        EvictionPolicy: valueOnly
+                        MaxTTL: 0
+                        MaxExpiry: 0
+                        CompressionMode: passive
+                        MinimumDurabilityLevel: 1
+                        StorageBackend: couchstore
+                      - Name: travel-sample
+                        FlushEnabled: false
+                        ReplicaIndexDisabled: true
+                        RAMQuotaMB: 200
+                        NumReplicas: 0
+                        BucketType: membase
+                        EvictionPolicy: valueOnly
+                        MaxTTL: 0
+                        MaxExpiry: 0
+                        CompressionMode: passive
+                        MinimumDurabilityLevel: 1
+                        StorageBackend: couchstore
+        '401':
+          $ref: '#/components/responses/401'
+      operationId: get-v1-buckets
+      description: List all dbs or buckets
+      tags:
+        - Metadata
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: pretty
+          description: if the JSON payload should be formatted pretty
+        - schema:
+            type: boolean
+          in: query
+          name: meta
+          description: if metadata should be included in the response
+  '/v1/buckets/{bucketName}':
+    parameters:
+      - schema:
+          type: string
+        name: bucketName
+        in: path
+        required: true
+        description: db or bucket name
+    get:
+      summary: Get Database or Bucket Details
+      responses:
+        '200':
+          description: Database or Bucket information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bucket:
+                    type: object
+              examples:
+                example-1:
+                  value:
+                    bucket:
+                      Name: travel-sample
+                      FlushEnabled: false
+                      ReplicaIndexDisabled: true
+                      RAMQuotaMB: 200
+                      NumReplicas: 0
+                      BucketType: membase
+                      EvictionPolicy: valueOnly
+                      MaxTTL: 0
+                      MaxExpiry: 0
+                      CompressionMode: passive
+                      MinimumDurabilityLevel: 1
+                      StorageBackend: couchstore
+        '401':
+          $ref: '#/components/responses/401'
+      operationId: get-v1-buckets-bucketName
+      description: Gets db or bucket details
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: pretty
+          description: if the JSON payload should be formatted pretty
+        - schema:
+            type: boolean
+          in: query
+          name: meta
+          description: if metadata should be included in the response
+      tags:
+        - Metadata
+  /v1/scopes:
+    get:
+      summary: List Scopes
+      responses:
+        '200':
+          description: Scopes list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  scopes:
+                    type: array
+                    items:
+                      type: object
+              examples:
+                example-1:
+                  value:
+                    scopes:
+                      - Name: inventory3
+                        Collections: null
+                      - Name: inventory2
+                        Collections: null
+                      - Name: inventory
+                        Collections:
+                          - Name: airline
+                            ScopeName: inventory
+                            MaxExpiry: 0
+                          - Name: route
+                            ScopeName: inventory
+                            MaxExpiry: 0
+                          - Name: landmark
+                            ScopeName: inventory
+                            MaxExpiry: 0
+                          - Name: hotel
+                            ScopeName: inventory
+                            MaxExpiry: 0
+                          - Name: airport
+                            ScopeName: inventory
+                            MaxExpiry: 0
+                      - Name: tenant_agent_00
+                        Collections:
+                          - Name: users
+                            ScopeName: tenant_agent_00
+                            MaxExpiry: 0
+                          - Name: bookings
+                            ScopeName: tenant_agent_00
+                            MaxExpiry: 0
+                      - Name: tenant_agent_01
+                        Collections:
+                          - Name: bookings
+                            ScopeName: tenant_agent_01
+                            MaxExpiry: 0
+                          - Name: users
+                            ScopeName: tenant_agent_01
+                            MaxExpiry: 0
+                      - Name: tenant_agent_02
+                        Collections:
+                          - Name: bookings
+                            ScopeName: tenant_agent_02
+                            MaxExpiry: 0
+                          - Name: users
+                            ScopeName: tenant_agent_02
+                            MaxExpiry: 0
+                      - Name: tenant_agent_03
+                        Collections:
+                          - Name: users
+                            ScopeName: tenant_agent_03
+                            MaxExpiry: 0
+                          - Name: bookings
+                            ScopeName: tenant_agent_03
+                            MaxExpiry: 0
+                      - Name: tenant_agent_04
+                        Collections:
+                          - Name: bookings
+                            ScopeName: tenant_agent_04
+                            MaxExpiry: 0
+                          - Name: users
+                            ScopeName: tenant_agent_04
+                            MaxExpiry: 0
+                      - Name: _default
+                        Collections:
+                          - Name: _default
+                            ScopeName: _default
+                            MaxExpiry: 0
+        '401':
+          $ref: '#/components/responses/401'
+      operationId: get-v1-scopes
+      description: List all of the scopes in the current database/bucket
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: pretty
+          description: if the JSON payload should be formatted pretty
+        - schema:
+            type: boolean
+          in: query
+          name: meta
+          description: if metadata should be included in the response
+      tags:
+        - Metadata
+  '/v1/scopes/{scopeName}':
+    get:
+      operationId: listScopes
+      tags:
+        - Metadata
+      summary: Get Scope Details
+      description: Gets a scope details
+      parameters:
+        - $ref: '#/components/parameters/timeout'
+        - $ref: '#/components/parameters/pretty'
+        - schema:
+            type: boolean
+          in: query
+          name: meta
+          description: if metadata should be included in the response
+      responses:
+        '200':
+          description: Gets scope information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  scope:
+                    type: object
+                required:
+                  - scope
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          description: Not Found
+    post:
+      summary: Create Scope
+      operationId: post-v1-scopes
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Scope exists
+        '401':
+          $ref: '#/components/responses/401'
+      description: Creates a scope
+      parameters: []
+      tags:
+        - Metadata
+    delete:
+      summary: Delete Scope
+      operationId: delete-v1-scopes
+      responses:
+        '200':
+          description: OK
+        '401':
+          $ref: '#/components/responses/401'
+      description: Deletes a scope
+      tags:
+        - Metadata
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: meta
+          description: if metadata should be included in the response
+    parameters:
+      - schema:
+          type: string
+        name: scopeName
+        in: path
+        required: true
+        description: scope name
+  '/v1/scopes/{scopeName}/collections':
+    parameters:
+      - schema:
+          type: string
+        name: scopeName
+        in: path
+        required: true
+        description: scope name
+    get:
+      summary: List Collections
+      tags:
+        - Metadata
+      responses:
+        '200':
+          description: Collections list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  collections:
+                    type: array
+                    items:
+                      type: object
+              examples:
+                example-1:
+                  value:
+                    collections:
+                      - Name: airline
+                        ScopeName: inventory
+                        MaxExpiry: 0
+                      - Name: route
+                        ScopeName: inventory
+                        MaxExpiry: 0
+                      - Name: landmark
+                        ScopeName: inventory
+                        MaxExpiry: 0
+                      - Name: hotel
+                        ScopeName: inventory
+                        MaxExpiry: 0
+                      - Name: airport
+                        ScopeName: inventory
+                        MaxExpiry: 0
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          description: Scope Not Found
+      operationId: get-v1-scopes-scopeName-collections
+      description: List all collections in a scope
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: pretty
+          description: if the JSON payload should be formatted pretty
+        - schema:
+            type: boolean
+          in: query
+          name: meta
+          description: if metadata should be included in the response
+  '/v1/scopes/{scopeName}/collections/{collectionName}':
+    get:
+      operationId: listCollections
+      tags:
+        - Metadata
+      summary: Get Collection Details
+      description: Gets a collection details
+      parameters:
+        - $ref: '#/components/parameters/scopeName'
+        - $ref: '#/components/parameters/timeout'
+        - $ref: '#/components/parameters/pretty'
+      responses:
+        '200':
+          description: Collection information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  collection:
+                    type: object
+                required:
+                  - collection
+              examples:
+                example-1:
+                  value:
+                    collection:
+                      Name: hotel
+                      ScopeName: inventory
+                      MaxExpiry: 0
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          description: Scope or Collection Not Found
+    post:
+      summary: Create Collection
+      operationId: post-v1-scopes-scopeName-collections
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          description: Scope Not Found
+      description: Creates a collection
+      parameters: []
+      tags:
+        - Metadata
+    parameters:
+      - schema:
+          type: string
+        name: scopeName
+        in: path
+        required: true
+        description: scope name
+      - schema:
+          type: string
+        name: collectionName
+        in: path
+        required: true
+        description: collection name
+    delete:
+      summary: Delete Collection
+      operationId: delete-v1-scopes-scopeName-collections-collectionName
+      responses:
+        '200':
+          description: OK
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          description: Scope or Collection Not Found
+      description: Deletes a collection
+      tags:
+        - Metadata
+  '/v1/scopes/{scopeName}/collections/{collectionName}/docs/{docId}':
+    get:
+      operationId: getDocument
+      tags:
+        - Documents
+      summary: Get Document
+      description: 'Retrieves an individual document, identified by a unique document ID'
+      parameters:
+        - $ref: '#/components/parameters/scopeName'
+        - $ref: '#/components/parameters/collectionName'
+        - $ref: '#/components/parameters/docId'
+        - $ref: '#/components/parameters/timeout'
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/meta'
+        - name: replicas
+          in: query
+          description: attempt to additionally read from the available replicas
+          required: false
+          schema:
+            type: string
+            enum:
+              - any
+              - all
+      responses:
+        '200':
+          description: Document Found
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - title: Default Response
+                    type: object
+                    properties:
+                      doc:
+                        type: object
+                      meta:
+                        type: object
+                    example:
+                      doc:
+                        id: 10
+                        name: 40-Mile Air
+                        iata: Q5
+                        icao: MLA
+                        country: United States
+                        accessCount: 50
+                  - title: All Replicas Response
+                    type: object
+                    properties:
+                      docs:
+                        type: object
+                        properties:
+                          active:
+                            type: object
+                            description: 'If available, contains the response from the active node'
+                          replicas:
+                            type: array
+                            description: Contains an array of all currently available replica responses
+                      meta:
+                        type: object
+                    example:
+                      docs:
+                        active:
+                          id: 10
+                          name: 40-Mile Air
+                          iata: Q5
+                          icao: MLA
+                          country: United States
+                          accessCount: 50
+                        replicas:
+                          - id: 10
+                            name: 40-Mile Air
+                            iata: Q5
+                            icao: MLA
+                            country: United States
+                            accessCount: 48
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          description: Document Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    head:
+      operationId: existsDocument
+      summary: Check Document Exists
+      description: Checks if a document exists or not
+      parameters:
+        - $ref: '#/components/parameters/scopeName'
+        - $ref: '#/components/parameters/collectionName'
+        - $ref: '#/components/parameters/docId'
+        - $ref: '#/components/parameters/timeout'
+      responses:
+        '204':
+          description: Document Found
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          description: Document Not found
+      tags:
+        - Documents
+    post:
+      operationId: createDocument
+      summary: Create Document
+      description: Creates a document identified by its unique ID
+      parameters:
+        - $ref: '#/components/parameters/scopeName'
+        - $ref: '#/components/parameters/collectionName'
+        - $ref: '#/components/parameters/docId'
+        - $ref: '#/components/parameters/timeout'
+        - $ref: '#/components/parameters/docExpiry'
+        - $ref: '#/components/parameters/docPreserveExpiry'
+        - $ref: '#/components/parameters/docDurability'
+        - $ref: '#/components/parameters/meta'
+        - name: upsert
+          in: query
+          description: override the document if it exists instead of failing
+          required: false
+          schema:
+            type: boolean
+      requestBody:
+        description: The document content.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              id: 10
+              name: 40-Mile Air
+              iata: Q5
+              icao: MLA
+              country: United States
+              accessCount: 50
+      responses:
+        '201':
+          description: Document Created
+          content:
+            application/json:
+              schema:
+                title: Response
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      consistencyToken:
+                        type: string
+                        description: the consistency token which can be used for optimistic concurrency.
+                example:
+                  meta:
+                    consistencyToken: eyJjYXMiOjE2NTA5NjIxODU3MDQ0Mzk4MDgsIm11dGF0a
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '409':
+          description: Document Already Exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Documents
+    put:
+      operationId: updateDocument
+      summary: Update Document
+      description: Replaces a document identified by its unique ID
+      parameters:
+        - $ref: '#/components/parameters/scopeName'
+        - $ref: '#/components/parameters/collectionName'
+        - $ref: '#/components/parameters/docId'
+        - $ref: '#/components/parameters/timeout'
+        - $ref: '#/components/parameters/docExpiry'
+        - $ref: '#/components/parameters/docPreserveExpiry'
+        - $ref: '#/components/parameters/docDurability'
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/meta'
+        - $ref: '#/components/parameters/consistencyToken'
+        - name: upsert
+          in: query
+          description: create the document if it does not exist instead of failing (ignores consistency token)
+          required: false
+          schema:
+            type: boolean
+        - name: lockTime
+          in: query
+          description: lock the document for the provided duration
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: The document content.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              id: 10
+              name: 40-Mile Air
+              iata: Q5
+              icao: MLA
+              country: United States
+              accessCount: 50
+      responses:
+        '201':
+          description: Document Modified
+          content:
+            application/json:
+              schema:
+                title: Response
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      consistencyToken:
+                        type: string
+                        description: the opaque consistency token which can be used for optimistic concurrency.
+                example:
+                  meta:
+                    consistencyToken: eyJjYXMiOjE2NTA5NjIxODU3MDQ0Mzk4MDgsIm11dGF0a
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          description: Document Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Consistency Token (CAS) Mismatch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Documents
+    delete:
+      operationId: removeDocument
+      summary: Delete Document
+      description: removes a document identified by its unique ID
+      parameters:
+        - $ref: '#/components/parameters/scopeName'
+        - $ref: '#/components/parameters/collectionName'
+        - $ref: '#/components/parameters/docId'
+        - $ref: '#/components/parameters/timeout'
+        - $ref: '#/components/parameters/docDurability'
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/meta'
+        - $ref: '#/components/parameters/consistencyToken'
+      responses:
+        '200':
+          description: Document Removed
+          content:
+            application/json:
+              schema:
+                title: Response
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      consistencyToken:
+                        type: string
+                        description: the opaque consistency token which can be used for optimistic concurrency.
+                example:
+                  meta:
+                    consistencyToken: eyJjYXMiOjE2NTA5NjIxODU3MDQ0Mzk4MDgsIm11dGF0a
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          description: Document Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Consistency Token (CAS) Mismatch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Documents
+  '/v1/scopes/{scopeName}/collections/{collectionName}/subdocs/{docId}':
+    get:
+      operationId: lookupInDocument
+      tags:
+        - Subdocuments
+      summary: Partial Document Lookup
+      description: Allows to look up individual properties of a single document.
+      parameters:
+        - $ref: '#/components/parameters/scopeName'
+        - $ref: '#/components/parameters/collectionName'
+        - $ref: '#/components/parameters/docId'
+        - $ref: '#/components/parameters/timeout'
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/meta'
+      requestBody:
+        description: The specs for the subdocument lookup.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum:
+                      - get
+                      - exists
+                      - count
+                  path:
+                    type: string
+            example:
+              - type: get
+                path: username
+              - type: count
+                path: friends
+            examples:
+              example-1:
+                value:
+                  - type: get
+                    path: string
+      responses:
+        '200':
+          description: Subdocument lookup succeeded
+          content:
+            application/json:
+              schema:
+                title: Response
+                type: object
+                properties:
+                  subdocs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - get
+                            - exists
+                            - count
+                        path:
+                          type: string
+                        content:
+                          type: any
+                  meta:
+                    type: object
+                    properties:
+                      consistencyToken:
+                        type: string
+                        description: The consistency token value that can be used for optimistic concurrency.
+                example:
+                  subdocs:
+                    - type: get
+                      path: username
+                      content: Michael
+                    - type: count
+                      patth: friends
+                      content: 2
+                  meta:
+                    consistencyToken: eyJjYXMiOjE2NTA5NjIxODU3MDQ0Mzk4MDgsIm11dGF0a
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          description: Document Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      operationId: mutateInDocument
+      summary: Partial Document Mutation
+      description: Allows to modify up individual properties of a single document.
+      parameters:
+        - $ref: '#/components/parameters/scopeName'
+        - $ref: '#/components/parameters/collectionName'
+        - $ref: '#/components/parameters/docId'
+        - $ref: '#/components/parameters/timeout'
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/meta'
+        - $ref: '#/components/parameters/docExpiry'
+        - $ref: '#/components/parameters/docPreserveExpiry'
+        - $ref: '#/components/parameters/docDurability'
+        - $ref: '#/components/parameters/consistencyToken'
+        - name: storeSemantics
+          in: query
+          description: how the outer document store semantics on subdoc should act
+          required: false
+          schema:
+            type: string
+            enum:
+              - replace
+              - upsert
+              - insert
+      requestBody:
+        description: The specs for the subdocument mutations.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum:
+                      - replace
+                      - insert
+                      - remove
+                      - upsert
+                      - arrayAppend
+                      - arrayPrepend
+                      - arrayInsert
+                      - arrayAddUnique
+                      - increment
+                      - decrement
+                  path:
+                    type: string
+                  value:
+                    type: any
+            example:
+              - type: replace
+                path: username
+                value: Thomas
+              - type: remove
+                path: age
+                value: foo
+      responses:
+        '200':
+          description: Subdocument mutation succeeded
+          content:
+            application/json:
+              schema:
+                title: Response
+                type: object
+                properties:
+                  subdocs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - get
+                            - exists
+                            - count
+                        path:
+                          type: string
+                        content:
+                          type: any
+                  meta:
+                    type: object
+                    properties:
+                      consistencyToken:
+                        type: string
+                        description: The consistency token that can be used for optimistic concurrency.
+                example:
+                  subdocs:
+                    - type: replace
+                      path: username
+                    - type: remove
+                      path: age
+                  meta:
+                    consistencyToken: eyJjYXMiOjE2NTA5NjIxODU3MDQ0Mzk4MDgsIm11dGF0a
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          description: Document Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Document Already Exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+        - Subdocuments
+  '/v1/scopes/{scopeName}/query':
+    post:
+      operationId: scopeQueryReadWrite
+      tags:
+        - Queries
+      summary: Run N1QL Query
+      description: Performs a N1QL query against one or more collections
+      parameters:
+        - $ref: '#/components/parameters/scopeName'
+        - $ref: '#/components/parameters/timeout'
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/meta'
+        - $ref: '#/components/parameters/docPreserveExpiry'
+        - $ref: '#/components/parameters/readonly'
+        - name: adhoc
+          required: false
+          description: 'if set to false, performs a prepared statement'
+          in: query
+          schema:
+            type: boolean
+        - name: flexIndex
+          required: false
+          description: enables search flexIndex capabilities for this query
+          in: query
+          schema:
+            type: boolean
+        - name: scanConsistency
+          required: false
+          in: query
+          description: can be used to customize the consistency guarantees of the statement
+          schema:
+            type: string
+            enum:
+              - notBounded
+              - requestPlus
+        - name: scanWait
+          required: false
+          in: query
+          description: customizes the scan wait time
+          schema:
+            type: string
+        - name: maxParallelism
+          required: false
+          in: query
+          description: customizes the max parallelism
+          schema:
+            type: number
+        - name: pipelineBatch
+          required: false
+          in: query
+          description: customizes the pipeline batch
+          schema:
+            type: number
+        - name: pipelineCap
+          required: false
+          in: query
+          description: customizes the pipeline cap
+          schema:
+            type: number
+        - name: scanCap
+          required: false
+          in: query
+          description: customizes the scan cap
+          schema:
+            type: number
+      requestBody:
+        description: The N1QL Query
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                parameters:
+                  oneOf:
+                    - title: Named Parameters
+                      type: object
+                    - title: Positional Parameters
+                      type: array
+                raw:
+                  title: pass in any parameters which do not have explit properties
+                  type: object
+            example:
+              query: SELECT firstname FROM users
+      responses:
+        '200':
+          description: Query Successful
+          content:
+            application/json:
+              schema:
+                title: Response
+                type: object
+                required:
+                  - docs
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      type:
+                        - object
+                        - string
+                        - number
+                  meta:
+                    type: object
+                    properties:
+                      metrics:
+                        type: object
+                        properties:
+                          elapsedTime:
+                            type: string
+                          executionTime:
+                            type: string
+                          sortCount:
+                            type: number
+                          resultCount:
+                            type: number
+                          resultSize:
+                            type: number
+                          mutationCount:
+                            type: number
+                          errorCount:
+                            type: number
+                          warningCount:
+                            type: number
+                example:
+                  docs:
+                    - firstname: Michael
+                    - firstname: Jagadesh
+                  meta:
+                    metrics:
+                      elapsedTime: 131.492184ms
+                      executionTime: 131.261322ms
+                      sortCount: 0
+                      resultCount: 2
+                      resultSize: 2
+                      mutationCount: 0
+                      errorCount: 0
+                      warningCount: 0
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+  '/v1/scopes/{scopeName}/collections/{collectionName}/docs':
+    get:
+      summary: List Documents or Get Bulk Documents
+      operationId: listDocsInCollection
+      description: Fetch a list of documents or get bulk documents
+      responses:
+        '200':
+          description: 'List of documents in a collection or requested bulk/multi documents '
+          content:
+            application/json:
+              schema:
+                title: Response
+                type: object
+                required:
+                  - docs
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      type:
+                        - object
+                        - string
+                        - number
+                  meta:
+                    type: object
+                    properties:
+                      metrics:
+                        type: object
+                        properties:
+                          elapsedTime:
+                            type: string
+                          executionTime:
+                            type: string
+                          sortCount:
+                            type: number
+                          resultCount:
+                            type: number
+                          resultSize:
+                            type: number
+                          mutationCount:
+                            type: number
+                          errorCount:
+                            type: number
+                          warningCount:
+                            type: number
+              examples:
+                example-1:
+                  value:
+                    docs:
+                      - id: abc
+                        doc:
+                          country: India
+                          name: abc
+                      - id: abc10
+                        doc:
+                          country: US
+                          name: abc10
+                    meta:
+                      api:
+                        RequestID: 232ec039-a202-45d1-a277-e00847d8a07f
+                        ClientContextID: dd3360dd-c47f-49ac-b4b4-b7bf404cbfbb
+                        Status: success
+                        Metrics:
+                          ElapsedTime: 22241050
+                          ExecutionTime: 22130406
+                          ResultCount: 2
+                          ResultSize: 97
+                          MutationCount: 0
+                          SortCount: 0
+                          ErrorCount: 0
+                          WarningCount: 0
+                        Signature:
+                          '*': '*'
+                          meta_id: json
+                        Warnings: []
+                        Profile: null
+        '401':
+          description: Unauthorized
+      parameters:
+        - $ref: '#/components/parameters/scopeName'
+        - $ref: '#/components/parameters/collectionName'
+        - $ref: '#/components/parameters/timeout'
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/meta'
+        - name: pagesize
+          schema:
+            type: integer
+          in: query
+          description: Page size
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: Page number
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Same as Page size
+        - schema:
+            type: integer
+          in: query
+          name: offset
+          description: Skip number of documents
+        - schema:
+            type: string
+          in: query
+          name: fields
+          description: field names separated by comma
+        - schema:
+            type: string
+          in: query
+          name: where
+          description: condition same as where in sql
+        - schema:
+            type: string
+          in: query
+          name: orderBy
+          description: same as orderby in sql
+        - schema:
+            type: string
+          in: query
+          name: order
+          description: same as order in sql
+        - schema:
+            type: string
+          in: query
+          name: ids
+          description: if bulk documents needed then comma separated doc ids to fetch selective documents
+        - schema:
+            type: boolean
+          in: query
+          name: exists
+          description: if check is needed on the bulk documents existence
+      tags:
+        - Bulk Documents
+        - Documents
+    post:
+      summary: Create Bulk Documents
+      operationId: post-v1-scopes-scopeName-collections-collectionName-docs
+      responses:
+        '200':
+          description: List of successfully created document ids
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                x-examples:
+                  example-1:
+                    docs:
+                      - id: x_y_z2
+                      - id: abc2
+              examples:
+                example-1:
+                  value:
+                    docs:
+                      - id: x_y_z2
+                      - id: abc2
+        '401':
+          $ref: '#/components/responses/401'
+      description: Create bulk documents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              x-examples:
+                example-1:
+                  - id: x_y_z2
+                    value:
+                      name: xyz2
+                      country: US
+                  - id: abc2
+                    value:
+                      name: abc2
+                      country: India
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  value:
+                    type: object
+        description: List of document ids and doc values
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: upsert
+          description: Override the documents if true
+        - schema:
+            type: boolean
+          in: query
+          name: pretty
+          description: if the JSON payload should be formatted pretty
+        - schema:
+            type: boolean
+          in: query
+          description: if metadata including errors should be included in the response
+          name: meta
+      tags:
+        - Bulk Documents
+    put:
+      summary: Update Bulk Documents
+      operationId: put-v1-scopes-scopeName-collections-collectionName-docs
+      responses:
+        '200':
+          description: List of successfully updated document ids
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                x-examples:
+                  example-1:
+                    docs:
+                      - id: x_y_z2
+                      - id: abc2
+              examples:
+                example-1:
+                  value:
+                    docs:
+                      - id: x_y_z2
+                      - id: abc2
+        '401':
+          $ref: '#/components/responses/401'
+      description: Update bulk documents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  value:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      country:
+                        type: string
+              x-examples:
+                example-1:
+                  - id: x_y_z2
+                    value:
+                      name: xyz2
+                      country: US
+                  - id: abc2
+                    value:
+                      name: abc2
+                      country: India
+            examples:
+              example-1:
+                value:
+                  - id: x_y_z2
+                    value:
+                      name: xyz2
+                      country: US
+                  - id: abc2
+                    value:
+                      name: abc2
+                      country: India
+        description: List of bulk ids and documents to update
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: pretty
+          description: if the JSON payload should be formatted pretty
+        - schema:
+            type: boolean
+          in: query
+          name: meta
+          description: if metadata including errors should be included in the response
+      tags:
+        - Bulk Documents
+    delete:
+      summary: Delete Bulk Documents
+      operationId: delete-v1-scopes-scopeName-collections-collectionName-docs
+      responses:
+        '200':
+          description: List of successfully deleted document ids
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                x-examples:
+                  example-1:
+                    docs:
+                      - id: x_y_z2
+                      - id: abc2
+              examples:
+                example-1:
+                  value:
+                    docs:
+                      - id: x_y_z2
+                      - id: abc2
+        '401':
+          $ref: '#/components/responses/401'
+      description: Delete bulk documents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+              x-examples:
+                example-1:
+                  - x_y_z2
+                  - abc2
+            examples:
+              example-1:
+                value:
+                  - x_y_z2
+                  - abc2
+        description: List of ids for the bulk documents to delete
+      tags:
+        - Bulk Documents
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: pretty
+          description: if the JSON payload should be formatted pretty
+        - schema:
+            type: boolean
+          in: query
+          name: meta
+          description: if metadata including errors should be included in the response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  parameters:
+    scopeName:
+      name: scopeName
+      in: path
+      description: name of the scope
+      required: true
+      schema:
+        type: string
+    collectionName:
+      name: collectionName
+      in: path
+      description: name of the collection
+      required: true
+      schema:
+        type: string
+    docId:
+      name: docId
+      in: path
+      description: unique ID of the document
+      required: true
+      schema:
+        type: string
+    timeout:
+      name: timeout
+      in: query
+      description: custom timeout for the operation
+      required: false
+      schema:
+        type: string
+    pretty:
+      name: pretty
+      in: query
+      description: if the JSON payload should be formatted pretty
+      required: false
+      schema:
+        type: boolean
+    meta:
+      name: meta
+      in: query
+      description: if metadata should be included in the response
+      required: false
+      schema:
+        type: boolean
+    docExpiry:
+      name: expiry
+      in: query
+      description: expiration time of the document
+      required: false
+      schema:
+        type: string
+    docPreserveExpiry:
+      name: preserveExpiry
+      in: query
+      description: preserve the original expiry of the modified document(s)
+      schema:
+        type: boolean
+    docDurability:
+      name: durability
+      in: query
+      description: additional durability requirements for this operation
+      required: false
+      schema:
+        type: string
+        enum:
+          - majority
+          - majorityPersistActive
+          - persistMajority
+    consistencyToken:
+      name: consistencyToken
+      in: query
+      description: an opaque token that can be used for operations that require coordinated consistency.
+      required: false
+      schema:
+        type: string
+    readonly:
+      schema:
+        type: boolean
+      in: query
+      name: readonly
+      description: set to true if this query does not modify any documents
+      required: false
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: number
+          description: the unique error code
+        message:
+          type: string
+          description: the human readable description of the error
+        hints:
+          type: array
+          description: potential suggestions on how to remedy the error (depending on the cause)
+          items:
+            type: string
+      required:
+        - code
+        - message
+  responses:
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

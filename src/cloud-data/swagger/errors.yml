@@ -1,0 +1,152 @@
+errors:
+  UnknownError:
+    code: 1000
+    message: An unknown error occurred
+    status: 500
+    hints:
+      - See the errors documentation at https://docs.couchbase.com/data-api/errors/
+  InternalServerError:
+    code: 1001
+    message: An internal server error occured
+    status: 500
+    hints:
+      - More information at https://docs.couchbase.com/data-api/errors/1001 
+  TimeoutError:
+    code: 1002
+    message: The request timed out before a response was recevied
+    status: 200
+    hints:
+      - Check the bucket name, scope name and collection name existence as this API retries in case a resource is still being created
+      - Check the validity of API keys
+      - Possibly increase the timeout value
+      - More information at https://docs.couchbase.com/data-api/errors/1002
+  InvalidRequest:
+    code: 1003
+    message: The request arguments are invalid
+    status: 400
+    hints:
+      - Check that the request parameters and the request body match the endpoint requirements
+      - Check that the request header, Content-Type:application/json is provided for the POST and PUT requests
+      - More information at https://docs.couchbase.com/data-api/errors/1003
+  Unauthorized:
+    code: 1004
+    message: The provided credentials are invalid or permissions are not sufficient to access the requested resource
+    status: 401
+    hints:
+      - Check the validity of API keys
+      - Check the allow list for the resource to ensure it allows access by the client
+      - More information at https://docs.couchbase.com/data-api/errors/1004
+  InvalidMethod:
+    code: 1005
+    message: The HTTP method is not valid for the request
+    status: 405
+    hints:
+      - Check to see that the request method being requested is valid for this endpoint
+      - More information at https://docs.couchbase.com/data-api/errors/1005
+  InvalidEndpoint:
+    code: 1006
+    message: The HTTP endpoint path is not valid or not supported
+    status: 404
+    hints:
+      - Check to see that the request endpoint path being requested is valid
+      - More information at https://docs.couchbase.com/data-api/errors/1006
+  DocumentNotFound:
+    code: 2001
+    message: The requested document was not found in the collection
+    status: 404
+    hints:
+      - Check the scope, collection and document id
+      - More information at https://docs.couchbase.com/data-api/errors/2001
+  DocumentExists:
+    code: 2002
+    message: The document already exists inside the collection
+    status: 409
+    hints:
+      - Check the scope, collection and document id
+      - More information at https://docs.couchbase.com/data-api/errors/2002
+  UnknownKvError:
+    code: 2003
+    message: An unknown KV error occured
+    status: 409
+    hints:
+      - Check the scope, collection and document id
+      - Check the document existence
+      - More information at https://docs.couchbase.com/data-api/errors/2003
+  PlanningFailure:
+    code: 3001
+    message: The server could not plan execution for the requested query
+    status: 400
+    hints:
+      - Check the query statement
+      - More information at https://docs.couchbase.com/data-api/errors/3001
+  QueryError:
+    code: 3002
+    message: Query Error
+    status: 400
+    hints:
+      - Check the scope and collection name existence
+      - Check that the required indexes are available if appropriate
+      - Check the query syntax
+      - Set or increase the timeout (request parameter like timeout=5m)
+      - More information at https://docs.couchbase.com/data-api/errors/3002
+  3000:
+    code: 3003
+    message: Query syntax error
+    status: 400
+    hints:
+      - Check the Query statement syntax
+      - Use the web-based UI to check the query syntax and receive hints
+      - More information at https://docs.couchbase.com/data-api/errors/3003
+  12003:
+    code: 3004
+    message: Keyspace not found
+    status: 404
+    hints:
+      - Check the bucket name, scope name and collection name existence in the query and in the url path
+      - Check the validity of API keys
+      - Check and increase the timeout value
+      - More information at https://docs.couchbase.com/data-api/errors/3004
+  12021:
+    code: 3005
+    message: Scope not found
+    status: 404
+    hints:
+      - Check the bucket name, scope name and collection name exist for the specified URL and query
+      - Check the validity of API keys
+      - Check and increase the timeout value as this API retries in case a resource is still being created
+      - More information at https://docs.couchbase.com/data-api/errors/3005
+  CollectionNotFound:
+    code: 3006
+    message: Collection not found
+    status: 404
+    hints:
+      - Check the bucket name, scope name and collection name exist for the specified URL and query
+      - Check the validity of API keys
+      - Check and increase the timeout value as this API retries in case a resource is still being created
+      - More information at https://docs.couchbase.com/data-api/errors/3006
+  ScopeExists:
+    code: 3007
+    message: Scope exists
+    status: 400
+    hints:
+      - Check the bucket name, scope name exist for the specified URL and query
+      - Check the validity of API keys
+      - Check and increase the timeout value as this API retries in case a resource is still being created
+      - More information at https://docs.couchbase.com/data-api/errors/3007
+  CollectionExists:
+    code: 3008
+    message: Collection exists
+    status: 400
+    hints:
+      - Check the bucket name, scope name and collection name exist for the specified URL and query
+      - Check the validity of API keys
+      - Check and increase the timeout value as this API retries in case a resource is still being created
+      - More information at https://docs.couchbase.com/data-api/errors/3008
+  UnknownQueryError:
+    code: 3009
+    message: Unkown Query Error
+    status: 400
+    hints:
+      - Check the validity of API keys
+      - Set or increase the timeout (request parameter like timeout=5m)
+      - More information at https://docs.couchbase.com/data-api/errors/3009
