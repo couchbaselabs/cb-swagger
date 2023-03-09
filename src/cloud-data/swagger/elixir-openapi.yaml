@@ -307,6 +307,10 @@ paths:
           $ref: '#/components/responses/401'
         '404':
           description: Scope not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       summary: Create Scope
       operationId: post-v1-scopes
@@ -380,6 +384,10 @@ paths:
           $ref: '#/components/responses/401'
         '404':
           description: Scope not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       operationId: get-v1-scopes-scopeName-collections
       description: Gets information about all collections in the specified scope.
       parameters:
@@ -422,6 +430,10 @@ paths:
           $ref: '#/components/responses/401'
         '404':
           description: Scope or collection not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       summary: Create Collection
       operationId: post-v1-scopes-scopeName-collections
@@ -434,6 +446,10 @@ paths:
           $ref: '#/components/responses/401'
         '404':
           description: Scope not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       description: Creates a collection in the specified scope.
       parameters: []
       tags:
@@ -451,6 +467,10 @@ paths:
           $ref: '#/components/responses/401'
         '404':
           description: Scope or collection not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       description: Deletes a collection in the specified scope.
       tags:
         - Metadata
@@ -557,6 +577,10 @@ paths:
           $ref: '#/components/responses/401'
         '404':
           description: Document not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       tags:
         - Documents
     post:
@@ -1230,7 +1254,7 @@ paths:
                         Warnings: []
                         Profile: null
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/401'
       parameters:
         - $ref: '#/components/parameters/timeout'
         - $ref: '#/components/parameters/pretty'
