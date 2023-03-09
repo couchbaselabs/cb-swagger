@@ -35,7 +35,9 @@ paths:
         - Specification
       responses:
         '200':
-          description: Specification file
+          description: |
+            Success.
+            Returns a specification file in the required format.
       operationId: get-v1-spec
       description: Gets the OpenAPI specification document for this REST API.
       parameters:
@@ -55,7 +57,9 @@ paths:
       summary: List Databases or Buckets
       responses:
         '200':
-          description: List of databases or buckets
+          description: |
+            Success.
+            Returns an object containing a nested array of databases or buckets.
           content:
             application/json:
               schema:
@@ -141,7 +145,9 @@ paths:
       summary: Get Database or Bucket Details
       responses:
         '200':
-          description: Database or Bucket information
+          description: |
+            Success.
+            Returns an object containing information about one database or bucket.
           content:
             application/json:
               schema:
@@ -179,7 +185,9 @@ paths:
       summary: List Scopes
       responses:
         '200':
-          description: Scopes list
+          description: |
+            Success.
+            Returns an object containing a nested array of scopes.
           content:
             application/json:
               schema:
@@ -281,7 +289,9 @@ paths:
         - $ref: '#/components/parameters/meta'
       responses:
         '200':
-          description: Gets scope information
+          description: |
+            Success.
+            Returns a nested object containing information about one scope.
           content:
             application/json:
               schema:
@@ -296,15 +306,15 @@ paths:
         '401':
           $ref: '#/components/responses/401'
         '404':
-          description: Not Found
+          description: Scope not found.
     post:
       summary: Create Scope
       operationId: post-v1-scopes
       responses:
         '200':
-          description: OK
+          description: Success.
         '400':
-          description: Scope exists
+          description: Scope already exists.
         '401':
           $ref: '#/components/responses/401'
       description: Creates a scope.
@@ -316,7 +326,7 @@ paths:
       operationId: delete-v1-scopes
       responses:
         '200':
-          description: OK
+          description: Success.
         '401':
           $ref: '#/components/responses/401'
       description: Deletes a scope.
@@ -335,7 +345,9 @@ paths:
         - Metadata
       responses:
         '200':
-          description: Collections list
+          description: |
+            Success.
+            Returns an object containing a nested array of collections.
           content:
             application/json:
               schema:
@@ -367,7 +379,7 @@ paths:
         '401':
           $ref: '#/components/responses/401'
         '404':
-          description: Scope Not Found
+          description: Scope not found.
       operationId: get-v1-scopes-scopeName-collections
       description: Gets information about all collections in the specified scope.
       parameters:
@@ -385,7 +397,9 @@ paths:
         - $ref: '#/components/parameters/pretty'
       responses:
         '200':
-          description: Collection information
+          description: |
+            Success.
+            Returns a nested object containing information about one collection.
           content:
             application/json:
               schema:
@@ -407,18 +421,19 @@ paths:
         '401':
           $ref: '#/components/responses/401'
         '404':
-          description: Scope or Collection Not Found
+          description: Scope or collection not found.
     post:
       summary: Create Collection
       operationId: post-v1-scopes-scopeName-collections
       responses:
         '200':
-          description: OK
+          description: Success.
         '400':
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '404':
+          description: Scope not found.
       description: Creates a collection in the specified scope.
       parameters: []
       tags:
@@ -431,10 +446,11 @@ paths:
       operationId: delete-v1-scopes-scopeName-collections-collectionName
       responses:
         '200':
-          description: OK
+          description: Success.
         '401':
           $ref: '#/components/responses/401'
         '404':
+          description: Scope or collection not found.
       description: Deletes a collection in the specified scope.
       tags:
         - Metadata
@@ -464,7 +480,9 @@ paths:
               - all
       responses:
         '200':
-          description: Document Found
+          description: |
+            Success.
+            Returns either the document, or all document replicas, as requested.
           content:
             application/json:
               schema:
@@ -519,7 +537,7 @@ paths:
         '401':
           $ref: '#/components/responses/401'
         '404':
-          description: Document Not found
+          description: Document not found.
           content:
             application/json:
               schema:
@@ -532,13 +550,13 @@ paths:
         - $ref: '#/components/parameters/timeout'
       responses:
         '204':
-          description: Document Found
+          description: Document found.
         '400':
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
         '404':
-          description: Document Not found
+          description: Document not found.
       tags:
         - Documents
     post:
@@ -577,7 +595,7 @@ paths:
               accessCount: 50
       responses:
         '201':
-          description: Document Created
+          description: Document created.
           content:
             application/json:
               schema:
@@ -598,7 +616,7 @@ paths:
         '401':
           $ref: '#/components/responses/401'
         '409':
-          description: Document Already Exists
+          description: Document already exists.
           content:
             application/json:
               schema:
@@ -652,7 +670,7 @@ paths:
               accessCount: 50
       responses:
         '201':
-          description: Document Modified
+          description: Document modified.
           content:
             application/json:
               schema:
@@ -673,13 +691,13 @@ paths:
         '401':
           $ref: '#/components/responses/401'
         '404':
-          description: Document Not Found
+          description: Document not found.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
         '409':
-          description: Consistency Token (CAS) Mismatch
+          description: Consistency token (CAS) mismatch.
           content:
             application/json:
               schema:
@@ -698,7 +716,9 @@ paths:
         - $ref: '#/components/parameters/consistencyToken'
       responses:
         '200':
-          description: Document Removed
+          description: |
+            Success.
+            Document removed.
           content:
             application/json:
               schema:
@@ -719,13 +739,13 @@ paths:
         '401':
           $ref: '#/components/responses/401'
         '404':
-          description: Document Not Found
+          description: Document not found.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
         '409':
-          description: Consistency Token (CAS) Mismatch
+          description: Consistency token (CAS) mismatch.
           content:
             application/json:
               schema:
@@ -777,7 +797,9 @@ paths:
                     path: string
       responses:
         '200':
-          description: Subdocument lookup succeeded
+          description: |
+            Success.
+            Returns an object containing a nested array of subdocuments.
           content:
             application/json:
               schema:
@@ -820,7 +842,7 @@ paths:
         '401':
           $ref: '#/components/responses/401'
         '404':
-          description: Document Not Found
+          description: Document not found.
           content:
             application/json:
               schema:
@@ -883,7 +905,9 @@ paths:
                 value: foo
       responses:
         '200':
-          description: Subdocument mutation succeeded
+          description: |
+            Success.
+            Returns an object containing a nested array of subdocuments.
           content:
             application/json:
               schema:
@@ -924,13 +948,13 @@ paths:
         '401':
           $ref: '#/components/responses/401'
         '404':
-          description: Document Not Found
+          description: Document not found.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
         '409':
-          description: Document Already Exists
+          description: Document already exists.
           content:
             application/json:
               schema:
@@ -1066,7 +1090,9 @@ paths:
               query: SELECT firstname FROM users
       responses:
         '200':
-          description: Query Successful
+          description: |
+            Success.
+            Returns an object containing query results and metadata.
           content:
             application/json:
               schema:
@@ -1132,7 +1158,9 @@ paths:
       description: Fetch a list of documents, or retrieve documents in bulk, in the specified scope and collection.
       responses:
         '200':
-          description: 'List of documents in a collection or requested bulk/multi documents '
+          description: |
+            Success.
+            Returns an object containing documents and metadata.
           content:
             application/json:
               schema:
@@ -1285,7 +1313,9 @@ paths:
       operationId: post-v1-scopes-scopeName-collections-collectionName-docs
       responses:
         '200':
-          description: List of successfully created document ids
+          description: |
+            Success.
+            Returns an object containing a nested array of created document IDs.
           content:
             application/json:
               schema:
@@ -1354,7 +1384,9 @@ paths:
       operationId: put-v1-scopes-scopeName-collections-collectionName-docs
       responses:
         '200':
-          description: List of successfully updated document ids
+          description: |
+            Success.
+            Returns an object containing a nested array of updated document IDs.
           content:
             application/json:
               schema:
@@ -1430,7 +1462,9 @@ paths:
       operationId: delete-v1-scopes-scopeName-collections-collectionName-docs
       responses:
         '200':
-          description: List of successfully deleted document ids
+          description: |
+            Success.
+            Returns an object containing a nested array of deleted document IDs.
           content:
             application/json:
               schema:
@@ -1612,13 +1646,13 @@ components:
         - message
   responses:
     '400':
-      description: Bad Request
+      description: Bad request.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
     '401':
-      description: Unauthorized
+      description: Unauthorized.
       content:
         application/json:
           schema:
