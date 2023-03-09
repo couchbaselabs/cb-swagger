@@ -41,9 +41,14 @@ paths:
       parameters:
         - schema:
             type: string
+            default: text/html
+            enum:
+              - text/html
+              - application/yaml
+              - application/json
           in: header
           name: Accept
-          description: 'spec file type - [text/html], application/yaml, application/json'
+          description: The specification file type.
       security: []
   /v1/buckets:
     get:
@@ -122,16 +127,8 @@ paths:
       tags:
         - Metadata
       parameters:
-        - schema:
-            type: boolean
-          in: query
-          name: pretty
-          description: if the JSON payload should be formatted pretty
-        - schema:
-            type: boolean
-          in: query
-          name: meta
-          description: if metadata should be included in the response
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/meta'
   '/v1/buckets/{bucketName}':
     parameters:
       - schema:
@@ -139,7 +136,7 @@ paths:
         name: bucketName
         in: path
         required: true
-        description: db or bucket name
+        description: The name of the database or bucket.
     get:
       summary: Get Database or Bucket Details
       responses:
@@ -173,16 +170,8 @@ paths:
       operationId: get-v1-buckets-bucketName
       description: Gets information for an individual database or bucket.
       parameters:
-        - schema:
-            type: boolean
-          in: query
-          name: pretty
-          description: if the JSON payload should be formatted pretty
-        - schema:
-            type: boolean
-          in: query
-          name: meta
-          description: if metadata should be included in the response
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/meta'
       tags:
         - Metadata
   /v1/scopes:
@@ -275,16 +264,8 @@ paths:
       operationId: get-v1-scopes
       description: Gets information about all of the scopes in the current database or bucket.
       parameters:
-        - schema:
-            type: boolean
-          in: query
-          name: pretty
-          description: if the JSON payload should be formatted pretty
-        - schema:
-            type: boolean
-          in: query
-          name: meta
-          description: if metadata should be included in the response
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/meta'
       tags:
         - Metadata
   '/v1/scopes/{scopeName}':
@@ -297,11 +278,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/timeout'
         - $ref: '#/components/parameters/pretty'
-        - schema:
-            type: boolean
-          in: query
-          name: meta
-          description: if metadata should be included in the response
+        - $ref: '#/components/parameters/meta'
       responses:
         '200':
           description: Gets scope information
@@ -346,26 +323,12 @@ paths:
       tags:
         - Metadata
       parameters:
-        - schema:
-            type: boolean
-          in: query
-          name: meta
-          description: if metadata should be included in the response
+        - $ref: '#/components/parameters/meta'
     parameters:
-      - schema:
-          type: string
-        name: scopeName
-        in: path
-        required: true
-        description: scope name
+      - $ref: '#/components/parameters/scopeName'
   '/v1/scopes/{scopeName}/collections':
     parameters:
-      - schema:
-          type: string
-        name: scopeName
-        in: path
-        required: true
-        description: scope name
+      - $ref: '#/components/parameters/scopeName'
     get:
       summary: List Collections
       tags:
@@ -408,16 +371,8 @@ paths:
       operationId: get-v1-scopes-scopeName-collections
       description: Gets information about all collections in the specified scope.
       parameters:
-        - schema:
-            type: boolean
-          in: query
-          name: pretty
-          description: if the JSON payload should be formatted pretty
-        - schema:
-            type: boolean
-          in: query
-          name: meta
-          description: if metadata should be included in the response
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/meta'
   '/v1/scopes/{scopeName}/collections/{collectionName}':
     get:
       operationId: listCollections
@@ -426,7 +381,6 @@ paths:
       summary: Get Collection Details
       description: Gets information about an individual collection in the specified scope.
       parameters:
-        - $ref: '#/components/parameters/scopeName'
         - $ref: '#/components/parameters/timeout'
         - $ref: '#/components/parameters/pretty'
       responses:
@@ -470,18 +424,8 @@ paths:
       tags:
         - Metadata
     parameters:
-      - schema:
-          type: string
-        name: scopeName
-        in: path
-        required: true
-        description: scope name
-      - schema:
-          type: string
-        name: collectionName
-        in: path
-        required: true
-        description: collection name
+      - $ref: '#/components/parameters/scopeName'
+      - $ref: '#/components/parameters/collectionName'
     delete:
       summary: Delete Collection
       operationId: delete-v1-scopes-scopeName-collections-collectionName
@@ -495,6 +439,10 @@ paths:
       tags:
         - Metadata
   '/v1/scopes/{scopeName}/collections/{collectionName}/docs/{docId}':
+    parameters:
+      - $ref: '#/components/parameters/scopeName'
+      - $ref: '#/components/parameters/collectionName'
+      - $ref: '#/components/parameters/docId'
     get:
       operationId: getDocument
       tags:
@@ -502,15 +450,12 @@ paths:
       summary: Get Document
       description: Retrieves an individual document, identified by its unique document ID, in the specified scope and collection.
       parameters:
-        - $ref: '#/components/parameters/scopeName'
-        - $ref: '#/components/parameters/collectionName'
-        - $ref: '#/components/parameters/docId'
         - $ref: '#/components/parameters/timeout'
         - $ref: '#/components/parameters/pretty'
         - $ref: '#/components/parameters/meta'
         - name: replicas
           in: query
-          description: attempt to additionally read from the available replicas
+          description: If specified, attempts to return available replicas of the document.
           required: false
           schema:
             type: string
@@ -584,9 +529,6 @@ paths:
       summary: Check Document Exists
       description: Checks whether a document exists or not in the specified scope and collection.
       parameters:
-        - $ref: '#/components/parameters/scopeName'
-        - $ref: '#/components/parameters/collectionName'
-        - $ref: '#/components/parameters/docId'
         - $ref: '#/components/parameters/timeout'
       responses:
         '204':
@@ -604,9 +546,6 @@ paths:
       summary: Create Document
       description: Creates or updates a document, identified by its unique ID, in the specified scope and collection.
       parameters:
-        - $ref: '#/components/parameters/scopeName'
-        - $ref: '#/components/parameters/collectionName'
-        - $ref: '#/components/parameters/docId'
         - $ref: '#/components/parameters/timeout'
         - $ref: '#/components/parameters/docExpiry'
         - $ref: '#/components/parameters/docPreserveExpiry'
@@ -614,7 +553,11 @@ paths:
         - $ref: '#/components/parameters/meta'
         - name: upsert
           in: query
-          description: override the document if it exists instead of failing
+          description: |
+            Whether to update an existing document.
+
+            When `true`, if the document already exists, the document is overwritten.
+            When `false`, if the document already exists, the operation fails.
           required: false
           schema:
             type: boolean
@@ -667,9 +610,6 @@ paths:
       summary: Update Document
       description: Replaces a document, identified by its unique ID, in the specified scope and collection.
       parameters:
-        - $ref: '#/components/parameters/scopeName'
-        - $ref: '#/components/parameters/collectionName'
-        - $ref: '#/components/parameters/docId'
         - $ref: '#/components/parameters/timeout'
         - $ref: '#/components/parameters/docExpiry'
         - $ref: '#/components/parameters/docPreserveExpiry'
@@ -679,16 +619,23 @@ paths:
         - $ref: '#/components/parameters/consistencyToken'
         - name: upsert
           in: query
-          description: create the document if it does not exist instead of failing (ignores consistency token)
+          description: |
+            Whether to create the document if it does not exist.
+
+            When `true`, if the document does not already exist, the document is created.
+            When `false`, if the document does not already exist, the operation fails.
+
+            This parameter ignores the consistency token.
           required: false
           schema:
             type: boolean
         - name: lockTime
           in: query
-          description: lock the document for the provided duration
+          description: If specified, locks the document for the provided duration.
           required: false
           schema:
             type: string
+            format: duration
       requestBody:
         description: The document content.
         required: true
@@ -744,9 +691,6 @@ paths:
       summary: Delete Document
       description: Removes a document, identified by its unique ID, in the specified scope and collection.
       parameters:
-        - $ref: '#/components/parameters/scopeName'
-        - $ref: '#/components/parameters/collectionName'
-        - $ref: '#/components/parameters/docId'
         - $ref: '#/components/parameters/timeout'
         - $ref: '#/components/parameters/docDurability'
         - $ref: '#/components/parameters/pretty'
@@ -789,6 +733,10 @@ paths:
       tags:
         - Documents
   '/v1/scopes/{scopeName}/collections/{collectionName}/subdocs/{docId}':
+    parameters:
+      - $ref: '#/components/parameters/scopeName'
+      - $ref: '#/components/parameters/collectionName'
+      - $ref: '#/components/parameters/docId'
     get:
       operationId: lookupInDocument
       tags:
@@ -796,9 +744,6 @@ paths:
       summary: Partial Document Lookup
       description: Retrieves individual properties within a single document in the specified scope and collection.
       parameters:
-        - $ref: '#/components/parameters/scopeName'
-        - $ref: '#/components/parameters/collectionName'
-        - $ref: '#/components/parameters/docId'
         - $ref: '#/components/parameters/timeout'
         - $ref: '#/components/parameters/pretty'
         - $ref: '#/components/parameters/meta'
@@ -885,9 +830,6 @@ paths:
       summary: Partial Document Mutation
       description: Modifies individual properties within a single document in the specified scope and collection.
       parameters:
-        - $ref: '#/components/parameters/scopeName'
-        - $ref: '#/components/parameters/collectionName'
-        - $ref: '#/components/parameters/docId'
         - $ref: '#/components/parameters/timeout'
         - $ref: '#/components/parameters/pretty'
         - $ref: '#/components/parameters/meta'
@@ -897,7 +839,7 @@ paths:
         - $ref: '#/components/parameters/consistencyToken'
         - name: storeSemantics
           in: query
-          description: how the outer document store semantics on subdoc should act
+          description: The outer document store semantics.
           required: false
           schema:
             type: string
@@ -1011,20 +953,40 @@ paths:
         - $ref: '#/components/parameters/readonly'
         - name: adhoc
           required: false
-          description: 'if set to false, performs a prepared statement'
+          description: |
+            Whether to perform an ad-hoc statement or a prepared statement.
+
+            When `true`, the query plan is not cached for reuse.
+            If a prepared statement has been created from this query previously, the cached query plan is not reused.
+
+            When `false`, if this query has not been executed before, the query plan is cached for reuse.
+            If a prepared statement has been created from this query previously, the cached query plan is reused.
           in: query
           schema:
             type: boolean
         - name: flexIndex
           required: false
-          description: enables search flexIndex capabilities for this query
+          description: Enables full-text search index capabilities for this query.
           in: query
           schema:
             type: boolean
         - name: scanConsistency
           required: false
           in: query
-          description: can be used to customize the consistency guarantees of the statement
+          description: |
+            Specifies the consistency guarantee or constraint for index scanning.
+            The valid values are:
+
+            `notBounded` &mdash;
+            No timestamp vector is used in the index scan.
+            This is the fastest mode, because it avoids the costs of obtaining the vector and waiting for the index to catch up to the vector.
+
+            `requestPlus` &mdash;
+            This implements strong consistency per request.
+            Before processing the request, a current vector is obtained.
+            The vector is used as a lower bound for the statements in the request.
+            If there are DML statements in the request, RYOW (read your own write) is also applied within the request.
+
           schema:
             type: string
             enum:
@@ -1033,33 +995,54 @@ paths:
         - name: scanWait
           required: false
           in: query
-          description: customizes the scan wait time
+          description: |
+            Can be supplied when `scanConsistency` is set to `requestPlus`.
+
+            Specifies how much time the client is willing to wait for the indexer to satisfy the required `scanConsistency` criteria.
+            After receiving the scan request, if the indexer is unable to catch up within the `scanWait` time and initiate the scan, the indexer aborts with an error and the scan fails.
+
+            The format includes an amount and a mandatory unit, e.g. `10ms` (10 milliseconds) or `0.5s` (half a second).
+
+            Valid units are:
+            `ns` (nanoseconds),
+            `us` (microseconds),
+            `ms` (milliseconds),
+            `s` (seconds),
+            `m` (minutes),
+            `h` (hours).
+
           schema:
             type: string
+            format: duration
         - name: maxParallelism
           required: false
           in: query
-          description: customizes the max parallelism
+          description: Specifies the maximum parallelism for the query.
           schema:
-            type: number
+            type: integer
         - name: pipelineBatch
           required: false
           in: query
-          description: customizes the pipeline batch
+          description: Controls the number of items execution operators can batch for fetch from the Data service.
           schema:
-            type: number
+            type: integer
         - name: pipelineCap
           required: false
           in: query
-          description: customizes the pipeline cap
+          description: Maximum number of items each execution operator can buffer between various operators.
           schema:
-            type: number
+            type: integer
         - name: scanCap
           required: false
           in: query
-          description: customizes the scan cap
+          description: |
+            Maximum buffered channel size between the indexer client and the query service for index scans.
+            This parameter controls when to use scan backfill.
+
+            Smaller values reduce garbage collection, while larger values reduce indexer backfill.
+
           schema:
-            type: number
+            type: integer
       requestBody:
         description: The N1QL Query
         required: true
@@ -1140,6 +1123,9 @@ paths:
         '401':
           $ref: '#/components/responses/401'
   '/v1/scopes/{scopeName}/collections/{collectionName}/docs':
+    parameters:
+      - $ref: '#/components/parameters/scopeName'
+      - $ref: '#/components/parameters/collectionName'
     get:
       summary: List Documents or Get Bulk Documents
       operationId: listDocsInCollection
@@ -1218,8 +1204,6 @@ paths:
         '401':
           description: Unauthorized
       parameters:
-        - $ref: '#/components/parameters/scopeName'
-        - $ref: '#/components/parameters/collectionName'
         - $ref: '#/components/parameters/timeout'
         - $ref: '#/components/parameters/pretty'
         - $ref: '#/components/parameters/meta'
@@ -1227,52 +1211,72 @@ paths:
           schema:
             type: integer
           in: query
-          description: Page size
+          description: |
+            The number of documents to return in each page of results.
+            Can be used with `page` to paginate the results.
         - schema:
             type: integer
           in: query
           name: page
-          description: Page number
+          description: |
+            The page of results to return.
+            Can be used with `pagesize` to paginate the results.
         - schema:
             type: integer
           in: query
           name: limit
-          description: Same as Page size
+          description: |
+            The number of documents to return.
+            Identical to `pagesize`.
+            Similar to the `LIMIT` clause in SQL++.
         - schema:
             type: integer
           in: query
           name: offset
-          description: Skip number of documents
+          description: |
+            The number of documents to skip before returning results.
+            Similar to the `OFFSET` clause in SQL++.
         - schema:
             type: string
           in: query
           name: fields
-          description: field names separated by comma
+          description: |
+            A list of field names, separated by comma.
+            Only the specified fields are returned in the results.
         - schema:
             type: string
           in: query
           name: where
-          description: condition same as where in sql
+          description: |
+            A condition that must be met for a document to be returned.
+            Similar to the `WHERE` clause in SQL++.
         - schema:
             type: string
           in: query
           name: orderBy
-          description: same as orderby in sql
+          description: |
+            The name of a field by which to sort the results.
+            Similar to the `ORDER BY` clause in SQL++.
         - schema:
             type: string
           in: query
           name: order
-          description: same as order in sql
+          description: Used with `orderBy` to specify the direction of the sort.
         - schema:
             type: string
           in: query
           name: ids
-          description: if bulk documents needed then comma separated doc ids to fetch selective documents
+          description: |
+            A list of document IDs, separated by comma.
+            Only the specified documents are returned in the results.
         - schema:
             type: boolean
           in: query
           name: exists
-          description: if check is needed on the bulk documents existence
+          description: |
+            Whether to check on a document's existence.
+            When `true`, the request merely checks that matching documents exist.
+            When `false`, the request returns all matching documents.
       tags:
         - Bulk Documents
         - Documents
@@ -1336,17 +1340,13 @@ paths:
             type: boolean
           in: query
           name: upsert
-          description: Override the documents if true
-        - schema:
-            type: boolean
-          in: query
-          name: pretty
-          description: if the JSON payload should be formatted pretty
-        - schema:
-            type: boolean
-          in: query
-          description: if metadata including errors should be included in the response
-          name: meta
+          description: |
+            Whether to update existing documents.
+
+            When `true`, if a document already exists, the document is overwritten.
+            When `false`, if a document already exists, the operation fails.
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/metaErrors'
       tags:
         - Bulk Documents
     put:
@@ -1421,16 +1421,8 @@ paths:
                       country: India
         description: List of bulk ids and documents to update
       parameters:
-        - schema:
-            type: boolean
-          in: query
-          name: pretty
-          description: if the JSON payload should be formatted pretty
-        - schema:
-            type: boolean
-          in: query
-          name: meta
-          description: if metadata including errors should be included in the response
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/metaErrors'
       tags:
         - Bulk Documents
     delete:
@@ -1485,16 +1477,8 @@ paths:
       tags:
         - Bulk Documents
       parameters:
-        - schema:
-            type: boolean
-          in: query
-          name: pretty
-          description: if the JSON payload should be formatted pretty
-        - schema:
-            type: boolean
-          in: query
-          name: meta
-          description: if metadata including errors should be included in the response
+        - $ref: '#/components/parameters/pretty'
+        - $ref: '#/components/parameters/metaErrors'
 components:
   securitySchemes:
     bearerAuth:
@@ -1504,62 +1488,78 @@ components:
     scopeName:
       name: scopeName
       in: path
-      description: name of the scope
+      description: The name of the scope.
       required: true
       schema:
         type: string
     collectionName:
       name: collectionName
       in: path
-      description: name of the collection
+      description: The name of the collection.
       required: true
       schema:
         type: string
     docId:
       name: docId
       in: path
-      description: unique ID of the document
+      description: The unique ID of the document.
       required: true
       schema:
         type: string
     timeout:
       name: timeout
       in: query
-      description: custom timeout for the operation
+      description: A custom timeout for the operation.
       required: false
       schema:
         type: string
+        format: duration
     pretty:
       name: pretty
       in: query
-      description: if the JSON payload should be formatted pretty
+      description: Whether the output should be formatted with indentations and newlines.
       required: false
       schema:
         type: boolean
     meta:
       name: meta
       in: query
-      description: if metadata should be included in the response
+      description: Whether metadata should be included in the response.
+      required: false
+      schema:
+        type: boolean
+    metaErrors:
+      name: meta
+      in: query
+      description: Whether metadata and errors should be included in the response.
       required: false
       schema:
         type: boolean
     docExpiry:
       name: expiry
       in: query
-      description: expiration time of the document
+      description: The expiration time of the document.
       required: false
       schema:
         type: string
     docPreserveExpiry:
       name: preserveExpiry
       in: query
-      description: preserve the original expiry of the modified document(s)
+      description: |
+        Specifies whether documents should keep their current expiration setting if modified by the request.
+        
+        When `true`, documents will keep any existing expiration setting if modified by the request.
+        If the request explicitly specifies the document expiration, the statement overrides this parameter, and the expiration is changed.
+        
+        When `false`, document expiration is set to 0 if modified by the request, unless the request explicitly specifies the document expiration.
+        
+        Not supported for SQL++ statements in a transaction.
       schema:
         type: boolean
     docDurability:
       name: durability
       in: query
-      description: additional durability requirements for this operation
+      description: The level of durability for mutations produced by the request.
       required: false
       schema:
         type: string
@@ -1570,7 +1570,7 @@ components:
     consistencyToken:
       name: consistencyToken
       in: query
-      description: an opaque token that can be used for operations that require coordinated consistency.
+      description: An opaque token that can be used for operations that require coordinated consistency.
       required: false
       schema:
         type: string
@@ -1579,7 +1579,18 @@ components:
         type: boolean
       in: query
       name: readonly
-      description: set to true if this query does not modify any documents
+      description: |
+        Controls whether a query can change a resulting recordset.
+
+        If `readonly` is `true`, then the following statements are not allowed:
+
+        `CREATE INDEX`,
+        `DROP INDEX`,
+        `INSERT`,
+        `MERGE`,
+        `UPDATE`,
+        `UPSERT`.
+
       required: false
   schemas:
     Error:
