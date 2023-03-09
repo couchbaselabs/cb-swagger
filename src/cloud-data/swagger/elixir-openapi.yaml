@@ -768,7 +768,7 @@ paths:
         - $ref: '#/components/parameters/pretty'
         - $ref: '#/components/parameters/meta'
       requestBody:
-        description: The specs for the subdocument lookup.
+        description: An array of objects, each of which contains the specifications for one subdocument lookup.
         required: true
         content:
           application/json:
@@ -870,7 +870,7 @@ paths:
               - upsert
               - insert
       requestBody:
-        description: The specs for the subdocument mutations.
+        description: An array of objects, each of which contains information for one subdocument mutation.
         required: true
         content:
           application/json:
@@ -1068,7 +1068,7 @@ paths:
           schema:
             type: integer
       requestBody:
-        description: The N1QL Query
+        description: An object containing the SQL++ query and parameters.
         required: true
         content:
           application/json:
@@ -1358,13 +1358,7 @@ paths:
                       name: abc2
                       country: India
               items:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  value:
-                    type: object
-        description: List of document ids and doc values
+        description: An array of objects, each of which contains the ID and value of a document to create.
       parameters:
         - schema:
             type: boolean
@@ -1451,7 +1445,7 @@ paths:
                     value:
                       name: abc2
                       country: India
-        description: List of bulk ids and documents to update
+        description: An array of objects, each of which contains the ID and value of a document to update.
       parameters:
         - $ref: '#/components/parameters/pretty'
         - $ref: '#/components/parameters/metaErrors'
@@ -1507,7 +1501,7 @@ paths:
                 value:
                   - x_y_z2
                   - abc2
-        description: List of ids for the bulk documents to delete
+        description: An array of strings, each of which is the ID of a document to delete.
       tags:
         - Bulk Documents
       parameters:
