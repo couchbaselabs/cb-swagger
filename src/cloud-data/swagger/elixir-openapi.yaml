@@ -37,7 +37,7 @@ paths:
         '200':
           description: Specification file
       operationId: get-v1-spec
-      description: Get the specification open api document
+      description: Gets the OpenAPI specification document for this REST API.
       parameters:
         - schema:
             type: string
@@ -118,7 +118,7 @@ paths:
         '401':
           $ref: '#/components/responses/401'
       operationId: get-v1-buckets
-      description: List all dbs or buckets
+      description: Gets information on all databases or buckets.
       tags:
         - Metadata
       parameters:
@@ -171,7 +171,7 @@ paths:
         '401':
           $ref: '#/components/responses/401'
       operationId: get-v1-buckets-bucketName
-      description: Gets db or bucket details
+      description: Gets information for an individual database or bucket.
       parameters:
         - schema:
             type: boolean
@@ -273,7 +273,7 @@ paths:
         '401':
           $ref: '#/components/responses/401'
       operationId: get-v1-scopes
-      description: List all of the scopes in the current database/bucket
+      description: Gets information about all of the scopes in the current database or bucket.
       parameters:
         - schema:
             type: boolean
@@ -293,7 +293,7 @@ paths:
       tags:
         - Metadata
       summary: Get Scope Details
-      description: Gets a scope details
+      description: Gets information about an individual scope.
       parameters:
         - $ref: '#/components/parameters/timeout'
         - $ref: '#/components/parameters/pretty'
@@ -330,7 +330,7 @@ paths:
           description: Scope exists
         '401':
           $ref: '#/components/responses/401'
-      description: Creates a scope
+      description: Creates a scope.
       parameters: []
       tags:
         - Metadata
@@ -342,7 +342,7 @@ paths:
           description: OK
         '401':
           $ref: '#/components/responses/401'
-      description: Deletes a scope
+      description: Deletes a scope.
       tags:
         - Metadata
       parameters:
@@ -406,7 +406,7 @@ paths:
         '404':
           description: Scope Not Found
       operationId: get-v1-scopes-scopeName-collections
-      description: List all collections in a scope
+      description: Gets information about all collections in the specified scope.
       parameters:
         - schema:
             type: boolean
@@ -424,7 +424,7 @@ paths:
       tags:
         - Metadata
       summary: Get Collection Details
-      description: Gets a collection details
+      description: Gets information about an individual collection in the specified scope.
       parameters:
         - $ref: '#/components/parameters/scopeName'
         - $ref: '#/components/parameters/timeout'
@@ -465,8 +465,7 @@ paths:
         '401':
           $ref: '#/components/responses/401'
         '404':
-          description: Scope Not Found
-      description: Creates a collection
+      description: Creates a collection in the specified scope.
       parameters: []
       tags:
         - Metadata
@@ -492,8 +491,7 @@ paths:
         '401':
           $ref: '#/components/responses/401'
         '404':
-          description: Scope or Collection Not Found
-      description: Deletes a collection
+      description: Deletes a collection in the specified scope.
       tags:
         - Metadata
   '/v1/scopes/{scopeName}/collections/{collectionName}/docs/{docId}':
@@ -502,7 +500,7 @@ paths:
       tags:
         - Documents
       summary: Get Document
-      description: 'Retrieves an individual document, identified by a unique document ID'
+      description: Retrieves an individual document, identified by its unique document ID, in the specified scope and collection.
       parameters:
         - $ref: '#/components/parameters/scopeName'
         - $ref: '#/components/parameters/collectionName'
@@ -584,7 +582,7 @@ paths:
     head:
       operationId: existsDocument
       summary: Check Document Exists
-      description: Checks if a document exists or not
+      description: Checks whether a document exists or not in the specified scope and collection.
       parameters:
         - $ref: '#/components/parameters/scopeName'
         - $ref: '#/components/parameters/collectionName'
@@ -604,7 +602,7 @@ paths:
     post:
       operationId: createDocument
       summary: Create Document
-      description: Creates a document identified by its unique ID
+      description: Creates or updates a document, identified by its unique ID, in the specified scope and collection.
       parameters:
         - $ref: '#/components/parameters/scopeName'
         - $ref: '#/components/parameters/collectionName'
@@ -667,7 +665,7 @@ paths:
     put:
       operationId: updateDocument
       summary: Update Document
-      description: Replaces a document identified by its unique ID
+      description: Replaces a document, identified by its unique ID, in the specified scope and collection.
       parameters:
         - $ref: '#/components/parameters/scopeName'
         - $ref: '#/components/parameters/collectionName'
@@ -744,7 +742,7 @@ paths:
     delete:
       operationId: removeDocument
       summary: Delete Document
-      description: removes a document identified by its unique ID
+      description: Removes a document, identified by its unique ID, in the specified scope and collection.
       parameters:
         - $ref: '#/components/parameters/scopeName'
         - $ref: '#/components/parameters/collectionName'
@@ -796,7 +794,7 @@ paths:
       tags:
         - Subdocuments
       summary: Partial Document Lookup
-      description: Allows to look up individual properties of a single document.
+      description: Retrieves individual properties within a single document in the specified scope and collection.
       parameters:
         - $ref: '#/components/parameters/scopeName'
         - $ref: '#/components/parameters/collectionName'
@@ -885,7 +883,7 @@ paths:
     post:
       operationId: mutateInDocument
       summary: Partial Document Mutation
-      description: Allows to modify up individual properties of a single document.
+      description: Modifies individual properties within a single document in the specified scope and collection.
       parameters:
         - $ref: '#/components/parameters/scopeName'
         - $ref: '#/components/parameters/collectionName'
@@ -1002,8 +1000,8 @@ paths:
       operationId: scopeQueryReadWrite
       tags:
         - Queries
-      summary: Run N1QL Query
-      description: Performs a N1QL query against one or more collections
+      summary: Run SQL++ Query
+      description: Performs a SQL++ query in the specified scope.
       parameters:
         - $ref: '#/components/parameters/scopeName'
         - $ref: '#/components/parameters/timeout'
@@ -1145,7 +1143,7 @@ paths:
     get:
       summary: List Documents or Get Bulk Documents
       operationId: listDocsInCollection
-      description: Fetch a list of documents or get bulk documents
+      description: Fetch a list of documents, or retrieve documents in bulk, in the specified scope and collection.
       responses:
         '200':
           description: 'List of documents in a collection or requested bulk/multi documents '
@@ -1309,7 +1307,7 @@ paths:
                       - id: abc2
         '401':
           $ref: '#/components/responses/401'
-      description: Create bulk documents
+      description: Creates documents in bulk in the specified scope and collection.
       requestBody:
         content:
           application/json:
@@ -1382,7 +1380,7 @@ paths:
                       - id: abc2
         '401':
           $ref: '#/components/responses/401'
-      description: Update bulk documents
+      description: Updates documents in bulk in the specified scope and collection.
       requestBody:
         content:
           application/json:
@@ -1466,7 +1464,7 @@ paths:
                       - id: abc2
         '401':
           $ref: '#/components/responses/401'
-      description: Delete bulk documents
+      description: Deletes documents in bulk in the specified scope and collection.
       requestBody:
         content:
           application/json:
