@@ -63,39 +63,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                x-examples:
-                  example-1:
-                    buckets:
-                      - Name: api-test
-                        FlushEnabled: false
-                        ReplicaIndexDisabled: false
-                        RAMQuotaMB: 1024
-                        NumReplicas: 1
-                        BucketType: membase
-                        EvictionPolicy: valueOnly
-                        MaxTTL: 0
-                        MaxExpiry: 0
-                        CompressionMode: passive
-                        MinimumDurabilityLevel: 1
-                        StorageBackend: couchstore
-                      - Name: travel-sample
-                        FlushEnabled: false
-                        ReplicaIndexDisabled: true
-                        RAMQuotaMB: 200
-                        NumReplicas: 0
-                        BucketType: membase
-                        EvictionPolicy: valueOnly
-                        MaxTTL: 0
-                        MaxExpiry: 0
-                        CompressionMode: passive
-                        MinimumDurabilityLevel: 1
-                        StorageBackend: couchstore
-                properties:
-                  buckets:
-                    type: array
-                    items:
-                      type: object
+                $ref: '#/components/schemas/BucketList'
               examples:
                 example-1:
                   value:
@@ -151,10 +119,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  bucket:
-                    type: object
+                $ref: '#/components/schemas/BucketXYZ'
               examples:
                 example-1:
                   value:
@@ -191,12 +156,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  scopes:
-                    type: array
-                    items:
-                      type: object
+                $ref: '#/components/schemas/ScopeList'
               examples:
                 example-1:
                   value:
@@ -295,12 +255,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  scope:
-                    type: object
-                required:
-                  - scope
+                $ref: '#/components/schemas/ScopeInfo'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -319,6 +274,10 @@ paths:
           description: Success.
         '400':
           description: Scope already exists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           $ref: '#/components/responses/401'
       description: Creates a scope.
@@ -355,12 +314,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  collections:
-                    type: array
-                    items:
-                      type: object
+                $ref: '#/components/schemas/Scope'
               examples:
                 example-1:
                   value:
@@ -411,12 +365,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  collection:
-                    type: object
-                required:
-                  - collection
+                $ref: '#/components/schemas/CollectionInfo'
               examples:
                 example-1:
                   value:
@@ -506,52 +455,7 @@ paths:
           content:
             application/json:
               schema:
-                oneOf:
-                  - title: Default Response
-                    type: object
-                    properties:
-                      doc:
-                        type: object
-                      meta:
-                        type: object
-                    example:
-                      doc:
-                        id: 10
-                        name: 40-Mile Air
-                        iata: Q5
-                        icao: MLA
-                        country: United States
-                        accessCount: 50
-                  - title: All Replicas Response
-                    type: object
-                    properties:
-                      docs:
-                        type: object
-                        properties:
-                          active:
-                            type: object
-                            description: 'If available, contains the response from the active node'
-                          replicas:
-                            type: array
-                            description: Contains an array of all currently available replica responses
-                      meta:
-                        type: object
-                    example:
-                      docs:
-                        active:
-                          id: 10
-                          name: 40-Mile Air
-                          iata: Q5
-                          icao: MLA
-                          country: United States
-                          accessCount: 50
-                        replicas:
-                          - id: 10
-                            name: 40-Mile Air
-                            iata: Q5
-                            icao: MLA
-                            country: United States
-                            accessCount: 48
+                $ref: '#/components/schemas/DocLookupRes'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -623,18 +527,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Response
-                type: object
-                properties:
-                  meta:
-                    type: object
-                    properties:
-                      consistencyToken:
-                        type: string
-                        description: the consistency token which can be used for optimistic concurrency.
-                example:
-                  meta:
-                    consistencyToken: eyJjYXMiOjE2NTA5NjIxODU3MDQ0Mzk4MDgsIm11dGF0a
+                $ref: '#/components/schemas/DocModRes'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -698,18 +591,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Response
-                type: object
-                properties:
-                  meta:
-                    type: object
-                    properties:
-                      consistencyToken:
-                        type: string
-                        description: the opaque consistency token which can be used for optimistic concurrency.
-                example:
-                  meta:
-                    consistencyToken: eyJjYXMiOjE2NTA5NjIxODU3MDQ0Mzk4MDgsIm11dGF0a
+                $ref: '#/components/schemas/DocModRes'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -746,18 +628,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Response
-                type: object
-                properties:
-                  meta:
-                    type: object
-                    properties:
-                      consistencyToken:
-                        type: string
-                        description: the opaque consistency token which can be used for optimistic concurrency.
-                example:
-                  meta:
-                    consistencyToken: eyJjYXMiOjE2NTA5NjIxODU3MDQ0Mzk4MDgsIm11dGF0a
+                $ref: '#/components/schemas/DocModRes'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -799,21 +670,12 @@ paths:
             schema:
               type: array
               items:
-                type: object
-                properties:
-                  type:
-                    type: string
-                    enum:
-                      - get
-                      - exists
-                      - count
-                  path:
-                    type: string
-            example:
-              - type: get
-                path: username
-              - type: count
-                path: friends
+                $ref: '#/components/schemas/SubdocReqLookup'
+              example:
+                - type: get
+                  path: username
+                - type: count
+                  path: friends
             examples:
               example-1:
                 value:
@@ -827,40 +689,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Response
-                type: object
-                properties:
-                  subdocs:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                          enum:
-                            - get
-                            - exists
-                            - count
-                        path:
-                          type: string
-                        content:
-                          type: any
-                  meta:
-                    type: object
-                    properties:
-                      consistencyToken:
-                        type: string
-                        description: The consistency token value that can be used for optimistic concurrency.
-                example:
-                  subdocs:
-                    - type: get
-                      path: username
-                      content: Michael
-                    - type: count
-                      patth: friends
-                      content: 2
-                  meta:
-                    consistencyToken: eyJjYXMiOjE2NTA5NjIxODU3MDQ0Mzk4MDgsIm11dGF0a
+                $ref: '#/components/schemas/SubdocResLookup'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -901,25 +730,7 @@ paths:
             schema:
               type: array
               items:
-                type: object
-                properties:
-                  type:
-                    type: string
-                    enum:
-                      - replace
-                      - insert
-                      - remove
-                      - upsert
-                      - arrayAppend
-                      - arrayPrepend
-                      - arrayInsert
-                      - arrayAddUnique
-                      - increment
-                      - decrement
-                  path:
-                    type: string
-                  value:
-                    type: any
+                $ref: '#/components/schemas/SubdocReqMutate'
             example:
               - type: replace
                 path: username
@@ -935,38 +746,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Response
-                type: object
-                properties:
-                  subdocs:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                          enum:
-                            - get
-                            - exists
-                            - count
-                        path:
-                          type: string
-                        content:
-                          type: any
-                  meta:
-                    type: object
-                    properties:
-                      consistencyToken:
-                        type: string
-                        description: The consistency token that can be used for optimistic concurrency.
-                example:
-                  subdocs:
-                    - type: replace
-                      path: username
-                    - type: remove
-                      path: age
-                  meta:
-                    consistencyToken: eyJjYXMiOjE2NTA5NjIxODU3MDQ0Mzk4MDgsIm11dGF0a
+                $ref: '#/components/schemas/SubdocResMutate'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -1097,19 +877,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                query:
-                  type: string
-                parameters:
-                  oneOf:
-                    - title: Named Parameters
-                      type: object
-                    - title: Positional Parameters
-                      type: array
-                raw:
-                  title: pass in any parameters which do not have explit properties
-                  type: object
+              $ref: "#/components/schemas/QueryReq"
             example:
               query: SELECT firstname FROM users
       responses:
@@ -1120,40 +888,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Response
-                type: object
-                required:
-                  - docs
-                properties:
-                  docs:
-                    type: array
-                    items:
-                      type:
-                        - object
-                        - string
-                        - number
-                  meta:
-                    type: object
-                    properties:
-                      metrics:
-                        type: object
-                        properties:
-                          elapsedTime:
-                            type: string
-                          executionTime:
-                            type: string
-                          sortCount:
-                            type: number
-                          resultCount:
-                            type: number
-                          resultSize:
-                            type: number
-                          mutationCount:
-                            type: number
-                          errorCount:
-                            type: number
-                          warningCount:
-                            type: number
+                $ref: '#/components/schemas/QueryRes'
                 example:
                   docs:
                     - firstname: Michael
@@ -1188,40 +923,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Response
-                type: object
-                required:
-                  - docs
-                properties:
-                  docs:
-                    type: array
-                    items:
-                      type:
-                        - object
-                        - string
-                        - number
-                  meta:
-                    type: object
-                    properties:
-                      metrics:
-                        type: object
-                        properties:
-                          elapsedTime:
-                            type: string
-                          executionTime:
-                            type: string
-                          sortCount:
-                            type: number
-                          resultCount:
-                            type: number
-                          resultSize:
-                            type: number
-                          mutationCount:
-                            type: number
-                          errorCount:
-                            type: number
-                          warningCount:
-                            type: number
+                $ref: '#/components/schemas/QueryRes'
               examples:
                 example-1:
                   value:
@@ -1343,26 +1045,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  docs:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                x-examples:
-                  example-1:
-                    docs:
-                      - id: x_y_z2
-                      - id: abc2
-              examples:
-                example-1:
-                  value:
-                    docs:
-                      - id: x_y_z2
-                      - id: abc2
+                $ref: '#/components/schemas/BulkRes'
         '401':
           $ref: '#/components/responses/401'
       description: Creates documents in bulk in the specified scope and collection.
@@ -1382,6 +1065,7 @@ paths:
                       name: abc2
                       country: India
               items:
+                $ref: '#/components/schemas/BulkReq'
         description: An array of objects, each of which contains the ID and value of a document to create.
       parameters:
         - schema:
@@ -1408,20 +1092,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  docs:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                x-examples:
-                  example-1:
-                    docs:
-                      - id: x_y_z2
-                      - id: abc2
+                $ref: '#/components/schemas/BulkRes'
               examples:
                 example-1:
                   value:
@@ -1437,17 +1108,7 @@ paths:
             schema:
               type: array
               items:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  value:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      country:
-                        type: string
+                $ref: '#/components/schemas/BulkReq'
               x-examples:
                 example-1:
                   - id: x_y_z2
@@ -1486,20 +1147,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  docs:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                x-examples:
-                  example-1:
-                    docs:
-                      - id: x_y_z2
-                      - id: abc2
+                $ref: '#/components/schemas/BulkRes'
               examples:
                 example-1:
                   value:
@@ -1645,18 +1293,497 @@ components:
 
       required: false
   schemas:
+    BucketList:
+      type: object
+      title: Bucket List
+      x-examples:
+        example-1:
+          buckets:
+            - Name: api-test
+              FlushEnabled: false
+              ReplicaIndexDisabled: false
+              RAMQuotaMB: 1024
+              NumReplicas: 1
+              BucketType: membase
+              EvictionPolicy: valueOnly
+              MaxTTL: 0
+              MaxExpiry: 0
+              CompressionMode: passive
+              MinimumDurabilityLevel: 1
+              StorageBackend: couchstore
+            - Name: travel-sample
+              FlushEnabled: false
+              ReplicaIndexDisabled: true
+              RAMQuotaMB: 200
+              NumReplicas: 0
+              BucketType: membase
+              EvictionPolicy: valueOnly
+              MaxTTL: 0
+              MaxExpiry: 0
+              CompressionMode: passive
+              MinimumDurabilityLevel: 1
+              StorageBackend: couchstore
+      properties:
+        buckets:
+          type: array
+          description: An array of objects, each of which contains information about one database or bucket.
+          items:
+            $ref: '#/components/schemas/BucketXYZ'
+    BucketXYZ:
+      type: object
+      title: Bucket Details
+      description: The properties of a database or bucket.
+      properties:
+        Name:
+          type: string
+          description: The name of the bucket or database.
+          example: api-test
+        FlushEnabled:
+          description: Whether flushing is enabled for the bucket.
+          type: boolean
+          default: false
+        ReplicaIndexDisabled:
+          description: |
+            Specifies whether view indexes are replicated.
+            Only valid for a Couchbase bucket.
+
+            When `true`, replica view indexes are disabled.
+            When `false`, view indexes are replicated.
+          type: boolean
+          example: false
+        RAMQuotaMB:
+          description: The amount of memory allocated to the bucket, per node, in MiB.
+          type: integer
+          minimum: 100
+          example: 1024
+        NumReplicas:
+          description: The number of replicas for the bucket.
+          type: integer
+          minimum: 1
+          maximum: 4
+          default: 1
+        BucketType:
+          type: string
+          description: The type of bucket.
+# FIXME: Couchbase or ephemeral?
+          example: membase
+# FIXME: need to split this based on type
+        EvictionPolicy:
+          type: string
+          enum:
+            - valueOnly
+            - fullEviction
+          description: |
+            The eviction policy of the bucket or database.
+
+            For a Couchbase bucket, the possible values are:
+
+            * `valueOnly`: The bucket only ejects data when it removes a document from memory.
+            * `fullEviction`: The bucket ejects data, metadata, keys, and values when it removes a document from memory.
+
+            For an Ephemeral bucket, the possible values are:
+
+            * `noEviction`: If the bucket reaches its memory quota, the bucket doesn't eject any existing data and attempts to cache new data fail.
+            * `nruEviction`: If the bucket reaches its memory quota, the bucket ejects older documents from RAM to make space for new data.
+
+          default: valueOnly
+          x-default: noEviction
+        MaxTTL:
+          type: integer
+          format: int32
+          description: |
+            The bucket's time to live (TTL) in seconds.
+            This imposes a maximum lifespan on items within a bucket, and thus ensures the expiration of such items, once the specified period is complete.
+          maximum: 2147483648
+          minimum: 0
+          default: 0
+        MaxExpiry:
+          type: number
+          description: The maximum expiry.
+          example: 0
+        CompressionMode:
+          type: string
+          enum:
+            - 'off'
+            - passive
+            - active
+          description: |
+            The compression mode for the bucket.
+            The possible values are:
+
+            * `off`: Always send compressed items in uncompressed form.
+            * `passive`: Send compressed items in uncompressed form by default.
+            * `active`: Send compressed items in compressed form by default.
+          default: passive
+# FIXME: Explanation in Server doesn't match the example
+        MinimumDurabilityLevel:
+          type: number
+          description: |
+            The minimum level at which all writes to the bucket must occur.
+          example: 1
+        StorageBackend:
+          type: string
+          enum:
+            - couchstore
+            - magma
+          description: The storage backend used by the bucket.
+          default: couchstore
+    BulkRes:
+      type: object
+      title: Bulk Response
+      properties:
+        docs:
+          type: array
+          description: An array of objects, each of which contains information about one document.
+          items:
+            $ref: '#/components/schemas/BulkXYZ'
+      x-examples:
+        example-1:
+          docs:
+            - id: x_y_z2
+            - id: abc2
+    BulkXYZ:
+      type: object
+      title: Bulk Details
+      properties:
+        id:
+          type: string
+          description: The ID of a document.
+    ScopeList:
+      type: object
+      title: Scope List
+      properties:
+        scopes:
+          type: array
+          description: An array of objects, each of which contains information about one scope.
+          items:
+            $ref: '#/components/schemas/Scope'
+    ScopeInfo:
+      type: object
+      title: Scope
+      properties:
+        scope:
+          $ref: '#/components/schemas/Scope'
+      required:
+        - scope
+    Scope:
+      type: object
+      title: Scope Details
+      description: An object which contains information about one scope.
+      properties:
+        name:
+          type: string
+          description: The name of the scope.
+        collections:
+          type: array
+          description: An array of objects, each of which contains information about one collection.
+          items:
+            $ref: '#/components/schemas/Collection'
+    CollectionInfo:
+      type: object
+      title: Collection
+      properties:
+        collection:
+          $ref: '#/components/schemas/Collection'
+      required:
+        - collection
+    Collection:
+      type: object
+      title: Collection Details
+      description: An object which contains information about one collection.
+      properties:
+        Name:
+          type: string
+          description: The name of the collection.
+          example: hotel
+        ScopeName:
+          type: string
+          description: The name of the scope which contains the collection.
+          example: inventory
+        MaxExpiry:
+          type: number
+          description: The maximum expiry for the collection.
+          example: 0
+    DocLookupResReplica:
+      title: Document Lookup Replicas
+      type: object
+      description: An object which contains information about one collection.
+      properties:
+        docs:
+          $ref: '#/components/schemas/DocLookupResReplicaXYZ'
+        meta:
+          type: object
+          description: 'FIXME: Metadata.'
+      example:
+        docs:
+          active:
+            id: 10
+            name: 40-Mile Air
+            iata: Q5
+            icao: MLA
+            country: United States
+            accessCount: 50
+          replicas:
+            - id: 10
+              name: 40-Mile Air
+              iata: Q5
+              icao: MLA
+              country: United States
+              accessCount: 48
+    DocLookupResReplicaXYZ:
+      type: object
+      title: Document Lookup Replica Details
+      description: An object which contains information about a document and its replicas.
+      properties:
+        active:
+          type: object
+          description: An object containing information about the replica on the active node, if available.
+        replicas:
+          type: array
+          description: An array of objects, each of which contains information about a currently available replica.
+          items:
+            type: object
+    DocLookupRes:
+      title: Document Lookup Response
+      oneOf:
+        - $ref: '#/components/schemas/DocLookupResDefault'
+        - $ref: '#/components/schemas/DocLookupResReplica'
+    DocLookupResDefault:
+      title: Document Lookup Default
+      type: object
+      properties:
+        doc:
+          type: object
+          description: An object containing the content of a single document.
+        meta:
+          type: object
+          description: 'FIXME: Metadata.'
+      example:
+        doc:
+          id: 10
+          name: 40-Mile Air
+          iata: Q5
+          icao: MLA
+          country: United States
+          accessCount: 50
+    DocModRes:
+      type: object
+      title: Document Modify Response
+      properties:
+        meta:
+          $ref: '#/components/schemas/DocModResMeta'
+      example:
+        meta:
+          consistencyToken: eyJjYXMiOjE2NTA5NjIxODU3MDQ0Mzk4MDgsIm11dGF0a
+    DocModResMeta:
+      type: object
+      title: Document Metadata
+      description: An object containing document metadata.
+      properties:
+        consistencyToken:
+          type: string
+          description: The consistency token which can be used for optimistic concurrency.
+    SubdocXYZ:
+      title: Subdocument Details
+      type: object
+      properties:
+        type:
+          type: string
+          description: The type of action that was performed on the subdocument.
+          enum:
+            - get
+            - exists
+            - count
+        path:
+          type: string
+          description: The location of the subdocument within the document.
+        content:
+          type: any
+          description: The subdocument value.
+    SubdocReqLookup:
+      title: Subdocument Lookup Request
+      type: object
+      properties:
+        type:
+          type: string
+          description: The type of action to perform.
+          enum:
+            - get
+            - exists
+            - count
+        path:
+          type: string
+          description: The location within the document where the action should be performed.
+    SubdocReqMutate:
+      title: Subdocument Mutation Request
+      type: object
+      properties:
+        type:
+          type: string
+          description: The type of action to perform.
+          enum:
+            - replace
+            - insert
+            - remove
+            - upsert
+            - arrayAppend
+            - arrayPrepend
+            - arrayInsert
+            - arrayAddUnique
+            - increment
+            - decrement
+        path:
+          type: string
+          description: The location within the document where the action should be performed.
+        value:
+          type: any
+          description: The subdocument value.
+    SubdocResLookup:
+      title: Subdocument Lookup Response
+      type: object
+      properties:
+        subdocs:
+          type: array
+          description: An array of objects, each of which contains information about one subdocument.
+          items:
+            $ref: '#/components/schemas/SubdocXYZ'
+        meta:
+          $ref: '#/components/schemas/DocModResMeta'
+      example:
+        subdocs:
+          - type: get
+            path: username
+            content: Michael
+          - type: count
+            path: friends
+            content: 2
+        meta:
+          consistencyToken: eyJjYXMiOjE2NTA5NjIxODU3MDQ0Mzk4MDgsIm11dGF0a
+    SubdocResMutate:
+      title: Subdocument Mutation Response
+      type: object
+      properties:
+        subdocs:
+          type: array
+          description: An array of objects, each of which contains information about one subdocument.
+          items:
+            $ref: '#/components/schemas/SubdocXYZ'
+        meta:
+          $ref: '#/components/schemas/DocModResMeta'
+      example:
+        subdocs:
+          - type: replace
+            path: username
+          - type: remove
+            path: age
+        meta:
+          consistencyToken: eyJjYXMiOjE2NTA5NjIxODU3MDQ0Mzk4MDgsIm11dGF0a
+    BulkReq:
+      type: object
+      title: Bulk Request
+      properties:
+        id:
+          type: string
+          description: The ID of a document.
+        value:
+          type: object
+          description: The document value.
+    QueryReq:
+      type: object
+      title: Query Request
+      properties:
+        query:
+          type: string
+          description: The text of the SQL++ query.
+        parameters:
+          $ref: '#/components/schemas/QueryReqParams'
+        raw:
+          description: An object containing the names and values for any parameters which do not have an explicit query property.
+          type: object
+    QueryReqParams:
+      title: Query Parameters
+      description: |
+        Specifies dynamic parameters for the query.
+
+        May be either an object containing named parameters, or an array of positional parameters.
+      oneOf:
+        - title: Named Parameters
+          type: object
+          description: An object containing parameter names and values.
+        - title: Positional Parameters
+          type: array
+          description: An array containing positional parameter values.
+    QueryRes:
+      title: Query Response
+      type: object
+      required:
+        - docs
+      properties:
+        docs:
+          type: array
+          description: An array of document values.
+          items:
+            type:
+              - object
+              - string
+              - number
+        meta:
+          $ref: '#/components/schemas/QueryResMeta'
+    QueryResMeta:
+      title: Query Metadata
+      type: object
+      description: An object containing query response metadata.
+      properties:
+        metrics:
+          $ref: '#/components/schemas/QueryResMetrics'
+    QueryResMetrics:
+      title: Query Metrics
+      type: object
+      description: An object containing query response metrics.
+      properties:
+        elapsedTime:
+          type: string
+          format: duration
+          description: The total time taken for the request, that is the time from when the request was received until the results were returned.
+        executionTime:
+          type: string
+          format: duration
+          description: The time taken for the execution of the request, that is the time from when query execution started until the results were returned.
+        sortCount:
+          type: integer
+          description: |
+            The number of objects that were sorted.
+            Present only if the request includes `ORDER BY`.
+
+            If a query includes `ORDER BY`, `LIMIT`, or `OFFSET` clauses, an application can use this value to give the overall number of results in a message such as "page 1 of N".
+
+        resultCount:
+          type: integer
+          description: The total number of objects in the results.
+        resultSize:
+          type: integer
+          description: The total number of bytes in the results.
+        mutationCount:
+          type: integer
+          description: The number of mutations that were made during the request.
+        errorCount:
+          type: integer
+          description: The number of errors that occurred during the request.
+        warningCount:
+          type: integer
+          description: The number of warnings that occurred during the request.
     Error:
       type: object
       properties:
         code:
           type: number
-          description: the unique error code
+          description: The unique error code.
         message:
           type: string
-          description: the human readable description of the error
+          description: The human-readable description of the error.
         hints:
           type: array
-          description: potential suggestions on how to remedy the error (depending on the cause)
+          description: Potential suggestions on how to remedy the error, depending on the cause.
           items:
             type: string
       required:
