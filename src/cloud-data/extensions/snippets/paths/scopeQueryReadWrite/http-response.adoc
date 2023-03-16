@@ -1,0 +1,233 @@
+= Example HTTP Response
+
+====
+.Response 200
+[source,json]
+----
+{
+  "docs": [
+    {
+      "airline": {
+        "callsign": "MILE-AIR",
+        "country": "United States",
+        "iata": "Q5",
+        "icao": "MLA",
+        "id": 10,
+        "name": "40-Mile Air",
+        "type": "airline"
+      }
+    },
+    {
+      "airline": {
+        "callsign": "FLIGHTVUE",
+        "country": "United Kingdom",
+        "iata": null,
+        "icao": "VUE",
+        "id": 665,
+        "name": "AD Aviation",
+        "type": "airline"
+      }
+    }
+  ],
+  "meta": {
+    "api": {
+      "RequestID": "135d5996-093e-4ab6-8e81-99d963808252",
+      "ClientContextID": "ecb63328-761b-4f3a-adfa-5a76410f89be",
+      "Status": "success",
+      "Metrics": {
+        "ElapsedTime": 0,
+        "ExecutionTime": 0,
+        "ResultCount": 0,
+        "ResultSize": 0,
+        "MutationCount": 0,
+        "SortCount": 0,
+        "ErrorCount": 0,
+        "WarningCount": 0
+      },
+      "Signature": {
+        "*": "*"
+      },
+      "Warnings": [],
+      "Profile": {
+        "cpuTime": "527.036µs",
+        "executionTimings": {
+          "#operator": "Authorize",
+          "#planPreparedTime": "2023-03-15T15:14:29.135Z",
+          "#stats": {
+            "#phaseSwitches": 4,
+            "execTime": "1.444µs",
+            "servTime": "408.162µs"
+          },
+          "privileges": {
+            "List": [
+              {
+                "Priv": 7,
+                "Props": 0,
+                "Target": "default:sd-docs-elixir-hlgvlw.samples.airline"
+              }
+            ]
+          },
+          "~child": {
+            "#operator": "Sequence",
+            "#stats": {
+              "#phaseSwitches": 1,
+              "execTime": "11.446µs"
+            },
+            "~children": [
+              {
+                "#operator": "IndexScan3",
+                "#stats": {
+                  "#itemsOut": 2,
+                  "#phaseSwitches": 11,
+                  "execTime": "10.627µs",
+                  "kernTime": "5.998µs",
+                  "servTime": "822.001µs"
+                },
+                "bucket": "sd-docs-elixir-hlgvlw",
+                "index": "def_samples_airline_name",
+                "index_id": "4d0dd5ec957ce14a",
+                "index_projection": {
+                  "primary_key": true
+                },
+                "keyspace": "airline",
+                "limit": "2",
+                "namespace": "default",
+                "optimizer_estimates": {
+                  "cardinality": 187,
+                  "cost": 45.657645808382426,
+                  "fr_cost": 12.179987410740013,
+                  "size": 12
+                },
+                "scope": "samples",
+                "spans": [
+                  {
+                    "exact": true,
+                    "range": [
+                      {
+                        "inclusion": 0,
+                        "index_key": "`name`"
+                      }
+                    ]
+                  }
+                ],
+                "using": "gsi"
+              },
+              {
+                "#operator": "Fetch",
+                "#stats": {
+                  "#itemsIn": 2,
+                  "#itemsOut": 2,
+                  "#phaseSwitches": 14,
+                  "execTime": "30.981µs",
+                  "kernTime": "767.185µs",
+                  "servTime": "36.011861ms"
+                },
+                "bucket": "sd-docs-elixir-hlgvlw",
+                "keyspace": "airline",
+                "namespace": "default",
+                "optimizer_estimates": {
+                  "cardinality": 187,
+                  "cost": 193.79570073792812,
+                  "fr_cost": 24.907998399668067,
+                  "size": 212
+                },
+                "scope": "samples"
+              },
+              {
+                "#operator": "InitialProject",
+                "#stats": {
+                  "#itemsIn": 2,
+                  "#itemsOut": 2,
+                  "#phaseSwitches": 10,
+                  "execTime": "3.094µs",
+                  "kernTime": "36.816148ms"
+                },
+                "discard_original": true,
+                "optimizer_estimates": {
+                  "cardinality": 187,
+                  "cost": 196.51846183651904,
+                  "fr_cost": 24.92255861944663,
+                  "size": 212
+                },
+                "preserve_order": true,
+                "result_terms": [
+                  {
+                    "expr": "self",
+                    "star": true
+                  }
+                ]
+              },
+              {
+                "#operator": "Limit",
+                "#stats": {
+                  "#itemsIn": 2,
+                  "#itemsOut": 2,
+                  "#phaseSwitches": 7,
+                  "execTime": "2.486µs",
+                  "kernTime": "8.862µs"
+                },
+                "expr": "2",
+                "optimizer_estimates": {
+                  "cardinality": 2,
+                  "cost": 25.85967745867182,
+                  "fr_cost": 24.937118839225192,
+                  "size": 212
+                }
+              },
+              {
+                "#operator": "Stream",
+                "#stats": {
+                  "#itemsIn": 2,
+                  "#itemsOut": 2,
+                  "#phaseSwitches": 8,
+                  "execTime": "10.354µs",
+                  "kernTime": "36.829211ms"
+                },
+                "optimizer_estimates": {
+                  "cardinality": 2,
+                  "cost": 25.85967745867182,
+                  "fr_cost": 24.937118839225192,
+                  "size": 212
+                }
+              }
+            ]
+          },
+          "~versions": [
+            "7.5.0-N1QL",
+            "7.5.0-3881-enterprise"
+          ]
+        },
+        "optimizerEstimates": {
+          "cardinality": 2,
+          "cost": 25.85967745867182
+        },
+        "phaseCounts": {
+          "fetch": 2,
+          "indexScan": 2
+        },
+        "phaseOperators": {
+          "authorize": 1,
+          "fetch": 1,
+          "indexScan": 1,
+          "project": 1,
+          "stream": 1
+        },
+        "phaseTimes": {
+          "authorize": "409.606µs",
+          "fetch": "36.042842ms",
+          "indexScan": "832.628µs",
+          "instantiate": "25.231µs",
+          "parse": "273.812µs",
+          "plan": "85.962629ms",
+          "project": "3.094µs",
+          "run": "37.800882ms",
+          "stream": "10.354µs"
+        },
+        "requestTime": "2023-03-15T15:14:29.133Z",
+        "servicingHost": "fe797a8bae537d905243f9e83b69b017"
+      }
+    }
+  }
+}
+----
+====
