@@ -1,0 +1,14 @@
+= Example HTTP Request
+
+Get two documents from the `airline` collection, including metadata, and format the output.
+
+====
+.Curl request
+[source,sh]
+----
+curl -X GET \
+     -H 'Content-Type:application/json' \
+     -u "${api_key}:${secret_key}" \
+"${endpoint}/v1/scopes/samples/collections/airline/docs?pretty=true&meta=true&ids=x_y_z2,abc2"
+----
+====

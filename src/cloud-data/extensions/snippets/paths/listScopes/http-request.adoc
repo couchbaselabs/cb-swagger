@@ -1,0 +1,14 @@
+= Example HTTP Request
+
+Get information about the specified scope, and format the output.
+
+====
+.Curl request
+[source,sh]
+----
+curl -X GET \
+     -H 'Content-Type:application/json' \
+     -u "${api_key}:${secret_key}" \
+"${endpoint}/v1/scopes/samples?pretty=true"
+----
+====

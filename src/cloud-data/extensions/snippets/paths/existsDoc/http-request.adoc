@@ -1,0 +1,13 @@
+= Example HTTP Request
+
+Check whether the document `abc10` exists in the `airline` collection.
+
+====
+.Curl request
+[source,sh]
+----
+curl -I \
+     -u "${api_key}:${secret_key}" \
+"${endpoint}/v1/scopes/samples/collections/airline/docs/abc10"
+----
+====

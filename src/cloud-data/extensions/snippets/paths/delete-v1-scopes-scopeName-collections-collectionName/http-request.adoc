@@ -1,0 +1,14 @@
+= Example HTTP Request
+
+Delete the `bookings` collection in the `tenant_agent` scope.
+
+====
+.Curl request
+[source,sh]
+----
+curl -X DELETE \
+     -H 'Content-Type:application/json' \
+     -u "${api_key}:${secret_key}" \
+"${endpoint}/v1/scopes/tenant_agent/collections/bookings"
+----
+====
