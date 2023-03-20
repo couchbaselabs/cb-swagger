@@ -25,11 +25,39 @@
 __Version__ : {{{version}}}
 {{/version}}
 
-{{#host}}
+{{#servers}}
+{{#-first}}
 === Host information
+
+{{/-first}}
+....
+{{url}}
+....
+
+{{{description}}}
+
+{{#variables}}
+{{#-first}}
+[cols="1,3"]
+|===
+| Variable | Description
+
+{{/-first}}
+a| *{{name}}*
+a| {{{description}}}
+
 [%hardbreaks]
-__Host__ : {{{host}}}
-{{/host}}
+{{! enumerated values}}
+{{#enumValues}}{{#-first}}*Values:* {{/-first}}{{^-last}}`{{this}}`, {{/-last}}{{#-last}}`{{this}}`{{/-last}}{{/enumValues}}
+{{! example }}
+{{#value}}*Example:* `{{this}}`{{/value}}
+// end
+
+{{#-last}}
+|===
+{{/-last}}
+{{/variables}}
+{{/servers}}
 
 {{#specinclude}}intro.adoc{{/specinclude}}
 
