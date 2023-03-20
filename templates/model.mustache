@@ -21,7 +21,9 @@ This section describes the properties consumed and returned by this REST API.
 
 {{#models}}
 {{#model}}
+{{^parent}}
 * <<{{name}}>>
+{{/parent}}
 {{/model}}
 {{/models}}
 
@@ -32,8 +34,14 @@ This section describes the properties consumed and returned by this REST API.
 {{! include partial before definition }}
 {{#specinclude}}/definitions/{{name}}/definition-before.adoc{{/specinclude}}
 
+{{^parent}}
 [#{{name}}]
 === {{#title}}{{title}}{{/title}}{{^title}}{{classname}}{{/title}}
+{{/parent}}
+{{#parent}}
+[discrete#{{name}}]
+==== {{#title}}{{title}}{{/title}}{{^title}}{{classname}}{{/title}}
+{{/parent}}
 
 {{! include partial before definition body }}
 {{#specinclude}}/definitions/{{name}}/definition-begin.adoc{{/specinclude}}
@@ -92,9 +100,18 @@ endif::[]
 // end
 {{! DEFINITION SCHEMA }}
 | {{>schema}}
-
 {{/vars}}
 |===
+{{! Polymorphism}}
+{{#hasDiscriminatorWithNonEmptyMapping}}
+This schema has different properties, depending on the value of *{{discriminatorName}}*:
+{{#discriminator}}
+
+{{#mappedModels}}
+* `{{mappingName}}` -- <<{{modelName}}>>
+{{/mappedModels}}
+{{/discriminator}}
+{{/hasDiscriminatorWithNonEmptyMapping}}
 {{/composedSchemas}}
 {{#composedSchemas}}
 {{#oneOf}}
