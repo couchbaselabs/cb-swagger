@@ -63,6 +63,18 @@ a| {{{description}}}
 
 == Resources
 
+{{! Create attributes for tag names and descriptions }}
+{{#openAPI}}
+{{#tags}}
+{{#name}}
+:tag-{{#lambda.camelcase}}{{name}}{{/lambda.camelcase}}: {{this}}
+{{/name}}
+{{#description}}
+:toc-{{#lambda.camelcase}}{{name}}{{/lambda.camelcase}}: {{this}}
+{{/description}}
+{{/tags}}
+{{/openAPI}}
+
 {{! Table of contents for endpoints }}
 This section describes the operations available with this REST API.
 The operations are grouped in the following categories.
@@ -82,21 +94,19 @@ The operations are grouped in the following categories.
 
 {{! tag description }}
 [#{{baseName}}]
-{{#operation}}
-{{#-first}}
-{{#tags}}
-{{#-first}}
-=== {{#name}}{{name}}{{/name}}{{^name}}{{baseName}}{{/name}}
-
-{{#description}}{{description}}{{/description}}
-{{^description}}**{toc-title}**{{/description}}
-{{/-first}}
-{{/tags}}
-{{^tags}}
+ifdef::tag-{{#lambda.camelcase}}{{baseName}}{{/lambda.camelcase}}[]
+=== {tag-{{#lambda.camelcase}}{{baseName}}{{/lambda.camelcase}}}
+endif::[]
+ifndef::tag-{{#lambda.camelcase}}{{baseName}}{{/lambda.camelcase}}[]
 === Default
-{{/tags}}
-{{/-first}}
-{{/operation}}
+endif::[]
+
+ifdef::toc-{{#lambda.camelcase}}{{baseName}}{{/lambda.camelcase}}[]
+{toc-{{#lambda.camelcase}}{{baseName}}{{/lambda.camelcase}}}
+endif::[]
+ifndef::toc-{{#lambda.camelcase}}{{baseName}}{{/lambda.camelcase}}[]
+**{toc-title}**
+endif::[]
 
 {{! Table of contents for operations }}
 
@@ -138,7 +148,7 @@ The operations are grouped in the following categories.
 {{! include partial before operation description body }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-description-begin.adoc{{/specinclude}}
 
-{{{notes}}}
+{{{unescapedNotes}}}
 
 {{! include partials after the operation description }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-description-end.adoc{{/specinclude}}
