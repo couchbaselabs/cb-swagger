@@ -10,8 +10,18 @@ info:
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
   summary: Couchbase Capella Data API
 servers:
-  - url: 'https://dapi.couchbase.live/'
-    description: Capella Data API Endpoint URL
+  - url: 'https://{database}.{host}/'
+    description: >
+      You can find the Data API endpoint from the Data API section within the Couchbase Capella user interface.
+      The Data API endpoint consists of the database name and the host where the database is located.
+      The URL scheme must be `https`.
+    variables:
+      database:
+        description: The database name.
+        default: dapi
+      host:
+        description: The host where the database is located.
+        default: couchbase.live
 tags:
   - name: Documents
     description: Operations to retrieve and modify individual documents.
