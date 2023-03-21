@@ -142,7 +142,7 @@ endif::[]
 {{! include partial before operation description }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-description-before.adoc{{/specinclude}}
 
-[#{{operationIdOriginal}}-description]]
+[#{{operationIdOriginal}}-description]
 ===== Description
 
 {{! include partial before operation description body }}
@@ -165,7 +165,7 @@ endif::[]
 
 {{! *** OPERATION PRODUCES *** }}
 {{#hasProduces}}
-[#{{operationIdOriginal}}-produces]]
+[#{{operationIdOriginal}}-produces]
 ===== Produces
 
 {{#produces}}
@@ -175,7 +175,7 @@ endif::[]
 
 {{! *** OPERATION CONSUMES *** }}
 {{#hasConsumes}}
-[#{{operationIdOriginal}}-consumes]]
+[#{{operationIdOriginal}}-consumes]
 ===== Consumes
 
 {{#consumes}}
@@ -190,7 +190,7 @@ endif::[]
 {{! If there are responses: anchor, title, and table header }}
 {{#responses}}
 {{#-first}}
-[#{{operationIdOriginal}}-responses]]
+[#{{operationIdOriginal}}-responses]
 ===== Responses
 
 {{! include partial before operation responses body }}
@@ -229,7 +229,7 @@ a| {{{message}}}
 {{! If there is operation security: anchor, title, and table header }}
 {{#authMethods}}
 {{#-first}}
-[#{{operationIdOriginal}}-security]]
+[#{{operationIdOriginal}}-security]
 ===== Security
 
 {{! include partial before operation security body }}
@@ -292,27 +292,35 @@ endif::internal-generation[]
 {{! *** MODELS *** }}
 {{> model}}
 
+{{! include partial before security }}
+{{#specinclude}}/security/document-before.adoc{{/specinclude}}
+
 {{! *** SECURITY *** }}
 {{#hasAuthMethods}}
 [[_securityscheme]]
 == Security
 
+{{! include partial before security body }}
+{{#specinclude}}/security/document-begin.adoc{{/specinclude}}
+
 {{#authMethods}}
+
+{{! include partial before security scheme }}
+{{#specinclude}}/security/{{name}}/security-scheme-before.adoc{{/specinclude}}
+
 {{#isBasic}}
 [[{{name}}]]
 === {{name}}
 
-{{! TODO: Security description }}
-{{#isBasicBasic}}
+{{! include partial before security scheme body }}
+{{#specinclude}}/security/{{name}}/security-scheme-begin.adoc{{/specinclude}}
 
-Basic authentication.
+{{#isBasicBasic}}
 
 [%hardbreaks]
 __Type__ : {{type}}
 {{/isBasicBasic}}
 {{#isBasicBearer}}
-
-Bearer authentication.
 
 [%hardbreaks]
 __Type__ : {{type}}
@@ -322,6 +330,19 @@ __Scheme__ : {{scheme}}
 {{/isBasic}}
 {{#isOAuth}}* *OAuth*  AuthorizationUrl: _{{authorizationUrl}}_, TokenUrl:   _{{tokenUrl}}_ {{/isOAuth}}
 {{#isApiKey}}* *APIKey* KeyParamName:     _{{keyParamName}}_,     KeyInQuery: _{{isKeyInQuery}}_, KeyInHeader: _{{isKeyInHeader}}_{{/isApiKey}}
+
+{{! include partial after security scheme body }}
+{{#specinclude}}/security/{{name}}/security-scheme-end.adoc{{/specinclude}}
+
+{{! include partial after security scheme }}
+{{#specinclude}}/security/{{name}}/security-scheme-after.adoc{{/specinclude}}
+
 {{/authMethods}}
 
+{{! include partial after security body }}
+{{#specinclude}}/security/document-end.adoc{{/specinclude}}
+
 {{/hasAuthMethods}}
+
+{{! include partial after security body }}
+{{#specinclude}}/security/document-after.adoc{{/specinclude}}
