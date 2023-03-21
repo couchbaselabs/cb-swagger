@@ -4,9 +4,16 @@
 {{#isModel}}
 <<{{dataType}}>>
 {{/isModel}}
-{{! ... otherwise, just output the data type and data format. }}
+{{! ... otherwise: }}
 {{^isModel}}
+{{! ... if this has a specific data type, output the data type and data format; }}
+{{^isAnyType}}
 {{dataType}}{{#dataFormat}} ({{{dataFormat}}}){{/dataFormat}}
+{{/isAnyType}}
+{{! ... if not, just output the base type. }}
+{{#isAnyType}}
+{{baseType}}
+{{/isAnyType}}
 {{/isModel}}
 {{/isContainer}}
 {{! If this is an array ... }}
@@ -15,10 +22,17 @@
 {{#items.isModel}}
 <<{{items.dataType}}>>
 {{/items.isModel}}
-{{! ... otherwise, just output each item's data type; }}
+{{! ... otherwise: }}
 {{^items.isModel}}
+{{! ... if each item has a specific data type, output each item's data type ... }}
+{{^items.isAnyType}}
 {{items.dataType}}
+{{/items.isAnyType}}
+{{! ... if not, just output each item's base type ... }}
+{{#items.isAnyType}}
+{{items.baseType}}
+{{/items.isAnyType}}
 {{/items.isModel}}
-{{! ... and in both cases, output the array data type. }}
+{{! ... and finally, output the array data type. }}
 {{dataType}}
 {{/isContainer}}
