@@ -12,9 +12,15 @@
 :specDir: partial$
 :snippetDir: partial$paths/
 :page-topic-type: reference
-:table-caption!:
 {{/headerAttributes}}
+{{#useTableTitles}}
+:table-caption!:
+{{/useTableTitles}}
 
+{{! include partial before overview }}
+{{#specinclude}}/overview/document-before.adoc{{/specinclude}}
+
+{{! *** OVERVIEW *** }}
 {{#useIntroduction}}
 == Overview
 
@@ -24,6 +30,9 @@
 .Abstract
 {{/useIntroduction}}
 {{{appDescription}}}
+
+{{! include partial before overview body }}
+{{#specinclude}}/overview/document-begin.adoc{{/specinclude}}
 
 {{#version}}
 === Version information
@@ -65,8 +74,16 @@ a| {{{description}}}
 {{/variables}}
 {{/servers}}
 
-{{#specinclude}}intro.adoc{{/specinclude}}
+{{! include partial after overview body }}
+{{#specinclude}}/overview/document-end.adoc{{/specinclude}}
 
+{{! include partial after overview }}
+{{#specinclude}}/overview/document-after.adoc{{/specinclude}}
+
+{{! include partial before paths }}
+{{#specinclude}}/paths/document-before.adoc{{/specinclude}}
+
+{{! *** PATHS *** }}
 == Resources
 
 {{! Create attributes for tag names and descriptions }}
@@ -80,6 +97,9 @@ a| {{{description}}}
 {{/description}}
 {{/tags}}
 {{/openAPI}}
+
+{{! include partial before paths body }}
+{{#specinclude}}/paths/document-begin.adoc{{/specinclude}}
 
 {{! Table of contents for endpoints }}
 This section describes the operations available with this REST API.
@@ -115,13 +135,11 @@ ifndef::toc-{{#lambda.camelcase}}{{baseName}}{{/lambda.camelcase}}[]
 endif::[]
 
 {{! Table of contents for operations }}
-
 {{#operation}}
 * <<{{operationIdOriginal}}>>
 {{/operation}}
 
 {{! Operation body }}
-
 {{#operation}}
 
 {{! include partial before operation }}
@@ -295,6 +313,12 @@ endif::internal-generation[]
 {{/apis}}
 {{/apiInfo}}
 
+{{! include partial after paths body }}
+{{#specinclude}}/paths/document-end.adoc{{/specinclude}}
+
+{{! include partial after paths }}
+{{#specinclude}}/paths/document-after.adoc{{/specinclude}}
+
 {{! *** MODELS *** }}
 {{> model}}
 
@@ -350,5 +374,5 @@ __Scheme__ : {{scheme}}
 
 {{/hasAuthMethods}}
 
-{{! include partial after security body }}
+{{! include partial after security }}
 {{#specinclude}}/security/document-after.adoc{{/specinclude}}
