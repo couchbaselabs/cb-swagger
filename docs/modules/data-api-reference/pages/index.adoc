@@ -1,10 +1,20 @@
 = Couchbase Capella Data API
 :specDir: partial$
 :snippetDir: partial$paths/
+:page-topic-type: reference
+:table-caption!:
+
+
+// markup not found, no include::{specDir}overview/document-before.adoc[opts=optional]
+
 
 == Overview
 
 The Couchbase Capella Data API enables you to work with data resources, documents, and queries.
+
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
 
 === Version information
 [%hardbreaks]
@@ -41,7 +51,15 @@ a| The host where the database is located.
 |===
 
 
-// markup not found, no include::{specDir}intro.adoc[opts=optional]
+// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
 
 
 == Resources
@@ -58,6 +76,10 @@ a| The host where the database is located.
 :toc-metadata: Operations for data resources.
 :tag-specification: Specification
 :toc-specification: Operations for the REST API specification.
+
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
 
 This section describes the operations available with this REST API.
 The operations are grouped in the following categories.
@@ -85,12 +107,10 @@ ifndef::toc-bulkDocuments[]
 **{toc-title}**
 endif::[]
 
-
 * <<delete-v1-scopes-scopeName-collections-collectionName-docs>>
 * <<listDocsInCollection>>
 * <<post-v1-scopes-scopeName-collections-collectionName-docs>>
 * <<put-v1-scopes-scopeName-collections-collectionName-docs>>
-
 
 
 
@@ -137,9 +157,9 @@ Deletes documents in bulk in the specified scope and collection.
 // markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -173,9 +193,9 @@ endif::[]
 
 |===
 
-====== Body Parameter
 
 [cols="2,3,1"]
+.Body Parameter
 |===
 |Name| Description| Schema
 
@@ -198,9 +218,9 @@ List
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -387,9 +407,9 @@ Fetch a list of documents, or retrieve documents in bulk, in the specified scope
 // markup not found, no include::{specDir}paths/listDocsInCollection/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -426,9 +446,9 @@ endif::[]
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -785,9 +805,9 @@ Creates documents in bulk in the specified scope and collection.
 // markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -821,9 +841,9 @@ endif::[]
 
 |===
 
-====== Body Parameter
 
 [cols="2,3,1"]
+.Body Parameter
 |===
 |Name| Description| Schema
 
@@ -843,9 +863,9 @@ List
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -1050,9 +1070,9 @@ Updates documents in bulk in the specified scope and collection.
 // markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -1086,9 +1106,9 @@ endif::[]
 
 |===
 
-====== Body Parameter
 
 [cols="2,3,1"]
+.Body Parameter
 |===
 |Name| Description| Schema
 
@@ -1111,9 +1131,9 @@ List
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -1271,13 +1291,11 @@ ifndef::toc-documents[]
 **{toc-title}**
 endif::[]
 
-
 * <<createDocument>>
 * <<existsDocument>>
 * <<getDocument>>
 * <<removeDocument>>
 * <<updateDocument>>
-
 
 
 
@@ -1324,9 +1342,9 @@ Creates or updates a document, identified by its unique ID, in the specified sco
 // markup not found, no include::{specDir}paths/createDocument/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -1374,9 +1392,9 @@ endif::[]
 
 |===
 
-====== Body Parameter
 
 [cols="2,3,1"]
+.Body Parameter
 |===
 |Name| Description| Schema
 
@@ -1398,9 +1416,9 @@ endif::[]
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -1664,9 +1682,9 @@ Checks whether a document exists or not in the specified scope and collection.
 // markup not found, no include::{specDir}paths/existsDocument/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -1717,9 +1735,9 @@ endif::[]
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -1896,9 +1914,9 @@ Retrieves an individual document, identified by its unique document ID, in the s
 // markup not found, no include::{specDir}paths/getDocument/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -1949,9 +1967,9 @@ endif::[]
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -2171,9 +2189,9 @@ Removes a document, identified by its unique ID, in the specified scope and coll
 // markup not found, no include::{specDir}paths/removeDocument/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -2224,9 +2242,9 @@ endif::[]
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -2464,9 +2482,9 @@ Replaces a document, identified by its unique ID, in the specified scope and col
 // markup not found, no include::{specDir}paths/updateDocument/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -2514,9 +2532,9 @@ endif::[]
 
 |===
 
-====== Body Parameter
 
 [cols="2,3,1"]
+.Body Parameter
 |===
 |Name| Description| Schema
 
@@ -2538,9 +2556,9 @@ endif::[]
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -2823,7 +2841,6 @@ ifndef::toc-metadata[]
 **{toc-title}**
 endif::[]
 
-
 * <<delete-v1-scopes>>
 * <<delete-v1-scopes-scopeName-collections-collectionName>>
 * <<get-v1-buckets>>
@@ -2834,7 +2851,6 @@ endif::[]
 * <<listScopes>>
 * <<post-v1-scopes>>
 * <<post-v1-scopes-scopeName-collections>>
-
 
 
 
@@ -2881,9 +2897,9 @@ Deletes a scope, and any collections within it.
 // markup not found, no include::{specDir}paths/delete-v1-scopes/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -3056,9 +3072,9 @@ Deletes a collection in the specified scope.
 // markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -3253,9 +3269,9 @@ Gets information on all databases or buckets.
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -3438,9 +3454,9 @@ Gets information for an individual database or bucket.
 // markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -3463,9 +3479,9 @@ endif::[]
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -3652,9 +3668,9 @@ Gets information about all of the scopes in the current database or bucket.
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -3837,9 +3853,9 @@ Gets information about all collections in the specified scope.
 // markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -3862,9 +3878,9 @@ endif::[]
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -4051,9 +4067,9 @@ Gets information about an individual collection in the specified scope.
 // markup not found, no include::{specDir}paths/listCollections/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -4090,9 +4106,9 @@ endif::[]
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -4283,9 +4299,9 @@ Gets information about an individual scope.
 // markup not found, no include::{specDir}paths/listScopes/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -4308,9 +4324,9 @@ endif::[]
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -4515,9 +4531,9 @@ Creates a scope.
 // markup not found, no include::{specDir}paths/post-v1-scopes/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -4694,9 +4710,9 @@ Creates a collection in the specified scope.
 // markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -4862,9 +4878,7 @@ ifndef::toc-queries[]
 **{toc-title}**
 endif::[]
 
-
 * <<scopeQueryReadWrite>>
-
 
 
 
@@ -4911,9 +4925,9 @@ Performs a SQL++ query in the specified scope.
 // markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -4933,9 +4947,9 @@ endif::[]
 
 |===
 
-====== Body Parameter
 
 [cols="2,3,1"]
+.Body Parameter
 |===
 |Name| Description| Schema
 
@@ -4957,9 +4971,9 @@ endif::[]
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -5331,9 +5345,7 @@ ifndef::toc-specification[]
 **{toc-title}**
 endif::[]
 
-
 * <<get-v1-spec>>
-
 
 
 
@@ -5383,9 +5395,9 @@ Gets the OpenAPI specification document for this REST API.
 
 
 
-====== Header Parameters
 
 [cols="2,3,1"]
+.Header Parameters
 |===
 |Name| Description| Schema
 
@@ -5504,10 +5516,8 @@ ifndef::toc-subdocuments[]
 **{toc-title}**
 endif::[]
 
-
 * <<lookupInDocument>>
 * <<mutateInDocument>>
-
 
 
 
@@ -5554,9 +5564,9 @@ Retrieves individual properties within a single document in the specified scope 
 // markup not found, no include::{specDir}paths/lookupInDocument/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -5604,9 +5614,9 @@ endif::[]
 
 |===
 
-====== Body Parameter
 
 [cols="2,3,1"]
+.Body Parameter
 |===
 |Name| Description| Schema
 
@@ -5629,9 +5639,9 @@ List
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -5840,9 +5850,9 @@ Modifies individual properties within a single document in the specified scope a
 // markup not found, no include::{specDir}paths/mutateInDocument/operation-parameters-begin.adoc[opts=optional]
 
 
-====== Path Parameters
 
 [cols="2,3,1"]
+.Path Parameters
 |===
 |Name| Description| Schema
 
@@ -5890,9 +5900,9 @@ endif::[]
 
 |===
 
-====== Body Parameter
 
 [cols="2,3,1"]
+.Body Parameter
 |===
 |Name| Description| Schema
 
@@ -5915,9 +5925,9 @@ List
 
 
 
-====== Query Parameters
 
 [cols="2,3,1"]
+.Query Parameters
 |===
 |Name| Description| Schema
 
@@ -6164,6 +6174,14 @@ endif::internal-generation[]
 
 // markup not found, no include::{specDir}paths/mutateInDocument/operation-after.adoc[opts=optional]
 
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
 
 
 
