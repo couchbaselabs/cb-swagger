@@ -10,6 +10,9 @@
 {{#description}}
 :desc-{{name}}: {{description}}
 {{/description}}
+{{#-last}}
+:count-models: {{-index}}
+{{/-last}}
 {{/model}}
 {{/models}}
 
@@ -19,6 +22,9 @@
 {{! Table of contents }}
 This section describes the properties consumed and returned by this REST API.
 
+ifeval::[{count-models} > 10]
+[.two-columns]
+endif::[]
 [%hardbreaks]
 {{#models}}
 {{#model}}
@@ -36,6 +42,9 @@ This section describes the properties consumed and returned by this REST API.
 {{#specinclude}}/definitions/{{name}}/definition-before.adoc{{/specinclude}}
 
 {{^parent}}
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#{{name}}]
 === {{#title}}{{title}}{{/title}}{{^title}}{{classname}}{{/title}}
 {{/parent}}
