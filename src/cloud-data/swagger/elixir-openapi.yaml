@@ -1421,7 +1421,7 @@ components:
             Different properties may be returned, depending on the bucket type.
 
             * `membase` &mdash; A Couchbase bucket.
-            * `ephemeral` &mdash; An ephemeral bucket.
+            * `ephemeral` &mdash; A memory-only bucket.
         MaxTTL:
           type: integer
           format: int32
@@ -1468,8 +1468,8 @@ components:
         - $ref: '#/components/schemas/BucketSchema'
         - $ref: '#/components/schemas/BucketXtraCouchbase'
     BucketSchemaEphemeral:
-      title: Ephemeral Buckets
-      description: The properties of an Ephemeral database or bucket.
+      title: Memory-Only Buckets
+      description: The properties of a memory-only database or bucket.
       allOf:
         - $ref: '#/components/schemas/BucketSchema'
         - $ref: '#/components/schemas/BucketXtraEphemeral'
@@ -1500,7 +1500,7 @@ components:
           default: valueOnly
     BucketXtraEphemeral:
       type: object
-      title: Bucket Details for Ephemeral Buckets
+      title: Bucket Details for Memory-Only Buckets
       properties:
         EvictionPolicy:
           type: string
@@ -1509,7 +1509,7 @@ components:
             - nruEviction
           description: |
             The eviction policy of the bucket or database.
-            For an Ephemeral bucket, the possible values are:
+            For a memory-only bucket, the possible values are:
 
             * `noEviction`: If the bucket reaches its memory quota, the bucket doesn't eject any existing data and attempts to cache new data fail.
             * `nruEviction`: If the bucket reaches its memory quota, the bucket ejects older documents from RAM to make space for new data.
