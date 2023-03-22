@@ -22,25 +22,28 @@
 
 {{! *** OVERVIEW *** }}
 {{#useIntroduction}}
+[[overview]]
 == Overview
-
 {{/useIntroduction}}
+
+{{! include partial before overview body }}
+{{#specinclude}}/overview/document-begin.adoc{{/specinclude}}
+
 {{^useIntroduction}}
 [abstract]
 .Abstract
 {{/useIntroduction}}
 {{{appDescription}}}
 
-{{! include partial before overview body }}
-{{#specinclude}}/overview/document-begin.adoc{{/specinclude}}
-
 {{#version}}
+[discrete#version]
 === Version information
 [%hardbreaks]
 __Version__ : {{{version}}}
 {{/version}}
 
 {{#servers}}
+[discrete#host]
 {{#-first}}
 === Host information
 
@@ -84,6 +87,7 @@ a| {{{description}}}
 {{#specinclude}}/paths/document-before.adoc{{/specinclude}}
 
 {{! *** PATHS *** }}
+[[resources]]
 == Resources
 
 {{! Create attributes for tag names and descriptions }}
@@ -327,7 +331,7 @@ endif::internal-generation[]
 
 {{! *** SECURITY *** }}
 {{#hasAuthMethods}}
-[[_securityscheme]]
+[[security]]
 == Security
 
 {{! include partial before security body }}
@@ -339,7 +343,7 @@ endif::internal-generation[]
 {{#specinclude}}/security/{{name}}/security-scheme-before.adoc{{/specinclude}}
 
 {{#isBasic}}
-[[{{name}}]]
+[[security-{{name}}]]
 === {{name}}
 
 {{! include partial before security scheme body }}
