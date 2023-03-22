@@ -2,24 +2,32 @@
 :specDir: partial$
 :snippetDir: partial$paths/
 :page-topic-type: reference
+:page-toclevels: 2
 :table-caption!:
 
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See ./swagger/elixir-openapi.yaml
 
-// markup not found, no include::{specDir}overview/document-before.adoc[opts=optional]
+
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 
+[[overview]]
 == Overview
-
-The Couchbase Capella Data API enables you to work with data resources, documents, and queries.
 
 
 // markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
 
 
+The Couchbase Capella Data API enables you to work with data resources, documents, and queries.
+
+[discrete#version]
 === Version information
 [%hardbreaks]
 __Version__ : 0.4.0
 
+[discrete#host]
 === Host information
 
 ....
@@ -62,6 +70,7 @@ a| The host where the database is located.
 // markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
 
 
+[[resources]]
 == Resources
 
 :tag-documents: Documents
@@ -84,12 +93,13 @@ a| The host where the database is located.
 This section describes the operations available with this REST API.
 The operations are grouped in the following categories.
 
-* <<BulkDocuments>>
-* <<Documents>>
-* <<Metadata>>
-* <<Queries>>
-* <<Specification>>
-* <<Subdocuments>>
+[%hardbreaks]
+<<BulkDocuments>>
+<<Documents>>
+<<Metadata>>
+<<Queries>>
+<<Specification>>
+<<Subdocuments>>
 
 
 [#BulkDocuments]
@@ -107,10 +117,11 @@ ifndef::toc-bulkDocuments[]
 **{toc-title}**
 endif::[]
 
-* <<delete-v1-scopes-scopeName-collections-collectionName-docs>>
-* <<listDocsInCollection>>
-* <<post-v1-scopes-scopeName-collections-collectionName-docs>>
-* <<put-v1-scopes-scopeName-collections-collectionName-docs>>
+[%hardbreaks]
+<<delete-v1-scopes-scopeName-collections-collectionName-docs>>
+<<listDocsInCollection>>
+<<post-v1-scopes-scopeName-collections-collectionName-docs>>
+<<put-v1-scopes-scopeName-collections-collectionName-docs>>
 
 
 
@@ -1291,11 +1302,12 @@ ifndef::toc-documents[]
 **{toc-title}**
 endif::[]
 
-* <<createDocument>>
-* <<existsDocument>>
-* <<getDocument>>
-* <<removeDocument>>
-* <<updateDocument>>
+[%hardbreaks]
+<<createDocument>>
+<<existsDocument>>
+<<getDocument>>
+<<removeDocument>>
+<<updateDocument>>
 
 
 
@@ -2841,16 +2853,17 @@ ifndef::toc-metadata[]
 **{toc-title}**
 endif::[]
 
-* <<delete-v1-scopes>>
-* <<delete-v1-scopes-scopeName-collections-collectionName>>
-* <<get-v1-buckets>>
-* <<get-v1-buckets-bucketName>>
-* <<get-v1-scopes>>
-* <<get-v1-scopes-scopeName-collections>>
-* <<listCollections>>
-* <<listScopes>>
-* <<post-v1-scopes>>
-* <<post-v1-scopes-scopeName-collections>>
+[%hardbreaks]
+<<delete-v1-scopes>>
+<<delete-v1-scopes-scopeName-collections-collectionName>>
+<<get-v1-buckets>>
+<<get-v1-buckets-bucketName>>
+<<get-v1-scopes>>
+<<get-v1-scopes-scopeName-collections>>
+<<listCollections>>
+<<listScopes>>
+<<post-v1-scopes>>
+<<post-v1-scopes-scopeName-collections>>
 
 
 
@@ -4878,7 +4891,8 @@ ifndef::toc-queries[]
 **{toc-title}**
 endif::[]
 
-* <<scopeQueryReadWrite>>
+[%hardbreaks]
+<<scopeQueryReadWrite>>
 
 
 
@@ -5345,7 +5359,8 @@ ifndef::toc-specification[]
 **{toc-title}**
 endif::[]
 
-* <<get-v1-spec>>
+[%hardbreaks]
+<<get-v1-spec>>
 
 
 
@@ -5516,8 +5531,9 @@ ifndef::toc-subdocuments[]
 **{toc-title}**
 endif::[]
 
-* <<lookupInDocument>>
-* <<mutateInDocument>>
+[%hardbreaks]
+<<lookupInDocument>>
+<<mutateInDocument>>
 
 
 
@@ -6193,7 +6209,7 @@ endif::internal-generation[]
 
 :desc-BucketSchema: The properties of a database or bucket.
 :desc-BucketSchemaCouchbase: The properties of a Couchbase database or bucket.
-:desc-BucketSchemaEphemeral: The properties of an Ephemeral database or bucket.
+:desc-BucketSchemaEphemeral: The properties of a memory-only database or bucket.
 :desc-CollectionSchema: An object which contains information about one collection.
 :desc-DocLookupDefaultMeta: A wrapper object containing document metadata. Only included if requested. 
 :desc-DocLookupReplicaMeta: A wrapper object containing replicas metadata. Only included if requested. 
@@ -6207,6 +6223,7 @@ endif::internal-generation[]
 :desc-ScopeSchema: An object which contains information about one scope.
 :desc-SystemMeta: A wrapper object containing system metadata. Only included if requested. 
 :desc-SystemMetaLogs: A nested object containing log metadata.
+:count-models: 41
 
 
 // markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
@@ -6214,51 +6231,58 @@ endif::internal-generation[]
 
 This section describes the properties consumed and returned by this REST API.
 
-* <<BucketInfo>>
-* <<BucketList>>
-* <<BucketSchema>>
-* <<BucketXtraCouchbase>>
-* <<BucketXtraEphemeral>>
-* <<BulkReq>>
-* <<BulkResLookup>>
-* <<BulkResLookupSchema>>
-* <<BulkResMod>>
-* <<BulkResModSchema>>
-* <<CollectionInfo>>
-* <<CollectionList>>
-* <<CollectionSchema>>
-* <<DocLookup>>
-* <<DocLookupDefault>>
-* <<DocLookupDefaultMeta>>
-* <<DocLookupReplica>>
-* <<DocLookupReplicaMeta>>
-* <<DocLookupShareMetaAPI>>
-* <<DocMod>>
-* <<DocModMeta>>
-* <<DocModMetaAPI>>
-* <<Error>>
-* <<QueryReq>>
-* <<QueryReqParams>>
-* <<QueryRes>>
-* <<QueryResMeta>>
-* <<QueryResMetaAPI>>
-* <<QueryResMetaAPIMetrics>>
-* <<ScopeInfo>>
-* <<ScopeList>>
-* <<ScopeSchema>>
-* <<SubdocReqLookup>>
-* <<SubdocReqMutate>>
-* <<SubdocResLookup>>
-* <<SubdocResMutate>>
-* <<SubdocSchema>>
-* <<SystemMeta>>
-* <<SystemMetaLogs>>
+ifeval::[{count-models} > 10]
+[.two-columns]
+endif::[]
+[%hardbreaks]
+<<BucketInfo>>
+<<BucketList>>
+<<BucketSchema>>
+<<BucketXtraCouchbase>>
+<<BucketXtraEphemeral>>
+<<BulkReq>>
+<<BulkResLookup>>
+<<BulkResLookupSchema>>
+<<BulkResMod>>
+<<BulkResModSchema>>
+<<CollectionInfo>>
+<<CollectionList>>
+<<CollectionSchema>>
+<<DocLookup>>
+<<DocLookupDefault>>
+<<DocLookupDefaultMeta>>
+<<DocLookupReplica>>
+<<DocLookupReplicaMeta>>
+<<DocLookupShareMetaAPI>>
+<<DocMod>>
+<<DocModMeta>>
+<<DocModMetaAPI>>
+<<Error>>
+<<QueryReq>>
+<<QueryReqParams>>
+<<QueryRes>>
+<<QueryResMeta>>
+<<QueryResMetaAPI>>
+<<QueryResMetaAPIMetrics>>
+<<ScopeInfo>>
+<<ScopeList>>
+<<ScopeSchema>>
+<<SubdocReqLookup>>
+<<SubdocReqMutate>>
+<<SubdocResLookup>>
+<<SubdocResMutate>>
+<<SubdocSchema>>
+<<SystemMeta>>
+<<SystemMetaLogs>>
 
 
 
 // markup not found, no include::{specDir}definitions/BucketInfo/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#BucketInfo]
 === Bucket Information
 
@@ -6320,6 +6344,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/BucketList/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#BucketList]
 === Bucket List
 
@@ -6379,6 +6406,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/BucketSchema/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#BucketSchema]
 === Bucket Details
 
@@ -6456,7 +6486,7 @@ a| The type of bucket.
 Different properties may be returned, depending on the bucket type.
 
 * `membase` &mdash; A Couchbase bucket.
-* `ephemeral` &mdash; An ephemeral bucket.
+* `ephemeral` &mdash; A memory-only bucket.
 
 
 [%hardbreaks]
@@ -6600,7 +6630,7 @@ All of the following:
 
 
 [discrete#BucketSchemaEphemeral]
-==== Ephemeral Buckets
+==== Memory-Only Buckets
 
 
 // markup not found, no include::{specDir}definitions/BucketSchemaEphemeral/definition-begin.adoc[opts=optional]
@@ -6626,6 +6656,9 @@ All of the following:
 // markup not found, no include::{specDir}definitions/BucketXtraCouchbase/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#BucketXtraCouchbase]
 === Bucket Details for Couchbase Buckets
 
@@ -6692,8 +6725,11 @@ endif::[]
 // markup not found, no include::{specDir}definitions/BucketXtraEphemeral/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#BucketXtraEphemeral]
-=== Bucket Details for Ephemeral Buckets
+=== Bucket Details for Memory-Only Buckets
 
 
 // markup not found, no include::{specDir}definitions/BucketXtraEphemeral/definition-begin.adoc[opts=optional]
@@ -6707,7 +6743,7 @@ endif::[]
 a| *EvictionPolicy* +
 _optional_
 a| The eviction policy of the bucket or database.
-For an Ephemeral bucket, the possible values are:
+For a memory-only bucket, the possible values are:
 
 * `noEviction`: If the bucket reaches its memory quota, the bucket doesn't eject any existing data and attempts to cache new data fail.
 * `nruEviction`: If the bucket reaches its memory quota, the bucket ejects older documents from RAM to make space for new data.
@@ -6739,6 +6775,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/BulkReq/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#BulkReq]
 === Bulk Modify Request
 
@@ -6777,7 +6816,7 @@ ifeval::["null" != "null"]
 *Example:* `null`
 endif::[]
 // end
-| Object
+| AnyType
 
 |===
 
@@ -6794,6 +6833,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/BulkResLookup/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#BulkResLookup]
 === Bulk Lookup Response
 
@@ -6853,6 +6895,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/BulkResLookupSchema/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#BulkResLookupSchema]
 === Bulk Lookup Details
 
@@ -6926,6 +6971,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/BulkResMod/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#BulkResMod]
 === Bulk Modify Response
 
@@ -6985,6 +7033,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/BulkResModSchema/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#BulkResModSchema]
 === Bulk Modify Details
 
@@ -7026,6 +7077,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/CollectionInfo/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#CollectionInfo]
 === Collection Information
 
@@ -7087,6 +7141,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/CollectionList/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#CollectionList]
 === Collection List
 
@@ -7146,6 +7203,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/CollectionSchema/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#CollectionSchema]
 === Collection Details
 
@@ -7215,6 +7275,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/DocLookup/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#DocLookup]
 === Document Lookup Response
 
@@ -7242,6 +7305,9 @@ One of the following:
 // markup not found, no include::{specDir}definitions/DocLookupDefault/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#DocLookupDefault]
 === Document Lookup Default
 
@@ -7300,6 +7366,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/DocLookupDefaultMeta/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#DocLookupDefaultMeta]
 === Document Lookup Default Metadata
 
@@ -7344,6 +7413,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/DocLookupReplica/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#DocLookupReplica]
 === Document Lookup Replicas
 
@@ -7403,6 +7475,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/DocLookupReplicaMeta/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#DocLookupReplicaMeta]
 === Document Lookup Replicas Metadata
 
@@ -7445,6 +7520,9 @@ List
 // markup not found, no include::{specDir}definitions/DocLookupShareMetaAPI/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#DocLookupShareMetaAPI]
 === Document Concurrency and Expiry
 
@@ -7514,6 +7592,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/DocMod/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#DocMod]
 === Document Modify Response
 
@@ -7558,6 +7639,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/DocModMeta/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#DocModMeta]
 === Document Modify Metadata
 
@@ -7602,6 +7686,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/DocModMetaAPI/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#DocModMetaAPI]
 === Document Concurrency
 
@@ -7643,6 +7730,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/Error/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#Error]
 === Error
 
@@ -7713,6 +7803,9 @@ List
 // markup not found, no include::{specDir}definitions/QueryReq/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#QueryReq]
 === Query Request
 
@@ -7785,6 +7878,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/QueryReqParams/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#QueryReqParams]
 === Query Parameters
 
@@ -7813,6 +7909,9 @@ List
 // markup not found, no include::{specDir}definitions/QueryRes/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#QueryRes]
 === Query Response
 
@@ -7872,6 +7971,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/QueryResMeta/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#QueryResMeta]
 === Query Metadata
 
@@ -7916,6 +8018,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/QueryResMetaAPI/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#QueryResMetaAPI]
 === Query API Metadata
 
@@ -8065,6 +8170,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/QueryResMetaAPIMetrics/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#QueryResMetaAPIMetrics]
 === Query Response Metrics
 
@@ -8208,6 +8316,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/ScopeInfo/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#ScopeInfo]
 === Scope Information
 
@@ -8269,6 +8380,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/ScopeList/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#ScopeList]
 === Scope List
 
@@ -8328,6 +8442,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/ScopeSchema/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#ScopeSchema]
 === Scope Details
 
@@ -8384,6 +8501,9 @@ List
 // markup not found, no include::{specDir}definitions/SubdocReqLookup/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#SubdocReqLookup]
 === Subdocument Lookup Request
 
@@ -8445,6 +8565,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/SubdocReqMutate/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#SubdocReqMutate]
 === Subdocument Mutation Request
 
@@ -8528,6 +8651,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/SubdocResLookup/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#SubdocResLookup]
 === Subdocument Lookup Response
 
@@ -8587,6 +8713,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/SubdocResMutate/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#SubdocResMutate]
 === Subdocument Mutation Response
 
@@ -8646,6 +8775,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/SubdocSchema/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#SubdocSchema]
 === Subdocument Details
 
@@ -8721,6 +8853,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/SystemMeta/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#SystemMeta]
 === System Metadata
 
@@ -8765,6 +8900,9 @@ endif::[]
 // markup not found, no include::{specDir}definitions/SystemMetaLogs/definition-before.adoc[opts=optional]
 
 
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
 [#SystemMetaLogs]
 === System Metadata Logs
 
@@ -8842,7 +8980,7 @@ endif::[]
 // markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
 
 
-[[_securityscheme]]
+[[security]]
 == Security
 
 
@@ -8854,11 +8992,11 @@ endif::[]
 // markup not found, no include::{specDir}security/Basic/security-scheme-before.adoc[opts=optional]
 
 
-[[Basic]]
+[[security-Basic]]
 === Basic
 
 
-include::{specDir}security/Basic/security-scheme-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}security/Basic/security-scheme-begin.adoc[opts=optional]
 
 
 
@@ -8868,7 +9006,7 @@ __Type__ : http
 
 
 
-// markup not found, no include::{specDir}security/Basic/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/Basic/security-scheme-end.adoc[opts=optional]
 
 
 
