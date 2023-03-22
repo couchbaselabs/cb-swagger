@@ -6,10 +6,6 @@ Query the `airline` collection, and format the output, including metadata.
 .Curl request
 [source,sh]
 ----
-curl -X POST \
-     -H 'Content-Type:application/json' \
-     -u "${api_key}:${secret_key}" \
-     -d '{"query": "SELECT * FROM airline LIMIT 2"}' \
-"${endpoint}/v1/scopes/samples/query?pretty=true&meta=true"
+include::example$post-query.sh[tag=request]
 ----
 ====
