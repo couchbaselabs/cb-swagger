@@ -1,14 +1,12 @@
 = Example HTTP Request
 
 Retrieve the document called `abc10` in the specified scope and collection, with all replicas.
+Include metadata and format the response.
 
 ====
 .Curl request
 [source,sh]
 ----
-curl -X GET \
-     -H 'Content-Type:application/json' \
-     -u "${api_key}:${secret_key}" \
-"${endpoint}/v1/scopes/samples/collections/airline/docs/abc10?pretty=true&meta=true&replicas=all"
+include::example$get-doc.sh[tag=request]
 ----
 ====

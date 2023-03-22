@@ -6,10 +6,6 @@ Add a new `pets_ok` field with value `true` to document `landmark_10019` and for
 .Curl request
 [source,sh]
 ----
-curl -X POST \
-     -H 'Content-Type:application/json' \
-     -u "${api_key}:${secret_key}" \
-     -d '[{"type":"upsert","path":"pets_ok","value":true}]' \
-"${endpoint}/v1/scopes/samples/collections/landmark/subdocs/landmark_10019?pretty=true&meta=true"
+include::example$post-subdoc.sh[tag=request]
 ----
 ====
