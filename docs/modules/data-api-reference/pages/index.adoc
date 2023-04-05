@@ -1,0 +1,9024 @@
+= Couchbase Capella Data API
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+:table-caption!:
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+
+
+include::{specDir}overview/document-before.adoc[opts=optional]
+
+
+[[overview]]
+== Overview
+
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
+
+The Couchbase Capella Data API enables you to work with data resources, documents, and queries.
+
+[discrete#version]
+=== Version information
+[%hardbreaks]
+__Version__ : 0.4.0
+
+[discrete#host]
+=== Host information
+
+....
+https://{database}.{host}
+....
+
+You can find the Data API endpoint from the Data API section within the Couchbase Capella user interface. The Data API endpoint consists of the database name and the host where the database is located. The URL scheme must be `https`. 
+
+[cols="1,3"]
+|===
+| Variable | Description
+
+a| *database*
+a| The database name.
+
+[%hardbreaks]
+
+*Example:* `dapi`
+// end
+
+a| *host*
+a| The host where the database is located.
+
+[%hardbreaks]
+
+*Example:* `couchbase.live`
+// end
+
+|===
+
+
+// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
+
+
+[[resources]]
+== Resources
+
+:tag-documents: Documents
+:toc-documents: Operations to retrieve and modify individual documents.
+:tag-bulkDocuments: Bulk Documents
+:toc-bulkDocuments: Operations to retrieve and modify multiple documents in bulk.
+:tag-subdocuments: Subdocuments
+:toc-subdocuments: Operations to retrieve and modify sections of individual documents.
+:tag-queries: Queries
+:toc-queries: Operations to perform queries.
+:tag-metadata: Metadata
+:toc-metadata: Operations for data resources.
+:tag-specification: Specification
+:toc-specification: Operations for the REST API specification.
+
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
+
+This section describes the operations available with this REST API.
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+<<BulkDocuments>>
+<<Documents>>
+<<Metadata>>
+<<Queries>>
+<<Specification>>
+<<Subdocuments>>
+
+
+[#BulkDocuments]
+ifdef::tag-bulkDocuments[]
+=== {tag-bulkDocuments}
+endif::[]
+ifndef::tag-bulkDocuments[]
+=== Default
+endif::[]
+
+ifdef::toc-bulkDocuments[]
+{toc-bulkDocuments}
+endif::[]
+ifndef::toc-bulkDocuments[]
+**{toc-title}**
+endif::[]
+
+[%hardbreaks]
+<<delete-v1-scopes-scopeName-collections-collectionName-docs>>
+<<listDocsInCollection>>
+<<post-v1-scopes-scopeName-collections-collectionName-docs>>
+<<put-v1-scopes-scopeName-collections-collectionName-docs>>
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-before.adoc[opts=optional]
+
+
+[#delete-v1-scopes-scopeName-collections-collectionName-docs]
+==== Delete Bulk Documents
+....
+DELETE /v1/scopes/{scopeName}/collections/{collectionName}/docs
+....
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-description-before.adoc[opts=optional]
+
+
+[#delete-v1-scopes-scopeName-collections-collectionName-docs-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-description-begin.adoc[opts=optional]
+
+
+Deletes documents in bulk in the specified scope and collection.
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+[cols="2,3,1"]
+.Body Parameter
+|===
+|Name| Description| Schema
+
+a| *Body* +
+_optional_
+a| 
+An array of strings, each of which is the ID of a document to delete.
+
+[%hardbreaks]
+ifeval::["["x_y_z2","abc2"]" != "null"]
+*Example:* `["x_y_z2","abc2"]`
+endif::[]
+// end
+
+| String
+List
+
+
+|===
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata and errors should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-after.adoc[opts=optional]
+
+
+[#delete-v1-scopes-scopeName-collections-collectionName-docs-produces]
+===== Produces
+
+* application/json
+
+[#delete-v1-scopes-scopeName-collections-collectionName-docs-consumes]
+===== Consumes
+
+* application/json
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-responses-before.adoc[opts=optional]
+
+
+[#delete-v1-scopes-scopeName-collections-collectionName-docs-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns an object containing a nested array of deleted document IDs. 
+| <<BulkResMod>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-security-before.adoc[opts=optional]
+
+
+[#delete-v1-scopes-scopeName-collections-collectionName-docs-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}delete-v1-scopes-scopeName-collections-collectionName-docs/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}delete-v1-scopes-scopeName-collections-collectionName-docs/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/docs/DELETE/DELETE.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/docs/DELETE/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName-docs/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-before.adoc[opts=optional]
+
+
+[#listDocsInCollection]
+==== List Documents or Get Bulk Documents
+....
+GET /v1/scopes/{scopeName}/collections/{collectionName}/docs
+....
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-description-before.adoc[opts=optional]
+
+
+[#listDocsInCollection-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-description-begin.adoc[opts=optional]
+
+
+Fetch a list of documents, or retrieve documents in bulk, in the specified scope and collection.
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *timeout* +
+_optional_
+a| A custom timeout for the operation.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String (duration)
+
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *pagesize* +
+_optional_
+a| The number of documents to return in each page of results.
+Can be used with `page` to paginate the results.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Integer
+
+
+a| *page* +
+_optional_
+a| The page of results to return.
+Can be used with `pagesize` to paginate the results.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Integer
+
+
+a| *limit* +
+_optional_
+a| The number of documents to return.
+Identical to `pagesize`.
+Similar to the `LIMIT` clause in SQL++.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Integer
+
+
+a| *offset* +
+_optional_
+a| The number of documents to skip before returning results.
+Similar to the `OFFSET` clause in SQL++.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Integer
+
+
+a| *fields* +
+_optional_
+a| A list of field names, separated by comma.
+Only the specified fields are returned in the results.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *where* +
+_optional_
+a| A condition that must be met for a document to be returned.
+Similar to the `WHERE` clause in SQL++.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *orderBy* +
+_optional_
+a| The name of a field by which to sort the results.
+Similar to the `ORDER BY` clause in SQL++.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *order* +
+_optional_
+a| Used with `orderBy` to specify the direction of the sort.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *ids* +
+_optional_
+a| A list of document IDs, separated by comma.
+Only the specified documents are returned in the results.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *exists* +
+_optional_
+a| Whether to check on a document's existence.
+When `true`, the request merely checks that matching documents exist.
+When `false`, the request returns all matching documents.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-parameters-after.adoc[opts=optional]
+
+
+[#listDocsInCollection-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-responses-before.adoc[opts=optional]
+
+
+[#listDocsInCollection-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns an object containing documents and metadata. 
+| <<BulkResLookup>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-security-before.adoc[opts=optional]
+
+
+[#listDocsInCollection-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}listDocsInCollection/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}listDocsInCollection/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/docs/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/docs/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/listDocsInCollection/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-before.adoc[opts=optional]
+
+
+[#post-v1-scopes-scopeName-collections-collectionName-docs]
+==== Create Bulk Documents
+....
+POST /v1/scopes/{scopeName}/collections/{collectionName}/docs
+....
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-description-before.adoc[opts=optional]
+
+
+[#post-v1-scopes-scopeName-collections-collectionName-docs-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-description-begin.adoc[opts=optional]
+
+
+Creates documents in bulk in the specified scope and collection.
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+[cols="2,3,1"]
+.Body Parameter
+|===
+|Name| Description| Schema
+
+a| *Body* +
+_optional_
+a| 
+An array of objects, each of which contains the ID and value of a document to create.
+
+[%hardbreaks]
+// end
+
+| <<BulkReq>>
+List
+
+
+|===
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *upsert* +
+_optional_
+a| Whether to update existing documents.
+
+When `true`, if a document already exists, the document is overwritten.
+When `false`, if a document already exists, the operation fails.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata and errors should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-after.adoc[opts=optional]
+
+
+[#post-v1-scopes-scopeName-collections-collectionName-docs-produces]
+===== Produces
+
+* application/json
+
+[#post-v1-scopes-scopeName-collections-collectionName-docs-consumes]
+===== Consumes
+
+* application/json
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-responses-before.adoc[opts=optional]
+
+
+[#post-v1-scopes-scopeName-collections-collectionName-docs-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns an object containing a nested array of created document IDs. 
+| <<BulkResMod>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-security-before.adoc[opts=optional]
+
+
+[#post-v1-scopes-scopeName-collections-collectionName-docs-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}post-v1-scopes-scopeName-collections-collectionName-docs/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}post-v1-scopes-scopeName-collections-collectionName-docs/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/docs/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/docs/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections-collectionName-docs/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-before.adoc[opts=optional]
+
+
+[#put-v1-scopes-scopeName-collections-collectionName-docs]
+==== Update Bulk Documents
+....
+PUT /v1/scopes/{scopeName}/collections/{collectionName}/docs
+....
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-description-before.adoc[opts=optional]
+
+
+[#put-v1-scopes-scopeName-collections-collectionName-docs-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-description-begin.adoc[opts=optional]
+
+
+Updates documents in bulk in the specified scope and collection.
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+[cols="2,3,1"]
+.Body Parameter
+|===
+|Name| Description| Schema
+
+a| *Body* +
+_optional_
+a| 
+An array of objects, each of which contains the ID and value of a document to update.
+
+[%hardbreaks]
+ifeval::["[{"id":"x_y_z2","value":{"name":"xyz2","country":"US"}},{"id":"abc2","value":{"name":"abc2","country":"India"}}]" != "null"]
+*Example:* `[{"id":"x_y_z2","value":{"name":"xyz2","country":"US"}},{"id":"abc2","value":{"name":"abc2","country":"India"}}]`
+endif::[]
+// end
+
+| <<BulkReq>>
+List
+
+
+|===
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata and errors should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-parameters-after.adoc[opts=optional]
+
+
+[#put-v1-scopes-scopeName-collections-collectionName-docs-produces]
+===== Produces
+
+* application/json
+
+[#put-v1-scopes-scopeName-collections-collectionName-docs-consumes]
+===== Consumes
+
+* application/json
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-responses-before.adoc[opts=optional]
+
+
+[#put-v1-scopes-scopeName-collections-collectionName-docs-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns an object containing a nested array of updated document IDs. 
+| <<BulkResMod>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-security-before.adoc[opts=optional]
+
+
+[#put-v1-scopes-scopeName-collections-collectionName-docs-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}put-v1-scopes-scopeName-collections-collectionName-docs/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}put-v1-scopes-scopeName-collections-collectionName-docs/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/docs/PUT/PUT.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/docs/PUT/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/put-v1-scopes-scopeName-collections-collectionName-docs/operation-after.adoc[opts=optional]
+
+
+
+[#Documents]
+ifdef::tag-documents[]
+=== {tag-documents}
+endif::[]
+ifndef::tag-documents[]
+=== Default
+endif::[]
+
+ifdef::toc-documents[]
+{toc-documents}
+endif::[]
+ifndef::toc-documents[]
+**{toc-title}**
+endif::[]
+
+[%hardbreaks]
+<<createDocument>>
+<<existsDocument>>
+<<getDocument>>
+<<removeDocument>>
+<<updateDocument>>
+
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-before.adoc[opts=optional]
+
+
+[#createDocument]
+==== Create Document
+....
+POST /v1/scopes/{scopeName}/collections/{collectionName}/docs/{docId}
+....
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-description-before.adoc[opts=optional]
+
+
+[#createDocument-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-description-begin.adoc[opts=optional]
+
+
+Creates or updates a document, identified by its unique ID, in the specified scope and collection.
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *docId* +
+_required_
+a| The unique ID of the document.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+[cols="2,3,1"]
+.Body Parameter
+|===
+|Name| Description| Schema
+
+a| *Body* +
+_required_
+a| 
+The document content.
+
+[%hardbreaks]
+ifeval::["{"id":10,"name":"40-Mile Air","iata":"Q5","icao":"MLA","country":"United States","accessCount":50}" != "null"]
+*Example:* `{"id":10,"name":"40-Mile Air","iata":"Q5","icao":"MLA","country":"United States","accessCount":50}`
+endif::[]
+// end
+
+| AnyType
+
+
+|===
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *timeout* +
+_optional_
+a| A custom timeout for the operation.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String (duration)
+
+
+a| *expiry* +
+_optional_
+a| The expiration time of the document.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *preserveExpiry* +
+_optional_
+a| Specifies whether documents should keep their current expiration setting if modified by the request.
+
+When `true`, documents will keep any existing expiration setting if modified by the request.
+If the request explicitly specifies the document expiration, the statement overrides this parameter, and the expiration is changed.
+
+When `false`, document expiration is set to 0 if modified by the request, unless the request explicitly specifies the document expiration.
+
+Not supported for SQL++ statements in a transaction.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *durability* +
+_optional_
+a| The level of durability for mutations produced by the request.
+
+
+[%hardbreaks]
+*Values:* `majority`, `majorityPersistActive`, `persistMajority`
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *meta* +
+_optional_
+a| Whether metadata should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *upsert* +
+_optional_
+a| Whether to update an existing document.
+
+When `true`, if the document already exists, the document is overwritten.
+When `false`, if the document already exists, the operation fails.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-parameters-after.adoc[opts=optional]
+
+
+[#createDocument-produces]
+===== Produces
+
+* application/json
+
+[#createDocument-consumes]
+===== Consumes
+
+* application/json
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-responses-before.adoc[opts=optional]
+
+
+[#createDocument-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 201
+a| Document created.
+| <<DocMod>>
+
+| 400
+a| Bad request.
+| <<Error>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+| 409
+a| Document already exists.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-security-before.adoc[opts=optional]
+
+
+[#createDocument-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}createDocument/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}createDocument/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/docs/{docId}/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/docs/\{docId\}/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/createDocument/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-before.adoc[opts=optional]
+
+
+[#existsDocument]
+==== Check Document Exists
+....
+HEAD /v1/scopes/{scopeName}/collections/{collectionName}/docs/{docId}
+....
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-description-before.adoc[opts=optional]
+
+
+[#existsDocument-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-description-begin.adoc[opts=optional]
+
+
+Checks whether a document exists or not in the specified scope and collection.
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *docId* +
+_required_
+a| The unique ID of the document.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *timeout* +
+_optional_
+a| A custom timeout for the operation.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String (duration)
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-parameters-after.adoc[opts=optional]
+
+
+[#existsDocument-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-responses-before.adoc[opts=optional]
+
+
+[#existsDocument-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 204
+a| Document found.
+| 
+
+| 400
+a| Bad request.
+| <<Error>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+| 404
+a| Document not found.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-security-before.adoc[opts=optional]
+
+
+[#existsDocument-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}existsDocument/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}existsDocument/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/docs/{docId}/HEAD/HEAD.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/docs/\{docId\}/HEAD/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/existsDocument/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-before.adoc[opts=optional]
+
+
+[#getDocument]
+==== Get Document
+....
+GET /v1/scopes/{scopeName}/collections/{collectionName}/docs/{docId}
+....
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-description-before.adoc[opts=optional]
+
+
+[#getDocument-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-description-begin.adoc[opts=optional]
+
+
+Retrieves an individual document, identified by its unique document ID, in the specified scope and collection.
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *docId* +
+_required_
+a| The unique ID of the document.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *timeout* +
+_optional_
+a| A custom timeout for the operation.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String (duration)
+
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *replicas* +
+_optional_
+a| If specified, attempts to return available replicas of the document.
+
+
+[%hardbreaks]
+*Values:* `any`, `all`
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-parameters-after.adoc[opts=optional]
+
+
+[#getDocument-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-responses-before.adoc[opts=optional]
+
+
+[#getDocument-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns either the document, or all document replicas, as requested. 
+| <<DocLookup>>
+
+| 400
+a| Bad request.
+| <<Error>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+| 404
+a| Document not found.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-security-before.adoc[opts=optional]
+
+
+[#getDocument-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}getDocument/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}getDocument/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/docs/{docId}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/docs/\{docId\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/getDocument/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-before.adoc[opts=optional]
+
+
+[#removeDocument]
+==== Delete Document
+....
+DELETE /v1/scopes/{scopeName}/collections/{collectionName}/docs/{docId}
+....
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-description-before.adoc[opts=optional]
+
+
+[#removeDocument-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-description-begin.adoc[opts=optional]
+
+
+Removes a document, identified by its unique ID, in the specified scope and collection.
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *docId* +
+_required_
+a| The unique ID of the document.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *timeout* +
+_optional_
+a| A custom timeout for the operation.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String (duration)
+
+
+a| *durability* +
+_optional_
+a| The level of durability for mutations produced by the request.
+
+
+[%hardbreaks]
+*Values:* `majority`, `majorityPersistActive`, `persistMajority`
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *consistencyToken* +
+_optional_
+a| An opaque token that can be used for operations that require coordinated consistency.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-parameters-after.adoc[opts=optional]
+
+
+[#removeDocument-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-responses-before.adoc[opts=optional]
+
+
+[#removeDocument-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Document removed. 
+| <<DocMod>>
+
+| 400
+a| Bad request.
+| <<Error>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+| 404
+a| Document not found.
+| <<Error>>
+
+| 409
+a| Consistency token (CAS) mismatch.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-security-before.adoc[opts=optional]
+
+
+[#removeDocument-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}removeDocument/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}removeDocument/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/docs/{docId}/DELETE/DELETE.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/docs/\{docId\}/DELETE/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/removeDocument/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-before.adoc[opts=optional]
+
+
+[#updateDocument]
+==== Update Document
+....
+PUT /v1/scopes/{scopeName}/collections/{collectionName}/docs/{docId}
+....
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-description-before.adoc[opts=optional]
+
+
+[#updateDocument-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-description-begin.adoc[opts=optional]
+
+
+Replaces a document, identified by its unique ID, in the specified scope and collection.
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *docId* +
+_required_
+a| The unique ID of the document.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+[cols="2,3,1"]
+.Body Parameter
+|===
+|Name| Description| Schema
+
+a| *Body* +
+_required_
+a| 
+The document content.
+
+[%hardbreaks]
+ifeval::["{"id":10,"name":"40-Mile Air","iata":"Q5","icao":"MLA","country":"United States","accessCount":50}" != "null"]
+*Example:* `{"id":10,"name":"40-Mile Air","iata":"Q5","icao":"MLA","country":"United States","accessCount":50}`
+endif::[]
+// end
+
+| AnyType
+
+
+|===
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *timeout* +
+_optional_
+a| A custom timeout for the operation.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String (duration)
+
+
+a| *expiry* +
+_optional_
+a| The expiration time of the document.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *preserveExpiry* +
+_optional_
+a| Specifies whether documents should keep their current expiration setting if modified by the request.
+
+When `true`, documents will keep any existing expiration setting if modified by the request.
+If the request explicitly specifies the document expiration, the statement overrides this parameter, and the expiration is changed.
+
+When `false`, document expiration is set to 0 if modified by the request, unless the request explicitly specifies the document expiration.
+
+Not supported for SQL++ statements in a transaction.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *durability* +
+_optional_
+a| The level of durability for mutations produced by the request.
+
+
+[%hardbreaks]
+*Values:* `majority`, `majorityPersistActive`, `persistMajority`
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *consistencyToken* +
+_optional_
+a| An opaque token that can be used for operations that require coordinated consistency.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *upsert* +
+_optional_
+a| Whether to create the document if it does not exist.
+
+When `true`, if the document does not already exist, the document is created.
+When `false`, if the document does not already exist, the operation fails.
+
+This parameter ignores the consistency token.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *lockTime* +
+_optional_
+a| If specified, locks the document for the provided duration.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String (duration)
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-parameters-after.adoc[opts=optional]
+
+
+[#updateDocument-produces]
+===== Produces
+
+* application/json
+
+[#updateDocument-consumes]
+===== Consumes
+
+* application/json
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-responses-before.adoc[opts=optional]
+
+
+[#updateDocument-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 201
+a| Document modified.
+| <<DocMod>>
+
+| 400
+a| Bad request.
+| <<Error>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+| 404
+a| Document not found.
+| <<Error>>
+
+| 409
+a| Consistency token (CAS) mismatch.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-security-before.adoc[opts=optional]
+
+
+[#updateDocument-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}updateDocument/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}updateDocument/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/docs/{docId}/PUT/PUT.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/docs/\{docId\}/PUT/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/updateDocument/operation-after.adoc[opts=optional]
+
+
+
+[#Metadata]
+ifdef::tag-metadata[]
+=== {tag-metadata}
+endif::[]
+ifndef::tag-metadata[]
+=== Default
+endif::[]
+
+ifdef::toc-metadata[]
+{toc-metadata}
+endif::[]
+ifndef::toc-metadata[]
+**{toc-title}**
+endif::[]
+
+[%hardbreaks]
+<<delete-v1-scopes>>
+<<delete-v1-scopes-scopeName-collections-collectionName>>
+<<get-v1-buckets>>
+<<get-v1-buckets-bucketName>>
+<<get-v1-scopes>>
+<<get-v1-scopes-scopeName-collections>>
+<<listCollections>>
+<<listScopes>>
+<<post-v1-scopes>>
+<<post-v1-scopes-scopeName-collections>>
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-before.adoc[opts=optional]
+
+
+[#delete-v1-scopes]
+==== Delete Scope
+....
+DELETE /v1/scopes/{scopeName}
+....
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-description-before.adoc[opts=optional]
+
+
+[#delete-v1-scopes-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-description-begin.adoc[opts=optional]
+
+
+Deletes a scope, and any collections within it.
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-parameters-after.adoc[opts=optional]
+
+
+[#delete-v1-scopes-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-responses-before.adoc[opts=optional]
+
+
+[#delete-v1-scopes-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success.
+| 
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-security-before.adoc[opts=optional]
+
+
+[#delete-v1-scopes-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}delete-v1-scopes/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}delete-v1-scopes/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/DELETE/DELETE.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/DELETE/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-before.adoc[opts=optional]
+
+
+[#delete-v1-scopes-scopeName-collections-collectionName]
+==== Delete Collection
+....
+DELETE /v1/scopes/{scopeName}/collections/{collectionName}
+....
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-description-before.adoc[opts=optional]
+
+
+[#delete-v1-scopes-scopeName-collections-collectionName-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-description-begin.adoc[opts=optional]
+
+
+Deletes a collection in the specified scope.
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-parameters-after.adoc[opts=optional]
+
+
+[#delete-v1-scopes-scopeName-collections-collectionName-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-responses-before.adoc[opts=optional]
+
+
+[#delete-v1-scopes-scopeName-collections-collectionName-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success.
+| 
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+| 404
+a| Scope or collection not found.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-security-before.adoc[opts=optional]
+
+
+[#delete-v1-scopes-scopeName-collections-collectionName-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}delete-v1-scopes-scopeName-collections-collectionName/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}delete-v1-scopes-scopeName-collections-collectionName/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/DELETE/DELETE.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/DELETE/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/delete-v1-scopes-scopeName-collections-collectionName/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-before.adoc[opts=optional]
+
+
+[#get-v1-buckets]
+==== List Databases or Buckets
+....
+GET /v1/buckets
+....
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-description-before.adoc[opts=optional]
+
+
+[#get-v1-buckets-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-description-begin.adoc[opts=optional]
+
+
+Gets information on all databases or buckets.
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-parameters-after.adoc[opts=optional]
+
+
+[#get-v1-buckets-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-responses-before.adoc[opts=optional]
+
+
+[#get-v1-buckets-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns an object containing a nested array of databases or buckets. 
+| <<BucketList>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-security-before.adoc[opts=optional]
+
+
+[#get-v1-buckets-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}get-v1-buckets/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get-v1-buckets/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/buckets/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/buckets/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-before.adoc[opts=optional]
+
+
+[#get-v1-buckets-bucketName]
+==== Get Database or Bucket Details
+....
+GET /v1/buckets/{bucketName}
+....
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-description-before.adoc[opts=optional]
+
+
+[#get-v1-buckets-bucketName-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-description-begin.adoc[opts=optional]
+
+
+Gets information for an individual database or bucket.
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *bucketName* +
+_required_
+a| The name of the database or bucket.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-parameters-after.adoc[opts=optional]
+
+
+[#get-v1-buckets-bucketName-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-responses-before.adoc[opts=optional]
+
+
+[#get-v1-buckets-bucketName-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns an object containing information about one database or bucket. 
+| <<BucketInfo>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-security-before.adoc[opts=optional]
+
+
+[#get-v1-buckets-bucketName-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}get-v1-buckets-bucketName/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get-v1-buckets-bucketName/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/buckets/{bucketName}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/buckets/\{bucketName\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/get-v1-buckets-bucketName/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-before.adoc[opts=optional]
+
+
+[#get-v1-scopes]
+==== List Scopes
+....
+GET /v1/scopes
+....
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-description-before.adoc[opts=optional]
+
+
+[#get-v1-scopes-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-description-begin.adoc[opts=optional]
+
+
+Gets information about all of the scopes in the current database or bucket.
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-parameters-after.adoc[opts=optional]
+
+
+[#get-v1-scopes-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-responses-before.adoc[opts=optional]
+
+
+[#get-v1-scopes-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns an object containing a nested array of scopes. 
+| <<ScopeList>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-security-before.adoc[opts=optional]
+
+
+[#get-v1-scopes-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}get-v1-scopes/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get-v1-scopes/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-before.adoc[opts=optional]
+
+
+[#get-v1-scopes-scopeName-collections]
+==== List Collections
+....
+GET /v1/scopes/{scopeName}/collections
+....
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-description-before.adoc[opts=optional]
+
+
+[#get-v1-scopes-scopeName-collections-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-description-begin.adoc[opts=optional]
+
+
+Gets information about all collections in the specified scope.
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-parameters-after.adoc[opts=optional]
+
+
+[#get-v1-scopes-scopeName-collections-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-responses-before.adoc[opts=optional]
+
+
+[#get-v1-scopes-scopeName-collections-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns an object containing a nested array of collections. 
+| <<CollectionList>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+| 404
+a| Scope not found.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-security-before.adoc[opts=optional]
+
+
+[#get-v1-scopes-scopeName-collections-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}get-v1-scopes-scopeName-collections/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get-v1-scopes-scopeName-collections/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/get-v1-scopes-scopeName-collections/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-before.adoc[opts=optional]
+
+
+[#listCollections]
+==== Get Collection Details
+....
+GET /v1/scopes/{scopeName}/collections/{collectionName}
+....
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-description-before.adoc[opts=optional]
+
+
+[#listCollections-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-description-begin.adoc[opts=optional]
+
+
+Gets information about an individual collection in the specified scope.
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *timeout* +
+_optional_
+a| A custom timeout for the operation.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String (duration)
+
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-parameters-after.adoc[opts=optional]
+
+
+[#listCollections-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-responses-before.adoc[opts=optional]
+
+
+[#listCollections-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns a nested object containing information about one collection. 
+| <<CollectionInfo>>
+
+| 400
+a| Bad request.
+| <<Error>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+| 404
+a| Scope or collection not found.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-security-before.adoc[opts=optional]
+
+
+[#listCollections-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}listCollections/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}listCollections/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/listCollections/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-before.adoc[opts=optional]
+
+
+[#listScopes]
+==== Get Scope Details
+....
+GET /v1/scopes/{scopeName}
+....
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-description-before.adoc[opts=optional]
+
+
+[#listScopes-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-description-begin.adoc[opts=optional]
+
+
+Gets information about an individual scope.
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *timeout* +
+_optional_
+a| A custom timeout for the operation.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String (duration)
+
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-parameters-after.adoc[opts=optional]
+
+
+[#listScopes-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-responses-before.adoc[opts=optional]
+
+
+[#listScopes-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns a nested object containing information about one scope. 
+| <<ScopeInfo>>
+
+| 400
+a| Bad request.
+| <<Error>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+| 404
+a| Scope not found.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-security-before.adoc[opts=optional]
+
+
+[#listScopes-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}listScopes/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}listScopes/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/listScopes/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-before.adoc[opts=optional]
+
+
+[#post-v1-scopes]
+==== Create Scope
+....
+POST /v1/scopes/{scopeName}
+....
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-description-before.adoc[opts=optional]
+
+
+[#post-v1-scopes-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-description-begin.adoc[opts=optional]
+
+
+Creates a scope.
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-parameters-after.adoc[opts=optional]
+
+
+[#post-v1-scopes-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-responses-before.adoc[opts=optional]
+
+
+[#post-v1-scopes-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success.
+| 
+
+| 400
+a| Scope already exists.
+| <<Error>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-security-before.adoc[opts=optional]
+
+
+[#post-v1-scopes-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}post-v1-scopes/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}post-v1-scopes/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-before.adoc[opts=optional]
+
+
+[#post-v1-scopes-scopeName-collections]
+==== Create Collection
+....
+POST /v1/scopes/{scopeName}/collections/{collectionName}
+....
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-description-before.adoc[opts=optional]
+
+
+[#post-v1-scopes-scopeName-collections-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-description-begin.adoc[opts=optional]
+
+
+Creates a collection in the specified scope.
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-parameters-after.adoc[opts=optional]
+
+
+[#post-v1-scopes-scopeName-collections-produces]
+===== Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-responses-before.adoc[opts=optional]
+
+
+[#post-v1-scopes-scopeName-collections-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success.
+| 
+
+| 400
+a| Bad request.
+| <<Error>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+| 404
+a| Scope not found.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-security-before.adoc[opts=optional]
+
+
+[#post-v1-scopes-scopeName-collections-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}post-v1-scopes-scopeName-collections/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}post-v1-scopes-scopeName-collections/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/post-v1-scopes-scopeName-collections/operation-after.adoc[opts=optional]
+
+
+
+[#Queries]
+ifdef::tag-queries[]
+=== {tag-queries}
+endif::[]
+ifndef::tag-queries[]
+=== Default
+endif::[]
+
+ifdef::toc-queries[]
+{toc-queries}
+endif::[]
+ifndef::toc-queries[]
+**{toc-title}**
+endif::[]
+
+[%hardbreaks]
+<<scopeQueryReadWrite>>
+
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-before.adoc[opts=optional]
+
+
+[#scopeQueryReadWrite]
+==== Run SQL++ Query
+....
+POST /v1/scopes/{scopeName}/query
+....
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-description-before.adoc[opts=optional]
+
+
+[#scopeQueryReadWrite-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-description-begin.adoc[opts=optional]
+
+
+Performs a SQL++ query in the specified scope.
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+[cols="2,3,1"]
+.Body Parameter
+|===
+|Name| Description| Schema
+
+a| *Body* +
+_required_
+a| 
+An object containing the SQL++ query and parameters.
+
+[%hardbreaks]
+ifeval::["{"query":"SELECT firstname FROM users"}" != "null"]
+*Example:* `{"query":"SELECT firstname FROM users"}`
+endif::[]
+// end
+
+| <<QueryReq>>
+
+
+|===
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *timeout* +
+_optional_
+a| A custom timeout for the operation.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String (duration)
+
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *preserveExpiry* +
+_optional_
+a| Specifies whether documents should keep their current expiration setting if modified by the request.
+
+When `true`, documents will keep any existing expiration setting if modified by the request.
+If the request explicitly specifies the document expiration, the statement overrides this parameter, and the expiration is changed.
+
+When `false`, document expiration is set to 0 if modified by the request, unless the request explicitly specifies the document expiration.
+
+Not supported for SQL++ statements in a transaction.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *readonly* +
+_optional_
+a| Controls whether a query can change a resulting recordset.
+
+If `readonly` is `true`, then the following statements are not allowed:
+
+`CREATE INDEX`,
+`DROP INDEX`,
+`INSERT`,
+`MERGE`,
+`UPDATE`,
+`UPSERT`.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *adhoc* +
+_optional_
+a| Whether to perform an ad-hoc statement or a prepared statement.
+
+When `true`, the query plan is not cached for reuse.
+If a prepared statement has been created from this query previously, the cached query plan is not reused.
+
+When `false`, if this query has not been executed before, the query plan is cached for reuse.
+If a prepared statement has been created from this query previously, the cached query plan is reused.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *flexIndex* +
+_optional_
+a| Enables full-text search index capabilities for this query.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *scanConsistency* +
+_optional_
+a| Specifies the consistency guarantee or constraint for index scanning.
+The valid values are:
+
+`notBounded` &mdash;
+No timestamp vector is used in the index scan.
+This is the fastest mode, because it avoids the costs of obtaining the vector and waiting for the index to catch up to the vector.
+
+`requestPlus` &mdash;
+This implements strong consistency per request.
+Before processing the request, a current vector is obtained.
+The vector is used as a lower bound for the statements in the request.
+If there are DML statements in the request, RYOW (read your own write) is also applied within the request.
+
+
+
+[%hardbreaks]
+*Values:* `notBounded`, `requestPlus`
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *scanWait* +
+_optional_
+a| Can be supplied when `scanConsistency` is set to `requestPlus`.
+
+Specifies how much time the client is willing to wait for the indexer to satisfy the required `scanConsistency` criteria.
+After receiving the scan request, if the indexer is unable to catch up within the `scanWait` time and initiate the scan, the indexer aborts with an error and the scan fails.
+
+The format includes an amount and a mandatory unit, e.g. `10ms` (10 milliseconds) or `0.5s` (half a second).
+
+Valid units are:
+`ns` (nanoseconds),
+`us` (microseconds),
+`ms` (milliseconds),
+`s` (seconds),
+`m` (minutes),
+`h` (hours).
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String (duration)
+
+
+a| *maxParallelism* +
+_optional_
+a| Specifies the maximum parallelism for the query.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Integer
+
+
+a| *pipelineBatch* +
+_optional_
+a| Controls the number of items execution operators can batch for fetch from the Data service.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Integer
+
+
+a| *pipelineCap* +
+_optional_
+a| Maximum number of items each execution operator can buffer between various operators.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Integer
+
+
+a| *scanCap* +
+_optional_
+a| Maximum buffered channel size between the indexer client and the query service for index scans.
+This parameter controls when to use scan backfill.
+
+Smaller values reduce garbage collection, while larger values reduce indexer backfill.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Integer
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-parameters-after.adoc[opts=optional]
+
+
+[#scopeQueryReadWrite-produces]
+===== Produces
+
+* application/json
+
+[#scopeQueryReadWrite-consumes]
+===== Consumes
+
+* application/json
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-responses-before.adoc[opts=optional]
+
+
+[#scopeQueryReadWrite-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns an object containing query results and metadata. 
+| <<QueryRes>>
+
+| 400
+a| Bad request.
+| <<Error>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-security-before.adoc[opts=optional]
+
+
+[#scopeQueryReadWrite-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}scopeQueryReadWrite/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}scopeQueryReadWrite/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/query/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/query/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/scopeQueryReadWrite/operation-after.adoc[opts=optional]
+
+
+
+[#Specification]
+ifdef::tag-specification[]
+=== {tag-specification}
+endif::[]
+ifndef::tag-specification[]
+=== Default
+endif::[]
+
+ifdef::toc-specification[]
+{toc-specification}
+endif::[]
+ifndef::toc-specification[]
+**{toc-title}**
+endif::[]
+
+[%hardbreaks]
+<<get-v1-spec>>
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-before.adoc[opts=optional]
+
+
+[#get-v1-spec]
+==== Get Specification
+....
+GET /v1/spec
+....
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-description-before.adoc[opts=optional]
+
+
+[#get-v1-spec-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-description-begin.adoc[opts=optional]
+
+
+Gets the OpenAPI specification document for this REST API.
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+
+[cols="2,3,1"]
+.Header Parameters
+|===
+|Name| Description| Schema
+
+a| *Accept* +
+_optional_
+a| The specification file type.
+The default option is a HTML file, generated by Redocly.
+
+
+
+[%hardbreaks]
+*Values:* `text/html`, `application/yaml`, `application/json`
+ifeval::["text/html" != "null"]
+*Default:* `text/html`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-parameters-after.adoc[opts=optional]
+
+
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-responses-before.adoc[opts=optional]
+
+
+[#get-v1-spec-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns a specification file in the required format. 
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-responses-after.adoc[opts=optional]
+
+
+
+include::{specDir}paths/get-v1-spec/operation-security-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}get-v1-spec/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}get-v1-spec/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/spec/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/spec/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/get-v1-spec/operation-after.adoc[opts=optional]
+
+
+
+[#Subdocuments]
+ifdef::tag-subdocuments[]
+=== {tag-subdocuments}
+endif::[]
+ifndef::tag-subdocuments[]
+=== Default
+endif::[]
+
+ifdef::toc-subdocuments[]
+{toc-subdocuments}
+endif::[]
+ifndef::toc-subdocuments[]
+**{toc-title}**
+endif::[]
+
+[%hardbreaks]
+<<lookupInDocument>>
+<<mutateInDocument>>
+
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-before.adoc[opts=optional]
+
+
+[#lookupInDocument]
+==== Partial Document Lookup
+....
+GET /v1/scopes/{scopeName}/collections/{collectionName}/subdocs/{docId}
+....
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-description-before.adoc[opts=optional]
+
+
+[#lookupInDocument-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-description-begin.adoc[opts=optional]
+
+
+Retrieves individual properties within a single document in the specified scope and collection.
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *docId* +
+_required_
+a| The unique ID of the document.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+[cols="2,3,1"]
+.Body Parameter
+|===
+|Name| Description| Schema
+
+a| *Body* +
+_required_
+a| 
+An array of objects, each of which contains the specifications for one subdocument lookup.
+
+[%hardbreaks]
+ifeval::["[{"type":"get","path":"string"}]" != "null"]
+*Example:* `[{"type":"get","path":"string"}]`
+endif::[]
+// end
+
+| <<SubdocReqLookup>>
+List
+
+
+|===
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *timeout* +
+_optional_
+a| A custom timeout for the operation.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String (duration)
+
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-parameters-after.adoc[opts=optional]
+
+
+[#lookupInDocument-produces]
+===== Produces
+
+* application/json
+
+[#lookupInDocument-consumes]
+===== Consumes
+
+* application/json
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-responses-before.adoc[opts=optional]
+
+
+[#lookupInDocument-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns an object containing a nested array of subdocuments. 
+| <<SubdocResLookup>>
+
+| 400
+a| Bad request.
+| <<Error>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+| 404
+a| Document not found.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-security-before.adoc[opts=optional]
+
+
+[#lookupInDocument-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}lookupInDocument/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}lookupInDocument/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/subdocs/{docId}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/subdocs/\{docId\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/lookupInDocument/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-before.adoc[opts=optional]
+
+
+[#mutateInDocument]
+==== Partial Document Mutation
+....
+POST /v1/scopes/{scopeName}/collections/{collectionName}/subdocs/{docId}
+....
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-begin.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-description-before.adoc[opts=optional]
+
+
+[#mutateInDocument-description]
+===== Description
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-description-begin.adoc[opts=optional]
+
+
+Modifies individual properties within a single document in the specified scope and collection.
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-description-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-parameters-before.adoc[opts=optional]
+
+
+===== Parameters
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[cols="2,3,1"]
+.Path Parameters
+|===
+|Name| Description| Schema
+
+a| *scopeName* +
+_required_
+a| The name of the scope.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *collectionName* +
+_required_
+a| The name of the collection.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *docId* +
+_required_
+a| The unique ID of the document.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+[cols="2,3,1"]
+.Body Parameter
+|===
+|Name| Description| Schema
+
+a| *Body* +
+_required_
+a| 
+An array of objects, each of which contains information for one subdocument mutation.
+
+[%hardbreaks]
+ifeval::["[{"type":"replace","path":"username","value":"Thomas"},{"type":"remove","path":"age","value":"foo"}]" != "null"]
+*Example:* `[{"type":"replace","path":"username","value":"Thomas"},{"type":"remove","path":"age","value":"foo"}]`
+endif::[]
+// end
+
+| <<SubdocReqMutate>>
+List
+
+
+|===
+
+
+
+
+[cols="2,3,1"]
+.Query Parameters
+|===
+|Name| Description| Schema
+
+a| *timeout* +
+_optional_
+a| A custom timeout for the operation.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String (duration)
+
+
+a| *pretty* +
+_optional_
+a| Whether the output should be formatted with indentations and newlines.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *meta* +
+_optional_
+a| Whether metadata should be included in the response.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *expiry* +
+_optional_
+a| The expiration time of the document.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *preserveExpiry* +
+_optional_
+a| Specifies whether documents should keep their current expiration setting if modified by the request.
+
+When `true`, documents will keep any existing expiration setting if modified by the request.
+If the request explicitly specifies the document expiration, the statement overrides this parameter, and the expiration is changed.
+
+When `false`, document expiration is set to 0 if modified by the request, unless the request explicitly specifies the document expiration.
+
+Not supported for SQL++ statements in a transaction.
+
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
+
+
+a| *durability* +
+_optional_
+a| The level of durability for mutations produced by the request.
+
+
+[%hardbreaks]
+*Values:* `majority`, `majorityPersistActive`, `persistMajority`
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *consistencyToken* +
+_optional_
+a| An opaque token that can be used for operations that require coordinated consistency.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+a| *storeSemantics* +
+_optional_
+a| The outer document store semantics.
+
+
+[%hardbreaks]
+*Values:* `replace`, `upsert`, `insert`
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| String
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-parameters-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-parameters-after.adoc[opts=optional]
+
+
+[#mutateInDocument-produces]
+===== Produces
+
+* application/json
+
+[#mutateInDocument-consumes]
+===== Consumes
+
+* application/json
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-responses-before.adoc[opts=optional]
+
+
+[#mutateInDocument-responses]
+===== Responses
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="1,3,1"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| Success. Returns an object containing a nested array of subdocuments. 
+| <<SubdocResMutate>>
+
+| 400
+a| Bad request.
+| <<Error>>
+
+| 401
+a| Unauthorized.
+| <<Error>>
+
+| 404
+a| Document not found.
+| <<Error>>
+
+| 409
+a| Document already exists.
+| <<Error>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-responses-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-security-before.adoc[opts=optional]
+
+
+[#mutateInDocument-security]
+===== Security
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-security-begin.adoc[opts=optional]
+
+
+[cols="1,3"]
+|===
+| Type | Name
+
+| http (basic)
+| <<Basic>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-security-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-security-after.adoc[opts=optional]
+
+
+:leveloffset: +4
+
+include::{snippetDir}mutateInDocument/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}mutateInDocument/http-response.adoc[opts=optional]
+
+:leveloffset: -4
+
+
+// file not found, no * wiremock data link :v1/scopes/{scopeName}/collections/{collectionName}/subdocs/{docId}/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}v1/scopes/\{scopeName\}/collections/\{collectionName\}/subdocs/\{docId\}/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-end.adoc[opts=optional]
+
+
+// markup not found, no include::{specDir}paths/mutateInDocument/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
+
+
+[#models]
+== Definitions
+
+:desc-BucketSchema: The properties of a database or bucket.
+:desc-BucketSchemaCouchbase: The properties of a Couchbase database or bucket.
+:desc-BucketSchemaEphemeral: The properties of a memory-only database or bucket.
+:desc-CollectionSchema: An object which contains information about one collection.
+:desc-DocLookupDefaultMeta: A wrapper object containing document metadata. Only included if requested. 
+:desc-DocLookupReplicaMeta: A wrapper object containing replicas metadata. Only included if requested. 
+:desc-DocLookupShareMetaAPI: A nested object containing API metadata.
+:desc-DocModMeta: A wrapper object containing document metadata. Only included if requested. 
+:desc-DocModMetaAPI: A nested object containing API metadata.
+:desc-QueryReqParams: Specifies dynamic parameters for the query.  May be either an object containing named parameters, or an array of positional parameters. 
+:desc-QueryResMeta: A wrapper object containing query metadata. Only included if requested. 
+:desc-QueryResMetaAPI: A nested object containing API metadata.
+:desc-QueryResMetaAPIMetrics: An object containing query response metrics.
+:desc-ScopeSchema: An object which contains information about one scope.
+:desc-SystemMeta: A wrapper object containing system metadata. Only included if requested. 
+:desc-SystemMetaLogs: A nested object containing log metadata.
+:count-models: 41
+
+
+// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 10]
+[.two-columns]
+endif::[]
+[%hardbreaks]
+<<BucketInfo>>
+<<BucketList>>
+<<BucketSchema>>
+<<BucketXtraCouchbase>>
+<<BucketXtraEphemeral>>
+<<BulkReq>>
+<<BulkResLookup>>
+<<BulkResLookupSchema>>
+<<BulkResMod>>
+<<BulkResModSchema>>
+<<CollectionInfo>>
+<<CollectionList>>
+<<CollectionSchema>>
+<<DocLookup>>
+<<DocLookupDefault>>
+<<DocLookupDefaultMeta>>
+<<DocLookupReplica>>
+<<DocLookupReplicaMeta>>
+<<DocLookupShareMetaAPI>>
+<<DocMod>>
+<<DocModMeta>>
+<<DocModMetaAPI>>
+<<Error>>
+<<QueryReq>>
+<<QueryReqParams>>
+<<QueryRes>>
+<<QueryResMeta>>
+<<QueryResMetaAPI>>
+<<QueryResMetaAPIMetrics>>
+<<ScopeInfo>>
+<<ScopeList>>
+<<ScopeSchema>>
+<<SubdocReqLookup>>
+<<SubdocReqMutate>>
+<<SubdocResLookup>>
+<<SubdocResMutate>>
+<<SubdocSchema>>
+<<SystemMeta>>
+<<SystemMetaLogs>>
+
+
+
+// markup not found, no include::{specDir}definitions/BucketInfo/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#BucketInfo]
+=== Bucket Information
+
+
+// markup not found, no include::{specDir}definitions/BucketInfo/definition-begin.adoc[opts=optional]
+
+
+[#fields-BucketInfo]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *bucket* +
+_required_
+a| 
+ifdef::desc-BucketSchema[]
+{desc-BucketSchema}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<BucketSchema>>
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-SystemMeta[]
+{desc-SystemMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<SystemMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/BucketInfo/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/BucketInfo/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/BucketList/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#BucketList]
+=== Bucket List
+
+
+// markup not found, no include::{specDir}definitions/BucketList/definition-begin.adoc[opts=optional]
+
+
+[#fields-BucketList]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *buckets* +
+_required_
+a| An array of objects, each of which contains information about one database or bucket.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<BucketSchema>>
+List
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-SystemMeta[]
+{desc-SystemMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<SystemMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/BucketList/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/BucketList/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/BucketSchema/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#BucketSchema]
+=== Bucket Details
+
+
+// markup not found, no include::{specDir}definitions/BucketSchema/definition-begin.adoc[opts=optional]
+
+
+[#fields-BucketSchema]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *Name* +
+_optional_
+a| The name of the bucket or database.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["api-test" != "null"]
+*Example:* `api-test`
+endif::[]
+// end
+| String
+
+a| *FlushEnabled* +
+_optional_
+a| Whether flushing is enabled for the bucket.
+
+[%hardbreaks]
+ifeval::["false" != "null"]
+*Default:* `false`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Boolean
+
+a| *RAMQuotaMB* +
+_optional_
+a| The amount of memory allocated to the bucket, per node, in MiB.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+*Minimum:* `100`
+ifeval::["1024" != "null"]
+*Example:* `1024`
+endif::[]
+// end
+| Integer
+
+a| *NumReplicas* +
+_optional_
+a| The number of replicas for the bucket.
+
+[%hardbreaks]
+ifeval::["1" != "null"]
+*Default:* `1`
+endif::[]
+*Minimum:* `1`
+*Maximum:* `4`
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Integer
+
+a| *BucketType* +
+_optional_
+a| The type of bucket.
+Different properties may be returned, depending on the bucket type.
+
+* `membase` &mdash; A Couchbase bucket.
+* `ephemeral` &mdash; A memory-only bucket.
+
+
+[%hardbreaks]
+*Values:* `membase`, `ephemeral`
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *MaxTTL* +
+_optional_
+a| The bucket's time to live (TTL) in seconds.
+This imposes a maximum lifespan on items within a bucket, and thus ensures the expiration of such items, once the specified period is complete.
+
+
+[%hardbreaks]
+ifeval::["0" != "null"]
+*Default:* `0`
+endif::[]
+*Minimum:* `0`
+*Maximum:* `2147483648`
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Integer (int32)
+
+a| *MaxExpiry* +
+_optional_
+a| The maximum expiry.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["0" != "null"]
+*Example:* `0`
+endif::[]
+// end
+| BigDecimal
+
+a| *CompressionMode* +
+_optional_
+a| The compression mode for the bucket.
+The possible values are:
+
+* `off`: Always send compressed items in uncompressed form.
+* `passive`: Send compressed items in uncompressed form by default.
+* `active`: Send compressed items in compressed form by default.
+
+
+[%hardbreaks]
+*Values:* `off`, `passive`, `active`
+ifeval::["passive" != "null"]
+*Default:* `passive`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *MinimumDurabilityLevel* +
+_optional_
+a| The minimum level at which all writes to the bucket must occur.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["1" != "null"]
+*Example:* `1`
+endif::[]
+// end
+| BigDecimal
+
+a| *StorageBackend* +
+_optional_
+a| The storage backend used by the bucket.
+
+[%hardbreaks]
+*Values:* `couchstore`, `magma`
+ifeval::["couchstore" != "null"]
+*Default:* `couchstore`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+|===
+This schema has different properties, depending on the value of *BucketType*:
+
+* `ephemeral` -- <<BucketSchemaEphemeral>>
+* `membase` -- <<BucketSchemaCouchbase>>
+
+
+// markup not found, no include::{specDir}definitions/BucketSchema/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/BucketSchema/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/BucketSchemaCouchbase/definition-before.adoc[opts=optional]
+
+
+[discrete#BucketSchemaCouchbase]
+==== Couchbase Buckets
+
+
+// markup not found, no include::{specDir}definitions/BucketSchemaCouchbase/definition-begin.adoc[opts=optional]
+
+
+All of the following:
+
+* <<BucketSchema>>
+
+* <<BucketXtraCouchbase>>
+
+
+
+// markup not found, no include::{specDir}definitions/BucketSchemaCouchbase/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/BucketSchemaCouchbase/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/BucketSchemaEphemeral/definition-before.adoc[opts=optional]
+
+
+[discrete#BucketSchemaEphemeral]
+==== Memory-Only Buckets
+
+
+// markup not found, no include::{specDir}definitions/BucketSchemaEphemeral/definition-begin.adoc[opts=optional]
+
+
+All of the following:
+
+* <<BucketSchema>>
+
+* <<BucketXtraEphemeral>>
+
+
+
+// markup not found, no include::{specDir}definitions/BucketSchemaEphemeral/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/BucketSchemaEphemeral/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/BucketXtraCouchbase/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#BucketXtraCouchbase]
+=== Bucket Details for Couchbase Buckets
+
+
+// markup not found, no include::{specDir}definitions/BucketXtraCouchbase/definition-begin.adoc[opts=optional]
+
+
+[#fields-BucketXtraCouchbase]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *ReplicaIndexDisabled* +
+_optional_
+a| Specifies whether view indexes are replicated.
+Only valid for a Couchbase bucket.
+
+When `true`, replica view indexes are disabled.
+When `false`, view indexes are replicated.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["false" != "null"]
+*Example:* `false`
+endif::[]
+// end
+| Boolean
+
+a| *EvictionPolicy* +
+_optional_
+a| The eviction policy of the bucket or database.
+For a Couchbase bucket, the possible values are:
+
+* `valueOnly`: The bucket only ejects data when it removes a document from memory.
+* `fullEviction`: The bucket ejects data, metadata, keys, and values when it removes a document from memory.
+
+
+[%hardbreaks]
+*Values:* `valueOnly`, `fullEviction`
+ifeval::["valueOnly" != "null"]
+*Default:* `valueOnly`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/BucketXtraCouchbase/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/BucketXtraCouchbase/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/BucketXtraEphemeral/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#BucketXtraEphemeral]
+=== Bucket Details for Memory-Only Buckets
+
+
+// markup not found, no include::{specDir}definitions/BucketXtraEphemeral/definition-begin.adoc[opts=optional]
+
+
+[#fields-BucketXtraEphemeral]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *EvictionPolicy* +
+_optional_
+a| The eviction policy of the bucket or database.
+For a memory-only bucket, the possible values are:
+
+* `noEviction`: If the bucket reaches its memory quota, the bucket doesn't eject any existing data and attempts to cache new data fail.
+* `nruEviction`: If the bucket reaches its memory quota, the bucket ejects older documents from RAM to make space for new data.
+
+
+[%hardbreaks]
+*Values:* `noEviction`, `nruEviction`
+ifeval::["noEviction" != "null"]
+*Default:* `noEviction`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/BucketXtraEphemeral/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/BucketXtraEphemeral/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/BulkReq/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#BulkReq]
+=== Bulk Modify Request
+
+
+// markup not found, no include::{specDir}definitions/BulkReq/definition-begin.adoc[opts=optional]
+
+
+[#fields-BulkReq]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *id* +
+_required_
+a| The ID of a document.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *value* +
+_required_
+a| The document value.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| AnyType
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/BulkReq/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/BulkReq/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/BulkResLookup/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#BulkResLookup]
+=== Bulk Lookup Response
+
+
+// markup not found, no include::{specDir}definitions/BulkResLookup/definition-begin.adoc[opts=optional]
+
+
+[#fields-BulkResLookup]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *docs* +
+_required_
+a| An array of objects, each of which contains information about one document.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<BulkResLookupSchema>>
+List
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-SystemMeta[]
+{desc-SystemMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<SystemMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/BulkResLookup/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/BulkResLookup/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/BulkResLookupSchema/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#BulkResLookupSchema]
+=== Bulk Lookup Details
+
+
+// markup not found, no include::{specDir}definitions/BulkResLookupSchema/definition-begin.adoc[opts=optional]
+
+
+[#fields-BulkResLookupSchema]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *id* +
+_required_
+a| The ID of a document.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *doc* +
+_optional_
+a| The content of a single document. Not included if just checking for the existence of the document.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| AnyType
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-DocModMeta[]
+{desc-DocModMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<DocModMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/BulkResLookupSchema/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/BulkResLookupSchema/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/BulkResMod/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#BulkResMod]
+=== Bulk Modify Response
+
+
+// markup not found, no include::{specDir}definitions/BulkResMod/definition-begin.adoc[opts=optional]
+
+
+[#fields-BulkResMod]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *docs* +
+_optional_
+a| An array of objects, each of which contains information about one document.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<BulkResModSchema>>
+List
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-SystemMeta[]
+{desc-SystemMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<SystemMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/BulkResMod/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/BulkResMod/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/BulkResModSchema/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#BulkResModSchema]
+=== Bulk Modify Details
+
+
+// markup not found, no include::{specDir}definitions/BulkResModSchema/definition-begin.adoc[opts=optional]
+
+
+[#fields-BulkResModSchema]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *id* +
+_required_
+a| The ID of a document.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/BulkResModSchema/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/BulkResModSchema/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/CollectionInfo/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#CollectionInfo]
+=== Collection Information
+
+
+// markup not found, no include::{specDir}definitions/CollectionInfo/definition-begin.adoc[opts=optional]
+
+
+[#fields-CollectionInfo]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *collection* +
+_required_
+a| 
+ifdef::desc-CollectionSchema[]
+{desc-CollectionSchema}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<CollectionSchema>>
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-SystemMeta[]
+{desc-SystemMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<SystemMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/CollectionInfo/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/CollectionInfo/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/CollectionList/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#CollectionList]
+=== Collection List
+
+
+// markup not found, no include::{specDir}definitions/CollectionList/definition-begin.adoc[opts=optional]
+
+
+[#fields-CollectionList]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *collections* +
+_required_
+a| An array of objects, each of which contains information about one collection.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<CollectionSchema>>
+List
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-SystemMeta[]
+{desc-SystemMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<SystemMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/CollectionList/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/CollectionList/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/CollectionSchema/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#CollectionSchema]
+=== Collection Details
+
+
+// markup not found, no include::{specDir}definitions/CollectionSchema/definition-begin.adoc[opts=optional]
+
+
+[#fields-CollectionSchema]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *Name* +
+_optional_
+a| The name of the collection.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["hotel" != "null"]
+*Example:* `hotel`
+endif::[]
+// end
+| String
+
+a| *ScopeName* +
+_optional_
+a| The name of the scope which contains the collection.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["inventory" != "null"]
+*Example:* `inventory`
+endif::[]
+// end
+| String
+
+a| *MaxExpiry* +
+_optional_
+a| The maximum expiry for the collection.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["0" != "null"]
+*Example:* `0`
+endif::[]
+// end
+| BigDecimal
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/CollectionSchema/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/CollectionSchema/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/DocLookup/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#DocLookup]
+=== Document Lookup Response
+
+
+// markup not found, no include::{specDir}definitions/DocLookup/definition-begin.adoc[opts=optional]
+
+
+One of the following:
+
+* <<DocLookupDefault>>
+
+* <<DocLookupReplica>>
+
+
+
+// markup not found, no include::{specDir}definitions/DocLookup/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/DocLookup/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/DocLookupDefault/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#DocLookupDefault]
+=== Document Lookup Default
+
+
+// markup not found, no include::{specDir}definitions/DocLookupDefault/definition-begin.adoc[opts=optional]
+
+
+[#fields-DocLookupDefault]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *doc* +
+_required_
+a| The content of a single document.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| AnyType
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-DocLookupDefaultMeta[]
+{desc-DocLookupDefaultMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<DocLookupDefaultMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/DocLookupDefault/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/DocLookupDefault/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/DocLookupDefaultMeta/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#DocLookupDefaultMeta]
+=== Document Lookup Default Metadata
+
+
+// markup not found, no include::{specDir}definitions/DocLookupDefaultMeta/definition-begin.adoc[opts=optional]
+
+
+[#fields-DocLookupDefaultMeta]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *api* +
+_required_
+a| 
+ifdef::desc-DocLookupShareMetaAPI[]
+{desc-DocLookupShareMetaAPI}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<DocLookupShareMetaAPI>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/DocLookupDefaultMeta/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/DocLookupDefaultMeta/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/DocLookupReplica/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#DocLookupReplica]
+=== Document Lookup Replicas
+
+
+// markup not found, no include::{specDir}definitions/DocLookupReplica/definition-begin.adoc[opts=optional]
+
+
+[#fields-DocLookupReplica]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *docs* +
+_required_
+a| An array of documents, each representing a currently available replica.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| AnyType
+List
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-DocLookupReplicaMeta[]
+{desc-DocLookupReplicaMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<DocLookupReplicaMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/DocLookupReplica/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/DocLookupReplica/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/DocLookupReplicaMeta/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#DocLookupReplicaMeta]
+=== Document Lookup Replicas Metadata
+
+
+// markup not found, no include::{specDir}definitions/DocLookupReplicaMeta/definition-begin.adoc[opts=optional]
+
+
+[#fields-DocLookupReplicaMeta]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *api* +
+_required_
+a| An array of objects, each containing document metadata.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<DocLookupShareMetaAPI>>
+List
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/DocLookupReplicaMeta/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/DocLookupReplicaMeta/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/DocLookupShareMetaAPI/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#DocLookupShareMetaAPI]
+=== Document Concurrency and Expiry
+
+
+// markup not found, no include::{specDir}definitions/DocLookupShareMetaAPI/definition-begin.adoc[opts=optional]
+
+
+[#fields-DocLookupShareMetaAPI]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *consistencyToken* +
+_optional_
+a| The consistency token which can be used for optimistic concurrency.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *expiry* +
+_optional_
+a| The document expiry.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String (duration)
+
+a| *expiryTime* +
+_optional_
+a| The date and time when the document will expire.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Date (date-time)
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/DocLookupShareMetaAPI/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/DocLookupShareMetaAPI/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/DocMod/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#DocMod]
+=== Document Modify Response
+
+
+// markup not found, no include::{specDir}definitions/DocMod/definition-begin.adoc[opts=optional]
+
+
+[#fields-DocMod]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-DocModMeta[]
+{desc-DocModMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<DocModMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/DocMod/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/DocMod/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/DocModMeta/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#DocModMeta]
+=== Document Modify Metadata
+
+
+// markup not found, no include::{specDir}definitions/DocModMeta/definition-begin.adoc[opts=optional]
+
+
+[#fields-DocModMeta]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *api* +
+_required_
+a| 
+ifdef::desc-DocModMetaAPI[]
+{desc-DocModMetaAPI}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<DocModMetaAPI>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/DocModMeta/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/DocModMeta/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/DocModMetaAPI/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#DocModMetaAPI]
+=== Document Concurrency
+
+
+// markup not found, no include::{specDir}definitions/DocModMetaAPI/definition-begin.adoc[opts=optional]
+
+
+[#fields-DocModMetaAPI]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *consistencyToken* +
+_optional_
+a| The consistency token which can be used for optimistic concurrency.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/DocModMetaAPI/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/DocModMetaAPI/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Error/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#Error]
+=== Error
+
+
+// markup not found, no include::{specDir}definitions/Error/definition-begin.adoc[opts=optional]
+
+
+[#fields-Error]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *code* +
+_required_
+a| The unique error code.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| BigDecimal
+
+a| *message* +
+_required_
+a| The human-readable description of the error.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *hints* +
+_optional_
+a| Potential suggestions on how to remedy the error, depending on the cause.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+List
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/Error/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/Error/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/QueryReq/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#QueryReq]
+=== Query Request
+
+
+// markup not found, no include::{specDir}definitions/QueryReq/definition-begin.adoc[opts=optional]
+
+
+[#fields-QueryReq]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *query* +
+_required_
+a| The text of the SQL++ query.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *parameters* +
+_optional_
+a| 
+ifdef::desc-QueryReqParams[]
+{desc-QueryReqParams}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<QueryReqParams>>
+
+a| *raw* +
+_optional_
+a| An object containing the names and values for any parameters which do not have an explicit query property.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Object
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/QueryReq/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/QueryReq/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/QueryReqParams/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#QueryReqParams]
+=== Query Parameters
+
+
+// markup not found, no include::{specDir}definitions/QueryReqParams/definition-begin.adoc[opts=optional]
+
+
+One of the following:
+
+* Object
+
+* AnyType
+List
+
+
+
+// markup not found, no include::{specDir}definitions/QueryReqParams/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/QueryReqParams/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/QueryRes/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#QueryRes]
+=== Query Response
+
+
+// markup not found, no include::{specDir}definitions/QueryRes/definition-begin.adoc[opts=optional]
+
+
+[#fields-QueryRes]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *docs* +
+_required_
+a| An array of document values.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| AnyType
+List
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-QueryResMeta[]
+{desc-QueryResMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<QueryResMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/QueryRes/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/QueryRes/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/QueryResMeta/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#QueryResMeta]
+=== Query Metadata
+
+
+// markup not found, no include::{specDir}definitions/QueryResMeta/definition-begin.adoc[opts=optional]
+
+
+[#fields-QueryResMeta]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *api* +
+_required_
+a| 
+ifdef::desc-QueryResMetaAPI[]
+{desc-QueryResMetaAPI}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<QueryResMetaAPI>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/QueryResMeta/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/QueryResMeta/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/QueryResMetaAPI/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#QueryResMetaAPI]
+=== Query API Metadata
+
+
+// markup not found, no include::{specDir}definitions/QueryResMetaAPI/definition-begin.adoc[opts=optional]
+
+
+[#fields-QueryResMetaAPI]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *requestID* +
+_optional_
+a| A unique identifier for the response.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| UUID (UUID)
+
+a| *clientContextID* +
+_optional_
+a| The client context ID of the request, if one was supplied.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *status* +
+_optional_
+a| The status of the request.
+
+[%hardbreaks]
+*Values:* `success`, `running`, `errors`, `completed`, `stopped`, `timeout`, `fatal`
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *metrics* +
+_optional_
+a| 
+ifdef::desc-QueryResMetaAPIMetrics[]
+{desc-QueryResMetaAPIMetrics}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<QueryResMetaAPIMetrics>>
+
+a| *signature* +
+_optional_
+a| The schema of the results. Present only when the query completes successfully.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Object
+
+a| *errors* +
+_optional_
+a| An array of 0 or more error objects. If an error occurred during processing of the request, it will be represented by an error object in this list.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Object
+List
+
+a| *warnings* +
+_optional_
+a| An array of 0 or more warning objects. If a warning occurred during processing of the request, it is represented by a warning object in this list.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Object
+List
+
+a| *profile* +
+_optional_
+a| An object containing statistics and details about various phases of the query plan and execution. Also includes a full query plan with timing and information about the number of processed documents at each phase.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Object
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/QueryResMetaAPI/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/QueryResMetaAPI/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/QueryResMetaAPIMetrics/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#QueryResMetaAPIMetrics]
+=== Query Response Metrics
+
+
+// markup not found, no include::{specDir}definitions/QueryResMetaAPIMetrics/definition-begin.adoc[opts=optional]
+
+
+[#fields-QueryResMetaAPIMetrics]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *elapsedTime* +
+_optional_
+a| The total time taken for the request, that is the time from when the request was received until the results were returned.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String (duration)
+
+a| *executionTime* +
+_optional_
+a| The time taken for the execution of the request, that is the time from when query execution started until the results were returned.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String (duration)
+
+a| *sortCount* +
+_optional_
+a| The number of objects that were sorted.
+Present only if the request includes `ORDER BY`.
+
+If a query includes `ORDER BY`, `LIMIT`, or `OFFSET` clauses, an application can use this value to give the overall number of results in a message such as "page 1 of N".
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Integer
+
+a| *resultCount* +
+_optional_
+a| The total number of objects in the results.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Integer
+
+a| *resultSize* +
+_optional_
+a| The total number of bytes in the results.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Integer
+
+a| *mutationCount* +
+_optional_
+a| The number of mutations that were made during the request.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Integer
+
+a| *errorCount* +
+_optional_
+a| The number of errors that occurred during the request.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Integer
+
+a| *warningCount* +
+_optional_
+a| The number of warnings that occurred during the request.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| Integer
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/QueryResMetaAPIMetrics/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/QueryResMetaAPIMetrics/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ScopeInfo/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#ScopeInfo]
+=== Scope Information
+
+
+// markup not found, no include::{specDir}definitions/ScopeInfo/definition-begin.adoc[opts=optional]
+
+
+[#fields-ScopeInfo]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *scope* +
+_required_
+a| 
+ifdef::desc-ScopeSchema[]
+{desc-ScopeSchema}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<ScopeSchema>>
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-SystemMeta[]
+{desc-SystemMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<SystemMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/ScopeInfo/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/ScopeInfo/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ScopeList/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#ScopeList]
+=== Scope List
+
+
+// markup not found, no include::{specDir}definitions/ScopeList/definition-begin.adoc[opts=optional]
+
+
+[#fields-ScopeList]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *scopes* +
+_required_
+a| An array of objects, each of which contains information about one scope.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<ScopeSchema>>
+List
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-SystemMeta[]
+{desc-SystemMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<SystemMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/ScopeList/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/ScopeList/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ScopeSchema/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#ScopeSchema]
+=== Scope Details
+
+
+// markup not found, no include::{specDir}definitions/ScopeSchema/definition-begin.adoc[opts=optional]
+
+
+[#fields-ScopeSchema]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *name* +
+_optional_
+a| The name of the scope.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *collections* +
+_optional_
+a| An array of objects, each of which contains information about one collection.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<CollectionSchema>>
+List
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/ScopeSchema/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/ScopeSchema/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/SubdocReqLookup/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#SubdocReqLookup]
+=== Subdocument Lookup Request
+
+
+// markup not found, no include::{specDir}definitions/SubdocReqLookup/definition-begin.adoc[opts=optional]
+
+
+[#fields-SubdocReqLookup]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *type* +
+_required_
+a| The type of action to perform.
+
+* `get` &mdash; Fetch the subdocument from the given path.
+* `exists` &mdash; Check whether the given path exists.
+* `count` &mdash; Count the number of elements in the array or object at the given path.
+
+
+[%hardbreaks]
+*Values:* `get`, `exists`, `count`
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *path* +
+_required_
+a| The location within the document where the action should be performed, using SQL++ nested path syntax.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/SubdocReqLookup/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/SubdocReqLookup/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/SubdocReqMutate/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#SubdocReqMutate]
+=== Subdocument Mutation Request
+
+
+// markup not found, no include::{specDir}definitions/SubdocReqMutate/definition-begin.adoc[opts=optional]
+
+
+[#fields-SubdocReqMutate]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *type* +
+_required_
+a| The type of action to perform.
+
+* `replace` &mdash; Replace the value at the specified path.
+* `insert` &mdash; Add the value at the given path, if the given path does not exist.
+* `remove` &mdash; Remove the specified path.
+* `upsert` &mdash; Unconditionally set the value at the path.
+* `arrayAppend` &mdash; Add the value at the end of the array indicated by the path.
+* `arrayPrepend` &mdash; Add the value at the start of the array indicated by the path.
+* `arrayInsert` &mdash; Add the value at the given array index.
+  Path must include index, e.g. `my.list[4]`.
+
+* `arrayAddUnique` &mdash; Add the value to the array indicated by the path, if the value is not already in the array.
+* `increment` or `decrement` &mdash; increase or decrease a numeric value by the value provided.
+
+
+[%hardbreaks]
+*Values:* `replace`, `insert`, `remove`, `upsert`, `arrayAppend`, `arrayPrepend`, `arrayInsert`, `arrayAddUnique`, `increment`, `decrement`
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *path* +
+_required_
+a| The location within the document where the action should be performed, using SQL++ nested path syntax.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *value* +
+_optional_
+a| The subdocument value.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| AnyType
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/SubdocReqMutate/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/SubdocReqMutate/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/SubdocResLookup/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#SubdocResLookup]
+=== Subdocument Lookup Response
+
+
+// markup not found, no include::{specDir}definitions/SubdocResLookup/definition-begin.adoc[opts=optional]
+
+
+[#fields-SubdocResLookup]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *subdocs* +
+_required_
+a| An array of objects, each of which contains information about one subdocument.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<SubdocSchema>>
+List
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-DocModMeta[]
+{desc-DocModMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<DocModMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/SubdocResLookup/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/SubdocResLookup/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/SubdocResMutate/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#SubdocResMutate]
+=== Subdocument Mutation Response
+
+
+// markup not found, no include::{specDir}definitions/SubdocResMutate/definition-begin.adoc[opts=optional]
+
+
+[#fields-SubdocResMutate]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *subdocs* +
+_required_
+a| An array of objects, each of which contains information about one subdocument.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<SubdocSchema>>
+List
+
+a| *meta* +
+_optional_
+a| 
+ifdef::desc-DocModMeta[]
+{desc-DocModMeta}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<DocModMeta>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/SubdocResMutate/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/SubdocResMutate/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/SubdocSchema/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#SubdocSchema]
+=== Subdocument Details
+
+
+// markup not found, no include::{specDir}definitions/SubdocSchema/definition-begin.adoc[opts=optional]
+
+
+[#fields-SubdocSchema]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *type* +
+_required_
+a| The type of action that was performed on the subdocument.
+
+[%hardbreaks]
+*Values:* `get`, `exists`, `count`, `replace`, `insert`, `remove`, `upsert`, `arrayAppend`, `arrayPrepend`, `arrayInsert`, `arrayAddUnique`, `increment`, `decrement`
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *path* +
+_required_
+a| The location of the subdocument within the document, using SQL++ nested path syntax.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *content* +
+_optional_
+a| For `get` lookup requests, the subdocument value.
+
+For `exists` lookup requests, a boolean.
+
+For `count`, `increment`, or `decrement` requests, an integer.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| AnyType
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/SubdocSchema/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/SubdocSchema/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/SystemMeta/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#SystemMeta]
+=== System Metadata
+
+
+// markup not found, no include::{specDir}definitions/SystemMeta/definition-begin.adoc[opts=optional]
+
+
+[#fields-SystemMeta]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *logs* +
+_required_
+a| 
+ifdef::desc-SystemMetaLogs[]
+{desc-SystemMetaLogs}
+endif::[]
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| <<SystemMetaLogs>>
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/SystemMeta/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/SystemMeta/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/SystemMetaLogs/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#SystemMetaLogs]
+=== System Metadata Logs
+
+
+// markup not found, no include::{specDir}definitions/SystemMetaLogs/definition-begin.adoc[opts=optional]
+
+
+[#fields-SystemMetaLogs]
+[cols="1,4,1"]
+|===
+| Name| Description| Schema
+
+a| *elapsedTime* +
+_optional_
+a| The total time taken for the request, that is the time from when the request was received until the results were returned.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String (duration)
+
+a| *requestAgent* +
+_optional_
+a| The agent used to make the request.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+a| *requestPath* +
+_optional_
+a| The path of the request.
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+ifeval::["null" != "null"]
+*Example:* `null`
+endif::[]
+// end
+| String
+
+|===
+
+
+// markup not found, no include::{specDir}definitions/SystemMetaLogs/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/SystemMetaLogs/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
+
+
+[[security]]
+== Security
+
+
+// markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Basic/security-scheme-before.adoc[opts=optional]
+
+
+[[security-Basic]]
+=== Basic
+
+
+// markup not found, no include::{specDir}security/Basic/security-scheme-begin.adoc[opts=optional]
+
+
+
+[%hardbreaks]
+__Type__ : http
+
+
+
+
+include::{specDir}security/Basic/security-scheme-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/Basic/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
