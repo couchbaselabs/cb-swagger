@@ -16,3 +16,16 @@ curl -v -u Administrator:password \
 
 NOTE: The `certificate`, `clientCertificate`, and `clientKey` parameters use command substitution with the `cat` command to return the _content_ of the referenced files.
 The content of these files is then URL-encoded to escape any special characters.
+
+The example below edits the Google Cloud Storage link named `myGcsLink` in the `Default` scope to use Google Application Default Credentials for authentication.
+
+*Curl request*
+
+``` sh
+curl -v -u Administrator:password \
+     -X PUT \
+     "http://localhost:8095/analytics/link/Default/myGcsLink" \
+     -d type=gcs \
+     -d applicationDefaultCredentials=true
+```
+
