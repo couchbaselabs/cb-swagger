@@ -43,6 +43,8 @@ ifdef::basebackend-html[]
 endif::[]
 
 
+This section describes the properties consumed and returned by this REST API.
+
 **{toc-title}**
 
 * <<_clusters>>
@@ -143,7 +145,12 @@ __optional__|The value of the query setting Scan Consistency used for the query.
 |**serviceTime** +
 __optional__|Total amount of calendar time taken to complete the query.|string (duration)
 |**state** +
-__optional__|The state of the query execution, such as completed, running, cancelled.|string
+__optional__|The state of the query execution, such as `completed`, `running`, `cancelled`.
+
+Note that the `completed` state means that the request was started and completed by the Query service, but it does not mean that it was necessarily successful.
+The request could have been successful, or completed with errors.
+
+To find requests that were successful, use this field in conjunction with the `errorCount` field: search for requests whose state is `completed` and whose error count is `0`.|string
 |**statement** +
 __optional__|The query statement being executed.|string
 |**useCBO** +
