@@ -27,6 +27,17 @@ curl -v -u Administrator:password \
      -d endpoint=my.endpoint.uri
 ```
 
+The example below creates a Google Cloud Storage link named `myGcsLink` in the `Default` scope, with anonymous authentication.
+
+*Curl request*
+
+``` sh
+curl -v -u Administrator:password \
+     -X POST \
+     "http://localhost:8095/analytics/link/Default/myGcsLink" \
+     -d type=gcs
+```
+
 The example below creates an Amazon S3 link named `myAwsLink` in the `travel-sample.inventory` scope.
 
 *Curl request*

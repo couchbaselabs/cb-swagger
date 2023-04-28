@@ -52,7 +52,7 @@ paths:
         - $ref: "#/parameters/S3SessionToken"
         - $ref: "#/parameters/S3Region"
         - $ref: "#/parameters/S3ServiceEndpoint"
-        - $ref: '#/parameters/AzureEndpoint'
+        # - $ref: '#/parameters/AzureEndpoint'
         - $ref: '#/parameters/AzureAccountName'
         - $ref: '#/parameters/AzureAccountKey'
         - $ref: '#/parameters/AzureSharedAccessSignature'
@@ -62,6 +62,9 @@ paths:
         - $ref: '#/parameters/AzureClientSecret'
       # - $ref: '#/parameters/AzureClientCertificate'
         - $ref: '#/parameters/AzureClientCertificatePassword'
+        - $ref: "#/parameters/CommonEndpoint"
+        - $ref: "#/parameters/GcsApplicationDefaultCredentials"
+        - $ref: "#/parameters/GcsJsonCredentials"
       security:
         - Analytics Manage: []
       responses:
@@ -145,7 +148,7 @@ paths:
         - $ref: "#/parameters/S3SessionToken"
         - $ref: "#/parameters/S3Region"
         - $ref: "#/parameters/S3ServiceEndpoint"
-        - $ref: '#/parameters/AzureEndpoint'
+        # - $ref: '#/parameters/AzureEndpoint'
         - $ref: '#/parameters/AzureAccountName'
         - $ref: '#/parameters/AzureAccountKey'
         - $ref: '#/parameters/AzureSharedAccessSignature'
@@ -155,6 +158,9 @@ paths:
         - $ref: '#/parameters/AzureClientSecret'
       # - $ref: '#/parameters/AzureClientCertificate'
         - $ref: '#/parameters/AzureClientCertificatePassword'
+        - $ref: "#/parameters/CommonEndpoint"
+        - $ref: "#/parameters/GcsApplicationDefaultCredentials"
+        - $ref: "#/parameters/GcsJsonCredentials"
       security:
         - Analytics Manage: []
       responses:
@@ -234,7 +240,7 @@ paths:
         - $ref: "#/parameters/S3SessionToken"
         - $ref: "#/parameters/S3Region"
         - $ref: "#/parameters/S3ServiceEndpoint"
-        - $ref: '#/parameters/AzureEndpoint'
+        # - $ref: '#/parameters/AzureEndpoint'
         - $ref: '#/parameters/AzureAccountName'
         - $ref: '#/parameters/AzureAccountKey'
         - $ref: '#/parameters/AzureSharedAccessSignature'
@@ -244,6 +250,9 @@ paths:
         - $ref: '#/parameters/AzureClientSecret'
       # - $ref: '#/parameters/AzureClientCertificate'
         - $ref: '#/parameters/AzureClientCertificatePassword'
+        - $ref: "#/parameters/CommonEndpoint"
+        - $ref: "#/parameters/GcsApplicationDefaultCredentials"
+        - $ref: "#/parameters/GcsJsonCredentials"
       security:
         - Analytics Manage: []
       responses:
@@ -273,6 +282,7 @@ paths:
             - couchbase
             - S3
             - azureblob
+            - gcs
       security:
         - Analytics Manage: []
       responses:
@@ -312,7 +322,7 @@ paths:
         - $ref: "#/parameters/S3SessionToken"
         - $ref: "#/parameters/S3Region"
         - $ref: "#/parameters/S3ServiceEndpoint"
-        - $ref: '#/parameters/AzureEndpoint'
+        # - $ref: '#/parameters/AzureEndpoint'
         - $ref: '#/parameters/AzureAccountName'
         - $ref: '#/parameters/AzureAccountKey'
         - $ref: '#/parameters/AzureSharedAccessSignature'
@@ -322,6 +332,9 @@ paths:
         - $ref: '#/parameters/AzureClientSecret'
       # - $ref: '#/parameters/AzureClientCertificate'
         - $ref: '#/parameters/AzureClientCertificatePassword'
+        - $ref: "#/parameters/CommonEndpoint"
+        - $ref: "#/parameters/GcsApplicationDefaultCredentials"
+        - $ref: "#/parameters/GcsJsonCredentials"
       security:
         - Analytics Manage: []
       responses:
@@ -402,10 +415,12 @@ parameters:
       `couchbase`: A link to a remote Couchbase cluster.
       `s3`: A link to the Amazon S3 service.
       `azureblob`: A link to Azure Blob Storage.
+      `gcs`: A link to Google Cloud Storage.
     enum:
       - couchbase
       - s3
       - azureblob
+      - gcs
 
   CommonTypeEdit:
     name: type
@@ -419,6 +434,7 @@ parameters:
       - couchbase
       - s3
       - azureblob
+      - gcs
 
   CommonTypeQuery:
     name: type
@@ -432,6 +448,7 @@ parameters:
       - couchbase
       - s3
       - azureblob
+      - gcs
 
   # FIXME: In OpenAPI 3.0, replace the following with separate parameters for Couchbase and Azure.
 
@@ -450,6 +467,20 @@ parameters:
 
 
       You should URL-encode this parameter to escape any special characters.
+
+  # FIXME: In OpenAPI 3.0, replace the following with separate parameters for Azure and GCS.
+
+  CommonEndpoint:
+    name: endpoint
+    type: string
+    in: formData
+    required: false
+    description: >
+      For Azure Blob links and Google Cloud Storage links.
+      The endpoint URI.
+
+
+      Required for Azure Blob links; optional for Google Cloud Storage links.
 
   S3AccessKeyID:
     name: accessKeyId
@@ -504,14 +535,14 @@ parameters:
       For S3 links only.
       The Amazon S3 service endpoint.
 
-  AzureEndpoint:
-    name: endpoint
-    type: string
-    in: formData
-    required: true
-    description: >
-      For Azure Blob links only.
-      The endpoint URI.
+  # AzureEndpoint:
+  #   name: endpoint
+  #   type: string
+  #   in: formData
+  #   required: true
+  #   description: >
+  #     For Azure Blob links only.
+  #     The endpoint URI.
 
   AzureAccountName:
     name: accountName
@@ -630,6 +661,41 @@ parameters:
 
 
       You should URL-encode this parameter to escape any special characters.
+
+  # GcsEndpoint:
+  #   name: endpoint
+  #   type: string
+  #   in: formData
+  #   required: true
+  #   description: >
+  #     For Google Cloud Storage links only.
+  #     The endpoint URI.
+
+  GcsJsonCredentials:
+    name: jsonCredentials
+    type: string
+    in: formData
+    required: false
+    description: >
+      For Google Cloud Storage links only.
+      The JSON credentials of the link.
+
+
+      This parameter is not allowed if `applicationDefaultCredentials` is provided.
+
+  GcsApplicationDefaultCredentials:
+    name: applicationDefaultCredentials
+    type: string
+    enum:
+      - 'true'
+    in: formData
+    required: false
+    description: >
+      For Google Cloud Storage links only.
+      If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+
+
+      This parameter may only have the value `"true"`.
 
   CouchbaseHostname:
     name: hostname
@@ -753,13 +819,15 @@ definitions:
 
           `couchbase`: A link to a remote Couchbase cluster.
           `s3`: A link to the Amazon S3 service.
-          `azureblob`: A link to Microsoft Azure Blob storage.
+          `azureblob`: A link to Microsoft Azure Blob Storage.
+          `gcs`: A link to Google Cloud Storage.
 
-          Different properties are returned, depending on the link type: refer to [Couchbase](#couchbase), [S3](#s3), or [Azure Blob](#azure-blob).
+          Different properties are returned, depending on the link type: refer to [Couchbase](#couchbase), [S3](#s3), [Azure Blob](#azure-blob), or [GCS](#gcs).
         enum:
           - couchbase
           - s3
           - azureblob
+          - gcs
 
   Couchbase:
     description: These properties are returned for remote Couchbase links.
@@ -1018,6 +1086,37 @@ definitions:
               Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
               If not set, this property returns `null`.
             example: myTenantID
+
+  GCS:
+    description: These properties are returned for Google Cloud Storage links.
+    allOf:
+      - $ref: "#/definitions/Links"
+      - type: object
+        required:
+          - applicationDefaultCredentials
+          - endpoint
+          - jsonCredentials
+        properties:
+          applicationDefaultCredentials:
+            type: string
+            enum:
+              - 'true'
+            description: >
+              If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+              If not set, this property returns `null`.
+            example: true
+          endpoint:
+            type: string
+            description: >
+              The endpoint URI.
+              If not set, this property returns `null`.
+            example: 'https://storage.googleapis.com'
+          jsonCredentials:
+            type: string
+            description: >
+              The JSON credentials of the link.
+              If not set, this property returns `null`.
+            example: <redacted sensitive entry>
 
   Errors:
     type: object
