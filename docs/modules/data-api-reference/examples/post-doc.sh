@@ -3,7 +3,7 @@
 # tag::request[]
 curl -X POST \
      -H 'Content-Type:application/json' \
-     -u "${api_key}:${secret_key}" \
+     -u "${access_key}:${secret_key}" \
      -d '{"id": 10,
           "name": "40-Mile Air",
           "iata": "Q5",
