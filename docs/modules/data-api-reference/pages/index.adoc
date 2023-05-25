@@ -59,7 +59,7 @@ a| The host where the database is located.
 |===
 
 
-// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+include::{specDir}overview/document-end.adoc[opts=optional]
 
 
 
@@ -1802,13 +1802,9 @@ endif::[]
 a| Document found.
 | 
 
-| 400
-a| Bad request.
-| <<Error>>
-
 | 401
 a| Unauthorized.
-| <<Error>>
+| 
 
 | 404
 a| Document not found.
@@ -2040,6 +2036,20 @@ endif::[]
 // end
 
 | String
+
+
+a| *withExpiry* +
+_optional_
+a| Set to `true` if the metadata should contain the expiry time.
+
+
+[%hardbreaks]
+ifeval::["null" != "null"]
+*Default:* `null`
+endif::[]
+// end
+
+| Boolean
 
 
 |===

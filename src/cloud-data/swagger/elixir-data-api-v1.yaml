@@ -1,6 +1,6 @@
 openapi: 3.1.0
 x-stoplight:
-  id: 7qw1goqcnwdw5
+  id: z7i57fqffvilq
 info:
   title: Couchbase Capella Data API
   description: This documentation describes the Capella REST Data API
@@ -519,6 +519,11 @@ paths:
             enum:
               - any
               - all
+        - schema:
+            type: boolean
+          in: query
+          name: withExpiry
+          description: set to true if the metadata should contain the expiry time
       responses:
         '200':
           description: Document Found
@@ -593,10 +598,8 @@ paths:
       responses:
         '204':
           description: Document Found
-        '400':
-          $ref: '#/components/responses/400'
         '401':
-          $ref: '#/components/responses/401'
+          description: Unauthorized
         '404':
           description: Document Not found
       tags:
