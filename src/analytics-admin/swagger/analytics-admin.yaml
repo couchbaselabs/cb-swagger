@@ -135,7 +135,7 @@ paths:
 
         NOTE: This endpoint may not return meaningful results in Couchbase Server 7.0 and later.
         The reported number of mutations may be different to the actual number of mutations in the Analytics collection.
-        For this reason, this endpoint has been deprecated, and you should use the [Ingestion Status](#ingestion-status) endpoint instead.
+        For this reason, this endpoint has been deprecated, and you should use the [Ingestion Status](#_ingestion_status) endpoint instead.
       security:
         - Analytics Manage / Analytics Select: []
       responses:
@@ -488,7 +488,7 @@ securityDefinitions:
   Analytics Manage / Analytics Select:
     type: basic
     description: |
-      For the [Request Cancellation](#request-cancellation), [Ingestion Status](#ingestion-status), and [Pending Mutations](#pending-mutations) operations, users must have one of the following access roles:
+      For the [Request Cancellation](#_cancel_request), [Ingestion Status](#_ingestion_status), and [Pending Mutations](#_monitor_node) operations, users must have one of the following access roles:
 
       * Full Admin
       * Cluster Admin
@@ -500,7 +500,7 @@ securityDefinitions:
   Cluster Read / Pools Read:
     type: basic
     description: |
-      For the [Cluster Status](#cluster-status) operation, users must have one of the following access roles:
+      For the [Cluster Status](#_cluster_status) operation, users must have one of the following access roles:
 
       * Full Admin
       * Cluster Admin
@@ -510,7 +510,7 @@ securityDefinitions:
   Analytics Manage:
     type: basic
     description: |
-      For the [Cluster Restart](#cluster-restart) and [Node Restart](#node-restart) operations, users must have one of the following RBAC roles:
+      For the [Cluster Restart](#_restart_cluster) and [Node Restart](#_restart_node) operations, users must have one of the following RBAC roles:
 
       * Full Admin
       * Cluster Admin
