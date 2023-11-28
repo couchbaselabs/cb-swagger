@@ -1,0 +1,155 @@
+
+// This file is created automatically by Swagger2Markup.
+// DO NOT EDIT! Refer to https://github.com/couchbaselabs/cb-swagger
+
+
+[[_service]]
+=== Service
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**activeMemoryGlobalBudget** +
+__optional__|The memory budget (in bytes) for the active runtime. +
+**Default** : `67108864`|integer (int32)
+|**activeStopTimeout** +
+__optional__|The maximum time (in seconds) to wait for a graceful stop of an active runtime. +
+**Default** : `3600`|integer (int32)
+|**activeSuspendTimeout** +
+__optional__|The maximum time (in seconds) to wait for a graceful suspend of an active runtime. +
+**Default** : `3600`|integer (int32)
+|**analyticsBroadcastDcpStateMutationCount** +
+__optional__|The number of processed mutations after which the DCP state is broadcast to storage +
+**Default** : `10000`|integer (int32)
+|**analyticsHttpRequestQueueSize** +
+__optional__|The maximum number of HTTP requests to queue pending ability to execute. +
+**Default** : `256`|integer (int32)
+|**analyticsHttpThreadCount** +
+__optional__|The number of threads to service HTTP requests. +
+**Default** : `16`|integer (int32)
+|**bindAddress** +
+__optional__|The bind address to use.|string
+|**bindToHost** +
+__optional__|Bind to configured hostname instead of wildcard address. +
+**Default** : `false`|boolean
+|**clusterConnectRetries** +
+__optional__|Number of attempts to contact CC before giving up. +
+**Default** : `5`|integer (int32)
+|**collectDcpStateFromNodesTimeout** +
+__optional__|The maximum time to wait to collect DCP state from all nodes in seconds. +
+**Default** : `600`|integer (int32)
+|**compilerFramesize** +
+__optional__|The page size (in bytes) for computation. +
+**Default** : `32768`|integer (int32)
+|**compilerGroupmemory** +
+__optional__|The memory budget (in bytes) for a group by operator instance in a partition. +
+**Default** : `33554432`|integer (int32)
+|**compilerJoinmemory** +
+__optional__|The memory budget (in bytes) for a join operator instance in a partition. +
+**Default** : `33554432`|integer (int32)
+|**compilerParallelism** +
+__optional__|The degree of parallelism for query execution. Zero means to use the storage parallelism as the query execution parallelism, while other integer values dictate the number of query execution parallel partitions. The system will fall back to use the number of all available CPU cores in the cluster as the degree of parallelism if the number set by a user is too large or too small. +
+**Default** : `0`|integer (int32)
+|**compilerSortParallel** +
+__optional__|Enables or disables full parallel sort. +
+**Default** : `false`|boolean
+|**compilerSortmemory** +
+__optional__|The memory budget (in bytes) for a sort operator instance in a partition. +
+**Default** : `33554432`|integer (int32)
+|**compilerWindowmemory** +
+__optional__|The memory budget (in bytes) for a window operator instance in a partition. +
+**Default** : `33554432`|integer (int32)
+|**coresMultiplier** +
+__optional__|The factor to multiply by the number of cores to determine maximum query concurrent execution level. +
+**Default** : `3`|integer (int32)
+|**dcpBufferAckWatermark** +
+__optional__|The percentage of DCP connection buffer size at which to acknowledge bytes consumed to DCP producer. +
+**Default** : `20` +
+**Minimum value** : `1` +
+**Maximum value** : `100`|integer (int32)
+|**dcpChannelReconnectRemoteIdleSeconds** +
+__optional__|Reconnect remote DCP channels that are idle for the specified number of seconds to ensure permissions have not been lost. A value of 0 disables reconnects on idle. +
+**Default** : `120`|integer (int32)
+|**dcpConnectionBufferSize** +
+__optional__|DCP connection buffer size (in bytes).
+
+If the JVM maximum heap size is less than 8GB, the default for this parameter is 10 MB divided by the number of IO Devices on the node. Otherwise, the default is 1% of the JVM maximum heap size divided by the number of IO Devices on the node.|integer (int32)
+|**deadlockWatchdogHaltDelaySeconds** +
+__optional__|The delay (in seconds) to wait for graceful shutdown due to deadlocked threads, before halting. +
+**Default** : `120`|integer (int32)
+|**deadlockWatchdogPollSeconds** +
+__optional__|The frequency (in seconds) to scan for deadlocked threads. +
+**Default** : `300`|integer (int32)
+|**jobHistorySize** +
+__optional__|Limits the number of historical jobs remembered by the system to the specified value. +
+**Default** : `10`|integer (int32)
+|**jobQueueCapacity** +
+__optional__|The maximum number of jobs to queue before rejecting new jobs. +
+**Default** : `4096`|integer (int32)
+|**jvmArgs** +
+__optional__|JVM arguments to pass to the Analytics Driver. The default is undefined (null).
+
+Note that JVM arguments are generally not secure, and are exposed by link:../cli/cbcollect-info-tool.html[cbcollect_info] and the link:../learn/clusters-and-availability/system-events.html[System Event] log. To pass arguments opaquely, you may use https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-4856361B-8BFD-4964-AE84-121F5F6CF111[Java command-line argument files].|string
+|**logLevel** +
+__optional__|The logging level. +
+**Default** : `"DEBUG"`|string
+|**maxWebRequestSize** +
+__optional__|The maximum accepted web request size in bytes. +
+**Default** : `52428800`|integer (int32)
+|**netBufferCount** +
+__optional__|Number of network buffers per input/output channel. +
+**Default** : `1`|integer (int32)
+|**netThreadCount** +
+__optional__|Number of threads to use for Network I/O. +
+**Default** : `1`|integer (int32)
+|**rebalancePullDatasetSizeFrequency** +
+__optional__|The frequency at which the Analytics collection size is pulled from nodes during rebalance in seconds. +
+**Default** : `5`|integer (int32)
+|**remoteLinkConnectTimeoutSeconds** +
+__optional__|The maximum time (in seconds) to wait for a remote link connection to establish. A value of 0 disables timeout; a value of -1 sets timeout to the system default. +
+**Default** : `60`|integer (int32)
+|**remoteLinkSocketTimeoutSeconds** +
+__optional__|The maximum time (in seconds) to wait after establishing the connection for remote links; the maximum time of inactivity between two data packets. A value of 0 disables timeout; a value of -1 sets timeout to the system default. +
+**Default** : `60`|integer (int32)
+|**requestsArchiveSize** +
+__optional__|The maximum number of archived requests to maintain. +
+**Default** : `50`|integer (int32)
+|**resultSweepThreshold** +
+__optional__|The duration within which an instance of the result cleanup should be invoked in milliseconds. +
+**Default** : `60000`|integer (int32)
+|**resultTtl** +
+__optional__|Limits the amount of time results for asynchronous jobs should be retained by the system in milliseconds. +
+**Default** : `86400000`|integer (int32)
+|**storageBuffercacheMaxopenfiles** +
+__optional__|The maximum number of open files in the buffer cache. +
+**Default** : `2147483647`|integer (int32)
+|**storageBuffercachePagesize** +
+__optional__|The page size in bytes for pages in the buffer cache. +
+**Default** : `131072`|integer (int32)
+|**storageCompressionBlock** +
+__optional__|The default compression scheme for the storage. +
+**Default** : `"snappy"`|string
+|**storageMemorycomponentNumcomponents** +
+__optional__|The number of memory components to be used per LSM index. +
+**Default** : `2`|integer (int32)
+|**storageMemorycomponentPagesize** +
+__optional__|The page size in bytes for pages allocated to memory components. +
+**Default** : `131072`|integer (int32)
+|**storageWriteRateLimit** +
+__optional__|The maximum disk write rate for each storage partition in bytes per second. Disabled if the provided value is less than or equal to 0. +
+**Default** : `0`|integer (int64)
+|**threaddumpFrequencySeconds** +
+__optional__|The frequency (in seconds) at which to log diagnostic thread dumps. +
+**Default** : `300`|integer (int32)
+|**threaddumpLogLevel** +
+__optional__|The log level at which to emit diagnostic thread dumps. +
+**Default** : `"DEBUG"`|string
+|**traceCategories** +
+__optional__|Categories for tracing. The default is the empty array — no categories.|< object > array
+|**txnDatasetCheckpointInterval** +
+__optional__|The interval (in seconds) after which an Analytics collection is considered idle and persisted to disk. +
+**Default** : `3600`|integer (int32)
+|===
+
+
+
