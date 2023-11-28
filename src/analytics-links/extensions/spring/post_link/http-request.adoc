@@ -1,8 +1,9 @@
+====
 The example below creates a Couchbase link named `myCbLink` in the `Default` scope, with no encryption.
 
-*Curl request*
-
-``` sh
+.Curl request
+[source,sh]
+----
 curl -v -u Administrator:password \
      -X POST \
      "http://localhost:8095/analytics/link/Default/myCbLink" \
@@ -11,27 +12,31 @@ curl -v -u Administrator:password \
      -d encryption=none \
      --data-urlencode username=remote.user \
      --data-urlencode password=remote.p4ssw0rd
-```
+----
 
 NOTE: The `username` and `password` parameters are URL-encoded to escape any special characters.
+====
 
+====
 The example below creates a Microsoft Azure Blob link named `myBlobLink` in the `Default` scope, with anonymous authentication.
 
-*Curl request*
-
-``` sh
+.Curl request
+[source,sh]
+----
 curl -v -u Administrator:password \
      -X POST \
      "http://localhost:8095/analytics/link/Default/myBlobLink" \
      -d type=azureblob \
      -d endpoint=my.endpoint.uri
-```
+----
+====
 
+====
 The example below creates an Amazon S3 link named `myAwsLink` in the `travel-sample.inventory` scope.
 
-*Curl request*
-
-``` sh
+.Curl request
+[source,sh]
+----
 curl -v -u Administrator:password \
      -X POST \
      "http://localhost:8095/analytics/link/travel-sample%2Finventory/myAwsLink" \
@@ -39,16 +44,18 @@ curl -v -u Administrator:password \
      -d region=us-east-1 \
      -d accessKeyId=myAccessKey \
      --data-urlencode secretAccessKey=mySecretKey
-```
+----
 
 NOTE: The dot separator within the scope name is converted to a slash (`/`), which is then URL-encoded as `%2F`.
 The `secretAccessKey` parameter is URL-encoded to escape any special characters.
+====
 
+====
 The example below creates an Amazon S3 link named `myTempLink` with temporary credentials in the `travel-sample.inventory` scope.
 
-*Curl request*
-
-``` sh
+.Curl request
+[source,sh]
+----
 curl -v -u Administrator:password \
      -X POST \
      "http://localhost:8095/analytics/link/travel-sample%2Finventory/myTempLink" \
@@ -57,7 +64,8 @@ curl -v -u Administrator:password \
      -d accessKeyId=myTempAccessKey \
      -d sessionToken=mySessionToken \
      --data-urlencode secretAccessKey=myTempSecretKey
-```
+----
 
 NOTE: The dot separator within the scope name is converted to a slash (`/`), which is then URL-encoded as `%2F`.
 The `secretAccessKey` parameter is URL-encoded to escape any special characters.
+====
