@@ -1446,9 +1446,9 @@ definitions:
           In addition, the {numatrs_req}[request-level] `numatrs` parameter specifies this property per request.
           The minimum of that and the node-level `numatrs` setting is applied.
       n1ql-feat-ctrl:
-        type:
-          - string
-          - integer
+        type: integer
+        # type should be [string, integer] but swagger2markup cannot process
+        # fix with move to Redocly / openapi-generator
         format: int32
         default: 76
         example: "0x1"
