@@ -1446,13 +1446,17 @@ definitions:
           In addition, the {numatrs_req}[request-level] `numatrs` parameter specifies this property per request.
           The minimum of that and the node-level `numatrs` setting is applied.
       n1ql-feat-ctrl:
-        type: integer
+        type:
+          - string
+          - integer
         format: int32
         default: 76
+        example: "0x1"
         description: |
           [[n1ql-feat-ctrl]]
           {sqlpp} feature control.
           This setting is provided for technical support only.
+          The value may be an integer, or a string representing a hexadecimal number.
 
           The {queryN1qlFeatCtrl}[cluster-level] `queryN1qlFeatCtrl` setting specifies this property for the whole cluster.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
