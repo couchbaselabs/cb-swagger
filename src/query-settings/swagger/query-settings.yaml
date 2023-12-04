@@ -248,12 +248,16 @@ definitions:
           In addition, there is a {memory_quota_req}[request-level] `memory_quota` parameter.
           If a request includes this parameter, it will be capped by the node-level `memory-quota` setting.
       queryN1qlFeatCtrl:
-        type: integer
+        type:
+          - string
+          - integer
         format: int32
+        example: "0x1"
         description: |
           [[queryN1qlFeatCtrl]]
           {sqlpp} feature control.
           This setting is provided for technical support only.
+          The value may be an integer, or a string representing a hexadecimal number.
 
           The {n1ql-feat-ctrl}[node-level] `n1ql-feat-ctrl` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
