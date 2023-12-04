@@ -689,10 +689,12 @@ This setting is provided for technical support only. +
 __optional__|[[n1ql-feat-ctrl]]
 {sqlpp} feature control.
 This setting is provided for technical support only.
+The value may be an integer, or a string representing a hexadecimal number.
 
 The {queryN1qlFeatCtrl}[cluster-level] `queryN1qlFeatCtrl` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
-**Default** : `76`|integer (int32)
+**Default** : `76` +
+**Example** : `"0x1"`|integer (int32)
 |**numatrs** +
 __optional__|[[numatrs-srv]]
 Specifies the total number of xref:learn:data/transactions.adoc#additional-storage-use[active transaction records].
