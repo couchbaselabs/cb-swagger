@@ -923,6 +923,40 @@ definitions:
           [flex-indexes]: /server/7.6/n1ql/n1ql-language-reference/flex-indexes.html
         default: false
         example: true
+      use_replica:
+        type: string
+        default: unset
+        enum: ["off","on","unset"]
+        example: on
+        x-desc-name: use_replica_req
+        description: |
+          [#use_replica_req]
+          Specifies whether a query can fetch data from a replica vBucket if active vBuckets are inaccessible.
+          The possible values are:
+
+          * `off` &mdash; read from replica is disabled for this request.
+
+          * `on` &mdash; read from replica is enabled for this request, unless it has been disabled for all requests at node level.
+
+          * `unset` &mdash; read from replica is specified by the node-level setting.
+          If the node-level setting is also `unset`, read from replica is disabled for this request.
+
+          The [node-level][use-replica-srv] `use-replica` setting specifies the default for this property for a single node.
+          The request-level parameter usually overrides the node-level setting.
+          However, when the node-level setting is `off`, the request-level parameter cannot enable the property.
+
+          In addition, the [cluster-level][queryUseReplica] `queryUseReplica` setting specifies the default for this property for the whole cluster.
+          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+          WARNING: Do not enable read from replica when you require consistent results.
+
+          SELECT queries within a transaction cannot read from replica.
+
+          [use-replica-srv]: #use-replica-srv
+          [queryUseReplica]: #queryUseReplica
+        x-desc-refs: |
+          [use-replica-srv]: admin.html#use-replica-srv
+          [queryUseReplica]: ../../rest-api/rest-cluster-query-settings.html#queryUseReplica
       $<identifier>:
         type: string
         format: any JSON value
