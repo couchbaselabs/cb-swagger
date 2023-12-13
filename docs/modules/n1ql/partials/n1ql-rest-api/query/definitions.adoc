@@ -62,11 +62,10 @@ This section describes the properties consumed and returned by this REST API.
 |Name|Description|Schema
 |**args** +
 __optional__|[#args]
-Applicable if the statement has 1 or more positional parameters.
+Supplies the values for positional parameters in the statement.
+Applicable if the statement or prepared statement contains 1 or more positional parameters.
 
-An array of JSON values, one for each positional parameter in the statement.
-
-Note that positional parameters apply to `prepared` also.
+The value is an array of JSON values, one for each positional parameter in the statement.
 
 Refer to link:/server/7.6/settings/query-settings.html#section_srh_tlm_n1b[Named Parameters and Positional Parameters] for details. +
 **Example** : `[ "LAX", 6 ]`|< object > array
@@ -594,16 +593,16 @@ SELECT queries within a transaction cannot read from replica. +
 **Example** : `"true"`|enum (off, on, unset)
 |**$<identifier>** +
 __optional__|[#identifier]
-Applicable if the `statement` has 1 or more named parameters.
+Supplies the value for a named parameter in the statement.
+Applicable if the statement or prepared statement contains 1 or more named parameters.
 
 The name of a named parameter consists of two parts:
 
 . The `$` character.
-. An identifier that starts with an alpha character followed by one or more alphanumeric characters.
+. An identifier that specifies the name of the parameter.
+ This must start with an alpha character, followed by one or more alphanumeric characters.
 
-The value of the named parameter is any JSON value.
-
-Named parameters apply to `prepared` also.
+The value of the named parameter can be any JSON value.
 
 Refer to link:/server/7.6/settings/query-settings.html#section_srh_tlm_n1b[Named Parameters and Positional Parameters] for details.|string (any JSON value)
 |===
