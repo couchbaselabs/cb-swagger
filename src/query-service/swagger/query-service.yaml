@@ -185,11 +185,10 @@ definitions:
         x-desc-name: args
         description: |
           [#args]
-          Applicable if the statement has 1 or more positional parameters.
-          
-          An array of JSON values, one for each positional parameter in the statement.
+          Supplies the values for positional parameters in the statement.
+          Applicable if the statement or prepared statement contains 1 or more positional parameters.
 
-          Note that positional parameters apply to `prepared` also.
+          The value is an array of JSON values, one for each positional parameter in the statement.
 
           Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
@@ -963,16 +962,16 @@ definitions:
         x-desc-name: identifier
         description: |
           [#identifier]
-          Applicable if the `statement` has 1 or more named parameters.
+          Supplies the value for a named parameter in the statement.
+          Applicable if the statement or prepared statement contains 1 or more named parameters.
 
           The name of a named parameter consists of two parts:
 
           1. The `$` character.
-          2. An identifier that starts with an alpha character followed by one or more alphanumeric characters.
+          2. An identifier that specifies the name of the parameter.
+             This must start with an alpha character, followed by one or more alphanumeric characters.
 
-          The value of the named parameter is any JSON value.
-
-          Named parameters apply to `prepared` also.
+          The value of the named parameter can be any JSON value.
 
           Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
