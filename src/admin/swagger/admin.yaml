@@ -1791,6 +1791,40 @@ definitions:
         x-desc-refs: |
           [queryUseCBO]: ../../rest-api/rest-cluster-query-settings.html#queryUseCBO
           [use_cbo_req]: index.html#use_cbo_req
+      use-replica:
+        type: string
+        default: unset
+        enum: ["off","on","unset"]
+        example: on
+        x-desc-name: use-replica-srv
+        description: |
+          [#use-replica-srv]
+          Specifies whether a query can fetch data from a replica vBucket if active vBuckets are inaccessible.
+          The possible values are:
+
+          * `off` &mdash; read from replica is disabled for all queries and cannot be overridden at request level.
+
+          * `on` &mdash; read from replica is enabled for all queries, but can be disabled at request level.
+
+          * `unset` &mdash; read from replica is enabled or disabled at request level.
+
+          The [cluster-level][queryUseReplica] `queryUseReplica` setting specifies the default for this property for the whole cluster.
+          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+          In addition, the [request-level][use_replica_req] `use_replica` parameter specifies this property per request.
+          If a request does not include this parameter, or if the request-level parameter is `unset`, the node-level setting is used.
+          If the request-level parameter and the node-level setting are both `unset`, read from replica is disabled for that request.
+
+          WARNING: Do not enable read from replica when you require consistent results.
+
+          SELECT queries within a transaction cannot read from replica.
+
+          [queryUseReplica]: #queryUseReplica
+          [use_replica_req]: #use_replica_req
+        x-desc-refs: |
+          [queryUseReplica]: ../../rest-api/rest-cluster-query-settings.html#queryUseReplica
+          [use_replica_req]: index.html#use_replica_req
+
 parameters:
   PathStat:
     name: stat
