@@ -61,62 +61,62 @@ This section describes the properties consumed and returned by this REST API.
 |===
 |Name|Description|Schema
 |**args** +
-__optional__|[[args]]
+__optional__|[#args]
 Applicable if the statement has 1 or more positional parameters.
 
 An array of JSON values, one for each positional parameter in the statement.
 
 Note that positional parameters apply to `prepared` also.
 
-Refer to {section_srh_tlm_n1b}[] for details. +
+Refer to link:/server/7.6/settings/query-settings.html#section_srh_tlm_n1b[Named Parameters and Positional Parameters] for details. +
 **Example** : `[ "LAX", 6 ]`|< object > array
 |**atrcollection** +
-__optional__|[[atrcollection_req]]
-Specifies the collection where the {transactions-understanding-transactions}[active transaction record] (ATR) is stored.
+__optional__|[#atrcollection_req]
+Specifies the collection where the link:/server/7.6/learn/data/transactions.html#active-transaction-record-entries[active transaction record] (ATR) is stored.
 The collection must be present.
 If not specified, the ATR is stored in the default collection in the default scope in the bucket containing the first mutated document within the transaction.
 
-The value must be a string in the form `"bucket.scope.collection"` or `"namespace:bucket.scope.collection"`.
-If any part of the path contains a special character, that part of the path must be delimited in backticks `&grave;&grave;`.
+The value must be a string in the form `&quot;bucket.scope.collection&quot;` or `&quot;namespace:bucket.scope.collection&quot;`.
+If any part of the path contains a special character, that part of the path must be delimited in backticks &grave;&grave;.
 
-The {atrcollection-srv}[node-level] `atrcollection` setting specifies the default for this parameter for a single node.
+The <<atrcollection-srv,node-level>> `atrcollection` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting. +
 **Example** : `"default:&grave;travel-sample&grave;.transaction.test"`|string
 |**auto_execute** +
-__optional__|[[auto_execute]]
+__optional__|[#auto_execute]
 Specifies that prepared statements should be executed automatically as soon as they are created.
 This saves you from having to make two separate requests in cases where you want to prepare a statement and execute it immediately.
 
-Refer to {prepare-auto-execute}[Auto-Execute] for more information. +
+Refer to link:/server/7.6/n1ql/n1ql-language-reference/prepare.html#auto-execute[Auto-Execute] for more information. +
 **Default** : `false` +
 **Example** : `true`|boolean
 |**client_context_id** +
-__optional__|[[client_context_id]]
+__optional__|[#client_context_id]
 A piece of data supplied by the client that is echoed in the response, if present.
-{sqlpp} is agnostic about the content of this parameter; it is just echoed in the response.
+SQL++ is agnostic about the content of this parameter; it is just echoed in the response.
 
 * Maximum allowed size is 64 characters; all others will be cut.
-* If it contains an escape character `/` or quote `"`, it will be rejected as error code 1110.|string
+* If it contains an escape character `/` or quote `&quot;`, it will be rejected as error code 1110.|string
 |**compression** +
-__optional__|[[compression]]
+__optional__|[#compression]
 Compression format to use for response data on the wire.
 
 Values are case-insensitive. +
 **Default** : `"NONE"` +
 **Example** : `"zip"`|enum (ZIP, RLE, LZMA, LZO, NONE)
 |**controls** +
-__optional__|[[controls_req]]
+__optional__|[#controls_req]
 Specifies if there should be a controls section returned with the request results.
 
 When set to `true`, the query response document includes a controls section with runtime information provided along with the request, such as positional and named parameters or settings.
 
 If the request qualifies for caching, these values will also be cached in the `completed_requests` system keyspace.
 
-The {controls-srv}[node-level] `controls` setting specifies the default for this parameter for a single node.
+The <<controls-srv,node-level>> `controls` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting. +
 **Example** : `true`|boolean
 |**creds** +
-__optional__|[[creds]]
+__optional__|[#creds]
 Specifies the login credentials.
 The Query API supports two types of identity: local (or bucket) and admin.
 
@@ -132,37 +132,37 @@ If credentials are supplied in the request header, then HTTP Basic Authenticatio
   "pass" : "password"
 } ]`|< <<_credentials,Credentials>> > array
 |**durability_level** +
-__optional__|[[durability_level]]
-The level of {durability}[durability] for mutations produced by the request.
+__optional__|[#durability_level]
+The level of link:/server/7.6/learn/data/durability.html[durability] for mutations produced by the request.
 
-If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the {tximplicit}[tximplicit] parameter set to `true`, the durability level is specified for all mutations within that transaction.
+If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the <<tximplicit,tximplicit>> parameter set to `true`, the durability level is specified for all mutations within that transaction.
 
 Durability is also supported for non-transactional DML statements.
 In this case, the `kvtimeout` parameter is used as the durability timeout.
 
-If not specified, the default durability level is `"majority"`.
-Set the durability level to `"none"` or `""` to specify no durability. +
+If not specified, the default durability level is `&quot;majority&quot;`.
+Set the durability level to `&quot;none&quot;` or `&quot;&quot;` to specify no durability. +
 **Default** : `"majority"` +
-**Example** : `"none"`|enum ("", none, majority, majorityAndPersistActive, persistToMajority)
+**Example** : `"none"`|enum (&quot;&quot;, none, majority, majorityAndPersistActive, persistToMajority)
 |**encoded_plan** +
-__optional__|[[encoded_plan]]
+__optional__|[#encoded_plan]
 In Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
 It is included for compatibility with previous versions of Couchbase Server.|string
 |**encoding** +
-__optional__|[[encoding]]
+__optional__|[#encoding]
 Desired character encoding for the query results.
 
 Only possible value is `UTF-8` and is case-insensitive. +
 **Default** : `"UTF-8"`|string
 |**format** +
-__optional__|[[format]]
+__optional__|[#format]
 Desired format for the query results.
 
 Values are case-insensitive. +
 **Default** : `"JSON"` +
 **Example** : `"XML"`|enum (JSON, XML, CSV, TSV)
 |**kvtimeout** +
-__optional__|[[kvtimeout]]
+__optional__|[#kvtimeout]
 The maximum time to wait for a KV operation before timing out.
 Only applies to statements within a transaction, or to non-transactional statements when the `durability_level` is set.
 
@@ -182,15 +182,15 @@ When disabled, no timeout is applied and the KV operation runs for however long 
 **Default** : `"2.5s"` +
 **Example** : `"10ms"`|string
 |**max_parallelism** +
-__optional__|[[max_parallelism_req]]
+__optional__|[#max_parallelism_req]
 Specifies the maximum parallelism for the query.
 
-The {max-parallelism-srv}[node-level] `max-parallelism` setting specifies the ceiling for this parameter for a single node.
+The <<max-parallelism-srv,node-level>> `max-parallelism` setting specifies the ceiling for this parameter for a single node.
 If the request-level parameter is zero or negative, the parallelism for the query is set to the node-level setting.
 If the request-level parameter is greater than zero and less than the node-level setting, the request-level parameter overrides the node-level setting.
 If the request-level parameter is greater than the node-level setting, the parallelism for the query is set to the node-level setting.
 
-In addition, the {queryMaxParallelism}[cluster-level] `queryMaxParallelism` setting specifies the ceiling for this parameter for the whole cluster.
+In addition, the <<queryMaxParallelism,cluster-level>> `queryMaxParallelism` setting specifies the ceiling for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
 To enable queries to run in parallel, you must specify the cluster-level `queryMaxParallelism` parameter, or specify the node-level `max-parallelism` parameter on all Query nodes.
@@ -198,7 +198,7 @@ To enable queries to run in parallel, you must specify the cluster-level `queryM
 The default value is the same as the number of partitions of the index selected for the query. +
 **Example** : `3`|integer (int32)
 |**memory_quota** +
-__optional__|[[memory_quota_req]]
+__optional__|[#memory_quota_req]
 Specifies the maximum amount of memory the request may use, in MB.
 
 Specify `0` (the default value) to disable.
@@ -207,65 +207,65 @@ When disabled, there is no quota.
 Within a transaction, this parameter enforces the memory quota for the transaction.
 The transaction memory quota tracks only the delta table and the transaction log (approximately).
 
-The {memory-quota-srv}[node-level] `memory-quota` setting specifies the ceiling for this parameter for a single node.
+The <<memory-quota-srv,node-level>> `memory-quota` setting specifies the ceiling for this parameter for a single node.
 If the node-level setting is zero (the default), the request-level parameter overrides the node-level setting.
 If the node-level setting is greater than zero, the request-level parameter is capped by the node-level setting.
 
-In addition, the {queryMemoryQuota}[cluster-level] `queryMemoryQuota` setting specifies the ceiling for this parameter for the whole cluster.
+In addition, the <<queryMemoryQuota,cluster-level>> `queryMemoryQuota` setting specifies the ceiling for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
 **Default** : `0` +
 **Example** : `4`|integer (int32)
 |**metrics** +
-__optional__|[[metrics]]
+__optional__|[#metrics]
 Specifies that metrics should be returned with query results. +
 **Default** : `true` +
 **Example** : `false`|boolean
 |**namespace** +
-__optional__|[[namespace]] Specifies the namespace to use. Currently, only the `default` namespace is available. +
+__optional__|Specifies the namespace to use. Currently, only the `default` namespace is available. +
 **Example** : `"default"`|string
 |**numatrs** +
-__optional__|[[numatrs_req]]
-Specifies the total number of {transactions-understanding-transactions}[active transaction records].
+__optional__|[#numatrs_req]
+Specifies the total number of link:/server/7.6/learn/data/transactions.html#active-transaction-record-entries[active transaction records].
 Must be a positive integer.
 
-The {numatrs-srv}[node-level] `numatrs` setting specifies the default for this parameter for a single node.
+The <<numatrs-srv,node-level>> `numatrs` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
-In addition, the {queryNumAtrs}[cluster-level] `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
+In addition, the <<queryNumAtrs,cluster-level>> `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
 **Default** : `1024` +
 **Example** : `512`|integer (int32)
 |**pipeline_batch** +
-__optional__|[[pipeline_batch_req]]
+__optional__|[#pipeline_batch_req]
 Controls the number of items execution operators can batch for Fetch from the KV.
 
-The {pipeline-batch-srv}[node-level] `pipeline-batch` setting specifies the default for this parameter for a single node.
+The <<pipeline-batch-srv,node-level>> `pipeline-batch` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
-In addition, the {queryPipelineBatch}[cluster-level] `queryPipelineBatch` setting specifies the default for this parameter for the whole cluster.
+In addition, the <<queryPipelineBatch,cluster-level>> `queryPipelineBatch` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
 **Example** : `64`|integer (int32)
 |**pipeline_cap** +
-__optional__|[[pipeline_cap_req]]
+__optional__|[#pipeline_cap_req]
 Maximum number of items each execution operator can buffer between various operators.
 
-The {pipeline-cap-srv}[node-level] `pipeline-cap` setting specifies the default for this parameter for a single node.
+The <<pipeline-cap-srv,node-level>> `pipeline-cap` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
-In addition, the {queryPipelineCap}[cluster-level] `queryPipelineCap` setting specifies the default for this parameter for the whole cluster.
+In addition, the <<queryPipelineCap,cluster-level>> `queryPipelineCap` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
 **Example** : `1024`|integer (int32)
 |**prepared** +
-__optional__|[[prepared]]
+__optional__|[#prepared]
 _Required_ if `statement` not provided.
 
-The name of the prepared {sqlpp} statement to be executed.
-Refer to {execute}[EXECUTE] for examples.
+The name of the prepared SQL++ statement to be executed.
+Refer to link:/server/7.6/n1ql/n1ql-language-reference/execute.html[EXECUTE] for examples.
 
 If both `prepared` and `statement` are present and non-empty, an error is returned. +
 **Example** : `"[127.0.0.1:8091]pricy_hotel"`|string
 |**preserve_expiry** +
-__optional__|[[preserve_expiry]]
+__optional__|[#preserve_expiry]
 Specifies whether documents should keep their current expiration setting when modified by a DML statement.
 
 If `true`, documents will keep any existing expiration setting when modified by a DML statement.
@@ -277,34 +277,34 @@ Not supported for statements in a transaction. +
 **Default** : `false` +
 **Example** : `true`|boolean
 |**pretty** +
-__optional__|[[pretty_req]]
+__optional__|[#pretty_req]
 Specifies the query results returned in pretty format.
 
-The {pretty-srv}[node-level] `pretty` setting specifies the default for this parameter for a single node.
+The <<pretty-srv,node-level>> `pretty` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting. +
 **Example** : `false`|boolean
 |**profile** +
-__optional__|[[profile_req]]
+__optional__|[#profile_req]
 Specifies if there should be a profile section returned with the request results.
 The valid values are:
 
-`off`:: No profiling information is added to the query response.
+* `off` &mdash; No profiling information is added to the query response.
 
-`phases`::
+* `phases` &mdash;
 The query response includes a profile section with stats and details about various phases of the query plan and execution.
 Three phase times will be included in the `system:active_requests` and `system:completed_requests` monitoring keyspaces.
 
-`timings`::
+* `timings` &mdash;
 Besides the phase times, the profile section of the query response document will include a full query plan with timing and information about the number of processed documents at each phase.
 This information will be included in the `system:active_requests` and `system:completed_requests` keyspaces.
 
 If `profile` is not set as one of the above values, then the profile setting does not change.
 
-The {profile-srv}[node-level] `profile` setting specifies the default for this parameter for a single node.
+The <<profile-srv,node-level>> `profile` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting. +
 **Example** : `"phases"`|enum (off, phases, timings)
 |**query_context** +
-__optional__|[[query_context]]
+__optional__|[#query_context]
 Specifies the namespace, bucket, and scope used to resolve partial keyspace references within the request.
 
 The query context may be a _full path_, containing namespace, bucket, and scope; or a _relative path_, containing just the bucket and scope.
@@ -313,7 +313,7 @@ If the namespace name is omitted, the default namespace in the current session i
 **Default** : `"default:"` +
 **Example** : `"default:travel-sample.inventory"`|string
 |**readonly** +
-__optional__|[[readonly]]
+__optional__|[#readonly]
 Controls whether a query can change a resulting recordset.
 
 If `readonly` is `true`, then the following statements are not allowed:
@@ -329,42 +329,41 @@ When using GET requests, it's best to set `readonly` to `true`. +
 **Default** : `false` +
 **Example** : `true`|boolean
 |**scan_cap** +
-__optional__|[[scan_cap_req]]
+__optional__|[#scan_cap_req]
 Maximum buffered channel size between the indexer client and the query service for index scans.
 This parameter controls when to use scan backfill.
 
 Use `0` or a negative number to disable.
 Smaller values reduce GC, while larger values reduce indexer backfill.
 
-The {scan-cap-srv}[node-level] `scan-cap` setting specifies the default for this parameter for a single node.
+The <<scan-cap-srv,node-level>> `scan-cap` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
-In addition, the {queryScanCap}[cluster-level] `queryScanCap` setting specifies the default for this parameter for the whole cluster.
+In addition, the <<queryScanCap,cluster-level>> `queryScanCap` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
 **Example** : `1024`|integer (int32)
 |**scan_consistency** +
-__optional__|[[scan_consistency]]
+__optional__|[#scan_consistency]
 Specifies the consistency guarantee or constraint for index scanning.
 The valid values are:
 
-`not_bounded`::
+* `not_bounded` &mdash;
 No timestamp vector is used in the index scan.
 This is the fastest mode, because it avoids the costs of obtaining the vector and waiting for the index to catch up to the vector.
 
-`at_plus`::
+* `at_plus` &mdash;
 This implements bounded consistency.
 The request includes a `scan_vector` parameter and value, which is used as a lower bound.
 This can be used to implement read-your-own-writes (RYOW).
 
-`request_plus`::
+* `request_plus` &mdash;
 This implements strong consistency per request.
 Before processing the request, a current vector is obtained.
 The vector is used as a lower bound for the statements in the request.
 If there are DML statements in the request, RYOW is also applied within the request.
-+
-If `request_plus` is specified in a query that runs during a failover of an index node, the query waits until the rebalance operation completes and the index data has rebalanced before returning a result.
+(If `request_plus` is specified in a query that runs during a failover of an index node, the query waits until the rebalance operation completes and the index data has rebalanced before returning a result.)
 
-`statement_plus`::
+* `statement_plus` &mdash;
 This implements strong consistency per statement.
 Before processing each statement, a current vector is obtained and used as a lower bound for that statement.
 
@@ -373,25 +372,25 @@ Values are case-insensitive.
 For multi-statement requests, the default behavior is RYOW within each request.
 If you want to disable RYOW within a request, add a separate `request_consistency` parameter that can be set to `not_bounded`.
 
-If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the {tximplicit}[tximplicit] parameter set to `true`, then this parameter sets the transactional scan consistency.
-Refer to {transactional-scan-consistency}[Transactional Scan Consistency] for details. +
+If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the <<tximplicit,tximplicit>> parameter set to `true`, then this parameter sets the transactional scan consistency.
+Refer to link:/server/7.6/settings/query-settings.html#transactional-scan-consistency[Transactional Scan Consistency] for details. +
 **Default** : `"not_bounded"` +
 **Example** : `"at_plus"`|enum (not_bounded, at_plus, request_plus, statement_plus)
 |**scan_vector** +
-__optional__|[[scan_vector]]
+__optional__|[#scan_vector]
 _Required_ if `scan_consistency` is `at_plus` and `scan_vectors` not provided.
 
 Specify the lower bound vector timestamp for one keyspace when using `at_plus` scan consistency.
 
-Scan vectors are built of two-element +[+[.var]`value`, [.var]`guard`] entries:
+Scan vectors are built of two-element [`value`, `guard`] entries:
 
-* [.var]`value`: a vBucket's sequence number (a JSON number)
-* [.var]`guard`: a vBucket's UUID (a string)
+* `value`: a vBucket's sequence number (a JSON number)
+* `guard`: a vBucket's UUID (a string)
 
 Scan vectors have two forms:
 
-. *Full scan vector*: an array of +[+[.var]`value`, [.var]`guard`] entries, giving an entry for every vBucket in the system.
-. *Sparse scan vectors*: an object providing entries for specific vBuckets, mapping a vBucket number (a string) to each +[+[.var]`value`, [.var]`guard`] entry.
+. Full: an array of [`value`, `guard`] entries, giving an entry for every vBucket in the system.
+. Sparse: an object providing entries for specific vBuckets, mapping a vBucket number (a string) to each [`value`, `guard`] entry.
 
 Note that `scan_vector` can only be used if the query uses at most one keyspace; if it is used for a query referencing more than one keyspace, the query will fail with an error.
 
@@ -401,7 +400,7 @@ For queries referencing multiple keyspaces, use `scan_vectors`. +
   "19" : [ 47574574, "VB19ID" ]
 }`|object
 |**scan_vectors** +
-__optional__|[[scan_vectors]]
+__optional__|[#scan_vectors]
 _Required_ if `scan_consistency` is `at_plus` and `scan_vector` not provided.
 
 A map from keyspace names to scan vectors.
@@ -409,7 +408,7 @@ See `scan_vector`.
 
 The scan vectors can be Full or Sparse.|object
 |**scan_wait** +
-__optional__|[[scan_wait]]
+__optional__|[#scan_wait]
 Can be supplied with `scan_consistency` values of `request_plus`, `statement_plus` and `at_plus`.
 
 Specifies the maximum time the client is willing to wait for an index to catch up to the vector timestamp in the request.
@@ -431,15 +430,15 @@ Specify `0` or a negative integer to disable. +
 **Default** : `""` +
 **Example** : `"30m"`|string (duration)
 |**signature** +
-__optional__|[[signature]]
+__optional__|[#signature]
 Include a header for the results schema in the response. +
 **Default** : `true` +
 **Example** : `false`|boolean
 |**statement** +
-__optional__|[[statement]]
+__optional__|[#statement]
 _Required_ if `prepared` not provided.
 
-Any valid {sqlpp} statement for a POST request, or a read-only {sqlpp} statement (SELECT, EXPLAIN) for a GET request.
+Any valid SQL++ statement for a POST request, or a read-only SQL++ statement (SELECT, EXPLAIN) for a GET request.
 
 If both `prepared` and `statement` are present and non-empty, an error is returned.
 
@@ -452,7 +451,7 @@ To avoid this, either URL-encode the semicolon as `%3B`, or just omit the semico
 This restriction does not apply when specifying the request parameters in JSON format. +
 **Example** : `"SELECT * FROM &grave;travel-sample&grave;.inventory.hotel LIMIT 1"`|string
 |**timeout** +
-__optional__|[[timeout_req]]
+__optional__|[#timeout_req]
 Maximum time to spend on the request before timing out.
 
 The value for this parameter is a string.
@@ -469,22 +468,22 @@ Valid units are:
 Specify a duration of `0` or a negative duration to disable.
 When disabled, no timeout is applied and the request runs for however long it takes.
 
-If {txid}[txid] or {tximplicit}[tximplicit] is set, this parameter is ignored.
+If <<tximplicit,tximplicit>> or <<txid,txid>> is set, this parameter is ignored.
 The request inherits the remaining time of the transaction as timeout.
 
-The {timeout-srv}[node-level] `timeout` setting specifies the default for this parameter for a single node.
+The <<timeout-srv,node-level>> `timeout` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 However, if the node-level setting is greater than 0, the timeout for the query is limited to the node-level setting.
 
-In addition, the {queryTimeout}[cluster-level] `queryTimeout` setting specifies the default for this parameter for the whole cluster.
+In addition, the <<queryTimeout,cluster-level>> `queryTimeout` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
 **Example** : `"30m"`|string (duration)
 |**txdata** +
-__optional__|[[txdata]]
+__optional__|[#txdata]
 Transaction data.
 For internal use only.|object
 |**txid** +
-__optional__|[[txid]]
+__optional__|[#txid]
 _Required_ for statements within a transaction.
 
 Transaction ID.
@@ -495,29 +494,29 @@ The transaction ID should be the same as the transaction ID generated by the `BE
 The transaction must be active and non-expired. +
 **Example** : `"d81d9b4a-b758-4f98-b007-87ba262d3a51"`|string (UUID)
 |**tximplicit** +
-__optional__|[[tximplicit]]
+__optional__|[#tximplicit]
 Specifies that a DML statement is a singleton transaction.
 
 When this parameter is true, the Query service starts a transaction and executes the statement.
 If execution is successful, the Query service commits the transaction; otherwise the transaction is rolled back.
 
 The statement may not be part of an ongoing transaction.
-If the {txid}[txid] request-level parameter is set, the `tximplicit` parameter is ignored. +
+If the <<txid,txid>> request-level parameter is set, the `tximplicit` parameter is ignored. +
 **Default** : `false` +
 **Example** : `true`|boolean
 |**txstmtnum** +
-__optional__|[[txstmtnum]]
+__optional__|[#txstmtnum]
 Transaction statement number.
 The transaction statement number must be a positive integer, and must be higher than any previous transaction statement numbers in the transaction.
 If the transaction statement number is lower than the transaction statement number for any previous statement, an error is generated. +
 **Example** : `10`|integer (int32)
 |**txtimeout** +
-__optional__|[[txtimeout_req]]
+__optional__|[#txtimeout_req]
 Maximum time to spend on a transaction before timing out.
-Only applies to `BEGIN TRANSACTION` statements, or DML statements for which {tximplicit}[tximplicit] is set.
+Only applies to `BEGIN TRANSACTION` statements, or DML statements for which <<tximplicit,tximplicit>> is set.
 For other statements, it is ignored.
 
-Within a transaction, the request-level {timeout_req}[timeout] parameter is ignored.
+Within a transaction, the request-level <<timeout_req,timeout>> parameter is ignored.
 The transaction timeout clock starts when the `BEGIN WORK` statement is successful.
 Once the transaction timeout is reached, no statement is allowed to continue in the transaction.
 
@@ -535,28 +534,28 @@ Valid units are:
 Specify a duration of `0` to disable.
 When disabled, the request-level timeout is set to the default.
 
-The {txtimeout-srv}[node-level] `txtimeout` setting specifies the default for this parameter for a single node.
+The <<txtimeout-srv,node-level>> `txtimeout` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 However, if the node-level setting is greater than 0, the transaction timeout for the query is limited to the node-level setting.
 
-In addition, the {queryTxTimeout}[cluster-level] `queryTxTimeout` setting specifies the default for this parameter for the whole cluster.
+In addition, the <<queryTxTimeout,cluster-level>> `queryTxTimeout` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sessions or redirected input. +
+The default is `&quot;15s&quot;` for cbq files or scripts, `&quot;2m&quot;` for interactive cbq sessions or redirected input. +
 **Example** : `"30m"`|string (duration)
 |**use_cbo** +
-__optional__|[[use_cbo_req]]
+__optional__|[#use_cbo_req]
 Specifies whether the cost-based optimizer is enabled.
 
-The {use-cbo-srv}[node-level] `use-cbo` setting specifies the default for this parameter for a single node.
+The <<use-cbo-srv,node-level>> `use-cbo` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
-In addition, the {queryUseCBO}[cluster-level] `queryUseCBO` setting specifies the default for this parameter for the whole cluster.
+In addition, the <<queryUseCBO,cluster-level>> `queryUseCBO` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
 **Example** : `true`|boolean
 |**use_fts** +
-__optional__|[[use_fts]]
-[.edition]#{enterprise}#
+__optional__|[#use_fts]
+&blacktriangleright; https://www.couchbase.com/products/editions[ENTERPRISE EDITION]
 
 Specifies that the query should use a full-text index.
 
@@ -566,23 +565,47 @@ If the query does not contain a `USING FTS` hint, and this parameter is set to t
 If a qualified full-text index is available, it is selected for the query.
 If none of the available full-text indexes are qualified, the available GSI indexes are considered instead.
 
-Refer to {flex-indexes}[Flex Indexes] for more information. +
+Refer to link:/server/7.6/n1ql/n1ql-language-reference/flex-indexes.html[Flex Indexes] for more information. +
 **Default** : `false` +
 **Example** : `true`|boolean
+|**use_replica** +
+__optional__|[#use_replica_req]
+Specifies whether a query can fetch data from a replica vBucket if active vBuckets are inaccessible.
+The possible values are:
+
+* `off` &mdash; read from replica is disabled for this request.
+
+* `on` &mdash; read from replica is enabled for this request, unless it has been disabled for all requests at node level.
+
+* `unset` &mdash; read from replica is specified by the node-level setting.
+If the node-level setting is also `unset`, read from replica is disabled for this request.
+
+The <<use-replica-srv,node-level>> `use-replica` setting specifies the default for this property for a single node.
+The request-level parameter usually overrides the node-level setting.
+However, when the node-level setting is `off`, the request-level parameter cannot enable the property.
+
+In addition, the <<queryUseReplica,cluster-level>> `queryUseReplica` setting specifies the default for this property for the whole cluster.
+When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+WARNING: Do not enable read from replica when you require consistent results.
+
+SELECT queries within a transaction cannot read from replica. +
+**Default** : `"unset"` +
+**Example** : `"true"`|enum (off, on, unset)
 |**$<identifier>** +
-__optional__|[[identifier]]
+__optional__|[#identifier]
 Applicable if the `statement` has 1 or more named parameters.
 
 The name of a named parameter consists of two parts:
 
-. The $ character
+. The `$` character.
 . An identifier that starts with an alpha character followed by one or more alphanumeric characters.
 
 The value of the named parameter is any JSON value.
 
 Named parameters apply to `prepared` also.
 
-Refer to {section_srh_tlm_n1b}[] for details.|string (any JSON value)
+Refer to link:/server/7.6/settings/query-settings.html#section_srh_tlm_n1b[Named Parameters and Positional Parameters] for details.|string (any JSON value)
 |===
 
 
@@ -619,7 +642,7 @@ The response body has the following structure.
 |**requestID** +
 __optional__|A unique identifier for the response.|string (UUID)
 |**clientContextID** +
-__optional__|The client context ID of the request, if one was supplied &mdash; see `client_context_id` in {request-parameters}[].|string
+__optional__|The client context ID of the request, if one was supplied &mdash; see `client_context_id` in <<_request_parameters,Request Parameters>>.|string
 |**signature** +
 __optional__|The schema of the results. Present only when the query completes successfully. +
 **Example** : `{
@@ -636,7 +659,7 @@ __optional__|An array of 0 or more warning objects. If a warning occurred during
 |**metrics** +
 __optional__|An object containing metrics about the request.|<<_metrics,Metrics>>
 |**controls** +
-__optional__|An object containing runtime information provided along with the request. Present only if `controls` was set to true in the {request-parameters}[].|<<_controls,Controls>>
+__optional__|An object containing runtime information provided along with the request. Present only if `controls` was set to true in the <<_request_parameters,Request Parameters>>.|<<_controls,Controls>>
 |===
 
 
@@ -656,12 +679,12 @@ __required__|A message describing the error or warning in detail. This property 
 __optional__|Unique name that has a 1:1 mapping to the code. Uniquely identifies the condition. This property is helpful for pattern matching and can have meaning, making it more memorable than the code. The name should be fully qualified. +
 **Example** : `"indexing.scan.io_failure"`|string
 |**sev** +
-__optional__|One of the following {sqlpp} severity levels, listed in order of severity:
+__optional__|One of the following SQL++ severity levels, listed in order of severity:
 
- 1. Severe
- 2. Error
- 3. Warn
- 4. Info|integer
+. Severe
+. Error
+. Warn
+. Info|integer
 |**temp** +
 __optional__|Indicates if the condition is transient &mdash; for example, the queue is full. If the value is `false`, it tells clients and users that a retry without modification produces the same condition.|boolean
 |===
@@ -690,7 +713,7 @@ __optional__|The number of mutations that were made during the request.|integer 
 |**sortCount** +
 __optional__|The number of objects that were sorted. Present only if the request includes `ORDER BY`.
 
-If a query includes ORDER BY, LIMIT, or OFFSET clauses, an application can use the `sortCount` value to give the overall number of results in a message such as `"page 1 of N"`.|integer (unsigned)
+If a query includes ORDER BY, LIMIT, or OFFSET clauses, an application can use the `sortCount` value to give the overall number of results in a message such as `&quot;page 1 of N&quot;`.|integer (unsigned)
 |**usedMemory** +
 __optional__|The amount of document memory used to execute the request. This property is only returned if a memory quota was set for the query.|integer (unsigned)
 |**errorCount** +

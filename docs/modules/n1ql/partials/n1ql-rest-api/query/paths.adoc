@@ -22,7 +22,7 @@ POST /query/service
 
 
 ==== Description
-Enables you to execute a {sqlpp} statement. This method allows you to run queries and modifying statements, and specify query parameters.
+Enables you to execute a SQL++ statement. This method allows you to run queries and modifying statements, and specify query parameters.
 
 
 ==== Parameters
@@ -50,14 +50,9 @@ This section describes the response HTTP status codes.
 |**200**|The operation was successful.|<<_response_body,Response Body>>
 |**400**|Bad Request. The request cannot be processed for one of the following reasons:
 
-
-  * The statement contains a {sqlpp} syntax error.
-
-
-  * The request has a missing or unrecognized HTTP parameter.
-
-
-  * The request is badly formatted (for example, the request body contains a JSON syntax error).|No Content
+* The statement contains a SQL++ syntax error.
+* The request has a missing or unrecognized HTTP parameter.
+* The request is badly formatted (for example, the request body contains a JSON syntax error).|No Content
 |**401**|Unauthorized. The credentials provided with the request are missing or invalid.|No Content
 |**403**|Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement.|No Content
 |**404**|Not found. The statement in the request references an invalid namespace or keyspace.|No Content
@@ -113,7 +108,7 @@ curl http://localhost:8093/query/service \
 Conversely, because it is sent as a JSON object, the statement in this example can contain a semicolon.
 ====
 
-For further examples, refer to {section_srh_tlm_n1b}[].
+For further examples, refer to xref:n1ql:n1ql-rest-api/examplesrest.adoc[].
 
 
 [[_get_service]]
@@ -124,7 +119,7 @@ GET /query/service
 
 
 ==== Description
-Enables you to execute a {sqlpp} statement. This method allows you to run queries and modifying statements, and specify query parameters. It does not allow you to run modifying statements.
+Enables you to execute a SQL++ statement. This method allows you to run queries and modifying statements, and specify query parameters. It does not allow you to run modifying statements.
 
 This endpoint is intended for situations where use of the `POST` method is restricted.
 
@@ -149,14 +144,9 @@ This section describes the response HTTP status codes.
 |**200**|The operation was successful.|<<_response_body,Response Body>>
 |**400**|Bad Request. The request cannot be processed for one of the following reasons:
 
-
-  * The statement contains a {sqlpp} syntax error.
-
-
-  * The request has a missing or unrecognized HTTP parameter.
-
-
-  * The request is badly formatted (for example, the request body contains a JSON syntax error).|No Content
+* The statement contains a SQL++ syntax error.
+* The request has a missing or unrecognized HTTP parameter.
+* The request is badly formatted (for example, the request body contains a JSON syntax error).|No Content
 |**401**|Unauthorized. The credentials provided with the request are missing or invalid.|No Content
 |**403**|Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement.|No Content
 |**404**|Not found. The statement in the request references an invalid namespace or keyspace.|No Content
@@ -193,7 +183,7 @@ curl -v http://localhost:8093/query/service?statement=SELECT%20name%20FROM%20%60
 ----
 ====
 
-For further examples, refer to {section_srh_tlm_n1b}[].
+For further examples, refer to xref:n1ql:n1ql-rest-api/examplesrest.adoc[].
 
 
 
