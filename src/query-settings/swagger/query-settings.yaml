@@ -536,6 +536,39 @@ definitions:
         x-desc-refs: |
           [use-cbo-srv]: ../n1ql/n1ql-rest-api/admin.html#use-cbo-srv
           [use_cbo_req]: ../n1ql/n1ql-rest-api/index.html#use_cbo_req
+      queryUseReplica:
+        type: string
+        default: unset
+        enum: ["off","on","unset"]
+        example: on
+        x-desc-name: queryUseReplica
+        description: |
+          [#queryUseReplica]
+          Specifies whether a query can fetch data from a replica vBucket if active vBuckets are inaccessible.
+          The possible values are:
+
+          * `off` &mdash; read from replica is disabled for all queries and cannot be overridden at request level.
+
+          * `on` &mdash; read from replica is enabled for all queries, but can be disabled at request level.
+
+          * `unset` &mdash; read from replica is enabled or disabled at request level.
+
+          The [node-level][use-replica-srv] `use-replica` setting specifies this property for a single node.
+          When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
+
+          In addition, the [request-level][use_replica_req] `use_replica` parameter specifies this property per request.
+          If a request does not include this parameter, or if the request-level parameter is `unset`, the node-level setting is used.
+          If the request-level parameter and the node-level setting are both `unset`, read from replica is disabled for that request.
+
+          WARNING: Do not enable read from replica when you require consistent results.
+
+          SELECT queries within a transaction cannot read from replica.
+
+          [use-replica-srv]: #use-replica-srv
+          [use_replica_req]: #use_replica_req
+        x-desc-refs: |
+          [use-replica-srv]: ../n1ql/n1ql-rest-api/admin.html#use-replica-srv
+          [use_replica_req]: ../n1ql/n1ql-rest-api/index.html#use_replica_req
       queryCurlWhitelist:
         x-desc-name: queryCurlWhitelist
         description: |
