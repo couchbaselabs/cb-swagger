@@ -1,0 +1,38 @@
+
+// This file is created automatically by Swagger2Markup.
+// DO NOT EDIT! Refer to https://github.com/couchbaselabs/cb-swagger
+
+
+[[_query_responses]]
+=== Query Responses
+[%hardbreaks]
+__Polymorphism__ : Composition
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**requestID** +
+__optional__|A unique identifier for the response.|string (UUID)
+|**clientContextID** +
+__optional__|The client context ID of the request, if one was supplied — refer to `client_context_id` in <<_query_parameters,Query Parameters>>.|string
+|**signature** +
+__optional__|The schema of the results. Present only when the query completes successfully.|object
+|**results** +
+__optional__|An array of all the objects returned by the query. An object can be any JSON value.|< object > array
+|**status** +
+__optional__|The status of the request.|enum (success, running, errors, completed, stopped, timeout, fatal)
+|**errors** +
+__optional__|An array of error objects. Present only if 1 or more errors are returned during processing of the request. Each error is represented by an object in this list.|< <<_errors,Errors>> > array
+|**warnings** +
+__optional__|An array of warning objects. Present only if 1 or more warnings are returned during processing of the request. Each warning is represented by an object in this list.
+
+Note that you can specify the maximum number of warning messages to be returned in the query response — refer to `max-warnings` in <<_query_parameters,Query Parameters>>. By default, no warnings are returned, even if warnings have occurred during processing.|< <<_warnings,Warnings>> > array
+|**plans** +
+__optional__|An object containing the query plans, if requested.|<<_plans,Plans>>
+|**metrics** +
+__optional__|An object containing metrics about the request.|<<_metrics,Metrics>>
+|===
+
+
+
