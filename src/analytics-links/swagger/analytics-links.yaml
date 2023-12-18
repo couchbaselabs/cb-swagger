@@ -33,7 +33,7 @@ paths:
       operationId: post_alt
       deprecated: true
       summary: Create Link (Alternative)
-      description: An alternative endpoint for [creating a link](#create-link), provided for backward compatibility.
+      description: An alternative endpoint for [creating a link](#_post_link), provided for backward compatibility.
       tags:
         - Legacy Methods
       parameters:
@@ -125,7 +125,7 @@ paths:
       deprecated: true
       summary: Edit Link (Alternative)
       description: >
-        An alternative endpoint for [editing a link](#edit-link), provided for backward compatibility.
+        An alternative endpoint for [editing a link](#_put_link), provided for backward compatibility.
         The link name, type, and scope name cannot be modified.
       tags:
         - Legacy Methods
@@ -169,7 +169,7 @@ paths:
       operationId: delete_alt
       summary: Delete Link (Alternative)
       description: >
-        An alternative endpoint for [deleting a link](#delete-link), provided for backward compatibility.
+        An alternative endpoint for [deleting a link](#_delete_link), provided for backward compatibility.
         The link cannot be deleted if any other entities are using it, such as an Analytics collection.
         The entities using the link need to be disconnected from the link, otherwise, the delete operation fails.
       tags:
@@ -755,7 +755,7 @@ definitions:
           `s3`: A link to the Amazon S3 service.
           `azureblob`: A link to Microsoft Azure Blob storage.
 
-          Different properties are returned, depending on the link type: refer to [Couchbase](#couchbase), [S3](#s3), or [Azure Blob](#azure-blob).
+          Different properties are returned, depending on the link type: refer to [Couchbase](#_couchbase), [S3](#_s3), [Azure Blob](#_azure-blob), or [GCS](#_gcs).
         enum:
           - couchbase
           - s3

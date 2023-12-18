@@ -88,11 +88,11 @@ paths:
     post:
       operationId: post_query
       summary: Query Service (Alternative)
-      description: An alternative endpoint for the [Query Service](#query-service), provided for tools compatibility.
+      description: An alternative endpoint for the [Query Service](#_post_service), provided for tools compatibility.
     get:
       operationId: get_query
       summary: Read-Only Query Service (Alternative)
-      description: An alternative endpoint for the [Read-Only Query Service](#read-only-query-service), provided for tools compatibility.
+      description: An alternative endpoint for the [Read-Only Query Service](#_get_service), provided for tools compatibility.
 
 definitions:
 
@@ -213,7 +213,6 @@ definitions:
   # For the REST API reference
   # This is more complex than the parameters, because we need to compose the nested metrics object.
   # Use YAML anchors so the shared properties don't appear as a separate section in the output.
-  # Use reference-style links so they can point to different locations in different output files.
   Query Responses:
     allOf:
       - type: object
@@ -226,7 +225,7 @@ definitions:
             type: string
             description: >
               The client context ID of the request, if one was supplied —
-              refer to `client_context_id` in [Query Parameters][1].
+              refer to `client_context_id` in [Query Parameters](#_query_parameters).
           signature:
             type: object
             description: >
@@ -265,7 +264,7 @@ definitions:
 
 
               Note that you can specify the maximum number of warning messages to be returned in the query response —
-              refer to `max-warnings` in [Query Parameters][2].
+              refer to `max-warnings` in [Query Parameters](#_query_parameters).
               By default, no warnings are returned, even if warnings have occurred during processing.
             items:
               $ref: "#/definitions/Warnings"
