@@ -2,8 +2,8 @@ apply plugin: 'io.github.swagger2markup'
 
 convertSwagger2markup {
     swaggerInput file("swagger/analytics-settings.yaml").getAbsolutePath()
-    outputDir file("${AnalyticsSettingsBuildDir}")
-    config = ['swagger2markup.markupLanguage' : 'MARKDOWN',
+    outputDir file("${rootDir}/docs/modules/analytics/partials/rest-settings")
+    config = ['swagger2markup.markupLanguage' : 'ASCIIDOC',
               'swagger2markup.generatedExamplesEnabled' : false,
               'swagger2markup.pathsGroupedBy' : 'AS_IS',
               'swagger2markup.operationOrderBy' : 'AS_IS',

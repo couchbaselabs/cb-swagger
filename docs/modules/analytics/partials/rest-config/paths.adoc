@@ -1,0 +1,305 @@
+
+// This file is created automatically by Swagger2Markup.
+// DO NOT EDIT! Refer to https://github.com/couchbaselabs/cb-swagger
+
+
+[[_paths]]
+== Paths
+
+This section describes the operations available with this REST API.
+
+* <<_get_service>>
+* <<_put_service>>
+* <<_get_node>>
+* <<_put_node>>
+
+
+[[_get_service]]
+=== View Service-Level Parameters
+....
+GET /analytics/config/service
+....
+
+
+==== Description
+Views service-level parameters, which apply to all nodes running the Analytics service.
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|Success. Returns an object listing the configurable service-level parameters and their current values.|<<_service,Service>>
+|**401**|Unauthorized. The user name or password may be incorrect.
+
+Returns an object containing an error message. Refer to link:error-codes.html[Error Codes].|object
+|===
+
+
+==== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage,Analytics Manage>>**
+|===
+
+
+==== Example HTTP request
+
+====
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+     http://localhost:8095/analytics/config/service
+----
+====
+
+
+==== Example HTTP response
+
+====
+.Response 200
+[source,json]
+----
+{
+  "activeMemoryGlobalBudget" : 67108864,
+  "activeStopTimeout" : 3600,
+  "activeSuspendTimeout" : 3600,
+  "analyticsBroadcastDcpStateMutationCount" : 10000,
+  "analyticsHttpRequestQueueSize" : 256,
+  "analyticsHttpThreadCount" : 16,
+  "bindAddress" : null,
+  "bindToHost" : false,
+  "clusterConnectRetries" : 5,
+  "collectDcpStateFromNodesTimeout" : 600,
+  "compilerFramesize" : 32768,
+  "compilerGroupmemory" : 33554432,
+  "compilerJoinmemory" : 33554432,
+  "compilerParallelism" : 0,
+  "compilerSortParallel" : false,
+  "compilerSortmemory" : 33554432,
+  "compilerWindowmemory" : 33554432,
+  "coresMultiplier" : 3,
+  "dcpBufferAckWatermark" : 20,
+  "dcpChannelReconnectRemoteIdleSeconds" : 120,
+  "dcpConnectionBufferSize" : 10485760,
+  "deadlockWatchdogHaltDelaySeconds" : 120,
+  "deadlockWatchdogPollSeconds" : 300,
+  "jobHistorySize" : 10,
+  "jobQueueCapacity" : 4096,
+  "jvmArgs" : null,
+  "logLevel" : "DEBUG",
+  "maxWebRequestSize" : 209715200,
+  "netBufferCount" : 1,
+  "netThreadCount" : 1,
+  "rebalancePullDatasetSizeFrequency" : 5,
+  "remoteLinkConnectTimeoutSeconds" : 60,
+  "remoteLinkSocketTimeoutSeconds" : 60,
+  "requestsArchiveSize" : 50,
+  "resultSweepThreshold" : 60000,
+  "resultTtl" : 86400000,
+  "storageBuffercacheMaxopenfiles" : 2147483647,
+  "storageBuffercachePagesize" : 131072,
+  "storageCompressionBlock" : "snappy",
+  "storageMemorycomponentNumcomponents" : 2,
+  "storageMemorycomponentPagesize" : 131072,
+  "storageWriteRateLimit" : 0,
+  "threaddumpFrequencySeconds" : 300,
+  "threaddumpLogLevel" : "DEBUG",
+  "traceCategories" : [ ],
+  "txnDatasetCheckpointInterval" : 3600
+}
+----
+====
+
+
+[[_put_service]]
+=== Modify Service-Level Parameters
+....
+PUT /analytics/config/service
+....
+
+
+==== Description
+Modifies service-level parameters, which apply to all nodes running the Analytics service.
+
+IMPORTANT: For the configuration changes to take effect,
+you must restart the Analytics cluster using the link:rest-admin.html#_restart_cluster[Cluster Restart API].
+
+
+==== Parameters
+
+By default, the API accepts parameters using the `application/x-www-form-urlencoded` MIME type.
+You can specify the `application/json` MIME type using the `Content-Type` header of the PUT request.
+
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**Service** +
+__optional__|An object specifying one or more of the configurable service-level parameters.|<<_service,Service>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|The operation was successful.|No Content
+|**400**|Bad request. Unknown parameter or incorrect value.|<<_errors,Errors>>
+|**401**|Unauthorized. The user name or password may be incorrect.
+
+Returns an object containing an error message. Refer to link:error-codes.html[Error Codes].|object
+|===
+
+
+==== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage,Analytics Manage>>**
+|===
+
+
+==== Example HTTP request
+
+====
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password -X PUT \
+     -d jobHistorySize=5 \
+     http://localhost:8095/analytics/config/service
+----
+====
+
+
+[[_get_node]]
+=== View Node-Specific Parameters
+....
+GET /analytics/config/node
+....
+
+
+==== Description
+Views node-specific parameters, which apply to the node receiving the request.
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|Success. Returns an object listing the configurable node-level parameters and their current values.|<<_node,Node>>
+|**401**|Unauthorized. The user name or password may be incorrect.
+
+Returns an object containing an error message. Refer to link:error-codes.html[Error Codes].|object
+|===
+
+
+==== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage,Analytics Manage>>**
+|===
+
+
+==== Example HTTP request
+
+====
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+     http://localhost:8095/analytics/config/node
+----
+====
+
+
+==== Example HTTP response
+
+====
+.Response 200
+[source,json]
+----
+{
+  "jvmArgs" : null,
+  "storageBuffercacheSize" : 325320704,
+  "storageMemorycomponentGlobalbudget" : 325320704
+}
+----
+====
+
+
+[[_put_node]]
+=== Modify Node-Specific Parameters
+....
+PUT /analytics/config/node
+....
+
+
+==== Description
+Views node-specific parameters, which apply to the node receiving the request.
+
+IMPORTANT: For the configuration changes to take effect,
+you must restart the node using the link:rest-admin.html#_restart_node[Node Restart API],
+or restart the Analytics cluster using the link:rest-admin.html#_restart_cluster[Cluster Restart API].
+
+
+==== Parameters
+
+By default, the API accepts parameters using the `application/x-www-form-urlencoded` MIME type.
+You can specify the `application/json` MIME type using the `Content-Type` header of the PUT request.
+
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**Node** +
+__optional__|An object specifying one or more of the configurable node-level parameters on this node.|<<_node,Node>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|The operation was successful.|No Content
+|**400**|Bad request. Unknown parameter or incorrect value.|<<_errors,Errors>>
+|**401**|Unauthorized. The user name or password may be incorrect.
+
+Returns an object containing an error message. Refer to link:error-codes.html[Error Codes].|object
+|===
+
+
+==== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage,Analytics Manage>>**
+|===
+
+
+==== Example HTTP request
+
+====
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password -X PUT \
+     -d storageBuffercacheSize=162660352 \
+     http://localhost:8095/analytics/config/node
+----
+====
+
+
+
