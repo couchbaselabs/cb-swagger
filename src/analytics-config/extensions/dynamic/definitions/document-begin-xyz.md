@@ -1,1 +1,0 @@
-<!-- hide swagger2markup links
