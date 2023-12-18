@@ -1,0 +1,125 @@
+
+// This file is created automatically by Swagger2Markup.
+// DO NOT EDIT! Refer to https://github.com/couchbaselabs/cb-swagger
+
+
+[[_definitions]]
+== Definitions
+
+This section describes the properties returned by these REST APIs.
+
+* <<_ingestion>>
+* <<_mutations>>
+
+
+[[_ingestion]]
+=== Ingestion
+An object containing a single links property.
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**links** +
+__optional__|An array of objects, each giving information about a single linked Analytics scope.|< <<_links,Links>> > array
+|===
+
+[[_links]]
+**Links**
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**name** +
+__optional__|The name of the link. +
+**Example** : `"Local"`|string
+|**scope** +
+__optional__|The name of the Analytics scope. +
+**Example** : `"travel-sample/inventory"`|string
+|**status** +
+__optional__|The status of the Analytics scope. +
+**Example** : `"healthy"`|enum (healthy, stopped, unhealthy, suspended)
+|**state** +
+__optional__|An array of objects, each giving the ingestion state of one or more Analytics collections.
+
+Analytics collections which have the same ingestion state within this Analytics scope are aggregated together.|< <<_states,States>> > array
+|===
+
+[[_states]]
+**States**
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**timestamp** +
+__required__|The time since epoch that this sample was calculated, in milliseconds. +
+**Example** : `1631273689161`|integer
+|**progress** +
+__required__|The percentage (fraction from 0 to 1) of ingestion progress at the current time. +
+**Minimum value** : `0` +
+**Maximum value** : `1` +
+**Example** : `0.0`|number (double)
+|**timeLag** +
+__optional__|The estimated time that the ingestion lags behind the Data service, in milliseconds. Only displayed for Analytics collections that are not fully ingested. +
+**Example** : `9744`|integer
+|**itemsProcessed** +
+__optional__|The number of items ingested since last connect; that is, the total number of mutations and deletions processed. Only displayed for Analytics collections that are not fully ingested.
+
+Note that this value is reset on connect, so it may appear to get smaller. +
+**Example** : `12301`|integer
+|**seqnoAdvances** +
+__optional__|The change in sequence number (seqno) since last connect. Only displayed for Analytics collections that are not fully ingested. +
+**Example** : `61`|integer
+|**scopes** +
+__required__|An array of objects, each one giving information about a single Analytics scope.|< <<_state_scopes,State Scopes>> > array
+|===
+
+[[_state_scopes]]
+**State Scopes**
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**name** +
+__required__|The name of the Analytics scope. +
+**Example** : `"travel-sample/inventory"`|string
+|**collections** +
+__required__|An array of objects, each one giving information about a single Analytics collection.|< <<_state_collections,State Collections>> > array
+|===
+
+[[_state_collections]]
+**State Collections**
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**name** +
+__required__|The name of the Analytics collection. +
+**Example** : `"route"`|string
+|===
+
+
+[[_mutations]]
+=== Mutations
+An object containing one or more nested scope objects, one for each available Analytics scope.
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**_scope_** +
+__optional__|An object containing one or more collection properties, one for each Analytics collection in the Analytics scope. The name of the object is the name of the Analytics scope, in display form.|<<_collections,Collections>>
+|===
+
+[[_collections]]
+**Collections**
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**_collection_** +
+__optional__|The number of mutations in the DCP queue that have not yet been ingested. The name of the property is the name of the Analytics collection.|integer
+|===
+
+
+

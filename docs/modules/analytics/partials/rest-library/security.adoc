@@ -1,0 +1,36 @@
+
+// This file is created automatically by Swagger2Markup.
+// DO NOT EDIT! Refer to https://github.com/couchbaselabs/cb-swagger
+
+
+[[_securityscheme]]
+== Security
+
+The Analytics Library REST API supports HTTP basic authentication.
+Credentials can be passed via HTTP headers.
+
+
+[[_full_admin]]
+=== Full Admin
+To <<_post_library,Create or Update a Library>> or <<_delete_library,Delete a Library>>, users must have the Full Admin RBAC role.
+
+[%hardbreaks]
+__Type__ : basic
+
+
+[[_analytics_admin]]
+=== Analytics Admin
+To <<_get_collection,Read All Libraries>>, users must have one of the following RBAC roles:
+
+* Full Admin
+* Cluster Admin
+* Analytics Admin
+
+[%hardbreaks]
+__Type__ : basic
+
+
+Refer to xref:learn:security/roles.adoc[] for more details.
+
+
+
