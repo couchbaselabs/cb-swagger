@@ -651,7 +651,13 @@ definitions:
         description: Total amount of calendar time taken to complete the query.
       state:
         type: string
-        description: The state of the query execution, such as completed, running, cancelled.
+        description: |
+          The state of the query execution, such as `completed`, `running`, `cancelled`.
+
+          Note that the `completed` state means that the request was started and completed by the Query service, but it does not mean that it was necessarily successful.
+          The request could have been successful, or completed with errors.
+
+          To find requests that were successful, use this field in conjunction with the `errorCount` field: search for requests whose state is `completed` and whose error count is `0`.
       statement:
         type: string
         description: The query statement being executed.
@@ -1405,8 +1411,11 @@ definitions:
           Specify `0` (the default value) to disable.
           When disabled, there is no quota.
 
-          Within a transaction, this setting enforces the memory quota for the transaction.
-          The transaction memory quota tracks only the delta table and the transaction log (approximately).
+          This parameter enforces a ceiling on the memory used for the tracked documents required for processing a request.
+          It does not take into account any other memory that might be used to process a request, such as the stack, the operators, or some intermediate values.
+
+          Within a transaction, this setting enforces the memory quota for the transaction by tracking the
+          delta table and the transaction log (approximately).
 
           The {queryMemoryQuota}[cluster-level] `queryMemoryQuota` setting specifies this property for the whole cluster.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
