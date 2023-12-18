@@ -1,0 +1,16 @@
+====
+The example below creates or updates a library called `mylib` in the `travel-sample.inventory` scope.
+The Python code is stored in a file called `lib.pyz`.
+
+.Curl request
+[source,sh]
+----
+curl -X POST \
+http://localhost:8095/analytics/library/travel-sample%2Finventory/mylib \
+-u Administrator:password \
+-d type=python
+-d data=lib.pyz
+----
+
+NOTE: The dot separator within the scope name is converted to a slash (`/`), which is then URL-encoded as `%2F`.
+====

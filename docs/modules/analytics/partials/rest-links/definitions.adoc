@@ -1,0 +1,311 @@
+
+// This file is created automatically by Swagger2Markup.
+// DO NOT EDIT! Refer to https://github.com/couchbaselabs/cb-swagger
+
+
+[[_definitions]]
+== Definitions
+
+This section describes the properties returned by this REST API.
+
+* <<_links>>
+* <<_errors>>
+
+
+[[_links]]
+=== Links
+These properties are common to all links.
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**scope** +
+__required__|The name of the Analytics scope containing the link.
+
+The scope name may contain one or two identifiers, separated by a slash (/). +
+**Example** : `"travel-sample/inventory"`|string
+|**name** +
+__required__|The name of the link. +
+**Example** : `"myLink"`|string
+|**type** +
+__required__|The type of the link.
+
+`couchbase`: A link to a remote Couchbase cluster.
+`s3`: A link to the Amazon S3 service.
+`azureblob`: A link to Microsoft Azure Blob Storage.
+`gcs`: A link to Google Cloud Storage.
+
+Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob, gcs)
+|===
+
+
+[[_couchbase]]
+=== Couchbase
+These properties are returned for remote Couchbase links.
+
+[%hardbreaks]
+__Polymorphism__ : Inheritance
+__Discriminator__ : type
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**scope** +
+__required__|The name of the Analytics scope containing the link.
+
+The scope name may contain one or two identifiers, separated by a slash (/). +
+**Example** : `"travel-sample/inventory"`|string
+|**name** +
+__required__|The name of the link. +
+**Example** : `"myLink"`|string
+|**type** +
+__required__|The type of the link.
+
+`couchbase`: A link to a remote Couchbase cluster.
+`s3`: A link to the Amazon S3 service.
+`azureblob`: A link to Microsoft Azure Blob Storage.
+`gcs`: A link to Google Cloud Storage.
+
+Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob, gcs)
+|**activeHostname** +
+__required__|The remote hostname. +
+**Example** : `"remoteHostName:8091"`|string
+|**bootstrapAlternateAddress** +
+__required__|Specifies whether the provided (bootstrap) hostname is an alternative address. +
+**Example** : `false`|boolean
+|**bootstrapHostname** +
+__required__|The provided (bootstrap) hostname. +
+**Example** : `"remoteHostName:8091"`|string
+|**certificate** +
+__required__|The content of the target cluster root certificate. Only set for links with full encryption. If not set, this property returns `null`.|string
+|**clientCertificate** +
+__required__|The content of the client certificate. Only set for links with full encryption using client certificate and client key. If not set, this property returns `null`.|string
+|**clientKey** +
+__required__|The content of the client key. Only set for links with full encryption using client certificate and client key. If not set, this property returns `null`.|string
+|**clusterCompatibility** +
+__required__|For internal use only. +
+**Example** : `393221`|integer
+|**encryption** +
+__required__|The type of encryption used by the link.
+
+`none`: Neither passwords nor data are encrypted.
+`half`: Passwords are encrypted using SCRAM-SHA, but data is not.
+`full`: All data and passwords are encrypted and TLS is used.|enum (none, half, full)
+|**nodes** +
+__required__|An array of objects, each of which contains information about a node in the target cluster.|< <<_nodes,Nodes>> > array
+|**password** +
+__required__|The password used to connect to the link. This is redacted for the sake of security. Not set for links with full encryption using client certificate and client key. If not set, this property returns `null`. +
+**Example** : `"<redacted sensitive entry>"`|string
+|**username** +
+__required__|The remote username. Not set for links with full encryption using client certificate and client key. If not set, this property returns `null`. +
+**Example** : `"remote.user"`|string
+|**uuid** +
+__required__|A UUID uniquely identifying the link. +
+**Example** : `"6331e2a390125b662f7bcfd63ecb3a73"`|string (UUID)
+|===
+
+[[_nodes]]
+**Nodes**
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**alternateAddresses** +
+__optional__|The alternate address defined on the node, if any. If not defined, this property returns `null`.|string
+|**hostname** +
+__optional__|The hostname of the node. If not defined, this property returns `null`.|string
+|**services** +
+__optional__|An object giving information about the services and ports configured on this node.|<<_services,Services>>
+|===
+
+[[_services]]
+**Services**
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**cbas** +
+__optional__|The port number for a connection to the Analytics service. +
+**Example** : `8095`|integer
+|**cbasSSL** +
+__optional__|The port number for an encrypted connection to the Analytics service. +
+**Example** : `18095`|integer
+|**kv** +
+__optional__|The port number for a connection to the Data service. +
+**Example** : `11210`|integer
+|**kvSSL** +
+__optional__|The port number for an encrypted connection to the Data service. +
+**Example** : `11207`|integer
+|**mgmt** +
+__optional__|The port number for a connection to the Cluster Manager service. +
+**Example** : `8091`|integer
+|**mgmtSSL** +
+__optional__|The port number for an encrypted connection to the Cluster Manager service. +
+**Example** : `18091`|integer
+|===
+
+
+[[_s3]]
+=== S3
+These properties are returned for S3 links.
+
+[%hardbreaks]
+__Polymorphism__ : Inheritance
+__Discriminator__ : type
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**scope** +
+__required__|The name of the Analytics scope containing the link.
+
+The scope name may contain one or two identifiers, separated by a slash (/). +
+**Example** : `"travel-sample/inventory"`|string
+|**name** +
+__required__|The name of the link. +
+**Example** : `"myLink"`|string
+|**type** +
+__required__|The type of the link.
+
+`couchbase`: A link to a remote Couchbase cluster.
+`s3`: A link to the Amazon S3 service.
+`azureblob`: A link to Microsoft Azure Blob Storage.
+`gcs`: A link to Google Cloud Storage.
+
+Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob, gcs)
+|**accessKeyId** +
+__required__|The Amazon S3 access key ID. +
+**Example** : `"myAccessKey"`|string
+|**region** +
+__required__|The Amazon S3 region. +
+**Example** : `"us-east-1"`|string
+|**secretAccessKey** +
+__required__|The Amazon S3 secret access key. This is redacted for the sake of security. +
+**Example** : `"<redacted sensitive entry>"`|string
+|**sessionToken** +
+__optional__|For S3 links only. The Amazon S3 session token. Indicates that the link has temporary access, and that the `accessKeyId` and `secretAccessKey` are temporary credentials. This is redacted for the sake of security. +
+**Example** : `"<redacted sensitive entry>"`|string
+|**serviceEndpoint** +
+__required__|Amazon S3 service endpoint. If not set, this property returns `null`. +
+**Example** : `"my.endpoint.uri"`|string
+|===
+
+
+[[_azure_blob]]
+=== Azure Blob
+These properties are returned for Azure Blob links.
+
+[%hardbreaks]
+__Polymorphism__ : Inheritance
+__Discriminator__ : type
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**scope** +
+__required__|The name of the Analytics scope containing the link.
+
+The scope name may contain one or two identifiers, separated by a slash (/). +
+**Example** : `"travel-sample/inventory"`|string
+|**name** +
+__required__|The name of the link. +
+**Example** : `"myLink"`|string
+|**type** +
+__required__|The type of the link.
+
+`couchbase`: A link to a remote Couchbase cluster.
+`s3`: A link to the Amazon S3 service.
+`azureblob`: A link to Microsoft Azure Blob Storage.
+`gcs`: A link to Google Cloud Storage.
+
+Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob, gcs)
+|**accountKey** +
+__optional__|The account key. Used for shared key authentication. This is redacted for the sake of security. If not set, this property returns `null`. +
+**Example** : `"<redacted sensitive entry>"`|string
+|**accountName** +
+__optional__|The account name. Used for shared key authentication. If not set, this property returns `null`. +
+**Example** : `"myAccountName"`|string
+|**clientCertificate** +
+__optional__|The client certificate for the registered application. Used for Azure Active Directory client certificate authentication. This is redacted for the sake of security. If not set, this property returns `null`. +
+**Example** : `"<redacted sensitive entry>"`|string
+|**clientCertificatePassword** +
+__optional__|The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected. This is redacted for the sake of security. If not set, this property returns `null`. +
+**Example** : `"<redacted sensitive entry>"`|string
+|**clientId** +
+__optional__|The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication. If not set, this property returns `null`. +
+**Example** : `"myClientID"`|string
+|**clientSecret** +
+__optional__|The client secret for the registered application. Used for Azure Active Directory client secret authentication. This is redacted for the sake of security. If not set, this property returns `null`. +
+**Example** : `"<redacted sensitive entry>"`|string
+|**endpoint** +
+__required__|The endpoint URI. +
+**Example** : `"my.endpoint.uri"`|string
+|**managedIdentityId** +
+__optional__|The managed identity ID. Used for managed identity authentication. If not set, this property returns `null`. +
+**Example** : `"myManagedIdentityID"`|string
+|**sharedAccessSignature** +
+__optional__|A token that can be used for authentication. Used for shared access signature authentication. This is redacted for the sake of security. If not set, this property returns `null`. +
+**Example** : `"<redacted sensitive entry>"`|string
+|**tenantId** +
+__optional__|The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication. If not set, this property returns `null`. +
+**Example** : `"myTenantID"`|string
+|===
+
+
+[[_gcs]]
+=== GCS
+These properties are returned for Google Cloud Storage links.
+
+[%hardbreaks]
+__Polymorphism__ : Inheritance
+__Discriminator__ : type
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**scope** +
+__required__|The name of the Analytics scope containing the link.
+
+The scope name may contain one or two identifiers, separated by a slash (/). +
+**Example** : `"travel-sample/inventory"`|string
+|**name** +
+__required__|The name of the link. +
+**Example** : `"myLink"`|string
+|**type** +
+__required__|The type of the link.
+
+`couchbase`: A link to a remote Couchbase cluster.
+`s3`: A link to the Amazon S3 service.
+`azureblob`: A link to Microsoft Azure Blob Storage.
+`gcs`: A link to Google Cloud Storage.
+
+Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob, gcs)
+|**applicationDefaultCredentials** +
+__required__|If present, indicates that the link should use the Google Application Default Credentials for authenticating. If not set, this property returns `null`. +
+**Example** : `"true"`|enum (true)
+|**endpoint** +
+__required__|The endpoint URI. If not set, this property returns `null`. +
+**Example** : `"https://storage.googleapis.com"`|string
+|**jsonCredentials** +
+__required__|The JSON credentials of the link. If not set, this property returns `null`. +
+**Example** : `"<redacted sensitive entry>"`|string
+|===
+
+
+[[_errors]]
+=== Errors
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**error** +
+__required__|An error message.|string
+|===
+
+
+

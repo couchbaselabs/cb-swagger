@@ -1,0 +1,29 @@
+
+// This file is created automatically by Swagger2Markup.
+// DO NOT EDIT! Refer to https://github.com/couchbaselabs/cb-swagger
+
+
+[[_node]]
+=== Node
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**jvmArgs** +
+__optional__|JVM arguments to pass to the Analytics Driver. The default is undefined (null).
+
+Node-specific JVM arguments are appended to service-level JVM arguments. If the same JVM argument appears in both the service-level arguments and the node-specific arguments, the node-specific argument takes priority.
+
+Note that JVM arguments are generally not secure, and are exposed by link:../cli/cbcollect-info-tool.html[cbcollect_info] and the link:../learn/clusters-and-availability/system-events.html[System Event] log. To pass arguments opaquely, you may use https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-4856361B-8BFD-4964-AE84-121F5F6CF111[Java command-line argument files].|string
+|**storageBuffercacheSize** +
+__optional__|The size of memory allocated to the disk buffer cache. The value should be a multiple of the buffer cache page size.
+
+The default is 1/4 of the allocated Analytics Service memory.|integer
+|**storageMemorycomponentGlobalbudget** +
+__optional__|The size of memory allocated to the memory components. The value should be a multiple of the memory component page size.
+
+The default is 1/4 of the allocated Analytics Service memory.|integer
+|===
+
+
+
