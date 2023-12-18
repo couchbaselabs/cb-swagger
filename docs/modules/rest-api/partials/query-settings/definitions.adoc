@@ -178,8 +178,11 @@ Refer to xref:n1ql:n1ql-language-reference/index-partitioning.adoc#max-paralleli
 __optional__|[[queryMemoryQuota]]
 Specifies the maximum amount of memory a request may use on any Query node in the cluster, in MB.
 
-Within a transaction, this setting enforces the memory quota for the transaction.
-The transaction memory quota tracks only the delta table and the transaction log (approximately).
+This parameter enforces a ceiling on the memory used for the tracked documents required for processing a request.
+It does not take into account any other memory that might be used to process a request, such as the stack, the operators, or some intermediate values.
+
+Within a transaction, this setting enforces the memory quota for the transaction by tracking the
+delta table and the transaction log (approximately).
 
 The {memory-quota-srv}[node-level] `memory-quota` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.

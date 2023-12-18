@@ -67,7 +67,8 @@ __required__|The type of the link.
 
 `couchbase`: A link to a remote Couchbase cluster.
 `s3`: A link to the Amazon S3 service.
-`azureblob`: A link to Azure Blob Storage.|enum (couchbase, s3, azureblob)
+`azureblob`: A link to Azure Blob Storage.
+`gcs`: A link to Google Cloud Storage.|enum (couchbase, s3, azureblob, gcs)
 |**FormData**|**hostname** +
 __required__|For Couchbase links only. The remote hostname.|string
 |**FormData**|**encryption** +
@@ -112,8 +113,6 @@ Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` ar
 __required__|For S3 links only. The Amazon S3 region.|string
 |**FormData**|**serviceEndpoint** +
 __optional__|For S3 links only. The Amazon S3 service endpoint.|string
-|**FormData**|**endpoint** +
-__required__|For Azure Blob links only. The endpoint URI.|string
 |**FormData**|**accountName** +
 __optional__|For Azure Blob links only. The account name. Used for shared key authentication.
 
@@ -146,6 +145,18 @@ You should URL-encode this parameter to escape any special characters.|string
 __optional__|For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
 
 You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**endpoint** +
+__optional__|For Azure Blob links and Google Cloud Storage links. The endpoint URI.
+
+Required for Azure Blob links; optional for Google Cloud Storage links.|string
+|**FormData**|**applicationDefaultCredentials** +
+__optional__|For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+
+This parameter may only have the value `&quot;true&quot;`.|enum (true)
+|**FormData**|**jsonCredentials** +
+__optional__|For Google Cloud Storage links only. The JSON credentials of the link.
+
+This parameter is not allowed if `applicationDefaultCredentials` is provided.|string
 |===
 
 
@@ -280,7 +291,7 @@ With this parameter, the scope name may contain one or two identifiers, separate
 |**Path**|**name** +
 __required__|The name of the link.|string
 |**Query**|**type** +
-__optional__|The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.|enum (couchbase, S3, azureblob)
+__optional__|The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.|enum (couchbase, S3, azureblob, gcs)
 |===
 
 
@@ -362,7 +373,7 @@ With this parameter, the scope name may contain one or two identifiers, separate
 |**Path**|**name** +
 __required__|The name of the link.|string
 |**FormData**|**type** +
-__optional__|The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.|enum (couchbase, s3, azureblob)
+__optional__|The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.|enum (couchbase, s3, azureblob, gcs)
 |**FormData**|**hostname** +
 __required__|For Couchbase links only. The remote hostname.|string
 |**FormData**|**encryption** +
@@ -407,8 +418,6 @@ Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` ar
 __required__|For S3 links only. The Amazon S3 region.|string
 |**FormData**|**serviceEndpoint** +
 __optional__|For S3 links only. The Amazon S3 service endpoint.|string
-|**FormData**|**endpoint** +
-__required__|For Azure Blob links only. The endpoint URI.|string
 |**FormData**|**accountName** +
 __optional__|For Azure Blob links only. The account name. Used for shared key authentication.
 
@@ -441,6 +450,18 @@ You should URL-encode this parameter to escape any special characters.|string
 __optional__|For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
 
 You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**endpoint** +
+__optional__|For Azure Blob links and Google Cloud Storage links. The endpoint URI.
+
+Required for Azure Blob links; optional for Google Cloud Storage links.|string
+|**FormData**|**applicationDefaultCredentials** +
+__optional__|For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+
+This parameter may only have the value `&quot;true&quot;`.|enum (true)
+|**FormData**|**jsonCredentials** +
+__optional__|For Google Cloud Storage links only. The JSON credentials of the link.
+
+This parameter is not allowed if `applicationDefaultCredentials` is provided.|string
 |===
 
 
@@ -612,7 +633,7 @@ __optional__|The name of a link. When this parameter is included, the request on
 
 This parameter is provided for backward compatibility. Note that it is deprecated, and will be removed in a future release.|string
 |**Query**|**type** +
-__optional__|The type of the link. If this parameter is omitted, all link types are retrieved, excluding the `Local` link.|enum (couchbase, s3, azureblob)
+__optional__|The type of the link. If this parameter is omitted, all link types are retrieved, excluding the `Local` link.|enum (couchbase, s3, azureblob, gcs)
 |===
 
 
@@ -699,7 +720,7 @@ __required__|The name of the Analytics scope.
 
 With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.|string
 |**Query**|**type** +
-__optional__|The type of the link. If this parameter is omitted, all link types are retrieved, excluding the `Local` link.|enum (couchbase, s3, azureblob)
+__optional__|The type of the link. If this parameter is omitted, all link types are retrieved, excluding the `Local` link.|enum (couchbase, s3, azureblob, gcs)
 |===
 
 
@@ -836,7 +857,8 @@ __required__|The type of the link.
 
 `couchbase`: A link to a remote Couchbase cluster.
 `s3`: A link to the Amazon S3 service.
-`azureblob`: A link to Azure Blob Storage.|enum (couchbase, s3, azureblob)
+`azureblob`: A link to Azure Blob Storage.
+`gcs`: A link to Google Cloud Storage.|enum (couchbase, s3, azureblob, gcs)
 |**FormData**|**hostname** +
 __required__|For Couchbase links only. The remote hostname.|string
 |**FormData**|**encryption** +
@@ -881,8 +903,6 @@ Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` ar
 __required__|For S3 links only. The Amazon S3 region.|string
 |**FormData**|**serviceEndpoint** +
 __optional__|For S3 links only. The Amazon S3 service endpoint.|string
-|**FormData**|**endpoint** +
-__required__|For Azure Blob links only. The endpoint URI.|string
 |**FormData**|**accountName** +
 __optional__|For Azure Blob links only. The account name. Used for shared key authentication.
 
@@ -915,6 +935,18 @@ You should URL-encode this parameter to escape any special characters.|string
 __optional__|For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
 
 You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**endpoint** +
+__optional__|For Azure Blob links and Google Cloud Storage links. The endpoint URI.
+
+Required for Azure Blob links; optional for Google Cloud Storage links.|string
+|**FormData**|**applicationDefaultCredentials** +
+__optional__|For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+
+This parameter may only have the value `&quot;true&quot;`.|enum (true)
+|**FormData**|**jsonCredentials** +
+__optional__|For Google Cloud Storage links only. The JSON credentials of the link.
+
+This parameter is not allowed if `applicationDefaultCredentials` is provided.|string
 |===
 
 
@@ -966,7 +998,7 @@ With this parameter, the scope name may only contain a single identifier.|string
 |**FormData**|**name** +
 __required__|The name of the link.|string
 |**FormData**|**type** +
-__optional__|The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.|enum (couchbase, s3, azureblob)
+__optional__|The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.|enum (couchbase, s3, azureblob, gcs)
 |**FormData**|**hostname** +
 __required__|For Couchbase links only. The remote hostname.|string
 |**FormData**|**encryption** +
@@ -1011,8 +1043,6 @@ Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` ar
 __required__|For S3 links only. The Amazon S3 region.|string
 |**FormData**|**serviceEndpoint** +
 __optional__|For S3 links only. The Amazon S3 service endpoint.|string
-|**FormData**|**endpoint** +
-__required__|For Azure Blob links only. The endpoint URI.|string
 |**FormData**|**accountName** +
 __optional__|For Azure Blob links only. The account name. Used for shared key authentication.
 
@@ -1045,6 +1075,18 @@ You should URL-encode this parameter to escape any special characters.|string
 __optional__|For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
 
 You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**endpoint** +
+__optional__|For Azure Blob links and Google Cloud Storage links. The endpoint URI.
+
+Required for Azure Blob links; optional for Google Cloud Storage links.|string
+|**FormData**|**applicationDefaultCredentials** +
+__optional__|For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+
+This parameter may only have the value `&quot;true&quot;`.|enum (true)
+|**FormData**|**jsonCredentials** +
+__optional__|For Google Cloud Storage links only. The JSON credentials of the link.
+
+This parameter is not allowed if `applicationDefaultCredentials` is provided.|string
 |===
 
 

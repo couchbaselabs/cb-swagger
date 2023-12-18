@@ -33,9 +33,10 @@ __required__|The type of the link.
 
 `couchbase`: A link to a remote Couchbase cluster.
 `s3`: A link to the Amazon S3 service.
-`azureblob`: A link to Microsoft Azure Blob storage.
+`azureblob`: A link to Microsoft Azure Blob Storage.
+`gcs`: A link to Google Cloud Storage.
 
-Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob)
+Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob, gcs)
 |===
 
 
@@ -64,9 +65,10 @@ __required__|The type of the link.
 
 `couchbase`: A link to a remote Couchbase cluster.
 `s3`: A link to the Amazon S3 service.
-`azureblob`: A link to Microsoft Azure Blob storage.
+`azureblob`: A link to Microsoft Azure Blob Storage.
+`gcs`: A link to Google Cloud Storage.
 
-Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob)
+Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob, gcs)
 |**activeHostname** +
 __required__|The remote hostname. +
 **Example** : `"remoteHostName:8091"`|string
@@ -170,9 +172,10 @@ __required__|The type of the link.
 
 `couchbase`: A link to a remote Couchbase cluster.
 `s3`: A link to the Amazon S3 service.
-`azureblob`: A link to Microsoft Azure Blob storage.
+`azureblob`: A link to Microsoft Azure Blob Storage.
+`gcs`: A link to Google Cloud Storage.
 
-Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob)
+Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob, gcs)
 |**accessKeyId** +
 __required__|The Amazon S3 access key ID. +
 **Example** : `"myAccessKey"`|string
@@ -216,9 +219,10 @@ __required__|The type of the link.
 
 `couchbase`: A link to a remote Couchbase cluster.
 `s3`: A link to the Amazon S3 service.
-`azureblob`: A link to Microsoft Azure Blob storage.
+`azureblob`: A link to Microsoft Azure Blob Storage.
+`gcs`: A link to Google Cloud Storage.
 
-Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob)
+Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob, gcs)
 |**accountKey** +
 __optional__|The account key. Used for shared key authentication. This is redacted for the sake of security. If not set, this property returns `null`. +
 **Example** : `"<redacted sensitive entry>"`|string
@@ -249,6 +253,47 @@ __optional__|A token that can be used for authentication. Used for shared access
 |**tenantId** +
 __optional__|The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication. If not set, this property returns `null`. +
 **Example** : `"myTenantID"`|string
+|===
+
+
+[[_gcs]]
+=== GCS
+These properties are returned for Google Cloud Storage links.
+
+[%hardbreaks]
+__Polymorphism__ : Inheritance
+__Discriminator__ : type
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**scope** +
+__required__|The name of the Analytics scope containing the link.
+
+The scope name may contain one or two identifiers, separated by a slash (/). +
+**Example** : `"travel-sample/inventory"`|string
+|**name** +
+__required__|The name of the link. +
+**Example** : `"myLink"`|string
+|**type** +
+__required__|The type of the link.
+
+`couchbase`: A link to a remote Couchbase cluster.
+`s3`: A link to the Amazon S3 service.
+`azureblob`: A link to Microsoft Azure Blob Storage.
+`gcs`: A link to Google Cloud Storage.
+
+Different properties are returned, depending on the link type: refer to <<_couchbase,Couchbase>>, <<_s3,S3>>, <<_azure-blob,Azure Blob>>, or <<_gcs,GCS>>.|enum (couchbase, s3, azureblob, gcs)
+|**applicationDefaultCredentials** +
+__required__|If present, indicates that the link should use the Google Application Default Credentials for authenticating. If not set, this property returns `null`. +
+**Example** : `"true"`|enum (true)
+|**endpoint** +
+__required__|The endpoint URI. If not set, this property returns `null`. +
+**Example** : `"https://storage.googleapis.com"`|string
+|**jsonCredentials** +
+__required__|The JSON credentials of the link. If not set, this property returns `null`. +
+**Example** : `"<redacted sensitive entry>"`|string
 |===
 
 
