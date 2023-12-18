@@ -1,0 +1,1094 @@
+
+// This file is created automatically by Swagger2Markup.
+// DO NOT EDIT! Refer to https://github.com/couchbaselabs/cb-swagger
+
+
+[[_paths]]
+== Resources
+
+This section describes the operations available with this REST API.
+The operations are grouped in the following categories.
+
+* <<_single_links_resource>>
+* <<_multiple_links_resource>>
+* <<_legacy_methods_resource>>
+
+
+[[_single_links_resource]]
+=== Single Links
+Operations for single links.
+
+
+* <<_post_link>>
+* <<_get_link>>
+* <<_put_link>>
+* <<_delete_link>>
+
+
+[[_post_link]]
+==== Create Link
+....
+POST /analytics/link/{scope}/{name}
+....
+
+
+===== Description
+Creates a link in the specified Analytics scope.
+
+
+When creating or altering a remote link using an alternate address, note the following:
+
+* At least one node in the remote cluster must expose the `mgmt` port (`rest_port`, default 8091) or the `mgmtSSL` port (`ssl_rest_port`, default 18091).
+* Furthermore, *all* data nodes in the remote cluster must expose the `kv` port (`memcached_port`, default 11210) or the `kvSSL` port (`memcached_ssl_port`, default 11207).
+
+Failure to do so will result in a 400 (Bad Request) error.
+
+NOTE: The SSL ports are required when the **encryption** mode is set to `full`; the non-SSL ports are required otherwise.
+
+
+CAUTION: When creating an external link, be sure to follow best practices for security.
+Root account credentials should never be used.
+It is recommended to grant the minimum possible permissions to perform the required operations, and only to allow access to the required data and resources.
+
+
+===== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**scope** +
+__required__|The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.|string
+|**Path**|**name** +
+__required__|The name of the link.|string
+|**FormData**|**type** +
+__required__|The type of the link.
+
+`couchbase`: A link to a remote Couchbase cluster.
+`s3`: A link to the Amazon S3 service.
+`azureblob`: A link to Azure Blob Storage.|enum (couchbase, s3, azureblob)
+|**FormData**|**hostname** +
+__required__|For Couchbase links only. The remote hostname.|string
+|**FormData**|**encryption** +
+__required__|For Couchbase links only. The type of encryption used by the link.
+
+`none`: Neither passwords nor data are encrypted.
+`half`: Passwords are encrypted using SCRAM-SHA, but data is not.
+`full`: All data and passwords are encrypted and TLS is used.|enum (none, half, full)
+|**FormData**|**username** +
+__optional__|For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**password** +
+__optional__|For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**certificate** +
+__optional__|For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.
+
+You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines.|string
+|**FormData**|**clientCertificate** +
+__optional__|For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.
+
+For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientKey** +
+__optional__|For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**accessKeyId** +
+__required__|For S3 links only. The Amazon S3 access key ID.|string
+|**FormData**|**secretAccessKey** +
+__required__|For S3 links only. The Amazon S3 secret access key.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**sessionToken** +
+__optional__|For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.
+
+Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid.|string
+|**FormData**|**region** +
+__required__|For S3 links only. The Amazon S3 region.|string
+|**FormData**|**serviceEndpoint** +
+__optional__|For S3 links only. The Amazon S3 service endpoint.|string
+|**FormData**|**endpoint** +
+__required__|For Azure Blob links only. The endpoint URI.|string
+|**FormData**|**accountName** +
+__optional__|For Azure Blob links only. The account name. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**accountKey** +
+__optional__|For Azure Blob links only. The account key. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**sharedAccessSignature** +
+__optional__|For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**managedIdentityId** +
+__optional__|For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientId** +
+__optional__|For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**tenantId** +
+__optional__|For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientSecret** +
+__optional__|For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientCertificatePassword** +
+__optional__|For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
+
+You should URL-encode this parameter to escape any special characters.|string
+|===
+
+
+===== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|The operation was successful.|No Content
+|**400**|Bad request. A parameter has an incorrect value.|<<_errors,Errors>>
+|**500**|Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments.|<<_errors,Errors>>
+|===
+
+
+===== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage,Analytics Manage>>**
+|===
+
+
+===== Example HTTP request
+
+====
+The example below creates a Couchbase link named `myCbLink` in the `Default` scope, with no encryption.
+
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+     -X POST \
+     "http://localhost:8095/analytics/link/Default/myCbLink" \
+     -d type=couchbase \
+     -d hostname=remoteHostName:8091 \
+     -d encryption=none \
+     --data-urlencode username=remote.user \
+     --data-urlencode password=remote.p4ssw0rd
+----
+
+NOTE: The `username` and `password` parameters are URL-encoded to escape any special characters.
+====
+
+====
+The example below creates a Microsoft Azure Blob link named `myBlobLink` in the `Default` scope, with anonymous authentication.
+
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+     -X POST \
+     "http://localhost:8095/analytics/link/Default/myBlobLink" \
+     -d type=azureblob \
+     -d endpoint=my.endpoint.uri
+----
+====
+
+====
+The example below creates an Amazon S3 link named `myAwsLink` in the `travel-sample.inventory` scope.
+
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+     -X POST \
+     "http://localhost:8095/analytics/link/travel-sample%2Finventory/myAwsLink" \
+     -d type=s3 \
+     -d region=us-east-1 \
+     -d accessKeyId=myAccessKey \
+     --data-urlencode secretAccessKey=mySecretKey
+----
+
+NOTE: The dot separator within the scope name is converted to a slash (`/`), which is then URL-encoded as `%2F`.
+The `secretAccessKey` parameter is URL-encoded to escape any special characters.
+====
+
+====
+The example below creates an Amazon S3 link named `myTempLink` with temporary credentials in the `travel-sample.inventory` scope.
+
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+     -X POST \
+     "http://localhost:8095/analytics/link/travel-sample%2Finventory/myTempLink" \
+     -d type=s3 \
+     -d region=eu-west-1 \
+     -d accessKeyId=myTempAccessKey \
+     -d sessionToken=mySessionToken \
+     --data-urlencode secretAccessKey=myTempSecretKey
+----
+
+NOTE: The dot separator within the scope name is converted to a slash (`/`), which is then URL-encoded as `%2F`.
+The `secretAccessKey` parameter is URL-encoded to escape any special characters.
+====
+
+
+[[_get_link]]
+==== Query Link
+....
+GET /analytics/link/{scope}/{name}
+....
+
+
+===== Description
+Returns information about a link in the specified Analytics scope.
+
+
+===== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**scope** +
+__required__|The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.|string
+|**Path**|**name** +
+__required__|The name of the link.|string
+|**Query**|**type** +
+__optional__|The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.|enum (couchbase, S3, azureblob)
+|===
+
+
+===== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|Success. Returns an array of objects, each of which contains information about a link.|< <<_links,Links>> > array
+|**400**|Bad request. A parameter has an incorrect value.|<<_errors,Errors>>
+|**500**|Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments.|<<_errors,Errors>>
+|===
+
+
+===== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage,Analytics Manage>>**
+|===
+
+
+===== Example HTTP request
+
+====
+The example below queries the `myAwsLink` link in the `travel-sample.inventory` scope.
+
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+     "http://localhost:8095/analytics/link/travel-sample%2Finventory/myAwsLink"
+----
+
+NOTE: The dot separator within the scope name is converted to a slash (`/`), which is then URL-encoded as `%2F`.
+====
+
+
+===== Example HTTP response
+
+====
+.Response 200
+[source,json]
+----
+[ {
+  "accessKeyId" : "myAccessKey",
+  "name" : "myAwsLink",
+  "region" : "us-east-1",
+  "scope" : "travel-sample/inventory",
+  "secretAccessKey" : "<redacted sensitive entry>",
+  "serviceEndpoint" : null,
+  "type" : "s3"
+} ]
+----
+====
+
+
+[[_put_link]]
+==== Edit Link
+....
+PUT /analytics/link/{scope}/{name}
+....
+
+
+===== Description
+Edits an existing link in the specified Analytics scope. The link name, type, and scope name cannot be modified.
+
+
+===== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**scope** +
+__required__|The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.|string
+|**Path**|**name** +
+__required__|The name of the link.|string
+|**FormData**|**type** +
+__optional__|The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.|enum (couchbase, s3, azureblob)
+|**FormData**|**hostname** +
+__required__|For Couchbase links only. The remote hostname.|string
+|**FormData**|**encryption** +
+__required__|For Couchbase links only. The type of encryption used by the link.
+
+`none`: Neither passwords nor data are encrypted.
+`half`: Passwords are encrypted using SCRAM-SHA, but data is not.
+`full`: All data and passwords are encrypted and TLS is used.|enum (none, half, full)
+|**FormData**|**username** +
+__optional__|For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**password** +
+__optional__|For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**certificate** +
+__optional__|For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.
+
+You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines.|string
+|**FormData**|**clientCertificate** +
+__optional__|For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.
+
+For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientKey** +
+__optional__|For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**accessKeyId** +
+__required__|For S3 links only. The Amazon S3 access key ID.|string
+|**FormData**|**secretAccessKey** +
+__required__|For S3 links only. The Amazon S3 secret access key.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**sessionToken** +
+__optional__|For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.
+
+Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid.|string
+|**FormData**|**region** +
+__required__|For S3 links only. The Amazon S3 region.|string
+|**FormData**|**serviceEndpoint** +
+__optional__|For S3 links only. The Amazon S3 service endpoint.|string
+|**FormData**|**endpoint** +
+__required__|For Azure Blob links only. The endpoint URI.|string
+|**FormData**|**accountName** +
+__optional__|For Azure Blob links only. The account name. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**accountKey** +
+__optional__|For Azure Blob links only. The account key. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**sharedAccessSignature** +
+__optional__|For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**managedIdentityId** +
+__optional__|For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientId** +
+__optional__|For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**tenantId** +
+__optional__|For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientSecret** +
+__optional__|For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientCertificatePassword** +
+__optional__|For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
+
+You should URL-encode this parameter to escape any special characters.|string
+|===
+
+
+===== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|The operation was successful.|No Content
+|**400**|Bad request. A parameter has an incorrect value.|<<_errors,Errors>>
+|**500**|Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments.|<<_errors,Errors>>
+|===
+
+
+===== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage,Analytics Manage>>**
+|===
+
+
+===== Example HTTP request
+
+====
+The example below edits the link named `myCbLink` in the `Default` scope to use full encryption with a client certificate and client key.
+
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+     -X PUT \
+     "http://localhost:8095/analytics/link/Default/myCbLink" \
+     -d type=couchbase \
+     -d hostname=remoteHostName:8091 \
+     -d encryption=full \
+     --data-urlencode "certificate=$(cat ./cert/targetClusterRootCert.pem)" \
+     --data-urlencode "clientCertificate=$(cat ./cert/clientCert.pem)" \
+     --data-urlencode "clientKey=$(cat ./cert/client.key)"
+----
+
+NOTE: The `certificate`, `clientCertificate`, and `clientKey` parameters use command substitution with the `cat` command to return the _content_ of the referenced files.
+The content of these files is then URL-encoded to escape any special characters.
+====
+
+
+[[_delete_link]]
+==== Delete Link
+....
+DELETE /analytics/link/{scope}/{name}
+....
+
+
+===== Description
+Deletes a link in the specified Analytics scope. The link cannot be deleted if any other entities are using it, such as an Analytics collection. The entities using the link need to be disconnected from the link, otherwise, the delete operation fails.
+
+
+===== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**scope** +
+__required__|The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.|string
+|**Path**|**name** +
+__required__|The name of the link.|string
+|===
+
+
+===== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|The operation was successful.|No Content
+|**400**|Bad request. A parameter has an incorrect value.|<<_errors,Errors>>
+|**500**|Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments.|<<_errors,Errors>>
+|===
+
+
+===== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage,Analytics Manage>>**
+|===
+
+
+===== Example HTTP request
+
+====
+The example below deletes the link named `myCbLink` from the `Default` scope.
+
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+     -X DELETE \
+     "http://localhost:8095/analytics/link/Default/myCbLink"
+----
+====
+
+====
+The example below deletes the link named `myAwsLink` from the `travel-sample.inventory` scope.
+
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+     -X DELETE \
+     "http://localhost:8095/analytics/link/travel-sample%2Finventory/myAwsLink"
+----
+
+NOTE: The dot separator within the scope name is converted to a slash (`/`), which is then URL-encoded as `%2F`.
+====
+
+
+[[_multiple_links_resource]]
+=== Multiple Links
+Operations for multiple links.
+
+
+* <<_get_all>>
+* <<_get_scope>>
+
+
+[[_get_all]]
+==== Query All Links
+....
+GET /analytics/link
+....
+
+
+===== Description
+Returns information about all links in all Analytics scopes.
+
+
+===== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**dataverse** +
+__optional__|The name of an Analytics scope. When this parameter is included, the request only returns information about links in the specified scope.
+
+With this parameter, the scope name may only contain a single identifier.
+
+This parameter is provided for backward compatibility. Note that it is deprecated, and will be removed in a future release.|string
+|**Query**|**name** +
+__optional__|The name of a link. When this parameter is included, the request only returns information about the specified link. If specified, the `dataverse` parameter must be specified also.
+
+This parameter is provided for backward compatibility. Note that it is deprecated, and will be removed in a future release.|string
+|**Query**|**type** +
+__optional__|The type of the link. If this parameter is omitted, all link types are retrieved, excluding the `Local` link.|enum (couchbase, s3, azureblob)
+|===
+
+
+===== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|Success. Returns an array of objects, each of which contains information about a link.|< <<_links,Links>> > array
+|**400**|Bad request. A parameter has an incorrect value.|<<_errors,Errors>>
+|**500**|Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments.|<<_errors,Errors>>
+|===
+
+
+===== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage,Analytics Manage>>**
+|===
+
+
+===== Example HTTP request
+
+====
+The example below queries all links of type `S3` in all Analytics scopes.
+
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+     "http://localhost:8095/analytics/link?type=S3"
+----
+====
+
+
+===== Example HTTP response
+
+====
+.Response 200
+[source,json]
+----
+[ {
+  "accessKeyId" : "myAccessKey",
+  "name" : "myAwsLink",
+  "region" : "us-east-1",
+  "scope" : "travel-sample/inventory",
+  "secretAccessKey" : "<redacted sensitive entry>",
+  "serviceEndpoint" : null,
+  "type" : "s3"
+}, {
+  "accessKeyId" : "myTempAccessKey",
+  "name" : "myTempLink",
+  "region" : "eu-west-1",
+  "scope" : "travel-sample/inventory",
+  "secretAccessKey" : "<redacted sensitive entry>",
+  "serviceEndpoint" : null,
+  "sessionToken" : "<redacted sensitive entry>",
+  "type" : "s3"
+} ]
+----
+====
+
+
+[[_get_scope]]
+==== Query Scope Links
+....
+GET /analytics/link/{scope}
+....
+
+
+===== Description
+Returns information about all links in the specified Analytics scope.
+
+
+===== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**scope** +
+__required__|The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.|string
+|**Query**|**type** +
+__optional__|The type of the link. If this parameter is omitted, all link types are retrieved, excluding the `Local` link.|enum (couchbase, s3, azureblob)
+|===
+
+
+===== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|Success. Returns an array of objects, each of which contains information about a link.|< <<_links,Links>> > array
+|**400**|Bad request. A parameter has an incorrect value.|<<_errors,Errors>>
+|**500**|Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments.|<<_errors,Errors>>
+|===
+
+
+===== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage,Analytics Manage>>**
+|===
+
+
+===== Example HTTP request
+
+====
+The example below queries all links in the `Default` scope.
+
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+     "http://localhost:8095/analytics/link/Default"
+----
+====
+
+
+===== Example HTTP response
+
+====
+.Response 200
+[source,json]
+----
+[
+  {
+    "accountKey": null,
+    "accountName": null,
+    "clientCertificate": null,
+    "clientCertificatePassword": null,
+    "clientId": null,
+    "clientSecret": null,
+    "endpoint": "my.endpoint.uri",
+    "managedIdentityId": null,
+    "name": "myBlobLink",
+    "scope": "Default",
+    "sharedAccessSignature": null,
+    "tenantId": null,
+    "type": "azureblob"
+  },
+  {
+    "activeHostname": "remoteHostName:8091",
+    "bootstrapAlternateAddress": false,
+    "bootstrapHostname": "remoteHostName:8091",
+    "certificate": null,
+    "clientCertificate": null,
+    "clientKey": null,
+    "clusterCompatibility": 393221,
+    "encryption": "none",
+    "name": "myCbLink",
+    "nodes": [
+      {
+        "alternateAddresses": null,
+        "hostname": null,
+        "services": {
+          "cbas": 8095,
+          "cbasSSL": 18095,
+          "kv": 11210,
+          "kvSSL": 11207,
+          "mgmt": 8091,
+          "mgmtSSL": 18091
+        }
+      }
+    ],
+    "password": "<redacted sensitive entry>",
+    "scope": "Default",
+    "type": "couchbase",
+    "username": "remote.user",
+    "uuid": "6331e2a390125b662f7bcfd63ecb3a73"
+  }
+]
+----
+====
+
+
+[[_legacy_methods_resource]]
+=== Legacy Methods
+Operations provided for backward compatibility.
+
+
+* <<_post_alt>>
+* <<_put_alt>>
+* <<_delete_alt>>
+
+
+[[_post_alt]]
+==== Create Link (Alternative)
+....
+POST /analytics/link
+....
+
+[CAUTION]
+====
+operation.deprecated
+====
+
+
+===== Description
+An alternative endpoint for <<_post_link,creating a link>>, provided for backward compatibility.
+
+
+===== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**FormData**|**dataverse** +
+__required__|The name of the Analytics scope containing the link.
+
+With this parameter, the scope name may only contain a single identifier.|string
+|**FormData**|**name** +
+__required__|The name of the link.|string
+|**FormData**|**type** +
+__required__|The type of the link.
+
+`couchbase`: A link to a remote Couchbase cluster.
+`s3`: A link to the Amazon S3 service.
+`azureblob`: A link to Azure Blob Storage.|enum (couchbase, s3, azureblob)
+|**FormData**|**hostname** +
+__required__|For Couchbase links only. The remote hostname.|string
+|**FormData**|**encryption** +
+__required__|For Couchbase links only. The type of encryption used by the link.
+
+`none`: Neither passwords nor data are encrypted.
+`half`: Passwords are encrypted using SCRAM-SHA, but data is not.
+`full`: All data and passwords are encrypted and TLS is used.|enum (none, half, full)
+|**FormData**|**username** +
+__optional__|For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**password** +
+__optional__|For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**certificate** +
+__optional__|For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.
+
+You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines.|string
+|**FormData**|**clientCertificate** +
+__optional__|For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.
+
+For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientKey** +
+__optional__|For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**accessKeyId** +
+__required__|For S3 links only. The Amazon S3 access key ID.|string
+|**FormData**|**secretAccessKey** +
+__required__|For S3 links only. The Amazon S3 secret access key.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**sessionToken** +
+__optional__|For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.
+
+Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid.|string
+|**FormData**|**region** +
+__required__|For S3 links only. The Amazon S3 region.|string
+|**FormData**|**serviceEndpoint** +
+__optional__|For S3 links only. The Amazon S3 service endpoint.|string
+|**FormData**|**endpoint** +
+__required__|For Azure Blob links only. The endpoint URI.|string
+|**FormData**|**accountName** +
+__optional__|For Azure Blob links only. The account name. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**accountKey** +
+__optional__|For Azure Blob links only. The account key. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**sharedAccessSignature** +
+__optional__|For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**managedIdentityId** +
+__optional__|For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientId** +
+__optional__|For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**tenantId** +
+__optional__|For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientSecret** +
+__optional__|For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientCertificatePassword** +
+__optional__|For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
+
+You should URL-encode this parameter to escape any special characters.|string
+|===
+
+
+===== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|The operation was successful.|No Content
+|**400**|Bad request. A parameter has an incorrect value.|<<_errors,Errors>>
+|**500**|Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments.|<<_errors,Errors>>
+|===
+
+
+===== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage,Analytics Manage>>**
+|===
+
+
+[[_put_alt]]
+==== Edit Link (Alternative)
+....
+PUT /analytics/link
+....
+
+[CAUTION]
+====
+operation.deprecated
+====
+
+
+===== Description
+An alternative endpoint for <<_put_link,editing a link>>, provided for backward compatibility. The link name, type, and scope name cannot be modified.
+
+
+===== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**FormData**|**dataverse** +
+__required__|The name of the Analytics scope containing the link.
+
+With this parameter, the scope name may only contain a single identifier.|string
+|**FormData**|**name** +
+__required__|The name of the link.|string
+|**FormData**|**type** +
+__optional__|The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.|enum (couchbase, s3, azureblob)
+|**FormData**|**hostname** +
+__required__|For Couchbase links only. The remote hostname.|string
+|**FormData**|**encryption** +
+__required__|For Couchbase links only. The type of encryption used by the link.
+
+`none`: Neither passwords nor data are encrypted.
+`half`: Passwords are encrypted using SCRAM-SHA, but data is not.
+`full`: All data and passwords are encrypted and TLS is used.|enum (none, half, full)
+|**FormData**|**username** +
+__optional__|For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**password** +
+__optional__|For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**certificate** +
+__optional__|For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.
+
+You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines.|string
+|**FormData**|**clientCertificate** +
+__optional__|For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.
+
+For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientKey** +
+__optional__|For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**accessKeyId** +
+__required__|For S3 links only. The Amazon S3 access key ID.|string
+|**FormData**|**secretAccessKey** +
+__required__|For S3 links only. The Amazon S3 secret access key.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**sessionToken** +
+__optional__|For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.
+
+Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid.|string
+|**FormData**|**region** +
+__required__|For S3 links only. The Amazon S3 region.|string
+|**FormData**|**serviceEndpoint** +
+__optional__|For S3 links only. The Amazon S3 service endpoint.|string
+|**FormData**|**endpoint** +
+__required__|For Azure Blob links only. The endpoint URI.|string
+|**FormData**|**accountName** +
+__optional__|For Azure Blob links only. The account name. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**accountKey** +
+__optional__|For Azure Blob links only. The account key. Used for shared key authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**sharedAccessSignature** +
+__optional__|For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**managedIdentityId** +
+__optional__|For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientId** +
+__optional__|For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**tenantId** +
+__optional__|For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientSecret** +
+__optional__|For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.
+
+You should URL-encode this parameter to escape any special characters.|string
+|**FormData**|**clientCertificatePassword** +
+__optional__|For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
+
+You should URL-encode this parameter to escape any special characters.|string
+|===
+
+
+===== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|The operation was successful.|No Content
+|**400**|Bad request. A parameter has an incorrect value.|<<_errors,Errors>>
+|**500**|Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments.|<<_errors,Errors>>
+|===
+
+
+===== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage,Analytics Manage>>**
+|===
+
+
+[[_delete_alt]]
+==== Delete Link (Alternative)
+....
+DELETE /analytics/link
+....
+
+[CAUTION]
+====
+operation.deprecated
+====
+
+
+===== Description
+An alternative endpoint for <<_delete_link,deleting a link>>, provided for backward compatibility. The link cannot be deleted if any other entities are using it, such as an Analytics collection. The entities using the link need to be disconnected from the link, otherwise, the delete operation fails.
+
+
+===== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**FormData**|**dataverse** +
+__required__|The name of the Analytics scope containing the link.
+
+With this parameter, the scope name may only contain a single identifier.|string
+|**FormData**|**name** +
+__required__|The name of the link.|string
+|===
+
+
+===== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|The operation was successful.|No Content
+|**400**|Bad request. A parameter has an incorrect value.|<<_errors,Errors>>
+|**500**|Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments.|<<_errors,Errors>>
+|===
+
+
+===== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage,Analytics Manage>>**
+|===
+
+
+

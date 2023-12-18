@@ -1,0 +1,265 @@
+
+// This file is created automatically by Swagger2Markup.
+// DO NOT EDIT! Refer to https://github.com/couchbaselabs/cb-swagger
+
+
+[[_paths]]
+== Paths
+
+This section describes the operations available with this REST API.
+
+* <<_post_service>>
+* <<_get_service>>
+* <<_post_query>>
+* <<_get_query>>
+
+
+[[_post_service]]
+=== Query Service
+....
+POST /analytics/service
+....
+
+
+==== Description
+Enables you to execute a N1QL for Analytics statement. This method allows you to run queries and modifying statements, and specify query parameters.
+
+
+==== Parameters
+
+By default, the API accepts parameters using the `application/x-www-form-urlencoded` MIME type.
+You can specify the `application/json` MIME type using the `Content-Type` header of the POST request.
+
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**Parameters** +
+__required__|An object specifying one or more query parameters.|<<_query_parameters,Query Parameters>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|The operation was successful.|<<_query_responses,Query Responses>>
+|**400**|Bad request. A parameter has an incorrect value.|<<_query_responses,Query Responses>>
+|**401**|Unauthorized. The user name or password may be incorrect.|<<_query_responses,Query Responses>>
+|===
+
+
+==== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage_analytics_select,Analytics Manage / Analytics Select>>**
+|===
+
+
+==== Example HTTP request
+
+====
+The example below uses URL-encoded data.
+
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+     --data-urlencode "statement=select 1;" \
+     http://localhost:8095/analytics/service
+----
+====
+
+====
+The example below posts the same query statement as data of type `application/json` and adds a client context ID.
+
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password -H "Content-Type: application/json" -d '{
+    "statement":"select 1;",
+    "pretty":true,
+    "client_context_id":"xyz"
+}' http://localhost:8095/analytics/service
+----
+====
+
+
+==== Example HTTP response
+
+====
+.Response 200
+[source,json]
+----
+{
+  "requestID": "c1984db0-f135-48ee-aea0-39dfe02d55ea",
+  "clientContextID": "xyz",
+  "signature": {
+    "*": "*"
+  },
+  "results": [ {
+    "$1" : 1
+  } ]
+  ,
+  "plans":{},
+  "status": "success",
+  "metrics": {
+    "elapsedTime": "41.969099ms",
+    "executionTime": "31.36645ms",
+    "resultCount": 1,
+    "resultSize": 15,
+    "processedObjects": 0
+  }
+}
+----
+====
+
+
+[[_get_service]]
+=== Read-Only Query Service
+....
+GET /analytics/service
+....
+
+
+==== Description
+Enables you to execute a N1QL for Analytics statement. This method only allows you to run queries and specify query parameters. It does not allow you to run modifying statements.
+
+This is intended for situations where use of the `POST` method is restricted.
+
+
+==== Parameters
+
+[options="header", cols=".^2a,.^3a,.^9a,.^4a,.^2a"]
+|===
+|Type|Name|Description|Schema|Default
+|**Query**|**statement** +
+__required__|Specifies at least one valid N1QL for Analytics statement to run.|string|
+|**Query**|**client_context_id** +
+__optional__|An identifier passed by the client that is returned verbatim in the query response. Useful for matching a particular query to a specific caller.|string|
+|**Query**|**format** +
+__optional__|Desired format for the query results.
+
+Note that the only possible format is `JSON`.|enum (JSON)|`"JSON"`
+|**Query**|**pretty** +
+__optional__|If `true`, the result is indented.|boolean|`"false"`
+|**Query**|**query_context** +
+__optional__|A scope for the statement. The value of this parameter must start with `default:`, followed by an Analytics scope name. The `default:` prefix is a dummy and is ignored when resolving an Analytics collection name or synonym name.|string|`"default:Default"`
+|**Query**|**readonly** +
+__optional__|If `true`, then DDL statements are not allowed.|boolean|`"false"`
+|**Query**|**scan_consistency** +
+__optional__|The consistency guarantee constraint for index scanning. If `not_bounded`, the query is executed immediately. If `request_plus`, the required datasets are updated with data available from the Data service at the time of the request before the query is executed.|enum (not_bounded, request_plus)|`"not_bounded"`
+|**Query**|**scan_wait** +
+__optional__|The maximum time to wait for datasets to be updated before the query is executed. The format includes an amount and a unit: `ns`, `us`, `ms`, `s`, `m`, or `h`. The default is `&quot;&quot;` (no timeout).|string|`""`
+|**Query**|**timeout** +
+__optional__|Maximum time to spend on the request before timing out. The format includes an amount and a unit: `ns`, `us`, `ms`, `s`, `m`, or `h`. The default is `&quot;&quot;` (no timeout).|string|`""`
+|**Query**|**args** +
+__optional__|An array of positional parameter values.|< string (URL-encoded) > array|
+|**Query**|**$_identifier_** +
+__optional__|A named parameter value.|string|
+|**Query**|**plan-format** +
+__optional__|The plan format.|enum (JSON, STRING)|`"JSON"`
+|**Query**|**logical-plan** +
+__optional__|If `true`, the logical plan is included in the query response.|boolean|`"false"`
+|**Query**|**organized-logical-plan** +
+__optional__|If `true`, the optimized logical plan is included in the query response.|boolean|`"true"`
+|**Query**|**expression-tree** +
+__optional__|If `true`, the expression tree is included in the query response.|boolean|`"false"`
+|**Query**|**rewritten-expression-tree** +
+__optional__|If `true`, the rewritten expression tree is included in the query response.|boolean|`"false"`
+|**Query**|**job** +
+__optional__|If `true`, the job details are included in the query response.|boolean|`"false"`
+|**Query**|**max-warnings** +
+__optional__|An integer specifying the maximum number of warning messages to be included in the query response.|integer (int32)|`0`
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|The operation was successful.|<<_query_responses,Query Responses>>
+|**400**|Bad request. A parameter has an incorrect value.|<<_query_responses,Query Responses>>
+|**401**|Unauthorized. The user name or password may be incorrect.|<<_query_responses,Query Responses>>
+|===
+
+
+==== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage_analytics_select,Analytics Manage / Analytics Select>>**
+|===
+
+
+==== Example HTTP request
+
+====
+The example below uses a URL-encoded query parameter.
+The {sqlpp} statement is `SELECT "hello, beer!" AS greeting`.
+
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password \
+http://localhost:8095/analytics/service?statement=SELECT%20%22hello%2C%20beer%21%22%20AS%20greeting
+----
+====
+
+
+==== Example HTTP response
+
+====
+.Response 200
+[source,json]
+----
+{
+  "requestID": "bbf382b1-4335-4a10-9eca-3b5d1a70b562",
+  "signature": {
+    "*": "*"
+  },
+  "results": [ { "greeting": "hello, beer!" }
+ ]
+  ,
+  "plans":{},
+  "status": "success",
+  "metrics": {
+    "elapsedTime": "56.893471ms",
+    "executionTime": "51.615165ms",
+    "resultCount": 1,
+    "resultSize": 31,
+    "processedObjects": 0
+  }
+}
+----
+====
+
+
+[[_post_query]]
+=== Query Service (Alternative)
+....
+POST /query/service
+....
+
+
+==== Description
+An alternative endpoint for the <<_post_service,Query Service>>, provided for tools compatibility.
+
+
+[[_get_query]]
+=== Read-Only Query Service (Alternative)
+....
+GET /query/service
+....
+
+
+==== Description
+An alternative endpoint for the <<_get_service,Read-Only Query Service>>, provided for tools compatibility.
+
+
+

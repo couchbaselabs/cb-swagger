@@ -1,0 +1,70 @@
+
+// This file is created automatically by Swagger2Markup.
+// DO NOT EDIT! Refer to https://github.com/couchbaselabs/cb-swagger
+
+
+[[_query_parameters]]
+=== Query Parameters
+[%hardbreaks]
+__Polymorphism__ : Composition
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**statement** +
+__required__|Specifies at least one valid N1QL for Analytics statement to run.|string
+|**client_context_id** +
+__optional__|An identifier passed by the client that is returned verbatim in the query response. Useful for matching a particular query to a specific caller.|string
+|**format** +
+__optional__|Desired format for the query results.
+
+Note that the only possible format is `JSON`. +
+**Default** : `"JSON"`|enum (JSON)
+|**pretty** +
+__optional__|If `true`, the result is indented. +
+**Default** : `false`|boolean
+|**query_context** +
+__optional__|A scope for the statement. The value of this parameter must start with `default:`, followed by an Analytics scope name. The `default:` prefix is a dummy and is ignored when resolving an Analytics collection name or synonym name. +
+**Default** : `"default:Default"`|string
+|**readonly** +
+__optional__|If `true`, then DDL statements are not allowed. +
+**Default** : `false`|boolean
+|**scan_consistency** +
+__optional__|The consistency guarantee constraint for index scanning. If `not_bounded`, the query is executed immediately. If `request_plus`, the required datasets are updated with data available from the Data service at the time of the request before the query is executed. +
+**Default** : `"not_bounded"`|enum (not_bounded, request_plus)
+|**scan_wait** +
+__optional__|The maximum time to wait for datasets to be updated before the query is executed. The format includes an amount and a unit: `ns`, `us`, `ms`, `s`, `m`, or `h`. The default is `&quot;&quot;` (no timeout). +
+**Default** : `""`|string
+|**timeout** +
+__optional__|Maximum time to spend on the request before timing out. The format includes an amount and a unit: `ns`, `us`, `ms`, `s`, `m`, or `h`. The default is `&quot;&quot;` (no timeout). +
+**Default** : `""`|string
+|**args** +
+__optional__|An array of positional parameter values.|< object > array
+|**$_identifier_** +
+__optional__|A named parameter value.|string
+|**plan-format** +
+__optional__|The plan format. +
+**Default** : `"JSON"`|enum (JSON, STRING)
+|**logical-plan** +
+__optional__|If `true`, the logical plan is included in the query response. +
+**Default** : `false`|boolean
+|**optimized-logical-plan** +
+__optional__|If `true`, the optimized logical plan is included in the query response. +
+**Default** : `true`|boolean
+|**expression-tree** +
+__optional__|If `true`, the expression tree is included in the query response. +
+**Default** : `false`|boolean
+|**rewritten-expression-tree** +
+__optional__|If `true`, the rewritten expression tree is included in the query response. +
+**Default** : `false`|boolean
+|**job** +
+__optional__|If `true`, the job details are included in the query response. +
+**Default** : `false`|boolean
+|**max-warnings** +
+__optional__|An integer specifying the maximum number of warning messages to be included in the query response. +
+**Default** : `0`|integer (int32)
+|===
+
+
+
