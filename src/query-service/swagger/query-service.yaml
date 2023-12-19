@@ -4,12 +4,12 @@ info:
   version: '7.6'
   description: |
     The Query Service REST API is provided by the Query service.
-    This API enables you to run {sqlpp} queries and set request-level parameters.
+    This API enables you to run SQL++ queries and set request-level parameters.
 
     The API schemes and host URLs are as follows:
 
-    * `http://node:8093/`
-    * `https://node:18093/` (for secure access)
+    * http://node:8093/
+    * https://node:18093/ (for secure access)
 
     where `node` is the host name or IP address of a node running the Query service.
 
@@ -26,7 +26,7 @@ paths:
       operationId: post_service
       summary: Query Service
       description: >
-        Enables you to execute a {sqlpp} statement.
+        Enables you to execute a SQL++ statement.
         This method allows you to run queries and modifying statements, and specify query parameters.
       parameters:
         - in: body
@@ -65,7 +65,7 @@ paths:
       operationId: get_service
       summary: Read-Only Query Service
       description: >
-        Enables you to execute a {sqlpp} statement.
+        Enables you to execute a SQL++ statement.
         This method allows you to run queries and modifying statements, and specify query parameters.
         It does not allow you to run modifying statements.
 
@@ -98,7 +98,14 @@ paths:
         "503":
           $ref: '#/responses/ServiceUnavailable'
 
-# Use attributes for xrefs so that they can point to different locations in different contexts
+# The output of this spec is used in more than one location, so Markdown cannot use relative links.
+# Absolute links begin with /server/7.6 -- this must be replaced for every branch.
+# Relative links are currently expected to point to a location in the same page.
+# The x-desc-refs attribute records links which point to other REST API references, for future use.
+# The x-desc-name attribute records the ID of the parameter description, also for future use.
+
+# The swagger2markup Markdown converter does not recognize HTML tags like <a id="foo">.
+# For the moment we have to use the AsciiDoc markup [#foo], which is passed through unchanged.
 
 responses:
   OK:
@@ -112,7 +119,7 @@ responses:
       The request cannot be processed for one of the following reasons:
 
 
-        * The statement contains a {sqlpp} syntax error.
+        * The statement contains a SQL++ syntax error.
 
 
         * The request has a missing or unrecognized HTTP parameter.
@@ -175,71 +182,68 @@ definitions:
       args:
         type: array
         items: {}
+        x-desc-name: args
         description: |
-          [[args]]
-          Applicable if the statement has 1 or more positional parameters.
-          
-          An array of JSON values, one for each positional parameter in the statement.
+          [#args]
+          Supplies the values for positional parameters in the statement.
+          Applicable if the statement or prepared statement contains 1 or more positional parameters.
 
-          Note that positional parameters apply to `prepared` also.
+          The value is an array of JSON values, one for each positional parameter in the statement.
 
-          Refer to {section_srh_tlm_n1b}[] for details.
+          Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
+
+          [section_srh_tlm_n1b]: /server/7.6/settings/query-settings.html#section_srh_tlm_n1b
         example:
           - LAX
           - 6
       atrcollection:
         type: string
+        x-desc-name: atrcollection_req
         description: |
-          [[atrcollection_req]]
-          Specifies the collection where the {transactions-understanding-transactions}[active transaction record] (ATR) is stored.
+          [#atrcollection_req]
+          Specifies the collection where the [active transaction record][additional-storage-use] (ATR) is stored.
           The collection must be present.
           If not specified, the ATR is stored in the default collection in the default scope in the bucket containing the first mutated document within the transaction.
 
           The value must be a string in the form `"bucket.scope.collection"` or `"namespace:bucket.scope.collection"`.
-          If any part of the path contains a special character, that part of the path must be delimited in backticks `&grave;&grave;`.
+          If any part of the path contains a special character, that part of the path must be delimited in backticks &grave;&grave;.
 
-          The {atrcollection-srv}[node-level] `atrcollection` setting specifies the default for this parameter for a single node.
+          The [node-level][atrcollection-srv] `atrcollection` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
+
+          [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
+          [atrcollection-srv]: #atrcollection-srv
+        x-desc-refs: |
+          [atrcollection-srv]: admin.html#atrcollection-srv
         example: default:&grave;travel-sample&grave;.transaction.test
       auto_execute:
         type: boolean
+        x-desc-name: auto_execute
         description: |
-          [[auto_execute]]
+          [#auto_execute]
           Specifies that prepared statements should be executed automatically as soon as they are created.
           This saves you from having to make two separate requests in cases where you want to prepare a statement and execute it immediately.
 
-          Refer to {prepare-auto-execute}[Auto-Execute] for more information.
+          Refer to [Auto-Execute][auto-execute] for more information.
+
+          [auto-execute]: /server/7.6/n1ql/n1ql-language-reference/prepare.html#auto-execute
         default: false
         example: true
-      # batch_args:
-      #   type: array
-      #   description: |
-      #     [[batch_args]]
-      #     Applicable to POST requests only, containing UPDATE, INSERT, DELETE statements (DML statements) with _positional_ parameters.
-
-      #     An array of arrays.
-      #     The values in each inner array need to match the positional parameters in the statement.
-      # batch_named_args:
-      #   type: array
-      #   description: |
-      #     [[batch_named_args]]
-      #     Applicable to POST requests only, containing UPDATE, INSERT, DELETE statements (DML statements) with _named_ parameters.
-
-      #     An array of objects.
-      #     The keys in each object need to match the named parameters in the statement.
       client_context_id:
         type: string
+        x-desc-name: client_context_id
         description: |
-          [[client_context_id]]
+          [#client_context_id]
           A piece of data supplied by the client that is echoed in the response, if present.
-          {sqlpp} is agnostic about the content of this parameter; it is just echoed in the response.
+          SQL++ is agnostic about the content of this parameter; it is just echoed in the response.
 
           * Maximum allowed size is 64 characters; all others will be cut.
           * If it contains an escape character `/` or quote `"`, it will be rejected as error code 1110.
       compression:
         type: string
+        x-desc-name: compression
         description: |
-          [[compression]]
+          [#compression]
           Compression format to use for response data on the wire.
 
           Values are case-insensitive.
@@ -248,23 +252,29 @@ definitions:
         example: zip
       controls:
         type: boolean
+        x-desc-name: controls_req
         description: |
-          [[controls_req]]
+          [#controls_req]
           Specifies if there should be a controls section returned with the request results.
 
           When set to `true`, the query response document includes a controls section with runtime information provided along with the request, such as positional and named parameters or settings.
 
           If the request qualifies for caching, these values will also be cached in the `completed_requests` system keyspace.
 
-          The {controls-srv}[node-level] `controls` setting specifies the default for this parameter for a single node.
+          The [node-level][controls-srv] `controls` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
+
+          [controls-srv]: #controls-srv
+        x-desc-refs: |
+          [controls-srv]: admin.html#controls-srv
         example: true
       creds:
         type: array
         items:
           $ref: "#/definitions/Credentials"
+        x-desc-name: creds
         description: |
-          [[creds]]
+          [#creds]
           Specifies the login credentials.
           The Query API supports two types of identity: local (or bucket) and admin.
 
@@ -279,38 +289,51 @@ definitions:
             pass: password
       durability_level:
         type: string
+        x-desc-name: durability_level
         description: |
-          [[durability_level]]
-          The level of {durability}[durability] for mutations produced by the request.
+          [#durability_level]
+          The level of [durability][durability] for mutations produced by the request.
 
-          If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the {tximplicit}[tximplicit] parameter set to `true`, the durability level is specified for all mutations within that transaction.
+          If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the [tximplicit](#tximplicit) parameter set to `true`, the durability level is specified for all mutations within that transaction.
 
           Durability is also supported for non-transactional DML statements.
           In this case, the `kvtimeout` parameter is used as the durability timeout.
 
           If not specified, the default durability level is `"majority"`.
           Set the durability level to `"none"` or `""` to specify no durability.
-        enum: ['""', "none", "majority", "majorityAndPersistActive", "persistToMajority"]
+
+          [durability]: /server/7.6/learn/data/durability.html
+        enum:
+        # Workaround for swagger2markup.
+        # Remove the &quot; entities for Redocly.
+          - "&quot;&quot;"
+          - none
+          - majority
+          - majorityAndPersistActive
+          - persistToMajority
         default: majority
         example: none
       encoded_plan:
         type: string
+        x-desc-name: encoded_plan
         description: |
-          [[encoded_plan]]
+          [#encoded_plan]
           In Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
           It is included for compatibility with previous versions of Couchbase Server.
       encoding:
         type: string
+        x-desc-name: encoding
         description: |
-          [[encoding]]
+          [#encoding]
           Desired character encoding for the query results.
 
           Only possible value is `UTF-8` and is case-insensitive.
         default: UTF-8
       format:
         type: string
+        x-desc-name: format
         description: |
-          [[format]]
+          [#format]
           Desired format for the query results.
 
           Values are case-insensitive.
@@ -319,8 +342,9 @@ definitions:
         example: XML
       kvtimeout:
         type: string
+        x-desc-name: kvtimeout
         description: |
-          [[kvtimeout]]
+          [#kvtimeout]
           The maximum time to wait for a KV operation before timing out.
           Only applies to statements within a transaction, or to non-transactional statements when the `durability_level` is set.
 
@@ -342,27 +366,35 @@ definitions:
       max_parallelism:
         type: integer
         format: int32
+        x-desc-name: max_parallelism_req
         description: |
-          [[max_parallelism_req]]
+          [#max_parallelism_req]
           Specifies the maximum parallelism for the query.
 
-          The {max-parallelism-srv}[node-level] `max-parallelism` setting specifies the ceiling for this parameter for a single node.
+          The [node-level][max-parallelism-srv] `max-parallelism` setting specifies the ceiling for this parameter for a single node.
           If the request-level parameter is zero or negative, the parallelism for the query is set to the node-level setting.
           If the request-level parameter is greater than zero and less than the node-level setting, the request-level parameter overrides the node-level setting.
           If the request-level parameter is greater than the node-level setting, the parallelism for the query is set to the node-level setting.
 
-          In addition, the {queryMaxParallelism}[cluster-level] `queryMaxParallelism` setting specifies the ceiling for this parameter for the whole cluster.
+          In addition, the [cluster-level][queryMaxParallelism] `queryMaxParallelism` setting specifies the ceiling for this parameter for the whole cluster.
           When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
           To enable queries to run in parallel, you must specify the cluster-level `queryMaxParallelism` parameter, or specify the node-level `max-parallelism` parameter on all Query nodes.
 
           The default value is the same as the number of partitions of the index selected for the query.
+
+          [max-parallelism-srv]: #max-parallelism-srv
+          [queryMaxParallelism]: #queryMaxParallelism
+        x-desc-refs: |
+          [max-parallelism-srv]: admin.html#max-parallelism-srv
+          [queryMaxParallelism]: ../../rest-api/rest-cluster-query-settings.html#queryMaxParallelism
         example: 3
       memory_quota:
         type: integer
         format: int32
+        x-desc-name: memory_quota_req
         description: |
-          [[memory_quota_req]]
+          [#memory_quota_req]
           Specifies the maximum amount of memory the request may use, in MB.
 
           Specify `0` (the default value) to disable.
@@ -374,84 +406,117 @@ definitions:
           Within a transaction, this setting enforces the memory quota for the transaction by tracking the
           delta table and the transaction log (approximately).
 
-          The {memory-quota-srv}[node-level] `memory-quota` setting specifies the ceiling for this parameter for a single node.
+          The [node-level][memory-quota-srv] `memory-quota` setting specifies the ceiling for this parameter for a single node.
           If the node-level setting is zero (the default), the request-level parameter overrides the node-level setting.
           If the node-level setting is greater than zero, the request-level parameter is capped by the node-level setting.
 
-          In addition, the {queryMemoryQuota}[cluster-level] `queryMemoryQuota` setting specifies the ceiling for this parameter for the whole cluster.
+          In addition, the [cluster-level][queryMemoryQuota] `queryMemoryQuota` setting specifies the ceiling for this parameter for the whole cluster.
           When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+          [memory-quota-srv]: #memory-quota-srv
+          [queryMemoryQuota]: #queryMemoryQuota
+        x-desc-refs: |
+          [memory-quota-srv]: admin.html#memory-quota-srv
+          [queryMemoryQuota]: ../../rest-api/rest-cluster-query-settings.html#queryMemoryQuota
         default: 0
         example: 4
       metrics:
         type: boolean
+        x-desc-name: metrics
         description: |
-          [[metrics]]
+          [#metrics]
           Specifies that metrics should be returned with query results.
         default: true
         example: false
       namespace:
         type: string
+        x-desc-name: namespace
         description: >
-          [[namespace]]
           Specifies the namespace to use.
           Currently, only the `default` namespace is available.
         example: default
       numatrs:
         type: integer
         format: int32
+        x-desc-name: numatrs_req
         description: |
-          [[numatrs_req]]
-          Specifies the total number of {transactions-understanding-transactions}[active transaction records].
+          [#numatrs_req]
+          Specifies the total number of [active transaction records][additional-storage-use].
           Must be a positive integer.
 
-          The {numatrs-srv}[node-level] `numatrs` setting specifies the default for this parameter for a single node.
+          The [node-level][numatrs-srv] `numatrs` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
 
-          In addition, the {queryNumAtrs}[cluster-level] `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
+          In addition, the [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
           When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+          [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
+          [numatrs-srv]: #numatrs-srv
+          [queryNumAtrs]: #queryNumAtrs
+        x-desc-refs: |
+          [numatrs-srv]: admin.html#numatrs-srv
+          [queryNumAtrs]: ../../rest-api/rest-cluster-query-settings.html#queryNumAtrs
         default: 1024
         example: 512
       pipeline_batch:
         type: integer
         format: int32
+        x-desc-name: pipeline_batch_req
         description: |
-          [[pipeline_batch_req]]
+          [#pipeline_batch_req]
           Controls the number of items execution operators can batch for Fetch from the KV.
 
-          The {pipeline-batch-srv}[node-level] `pipeline-batch` setting specifies the default for this parameter for a single node.
+          The [node-level][pipeline-batch-srv] `pipeline-batch` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
-          In addition, the {queryPipelineBatch}[cluster-level] `queryPipelineBatch` setting specifies the default for this parameter for the whole cluster.
+          In addition, the [cluster-level][queryPipelineBatch] `queryPipelineBatch` setting specifies the default for this parameter for the whole cluster.
           When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+          [pipeline-batch-srv]: #pipeline-batch-srv
+          [queryPipelineBatch]: #queryPipelineBatch
+        x-desc-refs: |
+          [pipeline-batch-srv]: admin.html#pipeline-batch-srv
+          [queryPipelineBatch]: ../../rest-api/rest-cluster-query-settings.html#queryPipelineBatch
         example: 64
       pipeline_cap:
         type: integer
         format: int32
+        x-desc-name: pipeline_cap_req
         description: |
-          [[pipeline_cap_req]]
+          [#pipeline_cap_req]
           Maximum number of items each execution operator can buffer between various operators.
 
-          The {pipeline-cap-srv}[node-level] `pipeline-cap` setting specifies the default for this parameter for a single node.
+          The [node-level][pipeline-cap-srv] `pipeline-cap` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
-          In addition, the {queryPipelineCap}[cluster-level] `queryPipelineCap` setting specifies the default for this parameter for the whole cluster.
+          In addition, the [cluster-level][queryPipelineCap] `queryPipelineCap` setting specifies the default for this parameter for the whole cluster.
           When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+          [pipeline-cap-srv]: #pipeline-cap-srv
+          [queryPipelineCap]: #queryPipelineCap
+        x-desc-refs: |
+          [pipeline-cap-srv]: admin.html#pipeline-cap-srv
+          [queryPipelineCap]: ../../rest-api/rest-cluster-query-settings.html#queryPipelineCap
         example: 1024
       prepared:
         type: string
+        x-desc-name: prepared
         description: |
-          [[prepared]]
+          [#prepared]
           _Required_ if `statement` not provided.
 
-          The name of the prepared {sqlpp} statement to be executed.
-          Refer to {execute}[EXECUTE] for examples.
+          The name of the prepared SQL++ statement to be executed.
+          Refer to [EXECUTE][execute] for examples.
 
           If both `prepared` and `statement` are present and non-empty, an error is returned.
+
+          [execute]: /server/7.6/n1ql/n1ql-language-reference/execute.html
         example: "[127.0.0.1:8091]pricy_hotel"
       preserve_expiry:
         type: boolean
+        x-desc-name: preserve_expiry
         description: |
-          [[preserve_expiry]]
+          [#preserve_expiry]
           Specifies whether documents should keep their current expiration setting when modified by a DML statement.
 
           If `true`, documents will keep any existing expiration setting when modified by a DML statement.
@@ -464,40 +529,51 @@ definitions:
         example: true
       pretty:
         type: boolean
+        x-desc-name: pretty_req
         description: |
-          [[pretty_req]]
+          [#pretty_req]
           Specifies the query results returned in pretty format.
 
-          The {pretty-srv}[node-level] `pretty` setting specifies the default for this parameter for a single node.
+          The [node-level][pretty-srv] `pretty` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
+
+          [pretty-srv]: #pretty-srv
+        x-desc-refs: |
+          [pretty-srv]: admin.html#pretty-srv
         example: false
       profile:
         type: string
+        x-desc-name: profile_req
         description: |
-          [[profile_req]]
+          [#profile_req]
           Specifies if there should be a profile section returned with the request results.
           The valid values are:
 
-          `off`:: No profiling information is added to the query response.
+          * `off` &mdash; No profiling information is added to the query response.
 
-          `phases`::
+          * `phases` &mdash;
           The query response includes a profile section with stats and details about various phases of the query plan and execution.
           Three phase times will be included in the `system:active_requests` and `system:completed_requests` monitoring keyspaces.
 
-          `timings`::
+          * `timings` &mdash;
           Besides the phase times, the profile section of the query response document will include a full query plan with timing and information about the number of processed documents at each phase.
           This information will be included in the `system:active_requests` and `system:completed_requests` keyspaces.
 
           If `profile` is not set as one of the above values, then the profile setting does not change.
 
-          The {profile-srv}[node-level] `profile` setting specifies the default for this parameter for a single node.
+          The [node-level][profile-srv] `profile` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
+
+          [profile-srv]: #profile-srv
+        x-desc-refs: |
+          [profile-srv]: admin.html#profile-srv
         enum: ["off", "phases", "timings"]
         example: phases
       query_context:
         type: string
+        x-desc-name: query_context
         description: |
-          [[query_context]]
+          [#query_context]
           Specifies the namespace, bucket, and scope used to resolve partial keyspace references within the request.
 
           The query context may be a _full path_, containing namespace, bucket, and scope; or a _relative path_, containing just the bucket and scope.
@@ -507,8 +583,9 @@ definitions:
         example: default:travel-sample.inventory
       readonly:
         type: boolean
+        x-desc-name: readonly
         description: |
-          [[readonly]]
+          [#readonly]
           Controls whether a query can change a resulting recordset.
 
           If `readonly` is `true`, then the following statements are not allowed:
@@ -526,45 +603,52 @@ definitions:
       scan_cap:
         type: integer
         format: int32
+        x-desc-name: scan_cap_req
         description: |
-          [[scan_cap_req]]
+          [#scan_cap_req]
           Maximum buffered channel size between the indexer client and the query service for index scans.
           This parameter controls when to use scan backfill.
 
           Use `0` or a negative number to disable.
           Smaller values reduce GC, while larger values reduce indexer backfill.
 
-          The {scan-cap-srv}[node-level] `scan-cap` setting specifies the default for this parameter for a single node.
+          The [node-level][scan-cap-srv] `scan-cap` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
-          In addition, the {queryScanCap}[cluster-level] `queryScanCap` setting specifies the default for this parameter for the whole cluster.
+          In addition, the [cluster-level][queryScanCap] `queryScanCap` setting specifies the default for this parameter for the whole cluster.
           When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+          [scan-cap-srv]: #scan-cap-srv
+          [queryScanCap]: #queryScanCap
+        x-desc-refs: |
+          [scan-cap-srv]: admin.html#scan-cap-srv
+          [queryScanCap]: ../../rest-api/rest-cluster-query-settings.html#queryScanCap
         example: 1024
       scan_consistency:
         type: string
+        x-desc-name: scan_consistency
         description: |
-          [[scan_consistency]]
+          [#scan_consistency]
           Specifies the consistency guarantee or constraint for index scanning.
           The valid values are:
 
-          `not_bounded`::
+          * `not_bounded` &mdash;
           No timestamp vector is used in the index scan.
           This is the fastest mode, because it avoids the costs of obtaining the vector and waiting for the index to catch up to the vector.
 
-          `at_plus`::
+          * `at_plus` &mdash;
           This implements bounded consistency.
           The request includes a `scan_vector` parameter and value, which is used as a lower bound.
           This can be used to implement read-your-own-writes (RYOW).
 
-          `request_plus`::
+          * `request_plus` &mdash;
           This implements strong consistency per request.
           Before processing the request, a current vector is obtained.
           The vector is used as a lower bound for the statements in the request.
           If there are DML statements in the request, RYOW is also applied within the request.
-          +
-          If `request_plus` is specified in a query that runs during a failover of an index node, the query waits until the rebalance operation completes and the index data has rebalanced before returning a result.
+          (If `request_plus` is specified in a query that runs during a failover of an index node, the query waits until the rebalance operation completes and the index data has rebalanced before returning a result.)
 
-          `statement_plus`::
+          * `statement_plus` &mdash;
           This implements strong consistency per statement.
           Before processing each statement, a current vector is obtained and used as a lower bound for that statement.
 
@@ -573,29 +657,32 @@ definitions:
           For multi-statement requests, the default behavior is RYOW within each request.
           If you want to disable RYOW within a request, add a separate `request_consistency` parameter that can be set to `not_bounded`.
 
-          If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the {tximplicit}[tximplicit] parameter set to `true`, then this parameter sets the transactional scan consistency.
-          Refer to {transactional-scan-consistency}[Transactional Scan Consistency] for details.
+          If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the [tximplicit](#tximplicit) parameter set to `true`, then this parameter sets the transactional scan consistency.
+          Refer to [Transactional Scan Consistency][transactional-scan-consistency] for details.
+
+          [transactional-scan-consistency]: /server/7.6/settings/query-settings.html#transactional-scan-consistency
         enum: ["not_bounded", "at_plus", "request_plus", "statement_plus"]
         default: not_bounded
         example: at_plus
       scan_vector:
         type: object
         x-type: array
+        x-desc-name: scan_vector
         description: |
-          [[scan_vector]]
+          [#scan_vector]
           _Required_ if `scan_consistency` is `at_plus` and `scan_vectors` not provided.
 
           Specify the lower bound vector timestamp for one keyspace when using `at_plus` scan consistency.
 
-          Scan vectors are built of two-element +[+[.var]`value`, [.var]`guard`] entries:
+          Scan vectors are built of two-element [`value`, `guard`] entries:
 
-          * [.var]`value`: a vBucket's sequence number (a JSON number)
-          * [.var]`guard`: a vBucket's UUID (a string)
+          * `value`: a vBucket's sequence number (a JSON number)
+          * `guard`: a vBucket's UUID (a string)
 
           Scan vectors have two forms:
 
-          . *Full scan vector*: an array of +[+[.var]`value`, [.var]`guard`] entries, giving an entry for every vBucket in the system.
-          . *Sparse scan vectors*: an object providing entries for specific vBuckets, mapping a vBucket number (a string) to each +[+[.var]`value`, [.var]`guard`] entry.
+          1. Full: an array of [`value`, `guard`] entries, giving an entry for every vBucket in the system.
+          2. Sparse: an object providing entries for specific vBuckets, mapping a vBucket number (a string) to each [`value`, `guard`] entry.
 
           Note that `scan_vector` can only be used if the query uses at most one keyspace; if it is used for a query referencing more than one keyspace, the query will fail with an error.
 
@@ -610,8 +697,9 @@ definitions:
       scan_vectors:
         type: object
         x-type: array
+        x-desc-name: scan_vectors
         description: |
-          [[scan_vectors]]
+          [#scan_vectors]
           _Required_ if `scan_consistency` is `at_plus` and `scan_vector` not provided.
 
           A map from keyspace names to scan vectors.
@@ -621,8 +709,9 @@ definitions:
       scan_wait:
         type: string
         format: duration
+        x-desc-name: scan_wait
         description: |
-          [[scan_wait]]
+          [#scan_wait]
           Can be supplied with `scan_consistency` values of `request_plus`, `statement_plus` and `at_plus`.
 
           Specifies the maximum time the client is willing to wait for an index to catch up to the vector timestamp in the request.
@@ -645,22 +734,24 @@ definitions:
         example: 30m
       signature:
         type: boolean
+        x-desc-name: signature
         description: |
-          [[signature]]
+          [#signature]
           Include a header for the results schema in the response.
         default: true
         example: false
       statement:
         type: string
+        x-desc-name: statement
         description: |
-          [[statement]]
+          [#statement]
           _Required_ if `prepared` not provided.
 
-          Any valid {sqlpp} statement for a POST request, or a read-only {sqlpp} statement (SELECT, EXPLAIN) for a GET request.
+          Any valid SQL++ statement for a POST request, or a read-only SQL++ statement (SELECT, EXPLAIN) for a GET request.
 
           If both `prepared` and `statement` are present and non-empty, an error is returned.
 
-          '''
+          ----
 
           When specifying the request parameters as form data, the statement may not contain an unescaped semicolon (`;`).
           If it does, the Query Service responds with error 1040.
@@ -671,8 +762,9 @@ definitions:
       timeout:
         type: string
         format: duration
+        x-desc-name: timeout_req
         description: |
-          [[timeout_req]]
+          [#timeout_req]
           Maximum time to spend on the request before timing out.
 
           The value for this parameter is a string.
@@ -689,27 +781,35 @@ definitions:
           Specify a duration of `0` or a negative duration to disable.
           When disabled, no timeout is applied and the request runs for however long it takes.
 
-          If {txid}[txid] or {tximplicit}[tximplicit] is set, this parameter is ignored.
+          If [tximplicit](#tximplicit) or [txid](#txid) is set, this parameter is ignored.
           The request inherits the remaining time of the transaction as timeout.
 
-          The {timeout-srv}[node-level] `timeout` setting specifies the default for this parameter for a single node.
+          The [node-level][timeout-srv] `timeout` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
           However, if the node-level setting is greater than 0, the timeout for the query is limited to the node-level setting.
 
-          In addition, the {queryTimeout}[cluster-level] `queryTimeout` setting specifies the default for this parameter for the whole cluster.
+          In addition, the [cluster-level][queryTimeout] `queryTimeout` setting specifies the default for this parameter for the whole cluster.
           When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+          [timeout-srv]: #timeout-srv
+          [queryTimeout]: #queryTimeout
+        x-desc-refs: |
+          [timeout-srv]: admin.html#timeout-srv
+          [queryTimeout]: ../../rest-api/rest-cluster-query-settings.html#queryTimeout
         example: 30m
       txdata:
         type: object
+        x-desc-name: txdata
         description: |
-          [[txdata]]
+          [#txdata]
           Transaction data.
           For internal use only.
       txid:
         type: string
         format: UUID
+        x-desc-name: txid
         description: |
-          [[txid]]
+          [#txid]
           _Required_ for statements within a transaction.
 
           Transaction ID.
@@ -721,22 +821,24 @@ definitions:
         example: d81d9b4a-b758-4f98-b007-87ba262d3a51
       tximplicit:
         type: boolean
+        x-desc-name: tximplicit
         description: |
-          [[tximplicit]]
+          [#tximplicit]
           Specifies that a DML statement is a singleton transaction.
 
           When this parameter is true, the Query service starts a transaction and executes the statement.
           If execution is successful, the Query service commits the transaction; otherwise the transaction is rolled back.
 
           The statement may not be part of an ongoing transaction.
-          If the {txid}[txid] request-level parameter is set, the `tximplicit` parameter is ignored.
+          If the [txid](#txid) request-level parameter is set, the `tximplicit` parameter is ignored.
         default: false
         example: true
       txstmtnum:
         type: integer
         format: int32
+        x-desc-name: txstmtnum
         description: |
-          [[txstmtnum]]
+          [#txstmtnum]
           Transaction statement number.
           The transaction statement number must be a positive integer, and must be higher than any previous transaction statement numbers in the transaction.
           If the transaction statement number is lower than the transaction statement number for any previous statement, an error is generated.
@@ -744,13 +846,14 @@ definitions:
       txtimeout:
         type: string
         format: duration
+        x-desc-name: txtimeout_req
         description: |
-          [[txtimeout_req]]
+          [#txtimeout_req]
           Maximum time to spend on a transaction before timing out.
-          Only applies to `BEGIN TRANSACTION` statements, or DML statements for which {tximplicit}[tximplicit] is set.
+          Only applies to `BEGIN TRANSACTION` statements, or DML statements for which [tximplicit](#tximplicit) is set.
           For other statements, it is ignored.
 
-          Within a transaction, the request-level {timeout_req}[timeout] parameter is ignored.
+          Within a transaction, the request-level [timeout](#timeout_req) parameter is ignored.
           The transaction timeout clock starts when the `BEGIN WORK` statement is successful.
           Once the transaction timeout is reached, no statement is allowed to continue in the transaction.
 
@@ -768,32 +871,46 @@ definitions:
           Specify a duration of `0` to disable.
           When disabled, the request-level timeout is set to the default.
 
-          The {txtimeout-srv}[node-level] `txtimeout` setting specifies the default for this parameter for a single node.
+          The [node-level][txtimeout-srv] `txtimeout` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
           However, if the node-level setting is greater than 0, the transaction timeout for the query is limited to the node-level setting.
 
-          In addition, the {queryTxTimeout}[cluster-level] `queryTxTimeout` setting specifies the default for this parameter for the whole cluster.
+          In addition, the [cluster-level][queryTxTimeout] `queryTxTimeout` setting specifies the default for this parameter for the whole cluster.
           When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
           The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sessions or redirected input.
+
+          [txtimeout-srv]: #txtimeout-srv
+          [queryTxTimeout]: #queryTxTimeout
+        x-desc-refs: |
+          [txtimeout-srv]: admin.html#txtimeout-srv
+          [queryTxTimeout]: ../../rest-api/rest-cluster-query-settings.html#queryTxTimeout
         example: 30m
       use_cbo:
         type: boolean
+        x-desc-name: use_cbo_req
         description: |
-          [[use_cbo_req]]
+          [#use_cbo_req]
           Specifies whether the cost-based optimizer is enabled.
 
-          The {use-cbo-srv}[node-level] `use-cbo` setting specifies the default for this parameter for a single node.
+          The [node-level][use-cbo-srv] `use-cbo` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
 
-          In addition, the {queryUseCBO}[cluster-level] `queryUseCBO` setting specifies the default for this parameter for the whole cluster.
+          In addition, the [cluster-level][queryUseCBO] `queryUseCBO` setting specifies the default for this parameter for the whole cluster.
           When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+          [use-cbo-srv]: #use-cbo-srv
+          [queryUseCBO]: #queryUseCBO
+        x-desc-refs: |
+          [use-cbo-srv]: admin.html#use-cbo-srv
+          [queryUseCBO]: ../../rest-api/rest-cluster-query-settings.html#queryUseCBO
         example: true
       use_fts:
         type: boolean
+        x-desc-name: use_fts
         description: |
-          [[use_fts]]
-          [.edition]#{enterprise}#
+          [#use_fts]
+          &blacktriangleright; [ENTERPRISE EDITION](https://www.couchbase.com/products/editions)
 
           Specifies that the query should use a full-text index.
 
@@ -803,26 +920,69 @@ definitions:
           If a qualified full-text index is available, it is selected for the query.
           If none of the available full-text indexes are qualified, the available GSI indexes are considered instead.
 
-          Refer to {flex-indexes}[Flex Indexes] for more information.
+          Refer to [Flex Indexes][flex-indexes] for more information.
+
+          [flex-indexes]: /server/7.6/n1ql/n1ql-language-reference/flex-indexes.html
         default: false
         example: true
+      use_replica:
+        type: string
+        default: unset
+        enum: ["off","on","unset"]
+        example: on
+        x-desc-name: use_replica_req
+        description: |
+          [#use_replica_req]
+          Specifies whether a query can fetch data from a replica vBucket if active vBuckets are inaccessible.
+          The possible values are:
+
+          * `off` &mdash; read from replica is disabled for this request.
+
+          * `on` &mdash; read from replica is enabled for this request, unless it has been disabled for all requests at node level.
+
+          * `unset` &mdash; read from replica is specified by the node-level setting.
+          If the node-level setting is also `unset`, read from replica is disabled for this request.
+
+          The [node-level][use-replica-srv] `use-replica` setting specifies the default for this property for a single node.
+          The request-level parameter usually overrides the node-level setting.
+          However, when the node-level setting is `off`, the request-level parameter cannot enable the property.
+
+          In addition, the [cluster-level][queryUseReplica] `queryUseReplica` setting specifies the default for this property for the whole cluster.
+          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+          Do not enable read from replica when you require consistent results.
+          Only SELECT queries that are not within a transaction can read from replica.
+
+          Reading from replica is only possible if the cluster uses Couchbase Server 7.6.0 or later.
+
+          Note that KV range scans cannot currently be started on a replica vBucket.
+          If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
+
+          [use-replica-srv]: #use-replica-srv
+          [queryUseReplica]: #queryUseReplica
+        x-desc-refs: |
+          [use-replica-srv]: admin.html#use-replica-srv
+          [queryUseReplica]: ../../rest-api/rest-cluster-query-settings.html#queryUseReplica
       $<identifier>:
         type: string
         format: any JSON value
+        x-desc-name: identifier
         description: |
-          [[identifier]]
-          Applicable if the `statement` has 1 or more named parameters.
+          [#identifier]
+          Supplies the value for a named parameter in the statement.
+          Applicable if the statement or prepared statement contains 1 or more named parameters.
 
           The name of a named parameter consists of two parts:
 
-          . The $ character
-          . An identifier that starts with an alpha character followed by one or more alphanumeric characters.
+          1. The `$` character.
+          2. An identifier that specifies the name of the parameter.
+             This must start with an alpha character, followed by one or more alphanumeric characters.
 
-          The value of the named parameter is any JSON value.
+          The value of the named parameter can be any JSON value.
 
-          Named parameters apply to `prepared` also.
+          Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
-          Refer to {section_srh_tlm_n1b}[] for details.
+          [section_srh_tlm_n1b]: /server/7.6/settings/query-settings.html#section_srh_tlm_n1b
 
   Credentials:
     type: object
@@ -848,7 +1008,7 @@ definitions:
         description: A unique identifier for the response.
       clientContextID:
         type: string
-        description: The client context ID of the request, if one was supplied &mdash; see `client_context_id` in {request-parameters}[].
+        description: The client context ID of the request, if one was supplied &mdash; see `client_context_id` in [Request Parameters](#_request_parameters).
       signature:
         type: object
         description: >
@@ -894,7 +1054,7 @@ definitions:
         type: object
         description: >
           An object containing runtime information provided along with the request.
-          Present only if `controls` was set to true in the {request-parameters}[].
+          Present only if `controls` was set to true in the [Request Parameters](#_request_parameters).
         $ref: "#/definitions/Controls"
 
   Conditions:
@@ -930,7 +1090,7 @@ definitions:
       sev:
         type: integer
         description: |
-          One of the following {sqlpp} severity levels, listed in order of severity:
+          One of the following SQL++ severity levels, listed in order of severity:
 
            1. Severe
            2. Error
