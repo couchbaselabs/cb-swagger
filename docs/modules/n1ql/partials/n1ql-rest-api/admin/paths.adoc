@@ -228,10 +228,6 @@ GET /admin/prepareds
 
 ===== Description
 Returns all prepared statements.
-[NOTE]
-====
-Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-prepared-get[Get Prepared Statements] for examples.
-====
 
 
 ===== Responses
@@ -252,6 +248,11 @@ Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-prepared-get[Get Pre
 |===
 
 
+===== Example HTTP request
+
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-prepared-get[Get Prepared Statements] for examples.
+
+
 [[_get_prepared]]
 ==== Retrieve a Prepared Statement
 ....
@@ -261,10 +262,6 @@ GET /admin/prepareds/{name}
 
 ===== Description
 Returns the specified prepared statement.
-[NOTE]
-====
-Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-prepared-get[Get Prepared Statements] for examples.
-====
 
 
 ===== Parameters
@@ -296,6 +293,11 @@ This may be a UUID that was assigned automatically, or a name that was user-spec
 |===
 
 
+===== Example HTTP request
+
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-prepared-get[Get Prepared Statements] for examples.
+
+
 [[_delete_prepared]]
 ==== Delete a Prepared Statement
 ....
@@ -305,10 +307,6 @@ DELETE /admin/prepareds/{name}
 
 ===== Description
 Deletes the specified prepared statement.
-[NOTE]
-====
-Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-prepared-delete[Delete Prepared Statements] for examples.
-====
 
 
 ===== Parameters
@@ -341,6 +339,11 @@ This may be a UUID that was assigned automatically, or a name that was user-spec
 |===
 
 
+===== Example HTTP request
+
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-prepared-delete[Delete Prepared Statements] for examples.
+
+
 [[_get_prepared_indexes]]
 ==== Retrieve Prepared Index Statements
 ....
@@ -350,11 +353,9 @@ GET /admin/indexes/prepareds
 
 ===== Description
 Returns all prepared index statements.
-[TIP]
-====
-* Use <<_get_prepared>> to get information about a prepared index statement.
-* Use <<_delete_prepared>> to delete a prepared index statement.
-====
+
+* Use <<_get_prepared,Retrieve a Prepared Statement>> to get information about a prepared index statement.
+* Use <<_delete_prepared,Delete a Prepared Statement>> to delete a prepared index statement.
 
 
 ===== Responses
@@ -395,10 +396,6 @@ GET /admin/active_requests
 
 ===== Description
 Returns all active query requests.
-[NOTE]
-====
-Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-active-get[Get Active Requests] for examples.
-====
 
 
 ===== Responses
@@ -419,6 +416,11 @@ Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-active-get[Get Activ
 |===
 
 
+===== Example HTTP request
+
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-active-get[Get Active Requests] for examples.
+
+
 [[_get_active_request]]
 ==== Retrieve an Active Request
 ....
@@ -428,10 +430,6 @@ GET /admin/active_requests/{request}
 
 ===== Description
 Returns the specified active query request.
-[NOTE]
-====
-Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-active-get[Get Active Requests] for examples.
-====
 
 
 ===== Parameters
@@ -463,6 +461,11 @@ This is the `requestID` that was assigned automatically when the statement was c
 |===
 
 
+===== Example HTTP request
+
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-active-get[Get Active Requests] for examples.
+
+
 [[_delete_active_request]]
 ==== Delete an Active Request
 ....
@@ -472,10 +475,6 @@ DELETE /admin/active_requests/{request}
 
 ===== Description
 Terminates the specified active query request.
-[NOTE]
-====
-Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-active-delete[Terminate an Active Request] for examples.
-====
 
 
 ===== Parameters
@@ -508,6 +507,11 @@ This is the `requestID` that was assigned automatically when the statement was c
 |===
 
 
+===== Example HTTP request
+
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-active-delete[Terminate an Active Request] for examples.
+
+
 [[_get_active_indexes]]
 ==== Retrieve Active Index Requests
 ....
@@ -517,11 +521,9 @@ GET /admin/indexes/active_requests
 
 ===== Description
 Returns all active index requests.
-[TIP]
-====
-* Use <<_get_active_request>> to get information about an active index request.
-* Use <<_delete_active_request>> to terminate an active index request.
-====
+
+* Use <<_get_active_request,Retrieve an Active Request>> to get information about an active index request.
+* Use <<_delete_active_request,Delete an Active Request>> to terminate an active index request.
 
 
 ===== Responses
@@ -562,10 +564,6 @@ GET /admin/completed_requests
 
 ===== Description
 Returns all completed requests.
-[NOTE]
-====
-Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-completed-get[Get Completed Requests] for examples.
-====
 
 
 ===== Responses
@@ -586,6 +584,11 @@ Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-completed-get[Get Co
 |===
 
 
+===== Example HTTP request
+
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-completed-get[Get Completed Requests] for examples.
+
+
 [[_get_completed_request]]
 ==== Retrieve a Completed Request
 ....
@@ -595,10 +598,6 @@ GET /admin/completed_requests/{request}
 
 ===== Description
 Returns the specified completed request.
-[NOTE]
-====
-Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-completed-get[Get Completed Requests] for examples.
-====
 
 
 ===== Parameters
@@ -630,6 +629,11 @@ This is the `requestID` that was assigned automatically when the statement was c
 |===
 
 
+===== Example HTTP request
+
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-completed-get[Get Completed Requests] for examples.
+
+
 [[_delete_completed_request]]
 ==== Delete a Completed Request
 ....
@@ -639,10 +643,6 @@ DELETE /admin/completed_requests/{request}
 
 ===== Description
 Purges the specified completed request.
-[NOTE]
-====
-Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-completed-delete[Purge the Completed Requests] for examples.
-====
 
 
 ===== Parameters
@@ -675,6 +675,11 @@ This is the `requestID` that was assigned automatically when the statement was c
 |===
 
 
+===== Example HTTP request
+
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#sys-completed-delete[Purge the Completed Requests] for examples.
+
+
 [[_get_completed_indexes]]
 ==== Retrieve Completed Index Requests
 ....
@@ -684,11 +689,9 @@ GET /admin/indexes/completed_requests
 
 ===== Description
 Returns all completed index requests.
-[TIP]
-====
-* Use <<_get_completed_request>> to get information about a completed index request.
-* Use <<_delete_completed_request>> to purge a completed index request.
-====
+
+* Use <<_get_completed_request,Retrieve a Completed Request>> to get information about a completed index request.
+* Use <<_delete_completed_request,Delete a Completed Request>> to purge a completed index request.
 
 
 ===== Responses
@@ -730,10 +733,6 @@ GET /admin/vitals
 ===== Description
 Returns data about the running state and health of the query engine.
 This information can be very useful to assess the current workload and performance characteristics of a query engine, and hence load-balance the requests being sent to various query engines.
-[NOTE]
-====
-Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#vitals[Get System Vitals] for examples.
-====
 
 
 ===== Responses
@@ -752,6 +751,11 @@ Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#vitals[Get System Vitals
 |Type|Name
 |**basic**|**<<_default,Default>>**
 |===
+
+
+===== Example HTTP request
+
+Refer to xref:manage:monitor/monitoring-n1ql-query.adoc#vitals[Get System Vitals] for examples.
 
 
 [[_get_stats]]
@@ -843,7 +847,7 @@ Currently unused.
 [options="header", cols=".^2a,.^14a,.^4a"]
 |===
 |HTTP Code|Description|Schema
-|**302**|Redirects to the <<_get_stats>> endpoint.|text/html
+|**302**|Redirects to the <<_get_stats,Retrieve All Statistics>> endpoint.|string (text/html)
 |===
 
 
@@ -891,10 +895,9 @@ GET /admin/settings
 
 ===== Description
 Returns node-level query settings.
-[NOTE]
-====
-Refer to xref:settings:query-settings.adoc[Query Settings] for more information.
-====
+
+
+NOTE: Refer to xref:settings:query-settings.adoc[] for more information.
 
 
 ===== Responses
@@ -924,10 +927,9 @@ POST /admin/settings
 
 ===== Description
 Updates node-level query settings.
-[NOTE]
-====
-Refer to xref:settings:query-settings.adoc[Query Settings] for more information.
-====
+
+
+NOTE: Refer to xref:settings:query-settings.adoc[] for more information.
 
 
 ===== Parameters
