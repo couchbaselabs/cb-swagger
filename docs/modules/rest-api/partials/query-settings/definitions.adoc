@@ -347,9 +347,13 @@ In addition, the <<use_replica_req,request-level>> `use_replica` parameter speci
 If a request does not include this parameter, or if the request-level parameter is `unset`, the node-level setting is used.
 If the request-level parameter and the node-level setting are both `unset`, read from replica is disabled for that request.
 
-WARNING: Do not enable read from replica when you require consistent results.
+Do not enable read from replica when you require consistent results.
+Only SELECT queries that are not within a transaction can read from replica.
 
-SELECT queries within a transaction cannot read from replica. +
+Reading from replica is only possible if the cluster uses Couchbase Server 7.6.0 or later.
+
+Note that KV range scans cannot currently be started on a replica vBucket.
+If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request. +
 **Default** : `"unset"` +
 **Example** : `"true"`|enum (off, on, unset)
 |**queryCurlWhitelist** +
