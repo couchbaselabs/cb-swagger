@@ -1503,6 +1503,26 @@ definitions:
           [#mutexprofile]
           Mutex profile.
           This setting is provided for technical support only.
+      n1ql-feat-ctrl:
+        type: integer
+        # type should be [string, integer] but swagger2markup cannot process
+        # fix with move to Redocly / openapi-generator
+        format: int32
+        default: 76
+        example: "0x1"
+        x-desc-name: n1ql-feat-ctrl
+        description: |
+          [#n1ql-feat-ctrl]
+          SQL++ feature control.
+          This setting is provided for technical support only.
+          The value may be an integer, or a string representing a hexadecimal number.
+
+          The [cluster-level][queryN1qlFeatCtrl] `queryN1qlFeatCtrl` setting specifies this property for the whole cluster.
+          When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
+
+          [queryN1qlFeatCtrl]: #queryN1qlFeatCtrl
+        x-desc-refs: |
+          [queryN1qlFeatCtrl]: ../../rest-api/rest-cluster-query-settings.html#queryN1qlFeatCtrl
       node-quota:
         type: integer
         default: 0
@@ -1576,26 +1596,6 @@ definitions:
         x-desc-refs: |
           [queryNumAtrs]: ../../rest-api/rest-cluster-query-settings.html#queryNumAtrs
           [numatrs_req]: index.html#numatrs_req
-      n1ql-feat-ctrl:
-        type: integer
-        # type should be [string, integer] but swagger2markup cannot process
-        # fix with move to Redocly / openapi-generator
-        format: int32
-        default: 76
-        example: "0x1"
-        x-desc-name: n1ql-feat-ctrl
-        description: |
-          [#n1ql-feat-ctrl]
-          SQL++ feature control.
-          This setting is provided for technical support only.
-          The value may be an integer, or a string representing a hexadecimal number.
-
-          The [cluster-level][queryN1qlFeatCtrl] `queryN1qlFeatCtrl` setting specifies this property for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
-
-          [queryN1qlFeatCtrl]: #queryN1qlFeatCtrl
-        x-desc-refs: |
-          [queryN1qlFeatCtrl]: ../../rest-api/rest-cluster-query-settings.html#queryN1qlFeatCtrl
       pipeline-batch:
         type: integer
         format: int32

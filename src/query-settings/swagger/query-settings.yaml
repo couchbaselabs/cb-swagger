@@ -327,6 +327,21 @@ definitions:
         x-desc-refs: |
           [memory-quota-srv]: ../n1ql/n1ql-rest-api/admin.html#memory-quota-srv
           [memory_quota_req]: ../n1ql/n1ql-rest-api/index.html#memory_quota_req
+      queryN1qlFeatCtrl:
+        type: integer
+        format: int32
+        x-desc-name: queryN1qlFeatCtrl
+        description: |
+          [#queryN1qlFeatCtrl]
+          SQL++ feature control.
+          This setting is provided for technical support only.
+
+          The [node-level][n1ql-feat-ctrl] `n1ql-feat-ctrl` setting specifies this property for a single node.
+          When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
+
+          [n1ql-feat-ctrl]: #n1ql-feat-ctrl
+        x-desc-refs: |
+          [n1ql-feat-ctrl]: ../n1ql/n1ql-rest-api/admin.html#n1ql-feat-ctrl
       queryNodeQuota:
         type: integer
         default: 0
@@ -361,41 +376,6 @@ definitions:
           [node-quota-val-percent]: #node-quota-val-percent
         x-desc-refs: |
           [node-quota-val-percent]: ../n1ql/n1ql-rest-api/admin.html#node-quota-val-percent
-      queryNumCpus:
-        type: integer
-        default: 0
-        x-desc-name: queryNumCpus
-        description: |
-          The number of CPUs the Query service can use on any Query node in the cluster.
-          Note that this setting requires a restart of the Query service to take effect.
-
-          When set to `0` (the default), the Query service can use all available CPUs, up to the limits described below.
-
-          The number of CPUs can never be greater than the number of logical CPUs.
-          In Community Edition, the number of allowed CPUs cannot be greater than 4.
-          In Enterprise Edition, there is no limit to the number of allowed CPUs.
-
-          The [node-level][num-cpus] `num-cpus` setting specifies this property for a single node.
-          When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
-
-          [num-cpus]: #num-cpus
-        x-desc-refs: |
-          [num-cpus]: ../n1ql/n1ql-rest-api/admin.html#num-cpus
-      queryN1qlFeatCtrl:
-        type: integer
-        format: int32
-        x-desc-name: queryN1qlFeatCtrl
-        description: |
-          [#queryN1qlFeatCtrl]
-          SQL++ feature control.
-          This setting is provided for technical support only.
-
-          The [node-level][n1ql-feat-ctrl] `n1ql-feat-ctrl` setting specifies this property for a single node.
-          When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
-
-          [n1ql-feat-ctrl]: #n1ql-feat-ctrl
-        x-desc-refs: |
-          [n1ql-feat-ctrl]: ../n1ql/n1ql-rest-api/admin.html#n1ql-feat-ctrl
       queryNumAtrs:
         type: integer
         format: int32
@@ -420,6 +400,26 @@ definitions:
         x-desc-refs: |
           [numatrs-srv]: ../n1ql/n1ql-rest-api/admin.html#numatrs-srv
           [numatrs_req]: ../n1ql/n1ql-rest-api/index.html#numatrs_req
+      queryNumCpus:
+        type: integer
+        default: 0
+        x-desc-name: queryNumCpus
+        description: |
+          The number of CPUs the Query service can use on any Query node in the cluster.
+          Note that this setting requires a restart of the Query service to take effect.
+
+          When set to `0` (the default), the Query service can use all available CPUs, up to the limits described below.
+
+          The number of CPUs can never be greater than the number of logical CPUs.
+          In Community Edition, the number of allowed CPUs cannot be greater than 4.
+          In Enterprise Edition, there is no limit to the number of allowed CPUs.
+
+          The [node-level][num-cpus] `num-cpus` setting specifies this property for a single node.
+          When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
+
+          [num-cpus]: #num-cpus
+        x-desc-refs: |
+          [num-cpus]: ../n1ql/n1ql-rest-api/admin.html#num-cpus
       queryPipelineBatch:
         type: integer
         format: int32
