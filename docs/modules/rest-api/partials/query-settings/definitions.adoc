@@ -107,6 +107,20 @@ The <<completed-limit,node-level>> `completed-limit` setting specifies this prop
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
 **Default** : `4000` +
 **Example** : `7000`|integer (int32)
+|**queryCompletedMaxPlanSize** +
+__optional__|[#queryCompletedMaxPlanSize]
+A plan size in bytes.
+Limits the size of query execution plans that can be logged in the completed requests catalog.
+Values larger than the maximum limit are silently treated as the maximum limit.
+Queries with plans larger than this are not logged.
+You must obtain execution plans for such queries via profiling or using the EXPLAIN statement.
+
+Refer to link:/server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config[Configure the Completed Requests] for more information.
+
+The <<completed-max-plan-size,node-level>> `completed-max-plan-size` setting specifies this property for a single node.
+When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
+**Minimum value** : `0` +
+**Maximum value** : `20840448`|integer
 |**queryCompletedThreshold** +
 __optional__|[#queryCompletedThreshold]
 A duration in milliseconds.
@@ -197,6 +211,24 @@ This setting is provided for technical support only.
 
 The <<n1ql-feat-ctrl,node-level>> `n1ql-feat-ctrl` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.|integer (int32)
+|**queryNodeQuota** +
+__optional__|[#queryNodeQuota]
+Sets the soft memory limit for every Query node in the cluster, in MB.
+The garbage collector tries to keep below this target.
+It is not a hard, absolute limit, and memory usage may exceed this value.
+
+When set to `0` (the default), there is no soft memory limit.
+
+The <<node-quota,node-level>> `node-quota` setting specifies this property for a single node.
+When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.|integer
+|**queryNodeQuotaValPercent** +
+__optional__|The percentage of the `queryNodeQuota` that is dedicated to tracked value content memory across all active requests for every Query node in the cluster.
+(The `queryMemoryQuota` setting specifies the maximum amount of memory an individual request may use on any Query node in the cluster.)
+
+The <<node-quota-val-percent,node-level>> `node-quota-val-percent` setting specifies this property for a single node.
+When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
+**Minimum value** : `0` +
+**Maximum value** : `100`|integer
 |**queryNumAtrs** +
 __optional__|[#queryNumAtrs]
 Specifies the total number of link:/server/7.6/learn/data/transactions.html#active-transaction-record-entries[active transaction records] for all Query nodes in the cluster.
@@ -209,6 +241,18 @@ If a request includes this parameter, it will be capped by the node-level `numat
 **Default** : `1024` +
 **Minimum value (exclusive)** : `0` +
 **Example** : `512`|integer (int32)
+|**queryNumCpus** +
+__optional__|The number of CPUs the Query service can use on any Query node in the cluster.
+Note that this setting requires a restart of the Query service to take effect.
+
+When set to `0` (the default), the Query service can use all available CPUs, up to the limits described below.
+
+The number of CPUs can never be greater than the number of logical CPUs.
+In Community Edition, the number of allowed CPUs cannot be greater than 4.
+In Enterprise Edition, there is no limit to the number of allowed CPUs.
+
+The <<num-cpus,node-level>> `num-cpus` setting specifies this property for a single node.
+When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.|integer
 |**queryPipelineBatch** +
 __optional__|[#queryPipelineBatch]
 Controls the number of items execution operators can batch for Fetch from the KV.
