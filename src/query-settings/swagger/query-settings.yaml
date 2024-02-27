@@ -183,6 +183,29 @@ definitions:
           [completed-limit]: #completed-limit
         x-desc-refs: |
           [completed-limit]: ../n1ql/n1ql-rest-api/admin.html#completed-limit
+      queryCompletedMaxPlanSize:
+        type: integer
+        default: 262144
+        minimum: 0
+        maximum: 20840448
+        x-desc-name: queryCompletedMaxPlanSize
+        description: |
+          [#queryCompletedMaxPlanSize]
+          A plan size in bytes.
+          Limits the size of query execution plans that can be logged in the completed requests catalog.
+          Values larger than the maximum limit are silently treated as the maximum limit.
+          Queries with plans larger than this are not logged.
+          You must obtain execution plans for such queries via profiling or using the EXPLAIN statement.
+
+          Refer to [Configure the Completed Requests][sys-completed-config] for more information.
+
+          The [node-level][completed-max-plan-size] `completed-max-plan-size` setting specifies this property for a single node.
+          When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
+
+          [sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+          [completed-max-plan-size]: #completed-max-plan-size
+        x-desc-refs: |
+          [completed-max-plan-size]: ../n1ql/n1ql-rest-api/admin.html#completed-max-plan-size
       queryCompletedThreshold:
         type: integer
         format: int32
@@ -304,6 +327,60 @@ definitions:
         x-desc-refs: |
           [memory-quota-srv]: ../n1ql/n1ql-rest-api/admin.html#memory-quota-srv
           [memory_quota_req]: ../n1ql/n1ql-rest-api/index.html#memory_quota_req
+      queryNodeQuota:
+        type: integer
+        default: 0
+        x-desc-name: queryNodeQuota
+        description: |
+          [#queryNodeQuota]
+          Sets the soft memory limit for every Query node in the cluster, in MB.
+          The garbage collector tries to keep below this target.
+          It is not a hard, absolute limit, and memory usage may exceed this value.
+
+          When set to `0` (the default), there is no soft memory limit.
+
+          The [node-level][node-quota] `node-quota` setting specifies this property for a single node.
+          When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
+
+          [node-quota]: #node-quota
+        x-desc-refs: |
+          [node-quota]: ../n1ql/n1ql-rest-api/admin.html#node-quota
+      queryNodeQuotaValPercent:
+        type: integer
+        default: 67
+        minimum: 0
+        maximum: 100
+        x-desc-name: queryNodeQuotaValPercent
+        description: |
+          The percentage of the `queryNodeQuota` that is dedicated to tracked value content memory across all active requests for every Query node in the cluster.
+          (The `queryMemoryQuota` setting specifies the maximum amount of memory an individual request may use on any Query node in the cluster.)
+
+          The [node-level][node-quota-val-percent] `node-quota-val-percent` setting specifies this property for a single node.
+          When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
+
+          [node-quota-val-percent]: #node-quota-val-percent
+        x-desc-refs: |
+          [node-quota-val-percent]: ../n1ql/n1ql-rest-api/admin.html#node-quota-val-percent
+      queryNumCpus:
+        type: integer
+        default: 0
+        x-desc-name: queryNumCpus
+        description: |
+          The number of CPUs the Query service can use on any Query node in the cluster.
+          Note that this setting requires a restart of the Query service to take effect.
+
+          When set to `0` (the default), the Query service can use all available CPUs, up to the limits described below.
+
+          The number of CPUs can never be greater than the number of logical CPUs.
+          In Community Edition, the number of allowed CPUs cannot be greater than 4.
+          In Enterprise Edition, there is no limit to the number of allowed CPUs.
+
+          The [node-level][num-cpus] `num-cpus` setting specifies this property for a single node.
+          When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
+
+          [num-cpus]: #num-cpus
+        x-desc-refs: |
+          [num-cpus]: ../n1ql/n1ql-rest-api/admin.html#num-cpus
       queryN1qlFeatCtrl:
         type: integer
         format: int32
