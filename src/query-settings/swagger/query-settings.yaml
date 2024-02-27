@@ -185,6 +185,7 @@ definitions:
           [completed-limit]: ../n1ql/n1ql-rest-api/admin.html#completed-limit
       queryCompletedMaxPlanSize:
         type: integer
+        format: int32
         default: 262144
         minimum: 0
         maximum: 20840448
@@ -344,6 +345,7 @@ definitions:
           [n1ql-feat-ctrl]: ../n1ql/n1ql-rest-api/admin.html#n1ql-feat-ctrl
       queryNodeQuota:
         type: integer
+        format: int32
         default: 0
         x-desc-name: queryNodeQuota
         description: |
@@ -362,11 +364,13 @@ definitions:
           [node-quota]: ../n1ql/n1ql-rest-api/admin.html#node-quota
       queryNodeQuotaValPercent:
         type: integer
+        format: int32
         default: 67
         minimum: 0
         maximum: 100
         x-desc-name: queryNodeQuotaValPercent
         description: |
+          [#queryNodeQuotaValPercent]
           The percentage of the `queryNodeQuota` that is dedicated to tracked value content memory across all active requests for every Query node in the cluster.
           (The `queryMemoryQuota` setting specifies the maximum amount of memory an individual request may use on any Query node in the cluster.)
 
@@ -402,9 +406,11 @@ definitions:
           [numatrs_req]: ../n1ql/n1ql-rest-api/index.html#numatrs_req
       queryNumCpus:
         type: integer
+        format: int32
         default: 0
         x-desc-name: queryNumCpus
         description: |
+          [#queryNumCpus]
           The number of CPUs the Query service can use on any Query node in the cluster.
           Note that this setting requires a restart of the Query service to take effect.
 

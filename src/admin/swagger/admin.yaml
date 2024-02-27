@@ -1259,6 +1259,7 @@ definitions:
           [queryCompletedLimit]: ../../rest-api/rest-cluster-query-settings.html#queryCompletedLimit
       completed-max-plan-size:
         type: integer
+        format: int32
         default: 262144
         minimum: 0
         maximum: 20840448
@@ -1525,6 +1526,7 @@ definitions:
           [queryN1qlFeatCtrl]: ../../rest-api/rest-cluster-query-settings.html#queryN1qlFeatCtrl
       node-quota:
         type: integer
+        format: int32
         default: 0
         x-desc-name: node-quota
         description: |
@@ -1543,11 +1545,13 @@ definitions:
           [queryNodeQuota]: ../../rest-api/rest-cluster-query-settings.html#queryNodeQuota
       node-quota-val-percent:
         type: integer
+        format: int32
         default: 67
         minimum: 0
         maximum: 100
         x-desc-name: node-quota-val-percent
         description: |
+          [#node-quota-val-percent]
           The percentage of the `node-quota` that is dedicated to tracked value content memory across all active requests on this node.
           (The `memory-quota` setting specifies the maximum amount of memory an individual request may use on this node.)
 
@@ -1559,9 +1563,11 @@ definitions:
           [queryNodeQuotaValPercent]: ../../rest-api/rest-cluster-query-settings.html#queryNodeQuotaValPercent
       num-cpus:
         type: integer
+        format: int32
         default: 0
         x-desc-name: num-cpus
         description: |
+          [#num-cpus]
           The number of CPUs the Query service can use on this node.
           Note that this setting requires a restart of the Query service to take effect.
 

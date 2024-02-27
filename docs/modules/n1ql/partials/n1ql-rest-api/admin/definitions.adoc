@@ -548,8 +548,9 @@ Refer to link:/server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-complete
 
 The <<queryCompletedMaxPlanSize,cluster-level>> `queryCompletedMaxPlanSize` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
+**Default** : `262144` +
 **Minimum value** : `0` +
-**Maximum value** : `20840448`|integer
+**Maximum value** : `20840448`|integer (int32)
 |**completed-threshold** +
 __optional__|[#completed-threshold]
 A duration in milliseconds.
@@ -720,17 +721,21 @@ It is not a hard, absolute limit, and memory usage may exceed this value.
 When set to `0` (the default), there is no soft memory limit.
 
 The <<queryNodeQuota,cluster-level>> `queryNodeQuota` setting specifies this property for the whole cluster.
-When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.|integer
+When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
+**Default** : `0`|integer (int32)
 |**node-quota-val-percent** +
-__optional__|The percentage of the `node-quota` that is dedicated to tracked value content memory across all active requests on this node.
+__optional__|[#node-quota-val-percent]
+The percentage of the `node-quota` that is dedicated to tracked value content memory across all active requests on this node.
 (The `memory-quota` setting specifies the maximum amount of memory an individual request may use on this node.)
 
 The <<queryNodeQuotaValPercent,cluster-level>> `queryNodeQuotaValPercent` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
+**Default** : `67` +
 **Minimum value** : `0` +
-**Maximum value** : `100`|integer
+**Maximum value** : `100`|integer (int32)
 |**num-cpus** +
-__optional__|The number of CPUs the Query service can use on this node.
+__optional__|[#num-cpus]
+The number of CPUs the Query service can use on this node.
 Note that this setting requires a restart of the Query service to take effect.
 
 When set to `0` (the default), the Query service can use all available CPUs, up to the limits described below.
@@ -740,7 +745,8 @@ In Community Edition, the number of allowed CPUs cannot be greater than 4.
 In Enterprise Edition, there is no limit to the number of allowed CPUs.
 
 The <<queryNumCpus,cluster-level>> `queryNumCpus` setting specifies this property for the whole cluster.
-When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.|integer
+When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
+**Default** : `0`|integer (int32)
 |**numatrs** +
 __optional__|[#numatrs-srv]
 Specifies the total number of link:/server/7.6/learn/data/transactions.html#active-transaction-record-entries[active transaction records].
