@@ -1923,6 +1923,25 @@ definitions:
           [queryUseReplica]: ../../rest-api/rest-cluster-query-settings.html#queryUseReplica
           [use_replica_req]: index.html#use_replica_req
 
+  Garbage:
+    type: object
+    title: Garbage Collection
+    properties:
+      freed:
+        type: integer
+        description: The amount of memory freed.
+      released:
+        type: integer
+        description: |
+          Only returned by the POST method.
+          The amount of memory released to the OS.
+      status:
+        type: string
+        description: The status of the garbage collector.
+    required:
+      - freed
+      - status
+
 parameters:
   PathStat:
     name: stat
