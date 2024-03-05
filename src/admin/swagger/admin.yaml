@@ -383,6 +383,52 @@ paths:
           schema:
             type: object
 
+  /admin/gc:
+    get:
+      operationId: get_gc
+      summary: Run Garbage Collector
+      description: |
+        Runs the garbage collector.
+
+        A message is written to `query.log` whenever the garbage collector endpoint is invoked.
+      tags:
+        - default
+      security:
+        - Default: []
+      responses:
+        200:
+          description: Indicates that the garbage collector was invoked.
+          schema:
+            $ref: "#/definitions/Garbage"
+        401:
+          description: |
+            Error 10000: authentication failure.
+            The invoking user is not a valid full-admin user.
+          schema:
+            type: object
+    post:
+      operationId: post_gc
+      summary: Run Garbage Collector and Release Memory
+      description: |
+        Run the garbage collector and attempts to return freed memory to the OS.
+
+        A message is written to `query.log` whenever the garbage collector endpoint is invoked.
+      tags:
+        - default
+      security:
+        - Default: []
+      responses:
+        200:
+          description: Indicates that the garbage collector was invoked.
+          schema:
+            $ref: "#/definitions/Garbage"
+        401:
+          description: |
+            Error 10000: authentication failure.
+            The invoking user is not a valid full-admin user.
+          schema:
+            type: object
+
   # /admin/ssl_cert:
   #   get:
   #     deprecated: true
