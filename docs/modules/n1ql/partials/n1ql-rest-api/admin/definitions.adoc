@@ -55,6 +55,7 @@ This section describes the properties consumed and returned by this REST API.
 * <<_statistics>>
 * <<_metrics>>
 * <<_settings>>
+* <<_garbage_collection>>
 
 
 [[_clusters]]
@@ -970,6 +971,22 @@ If specified, all completed queries with this user name are logged. +
 
 
 // end::settings[]
+
+
+[[_garbage_collection]]
+=== Garbage Collection
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**freed** +
+__required__|The amount of memory freed.|integer
+|**released** +
+__optional__|Only returned by the POST method.
+The amount of memory released to the OS.|integer
+|**status** +
+__required__|The status of the garbage collector.|string
+|===
 
 
 
