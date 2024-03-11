@@ -965,7 +965,7 @@ definitions:
         x-desc-refs: |
           [use-replica-srv]: admin.html#use-replica-srv
           [queryUseReplica]: ../../rest-api/rest-cluster-query-settings.html#queryUseReplica
-      $<identifier>:
+      <symbol><identifier>:
         type: string
         format: any JSON value
         x-desc-name: identifier
@@ -974,11 +974,11 @@ definitions:
           Supplies the value for a named parameter in the statement.
           Applicable if the statement or prepared statement contains 1 or more named parameters.
 
-          The name of a named parameter consists of two parts:
+          The name of this property consists of two parts:
 
-          1. The `$` character.
+          1. The `$` character or the `@` character.
           2. An identifier that specifies the name of the parameter.
-             This must start with an alpha character, followed by one or more alphanumeric characters.
+              This must start with an alpha character, followed by one or more alphanumeric characters.
 
           The value of the named parameter can be any JSON value.
 
