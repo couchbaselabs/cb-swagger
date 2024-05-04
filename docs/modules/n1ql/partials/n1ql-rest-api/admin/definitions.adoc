@@ -536,6 +536,23 @@ The <<queryCompletedLimit,cluster-level>> `queryCompletedLimit` setting specifie
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
 **Default** : `4000` +
 **Example** : `7000`|integer (int32)
+|**completed-max-plan-size** +
+__optional__|[#completed-max-plan-size]
+This property is available in databases running Couchbase Server 7.6.0 and later.
+
+A plan size in bytes.
+Limits the size of query execution plans that can be logged in the completed requests catalog.
+Values larger than the maximum limit are silently treated as the maximum limit.
+Queries with plans larger than this are not logged.
+You must obtain execution plans for such queries via profiling or using the EXPLAIN statement.
+
+Refer to link:/server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config[Configure the Completed Requests] for more information.
+
+The <<queryCompletedMaxPlanSize,cluster-level>> `queryCompletedMaxPlanSize` setting specifies this property for the whole cluster.
+When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
+**Default** : `262144` +
+**Minimum value** : `0` +
+**Maximum value** : `20840448`|integer (int32)
 |**completed-threshold** +
 __optional__|[#completed-threshold]
 A duration in milliseconds.
@@ -699,6 +716,47 @@ The <<queryN1qlFeatCtrl,cluster-level>> `queryN1qlFeatCtrl` setting specifies th
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
 **Default** : `76` +
 **Example** : `"0x1"`|integer (int32)
+|**node-quota** +
+__optional__|[#node-quota]
+This property is available in databases running Couchbase Server 7.6.0 and later.
+
+Sets the soft memory limit for this node, in MB.
+The garbage collector tries to keep below this target.
+It is not a hard, absolute limit, and memory usage may exceed this value.
+
+When set to `0` (the default), there is no soft memory limit.
+
+The <<queryNodeQuota,cluster-level>> `queryNodeQuota` setting specifies this property for the whole cluster.
+When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
+**Default** : `0`|integer (int32)
+|**node-quota-val-percent** +
+__optional__|[#node-quota-val-percent]
+This property is available in databases running Couchbase Server 7.6.0 and later.
+
+The percentage of the `node-quota` that is dedicated to tracked value content memory across all active requests on this node.
+(The `memory-quota` setting specifies the maximum amount of document memory an individual request may use on this node.)
+
+The <<queryNodeQuotaValPercent,cluster-level>> `queryNodeQuotaValPercent` setting specifies this property for the whole cluster.
+When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
+**Default** : `67` +
+**Minimum value** : `0` +
+**Maximum value** : `100`|integer (int32)
+|**num-cpus** +
+__optional__|[#num-cpus]
+This property is available in databases running Couchbase Server 7.6.0 and later.
+
+The number of CPUs the Query service can use on this node.
+Note that this setting requires a restart of the Query service to take effect.
+
+When set to `0` (the default), the Query service can use all available CPUs, up to the limits described below.
+
+The number of CPUs can never be greater than the number of logical CPUs.
+In Community Edition, the number of allowed CPUs cannot be greater than 4.
+In Enterprise Edition, there is no limit to the number of allowed CPUs.
+
+The <<queryNumCpus,cluster-level>> `queryNumCpus` setting specifies this property for the whole cluster.
+When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
+**Default** : `0`|integer (int32)
 |**numatrs** +
 __optional__|[#numatrs-srv]
 Specifies the total number of link:/server/7.6/learn/data/transactions.html#active-transaction-record-entries[active transaction records].
