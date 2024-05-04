@@ -162,8 +162,10 @@ Values are case-insensitive. +
 **Example** : `"XML"`|enum (JSON, XML, CSV, TSV)
 |**kvtimeout** +
 __optional__|[#kvtimeout]
-The maximum time to wait for a KV operation before timing out.
-Only applies to statements within a transaction, or to non-transactional statements when the `durability_level` is set.
+The approximate time to wait for a KV get operation before timing out.
+This applies to statements within a transaction, and to non-transactional statements, whether `durability_level` is set or not.
+
+If `use_replica` is enabled for a query, then this parameter also specifies the approximate time to wait before fetching data from a replica vBucket when the active vBucket is inaccessible.
 
 The value for this parameter is a string.
 Its format includes an amount and a mandatory unit, e.g. `10ms` (10 milliseconds) or `0.5s` (half a second).
@@ -599,16 +601,17 @@ Note that KV range scans cannot currently be started on a replica vBucket.
 If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request. +
 **Default** : `"unset"` +
 **Example** : `"true"`|enum (off, on, unset)
-|**$<identifier>** +
+|**<symbol><identifier>** +
 __optional__|[#identifier]
 Supplies the value for a named parameter in the statement.
 Applicable if the statement or prepared statement contains 1 or more named parameters.
 
-The name of a named parameter consists of two parts:
+The name of this property consists of two parts:
 
 . The `$` character.
+This may be the `$` character or the `@` character in databases running Couchbase Server 7.6.0 and later.
 . An identifier that specifies the name of the parameter.
- This must start with an alpha character, followed by one or more alphanumeric characters.
+This must start with an alpha character, followed by one or more alphanumeric characters.
 
 The value of the named parameter can be any JSON value.
 
