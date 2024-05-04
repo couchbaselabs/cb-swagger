@@ -67,7 +67,7 @@ Applicable if the statement or prepared statement contains 1 or more positional 
 
 The value is an array of JSON values, one for each positional parameter in the statement.
 
-Refer to link:/server/7.6/settings/query-settings.html#section_srh_tlm_n1b[Named Parameters and Positional Parameters] for details. +
+Refer to link:/cloud/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b[Named Parameters and Positional Parameters] for details. +
 **Example** : `[ "LAX", 6 ]`|< object > array
 |**atrcollection** +
 __optional__|[#atrcollection_req]
@@ -378,7 +378,7 @@ For multi-statement requests, the default behavior is RYOW within each request.
 If you want to disable RYOW within a request, add a separate `request_consistency` parameter that can be set to `not_bounded`.
 
 If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the <<tximplicit,tximplicit>> parameter set to `true`, then this parameter sets the transactional scan consistency.
-Refer to link:/server/7.6/settings/query-settings.html#transactional-scan-consistency[Transactional Scan Consistency] for details. +
+Refer to link:/cloud/n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency[Transactional Scan Consistency] for details. +
 **Default** : `"not_bounded"` +
 **Example** : `"at_plus"`|enum (not_bounded, at_plus, request_plus, statement_plus)
 |**scan_vector** +
@@ -615,7 +615,7 @@ This must start with an alpha character, followed by one or more alphanumeric ch
 
 The value of the named parameter can be any JSON value.
 
-Refer to link:/server/7.6/settings/query-settings.html#section_srh_tlm_n1b[Named Parameters and Positional Parameters] for details.|string (any JSON value)
+Refer to link:/cloud/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b[Named Parameters and Positional Parameters] for details.|string (any JSON value)
 |===
 
 
