@@ -383,6 +383,56 @@ paths:
           schema:
             type: object
 
+  /admin/gc:
+    get:
+      operationId: get_gc
+      summary: Run Garbage Collector
+      description: |
+        This endpoint is available in databases running Couchbase Server 7.6.0 and later.
+
+        Runs the garbage collector.
+
+        A message is written to `query.log` whenever the garbage collector endpoint is invoked.
+      tags:
+        - default
+      security:
+        - Default: []
+      responses:
+        200:
+          description: Indicates that the garbage collector was invoked.
+          schema:
+            $ref: "#/definitions/Garbage Collection"
+        401:
+          description: |
+            Error 10000: authentication failure.
+            The invoking user is not a valid full-admin user.
+          schema:
+            type: object
+    post:
+      operationId: post_gc
+      summary: Run Garbage Collector and Release Memory
+      description: |
+        This endpoint is available in databases running Couchbase Server 7.6.0 and later.
+
+        Runs the garbage collector and attempts to return freed memory to the OS.
+
+        A message is written to `query.log` whenever the garbage collector endpoint is invoked.
+      tags:
+        - default
+      security:
+        - Default: []
+      responses:
+        200:
+          description: Indicates that the garbage collector was invoked.
+          schema:
+            $ref: "#/definitions/Garbage Collection"
+        401:
+          description: |
+            Error 10000: authentication failure.
+            The invoking user is not a valid full-admin user.
+          schema:
+            type: object
+
   # /admin/ssl_cert:
   #   get:
   #     deprecated: true
@@ -1886,6 +1936,25 @@ definitions:
         x-desc-refs: |
           [queryUseReplica]: ../../rest-api/rest-cluster-query-settings.html#queryUseReplica
           [use_replica_req]: index.html#use_replica_req
+
+  Garbage Collection:
+    type: object
+    title: Garbage Collection
+    properties:
+      freed:
+        type: integer
+        description: The amount of memory freed.
+      released:
+        type: integer
+        description: |
+          Only returned by the POST method.
+          The amount of memory released to the OS.
+      status:
+        type: string
+        description: The status of the garbage collector.
+    required:
+      - freed
+      - status
 
 parameters:
   PathStat:
