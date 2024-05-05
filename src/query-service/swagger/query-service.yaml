@@ -374,20 +374,20 @@ definitions:
           [#max_parallelism_req]
           Specifies the maximum parallelism for the query.
 
+          The default value is the same as the number of partitions of the index selected for the query.
+
 #         The [node-level][max-parallelism-srv] `max-parallelism` setting specifies the ceiling for this parameter for a single node.
 #         If the request-level parameter is zero or negative, the parallelism for the query is set to the node-level setting.
 #         If the request-level parameter is greater than zero and less than the node-level setting, the request-level parameter overrides the node-level setting.
 #         If the request-level parameter is greater than the node-level setting, the parallelism for the query is set to the node-level setting.
 
-          In addition, the [cluster-level][queryMaxParallelism] `queryMaxParallelism` setting specifies the ceiling for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryMaxParallelism] `queryMaxParallelism` setting specifies the ceiling for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-          To enable queries to run in parallel, you must specify the cluster-level `queryMaxParallelism` parameter, or specify the node-level `max-parallelism` parameter on all Query nodes.
-
-          The default value is the same as the number of partitions of the index selected for the query.
+#         To enable queries to run in parallel, you must specify the cluster-level `queryMaxParallelism` parameter, or specify the node-level `max-parallelism` parameter on all Query nodes.
 
 #         [max-parallelism-srv]: #max-parallelism-srv
-          [queryMaxParallelism]: #queryMaxParallelism
+#         [queryMaxParallelism]: #queryMaxParallelism
         x-desc-refs: |
           [max-parallelism-srv]: admin.html#max-parallelism-srv
           [queryMaxParallelism]: ../../rest-api/rest-cluster-query-settings.html#queryMaxParallelism
@@ -414,11 +414,11 @@ definitions:
 #         If the node-level setting is zero (the default), the request-level parameter overrides the node-level setting.
 #         If the node-level setting is greater than zero, the request-level parameter is capped by the node-level setting.
 
-          In addition, the [cluster-level][queryMemoryQuota] `queryMemoryQuota` setting specifies the ceiling for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryMemoryQuota] `queryMemoryQuota` setting specifies the ceiling for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
 #         [memory-quota-srv]: #memory-quota-srv
-          [queryMemoryQuota]: #queryMemoryQuota
+#         [queryMemoryQuota]: #queryMemoryQuota
         x-desc-refs: |
           [memory-quota-srv]: admin.html#memory-quota-srv
           [queryMemoryQuota]: ../../rest-api/rest-cluster-query-settings.html#queryMemoryQuota
@@ -453,11 +453,11 @@ definitions:
 #         The [node-level][numatrs-srv] `numatrs` setting specifies the default for this parameter for a single node.
 #         The request-level parameter overrides the node-level setting.
 
-          In addition, the [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
 #         [numatrs-srv]: #numatrs-srv
-          [queryNumAtrs]: #queryNumAtrs
+#         [queryNumAtrs]: #queryNumAtrs
         x-desc-refs: |
           [numatrs-srv]: admin.html#numatrs-srv
           [queryNumAtrs]: ../../rest-api/rest-cluster-query-settings.html#queryNumAtrs
@@ -474,11 +474,11 @@ definitions:
 #         The [node-level][pipeline-batch-srv] `pipeline-batch` setting specifies the default for this parameter for a single node.
 #         The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
-          In addition, the [cluster-level][queryPipelineBatch] `queryPipelineBatch` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryPipelineBatch] `queryPipelineBatch` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
 #         [pipeline-batch-srv]: #pipeline-batch-srv
-          [queryPipelineBatch]: #queryPipelineBatch
+#         [queryPipelineBatch]: #queryPipelineBatch
         x-desc-refs: |
           [pipeline-batch-srv]: admin.html#pipeline-batch-srv
           [queryPipelineBatch]: ../../rest-api/rest-cluster-query-settings.html#queryPipelineBatch
@@ -494,11 +494,11 @@ definitions:
 #         The [node-level][pipeline-cap-srv] `pipeline-cap` setting specifies the default for this parameter for a single node.
 #         The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
-          In addition, the [cluster-level][queryPipelineCap] `queryPipelineCap` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryPipelineCap] `queryPipelineCap` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
 #         [pipeline-cap-srv]: #pipeline-cap-srv
-          [queryPipelineCap]: #queryPipelineCap
+#         [queryPipelineCap]: #queryPipelineCap
         x-desc-refs: |
           [pipeline-cap-srv]: admin.html#pipeline-cap-srv
           [queryPipelineCap]: ../../rest-api/rest-cluster-query-settings.html#queryPipelineCap
@@ -620,11 +620,11 @@ definitions:
 #         The [node-level][scan-cap-srv] `scan-cap` setting specifies the default for this parameter for a single node.
 #         The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
-          In addition, the [cluster-level][queryScanCap] `queryScanCap` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryScanCap] `queryScanCap` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
 #         [scan-cap-srv]: #scan-cap-srv
-          [queryScanCap]: #queryScanCap
+#         [queryScanCap]: #queryScanCap
         x-desc-refs: |
           [scan-cap-srv]: admin.html#scan-cap-srv
           [queryScanCap]: ../../rest-api/rest-cluster-query-settings.html#queryScanCap
@@ -793,11 +793,11 @@ definitions:
 #         The request-level parameter overrides the node-level setting.
 #         However, if the node-level setting is greater than 0, the timeout for the query is limited to the node-level setting.
 
-          In addition, the [cluster-level][queryTimeout] `queryTimeout` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryTimeout] `queryTimeout` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
 #         [timeout-srv]: #timeout-srv
-          [queryTimeout]: #queryTimeout
+#         [queryTimeout]: #queryTimeout
         x-desc-refs: |
           [timeout-srv]: admin.html#timeout-srv
           [queryTimeout]: ../../rest-api/rest-cluster-query-settings.html#queryTimeout
@@ -876,17 +876,17 @@ definitions:
           Specify a duration of `0` to disable.
           When disabled, the request-level timeout is set to the default.
 
+          The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sessions or redirected input.
+
 #         The [node-level][txtimeout-srv] `txtimeout` setting specifies the default for this parameter for a single node.
 #         The request-level parameter overrides the node-level setting.
 #         However, if the node-level setting is greater than 0, the transaction timeout for the query is limited to the node-level setting.
 
-          In addition, the [cluster-level][queryTxTimeout] `queryTxTimeout` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
-
-          The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sessions or redirected input.
+#         In addition, the [cluster-level][queryTxTimeout] `queryTxTimeout` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
 #         [txtimeout-srv]: #txtimeout-srv
-          [queryTxTimeout]: #queryTxTimeout
+#         [queryTxTimeout]: #queryTxTimeout
         x-desc-refs: |
           [txtimeout-srv]: admin.html#txtimeout-srv
           [queryTxTimeout]: ../../rest-api/rest-cluster-query-settings.html#queryTxTimeout
@@ -901,11 +901,11 @@ definitions:
 #         The [node-level][use-cbo-srv] `use-cbo` setting specifies the default for this parameter for a single node.
 #         The request-level parameter overrides the node-level setting.
 
-          In addition, the [cluster-level][queryUseCBO] `queryUseCBO` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryUseCBO] `queryUseCBO` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
 #         [use-cbo-srv]: #use-cbo-srv
-          [queryUseCBO]: #queryUseCBO
+#         [queryUseCBO]: #queryUseCBO
         x-desc-refs: |
           [use-cbo-srv]: admin.html#use-cbo-srv
           [queryUseCBO]: ../../rest-api/rest-cluster-query-settings.html#queryUseCBO
@@ -948,13 +948,6 @@ definitions:
           * `unset` &mdash; read from replica is specified by the node-level setting.
           If the node-level setting is also `unset`, read from replica is disabled for this request.
 
-#         The [node-level][use-replica-srv] `use-replica` setting specifies the default for this property for a single node.
-#         The request-level parameter usually overrides the node-level setting.
-#         However, when the node-level setting is `off`, the request-level parameter cannot enable the property.
-
-          In addition, the [cluster-level][queryUseReplica] `queryUseReplica` setting specifies the default for this property for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
-
           Do not enable read from replica when you require consistent results.
           Only SELECT queries that are not within a transaction can read from replica.
 
@@ -963,8 +956,15 @@ definitions:
           Note that KV range scans cannot currently be started on a replica vBucket.
           If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
 
+#         The [node-level][use-replica-srv] `use-replica` setting specifies the default for this property for a single node.
+#         The request-level parameter usually overrides the node-level setting.
+#         However, when the node-level setting is `off`, the request-level parameter cannot enable the property.
+
+#         In addition, the [cluster-level][queryUseReplica] `queryUseReplica` setting specifies the default for this property for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
 #         [use-replica-srv]: #use-replica-srv
-          [queryUseReplica]: #queryUseReplica
+#         [queryUseReplica]: #queryUseReplica
         x-desc-refs: |
           [use-replica-srv]: admin.html#use-replica-srv
           [queryUseReplica]: ../../rest-api/rest-cluster-query-settings.html#queryUseReplica
