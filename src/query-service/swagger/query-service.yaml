@@ -319,7 +319,7 @@ definitions:
         x-desc-name: encoded_plan
         description: |
           [#encoded_plan]
-          In Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
+          In databases running Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
           It is included for compatibility with previous versions of Couchbase Server.
       encoding:
         type: string
@@ -915,8 +915,6 @@ definitions:
         x-desc-name: use_fts
         description: |
           [#use_fts]
-          &blacktriangleright; [ENTERPRISE EDITION](https://www.couchbase.com/products/editions)
-
           Specifies that the query should use a full-text index.
 
           If the query contains a `USING FTS` hint, that takes priority over this parameter.
@@ -980,7 +978,7 @@ definitions:
           The name of this property consists of two parts:
 
           1. The `$` character.
-              This may be the `$` character or the `@` character in databases running Couchbase Server 7.6.0 and later.
+              In databases running Couchbase Server 7.6.0 and later, this may be the `$` character or the `@` character.
           2. An identifier that specifies the name of the parameter.
               This must start with an alpha character, followed by one or more alphanumeric characters.
 
