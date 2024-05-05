@@ -37,7 +37,7 @@ paths:
             $ref: "#/definitions/Request Parameters"
       security:
         - Header: []
-        - Parameter: []
+#       - Parameter: []
       responses:
         "200":
           $ref: '#/responses/OK'
@@ -73,7 +73,7 @@ paths:
         This endpoint is intended for situations where use of the `POST` method is restricted.
       security:
         - Header: []
-        - Parameter: []
+#       - Parameter: []
       responses:
         "200":
           $ref: '#/responses/OK'
@@ -269,25 +269,25 @@ definitions:
         x-desc-refs: |
           [controls-srv]: admin.html#controls-srv
         example: true
-      creds:
-        type: array
-        items:
-          $ref: "#/definitions/Credentials"
-        x-desc-name: creds
-        description: |
-          [#creds]
-          Specifies the login credentials.
-          The Query API supports two types of identity: local (or bucket) and admin.
+#     creds:
+#       type: array
+#       items:
+#         $ref: "#/definitions/Credentials"
+#       x-desc-name: creds
+#       description: |
+#         [#creds]
+#         Specifies the login credentials.
+#         The Query API supports two types of identity: local (or bucket) and admin.
 
-          The format is an identity and password.
-          You can specify credentials for multiple identities.
+#         The format is an identity and password.
+#         You can specify credentials for multiple identities.
 
-          If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored.
-        example:
-          - user: local:bucket-name
-            pass: password
-          - user: admin:admin-name
-            pass: password
+#         If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored.
+#       example:
+#         - user: local:bucket-name
+#           pass: password
+#         - user: admin:admin-name
+#           pass: password
       durability_level:
         type: string
         x-desc-name: durability_level
@@ -990,18 +990,18 @@ definitions:
 
           [section_srh_tlm_n1b]: /cloud/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
 
-  Credentials:
-    type: object
-    title: Credentials
-    properties:
-      user:
-        type: string
-        description: >
-          An identity for authentication.
-          Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
-      pass:
-        type: string
-        description: A password for authentication.
+# Credentials:
+#   type: object
+#   title: Credentials
+#   properties:
+#     user:
+#       type: string
+#       description: >
+#         An identity for authentication.
+#         Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
+#     pass:
+#       type: string
+#       description: A password for authentication.
 
   Response Body:
     type: object
@@ -1185,10 +1185,10 @@ securityDefinitions:
       Specify a user name and password via HTTP headers.
       This method can only be used to provide a single credential.
 
-  Parameter:
-    type: apiKey
-    name: creds
-    in: query
-    description: >
-      Specify user names and passwords via the `creds` request parameter.
-      This is the only method that can provide multiple credentials for a request.
+# Parameter:
+#   type: apiKey
+#   name: creds
+#   in: query
+#   description: >
+#     Specify user names and passwords via the `creds` request parameter.
+#     This is the only method that can provide multiple credentials for a request.
