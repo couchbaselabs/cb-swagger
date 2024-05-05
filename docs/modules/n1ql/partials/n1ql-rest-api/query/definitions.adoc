@@ -76,10 +76,7 @@ The collection must be present.
 If not specified, the ATR is stored in the default collection in the default scope in the bucket containing the first mutated document within the transaction.
 
 The value must be a string in the form `&quot;bucket.scope.collection&quot;` or `&quot;namespace:bucket.scope.collection&quot;`.
-If any part of the path contains a special character, that part of the path must be delimited in backticks &grave;&grave;.
-
-The <<atrcollection-srv,node-level>> `atrcollection` setting specifies the default for this parameter for a single node.
-The request-level parameter overrides the node-level setting. +
+If any part of the path contains a special character, that part of the path must be delimited in backticks &grave;&grave;. +
 **Example** : `"default:&grave;travel-sample&grave;.transaction.test"`|string
 |**auto_execute** +
 __optional__|[#auto_execute]
@@ -109,27 +106,8 @@ Specifies if there should be a controls section returned with the request result
 
 When set to `true`, the query response document includes a controls section with runtime information provided along with the request, such as positional and named parameters or settings.
 
-If the request qualifies for caching, these values will also be cached in the `completed_requests` system keyspace.
-
-The <<controls-srv,node-level>> `controls` setting specifies the default for this parameter for a single node.
-The request-level parameter overrides the node-level setting. +
+If the request qualifies for caching, these values will also be cached in the `completed_requests` system keyspace. +
 **Example** : `true`|boolean
-|**creds** +
-__optional__|[#creds]
-Specifies the login credentials.
-The Query API supports two types of identity: local (or bucket) and admin.
-
-The format is an identity and password.
-You can specify credentials for multiple identities.
-
-If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored. +
-**Example** : `[ {
-  "user" : "local:bucket-name",
-  "pass" : "password"
-}, {
-  "user" : "admin:admin-name",
-  "pass" : "password"
-} ]`|< <<_credentials,Credentials>> > array
 |**durability_level** +
 __optional__|[#durability_level]
 The level of link:/server/7.6/learn/data/durability.html[durability] for mutations produced by the request.
@@ -145,7 +123,7 @@ Set the durability level to `&quot;none&quot;` or `&quot;&quot;` to specify no d
 **Example** : `"none"`|enum (&quot;&quot;, none, majority, majorityAndPersistActive, persistToMajority)
 |**encoded_plan** +
 __optional__|[#encoded_plan]
-In Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
+In databases running Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
 It is included for compatibility with previous versions of Couchbase Server.|string
 |**encoding** +
 __optional__|[#encoding]
@@ -186,16 +164,6 @@ When disabled, no timeout is applied and the KV operation runs for however long 
 __optional__|[#max_parallelism_req]
 Specifies the maximum parallelism for the query.
 
-The <<max-parallelism-srv,node-level>> `max-parallelism` setting specifies the ceiling for this parameter for a single node.
-If the request-level parameter is zero or negative, the parallelism for the query is set to the node-level setting.
-If the request-level parameter is greater than zero and less than the node-level setting, the request-level parameter overrides the node-level setting.
-If the request-level parameter is greater than the node-level setting, the parallelism for the query is set to the node-level setting.
-
-In addition, the <<queryMaxParallelism,cluster-level>> `queryMaxParallelism` setting specifies the ceiling for this parameter for the whole cluster.
-When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
-
-To enable queries to run in parallel, you must specify the cluster-level `queryMaxParallelism` parameter, or specify the node-level `max-parallelism` parameter on all Query nodes.
-
 The default value is the same as the number of partitions of the index selected for the query. +
 **Example** : `3`|integer (int32)
 |**memory_quota** +
@@ -210,14 +178,7 @@ processing a request. It does not take into account any other memory that might 
 process a request, such as the stack, the operators, or some intermediate values.
 
 Within a transaction, this setting enforces the memory quota for the transaction by tracking the
-delta table and the transaction log (approximately).
-
-The <<memory-quota-srv,node-level>> `memory-quota` setting specifies the ceiling for this parameter for a single node.
-If the node-level setting is zero (the default), the request-level parameter overrides the node-level setting.
-If the node-level setting is greater than zero, the request-level parameter is capped by the node-level setting.
-
-In addition, the <<queryMemoryQuota,cluster-level>> `queryMemoryQuota` setting specifies the ceiling for this parameter for the whole cluster.
-When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
+delta table and the transaction log (approximately). +
 **Default** : `0` +
 **Example** : `4`|integer (int32)
 |**metrics** +
@@ -231,34 +192,16 @@ __optional__|Specifies the namespace to use. Currently, only the `default` names
 |**numatrs** +
 __optional__|[#numatrs_req]
 Specifies the total number of link:/server/7.6/learn/data/transactions.html#active-transaction-record-entries[active transaction records].
-Must be a positive integer.
-
-The <<numatrs-srv,node-level>> `numatrs` setting specifies the default for this parameter for a single node.
-The request-level parameter overrides the node-level setting.
-
-In addition, the <<queryNumAtrs,cluster-level>> `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
-When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
+Must be a positive integer. +
 **Default** : `1024` +
 **Example** : `512`|integer (int32)
 |**pipeline_batch** +
 __optional__|[#pipeline_batch_req]
-Controls the number of items execution operators can batch for Fetch from the KV.
-
-The <<pipeline-batch-srv,node-level>> `pipeline-batch` setting specifies the default for this parameter for a single node.
-The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
-
-In addition, the <<queryPipelineBatch,cluster-level>> `queryPipelineBatch` setting specifies the default for this parameter for the whole cluster.
-When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
+Controls the number of items execution operators can batch for Fetch from the KV. +
 **Example** : `64`|integer (int32)
 |**pipeline_cap** +
 __optional__|[#pipeline_cap_req]
-Maximum number of items each execution operator can buffer between various operators.
-
-The <<pipeline-cap-srv,node-level>> `pipeline-cap` setting specifies the default for this parameter for a single node.
-The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
-
-In addition, the <<queryPipelineCap,cluster-level>> `queryPipelineCap` setting specifies the default for this parameter for the whole cluster.
-When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
+Maximum number of items each execution operator can buffer between various operators. +
 **Example** : `1024`|integer (int32)
 |**prepared** +
 __optional__|[#prepared]
@@ -283,10 +226,7 @@ Not supported for statements in a transaction. +
 **Example** : `true`|boolean
 |**pretty** +
 __optional__|[#pretty_req]
-Specifies the query results returned in pretty format.
-
-The <<pretty-srv,node-level>> `pretty` setting specifies the default for this parameter for a single node.
-The request-level parameter overrides the node-level setting. +
+Specifies the query results returned in pretty format. +
 **Example** : `false`|boolean
 |**profile** +
 __optional__|[#profile_req]
@@ -303,10 +243,7 @@ Three phase times will be included in the `system:active_requests` and `system:c
 Besides the phase times, the profile section of the query response document will include a full query plan with timing and information about the number of processed documents at each phase.
 This information will be included in the `system:active_requests` and `system:completed_requests` keyspaces.
 
-If `profile` is not set as one of the above values, then the profile setting does not change.
-
-The <<profile-srv,node-level>> `profile` setting specifies the default for this parameter for a single node.
-The request-level parameter overrides the node-level setting. +
+If `profile` is not set as one of the above values, then the profile setting does not change. +
 **Example** : `"phases"`|enum (off, phases, timings)
 |**query_context** +
 __optional__|[#query_context]
@@ -339,13 +276,7 @@ Maximum buffered channel size between the indexer client and the query service f
 This parameter controls when to use scan backfill.
 
 Use `0` or a negative number to disable.
-Smaller values reduce GC, while larger values reduce indexer backfill.
-
-The <<scan-cap-srv,node-level>> `scan-cap` setting specifies the default for this parameter for a single node.
-The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
-
-In addition, the <<queryScanCap,cluster-level>> `queryScanCap` setting specifies the default for this parameter for the whole cluster.
-When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
+Smaller values reduce GC, while larger values reduce indexer backfill. +
 **Example** : `1024`|integer (int32)
 |**scan_consistency** +
 __optional__|[#scan_consistency]
@@ -474,14 +405,7 @@ Specify a duration of `0` or a negative duration to disable.
 When disabled, no timeout is applied and the request runs for however long it takes.
 
 If <<tximplicit,tximplicit>> or <<txid,txid>> is set, this parameter is ignored.
-The request inherits the remaining time of the transaction as timeout.
-
-The <<timeout-srv,node-level>> `timeout` setting specifies the default for this parameter for a single node.
-The request-level parameter overrides the node-level setting.
-However, if the node-level setting is greater than 0, the timeout for the query is limited to the node-level setting.
-
-In addition, the <<queryTimeout,cluster-level>> `queryTimeout` setting specifies the default for this parameter for the whole cluster.
-When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
+The request inherits the remaining time of the transaction as timeout. +
 **Example** : `"30m"`|string (duration)
 |**txdata** +
 __optional__|[#txdata]
@@ -539,29 +463,14 @@ Valid units are:
 Specify a duration of `0` to disable.
 When disabled, the request-level timeout is set to the default.
 
-The <<txtimeout-srv,node-level>> `txtimeout` setting specifies the default for this parameter for a single node.
-The request-level parameter overrides the node-level setting.
-However, if the node-level setting is greater than 0, the transaction timeout for the query is limited to the node-level setting.
-
-In addition, the <<queryTxTimeout,cluster-level>> `queryTxTimeout` setting specifies the default for this parameter for the whole cluster.
-When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
-
 The default is `&quot;15s&quot;` for cbq files or scripts, `&quot;2m&quot;` for interactive cbq sessions or redirected input. +
 **Example** : `"30m"`|string (duration)
 |**use_cbo** +
 __optional__|[#use_cbo_req]
-Specifies whether the cost-based optimizer is enabled.
-
-The <<use-cbo-srv,node-level>> `use-cbo` setting specifies the default for this parameter for a single node.
-The request-level parameter overrides the node-level setting.
-
-In addition, the <<queryUseCBO,cluster-level>> `queryUseCBO` setting specifies the default for this parameter for the whole cluster.
-When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster. +
+Specifies whether the cost-based optimizer is enabled. +
 **Example** : `true`|boolean
 |**use_fts** +
 __optional__|[#use_fts]
-&blacktriangleright; https://www.couchbase.com/products/editions[ENTERPRISE EDITION]
-
 Specifies that the query should use a full-text index.
 
 If the query contains a `USING FTS` hint, that takes priority over this parameter.
@@ -585,13 +494,6 @@ The possible values are:
 * `unset` &mdash; read from replica is specified by the node-level setting.
 If the node-level setting is also `unset`, read from replica is disabled for this request.
 
-The <<use-replica-srv,node-level>> `use-replica` setting specifies the default for this property for a single node.
-The request-level parameter usually overrides the node-level setting.
-However, when the node-level setting is `off`, the request-level parameter cannot enable the property.
-
-In addition, the <<queryUseReplica,cluster-level>> `queryUseReplica` setting specifies the default for this property for the whole cluster.
-When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
-
 Do not enable read from replica when you require consistent results.
 Only SELECT queries that are not within a transaction can read from replica.
 
@@ -609,7 +511,7 @@ Applicable if the statement or prepared statement contains 1 or more named param
 The name of this property consists of two parts:
 
 . The `$` character.
-This may be the `$` character or the `@` character in databases running Couchbase Server 7.6.0 and later.
+In databases running Couchbase Server 7.6.0 and later, this may be the `$` character or the `@` character.
 . An identifier that specifies the name of the parameter.
 This must start with an alpha character, followed by one or more alphanumeric characters.
 
@@ -620,25 +522,6 @@ Refer to link:/cloud/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b[Na
 
 
 // end::settings[]
-
-
-[[_credentials]]
-=== Credentials
-
-// tag::credentials[]
-
-
-[options="header", cols=".^3a,.^11a,.^4a"]
-|===
-|Name|Description|Schema
-|**user** +
-__optional__|An identity for authentication. Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.|string
-|**pass** +
-__optional__|A password for authentication.|string
-|===
-
-
-// end::credentials[]
 
 
 [[_response_body]]
