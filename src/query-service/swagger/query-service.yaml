@@ -37,7 +37,7 @@ paths:
             $ref: "#/definitions/Request Parameters"
       security:
         - Header: []
-        - Parameter: []
+#       - Parameter: []
       responses:
         "200":
           $ref: '#/responses/OK'
@@ -73,7 +73,7 @@ paths:
         This endpoint is intended for situations where use of the `POST` method is restricted.
       security:
         - Header: []
-        - Parameter: []
+#       - Parameter: []
       responses:
         "200":
           $ref: '#/responses/OK'
@@ -208,11 +208,12 @@ definitions:
           The value must be a string in the form `"bucket.scope.collection"` or `"namespace:bucket.scope.collection"`.
           If any part of the path contains a special character, that part of the path must be delimited in backticks &grave;&grave;.
 
-          The [node-level][atrcollection-srv] `atrcollection` setting specifies the default for this parameter for a single node.
-          The request-level parameter overrides the node-level setting.
-
           [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
-          [atrcollection-srv]: #atrcollection-srv
+
+#          The [node-level][atrcollection-srv] `atrcollection` setting specifies the default for this parameter for a single node.
+#          The request-level parameter overrides the node-level setting.
+
+#          [atrcollection-srv]: #atrcollection-srv
         x-desc-refs: |
           [atrcollection-srv]: admin.html#atrcollection-srv
         example: default:&grave;travel-sample&grave;.transaction.test
@@ -261,32 +262,32 @@ definitions:
 
           If the request qualifies for caching, these values will also be cached in the `completed_requests` system keyspace.
 
-          The [node-level][controls-srv] `controls` setting specifies the default for this parameter for a single node.
-          The request-level parameter overrides the node-level setting.
+#         The [node-level][controls-srv] `controls` setting specifies the default for this parameter for a single node.
+#         The request-level parameter overrides the node-level setting.
 
-          [controls-srv]: #controls-srv
+#         [controls-srv]: #controls-srv
         x-desc-refs: |
           [controls-srv]: admin.html#controls-srv
         example: true
-      creds:
-        type: array
-        items:
-          $ref: "#/definitions/Credentials"
-        x-desc-name: creds
-        description: |
-          [#creds]
-          Specifies the login credentials.
-          The Query API supports two types of identity: local (or bucket) and admin.
+#     creds:
+#       type: array
+#       items:
+#         $ref: "#/definitions/Credentials"
+#       x-desc-name: creds
+#       description: |
+#         [#creds]
+#         Specifies the login credentials.
+#         The Query API supports two types of identity: local (or bucket) and admin.
 
-          The format is an identity and password.
-          You can specify credentials for multiple identities.
+#         The format is an identity and password.
+#         You can specify credentials for multiple identities.
 
-          If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored.
-        example:
-          - user: local:bucket-name
-            pass: password
-          - user: admin:admin-name
-            pass: password
+#         If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored.
+#       example:
+#         - user: local:bucket-name
+#           pass: password
+#         - user: admin:admin-name
+#           pass: password
       durability_level:
         type: string
         x-desc-name: durability_level
@@ -318,7 +319,7 @@ definitions:
         x-desc-name: encoded_plan
         description: |
           [#encoded_plan]
-          In Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
+          In databases running Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
           It is included for compatibility with previous versions of Couchbase Server.
       encoding:
         type: string
@@ -373,20 +374,20 @@ definitions:
           [#max_parallelism_req]
           Specifies the maximum parallelism for the query.
 
-          The [node-level][max-parallelism-srv] `max-parallelism` setting specifies the ceiling for this parameter for a single node.
-          If the request-level parameter is zero or negative, the parallelism for the query is set to the node-level setting.
-          If the request-level parameter is greater than zero and less than the node-level setting, the request-level parameter overrides the node-level setting.
-          If the request-level parameter is greater than the node-level setting, the parallelism for the query is set to the node-level setting.
-
-          In addition, the [cluster-level][queryMaxParallelism] `queryMaxParallelism` setting specifies the ceiling for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
-
-          To enable queries to run in parallel, you must specify the cluster-level `queryMaxParallelism` parameter, or specify the node-level `max-parallelism` parameter on all Query nodes.
-
           The default value is the same as the number of partitions of the index selected for the query.
 
-          [max-parallelism-srv]: #max-parallelism-srv
-          [queryMaxParallelism]: #queryMaxParallelism
+#         The [node-level][max-parallelism-srv] `max-parallelism` setting specifies the ceiling for this parameter for a single node.
+#         If the request-level parameter is zero or negative, the parallelism for the query is set to the node-level setting.
+#         If the request-level parameter is greater than zero and less than the node-level setting, the request-level parameter overrides the node-level setting.
+#         If the request-level parameter is greater than the node-level setting, the parallelism for the query is set to the node-level setting.
+
+#         In addition, the [cluster-level][queryMaxParallelism] `queryMaxParallelism` setting specifies the ceiling for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+#         To enable queries to run in parallel, you must specify the cluster-level `queryMaxParallelism` parameter, or specify the node-level `max-parallelism` parameter on all Query nodes.
+
+#         [max-parallelism-srv]: #max-parallelism-srv
+#         [queryMaxParallelism]: #queryMaxParallelism
         x-desc-refs: |
           [max-parallelism-srv]: admin.html#max-parallelism-srv
           [queryMaxParallelism]: ../../rest-api/rest-cluster-query-settings.html#queryMaxParallelism
@@ -409,15 +410,15 @@ definitions:
           Within a transaction, this setting enforces the memory quota for the transaction by tracking the
           delta table and the transaction log (approximately).
 
-          The [node-level][memory-quota-srv] `memory-quota` setting specifies the ceiling for this parameter for a single node.
-          If the node-level setting is zero (the default), the request-level parameter overrides the node-level setting.
-          If the node-level setting is greater than zero, the request-level parameter is capped by the node-level setting.
+#         The [node-level][memory-quota-srv] `memory-quota` setting specifies the ceiling for this parameter for a single node.
+#         If the node-level setting is zero (the default), the request-level parameter overrides the node-level setting.
+#         If the node-level setting is greater than zero, the request-level parameter is capped by the node-level setting.
 
-          In addition, the [cluster-level][queryMemoryQuota] `queryMemoryQuota` setting specifies the ceiling for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryMemoryQuota] `queryMemoryQuota` setting specifies the ceiling for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-          [memory-quota-srv]: #memory-quota-srv
-          [queryMemoryQuota]: #queryMemoryQuota
+#         [memory-quota-srv]: #memory-quota-srv
+#         [queryMemoryQuota]: #queryMemoryQuota
         x-desc-refs: |
           [memory-quota-srv]: admin.html#memory-quota-srv
           [queryMemoryQuota]: ../../rest-api/rest-cluster-query-settings.html#queryMemoryQuota
@@ -447,15 +448,16 @@ definitions:
           Specifies the total number of [active transaction records][additional-storage-use].
           Must be a positive integer.
 
-          The [node-level][numatrs-srv] `numatrs` setting specifies the default for this parameter for a single node.
-          The request-level parameter overrides the node-level setting.
-
-          In addition, the [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
-
           [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
-          [numatrs-srv]: #numatrs-srv
-          [queryNumAtrs]: #queryNumAtrs
+
+#         The [node-level][numatrs-srv] `numatrs` setting specifies the default for this parameter for a single node.
+#         The request-level parameter overrides the node-level setting.
+
+#         In addition, the [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+#         [numatrs-srv]: #numatrs-srv
+#         [queryNumAtrs]: #queryNumAtrs
         x-desc-refs: |
           [numatrs-srv]: admin.html#numatrs-srv
           [queryNumAtrs]: ../../rest-api/rest-cluster-query-settings.html#queryNumAtrs
@@ -469,14 +471,14 @@ definitions:
           [#pipeline_batch_req]
           Controls the number of items execution operators can batch for Fetch from the KV.
 
-          The [node-level][pipeline-batch-srv] `pipeline-batch` setting specifies the default for this parameter for a single node.
-          The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
+#         The [node-level][pipeline-batch-srv] `pipeline-batch` setting specifies the default for this parameter for a single node.
+#         The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
-          In addition, the [cluster-level][queryPipelineBatch] `queryPipelineBatch` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryPipelineBatch] `queryPipelineBatch` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-          [pipeline-batch-srv]: #pipeline-batch-srv
-          [queryPipelineBatch]: #queryPipelineBatch
+#         [pipeline-batch-srv]: #pipeline-batch-srv
+#         [queryPipelineBatch]: #queryPipelineBatch
         x-desc-refs: |
           [pipeline-batch-srv]: admin.html#pipeline-batch-srv
           [queryPipelineBatch]: ../../rest-api/rest-cluster-query-settings.html#queryPipelineBatch
@@ -489,14 +491,14 @@ definitions:
           [#pipeline_cap_req]
           Maximum number of items each execution operator can buffer between various operators.
 
-          The [node-level][pipeline-cap-srv] `pipeline-cap` setting specifies the default for this parameter for a single node.
-          The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
+#         The [node-level][pipeline-cap-srv] `pipeline-cap` setting specifies the default for this parameter for a single node.
+#         The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
-          In addition, the [cluster-level][queryPipelineCap] `queryPipelineCap` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryPipelineCap] `queryPipelineCap` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-          [pipeline-cap-srv]: #pipeline-cap-srv
-          [queryPipelineCap]: #queryPipelineCap
+#         [pipeline-cap-srv]: #pipeline-cap-srv
+#         [queryPipelineCap]: #queryPipelineCap
         x-desc-refs: |
           [pipeline-cap-srv]: admin.html#pipeline-cap-srv
           [queryPipelineCap]: ../../rest-api/rest-cluster-query-settings.html#queryPipelineCap
@@ -537,10 +539,10 @@ definitions:
           [#pretty_req]
           Specifies the query results returned in pretty format.
 
-          The [node-level][pretty-srv] `pretty` setting specifies the default for this parameter for a single node.
-          The request-level parameter overrides the node-level setting.
+#         The [node-level][pretty-srv] `pretty` setting specifies the default for this parameter for a single node.
+#         The request-level parameter overrides the node-level setting.
 
-          [pretty-srv]: #pretty-srv
+#         [pretty-srv]: #pretty-srv
         x-desc-refs: |
           [pretty-srv]: admin.html#pretty-srv
         example: false
@@ -564,10 +566,10 @@ definitions:
 
           If `profile` is not set as one of the above values, then the profile setting does not change.
 
-          The [node-level][profile-srv] `profile` setting specifies the default for this parameter for a single node.
-          The request-level parameter overrides the node-level setting.
+#         The [node-level][profile-srv] `profile` setting specifies the default for this parameter for a single node.
+#         The request-level parameter overrides the node-level setting.
 
-          [profile-srv]: #profile-srv
+#         [profile-srv]: #profile-srv
         x-desc-refs: |
           [profile-srv]: admin.html#profile-srv
         enum: ["off", "phases", "timings"]
@@ -615,14 +617,14 @@ definitions:
           Use `0` or a negative number to disable.
           Smaller values reduce GC, while larger values reduce indexer backfill.
 
-          The [node-level][scan-cap-srv] `scan-cap` setting specifies the default for this parameter for a single node.
-          The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
+#         The [node-level][scan-cap-srv] `scan-cap` setting specifies the default for this parameter for a single node.
+#         The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
-          In addition, the [cluster-level][queryScanCap] `queryScanCap` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryScanCap] `queryScanCap` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-          [scan-cap-srv]: #scan-cap-srv
-          [queryScanCap]: #queryScanCap
+#         [scan-cap-srv]: #scan-cap-srv
+#         [queryScanCap]: #queryScanCap
         x-desc-refs: |
           [scan-cap-srv]: admin.html#scan-cap-srv
           [queryScanCap]: ../../rest-api/rest-cluster-query-settings.html#queryScanCap
@@ -787,15 +789,15 @@ definitions:
           If [tximplicit](#tximplicit) or [txid](#txid) is set, this parameter is ignored.
           The request inherits the remaining time of the transaction as timeout.
 
-          The [node-level][timeout-srv] `timeout` setting specifies the default for this parameter for a single node.
-          The request-level parameter overrides the node-level setting.
-          However, if the node-level setting is greater than 0, the timeout for the query is limited to the node-level setting.
+#         The [node-level][timeout-srv] `timeout` setting specifies the default for this parameter for a single node.
+#         The request-level parameter overrides the node-level setting.
+#         However, if the node-level setting is greater than 0, the timeout for the query is limited to the node-level setting.
 
-          In addition, the [cluster-level][queryTimeout] `queryTimeout` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryTimeout] `queryTimeout` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-          [timeout-srv]: #timeout-srv
-          [queryTimeout]: #queryTimeout
+#         [timeout-srv]: #timeout-srv
+#         [queryTimeout]: #queryTimeout
         x-desc-refs: |
           [timeout-srv]: admin.html#timeout-srv
           [queryTimeout]: ../../rest-api/rest-cluster-query-settings.html#queryTimeout
@@ -874,17 +876,17 @@ definitions:
           Specify a duration of `0` to disable.
           When disabled, the request-level timeout is set to the default.
 
-          The [node-level][txtimeout-srv] `txtimeout` setting specifies the default for this parameter for a single node.
-          The request-level parameter overrides the node-level setting.
-          However, if the node-level setting is greater than 0, the transaction timeout for the query is limited to the node-level setting.
-
-          In addition, the [cluster-level][queryTxTimeout] `queryTxTimeout` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
-
           The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sessions or redirected input.
 
-          [txtimeout-srv]: #txtimeout-srv
-          [queryTxTimeout]: #queryTxTimeout
+#         The [node-level][txtimeout-srv] `txtimeout` setting specifies the default for this parameter for a single node.
+#         The request-level parameter overrides the node-level setting.
+#         However, if the node-level setting is greater than 0, the transaction timeout for the query is limited to the node-level setting.
+
+#         In addition, the [cluster-level][queryTxTimeout] `queryTxTimeout` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+#         [txtimeout-srv]: #txtimeout-srv
+#         [queryTxTimeout]: #queryTxTimeout
         x-desc-refs: |
           [txtimeout-srv]: admin.html#txtimeout-srv
           [queryTxTimeout]: ../../rest-api/rest-cluster-query-settings.html#queryTxTimeout
@@ -896,14 +898,14 @@ definitions:
           [#use_cbo_req]
           Specifies whether the cost-based optimizer is enabled.
 
-          The [node-level][use-cbo-srv] `use-cbo` setting specifies the default for this parameter for a single node.
-          The request-level parameter overrides the node-level setting.
+#         The [node-level][use-cbo-srv] `use-cbo` setting specifies the default for this parameter for a single node.
+#         The request-level parameter overrides the node-level setting.
 
-          In addition, the [cluster-level][queryUseCBO] `queryUseCBO` setting specifies the default for this parameter for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+#         In addition, the [cluster-level][queryUseCBO] `queryUseCBO` setting specifies the default for this parameter for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-          [use-cbo-srv]: #use-cbo-srv
-          [queryUseCBO]: #queryUseCBO
+#         [use-cbo-srv]: #use-cbo-srv
+#         [queryUseCBO]: #queryUseCBO
         x-desc-refs: |
           [use-cbo-srv]: admin.html#use-cbo-srv
           [queryUseCBO]: ../../rest-api/rest-cluster-query-settings.html#queryUseCBO
@@ -913,8 +915,6 @@ definitions:
         x-desc-name: use_fts
         description: |
           [#use_fts]
-          &blacktriangleright; [ENTERPRISE EDITION](https://www.couchbase.com/products/editions)
-
           Specifies that the query should use a full-text index.
 
           If the query contains a `USING FTS` hint, that takes priority over this parameter.
@@ -946,13 +946,6 @@ definitions:
           * `unset` &mdash; read from replica is specified by the node-level setting.
           If the node-level setting is also `unset`, read from replica is disabled for this request.
 
-          The [node-level][use-replica-srv] `use-replica` setting specifies the default for this property for a single node.
-          The request-level parameter usually overrides the node-level setting.
-          However, when the node-level setting is `off`, the request-level parameter cannot enable the property.
-
-          In addition, the [cluster-level][queryUseReplica] `queryUseReplica` setting specifies the default for this property for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
-
           Do not enable read from replica when you require consistent results.
           Only SELECT queries that are not within a transaction can read from replica.
 
@@ -961,8 +954,15 @@ definitions:
           Note that KV range scans cannot currently be started on a replica vBucket.
           If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
 
-          [use-replica-srv]: #use-replica-srv
-          [queryUseReplica]: #queryUseReplica
+#         The [node-level][use-replica-srv] `use-replica` setting specifies the default for this property for a single node.
+#         The request-level parameter usually overrides the node-level setting.
+#         However, when the node-level setting is `off`, the request-level parameter cannot enable the property.
+
+#         In addition, the [cluster-level][queryUseReplica] `queryUseReplica` setting specifies the default for this property for the whole cluster.
+#         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
+#         [use-replica-srv]: #use-replica-srv
+#         [queryUseReplica]: #queryUseReplica
         x-desc-refs: |
           [use-replica-srv]: admin.html#use-replica-srv
           [queryUseReplica]: ../../rest-api/rest-cluster-query-settings.html#queryUseReplica
@@ -978,7 +978,7 @@ definitions:
           The name of this property consists of two parts:
 
           1. The `$` character.
-              This may be the `$` character or the `@` character in databases running Couchbase Server 7.6.0 and later.
+              In databases running Couchbase Server 7.6.0 and later, this may be the `$` character or the `@` character.
           2. An identifier that specifies the name of the parameter.
               This must start with an alpha character, followed by one or more alphanumeric characters.
 
@@ -988,18 +988,18 @@ definitions:
 
           [section_srh_tlm_n1b]: /cloud/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
 
-  Credentials:
-    type: object
-    title: Credentials
-    properties:
-      user:
-        type: string
-        description: >
-          An identity for authentication.
-          Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
-      pass:
-        type: string
-        description: A password for authentication.
+# Credentials:
+#   type: object
+#   title: Credentials
+#   properties:
+#     user:
+#       type: string
+#       description: >
+#         An identity for authentication.
+#         Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
+#     pass:
+#       type: string
+#       description: A password for authentication.
 
   Response Body:
     type: object
@@ -1183,10 +1183,10 @@ securityDefinitions:
       Specify a user name and password via HTTP headers.
       This method can only be used to provide a single credential.
 
-  Parameter:
-    type: apiKey
-    name: creds
-    in: query
-    description: >
-      Specify user names and passwords via the `creds` request parameter.
-      This is the only method that can provide multiple credentials for a request.
+# Parameter:
+#   type: apiKey
+#   name: creds
+#   in: query
+#   description: >
+#     Specify user names and passwords via the `creds` request parameter.
+#     This is the only method that can provide multiple credentials for a request.
