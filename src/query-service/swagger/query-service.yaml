@@ -1058,6 +1058,12 @@ definitions:
           An object containing runtime information provided along with the request.
           Present only if `controls` was set to true in the [Request Parameters](#_request_parameters).
         $ref: "#/definitions/Controls"
+      profile:
+        type: object
+        description: >
+          An object containing monitoring and profiling information about the request.
+          Present only if `profile` was set to `"phases"` or `"timings"` in the [Request Parameters](#_request_parameters).
+        $ref: "#/definitions/Profile"
 
   Conditions:
     type: object
@@ -1173,6 +1179,120 @@ definitions:
         type: string
         description: The type of query statement.
         example: SELECT
+
+  Profile:
+    type: object
+    required:
+      - requestTime
+      - servicingHost
+      - phaseCounts
+      - phaseOperators
+      - phaseTimes
+    properties:
+      requestTime:
+        type: string
+        format: date-time
+        description: Timestamp when the query was received.
+      servicingHost:
+        type: string
+        description: IP address and port number of the node where the query was executed.
+      phaseCounts:
+        type: object
+        description: |
+          Count of documents processed at selective phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
+        example:
+          {
+            "fetch": 16,
+            "indexScan": 187
+          }
+      phaseOperators:
+        type: object
+        description: |
+          Indicates the numbers of each kind of query operator involved in different phases of the query processing.
+
+          For instance, a non-covering index path might involve one index scan and one fetch operator.
+          A join would probably involved two or more fetches, one per keyspace.
+          A union select would have twice as many operator counts, one per each branch of the union.
+
+          This is in essence the count of all the operators in the `executionTimings` object.
+        example:
+          {
+            "authorize": 1,
+            "fetch": 1,
+            "indexScan": 2
+          }
+      phaseTimes:
+        type: object
+        description: |
+          Cumulative execution times for various phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
+        example:
+          {
+            "authorize": "823.631µs",
+            "fetch": "656.873µs",
+            "indexScan": "29.146543ms",
+            "instantiate": "236.221µs",
+            "parse": "826.382µs",
+            "plan": "11.831101ms",
+            "run": "16.892181ms"
+          }
+      executionTimings:
+        type: object
+        title: Execution Timings
+        description: |
+          Present only if `profile` was set to `"timings"` in the [Request Parameters](#_request_parameters).
+
+          The execution details for various phases involved in the query execution, such as kernel and service execution times, number of documents processed at each query operator in each phase, and number of phase switches.
+        required:
+          - '#operator'
+          - '#stats'
+        properties:
+          '#operator':
+            type: string
+            description: Name of the operator.
+            example: Fetch
+          '#stats':
+            type: object
+            title: Statistics
+            description: Statistics collected for the operator.
+            properties:
+              '#itemsIn':
+                type: integer
+                format: int32
+                description: Number of input documents to the operator.
+                example: 187
+              '#itemsOut':
+                type: integer
+                format: int32
+                description: Number of output documents after the operator processing.
+                example: 16
+              '#phaseSwitches':
+                type: integer
+                format: int32
+                description: Number of switches between executing, waiting for services, or waiting for the goroutine scheduler.
+                example: 413
+              execTime:
+                type: string
+                format: duration
+                description: Time spent executing the operator code inside SQL++ query engine.
+                example: "128.434µs"
+              kernTime:
+                type: string
+                format: duration
+                description: Time spent waiting to be scheduled for CPU time.
+                example: "15.027879ms"
+              servTime:
+                type: string
+                format: duration
+                description: |
+                  Time spent waiting for another service, such as index or data.
+
+                  For index scan, it is time spent waiting for GSI/indexer.
+
+                  For fetch, it is time spent waiting on the KV store.
+                example: "1.590934ms"
+          '~child':
+            type: object
+            description: Further nested operators, each with their own execution timings.
 
 securityDefinitions:
   Header:
