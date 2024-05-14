@@ -715,6 +715,15 @@ definitions:
         description: |
           The name of the prepared statement.
           This may be a UUID that was assigned automatically, or a name that was user-specified when the statement was created.
+      namespace:
+        type: string
+        description: |
+          The namespace in which the prepared statement is stored.
+          Currently, only the `default` namespace is available.
+      node:
+        type: string
+        description: |
+          The node on which the prepared statement is stored.
       statement:
         type: string
         description: The text of the query.
