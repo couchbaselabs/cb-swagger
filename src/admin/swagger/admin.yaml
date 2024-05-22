@@ -619,24 +619,46 @@ definitions:
       phaseCounts:
         type: object
         description: |
-          Count of documents processed at selective phases involved in the query execution.
-          Refer to [Attribute Profile in Query Response][profile] for more details and examples.
+          Count of documents processed at selective phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
 
-          [profile]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#profile
+          For active requests, this property is dynamic, depending on the documents processed by various phases up to this moment in time.
+          Polling the active requests again may return different values.
+        example:
+          {
+            "fetch": 16,
+            "indexScan": 187
+          }
       phaseOperators:
         type: object
         description: |
-          Indicates the number of each kind of query operators involved in different phases of the query processing.
-          Refer to [Attribute Profile in Query Response][profile] for more details and examples.
+          Indicates the numbers of each kind of query operator involved in different phases of the query processing.
 
-          [profile]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#profile
+          For instance, a non-covering index path might involve one index scan and one fetch operator.
+          A join would probably involve two or more fetches, one per keyspace.
+          A union select would have twice as many operator counts, one per each branch of the union.
+        example:
+          {
+            "authorize": 1,
+            "fetch": 1,
+            "indexScan": 2
+          }
       phaseTimes:
         type: object
         description: |
-          Cumulative execution times for various phases involved in the query execution.
-          Refer to [Attribute Profile in Query Response][profile] for more details and examples.
+          Cumulative execution times for various phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
 
-          [profile]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#profile
+          For active requests, this property is dynamic, depending on the documents processed by various phases up to this moment in time.
+          Polling the active requests again may return different values.
+        example:
+          {
+            "authorize": "823.631µs",
+            "fetch": "656.873µs",
+            "indexScan": "29.146543ms",
+            "instantiate": "236.221µs",
+            "parse": "826.382µs",
+            "plan": "11.831101ms",
+            "run": "16.892181ms"
+          }
       remoteAddr:
         type: string
         description: IP address and port number of the client application, from where the query is received.
