@@ -553,6 +553,8 @@ __optional__|An array of 0 or more warning objects. If a warning occurred during
 __optional__|An object containing metrics about the request.|<<_metrics,Metrics>>
 |**controls** +
 __optional__|An object containing runtime information provided along with the request. Present only if `controls` was set to true in the <<_request_parameters,Request Parameters>>.|<<_controls,Controls>>
+|**profile** +
+__optional__|An object containing monitoring and profiling information about the request. Present only if `profile` was set to `&quot;phases&quot;` or `&quot;timings&quot;` in the <<_request_parameters,Request Parameters>>.|<<_profile,Profile>>
 |===
 
 
@@ -640,6 +642,114 @@ __optional__|The type of query statement. +
 
 Additional elements not listed here might also be present.
 Clients and consumers of the REST API or the logs must accommodate any additional elements.
+
+
+[[_profile]]
+=== Profile
+
+// tag::profile[]
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**requestTime** +
+__required__|Timestamp when the query was received.|string (date-time)
+|**servicingHost** +
+__required__|IP address and port number of the node where the query was executed.|string
+|**phaseCounts** +
+__required__|Count of documents processed at selective phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc. +
+**Example** : `{
+  "fetch" : 16,
+  "indexScan" : 187
+}`|object
+|**phaseOperators** +
+__required__|Indicates the numbers of each kind of query operator involved in different phases of the query processing.
+
+For instance, a non-covering index path might involve one index scan and one fetch operator.
+A join would probably involve two or more fetches, one per keyspace.
+A union select would have twice as many operator counts, one per each branch of the union.
+
+This is in essence the count of all the operators in the `executionTimings` object. +
+**Example** : `{
+  "authorize" : 1,
+  "fetch" : 1,
+  "indexScan" : 2
+}`|object
+|**phaseTimes** +
+__required__|Cumulative execution times for various phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc. +
+**Example** : `{
+  "authorize" : "823.631µs",
+  "fetch" : "656.873µs",
+  "indexScan" : "29.146543ms",
+  "instantiate" : "236.221µs",
+  "parse" : "826.382µs",
+  "plan" : "11.831101ms",
+  "run" : "16.892181ms"
+}`|object
+|**executionTimings** +
+__optional__|Present only if `profile` was set to `&quot;timings&quot;` in the <<_request_parameters,Request Parameters>>.
+
+The execution details for various phases involved in the query execution, such as kernel and service execution times, number of documents processed at each query operator in each phase, and number of phase switches.|<<_execution_timings,Execution Timings>>
+|===
+
+[[_execution_timings]]
+**Execution Timings**
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**#operator** +
+__required__|Name of the operator. +
+**Example** : `"Fetch"`|string
+|**#stats** +
+__required__|Statistics collected for the operator.|<<_statistics,Statistics>>
+|**~child** +
+__optional__|Further nested operators, each with their own execution timings.|object
+|===
+
+[[_statistics]]
+**Statistics**
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**#itemsIn** +
+__optional__|Number of input documents to the operator. +
+**Example** : `187`|integer (int32)
+|**#itemsOut** +
+__optional__|Number of output documents after the operator processing. +
+**Example** : `16`|integer (int32)
+|**#phaseSwitches** +
+__optional__|Number of switches between executing, waiting for services, or waiting for the goroutine scheduler. +
+**Example** : `413`|integer (int32)
+|**execTime** +
+__optional__|Time spent executing the operator code inside SQL++ query engine. +
+**Example** : `"128.434µs"`|string (duration)
+|**kernTime** +
+__optional__|Time spent waiting to be scheduled for CPU time. +
+**Example** : `"15.027879ms"`|string (duration)
+|**servTime** +
+__optional__|Time spent waiting for another service, such as index or data.
+
+For index scan, it is time spent waiting for GSI/indexer.
+
+For fetch, it is time spent waiting on the KV store. +
+**Example** : `"1.590934ms"`|string (duration)
+|===
+
+
+[TIP]
+====
+The `kernTime`, `servTime`, and `execTime` statistics can be very helpful in troubleshooting query performance issues.
+For example:
+
+* A high `servTime` for a low number of items processed is an indication that the indexer or KV store is stressed.
+* A high `kernTime` means there is a downstream issue in the query plan or the query server having many requests to process, so the scheduled waiting time will be more for CPU time.
+====
+
+
+// end::profile[]
 
 
 
