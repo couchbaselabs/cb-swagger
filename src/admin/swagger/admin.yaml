@@ -815,6 +815,9 @@ definitions:
     type: object
     title: Vital Statistics
     properties:
+      bucket.IO.stats:
+        type: object
+        description: The number of reads and retries for each bucket.
       uptime:
         type: string
         format: duration
@@ -832,6 +835,9 @@ definitions:
       cores:
         type: integer
         description: The maximum number of logical cores available to the query engine.
+      ffdc.total:
+        type: integer
+        description: The total number of times FFDC has been invoked since the last restart.
       gc.num:
         type: integer
         format: int64
@@ -844,6 +850,33 @@ definitions:
         type: integer
         format: int64
         description: The percentage of time spent pausing for garbage collection since the last time the statistics were checked.
+      healthy:
+        type: boolean
+        description: False when either the unbounded or plus request queues are full; true otherwise.
+      host.memory.free:
+        type: integer
+        format: int64
+        description: Amount of free memory on the host.
+      host.memory.quota:
+        type: integer
+        format: int64
+        description: |
+          The host memory quota.
+          This reflects the node-quota setting.
+      host.memory.total:
+        type: integer
+        format: int64
+        description: Total memory on the host.
+      host.memory.value_quota:
+        type: integer
+        format: int64
+        description: This the total document memory quota on the node.
+      load:
+        type: integer
+        description: A calculation for how busy the server is.
+      loadfactor:
+        type: integer
+        description: The moving 15 minute average of the load calculation.
       memory.usage:
         type: integer
         format: int64
@@ -862,6 +895,17 @@ definitions:
         description: |
           The total amount of memory obtained from the operating system (bytes).
           This measures the virtual address space reserved by the query engine for heaps, stacks, and other internal data structures.
+      node:
+        type: string
+        description: The name or IP address and port of the node.
+      node.allocated.values:
+        type: integer
+        description: |
+          The total number of values allocated to contain documents or computations around documents.
+          (This is only of relevance internally.)
+      node.memory.usage:
+        type: integer
+        description: The currently allocated document memory on the node.
       cpu.user.percent:
         type: integer
         format: int64
@@ -874,6 +918,18 @@ definitions:
         description: |
           CPU usage.
           The percentage of time spent executing system code since the last time the statistics were checked.
+      process.memory.usage:
+        type: integer
+        description: Current process memory use.
+      process.percore.cpupercent:
+        type: number
+        description: Average CPU usage per core.
+      process.rss:
+        type: integer
+        description: Process RSS (bytes)
+      process.service.usage:
+        type: integer
+        description: The number of active servicers for the dominant workload &mdash; unbound queue servicers or plus queue servicers.
       request.completed.count:
         type: integer
         description: Total number of completed requests.
@@ -895,6 +951,12 @@ definitions:
         description: |
           Number of query requests processed per second.
           15-minute exponentially weighted moving average.
+      request.queued.count:
+        type: integer
+        description: Number of queued requests.
+      request.quota.used.hwm:
+        type: integer
+        description: High water mark for request quota use.
       request_time.mean:
         type: string
         format: duration
@@ -928,6 +990,26 @@ definitions:
       request.prepared.percent:
         type: integer
         description: Percentage of requests that are prepared statements.
+      servicers.paused.count:
+        type: integer
+        description: |
+          Number of servicers temporarily paused due to memory pressure.
+          (Applies to serverless environments only.)
+      servicers.paused.total:
+        type: integer
+        description: |
+          Number of times servicers have been temporarily paused.
+          (Applies to serverless environments only.)
+      temp.hwm:
+        type: integer
+        description: |
+          High water mark for temp space use directly by query.
+          (Doesn't include use by the GSI and FTS clients.)
+      temp.usage:
+        type: integer
+        description: |
+          Current Query temp space use.
+          (Doesn't include use by the GSI and FTS clients.)
 
   Statistics:
     type: object
