@@ -266,6 +266,8 @@ __required__|The count of times the prepared statement has been executed.|intege
 [options="header", cols=".^3a,.^11a,.^4a"]
 |===
 |Name|Description|Schema
+|**bucket.IO.stats** +
+__optional__|The number of reads and retries for each bucket.|object
 |**cores** +
 __optional__|The maximum number of logical cores available to the query engine.|integer
 |**cpu.sys.percent** +
@@ -274,12 +276,29 @@ The percentage of time spent executing system code since the last time the stati
 |**cpu.user.percent** +
 __optional__|CPU usage.
 The percentage of time spent executing user code since the last time the statistics were checked.|integer (int64)
+|**ffdc.total** +
+__optional__|The total number of times FFDC has been invoked since the last restart.|integer
 |**gc.num** +
 __optional__|The target heap size of the next garbage collection cycle.|integer (int64)
 |**gc.pause.percent** +
 __optional__|The percentage of time spent pausing for garbage collection since the last time the statistics were checked.|integer (int64)
 |**gc.pause.time** +
 __optional__|The total time spent pausing for garbage collection since the query engine started (ns).|string (duration)
+|**healthy** +
+__optional__|False when either the unbounded or plus request queues are full; true otherwise.|boolean
+|**host.memory.free** +
+__optional__|Amount of free memory on the host.|integer (int64)
+|**host.memory.quota** +
+__optional__|The host memory quota.
+This reflects the node-quota setting.|integer (int64)
+|**host.memory.total** +
+__optional__|Total memory on the host.|integer (int64)
+|**host.memory.value_quota** +
+__optional__|This the total document memory quota on the node.|integer (int64)
+|**load** +
+__optional__|A calculation for how busy the server is.|integer
+|**loadfactor** +
+__optional__|The moving 15 minute average of the load calculation.|integer
 |**local.time** +
 __optional__|The local time of the query engine.|string (date-time)
 |**memory.system** +
@@ -291,6 +310,21 @@ This increases as heap objects are allocated, but does not decrease when objects
 |**memory.usage** +
 __optional__|The amount of memory allocated for heap objects (bytes).
 This increases as heap objects are allocated, and decreases as objects are freed.|integer (int64)
+|**node** +
+__optional__|The name or IP address and port of the node.|string
+|**node.allocated.values** +
+__optional__|The total number of values allocated to contain documents or computations around documents.
+(This is only of relevance internally.)|integer
+|**node.memory.usage** +
+__optional__|The currently allocated document memory on the node.|integer
+|**process.memory.usage** +
+__optional__|Current process memory use.|integer
+|**process.percore.cpupercent** +
+__optional__|Average CPU usage per core.|number
+|**process.rss** +
+__optional__|Process RSS (bytes)|integer
+|**process.service.usage** +
+__optional__|The number of active servicers for the dominant workload &mdash; unbound queue servicers or plus queue servicers.|integer
 |**request.active.count** +
 __optional__|Total number of active requests.|integer
 |**request.completed.count** +
@@ -306,6 +340,10 @@ __optional__|Number of query requests processed per second.
 5-minute exponentially weighted moving average.|number
 |**request.prepared.percent** +
 __optional__|Percentage of requests that are prepared statements.|integer
+|**request.queued.count** +
+__optional__|Number of queued requests.|integer
+|**request.quota.used.hwm** +
+__optional__|High water mark for request quota use.|integer
 |**request_time.80percentile** +
 __optional__|End-to-end time to process a query.
 The 80th percentile.|string (duration)
@@ -321,6 +359,18 @@ The mean value.|string (duration)
 |**request_time.median** +
 __optional__|End-to-end time to process a query.
 The median value.|string (duration)
+|**servicers.paused.count** +
+__optional__|Number of servicers temporarily paused due to memory pressure.
+(Applies to serverless environments only.)|integer
+|**servicers.paused.total** +
+__optional__|Number of times servicers have been temporarily paused.
+(Applies to serverless environments only.)|integer
+|**temp.hwm** +
+__optional__|High water mark for temp space use directly by query.
+(Doesn't include use by the GSI and FTS clients.)|integer
+|**temp.usage** +
+__optional__|Current Query temp space use.
+(Doesn't include use by the GSI and FTS clients.)|integer
 |**total.threads** +
 __optional__|The number of active threads used by the query engine.|integer
 |**uptime** +
