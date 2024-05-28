@@ -16,6 +16,84 @@ This section describes the operations available with these REST APIs.
 * <<_monitor_node>>
 
 
+[[_return_active_requests]]
+=== Return Active Requests
+....
+GET /analytics/admin/active_requests
+....
+
+
+==== Description
+Returns a list of the requests that aer being processed.
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|Success. Returns an object containing a list describing the current requests.|No Content
+|**401**|Unauthorized. The user name or password may be incorrect.
+
+Returns an object containing an error message. Refer to link:error-codes.html[Error Codes].|object
+|**404**|Not found. The path may be incorrect.|No Content
+|===
+
+
+==== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage_analytics_select,Analytics Manage / Analytics Select>>**
+|===
+
+
+==== Example HTTP request
+
+====
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password -X GET \
+     http://localhost:8095/analytics/admin/active_requests
+----
+====
+
+
+==== Example HTTP response
+
+====
+.Response 200
+[source,json]
+----
+[
+  {
+    "cancellable": true,
+    "clientContextID": "28379d60-7139-44d6-b57a-95935540b586",
+    "elapsedTime": 0.126,
+    "jobCreateTime": "2024-05-28T19:47:02.512",
+    "jobId": "JID:0.14",
+    "jobQueueTime": 0,
+    "jobRequiredCPUs": 1,
+    "jobRequiredMemory": 34013184,
+    "jobStartTime": "2024-05-28T19:47:02.514",
+    "jobStatus": "RUNNING",
+    "node": "172.20.0.2:8095",
+    "remoteAddr": "172.20.0.2:53612",
+    "requestTime": "2024-05-28T19:47:02.412",
+    "scanConsistency": "not_bounded",
+    "state": "running",
+    "statement": "select count(*) from hotel_endorsement_view;",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:126.0) Gecko/20100101 Firefox/126.0",
+    "users": "Administrator",
+    "uuid": "91f60338-a3e0-4163-9287-5e723fda29ef"
+  }
+]
+----
+====
+
+
 [[_cancel_request]]
 === Request Cancellation
 ....
@@ -71,6 +149,108 @@ The example below uses the `client_context_id` used in the xref:rest-service.ado
 curl -v -u Administrator:password -X DELETE \
      http://localhost:8095/analytics/admin/active_requests \
      -d client_context_id=xyz
+----
+====
+
+
+[[_completed_requests]]
+=== Return all completed requests
+....
+GET /analytics/admin/completed_requests
+....
+
+
+==== Description
+Gets a list of all completed analytic requests.
+
+
+==== Responses
+
+[options="header", cols=".^2a,.^14a,.^4a"]
+|===
+|HTTP Code|Description|Schema
+|**200**|Success. Returns a list of all completed analytic requests.|No Content
+|**401**|Unauthorized. The user name or password may be incorrect.
+
+Returns an object containing an error message. Refer to link:error-codes.html[Error Codes].|object
+|**404**|Not found. The path may be incorrect.|No Content
+|===
+
+
+==== Security
+
+[options="header", cols=".^3a,.^4a"]
+|===
+|Type|Name
+|**basic**|**<<_analytics_manage_analytics_select,Analytics Manage / Analytics Select>>**
+|===
+
+
+==== Example HTTP request
+
+====
+.Curl request
+[source,sh]
+----
+curl -v -u Administrator:password -X GET \
+     http://localhost:8095/analytics/admin/active_requests
+----
+====
+
+
+==== Example HTTP response
+
+====
+.Response 200
+[source,json]
+----
+[
+  {
+    "cancellable": true,
+    "clientContextID": "92e62399-1bc2-49a3-87e6-5dd88b463045",
+    "elapsedTime": 0.021,
+    "jobId": null,
+    "jobQueueTime": 1716926862,
+    "jobRequiredCPUs": 0,
+    "jobRequiredMemory": 0,
+    "jobStatus": "null",
+    "node": "172.20.0.2:8095",
+    "remoteAddr": "172.20.0.2:53612",
+    "requestTime": "2024-05-28T19:44:07.730",
+    "scanConsistency": "not_bounded",
+    "state": "completed",
+    "statement": "select count(*) from hotel_endoresement_view;",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:126.0) Gecko/20100101 Firefox/126.0",
+    "users": "Administrator",
+    "uuid": "9ea68a11-31f3-4ea5-9455-2686fa499b8d"
+  },
+  {
+    "cancellable": true,
+    "clientContextID": "28379d60-7139-44d6-b57a-95935540b586",
+    "elapsedTime": 0.228,
+    "jobCreateTime": "2024-05-28T19:47:02.512",
+    "jobEndTime": "2024-05-28T19:47:02.638",
+    "jobId": "JID:0.14",
+    "jobQueueTime": 0,
+    "jobRequiredCPUs": 1,
+    "jobRequiredMemory": 34013184,
+    "jobStartTime": "2024-05-28T19:47:02.514",
+    "jobStatus": "TERMINATED",
+    "node": "172.20.0.2:8095",
+    "plan": "{\n   \"operator\" : \"distribute-result\",\n   \"expressions\" : [ \"$$84\" ],\n   \"operatorId\" : 
+    . . . 
+    \n            } ]\n         } ]\n      } ]\n   } ]\n}",
+    "remoteAddr": "172.20.0.2:53612",
+    "requestTime": "2024-05-28T19:47:02.412",
+    "scanConsistency": "not_bounded",
+    "state": "completed",
+    "statement": "select count(*) from hotel_endorsement_view;",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:126.0) Gecko/20100101 Firefox/126.0",
+    "users": "Administrator",
+    "uuid": "91f60338-a3e0-4163-9287-5e723fda29ef"
+  }
+
+]
 ----
 ====
 
