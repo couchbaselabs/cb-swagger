@@ -34,7 +34,7 @@ Gets a list of the analytic requests that are running.
 [options="header", cols=".^2a,.^14a,.^4a"]
 |===
 |HTTP Code|Description|Schema
-|**200**|Success. Returns an object containing a list describing the current requests.|No Content
+|**200**|Success. Returns an array id details on the running requests.|< <<_request,Request>> > array
 |**401**|Unauthorized. The user name or password may be incorrect.
 
 Returns an object containing an error message. Refer to link:error-codes.html[Error Codes].|object
@@ -171,7 +171,7 @@ Gets a list of all completed analytic requests.
 [options="header", cols=".^2a,.^14a,.^4a"]
 |===
 |HTTP Code|Description|Schema
-|**200**|Success. Returns a list of all completed analytic requests.|No Content
+|**200**|Success. Returns a list of all completed analytic requests.|< <<_request,Request>> > array
 |**401**|Unauthorized. The user name or password may be incorrect.
 
 Returns an object containing an error message. Refer to link:error-codes.html[Error Codes].|object

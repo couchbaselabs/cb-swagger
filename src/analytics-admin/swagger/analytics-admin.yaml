@@ -56,7 +56,12 @@ paths:
       responses:
         "200":
           description: >
-            Success. Returns an object containing a list describing the current requests.
+            Success. 
+            Returns an array id details on the running requests.
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Request"
         "401":
           $ref: '#/responses/Unauthorized'
         "404":
@@ -76,6 +81,10 @@ paths:
         "200":
           description: >
             Success. Returns a list of all completed analytic requests.
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Request"
         "401":
           $ref: '#/responses/Unauthorized'
         "404":
@@ -501,6 +510,98 @@ definitions:
             description: >
               The number of mutations in the DCP queue that have not yet been ingested.
               The name of the property is the name of the Analytics collection.
+  Request:
+    description: An object giving information about an Analytics service request.
+    type: object
+    properties:
+      cancellable:
+        type: boolean
+        description: Whether this request can be cancelled.
+      clientContextID:
+        type: string
+        description: Sets a context ID returned by the service for debugging purposes.
+        example: 28379d60-7139-44d6-b57a-95935540b586
+      elapsedTime:
+        type: number
+        description: Seconds the request has been running.
+        example: 0.126
+      jobCreateTime:
+        type: string
+        description: The date and time when the request was created.
+        example: 2024-05-28T19:47:02.512
+      jobId:
+        type: string
+        description: >
+          String containing the ID of the request while it is running.
+          This value is null when the request is complete.
+        example: JID:0.14
+      jobQueueTime:
+        type: number
+        description: How long the request has been in the queue waiting to run.
+        example: 0
+      jobRequiredCPUs:
+        type: integer
+        description: The number of CPU cores required to run this request.
+        example: 1
+      jobRequiredMemory:
+        type: integer
+        description: >
+          The bytes of RAM being used to process this request.
+          This value is 0 after the request completes.
+        example: 34013184
+      jobStartTime:
+        type: string
+        description: The date and time the request began running.
+        example: 2024-05-28T19:47:02.514
+      jobStatus:
+        type: string
+        enum:
+          - RUNNING
+          - TERMINATED
+        description: The state of the request.
+        example: RUNNING
+      node:
+        type: string
+        description: The Analytics node running the request.
+        example: 172.20.0.2:8095
+      remoteAddr:
+        type: string
+        description: The network address and port of the system that made the request.
+        example: 172.20.0.123:53612
+      requestTime:
+        type: string
+        description: The date and time the request was made.
+      scanConsistency:
+        type: string
+        description: The value of the query setting Scan Consistency used for the query.
+        example: not_bounded
+      state:
+        type: string
+        enum:
+          - running
+          - completed
+        description: The state of the request.
+        example: running
+      statement:
+        type: string
+        description: The SQL++ statement being run by the request.
+        example: select count(*) from hotel_endorsement_view;
+      userAgent: 
+        type: string
+        description: The browser user agent string of the system that made the request.
+        example: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:126.0) Gecko/20100101 Firefox/126.0
+      users:
+        type: string
+        description: The user who made the request.
+        example: Administrator
+      uuid:
+        type: string
+        description: The unique identifier for this request.
+        example: 91f60338-a3e0-4163-9287-5e723fda29ef
+
+
+
+
 
 responses:
   Unauthorized:
