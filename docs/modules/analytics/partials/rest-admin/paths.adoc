@@ -8,7 +8,9 @@
 
 This section describes the operations available with these REST APIs.
 
+* <<_return_active_requests>>
 * <<_cancel_request>>
+* <<_completed_requests>>
 * <<_cluster_status>>
 * <<_restart_cluster>>
 * <<_restart_node>>
@@ -17,14 +19,14 @@ This section describes the operations available with these REST APIs.
 
 
 [[_return_active_requests]]
-=== Return Active Requests
+=== Active Requests
 ....
 GET /analytics/admin/active_requests
 ....
 
 
 ==== Description
-Returns a list of the requests that aer being processed.
+Gets a list of the analytic requests that are running.
 
 
 ==== Responses
@@ -154,7 +156,7 @@ curl -v -u Administrator:password -X DELETE \
 
 
 [[_completed_requests]]
-=== Return all completed requests
+=== Completed Requests
 ....
 GET /analytics/admin/completed_requests
 ....
@@ -193,7 +195,7 @@ Returns an object containing an error message. Refer to link:error-codes.html[Er
 [source,sh]
 ----
 curl -v -u Administrator:password -X GET \
-     http://localhost:8095/analytics/admin/active_requests
+     http://localhost:8095/analytics/admin/completed_requests
 ----
 ====
 

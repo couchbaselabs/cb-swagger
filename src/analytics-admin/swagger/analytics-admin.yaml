@@ -49,9 +49,8 @@ paths:
             The path may be incorrect, or there is no active request with the specified identifier.
     get:
       operationId: return_active_requests
-      summary: Return Active Requests
-      description: Returns a list of the requests that aer being processed.
-      parameters:
+      summary: Active Requests
+      description: Gets a list of the analytic requests that are running.
       security:
         - Analytics Manage / Analytics Select: []
       responses:
@@ -68,7 +67,7 @@ paths:
   /analytics/admin/completed_requests:
     get:
       operationId: completed_requests
-      summary: Return all completed requests
+      summary: Completed Requests
       description: Gets a list of all completed analytic requests.
       parameters:
       security:
