@@ -519,7 +519,7 @@ definitions:
         description: Whether this request can be cancelled.
       clientContextID:
         type: string
-        description: Sets a context ID returned by the service for debugging purposes.
+        description: A context ID for debugging purposes.
         example: 28379d60-7139-44d6-b57a-95935540b586
       elapsedTime:
         type: number
@@ -533,7 +533,7 @@ definitions:
         type: string
         description: >
           String containing the ID of the request while it is running.
-          This value is null when the request is complete.
+          This value can be null if request did not run (for example, due to an error).
         example: JID:0.14
       jobQueueTime:
         type: number
@@ -558,8 +558,12 @@ definitions:
         enum:
           - RUNNING
           - TERMINATED
+          - null
         description: The state of the request.
         example: RUNNING
+      plan:
+        type: string
+        description: The query plan for this request.  
       node:
         type: string
         description: The Analytics node running the request.

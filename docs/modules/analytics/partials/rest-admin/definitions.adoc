@@ -300,7 +300,7 @@ An object giving information about an Analytics service request.
 |**cancellable** +
 __optional__|Whether this request can be cancelled.|boolean
 |**clientContextID** +
-__optional__|Sets a context ID returned by the service for debugging purposes. +
+__optional__|A context ID for debugging purposes. +
 **Example** : `"28379d60-7139-44d6-b57a-95935540b586"`|string
 |**elapsedTime** +
 __optional__|Seconds the request has been running. +
@@ -309,7 +309,7 @@ __optional__|Seconds the request has been running. +
 __optional__|The date and time when the request was created. +
 **Example** : `"2024-05-28T19:47:02.512+0000"`|string
 |**jobId** +
-__optional__|String containing the ID of the request while it is running. This value is null when the request is complete. +
+__optional__|String containing the ID of the request while it is running. This value can be null if request did not run due to an error. +
 **Example** : `"JID:0.14"`|string
 |**jobQueueTime** +
 __optional__|How long the request has been in the queue waiting to run. +
@@ -326,6 +326,8 @@ __optional__|The date and time the request began running. +
 |**jobStatus** +
 __optional__|The state of the request. +
 **Example** : `"RUNNING"`|enum (RUNNING, TERMINATED)
+|**plan** +
+__optional__|The query plan for this request.|string
 |**node** +
 __optional__|The Analytics node running the request. +
 **Example** : `"172.20.0.2:8095"`|string
