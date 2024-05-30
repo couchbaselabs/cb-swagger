@@ -574,9 +574,10 @@ definitions:
       requestTime:
         type: string
         description: The date and time the request was made.
+        example: 2024-05-28T19:44:07.730
       scanConsistency:
         type: string
-        description: The value of the query setting Scan Consistency used for the query.
+        description: The Scan Consistency setting used for the request's query.
         example: not_bounded
       state:
         type: string
@@ -587,7 +588,7 @@ definitions:
         example: running
       statement:
         type: string
-        description: The SQL++ statement being run by the request.
+        description: The SQL++ query statement being run by the request.
         example: select count(*) from hotel_endorsement_view;
       userAgent: 
         type: string
