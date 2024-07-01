@@ -11,6 +11,7 @@ This section describes the properties returned by these REST APIs.
 * <<_status>>
 * <<_ingestion>>
 * <<_mutations>>
+* <<_request>>
 
 
 [[_status]]
@@ -285,6 +286,75 @@ __optional__|An object containing one or more collection properties, one for eac
 |Name|Description|Schema
 |**_collection_** +
 __optional__|The number of mutations in the DCP queue that have not yet been ingested. The name of the property is the name of the Analytics collection.|integer
+|===
+
+
+[[_request]]
+=== Request
+An object giving information about an Analytics service request.
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|Name|Description|Schema
+|**cancellable** +
+__optional__|Whether this request can be cancelled.|boolean
+|**clientContextID** +
+__optional__|A context ID for debugging purposes. +
+**Example** : `"28379d60-7139-44d6-b57a-95935540b586"`|string
+|**elapsedTime** +
+__optional__|How long the request has been running in seconds. +
+**Example** : `0.126`|number
+|**jobCreateTime** +
+__optional__|The date and time when the request's job was created. +
+**Example** : `"2024-05-28T19:47:02.512+0000"`|string
+|**jobId** +
+__optional__|The request's job ID. This value can be null if request did not run (for example, due to an error). +
+**Example** : `"JID:0.14"`|string
+|**jobQueueTime** +
+__optional__|How long the request's job has been in the queue waiting to run in seconds. +
+**Example** : `0.0`|number
+|**jobRequiredCPUs** +
+__optional__|The number of CPU cores required to run this request. +
+**Example** : `1`|integer
+|**jobRequiredMemory** +
+__optional__|The bytes of RAM being used to process this request. +
+**Example** : `34013184`|integer
+|**jobStartTime** +
+__optional__|The date and time the request's job began running. +
+**Example** : `"2024-05-28T19:47:02.514+0000"`|string
+|**jobStatus** +
+__optional__|The state of the request's job. +
+**Example** : `"RUNNING"`|enum (PENDING, RUNNING, TERMINATED, FAILURE, FAILURE_BEFORE_EXECUTION)
+|**plan** +
+__optional__|The query plan for this request.|string
+|**node** +
+__optional__|The Analytics node that received the request. +
+**Example** : `"172.20.0.2:8095"`|string
+|**remoteAddr** +
+__optional__|The network address and port of the client that made the request. +
+**Example** : `"172.20.0.123:53612"`|string
+|**requestTime** +
+__optional__|The date and time the request was received. +
+**Example** : `"2024-05-28T19:44:07.730+0000"`|string
+|**scanConsistency** +
+__optional__|The Scan Consistency setting used for the request's query. +
+**Example** : `"not_bounded"`|string
+|**state** +
+__optional__|The state of the request. +
+**Example** : `"running"`|enum (received, running, cancelled, completed)
+|**statement** +
+__optional__|The SQL++ query statement being run by the request. +
+**Example** : `"select count(*) from hotel_endorsement_view;"`|string
+|**userAgent** +
+__optional__|The user agent string of the browser that made the request. +
+**Example** : `"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:126.0) Gecko/20100101 Firefox/126.0"`|string
+|**users** +
+__optional__|The user who made the request. +
+**Example** : `"Administrator"`|string
+|**uuid** +
+__optional__|The unique identifier for this request. +
+**Example** : `"91f60338-a3e0-4163-9287-5e723fda29ef"`|string
 |===
 
 
