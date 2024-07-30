@@ -742,6 +742,17 @@ definitions:
           Include a header for the results schema in the response.
         default: true
         example: false
+      sort_projection:
+        type: boolean
+        x-desc-name: sort_projection
+        description: |
+          [#sort_projection]
+          If `true`, causes statement projection terms to be sorted alphabetically.
+
+          If `false` (the default), statement projection terms are returned in the order specified by the query.
+
+        default: false
+        example: true
       statement:
         type: string
         x-desc-name: statement
