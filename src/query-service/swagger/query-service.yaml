@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   title: Query Service REST API
-  version: '7.6'
+  version: '7.7'
   description: |
     The Query Service REST API is provided by the Query service.
     This API enables you to run SQL++ queries and set request-level parameters.
@@ -99,7 +99,7 @@ paths:
           $ref: '#/responses/ServiceUnavailable'
 
 # The output of this spec is used in more than one location, so Markdown cannot use relative links.
-# Absolute links begin with /server/7.6 -- this must be replaced for every branch.
+# Absolute links begin with /server/7.7 -- this must be replaced for every branch.
 # Relative links are currently expected to point to a location in the same page.
 # The x-desc-refs attribute records links which point to other REST API references, for future use.
 # The x-desc-name attribute records the ID of the parameter description, also for future use.
@@ -192,7 +192,7 @@ definitions:
 
           Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
-          [section_srh_tlm_n1b]: /server/7.6/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
+          [section_srh_tlm_n1b]: /server/7.7/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
         example:
           - LAX
           - 6
@@ -211,7 +211,7 @@ definitions:
           The [node-level][atrcollection-srv] `atrcollection` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
 
-          [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
+          [additional-storage-use]: /server/7.7/learn/data/transactions.html#active-transaction-record-entries
           [atrcollection-srv]: #atrcollection-srv
         x-desc-refs: |
           [atrcollection-srv]: admin.html#atrcollection-srv
@@ -226,7 +226,7 @@ definitions:
 
           Refer to [Auto-Execute][auto-execute] for more information.
 
-          [auto-execute]: /server/7.6/n1ql/n1ql-language-reference/prepare.html#auto-execute
+          [auto-execute]: /server/7.7/n1ql/n1ql-language-reference/prepare.html#auto-execute
         default: false
         example: true
       client_context_id:
@@ -302,7 +302,7 @@ definitions:
           If not specified, the default durability level is `"majority"`.
           Set the durability level to `"none"` or `""` to specify no durability.
 
-          [durability]: /server/7.6/learn/data/durability.html
+          [durability]: /server/7.7/learn/data/durability.html
         enum:
         # Workaround for swagger2markup.
         # Remove the &quot; entities for Redocly.
@@ -452,7 +452,7 @@ definitions:
           In addition, the [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
           When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-          [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
+          [additional-storage-use]: /server/7.7/learn/data/transactions.html#active-transaction-record-entries
           [numatrs-srv]: #numatrs-srv
           [queryNumAtrs]: #queryNumAtrs
         x-desc-refs: |
@@ -512,7 +512,7 @@ definitions:
 
           If both `prepared` and `statement` are present and non-empty, an error is returned.
 
-          [execute]: /server/7.6/n1ql/n1ql-language-reference/execute.html
+          [execute]: /server/7.7/n1ql/n1ql-language-reference/execute.html
         example: "[127.0.0.1:8091]pricy_hotel"
       preserve_expiry:
         type: boolean
@@ -662,7 +662,7 @@ definitions:
           If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the [tximplicit](#tximplicit) parameter set to `true`, then this parameter sets the transactional scan consistency.
           Refer to [Transactional Scan Consistency][transactional-scan-consistency] for details.
 
-          [transactional-scan-consistency]: /server/7.6/n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency
+          [transactional-scan-consistency]: /server/7.7/n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency
         enum: ["not_bounded", "at_plus", "request_plus", "statement_plus"]
         default: not_bounded
         example: at_plus
@@ -934,7 +934,7 @@ definitions:
 
           Refer to [Flex Indexes][flex-indexes] for more information.
 
-          [flex-indexes]: /server/7.6/n1ql/n1ql-language-reference/flex-indexes.html
+          [flex-indexes]: /server/7.7/n1ql/n1ql-language-reference/flex-indexes.html
         default: false
         example: true
       use_replica:
@@ -994,7 +994,7 @@ definitions:
 
           Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
-          [section_srh_tlm_n1b]: /server/7.6/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
+          [section_srh_tlm_n1b]: /server/7.7/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
 
   Credentials:
     type: object
