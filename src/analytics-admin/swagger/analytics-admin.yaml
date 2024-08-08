@@ -47,6 +47,50 @@ paths:
           description: >
             Not found.
             The path may be incorrect, or there is no active request with the specified identifier.
+    get:
+      operationId: return_active_requests
+      summary: Active Requests
+      description: Gets a list of the analytic requests that are running.
+      security:
+        - Analytics Manage / Analytics Select: []
+      responses:
+        "200":
+          description: >
+            Success. 
+            Returns an array id details on the running requests.
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Request"
+        "401":
+          $ref: '#/responses/Unauthorized'
+        "404":
+          description: >
+            Not found.
+            The path may be incorrect.
+
+  /analytics/admin/completed_requests:
+    get:
+      operationId: completed_requests
+      summary: Completed Requests
+      description: Gets a list of all completed analytic requests.
+      parameters:
+      security:
+        - Analytics Manage / Analytics Select: []
+      responses:
+        "200":
+          description: >
+            Success. Returns a list of all completed analytic requests.
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Request"
+        "401":
+          $ref: '#/responses/Unauthorized'
+        "404":
+          description: >
+            Not found.
+            The path may be incorrect.
 
   /analytics/cluster:
     get:
@@ -466,6 +510,107 @@ definitions:
             description: >
               The number of mutations in the DCP queue that have not yet been ingested.
               The name of the property is the name of the Analytics collection.
+  Request:
+    description: An object giving information about an Analytics service request.
+    type: object
+    properties:
+      cancellable:
+        type: boolean
+        description: Whether this request can be cancelled.
+      clientContextID:
+        type: string
+        description: A context ID for debugging purposes.
+        example: 28379d60-7139-44d6-b57a-95935540b586
+      elapsedTime:
+        type: number
+        description: How long the request has been running in seconds.
+        example: 0.126
+      jobCreateTime:
+        type: string
+        description: The date and time when the request's job was created.
+        example: 2024-05-28T19:47:02.512
+      jobId:
+        type: string
+        description: >
+          The request's job ID.
+          This value can be null if request did not run (for example, due to an error).
+        example: JID:0.14
+      jobQueueTime:
+        type: number
+        description: How long the request's job has been in the queue waiting to run in seconds.
+        example: 0
+      jobRequiredCPUs:
+        type: integer
+        description: The number of CPU cores required to run this request.
+        example: 1
+      jobRequiredMemory:
+        type: integer
+        description: >
+          The bytes of RAM being used to process this request.
+        example: 34013184
+      jobStartTime:
+        type: string
+        description: The date and time the request's job began running.
+        example: 2024-05-28T19:47:02.514
+      jobStatus:
+        type: string
+        enum:
+          - PENDING
+          - RUNNING
+          - TERMINATED
+          - FAILURE
+          - FAILURE_BEFORE_EXECUTION
+          - null
+        description: The state of the request's job.
+        example: RUNNING
+      plan:
+        type: string
+        description: The query plan for this request.  
+      node:
+        type: string
+        description: The Analytics node that received the request.
+        example: 172.20.0.2:8095
+      remoteAddr:
+        type: string
+        description: The network address and port of the client that made the request.
+        example: 172.20.0.123:53612
+      requestTime:
+        type: string
+        description: The date and time the request was received.
+        example: 2024-05-28T19:44:07.730
+      scanConsistency:
+        type: string
+        description: The Scan Consistency setting used for the request's query.
+        example: not_bounded
+      state:
+        type: string
+        enum:
+          - received
+          - running
+          - cancelled
+          - completed
+        description: The state of the request.
+        example: running
+      statement:
+        type: string
+        description: The SQL++ query statement being run by the request.
+        example: select count(*) from hotel_endorsement_view;
+      userAgent: 
+        type: string
+        description: The user agent string of the browser that made the request.
+        example: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:126.0) Gecko/20100101 Firefox/126.0
+      users:
+        type: string
+        description: The user who made the request.
+        example: Administrator
+      uuid:
+        type: string
+        description: The unique identifier for this request.
+        example: 91f60338-a3e0-4163-9287-5e723fda29ef
+
+
+
+
 
 responses:
   Unauthorized:
@@ -488,7 +633,7 @@ securityDefinitions:
   Analytics Manage / Analytics Select:
     type: basic
     description: |
-      For the [Request Cancellation](#_cancel_request), [Ingestion Status](#_ingestion_status), and [Pending Mutations](#_monitor_node) operations, users must have one of the following access roles:
+      For the [Active Requests](#_return_active_requests), [Request Cancellation](#_cancel_request), [Completed Requests](#_completed_requests), [Ingestion Status](#_ingestion_status), and [Pending Mutations](#_monitor_node) operations, users must have one of the following access roles:
 
       * Full Admin
       * Cluster Admin
