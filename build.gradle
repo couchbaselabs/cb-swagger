@@ -2,7 +2,7 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
-        maven { url 'https://oss.jfrog.org/artifactory/oss-snapshot-local/' }
+        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
         //mavenLocal()
     }
     dependencies {
@@ -41,8 +41,8 @@ convertSwagger2markup {
               'swagger2markup.extensions.dynamicSecurity.contentPath' : file('src/admin/asciidoc/extensions/security').absolutePath]
 }
 
-wrapper {
-    gradleVersion = '7.3'
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.9'
 }
 
 defaultTasks 'convertSwagger2markup'
