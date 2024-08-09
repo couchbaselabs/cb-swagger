@@ -76,7 +76,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 **Example** : `false`|boolean
 |**queryCleanupWindow** +
 __optional__|[#queryCleanupWindow]
-Specifies how frequently the Query service checks its subset of link:/server/7.6/learn/data/transactions.html#active-transaction-record-entries[active transaction records] for cleanup.
+Specifies how frequently the Query service checks its subset of link:/server/7.7/learn/data/transactions.html#active-transaction-record-entries[active transaction records] for cleanup.
 Decreasing this setting causes expiration transactions to be found more swiftly, with the tradeoff of increasing the number of reads per second used for the scanning process.
 
 The value for this setting is a string.
@@ -101,7 +101,7 @@ As new completed requests are added, old ones are removed.
 
 Increase this when the completed request keyspace is not big enough to track the slow requests, such as when you want a larger sample of slow requests.
 
-Refer to link:/server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config[Configure the Completed Requests] for more information and examples.
+Refer to link:/server/7.7/manage/monitor/monitoring-n1ql-query.html#sys-completed-config[Configure the Completed Requests] for more information and examples.
 
 The <<completed-limit,node-level>> `completed-limit` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
@@ -115,7 +115,7 @@ Values larger than the maximum limit are silently treated as the maximum limit.
 Queries with plans larger than this are not logged.
 You must obtain execution plans for such queries via profiling or using the EXPLAIN statement.
 
-Refer to link:/server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config[Configure the Completed Requests] for more information.
+Refer to link:/server/7.7/manage/monitor/monitoring-n1ql-query.html#sys-completed-config[Configure the Completed Requests] for more information.
 
 The <<completed-max-plan-size,node-level>> `completed-max-plan-size` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
@@ -130,7 +130,7 @@ All completed queries lasting longer than this threshold are logged in the compl
 Specify `0` to track all requests, independent of duration.
 Specify any negative number to track none.
 
-Refer to link:/server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config[Configure the Completed Requests] for more information and examples.
+Refer to link:/server/7.7/manage/monitor/monitoring-n1ql-query.html#sys-completed-config[Configure the Completed Requests] for more information and examples.
 
 The <<completed-threshold,node-level>> `completed-threshold` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster. +
@@ -185,7 +185,7 @@ If a request includes this parameter, it will be capped by the node-level `max-p
 
 NOTE: To enable queries to run in parallel, you must specify the cluster-level `queryMaxParallelism` parameter, or specify the node-level `max-parallelism` parameter on all Query nodes.
 
-Refer to link:/server/7.6/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism[Max Parallelism] for more information. +
+Refer to link:/server/7.7/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism[Max Parallelism] for more information. +
 **Default** : `1` +
 **Example** : `0`|integer (int32)
 |**queryMemoryQuota** +
@@ -235,7 +235,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 **Maximum value** : `100`|integer (int32)
 |**queryNumAtrs** +
 __optional__|[#queryNumAtrs]
-Specifies the total number of link:/server/7.6/learn/data/transactions.html#active-transaction-record-entries[active transaction records] for all Query nodes in the cluster.
+Specifies the total number of link:/server/7.7/learn/data/transactions.html#active-transaction-record-entries[active transaction records] for all Query nodes in the cluster.
 
 The <<numatrs-srv,node-level>> `numatrs` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
