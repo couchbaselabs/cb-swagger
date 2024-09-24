@@ -1,0 +1,75 @@
+a| *{{#isBodyParam}}Body{{/isBodyParam}}{{^isBodyParam}}{{baseName}}{{/isBodyParam}}* +
+_{{#required}}required{{/required}}{{^required}}optional{{/required}}_
+a| // [markdown]
+--
+{{#unescapedDescription}}{{{unescapedDescription}}}{{/unescapedDescription}}
+{{^unescapedDescription}}{{{description}}}{{/unescapedDescription}}
+--
+
+[%hardbreaks]
+{{! enumerated values}}
+{{#isEnum}}
+*Values:* {{#_enum}}{{^-last}}`{{this}}`, {{/-last}}{{#-last}}`{{this}}`{{/-last}}{{/_enum}}
+{{/isEnum}}
+{{! default value}}
+{{#defaultValue}}
+ifeval::["{{{defaultValue}}}" != "null"]
+*Default:* `{{{defaultValue}}}`
+endif::[]
+{{/defaultValue}}
+{{! pattern}}
+{{#pattern}}
+*Pattern:* `{{{pattern}}}`
+{{/pattern}}
+{{! minimum value}}
+{{#minimum}}
+*Minimum:* `{{{minimum}}}`
+{{/minimum}}
+{{! maximum value}}
+{{#maximum}}
+*Maximum:* `{{{maximum}}}`
+{{/maximum}}
+{{! exclusive minimum value}}
+{{#exclusiveMinimum}}
+*Exclusive minimum:* `{{{exclusiveMinimum}}}`
+{{/exclusiveMinimum}}
+{{! exclusive maximum value}}
+{{#exclusiveMaximum}}
+*Exclusive maximum:* `{{{exclusiveMaximum}}}`
+{{/exclusiveMaximum}}
+{{! multiple of value}}
+{{#multipleOf}}
+*Multiple of:* `{{{multipleOf}}}`
+{{/multipleOf}}
+{{! minimum length value}}
+{{#minLength}}
+*Minimum length:* `{{{minLength}}}`
+{{/minLength}}
+{{! maximum length value}}
+{{#maxLength}}
+*Maximum length:* `{{{maxLength}}}`
+{{/maxLength}}
+{{! minimum items value}}
+{{#minItems}}
+*Minimum items:* `{{{minItems}}}`
+{{/minItems}}
+{{! maximum items value}}
+{{#maxItems}}
+*Maximum items:* `{{{maxItems}}}`
+{{/maxItems}}
+{{! unique items value}}
+{{#uniqueItems}}
+*Unique items:* `{{{uniqueItems}}}`
+{{/uniqueItems}}
+{{! example -- deprecated}}
+{{! example -- deprecated}}
+{{#isBodyParam}}
+{{#example}}
+ifeval::["{{{example}}}" != "null"]
+*Example:* `{{{example}}}`
+endif::[]
+{{/example}}
+{{/isBodyParam}}
+{blank}
+
+| {{>schema}}

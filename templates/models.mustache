@@ -1,0 +1,149 @@
+{{! include partial before definitions }}
+{{#specinclude}}/definitions/document-before.adoc{{/specinclude}}
+
+[#models]
+== Definitions
+
+{{! Create attributes for each model description }}
+{{#models}}
+{{#model}}
+{{#-first}}
+// Don't display model descriptions here
+ifeval::[true == false]
+{{/-first}}
+{{#description}}
+//tag::desc-{{name}}[]
+{{{unescapedDescription}}}
+//end::desc-{{name}}[]
+{{/description}}
+{{#-last}}
+endif::[]
+:count-models: {{-index}}
+{{/-last}}
+{{/model}}
+{{/models}}
+
+{{! include partial before definitions body }}
+{{#specinclude}}/definitions/document-begin.adoc{{/specinclude}}
+
+{{! Table of contents }}
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 10]
+[.two-columns]
+endif::[]
+[%hardbreaks]
+{{#models}}
+{{#model}}
+<<{{name}}>>
+{{/model}}
+{{/models}}
+
+{{! *** DEFINITION *** }}
+{{#models}}
+{{#model}}
+
+{{! include partial before definition }}
+{{#specinclude}}/definitions/{{name}}/definition-before.adoc{{/specinclude}}
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#{{name}}]
+=== {{#title}}{{title}}{{/title}}{{^title}}{{classname}}{{/title}}
+
+{{! include partial before definition body }}
+{{#specinclude}}/definitions/{{name}}/definition-begin.adoc{{/specinclude}}
+
+{{^composedSchemas}}
+{{#hasVars}}
+.icon:brackets-curly[fw] Object
+{blank}
+
+[#fields-{{name}}]
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+{{#vars}}
+{{! DEFINITION NAME }}
+a| *{{baseName}}* +
+_{{#required}}required{{/required}}{{^required}}optional{{/required}}_
+{{! DEFINITION DESCRIPTION }}
+a| {{>model}}
+{{! DEFINITION SCHEMA }}
+| {{>schema}}
+{{/vars}}
+{{#additionalProperties}}
+{{! ADDITIONAL PROPERTY NAME }}
+a| _additional +
+properties_
+{{! ADDITIONAL PROPERTY DESCRIPTION }}
+a| {{>model}}
+{{! ADDITIONAL PROPERTY SCHEMA }}
+| {{>schema}}
+{{/additionalProperties}}
+|===
+{{! Polymorphism}}
+{{#hasDiscriminatorWithNonEmptyMapping}}
+This schema has different properties, depending on the value of *{{discriminatorName}}*:
+{{#discriminator}}
+
+{{#mappedModels}}
+* `{{mappingName}}` -- <<{{modelName}}>>
+{{/mappedModels}}
+{{/discriminator}}
+{{/hasDiscriminatorWithNonEmptyMapping}}
+{{/hasVars}}
+{{#isString}}
+.icon:quote-left[fw] String
+{blank}
+
+{{>model}}
+{{/isString}}
+{{#isArray}}
+.icon:brackets[fw] Array
+{blank}
+
+{{>model}}
+
+{{#items}}
+{{>schema}} array
+{{/items}}
+{{/isArray}}
+{{/composedSchemas}}
+{{#composedSchemas}}
+{{#oneOf}}
+{{#-first}}One of the following:
+
+{{/-first}}
+* {{>schema}}
+{{/oneOf}}
+{{#anyOf}}
+{{#-first}}Any of the following:
+
+{{/-first}}
+* {{>schema}}
+{{/anyOf}}
+{{#allOf}}
+{{#-first}}All of the following:
+
+{{/-first}}
+* {{>schema}}
+{{/allOf}}
+{{/composedSchemas}}
+
+{{! include partial after definition body }}
+{{#specinclude}}/definitions/{{name}}/definition-end.adoc{{/specinclude}}
+
+{{! include partial after definition }}
+{{#specinclude}}/definitions/{{name}}/definition-after.adoc{{/specinclude}}
+
+{{/model}}
+{{/models}}
+
+{{! include partial after definitions body }}
+{{#specinclude}}/definitions/document-end.adoc{{/specinclude}}
+
+{{! include partial after definitions }}
+{{#specinclude}}/definitions/document-after.adoc{{/specinclude}}
