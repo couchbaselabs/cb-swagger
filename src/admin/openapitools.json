@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "6.4.0",
+    "generators": {
+      "v3.0": {
+        "generatorName": "asciidoc",
+        "inputSpec": "#{cwd}/swagger/admin.yaml",
+        "output": "#{cwd}/../../docs/modules/n1ql-rest-admin/pages",
+        "templateDir": "#{cwd}/../../templates",
+        "additionalProperties": {
+          "specDir": "#{cwd}/../../docs/modules/n1ql-rest-admin/partials/",
+          "snippetDir": "#{cwd}/../../docs/modules/n1ql-rest-admin/partials/paths/",
+          "headerAttributes": false,
+          "useIntroduction": true,
+          "useTableTitles": true,
+          "legacyDiscriminatorBehavior": true
+        },
+        "globalProperty": {
+          "generateAliasAsModel": true
+        },
+        "gitRepoId": "cb-swagger",
+        "gitUserId": "couchbase"
+      }
+    }
+  }
+}
