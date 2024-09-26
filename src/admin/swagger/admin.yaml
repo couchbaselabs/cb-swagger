@@ -624,6 +624,7 @@ definitions:
             "fetch": 16,
             "indexScan": 187
           }
+        x-has-example: true
       phaseOperators:
         type: object
         description: |
@@ -638,6 +639,7 @@ definitions:
             "fetch": 1,
             "indexScan": 2
           }
+        x-has-example: true
       phaseTimes:
         type: object
         description: |
@@ -655,6 +657,7 @@ definitions:
             "plan": "11.831101ms",
             "run": "16.892181ms"
           }
+        x-has-example: true
       remoteAddr:
         type: string
         description: IP address and port number of the client application, from where the query is received.
@@ -1228,6 +1231,8 @@ definitions:
         type: string
         default: ""
         example: default:&grave;travel-sample&grave;.transaction.test
+        x-has-default: true
+        x-has-example: true
         x-desc-name: atrcollection-srv
         description: |
           Specifies the collection where [active transaction records][additional-storage-use] are stored.
@@ -1248,6 +1253,8 @@ definitions:
         type: boolean
         default: false
         example: true
+        x-has-default: true
+        x-has-example: true
         x-desc-name: auto-prepare
         description: |
           Specifies whether the query engine should create a prepared statement every time a SQL++ request is submitted, whether the PREPARE statement is included or not.
@@ -1260,6 +1267,8 @@ definitions:
         type: boolean
         default: true
         example: false
+        x-has-default: true
+        x-has-example: true
         x-desc-name: cleanupclientattempts
         description: |
           When enabled, the Query service preferentially aims to clean up just transactions that it has created, leaving transactions for the distributed cleanup process only when it is forced to.
@@ -1274,6 +1283,8 @@ definitions:
         type: boolean
         default: true
         example: false
+        x-has-default: true
+        x-has-example: true
         x-desc-name: cleanuplostattempts
         description: |
           When enabled, the Query service takes part in the distributed cleanup process, and cleans up expired transactions created by any client.
@@ -1289,6 +1300,8 @@ definitions:
         format: duration
         default: 60s
         example: 30s
+        x-has-default: true
+        x-has-example: true
         x-desc-name: cleanupwindow
         description: |
           Specifies how frequently the Query service checks its subset of [active transaction records][additional-storage-use] for cleanup.
@@ -1330,11 +1343,15 @@ definitions:
             type: boolean
             default: null
             example: true
+            x-has-default: true
+            x-has-example: true
             description: If true, all requests that generate a panic are logged.
           client:
             type: string
             default: ""
             example: "172.1.2.3"
+            x-has-default: true
+            x-has-example: true
             description: |
               The IP address of the client.
               If specified, all completed requests from this IP address are logged.
@@ -1354,6 +1371,8 @@ definitions:
             format: int32
             default: null
             example: 12003
+            x-has-default: true
+            x-has-example: true
             description: |
               An error number.
               If specified, all completed queries returning this error number are logged.
@@ -1361,6 +1380,8 @@ definitions:
             type: string
             default: ""
             example: "both_user_and_error"
+            x-has-default: true
+            x-has-example: true
             description: |
               A unique string which tags a set of qualifiers.
 
@@ -1372,6 +1393,8 @@ definitions:
             format: int32
             default: 1000
             example: 7000
+            x-has-default: true
+            x-has-example: true
             description: |
               A duration in milliseconds.
               If specified, all completed queries lasting longer than this threshold are logged.
@@ -1381,6 +1404,8 @@ definitions:
             type: string
             default: ""
             example: "marco"
+            x-has-default: true
+            x-has-example: true
             description: |
               A user name, as given in the request credentials.
               If specified, all completed queries with this user name are logged.
@@ -1389,6 +1414,8 @@ definitions:
         format: int32
         default: 4000
         example: 7000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: completed-limit
         description: |
           Sets the number of requests to be logged in the completed requests catalog.
@@ -1411,6 +1438,7 @@ definitions:
         default: 262144
         minimum: 0
         maximum: 20840448
+        x-has-default: true
         x-desc-name: completed-max-plan-size
         x-desc-status: Couchbase Server 7.6
         description: |
@@ -1436,6 +1464,8 @@ definitions:
         format: int32
         default: 1000
         example: 7000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: completed-threshold
         description: |
           A duration in milliseconds.
@@ -1457,6 +1487,8 @@ definitions:
         type: boolean
         default: false
         example: true
+        x-has-default: true
+        x-has-example: true
         x-desc-name: controls-srv
         description: |
           Specifies if there should be a controls section returned with the request results.
@@ -1475,6 +1507,8 @@ definitions:
         type: string
         default: ""
         example: /tmp/info.txt
+        x-has-default: true
+        x-has-example: true
         x-desc-name: cpuprofile
         description: |
           The absolute path and filename to write the CPU profile to a local file.
@@ -1488,6 +1522,8 @@ definitions:
         type: boolean
         default: false
         example: true
+        x-has-default: true
+        x-has-example: true
         x-desc-name: debug
         description: |
           Use debug mode.
@@ -1496,6 +1532,7 @@ definitions:
       distribute:
         type: boolean
         example: true
+        x-has-example: true
         x-desc-name: distribute
         description: |
           This field is only available with the POST method.
@@ -1506,6 +1543,8 @@ definitions:
         format: int32
         default: 16384
         example: 7000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: functions-limit
         description: Maximum number of user-defined functions.
       keep-alive-length:
@@ -1513,6 +1552,8 @@ definitions:
         format: int32
         default: 16384
         example: 7000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: keep-alive-length
         description: Maximum size of buffered result.
       loglevel:
@@ -1520,6 +1561,8 @@ definitions:
         default: INFO
         enum: ["DEBUG","TRACE","INFO","WARN","ERROR","SEVERE","NONE"]
         example: DEBUG
+        x-has-default: true
+        x-has-example: true
         x-desc-name: loglevel
         description: |
           Log level used in the logger.
@@ -1564,6 +1607,8 @@ definitions:
         format: int32
         default: 1
         example: 0
+        x-has-default: true
+        x-has-example: true
         x-desc-name: max-parallelism-srv
         description: |
           Specifies the maximum parallelism for queries on this node.
@@ -1596,6 +1641,8 @@ definitions:
         format: int32
         default: 0
         example: 4
+        x-has-default: true
+        x-has-example: true
         x-desc-name: memory-quota-srv
         description: |
           Specifies the maximum amount of memory a request may use on this node, in MB.
@@ -1626,6 +1673,8 @@ definitions:
         type: string
         default: ""
         example: /tmp/memory-usage.log
+        x-has-default: true
+        x-has-example: true
         x-desc-name: memprofile
         description: |
           Filename to write the diagnostic memory usage log.
@@ -1636,6 +1685,7 @@ definitions:
       mutexprofile:
         type: boolean
         default: false
+        x-has-default: true
         x-desc-name: mutexprofile
         description: |
           Mutex profile.
@@ -1647,6 +1697,8 @@ definitions:
         format: int32
         default: 76
         example: "0x1"
+        x-has-default: true
+        x-has-example: true
         x-desc-name: n1ql-feat-ctrl
         description: |
           SQL++ feature control.
@@ -1664,6 +1716,7 @@ definitions:
         type: integer
         format: int32
         default: 0
+        x-has-default: true
         x-desc-name: node-quota
         x-desc-status: Couchbase Server 7.6
         description: |
@@ -1687,6 +1740,7 @@ definitions:
         default: 67
         minimum: 0
         maximum: 100
+        x-has-default: true
         x-desc-name: node-quota-val-percent
         x-desc-status: Couchbase Server 7.6
         description: |
@@ -1705,6 +1759,7 @@ definitions:
         type: integer
         format: int32
         default: 0
+        x-has-default: true
         x-desc-name: num-cpus
         x-desc-status: Couchbase Server 7.6
         description: |
@@ -1748,6 +1803,8 @@ definitions:
         format: int32
         default: 16
         example: 64
+        x-has-default: true
+        x-has-example: true
         x-desc-name: pipeline-batch-srv
         description: |
           Controls the number of items execution operators can batch for Fetch from the KV.
@@ -1768,6 +1825,8 @@ definitions:
         format: int32
         default: 512
         example: 1024
+        x-has-default: true
+        x-has-example: true
         x-desc-name: pipeline-cap-srv
         description: |
           Maximum number of items each execution operator can buffer between various operators.
@@ -1787,6 +1846,7 @@ definitions:
         type: integer
         format: int32
         example: 16
+        x-has-example: true
         x-desc-name: plus-servicers
         description: |
           The number of service threads for transactions where the scan consistency is `request_plus` or `at_plus`.
@@ -1796,6 +1856,8 @@ definitions:
         format: int32
         default: 16384
         example: 65536
+        x-has-default: true
+        x-has-example: true
         x-desc-name: prepared-limit
         description: |
           Maximum number of prepared statements in the cache.
@@ -1811,6 +1873,8 @@ definitions:
         type: boolean
         default: false
         example: true
+        x-has-default: true
+        x-has-example: true
         x-desc-name: pretty-srv
         description: |
           Specifies whether query results are returned in pretty format.
@@ -1825,6 +1889,8 @@ definitions:
         type: string
         default: "off"
         example: "phases"
+        x-has-default: true
+        x-has-example: true
         enum: ["off","phases","timings"]
         x-desc-name: profile-srv
         description: |
@@ -1855,6 +1921,8 @@ definitions:
         format: int32
         default: 67108864
         example: 70000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: request-size-cap
         description: Maximum size of a request.
       scan-cap:
@@ -1862,6 +1930,8 @@ definitions:
         format: int32
         default: 512
         example: 1024
+        x-has-default: true
+        x-has-example: true
         x-desc-name: scan-cap-srv
         description: |
           Maximum buffered channel size between the indexer client and the query service for index scans.
@@ -1886,6 +1956,8 @@ definitions:
         format: int32
         default: 32
         example: 8
+        x-has-default: true
+        x-has-example: true
         x-desc-name: servicers
         description: |
           The number of service threads for the query.
@@ -1897,6 +1969,8 @@ definitions:
         format: int64
         default: 0
         example: 500000000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: timeout-srv
         description: |
           Maximum time to spend on the request before timing out (ns).
@@ -1923,6 +1997,8 @@ definitions:
         format: int64
         default: 0
         example: 500000000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: txtimeout-srv
         description: |
           Maximum time to spend on a transaction before timing out (ns).
@@ -1952,6 +2028,8 @@ definitions:
         type: boolean
         default: true
         example: false
+        x-has-default: true
+        x-has-example: true
         x-desc-name: use-cbo-srv
         description: |
           Specifies whether the cost-based optimizer is enabled.
@@ -1972,6 +2050,8 @@ definitions:
         default: unset
         enum: ["off","on","unset"]
         example: on
+        x-has-default: true
+        x-has-example: true
         x-desc-name: use-replica-srv
         x-desc-status: Couchbase Server 7.6
         description: |
