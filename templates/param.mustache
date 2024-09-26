@@ -1,5 +1,9 @@
 a| *{{#isBodyParam}}Body{{/isBodyParam}}{{^isBodyParam}}{{baseName}}{{/isBodyParam}}* +
 _{{#required}}required{{/required}}{{^required}}optional{{/required}}_
+a| {{#vendorExtensions}}
+{{#x-desc-edition}}[.edition]##{{this}}##{{/x-desc-edition}}{{#x-desc-status}}[.status]##{{this}}##{{/x-desc-status}}
+{{/vendorExtensions}}
+
 [markdown]
 --
 {{#unescapedDescription}}{{{unescapedDescription}}}{{/unescapedDescription}}
