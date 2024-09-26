@@ -40,8 +40,8 @@ tags:
 # The x-desc-refs attribute records links which point to other REST API references, for future use.
 # The x-desc-name attribute records the ID of the parameter description, also for future use.
 
-# The swagger2markup Markdown converter does not recognize HTML tags like <a id="foo">.
-# For the moment we have to use the AsciiDoc markup [#foo], which is passed through unchanged.
+# The AsciiDoc Markdown converter does not recognize HTML tags like <a id="foo">.
+# Use the x-desc-name vendor extension to specify the anchor for a property.
 
 paths:
   /admin/clusters:
@@ -1226,7 +1226,6 @@ definitions:
         example: default:&grave;travel-sample&grave;.transaction.test
         x-desc-name: atrcollection-srv
         description: |
-          [#atrcollection-srv]
           Specifies the collection where [active transaction records][additional-storage-use] are stored.
           The collection must be present.
           If not specified, the active transaction record is stored in the default collection in the default scope in the bucket containing the first mutated document within the transaction.
@@ -1247,7 +1246,6 @@ definitions:
         example: true
         x-desc-name: auto-prepare
         description: |
-          [#auto-prepare]
           Specifies whether the query engine should create a prepared statement every time a SQL++ request is submitted, whether the PREPARE statement is included or not.
           
           Refer to [Auto-Prepare][auto-prepare] for more information.
@@ -1260,7 +1258,6 @@ definitions:
         example: false
         x-desc-name: cleanupclientattempts
         description: |
-          [#cleanupclientattempts]
           When enabled, the Query service preferentially aims to clean up just transactions that it has created, leaving transactions for the distributed cleanup process only when it is forced to.
 
           The [cluster-level][queryCleanupClientAttempts] `queryCleanupClientAttempts` setting specifies this property for the whole cluster.
@@ -1275,7 +1272,6 @@ definitions:
         example: false
         x-desc-name: cleanuplostattempts
         description: |
-          [#cleanuplostattempts]
           When enabled, the Query service takes part in the distributed cleanup process, and cleans up expired transactions created by any client.
 
           The [cluster-level][queryCleanupLostAttempts] `queryCleanupLostAttempts` setting specifies this property for the whole cluster.
@@ -1291,7 +1287,6 @@ definitions:
         example: 30s
         x-desc-name: cleanupwindow
         description: |
-          [#cleanupwindow]
           Specifies how frequently the Query service checks its subset of [active transaction records][additional-storage-use] for cleanup.
           Decreasing this setting causes expiration transactions to be found more swiftly, with the tradeoff of increasing the number of reads per second used for the scanning process.
 
@@ -1320,7 +1315,6 @@ definitions:
         example: {"user": "marco", "error": 12003}
         x-desc-name: completed
         description: |
-          [#completed]
           A nested object that sets the parameters for the completed requests catalog.
           All completed requests that match these parameters are tracked in the completed requests catalog.
 
@@ -1393,7 +1387,6 @@ definitions:
         example: 7000
         x-desc-name: completed-limit
         description: |
-          [#completed-limit]
           Sets the number of requests to be logged in the completed requests catalog.
           As new completed requests are added, old ones are removed.
 
@@ -1416,7 +1409,6 @@ definitions:
         maximum: 20840448
         x-desc-name: completed-max-plan-size
         description: |
-          [#completed-max-plan-size]
           A plan size in bytes.
           Limits the size of query execution plans that can be logged in the completed requests catalog.
           Values larger than the maximum limit are silently treated as the maximum limit.
@@ -1439,7 +1431,6 @@ definitions:
         example: 7000
         x-desc-name: completed-threshold
         description: |
-          [#completed-threshold]
           A duration in milliseconds.
           All completed queries lasting longer than this threshold are logged in the completed requests catalog.
 
@@ -1461,7 +1452,6 @@ definitions:
         example: true
         x-desc-name: controls-srv
         description: |
-          [#controls-srv]
           Specifies if there should be a controls section returned with the request results.
 
           When set to `true`, the query response document includes a controls section with runtime information provided along with the request, such as positional and named parameters or settings.
@@ -1480,7 +1470,6 @@ definitions:
         example: /tmp/info.txt
         x-desc-name: cpuprofile
         description: |
-          [#cpuprofile]
           The absolute path and filename to write the CPU profile to a local file.
 
           The output file includes a controls section and performance measurements, such as memory allocation and garbage collection, to pinpoint bottlenecks and ways to improve your code execution.
@@ -1494,7 +1483,6 @@ definitions:
         example: true
         x-desc-name: debug
         description: |
-          [#debug]
           Use debug mode.
 
           When set to `true`, extra logging is provided.
@@ -1503,7 +1491,6 @@ definitions:
         example: true
         x-desc-name: distribute
         description: |
-          [#distribute]
           This field is only available with the POST method.
           When specified alongside other settings, this field instructs the node that is processing the request to cascade those settings to all other query nodes.
           The actual value of this field is ignored.
@@ -1513,18 +1500,14 @@ definitions:
         default: 16384
         example: 7000
         x-desc-name: functions-limit
-        description: |
-          [#functions-limit]
-          Maximum number of user-defined functions.
+        description: Maximum number of user-defined functions.
       keep-alive-length:
         type: integer
         format: int32
         default: 16384
         example: 7000
         x-desc-name: keep-alive-length
-        description: |
-          [#keep-alive-length]
-          Maximum size of buffered result.
+        description: Maximum size of buffered result.
       loglevel:
         type: string
         default: INFO
@@ -1532,7 +1515,6 @@ definitions:
         example: DEBUG
         x-desc-name: loglevel
         description: |
-          [#loglevel]
           Log level used in the logger.
 
           All values, in descending order of data:
@@ -1568,7 +1550,6 @@ definitions:
         format: int32
         x-desc-name: max-index-api
         description: |
-          [#max-index-api]
           Max index API.
           This setting is provided for technical support only.
       max-parallelism:
@@ -1578,7 +1559,6 @@ definitions:
         example: 0
         x-desc-name: max-parallelism-srv
         description: |
-          [#max-parallelism-srv]
           Specifies the maximum parallelism for queries on this node.
 
           If the value is zero or negative, the maximum parallelism is restricted to the number of allowed cores.
@@ -1611,7 +1591,6 @@ definitions:
         example: 4
         x-desc-name: memory-quota-srv
         description: |
-          [#memory-quota-srv]
           Specifies the maximum amount of memory a request may use on this node, in MB.
           Note that the overall node memory quota is this setting multiplied by the [node-level](#servicers) `servicers` setting.
 
@@ -1641,7 +1620,6 @@ definitions:
         example: /tmp/memory-usage.log
         x-desc-name: memprofile
         description: |
-          [#memprofile]
           Filename to write the diagnostic memory usage log.
 
           NOTE: If `memprofile` is left running too long, it can slow the system down as its file size increases.
@@ -1652,7 +1630,6 @@ definitions:
         default: false
         x-desc-name: mutexprofile
         description: |
-          [#mutexprofile]
           Mutex profile.
           This setting is provided for technical support only.
       n1ql-feat-ctrl:
@@ -1664,7 +1641,6 @@ definitions:
         example: "0x1"
         x-desc-name: n1ql-feat-ctrl
         description: |
-          [#n1ql-feat-ctrl]
           SQL++ feature control.
           This setting is provided for technical support only.
           The value may be an integer, or a string representing a hexadecimal number.
@@ -1681,7 +1657,6 @@ definitions:
         default: 0
         x-desc-name: node-quota
         description: |
-          [#node-quota]
           Sets the soft memory limit for this node, in MB.
           The garbage collector tries to keep below this target.
           It is not a hard, absolute limit, and memory usage may exceed this value.
@@ -1702,7 +1677,6 @@ definitions:
         maximum: 100
         x-desc-name: node-quota-val-percent
         description: |
-          [#node-quota-val-percent]
           The percentage of the `node-quota` that is dedicated to tracked value content memory across all active requests on this node.
           (The `memory-quota` setting specifies the maximum amount of document memory an individual request may use on this node.)
 
@@ -1718,7 +1692,6 @@ definitions:
         default: 0
         x-desc-name: num-cpus
         description: |
-          [#num-cpus]
           The number of CPUs the Query service can use on this node.
           Note that this setting requires a restart of the Query service to take effect.
 
@@ -1738,7 +1711,6 @@ definitions:
         type: string
         x-desc-name: numatrs-srv
         description: |
-          [#numatrs-srv]
           Specifies the total number of [active transaction records][additional-storage-use].
 
           The [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies this property for the whole cluster.
@@ -1760,7 +1732,6 @@ definitions:
         example: 64
         x-desc-name: pipeline-batch-srv
         description: |
-          [#pipeline-batch-srv]
           Controls the number of items execution operators can batch for Fetch from the KV.
 
           The [cluster-level][queryPipelineBatch] `queryPipelineBatch` setting specifies this property for the whole cluster.
@@ -1781,7 +1752,6 @@ definitions:
         example: 1024
         x-desc-name: pipeline-cap-srv
         description: |
-          [#pipeline-cap-srv]
           Maximum number of items each execution operator can buffer between various operators.
 
           The [cluster-level][queryPipelineCap] `queryPipelineCap` setting specifies this property for the whole cluster.
@@ -1801,7 +1771,6 @@ definitions:
         example: 16
         x-desc-name: plus-servicers
         description: |
-          [#plus-servicers]
           The number of service threads for transactions where the scan consistency is `request_plus` or `at_plus`.
           The default is 16 times the number of logical cores.
       prepared-limit:
@@ -1811,7 +1780,6 @@ definitions:
         example: 65536
         x-desc-name: prepared-limit
         description: |
-          [#prepared-limit]
           Maximum number of prepared statements in the cache.
           When this cache reaches the limit, the least recently used prepared statements will be discarded as new prepared statements are created.
 
@@ -1827,7 +1795,6 @@ definitions:
         example: true
         x-desc-name: pretty-srv
         description: |
-          [#pretty-srv]
           Specifies whether query results are returned in pretty format.
 
           The [request-level][pretty_req] `pretty` parameter specifies this property per request.
@@ -1843,7 +1810,6 @@ definitions:
         enum: ["off","phases","timings"]
         x-desc-name: profile-srv
         description: |
-          [#profile-srv]
           Specifies if there should be a profile section returned with the request results.
           The valid values are:
 
@@ -1872,9 +1838,7 @@ definitions:
         default: 67108864
         example: 70000
         x-desc-name: request-size-cap
-        description: |
-          [#request-size-cap]
-          Maximum size of a request.
+        description: Maximum size of a request.
       scan-cap:
         type: integer
         format: int32
@@ -1882,7 +1846,6 @@ definitions:
         example: 1024
         x-desc-name: scan-cap-srv
         description: |
-          [#scan-cap-srv]
           Maximum buffered channel size between the indexer client and the query service for index scans.
           This parameter controls when to use scan backfill.
 
@@ -1907,7 +1870,6 @@ definitions:
         example: 8
         x-desc-name: servicers
         description: |
-          [#servicers]
           The number of service threads for the query.
           The default is 4 times the number of cores on the query node.
 
@@ -1919,7 +1881,6 @@ definitions:
         example: 500000000
         x-desc-name: timeout-srv
         description: |
-          [#timeout-srv]
           Maximum time to spend on the request before timing out (ns).
 
           The value for this setting is an integer, representing a duration in nanoseconds.
@@ -1946,7 +1907,6 @@ definitions:
         example: 500000000
         x-desc-name: txtimeout-srv
         description: |
-          [#txtimeout-srv]
           Maximum time to spend on a transaction before timing out (ns).
           This setting only applies to requests containing the `BEGIN TRANSACTION` statement, or to requests where the [tximplicit][tximplicit] parameter is set.
           For all other requests, it is ignored.
@@ -1976,7 +1936,6 @@ definitions:
         example: false
         x-desc-name: use-cbo-srv
         description: |
-          [#use-cbo-srv]
           Specifies whether the cost-based optimizer is enabled.
 
           The [cluster-level][queryUseCBO] `queryUseCBO` setting specifies this property for the whole cluster.
@@ -1997,7 +1956,6 @@ definitions:
         example: on
         x-desc-name: use-replica-srv
         description: |
-          [#use-replica-srv]
           Specifies whether a query can fetch data from a replica vBucket if active vBuckets are inaccessible.
           The possible values are:
 
