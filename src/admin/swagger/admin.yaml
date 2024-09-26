@@ -299,8 +299,8 @@ paths:
       description: |
         Returns all prepared index statements.
 
-        * Use [Retrieve a Prepared Statement](#_get_prepared) to get information about a prepared index statement.
-        * Use [Delete a Prepared Statement](#_delete_prepared) to delete a prepared index statement.
+        * Use [Retrieve a Prepared Statement](#get_prepared) to get information about a prepared index statement.
+        * Use [Delete a Prepared Statement](#delete_prepared) to delete a prepared index statement.
       tags:
         - prepared statements
       security:
@@ -323,8 +323,8 @@ paths:
       description: |
         Returns all active index requests.
 
-        * Use [Retrieve an Active Request](#_get_active_request) to get information about an active index request.
-        * Use [Delete an Active Request](#_delete_active_request) to terminate an active index request.
+        * Use [Retrieve an Active Request](#get_active_request) to get information about an active index request.
+        * Use [Delete an Active Request](#delete_active_request) to terminate an active index request.
       tags:
         - active requests
       security:
@@ -345,8 +345,8 @@ paths:
       description: |
         Returns all completed index requests.
 
-        * Use [Retrieve a Completed Request](#_get_completed_request) to get information about a completed index request.
-        * Use [Delete a Completed Request](#_delete_completed_request) to purge a completed index request.
+        * Use [Retrieve a Completed Request](#get_completed_request) to get information about a completed index request.
+        * Use [Delete a Completed Request](#delete_completed_request) to purge a completed index request.
       tags:
         - completed requests
       security:
@@ -492,7 +492,7 @@ paths:
         - text/html
       responses:
         302:
-          description: Redirects to the [Retrieve All Statistics](#_get_stats) endpoint.
+          description: Redirects to the [Retrieve All Statistics](#get_stats) endpoint.
           # schema:
           #   type: string
           #   format: text/html
@@ -2131,4 +2131,4 @@ securityDefinitions:
 
   None:
     type: basic
-    description: No authentication is required for the [Ping](#_get_ping) or [Get Debug Variables](#_get_debug_vars) endpoints.
+    description: No authentication is required for the [Ping](#get_ping) or [Get Debug Variables](#get_debug_vars) endpoints.
