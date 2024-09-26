@@ -25,7 +25,7 @@ DO NOT EDIT! See https://{{gitHost}}/{{gitUserId}}/{{gitRepoId}}
 
 {{! If useIntroduction is true, include the API description}}
 {{#useIntroduction}}
-// [markdown]
+[markdown]
 --
 {{{appDescription}}}
 --
@@ -49,7 +49,7 @@ __Version__ : {{{version}}}
 ....
 
 {{#description}}
-// [markdown]
+[markdown]
 --
 {{{description}}}
 --
@@ -63,7 +63,7 @@ __Version__ : {{{version}}}
 
 {{/-first}}
 a| *{{name}}*
-a| // [markdown]
+a| [markdown]
 --
 {{{description}}}
 --
@@ -163,7 +163,7 @@ endif::[]
 {{! include partial before operation description body }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-description-begin.adoc{{/specinclude}}
 
-// [markdown]
+[markdown]
 --
 {{{unescapedNotes}}}
 --
@@ -241,7 +241,7 @@ endif::[]
 {{! Iterate through responses }}
 {{#responses}}
 | {{code}}
-a| // [markdown]
+a| [markdown]
 --
 {{{message}}}
 --
