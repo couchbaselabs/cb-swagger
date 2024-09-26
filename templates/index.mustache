@@ -139,19 +139,22 @@ endif::[]
 [#{{operationIdOriginal}}]
 {{#useMethodAndPath}}
 ==== {{httpMethod}} {{path}}
-
-{{summary}}
-
 {{/useMethodAndPath}}
 {{^useMethodAndPath}}
 ==== {{summary}}
-....
-{{httpMethod}} {{path}}
-....
 {{/useMethodAndPath}}
 
 {{! include partial before operation body }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-begin.adoc{{/specinclude}}
+
+{{#useMethodAndPath}}
+{{summary}}
+{{/useMethodAndPath}}
+{{^useMethodAndPath}}
+....
+{{httpMethod}} {{path}}
+....
+{{/useMethodAndPath}}
 
 {{! *** OPERATION DESCRIPTION *** }}
 {{! include partial before operation description }}
