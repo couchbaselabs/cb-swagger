@@ -178,9 +178,7 @@ paths:
         - Default: []
       responses:
         200:
-          description: True if the prepared statement was successfully deleted.
-          schema:
-            type: boolean
+          description: The prepared statement was successfully deleted.
         500:
           description: Returns an error message if the prepared statement could not be found.
           schema:
@@ -234,9 +232,7 @@ paths:
         - Default: []
       responses:
         200:
-          description: True if the active request was successfully terminated.
-          schema:
-            type: boolean
+          description: The active request was successfully terminated.
         500:
           description: Returns an error message if the active request could not be found.
           schema:
@@ -274,7 +270,7 @@ paths:
         - Default: []
       responses:
         200:
-          description: An object containing information about the specified active request.
+          description: An object containing information about the specified completed request.
           schema:
             $ref: "#/definitions/Requests"
     delete:
@@ -290,9 +286,7 @@ paths:
         - Default: []
       responses:
         200:
-          description: True if the completed request was successfully purged.
-          schema:
-            type: boolean
+          description: The completed request was successfully purged.
         500:
           description: Returns an error message if the completed request could not be found.
           schema:
@@ -499,9 +493,9 @@ paths:
       responses:
         302:
           description: Redirects to the [Retrieve All Statistics](#_get_stats) endpoint.
-          schema:
-            type: string
-            format: text/html
+          # schema:
+          #   type: string
+          #   format: text/html
 
   /admin/settings:
     get:
