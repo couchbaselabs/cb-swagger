@@ -6,12 +6,10 @@ info:
     The Query Admin REST API is a secondary API provided by the Query service.
     This API enables you to retrieve statistics about the clusters and nodes running the Query service; view or specify node-level settings; and view or delete requests.
 
-    The API schemes and host URLs are as follows:
+host: localhost:8093
 
-    * http://node:8093/
-    * https://node:18093/ (for secure access)
-
-    where `node` is the host name or IP address of a computer running the Query service.
+schemes:
+  - http
 
 produces:
   - application/json
