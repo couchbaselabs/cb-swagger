@@ -372,20 +372,25 @@ endif::internal-generation[]
 {{! include partial before security scheme }}
 {{#specinclude}}/security/{{name}}/security-scheme-before.adoc{{/specinclude}}
 
-{{#isBasic}}
 [[security-{{name}}]]
 === {{#lambda.titlecase}}{{name}}{{/lambda.titlecase}}
 
 {{! include partial before security scheme body }}
 {{#specinclude}}/security/{{name}}/security-scheme-begin.adoc{{/specinclude}}
 
-{{#isBasicBasic}}
+{{#description}}
+[markdown]
+--
+{{{description}}}
+--
+{{/description}}
 
+{{#isBasic}}
+{{#isBasicBasic}}
 [%hardbreaks]
 __Type__ : {{type}}
 {{/isBasicBasic}}
 {{#isBasicBearer}}
-
 [%hardbreaks]
 __Type__ : {{type}}
 __Scheme__ : {{scheme}}
