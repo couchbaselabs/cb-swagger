@@ -14,15 +14,13 @@ include::index.adoc[tag=desc-{{dataType}}, opts=optional]
 {{! enumerated values}}
 {{#isEnum}}
 {{#allowableValues}}
-*Values:* {{#values}}{{^-last}}`{{this}}`, {{/-last}}{{#-last}}`{{this}}`{{/-last}}{{/values}}
+*Values:* {{#values}}{{^-last}}`{{#isString}}"{{/isString}}{{this}}{{#isString}}"{{/isString}}`, {{/-last}}{{#-last}}`{{#isString}}"{{/isString}}{{this}}{{#isString}}"{{/isString}}`{{/-last}}{{/values}}
 {{/allowableValues}}
 {{/isEnum}}
 {{! default value}}
-{{#defaultValue}}
-ifeval::["{{defaultValue}}" != "null"]
-*Default:* `{{{defaultValue}}}`
-endif::[]
-{{/defaultValue}}
+{{#vendorExtensions.x-has-default}}
+*Default:* `{{#isString}}"{{/isString}}{{{defaultValue}}}{{#isString}}"{{/isString}}`
+{{/vendorExtensions.x-has-default}}
 {{! pattern}}
 {{#pattern}}
 *Pattern:* `{{{pattern}}}`
@@ -68,9 +66,7 @@ endif::[]
 *Unique items:* `{{{uniqueItems}}}`
 {{/uniqueItems}}
 {{! example -- deprecated}}
-{{#example}}
-ifeval::["{{example}}" != "null"]
-*Example:* `{{{example}}}`
-endif::[]
-{{/example}}
+{{#vendorExtensions.x-has-example}}
+*Example:* `{{#isString}}"{{/isString}}{{{example}}}{{#isString}}"{{/isString}}`
+{{/vendorExtensions.x-has-example}}
 {blank}
