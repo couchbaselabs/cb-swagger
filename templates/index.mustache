@@ -104,7 +104,7 @@ The operations are grouped in the following categories.
 [%hardbreaks]
 {{#apiInfo}}
 {{#apis}}
-<<{{baseName}}>>
+<<tag-{{baseName}}>>
 {{/apis}}
 {{/apiInfo}}
 
@@ -113,8 +113,8 @@ The operations are grouped in the following categories.
 {{#apis}}
 
 {{! tag description }}
-[#{{baseName}}]
-=== {{#lambda.titlecase}}{{baseName}}{{/lambda.titlecase}}
+[#tag-{{baseName}}]
+=== {{#lambda.uncamelize}}{{baseName}}{{/lambda.uncamelize}}
 
 ifeval::["{{operationTagDescription}}" != ""]
 {{operationTagDescription}}
