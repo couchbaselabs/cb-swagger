@@ -67,7 +67,8 @@ endif::[]
 
 {{#vars}}
 {{! DEFINITION NAME }}
-a| *{{baseName}}* +
+a| {{#vendorExtensions}}{{#x-desc-name}}[#{{this}}]{{/x-desc-name}}{{/vendorExtensions}}
+*{{baseName}}* +
 _{{#required}}required{{/required}}{{^required}}optional{{/required}}_
 {{! DEFINITION DESCRIPTION }}
 a| {{>model}}
