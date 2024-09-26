@@ -1,5 +1,5 @@
 {{! If this is not an array ... }}
-{{^isContainer}}
+{{^isArray}}
 {{! ... but is a reference, create a link to that object; }}
 {{#ref}}
 <<{{dataType}}>>
@@ -21,9 +21,9 @@
 {{/isAnyType}}
 {{/isModel}}
 {{/ref}}
-{{/isContainer}}
+{{/isArray}}
 {{! If this is an array ... }}
-{{#isContainer}}
+{{#isArray}}
 {{#items}}
 {{! ... and each item is a reference object, create a link to that object; }}
 {{#ref}}
@@ -48,5 +48,5 @@
 {{/ref}}
 {{/items}}
 {{! ... and finally, output the array data type. }}
-{{openApiType}}
-{{/isContainer}}
+{{#lambda.lowercase}}{{dataType}}{{/lambda.lowercase}}
+{{/isArray}}
