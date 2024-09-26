@@ -8,7 +8,7 @@
 {{#models}}
 {{#model}}
 {{#-first}}
-// Don't display model descriptions here
+//tag::model-descriptions[]
 ifeval::[true == false]
 {{/-first}}
 {{#description}}
@@ -18,6 +18,7 @@ ifeval::[true == false]
 {{/description}}
 {{#-last}}
 endif::[]
+//end::model-descriptions[]
 :count-models: {{-index}}
 {{/-last}}
 {{/model}}
@@ -45,6 +46,9 @@ endif::[]
 
 {{! include partial before definition }}
 {{#specinclude}}/definitions/{{name}}/definition-before.adoc{{/specinclude}}
+
+{{! tag for partial}}
+//tag::{{name}}[]
 
 ifeval::[{count-models} > 10]
 [discrete]
@@ -136,6 +140,9 @@ This schema has different properties, depending on the value of *{{discriminator
 
 {{! include partial after definition body }}
 {{#specinclude}}/definitions/{{name}}/definition-end.adoc{{/specinclude}}
+
+{{! end tag for partial}}
+//end::{{name}}[]
 
 {{! include partial after definition }}
 {{#specinclude}}/definitions/{{name}}/definition-after.adoc{{/specinclude}}
