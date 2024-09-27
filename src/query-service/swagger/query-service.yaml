@@ -194,6 +194,7 @@ definitions:
           Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
           [section_srh_tlm_n1b]: /cloud/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
+        x-has-example: true
         example:
           - LAX
           - 6
@@ -216,6 +217,7 @@ definitions:
 #          [atrcollection-srv]: #atrcollection-srv
         x-desc-refs: |
           [atrcollection-srv]: admin.html#atrcollection-srv
+        x-has-example: true
         example: default:&grave;travel-sample&grave;.transaction.test
       auto_execute:
         type: boolean
@@ -227,6 +229,8 @@ definitions:
           Refer to [Auto-Execute][auto-execute] for more information.
 
           [auto-execute]: /cloud/n1ql/n1ql-language-reference/prepare.html#auto-execute
+        x-has-default: true
+        x-has-example: true
         default: false
         example: true
       client_context_id:
@@ -246,6 +250,8 @@ definitions:
 
           Values are case-insensitive.
         enum: ["ZIP", "RLE", "LZMA", "LZO", "NONE"]
+        x-has-default: true
+        x-has-example: true
         default: NONE
         example: zip
       controls:
@@ -264,6 +270,7 @@ definitions:
 #         [controls-srv]: #controls-srv
         x-desc-refs: |
           [controls-srv]: admin.html#controls-srv
+        x-has-example: true
         example: true
 #     creds:
 #       type: array
@@ -278,6 +285,7 @@ definitions:
 #         You can specify credentials for multiple identities.
 
 #         If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored.
+#       x-has-example: true
 #       example:
 #         - user: local:bucket-name
 #           pass: password
@@ -299,13 +307,13 @@ definitions:
 
           [durability]: /server/7.6/learn/data/durability.html
         enum:
-        # Workaround for swagger2markup.
-        # Remove the &quot; entities for Redocly.
-          - "&quot;&quot;"
+          - ""
           - none
           - majority
           - majorityAndPersistActive
           - persistToMajority
+        x-has-default: true
+        x-has-example: true
         default: majority
         example: none
       encoded_plan:
@@ -321,6 +329,7 @@ definitions:
           Desired character encoding for the query results.
 
           Only possible value is `UTF-8` and is case-insensitive.
+        x-has-default: true
         default: UTF-8
       format:
         type: string
@@ -330,6 +339,8 @@ definitions:
 
           Values are case-insensitive.
         enum: ["JSON", "XML", "CSV", "TSV"]
+        x-has-default: true
+        x-has-example: true
         default: JSON
         example: XML
       kvtimeout:
@@ -354,6 +365,8 @@ definitions:
 
           Specify a duration of `0` or a negative duration to disable.
           When disabled, no timeout is applied and the KV operation runs for however long it takes.
+        x-has-default: true
+        x-has-example: true
         default: 2.5s
         example: 10ms
       max_parallelism:
@@ -380,6 +393,7 @@ definitions:
         x-desc-refs: |
           [max-parallelism-srv]: admin.html#max-parallelism-srv
           [queryMaxParallelism]: ../../rest-api/rest-cluster-query-settings.html#queryMaxParallelism
+        x-has-example: true
         example: 3
       memory_quota:
         type: integer
@@ -410,12 +424,16 @@ definitions:
         x-desc-refs: |
           [memory-quota-srv]: admin.html#memory-quota-srv
           [queryMemoryQuota]: ../../rest-api/rest-cluster-query-settings.html#queryMemoryQuota
+        x-has-default: true
+        x-has-example: true
         default: 0
         example: 4
       metrics:
         type: boolean
         x-desc-name: metrics
         description: Specifies that metrics should be returned with query results.
+        x-has-default: true
+        x-has-example: true
         default: true
         example: false
       namespace:
@@ -424,6 +442,7 @@ definitions:
         description: >
           Specifies the namespace to use.
           Currently, only the `default` namespace is available.
+        x-has-example: true
         example: default
       numatrs:
         type: integer
@@ -446,6 +465,8 @@ definitions:
         x-desc-refs: |
           [numatrs-srv]: admin.html#numatrs-srv
           [queryNumAtrs]: ../../rest-api/rest-cluster-query-settings.html#queryNumAtrs
+        x-has-default: true
+        x-has-example: true
         default: 1024
         example: 512
       pipeline_batch:
@@ -466,6 +487,7 @@ definitions:
         x-desc-refs: |
           [pipeline-batch-srv]: admin.html#pipeline-batch-srv
           [queryPipelineBatch]: ../../rest-api/rest-cluster-query-settings.html#queryPipelineBatch
+        x-has-example: true
         example: 64
       pipeline_cap:
         type: integer
@@ -485,6 +507,7 @@ definitions:
         x-desc-refs: |
           [pipeline-cap-srv]: admin.html#pipeline-cap-srv
           [queryPipelineCap]: ../../rest-api/rest-cluster-query-settings.html#queryPipelineCap
+        x-has-example: true
         example: 1024
       prepared:
         type: string
@@ -498,6 +521,7 @@ definitions:
           If both `prepared` and `statement` are present and non-empty, an error is returned.
 
           [execute]: /cloud/n1ql/n1ql-language-reference/execute.html
+        x-has-example: true
         example: "[127.0.0.1:8091]pricy_hotel"
       preserve_expiry:
         type: boolean
@@ -511,6 +535,8 @@ definitions:
           If `false`, document expiration is set to 0 when modified by a DML statement, unless the DML statement explicitly specifies the document expiration.
 
           Not supported for statements in a transaction.
+        x-has-default: true
+        x-has-example: true
         default: false
         example: true
       pretty:
@@ -525,6 +551,7 @@ definitions:
 #         [pretty-srv]: #pretty-srv
         x-desc-refs: |
           [pretty-srv]: admin.html#pretty-srv
+        x-has-example: true
         example: false
       profile:
         type: string
@@ -552,6 +579,7 @@ definitions:
         x-desc-refs: |
           [profile-srv]: admin.html#profile-srv
         enum: ["off", "phases", "timings"]
+        x-has-example: true
         example: phases
       query_context:
         type: string
@@ -562,6 +590,8 @@ definitions:
           The query context may be a _full path_, containing namespace, bucket, and scope; or a _relative path_, containing just the bucket and scope.
           Currently, only the `default` namespace is available.
           If the namespace name is omitted, the default namespace in the current session is used.
+        x-has-default: true
+        x-has-example: true
         default: "default:"
         example: default:travel-sample.inventory
       readonly:
@@ -580,6 +610,8 @@ definitions:
           * UPSERT
 
           When using GET requests, it's best to set `readonly` to `true`.
+        x-has-default: true
+        x-has-example: true
         default: false
         example: true
       scan_cap:
@@ -604,6 +636,7 @@ definitions:
         x-desc-refs: |
           [scan-cap-srv]: admin.html#scan-cap-srv
           [queryScanCap]: ../../rest-api/rest-cluster-query-settings.html#queryScanCap
+        x-has-example: true
         example: 1024
       scan_consistency:
         type: string
@@ -642,6 +675,8 @@ definitions:
 
           [transactional-scan-consistency]: /cloud/n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency
         enum: ["not_bounded", "at_plus", "request_plus", "statement_plus"]
+        x-has-default: true
+        x-has-example: true
         default: not_bounded
         example: at_plus
       scan_vector:
@@ -666,6 +701,7 @@ definitions:
           Note that `scan_vector` can only be used if the query uses at most one keyspace; if it is used for a query referencing more than one keyspace, the query will fail with an error.
 
           For queries referencing multiple keyspaces, use `scan_vectors`.
+        x-has-example: true
         example:
           5:
             - 5409393
@@ -707,12 +743,16 @@ definitions:
           * `h` (hours)
 
           Specify `0` or a negative integer to disable.
+        x-has-default: true
+        x-has-example: true
         default: ""
         example: 30m
       signature:
         type: boolean
         x-desc-name: signature
         description: Include a header for the results schema in the response.
+        x-has-default: true
+        x-has-example: true
         default: true
         example: false
       sort_projection:
@@ -722,6 +762,8 @@ definitions:
           If `true`, causes statement projection terms to be sorted alphabetically.
 
           If `false` (the default), statement projection terms are returned in the order specified by the query.
+        x-has-default: true
+        x-has-example: true
         default: false
         example: true
       statement:
@@ -741,6 +783,7 @@ definitions:
           To avoid this, either URL-encode the semicolon as `%3B`, or just omit the semicolon if possible.
 
           This restriction does not apply when specifying the request parameters in JSON format.
+        x-has-example: true
         example: SELECT * FROM &grave;travel-sample&grave;.inventory.hotel LIMIT 1
       timeout:
         type: string
@@ -778,6 +821,7 @@ definitions:
         x-desc-refs: |
           [timeout-srv]: admin.html#timeout-srv
           [queryTimeout]: ../../rest-api/rest-cluster-query-settings.html#queryTimeout
+        x-has-example: true
         example: 30m
       txdata:
         type: object
@@ -798,6 +842,7 @@ definitions:
 
           The transaction ID should be the same as the transaction ID generated by the `BEGIN TRANSACTION` statement.
           The transaction must be active and non-expired.
+        x-has-example: true
         example: d81d9b4a-b758-4f98-b007-87ba262d3a51
       tximplicit:
         type: boolean
@@ -810,6 +855,8 @@ definitions:
 
           The statement may not be part of an ongoing transaction.
           If the [txid](#txid) request-level parameter is set, the `tximplicit` parameter is ignored.
+        x-has-default: true
+        x-has-example: true
         default: false
         example: true
       txstmtnum:
@@ -820,6 +867,7 @@ definitions:
           Transaction statement number.
           The transaction statement number must be a positive integer, and must be higher than any previous transaction statement numbers in the transaction.
           If the transaction statement number is lower than the transaction statement number for any previous statement, an error is generated.
+        x-has-example: true
         example: 10
       txtimeout:
         type: string
@@ -862,6 +910,7 @@ definitions:
         x-desc-refs: |
           [txtimeout-srv]: admin.html#txtimeout-srv
           [queryTxTimeout]: ../../rest-api/rest-cluster-query-settings.html#queryTxTimeout
+        x-has-example: true
         example: 30m
       use_cbo:
         type: boolean
@@ -880,6 +929,7 @@ definitions:
         x-desc-refs: |
           [use-cbo-srv]: admin.html#use-cbo-srv
           [queryUseCBO]: ../../rest-api/rest-cluster-query-settings.html#queryUseCBO
+        x-has-example: true
         example: true
       use_fts:
         type: boolean
@@ -896,12 +946,16 @@ definitions:
           Refer to [Flex Indexes][flex-indexes] for more information.
 
           [flex-indexes]: /cloud/n1ql/n1ql-language-reference/flex-indexes.html
+        x-has-default: true
+        x-has-example: true
         default: false
         example: true
       use_replica:
         type: string
-        default: unset
         enum: ["off","on","unset"]
+        x-has-default: true
+        x-has-example: true
+        default: unset
         example: on
         x-desc-name: use_replica_req
         description: |
@@ -986,6 +1040,7 @@ definitions:
         description: >
           The schema of the results.
           Present only when the query completes successfully.
+        x-has-example: true
         example:
           id: json
       results:
@@ -1063,6 +1118,7 @@ definitions:
           Uniquely identifies the condition.
           This property is helpful for pattern matching and can have meaning, making it more memorable than the code.
           The name should be fully qualified.
+        x-has-example: true
         example:
           indexing.scan.io_failure
         x-example:
@@ -1150,6 +1206,7 @@ definitions:
       stmtType:
         type: string
         description: The type of query statement.
+        x-has-example: true
         example: SELECT
 
   Profile:
@@ -1172,6 +1229,7 @@ definitions:
         type: object
         description: |
           Count of documents processed at selective phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
+        x-has-example: true
         example:
           {
             "fetch": 16,
@@ -1187,6 +1245,7 @@ definitions:
           A union select would have twice as many operator counts, one per each branch of the union.
 
           This is in essence the count of all the operators in the `executionTimings` object.
+        x-has-example: true
         example:
           {
             "authorize": 1,
@@ -1197,6 +1256,7 @@ definitions:
         type: object
         description: |
           Cumulative execution times for various phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
+        x-has-example: true
         example:
           {
             "authorize": "823.631µs",
@@ -1221,6 +1281,7 @@ definitions:
           '#operator':
             type: string
             description: Name of the operator.
+            x-has-example: true
             example: Fetch
           '#stats':
             type: object
@@ -1231,26 +1292,31 @@ definitions:
                 type: integer
                 format: int32
                 description: Number of input documents to the operator.
+                x-has-example: true
                 example: 187
               '#itemsOut':
                 type: integer
                 format: int32
                 description: Number of output documents after the operator processing.
+                x-has-example: true
                 example: 16
               '#phaseSwitches':
                 type: integer
                 format: int32
                 description: Number of switches between executing, waiting for services, or waiting for the goroutine scheduler.
+                x-has-example: true
                 example: 413
               execTime:
                 type: string
                 format: duration
                 description: Time spent executing the operator code inside SQL++ query engine.
+                x-has-example: true
                 example: "128.434µs"
               kernTime:
                 type: string
                 format: duration
                 description: Time spent waiting to be scheduled for CPU time.
+                x-has-example: true
                 example: "15.027879ms"
               servTime:
                 type: string
@@ -1261,6 +1327,7 @@ definitions:
                   For index scan, it is time spent waiting for GSI/indexer.
 
                   For fetch, it is time spent waiting on the KV store.
+                x-has-example: true
                 example: "1.590934ms"
           '~child':
             type: object
