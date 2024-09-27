@@ -1072,20 +1072,10 @@ definitions:
         items:
           $ref: "#/definitions/Conditions"
       metrics:
-        type: object
-        description: An object containing metrics about the request.
         $ref: "#/definitions/Metrics"
       controls:
-        type: object
-        description: >
-          An object containing runtime information provided along with the request.
-          Present only if `controls` was set to true in the [Request Parameters](#_request_parameters).
         $ref: "#/definitions/Controls"
       profile:
-        type: object
-        description: >
-          An object containing monitoring and profiling information about the request.
-          Present only if `profile` was set to `"phases"` or `"timings"` in the [Request Parameters](#_request_parameters).
         $ref: "#/definitions/Profile"
 
   Conditions:
@@ -1136,6 +1126,7 @@ definitions:
 
   Metrics:
     type: object
+    description: An object containing metrics about the request.
     required:
       - elapsedTime
       - executionTime
@@ -1186,6 +1177,9 @@ definitions:
 
   Controls:
     type: object
+    description: >
+      An object containing runtime information provided along with the request.
+      Present only if `controls` was set to true in the [Request Parameters](#Request).
     properties:
       scan_consistency:
         type: string
@@ -1207,6 +1201,9 @@ definitions:
 
   Profile:
     type: object
+    description: >
+      An object containing monitoring and profiling information about the request.
+      Present only if `profile` was set to `"phases"` or `"timings"` in the [Request Parameters](#Request).
     required:
       - requestTime
       - servicingHost
