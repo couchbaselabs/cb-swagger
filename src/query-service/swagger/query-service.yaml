@@ -39,7 +39,7 @@ paths:
           required: true
           description: An object specifying one or more query parameters.
           schema:
-            $ref: "#/definitions/Request Parameters"
+            $ref: "#/definitions/Request"
       security:
         - Header: []
 #       - Parameter: []
@@ -116,7 +116,7 @@ responses:
   OK:
     description: The operation was successful.
     schema:
-      $ref: "#/definitions/Response Body"
+      $ref: "#/definitions/Response"
 
   BadRequest:
     description: |-
@@ -177,7 +177,7 @@ responses:
       There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible.
 
 definitions:
-  Request Parameters:
+  Request:
     type: object
     title: Request Parameters
     properties:
@@ -1023,7 +1023,7 @@ definitions:
 #       type: string
 #       description: A password for authentication.
 
-  Response Body:
+  Response:
     type: object
     title: Response Body
     description: The response body has the following structure.
@@ -1034,7 +1034,7 @@ definitions:
         description: A unique identifier for the response.
       clientContextID:
         type: string
-        description: The client context ID of the request, if one was supplied &mdash; see `client_context_id` in [Request Parameters](#_request_parameters).
+        description: The client context ID of the request, if one was supplied &mdash; see `client_context_id` in [Request Parameters](#Request).
       signature:
         type: object
         description: >
@@ -1271,7 +1271,7 @@ definitions:
         type: object
         title: Execution Timings
         description: |
-          Present only if `profile` was set to `"timings"` in the [Request Parameters](#_request_parameters).
+          Present only if `profile` was set to `"timings"` in the [Request Parameters](#Request).
 
           The execution details for various phases involved in the query execution, such as kernel and service execution times, number of documents processed at each query operator in each phase, and number of phase switches.
         required:
