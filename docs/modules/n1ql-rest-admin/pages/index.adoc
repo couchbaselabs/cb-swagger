@@ -9,13 +9,15 @@
 This file is created automatically by OpenAPI Generator.
 DO NOT EDIT! See https://github.com/couchbase/cb-swagger
 
+:leveloffset: 1
 
 include::{specDir}overview/document-before.adoc[opts=optional]
 
 
 [[overview]]
-== Overview
+= Overview
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
 
@@ -28,12 +30,12 @@ This API enables you to retrieve statistics about the clusters and nodes running
 --
 
 [discrete#version]
-=== Version information
+= Version information
 [%hardbreaks]
 __Version__ : capella
 
 [discrete#host]
-=== Host information
+= Host information
 
 ....
 http://localhost:8093
@@ -44,6 +46,7 @@ http://localhost:8093
 
 // markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 include::{specDir}overview/document-after.adoc[opts=optional]
@@ -54,13 +57,17 @@ include::{specDir}overview/document-after.adoc[opts=optional]
 
 
 [[resources]]
-== Resources
+= Resources
 
+:count-apis: 7
+
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
@@ -71,16 +78,20 @@ The operations are grouped in the following categories.
 <<tag-PreparedStatements>>
 <<tag-Settings>>
 <<tag-Statistics>>
+endif::[]
 
 
+ifeval::[{count-apis} > 1]
 [#tag-ActiveRequests]
-=== Active Requests
+= Active Requests
+:leveloffset: +1
 
 ifeval::["" != ""]
 
 endif::[]
 ifeval::["" == ""]
 **{toc-title}**
+endif::[]
 endif::[]
 
 [%hardbreaks]
@@ -95,8 +106,9 @@ endif::[]
 
 
 [#delete_active_request]
-==== Delete an Active Request
+= Delete an Active Request
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-begin.adoc[opts=optional]
 
@@ -110,8 +122,9 @@ DELETE /admin/active_requests/{request}
 
 
 [#delete_active_request-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-description-begin.adoc[opts=optional]
 
@@ -125,6 +138,8 @@ Terminates the specified active query request.
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-description-after.adoc[opts=optional]
 
@@ -134,8 +149,9 @@ Terminates the specified active query request.
 
 
 [#delete_active_request-parameters]
-===== Parameters
+= Parameters
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-parameters-begin.adoc[opts=optional]
 
@@ -176,6 +192,8 @@ This is the `requestID` that was assigned automatically when the statement was c
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-parameters-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 
 
@@ -183,7 +201,7 @@ This is the `requestID` that was assigned automatically when the statement was c
 
 
 [#delete_active_request-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -193,8 +211,9 @@ This is the `requestID` that was assigned automatically when the statement was c
 
 
 [#delete_active_request-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-responses-begin.adoc[opts=optional]
 
@@ -223,6 +242,7 @@ Returns an error message if the active request could not be found.
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -234,8 +254,9 @@ Returns an error message if the active request could not be found.
 
 
 [#delete_active_request-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-security-begin.adoc[opts=optional]
 
@@ -252,22 +273,23 @@ Returns an error message if the active request could not be found.
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 include::{snippetDir}delete_active_request/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}delete_active_request/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-after.adoc[opts=optional]
@@ -279,8 +301,9 @@ include::{snippetDir}delete_active_request/http-request.adoc[opts=optional]
 
 
 [#get_active_indexes]
-==== Retrieve Active Index Requests
+= Retrieve Active Index Requests
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-begin.adoc[opts=optional]
 
@@ -294,8 +317,9 @@ GET /admin/indexes/active_requests
 
 
 [#get_active_indexes-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-description-begin.adoc[opts=optional]
 
@@ -312,6 +336,8 @@ Returns all active index requests.
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-description-after.adoc[opts=optional]
 
@@ -324,19 +350,11 @@ Returns all active index requests.
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_active_indexes/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-parameters-after.adoc[opts=optional]
 
 
 [#get_active_indexes-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -346,8 +364,9 @@ Returns all active index requests.
 
 
 [#get_active_indexes-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-responses-begin.adoc[opts=optional]
 
@@ -370,6 +389,7 @@ list
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -381,8 +401,9 @@ list
 
 
 [#get_active_indexes-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-security-begin.adoc[opts=optional]
 
@@ -399,22 +420,23 @@ list
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_active_indexes/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_active_indexes/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-after.adoc[opts=optional]
@@ -426,8 +448,9 @@ list
 
 
 [#get_active_request]
-==== Retrieve an Active Request
+= Retrieve an Active Request
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-begin.adoc[opts=optional]
 
@@ -441,8 +464,9 @@ GET /admin/active_requests/{request}
 
 
 [#get_active_request-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-description-begin.adoc[opts=optional]
 
@@ -456,6 +480,8 @@ Returns the specified active query request.
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-description-after.adoc[opts=optional]
 
@@ -465,8 +491,9 @@ Returns the specified active query request.
 
 
 [#get_active_request-parameters]
-===== Parameters
+= Parameters
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-parameters-begin.adoc[opts=optional]
 
@@ -507,6 +534,8 @@ This is the `requestID` that was assigned automatically when the statement was c
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-parameters-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 
 
@@ -514,7 +543,7 @@ This is the `requestID` that was assigned automatically when the statement was c
 
 
 [#get_active_request-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -524,8 +553,9 @@ This is the `requestID` that was assigned automatically when the statement was c
 
 
 [#get_active_request-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-responses-begin.adoc[opts=optional]
 
@@ -547,6 +577,7 @@ An object containing information about the specified active request.
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -558,8 +589,9 @@ An object containing information about the specified active request.
 
 
 [#get_active_request-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-security-begin.adoc[opts=optional]
 
@@ -576,22 +608,23 @@ An object containing information about the specified active request.
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 include::{snippetDir}get_active_request/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_active_request/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-after.adoc[opts=optional]
@@ -603,8 +636,9 @@ include::{snippetDir}get_active_request/http-request.adoc[opts=optional]
 
 
 [#get_active_requests]
-==== Retrieve All Active Requests
+= Retrieve All Active Requests
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-begin.adoc[opts=optional]
 
@@ -618,8 +652,9 @@ GET /admin/active_requests
 
 
 [#get_active_requests-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-description-begin.adoc[opts=optional]
 
@@ -633,6 +668,8 @@ Returns all active query requests.
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-description-after.adoc[opts=optional]
 
@@ -645,19 +682,11 @@ Returns all active query requests.
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_active_requests/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/get_active_requests/operation-parameters-after.adoc[opts=optional]
 
 
 [#get_active_requests-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -667,8 +696,9 @@ Returns all active query requests.
 
 
 [#get_active_requests-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-responses-begin.adoc[opts=optional]
 
@@ -691,6 +721,7 @@ list
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -702,8 +733,9 @@ list
 
 
 [#get_active_requests-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-security-begin.adoc[opts=optional]
 
@@ -720,36 +752,45 @@ list
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 include::{snippetDir}get_active_requests/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_active_requests/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-after.adoc[opts=optional]
 
 
 
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
 [#tag-CompletedRequests]
-=== Completed Requests
+= Completed Requests
+:leveloffset: +1
 
 ifeval::["" != ""]
 
 endif::[]
 ifeval::["" == ""]
 **{toc-title}**
+endif::[]
 endif::[]
 
 [%hardbreaks]
@@ -764,8 +805,9 @@ endif::[]
 
 
 [#delete_completed_request]
-==== Delete a Completed Request
+= Delete a Completed Request
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-begin.adoc[opts=optional]
 
@@ -779,8 +821,9 @@ DELETE /admin/completed_requests/{request}
 
 
 [#delete_completed_request-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-description-begin.adoc[opts=optional]
 
@@ -794,6 +837,8 @@ Purges the specified completed request.
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-description-after.adoc[opts=optional]
 
@@ -803,8 +848,9 @@ Purges the specified completed request.
 
 
 [#delete_completed_request-parameters]
-===== Parameters
+= Parameters
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-parameters-begin.adoc[opts=optional]
 
@@ -845,6 +891,8 @@ This is the `requestID` that was assigned automatically when the statement was c
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-parameters-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 
 
@@ -852,7 +900,7 @@ This is the `requestID` that was assigned automatically when the statement was c
 
 
 [#delete_completed_request-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -862,8 +910,9 @@ This is the `requestID` that was assigned automatically when the statement was c
 
 
 [#delete_completed_request-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-responses-begin.adoc[opts=optional]
 
@@ -892,6 +941,7 @@ Returns an error message if the completed request could not be found.
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -903,8 +953,9 @@ Returns an error message if the completed request could not be found.
 
 
 [#delete_completed_request-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-security-begin.adoc[opts=optional]
 
@@ -921,22 +972,23 @@ Returns an error message if the completed request could not be found.
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 include::{snippetDir}delete_completed_request/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}delete_completed_request/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-after.adoc[opts=optional]
@@ -948,8 +1000,9 @@ include::{snippetDir}delete_completed_request/http-request.adoc[opts=optional]
 
 
 [#get_completed_indexes]
-==== Retrieve Completed Index Requests
+= Retrieve Completed Index Requests
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-begin.adoc[opts=optional]
 
@@ -963,8 +1016,9 @@ GET /admin/indexes/completed_requests
 
 
 [#get_completed_indexes-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-description-begin.adoc[opts=optional]
 
@@ -981,6 +1035,8 @@ Returns all completed index requests.
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-description-after.adoc[opts=optional]
 
@@ -993,19 +1049,11 @@ Returns all completed index requests.
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_completed_indexes/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-parameters-after.adoc[opts=optional]
 
 
 [#get_completed_indexes-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -1015,8 +1063,9 @@ Returns all completed index requests.
 
 
 [#get_completed_indexes-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-responses-begin.adoc[opts=optional]
 
@@ -1039,6 +1088,7 @@ list
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -1050,8 +1100,9 @@ list
 
 
 [#get_completed_indexes-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-security-begin.adoc[opts=optional]
 
@@ -1068,22 +1119,23 @@ list
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_completed_indexes/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_completed_indexes/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-after.adoc[opts=optional]
@@ -1095,8 +1147,9 @@ list
 
 
 [#get_completed_request]
-==== Retrieve a Completed Request
+= Retrieve a Completed Request
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-begin.adoc[opts=optional]
 
@@ -1110,8 +1163,9 @@ GET /admin/completed_requests/{request}
 
 
 [#get_completed_request-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-description-begin.adoc[opts=optional]
 
@@ -1125,6 +1179,8 @@ Returns the specified completed request.
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-description-after.adoc[opts=optional]
 
@@ -1134,8 +1190,9 @@ Returns the specified completed request.
 
 
 [#get_completed_request-parameters]
-===== Parameters
+= Parameters
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-parameters-begin.adoc[opts=optional]
 
@@ -1176,6 +1233,8 @@ This is the `requestID` that was assigned automatically when the statement was c
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-parameters-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 
 
@@ -1183,7 +1242,7 @@ This is the `requestID` that was assigned automatically when the statement was c
 
 
 [#get_completed_request-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -1193,8 +1252,9 @@ This is the `requestID` that was assigned automatically when the statement was c
 
 
 [#get_completed_request-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-responses-begin.adoc[opts=optional]
 
@@ -1216,6 +1276,7 @@ An object containing information about the specified completed request.
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -1227,8 +1288,9 @@ An object containing information about the specified completed request.
 
 
 [#get_completed_request-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-security-begin.adoc[opts=optional]
 
@@ -1245,22 +1307,23 @@ An object containing information about the specified completed request.
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 include::{snippetDir}get_completed_request/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_completed_request/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-after.adoc[opts=optional]
@@ -1272,8 +1335,9 @@ include::{snippetDir}get_completed_request/http-request.adoc[opts=optional]
 
 
 [#get_completed_requests]
-==== Retrieve All Completed Requests
+= Retrieve All Completed Requests
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-begin.adoc[opts=optional]
 
@@ -1287,8 +1351,9 @@ GET /admin/completed_requests
 
 
 [#get_completed_requests-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-description-begin.adoc[opts=optional]
 
@@ -1302,6 +1367,8 @@ Returns all completed requests.
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-description-after.adoc[opts=optional]
 
@@ -1314,19 +1381,11 @@ Returns all completed requests.
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_completed_requests/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-parameters-after.adoc[opts=optional]
 
 
 [#get_completed_requests-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -1336,8 +1395,9 @@ Returns all completed requests.
 
 
 [#get_completed_requests-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-responses-begin.adoc[opts=optional]
 
@@ -1360,6 +1420,7 @@ list
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -1371,8 +1432,9 @@ list
 
 
 [#get_completed_requests-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-security-begin.adoc[opts=optional]
 
@@ -1389,36 +1451,45 @@ list
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 include::{snippetDir}get_completed_requests/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_completed_requests/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-after.adoc[opts=optional]
 
 
 
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
 [#tag-Configuration]
-=== Configuration
+= Configuration
+:leveloffset: +1
 
 ifeval::["Operations for cluster and node configuration." != ""]
 Operations for cluster and node configuration.
 endif::[]
 ifeval::["Operations for cluster and node configuration." == ""]
 **{toc-title}**
+endif::[]
 endif::[]
 
 [%hardbreaks]
@@ -1434,8 +1505,9 @@ endif::[]
 
 
 [#get_cluster]
-==== Read a Cluster
+= Read a Cluster
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-begin.adoc[opts=optional]
 
@@ -1449,8 +1521,9 @@ GET /admin/clusters/{cluster}
 
 
 [#get_cluster-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-description-begin.adoc[opts=optional]
 
@@ -1463,6 +1536,8 @@ Returns information about the specified cluster.
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-description-after.adoc[opts=optional]
 
@@ -1472,8 +1547,9 @@ Returns information about the specified cluster.
 
 
 [#get_cluster-parameters]
-===== Parameters
+= Parameters
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-parameters-begin.adoc[opts=optional]
 
@@ -1512,6 +1588,8 @@ The name of a cluster.
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-parameters-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 
 
@@ -1519,7 +1597,7 @@ The name of a cluster.
 
 
 [#get_cluster-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -1529,8 +1607,9 @@ The name of a cluster.
 
 
 [#get_cluster-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-responses-begin.adoc[opts=optional]
 
@@ -1552,6 +1631,7 @@ An object giving information about the specified cluster.
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -1563,8 +1643,9 @@ An object giving information about the specified cluster.
 
 
 [#get_cluster-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-security-begin.adoc[opts=optional]
 
@@ -1581,22 +1662,23 @@ An object giving information about the specified cluster.
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_cluster/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_cluster/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-after.adoc[opts=optional]
@@ -1608,8 +1690,9 @@ An object giving information about the specified cluster.
 
 
 [#get_clusters]
-==== Read All Clusters
+= Read All Clusters
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-begin.adoc[opts=optional]
 
@@ -1623,8 +1706,9 @@ GET /admin/clusters
 
 
 [#get_clusters-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-description-begin.adoc[opts=optional]
 
@@ -1636,6 +1720,8 @@ Returns information about all clusters.
 
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-description-after.adoc[opts=optional]
@@ -1649,19 +1735,11 @@ Returns information about all clusters.
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_clusters/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/get_clusters/operation-parameters-after.adoc[opts=optional]
 
 
 [#get_clusters-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -1671,8 +1749,9 @@ Returns information about all clusters.
 
 
 [#get_clusters-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-responses-begin.adoc[opts=optional]
 
@@ -1695,6 +1774,7 @@ list
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -1706,8 +1786,9 @@ list
 
 
 [#get_clusters-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-security-begin.adoc[opts=optional]
 
@@ -1724,22 +1805,23 @@ list
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_clusters/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_clusters/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-after.adoc[opts=optional]
@@ -1751,8 +1833,9 @@ list
 
 
 [#get_config]
-==== Read Configuration
+= Read Configuration
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_config/operation-begin.adoc[opts=optional]
 
@@ -1766,8 +1849,9 @@ GET /admin/config
 
 
 [#get_config-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_config/operation-description-begin.adoc[opts=optional]
 
@@ -1779,6 +1863,8 @@ Returns the configuration of the query service on the cluster.
 
 
 // markup not found, no include::{specDir}paths/get_config/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_config/operation-description-after.adoc[opts=optional]
@@ -1792,19 +1878,11 @@ Returns the configuration of the query service on the cluster.
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_config/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/get_config/operation-parameters-after.adoc[opts=optional]
 
 
 [#get_config-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -1814,8 +1892,9 @@ Returns the configuration of the query service on the cluster.
 
 
 [#get_config-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_config/operation-responses-begin.adoc[opts=optional]
 
@@ -1837,6 +1916,7 @@ An object giving information about the specified node.
 
 // markup not found, no include::{specDir}paths/get_config/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -1848,8 +1928,9 @@ An object giving information about the specified node.
 
 
 [#get_config-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_config/operation-security-begin.adoc[opts=optional]
 
@@ -1866,22 +1947,23 @@ An object giving information about the specified node.
 
 // markup not found, no include::{specDir}paths/get_config/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_config/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_config/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_config/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_config/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_config/operation-after.adoc[opts=optional]
@@ -1893,8 +1975,9 @@ An object giving information about the specified node.
 
 
 [#get_node]
-==== Read a Node
+= Read a Node
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_node/operation-begin.adoc[opts=optional]
 
@@ -1908,8 +1991,9 @@ GET /admin/clusters/{cluster}/nodes/{node}
 
 
 [#get_node-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_node/operation-description-begin.adoc[opts=optional]
 
@@ -1922,6 +2006,8 @@ Returns information about the specified node in the specified cluster.
 
 // markup not found, no include::{specDir}paths/get_node/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_node/operation-description-after.adoc[opts=optional]
 
@@ -1931,8 +2017,9 @@ Returns information about the specified node in the specified cluster.
 
 
 [#get_node-parameters]
-===== Parameters
+= Parameters
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_node/operation-parameters-begin.adoc[opts=optional]
 
@@ -1988,6 +2075,8 @@ The name of a node.
 
 // markup not found, no include::{specDir}paths/get_node/operation-parameters-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 
 
@@ -1995,7 +2084,7 @@ The name of a node.
 
 
 [#get_node-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -2005,8 +2094,9 @@ The name of a node.
 
 
 [#get_node-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_node/operation-responses-begin.adoc[opts=optional]
 
@@ -2028,6 +2118,7 @@ An object giving information about the specified node.
 
 // markup not found, no include::{specDir}paths/get_node/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -2039,8 +2130,9 @@ An object giving information about the specified node.
 
 
 [#get_node-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_node/operation-security-begin.adoc[opts=optional]
 
@@ -2057,22 +2149,23 @@ An object giving information about the specified node.
 
 // markup not found, no include::{specDir}paths/get_node/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_node/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_node/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_node/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_node/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_node/operation-after.adoc[opts=optional]
@@ -2084,8 +2177,9 @@ An object giving information about the specified node.
 
 
 [#get_nodes]
-==== Read All Nodes
+= Read All Nodes
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-begin.adoc[opts=optional]
 
@@ -2099,8 +2193,9 @@ GET /admin/clusters/{cluster}/nodes
 
 
 [#get_nodes-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-description-begin.adoc[opts=optional]
 
@@ -2113,6 +2208,8 @@ Returns information about all nodes in the specified cluster.
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-description-after.adoc[opts=optional]
 
@@ -2122,8 +2219,9 @@ Returns information about all nodes in the specified cluster.
 
 
 [#get_nodes-parameters]
-===== Parameters
+= Parameters
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-parameters-begin.adoc[opts=optional]
 
@@ -2162,6 +2260,8 @@ The name of a cluster.
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-parameters-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 
 
@@ -2169,7 +2269,7 @@ The name of a cluster.
 
 
 [#get_nodes-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -2179,8 +2279,9 @@ The name of a cluster.
 
 
 [#get_nodes-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-responses-begin.adoc[opts=optional]
 
@@ -2203,6 +2304,7 @@ list
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -2214,8 +2316,9 @@ list
 
 
 [#get_nodes-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-security-begin.adoc[opts=optional]
 
@@ -2232,36 +2335,45 @@ list
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_nodes/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_nodes/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-after.adoc[opts=optional]
 
 
 
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
 [#tag-Default]
-=== Default
+= Default
+:leveloffset: +1
 
 ifeval::["Other operations." != ""]
 Other operations.
 endif::[]
 ifeval::["Other operations." == ""]
 **{toc-title}**
+endif::[]
 endif::[]
 
 [%hardbreaks]
@@ -2275,8 +2387,9 @@ endif::[]
 
 
 [#get_gc]
-==== Run Garbage Collector
+= Run Garbage Collector
 
+:leveloffset: +1
 
 include::{specDir}paths/get_gc/operation-begin.adoc[opts=optional]
 
@@ -2290,8 +2403,9 @@ GET /admin/gc
 
 
 [#get_gc-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_gc/operation-description-begin.adoc[opts=optional]
 
@@ -2309,6 +2423,8 @@ A message is written to `query.log` whenever the garbage collector endpoint is i
 
 // markup not found, no include::{specDir}paths/get_gc/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_gc/operation-description-after.adoc[opts=optional]
 
@@ -2321,19 +2437,11 @@ A message is written to `query.log` whenever the garbage collector endpoint is i
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_gc/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/get_gc/operation-parameters-after.adoc[opts=optional]
 
 
 [#get_gc-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -2343,8 +2451,9 @@ A message is written to `query.log` whenever the garbage collector endpoint is i
 
 
 [#get_gc-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_gc/operation-responses-begin.adoc[opts=optional]
 
@@ -2373,6 +2482,7 @@ Error 10000: authentication failure. The invoking user is not a valid full-admin
 
 // markup not found, no include::{specDir}paths/get_gc/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -2384,8 +2494,9 @@ Error 10000: authentication failure. The invoking user is not a valid full-admin
 
 
 [#get_gc-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_gc/operation-security-begin.adoc[opts=optional]
 
@@ -2402,22 +2513,23 @@ Error 10000: authentication failure. The invoking user is not a valid full-admin
 
 // markup not found, no include::{specDir}paths/get_gc/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_gc/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_gc/http-request.adoc[opts=optional]
 
 
 include::{snippetDir}get_gc/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_gc/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_gc/operation-after.adoc[opts=optional]
@@ -2429,8 +2541,9 @@ include::{snippetDir}get_gc/http-response.adoc[opts=optional]
 
 
 [#get_ping]
-==== Ping
+= Ping
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_ping/operation-begin.adoc[opts=optional]
 
@@ -2444,8 +2557,9 @@ GET /admin/ping
 
 
 [#get_ping-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_ping/operation-description-begin.adoc[opts=optional]
 
@@ -2457,6 +2571,8 @@ Returns a minimal response, indicating that the service is running and reachable
 
 
 // markup not found, no include::{specDir}paths/get_ping/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_ping/operation-description-after.adoc[opts=optional]
@@ -2470,19 +2586,11 @@ Returns a minimal response, indicating that the service is running and reachable
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_ping/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/get_ping/operation-parameters-after.adoc[opts=optional]
 
 
 [#get_ping-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -2492,8 +2600,9 @@ Returns a minimal response, indicating that the service is running and reachable
 
 
 [#get_ping-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_ping/operation-responses-begin.adoc[opts=optional]
 
@@ -2515,6 +2624,7 @@ An empty object.
 
 // markup not found, no include::{specDir}paths/get_ping/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -2526,8 +2636,9 @@ An empty object.
 
 
 [#get_ping-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_ping/operation-security-begin.adoc[opts=optional]
 
@@ -2544,22 +2655,23 @@ An empty object.
 
 // markup not found, no include::{specDir}paths/get_ping/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_ping/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_ping/http-request.adoc[opts=optional]
 
 
 include::{snippetDir}get_ping/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_ping/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_ping/operation-after.adoc[opts=optional]
@@ -2571,8 +2683,9 @@ include::{snippetDir}get_ping/http-response.adoc[opts=optional]
 
 
 [#post_gc]
-==== Run Garbage Collector and Release Memory
+= Run Garbage Collector and Release Memory
 
+:leveloffset: +1
 
 include::{specDir}paths/post_gc/operation-begin.adoc[opts=optional]
 
@@ -2586,8 +2699,9 @@ POST /admin/gc
 
 
 [#post_gc-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/post_gc/operation-description-begin.adoc[opts=optional]
 
@@ -2605,6 +2719,8 @@ A message is written to `query.log` whenever the garbage collector endpoint is i
 
 // markup not found, no include::{specDir}paths/post_gc/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/post_gc/operation-description-after.adoc[opts=optional]
 
@@ -2617,19 +2733,11 @@ A message is written to `query.log` whenever the garbage collector endpoint is i
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/post_gc/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/post_gc/operation-parameters-after.adoc[opts=optional]
 
 
 [#post_gc-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -2639,8 +2747,9 @@ A message is written to `query.log` whenever the garbage collector endpoint is i
 
 
 [#post_gc-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/post_gc/operation-responses-begin.adoc[opts=optional]
 
@@ -2669,6 +2778,7 @@ Error 10000: authentication failure. The invoking user is not a valid full-admin
 
 // markup not found, no include::{specDir}paths/post_gc/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -2680,8 +2790,9 @@ Error 10000: authentication failure. The invoking user is not a valid full-admin
 
 
 [#post_gc-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/post_gc/operation-security-begin.adoc[opts=optional]
 
@@ -2698,36 +2809,45 @@ Error 10000: authentication failure. The invoking user is not a valid full-admin
 
 // markup not found, no include::{specDir}paths/post_gc/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/post_gc/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}post_gc/http-request.adoc[opts=optional]
 
 
 include::{snippetDir}post_gc/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/post_gc/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/post_gc/operation-after.adoc[opts=optional]
 
 
 
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
 [#tag-PreparedStatements]
-=== Prepared Statements
+= Prepared Statements
+:leveloffset: +1
 
 ifeval::["" != ""]
 
 endif::[]
 ifeval::["" == ""]
 **{toc-title}**
+endif::[]
 endif::[]
 
 [%hardbreaks]
@@ -2742,8 +2862,9 @@ endif::[]
 
 
 [#delete_prepared]
-==== Delete a Prepared Statement
+= Delete a Prepared Statement
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-begin.adoc[opts=optional]
 
@@ -2757,8 +2878,9 @@ DELETE /admin/prepareds/{name}
 
 
 [#delete_prepared-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-description-begin.adoc[opts=optional]
 
@@ -2772,6 +2894,8 @@ Deletes the specified prepared statement.
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-description-after.adoc[opts=optional]
 
@@ -2781,8 +2905,9 @@ Deletes the specified prepared statement.
 
 
 [#delete_prepared-parameters]
-===== Parameters
+= Parameters
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-parameters-begin.adoc[opts=optional]
 
@@ -2823,6 +2948,8 @@ This may be a UUID that was assigned automatically, or a name that was user-spec
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-parameters-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 
 
@@ -2830,7 +2957,7 @@ This may be a UUID that was assigned automatically, or a name that was user-spec
 
 
 [#delete_prepared-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -2840,8 +2967,9 @@ This may be a UUID that was assigned automatically, or a name that was user-spec
 
 
 [#delete_prepared-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-responses-begin.adoc[opts=optional]
 
@@ -2870,6 +2998,7 @@ Returns an error message if the prepared statement could not be found.
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -2881,8 +3010,9 @@ Returns an error message if the prepared statement could not be found.
 
 
 [#delete_prepared-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-security-begin.adoc[opts=optional]
 
@@ -2899,22 +3029,23 @@ Returns an error message if the prepared statement could not be found.
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 include::{snippetDir}delete_prepared/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}delete_prepared/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-after.adoc[opts=optional]
@@ -2926,8 +3057,9 @@ include::{snippetDir}delete_prepared/http-request.adoc[opts=optional]
 
 
 [#get_prepared]
-==== Retrieve a Prepared Statement
+= Retrieve a Prepared Statement
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-begin.adoc[opts=optional]
 
@@ -2941,8 +3073,9 @@ GET /admin/prepareds/{name}
 
 
 [#get_prepared-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-description-begin.adoc[opts=optional]
 
@@ -2956,6 +3089,8 @@ Returns the specified prepared statement.
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-description-after.adoc[opts=optional]
 
@@ -2965,8 +3100,9 @@ Returns the specified prepared statement.
 
 
 [#get_prepared-parameters]
-===== Parameters
+= Parameters
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-parameters-begin.adoc[opts=optional]
 
@@ -3007,6 +3143,8 @@ This may be a UUID that was assigned automatically, or a name that was user-spec
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-parameters-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 
 
@@ -3014,7 +3152,7 @@ This may be a UUID that was assigned automatically, or a name that was user-spec
 
 
 [#get_prepared-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -3024,8 +3162,9 @@ This may be a UUID that was assigned automatically, or a name that was user-spec
 
 
 [#get_prepared-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-responses-begin.adoc[opts=optional]
 
@@ -3047,6 +3186,7 @@ An object containing information about the specified prepared statement.
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -3058,8 +3198,9 @@ An object containing information about the specified prepared statement.
 
 
 [#get_prepared-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-security-begin.adoc[opts=optional]
 
@@ -3076,22 +3217,23 @@ An object containing information about the specified prepared statement.
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 include::{snippetDir}get_prepared/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_prepared/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-after.adoc[opts=optional]
@@ -3103,8 +3245,9 @@ include::{snippetDir}get_prepared/http-request.adoc[opts=optional]
 
 
 [#get_prepared_indexes]
-==== Retrieve Prepared Index Statements
+= Retrieve Prepared Index Statements
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-begin.adoc[opts=optional]
 
@@ -3118,8 +3261,9 @@ GET /admin/indexes/prepareds
 
 
 [#get_prepared_indexes-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-description-begin.adoc[opts=optional]
 
@@ -3136,6 +3280,8 @@ Returns all prepared index statements.
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-description-after.adoc[opts=optional]
 
@@ -3148,19 +3294,11 @@ Returns all prepared index statements.
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_prepared_indexes/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-parameters-after.adoc[opts=optional]
 
 
 [#get_prepared_indexes-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -3170,8 +3308,9 @@ Returns all prepared index statements.
 
 
 [#get_prepared_indexes-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-responses-begin.adoc[opts=optional]
 
@@ -3194,6 +3333,7 @@ list
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -3205,8 +3345,9 @@ list
 
 
 [#get_prepared_indexes-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-security-begin.adoc[opts=optional]
 
@@ -3223,22 +3364,23 @@ list
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_prepared_indexes/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_prepared_indexes/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-after.adoc[opts=optional]
@@ -3250,8 +3392,9 @@ list
 
 
 [#get_prepareds]
-==== Retrieve All Prepared Statements
+= Retrieve All Prepared Statements
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-begin.adoc[opts=optional]
 
@@ -3265,8 +3408,9 @@ GET /admin/prepareds
 
 
 [#get_prepareds-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-description-begin.adoc[opts=optional]
 
@@ -3280,6 +3424,8 @@ Returns all prepared statements.
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-description-after.adoc[opts=optional]
 
@@ -3292,19 +3438,11 @@ Returns all prepared statements.
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_prepareds/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/get_prepareds/operation-parameters-after.adoc[opts=optional]
 
 
 [#get_prepareds-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -3314,8 +3452,9 @@ Returns all prepared statements.
 
 
 [#get_prepareds-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-responses-begin.adoc[opts=optional]
 
@@ -3338,6 +3477,7 @@ list
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -3349,8 +3489,9 @@ list
 
 
 [#get_prepareds-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-security-begin.adoc[opts=optional]
 
@@ -3367,36 +3508,45 @@ list
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 include::{snippetDir}get_prepareds/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_prepareds/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-after.adoc[opts=optional]
 
 
 
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
 [#tag-Settings]
-=== Settings
+= Settings
+:leveloffset: +1
 
 ifeval::["Operations for query settings." != ""]
 Operations for query settings.
 endif::[]
 ifeval::["Operations for query settings." == ""]
 **{toc-title}**
+endif::[]
 endif::[]
 
 [%hardbreaks]
@@ -3409,8 +3559,9 @@ endif::[]
 
 
 [#get_settings]
-==== Retrieve Node-Level Query Settings
+= Retrieve Node-Level Query Settings
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_settings/operation-begin.adoc[opts=optional]
 
@@ -3424,8 +3575,9 @@ GET /admin/settings
 
 
 [#get_settings-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_settings/operation-description-begin.adoc[opts=optional]
 
@@ -3439,6 +3591,8 @@ Returns node-level query settings.
 
 // markup not found, no include::{specDir}paths/get_settings/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 include::{specDir}paths/get_settings/operation-description-after.adoc[opts=optional]
 
@@ -3451,19 +3605,11 @@ include::{specDir}paths/get_settings/operation-description-after.adoc[opts=optio
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_settings/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/get_settings/operation-parameters-after.adoc[opts=optional]
 
 
 [#get_settings-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -3473,8 +3619,9 @@ include::{specDir}paths/get_settings/operation-description-after.adoc[opts=optio
 
 
 [#get_settings-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_settings/operation-responses-begin.adoc[opts=optional]
 
@@ -3496,6 +3643,7 @@ An object giving node-level query settings.
 
 // markup not found, no include::{specDir}paths/get_settings/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -3507,8 +3655,9 @@ An object giving node-level query settings.
 
 
 [#get_settings-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_settings/operation-security-begin.adoc[opts=optional]
 
@@ -3525,22 +3674,23 @@ An object giving node-level query settings.
 
 // markup not found, no include::{specDir}paths/get_settings/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_settings/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_settings/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_settings/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_settings/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_settings/operation-after.adoc[opts=optional]
@@ -3552,8 +3702,9 @@ An object giving node-level query settings.
 
 
 [#post_settings]
-==== Update Node-Level Query Settings
+= Update Node-Level Query Settings
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/post_settings/operation-begin.adoc[opts=optional]
 
@@ -3567,8 +3718,9 @@ POST /admin/settings
 
 
 [#post_settings-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/post_settings/operation-description-begin.adoc[opts=optional]
 
@@ -3582,6 +3734,8 @@ Updates node-level query settings.
 
 // markup not found, no include::{specDir}paths/post_settings/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 include::{specDir}paths/post_settings/operation-description-after.adoc[opts=optional]
 
@@ -3591,8 +3745,9 @@ include::{specDir}paths/post_settings/operation-description-after.adoc[opts=opti
 
 
 [#post_settings-parameters]
-===== Parameters
+= Parameters
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/post_settings/operation-parameters-begin.adoc[opts=optional]
 
@@ -4318,6 +4473,8 @@ Specifies whether a query can fetch data from a replica vBucket if active vBucke
 
 // markup not found, no include::{specDir}paths/post_settings/operation-parameters-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 
 
@@ -4325,12 +4482,12 @@ Specifies whether a query can fetch data from a replica vBucket if active vBucke
 
 
 [#post_settings-produces]
-===== Produces
+= Produces
 
 * application/json
 
 [#post_settings-consumes]
-===== Consumes
+= Consumes
 
 * application/x-www-form-urlencoded
 * application/json
@@ -4340,8 +4497,9 @@ Specifies whether a query can fetch data from a replica vBucket if active vBucke
 
 
 [#post_settings-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/post_settings/operation-responses-begin.adoc[opts=optional]
 
@@ -4363,6 +4521,7 @@ An object giving node-level query settings, including the latest changes.
 
 // markup not found, no include::{specDir}paths/post_settings/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -4374,8 +4533,9 @@ An object giving node-level query settings, including the latest changes.
 
 
 [#post_settings-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/post_settings/operation-security-begin.adoc[opts=optional]
 
@@ -4392,36 +4552,45 @@ An object giving node-level query settings, including the latest changes.
 
 // markup not found, no include::{specDir}paths/post_settings/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/post_settings/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}post_settings/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}post_settings/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/post_settings/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/post_settings/operation-after.adoc[opts=optional]
 
 
 
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
 [#tag-Statistics]
-=== Statistics
+= Statistics
+:leveloffset: +1
 
 ifeval::["Operations for query statistics." != ""]
 Operations for query statistics.
 endif::[]
 ifeval::["Operations for query statistics." == ""]
 **{toc-title}**
+endif::[]
 endif::[]
 
 [%hardbreaks]
@@ -4436,8 +4605,9 @@ endif::[]
 
 
 [#get_debug_vars]
-==== Get Debug Variables
+= Get Debug Variables
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-begin.adoc[opts=optional]
 
@@ -4451,8 +4621,9 @@ GET /debug/vars
 
 
 [#get_debug_vars-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-description-begin.adoc[opts=optional]
 
@@ -4465,6 +4636,8 @@ Currently unused.
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-description-after.adoc[opts=optional]
 
@@ -4473,14 +4646,6 @@ Currently unused.
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-parameters-before.adoc[opts=optional]
 
 
-
-
-
-
-
-
-
-// markup not found, no include::{specDir}paths/get_debug_vars/operation-parameters-end.adoc[opts=optional]
 
 
 
@@ -4495,8 +4660,9 @@ Currently unused.
 
 
 [#get_debug_vars-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-responses-begin.adoc[opts=optional]
 
@@ -4518,6 +4684,7 @@ Redirects to the [Retrieve All Statistics](#get_stats) endpoint.
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -4529,8 +4696,9 @@ Redirects to the [Retrieve All Statistics](#get_stats) endpoint.
 
 
 [#get_debug_vars-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-security-begin.adoc[opts=optional]
 
@@ -4547,22 +4715,23 @@ Redirects to the [Retrieve All Statistics](#get_stats) endpoint.
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_debug_vars/http-request.adoc[opts=optional]
 
 
 include::{snippetDir}get_debug_vars/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-after.adoc[opts=optional]
@@ -4574,8 +4743,9 @@ include::{snippetDir}get_debug_vars/http-response.adoc[opts=optional]
 
 
 [#get_stat]
-==== Retrieve a Statistic
+= Retrieve a Statistic
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_stat/operation-begin.adoc[opts=optional]
 
@@ -4589,8 +4759,9 @@ GET /admin/stats/{stat}
 
 
 [#get_stat-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_stat/operation-description-begin.adoc[opts=optional]
 
@@ -4603,6 +4774,8 @@ Returns the specified statistic.
 
 // markup not found, no include::{specDir}paths/get_stat/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_stat/operation-description-after.adoc[opts=optional]
 
@@ -4612,8 +4785,9 @@ Returns the specified statistic.
 
 
 [#get_stat-parameters]
-===== Parameters
+= Parameters
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_stat/operation-parameters-begin.adoc[opts=optional]
 
@@ -4656,6 +4830,8 @@ You cannot specify a metric.
 
 // markup not found, no include::{specDir}paths/get_stat/operation-parameters-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 
 
@@ -4663,7 +4839,7 @@ You cannot specify a metric.
 
 
 [#get_stat-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -4673,8 +4849,9 @@ You cannot specify a metric.
 
 
 [#get_stat-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_stat/operation-responses-begin.adoc[opts=optional]
 
@@ -4696,6 +4873,7 @@ An object containing all metrics for the specified statistic. Each statistic has
 
 // markup not found, no include::{specDir}paths/get_stat/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -4707,8 +4885,9 @@ An object containing all metrics for the specified statistic. Each statistic has
 
 
 [#get_stat-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_stat/operation-security-begin.adoc[opts=optional]
 
@@ -4725,22 +4904,23 @@ An object containing all metrics for the specified statistic. Each statistic has
 
 // markup not found, no include::{specDir}paths/get_stat/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_stat/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_stat/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_stat/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_stat/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_stat/operation-after.adoc[opts=optional]
@@ -4752,8 +4932,9 @@ An object containing all metrics for the specified statistic. Each statistic has
 
 
 [#get_stats]
-==== Retrieve All Statistics
+= Retrieve All Statistics
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_stats/operation-begin.adoc[opts=optional]
 
@@ -4767,8 +4948,9 @@ GET /admin/stats
 
 
 [#get_stats-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_stats/operation-description-begin.adoc[opts=optional]
 
@@ -4780,6 +4962,8 @@ Returns all statistics.
 
 
 // markup not found, no include::{specDir}paths/get_stats/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_stats/operation-description-after.adoc[opts=optional]
@@ -4793,19 +4977,11 @@ Returns all statistics.
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_stats/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/get_stats/operation-parameters-after.adoc[opts=optional]
 
 
 [#get_stats-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -4815,8 +4991,9 @@ Returns all statistics.
 
 
 [#get_stats-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_stats/operation-responses-begin.adoc[opts=optional]
 
@@ -4838,6 +5015,7 @@ An object containing all statistics. Each statistic consists of a top-level stat
 
 // markup not found, no include::{specDir}paths/get_stats/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -4849,8 +5027,9 @@ An object containing all statistics. Each statistic consists of a top-level stat
 
 
 [#get_stats-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_stats/operation-security-begin.adoc[opts=optional]
 
@@ -4867,22 +5046,23 @@ An object containing all statistics. Each statistic consists of a top-level stat
 
 // markup not found, no include::{specDir}paths/get_stats/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_stats/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 // markup not found, no include::{snippetDir}get_stats/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_stats/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_stats/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_stats/operation-after.adoc[opts=optional]
@@ -4894,8 +5074,9 @@ An object containing all statistics. Each statistic consists of a top-level stat
 
 
 [#get_vitals]
-==== Retrieve Vitals
+= Retrieve Vitals
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-begin.adoc[opts=optional]
 
@@ -4909,8 +5090,9 @@ GET /admin/vitals
 
 
 [#get_vitals-description]
-===== Description
+= Description
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-description-begin.adoc[opts=optional]
 
@@ -4925,6 +5107,8 @@ This information can be very useful to assess the current workload and performan
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-description-end.adoc[opts=optional]
 
+:leveloffset: -1
+
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-description-after.adoc[opts=optional]
 
@@ -4937,19 +5121,11 @@ This information can be very useful to assess the current workload and performan
 
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_vitals/operation-parameters-end.adoc[opts=optional]
-
-
-
-
 // markup not found, no include::{specDir}paths/get_vitals/operation-parameters-after.adoc[opts=optional]
 
 
 [#get_vitals-produces]
-===== Produces
+= Produces
 
 * application/json
 
@@ -4959,8 +5135,9 @@ This information can be very useful to assess the current workload and performan
 
 
 [#get_vitals-responses]
-===== Responses
+= Responses
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-responses-begin.adoc[opts=optional]
 
@@ -4982,6 +5159,7 @@ An object containing all vital statistics.
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-responses-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
@@ -4993,8 +5171,9 @@ An object containing all vital statistics.
 
 
 [#get_vitals-security]
-===== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-security-begin.adoc[opts=optional]
 
@@ -5011,31 +5190,38 @@ An object containing all vital statistics.
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-security-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-security-after.adoc[opts=optional]
 
 
-:leveloffset: +4
 
 include::{snippetDir}get_vitals/http-request.adoc[opts=optional]
 
 
 // markup not found, no include::{snippetDir}get_vitals/http-response.adoc[opts=optional]
 
-:leveloffset: -4
 
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-after.adoc[opts=optional]
 
 
 
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
 
 // markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
@@ -5046,7 +5232,7 @@ include::{snippetDir}get_vitals/http-request.adoc[opts=optional]
 
 
 [#models]
-== Definitions
+= Definitions
 
 //tag::model-descriptions[]
 ifeval::[true == false]
@@ -5063,6 +5249,7 @@ endif::[]
 //end::model-descriptions[]
 :count-models: 10
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
 
@@ -5089,14 +5276,13 @@ endif::[]
 // markup not found, no include::{specDir}definitions/Clusters/definition-before.adoc[opts=optional]
 
 
-//tag::Clusters[]
-
 ifeval::[{count-models} > 10]
 [discrete]
 endif::[]
 [#Clusters]
-=== Cluster Information
+= Cluster Information
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/Clusters/definition-begin.adoc[opts=optional]
 
@@ -5104,7 +5290,8 @@ endif::[]
 .icon:brackets-curly[fw] Object
 {blank}
 
-[#fields-Clusters]
+//tag::Clusters[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -5181,12 +5368,14 @@ a|
 
 |===
 
+//end::Clusters[]
+
+
 
 // markup not found, no include::{specDir}definitions/Clusters/definition-end.adoc[opts=optional]
 
 
-//end::Clusters[]
-
+:leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/Clusters/definition-after.adoc[opts=optional]
 
@@ -5196,14 +5385,13 @@ a|
 // markup not found, no include::{specDir}definitions/Garbage/definition-before.adoc[opts=optional]
 
 
-//tag::Garbage[]
-
 ifeval::[{count-models} > 10]
 [discrete]
 endif::[]
 [#Garbage]
-=== Garbage Collection
+= Garbage Collection
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/Garbage/definition-begin.adoc[opts=optional]
 
@@ -5211,7 +5399,8 @@ endif::[]
 .icon:brackets-curly[fw] Object
 {blank}
 
-[#fields-Garbage]
+//tag::Garbage[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -5262,12 +5451,14 @@ The status of the garbage collector.
 
 |===
 
+//end::Garbage[]
+
+
 
 // markup not found, no include::{specDir}definitions/Garbage/definition-end.adoc[opts=optional]
 
 
-//end::Garbage[]
-
+:leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/Garbage/definition-after.adoc[opts=optional]
 
@@ -5277,14 +5468,13 @@ The status of the garbage collector.
 // markup not found, no include::{specDir}definitions/Logging_Parameters/definition-before.adoc[opts=optional]
 
 
-//tag::Logging_Parameters[]
-
 ifeval::[{count-models} > 10]
 [discrete]
 endif::[]
 [#Logging_Parameters]
-=== Logging Parameters
+= Logging Parameters
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/Logging_Parameters/definition-begin.adoc[opts=optional]
 
@@ -5292,7 +5482,8 @@ endif::[]
 .icon:brackets-curly[fw] Object
 {blank}
 
-[#fields-Logging_Parameters]
+//tag::Logging_Parameters[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -5430,12 +5621,14 @@ If specified, all completed queries with this user name are logged.
 
 |===
 
+//end::Logging_Parameters[]
+
+
 
 // markup not found, no include::{specDir}definitions/Logging_Parameters/definition-end.adoc[opts=optional]
 
 
-//end::Logging_Parameters[]
-
+:leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/Logging_Parameters/definition-after.adoc[opts=optional]
 
@@ -5445,14 +5638,13 @@ If specified, all completed queries with this user name are logged.
 // markup not found, no include::{specDir}definitions/Metrics/definition-before.adoc[opts=optional]
 
 
-//tag::Metrics[]
-
 ifeval::[{count-models} > 10]
 [discrete]
 endif::[]
 [#Metrics]
-=== Metrics
+= Metrics
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/Metrics/definition-begin.adoc[opts=optional]
 
@@ -5460,7 +5652,8 @@ endif::[]
 .icon:brackets-curly[fw] Object
 {blank}
 
-[#fields-Metrics]
+//tag::Metrics[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -5663,12 +5856,14 @@ The 99.9th percentile.
 
 |===
 
+//end::Metrics[]
+
+
 
 // markup not found, no include::{specDir}definitions/Metrics/definition-end.adoc[opts=optional]
 
 
-//end::Metrics[]
-
+:leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/Metrics/definition-after.adoc[opts=optional]
 
@@ -5678,14 +5873,13 @@ The 99.9th percentile.
 // markup not found, no include::{specDir}definitions/Nodes/definition-before.adoc[opts=optional]
 
 
-//tag::Nodes[]
-
 ifeval::[{count-models} > 10]
 [discrete]
 endif::[]
 [#Nodes]
-=== Node Information
+= Node Information
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/Nodes/definition-begin.adoc[opts=optional]
 
@@ -5693,7 +5887,8 @@ endif::[]
 .icon:brackets-curly[fw] Object
 {blank}
 
-[#fields-Nodes]
+//tag::Nodes[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -5798,12 +5993,14 @@ a|
 
 |===
 
+//end::Nodes[]
+
+
 
 // markup not found, no include::{specDir}definitions/Nodes/definition-end.adoc[opts=optional]
 
 
-//end::Nodes[]
-
+:leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/Nodes/definition-after.adoc[opts=optional]
 
@@ -5813,14 +6010,13 @@ a|
 // markup not found, no include::{specDir}definitions/Requests/definition-before.adoc[opts=optional]
 
 
-//tag::Requests[]
-
 ifeval::[{count-models} > 10]
 [discrete]
 endif::[]
 [#Requests]
-=== Requests
+= Requests
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/Requests/definition-begin.adoc[opts=optional]
 
@@ -5828,7 +6024,8 @@ endif::[]
 .icon:brackets-curly[fw] Object
 {blank}
 
-[#fields-Requests]
+//tag::Requests[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -6161,12 +6358,14 @@ Username with whose privileges the query is run.
 
 |===
 
+//end::Requests[]
+
+
 
 // markup not found, no include::{specDir}definitions/Requests/definition-end.adoc[opts=optional]
 
 
-//end::Requests[]
-
+:leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/Requests/definition-after.adoc[opts=optional]
 
@@ -6176,14 +6375,13 @@ Username with whose privileges the query is run.
 // markup not found, no include::{specDir}definitions/Settings/definition-before.adoc[opts=optional]
 
 
-//tag::Settings[]
-
 ifeval::[{count-models} > 10]
 [discrete]
 endif::[]
 [#Settings]
-=== Settings
+= Settings
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/Settings/definition-begin.adoc[opts=optional]
 
@@ -6191,7 +6389,8 @@ endif::[]
 .icon:brackets-curly[fw] Object
 {blank}
 
-[#fields-Settings]
+//tag::Settings[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -7208,12 +7407,14 @@ If a query uses sequential scan and a data node becomes unavailable, the query m
 
 |===
 
+//end::Settings[]
+
+
 
 // markup not found, no include::{specDir}definitions/Settings/definition-end.adoc[opts=optional]
 
 
-//end::Settings[]
-
+:leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/Settings/definition-after.adoc[opts=optional]
 
@@ -7223,14 +7424,13 @@ If a query uses sequential scan and a data node becomes unavailable, the query m
 // markup not found, no include::{specDir}definitions/Statements/definition-before.adoc[opts=optional]
 
 
-//tag::Statements[]
-
 ifeval::[{count-models} > 10]
 [discrete]
 endif::[]
 [#Statements]
-=== Prepared Statements
+= Prepared Statements
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/Statements/definition-begin.adoc[opts=optional]
 
@@ -7238,7 +7438,8 @@ endif::[]
 .icon:brackets-curly[fw] Object
 {blank}
 
-[#fields-Statements]
+//tag::Statements[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -7494,12 +7695,14 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 |===
 
+//end::Statements[]
+
+
 
 // markup not found, no include::{specDir}definitions/Statements/definition-end.adoc[opts=optional]
 
 
-//end::Statements[]
-
+:leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/Statements/definition-after.adoc[opts=optional]
 
@@ -7509,14 +7712,13 @@ It is only returned when retrieving a specific prepared statement, not when retr
 // markup not found, no include::{specDir}definitions/Statistics/definition-before.adoc[opts=optional]
 
 
-//tag::Statistics[]
-
 ifeval::[{count-models} > 10]
 [discrete]
 endif::[]
 [#Statistics]
-=== Statistics
+= Statistics
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/Statistics/definition-begin.adoc[opts=optional]
 
@@ -7524,7 +7726,8 @@ endif::[]
 .icon:brackets-curly[fw] Object
 {blank}
 
-[#fields-Statistics]
+//tag::Statistics[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -8176,12 +8379,14 @@ The total number of query warnings returned so far.
 
 |===
 
+//end::Statistics[]
+
+
 
 // markup not found, no include::{specDir}definitions/Statistics/definition-end.adoc[opts=optional]
 
 
-//end::Statistics[]
-
+:leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/Statistics/definition-after.adoc[opts=optional]
 
@@ -8191,14 +8396,13 @@ The total number of query warnings returned so far.
 // markup not found, no include::{specDir}definitions/Vitals/definition-before.adoc[opts=optional]
 
 
-//tag::Vitals[]
-
 ifeval::[{count-models} > 10]
 [discrete]
 endif::[]
 [#Vitals]
-=== Vital Statistics
+= Vital Statistics
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/Vitals/definition-begin.adoc[opts=optional]
 
@@ -8206,7 +8410,8 @@ endif::[]
 .icon:brackets-curly[fw] Object
 {blank}
 
-[#fields-Vitals]
+//tag::Vitals[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -8895,12 +9100,14 @@ Current Query temp space use.
 
 |===
 
+//end::Vitals[]
+
+
 
 // markup not found, no include::{specDir}definitions/Vitals/definition-end.adoc[opts=optional]
 
 
-//end::Vitals[]
-
+:leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/Vitals/definition-after.adoc[opts=optional]
 
@@ -8910,6 +9117,7 @@ Current Query temp space use.
 // markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
 
 
+:leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
 
@@ -8919,8 +9127,9 @@ Current Query temp space use.
 
 
 [[security]]
-== Security
+= Security
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
 
@@ -8931,8 +9140,9 @@ Current Query temp space use.
 
 
 [[security-Default]]
-=== Default
+= Default
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}security/Default/security-scheme-begin.adoc[opts=optional]
 
@@ -8948,10 +9158,9 @@ Credentials can be passed via HTTP headers (HTTP basic authentication).
 __Type__ : http
 
 
-
-
 // markup not found, no include::{specDir}security/Default/security-scheme-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}security/Default/security-scheme-after.adoc[opts=optional]
@@ -8963,8 +9172,9 @@ __Type__ : http
 
 
 [[security-None]]
-=== None
+= None
 
+:leveloffset: +1
 
 // markup not found, no include::{specDir}security/None/security-scheme-begin.adoc[opts=optional]
 
@@ -8978,10 +9188,9 @@ No authentication is required for the [Ping](#get_ping) or [Get Debug Variables]
 __Type__ : http
 
 
-
-
 // markup not found, no include::{specDir}security/None/security-scheme-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}security/None/security-scheme-after.adoc[opts=optional]
@@ -8991,6 +9200,7 @@ __Type__ : http
 
 // markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
 
+:leveloffset: -1
 
 
 
