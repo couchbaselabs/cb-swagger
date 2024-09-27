@@ -423,8 +423,18 @@ __Scheme__ : {{scheme}}
 {{#bearerFormat}}__Format__: {{bearerFormat}}{{/bearerFormat}}
 {{/isBasicBearer}}
 {{/isBasic}}
-{{#isOAuth}}* *OAuth*  AuthorizationUrl: _{{authorizationUrl}}_, TokenUrl:   _{{tokenUrl}}_ {{/isOAuth}}
-{{#isApiKey}}* *APIKey* KeyParamName:     _{{keyParamName}}_,     KeyInQuery: _{{isKeyInQuery}}_, KeyInHeader: _{{isKeyInHeader}}_{{/isApiKey}}
+{{#isOAuth}}
+.OAuth
+[%hardbreaks]
+__Authorization URL__ : {{authorizationUrl}}
+__Token URL__ : {{tokenUrl}}
+{{/isOAuth}}
+{{#isApiKey}}
+.API Key
+[%hardbreaks]
+__Key parameter__ : {{keyParamName}}
+__Key in__ : {{#isKeyInQuery}}query{{/isKeyInQuery}} {{#isKeyInHeader}}header{{/isKeyInHeader}}
+{{/isApiKey}}
 
 {{! include partial after security scheme body }}
 {{#specinclude}}/security/{{name}}/security-scheme-end.adoc{{/specinclude}}
