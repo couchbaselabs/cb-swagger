@@ -119,18 +119,15 @@ responses:
       $ref: "#/definitions/Response Body"
 
   BadRequest:
-    description: >
+    description: |-
       Bad Request.
       The request cannot be processed for one of the following reasons:
 
+      the statement contains a SQL++ syntax error;
 
-        * The statement contains a SQL++ syntax error.
+      the request has a missing or unrecognized HTTP parameter;
 
-
-        * The request has a missing or unrecognized HTTP parameter.
-
-
-        * The request is badly formatted (for example, the request body contains a JSON syntax error).
+      the request is badly formatted &mdash; for example, the request body contains a JSON syntax error.
 
   Unauthorized:
     description: >
