@@ -2,7 +2,7 @@
 {{#specinclude}}/definitions/document-before.adoc{{/specinclude}}
 
 [#models]
-== Definitions
+= Definitions
 
 {{! Create attributes for each model description }}
 {{#models}}
@@ -25,6 +25,7 @@ endif::[]
 {{/models}}
 
 {{! include partial before definitions body }}
+:leveloffset: +1
 {{#specinclude}}/definitions/document-begin.adoc{{/specinclude}}
 
 {{! Table of contents }}
@@ -47,16 +48,14 @@ endif::[]
 {{! include partial before definition }}
 {{#specinclude}}/definitions/{{name}}/definition-before.adoc{{/specinclude}}
 
-{{! tag for partial}}
-//tag::{{name}}[]
-
 ifeval::[{count-models} > 10]
 [discrete]
 endif::[]
 [#{{name}}]
-=== {{#title}}{{title}}{{/title}}{{^title}}{{classname}}{{/title}}
+= {{#title}}{{title}}{{/title}}{{^title}}{{classname}}{{/title}}
 
 {{! include partial before definition body }}
+:leveloffset: +1
 {{#specinclude}}/definitions/{{name}}/definition-begin.adoc{{/specinclude}}
 
 {{^composedSchemas}}
@@ -64,7 +63,9 @@ endif::[]
 .icon:brackets-curly[fw] Object
 {blank}
 
-[#fields-{{name}}]
+{{! tag for partial}}
+//tag::{{name}}[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -81,14 +82,19 @@ a| {{>model}}
 {{/vars}}
 {{#additionalProperties}}
 {{! ADDITIONAL PROPERTY NAME }}
-a| _additional +
-properties_
+a| {{#vendorExtensions}}{{#x-desc-name}}[#{{this}}]{{/x-desc-name}}{{/vendorExtensions}}
+_additional +
+property_
 {{! ADDITIONAL PROPERTY DESCRIPTION }}
 a| {{>model}}
 {{! ADDITIONAL PROPERTY SCHEMA }}
 | {{>schema}}
 {{/additionalProperties}}
 |===
+
+{{! end tag for partial}}
+//end::{{name}}[]
+
 {{! Polymorphism}}
 {{#hasDiscriminatorWithNonEmptyMapping}}
 This schema has different properties, depending on the value of *{{discriminatorName}}*:
@@ -141,10 +147,8 @@ This schema has different properties, depending on the value of *{{discriminator
 {{! include partial after definition body }}
 {{#specinclude}}/definitions/{{name}}/definition-end.adoc{{/specinclude}}
 
-{{! end tag for partial}}
-//end::{{name}}[]
-
 {{! include partial after definition }}
+:leveloffset: -1
 {{#specinclude}}/definitions/{{name}}/definition-after.adoc{{/specinclude}}
 
 {{/model}}
@@ -154,4 +158,5 @@ This schema has different properties, depending on the value of *{{discriminator
 {{#specinclude}}/definitions/document-end.adoc{{/specinclude}}
 
 {{! include partial after definitions }}
+:leveloffset: -1
 {{#specinclude}}/definitions/document-after.adoc{{/specinclude}}

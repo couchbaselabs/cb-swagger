@@ -14,13 +14,15 @@ This file is created automatically by OpenAPI Generator.
 DO NOT EDIT! See https://{{gitHost}}/{{gitUserId}}/{{gitRepoId}}
 
 {{! include partial before overview }}
+:leveloffset: 1
 {{#specinclude}}/overview/document-before.adoc{{/specinclude}}
 
 {{! *** OVERVIEW *** }}
 [[overview]]
-== Overview
+= Overview
 
 {{! include partial before overview body }}
+:leveloffset: +1
 {{#specinclude}}/overview/document-begin.adoc{{/specinclude}}
 
 {{! If useIntroduction is true, include the API description}}
@@ -33,7 +35,7 @@ DO NOT EDIT! See https://{{gitHost}}/{{gitUserId}}/{{gitRepoId}}
 
 {{#version}}
 [discrete#version]
-=== Version information
+= Version information
 [%hardbreaks]
 __Version__ : {{{version}}}
 {{/version}}
@@ -41,7 +43,7 @@ __Version__ : {{{version}}}
 {{#servers}}
 [discrete#host]
 {{#-first}}
-=== Host information
+= Host information
 
 {{/-first}}
 ....
@@ -83,6 +85,7 @@ a| [markdown]
 
 {{! include partial after overview body }}
 {{#specinclude}}/overview/document-end.adoc{{/specinclude}}
+:leveloffset: -1
 
 {{! include partial after overview }}
 {{#specinclude}}/overview/document-after.adoc{{/specinclude}}
@@ -92,13 +95,24 @@ a| [markdown]
 
 {{! *** PATHS *** }}
 [[resources]]
-== Resources
+= Resources
+
+{{! Count the APIs }}
+{{#apiInfo}}
+{{#apis}}
+{{#-last}}
+:count-apis: {{-index}}
+{{/-last}}
+{{/apis}}
+{{/apiInfo}}
 
 {{! include partial before paths body }}
+:leveloffset: +1
 {{#specinclude}}/paths/document-begin.adoc{{/specinclude}}
 
 {{! Table of contents for endpoints }}
 This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
@@ -107,20 +121,24 @@ The operations are grouped in the following categories.
 <<tag-{{baseName}}>>
 {{/apis}}
 {{/apiInfo}}
+endif::[]
 
 {{! Endpoint body }}
 {{#apiInfo}}
 {{#apis}}
 
+ifeval::[{count-apis} > 1]
 {{! tag description }}
 [#tag-{{baseName}}]
-=== {{#lambda.uncamelize}}{{baseName}}{{/lambda.uncamelize}}
+= {{#lambda.uncamelize}}{{baseName}}{{/lambda.uncamelize}}
+:leveloffset: +1
 
 ifeval::["{{operationTagDescription}}" != ""]
 {{operationTagDescription}}
 endif::[]
 ifeval::["{{operationTagDescription}}" == ""]
 **{toc-title}**
+endif::[]
 endif::[]
 
 {{#operations}}
@@ -138,13 +156,14 @@ endif::[]
 
 [#{{operationIdOriginal}}]
 {{#useMethodAndPath}}
-==== {{httpMethod}} {{path}}
+= {{httpMethod}} {{path}}
 {{/useMethodAndPath}}
 {{^useMethodAndPath}}
-==== {{summary}}
+= {{summary}}
 {{/useMethodAndPath}}
 
 {{! include partial before operation body }}
+:leveloffset: +1
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-begin.adoc{{/specinclude}}
 
 {{#useMethodAndPath}}
@@ -161,9 +180,10 @@ endif::[]
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-description-before.adoc{{/specinclude}}
 
 [#{{operationIdOriginal}}-description]
-===== Description
+= Description
 
 {{! include partial before operation description body }}
+:leveloffset: +1
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-description-begin.adoc{{/specinclude}}
 
 [markdown]
@@ -171,8 +191,11 @@ endif::[]
 {{{unescapedNotes}}}
 --
 
-{{! include partials after the operation description }}
+{{! include partials after operation description body }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-description-end.adoc{{/specinclude}}
+:leveloffset: -1
+
+{{! include partial after operation description }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-description-after.adoc{{/specinclude}}
 
 {{! *** OPERATION PARAMETERS *** }}
@@ -205,7 +228,7 @@ endif::[]
 {{! *** OPERATION PRODUCES *** }}
 {{#hasProduces}}
 [#{{operationIdOriginal}}-produces]
-===== Produces
+= Produces
 
 {{#produces}}
 * {{{mediaType}}}
@@ -215,7 +238,7 @@ endif::[]
 {{! *** OPERATION CONSUMES *** }}
 {{#hasConsumes}}
 [#{{operationIdOriginal}}-consumes]
-===== Consumes
+= Consumes
 
 {{#consumes}}
 * {{{mediaType}}}
@@ -230,9 +253,10 @@ endif::[]
 {{#responses}}
 {{#-first}}
 [#{{operationIdOriginal}}-responses]
-===== Responses
+= Responses
 
 {{! include partial before operation responses body }}
+:leveloffset: +1
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-responses-begin.adoc{{/specinclude}}
 
 [cols="20,60,20"]
@@ -258,6 +282,7 @@ a| [markdown]
 
 {{! include partials after operation responses body }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-responses-end.adoc{{/specinclude}}
+:leveloffset: -1
 {{/-last}}
 {{/responses}}
 
@@ -290,9 +315,10 @@ a| [markdown]
 {{#authMethods}}
 {{#-first}}
 [#{{operationIdOriginal}}-security]
-===== Security
+= Security
 
 {{! include partial before operation security body }}
+:leveloffset: +1
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-security-begin.adoc{{/specinclude}}
 
 [cols="20,80"]
@@ -314,6 +340,7 @@ a| [markdown]
 
 {{! include partials after operation security body }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-security-end.adoc{{/specinclude}}
+:leveloffset: -1
 {{/-last}}
 {{/authMethods}}
 
@@ -323,22 +350,29 @@ a| [markdown]
 {{! *** OPERATION SAMPLES *** }}
 {{! Include partials for operation sample requests and responses }}
 {{! The partials should have a level 1 title; the level offset pushes the title down to the correct section level. }}
-:leveloffset: +4
 {{#snippetinclude}}{{operationIdOriginal}}/http-request.adoc{{/snippetinclude}}
 {{#snippetinclude}}{{operationIdOriginal}}/http-response.adoc{{/snippetinclude}}
-:leveloffset: -4
+
+{{! include partials after operation body }}
+{{#specinclude}}/paths/{{operationIdOriginal}}/operation-end.adoc{{/specinclude}}
+:leveloffset: -1
 
 {{! include partials after the operation }}
-{{#specinclude}}/paths/{{operationIdOriginal}}/operation-end.adoc{{/specinclude}}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-after.adoc{{/specinclude}}
 
 {{/operation}}
 {{/operations}}
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
 {{/apis}}
 {{/apiInfo}}
 
 {{! include partial after paths body }}
 {{#specinclude}}/paths/document-end.adoc{{/specinclude}}
+:leveloffset: -1
 
 {{! include partial after paths }}
 {{#specinclude}}/paths/document-after.adoc{{/specinclude}}
@@ -352,9 +386,10 @@ a| [markdown]
 {{! *** SECURITY *** }}
 {{#hasAuthMethods}}
 [[security]]
-== Security
+= Security
 
 {{! include partial before security body }}
+:leveloffset: +1
 {{#specinclude}}/security/document-begin.adoc{{/specinclude}}
 
 {{#authMethods}}
@@ -363,9 +398,10 @@ a| [markdown]
 {{#specinclude}}/security/{{name}}/security-scheme-before.adoc{{/specinclude}}
 
 [[security-{{name}}]]
-=== {{#lambda.titlecase}}{{name}}{{/lambda.titlecase}}
+= {{#lambda.titlecase}}{{name}}{{/lambda.titlecase}}
 
 {{! include partial before security scheme body }}
+:leveloffset: +1
 {{#specinclude}}/security/{{name}}/security-scheme-begin.adoc{{/specinclude}}
 
 {{#description}}
@@ -392,6 +428,7 @@ __Scheme__ : {{scheme}}
 
 {{! include partial after security scheme body }}
 {{#specinclude}}/security/{{name}}/security-scheme-end.adoc{{/specinclude}}
+:leveloffset: -1
 
 {{! include partial after security scheme }}
 {{#specinclude}}/security/{{name}}/security-scheme-after.adoc{{/specinclude}}
@@ -400,6 +437,7 @@ __Scheme__ : {{scheme}}
 
 {{! include partial after security body }}
 {{#specinclude}}/security/document-end.adoc{{/specinclude}}
+:leveloffset: -1
 
 {{/hasAuthMethods}}
 

@@ -1,17 +1,15 @@
 {{#hasParams}}
-{{#useTableTitles}}
 [#{{operationIdOriginal}}-parameters]
-===== Parameters
-{{/useTableTitles}}
+= Parameters
 
 {{! include partial before operation parameters body }}
+:leveloffset: +1
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-parameters-begin.adoc{{/specinclude}}
-{{/hasParams}}
 
 {{#hasPathParams}}
 [#{{operationIdOriginal}}-path]
 {{^useTableTitles}}
-===== Path Parameters
+= Path Parameters
 {{/useTableTitles}}
 {{#useTableTitles}}
 .Path Parameters
@@ -31,7 +29,7 @@
 {{#hasBodyParam}}
 [#{{operationIdOriginal}}-body]
 {{^useTableTitles}}
-===== Body Parameter
+= Body Parameter
 {{/useTableTitles}}
 {{#useTableTitles}}
 .Body Parameter
@@ -51,7 +49,7 @@
 {{#hasFormParams}}
 [#{{operationIdOriginal}}-form]
 {{^useTableTitles}}
-===== Form Parameters
+= Form Parameters
 {{/useTableTitles}}
 {{#useTableTitles}}
 .Form Parameters
@@ -71,7 +69,7 @@
 {{#hasHeaderParams}}
 [#{{operationIdOriginal}}-header]
 {{^useTableTitles}}
-===== Header Parameters
+= Header Parameters
 {{/useTableTitles}}
 {{#useTableTitles}}
 .Header Parameters
@@ -91,7 +89,7 @@
 {{#hasQueryParams}}
 [#{{operationIdOriginal}}-query]
 {{^useTableTitles}}
-===== Query Parameters
+= Query Parameters
 {{/useTableTitles}}
 {{#useTableTitles}}
 .Query Parameters
@@ -110,3 +108,5 @@
 
 {{! include partial after operation parameters body }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-parameters-end.adoc{{/specinclude}}
+:leveloffset: -1
+{{/hasParams}}
