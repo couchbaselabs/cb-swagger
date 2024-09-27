@@ -986,25 +986,25 @@ definitions:
         x-desc-refs: |
           [use-replica-srv]: admin.html#use-replica-srv
           [queryUseReplica]: ../../rest-api/rest-cluster-query-settings.html#queryUseReplica
-      <symbol><identifier>:
-        type: string
-        format: any JSON value
-        x-desc-name: identifier
-        description: |
-          Supplies the value for a named parameter in the statement.
-          Applicable if the statement or prepared statement contains 1 or more named parameters.
+    additionalProperties:
+      type: string
+      format: any JSON value
+      x-desc-name: identifier
+      description: |
+        Supplies the value for a named parameter in the statement.
+        Applicable if the statement or prepared statement contains 1 or more named parameters.
 
-          The name of this property consists of two parts:
+        The name of this property consists of two parts:
 
-          1. The `$` character or the `@` character.
-          2. An identifier that specifies the name of the parameter.
-              This must start with an alpha character, followed by one or more alphanumeric characters.
+        1. The `$` character or the `@` character.
+        2. An identifier that specifies the name of the parameter.
+            This must start with an alpha character, followed by one or more alphanumeric characters.
 
-          The value of the named parameter can be any JSON value.
+        The value of the named parameter can be any JSON value.
 
-          Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
+        Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
-          [section_srh_tlm_n1b]: /server/7.6/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
+        [section_srh_tlm_n1b]: /server/7.6/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
 
   Credentials:
     type: object
