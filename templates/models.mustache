@@ -4,26 +4,6 @@
 [#models]
 = Definitions
 
-{{! Create attributes for each model description }}
-{{#models}}
-{{#model}}
-{{#-first}}
-//tag::model-descriptions[]
-ifeval::[true == false]
-{{/-first}}
-{{#description}}
-//tag::desc-{{name}}[]
-{{{unescapedDescription}}}
-//end::desc-{{name}}[]
-{{/description}}
-{{#-last}}
-endif::[]
-//end::model-descriptions[]
-:count-models: {{-index}}
-{{/-last}}
-{{/model}}
-{{/models}}
-
 {{! include partial before definitions body }}
 :leveloffset: +1
 {{#specinclude}}/definitions/document-begin.adoc{{/specinclude}}
@@ -65,6 +45,15 @@ endif::[]
 
 {{! tag for partial}}
 //tag::{{name}}[]
+
+{{! Create partial model description }}
+{{#description}}
+ifdef::model-descriptions[]
+//tag::desc-{{name}}[]
+{{{unescapedDescription}}}
+//end::desc-{{name}}[]
+endif::model-descriptions[]
+{{/description}}
 
 [cols="25,55,20"]
 |===
