@@ -590,38 +590,6 @@ endif::[]
 [#models]
 = Definitions
 
-//tag::model-descriptions[]
-ifeval::[true == false]
-//tag::desc-Conditions[]
-Errors and warnings have the following format.
-//end::desc-Conditions[]
-//tag::desc-Controls[]
-An object containing runtime information provided along with the request. Present only if `controls` was set to true in the [Request Parameters](#Request).
-
-//end::desc-Controls[]
-//tag::desc-Execution_Timings[]
-Present only if `profile` was set to `"timings"` in the [Request Parameters](#Request).
-
-The execution details for various phases involved in the query execution, such as kernel and service execution times, number of documents processed at each query operator in each phase, and number of phase switches.
-
-//end::desc-Execution_Timings[]
-//tag::desc-Metrics[]
-An object containing metrics about the request.
-//end::desc-Metrics[]
-//tag::desc-Profile[]
-An object containing monitoring and profiling information about the request. Present only if `profile` was set to `"phases"` or `"timings"` in the [Request Parameters](#Request).
-
-//end::desc-Profile[]
-//tag::desc-Response[]
-The response body has the following structure.
-//end::desc-Response[]
-//tag::desc-Statistics[]
-Statistics collected for the operator.
-//end::desc-Statistics[]
-endif::[]
-//end::model-descriptions[]
-:count-models: 8
-
 :leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
@@ -662,6 +630,12 @@ endif::[]
 {blank}
 
 //tag::Conditions[]
+
+ifdef::model-descriptions[]
+//tag::desc-Conditions[]
+Errors and warnings have the following format.
+//end::desc-Conditions[]
+endif::model-descriptions[]
 
 [cols="25,55,20"]
 |===
@@ -783,6 +757,13 @@ endif::[]
 
 //tag::Controls[]
 
+ifdef::model-descriptions[]
+//tag::desc-Controls[]
+An object containing runtime information provided along with the request. Present only if `controls` was set to true in the [Request Parameters](#Request).
+
+//end::desc-Controls[]
+endif::model-descriptions[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -880,6 +861,15 @@ endif::[]
 
 //tag::Execution_Timings[]
 
+ifdef::model-descriptions[]
+//tag::desc-Execution_Timings[]
+Present only if `profile` was set to `"timings"` in the [Request Parameters](#Request).
+
+The execution details for various phases involved in the query execution, such as kernel and service execution times, number of documents processed at each query operator in each phase, and number of phase switches.
+
+//end::desc-Execution_Timings[]
+endif::model-descriptions[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -962,6 +952,12 @@ endif::[]
 {blank}
 
 //tag::Metrics[]
+
+ifdef::model-descriptions[]
+//tag::desc-Metrics[]
+An object containing metrics about the request.
+//end::desc-Metrics[]
+endif::model-descriptions[]
 
 [cols="25,55,20"]
 |===
@@ -1132,6 +1128,13 @@ endif::[]
 
 //tag::Profile[]
 
+ifdef::model-descriptions[]
+//tag::desc-Profile[]
+An object containing monitoring and profiling information about the request. Present only if `profile` was set to `"phases"` or `"timings"` in the [Request Parameters](#Request).
+
+//end::desc-Profile[]
+endif::model-descriptions[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -1267,6 +1270,7 @@ endif::[]
 {blank}
 
 //tag::Request[]
+
 
 [cols="25,55,20"]
 |===
@@ -2297,6 +2301,12 @@ endif::[]
 
 //tag::Response[]
 
+ifdef::model-descriptions[]
+//tag::desc-Response[]
+The response body has the following structure.
+//end::desc-Response[]
+endif::model-descriptions[]
+
 [cols="25,55,20"]
 |===
 | Property | | Schema
@@ -2487,6 +2497,12 @@ endif::[]
 {blank}
 
 //tag::Statistics[]
+
+ifdef::model-descriptions[]
+//tag::desc-Statistics[]
+Statistics collected for the operator.
+//end::desc-Statistics[]
+endif::model-descriptions[]
 
 [cols="25,55,20"]
 |===
