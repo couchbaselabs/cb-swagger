@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   title: Query Settings REST API
-  version: '7.7'
+  version: '8.0'
   description: |
     The Query Settings REST API is provided by the Query service.
     This API enables you to view or specify cluster-level Query settings.
@@ -89,7 +89,7 @@ paths:
             type: object
 
 # The output of this spec is used in more than one location, so Markdown cannot use relative links.
-# Absolute links begin with /server/7.7 -- this must be replaced for every branch.
+# Absolute links begin with /server/8.0 -- this must be replaced for every branch.
 # Relative links are currently expected to point to a location in the same page.
 # The x-desc-refs attribute records links which point to other REST API references, for future use.
 # The x-desc-name attribute records the ID of the parameter description, also for future use.
@@ -157,7 +157,7 @@ definitions:
           The [node-level][cleanupwindow] `cleanupwindow` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [additional-storage-use]: /server/7.7/learn/data/transactions.html#active-transaction-record-entries
+          [additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
           [cleanupwindow]: #cleanupwindow
         x-desc-refs: |
           [cleanupwindow]: ../n1ql/n1ql-rest-api/admin.html#cleanupwindow
@@ -179,7 +179,7 @@ definitions:
           The [node-level][completed-limit] `completed-limit` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [sys-completed-config]: /server/7.7/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+          [sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
           [completed-limit]: #completed-limit
         x-desc-refs: |
           [completed-limit]: ../n1ql/n1ql-rest-api/admin.html#completed-limit
@@ -203,7 +203,7 @@ definitions:
           The [node-level][completed-max-plan-size] `completed-max-plan-size` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [sys-completed-config]: /server/7.7/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+          [sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
           [completed-max-plan-size]: #completed-max-plan-size
         x-desc-refs: |
           [completed-max-plan-size]: ../n1ql/n1ql-rest-api/admin.html#completed-max-plan-size
@@ -226,7 +226,7 @@ definitions:
           The [node-level][completed-threshold] `completed-threshold` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [sys-completed-config]: /server/7.7/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+          [sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
           [completed-threshold]: #completed-threshold
         x-desc-refs: |
           [completed-threshold]: ../n1ql/n1ql-rest-api/admin.html#completed-threshold
@@ -295,7 +295,7 @@ definitions:
           
           Refer to [Max Parallelism][max-parallelism] for more information.
 
-          [max-parallelism]: /server/7.7/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
+          [max-parallelism]: /server/8.0/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
           [max-parallelism-srv]: #max-parallelism-srv
           [max_parallelism_req]: #max_parallelism_req
         x-desc-refs: |
@@ -398,7 +398,7 @@ definitions:
           In addition, there is a [request-level][numatrs_req] `numatrs` parameter.
           If a request includes this parameter, it will be capped by the node-level `numatrs` setting.
 
-          [additional-storage-use]: /server/7.7/learn/data/transactions.html#active-transaction-record-entries
+          [additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
           [numatrs-srv]: #numatrs-srv
           [numatrs_req]: #numatrs_req
         x-desc-refs: |
