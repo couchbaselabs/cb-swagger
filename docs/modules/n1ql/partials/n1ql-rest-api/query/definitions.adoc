@@ -67,11 +67,11 @@ Applicable if the statement or prepared statement contains 1 or more positional 
 
 The value is an array of JSON values, one for each positional parameter in the statement.
 
-Refer to link:/server/7.7/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b[Named Parameters and Positional Parameters] for details. +
+Refer to link:/server/8.0/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b[Named Parameters and Positional Parameters] for details. +
 **Example** : `[ "LAX", 6 ]`|< object > array
 |**atrcollection** +
 __optional__|[#atrcollection_req]
-Specifies the collection where the link:/server/7.7/learn/data/transactions.html#active-transaction-record-entries[active transaction record] (ATR) is stored.
+Specifies the collection where the link:/server/8.0/learn/data/transactions.html#active-transaction-record-entries[active transaction record] (ATR) is stored.
 The collection must be present.
 If not specified, the ATR is stored in the default collection in the default scope in the bucket containing the first mutated document within the transaction.
 
@@ -86,7 +86,7 @@ __optional__|[#auto_execute]
 Specifies that prepared statements should be executed automatically as soon as they are created.
 This saves you from having to make two separate requests in cases where you want to prepare a statement and execute it immediately.
 
-Refer to link:/server/7.7/n1ql/n1ql-language-reference/prepare.html#auto-execute[Auto-Execute] for more information. +
+Refer to link:/server/8.0/n1ql/n1ql-language-reference/prepare.html#auto-execute[Auto-Execute] for more information. +
 **Default** : `false` +
 **Example** : `true`|boolean
 |**client_context_id** +
@@ -132,7 +132,7 @@ If credentials are supplied in the request header, then HTTP Basic Authenticatio
 } ]`|< <<_credentials,Credentials>> > array
 |**durability_level** +
 __optional__|[#durability_level]
-The level of link:/server/7.7/learn/data/durability.html[durability] for mutations produced by the request.
+The level of link:/server/8.0/learn/data/durability.html[durability] for mutations produced by the request.
 
 If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the <<tximplicit,tximplicit>> parameter set to `true`, the durability level is specified for all mutations within that transaction.
 
@@ -229,7 +229,7 @@ __optional__|Specifies the namespace to use. Currently, only the `default` names
 **Example** : `"default"`|string
 |**numatrs** +
 __optional__|[#numatrs_req]
-Specifies the total number of link:/server/7.7/learn/data/transactions.html#active-transaction-record-entries[active transaction records].
+Specifies the total number of link:/server/8.0/learn/data/transactions.html#active-transaction-record-entries[active transaction records].
 Must be a positive integer.
 
 The <<numatrs-srv,node-level>> `numatrs` setting specifies the default for this parameter for a single node.
@@ -264,7 +264,7 @@ __optional__|[#prepared]
 _Required_ if `statement` not provided.
 
 The name of the prepared SQL++ statement to be executed.
-Refer to link:/server/7.7/n1ql/n1ql-language-reference/execute.html[EXECUTE] for examples.
+Refer to link:/server/8.0/n1ql/n1ql-language-reference/execute.html[EXECUTE] for examples.
 
 If both `prepared` and `statement` are present and non-empty, an error is returned. +
 **Example** : `"[127.0.0.1:8091]pricy_hotel"`|string
@@ -377,7 +377,7 @@ For multi-statement requests, the default behavior is RYOW within each request.
 If you want to disable RYOW within a request, add a separate `request_consistency` parameter that can be set to `not_bounded`.
 
 If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the <<tximplicit,tximplicit>> parameter set to `true`, then this parameter sets the transactional scan consistency.
-Refer to link:/server/7.7/n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency[Transactional Scan Consistency] for details. +
+Refer to link:/server/8.0/n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency[Transactional Scan Consistency] for details. +
 **Default** : `"not_bounded"` +
 **Example** : `"at_plus"`|enum (not_bounded, at_plus, request_plus, statement_plus)
 |**scan_vector** +
@@ -576,7 +576,7 @@ If the query does not contain a `USING FTS` hint, and this parameter is set to t
 If a qualified full-text index is available, it is selected for the query.
 If none of the available full-text indexes are qualified, the available GSI indexes are considered instead.
 
-Refer to link:/server/7.7/n1ql/n1ql-language-reference/flex-indexes.html[Flex Indexes] for more information. +
+Refer to link:/server/8.0/n1ql/n1ql-language-reference/flex-indexes.html[Flex Indexes] for more information. +
 **Default** : `false` +
 **Example** : `true`|boolean
 |**use_replica** +
@@ -620,7 +620,7 @@ This must start with an alpha character, followed by one or more alphanumeric ch
 
 The value of the named parameter can be any JSON value.
 
-Refer to link:/server/7.7/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b[Named Parameters and Positional Parameters] for details.|string (any JSON value)
+Refer to link:/server/8.0/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b[Named Parameters and Positional Parameters] for details.|string (any JSON value)
 |===
 
 

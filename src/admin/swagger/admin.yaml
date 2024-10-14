@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   title: Query Admin REST API
-  version: '7.7'
+  version: '8.0'
   description: |
     The Query Admin REST API is a secondary API provided by the Query service.
     This API enables you to retrieve statistics about the clusters and nodes running the Query service; view or specify node-level settings; and view or delete requests.
@@ -37,7 +37,7 @@ tags:
     description: Other operations.
 
 # The output of this spec is used in more than one location, so Markdown cannot use relative links.
-# Absolute links begin with /server/7.7 -- this must be replaced for every branch.
+# Absolute links begin with /server/8.0 -- this must be replaced for every branch.
 # Relative links are currently expected to point to a location in the same page.
 # The x-desc-refs attribute records links which point to other REST API references, for future use.
 # The x-desc-name attribute records the ID of the parameter description, also for future use.
@@ -1245,7 +1245,7 @@ definitions:
           The [request-level][atrcollection_req] `atrcollection` parameter specifies this property per request.
           If a request does not include this parameter, the node-level `atrcollection` setting will be used.
 
-          [additional-storage-use]: /server/7.7/learn/data/transactions.html#active-transaction-record-entries
+          [additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
           [atrcollection_req]: #atrcollection_req
         x-desc-refs: |
           [atrcollection_req]: index.html#atrcollection_req
@@ -1260,7 +1260,7 @@ definitions:
           
           Refer to [Auto-Prepare][auto-prepare] for more information.
 
-          [auto-prepare]: /server/7.7/n1ql/n1ql-language-reference/prepare.html#auto-prepare
+          [auto-prepare]: /server/8.0/n1ql/n1ql-language-reference/prepare.html#auto-prepare
 
       cleanupclientattempts:
         type: boolean
@@ -1317,7 +1317,7 @@ definitions:
           The [cluster-level][queryCleanupWindow] `queryCleanupWindow` setting specifies this property for the whole cluster.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [additional-storage-use]: /server/7.7/learn/data/transactions.html#active-transaction-record-entries
+          [additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
           [queryCleanupWindow]: #queryCleanupWindow
         x-desc-refs: |
           [queryCleanupWindow]: ../../rest-api/rest-cluster-query-settings.html#queryCleanupWindow
@@ -1334,7 +1334,7 @@ definitions:
 
           Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
 
-          [sys-completed-config]: /server/7.7/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+          [sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
         properties:
           aborted:
             type: boolean
@@ -1376,7 +1376,7 @@ definitions:
 
               Refer to [Configure the Completed Requests][sys-completed-config] for more information.
 
-              [sys-completed-config]: /server/7.7/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+              [sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
           threshold:
             type: integer
             format: int32
@@ -1412,7 +1412,7 @@ definitions:
           The [cluster-level][queryCompletedLimit] `queryCompletedLimit` setting specifies this property for the whole cluster.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [sys-completed-config]: /server/7.7/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+          [sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
           [queryCompletedLimit]: #queryCompletedLimit
         x-desc-refs: |
           [queryCompletedLimit]: ../../rest-api/rest-cluster-query-settings.html#queryCompletedLimit
@@ -1436,7 +1436,7 @@ definitions:
           The [cluster-level][queryCompletedMaxPlanSize] `queryCompletedMaxPlanSize` setting specifies this property for the whole cluster.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [sys-completed-config]: /server/7.7/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+          [sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
           [queryCompletedMaxPlanSize]: #queryCompletedMaxPlanSize
         x-desc-refs: |
           [queryCompletedMaxPlanSize]: ../../rest-api/rest-cluster-query-settings.html#queryCompletedMaxPlanSize
@@ -1459,7 +1459,7 @@ definitions:
           The [cluster-level][queryCompletedThreshold] `queryCompletedThreshold` setting specifies this property for the whole cluster.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [sys-completed-config]: /server/7.7/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+          [sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
           [queryCompletedThreshold]: #queryCompletedThreshold
         x-desc-refs: |
           [queryCompletedThreshold]: ../../rest-api/rest-cluster-query-settings.html#queryCompletedThreshold
@@ -1606,7 +1606,7 @@ definitions:
 
           Refer to [Max Parallelism][max-parallelism] for more information.
 
-          [max-parallelism]: /server/7.7/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
+          [max-parallelism]: /server/8.0/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
           [queryMaxParallelism]: #queryMaxParallelism
           [max_parallelism_req]: #max_parallelism_req
         x-desc-refs: |
@@ -1755,7 +1755,7 @@ definitions:
           In addition, the [request-level][numatrs_req] `numatrs` parameter specifies this property per request.
           The minimum of that and the node-level `numatrs` setting is applied.
 
-          [additional-storage-use]: /server/7.7/learn/data/transactions.html#active-transaction-record-entries
+          [additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
           [queryNumAtrs]: #queryNumAtrs
           [numatrs_req]: #numatrs_req
         x-desc-refs: |
@@ -1870,7 +1870,7 @@ definitions:
           The [request-level][profile_req] `profile` parameter specifies this property per request.
           If a request does not include this parameter, the node-level `profile` setting will be used.
 
-          [monitor-profile-details]: /server/7.7/manage/monitor/monitoring-n1ql-query.html#monitor-profile-details
+          [monitor-profile-details]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#monitor-profile-details
           [profile_req]: #profile_req
         x-desc-refs: |
           [profile_req]: index.html#profile_req
