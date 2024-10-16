@@ -1,30 +1,28 @@
 buildscript {
     repositories {
-        jcenter()
-        mavenCentral()
-        maven { url 'https://oss.jfrog.org/artifactory/oss-snapshot-local/' }
-        //mavenLocal()
+        mavenLocal()
+        maven { url "https://repo1.maven.org/maven2" }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        maven {
+            url "https://oss.sonatype.org/content/repositories/releases/"
+        }
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
     }
     dependencies {
-        classpath 'io.github.swagger2markup:swagger2markup-gradle-plugin:1.3.3'
-        classpath "io.github.swagger2markup:swagger2markup:1.3.3"
-        classpath "io.github.swagger2markup:swagger2markup-import-files-ext:1.3.3"
-        classpath "io.github.swagger2markup:swagger2markup-spring-restdocs-ext:1.3.3"
+        classpath "org.openapitools:openapi-generator-gradle-plugin:7.8.0"
     }
 }
 
-apply plugin: 'io.github.swagger2markup'
-
-group 'io.github.swagger2markup'
-version '1.3.3'
-
-repositories {
-    jcenter()
-    mavenCentral()
-}
+apply plugin: 'org.openapi.generator'
 
 wrapper {
-    gradleVersion = '7.3'
+    gradleVersion = '8.10.2'
 }
 
-defaultTasks 'admin:convertSwagger2markup', 'query-service:convertSwagger2markup', 'query-settings:convertSwagger2markup', 'functions:convertSwagger2markup', 'indexes:convertSwagger2markup', 'analytics-service:convertSwagger2markup', 'analytics-config:convertSwagger2markup', 'analytics-admin:convertSwagger2markup', 'analytics-links:convertSwagger2markup', 'analytics-library:convertSwagger2markup', 'analytics-settings:convertSwagger2markup'
+defaultTasks 'admin:openApiGenerate',
+             'query-service:openApiGenerate'
+// defaultTasks 'admin:openApiGenerate', 'query-service:openApiGenerate', 'query-settings:openApiGenerate', 'functions:openApiGenerate', 'indexes:openApiGenerate', 'analytics-service:openApiGenerate', 'analytics-config:openApiGenerate', 'analytics-admin:openApiGenerate', 'analytics-links:openApiGenerate', 'analytics-library:openApiGenerate', 'analytics-settings:openApiGenerate'
