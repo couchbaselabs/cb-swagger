@@ -187,7 +187,7 @@ definitions:
           Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
           [section_srh_tlm_n1b]: /server/7.6/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
-        x-has-example: true
+        x-has-example: false
         example:
           - LAX
           - 6
@@ -210,7 +210,7 @@ definitions:
         x-desc-refs: |
           [atrcollection-srv]: admin.html#atrcollection-srv
         x-has-example: true
-        example: default:&grave;travel-sample&grave;.transaction.test
+        example: default:`travel-sample`.transaction.test
       auto_execute:
         type: boolean
         x-desc-name: auto_execute
@@ -277,7 +277,7 @@ definitions:
           You can specify credentials for multiple identities.
 
           If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored.
-        x-has-example: true
+        x-has-example: false
         example:
           - user: local:bucket-name
             pass: password
@@ -774,7 +774,7 @@ definitions:
 
           This restriction does not apply when specifying the request parameters in JSON format.
         x-has-example: true
-        example: SELECT * FROM &grave;travel-sample&grave;.inventory.hotel LIMIT 1
+        example: SELECT * FROM `travel-sample`.inventory.hotel LIMIT 1
       timeout:
         type: string
         format: duration
@@ -1009,9 +1009,13 @@ definitions:
         description: >
           An identity for authentication.
           Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
+        x-has-example: true
+        example: "local:bucket-name"
       pass:
         type: string
         description: A password for authentication.
+        x-has-example: true
+        example: "password"
 
   Response:
     type: object
