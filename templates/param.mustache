@@ -17,11 +17,11 @@ a| {{#vendorExtensions}}
 {{/isEnum}}
 {{! default value}}
 {{#vendorExtensions.x-has-default}}
-*Default:* `{{#isString}}"{{/isString}}{{{defaultValue}}}{{#isString}}"{{/isString}}`
+*Default:* `{{#isString}}pass:c["{{/isString}}{{{defaultValue}}}{{#isString}}"]{{/isString}}`
 {{/vendorExtensions.x-has-default}}
 {{! pattern}}
 {{#pattern}}
-*Pattern:* `{{{pattern}}}`
+*Pattern:* `pass:c[{{{pattern}}}]`
 {{/pattern}}
 {{! minimum value}}
 {{#minimum}}
@@ -66,7 +66,7 @@ a| {{#vendorExtensions}}
 {{! example -- deprecated}}
 {{#isBodyParam}}
 {{#vendorExtensions.x-has-example}}
-*Example:* `{{#isString}}"{{/isString}}{{{example}}}{{#isString}}"{{/isString}}`
+*Example:* `{{#isString}}pass:c["{{/isString}}{{{example}}}{{#isString}}"]{{/isString}}`
 {{/vendorExtensions.x-has-example}}
 {{/isBodyParam}}
 {blank}
