@@ -180,9 +180,6 @@ The name of a library.
 
 |===
 
-
-
-
 [#delete_library-query]
 .Query Parameters
 {blank}
@@ -228,6 +225,9 @@ For scoped libraries only. The scope in which the library is stored.
 
 
 |===
+
+
+
 
 
 include::{specDir}paths/delete_library/operation-parameters-end.adoc[opts=optional]
@@ -399,9 +399,6 @@ By default, this operation returns all global libraries and functions, and all s
 
 
 
-
-
-
 [#get_collection-query]
 .Query Parameters
 {blank}
@@ -447,6 +444,9 @@ For scoped libraries only. The scope from which to fetch libraries.
 
 
 |===
+
+
+
 
 
 include::{specDir}paths/get_collection/operation-parameters-end.adoc[opts=optional]
@@ -642,9 +642,6 @@ The name of a library.
 
 |===
 
-
-
-
 [#get_library-query]
 .Query Parameters
 {blank}
@@ -690,6 +687,9 @@ For scoped libraries only. The scope in which the library is stored.
 
 
 |===
+
+
+
 
 
 include::{specDir}paths/get_library/operation-parameters-end.adoc[opts=optional]
@@ -891,35 +891,6 @@ The name of a library.
 
 |===
 
-[#post_library-body]
-.Body Parameter
-{blank}
-
-[cols="20,60,20"]
-|===
-|Name| Description| Schema
-
-a| *Body* +
-_required_
-a| 
-
-
-[markdown]
---
-
-The JavaScript code for all functions in the library.
---
-
-[%hardbreaks]
-{blank}
-
-| String
-
-
-|===
-
-
-
 [#post_library-query]
 .Query Parameters
 {blank}
@@ -956,6 +927,35 @@ a|
 For scoped libraries only. The scope in which the library is stored.
 
 
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+[#post_library-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *Body* +
+_required_
+a| 
+
+
+[markdown]
+--
+
+The JavaScript code for all functions in the library.
 --
 
 [%hardbreaks]
