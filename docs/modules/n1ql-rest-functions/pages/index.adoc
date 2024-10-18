@@ -1,0 +1,1383 @@
+= Query Functions REST API
+:keywords: OpenAPI, REST
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+include::partial$header-attributes.adoc[opts=optional]
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+
+:leveloffset: 1
+
+include::{specDir}overview/document-before.adoc[opts=optional]
+
+
+[[overview]]
+= Overview
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+The Query Functions REST API is a secondary API provided by the Query service.
+This API enables you to manage the JavaScript libraries and objects that are used to create SQL++ user-defined functions.
+--
+
+[discrete#version]
+= Version information
+[%hardbreaks]
+__Version__ : 7.6
+
+[discrete#host]
+= Host information
+
+....
+http://localhost:8093
+....
+
+
+
+
+// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
+
+
+[[resources]]
+= Resources
+
+:count-apis: 1
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
+
+This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+<<tag-Default>>
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Default]
+= Default
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<delete_library>>
+<<get_collection>>
+<<get_library>>
+<<post_library>>
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-before.adoc[opts=optional]
+
+
+[#delete_library]
+= Delete a Library
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_library/operation-begin.adoc[opts=optional]
+
+
+....
+DELETE /evaluator/v1/libraries/{library}
+....
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-description-before.adoc[opts=optional]
+
+
+[#delete_library-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_library/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Deletes the specified library entirely.
+
+By default, this operation deletes a global library.
+For a scoped library, you must specify the bucket and scope.
+
+--
+
+
+include::{specDir}paths/delete_library/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-parameters-before.adoc[opts=optional]
+
+
+[#delete_library-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_library/operation-parameters-begin.adoc[opts=optional]
+
+
+[#delete_library-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *library* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of a library.
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+[#delete_library-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *bucket* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For scoped libraries only. The bucket in which the library is stored.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *scope* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For scoped libraries only. The scope in which the library is stored.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+
+
+include::{specDir}paths/delete_library/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-parameters-after.adoc[opts=optional]
+
+
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-responses-before.adoc[opts=optional]
+
+
+[#delete_library-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_library/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+| 
+
+| 400
+a| [markdown]
+--
+Bad request. The path may not conform to the schema. 
+--
+| 
+
+| 404
+a| [markdown]
+--
+Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-security-before.adoc[opts=optional]
+
+
+[#delete_library-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_library/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-Scope>>
+| http (basic)
+| <<security-Global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}delete_library/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}delete_library/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-before.adoc[opts=optional]
+
+
+[#get_collection]
+= Read All Libraries
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_collection/operation-begin.adoc[opts=optional]
+
+
+....
+GET /evaluator/v1/libraries
+....
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-description-before.adoc[opts=optional]
+
+
+[#get_collection-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_collection/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns all libraries and functions.
+
+By default, this operation returns all global libraries and functions, and all scoped libraries and functions. To return all the libraries and functions in a single scope, specify a bucket and scope.
+
+--
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-parameters-before.adoc[opts=optional]
+
+
+[#get_collection-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_collection/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#get_collection-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *bucket* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For scoped libraries only. The bucket from which to fetch libraries.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *scope* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For scoped libraries only. The scope from which to fetch libraries.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+
+
+include::{specDir}paths/get_collection/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-parameters-after.adoc[opts=optional]
+
+
+[#get_collection-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-responses-before.adoc[opts=optional]
+
+
+[#get_collection-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_collection/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+An array of objects, each giving information about a single library.
+--
+| <<Libraries>>
+list
+
+| 400
+a| [markdown]
+--
+Bad request. The path may not conform to the schema. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-security-before.adoc[opts=optional]
+
+
+[#get_collection-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_collection/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-Scope>>
+| http (basic)
+| <<security-Global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}get_collection/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get_collection/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-before.adoc[opts=optional]
+
+
+[#get_library]
+= Read a Library
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_library/operation-begin.adoc[opts=optional]
+
+
+....
+GET /evaluator/v1/libraries/{library}
+....
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-description-before.adoc[opts=optional]
+
+
+[#get_library-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_library/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns a library with all its functions.
+
+By default, this operation returns a global library. For a scoped library, you must specify the bucket and scope.
+
+--
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-parameters-before.adoc[opts=optional]
+
+
+[#get_library-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_library/operation-parameters-begin.adoc[opts=optional]
+
+
+[#get_library-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *library* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of a library.
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+[#get_library-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *bucket* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For scoped libraries only. The bucket in which the library is stored.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *scope* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For scoped libraries only. The scope in which the library is stored.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+
+
+include::{specDir}paths/get_library/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-parameters-after.adoc[opts=optional]
+
+
+[#get_library-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-responses-before.adoc[opts=optional]
+
+
+[#get_library-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_library/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+An object with a single property, giving information about the specified library.
+--
+| <<Functions>>
+
+| 400
+a| [markdown]
+--
+Bad request. The path may not conform to the schema. 
+--
+| 
+
+| 404
+a| [markdown]
+--
+Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-security-before.adoc[opts=optional]
+
+
+[#get_library-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_library/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-Scope>>
+| http (basic)
+| <<security-Global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}get_library/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get_library/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_library/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-before.adoc[opts=optional]
+
+
+[#post_library]
+= Create or Update a Library
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_library/operation-begin.adoc[opts=optional]
+
+
+....
+POST /evaluator/v1/libraries/{library}
+....
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-description-before.adoc[opts=optional]
+
+
+[#post_library-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_library/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Creates the specified library and its associated functions. If the specified library exists, the existing library is overwritten.
+
+By default, this operation creates or updates a global library. For a scoped library, you must specify the bucket and scope.
+
+--
+
+
+include::{specDir}paths/post_library/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-parameters-before.adoc[opts=optional]
+
+
+[#post_library-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_library/operation-parameters-begin.adoc[opts=optional]
+
+
+[#post_library-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *library* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of a library.
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+[#post_library-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *bucket* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For scoped libraries only. The bucket in which the library is stored.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *scope* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For scoped libraries only. The scope in which the library is stored.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+[#post_library-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *Body* +
+_required_
+a| 
+
+
+[markdown]
+--
+
+The JavaScript code for all functions in the library.
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+include::{specDir}paths/post_library/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-parameters-after.adoc[opts=optional]
+
+
+
+[#post_library-consumes]
+= Consumes
+
+* application/json
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-responses-before.adoc[opts=optional]
+
+
+[#post_library-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_library/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+| 
+
+| 400
+a| [markdown]
+--
+Bad request. The body of the request may be incorrect, or the path may not conform to the schema. 
+--
+| 
+
+| 404
+a| [markdown]
+--
+Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-security-before.adoc[opts=optional]
+
+
+[#post_library-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_library/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-Scope>>
+| http (basic)
+| <<security-Global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}post_library/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}post_library/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
+
+
+[#models]
+= Definitions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 10]
+[.two-columns]
+endif::[]
+[%hardbreaks]
+<<Functions>>
+<<Libraries>>
+
+
+
+// markup not found, no include::{specDir}definitions/Functions/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#Functions]
+= Functions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Functions/definition-begin.adoc[opts=optional]
+
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Functions[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+_additional +
+property_
+a| 
+
+[markdown]
+--
+The JavaScript code for all functions in the library.
+
+The name of the property is the name of the library.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"]`
+{blank}
+| String
+
+|===
+
+//end::Functions[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Functions/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Functions/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Libraries/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#Libraries]
+= Library
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Libraries/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Libraries[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*name* +
+_required_
+a| 
+
+[markdown]
+--
+The name of a library.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["math"]`
+{blank}
+| String
+
+a| 
+*bucket* +
+_required_
+a| 
+
+[markdown]
+--
+For scoped libraries, the bucket in which the library is stored. For global libraries, this string is empty.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["travel-sample"]`
+{blank}
+| String
+
+a| 
+*scope* +
+_required_
+a| 
+
+[markdown]
+--
+For scoped libraries, the scope in which the library is stored. For global libraries, this string is empty.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["inventory"]`
+{blank}
+| String
+
+a| 
+*code* +
+_required_
+a| 
+
+[markdown]
+--
+The JavaScript code for all functions in the library.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"]`
+{blank}
+| String
+
+|===
+
+//end::Libraries[]
+
+
+
+
+
+// markup not found, no include::{specDir}definitions/Libraries/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Libraries/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
+
+
+[[security]]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}security/document-begin.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Global/security-scheme-before.adoc[opts=optional]
+
+
+[[security-Global]]
+= Global
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Global/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+To manage global libraries, users must have the *Manage Global External Functions* RBAC role.
+
+This role enables you to create, read, update, or delete any global library, but does not give you access to any scoped libraries.
+
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Global/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Global/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Scope/security-scheme-before.adoc[opts=optional]
+
+
+[[security-Scope]]
+= Scope
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Scope/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+To manage scoped libraries, users must have the *Manage Scope External Functions* RBAC role, with permissions on the specified bucket and scope.
+
+This role enables you to create, read, update, or delete any library in the scope to which you have access, but does not give you access to any other scoped libraries.
+In addition, this role enables you to read any global library, but not to create, update, or delete them.
+
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Scope/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Scope/security-scheme-after.adoc[opts=optional]
+
+
+
+
+include::{specDir}security/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
