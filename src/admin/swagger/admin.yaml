@@ -6,19 +6,17 @@ info:
     The Query Admin REST API is a secondary API provided by the Query service.
     This API enables you to retrieve statistics about the clusters and nodes running the Query service; view or specify node-level settings; and view or delete requests.
 
-    The API schemes and host URLs are as follows:
+host: localhost:8093
 
-    * http://node:8093/
-    * https://node:18093/ (for secure access)
-
-    where `node` is the host name or IP address of a computer running the Query service.
+schemes:
+  - http
 
 produces:
   - application/json
 
 consumes:
-  - application/x-www-form-urlencoded
   - application/json
+  - application/x-www-form-urlencoded
 
 tags:
   - name: configuration
@@ -42,8 +40,8 @@ tags:
 # The x-desc-refs attribute records links which point to other REST API references, for future use.
 # The x-desc-name attribute records the ID of the parameter description, also for future use.
 
-# The swagger2markup Markdown converter does not recognize HTML tags like <a id="foo">.
-# For the moment we have to use the AsciiDoc markup [#foo], which is passed through unchanged.
+# The AsciiDoc Markdown converter does not recognize HTML tags like <a id="foo">.
+# Use the x-desc-name vendor extension to specify the anchor for a property.
 
 paths:
   /admin/clusters:
@@ -180,9 +178,7 @@ paths:
         - Default: []
       responses:
         200:
-          description: True if the prepared statement was successfully deleted.
-          schema:
-            type: boolean
+          description: The prepared statement was successfully deleted.
         500:
           description: Returns an error message if the prepared statement could not be found.
           schema:
@@ -236,9 +232,7 @@ paths:
         - Default: []
       responses:
         200:
-          description: True if the active request was successfully terminated.
-          schema:
-            type: boolean
+          description: The active request was successfully terminated.
         500:
           description: Returns an error message if the active request could not be found.
           schema:
@@ -276,7 +270,7 @@ paths:
         - Default: []
       responses:
         200:
-          description: An object containing information about the specified active request.
+          description: An object containing information about the specified completed request.
           schema:
             $ref: "#/definitions/Requests"
     delete:
@@ -292,9 +286,7 @@ paths:
         - Default: []
       responses:
         200:
-          description: True if the completed request was successfully purged.
-          schema:
-            type: boolean
+          description: The completed request was successfully purged.
         500:
           description: Returns an error message if the completed request could not be found.
           schema:
@@ -307,8 +299,8 @@ paths:
       description: |
         Returns all prepared index statements.
 
-        * Use [Retrieve a Prepared Statement](#_get_prepared) to get information about a prepared index statement.
-        * Use [Delete a Prepared Statement](#_delete_prepared) to delete a prepared index statement.
+        * Use [Retrieve a Prepared Statement](#get_prepared) to get information about a prepared index statement.
+        * Use [Delete a Prepared Statement](#delete_prepared) to delete a prepared index statement.
       tags:
         - prepared statements
       security:
@@ -331,8 +323,8 @@ paths:
       description: |
         Returns all active index requests.
 
-        * Use [Retrieve an Active Request](#_get_active_request) to get information about an active index request.
-        * Use [Delete an Active Request](#_delete_active_request) to terminate an active index request.
+        * Use [Retrieve an Active Request](#get_active_request) to get information about an active index request.
+        * Use [Delete an Active Request](#delete_active_request) to terminate an active index request.
       tags:
         - active requests
       security:
@@ -353,8 +345,8 @@ paths:
       description: |
         Returns all completed index requests.
 
-        * Use [Retrieve a Completed Request](#_get_completed_request) to get information about a completed index request.
-        * Use [Delete a Completed Request](#_delete_completed_request) to purge a completed index request.
+        * Use [Retrieve a Completed Request](#get_completed_request) to get information about a completed index request.
+        * Use [Delete a Completed Request](#delete_completed_request) to purge a completed index request.
       tags:
         - completed requests
       security:
@@ -399,7 +391,7 @@ paths:
         200:
           description: Indicates that the garbage collector was invoked.
           schema:
-            $ref: "#/definitions/Garbage Collection"
+            $ref: "#/definitions/Garbage"
         401:
           description: |
             Error 10000: authentication failure.
@@ -421,7 +413,7 @@ paths:
         200:
           description: Indicates that the garbage collector was invoked.
           schema:
-            $ref: "#/definitions/Garbage Collection"
+            $ref: "#/definitions/Garbage"
         401:
           description: |
             Error 10000: authentication failure.
@@ -500,10 +492,10 @@ paths:
         - text/html
       responses:
         302:
-          description: Redirects to the [Retrieve All Statistics](#_get_stats) endpoint.
-          schema:
-            type: string
-            format: text/html
+          description: Redirects to the [Retrieve All Statistics](#get_stats) endpoint.
+          # schema:
+          #   type: string
+          #   format: text/html
 
   /admin/settings:
     get:
@@ -628,6 +620,7 @@ definitions:
             "fetch": 16,
             "indexScan": 187
           }
+        x-has-example: true
       phaseOperators:
         type: object
         description: |
@@ -642,6 +635,7 @@ definitions:
             "fetch": 1,
             "indexScan": 2
           }
+        x-has-example: true
       phaseTimes:
         type: object
         description: |
@@ -659,6 +653,7 @@ definitions:
             "plan": "11.831101ms",
             "run": "16.892181ms"
           }
+        x-has-example: true
       remoteAddr:
         type: string
         description: IP address and port number of the client application, from where the query is received.
@@ -1231,10 +1226,11 @@ definitions:
       atrcollection:
         type: string
         default: ""
-        example: default:&grave;travel-sample&grave;.transaction.test
+        example: default:`travel-sample`.transaction.test
+        x-has-default: true
+        x-has-example: true
         x-desc-name: atrcollection-srv
         description: |
-          [#atrcollection-srv]
           Specifies the collection where [active transaction records][additional-storage-use] are stored.
           The collection must be present.
           If not specified, the active transaction record is stored in the default collection in the default scope in the bucket containing the first mutated document within the transaction.
@@ -1253,9 +1249,10 @@ definitions:
         type: boolean
         default: false
         example: true
+        x-has-default: true
+        x-has-example: true
         x-desc-name: auto-prepare
         description: |
-          [#auto-prepare]
           Specifies whether the query engine should create a prepared statement every time a SQL++ request is submitted, whether the PREPARE statement is included or not.
           
           Refer to [Auto-Prepare][auto-prepare] for more information.
@@ -1266,9 +1263,10 @@ definitions:
         type: boolean
         default: true
         example: false
+        x-has-default: true
+        x-has-example: true
         x-desc-name: cleanupclientattempts
         description: |
-          [#cleanupclientattempts]
           When enabled, the Query service preferentially aims to clean up just transactions that it has created, leaving transactions for the distributed cleanup process only when it is forced to.
 
           The [cluster-level][queryCleanupClientAttempts] `queryCleanupClientAttempts` setting specifies this property for the whole cluster.
@@ -1281,9 +1279,10 @@ definitions:
         type: boolean
         default: true
         example: false
+        x-has-default: true
+        x-has-example: true
         x-desc-name: cleanuplostattempts
         description: |
-          [#cleanuplostattempts]
           When enabled, the Query service takes part in the distributed cleanup process, and cleans up expired transactions created by any client.
 
           The [cluster-level][queryCleanupLostAttempts] `queryCleanupLostAttempts` setting specifies this property for the whole cluster.
@@ -1297,9 +1296,10 @@ definitions:
         format: duration
         default: 60s
         example: 30s
+        x-has-default: true
+        x-has-example: true
         x-desc-name: cleanupwindow
         description: |
-          [#cleanupwindow]
           Specifies how frequently the Query service checks its subset of [active transaction records][additional-storage-use] for cleanup.
           Decreasing this setting causes expiration transactions to be found more swiftly, with the tradeoff of increasing the number of reads per second used for the scanning process.
 
@@ -1323,12 +1323,11 @@ definitions:
           [queryCleanupWindow]: ../../rest-api/rest-cluster-query-settings.html#queryCleanupWindow
       completed:
         type: object
-        title: Logging parameters
+        title: Logging Parameters
         default: {"aborted": null, "threshold": 1000}
         example: {"user": "marco", "error": 12003}
         x-desc-name: completed
         description: |
-          [#completed]
           A nested object that sets the parameters for the completed requests catalog.
           All completed requests that match these parameters are tracked in the completed requests catalog.
 
@@ -1340,11 +1339,15 @@ definitions:
             type: boolean
             default: null
             example: true
+            x-has-default: true
+            x-has-example: true
             description: If true, all requests that generate a panic are logged.
           client:
             type: string
             default: ""
             example: "172.1.2.3"
+            x-has-default: true
+            x-has-example: true
             description: |
               The IP address of the client.
               If specified, all completed requests from this IP address are logged.
@@ -1364,6 +1367,8 @@ definitions:
             format: int32
             default: null
             example: 12003
+            x-has-default: true
+            x-has-example: true
             description: |
               An error number.
               If specified, all completed queries returning this error number are logged.
@@ -1371,6 +1376,8 @@ definitions:
             type: string
             default: ""
             example: "both_user_and_error"
+            x-has-default: true
+            x-has-example: true
             description: |
               A unique string which tags a set of qualifiers.
 
@@ -1382,6 +1389,8 @@ definitions:
             format: int32
             default: 1000
             example: 7000
+            x-has-default: true
+            x-has-example: true
             description: |
               A duration in milliseconds.
               If specified, all completed queries lasting longer than this threshold are logged.
@@ -1391,6 +1400,8 @@ definitions:
             type: string
             default: ""
             example: "marco"
+            x-has-default: true
+            x-has-example: true
             description: |
               A user name, as given in the request credentials.
               If specified, all completed queries with this user name are logged.
@@ -1399,9 +1410,10 @@ definitions:
         format: int32
         default: 4000
         example: 7000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: completed-limit
         description: |
-          [#completed-limit]
           Sets the number of requests to be logged in the completed requests catalog.
           As new completed requests are added, old ones are removed.
 
@@ -1422,9 +1434,9 @@ definitions:
         default: 262144
         minimum: 0
         maximum: 20840448
+        x-has-default: true
         x-desc-name: completed-max-plan-size
         description: |
-          [#completed-max-plan-size]
           A plan size in bytes.
           Limits the size of query execution plans that can be logged in the completed requests catalog.
           Values larger than the maximum limit are silently treated as the maximum limit.
@@ -1445,9 +1457,10 @@ definitions:
         format: int32
         default: 1000
         example: 7000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: completed-threshold
         description: |
-          [#completed-threshold]
           A duration in milliseconds.
           All completed queries lasting longer than this threshold are logged in the completed requests catalog.
 
@@ -1467,9 +1480,10 @@ definitions:
         type: boolean
         default: false
         example: true
+        x-has-default: true
+        x-has-example: true
         x-desc-name: controls-srv
         description: |
-          [#controls-srv]
           Specifies if there should be a controls section returned with the request results.
 
           When set to `true`, the query response document includes a controls section with runtime information provided along with the request, such as positional and named parameters or settings.
@@ -1486,9 +1500,10 @@ definitions:
         type: string
         default: ""
         example: /tmp/info.txt
+        x-has-default: true
+        x-has-example: true
         x-desc-name: cpuprofile
         description: |
-          [#cpuprofile]
           The absolute path and filename to write the CPU profile to a local file.
 
           The output file includes a controls section and performance measurements, such as memory allocation and garbage collection, to pinpoint bottlenecks and ways to improve your code execution.
@@ -1500,18 +1515,19 @@ definitions:
         type: boolean
         default: false
         example: true
+        x-has-default: true
+        x-has-example: true
         x-desc-name: debug
         description: |
-          [#debug]
           Use debug mode.
 
           When set to `true`, extra logging is provided.
       distribute:
         type: boolean
         example: true
+        x-has-example: true
         x-desc-name: distribute
         description: |
-          [#distribute]
           This field is only available with the POST method.
           When specified alongside other settings, this field instructs the node that is processing the request to cascade those settings to all other query nodes.
           The actual value of this field is ignored.
@@ -1520,27 +1536,28 @@ definitions:
         format: int32
         default: 16384
         example: 7000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: functions-limit
-        description: |
-          [#functions-limit]
-          Maximum number of user-defined functions.
+        description: Maximum number of user-defined functions.
       keep-alive-length:
         type: integer
         format: int32
         default: 16384
         example: 7000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: keep-alive-length
-        description: |
-          [#keep-alive-length]
-          Maximum size of buffered result.
+        description: Maximum size of buffered result.
       loglevel:
         type: string
         default: INFO
         enum: ["DEBUG","TRACE","INFO","WARN","ERROR","SEVERE","NONE"]
         example: DEBUG
+        x-has-default: true
+        x-has-example: true
         x-desc-name: loglevel
         description: |
-          [#loglevel]
           Log level used in the logger.
 
           All values, in descending order of data:
@@ -1576,7 +1593,6 @@ definitions:
         format: int32
         x-desc-name: max-index-api
         description: |
-          [#max-index-api]
           Max index API.
           This setting is provided for technical support only.
       max-parallelism:
@@ -1584,9 +1600,10 @@ definitions:
         format: int32
         default: 1
         example: 0
+        x-has-default: true
+        x-has-example: true
         x-desc-name: max-parallelism-srv
         description: |
-          [#max-parallelism-srv]
           Specifies the maximum parallelism for queries on this node.
 
           If the value is zero or negative, the maximum parallelism is restricted to the number of allowed cores.
@@ -1617,9 +1634,10 @@ definitions:
         format: int32
         default: 0
         example: 4
+        x-has-default: true
+        x-has-example: true
         x-desc-name: memory-quota-srv
         description: |
-          [#memory-quota-srv]
           Specifies the maximum amount of memory a request may use on this node, in MB.
           Note that the overall node memory quota is this setting multiplied by the [node-level](#servicers) `servicers` setting.
 
@@ -1647,9 +1665,10 @@ definitions:
         type: string
         default: ""
         example: /tmp/memory-usage.log
+        x-has-default: true
+        x-has-example: true
         x-desc-name: memprofile
         description: |
-          [#memprofile]
           Filename to write the diagnostic memory usage log.
 
           NOTE: If `memprofile` is left running too long, it can slow the system down as its file size increases.
@@ -1658,9 +1677,9 @@ definitions:
       mutexprofile:
         type: boolean
         default: false
+        x-has-default: true
         x-desc-name: mutexprofile
         description: |
-          [#mutexprofile]
           Mutex profile.
           This setting is provided for technical support only.
       n1ql-feat-ctrl:
@@ -1669,10 +1688,12 @@ definitions:
         # fix with move to Redocly / openapi-generator
         format: int32
         default: 76
-        example: "0x1"
+        example: 16460
+        x-example: "0x1"
+        x-has-default: true
+        x-has-example: true
         x-desc-name: n1ql-feat-ctrl
         description: |
-          [#n1ql-feat-ctrl]
           SQL++ feature control.
           This setting is provided for technical support only.
           The value may be an integer, or a string representing a hexadecimal number.
@@ -1687,9 +1708,9 @@ definitions:
         type: integer
         format: int32
         default: 0
+        x-has-default: true
         x-desc-name: node-quota
         description: |
-          [#node-quota]
           Sets the soft memory limit for this node, in MB.
           The garbage collector tries to keep below this target.
           It is not a hard, absolute limit, and memory usage may exceed this value.
@@ -1708,9 +1729,9 @@ definitions:
         default: 67
         minimum: 0
         maximum: 100
+        x-has-default: true
         x-desc-name: node-quota-val-percent
         description: |
-          [#node-quota-val-percent]
           The percentage of the `node-quota` that is dedicated to tracked value content memory across all active requests on this node.
           (The `memory-quota` setting specifies the maximum amount of document memory an individual request may use on this node.)
 
@@ -1724,9 +1745,9 @@ definitions:
         type: integer
         format: int32
         default: 0
+        x-has-default: true
         x-desc-name: num-cpus
         description: |
-          [#num-cpus]
           The number of CPUs the Query service can use on this node.
           Note that this setting requires a restart of the Query service to take effect.
 
@@ -1746,7 +1767,6 @@ definitions:
         type: string
         x-desc-name: numatrs-srv
         description: |
-          [#numatrs-srv]
           Specifies the total number of [active transaction records][additional-storage-use].
 
           The [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies this property for the whole cluster.
@@ -1766,9 +1786,10 @@ definitions:
         format: int32
         default: 16
         example: 64
+        x-has-default: true
+        x-has-example: true
         x-desc-name: pipeline-batch-srv
         description: |
-          [#pipeline-batch-srv]
           Controls the number of items execution operators can batch for Fetch from the KV.
 
           The [cluster-level][queryPipelineBatch] `queryPipelineBatch` setting specifies this property for the whole cluster.
@@ -1787,9 +1808,10 @@ definitions:
         format: int32
         default: 512
         example: 1024
+        x-has-default: true
+        x-has-example: true
         x-desc-name: pipeline-cap-srv
         description: |
-          [#pipeline-cap-srv]
           Maximum number of items each execution operator can buffer between various operators.
 
           The [cluster-level][queryPipelineCap] `queryPipelineCap` setting specifies this property for the whole cluster.
@@ -1807,9 +1829,9 @@ definitions:
         type: integer
         format: int32
         example: 16
+        x-has-example: true
         x-desc-name: plus-servicers
         description: |
-          [#plus-servicers]
           The number of service threads for transactions where the scan consistency is `request_plus` or `at_plus`.
           The default is 16 times the number of logical cores.
       prepared-limit:
@@ -1817,9 +1839,10 @@ definitions:
         format: int32
         default: 16384
         example: 65536
+        x-has-default: true
+        x-has-example: true
         x-desc-name: prepared-limit
         description: |
-          [#prepared-limit]
           Maximum number of prepared statements in the cache.
           When this cache reaches the limit, the least recently used prepared statements will be discarded as new prepared statements are created.
 
@@ -1833,9 +1856,10 @@ definitions:
         type: boolean
         default: false
         example: true
+        x-has-default: true
+        x-has-example: true
         x-desc-name: pretty-srv
         description: |
-          [#pretty-srv]
           Specifies whether query results are returned in pretty format.
 
           The [request-level][pretty_req] `pretty` parameter specifies this property per request.
@@ -1848,10 +1872,11 @@ definitions:
         type: string
         default: "off"
         example: "phases"
+        x-has-default: true
+        x-has-example: true
         enum: ["off","phases","timings"]
         x-desc-name: profile-srv
         description: |
-          [#profile-srv]
           Specifies if there should be a profile section returned with the request results.
           The valid values are:
 
@@ -1879,18 +1904,19 @@ definitions:
         format: int32
         default: 67108864
         example: 70000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: request-size-cap
-        description: |
-          [#request-size-cap]
-          Maximum size of a request.
+        description: Maximum size of a request.
       scan-cap:
         type: integer
         format: int32
         default: 512
         example: 1024
+        x-has-default: true
+        x-has-example: true
         x-desc-name: scan-cap-srv
         description: |
-          [#scan-cap-srv]
           Maximum buffered channel size between the indexer client and the query service for index scans.
           This parameter controls when to use scan backfill.
 
@@ -1913,9 +1939,10 @@ definitions:
         format: int32
         default: 32
         example: 8
+        x-has-default: true
+        x-has-example: true
         x-desc-name: servicers
         description: |
-          [#servicers]
           The number of service threads for the query.
           The default is 4 times the number of cores on the query node.
 
@@ -1925,9 +1952,10 @@ definitions:
         format: int64
         default: 0
         example: 500000000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: timeout-srv
         description: |
-          [#timeout-srv]
           Maximum time to spend on the request before timing out (ns).
 
           The value for this setting is an integer, representing a duration in nanoseconds.
@@ -1952,9 +1980,10 @@ definitions:
         format: int64
         default: 0
         example: 500000000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: txtimeout-srv
         description: |
-          [#txtimeout-srv]
           Maximum time to spend on a transaction before timing out (ns).
           This setting only applies to requests containing the `BEGIN TRANSACTION` statement, or to requests where the [tximplicit][tximplicit] parameter is set.
           For all other requests, it is ignored.
@@ -1982,9 +2011,10 @@ definitions:
         type: boolean
         default: true
         example: false
+        x-has-default: true
+        x-has-example: true
         x-desc-name: use-cbo-srv
         description: |
-          [#use-cbo-srv]
           Specifies whether the cost-based optimizer is enabled.
 
           The [cluster-level][queryUseCBO] `queryUseCBO` setting specifies this property for the whole cluster.
@@ -2002,10 +2032,11 @@ definitions:
         type: string
         default: unset
         enum: ["off","on","unset"]
-        example: on
+        example: "on"
+        x-has-default: true
+        x-has-example: true
         x-desc-name: use-replica-srv
         description: |
-          [#use-replica-srv]
           Specifies whether a query can fetch data from a replica vBucket if active vBuckets are inaccessible.
           The possible values are:
 
@@ -2036,7 +2067,7 @@ definitions:
           [queryUseReplica]: ../../rest-api/rest-cluster-query-settings.html#queryUseReplica
           [use_replica_req]: index.html#use_replica_req
 
-  Garbage Collection:
+  Garbage:
     type: object
     title: Garbage Collection
     properties:
@@ -2139,4 +2170,4 @@ securityDefinitions:
 
   None:
     type: basic
-    description: No authentication is required for the [Ping](#_get_ping) or [Get Debug Variables](#_get_debug_vars) endpoints.
+    description: No authentication is required for the [Ping](#get_ping) or [Get Debug Variables](#get_debug_vars) endpoints.

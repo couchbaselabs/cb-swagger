@@ -1,0 +1,103 @@
+{{! include partial before definitions }}
+{{#specinclude}}/definitions/document-before.adoc{{/specinclude}}
+
+[#models]
+= Definitions
+
+{{! include partial before definitions body }}
+:leveloffset: +1
+{{#specinclude}}/definitions/document-begin.adoc{{/specinclude}}
+
+{{! Table of contents }}
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 10]
+[.two-columns]
+endif::[]
+[%hardbreaks]
+{{#models}}
+{{#model}}
+<<{{name}}>>
+{{/model}}
+{{/models}}
+
+{{! *** DEFINITION *** }}
+{{#models}}
+{{#model}}
+
+{{! include partial before definition }}
+{{#specinclude}}/definitions/{{name}}/definition-before.adoc{{/specinclude}}
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#{{name}}]
+= {{#title}}{{title}}{{/title}}{{^title}}{{classname}}{{/title}}
+
+{{! include partial before definition body }}
+:leveloffset: +1
+{{#specinclude}}/definitions/{{name}}/definition-begin.adoc{{/specinclude}}
+
+{{^composedSchemas}}
+{{#hasVars}}
+{{>model}}
+{{/hasVars}}
+{{^hasVars}}
+{{#isMap}}
+{{>model}}
+{{/isMap}}
+{{/hasVars}}
+{{#isString}}
+.icon:quote-left[fw] String
+{blank}
+
+{{>property}}
+{{/isString}}
+{{#isArray}}
+.icon:brackets[fw] Array
+{blank}
+
+{{>property}}
+
+{{#items}}
+{{>schema}} array
+{{/items}}
+{{/isArray}}
+{{/composedSchemas}}
+{{#composedSchemas}}
+{{#oneOf}}
+{{#-first}}One of the following:
+
+{{/-first}}
+* {{>schema}}
+{{/oneOf}}
+{{#anyOf}}
+{{#-first}}Any of the following:
+
+{{/-first}}
+* {{>schema}}
+{{/anyOf}}
+{{#allOf}}
+{{#-first}}All of the following:
+
+{{/-first}}
+* {{>schema}}
+{{/allOf}}
+{{/composedSchemas}}
+
+{{! include partial after definition body }}
+{{#specinclude}}/definitions/{{name}}/definition-end.adoc{{/specinclude}}
+
+{{! include partial after definition }}
+:leveloffset: -1
+{{#specinclude}}/definitions/{{name}}/definition-after.adoc{{/specinclude}}
+
+{{/model}}
+{{/models}}
+
+{{! include partial after definitions body }}
+{{#specinclude}}/definitions/document-end.adoc{{/specinclude}}
+
+{{! include partial after definitions }}
+:leveloffset: -1
+{{#specinclude}}/definitions/document-after.adoc{{/specinclude}}
