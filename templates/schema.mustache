@@ -1,0 +1,52 @@
+{{! If this is not an array ... }}
+{{^isArray}}
+{{! ... but is a reference, create a link to that object; }}
+{{#ref}}
+<<{{dataType}}>>
+{{/ref}}
+{{! ... if it's not a reference, but it is a model, create a link to that object; }}
+{{^ref}}
+{{#isModel}}
+<<{{dataType}}>>
+{{/isModel}}
+{{! ... otherwise, if it's neither a reference nor a model, then: }}
+{{^isModel}}
+{{! ... if this has a specific data type, output the data type and data format; }}
+{{^isAnyType}}
+{{dataType}}{{#dataFormat}} ({{{dataFormat}}}){{/dataFormat}}
+{{/isAnyType}}
+{{! ... if not, just output the base type. }}
+{{#isAnyType}}
+{{baseType}}
+{{/isAnyType}}
+{{/isModel}}
+{{/ref}}
+{{/isArray}}
+{{! If this is an array ... }}
+{{#isArray}}
+{{#items}}
+{{! ... and each item is a reference object, create a link to that object; }}
+{{#ref}}
+<<{{dataType}}>>
+{{/ref}}
+{{! ... if it's not a reference, but it is a model, create a link to that object; }}
+{{^ref}}
+{{#isModel}}
+<<{{dataType}}>>
+{{/isModel}}
+{{! ... otherwise, if it's neither a reference nor a model, then: }}
+{{^isModel}}
+{{! ... if the item has a specific data type, output the data type and data format; }}
+{{^isAnyType}}
+{{dataType}}{{#dataFormat}} ({{{dataFormat}}}){{/dataFormat}}
+{{/isAnyType}}
+{{! ... if not, just output each item's base type. }}
+{{#isAnyType}}
+{{baseType}}
+{{/isAnyType}}
+{{/isModel}}
+{{/ref}}
+{{/items}}
+{{! ... and finally, output the array data type. }}
+{{#lambda.lowercase}}{{dataType}}{{/lambda.lowercase}}
+{{/isArray}}

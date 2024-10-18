@@ -1,21 +1,10 @@
 swagger: '2.0'
 info:
-  title: Functions REST API
+  title: Query Functions REST API
   version: '8.0'
-  description: >
-    The Functions REST API is a secondary API provided by the Query service.
-    This API enables you to manage the JavaScript libraries and objects that are used to create {sqlpp} user-defined functions.
-
-
-    The base URL schemes for this API are as follows:
-
-
-    * http://node:8093/
-
-    * https://node:18093/ (for secure access)
-
-
-    where `node` is the host name or IP address of a computer running the Query service.
+  description: |-
+    The Query Functions REST API is a secondary API provided by the Query service.
+    This API enables you to manage the JavaScript libraries and objects that are used to create SQL++ user-defined functions.
 
 produces:
   - application/json
@@ -116,8 +105,6 @@ paths:
           description: >
             Bad request.
             The body of the request may be incorrect, or the path may not conform to the schema.
-          schema:
-            type: string
         "404":
           $ref: "#/responses/LibraryNotFound"
     delete:
@@ -173,6 +160,7 @@ parameters:
     schema:
       type: string
       example: function f2c(f) { return (5/9)*(f-32); }
+      x-has-example: true
 
 definitions:
   Libraries:
@@ -183,24 +171,28 @@ definitions:
         type: string
         description: The name of a library.
         example: math
+        x-has-example: true
       bucket:
         type: string
         description: >
           For scoped libraries, the bucket in which the library is stored.
           For global libraries, this string is empty.
         example: travel-sample
+        x-has-example: true
       scope:
         type: string
         description: >
           For scoped libraries, the scope in which the library is stored.
           For global libraries, this string is empty.
         example: inventory
+        x-has-example: true
       code:
         type: string
         description: >
           The JavaScript code for all functions in the library.
         example: function add(a, b) { return a + b; }
                  function mul(a, b) { return a * b; }
+        x-has-example: true
     required:
       - name
       - bucket
@@ -210,37 +202,29 @@ definitions:
   Functions:
     type: object
     title: Functions
-    properties:
-      __library__:
-        type: string
-        description: |
-          The JavaScript code for all functions in the library.
+    additionalProperties:
+      type: string
+      description: |
+        The JavaScript code for all functions in the library.
 
-          The name of the property is the name of the library.
-        example: function add(a, b) { return a + b; }
-                 function mul(a, b) { return a * b; }
-    required:
-      - __library__
+        The name of the property is the name of the library.
+      example: function add(a, b) { return a + b; }
+                function mul(a, b) { return a * b; }
+      x-has-example: true
 
 responses:
   OK:
     description: The operation was successful.
-    schema:
-      type: string
 
   LibraryNotFound:
     description: >
       Not found.
       The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly.
-    schema:
-      type: string
 
   BadRequest:
     description: >
       Bad request.
       The path may not conform to the schema.
-    schema:
-      type: string
 
 securityDefinitions:
   Global:
