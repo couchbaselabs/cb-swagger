@@ -4850,6 +4850,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[client_context_id]: ../n1ql-rest-query/index.html#client_context_id
+
+
+endif::alt-markdown-links[]
 The opaque ID or context provided by the client.
 If specified, all completed requests with this client context ID are logged.
 
@@ -5390,6 +5395,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[client_context_id]: ../n1ql-rest-query/index.html#client_context_id
+
+
+endif::alt-markdown-links[]
 The opaque ID or context provided by the client.
 Refer to the [request-level][client_context_id] `client_context_id` parameter for more information.
 
@@ -5778,6 +5788,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[atrcollection_req]: ../n1ql-rest-query/index.html#atrcollection_req
+
+
+endif::alt-markdown-links[]
 Specifies the collection where [active transaction records][additional-storage-use] are stored.
 The collection must be present.
 If not specified, the active transaction record is stored in the default collection in the default scope in the bucket containing the first mutated document within the transaction.
@@ -5829,6 +5844,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryCleanupClientAttempts]: ../n1ql-rest-settings/index.html#queryCleanupClientAttempts
+
+
+endif::alt-markdown-links[]
 When enabled, the Query service preferentially aims to clean up just transactions that it has created, leaving transactions for the distributed cleanup process only when it is forced to.
 
 The [cluster-level][queryCleanupClientAttempts] `queryCleanupClientAttempts` setting specifies this property for the whole cluster.
@@ -5852,6 +5872,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryCleanupLostAttempts]: ../n1ql-rest-settings/index.html#queryCleanupLostAttempts
+
+
+endif::alt-markdown-links[]
 When enabled, the Query service takes part in the distributed cleanup process, and cleans up expired transactions created by any client.
 
 The [cluster-level][queryCleanupLostAttempts] `queryCleanupLostAttempts` setting specifies this property for the whole cluster.
@@ -5875,6 +5900,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryCleanupWindow]: ../n1ql-rest-settings/index.html#queryCleanupWindow
+
+
+endif::alt-markdown-links[]
 Specifies how frequently the Query service checks its subset of [active transaction records][additional-storage-use] for cleanup.
 Decreasing this setting causes expiration transactions to be found more swiftly, with the tradeoff of increasing the number of reads per second used for the scanning process.
 
@@ -5926,6 +5956,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryCompletedLimit]: ../n1ql-rest-settings/index.html#queryCompletedLimit
+
+
+endif::alt-markdown-links[]
 Sets the number of requests to be logged in the completed requests catalog.
 As new completed requests are added, old ones are removed.
 
@@ -5955,6 +5990,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryCompletedMaxPlanSize]: ../n1ql-rest-settings/index.html#queryCompletedMaxPlanSize
+
+
+endif::alt-markdown-links[]
 A plan size in bytes.
 Limits the size of query execution plans that can be logged in the completed requests catalog.
 Values larger than the maximum limit are silently treated as the maximum limit.
@@ -5986,6 +6026,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryCompletedThreshold]: ../n1ql-rest-settings/index.html#queryCompletedThreshold
+
+
+endif::alt-markdown-links[]
 A duration in milliseconds.
 All completed queries lasting longer than this threshold are logged in the completed requests catalog.
 
@@ -6016,6 +6061,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[controls_req]: ../n1ql-rest-query/index.html#controls_req
+
+
+endif::alt-markdown-links[]
 Specifies if there should be a controls section returned with the request results.
 
 When set to `true`, the query response document includes a controls section with runtime information provided along with the request, such as positional and named parameters or settings.
@@ -6140,6 +6190,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryLogLevel]: ../n1ql-rest-settings/index.html#queryLogLevel
+
+
+endif::alt-markdown-links[]
 Log level used in the logger.
 
 All values, in descending order of data:
@@ -6203,6 +6258,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryMaxParallelism]: ../n1ql-rest-settings/index.html#queryMaxParallelism
+[max_parallelism_req]: ../n1ql-rest-query/index.html#max_parallelism_req
+
+
+endif::alt-markdown-links[]
 Specifies the maximum parallelism for queries on this node.
 
 If the value is zero or negative, the maximum parallelism is restricted to the number of allowed cores.
@@ -6242,6 +6303,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryMemoryQuota]: ../n1ql-rest-settings/index.html#queryMemoryQuota
+[memory_quota_req]: ../n1ql-rest-query/index.html#memory_quota_req
+
+
+endif::alt-markdown-links[]
 Specifies the maximum amount of memory a request may use on this node, in MB.
 Note that the overall node memory quota is this setting multiplied by the [node-level](#servicers) `servicers` setting.
 
@@ -6319,6 +6386,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryN1qlFeatCtrl]: ../n1ql-rest-settings/index.html#queryN1qlFeatCtrl
+
+
+endif::alt-markdown-links[]
 SQL++ feature control.
 This setting is provided for technical support only.
 The value may be an integer, or a string representing a hexadecimal number.
@@ -6344,6 +6416,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryNodeQuota]: ../n1ql-rest-settings/index.html#queryNodeQuota
+
+
+endif::alt-markdown-links[]
 Sets the soft memory limit for this node, in MB.
 The garbage collector tries to keep below this target.
 It is not a hard, absolute limit, and memory usage may exceed this value.
@@ -6370,6 +6447,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryNodeQuotaValPercent]: ../n1ql-rest-settings/index.html#queryNodeQuotaValPercent
+
+
+endif::alt-markdown-links[]
 The percentage of the `node-quota` that is dedicated to tracked value content memory across all active requests on this node.
 (The `memory-quota` setting specifies the maximum amount of document memory an individual request may use on this node.)
 
@@ -6395,6 +6477,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryNumCpus]: ../n1ql-rest-settings/index.html#queryNumCpus
+
+
+endif::alt-markdown-links[]
 The number of CPUs the Query service can use on this node.
 Note that this setting requires a restart of the Query service to take effect.
 
@@ -6424,6 +6511,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
+[numatrs_req]: ../n1ql-rest-query/index.html#numatrs_req
+
+
+endif::alt-markdown-links[]
 Specifies the total number of [active transaction records][additional-storage-use].
 
 The [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies this property for the whole cluster.
@@ -6450,6 +6543,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryPipelineBatch]: ../n1ql-rest-settings/index.html#queryPipelineBatch
+[pipeline_batch_req]: ../n1ql-rest-query/index.html#pipeline_batch_req
+
+
+endif::alt-markdown-links[]
 Controls the number of items execution operators can batch for Fetch from the KV.
 
 The [cluster-level][queryPipelineBatch] `queryPipelineBatch` setting specifies this property for the whole cluster.
@@ -6477,6 +6576,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryPipelineCap]: ../n1ql-rest-settings/index.html#queryPipelineCap
+[pipeline_cap_req]: ../n1ql-rest-query/index.html#pipeline_cap_req
+
+
+endif::alt-markdown-links[]
 Maximum number of items each execution operator can buffer between various operators.
 
 The [cluster-level][queryPipelineCap] `queryPipelineCap` setting specifies this property for the whole cluster.
@@ -6522,6 +6627,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryPreparedLimit]: ../n1ql-rest-settings/index.html#queryPreparedLimit
+
+
+endif::alt-markdown-links[]
 Maximum number of prepared statements in the cache.
 When this cache reaches the limit, the least recently used prepared statements will be discarded as new prepared statements are created.
 
@@ -6546,6 +6656,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[pretty_req]: ../n1ql-rest-query/index.html#pretty_req
+
+
+endif::alt-markdown-links[]
 Specifies whether query results are returned in pretty format.
 
 The [request-level][pretty_req] `pretty` parameter specifies this property per request.
@@ -6569,6 +6684,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[profile_req]: ../n1ql-rest-query/index.html#profile_req
+
+
+endif::alt-markdown-links[]
 Specifies if there should be a profile section returned with the request results.
 The valid values are:
 
@@ -6624,6 +6744,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryScanCap]: ../n1ql-rest-settings/index.html#queryScanCap
+[scan_cap_req]: ../n1ql-rest-query/index.html#scan_cap_req
+
+
+endif::alt-markdown-links[]
 Maximum buffered channel size between the indexer client and the query service for index scans.
 This parameter controls when to use scan backfill.
 
@@ -6676,6 +6802,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryTimeout]: ../n1ql-rest-settings/index.html#queryTimeout
+[timeout_req]: ../n1ql-rest-query/index.html#timeout_req
+
+
+endif::alt-markdown-links[]
 Maximum time to spend on the request before timing out (ns).
 
 The value for this setting is an integer, representing a duration in nanoseconds.
@@ -6709,6 +6841,13 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[tximplicit]: ../n1ql-rest-query/index.html#tximplicit
+[queryTxTimeout]: ../n1ql-rest-settings/index.html#queryTxTimeout
+[txtimeout_req]: ../n1ql-rest-query/index.html#txtimeout_req
+
+
+endif::alt-markdown-links[]
 Maximum time to spend on a transaction before timing out (ns).
 This setting only applies to requests containing the `BEGIN TRANSACTION` statement, or to requests where the [tximplicit][tximplicit] parameter is set.
 For all other requests, it is ignored.
@@ -6745,6 +6884,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryUseCBO]: ../n1ql-rest-settings/index.html#queryUseCBO
+[use_cbo_req]: ../n1ql-rest-query/index.html#use_cbo_req
+
+
+endif::alt-markdown-links[]
 Specifies whether the cost-based optimizer is enabled.
 
 The [cluster-level][queryUseCBO] `queryUseCBO` setting specifies this property for the whole cluster.
@@ -6772,6 +6917,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[queryUseReplica]: ../n1ql-rest-settings/index.html#queryUseReplica
+[use_replica_req]: ../n1ql-rest-query/index.html#use_replica_req
+
+
+endif::alt-markdown-links[]
 Specifies whether a query can fetch data from a replica vBucket if active vBuckets are inaccessible.
 The possible values are:
 

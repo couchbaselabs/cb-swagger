@@ -1417,6 +1417,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[atrcollection-srv]: ../n1ql-rest-admin/index.html#atrcollection-srv
+
+
+endif::alt-markdown-links[]
 Specifies the collection where the [active transaction record][additional-storage-use] (ATR) is stored.
 The collection must be present.
 If not specified, the ATR is stored in the default collection in the default scope in the bucket containing the first mutated document within the transaction.
@@ -1509,6 +1514,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[controls-srv]: ../n1ql-rest-admin/index.html#controls-srv
+
+
+endif::alt-markdown-links[]
 Specifies if there should be a controls section returned with the request results.
 
 When set to `true`, the query response document includes a controls section with runtime information provided along with the request, such as positional and named parameters or settings.
@@ -1679,6 +1689,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
+[queryMaxParallelism]: ../n1ql-rest-settings/index.html#queryMaxParallelism
+
+
+endif::alt-markdown-links[]
 Specifies the maximum parallelism for the query.
 
 The [node-level][max-parallelism-srv] `max-parallelism` setting specifies the ceiling for this parameter for a single node.
@@ -1711,6 +1727,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
+[queryMemoryQuota]: ../n1ql-rest-settings/index.html#queryMemoryQuota
+
+
+endif::alt-markdown-links[]
 Specifies the maximum amount of memory the request may use, in MB.
 
 Specify `0` (the default value) to disable.
@@ -1782,6 +1804,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
+[queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
+
+
+endif::alt-markdown-links[]
 Specifies the total number of [active transaction records][additional-storage-use].
 Must be a positive integer.
 
@@ -1811,6 +1839,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
+[queryPipelineBatch]: ../n1ql-rest-settings/index.html#queryPipelineBatch
+
+
+endif::alt-markdown-links[]
 Controls the number of items execution operators can batch for Fetch from the KV.
 
 The [node-level][pipeline-batch-srv] `pipeline-batch` setting specifies the default for this parameter for a single node.
@@ -1837,6 +1871,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
+[queryPipelineCap]: ../n1ql-rest-settings/index.html#queryPipelineCap
+
+
+endif::alt-markdown-links[]
 Maximum number of items each execution operator can buffer between various operators.
 
 The [node-level][pipeline-cap-srv] `pipeline-cap` setting specifies the default for this parameter for a single node.
@@ -1912,6 +1952,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[pretty-srv]: ../n1ql-rest-admin/index.html#pretty-srv
+
+
+endif::alt-markdown-links[]
 Specifies the query results returned in pretty format.
 
 The [node-level][pretty-srv] `pretty` setting specifies the default for this parameter for a single node.
@@ -1934,6 +1979,11 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[profile-srv]: ../n1ql-rest-admin/index.html#profile-srv
+
+
+endif::alt-markdown-links[]
 Specifies if there should be a profile section returned with the request results.
 The valid values are:
 
@@ -2021,6 +2071,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
+[queryScanCap]: ../n1ql-rest-settings/index.html#queryScanCap
+
+
+endif::alt-markdown-links[]
 Maximum buffered channel size between the indexer client and the query service for index scans.
 This parameter controls when to use scan backfill.
 
@@ -2256,6 +2312,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
+[queryTimeout]: ../n1ql-rest-settings/index.html#queryTimeout
+
+
+endif::alt-markdown-links[]
 Maximum time to spend on the request before timing out.
 
 The value for this parameter is a string.
@@ -2384,6 +2446,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
+[queryTxTimeout]: ../n1ql-rest-settings/index.html#queryTxTimeout
+
+
+endif::alt-markdown-links[]
 Maximum time to spend on a transaction before timing out.
 Only applies to `BEGIN TRANSACTION` statements, or DML statements for which [tximplicit](#tximplicit) is set.
 For other statements, it is ignored.
@@ -2433,6 +2501,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
+[queryUseCBO]: ../n1ql-rest-settings/index.html#queryUseCBO
+
+
+endif::alt-markdown-links[]
 Specifies whether the cost-based optimizer is enabled.
 
 The [node-level][use-cbo-srv] `use-cbo` setting specifies the default for this parameter for a single node.
@@ -2487,6 +2561,12 @@ a|
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
+[queryUseReplica]: ../n1ql-rest-settings/index.html#queryUseReplica
+
+
+endif::alt-markdown-links[]
 Specifies whether a query can fetch data from a replica vBucket if active vBuckets are inaccessible.
 The possible values are:
 
