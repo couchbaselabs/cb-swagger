@@ -676,11 +676,11 @@ definitions:
           [use-replica-srv]: ../n1ql/n1ql-rest-api/admin.html#use-replica-srv
           [use_replica_req]: ../n1ql/n1ql-rest-api/index.html#use_replica_req
       queryCurlWhitelist:
-        x-desc-name: queryCurlWhitelist
         $ref: "#/definitions/Access"
 
   Access:
     type: object
+    x-desc-name: queryCurlWhitelist
     description: An object which determines which URLs may be accessed by the `CURL()` function.
     required:
       - all_access
