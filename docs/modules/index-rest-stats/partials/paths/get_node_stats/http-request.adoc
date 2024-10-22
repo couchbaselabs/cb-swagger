@@ -1,0 +1,37 @@
+= Example HTTP Request
+
+[[node-example-1,request {counter:xref}]]
+====
+Request {counter:example}: Return statistics for an index node and format the output.
+
+.Curl request
+[source,sh]
+----
+curl -X GET -u Administrator:password \
+"http://localhost:9102/api/v1/stats?pretty=true"
+----
+====
+
+[[node-example-2,request {counter:xref}]]
+====
+Request {counter:example}: Return statistics for an index node, omit empty results, and format the output.
+
+.Curl request
+[source,sh]
+----
+curl -X GET -u Administrator:password \
+"http://localhost:9102/api/v1/stats?skipEmpty=true&pretty=true"
+----
+====
+
+[[node-example-3,request {counter:xref}]]
+====
+Request {counter:example}: Return statistics for an index node, omit empty results, redact index names, and format the output.
+
+.Curl request
+[source,sh]
+----
+curl -X GET -u Administrator:password \
+"http://localhost:9102/api/v1/stats?skipEmpty=true&redact=true&pretty=true"
+----
+====

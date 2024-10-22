@@ -2,16 +2,14 @@ swagger: '2.0'
 info:
   title: Index Statistics REST API
   version: '8.0'
-  description: |
+  description: |-
     The Index Statistics REST API is provided by the Index service.
     This API enables you to get Index service statistics.
 
-    The API schemes and host URLs are as follows:
+host: localhost:9102
 
-    * http://node:9102/
-    * https://node:19102/ (for secure access)
-
-    where `node` is the host name or IP address of a computer running the index service.
+schemes:
+  - http
 
 produces:
   - application/json
@@ -84,7 +82,7 @@ parameters:
 
 
       If any part of the keyspace name contains a dot, that part of the keyspace name must be wrapped in backticks.
-      For example, `pass:c[`bucket.1`.scope.collection]`.
+      For example, `` `bucket.1`.scope.collection ``.
 
   PathIndex:
     name: index
@@ -98,6 +96,7 @@ parameters:
     type: boolean
     in: query
     required: false
+    x-has-default: true
     default: false
     description: Whether the output should be formatted with indentations and newlines.
     
@@ -106,6 +105,7 @@ parameters:
     type: boolean
     in: query
     required: false
+    x-has-default: true
     default: false
     description: Whether statistics for index partitions should be included.
 
@@ -114,6 +114,7 @@ parameters:
     type: boolean
     in: query
     required: false
+    x-has-default: true
     default: false
     description: >
       Whether keyspace and index names should be redacted in the output.
@@ -123,44 +124,87 @@ parameters:
     type: boolean
     in: query
     required: false
+    x-has-default: true
     default: false
     description: Whether empty, null, or zero statistics should be omitted from the output.
 
 definitions:
+
+  NodeIndexes:
+    type: object
+    title: Node and Indexes
+    allOf:
+      - $ref: "#/definitions/Nodes"
+      - $ref: "#/definitions/Indexes"
+
+  Nodes:
+    type: object
+    required:
+      - indexer
+    properties:
+      indexer:
+        $ref: "#/definitions/Node"
+
   Node:
     type: object
+    description: A nested object containing statistics for the current index node.
     properties:
       indexer_state:
         type: string
         description: Current state of the Index service on this node.
         enum: ["Active","Pause","Warmup"]
+        x-has-example: true
         example: Active
       memory_quota:
         type: integer
         format: int64
         description: Memory quota assigned to the Index service on this node by user configuration (bytes).
+        x-has-default: true
+        x-has-example: true
         example: 536870912
         default: 268435456
         maximum: 1099511992567
       memory_total_storage:
         type: integer
+        x-desc-edition: "{enterprise}"
         description: |
-          [.edition]#{enterprise}#
-
           The total size allocated in the indexer across all indexes (bytes).
           This also accounts for memory fragmentation.
+        x-has-example: true
         example: 71794688
       memory_used:
         type: integer
         description: Amount of memory used by the Index service on this node (bytes).
+        x-has-example: true
         example: 360192000
       total_indexer_gc_pause_ns:
         type: integer
         description: The total time the indexer has spent in GC pause since last startup (ns).
+        x-has-example: true
         example: 309778455
+
+  IndexPartitions:
+    type: object
+    title: Index and Partitions
+    allOf:
+      - $ref: "#/definitions/Indexes"
+      - $ref: "#/definitions/Partitions"
+
+  Indexes:
+    type: object
+    title: Indexes
+    additionalProperties:
+      $ref: "#/definitions/Index"
+
+  Partitions:
+    type: object
+    title: Partitions
+    additionalProperties:
+      $ref: "#/definitions/Index"
 
   Index:
     type: object
+    description: A nested object containing statistics for an index or index partition.
     properties:
       avg_array_length:
         type: integer
@@ -178,10 +222,8 @@ definitions:
         description: Average time to serve a scan request (nanoseconds).
       cache_hit_percent:
         type: integer
-        description: |
-          [.edition]#{enterprise}#
-
-          Percentage of memory accesses that were served from the managed cache.
+        x-desc-edition: "{enterprise}"
+        description: Percentage of memory accesses that were served from the managed cache.
       cache_hits:
         type: integer
         description: Accesses to this index data from RAM.
@@ -191,10 +233,12 @@ definitions:
       data_size:
         type: integer
         description: The size of indexable data that is maintained for the index or partition (bytes).
+        x-has-example: true
         example: 95728
       disk_size:
         type: integer
         description: Total disk file size consumed by the index or partition.
+        x-has-example: true
         example: 889054
       docid_count:
         type: integer
@@ -214,10 +258,12 @@ definitions:
           When initial build is completed, the value is `100`.
 
           For an index partition, the value is listed as `0`.
+        x-has-example: true
         example: 100
       items_count:
         type: integer
         description: The number of items currently indexed.
+        x-has-example: true
         example: 2155
       last_known_scan_time:
         type: integer
@@ -256,27 +302,24 @@ definitions:
         description: Number of requests that timed out, either waiting for snapshots or during scan in progress.
       recs_in_mem:
         type: integer
+        x-desc-edition: "{enterprise}"
         description: |
-          [.edition]#{enterprise}#
-
           For standard index storage, this is the number of records in this index that are stored in memory.
 
           For memory-optimized index storage, this is the same as `items_count`.
+        x-has-example: true
         example: 2155
       recs_on_disk:
         type: integer
-        description: |
-          [.edition]#{enterprise}#
-
-          For standard index storage, this is the number of records in this index that are stored on disk.
+        x-desc-edition: "{enterprise}"
+        description: For standard index storage, this is the number of records in this index that are stored on disk.
 
           For memory-optimized index storage, this is `0`.
       resident_percent:
         type: integer
-        description: |
-          [.edition]#{enterprise}#
-
-          Percentage of the data held in memory.
+        x-desc-edition: "{enterprise}"
+        description: Percentage of the data held in memory.
+        x-has-example: true
         example: 100
       scan_bytes_read:
         type: integer
@@ -292,91 +335,40 @@ responses:
       Returns the complete specified keyspace name, and the specified index name if provided.
 
       The keyspace name may be incorrect, the keyspace may contain no indexes, the index may not be located in the specified keyspace, or the index may be warming up after a restart.
-    schema:
-      type: string
 
   Node:
     description: |
       Success.
       Returns an object containing a nested `indexer` object, and usually one or more nested `<keyspace>:<index>` objects &mdash; one for each index found on the specified node.
     schema:
-      type: object
-      title: Node and Indexes
-      required:
-        - indexer
-      properties:
-        indexer:
-          description: A nested object containing statistics for the current index node.
-          $ref: "#/definitions/Node"
-        <keyspace>:<index>:
-          description: |
-            A nested object containing statistics for an entire index.
-            
-            * `<keyspace>` is the bucket, scope, and collection containing the index.
-            * `<index>` is the name of the index.
-
-            If the <<_get_node_stats_parameters,redact>> query parameter was set to `true`, the keyspace and index names are replaced by the index instance ID for confidentiality.
-          $ref: "#/definitions/Index"
+      $ref: "#/definitions/NodeIndexes"
 
   Keyspace:
     description: |
       Success.
       Returns an object containing one or more nested `<keyspace>:<index>` objects &mdash; one for each index found within the specified bucket, scope, or collection.
     schema:
-      type: object
-      title: Indexes
-      required:
-        - <keyspace>:<index>
-      properties:
-        <keyspace>:<index>:
-          description: |
-            A nested object containing statistics for an entire index.
-            
-            * `<keyspace>` is the bucket, scope, and collection containing the index.
-            * `<index>` is the name of the index.
-
-            If the <<_get_keyspace_stats_parameters,redact>> query parameter was set to `true`, the keyspace and index names are replaced by the index instance ID for confidentiality.
-          $ref: "#/definitions/Index"
+      $ref: "#/definitions/Indexes"
 
   Index:
     description: |
       Success.
       Returns an object containing one nested `<keyspace>:<index>` object.
 
-      If the <<_get_index_stats_parameters,partition>> query parameter was set to `true`, the returned object also contains one or more `Partition-<num>` objects &mdash; one for each index partition found on the specified node.
+      If the [partition](#get_index_stats-parameters) query parameter was set to `true`, the returned object also contains one or more `Partition-<num>` objects &mdash; one for each index partition found on the specified node.
     schema:
-      type: object
-      title: Index and Partitions
-      required:
-        - <keyspace>:<index>
-      properties:
-        <keyspace>:<index>:
-          description: |
-            A nested object containing statistics for an entire index.
-            
-            * `<keyspace>` is the bucket, scope, and collection containing the index.
-            * `<index>` is the name of the index.
-
-            If the <<_get_index_stats_parameters,redact>> query parameter was set to `true`, the keyspace and index names are replaced by the index instance ID for confidentiality.
-          $ref: "#/definitions/Index"
-        Partition-<num>:
-          description: |
-            A nested object containing statistics.
-            
-            * If the index is partitioned, this object contains statistics for one index partition, where `<num>` is the partition number.
-            * If the index is not partitioned, this object contains statistics for the entire index, and `<num>` is `0`.
-          $ref: "#/definitions/Index"
+      $ref: "#/definitions/IndexPartitions"
 
 securityDefinitions:
   Node Statistics:
     type: basic
     description: |
-      To get <<_node,Node statistics>>, users must have the Query System Catalog RBAC role.
+      To get [Node statistics](#Node), users must have the Query System Catalog RBAC role.
 
   Index Statistics:
     type: basic
     description: |
-      To get <<_index,Index statistics>> for all indexes in a bucket, scope, or collection, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on that bucket, scope, or collection.
+      To get [Index statistics](#Index) for all indexes in a bucket, scope, or collection, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on that bucket, scope, or collection.
 
 
-      To get <<_index,Index statistics>> for an individual index, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on the bucket, scope, and collection containing that index.
+      To get [Index statistics](#Index) for an individual index, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on the bucket, scope, and collection containing that index.
