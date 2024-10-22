@@ -4,10 +4,16 @@
 
 [markdown]
 --
+{{#vendorExtensions}}
+{{#x-desc-refs}}
+ifdef::alt-markdown-links[]
+{{this}}
+
+endif::alt-markdown-links[]
+{{/x-desc-refs}}
+{{/vendorExtensions}}
 {{#description}}{{{unescapedDescription}}}{{/description}}
-{{#isModel}}
-include::index.adoc[tag=desc-{{dataType}}, opts=optional]
-{{/isModel}}
+{{#isModel}}include::index.adoc[tag=desc-{{dataType}}, opts=optional]{{/isModel}}
 --
 
 [%hardbreaks]

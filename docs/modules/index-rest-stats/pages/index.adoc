@@ -1,0 +1,1878 @@
+= Index Statistics REST API
+:keywords: OpenAPI, REST
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+include::partial$header-attributes.adoc[opts=optional]
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+
+:leveloffset: 1
+
+include::{specDir}overview/document-before.adoc[opts=optional]
+
+
+[[overview]]
+= Overview
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+The Index Statistics REST API is provided by the Index service.
+This API enables you to get Index service statistics.
+--
+
+[discrete#version]
+= Version information
+[%hardbreaks]
+__Version__ : capella
+
+[discrete#host]
+= Host information
+
+....
+http://localhost:9102
+....
+
+
+
+
+include::{specDir}overview/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
+
+
+[[resources]]
+= Resources
+
+:count-apis: 1
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
+
+This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+<<tag-Default>>
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Default]
+= Default
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<get_index_stats>>
+<<get_keyspace_stats>>
+<<get_node_stats>>
+
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-before.adoc[opts=optional]
+
+
+[#get_index_stats]
+= Get Statistics for an Index
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/stats/{keyspace}/{index}
+....
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-description-before.adoc[opts=optional]
+
+
+[#get_index_stats-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns statistics for an index.
+--
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-parameters-before.adoc[opts=optional]
+
+
+[#get_index_stats-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-parameters-begin.adoc[opts=optional]
+
+
+[#get_index_stats-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *keyspace* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of a keyspace.
+This must contain a bucket name, which may be followed by an optional scope name and an optional collection name, separated by dots.
+For example, `bucket.scope.collection`.
+
+
+If any part of the keyspace name contains a dot, that part of the keyspace name must be wrapped in backticks.
+For example, `` `bucket.1`.scope.collection ``.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *index* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of an index.
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+[#get_index_stats-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *pretty* +
+_optional_
+a| 
+
+
+[markdown]
+--
+Whether the output should be formatted with indentations and newlines.
+
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+
+| Boolean
+
+
+a| *partition* +
+_optional_
+a| 
+
+
+[markdown]
+--
+Whether statistics for index partitions should be included.
+
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+
+| Boolean
+
+
+a| *redact* +
+_optional_
+a| 
+
+
+[markdown]
+--
+Whether keyspace and index names should be redacted in the output.
+
+
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+
+| Boolean
+
+
+a| *skipEmpty* +
+_optional_
+a| 
+
+
+[markdown]
+--
+Whether empty, null, or zero statistics should be omitted from the output.
+
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+
+| Boolean
+
+
+|===
+
+
+
+
+
+include::{specDir}paths/get_index_stats/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-parameters-after.adoc[opts=optional]
+
+
+[#get_index_stats-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-responses-before.adoc[opts=optional]
+
+
+[#get_index_stats-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success. Returns an object containing one nested `<keyspace>:<index>` object.  If the [partition](#get_index_stats-parameters) query parameter was set to `true`, the returned object also contains one or more `Partition-<num>` objects &mdash; one for each index partition found on the specified node. 
+--
+| <<IndexPartitions>>
+
+| 404
+a| [markdown]
+--
+Not found. Returns the complete specified keyspace name, and the specified index name if provided.  The keyspace name may be incorrect, the keyspace may contain no indexes, the index may not be located in the specified keyspace, or the index may be warming up after a restart. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-security-before.adoc[opts=optional]
+
+
+[#get_index_stats-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-indexStatistics>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}get_index_stats/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get_index_stats/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_index_stats/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-before.adoc[opts=optional]
+
+
+[#get_keyspace_stats]
+= Get Statistics for Indexes in a Keyspace
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/stats/{keyspace}
+....
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-before.adoc[opts=optional]
+
+
+[#get_keyspace_stats-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns statistics for all indexes within a bucket, scope, or collection.
+--
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-parameters-before.adoc[opts=optional]
+
+
+[#get_keyspace_stats-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-parameters-begin.adoc[opts=optional]
+
+
+[#get_keyspace_stats-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *keyspace* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of a keyspace.
+This must contain a bucket name, which may be followed by an optional scope name and an optional collection name, separated by dots.
+For example, `bucket.scope.collection`.
+
+
+If any part of the keyspace name contains a dot, that part of the keyspace name must be wrapped in backticks.
+For example, `` `bucket.1`.scope.collection ``.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+[#get_keyspace_stats-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *pretty* +
+_optional_
+a| 
+
+
+[markdown]
+--
+Whether the output should be formatted with indentations and newlines.
+
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+
+| Boolean
+
+
+a| *redact* +
+_optional_
+a| 
+
+
+[markdown]
+--
+Whether keyspace and index names should be redacted in the output.
+
+
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+
+| Boolean
+
+
+a| *skipEmpty* +
+_optional_
+a| 
+
+
+[markdown]
+--
+Whether empty, null, or zero statistics should be omitted from the output.
+
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+
+| Boolean
+
+
+|===
+
+
+
+
+
+include::{specDir}paths/get_keyspace_stats/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-parameters-after.adoc[opts=optional]
+
+
+[#get_keyspace_stats-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-responses-before.adoc[opts=optional]
+
+
+[#get_keyspace_stats-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success. Returns an object containing one or more nested `<keyspace>:<index>` objects &mdash; one for each index found within the specified bucket, scope, or collection. 
+--
+| <<Indexes>>
+
+| 404
+a| [markdown]
+--
+Not found. Returns the complete specified keyspace name, and the specified index name if provided.  The keyspace name may be incorrect, the keyspace may contain no indexes, the index may not be located in the specified keyspace, or the index may be warming up after a restart. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-security-before.adoc[opts=optional]
+
+
+[#get_keyspace_stats-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-indexStatistics>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}get_keyspace_stats/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get_keyspace_stats/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-before.adoc[opts=optional]
+
+
+[#get_node_stats]
+= Get Statistics for an Index Node
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/stats
+....
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-description-before.adoc[opts=optional]
+
+
+[#get_node_stats-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns statistics for an index node, and for all indexes on that node.
+--
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-before.adoc[opts=optional]
+
+
+[#get_node_stats-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#get_node_stats-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *pretty* +
+_optional_
+a| 
+
+
+[markdown]
+--
+Whether the output should be formatted with indentations and newlines.
+
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+
+| Boolean
+
+
+a| *redact* +
+_optional_
+a| 
+
+
+[markdown]
+--
+Whether keyspace and index names should be redacted in the output.
+
+
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+
+| Boolean
+
+
+a| *skipEmpty* +
+_optional_
+a| 
+
+
+[markdown]
+--
+Whether empty, null, or zero statistics should be omitted from the output.
+
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+
+| Boolean
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-after.adoc[opts=optional]
+
+
+[#get_node_stats-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-responses-before.adoc[opts=optional]
+
+
+[#get_node_stats-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success. Returns an object containing a nested `indexer` object, and usually one or more nested `<keyspace>:<index>` objects &mdash; one for each index found on the specified node. 
+--
+| <<NodeIndexes>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-security-before.adoc[opts=optional]
+
+
+[#get_node_stats-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-nodeStatistics>>
+| http (basic)
+| <<security-indexStatistics>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}get_node_stats/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get_node_stats/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_node_stats/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
+
+
+[#models]
+= Definitions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 10]
+[.two-columns]
+endif::[]
+[%hardbreaks]
+<<Index>>
+<<IndexPartitions>>
+<<Indexes>>
+<<Node>>
+<<NodeIndexes>>
+<<Nodes>>
+<<Partitions>>
+
+
+
+// markup not found, no include::{specDir}definitions/Index/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#Index]
+= Index
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Index/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Index[]
+
+ifdef::model-descriptions[]
+//tag::desc-Index[]
+A nested object containing statistics for an index or index partition.
+//end::desc-Index[]
+endif::model-descriptions[]
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*avg_array_length* +
+_optional_
+a| 
+
+[markdown]
+--
+(Array indexes only.)
+The average number of items indexed per document.
+
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*avg_drain_rate* +
+_optional_
+a| 
+
+[markdown]
+--
+Average number of items flushed from memory to disk storage per second.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*avg_item_size* +
+_optional_
+a| 
+
+[markdown]
+--
+Average size of the keys.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*avg_scan_latency* +
+_optional_
+a| 
+
+[markdown]
+--
+Average time to serve a scan request (nanoseconds).
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*cache_hit_percent* +
+_optional_
+a| 
+
+[markdown]
+--
+Percentage of memory accesses that were served from the managed cache.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*cache_hits* +
+_optional_
+a| 
+
+[markdown]
+--
+Accesses to this index data from RAM.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*cache_misses* +
+_optional_
+a| 
+
+[markdown]
+--
+Accesses to this index data from disk.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*data_size* +
+_optional_
+a| 
+
+[markdown]
+--
+The size of indexable data that is maintained for the index or partition (bytes).
+
+--
+
+[%hardbreaks]
+*Example:* `95728`
+{blank}
+| Integer
+
+a| 
+*disk_size* +
+_optional_
+a| 
+
+[markdown]
+--
+Total disk file size consumed by the index or partition.
+
+--
+
+[%hardbreaks]
+*Example:* `889054`
+{blank}
+| Integer
+
+a| 
+*docid_count* +
+_optional_
+a| 
+
+[markdown]
+--
+(Array indexes only.)
+The number of documents currently indexed.
+
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*frag_percent* +
+_optional_
+a| 
+
+[markdown]
+--
+Percentage fragmentation of the index.
+
+TIP: At small index sizes of less than a hundred kB, the static overhead of the index disk file will inflate the index fragmentation percentage.
+
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*initial_build_progress* +
+_optional_
+a| 
+
+[markdown]
+--
+Percentage initial build progress for the index.
+When initial build is completed, the value is `100`.
+
+For an index partition, the value is listed as `0`.
+
+
+--
+
+[%hardbreaks]
+*Example:* `100`
+{blank}
+| Integer
+
+a| 
+*items_count* +
+_optional_
+a| 
+
+[markdown]
+--
+The number of items currently indexed.
+
+--
+
+[%hardbreaks]
+*Example:* `2155`
+{blank}
+| Integer
+
+a| 
+*last_known_scan_time* +
+_optional_
+a| 
+
+[markdown]
+--
+Time of the last scan request received for this index (Unix timestamp in nanoseconds).
+This may be useful for determining whether this index is currently unused.
+
+NOTE: This statistic is persisted to disk every 15 minutes, so it is preserved when the indexer restarts.
+
+
+--
+
+[%hardbreaks]
+{blank}
+| Long (int64)
+
+a| 
+*num_docs_indexed* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of documents indexed by the indexer since last startup.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*num_docs_pending* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of documents pending to be indexed.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*num_docs_queued* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of documents queued to be indexed.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*num_items_flushed* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of items flushed from memory to disk storage.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*num_pending_requests* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of requests received but not yet served by the indexer.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*num_requests* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of requests served by the indexer since last startup.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*num_rows_returned* +
+_optional_
+a| 
+
+[markdown]
+--
+Total number of rows returned so far by the indexer.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*num_scan_errors* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of requests that failed due to errors other than timeout.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*num_scan_timeouts* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of requests that timed out, either waiting for snapshots or during scan in progress.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*recs_in_mem* +
+_optional_
+a| 
+
+[markdown]
+--
+For standard index storage, this is the number of records in this index that are stored in memory.
+
+For memory-optimized index storage, this is the same as `items_count`.
+
+
+--
+
+[%hardbreaks]
+*Example:* `2155`
+{blank}
+| Integer
+
+a| 
+*recs_on_disk* +
+_optional_
+a| 
+
+[markdown]
+--
+For standard index storage, this is the number of records in this index that are stored on disk.
+For memory-optimized index storage, this is `0`.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*resident_percent* +
+_optional_
+a| 
+
+[markdown]
+--
+Percentage of the data held in memory.
+
+--
+
+[%hardbreaks]
+*Example:* `100`
+{blank}
+| Integer
+
+a| 
+*scan_bytes_read* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of bytes read by a scan since last startup.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*total_scan_duration* +
+_optional_
+a| 
+
+[markdown]
+--
+Total time spent by the indexer in scanning rows since last startup (nanoseconds).
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+|===
+
+//end::Index[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Index/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Index/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/IndexPartitions/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#IndexPartitions]
+= Index and Partitions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/IndexPartitions/definition-begin.adoc[opts=optional]
+
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+All of the following:
+
+* <<Indexes>>
+
+* <<Partitions>>
+
+
+
+// markup not found, no include::{specDir}definitions/IndexPartitions/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/IndexPartitions/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Indexes/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#Indexes]
+= Indexes
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Indexes/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Indexes[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+_additional +
+property_
+a| 
+
+[markdown]
+--
+
+include::index.adoc[tag=desc-Index, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+| <<Index>>
+
+|===
+
+//end::Indexes[]
+
+
+
+
+include::{specDir}definitions/Indexes/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Indexes/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Node/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#Node]
+= Node
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Node/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Node[]
+
+ifdef::model-descriptions[]
+//tag::desc-Node[]
+A nested object containing statistics for the current index node.
+//end::desc-Node[]
+endif::model-descriptions[]
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*indexer_state* +
+_optional_
+a| 
+
+[markdown]
+--
+Current state of the Index service on this node.
+
+--
+
+[%hardbreaks]
+*Values:* `"Active"`, `"Pause"`, `"Warmup"`
+*Example:* `pass:c["Active"]`
+{blank}
+| String
+
+a| 
+*memory_quota* +
+_optional_
+a| 
+
+[markdown]
+--
+Memory quota assigned to the Index service on this node by user configuration (bytes).
+
+--
+
+[%hardbreaks]
+*Default:* `268435456`
+*Maximum:* `1099511992567`
+*Example:* `536870912`
+{blank}
+| Long (int64)
+
+a| 
+*memory_total_storage* +
+_optional_
+a| 
+
+[markdown]
+--
+The total size allocated in the indexer across all indexes (bytes).
+This also accounts for memory fragmentation.
+
+
+--
+
+[%hardbreaks]
+*Example:* `71794688`
+{blank}
+| Integer
+
+a| 
+*memory_used* +
+_optional_
+a| 
+
+[markdown]
+--
+Amount of memory used by the Index service on this node (bytes).
+
+--
+
+[%hardbreaks]
+*Example:* `360192000`
+{blank}
+| Integer
+
+a| 
+*total_indexer_gc_pause_ns* +
+_optional_
+a| 
+
+[markdown]
+--
+The total time the indexer has spent in GC pause since last startup (ns).
+
+--
+
+[%hardbreaks]
+*Example:* `309778455`
+{blank}
+| Integer
+
+|===
+
+//end::Node[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Node/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Node/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/NodeIndexes/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#NodeIndexes]
+= Node and Indexes
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/NodeIndexes/definition-begin.adoc[opts=optional]
+
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+All of the following:
+
+* <<Nodes>>
+
+* <<Indexes>>
+
+
+
+// markup not found, no include::{specDir}definitions/NodeIndexes/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/NodeIndexes/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Nodes/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#Nodes]
+= Nodes
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Nodes/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Nodes[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*indexer* +
+_required_
+a| 
+
+[markdown]
+--
+
+include::index.adoc[tag=desc-Node, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+| <<Node>>
+
+|===
+
+//end::Nodes[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Nodes/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Nodes/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Partitions/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#Partitions]
+= Partitions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Partitions/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Partitions[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+_additional +
+property_
+a| 
+
+[markdown]
+--
+
+include::index.adoc[tag=desc-Index, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+| <<Index>>
+
+|===
+
+//end::Partitions[]
+
+
+
+
+include::{specDir}definitions/Partitions/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Partitions/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
+
+
+[[security]]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}security/document-begin.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Node Statistics/security-scheme-before.adoc[opts=optional]
+
+
+[[security-nodeStatistics]]
+= Node Statistics
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Node Statistics/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+To get [Node statistics](#Node), users must have the Query System Catalog RBAC role.
+
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Node Statistics/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Node Statistics/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Index Statistics/security-scheme-before.adoc[opts=optional]
+
+
+[[security-indexStatistics]]
+= Index Statistics
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Index Statistics/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+To get [Index statistics](#Index) for all indexes in a bucket, scope, or collection, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on that bucket, scope, or collection.
+
+
+To get [Index statistics](#Index) for an individual index, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on the bucket, scope, and collection containing that index.
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Index Statistics/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Index Statistics/security-scheme-after.adoc[opts=optional]
+
+
+
+
+include::{specDir}security/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
