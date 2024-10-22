@@ -330,7 +330,7 @@ a| [markdown]
 {{! Iterate through operation security }}
 {{#authMethods}}
 | {{type}}{{#scheme}} ({{scheme}}){{/scheme}}
-| <<security-{{name}}>>
+| <<security-{{#lambda.camelcase}}{{name}}{{/lambda.camelcase}}>>
 {{/authMethods}}
 
 {{! If there is operation security: table footer }}
@@ -397,7 +397,7 @@ endif::[]
 {{! include partial before security scheme }}
 {{#specinclude}}/security/{{name}}/security-scheme-before.adoc{{/specinclude}}
 
-[[security-{{name}}]]
+[[security-{{#lambda.camelcase}}{{name}}{{/lambda.camelcase}}]]
 = {{#lambda.titlecase}}{{name}}{{/lambda.titlecase}}
 
 {{! include partial before security scheme body }}
