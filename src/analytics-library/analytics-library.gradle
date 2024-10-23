@@ -1,23 +1,23 @@
-apply plugin: 'io.github.swagger2markup'
+apply plugin: 'org.openapi.generator'
 
-convertSwagger2markup {
-    swaggerInput file("swagger/analytics-library.yaml").getAbsolutePath()
-    outputDir file("${rootDir}/docs/modules/analytics/partials/rest-library")
-    config = ['swagger2markup.markupLanguage' : 'ASCIIDOC',
-              'swagger2markup.generatedExamplesEnabled' : false,
-              'swagger2markup.pathsGroupedBy' : 'AS_IS',
-              'swagger2markup.tagOrderBy' : 'AS_IS',
-              'swagger2markup.operationOrderBy' : 'NATURAL',
-              'swagger2markup.definitionOrderBy' : 'AS_IS',
-              'swagger2markup.parameterOrderBy' : 'AS_IS',
-              'swagger2markup.propertyOrderBy' : 'AS_IS',
-              'swagger2markup.swaggerMarkupLanguage' : 'MARKDOWN',
-              'swagger2markup.flatBodyEnabled' : false,
-              'swagger2markup.extensions.springRestDocs.snippetBaseUri' : file('extensions/spring').absolutePath,
-              'swagger2markup.extensions.springRestDocs.markupLanguage' : 'ASCIIDOC',
-              'swagger2markup.extensions.springRestDocs.defaultSnippets' : true,
-              'swagger2markup.extensions.dynamicDefinitions.contentPath' : file('extensions/dynamic/definitions').absolutePath,
-              'swagger2markup.extensions.dynamicOverview.contentPath' : file('extensions/dynamic/overview').absolutePath,
-              'swagger2markup.extensions.dynamicPaths.contentPath' : file('extensions/dynamic/paths').absolutePath,
-              'swagger2markup.extensions.dynamicSecurity.contentPath' : file('extensions/dynamic/security').absolutePath]
+openApiGenerate {
+    generatorName = "asciidoc"
+    inputSpec = file("swagger/analytics-library.yaml").getAbsolutePath().toString()
+    outputDir = "${rootDir}/docs/modules/analytics-rest-library/pages"
+    templateDir = "${rootDir}/templates"
+    gitRepoId = "cb-swagger"
+    gitUserId = "couchbase"
+    additionalProperties = [
+            specDir: "${rootDir}/docs/modules/analytics-rest-library/partials/",
+            snippetDir: "${rootDir}/docs/modules/analytics-rest-library/partials/paths/",
+            headerAttributes: "false",
+            useIntroduction: "true",
+            useTableTitles: "true",
+            skipExamples: "true",
+            legacyDiscriminatorBehavior: "true"
+    ]
+    globalProperties = [
+            generateAliasAsModel: "true"
+    ]
+    generateAliasAsModel = true
 }
