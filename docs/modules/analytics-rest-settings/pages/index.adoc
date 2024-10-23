@@ -1,0 +1,617 @@
+= Analytics Settings REST API
+:keywords: OpenAPI, REST
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+
+:leveloffset: 1
+
+include::{specDir}overview/document-before.adoc[opts=optional]
+
+
+[[overview]]
+= Overview
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+The Analytics Settings REST API is provided by the Analytics service.
+This API enables you to view or set cluster-level Analytics settings.
+
+--
+
+[discrete#version]
+= Version information
+[%hardbreaks]
+__Version__ : 7.6
+
+[discrete#host]
+= Host information
+
+....
+http://localhost:8091
+....
+
+
+
+
+include::{specDir}overview/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
+
+
+[[resources]]
+= Resources
+
+:count-apis: 1
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
+
+This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+<<tag-Default>>
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Default]
+= Default
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<get_settings>>
+<<post_settings>>
+
+
+
+// markup not found, no include::{specDir}paths/get_settings/operation-before.adoc[opts=optional]
+
+
+[#get_settings]
+= View Analytics Settings
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_settings/operation-begin.adoc[opts=optional]
+
+
+....
+GET /settings/analytics
+....
+
+
+
+// markup not found, no include::{specDir}paths/get_settings/operation-description-before.adoc[opts=optional]
+
+
+[#get_settings-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_settings/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Retrieves cluster-level Analytics settings. Note that only one setting is available: `numReplicas`.
+
+--
+
+
+include::{specDir}paths/get_settings/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_settings/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_settings/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/get_settings/operation-parameters-after.adoc[opts=optional]
+
+
+[#get_settings-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get_settings/operation-responses-before.adoc[opts=optional]
+
+
+[#get_settings-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_settings/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+| <<Settings>>
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect. 
+--
+| Object
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_settings/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/get_settings/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_settings/operation-security-before.adoc[opts=optional]
+
+
+[#get_settings-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_settings/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-clusterReadPoolsRead>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_settings/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_settings/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}get_settings/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get_settings/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_settings/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_settings/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-before.adoc[opts=optional]
+
+
+[#post_settings]
+= Modify Analytics Settings
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_settings/operation-begin.adoc[opts=optional]
+
+
+....
+POST /settings/analytics
+....
+
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-description-before.adoc[opts=optional]
+
+
+[#post_settings-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_settings/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Sets cluster-level Analytics settings. Note that only one setting is available: `numReplicas`.
+
+--
+
+
+include::{specDir}paths/post_settings/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-parameters-before.adoc[opts=optional]
+
+
+[#post_settings-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_settings/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+[#post_settings-form]
+.Form Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *numReplicas* +
+_optional_
+a| 
+
+
+[markdown]
+--
+Specifies the number of replicas for Analytics.
+
+--
+
+[%hardbreaks]
+*Minimum:* `0`
+*Maximum:* `3`
+{blank}
+
+| Integer (int32)
+
+
+|===
+
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-parameters-after.adoc[opts=optional]
+
+
+[#post_settings-produces]
+= Produces
+
+* application/json
+
+[#post_settings-consumes]
+= Consumes
+
+* application/x-www-form-urlencoded
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-responses-before.adoc[opts=optional]
+
+
+[#post_settings-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_settings/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+| <<Settings>>
+
+| 400
+a| [markdown]
+--
+Bad request. A parameter has an incorrect value. 
+--
+| Object
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect. 
+--
+| Object
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-security-before.adoc[opts=optional]
+
+
+[#post_settings-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_settings/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-clusterReadPoolsRead>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}post_settings/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}post_settings/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_settings/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
+
+
+[#models]
+= Definitions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 10]
+[.two-columns]
+endif::[]
+[%hardbreaks]
+<<Settings>>
+
+
+
+// markup not found, no include::{specDir}definitions/Settings/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#Settings]
+= Settings
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Settings/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Settings[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*numReplicas* +
+_required_
+a| 
+
+[markdown]
+--
+Specifies the number of replicas for Analytics.
+--
+
+[%hardbreaks]
+*Minimum:* `0`
+*Maximum:* `3`
+*Example:* `3`
+{blank}
+| Integer
+
+|===
+
+//end::Settings[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Settings/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Settings/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
+
+
+[[security]]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Cluster Read / Pools Read/security-scheme-before.adoc[opts=optional]
+
+
+[[security-clusterReadPoolsRead]]
+= Cluster Read / Pools Read
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Cluster Read / Pools Read/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+The Analytics Settings REST API supports HTTP basic authentication.
+Credentials can be passed via HTTP headers.
+
+Users must have one of the following RBAC roles:
+
+* Full Admin
+* Cluster Admin
+* Read-Only Admin
+* Analytics Admin
+
+Refer to [Roles](/server/7.6/learn/security/roles.html) for more details.
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Cluster Read / Pools Read/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Cluster Read / Pools Read/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+

@@ -1,0 +1,1831 @@
+= Analytics Configuration REST API
+:keywords: OpenAPI, REST
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+
+:leveloffset: 1
+
+include::{specDir}overview/document-before.adoc[opts=optional]
+
+
+[[overview]]
+= Overview
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+The Analytics Configuration REST API is provided by the Analytics service.
+This API enables you to configure Analytics nodes and clusters.
+
+--
+
+[discrete#version]
+= Version information
+[%hardbreaks]
+__Version__ : 7.6
+
+[discrete#host]
+= Host information
+
+....
+http://localhost:8095
+....
+
+
+
+
+include::{specDir}overview/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
+
+
+[[resources]]
+= Resources
+
+:count-apis: 1
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
+
+This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+<<tag-Default>>
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Default]
+= Default
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<get_node>>
+<<get_service>>
+<<put_node>>
+<<put_service>>
+
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-before.adoc[opts=optional]
+
+
+[#get_node]
+= View Node-Specific Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_node/operation-begin.adoc[opts=optional]
+
+
+....
+GET /analytics/config/node
+....
+
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-description-before.adoc[opts=optional]
+
+
+[#get_node-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_node/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Views node-specific parameters, which apply to the node receiving the request.
+--
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-parameters-after.adoc[opts=optional]
+
+
+[#get_node-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-responses-before.adoc[opts=optional]
+
+
+[#get_node-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_node/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success. Returns an object listing the configurable node-level parameters and their current values. 
+--
+| <<Node>>
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
+--
+| Object
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-security-before.adoc[opts=optional]
+
+
+[#get_node-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_node/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}get_node/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get_node/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_node/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-before.adoc[opts=optional]
+
+
+[#get_service]
+= View Service-Level Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_service/operation-begin.adoc[opts=optional]
+
+
+....
+GET /analytics/config/service
+....
+
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-description-before.adoc[opts=optional]
+
+
+[#get_service-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_service/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Views service-level parameters, which apply to all nodes running the Analytics service.
+--
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-parameters-after.adoc[opts=optional]
+
+
+[#get_service-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-responses-before.adoc[opts=optional]
+
+
+[#get_service-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_service/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success. Returns an object listing the configurable service-level parameters and their current values. 
+--
+| <<Service>>
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
+--
+| Object
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-security-before.adoc[opts=optional]
+
+
+[#get_service-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_service/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}get_service/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get_service/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-before.adoc[opts=optional]
+
+
+[#put_node]
+= Modify Node-Specific Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_node/operation-begin.adoc[opts=optional]
+
+
+....
+PUT /analytics/config/node
+....
+
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-description-before.adoc[opts=optional]
+
+
+[#put_node-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_node/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Views node-specific parameters, which apply to the node receiving the request.
+
+IMPORTANT: For the configuration changes to take effect,
+you must restart the node using the [Node Restart API][1],
+or restart the Analytics cluster using the [Cluster Restart API][2].
+
+[1]: /server/7.6/analytics-rest-admin.html#restart_node
+[2]: /server/7.6/analytics-rest-admin.html#restart_cluster
+--
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-parameters-before.adoc[opts=optional]
+
+
+[#put_node-parameters]
+= Parameters
+
+:leveloffset: +1
+
+include::{specDir}paths/put_node/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+
+[#put_node-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *Body* +
+_optional_
+a| 
+
+
+[markdown]
+--
+
+An object specifying one or more of the configurable node-level parameters on this node.
+--
+
+[%hardbreaks]
+{blank}
+
+| <<Node>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-parameters-after.adoc[opts=optional]
+
+
+[#put_node-produces]
+= Produces
+
+* application/json
+
+[#put_node-consumes]
+= Consumes
+
+* application/json
+* application/x-www-form-urlencoded
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-responses-before.adoc[opts=optional]
+
+
+[#put_node-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_node/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+| 
+
+| 400
+a| [markdown]
+--
+Bad request. Unknown parameter or incorrect value. 
+--
+| <<Errors>>
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
+--
+| Object
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-security-before.adoc[opts=optional]
+
+
+[#put_node-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_node/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}put_node/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}put_node/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_node/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-before.adoc[opts=optional]
+
+
+[#put_service]
+= Modify Service-Level Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_service/operation-begin.adoc[opts=optional]
+
+
+....
+PUT /analytics/config/service
+....
+
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-description-before.adoc[opts=optional]
+
+
+[#put_service-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_service/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Modifies service-level parameters, which apply to all nodes running the Analytics service.
+
+IMPORTANT: For the configuration changes to take effect,
+you must restart the Analytics cluster using the [Cluster Restart API][1].
+
+[1]: /server/7.6/analytics-rest-admin.html#restart_cluster
+--
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-parameters-before.adoc[opts=optional]
+
+
+[#put_service-parameters]
+= Parameters
+
+:leveloffset: +1
+
+include::{specDir}paths/put_service/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+
+[#put_service-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *Body* +
+_optional_
+a| 
+
+
+[markdown]
+--
+
+An object specifying one or more of the configurable service-level parameters.
+--
+
+[%hardbreaks]
+{blank}
+
+| <<Service>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-parameters-after.adoc[opts=optional]
+
+
+[#put_service-produces]
+= Produces
+
+* application/json
+
+[#put_service-consumes]
+= Consumes
+
+* application/json
+* application/x-www-form-urlencoded
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-responses-before.adoc[opts=optional]
+
+
+[#put_service-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_service/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+| 
+
+| 400
+a| [markdown]
+--
+Bad request. Unknown parameter or incorrect value. 
+--
+| <<Errors>>
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
+--
+| Object
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-security-before.adoc[opts=optional]
+
+
+[#put_service-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_service/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}put_service/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}put_service/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_service/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
+
+
+[#models]
+= Definitions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 10]
+[.two-columns]
+endif::[]
+[%hardbreaks]
+<<Errors>>
+<<Node>>
+<<Service>>
+
+
+
+// markup not found, no include::{specDir}definitions/Errors/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#Errors]
+= Errors
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Errors/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Errors[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*error* +
+_required_
+a| 
+
+[markdown]
+--
+An error message.
+--
+
+[%hardbreaks]
+{blank}
+| String
+
+|===
+
+//end::Errors[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Errors/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Errors/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Node/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#Node]
+= Node
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Node/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Node[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*jvmArgs* +
+_optional_
+a| 
+
+[markdown]
+--
+JVM arguments to pass to the Analytics Driver.
+The default is undefined (null).
+
+Node-specific JVM arguments are appended to service-level JVM arguments.
+If the same JVM argument appears in both the service-level arguments and the node-specific arguments, the node-specific argument takes priority.
+
+Note that JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
+To pass arguments opaquely, you may use [Java command-line argument files][3].
+
+[1]: /server/7.6/cli/cbcollect-info-tool.html
+[2]: /server/7.6/learn/clusters-and-availability/system-events.html
+[3]: https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-4856361B-8BFD-4964-AE84-121F5F6CF111
+--
+
+[%hardbreaks]
+{blank}
+| String
+
+a| 
+*storageBuffercacheSize* +
+_optional_
+a| 
+
+[markdown]
+--
+The size of memory allocated to the disk buffer cache.
+The value should be a multiple of the buffer cache page size.
+
+The default is 1/4 of the allocated Analytics Service memory.
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+a| 
+*storageMemorycomponentGlobalbudget* +
+_optional_
+a| 
+
+[markdown]
+--
+The size of memory allocated to the memory components.
+The value should be a multiple of the memory component page size.
+
+The default is 1/4 of the allocated Analytics Service memory.
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+|===
+
+//end::Node[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Node/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Node/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Service/definition-before.adoc[opts=optional]
+
+
+ifeval::[{count-models} > 10]
+[discrete]
+endif::[]
+[#Service]
+= Service
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Service/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Service[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*activeMemoryGlobalBudget* +
+_optional_
+a| 
+
+[markdown]
+--
+The memory budget (in bytes) for the active runtime.
+--
+
+[%hardbreaks]
+*Default:* `67108864`
+{blank}
+| Integer (int32)
+
+a| 
+*activeStopTimeout* +
+_optional_
+a| 
+
+[markdown]
+--
+The maximum time (in seconds) to wait for a graceful stop of an active runtime.
+--
+
+[%hardbreaks]
+*Default:* `3600`
+{blank}
+| Integer (int32)
+
+a| 
+*activeSuspendTimeout* +
+_optional_
+a| 
+
+[markdown]
+--
+The maximum time (in seconds) to wait for a graceful suspend of an active runtime.
+--
+
+[%hardbreaks]
+*Default:* `3600`
+{blank}
+| Integer (int32)
+
+a| 
+*analyticsBroadcastDcpStateMutationCount* +
+_optional_
+a| 
+
+[markdown]
+--
+The number of processed mutations after which the DCP state is broadcast to storage
+--
+
+[%hardbreaks]
+*Default:* `10000`
+{blank}
+| Integer (int32)
+
+a| 
+*analyticsHttpRequestQueueSize* +
+_optional_
+a| 
+
+[markdown]
+--
+The maximum number of HTTP requests to queue pending ability to execute.
+--
+
+[%hardbreaks]
+*Default:* `256`
+{blank}
+| Integer (int32)
+
+a| 
+*analyticsHttpThreadCount* +
+_optional_
+a| 
+
+[markdown]
+--
+The number of threads to service HTTP requests.
+--
+
+[%hardbreaks]
+*Default:* `16`
+{blank}
+| Integer (int32)
+
+a| 
+*bindAddress* +
+_optional_
+a| 
+
+[markdown]
+--
+The bind address to use.
+--
+
+[%hardbreaks]
+{blank}
+| String
+
+a| 
+*bindToHost* +
+_optional_
+a| 
+
+[markdown]
+--
+Bind to configured hostname instead of wildcard address.
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+| Boolean
+
+a| 
+*clusterConnectRetries* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of attempts to contact CC before giving up.
+--
+
+[%hardbreaks]
+*Default:* `5`
+{blank}
+| Integer (int32)
+
+a| 
+*collectDcpStateFromNodesTimeout* +
+_optional_
+a| 
+
+[markdown]
+--
+The maximum time to wait to collect DCP state from all nodes in seconds.
+--
+
+[%hardbreaks]
+*Default:* `600`
+{blank}
+| Integer (int32)
+
+a| 
+*compilerFramesize* +
+_optional_
+a| 
+
+[markdown]
+--
+The page size (in bytes) for computation.
+--
+
+[%hardbreaks]
+*Default:* `32768`
+{blank}
+| Integer (int32)
+
+a| 
+*compilerGroupmemory* +
+_optional_
+a| 
+
+[markdown]
+--
+The memory budget (in bytes) for a group by operator instance in a partition.
+--
+
+[%hardbreaks]
+*Default:* `33554432`
+{blank}
+| Integer (int32)
+
+a| 
+*compilerJoinmemory* +
+_optional_
+a| 
+
+[markdown]
+--
+The memory budget (in bytes) for a join operator instance in a partition.
+--
+
+[%hardbreaks]
+*Default:* `33554432`
+{blank}
+| Integer (int32)
+
+a| 
+*compilerParallelism* +
+_optional_
+a| 
+
+[markdown]
+--
+The degree of parallelism for query execution. Zero means to use the storage parallelism as the query execution parallelism, while other integer values dictate the number of query execution parallel partitions. The system will fall back to use the number of all available CPU cores in the cluster as the degree of parallelism if the number set by a user is too large or too small.
+
+--
+
+[%hardbreaks]
+*Default:* `0`
+{blank}
+| Integer (int32)
+
+a| 
+*compilerSortParallel* +
+_optional_
+a| 
+
+[markdown]
+--
+Enables or disables full parallel sort.
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+| Boolean
+
+a| 
+*compilerSortmemory* +
+_optional_
+a| 
+
+[markdown]
+--
+The memory budget (in bytes) for a sort operator instance in a partition.
+--
+
+[%hardbreaks]
+*Default:* `33554432`
+{blank}
+| Integer (int32)
+
+a| 
+*compilerWindowmemory* +
+_optional_
+a| 
+
+[markdown]
+--
+The memory budget (in bytes) for a window operator instance in a partition.
+--
+
+[%hardbreaks]
+*Default:* `33554432`
+{blank}
+| Integer (int32)
+
+a| 
+*coresMultiplier* +
+_optional_
+a| 
+
+[markdown]
+--
+The factor to multiply by the number of cores to determine maximum query concurrent execution level.
+--
+
+[%hardbreaks]
+*Default:* `3`
+{blank}
+| Integer (int32)
+
+a| 
+*dcpBufferAckWatermark* +
+_optional_
+a| 
+
+[markdown]
+--
+The percentage of DCP connection buffer size at which to acknowledge bytes consumed to DCP producer.
+
+--
+
+[%hardbreaks]
+*Default:* `20`
+*Minimum:* `1`
+*Maximum:* `100`
+{blank}
+| Integer (int32)
+
+a| 
+*dcpChannelReconnectRemoteIdleSeconds* +
+_optional_
+a| 
+
+[markdown]
+--
+Reconnect remote DCP channels that are idle for the specified number of seconds to ensure permissions have not been lost. A value of 0 disables reconnects on idle.
+
+--
+
+[%hardbreaks]
+*Default:* `120`
+{blank}
+| Integer (int32)
+
+a| 
+*dcpConnectionBufferSize* +
+_optional_
+a| 
+
+[markdown]
+--
+DCP connection buffer size (in bytes).
+
+If the JVM maximum heap size is less than 8GB, the default for this parameter is 10 MB divided by the number of IO Devices on the node.
+Otherwise, the default is 1% of the JVM maximum heap size divided by the number of IO Devices on the node.
+--
+
+[%hardbreaks]
+{blank}
+| Integer (int32)
+
+a| 
+*deadlockWatchdogHaltDelaySeconds* +
+_optional_
+a| 
+
+[markdown]
+--
+The delay (in seconds) to wait for graceful shutdown due to deadlocked threads, before halting.
+--
+
+[%hardbreaks]
+*Default:* `120`
+{blank}
+| Integer (int32)
+
+a| 
+*deadlockWatchdogPollSeconds* +
+_optional_
+a| 
+
+[markdown]
+--
+The frequency (in seconds) to scan for deadlocked threads.
+--
+
+[%hardbreaks]
+*Default:* `300`
+{blank}
+| Integer (int32)
+
+a| 
+*jobHistorySize* +
+_optional_
+a| 
+
+[markdown]
+--
+Limits the number of historical jobs remembered by the system to the specified value.
+--
+
+[%hardbreaks]
+*Default:* `10`
+{blank}
+| Integer (int32)
+
+a| 
+*jobQueueCapacity* +
+_optional_
+a| 
+
+[markdown]
+--
+The maximum number of jobs to queue before rejecting new jobs.
+--
+
+[%hardbreaks]
+*Default:* `4096`
+{blank}
+| Integer (int32)
+
+a| 
+*jvmArgs* +
+_optional_
+a| 
+
+[markdown]
+--
+JVM arguments to pass to the Analytics Driver.
+The default is undefined (null).
+
+Note that JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
+To pass arguments opaquely, you may use [Java command-line argument files][3].
+
+[1]: /server/7.6/cli/cbcollect-info-tool.html
+[2]: /server/7.6/learn/clusters-and-availability/system-events.html
+[3]: https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-4856361B-8BFD-4964-AE84-121F5F6CF111
+--
+
+[%hardbreaks]
+{blank}
+| String
+
+a| 
+*logLevel* +
+_optional_
+a| 
+
+[markdown]
+--
+The logging level.
+--
+
+[%hardbreaks]
+*Default:* `pass:c["DEBUG"]`
+{blank}
+| String
+
+a| 
+*maxWebRequestSize* +
+_optional_
+a| 
+
+[markdown]
+--
+The maximum accepted web request size in bytes.
+--
+
+[%hardbreaks]
+*Default:* `52428800`
+{blank}
+| Integer (int32)
+
+a| 
+*netBufferCount* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of network buffers per input/output channel.
+--
+
+[%hardbreaks]
+*Default:* `1`
+{blank}
+| Integer (int32)
+
+a| 
+*netThreadCount* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of threads to use for Network I/O.
+--
+
+[%hardbreaks]
+*Default:* `1`
+{blank}
+| Integer (int32)
+
+a| 
+*rebalancePullDatasetSizeFrequency* +
+_optional_
+a| 
+
+[markdown]
+--
+The frequency at which the Analytics collection size is pulled from nodes during rebalance in seconds.
+--
+
+[%hardbreaks]
+*Default:* `5`
+{blank}
+| Integer (int32)
+
+a| 
+*remoteLinkConnectTimeoutSeconds* +
+_optional_
+a| 
+
+[markdown]
+--
+The maximum time (in seconds) to wait for a remote link connection to establish. A value of 0 disables timeout; a value of -1 sets timeout to the system default.
+
+--
+
+[%hardbreaks]
+*Default:* `60`
+{blank}
+| Integer (int32)
+
+a| 
+*remoteLinkSocketTimeoutSeconds* +
+_optional_
+a| 
+
+[markdown]
+--
+The maximum time (in seconds) to wait after establishing the connection for remote links; the maximum time of inactivity between two data packets. A value of 0 disables timeout; a value of -1 sets timeout to the system default.
+
+--
+
+[%hardbreaks]
+*Default:* `60`
+{blank}
+| Integer (int32)
+
+a| 
+*requestsArchiveSize* +
+_optional_
+a| 
+
+[markdown]
+--
+The maximum number of archived requests to maintain.
+--
+
+[%hardbreaks]
+*Default:* `50`
+{blank}
+| Integer (int32)
+
+a| 
+*resultSweepThreshold* +
+_optional_
+a| 
+
+[markdown]
+--
+The duration within which an instance of the result cleanup should be invoked in milliseconds.
+--
+
+[%hardbreaks]
+*Default:* `60000`
+{blank}
+| Integer (int32)
+
+a| 
+*resultTtl* +
+_optional_
+a| 
+
+[markdown]
+--
+Limits the amount of time results for asynchronous jobs should be retained by the system in milliseconds.
+--
+
+[%hardbreaks]
+*Default:* `86400000`
+{blank}
+| Integer (int32)
+
+a| 
+*storageBuffercacheMaxopenfiles* +
+_optional_
+a| 
+
+[markdown]
+--
+The maximum number of open files in the buffer cache.
+--
+
+[%hardbreaks]
+*Default:* `2147483647`
+{blank}
+| Integer (int32)
+
+a| 
+*storageBuffercachePagesize* +
+_optional_
+a| 
+
+[markdown]
+--
+The page size in bytes for pages in the buffer cache.
+--
+
+[%hardbreaks]
+*Default:* `131072`
+{blank}
+| Integer (int32)
+
+a| 
+*storageCompressionBlock* +
+_optional_
+a| 
+
+[markdown]
+--
+The default compression scheme for the storage.
+--
+
+[%hardbreaks]
+*Default:* `pass:c["snappy"]`
+{blank}
+| String
+
+a| 
+*storageMemorycomponentNumcomponents* +
+_optional_
+a| 
+
+[markdown]
+--
+The number of memory components to be used per LSM index.
+--
+
+[%hardbreaks]
+*Default:* `2`
+{blank}
+| Integer (int32)
+
+a| 
+*storageMemorycomponentPagesize* +
+_optional_
+a| 
+
+[markdown]
+--
+The page size in bytes for pages allocated to memory components.
+--
+
+[%hardbreaks]
+*Default:* `131072`
+{blank}
+| Integer (int32)
+
+a| 
+*storageWriteRateLimit* +
+_optional_
+a| 
+
+[markdown]
+--
+The maximum disk write rate for each storage partition in bytes per second. Disabled if the provided value is less than or equal to 0.
+
+--
+
+[%hardbreaks]
+*Default:* `0`
+{blank}
+| Long (int64)
+
+a| 
+*threaddumpFrequencySeconds* +
+_optional_
+a| 
+
+[markdown]
+--
+The frequency (in seconds) at which to log diagnostic thread dumps.
+--
+
+[%hardbreaks]
+*Default:* `300`
+{blank}
+| Integer (int32)
+
+a| 
+*threaddumpLogLevel* +
+_optional_
+a| 
+
+[markdown]
+--
+The log level at which to emit diagnostic thread dumps.
+--
+
+[%hardbreaks]
+*Default:* `pass:c["DEBUG"]`
+{blank}
+| String
+
+a| 
+*traceCategories* +
+_optional_
+a| 
+
+[markdown]
+--
+Categories for tracing. The default is the empty array — no categories.
+
+--
+
+[%hardbreaks]
+{blank}
+| String
+list
+
+a| 
+*txnDatasetCheckpointInterval* +
+_optional_
+a| 
+
+[markdown]
+--
+The interval (in seconds) after which an Analytics collection is considered idle and persisted to disk.
+--
+
+[%hardbreaks]
+*Default:* `3600`
+{blank}
+| Integer (int32)
+
+|===
+
+//end::Service[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Service/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Service/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
+
+
+[[security]]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-before.adoc[opts=optional]
+
+
+[[security-analyticsManage]]
+= Analytics Manage
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+The Analytics Configuration REST API supports HTTP basic authentication.
+Credentials can be passed via HTTP headers.
+
+Users must have one of the following RBAC roles:
+
+* Full Admin
+* Cluster Admin
+* Analytics Admin
+
+Refer to [Roles][1] for more details.
+
+[1]: /server/7.6/learn/security/roles.html
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+

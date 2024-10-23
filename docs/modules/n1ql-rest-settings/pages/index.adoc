@@ -112,6 +112,7 @@ GET /settings/querySettings/curlWhitelist
 ....
 
 
+
 // markup not found, no include::{specDir}paths/get_access/operation-description-before.adoc[opts=optional]
 
 
@@ -254,6 +255,7 @@ GET /settings/querySettings
 ....
 
 
+
 // markup not found, no include::{specDir}paths/get_settings/operation-description-before.adoc[opts=optional]
 
 
@@ -394,6 +396,7 @@ include::{snippetDir}get_settings/http-response.adoc[opts=optional]
 ....
 POST /settings/querySettings/curlWhitelist
 ....
+
 
 
 // markup not found, no include::{specDir}paths/post_access/operation-description-before.adoc[opts=optional]
@@ -591,6 +594,7 @@ include::{snippetDir}post_access/http-response.adoc[opts=optional]
 ....
 POST /settings/querySettings
 ....
+
 
 
 // markup not found, no include::{specDir}paths/post_settings/operation-description-before.adoc[opts=optional]
@@ -852,7 +856,6 @@ This field set must be set to `false` to enable the `allowed_urls` and `disallow
 
 Setting this field to `true` enables access to all endpoints.
 
-
 --
 
 [%hardbreaks]
@@ -875,7 +878,6 @@ To allow complete access to `localhost`, use `http://localhost`.
 
 Note that each URL must include the port, protocol, and all other components of the URL.
 
-
 --
 
 [%hardbreaks]
@@ -897,7 +899,6 @@ The CURL() function will disallow any URL that starts with this value.
 If both `allowed_urls` and `disallowed_urls` fields are populated, the `disallowed_urls` field takes precedence over `allowed_urls`.
 
 Note that each URL must include the port, protocol, and all other components of the URL.
-
 
 --
 
@@ -966,7 +967,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 
 [cleanupclientattempts]: #cleanupclientattempts
 
-
 --
 
 [%hardbreaks]
@@ -993,7 +993,6 @@ The [node-level][cleanuplostattempts] `cleanuplostattempts` setting specifies th
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [cleanuplostattempts]: #cleanuplostattempts
-
 
 --
 
@@ -1035,7 +1034,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
 [cleanupwindow]: #cleanupwindow
 
-
 --
 
 [%hardbreaks]
@@ -1068,7 +1066,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 
 [sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
 [completed-limit]: #completed-limit
-
 
 --
 
@@ -1104,7 +1101,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 [sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
 [completed-max-plan-size]: #completed-max-plan-size
 
-
 --
 
 [%hardbreaks]
@@ -1139,7 +1135,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 
 [sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
 [completed-threshold]: #completed-threshold
-
 
 --
 
@@ -1190,7 +1185,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 
 [loglevel]: #loglevel
 
-
 --
 
 [%hardbreaks]
@@ -1236,7 +1230,6 @@ Refer to [Max Parallelism][max-parallelism] for more information.
 [max-parallelism-srv]: #max-parallelism-srv
 [max_parallelism_req]: #max_parallelism_req
 
-
 --
 
 [%hardbreaks]
@@ -1275,7 +1268,6 @@ If a request includes this parameter, it will be capped by the node-level `memor
 [memory-quota-srv]: #memory-quota-srv
 [memory_quota_req]: #memory_quota_req
 
-
 --
 
 [%hardbreaks]
@@ -1303,7 +1295,6 @@ The [node-level][n1ql-feat-ctrl] `n1ql-feat-ctrl` setting specifies this propert
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [n1ql-feat-ctrl]: #n1ql-feat-ctrl
-
 
 --
 
@@ -1334,7 +1325,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 
 [node-quota]: #node-quota
 
-
 --
 
 [%hardbreaks]
@@ -1361,7 +1351,6 @@ The [node-level][node-quota-val-percent] `node-quota-val-percent` setting specif
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [node-quota-val-percent]: #node-quota-val-percent
-
 
 --
 
@@ -1396,7 +1385,6 @@ If a request includes this parameter, it will be capped by the node-level `numat
 [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
 [numatrs-srv]: #numatrs-srv
 [numatrs_req]: #numatrs_req
-
 
 --
 
@@ -1434,7 +1422,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 
 [num-cpus]: #num-cpus
 
-
 --
 
 [%hardbreaks]
@@ -1465,7 +1452,6 @@ The minimum of that and the node-level `pipeline-batch` setting is applied.
 
 [pipeline-batch-srv]: #pipeline-batch-srv
 [pipeline_batch_req]: #pipeline_batch_req
-
 
 --
 
@@ -1499,7 +1485,6 @@ The minimum of that and the node-level `pipeline-cap` setting is applied.
 [pipeline-cap-srv]: #pipeline-cap-srv
 [pipeline_cap_req]: #pipeline_cap_req
 
-
 --
 
 [%hardbreaks]
@@ -1527,7 +1512,6 @@ The [node-level][prepared-limit] `prepared-limit` setting specifies this propert
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [prepared-limit]: #prepared-limit
-
 
 --
 
@@ -1564,7 +1548,6 @@ The minimum of that and the node-level `scan-cap` setting is applied.
 
 [scan-cap-srv]: #scan-cap-srv
 [scan_cap_req]: #scan_cap_req
-
 
 --
 
@@ -1603,7 +1586,6 @@ The minimum of that and the node-level `timeout` setting is applied.
 
 [timeout-srv]: #timeout-srv
 [timeout_req]: #timeout_req
-
 
 --
 
@@ -1655,7 +1637,6 @@ If a request includes this parameter, it will be capped by the node-level `txtim
 [txtimeout-srv]: #txtimeout-srv
 [txtimeout_req]: #txtimeout_req
 
-
 --
 
 [%hardbreaks]
@@ -1678,7 +1659,6 @@ Only absolute paths are allowed.
 
 The default path is `var/lib/couchbase/tmp` within the Couchbase Server installation directory.
 
-
 --
 
 [%hardbreaks]
@@ -1699,7 +1679,6 @@ Setting the size to `0` disables backfill.
 Setting the size to `-1` means the size is unlimited.
 
 The maximum size is limited only by the available disk space.
-
 
 --
 
@@ -1732,7 +1711,6 @@ If a request does not include this parameter, the node-level setting is used, wh
 
 [use-cbo-srv]: #use-cbo-srv
 [use_cbo_req]: #use_cbo_req
-
 
 --
 
@@ -1782,7 +1760,6 @@ If a query uses sequential scan and a data node becomes unavailable, the query m
 [use-replica-srv]: #use-replica-srv
 [use_replica_req]: #use_replica_req
 
-
 --
 
 [%hardbreaks]
@@ -1799,7 +1776,6 @@ a|
 
 [markdown]
 --
-
 include::index.adoc[tag=desc-Access, opts=optional]
 --
 
