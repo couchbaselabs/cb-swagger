@@ -823,20 +823,21 @@ definitions:
           * `azureblob`: A link to Microsoft Azure Blob Storage.
           * `gcs`: A link to Google Cloud Storage.
 
-          Different properties are returned, depending on the link type: refer to [Couchbase](#Couchbase), [S3](#S3), [Azure Blob](#AzureBlob), or [GCS](#GCS).
+          Different properties are returned, depending on the link type: refer to [Couchbase](#couchbase), [S3](#s3), [Azure Blob](#azureblob), or [GCS](#gcs).
         enum:
           - couchbase
           - s3
           - azureblob
           - gcs
 
-  Couchbase:
+  couchbase:
+    title: Couchbase
     description: These properties are returned for remote Couchbase links.
     allOf:
       - $ref: "#/definitions/All"
-      - $ref: "#/definitions/CouchbaseSpecific"
+      - $ref: "#/definitions/couchbaseSpecific"
 
-  CouchbaseSpecific:
+  couchbaseSpecific:
         title: Couchbase Specific
         type: object
         required:
@@ -913,7 +914,7 @@ definitions:
             type: array
             description: An array of objects, each of which contains information about a node in the target cluster.
             items:
-              $ref: "#/definitions/CouchbaseSpecificNode"
+              $ref: "#/definitions/couchbaseSpecificNode"
           password:
             type: string
             description: >
@@ -938,7 +939,7 @@ definitions:
             x-has-example: true
             example: 6331e2a390125b662f7bcfd63ecb3a73
 
-  CouchbaseSpecificNode:
+  couchbaseSpecificNode:
               type: object
               title: Nodes
               properties:
@@ -957,9 +958,9 @@ definitions:
                   x-has-example: false
                   example: null
                 services:
-                  $ref: "#/definitions/CouchbaseSpecificNodeServices"
+                  $ref: "#/definitions/couchbaseSpecificNodeServices"
 
-  CouchbaseSpecificNodeServices:
+  couchbaseSpecificNodeServices:
                   type: object
                   title: Services
                   description: An object giving information about the services and ports configured on this node.
@@ -995,13 +996,14 @@ definitions:
                       x-has-example: true
                       example: 18091
 
-  S3:
+  s3:
+    title: S3
     description: These properties are returned for S3 links.
     allOf:
       - $ref: "#/definitions/All"
-      - $ref: "#/definitions/S3Specific"
+      - $ref: "#/definitions/s3Specific"
 
-  S3Specific:
+  s3Specific:
         title: S3 Specific
         type: object
         required:
@@ -1044,14 +1046,14 @@ definitions:
             x-has-example: true
             example: my.endpoint.uri
 
-  AzureBlob:
+  azureblob:
     title: Azure Blob
     description: These properties are returned for Azure Blob links.
     allOf:
       - $ref: "#/definitions/All"
-      - $ref: "#/definitions/AzureBlobSpecific"
+      - $ref: "#/definitions/azureblobSpecific"
 
-  AzureBlobSpecific:
+  azureblobSpecific:
         title: Azure Blob Specific
         type: object
         required:
@@ -1140,13 +1142,14 @@ definitions:
             x-has-example: true
             example: myTenantID
 
-  GCS:
+  gcs:
+    title: GCS
     description: These properties are returned for Google Cloud Storage links.
     allOf:
       - $ref: "#/definitions/All"
-      - $ref: "#/definitions/GCSSpecific"
+      - $ref: "#/definitions/gcsSpecific"
 
-  GCSSpecific:
+  gcsSpecific:
         title: GCS Specific
         type: object
         required:
