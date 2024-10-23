@@ -6,13 +6,10 @@ info:
     The Analytics Library REST API is provided by the Analytics service.
     This API enables you to manage the libraries that are used to create SQL\+\+ for Analytics user-defined functions.
 
-    The API schemes and host URLs are as follows:
+host: localhost:8095
 
-    * http://localhost:8095/
-    * https://localhost:18095/ (for secure access)
-
-    Note that this API is only available on the loopback interface of a node
-    running the Analytics service.
+schemes:
+  - http
 
 produces:
   - application/json
@@ -123,6 +120,7 @@ definitions:
 
 
           The scope name may contain one or two identifiers, separated by a slash (/).
+        x-has-example: true
         example: travel-sample/inventory
       hash_md5:
         type: string
@@ -130,6 +128,7 @@ definitions:
       name:
         type: string
         description: The name of the library.
+        x-has-example: true
         example: mylib
   Errors:
     type: object
@@ -168,13 +167,13 @@ securityDefinitions:
   Full Admin:
     type: basic
     description: >
-      To [Create or Update a Library](#_post_library) or [Delete a Library](#_delete_library),
+      To [Create or Update a Library](#post_library) or [Delete a Library](#delete_library),
       users must have the Full Admin RBAC role.
 
   Analytics Admin:
     type: basic
     description: |
-      To [Read All Libraries](#_get_collection), users must have one of the following RBAC roles:
+      To [Read All Libraries](#get_collection), users must have one of the following RBAC roles:
 
       * Full Admin
       * Cluster Admin
