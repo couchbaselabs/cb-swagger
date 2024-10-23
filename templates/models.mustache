@@ -17,13 +17,17 @@ endif::[]
 [%hardbreaks]
 {{#models}}
 {{#model}}
+{{^isEnum}}
 <<{{name}}>>
+{{/isEnum}}
 {{/model}}
 {{/models}}
 
 {{! *** DEFINITION *** }}
 {{#models}}
 {{#model}}
+{{! omit enums from model list. Probably going to regret this }}
+{{^isEnum}}
 
 {{! include partial before definition }}
 {{#specinclude}}/definitions/{{name}}/definition-before.adoc{{/specinclude}}
@@ -95,6 +99,7 @@ endif::[]
 :leveloffset: -1
 {{#specinclude}}/definitions/{{name}}/definition-after.adoc{{/specinclude}}
 
+{{/isEnum}}
 {{/model}}
 {{/models}}
 
