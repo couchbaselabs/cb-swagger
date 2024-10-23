@@ -1,15 +1,14 @@
+= Example HTTP Request
+
 ====
-The example below creates or updates a library called `mylib` in the `travel-sample.inventory` scope.
-The Python code is stored in a file called `lib.pyz`.
+The example below deletes the `mylib` library from the `travel-sample.inventory` scope.
 
 .Curl request
 [source,sh]
 ----
-curl -X POST \
+curl -X DELETE \
 http://localhost:8095/analytics/library/travel-sample%2Finventory/mylib \
--u Administrator:password \
--d type=python
--d data=lib.pyz
+-u Administrator:password
 ----
 
 NOTE: The dot separator within the scope name is converted to a slash (`/`), which is then URL-encoded as `%2F`.
