@@ -4,6 +4,15 @@
 [#models]
 = Definitions
 
+{{! Count the models }}
+{{#models}}
+{{#model}}
+{{#-last}}
+:count-models: {{-index}}
+{{/-last}}
+{{/model}}
+{{/models}}
+
 {{! include partial before definitions body }}
 :leveloffset: +1
 {{#specinclude}}/definitions/document-begin.adoc{{/specinclude}}
