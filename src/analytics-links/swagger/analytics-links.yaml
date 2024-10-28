@@ -407,13 +407,14 @@ parameters:
     type: string
     in: formData
     required: true
-    description: |
+    description: |-
       The type of the link.
+      For details, see [type](#type).
 
-      * `couchbase`: A link to a remote Couchbase cluster.
-      * `s3`: A link to the Amazon S3 service.
-      * `azureblob`: A link to Azure Blob Storage.
-      * `gcs`: A link to Google Cloud Storage.
+    # * `couchbase`: A link to a remote Couchbase cluster.
+    # * `s3`: A link to the Amazon S3 service.
+    # * `azureblob`: A link to Azure Blob Storage.
+    # * `gcs`: A link to Google Cloud Storage.
     enum:
       - couchbase
       - s3
@@ -688,12 +689,12 @@ parameters:
       - 'true'
     in: formData
     required: false
-    description: >
+    description: |-
       For Google Cloud Storage links only.
       If present, indicates that the link should use the Google Application Default Credentials for authenticating.
 
 
-      This parameter may only have the value `"true"`.
+    # FIXME: This parameter may only have the value `"true"`.
 
   CouchbaseHostname:
     name: hostname
@@ -737,12 +738,14 @@ parameters:
     type: string
     in: formData
     required: true
-    description: |
-      For Couchbase links only. The type of encryption used by the link.
+    description: |-
+      For Couchbase links only.
+      The type of encryption used by the link.
+      For details, see [encryption](#encryption).
 
-      * `none`: Neither passwords nor data are encrypted.
-      * `half`: Passwords are encrypted using SCRAM-SHA, but data is not.
-      * `full`: All data and passwords are encrypted and TLS is used.
+    # * `none`: Neither passwords nor data are encrypted.
+    # * `half`: Passwords are encrypted using SCRAM-SHA, but data is not.
+    # * `full`: All data and passwords are encrypted and TLS is used.
     enum:
       - none
       - half
@@ -815,6 +818,7 @@ definitions:
         example: myLink
       type:
         type: string
+        x-desc-name: type
         description: |
           The type of the link.
 
@@ -900,6 +904,7 @@ definitions:
             example: 393221
           encryption:
             type: string
+            x-desc-name: encryption
             description: |
               The type of encryption used by the link.
 
