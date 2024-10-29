@@ -819,15 +819,13 @@ definitions:
       type:
         type: string
         x-desc-name: type
-        description: |
+        description: |-
           The type of the link.
 
           * `couchbase`: A link to a remote Couchbase cluster.
           * `s3`: A link to the Amazon S3 service.
           * `azureblob`: A link to Microsoft Azure Blob Storage.
           * `gcs`: A link to Google Cloud Storage.
-
-          Different properties are returned, depending on the link type: refer to [Couchbase](#couchbase), [S3](#s3), [Azure Blob](#azureblob), or [GCS](#gcs).
         enum:
           - couchbase
           - s3
@@ -1217,14 +1215,9 @@ responses:
 securityDefinitions:
   Analytics Manage:
     type: basic
-    description: |
-      The Analytics Links REST API supports HTTP basic authentication.
-      Credentials can be passed via HTTP headers.
-
+    description: |-
       Users must have one of the following RBAC roles:
 
       * Full Admin
       * Cluster Admin
       * Analytics Admin
-
-      Refer to [Roles](/server/7.6/learn/security/roles.html) for more details.
