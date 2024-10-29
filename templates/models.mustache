@@ -7,9 +7,11 @@
 {{! Count the models }}
 {{#models}}
 {{#model}}
+{{^isEnum}}
 {{#-last}}
 :count-models: {{-index}}
 {{/-last}}
+{{/isEnum}}
 {{/model}}
 {{/models}}
 
@@ -20,7 +22,7 @@
 {{! Table of contents }}
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 10]
+ifeval::[{count-models} > 14]
 [.two-columns]
 endif::[]
 [%hardbreaks]
@@ -41,7 +43,7 @@ endif::[]
 {{! include partial before definition }}
 {{#specinclude}}/definitions/{{name}}/definition-before.adoc{{/specinclude}}
 
-ifeval::[{count-models} > 10]
+ifeval::[{count-models} > 14]
 [discrete]
 endif::[]
 [#{{name}}]
