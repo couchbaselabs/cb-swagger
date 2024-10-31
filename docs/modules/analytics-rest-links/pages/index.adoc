@@ -428,7 +428,7 @@ a|
 
 [markdown]
 --
-The type of the link.  * `couchbase`: A link to a remote Couchbase cluster. * `s3`: A link to the Amazon S3 service. * `azureblob`: A link to Azure Blob Storage. * `gcs`: A link to Google Cloud Storage. 
+The type of the link. For details, see [type](#type).
 
 --
 
@@ -463,7 +463,7 @@ a|
 
 [markdown]
 --
-For Couchbase links only. The type of encryption used by the link.  * `none`: Neither passwords nor data are encrypted. * `half`: Passwords are encrypted using SCRAM-SHA, but data is not. * `full`: All data and passwords are encrypted and TLS is used. 
+For Couchbase links only. The type of encryption used by the link. For details, see [encryption](#encryption).
 
 --
 
@@ -804,7 +804,7 @@ a|
 
 [markdown]
 --
-For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.  This parameter may only have the value `\"true\"`. 
+For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
 
 --
 
@@ -1097,7 +1097,7 @@ a|
 
 [markdown]
 --
-For Couchbase links only. The type of encryption used by the link.  * `none`: Neither passwords nor data are encrypted. * `half`: Passwords are encrypted using SCRAM-SHA, but data is not. * `full`: All data and passwords are encrypted and TLS is used. 
+For Couchbase links only. The type of encryption used by the link. For details, see [encryption](#encryption).
 
 --
 
@@ -1438,7 +1438,7 @@ a|
 
 [markdown]
 --
-For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.  This parameter may only have the value `\"true\"`. 
+For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
 
 --
 
@@ -2701,7 +2701,7 @@ a|
 
 [markdown]
 --
-The type of the link.  * `couchbase`: A link to a remote Couchbase cluster. * `s3`: A link to the Amazon S3 service. * `azureblob`: A link to Azure Blob Storage. * `gcs`: A link to Google Cloud Storage. 
+The type of the link. For details, see [type](#type).
 
 --
 
@@ -2736,7 +2736,7 @@ a|
 
 [markdown]
 --
-For Couchbase links only. The type of encryption used by the link.  * `none`: Neither passwords nor data are encrypted. * `half`: Passwords are encrypted using SCRAM-SHA, but data is not. * `full`: All data and passwords are encrypted and TLS is used. 
+For Couchbase links only. The type of encryption used by the link. For details, see [encryption](#encryption).
 
 --
 
@@ -3077,7 +3077,7 @@ a|
 
 [markdown]
 --
-For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.  This parameter may only have the value `\"true\"`. 
+For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
 
 --
 
@@ -3381,7 +3381,7 @@ a|
 
 [markdown]
 --
-For Couchbase links only. The type of encryption used by the link.  * `none`: Neither passwords nor data are encrypted. * `half`: Passwords are encrypted using SCRAM-SHA, but data is not. * `full`: All data and passwords are encrypted and TLS is used. 
+For Couchbase links only. The type of encryption used by the link. For details, see [encryption](#encryption).
 
 --
 
@@ -3722,7 +3722,7 @@ a|
 
 [markdown]
 --
-For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.  This parameter may only have the value `\"true\"`. 
+For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
 
 --
 
@@ -3892,6 +3892,8 @@ endif::[]
 [#models]
 = Definitions
 
+:count-models: 16
+
 :leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
@@ -3899,9 +3901,10 @@ endif::[]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 10]
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
 [.two-columns]
-endif::[]
+endif::collapse-models[]
 [%hardbreaks]
 <<All>>
 <<azureblob>>
@@ -3915,15 +3918,16 @@ endif::[]
 <<s3>>
 <<s3Specific>>
 <<Wrong>>
+endif::[]
 
 
 
 // markup not found, no include::{specDir}definitions/All/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#All]
 = Links
 
@@ -3980,7 +3984,7 @@ The name of the link.
 {blank}
 | String
 
-a| 
+a| [#type]
 *type* +
 _required_
 a| 
@@ -3993,9 +3997,6 @@ The type of the link.
 * `s3`: A link to the Amazon S3 service.
 * `azureblob`: A link to Microsoft Azure Blob Storage.
 * `gcs`: A link to Google Cloud Storage.
-
-Different properties are returned, depending on the link type: refer to [Couchbase](#couchbase), [S3](#s3), [Azure Blob](#azureblob), or [GCS](#gcs).
-
 --
 
 [%hardbreaks]
@@ -4029,9 +4030,9 @@ This schema has different properties, depending on the value of *type*:
 // markup not found, no include::{specDir}definitions/azureblob/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#azureblob]
 = Azure Blob
 
@@ -4064,9 +4065,9 @@ All of the following:
 // markup not found, no include::{specDir}definitions/azureblobSpecific/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#azureblobSpecific]
 = Azure Blob Specific
 
@@ -4264,9 +4265,9 @@ The tenant ID where the registered application is created. Used for Azure Active
 // markup not found, no include::{specDir}definitions/couchbase/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#couchbase]
 = Couchbase
 
@@ -4299,9 +4300,9 @@ All of the following:
 // markup not found, no include::{specDir}definitions/couchbaseSpecific/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#couchbaseSpecific]
 = Couchbase Specific
 
@@ -4425,7 +4426,7 @@ For internal use only.
 {blank}
 | Integer
 
-a| 
+a| [#encryption]
 *encryption* +
 _required_
 a| 
@@ -4527,9 +4528,9 @@ A UUID uniquely identifying the link.
 // markup not found, no include::{specDir}definitions/couchbaseSpecificNode/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#couchbaseSpecificNode]
 = Nodes
 
@@ -4612,9 +4613,9 @@ include::index.adoc[tag=desc-couchbaseSpecificNodeServices, opts=optional]
 // markup not found, no include::{specDir}definitions/couchbaseSpecificNodeServices/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#couchbaseSpecificNodeServices]
 = Services
 
@@ -4748,9 +4749,9 @@ The port number for an encrypted connection to the Cluster Manager service.
 // markup not found, no include::{specDir}definitions/gcs/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#gcs]
 = GCS
 
@@ -4783,9 +4784,9 @@ All of the following:
 // markup not found, no include::{specDir}definitions/gcsSpecific/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#gcsSpecific]
 = GCS Specific
 
@@ -4873,9 +4874,9 @@ The JSON credentials of the link. If not set, this property returns `null`.
 // markup not found, no include::{specDir}definitions/s3/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#s3]
 = S3
 
@@ -4908,9 +4909,9 @@ All of the following:
 // markup not found, no include::{specDir}definitions/s3Specific/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#s3Specific]
 = S3 Specific
 
@@ -5027,9 +5028,9 @@ Amazon S3 service endpoint. If not set, this property returns `null`.
 // markup not found, no include::{specDir}definitions/Wrong/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Wrong]
 = Errors
 
@@ -5096,7 +5097,7 @@ An error message.
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
+include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
@@ -5114,16 +5115,11 @@ An error message.
 
 [markdown]
 --
-The Analytics Links REST API supports HTTP basic authentication.
-Credentials can be passed via HTTP headers.
-
 Users must have one of the following RBAC roles:
 
 * Full Admin
 * Cluster Admin
 * Analytics Admin
-
-Refer to [Roles](/server/7.6/learn/security/roles.html) for more details.
 --
 
 [%hardbreaks]
@@ -5140,7 +5136,7 @@ __Type__ : http
 
 
 
-// markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
+include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 

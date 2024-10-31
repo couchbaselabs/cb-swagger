@@ -473,6 +473,8 @@ endif::[]
 [#models]
 = Definitions
 
+:count-models: 1
+
 :leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
@@ -480,20 +482,22 @@ endif::[]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 10]
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
 [.two-columns]
-endif::[]
+endif::collapse-models[]
 [%hardbreaks]
 <<Settings>>
+endif::[]
 
 
 
 // markup not found, no include::{specDir}definitions/Settings/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Settings]
 = Settings
 
@@ -563,7 +567,7 @@ Specifies the number of replicas for Analytics.
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
+include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
@@ -581,17 +585,12 @@ Specifies the number of replicas for Analytics.
 
 [markdown]
 --
-The Analytics Settings REST API supports HTTP basic authentication.
-Credentials can be passed via HTTP headers.
-
 Users must have one of the following RBAC roles:
 
 * Full Admin
 * Cluster Admin
 * Read-Only Admin
 * Analytics Admin
-
-Refer to [Roles](/server/7.6/learn/security/roles.html) for more details.
 --
 
 [%hardbreaks]
@@ -608,7 +607,7 @@ __Type__ : http
 
 
 
-// markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
+include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 

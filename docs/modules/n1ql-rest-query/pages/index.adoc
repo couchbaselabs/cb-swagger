@@ -597,6 +597,8 @@ endif::[]
 [#models]
 = Definitions
 
+:count-models: 9
+
 :leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
@@ -604,9 +606,10 @@ endif::[]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 10]
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
 [.two-columns]
-endif::[]
+endif::collapse-models[]
 [%hardbreaks]
 <<Conditions>>
 <<Controls>>
@@ -617,15 +620,16 @@ endif::[]
 <<Request>>
 <<Response>>
 <<Statistics>>
+endif::[]
 
 
 
 // markup not found, no include::{specDir}definitions/Conditions/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Conditions]
 = Conditions
 
@@ -750,9 +754,9 @@ include::{specDir}definitions/Conditions/definition-end.adoc[opts=optional]
 // markup not found, no include::{specDir}definitions/Controls/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Controls]
 = Controls
 
@@ -855,9 +859,9 @@ include::{specDir}definitions/Controls/definition-end.adoc[opts=optional]
 // markup not found, no include::{specDir}definitions/Credentials/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Credentials]
 = Credentials
 
@@ -927,9 +931,9 @@ A password for authentication.
 // markup not found, no include::{specDir}definitions/Execution_Timings/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Execution_Timings]
 = Execution Timings
 
@@ -1019,9 +1023,9 @@ Further nested operators, each with their own execution timings.
 // markup not found, no include::{specDir}definitions/Metrics/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Metrics]
 = Metrics
 
@@ -1195,9 +1199,9 @@ include::{specDir}definitions/Metrics/definition-end.adoc[opts=optional]
 // markup not found, no include::{specDir}definitions/Profile/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Profile]
 = Profile
 
@@ -1338,9 +1342,9 @@ include::index.adoc[tag=desc-Execution_Timings, opts=optional]
 // markup not found, no include::{specDir}definitions/Request/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Request]
 = Request Parameters
 
@@ -1390,7 +1394,7 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[atrcollection-srv]: ../n1ql-rest-admin/index.html#atrcollection-srv
+[atrcollection-srv]: #atrcollection-srv
 
 
 endif::alt-markdown-links[]
@@ -1405,7 +1409,7 @@ The [node-level][atrcollection-srv] `atrcollection` setting specifies the defaul
 The request-level parameter overrides the node-level setting.
 
 [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
-[atrcollection-srv]: #atrcollection-srv
+[atrcollection-srv]: ../n1ql-rest-admin/index.html#atrcollection-srv
 
 --
 
@@ -1483,7 +1487,7 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[controls-srv]: ../n1ql-rest-admin/index.html#controls-srv
+[controls-srv]: #controls-srv
 
 
 endif::alt-markdown-links[]
@@ -1496,7 +1500,7 @@ If the request qualifies for caching, these values will also be cached in the `c
 The [node-level][controls-srv] `controls` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
-[controls-srv]: #controls-srv
+[controls-srv]: ../n1ql-rest-admin/index.html#controls-srv
 
 --
 
@@ -1651,8 +1655,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
-[queryMaxParallelism]: ../n1ql-rest-settings/index.html#queryMaxParallelism
+[max-parallelism-srv]: #max-parallelism-srv
+[queryMaxParallelism]: #queryMaxParallelism
 
 
 endif::alt-markdown-links[]
@@ -1670,8 +1674,8 @@ To enable queries to run in parallel, you must specify the cluster-level `queryM
 
 The default value is the same as the number of partitions of the index selected for the query.
 
-[max-parallelism-srv]: #max-parallelism-srv
-[queryMaxParallelism]: #queryMaxParallelism
+[max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
+[queryMaxParallelism]: ../n1ql-rest-settings/index.html#queryMaxParallelism
 
 --
 
@@ -1688,8 +1692,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
-[queryMemoryQuota]: ../n1ql-rest-settings/index.html#queryMemoryQuota
+[memory-quota-srv]: #memory-quota-srv
+[queryMemoryQuota]: #queryMemoryQuota
 
 
 endif::alt-markdown-links[]
@@ -1711,8 +1715,8 @@ If the node-level setting is greater than zero, the request-level parameter is c
 In addition, the [cluster-level][queryMemoryQuota] `queryMemoryQuota` setting specifies the ceiling for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-[memory-quota-srv]: #memory-quota-srv
-[queryMemoryQuota]: #queryMemoryQuota
+[memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
+[queryMemoryQuota]: ../n1ql-rest-settings/index.html#queryMemoryQuota
 
 --
 
@@ -1762,8 +1766,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
-[queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
+[numatrs-srv]: #numatrs-srv
+[queryNumAtrs]: #queryNumAtrs
 
 
 endif::alt-markdown-links[]
@@ -1777,8 +1781,8 @@ In addition, the [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies 
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
 [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
-[numatrs-srv]: #numatrs-srv
-[queryNumAtrs]: #queryNumAtrs
+[numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
+[queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
 
 --
 
@@ -1796,8 +1800,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
-[queryPipelineBatch]: ../n1ql-rest-settings/index.html#queryPipelineBatch
+[pipeline-batch-srv]: #pipeline-batch-srv
+[queryPipelineBatch]: #queryPipelineBatch
 
 
 endif::alt-markdown-links[]
@@ -1809,8 +1813,8 @@ The request-level parameter overrides the node-level setting, but only if it is 
 In addition, the [cluster-level][queryPipelineBatch] `queryPipelineBatch` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-[pipeline-batch-srv]: #pipeline-batch-srv
-[queryPipelineBatch]: #queryPipelineBatch
+[pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
+[queryPipelineBatch]: ../n1ql-rest-settings/index.html#queryPipelineBatch
 
 --
 
@@ -1827,8 +1831,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
-[queryPipelineCap]: ../n1ql-rest-settings/index.html#queryPipelineCap
+[pipeline-cap-srv]: #pipeline-cap-srv
+[queryPipelineCap]: #queryPipelineCap
 
 
 endif::alt-markdown-links[]
@@ -1840,8 +1844,8 @@ The request-level parameter overrides the node-level setting, but only if it is 
 In addition, the [cluster-level][queryPipelineCap] `queryPipelineCap` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-[pipeline-cap-srv]: #pipeline-cap-srv
-[queryPipelineCap]: #queryPipelineCap
+[pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
+[queryPipelineCap]: ../n1ql-rest-settings/index.html#queryPipelineCap
 
 --
 
@@ -1905,7 +1909,7 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[pretty-srv]: ../n1ql-rest-admin/index.html#pretty-srv
+[pretty-srv]: #pretty-srv
 
 
 endif::alt-markdown-links[]
@@ -1914,7 +1918,7 @@ Specifies the query results returned in pretty format.
 The [node-level][pretty-srv] `pretty` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
-[pretty-srv]: #pretty-srv
+[pretty-srv]: ../n1ql-rest-admin/index.html#pretty-srv
 
 --
 
@@ -1931,7 +1935,7 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[profile-srv]: ../n1ql-rest-admin/index.html#profile-srv
+[profile-srv]: #profile-srv
 
 
 endif::alt-markdown-links[]
@@ -1953,7 +1957,7 @@ If `profile` is not set as one of the above values, then the profile setting doe
 The [node-level][profile-srv] `profile` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
-[profile-srv]: #profile-srv
+[profile-srv]: ../n1ql-rest-admin/index.html#profile-srv
 
 --
 
@@ -2020,8 +2024,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
-[queryScanCap]: ../n1ql-rest-settings/index.html#queryScanCap
+[scan-cap-srv]: #scan-cap-srv
+[queryScanCap]: #queryScanCap
 
 
 endif::alt-markdown-links[]
@@ -2037,8 +2041,8 @@ The request-level parameter overrides the node-level setting, but only if it is 
 In addition, the [cluster-level][queryScanCap] `queryScanCap` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-[scan-cap-srv]: #scan-cap-srv
-[queryScanCap]: #queryScanCap
+[scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
+[queryScanCap]: ../n1ql-rest-settings/index.html#queryScanCap
 
 --
 
@@ -2253,8 +2257,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
-[queryTimeout]: ../n1ql-rest-settings/index.html#queryTimeout
+[timeout-srv]: #timeout-srv
+[queryTimeout]: #queryTimeout
 
 
 endif::alt-markdown-links[]
@@ -2284,8 +2288,8 @@ However, if the node-level setting is greater than 0, the timeout for the query 
 In addition, the [cluster-level][queryTimeout] `queryTimeout` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-[timeout-srv]: #timeout-srv
-[queryTimeout]: #queryTimeout
+[timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
+[queryTimeout]: ../n1ql-rest-settings/index.html#queryTimeout
 
 --
 
@@ -2382,8 +2386,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
-[queryTxTimeout]: ../n1ql-rest-settings/index.html#queryTxTimeout
+[txtimeout-srv]: #txtimeout-srv
+[queryTxTimeout]: #queryTxTimeout
 
 
 endif::alt-markdown-links[]
@@ -2418,8 +2422,8 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sessions or redirected input.
 
-[txtimeout-srv]: #txtimeout-srv
-[queryTxTimeout]: #queryTxTimeout
+[txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
+[queryTxTimeout]: ../n1ql-rest-settings/index.html#queryTxTimeout
 
 --
 
@@ -2436,8 +2440,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
-[queryUseCBO]: ../n1ql-rest-settings/index.html#queryUseCBO
+[use-cbo-srv]: #use-cbo-srv
+[queryUseCBO]: #queryUseCBO
 
 
 endif::alt-markdown-links[]
@@ -2449,8 +2453,8 @@ The request-level parameter overrides the node-level setting.
 In addition, the [cluster-level][queryUseCBO] `queryUseCBO` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-[use-cbo-srv]: #use-cbo-srv
-[queryUseCBO]: #queryUseCBO
+[use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
+[queryUseCBO]: ../n1ql-rest-settings/index.html#queryUseCBO
 
 --
 
@@ -2494,8 +2498,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
-[queryUseReplica]: ../n1ql-rest-settings/index.html#queryUseReplica
+[use-replica-srv]: #use-replica-srv
+[queryUseReplica]: #queryUseReplica
 
 
 endif::alt-markdown-links[]
@@ -2524,8 +2528,8 @@ Reading from replica is only possible if the cluster uses Couchbase Server 7.6.0
 Note that KV range scans cannot currently be started on a replica vBucket.
 If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
 
-[use-replica-srv]: #use-replica-srv
-[queryUseReplica]: #queryUseReplica
+[use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
+[queryUseReplica]: ../n1ql-rest-settings/index.html#queryUseReplica
 
 --
 
@@ -2584,9 +2588,9 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 // markup not found, no include::{specDir}definitions/Response/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Response]
 = Response Body
 
@@ -2779,9 +2783,9 @@ include::index.adoc[tag=desc-Profile, opts=optional]
 // markup not found, no include::{specDir}definitions/Statistics/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Statistics]
 = Statistics
 

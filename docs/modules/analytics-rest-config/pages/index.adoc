@@ -839,6 +839,8 @@ endif::[]
 [#models]
 = Definitions
 
+:count-models: 3
+
 :leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
@@ -846,22 +848,24 @@ endif::[]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 10]
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
 [.two-columns]
-endif::[]
+endif::collapse-models[]
 [%hardbreaks]
 <<Errors>>
 <<Node>>
 <<Service>>
+endif::[]
 
 
 
 // markup not found, no include::{specDir}definitions/Errors/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Errors]
 = Errors
 
@@ -914,9 +918,9 @@ An error message.
 // markup not found, no include::{specDir}definitions/Node/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Node]
 = Node
 
@@ -1014,9 +1018,9 @@ The default is 1/4 of the allocated Analytics Service memory.
 // markup not found, no include::{specDir}definitions/Service/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Service]
 = Service
 
@@ -1776,7 +1780,7 @@ The interval (in seconds) after which an Analytics collection is considered idle
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
+include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
@@ -1794,18 +1798,11 @@ The interval (in seconds) after which an Analytics collection is considered idle
 
 [markdown]
 --
-The Analytics Configuration REST API supports HTTP basic authentication.
-Credentials can be passed via HTTP headers.
-
 Users must have one of the following RBAC roles:
 
 * Full Admin
 * Cluster Admin
 * Analytics Admin
-
-Refer to [Roles][1] for more details.
-
-[1]: /server/7.6/learn/security/roles.html
 --
 
 [%hardbreaks]
@@ -1822,7 +1819,7 @@ __Type__ : http
 
 
 
-// markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
+include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 

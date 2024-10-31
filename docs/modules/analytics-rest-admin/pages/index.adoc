@@ -1437,6 +1437,8 @@ endif::[]
 [#models]
 = Definitions
 
+:count-models: 14
+
 :leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
@@ -1444,9 +1446,10 @@ endif::[]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 10]
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
 [.two-columns]
-endif::[]
+endif::collapse-models[]
 [%hardbreaks]
 <<Ingestion>>
 <<IngestionLink>>
@@ -1462,15 +1465,16 @@ endif::[]
 <<StatusTopology>>
 <<StatusTopologyState>>
 <<StatusTopologyStateReplicas>>
+endif::[]
 
 
 
 // markup not found, no include::{specDir}definitions/Ingestion/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Ingestion]
 = Ingestion
 
@@ -1529,9 +1533,9 @@ list
 // markup not found, no include::{specDir}definitions/IngestionLink/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#IngestionLink]
 = Links
 
@@ -1634,9 +1638,9 @@ list
 // markup not found, no include::{specDir}definitions/IngestionLinkState/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#IngestionLinkState]
 = States
 
@@ -1772,9 +1776,9 @@ list
 // markup not found, no include::{specDir}definitions/IngestionLinkStateScope/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#IngestionLinkStateScope]
 = State Scopes
 
@@ -1843,9 +1847,9 @@ list
 // markup not found, no include::{specDir}definitions/IngestionLinkStateScopeColl/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#IngestionLinkStateScopeColl]
 = State Collections
 
@@ -1899,15 +1903,15 @@ The name of the Analytics collection.
 // markup not found, no include::{specDir}definitions/Mutations/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Mutations]
 = Mutations
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/Mutations/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/Mutations/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -1959,9 +1963,9 @@ include::index.adoc[tag=desc-MutationsColl, opts=optional]
 // markup not found, no include::{specDir}definitions/MutationsColl/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#MutationsColl]
 = Collections
 
@@ -2023,9 +2027,9 @@ The number of mutations in the DCP queue that have not yet been ingested. The na
 // markup not found, no include::{specDir}definitions/Request/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Request]
 = Request
 
@@ -2371,9 +2375,9 @@ The unique identifier for this request.
 // markup not found, no include::{specDir}definitions/Status/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Status]
 = Status
 
@@ -2615,9 +2619,9 @@ include::index.adoc[tag=desc-StatusTopology, opts=optional]
 // markup not found, no include::{specDir}definitions/StatusNodes/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#StatusNodes]
 = Nodes
 
@@ -2716,9 +2720,9 @@ The name or IP address of the node, including the cluster administration port.
 // markup not found, no include::{specDir}definitions/StatusPartitions/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#StatusPartitions]
 = Partitions
 
@@ -2862,9 +2866,9 @@ Indicates whether this partition is waiting to become active.
 // markup not found, no include::{specDir}definitions/StatusTopology/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#StatusTopology]
 = Partition Topology
 
@@ -3013,9 +3017,9 @@ list
 // markup not found, no include::{specDir}definitions/StatusTopologyState/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#StatusTopologyState]
 = Partition States
 
@@ -3114,9 +3118,9 @@ list
 // markup not found, no include::{specDir}definitions/StatusTopologyStateReplicas/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#StatusTopologyStateReplicas]
 = Replicas
 
@@ -3232,7 +3236,7 @@ The percentage (fraction from 0 to 1) of synchronization progress for this repli
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
+include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 

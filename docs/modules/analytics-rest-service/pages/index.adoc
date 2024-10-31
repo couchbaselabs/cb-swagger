@@ -136,7 +136,7 @@ An alternative endpoint for the [Read-Only Query Service](#get_service), provide
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}paths/get_query/operation-description-after.adoc[opts=optional]
+include::{specDir}paths/get_query/operation-description-after.adoc[opts=optional]
 
 
 
@@ -446,7 +446,6 @@ The maximum time to wait for datasets to be updated before the query is executed
 --
 
 [%hardbreaks]
-*Default:* `pass:c["null"]`
 {blank}
 
 | String
@@ -465,7 +464,6 @@ Maximum time to spend on the request before timing out. The format includes an a
 --
 
 [%hardbreaks]
-*Default:* `pass:c["null"]`
 {blank}
 
 | String
@@ -799,6 +797,49 @@ An alternative endpoint for the [Query Service](#post_service), provided for too
 // markup not found, no include::{specDir}paths/post_query/operation-parameters-before.adoc[opts=optional]
 
 
+[#post_query-parameters]
+= Parameters
+
+:leveloffset: +1
+
+include::{specDir}paths/post_query/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+
+[#post_query-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *Body* +
+_required_
+a| 
+
+
+[markdown]
+--
+
+An object specifying one or more query parameters.
+--
+
+[%hardbreaks]
+{blank}
+
+| <<Parameters>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post_query/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 
@@ -811,6 +852,11 @@ An alternative endpoint for the [Query Service](#post_service), provided for too
 
 * application/json
 
+[#post_query-consumes]
+= Consumes
+
+* application/json
+* application/x-www-form-urlencoded
 
 
 // markup not found, no include::{specDir}paths/post_query/operation-responses-before.adoc[opts=optional]
@@ -1117,6 +1163,8 @@ endif::[]
 [#models]
 = Definitions
 
+:count-models: 11
+
 :leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
@@ -1124,9 +1172,10 @@ endif::[]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 10]
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
 [.two-columns]
-endif::[]
+endif::collapse-models[]
 [%hardbreaks]
 <<Parameters>>
 <<ParametersCommon>>
@@ -1139,15 +1188,16 @@ endif::[]
 <<ResponsesLocal>>
 <<ResponsesLocalPlans>>
 <<ResponsesLocalYardsticks>>
+endif::[]
 
 
 
 // markup not found, no include::{specDir}definitions/Parameters/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Parameters]
 = Query Parameters
 
@@ -1180,9 +1230,9 @@ All of the following:
 // markup not found, no include::{specDir}definitions/ParametersCommon/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#ParametersCommon]
 = Common Parameters
 
@@ -1324,7 +1374,6 @@ The maximum time to wait for datasets to be updated before the query is executed
 --
 
 [%hardbreaks]
-*Default:* `pass:c[""]`
 {blank}
 | String
 
@@ -1340,7 +1389,6 @@ Maximum time to spend on the request before timing out. The format includes an a
 --
 
 [%hardbreaks]
-*Default:* `pass:c[""]`
 {blank}
 | String
 
@@ -1380,7 +1428,7 @@ A named parameter value.
 
 
 
-include::{specDir}definitions/ParametersCommon/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ParametersCommon/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
@@ -1393,9 +1441,9 @@ include::{specDir}definitions/ParametersCommon/definition-end.adoc[opts=optional
 // markup not found, no include::{specDir}definitions/ParametersLocal/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#ParametersLocal]
 = Analytics Parameters
 
@@ -1540,9 +1588,9 @@ An integer specifying the maximum number of warning messages to be included in t
 // markup not found, no include::{specDir}definitions/Responses/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Responses]
 = Query Responses
 
@@ -1575,9 +1623,9 @@ All of the following:
 // markup not found, no include::{specDir}definitions/ResponsesCommon/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#ResponsesCommon]
 = Common Responses
 
@@ -1617,8 +1665,14 @@ a|
 
 [markdown]
 --
-The client context ID of the request, if one was supplied — refer to `client_context_id` in [Query Parameters](#Parameters).
+ifdef::alt-markdown-links[]
+[1]: query-params.html
 
+endif::alt-markdown-links[]
+The client context ID of the request, if one was supplied —
+refer to `client_context_id` in [Query Parameters][1].
+
+[1]: #Parameters
 --
 
 [%hardbreaks]
@@ -1694,10 +1748,19 @@ a|
 
 [markdown]
 --
-An array of warning objects. Present only if 1 or more warnings are returned during processing of the request. Each warning is represented by an object in this list.
+ifdef::alt-markdown-links[]
+[1]: query-params.html
 
-Note that you can specify the maximum number of warning messages to be returned in the query response — refer to `max-warnings` in [Query Parameters](#Parameters). By default, no warnings are returned, even if warnings have occurred during processing.
+endif::alt-markdown-links[]
+An array of warning objects.
+Present only if 1 or more warnings are returned during processing of the request.
+Each warning is represented by an object in this list.
 
+Note that you can specify the maximum number of warning messages to be returned in the query response —
+refer to `max-warnings` in [Query Parameters][1].
+By default, no warnings are returned, even if warnings have occurred during processing.
+
+[1]: #Parameters
 --
 
 [%hardbreaks]
@@ -1739,9 +1802,9 @@ include::index.adoc[tag=desc-ResponsesCommonYardsticks, opts=optional]
 // markup not found, no include::{specDir}definitions/ResponsesCommonErrors/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#ResponsesCommonErrors]
 = Errors
 
@@ -1809,9 +1872,9 @@ A message describing the error in detail. Refer to [Error Codes](/server/7.6/ana
 // markup not found, no include::{specDir}definitions/ResponsesCommonWarnings/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#ResponsesCommonWarnings]
 = Warnings
 
@@ -1878,9 +1941,9 @@ A message describing the warning in detail.
 // markup not found, no include::{specDir}definitions/ResponsesCommonYardsticks/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#ResponsesCommonYardsticks]
 = Common Metrics
 
@@ -2010,9 +2073,9 @@ The number of warnings that occurred during the request.
 // markup not found, no include::{specDir}definitions/ResponsesLocal/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#ResponsesLocal]
 = Analytics Responses
 
@@ -2079,9 +2142,9 @@ include::index.adoc[tag=desc-ResponsesLocalYardsticks, opts=optional]
 // markup not found, no include::{specDir}definitions/ResponsesLocalPlans/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#ResponsesLocalPlans]
 = Plans
 
@@ -2195,9 +2258,9 @@ include::{specDir}definitions/ResponsesLocalPlans/definition-end.adoc[opts=optio
 // markup not found, no include::{specDir}definitions/ResponsesLocalYardsticks/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#ResponsesLocalYardsticks]
 = Analytics Metrics
 
@@ -2269,7 +2332,7 @@ Number of processed tuples during query execution.
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
+include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
@@ -2287,9 +2350,6 @@ Number of processed tuples during query execution.
 
 [markdown]
 --
-The Analytics Service REST API supports HTTP basic authentication.
-Credentials can be passed via HTTP headers.
-
 Users must have one of the following RBAC roles:
 
 * Full Admin
@@ -2298,8 +2358,6 @@ Users must have one of the following RBAC roles:
 * Analytics Reader
 * Analytics Select
 * Analytics Admin
-
-Refer to [Roles](/server/7.6/learn/security/roles.html) for more details.
 --
 
 [%hardbreaks]
@@ -2316,7 +2374,7 @@ __Type__ : http
 
 
 
-// markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
+include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 

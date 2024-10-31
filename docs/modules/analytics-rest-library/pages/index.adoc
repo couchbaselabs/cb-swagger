@@ -26,7 +26,7 @@ include::{specDir}overview/document-before.adoc[opts=optional]
 [markdown]
 --
 The Analytics Library REST API is provided by the Analytics service.
-This API enables you to manage the libraries that are used to create SQL\\+\\+ for Analytics user-defined functions.
+This API enables you to manage the libraries that are used to create SQL\+\+ for Analytics user-defined functions.
 
 --
 
@@ -246,7 +246,7 @@ a| [markdown]
 --
 Not found. The library name in the path may be incorrect. 
 --
-| <<String>>
+| 
 
 | 500
 a| [markdown]
@@ -763,6 +763,8 @@ endif::[]
 [#models]
 = Definitions
 
+:count-models: 3
+
 :leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
@@ -770,21 +772,23 @@ endif::[]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 10]
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
 [.two-columns]
-endif::[]
+endif::collapse-models[]
 [%hardbreaks]
 <<Errors>>
 <<Libraries>>
+endif::[]
 
 
 
 // markup not found, no include::{specDir}definitions/Errors/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Errors]
 = Errors
 
@@ -837,9 +841,9 @@ An error message.
 // markup not found, no include::{specDir}definitions/Libraries/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Libraries]
 = Libraries
 
