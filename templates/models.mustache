@@ -22,9 +22,10 @@
 {{! Table of contents }}
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 14]
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
 [.two-columns]
-endif::[]
+endif::collapse-models[]
 [%hardbreaks]
 {{#models}}
 {{#model}}
@@ -33,6 +34,7 @@ endif::[]
 {{/isEnum}}
 {{/model}}
 {{/models}}
+endif::[]
 
 {{! *** DEFINITION *** }}
 {{#models}}
@@ -43,9 +45,9 @@ endif::[]
 {{! include partial before definition }}
 {{#specinclude}}/definitions/{{name}}/definition-before.adoc{{/specinclude}}
 
-ifeval::[{count-models} > 14]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#{{name}}]
 = {{#title}}{{title}}{{/title}}{{^title}}{{classname}}{{/title}}
 
