@@ -111,6 +111,7 @@ GET /api/v1/stats/{keyspace}/{index}
 ....
 
 
+
 // markup not found, no include::{specDir}paths/get_index_stats/operation-description-before.adoc[opts=optional]
 
 
@@ -409,6 +410,7 @@ GET /api/v1/stats/{keyspace}
 ....
 
 
+
 // markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-before.adoc[opts=optional]
 
 
@@ -672,6 +674,7 @@ GET /api/v1/stats
 ....
 
 
+
 // markup not found, no include::{specDir}paths/get_node_stats/operation-description-before.adoc[opts=optional]
 
 
@@ -901,6 +904,8 @@ endif::[]
 [#models]
 = Definitions
 
+:count-models: 7
+
 :leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
@@ -908,9 +913,10 @@ endif::[]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 10]
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
 [.two-columns]
-endif::[]
+endif::collapse-models[]
 [%hardbreaks]
 <<Index>>
 <<IndexPartitions>>
@@ -919,15 +925,16 @@ endif::[]
 <<NodeIndexes>>
 <<Nodes>>
 <<Partitions>>
+endif::[]
 
 
 
 // markup not found, no include::{specDir}definitions/Index/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Index]
 = Index
 
@@ -961,7 +968,6 @@ a|
 (Array indexes only.)
 The average number of items indexed per document.
 
-
 --
 
 [%hardbreaks]
@@ -976,7 +982,6 @@ a|
 [markdown]
 --
 Average number of items flushed from memory to disk storage per second.
-
 --
 
 [%hardbreaks]
@@ -991,7 +996,6 @@ a|
 [markdown]
 --
 Average size of the keys.
-
 --
 
 [%hardbreaks]
@@ -1006,7 +1010,6 @@ a|
 [markdown]
 --
 Average time to serve a scan request (nanoseconds).
-
 --
 
 [%hardbreaks]
@@ -1021,7 +1024,6 @@ a|
 [markdown]
 --
 Percentage of memory accesses that were served from the managed cache.
-
 --
 
 [%hardbreaks]
@@ -1036,7 +1038,6 @@ a|
 [markdown]
 --
 Accesses to this index data from RAM.
-
 --
 
 [%hardbreaks]
@@ -1051,7 +1052,6 @@ a|
 [markdown]
 --
 Accesses to this index data from disk.
-
 --
 
 [%hardbreaks]
@@ -1066,7 +1066,6 @@ a|
 [markdown]
 --
 The size of indexable data that is maintained for the index or partition (bytes).
-
 --
 
 [%hardbreaks]
@@ -1082,7 +1081,6 @@ a|
 [markdown]
 --
 Total disk file size consumed by the index or partition.
-
 --
 
 [%hardbreaks]
@@ -1100,7 +1098,6 @@ a|
 (Array indexes only.)
 The number of documents currently indexed.
 
-
 --
 
 [%hardbreaks]
@@ -1117,7 +1114,6 @@ a|
 Percentage fragmentation of the index.
 
 TIP: At small index sizes of less than a hundred kB, the static overhead of the index disk file will inflate the index fragmentation percentage.
-
 
 --
 
@@ -1137,7 +1133,6 @@ When initial build is completed, the value is `100`.
 
 For an index partition, the value is listed as `0`.
 
-
 --
 
 [%hardbreaks]
@@ -1153,7 +1148,6 @@ a|
 [markdown]
 --
 The number of items currently indexed.
-
 --
 
 [%hardbreaks]
@@ -1173,7 +1167,6 @@ This may be useful for determining whether this index is currently unused.
 
 NOTE: This statistic is persisted to disk every 15 minutes, so it is preserved when the indexer restarts.
 
-
 --
 
 [%hardbreaks]
@@ -1188,7 +1181,6 @@ a|
 [markdown]
 --
 Number of documents indexed by the indexer since last startup.
-
 --
 
 [%hardbreaks]
@@ -1203,7 +1195,6 @@ a|
 [markdown]
 --
 Number of documents pending to be indexed.
-
 --
 
 [%hardbreaks]
@@ -1218,7 +1209,6 @@ a|
 [markdown]
 --
 Number of documents queued to be indexed.
-
 --
 
 [%hardbreaks]
@@ -1233,7 +1223,6 @@ a|
 [markdown]
 --
 Number of items flushed from memory to disk storage.
-
 --
 
 [%hardbreaks]
@@ -1248,7 +1237,6 @@ a|
 [markdown]
 --
 Number of requests received but not yet served by the indexer.
-
 --
 
 [%hardbreaks]
@@ -1263,7 +1251,6 @@ a|
 [markdown]
 --
 Number of requests served by the indexer since last startup.
-
 --
 
 [%hardbreaks]
@@ -1278,7 +1265,6 @@ a|
 [markdown]
 --
 Total number of rows returned so far by the indexer.
-
 --
 
 [%hardbreaks]
@@ -1293,7 +1279,6 @@ a|
 [markdown]
 --
 Number of requests that failed due to errors other than timeout.
-
 --
 
 [%hardbreaks]
@@ -1308,7 +1293,6 @@ a|
 [markdown]
 --
 Number of requests that timed out, either waiting for snapshots or during scan in progress.
-
 --
 
 [%hardbreaks]
@@ -1326,7 +1310,6 @@ For standard index storage, this is the number of records in this index that are
 
 For memory-optimized index storage, this is the same as `items_count`.
 
-
 --
 
 [%hardbreaks]
@@ -1343,7 +1326,6 @@ a|
 --
 For standard index storage, this is the number of records in this index that are stored on disk.
 For memory-optimized index storage, this is `0`.
-
 --
 
 [%hardbreaks]
@@ -1358,7 +1340,6 @@ a|
 [markdown]
 --
 Percentage of the data held in memory.
-
 --
 
 [%hardbreaks]
@@ -1374,7 +1355,6 @@ a|
 [markdown]
 --
 Number of bytes read by a scan since last startup.
-
 --
 
 [%hardbreaks]
@@ -1389,7 +1369,6 @@ a|
 [markdown]
 --
 Total time spent by the indexer in scanning rows since last startup (nanoseconds).
-
 --
 
 [%hardbreaks]
@@ -1416,9 +1395,9 @@ Total time spent by the indexer in scanning rows since last startup (nanoseconds
 // markup not found, no include::{specDir}definitions/IndexPartitions/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#IndexPartitions]
 = Index and Partitions
 
@@ -1451,9 +1430,9 @@ All of the following:
 // markup not found, no include::{specDir}definitions/Indexes/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Indexes]
 = Indexes
 
@@ -1479,7 +1458,6 @@ a|
 
 [markdown]
 --
-
 include::index.adoc[tag=desc-Index, opts=optional]
 --
 
@@ -1507,9 +1485,9 @@ include::{specDir}definitions/Indexes/definition-end.adoc[opts=optional]
 // markup not found, no include::{specDir}definitions/Node/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Node]
 = Node
 
@@ -1541,7 +1519,6 @@ a|
 [markdown]
 --
 Current state of the Index service on this node.
-
 --
 
 [%hardbreaks]
@@ -1558,7 +1535,6 @@ a|
 [markdown]
 --
 Memory quota assigned to the Index service on this node by user configuration (bytes).
-
 --
 
 [%hardbreaks]
@@ -1578,7 +1554,6 @@ a|
 The total size allocated in the indexer across all indexes (bytes).
 This also accounts for memory fragmentation.
 
-
 --
 
 [%hardbreaks]
@@ -1594,7 +1569,6 @@ a|
 [markdown]
 --
 Amount of memory used by the Index service on this node (bytes).
-
 --
 
 [%hardbreaks]
@@ -1610,7 +1584,6 @@ a|
 [markdown]
 --
 The total time the indexer has spent in GC pause since last startup (ns).
-
 --
 
 [%hardbreaks]
@@ -1638,9 +1611,9 @@ The total time the indexer has spent in GC pause since last startup (ns).
 // markup not found, no include::{specDir}definitions/NodeIndexes/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#NodeIndexes]
 = Node and Indexes
 
@@ -1673,9 +1646,9 @@ All of the following:
 // markup not found, no include::{specDir}definitions/Nodes/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Nodes]
 = Nodes
 
@@ -1701,7 +1674,6 @@ a|
 
 [markdown]
 --
-
 include::index.adoc[tag=desc-Node, opts=optional]
 --
 
@@ -1729,9 +1701,9 @@ include::index.adoc[tag=desc-Node, opts=optional]
 // markup not found, no include::{specDir}definitions/Partitions/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Partitions]
 = Partitions
 
@@ -1757,7 +1729,6 @@ a|
 
 [markdown]
 --
-
 include::index.adoc[tag=desc-Index, opts=optional]
 --
 

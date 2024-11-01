@@ -98,9 +98,8 @@ paths:
 
 # The output of this spec is used in more than one location, so Markdown cannot use relative links.
 # Absolute links begin with /cloud -- this must be replaced for every branch.
-# Relative links are currently expected to point to a location in the same page.
-# The x-desc-refs attribute records links which point to other REST API references, for future use.
-# The x-desc-name attribute records the ID of the parameter description, also for future use.
+# Relative links point to a location relative to the REST API reference page by default.
+# The x-desc-refs attribute is used to override links when content is transcluded to other locations.
 
 # The AsciiDoc Markdown converter does not recognize HTML tags like <a id="foo">.
 # Use the x-desc-name vendor extension to specify the anchor for a property.
@@ -207,9 +206,9 @@ definitions:
 #          The [node-level][atrcollection-srv] `atrcollection` setting specifies the default for this parameter for a single node.
 #          The request-level parameter overrides the node-level setting.
 
-#          [atrcollection-srv]: #atrcollection-srv
+#          [atrcollection-srv]: ../n1ql-rest-admin/index.html#atrcollection-srv
         x-desc-refs: |
-          [atrcollection-srv]: ../n1ql-rest-admin/index.html#atrcollection-srv
+          [atrcollection-srv]: #atrcollection-srv
         x-has-example: true
         example: default:`travel-sample`.transaction.test
       auto_execute:
@@ -260,9 +259,9 @@ definitions:
 #         The [node-level][controls-srv] `controls` setting specifies the default for this parameter for a single node.
 #         The request-level parameter overrides the node-level setting.
 
-#         [controls-srv]: #controls-srv
+#         [controls-srv]: ../n1ql-rest-admin/index.html#controls-srv
         x-desc-refs: |
-          [controls-srv]: ../n1ql-rest-admin/index.html#controls-srv
+          [controls-srv]: #controls-srv
         x-has-example: true
         example: true
 #     creds:
@@ -381,11 +380,11 @@ definitions:
 
 #         To enable queries to run in parallel, you must specify the cluster-level `queryMaxParallelism` parameter, or specify the node-level `max-parallelism` parameter on all Query nodes.
 
-#         [max-parallelism-srv]: #max-parallelism-srv
-#         [queryMaxParallelism]: #queryMaxParallelism
+#         [max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
+#         [queryMaxParallelism]: ../n1ql-rest-settings/index.html#queryMaxParallelism
         x-desc-refs: |
-          [max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
-          [queryMaxParallelism]: ../n1ql-rest-settings/index.html#queryMaxParallelism
+          [max-parallelism-srv]: #max-parallelism-srv
+          [queryMaxParallelism]: #queryMaxParallelism
         x-has-example: true
         example: 3
       memory_quota:
@@ -412,11 +411,11 @@ definitions:
 #         In addition, the [cluster-level][queryMemoryQuota] `queryMemoryQuota` setting specifies the ceiling for this parameter for the whole cluster.
 #         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-#         [memory-quota-srv]: #memory-quota-srv
-#         [queryMemoryQuota]: #queryMemoryQuota
+#         [memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
+#         [queryMemoryQuota]: ../n1ql-rest-settings/index.html#queryMemoryQuota
         x-desc-refs: |
-          [memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
-          [queryMemoryQuota]: ../n1ql-rest-settings/index.html#queryMemoryQuota
+          [memory-quota-srv]: #memory-quota-srv
+          [queryMemoryQuota]: #queryMemoryQuota
         x-has-default: true
         x-has-example: true
         default: 0
@@ -453,11 +452,11 @@ definitions:
 #         In addition, the [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
 #         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-#         [numatrs-srv]: #numatrs-srv
-#         [queryNumAtrs]: #queryNumAtrs
+#         [numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
+#         [queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
         x-desc-refs: |
-          [numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
-          [queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
+          [numatrs-srv]: #numatrs-srv
+          [queryNumAtrs]: #queryNumAtrs
         x-has-default: true
         x-has-example: true
         default: 1024
@@ -475,11 +474,11 @@ definitions:
 #         In addition, the [cluster-level][queryPipelineBatch] `queryPipelineBatch` setting specifies the default for this parameter for the whole cluster.
 #         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-#         [pipeline-batch-srv]: #pipeline-batch-srv
-#         [queryPipelineBatch]: #queryPipelineBatch
+#         [pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
+#         [queryPipelineBatch]: ../n1ql-rest-settings/index.html#queryPipelineBatch
         x-desc-refs: |
-          [pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
-          [queryPipelineBatch]: ../n1ql-rest-settings/index.html#queryPipelineBatch
+          [pipeline-batch-srv]: #pipeline-batch-srv
+          [queryPipelineBatch]: #queryPipelineBatch
         x-has-example: true
         example: 64
       pipeline_cap:
@@ -495,11 +494,11 @@ definitions:
 #         In addition, the [cluster-level][queryPipelineCap] `queryPipelineCap` setting specifies the default for this parameter for the whole cluster.
 #         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-#         [pipeline-cap-srv]: #pipeline-cap-srv
-#         [queryPipelineCap]: #queryPipelineCap
+#         [pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
+#         [queryPipelineCap]: ../n1ql-rest-settings/index.html#queryPipelineCap
         x-desc-refs: |
-          [pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
-          [queryPipelineCap]: ../n1ql-rest-settings/index.html#queryPipelineCap
+          [pipeline-cap-srv]: #pipeline-cap-srv
+          [queryPipelineCap]: #queryPipelineCap
         x-has-example: true
         example: 1024
       prepared:
@@ -541,9 +540,9 @@ definitions:
 #         The [node-level][pretty-srv] `pretty` setting specifies the default for this parameter for a single node.
 #         The request-level parameter overrides the node-level setting.
 
-#         [pretty-srv]: #pretty-srv
+#         [pretty-srv]: ../n1ql-rest-admin/index.html#pretty-srv
         x-desc-refs: |
-          [pretty-srv]: ../n1ql-rest-admin/index.html#pretty-srv
+          [pretty-srv]: #pretty-srv
         x-has-example: true
         example: false
       profile:
@@ -568,9 +567,9 @@ definitions:
 #         The [node-level][profile-srv] `profile` setting specifies the default for this parameter for a single node.
 #         The request-level parameter overrides the node-level setting.
 
-#         [profile-srv]: #profile-srv
+#         [profile-srv]: ../n1ql-rest-admin/index.html#profile-srv
         x-desc-refs: |
-          [profile-srv]: ../n1ql-rest-admin/index.html#profile-srv
+          [profile-srv]: #profile-srv
         enum: ["off", "phases", "timings"]
         x-has-example: true
         example: phases
@@ -624,11 +623,11 @@ definitions:
 #         In addition, the [cluster-level][queryScanCap] `queryScanCap` setting specifies the default for this parameter for the whole cluster.
 #         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-#         [scan-cap-srv]: #scan-cap-srv
-#         [queryScanCap]: #queryScanCap
+#         [scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
+#         [queryScanCap]: ../n1ql-rest-settings/index.html#queryScanCap
         x-desc-refs: |
-          [scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
-          [queryScanCap]: ../n1ql-rest-settings/index.html#queryScanCap
+          [scan-cap-srv]: #scan-cap-srv
+          [queryScanCap]: #queryScanCap
         x-has-example: true
         example: 1024
       scan_consistency:
@@ -809,11 +808,11 @@ definitions:
 #         In addition, the [cluster-level][queryTimeout] `queryTimeout` setting specifies the default for this parameter for the whole cluster.
 #         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-#         [timeout-srv]: #timeout-srv
-#         [queryTimeout]: #queryTimeout
+#         [timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
+#         [queryTimeout]: ../n1ql-rest-settings/index.html#queryTimeout
         x-desc-refs: |
-          [timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
-          [queryTimeout]: ../n1ql-rest-settings/index.html#queryTimeout
+          [timeout-srv]: #timeout-srv
+          [queryTimeout]: #queryTimeout
         x-has-example: true
         example: 30m
       txdata:
@@ -898,11 +897,11 @@ definitions:
 #         In addition, the [cluster-level][queryTxTimeout] `queryTxTimeout` setting specifies the default for this parameter for the whole cluster.
 #         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-#         [txtimeout-srv]: #txtimeout-srv
-#         [queryTxTimeout]: #queryTxTimeout
+#         [txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
+#         [queryTxTimeout]: ../n1ql-rest-settings/index.html#queryTxTimeout
         x-desc-refs: |
-          [txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
-          [queryTxTimeout]: ../n1ql-rest-settings/index.html#queryTxTimeout
+          [txtimeout-srv]: #txtimeout-srv
+          [queryTxTimeout]: #queryTxTimeout
         x-has-example: true
         example: 30m
       use_cbo:
@@ -917,11 +916,11 @@ definitions:
 #         In addition, the [cluster-level][queryUseCBO] `queryUseCBO` setting specifies the default for this parameter for the whole cluster.
 #         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-#         [use-cbo-srv]: #use-cbo-srv
-#         [queryUseCBO]: #queryUseCBO
+#         [use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
+#         [queryUseCBO]: ../n1ql-rest-settings/index.html#queryUseCBO
         x-desc-refs: |
-          [use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
-          [queryUseCBO]: ../n1ql-rest-settings/index.html#queryUseCBO
+          [use-cbo-srv]: #use-cbo-srv
+          [queryUseCBO]: #queryUseCBO
         x-has-example: true
         example: true
       use_fts:
@@ -978,11 +977,11 @@ definitions:
 #         In addition, the [cluster-level][queryUseReplica] `queryUseReplica` setting specifies the default for this property for the whole cluster.
 #         When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-#         [use-replica-srv]: #use-replica-srv
-#         [queryUseReplica]: #queryUseReplica
+#         [use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
+#         [queryUseReplica]: ../n1ql-rest-settings/index.html#queryUseReplica
         x-desc-refs: |
-          [use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
-          [queryUseReplica]: ../n1ql-rest-settings/index.html#queryUseReplica
+          [use-replica-srv]: #use-replica-srv
+          [queryUseReplica]: #queryUseReplica
     additionalProperties:
       type: string
       format: any JSON value

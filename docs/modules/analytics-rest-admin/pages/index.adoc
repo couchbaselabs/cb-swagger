@@ -1,0 +1,3359 @@
+= Analytics Administration REST APIs
+:keywords: OpenAPI, REST
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+include::partial$header-attributes.adoc[opts=optional]
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+
+:leveloffset: 1
+
+include::{specDir}overview/document-before.adoc[opts=optional]
+
+
+[[overview]]
+= Overview
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+The Analytics Administration REST APIs are provided by the Analytics service.
+These APIs enables you to manage and monitor the Analytics service.
+
+--
+
+[discrete#version]
+= Version information
+[%hardbreaks]
+__Version__ : capella
+
+[discrete#host]
+= Host information
+
+....
+http://localhost:8095
+....
+
+
+
+
+include::{specDir}overview/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
+
+
+[[resources]]
+= Resources
+
+:count-apis: 1
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
+
+This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+<<tag-Default>>
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Default]
+= Default
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<cancel_request>>
+<<cluster_status>>
+<<completed_requests>>
+<<ingestion_status>>
+<<monitor_node>>
+<<restart_cluster>>
+<<restart_node>>
+<<return_active_requests>>
+
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-before.adoc[opts=optional]
+
+
+[#cancel_request]
+= Request Cancellation
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-begin.adoc[opts=optional]
+
+
+....
+DELETE /analytics/admin/active_requests
+....
+
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-description-before.adoc[opts=optional]
+
+
+[#cancel_request-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Cancels an active request.
+--
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-parameters-before.adoc[opts=optional]
+
+
+[#cancel_request-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+[#cancel_request-form]
+.Form Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *client_context_id* +
+_required_
+a| 
+
+
+[markdown]
+--
+Identifier passed by the client that is used to identify an active request to be cancelled.
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-parameters-after.adoc[opts=optional]
+
+
+[#cancel_request-produces]
+= Produces
+
+* application/json
+
+[#cancel_request-consumes]
+= Consumes
+
+* application/x-www-form-urlencoded
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-responses-before.adoc[opts=optional]
+
+
+[#cancel_request-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful. 
+--
+| 
+
+| 400
+a| [markdown]
+--
+Bad request. Incorrect parameter or missing value. 
+--
+| 
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
+--
+| Object
+
+| 404
+a| [markdown]
+--
+Not found. The path may be incorrect, or there is no active request with the specified identifier. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-security-before.adoc[opts=optional]
+
+
+[#cancel_request-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManageAnalyticsSelect>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}cancel_request/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}cancel_request/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/cancel_request/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-before.adoc[opts=optional]
+
+
+[#cluster_status]
+= Cluster Status
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-begin.adoc[opts=optional]
+
+
+....
+GET /analytics/cluster
+....
+
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-description-before.adoc[opts=optional]
+
+
+[#cluster_status-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Shows various details about the current status of the Analytics Service, such as the service state, the state of each node partition, and the replicas of each partition.
+--
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-parameters-after.adoc[opts=optional]
+
+
+[#cluster_status-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-responses-before.adoc[opts=optional]
+
+
+[#cluster_status-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success. Returns an object giving the current status of the Analytics Service. 
+--
+| <<Status>>
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
+--
+| Object
+
+| 404
+a| [markdown]
+--
+Not found. The path may be incorrect. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-security-before.adoc[opts=optional]
+
+
+[#cluster_status-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-clusterReadPoolsRead>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}cluster_status/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}cluster_status/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/cluster_status/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-before.adoc[opts=optional]
+
+
+[#completed_requests]
+= Completed Requests
+
+:leveloffset: +1
+
+include::{specDir}paths/completed_requests/operation-begin.adoc[opts=optional]
+
+
+....
+GET /analytics/admin/completed_requests
+....
+
+
+
+include::{specDir}paths/completed_requests/operation-description-before.adoc[opts=optional]
+
+
+[#completed_requests-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Gets a list of all completed analytic requests.
+--
+
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-parameters-after.adoc[opts=optional]
+
+
+[#completed_requests-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-responses-before.adoc[opts=optional]
+
+
+[#completed_requests-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success. Returns a list of all completed analytic requests. 
+--
+| <<Request>>
+list
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
+--
+| Object
+
+| 404
+a| [markdown]
+--
+Not found. The path may be incorrect. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-security-before.adoc[opts=optional]
+
+
+[#completed_requests-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManageAnalyticsSelect>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}completed_requests/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}completed_requests/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/completed_requests/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-before.adoc[opts=optional]
+
+
+[#ingestion_status]
+= Ingestion Status
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-begin.adoc[opts=optional]
+
+
+....
+GET /analytics/status/ingestion
+....
+
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-description-before.adoc[opts=optional]
+
+
+[#ingestion_status-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Shows the progress of ingestion by the Analytics service, for each Analytics collection.
+--
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-parameters-after.adoc[opts=optional]
+
+
+[#ingestion_status-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-responses-before.adoc[opts=optional]
+
+
+[#ingestion_status-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success. Returns an object giving the ingestion status of each Analytics collection. 
+--
+| <<Ingestion>>
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
+--
+| Object
+
+| 404
+a| [markdown]
+--
+Not found. The path may be incorrect. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-security-before.adoc[opts=optional]
+
+
+[#ingestion_status-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManageAnalyticsSelect>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}ingestion_status/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}ingestion_status/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/ingestion_status/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-before.adoc[opts=optional]
+
+
+[#monitor_node]
+= Pending Mutations
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-begin.adoc[opts=optional]
+
+
+....
+GET /analytics/node/agg/stats/remaining
+....
+
+CAUTION: This operation is deprecated, and will be removed in a future release.
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-description-before.adoc[opts=optional]
+
+
+[#monitor_node-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Shows the number of mutations in the DCP queue that have not yet been ingested by the Analytics service, for each Analytics collection.
+
+NOTE: This endpoint may not return meaningful results in Couchbase Server 7.0 and later. The reported number of mutations may be different to the actual number of mutations in the Analytics collection. For this reason, this endpoint has been deprecated, and you should use the [Ingestion Status](#ingestion_status) endpoint instead.
+
+--
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-parameters-after.adoc[opts=optional]
+
+
+[#monitor_node-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-responses-before.adoc[opts=optional]
+
+
+[#monitor_node-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success. Returns an object giving the number of pending mutations for each Analytics collection. 
+--
+| <<Mutations>>
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
+--
+| Object
+
+| 404
+a| [markdown]
+--
+Not found. The path may be incorrect. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-security-before.adoc[opts=optional]
+
+
+[#monitor_node-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManageAnalyticsSelect>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}monitor_node/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}monitor_node/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/monitor_node/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-before.adoc[opts=optional]
+
+
+[#restart_cluster]
+= Cluster Restart
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-begin.adoc[opts=optional]
+
+
+....
+POST /analytics/cluster/restart
+....
+
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-description-before.adoc[opts=optional]
+
+
+[#restart_cluster-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Restarts all Analytics Service nodes in the cluster.
+--
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-parameters-after.adoc[opts=optional]
+
+
+[#restart_cluster-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-responses-before.adoc[opts=optional]
+
+
+[#restart_cluster-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 202
+a| [markdown]
+--
+Accepted. Returns an object showing the status of the cluster. 
+--
+| Object
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
+--
+| Object
+
+| 404
+a| [markdown]
+--
+Not found. The path may be incorrect. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-security-before.adoc[opts=optional]
+
+
+[#restart_cluster-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}restart_cluster/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}restart_cluster/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/restart_cluster/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-before.adoc[opts=optional]
+
+
+[#restart_node]
+= Node Restart
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/restart_node/operation-begin.adoc[opts=optional]
+
+
+....
+POST /analytics/node/restart
+....
+
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-description-before.adoc[opts=optional]
+
+
+[#restart_node-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/restart_node/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Restarts the specified Analytics Service node.
+--
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-parameters-after.adoc[opts=optional]
+
+
+[#restart_node-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-responses-before.adoc[opts=optional]
+
+
+[#restart_node-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/restart_node/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 202
+a| [markdown]
+--
+Accepted. Returns an object showing the status of the node. 
+--
+| Object
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
+--
+| Object
+
+| 404
+a| [markdown]
+--
+Not found. The path may be incorrect. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-security-before.adoc[opts=optional]
+
+
+[#restart_node-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/restart_node/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}restart_node/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}restart_node/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/restart_node/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-before.adoc[opts=optional]
+
+
+[#return_active_requests]
+= Active Requests
+
+:leveloffset: +1
+
+include::{specDir}paths/return_active_requests/operation-begin.adoc[opts=optional]
+
+
+....
+GET /analytics/admin/active_requests
+....
+
+
+
+include::{specDir}paths/return_active_requests/operation-description-before.adoc[opts=optional]
+
+
+[#return_active_requests-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Gets a list of the analytic requests that are running.
+--
+
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-parameters-after.adoc[opts=optional]
+
+
+[#return_active_requests-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-responses-before.adoc[opts=optional]
+
+
+[#return_active_requests-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.  Returns an array id details on the running requests. 
+--
+| <<Request>>
+list
+
+| 401
+a| [markdown]
+--
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
+--
+| Object
+
+| 404
+a| [markdown]
+--
+Not found. The path may be incorrect. 
+--
+| 
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-security-before.adoc[opts=optional]
+
+
+[#return_active_requests-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManageAnalyticsSelect>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}return_active_requests/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}return_active_requests/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/return_active_requests/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
+
+
+[#models]
+= Definitions
+
+:count-models: 14
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
+[.two-columns]
+endif::collapse-models[]
+[%hardbreaks]
+<<Ingestion>>
+<<IngestionLink>>
+<<IngestionLinkState>>
+<<IngestionLinkStateScope>>
+<<IngestionLinkStateScopeColl>>
+<<Mutations>>
+<<MutationsColl>>
+<<Request>>
+<<Status>>
+<<StatusNodes>>
+<<StatusPartitions>>
+<<StatusTopology>>
+<<StatusTopologyState>>
+<<StatusTopologyStateReplicas>>
+endif::[]
+
+
+
+// markup not found, no include::{specDir}definitions/Ingestion/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#Ingestion]
+= Ingestion
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Ingestion/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Ingestion[]
+
+ifdef::model-descriptions[]
+//tag::desc-Ingestion[]
+An object containing a single links property.
+//end::desc-Ingestion[]
+endif::model-descriptions[]
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*links* +
+_optional_
+a| 
+
+[markdown]
+--
+An array of objects, each giving information about a single linked Analytics scope.
+--
+
+[%hardbreaks]
+{blank}
+| <<IngestionLink>>
+list
+
+|===
+
+//end::Ingestion[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Ingestion/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Ingestion/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/IngestionLink/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#IngestionLink]
+= Links
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/IngestionLink/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::IngestionLink[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*name* +
+_optional_
+a| 
+
+[markdown]
+--
+The name of the link.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["Local"]`
+{blank}
+| String
+
+a| 
+*scope* +
+_optional_
+a| 
+
+[markdown]
+--
+The name of the Analytics scope.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["travel-sample/inventory"]`
+{blank}
+| String
+
+a| 
+*status* +
+_optional_
+a| 
+
+[markdown]
+--
+The status of the Analytics scope.
+--
+
+[%hardbreaks]
+*Values:* `"healthy"`, `"stopped"`, `"unhealthy"`, `"suspended"`
+*Example:* `pass:c["healthy"]`
+{blank}
+| String
+
+a| 
+*state* +
+_optional_
+a| 
+
+[markdown]
+--
+An array of objects, each giving the ingestion state of one or more Analytics collections.
+
+Analytics collections which have the same ingestion state within this Analytics scope are aggregated together.
+
+--
+
+[%hardbreaks]
+{blank}
+| <<IngestionLinkState>>
+list
+
+|===
+
+//end::IngestionLink[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/IngestionLink/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/IngestionLink/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/IngestionLinkState/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#IngestionLinkState]
+= States
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/IngestionLinkState/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::IngestionLinkState[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*timestamp* +
+_required_
+a| 
+
+[markdown]
+--
+The time since epoch that this sample was calculated, in milliseconds.
+--
+
+[%hardbreaks]
+*Example:* `1631273689161`
+{blank}
+| Integer
+
+a| 
+*progress* +
+_required_
+a| 
+
+[markdown]
+--
+The percentage (fraction from 0 to 1) of ingestion progress at the current time.
+--
+
+[%hardbreaks]
+*Minimum:* `0`
+*Maximum:* `1`
+*Example:* `0.0`
+{blank}
+| Double (double)
+
+a| 
+*timeLag* +
+_optional_
+a| 
+
+[markdown]
+--
+The estimated time that the ingestion lags behind the Data service, in milliseconds. Only displayed for Analytics collections that are not fully ingested.
+
+--
+
+[%hardbreaks]
+*Example:* `9744`
+{blank}
+| Integer
+
+a| 
+*itemsProcessed* +
+_optional_
+a| 
+
+[markdown]
+--
+The number of items ingested since last connect; that is, the total number of mutations and deletions processed. Only displayed for Analytics collections that are not fully ingested.
+
+Note that this value is reset on connect, so it may appear to get smaller.
+
+--
+
+[%hardbreaks]
+*Example:* `12301`
+{blank}
+| Integer
+
+a| 
+*seqnoAdvances* +
+_optional_
+a| 
+
+[markdown]
+--
+The change in sequence number (seqno) since last connect. Only displayed for Analytics collections that are not fully ingested.
+
+--
+
+[%hardbreaks]
+*Example:* `61`
+{blank}
+| Integer
+
+a| 
+*scopes* +
+_required_
+a| 
+
+[markdown]
+--
+An array of objects, each one giving information about a single Analytics scope.
+--
+
+[%hardbreaks]
+{blank}
+| <<IngestionLinkStateScope>>
+list
+
+|===
+
+//end::IngestionLinkState[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/IngestionLinkState/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/IngestionLinkState/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/IngestionLinkStateScope/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#IngestionLinkStateScope]
+= State Scopes
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/IngestionLinkStateScope/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::IngestionLinkStateScope[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*name* +
+_required_
+a| 
+
+[markdown]
+--
+The name of the Analytics scope.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["travel-sample/inventory"]`
+{blank}
+| String
+
+a| 
+*collections* +
+_required_
+a| 
+
+[markdown]
+--
+An array of objects, each one giving information about a single Analytics collection.
+--
+
+[%hardbreaks]
+{blank}
+| <<IngestionLinkStateScopeColl>>
+list
+
+|===
+
+//end::IngestionLinkStateScope[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/IngestionLinkStateScope/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/IngestionLinkStateScope/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/IngestionLinkStateScopeColl/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#IngestionLinkStateScopeColl]
+= State Collections
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/IngestionLinkStateScopeColl/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::IngestionLinkStateScopeColl[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*name* +
+_required_
+a| 
+
+[markdown]
+--
+The name of the Analytics collection.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["route"]`
+{blank}
+| String
+
+|===
+
+//end::IngestionLinkStateScopeColl[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/IngestionLinkStateScopeColl/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/IngestionLinkStateScopeColl/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Mutations/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#Mutations]
+= Mutations
+
+:leveloffset: +1
+
+include::{specDir}definitions/Mutations/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Mutations[]
+
+ifdef::model-descriptions[]
+//tag::desc-Mutations[]
+An object containing one or more nested scope objects, one for each available Analytics scope.
+//end::desc-Mutations[]
+endif::model-descriptions[]
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+_additional +
+property_
+a| 
+
+[markdown]
+--
+include::index.adoc[tag=desc-MutationsColl, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+| <<MutationsColl>>
+
+|===
+
+//end::Mutations[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Mutations/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Mutations/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/MutationsColl/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#MutationsColl]
+= Collections
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/MutationsColl/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::MutationsColl[]
+
+ifdef::model-descriptions[]
+//tag::desc-MutationsColl[]
+An object containing one or more collection properties, one for each Analytics collection in the Analytics scope.
+
+The name of the object is the name of the Analytics scope, in display form. For example, `` `travel-sample`.inventory ``.
+
+//end::desc-MutationsColl[]
+endif::model-descriptions[]
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+_additional +
+property_
+a| 
+
+[markdown]
+--
+The number of mutations in the DCP queue that have not yet been ingested. The name of the property is the name of the Analytics collection.
+
+--
+
+[%hardbreaks]
+{blank}
+| Integer
+
+|===
+
+//end::MutationsColl[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/MutationsColl/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/MutationsColl/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Request/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#Request]
+= Request
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Request/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Request[]
+
+ifdef::model-descriptions[]
+//tag::desc-Request[]
+An object giving information about an Analytics service request.
+//end::desc-Request[]
+endif::model-descriptions[]
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*cancellable* +
+_optional_
+a| 
+
+[markdown]
+--
+Whether this request can be cancelled.
+--
+
+[%hardbreaks]
+{blank}
+| Boolean
+
+a| 
+*clientContextID* +
+_optional_
+a| 
+
+[markdown]
+--
+A context ID for debugging purposes.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["28379d60-7139-44d6-b57a-95935540b586"]`
+{blank}
+| String
+
+a| 
+*elapsedTime* +
+_optional_
+a| 
+
+[markdown]
+--
+How long the request has been running in seconds.
+--
+
+[%hardbreaks]
+*Example:* `0.126`
+{blank}
+| BigDecimal
+
+a| 
+*jobCreateTime* +
+_optional_
+a| 
+
+[markdown]
+--
+The date and time when the request's job was created.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["2024-05-28T19:47:02.512"]`
+{blank}
+| String
+
+a| 
+*jobId* +
+_optional_
+a| 
+
+[markdown]
+--
+The request's job ID. This value can be null if request did not run (for example, due to an error).
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["JID:0.14"]`
+{blank}
+| String
+
+a| 
+*jobQueueTime* +
+_optional_
+a| 
+
+[markdown]
+--
+How long the request's job has been in the queue waiting to run in seconds.
+--
+
+[%hardbreaks]
+*Example:* `0.0`
+{blank}
+| BigDecimal
+
+a| 
+*jobRequiredCPUs* +
+_optional_
+a| 
+
+[markdown]
+--
+The number of CPU cores required to run this request.
+--
+
+[%hardbreaks]
+*Example:* `1`
+{blank}
+| Integer
+
+a| 
+*jobRequiredMemory* +
+_optional_
+a| 
+
+[markdown]
+--
+The bytes of RAM being used to process this request.
+
+--
+
+[%hardbreaks]
+*Example:* `34013184`
+{blank}
+| Integer
+
+a| 
+*jobStartTime* +
+_optional_
+a| 
+
+[markdown]
+--
+The date and time the request's job began running.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["2024-05-28T19:47:02.514"]`
+{blank}
+| String
+
+a| 
+*jobStatus* +
+_optional_
+a| 
+
+[markdown]
+--
+The state of the request's job.
+--
+
+[%hardbreaks]
+*Values:* `"PENDING"`, `"RUNNING"`, `"TERMINATED"`, `"FAILURE"`, `"FAILURE_BEFORE_EXECUTION"`
+*Example:* `pass:c["RUNNING"]`
+{blank}
+| String
+
+a| 
+*plan* +
+_optional_
+a| 
+
+[markdown]
+--
+The query plan for this request.
+--
+
+[%hardbreaks]
+{blank}
+| String
+
+a| 
+*node* +
+_optional_
+a| 
+
+[markdown]
+--
+The Analytics node that received the request.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["172.20.0.2:8095"]`
+{blank}
+| String
+
+a| 
+*remoteAddr* +
+_optional_
+a| 
+
+[markdown]
+--
+The network address and port of the client that made the request.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["172.20.0.123:53612"]`
+{blank}
+| String
+
+a| 
+*requestTime* +
+_optional_
+a| 
+
+[markdown]
+--
+The date and time the request was received.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["2024-05-28T19:44:07.730"]`
+{blank}
+| String
+
+a| 
+*scanConsistency* +
+_optional_
+a| 
+
+[markdown]
+--
+The Scan Consistency setting used for the request's query.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["not_bounded"]`
+{blank}
+| String
+
+a| 
+*state* +
+_optional_
+a| 
+
+[markdown]
+--
+The state of the request.
+--
+
+[%hardbreaks]
+*Values:* `"received"`, `"running"`, `"cancelled"`, `"completed"`
+*Example:* `pass:c["running"]`
+{blank}
+| String
+
+a| 
+*statement* +
+_optional_
+a| 
+
+[markdown]
+--
+The SQL++ query statement being run by the request.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["select count(*) from hotel_endorsement_view;"]`
+{blank}
+| String
+
+a| 
+*userAgent* +
+_optional_
+a| 
+
+[markdown]
+--
+The user agent string of the browser that made the request.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:126.0) Gecko/20100101 Firefox/126.0"]`
+{blank}
+| String
+
+a| 
+*users* +
+_optional_
+a| 
+
+[markdown]
+--
+The user who made the request.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["Administrator"]`
+{blank}
+| String
+
+a| 
+*uuid* +
+_optional_
+a| 
+
+[markdown]
+--
+The unique identifier for this request.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["91f60338-a3e0-4163-9287-5e723fda29ef"]`
+{blank}
+| String
+
+|===
+
+//end::Request[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Request/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Request/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Status/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#Status]
+= Status
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Status/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Status[]
+
+ifdef::model-descriptions[]
+//tag::desc-Status[]
+An object giving information about the status of the Analytics service.
+//end::desc-Status[]
+endif::model-descriptions[]
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*authorizedNodes* +
+_optional_
+a| 
+
+[markdown]
+--
+An array of strings, each of which is the ID of an authorized Analytics node.
+--
+
+[%hardbreaks]
+*Example:* `[86586a966202b5aa4aed31633f330aba, 948fb3af810a9b7bc6c76e2a69ba35d9]`
+{blank}
+| String
+list
+
+a| 
+*ccNodeId* +
+_optional_
+a| 
+
+[markdown]
+--
+The ID of the cluster controller node.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
+{blank}
+| String
+
+a| 
+*nodeConfigUri* +
+_optional_
+a| 
+
+[markdown]
+--
+The path of the Analytics Node Configuration REST API.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["/analytics/config/node"]`
+{blank}
+| String
+
+a| 
+*nodeDiagnosticsUri* +
+_optional_
+a| 
+
+[markdown]
+--
+The path of the Analytics Node Diagnostics REST API. For internal use only.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["/analytics/node/diagnostics"]`
+{blank}
+| String
+
+a| 
+*nodeRestartUri* +
+_optional_
+a| 
+
+[markdown]
+--
+The path of the Analytics Node Restart REST API.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["/analytics/node/restart"]`
+{blank}
+| String
+
+a| 
+*nodeServiceUri* +
+_optional_
+a| 
+
+[markdown]
+--
+The path of the Analytics Query Service REST API.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["/analytics/service"]`
+{blank}
+| String
+
+a| 
+*serviceConfigUri* +
+_optional_
+a| 
+
+[markdown]
+--
+The path of the Analytics Service Configuration REST API.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["/analytics/config/service"]`
+{blank}
+| String
+
+a| 
+*serviceDiagnosticsUri* +
+_optional_
+a| 
+
+[markdown]
+--
+The full URI of the Analytics Service Diagnostics REST API. For internal use only.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["http://localhost:8095/analytics/cluster/diagnostics"]`
+{blank}
+| String
+
+a| 
+*serviceRestartUri* +
+_optional_
+a| 
+
+[markdown]
+--
+The full URI of the Analytics Cluster Restart REST API.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["http://localhost:8095/analytics/cluster/restart"]`
+{blank}
+| String
+
+a| 
+*state* +
+_optional_
+a| 
+
+[markdown]
+--
+The state of the Analytics Service.
+--
+
+[%hardbreaks]
+*Values:* `"ACTIVE"`, `"REBALANCE_REQUIRED"`, `"UNUSABLE"`, `"SHUTTING_DOWN"`
+*Example:* `pass:c["ACTIVE"]`
+{blank}
+| String
+
+a| 
+*nodes* +
+_optional_
+a| 
+
+[markdown]
+--
+An array of objects, each giving information about one Analytics node.
+--
+
+[%hardbreaks]
+{blank}
+| <<StatusNodes>>
+list
+
+a| 
+*partitions* +
+_optional_
+a| 
+
+[markdown]
+--
+An array of objects, each giving information about one Analytics partition.
+--
+
+[%hardbreaks]
+{blank}
+| <<StatusPartitions>>
+list
+
+a| 
+*partitionsTopology* +
+_optional_
+a| 
+
+[markdown]
+--
+include::index.adoc[tag=desc-StatusTopology, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+| <<StatusTopology>>
+
+|===
+
+//end::Status[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Status/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Status/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/StatusNodes/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#StatusNodes]
+= Nodes
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/StatusNodes/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::StatusNodes[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*apiBase* +
+_optional_
+a| 
+
+[markdown]
+--
+The URI scheme, host, and port for HTTP access to Analytics REST APIs on this node.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["http://192.168.8.101:8095"]`
+{blank}
+| String
+
+a| 
+*apiBaseHttps* +
+_optional_
+a| 
+
+[markdown]
+--
+The URI scheme, host, and port for secure HTTPS access to Analytics REST APIs on this node.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["https://192.168.8.101:18095"]`
+{blank}
+| String
+
+a| 
+*nodeId* +
+_optional_
+a| 
+
+[markdown]
+--
+The ID of the node.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
+{blank}
+| String
+
+a| 
+*nodeName* +
+_optional_
+a| 
+
+[markdown]
+--
+The name or IP address of the node, including the cluster administration port.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["192.168.8.101:8091"]`
+{blank}
+| String
+
+|===
+
+//end::StatusNodes[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/StatusNodes/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/StatusNodes/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/StatusPartitions/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#StatusPartitions]
+= Partitions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/StatusPartitions/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::StatusPartitions[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*active* +
+_optional_
+a| 
+
+[markdown]
+--
+Indicates whether this partition is active.
+--
+
+[%hardbreaks]
+*Example:* `true`
+{blank}
+| Boolean
+
+a| 
+*activeNodeId* +
+_optional_
+a| 
+
+[markdown]
+--
+The ID of the node where this partition is currently active.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
+{blank}
+| String
+
+a| 
+*iodeviceNum* +
+_optional_
+a| 
+
+[markdown]
+--
+The number of the IO Device where this partition is located.
+--
+
+[%hardbreaks]
+*Example:* `0`
+{blank}
+| Integer
+
+a| 
+*nodeId* +
+_optional_
+a| 
+
+[markdown]
+--
+The ID of the node where this partition originated.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
+{blank}
+| String
+
+a| 
+*partitionId* +
+_optional_
+a| 
+
+[markdown]
+--
+The ID of this partition.
+--
+
+[%hardbreaks]
+*Example:* `0`
+{blank}
+| Integer
+
+a| 
+*path* +
+_optional_
+a| 
+
+[markdown]
+--
+The path of the IO Device where this partition is located.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["/data/@analytics/v_iodevice_0"]`
+{blank}
+| String
+
+a| 
+*pendingActivation* +
+_optional_
+a| 
+
+[markdown]
+--
+Indicates whether this partition is waiting to become active.
+--
+
+[%hardbreaks]
+*Example:* `false`
+{blank}
+| Boolean
+
+|===
+
+//end::StatusPartitions[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/StatusPartitions/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/StatusPartitions/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/StatusTopology/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#StatusTopology]
+= Partition Topology
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/StatusTopology/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::StatusTopology[]
+
+ifdef::model-descriptions[]
+//tag::desc-StatusTopology[]
+An object giving information about the partition topology.
+//end::desc-StatusTopology[]
+endif::model-descriptions[]
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*balanced* +
+_optional_
+a| 
+
+[markdown]
+--
+Indicates whether the Analytics nodes are balanced.
+--
+
+[%hardbreaks]
+*Example:* `true`
+{blank}
+| Boolean
+
+a| 
+*ccNodeId* +
+_optional_
+a| 
+
+[markdown]
+--
+The ID of the cluster controller node.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
+{blank}
+| String
+
+a| 
+*metadataPartition* +
+_optional_
+a| 
+
+[markdown]
+--
+The ID of the metadata partition.
+--
+
+[%hardbreaks]
+*Example:* `-1`
+{blank}
+| Integer
+
+a| 
+*numReplicas* +
+_optional_
+a| 
+
+[markdown]
+--
+The number of Analytics replicas.
+--
+
+[%hardbreaks]
+*Example:* `1`
+{blank}
+| Integer
+
+a| 
+*revision* +
+_optional_
+a| 
+
+[markdown]
+--
+The revision number of the partition topology.
+--
+
+[%hardbreaks]
+*Example:* `1`
+{blank}
+| Integer
+
+a| 
+*version* +
+_optional_
+a| 
+
+[markdown]
+--
+The version number of the partition topology.
+--
+
+[%hardbreaks]
+*Example:* `1`
+{blank}
+| Integer
+
+a| 
+*partitions* +
+_optional_
+a| 
+
+[markdown]
+--
+An array of objects, each giving information about the state of one Analytics partition.
+--
+
+[%hardbreaks]
+{blank}
+| <<StatusTopologyState>>
+list
+
+|===
+
+//end::StatusTopology[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/StatusTopology/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/StatusTopology/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/StatusTopologyState/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#StatusTopologyState]
+= Partition States
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/StatusTopologyState/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::StatusTopologyState[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*id* +
+_optional_
+a| 
+
+[markdown]
+--
+The partition ID.
+--
+
+[%hardbreaks]
+*Example:* `0`
+{blank}
+| Integer
+
+a| 
+*master* +
+_optional_
+a| 
+
+[markdown]
+--
+The ID of the node where the partition is currently active.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
+{blank}
+| String
+
+a| 
+*origin* +
+_optional_
+a| 
+
+[markdown]
+--
+The ID of the node where the partition originated.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
+{blank}
+| String
+
+a| 
+*replicas* +
+_optional_
+a| 
+
+[markdown]
+--
+An array of objects, each giving information about the state of one Analytics replica.
+--
+
+[%hardbreaks]
+{blank}
+| <<StatusTopologyStateReplicas>>
+list
+
+|===
+
+//end::StatusTopologyState[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/StatusTopologyState/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/StatusTopologyState/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/StatusTopologyStateReplicas/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#StatusTopologyStateReplicas]
+= Replicas
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/StatusTopologyStateReplicas/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::StatusTopologyStateReplicas[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*location* +
+_optional_
+a| 
+
+[markdown]
+--
+The name or IP address of the node where this replica is located, including the Analytics replication port.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["192.168.8.102:9120"]`
+{blank}
+| String
+
+a| 
+*nodeId* +
+_optional_
+a| 
+
+[markdown]
+--
+The ID of the node where this replica is located.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["948fb3af810a9b7bc6c76e2a69ba35d9"]`
+{blank}
+| String
+
+a| 
+*status* +
+_optional_
+a| 
+
+[markdown]
+--
+The synchronization status of the replica.
+--
+
+[%hardbreaks]
+*Values:* `"IN_SYNC"`, `"CATCHING_UP"`, `"DISCONNECTED"`
+*Example:* `pass:c["IN_SYNC"]`
+{blank}
+| String
+
+a| 
+*syncProgress* +
+_optional_
+a| 
+
+[markdown]
+--
+The percentage (fraction from 0 to 1) of synchronization progress for this replica at the current time.
+--
+
+[%hardbreaks]
+*Minimum:* `0`
+*Maximum:* `1`
+*Example:* `1.0`
+{blank}
+| Double (double)
+
+|===
+
+//end::StatusTopologyStateReplicas[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/StatusTopologyStateReplicas/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/StatusTopologyStateReplicas/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
+
+
+[[security]]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}security/document-begin.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Analytics Manage / Analytics Select/security-scheme-before.adoc[opts=optional]
+
+
+[[security-analyticsManageAnalyticsSelect]]
+= Analytics Manage / Analytics Select
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Analytics Manage / Analytics Select/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+For the [Active Requests](#return_active_requests), [Request Cancellation](#cancel_request), [Completed Requests](#completed_requests), [Ingestion Status](#ingestion_status), and [Pending Mutations](#monitor_node) operations, users must have one of the following access roles:
+
+* Full Admin
+* Cluster Admin
+* Analytics Manager
+* Analytics Reader
+* Analytics Select
+* Analytics Admin
+
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Analytics Manage / Analytics Select/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Analytics Manage / Analytics Select/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Cluster Read / Pools Read/security-scheme-before.adoc[opts=optional]
+
+
+[[security-clusterReadPoolsRead]]
+= Cluster Read / Pools Read
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Cluster Read / Pools Read/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+For the [Cluster Status](#cluster_status) operation, users must have one of the following access roles:
+
+* Full Admin
+* Cluster Admin
+* Read-Only Admin
+* Analytics Admin
+
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Cluster Read / Pools Read/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Cluster Read / Pools Read/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-before.adoc[opts=optional]
+
+
+[[security-analyticsManage]]
+= Analytics Manage
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+For the [Cluster Restart](#restart_cluster) and [Node Restart](#restart_node) operations, users must have one of the following RBAC roles:
+
+* Full Admin
+* Cluster Admin
+* Analytics Admin
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-after.adoc[opts=optional]
+
+
+
+
+include::{specDir}security/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
