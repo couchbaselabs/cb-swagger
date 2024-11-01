@@ -111,6 +111,7 @@ GET /query/service
 ....
 
 
+
 // markup not found, no include::{specDir}paths/get_service/operation-description-before.adoc[opts=optional]
 
 
@@ -326,6 +327,7 @@ include::{snippetDir}get_service/http-request.adoc[opts=optional]
 ....
 POST /query/service
 ....
+
 
 
 // markup not found, no include::{specDir}paths/post_service/operation-description-before.adoc[opts=optional]
@@ -595,6 +597,8 @@ endif::[]
 [#models]
 = Definitions
 
+:count-models: 9
+
 :leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
@@ -602,9 +606,10 @@ endif::[]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 10]
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
 [.two-columns]
-endif::[]
+endif::collapse-models[]
 [%hardbreaks]
 <<Conditions>>
 <<Controls>>
@@ -615,15 +620,16 @@ endif::[]
 <<Request>>
 <<Response>>
 <<Statistics>>
+endif::[]
 
 
 
 // markup not found, no include::{specDir}definitions/Conditions/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Conditions]
 = Conditions
 
@@ -656,7 +662,6 @@ a|
 --
 A unique number that identifies the error or warning. The code ranges are partitioned by component. The codes can also include parts that indicate severity and transience. This property is always present in every condition returned in the Query REST API or captured in a log.
 
-
 --
 
 [%hardbreaks]
@@ -672,7 +677,6 @@ a|
 --
 A message describing the error or warning in detail. This property is always present in every condition returned in the Query REST API or captured in a log.
 
-
 --
 
 [%hardbreaks]
@@ -687,7 +691,6 @@ a|
 [markdown]
 --
 Unique name that has a 1:1 mapping to the code. Uniquely identifies the condition. This property is helpful for pattern matching and can have meaning, making it more memorable than the code. The name should be fully qualified.
-
 
 --
 
@@ -710,7 +713,6 @@ One of the following SQL++ severity levels, listed in order of severity:
  3. Warn
  4. Info
 
-
 --
 
 [%hardbreaks]
@@ -725,7 +727,6 @@ a|
 [markdown]
 --
 Indicates if the condition is transient &mdash; for example, the queue is full. If the value is `false`, it tells clients and users that a retry without modification produces the same condition.
-
 
 --
 
@@ -753,9 +754,9 @@ include::{specDir}definitions/Conditions/definition-end.adoc[opts=optional]
 // markup not found, no include::{specDir}definitions/Controls/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Controls]
 = Controls
 
@@ -788,7 +789,6 @@ a|
 [markdown]
 --
 The value of the query setting Scan Consistency used for the query.
-
 --
 
 [%hardbreaks]
@@ -803,7 +803,6 @@ a|
 [markdown]
 --
 Whether the cost-based optimizer was enabled for the query.
-
 --
 
 [%hardbreaks]
@@ -819,7 +818,6 @@ a|
 --
 The memory quota for the request, in MB. This property is only returned if a memory quota was set for the query.
 
-
 --
 
 [%hardbreaks]
@@ -834,7 +832,6 @@ a|
 [markdown]
 --
 The type of query statement.
-
 --
 
 [%hardbreaks]
@@ -862,9 +859,9 @@ include::{specDir}definitions/Controls/definition-end.adoc[opts=optional]
 // markup not found, no include::{specDir}definitions/Credentials/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Credentials]
 = Credentials
 
@@ -892,7 +889,6 @@ a|
 --
 An identity for authentication. Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
 
-
 --
 
 [%hardbreaks]
@@ -908,7 +904,6 @@ a|
 [markdown]
 --
 A password for authentication.
-
 --
 
 [%hardbreaks]
@@ -936,9 +931,9 @@ A password for authentication.
 // markup not found, no include::{specDir}definitions/Execution_Timings/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Execution_Timings]
 = Execution Timings
 
@@ -973,7 +968,6 @@ a|
 [markdown]
 --
 Name of the operator.
-
 --
 
 [%hardbreaks]
@@ -988,7 +982,6 @@ a|
 
 [markdown]
 --
-
 include::index.adoc[tag=desc-Statistics, opts=optional]
 --
 
@@ -1004,7 +997,6 @@ a|
 [markdown]
 --
 Further nested operators, each with their own execution timings.
-
 --
 
 [%hardbreaks]
@@ -1031,9 +1023,9 @@ Further nested operators, each with their own execution timings.
 // markup not found, no include::{specDir}definitions/Metrics/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Metrics]
 = Metrics
 
@@ -1065,7 +1057,6 @@ a|
 [markdown]
 --
 The total time taken for the request, that is the time from when the request was received until the results were returned.
-
 --
 
 [%hardbreaks]
@@ -1080,7 +1071,6 @@ a|
 [markdown]
 --
 The time taken for the execution of the request, that is the time from when query execution started until the results were returned.
-
 --
 
 [%hardbreaks]
@@ -1095,7 +1085,6 @@ a|
 [markdown]
 --
 The total number of objects in the results.
-
 --
 
 [%hardbreaks]
@@ -1110,7 +1099,6 @@ a|
 [markdown]
 --
 The total number of bytes in the results.
-
 --
 
 [%hardbreaks]
@@ -1125,7 +1113,6 @@ a|
 [markdown]
 --
 The number of mutations that were made during the request.
-
 --
 
 [%hardbreaks]
@@ -1143,7 +1130,6 @@ The number of objects that were sorted. Present only if the request includes `OR
 
 If a query includes ORDER BY, LIMIT, or OFFSET clauses, an application can use the `sortCount` value to give the overall number of results in a message such as `"page 1 of N"`.
 
-
 --
 
 [%hardbreaks]
@@ -1159,7 +1145,6 @@ a|
 --
 The amount of document memory used to execute the request. This property is only returned if a memory quota was set for the query.
 
-
 --
 
 [%hardbreaks]
@@ -1174,7 +1159,6 @@ a|
 [markdown]
 --
 The number of errors that occurred during the request.
-
 --
 
 [%hardbreaks]
@@ -1189,7 +1173,6 @@ a|
 [markdown]
 --
 The number of warnings that occurred during the request.
-
 --
 
 [%hardbreaks]
@@ -1216,9 +1199,9 @@ include::{specDir}definitions/Metrics/definition-end.adoc[opts=optional]
 // markup not found, no include::{specDir}definitions/Profile/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Profile]
 = Profile
 
@@ -1251,7 +1234,6 @@ a|
 [markdown]
 --
 Timestamp when the query was received.
-
 --
 
 [%hardbreaks]
@@ -1266,7 +1248,6 @@ a|
 [markdown]
 --
 IP address and port number of the node where the query was executed.
-
 --
 
 [%hardbreaks]
@@ -1281,7 +1262,6 @@ a|
 [markdown]
 --
 Count of documents processed at selective phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
-
 
 --
 
@@ -1305,7 +1285,6 @@ A union select would have twice as many operator counts, one per each branch of 
 
 This is in essence the count of all the operators in the `executionTimings` object.
 
-
 --
 
 [%hardbreaks]
@@ -1322,7 +1301,6 @@ a|
 --
 Cumulative execution times for various phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
 
-
 --
 
 [%hardbreaks]
@@ -1337,7 +1315,6 @@ a|
 
 [markdown]
 --
-
 include::index.adoc[tag=desc-Execution_Timings, opts=optional]
 --
 
@@ -1365,9 +1342,9 @@ include::index.adoc[tag=desc-Execution_Timings, opts=optional]
 // markup not found, no include::{specDir}definitions/Request/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Request]
 = Request Parameters
 
@@ -1402,7 +1379,6 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 
 [section_srh_tlm_n1b]: /server/7.6/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
 
-
 --
 
 [%hardbreaks]
@@ -1418,7 +1394,7 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[atrcollection-srv]: ../n1ql-rest-admin/index.html#atrcollection-srv
+[atrcollection-srv]: #atrcollection-srv
 
 
 endif::alt-markdown-links[]
@@ -1433,8 +1409,7 @@ The [node-level][atrcollection-srv] `atrcollection` setting specifies the defaul
 The request-level parameter overrides the node-level setting.
 
 [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
-[atrcollection-srv]: #atrcollection-srv
-
+[atrcollection-srv]: ../n1ql-rest-admin/index.html#atrcollection-srv
 
 --
 
@@ -1457,7 +1432,6 @@ Refer to [Auto-Execute][auto-execute] for more information.
 
 [auto-execute]: /server/7.6/n1ql/n1ql-language-reference/prepare.html#auto-execute
 
-
 --
 
 [%hardbreaks]
@@ -1479,7 +1453,6 @@ SQL++ is agnostic about the content of this parameter; it is just echoed in the 
 * Maximum allowed size is 64 characters; all others will be cut.
 * If it contains an escape character `/` or quote `"`, it will be rejected as error code 1110.
 
-
 --
 
 [%hardbreaks]
@@ -1496,7 +1469,6 @@ a|
 Compression format to use for response data on the wire.
 
 Values are case-insensitive.
-
 
 --
 
@@ -1515,7 +1487,7 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[controls-srv]: ../n1ql-rest-admin/index.html#controls-srv
+[controls-srv]: #controls-srv
 
 
 endif::alt-markdown-links[]
@@ -1528,8 +1500,7 @@ If the request qualifies for caching, these values will also be cached in the `c
 The [node-level][controls-srv] `controls` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
-[controls-srv]: #controls-srv
-
+[controls-srv]: ../n1ql-rest-admin/index.html#controls-srv
 
 --
 
@@ -1552,7 +1523,6 @@ The format is an identity and password.
 You can specify credentials for multiple identities.
 
 If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored.
-
 
 --
 
@@ -1580,7 +1550,6 @@ Set the durability level to `"none"` or `""` to specify no durability.
 
 [durability]: /server/7.6/learn/data/durability.html
 
-
 --
 
 [%hardbreaks]
@@ -1600,7 +1569,6 @@ a|
 In Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
 It is included for compatibility with previous versions of Couchbase Server.
 
-
 --
 
 [%hardbreaks]
@@ -1617,7 +1585,6 @@ a|
 Desired character encoding for the query results.
 
 Only possible value is `UTF-8` and is case-insensitive.
-
 
 --
 
@@ -1636,7 +1603,6 @@ a|
 Desired format for the query results.
 
 Values are case-insensitive.
-
 
 --
 
@@ -1673,7 +1639,6 @@ Valid units are:
 Specify a duration of `0` or a negative duration to disable.
 When disabled, no timeout is applied and the KV operation runs for however long it takes.
 
-
 --
 
 [%hardbreaks]
@@ -1690,8 +1655,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
-[queryMaxParallelism]: ../n1ql-rest-settings/index.html#queryMaxParallelism
+[max-parallelism-srv]: #max-parallelism-srv
+[queryMaxParallelism]: #queryMaxParallelism
 
 
 endif::alt-markdown-links[]
@@ -1709,9 +1674,8 @@ To enable queries to run in parallel, you must specify the cluster-level `queryM
 
 The default value is the same as the number of partitions of the index selected for the query.
 
-[max-parallelism-srv]: #max-parallelism-srv
-[queryMaxParallelism]: #queryMaxParallelism
-
+[max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
+[queryMaxParallelism]: ../n1ql-rest-settings/index.html#queryMaxParallelism
 
 --
 
@@ -1728,8 +1692,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
-[queryMemoryQuota]: ../n1ql-rest-settings/index.html#queryMemoryQuota
+[memory-quota-srv]: #memory-quota-srv
+[queryMemoryQuota]: #queryMemoryQuota
 
 
 endif::alt-markdown-links[]
@@ -1751,9 +1715,8 @@ If the node-level setting is greater than zero, the request-level parameter is c
 In addition, the [cluster-level][queryMemoryQuota] `queryMemoryQuota` setting specifies the ceiling for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-[memory-quota-srv]: #memory-quota-srv
-[queryMemoryQuota]: #queryMemoryQuota
-
+[memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
+[queryMemoryQuota]: ../n1ql-rest-settings/index.html#queryMemoryQuota
 
 --
 
@@ -1771,7 +1734,6 @@ a|
 [markdown]
 --
 Specifies that metrics should be returned with query results.
-
 --
 
 [%hardbreaks]
@@ -1789,7 +1751,6 @@ a|
 --
 Specifies the namespace to use. Currently, only the `default` namespace is available.
 
-
 --
 
 [%hardbreaks]
@@ -1805,8 +1766,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
-[queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
+[numatrs-srv]: #numatrs-srv
+[queryNumAtrs]: #queryNumAtrs
 
 
 endif::alt-markdown-links[]
@@ -1820,9 +1781,8 @@ In addition, the [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies 
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
 [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
-[numatrs-srv]: #numatrs-srv
-[queryNumAtrs]: #queryNumAtrs
-
+[numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
+[queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
 
 --
 
@@ -1840,8 +1800,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
-[queryPipelineBatch]: ../n1ql-rest-settings/index.html#queryPipelineBatch
+[pipeline-batch-srv]: #pipeline-batch-srv
+[queryPipelineBatch]: #queryPipelineBatch
 
 
 endif::alt-markdown-links[]
@@ -1853,9 +1813,8 @@ The request-level parameter overrides the node-level setting, but only if it is 
 In addition, the [cluster-level][queryPipelineBatch] `queryPipelineBatch` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-[pipeline-batch-srv]: #pipeline-batch-srv
-[queryPipelineBatch]: #queryPipelineBatch
-
+[pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
+[queryPipelineBatch]: ../n1ql-rest-settings/index.html#queryPipelineBatch
 
 --
 
@@ -1872,8 +1831,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
-[queryPipelineCap]: ../n1ql-rest-settings/index.html#queryPipelineCap
+[pipeline-cap-srv]: #pipeline-cap-srv
+[queryPipelineCap]: #queryPipelineCap
 
 
 endif::alt-markdown-links[]
@@ -1885,9 +1844,8 @@ The request-level parameter overrides the node-level setting, but only if it is 
 In addition, the [cluster-level][queryPipelineCap] `queryPipelineCap` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-[pipeline-cap-srv]: #pipeline-cap-srv
-[queryPipelineCap]: #queryPipelineCap
-
+[pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
+[queryPipelineCap]: ../n1ql-rest-settings/index.html#queryPipelineCap
 
 --
 
@@ -1912,7 +1870,6 @@ If both `prepared` and `statement` are present and non-empty, an error is return
 
 [execute]: /server/7.6/n1ql/n1ql-language-reference/execute.html
 
-
 --
 
 [%hardbreaks]
@@ -1936,7 +1893,6 @@ If `false`, document expiration is set to 0 when modified by a DML statement, un
 
 Not supported for statements in a transaction.
 
-
 --
 
 [%hardbreaks]
@@ -1953,7 +1909,7 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[pretty-srv]: ../n1ql-rest-admin/index.html#pretty-srv
+[pretty-srv]: #pretty-srv
 
 
 endif::alt-markdown-links[]
@@ -1962,8 +1918,7 @@ Specifies the query results returned in pretty format.
 The [node-level][pretty-srv] `pretty` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
-[pretty-srv]: #pretty-srv
-
+[pretty-srv]: ../n1ql-rest-admin/index.html#pretty-srv
 
 --
 
@@ -1980,7 +1935,7 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[profile-srv]: ../n1ql-rest-admin/index.html#profile-srv
+[profile-srv]: #profile-srv
 
 
 endif::alt-markdown-links[]
@@ -2002,8 +1957,7 @@ If `profile` is not set as one of the above values, then the profile setting doe
 The [node-level][profile-srv] `profile` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
-[profile-srv]: #profile-srv
-
+[profile-srv]: ../n1ql-rest-admin/index.html#profile-srv
 
 --
 
@@ -2025,7 +1979,6 @@ Specifies the namespace, bucket, and scope used to resolve partial keyspace refe
 The query context may be a _full path_, containing namespace, bucket, and scope; or a _relative path_, containing just the bucket and scope.
 Currently, only the `default` namespace is available.
 If the namespace name is omitted, the default namespace in the current session is used.
-
 
 --
 
@@ -2055,7 +2008,6 @@ If `readonly` is `true`, then the following statements are not allowed:
 
 When using GET requests, it's best to set `readonly` to `true`.
 
-
 --
 
 [%hardbreaks]
@@ -2072,8 +2024,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
-[queryScanCap]: ../n1ql-rest-settings/index.html#queryScanCap
+[scan-cap-srv]: #scan-cap-srv
+[queryScanCap]: #queryScanCap
 
 
 endif::alt-markdown-links[]
@@ -2089,9 +2041,8 @@ The request-level parameter overrides the node-level setting, but only if it is 
 In addition, the [cluster-level][queryScanCap] `queryScanCap` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-[scan-cap-srv]: #scan-cap-srv
-[queryScanCap]: #queryScanCap
-
+[scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
+[queryScanCap]: ../n1ql-rest-settings/index.html#queryScanCap
 
 --
 
@@ -2140,7 +2091,6 @@ Refer to [Transactional Scan Consistency][transactional-scan-consistency] for de
 
 [transactional-scan-consistency]: /server/7.6/n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency
 
-
 --
 
 [%hardbreaks]
@@ -2175,7 +2125,6 @@ Note that `scan_vector` can only be used if the query uses at most one keyspace;
 
 For queries referencing multiple keyspaces, use `scan_vectors`.
 
-
 --
 
 [%hardbreaks]
@@ -2196,7 +2145,6 @@ A map from keyspace names to scan vectors.
 See `scan_vector`.
 
 The scan vectors can be Full or Sparse.
-
 
 --
 
@@ -2230,7 +2178,6 @@ Valid units are:
 
 Specify `0` or a negative integer to disable.
 
-
 --
 
 [%hardbreaks]
@@ -2247,7 +2194,6 @@ a|
 [markdown]
 --
 Include a header for the results schema in the response.
-
 --
 
 [%hardbreaks]
@@ -2266,7 +2212,6 @@ a|
 If `true`, causes statement projection terms to be sorted alphabetically.
 
 If `false` (the default), statement projection terms are returned in the order specified by the query.
-
 
 --
 
@@ -2297,7 +2242,6 @@ To avoid this, either URL-encode the semicolon as `%3B`, or just omit the semico
 
 This restriction does not apply when specifying the request parameters in JSON format.
 
-
 --
 
 [%hardbreaks]
@@ -2313,8 +2257,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
-[queryTimeout]: ../n1ql-rest-settings/index.html#queryTimeout
+[timeout-srv]: #timeout-srv
+[queryTimeout]: #queryTimeout
 
 
 endif::alt-markdown-links[]
@@ -2344,9 +2288,8 @@ However, if the node-level setting is greater than 0, the timeout for the query 
 In addition, the [cluster-level][queryTimeout] `queryTimeout` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-[timeout-srv]: #timeout-srv
-[queryTimeout]: #queryTimeout
-
+[timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
+[queryTimeout]: ../n1ql-rest-settings/index.html#queryTimeout
 
 --
 
@@ -2364,7 +2307,6 @@ a|
 --
 Transaction data.
 For internal use only.
-
 
 --
 
@@ -2388,7 +2330,6 @@ For use with DML statements within a transaction, rollbacks, and commits.
 The transaction ID should be the same as the transaction ID generated by the `BEGIN TRANSACTION` statement.
 The transaction must be active and non-expired.
 
-
 --
 
 [%hardbreaks]
@@ -2411,7 +2352,6 @@ If execution is successful, the Query service commits the transaction; otherwise
 The statement may not be part of an ongoing transaction.
 If the [txid](#txid) request-level parameter is set, the `tximplicit` parameter is ignored.
 
-
 --
 
 [%hardbreaks]
@@ -2431,7 +2371,6 @@ Transaction statement number.
 The transaction statement number must be a positive integer, and must be higher than any previous transaction statement numbers in the transaction.
 If the transaction statement number is lower than the transaction statement number for any previous statement, an error is generated.
 
-
 --
 
 [%hardbreaks]
@@ -2447,8 +2386,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
-[queryTxTimeout]: ../n1ql-rest-settings/index.html#queryTxTimeout
+[txtimeout-srv]: #txtimeout-srv
+[queryTxTimeout]: #queryTxTimeout
 
 
 endif::alt-markdown-links[]
@@ -2483,9 +2422,8 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sessions or redirected input.
 
-[txtimeout-srv]: #txtimeout-srv
-[queryTxTimeout]: #queryTxTimeout
-
+[txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
+[queryTxTimeout]: ../n1ql-rest-settings/index.html#queryTxTimeout
 
 --
 
@@ -2502,8 +2440,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
-[queryUseCBO]: ../n1ql-rest-settings/index.html#queryUseCBO
+[use-cbo-srv]: #use-cbo-srv
+[queryUseCBO]: #queryUseCBO
 
 
 endif::alt-markdown-links[]
@@ -2515,9 +2453,8 @@ The request-level parameter overrides the node-level setting.
 In addition, the [cluster-level][queryUseCBO] `queryUseCBO` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-[use-cbo-srv]: #use-cbo-srv
-[queryUseCBO]: #queryUseCBO
-
+[use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
+[queryUseCBO]: ../n1ql-rest-settings/index.html#queryUseCBO
 
 --
 
@@ -2545,7 +2482,6 @@ Refer to [Flex Indexes][flex-indexes] for more information.
 
 [flex-indexes]: /server/7.6/n1ql/n1ql-language-reference/flex-indexes.html
 
-
 --
 
 [%hardbreaks]
@@ -2562,8 +2498,8 @@ a|
 [markdown]
 --
 ifdef::alt-markdown-links[]
-[use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
-[queryUseReplica]: ../n1ql-rest-settings/index.html#queryUseReplica
+[use-replica-srv]: #use-replica-srv
+[queryUseReplica]: #queryUseReplica
 
 
 endif::alt-markdown-links[]
@@ -2592,9 +2528,8 @@ Reading from replica is only possible if the cluster uses Couchbase Server 7.6.0
 Note that KV range scans cannot currently be started on a replica vBucket.
 If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
 
-[use-replica-srv]: #use-replica-srv
-[queryUseReplica]: #queryUseReplica
-
+[use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
+[queryUseReplica]: ../n1ql-rest-settings/index.html#queryUseReplica
 
 --
 
@@ -2627,7 +2562,6 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 
 [section_srh_tlm_n1b]: /server/7.6/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
 
-
 --
 
 [%hardbreaks]
@@ -2654,9 +2588,9 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 // markup not found, no include::{specDir}definitions/Response/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Response]
 = Response Body
 
@@ -2688,7 +2622,6 @@ a|
 [markdown]
 --
 A unique identifier for the response.
-
 --
 
 [%hardbreaks]
@@ -2703,7 +2636,6 @@ a|
 [markdown]
 --
 The client context ID of the request, if one was supplied &mdash; see `client_context_id` in [Request Parameters](#Request).
-
 --
 
 [%hardbreaks]
@@ -2718,7 +2650,6 @@ a|
 [markdown]
 --
 The schema of the results. Present only when the query completes successfully.
-
 
 --
 
@@ -2736,7 +2667,6 @@ a|
 --
 An array of all the objects returned by the query. An object can be any JSON value.
 
-
 --
 
 [%hardbreaks]
@@ -2752,7 +2682,6 @@ a|
 [markdown]
 --
 The status of the request.
-
 --
 
 [%hardbreaks]
@@ -2768,7 +2697,6 @@ a|
 [markdown]
 --
 An array of 0 or more error objects. If an error occurred during processing of the request, it will be represented by an error object in this list.
-
 
 --
 
@@ -2786,7 +2714,6 @@ a|
 --
 An array of 0 or more warning objects. If a warning occurred during processing of the request, it is represented by a warning object in this list.
 
-
 --
 
 [%hardbreaks]
@@ -2801,7 +2728,6 @@ a|
 
 [markdown]
 --
-
 include::index.adoc[tag=desc-Metrics, opts=optional]
 --
 
@@ -2816,7 +2742,6 @@ a|
 
 [markdown]
 --
-
 include::index.adoc[tag=desc-Controls, opts=optional]
 --
 
@@ -2831,7 +2756,6 @@ a|
 
 [markdown]
 --
-
 include::index.adoc[tag=desc-Profile, opts=optional]
 --
 
@@ -2859,9 +2783,9 @@ include::index.adoc[tag=desc-Profile, opts=optional]
 // markup not found, no include::{specDir}definitions/Statistics/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Statistics]
 = Statistics
 
@@ -2893,7 +2817,6 @@ a|
 [markdown]
 --
 Number of input documents to the operator.
-
 --
 
 [%hardbreaks]
@@ -2909,7 +2832,6 @@ a|
 [markdown]
 --
 Number of output documents after the operator processing.
-
 --
 
 [%hardbreaks]
@@ -2925,7 +2847,6 @@ a|
 [markdown]
 --
 Number of switches between executing, waiting for services, or waiting for the goroutine scheduler.
-
 --
 
 [%hardbreaks]
@@ -2941,7 +2862,6 @@ a|
 [markdown]
 --
 Time spent executing the operator code inside SQL++ query engine.
-
 --
 
 [%hardbreaks]
@@ -2957,7 +2877,6 @@ a|
 [markdown]
 --
 Time spent waiting to be scheduled for CPU time.
-
 --
 
 [%hardbreaks]
@@ -2977,7 +2896,6 @@ Time spent waiting for another service, such as index or data.
 For index scan, it is time spent waiting for GSI/indexer.
 
 For fetch, it is time spent waiting on the KV store.
-
 
 --
 

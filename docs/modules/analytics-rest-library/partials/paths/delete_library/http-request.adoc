@@ -1,0 +1,15 @@
+= Example HTTP Request
+
+====
+The example below deletes the `mylib` library from the `travel-sample.inventory` scope.
+
+.Curl request
+[source,sh]
+----
+curl -X DELETE \
+http://localhost:8095/analytics/library/travel-sample%2Finventory/mylib \
+-u Administrator:password
+----
+
+NOTE: The dot separator within the scope name is converted to a slash (`/`), which is then URL-encoded as `%2F`.
+====

@@ -112,6 +112,7 @@ DELETE /evaluator/v1/libraries/{library}
 ....
 
 
+
 // markup not found, no include::{specDir}paths/delete_library/operation-description-before.adoc[opts=optional]
 
 
@@ -358,6 +359,7 @@ GET /evaluator/v1/libraries
 ....
 
 
+
 // markup not found, no include::{specDir}paths/get_collection/operation-description-before.adoc[opts=optional]
 
 
@@ -573,6 +575,7 @@ include::{snippetDir}get_collection/http-response.adoc[opts=optional]
 ....
 GET /evaluator/v1/libraries/{library}
 ....
+
 
 
 // markup not found, no include::{specDir}paths/get_library/operation-description-before.adoc[opts=optional]
@@ -822,6 +825,7 @@ include::{snippetDir}get_library/http-response.adoc[opts=optional]
 ....
 POST /evaluator/v1/libraries/{library}
 ....
+
 
 
 // markup not found, no include::{specDir}paths/post_library/operation-description-before.adoc[opts=optional]
@@ -1103,6 +1107,8 @@ endif::[]
 [#models]
 = Definitions
 
+:count-models: 2
+
 :leveloffset: +1
 
 // markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
@@ -1110,21 +1116,23 @@ endif::[]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 10]
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
 [.two-columns]
-endif::[]
+endif::collapse-models[]
 [%hardbreaks]
 <<Functions>>
 <<Libraries>>
+endif::[]
 
 
 
 // markup not found, no include::{specDir}definitions/Functions/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Functions]
 = Functions
 
@@ -1154,7 +1162,6 @@ The JavaScript code for all functions in the library.
 
 The name of the property is the name of the library.
 
-
 --
 
 [%hardbreaks]
@@ -1182,9 +1189,9 @@ The name of the property is the name of the library.
 // markup not found, no include::{specDir}definitions/Libraries/definition-before.adoc[opts=optional]
 
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#Libraries]
 = Library
 
@@ -1211,7 +1218,6 @@ a|
 [markdown]
 --
 The name of a library.
-
 --
 
 [%hardbreaks]
@@ -1227,7 +1233,6 @@ a|
 [markdown]
 --
 For scoped libraries, the bucket in which the library is stored. For global libraries, this string is empty.
-
 
 --
 
@@ -1245,7 +1250,6 @@ a|
 --
 For scoped libraries, the scope in which the library is stored. For global libraries, this string is empty.
 
-
 --
 
 [%hardbreaks]
@@ -1261,7 +1265,6 @@ a|
 [markdown]
 --
 The JavaScript code for all functions in the library.
-
 
 --
 
