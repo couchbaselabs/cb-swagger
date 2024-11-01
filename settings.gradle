@@ -1,6 +1,15 @@
 rootProject.name = 'cb-swagger'
-include 'admin', 'query-settings', 'query-service', 'functions', 'indexes'
-// include 'admin', 'query-settings', 'query-service', 'functions', 'indexes', 'analytics-service', 'analytics-config', 'analytics-admin', 'analytics-links', 'analytics-library', 'analytics-settings'
+include 'admin',
+        'query-settings',
+        'query-service',
+        'functions',
+        'indexes',
+        'analytics-admin',
+        'analytics-config',
+        'analytics-library',
+        'analytics-links',
+        'analytics-service',
+        'analytics-settings'
 project(':admin').projectDir = new File (settingsDir, 'src/admin')
 project(':admin').buildFileName = 'admin.gradle'
 project(':query-settings').projectDir = new File (settingsDir, 'src/query-settings')
@@ -11,15 +20,15 @@ project(':functions').projectDir = new File (settingsDir, 'src/functions')
 project(':functions').buildFileName = 'functions.gradle'
 project(':indexes').projectDir = new File (settingsDir, 'src/indexes')
 project(':indexes').buildFileName = 'indexes.gradle'
-// project(':analytics-service').projectDir = new File (settingsDir, 'src/analytics-service')
-// project(':analytics-service').buildFileName = 'analytics-service.gradle'
-// project(':analytics-config').projectDir = new File (settingsDir, 'src/analytics-config')
-// project(':analytics-config').buildFileName = 'analytics-config.gradle'
-// project(':analytics-settings').projectDir = new File (settingsDir, 'src/analytics-settings')
-// project(':analytics-settings').buildFileName = 'analytics-settings.gradle'
-// project(':analytics-admin').projectDir = new File (settingsDir, 'src/analytics-admin')
-// project(':analytics-admin').buildFileName = 'analytics-admin.gradle'
-// project(':analytics-links').projectDir = new File (settingsDir, 'src/analytics-links')
-// project(':analytics-links').buildFileName = 'analytics-links.gradle'
-// project(':analytics-library').projectDir = new File (settingsDir, 'src/analytics-library')
-// project(':analytics-library').buildFileName = 'analytics-library.gradle'
+project(':analytics-service').projectDir = new File (settingsDir, 'src/analytics-service')
+project(':analytics-service').buildFileName = 'analytics-service.gradle'
+project(':analytics-config').projectDir = new File (settingsDir, 'src/analytics-config')
+project(':analytics-config').buildFileName = 'analytics-config.gradle'
+project(':analytics-settings').projectDir = new File (settingsDir, 'src/analytics-settings')
+project(':analytics-settings').buildFileName = 'analytics-settings.gradle'
+project(':analytics-admin').projectDir = new File (settingsDir, 'src/analytics-admin')
+project(':analytics-admin').buildFileName = 'analytics-admin.gradle'
+project(':analytics-links').projectDir = new File (settingsDir, 'src/analytics-links')
+project(':analytics-links').buildFileName = 'analytics-links.gradle'
+project(':analytics-library').projectDir = new File (settingsDir, 'src/analytics-library')
+project(':analytics-library').buildFileName = 'analytics-library.gradle'

@@ -89,9 +89,8 @@ paths:
 
 # The output of this spec is used in more than one location, so Markdown cannot use relative links.
 # Absolute links begin with /cloud -- this must be replaced for every branch.
-# Relative links are currently expected to point to a location in the same page.
-# The x-desc-refs attribute records links which point to other REST API references, for future use.
-# The x-desc-name attribute records the ID of the parameter description, also for future use.
+# Relative links point to a location relative to the REST API reference page by default.
+# The x-desc-refs attribute is used to override links when content is transcluded to other locations.
 
 # The AsciiDoc Markdown converter does not recognize HTML tags like <a id="foo">.
 # Use the x-desc-name vendor extension to specify the anchor for a property.
@@ -114,9 +113,9 @@ definitions:
           The [node-level][cleanupclientattempts] `cleanupclientattempts` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [cleanupclientattempts]: #cleanupclientattempts
-        x-desc-refs: |
           [cleanupclientattempts]: ../n1ql-rest-admin/index.html#cleanupclientattempts
+        x-desc-refs: |
+          [cleanupclientattempts]: #cleanupclientattempts
       queryCleanupLostAttempts:
         type: boolean
         default: true
@@ -130,9 +129,9 @@ definitions:
           The [node-level][cleanuplostattempts] `cleanuplostattempts` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [cleanuplostattempts]: #cleanuplostattempts
-        x-desc-refs: |
           [cleanuplostattempts]: ../n1ql-rest-admin/index.html#cleanuplostattempts
+        x-desc-refs: |
+          [cleanuplostattempts]: #cleanuplostattempts
       queryCleanupWindow:
         type: string
         format: duration
@@ -160,9 +159,9 @@ definitions:
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
           [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
-          [cleanupwindow]: #cleanupwindow
-        x-desc-refs: |
           [cleanupwindow]: ../n1ql-rest-admin/index.html#cleanupwindow
+        x-desc-refs: |
+          [cleanupwindow]: #cleanupwindow
       queryCompletedLimit:
         type: integer
         format: int32
@@ -183,9 +182,9 @@ definitions:
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
           [sys-completed-config]: /capella/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
-          [completed-limit]: #completed-limit
-        x-desc-refs: |
           [completed-limit]: ../n1ql-rest-admin/index.html#completed-limit
+        x-desc-refs: |
+          [completed-limit]: #completed-limit
       queryCompletedMaxPlanSize:
         type: integer
         format: int32
@@ -209,9 +208,9 @@ definitions:
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
           [sys-completed-config]: /capella/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
-          [completed-max-plan-size]: #completed-max-plan-size
-        x-desc-refs: |
           [completed-max-plan-size]: ../n1ql-rest-admin/index.html#completed-max-plan-size
+        x-desc-refs: |
+          [completed-max-plan-size]: #completed-max-plan-size
       queryCompletedThreshold:
         type: integer
         format: int32
@@ -233,9 +232,9 @@ definitions:
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
           [sys-completed-config]: /capella/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
-          [completed-threshold]: #completed-threshold
-        x-desc-refs: |
           [completed-threshold]: ../n1ql-rest-admin/index.html#completed-threshold
+        x-desc-refs: |
+          [completed-threshold]: #completed-threshold
       queryLogLevel:
         type: string
         default: INFO
@@ -272,9 +271,9 @@ definitions:
           The [node-level][loglevel] `loglevel` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [loglevel]: #loglevel
-        x-desc-refs: |
           [loglevel]: ../n1ql-rest-admin/index.html#loglevel
+        x-desc-refs: |
+          [loglevel]: #loglevel
       queryMaxParallelism:
         type: integer
         format: int32
@@ -304,11 +303,11 @@ definitions:
           Refer to [Max Parallelism][max-parallelism] for more information.
 
           [max-parallelism]: /cloud/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
-          [max-parallelism-srv]: #max-parallelism-srv
-          [max_parallelism_req]: #max_parallelism_req
-        x-desc-refs: |
           [max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
           [max_parallelism_req]: ../n1ql-rest-query/index.html#max_parallelism_req
+        x-desc-refs: |
+          [max-parallelism-srv]: #max-parallelism-srv
+          [max_parallelism_req]: #max_parallelism_req
       queryMemoryQuota:
         type: integer
         format: int32
@@ -333,11 +332,11 @@ definitions:
           In addition, there is a [request-level][memory_quota_req] `memory_quota` parameter.
           If a request includes this parameter, it will be capped by the node-level `memory-quota` setting.
 
-          [memory-quota-srv]: #memory-quota-srv
-          [memory_quota_req]: #memory_quota_req
-        x-desc-refs: |
           [memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
           [memory_quota_req]: ../n1ql-rest-query/index.html#memory_quota_req
+        x-desc-refs: |
+          [memory-quota-srv]: #memory-quota-srv
+          [memory_quota_req]: #memory_quota_req
       queryN1qlFeatCtrl:
         type: integer
         format: int32
@@ -349,9 +348,9 @@ definitions:
           The [node-level][n1ql-feat-ctrl] `n1ql-feat-ctrl` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [n1ql-feat-ctrl]: #n1ql-feat-ctrl
-        x-desc-refs: |
           [n1ql-feat-ctrl]: ../n1ql-rest-admin/index.html#n1ql-feat-ctrl
+        x-desc-refs: |
+          [n1ql-feat-ctrl]: #n1ql-feat-ctrl
       queryNodeQuota:
         type: integer
         format: int32
@@ -370,9 +369,9 @@ definitions:
           The [node-level][node-quota] `node-quota` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [node-quota]: #node-quota
-        x-desc-refs: |
           [node-quota]: ../n1ql-rest-admin/index.html#node-quota
+        x-desc-refs: |
+          [node-quota]: #node-quota
       queryNodeQuotaValPercent:
         type: integer
         format: int32
@@ -390,9 +389,9 @@ definitions:
           The [node-level][node-quota-val-percent] `node-quota-val-percent` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [node-quota-val-percent]: #node-quota-val-percent
-        x-desc-refs: |
           [node-quota-val-percent]: ../n1ql-rest-admin/index.html#node-quota-val-percent
+        x-desc-refs: |
+          [node-quota-val-percent]: #node-quota-val-percent
       queryNumAtrs:
         type: integer
         format: int32
@@ -413,11 +412,11 @@ definitions:
           If a request includes this parameter, it will be capped by the node-level `numatrs` setting.
 
           [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
-          [numatrs-srv]: #numatrs-srv
-          [numatrs_req]: #numatrs_req
-        x-desc-refs: |
           [numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
           [numatrs_req]: ../n1ql-rest-query/index.html#numatrs_req
+        x-desc-refs: |
+          [numatrs-srv]: #numatrs-srv
+          [numatrs_req]: #numatrs_req
       queryNumCpus:
         type: integer
         format: int32
@@ -439,9 +438,9 @@ definitions:
           The [node-level][num-cpus] `num-cpus` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [num-cpus]: #num-cpus
-        x-desc-refs: |
           [num-cpus]: ../n1ql-rest-admin/index.html#num-cpus
+        x-desc-refs: |
+          [num-cpus]: #num-cpus
       queryPipelineBatch:
         type: integer
         format: int32
@@ -459,11 +458,11 @@ definitions:
           In addition, the [request-level][pipeline_batch_req] `pipeline_batch` parameter specifies this property per request.
           The minimum of that and the node-level `pipeline-batch` setting is applied.
 
-          [pipeline-batch-srv]: #pipeline-batch-srv
-          [pipeline_batch_req]: #pipeline_batch_req
-        x-desc-refs: |
           [pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
           [pipeline_batch_req]: ../n1ql-rest-query/index.html#pipeline_batch_req
+        x-desc-refs: |
+          [pipeline-batch-srv]: #pipeline-batch-srv
+          [pipeline_batch_req]: #pipeline_batch_req
       queryPipelineCap:
         type: integer
         format: int32
@@ -481,11 +480,11 @@ definitions:
           In addition, the [request-level][pipeline_cap_req] `pipeline_cap` parameter specifies this property per request.
           The minimum of that and the node-level `pipeline-cap` setting is applied.
 
-          [pipeline-cap-srv]: #pipeline-cap-srv
-          [pipeline_cap_req]: #pipeline_cap_req
-        x-desc-refs: |
           [pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
           [pipeline_cap_req]: ../n1ql-rest-query/index.html#pipeline_cap_req
+        x-desc-refs: |
+          [pipeline-cap-srv]: #pipeline-cap-srv
+          [pipeline_cap_req]: #pipeline_cap_req
       queryPreparedLimit:
         type: integer
         format: int32
@@ -501,9 +500,9 @@ definitions:
           The [node-level][prepared-limit] `prepared-limit` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [prepared-limit]: #prepared-limit
-        x-desc-refs: |
           [prepared-limit]: ../n1ql-rest-admin/index.html#prepared-limit
+        x-desc-refs: |
+          [prepared-limit]: #prepared-limit
       queryScanCap:
         type: integer
         format: int32
@@ -525,11 +524,11 @@ definitions:
           In addition, the [request-level][scan_cap_req] `scan_cap` parameter specifies this property per request.
           The minimum of that and the node-level `scan-cap` setting is applied.
 
-          [scan-cap-srv]: #scan-cap-srv
-          [scan_cap_req]: #scan_cap_req
-        x-desc-refs: |
           [scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
           [scan_cap_req]: ../n1ql-rest-query/index.html#scan_cap_req
+        x-desc-refs: |
+          [scan-cap-srv]: #scan-cap-srv
+          [scan_cap_req]: #scan_cap_req
       queryTimeout:
         type: integer
         format: int64
@@ -553,11 +552,11 @@ definitions:
           In addition, the [request-level][timeout_req] `timeout` parameter specifies this property per request.
           The minimum of that and the node-level `timeout` setting is applied.
 
-          [timeout-srv]: #timeout-srv
-          [timeout_req]: #timeout_req
-        x-desc-refs: |
           [timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
           [timeout_req]: ../n1ql-rest-query/index.html#timeout_req
+        x-desc-refs: |
+          [timeout-srv]: #timeout-srv
+          [timeout_req]: #timeout_req
       queryTxTimeout:
         type: string
         format: duration
@@ -591,13 +590,13 @@ definitions:
           In addition, there is a [request-level][txtimeout_req] `txtimeout` parameter.
           If a request includes this parameter, it will be capped by the node-level `txtimeout` setting.
 
-          [tximplicit]: #tximplicit
-          [txtimeout-srv]: #txtimeout-srv
-          [txtimeout_req]: #txtimeout_req
-        x-desc-refs: |
           [tximplicit]: ../n1ql-rest-query/index.html#tximplicit
           [txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
           [txtimeout_req]: ../n1ql-rest-query/index.html#txtimeout_req
+        x-desc-refs: |
+          [tximplicit]: #tximplicit
+          [txtimeout-srv]: #txtimeout-srv
+          [txtimeout_req]: #txtimeout_req
       queryTmpSpaceDir:
         type: string
         example: "/opt/couchbase/var/lib/couchbase/tmp"
@@ -641,11 +640,11 @@ definitions:
           In addition, the [request-level][use_cbo_req] `use_cbo` parameter specifies this property per request.
           If a request does not include this parameter, the node-level setting is used, which defaults to `true`.
 
-          [use-cbo-srv]: #use-cbo-srv
-          [use_cbo_req]: #use_cbo_req
-        x-desc-refs: |
           [use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
           [use_cbo_req]: ../n1ql-rest-query/index.html#use_cbo_req
+        x-desc-refs: |
+          [use-cbo-srv]: #use-cbo-srv
+          [use_cbo_req]: #use_cbo_req
       queryUseReplica:
         type: string
         default: unset
@@ -679,11 +678,11 @@ definitions:
           Note that KV range scans cannot currently be started on a replica vBucket.
           If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
 
-          [use-replica-srv]: #use-replica-srv
-          [use_replica_req]: #use_replica_req
-        x-desc-refs: |
           [use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
           [use_replica_req]: ../n1ql-rest-query/index.html#use_replica_req
+        x-desc-refs: |
+          [use-replica-srv]: #use-replica-srv
+          [use_replica_req]: #use_replica_req
       queryCurlWhitelist:
         $ref: "#/definitions/Access"
 
