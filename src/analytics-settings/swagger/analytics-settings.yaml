@@ -6,13 +6,10 @@ info:
     The Analytics Settings REST API is provided by the Analytics service.
     This API enables you to view or set cluster-level Analytics settings.
 
-    The API schemes and host URLs are as follows:
+host: localhost:8091
 
-    * http://node:8091/
-    * https://node:18091/ (for secure access)
-
-    where `node` is the host name or IP address of a node running the Analytics service.
-    (Note that the port numbers for this REST API are different to the port numbers used by the other Analytics REST APIs.)
+schemes:
+  - http
 
 produces:
   - application/json
@@ -69,6 +66,7 @@ definitions:
         minimum: 0
         maximum: 3
         description: Specifies the number of replicas for Analytics.
+        x-has-example: true
         example: 3
 
 responses:
@@ -94,15 +92,10 @@ responses:
 securityDefinitions:
   Cluster Read / Pools Read:
     type: basic
-    description: |
-      The Analytics Settings REST API supports HTTP basic authentication.
-      Credentials can be passed via HTTP headers.
-
+    description: |-
       Users must have one of the following RBAC roles:
 
       * Full Admin
       * Cluster Admin
       * Read-Only Admin
       * Analytics Admin
-
-      Refer to [Roles](../learn/security/roles.html) for more details.

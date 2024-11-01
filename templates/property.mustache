@@ -12,8 +12,13 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 {{/x-desc-refs}}
 {{/vendorExtensions}}
-{{#description}}{{{unescapedDescription}}}{{/description}}
-{{#isModel}}include::index.adoc[tag=desc-{{dataType}}, opts=optional]{{/isModel}}
+{{#description}}
+{{{unescapedDescription}}}
+{{/description}}
+{{! if ref is present, fetch remote description}}
+{{#ref}}
+include::index.adoc[tag=desc-{{dataType}}, opts=optional]
+{{/ref}}
 --
 
 [%hardbreaks]

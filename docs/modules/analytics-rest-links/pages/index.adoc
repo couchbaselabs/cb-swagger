@@ -1,0 +1,5146 @@
+= Analytics Links REST API
+:keywords: OpenAPI, REST
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+include::partial$header-attributes.adoc[opts=optional]
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+
+:leveloffset: 1
+
+include::{specDir}overview/document-before.adoc[opts=optional]
+
+
+[[overview]]
+= Overview
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+The Analytics Links REST API is provided by the Analytics service.
+This API enables you to manage the links to remote Couchbase clusters and external data sources.
+
+--
+
+[discrete#version]
+= Version information
+[%hardbreaks]
+__Version__ : 7.6
+
+[discrete#host]
+= Host information
+
+....
+http://localhost:8095
+....
+
+
+
+
+include::{specDir}overview/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
+
+
+[[resources]]
+= Resources
+
+:count-apis: 3
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
+
+This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+<<tag-LegacyMethods>>
+<<tag-MultipleLinks>>
+<<tag-SingleLinks>>
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-LegacyMethods]
+= Legacy Methods
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<delete_alt>>
+<<post_alt>>
+<<put_alt>>
+
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-before.adoc[opts=optional]
+
+
+[#delete_alt]
+= Delete Link (Alternative)
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-begin.adoc[opts=optional]
+
+
+....
+DELETE /analytics/link
+....
+
+CAUTION: This operation is deprecated, and will be removed in a future release.
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-description-before.adoc[opts=optional]
+
+
+[#delete_alt-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+An alternative endpoint for [deleting a link](#delete_link), provided for backward compatibility. The link cannot be deleted if any other entities are using it, such as an Analytics collection. The entities using the link need to be disconnected from the link, otherwise, the delete operation fails.
+
+--
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-parameters-before.adoc[opts=optional]
+
+
+[#delete_alt-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+[#delete_alt-form]
+.Form Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *dataverse* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the Analytics scope containing the link.  With this parameter, the scope name may only contain a single identifier. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *name* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the link.
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-parameters-after.adoc[opts=optional]
+
+
+[#delete_alt-produces]
+= Produces
+
+* application/json
+
+[#delete_alt-consumes]
+= Consumes
+
+* application/x-www-form-urlencoded
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-responses-before.adoc[opts=optional]
+
+
+[#delete_alt-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+| 
+
+| 400
+a| [markdown]
+--
+Bad request. A parameter has an incorrect value. 
+--
+| <<Wrong>>
+
+| 500
+a| [markdown]
+--
+Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
+--
+| <<Wrong>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-security-before.adoc[opts=optional]
+
+
+[#delete_alt-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}delete_alt/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}delete_alt/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/delete_alt/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-before.adoc[opts=optional]
+
+
+[#post_alt]
+= Create Link (Alternative)
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_alt/operation-begin.adoc[opts=optional]
+
+
+....
+POST /analytics/link
+....
+
+CAUTION: This operation is deprecated, and will be removed in a future release.
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-description-before.adoc[opts=optional]
+
+
+[#post_alt-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_alt/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+An alternative endpoint for [creating a link](#post_link), provided for backward compatibility.
+--
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-parameters-before.adoc[opts=optional]
+
+
+[#post_alt-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_alt/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+[#post_alt-form]
+.Form Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *dataverse* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the Analytics scope containing the link.  With this parameter, the scope name may only contain a single identifier. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *name* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the link.
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *type* +
+_required_
+a| 
+
+
+[markdown]
+--
+The type of the link. For details, see [type](#type).
+
+--
+
+[%hardbreaks]
+*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+{blank}
+
+| String
+
+
+a| *hostname* +
+_required_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The remote hostname. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *encryption* +
+_required_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The type of encryption used by the link. For details, see [encryption](#encryption).
+
+--
+
+[%hardbreaks]
+*Values:* `"none"`, `"half"`, `"full"`
+{blank}
+
+| String
+
+
+a| *username* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *password* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *certificate* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.  You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientCertificate* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientKey* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *accessKeyId* +
+_required_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 access key ID. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *secretAccessKey* +
+_required_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 secret access key.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *sessionToken* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.  Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *region* +
+_required_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 region. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *serviceEndpoint* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 service endpoint. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *accountName* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *accountKey* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *sharedAccessSignature* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *managedIdentityId* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientId* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *tenantId* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientSecret* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientCertificatePassword* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *endpoint* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *applicationDefaultCredentials* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+
+--
+
+[%hardbreaks]
+*Values:* `"true"`
+{blank}
+
+| String
+
+
+a| *jsonCredentials* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Google Cloud Storage links only. The JSON credentials of the link.  This parameter is not allowed if `applicationDefaultCredentials` is provided. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-parameters-after.adoc[opts=optional]
+
+
+[#post_alt-produces]
+= Produces
+
+* application/json
+
+[#post_alt-consumes]
+= Consumes
+
+* application/x-www-form-urlencoded
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-responses-before.adoc[opts=optional]
+
+
+[#post_alt-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_alt/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+| 
+
+| 400
+a| [markdown]
+--
+Bad request. A parameter has an incorrect value. 
+--
+| <<Wrong>>
+
+| 500
+a| [markdown]
+--
+Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
+--
+| <<Wrong>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-security-before.adoc[opts=optional]
+
+
+[#post_alt-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_alt/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}post_alt/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}post_alt/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_alt/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-before.adoc[opts=optional]
+
+
+[#put_alt]
+= Edit Link (Alternative)
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_alt/operation-begin.adoc[opts=optional]
+
+
+....
+PUT /analytics/link
+....
+
+CAUTION: This operation is deprecated, and will be removed in a future release.
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-description-before.adoc[opts=optional]
+
+
+[#put_alt-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_alt/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+An alternative endpoint for [editing a link](#put_link), provided for backward compatibility. The link name, type, and scope name cannot be modified.
+
+--
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-parameters-before.adoc[opts=optional]
+
+
+[#put_alt-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_alt/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+[#put_alt-form]
+.Form Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *dataverse* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the Analytics scope containing the link.  With this parameter, the scope name may only contain a single identifier. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *name* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the link.
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *type* +
+_optional_
+a| 
+
+
+[markdown]
+--
+The type of the link. If this parameter is specified, the value must match the type that was set when the link was created. 
+
+--
+
+[%hardbreaks]
+*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+{blank}
+
+| String
+
+
+a| *hostname* +
+_required_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The remote hostname. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *encryption* +
+_required_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The type of encryption used by the link. For details, see [encryption](#encryption).
+
+--
+
+[%hardbreaks]
+*Values:* `"none"`, `"half"`, `"full"`
+{blank}
+
+| String
+
+
+a| *username* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *password* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *certificate* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.  You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientCertificate* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientKey* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *accessKeyId* +
+_required_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 access key ID. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *secretAccessKey* +
+_required_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 secret access key.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *sessionToken* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.  Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *region* +
+_required_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 region. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *serviceEndpoint* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 service endpoint. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *accountName* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *accountKey* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *sharedAccessSignature* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *managedIdentityId* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientId* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *tenantId* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientSecret* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientCertificatePassword* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *endpoint* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *applicationDefaultCredentials* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+
+--
+
+[%hardbreaks]
+*Values:* `"true"`
+{blank}
+
+| String
+
+
+a| *jsonCredentials* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Google Cloud Storage links only. The JSON credentials of the link.  This parameter is not allowed if `applicationDefaultCredentials` is provided. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-parameters-after.adoc[opts=optional]
+
+
+[#put_alt-produces]
+= Produces
+
+* application/json
+
+[#put_alt-consumes]
+= Consumes
+
+* application/x-www-form-urlencoded
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-responses-before.adoc[opts=optional]
+
+
+[#put_alt-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_alt/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+| 
+
+| 400
+a| [markdown]
+--
+Bad request. A parameter has an incorrect value. 
+--
+| <<Wrong>>
+
+| 500
+a| [markdown]
+--
+Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
+--
+| <<Wrong>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-security-before.adoc[opts=optional]
+
+
+[#put_alt-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_alt/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}put_alt/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}put_alt/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_alt/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-MultipleLinks]
+= Multiple Links
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<get_all>>
+<<get_scope>>
+
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-before.adoc[opts=optional]
+
+
+[#get_all]
+= Query All Links
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_all/operation-begin.adoc[opts=optional]
+
+
+....
+GET /analytics/link
+....
+
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-description-before.adoc[opts=optional]
+
+
+[#get_all-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_all/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns information about all links in all Analytics scopes.
+--
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-parameters-before.adoc[opts=optional]
+
+
+[#get_all-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_all/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#get_all-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *dataverse* +
+_optional_
+a| 
+
+
+[markdown]
+--
+The name of an Analytics scope. When this parameter is included, the request only returns information about links in the specified scope.
+
+With this parameter, the scope name may only contain a single identifier.
+
+This parameter is provided for backward compatibility. Note that it is deprecated, and will be removed in a future release.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *name* +
+_optional_
+a| 
+
+
+[markdown]
+--
+The name of a link. When this parameter is included, the request only returns information about the specified link. If specified, the `dataverse` parameter must be specified also.
+
+This parameter is provided for backward compatibility. Note that it is deprecated, and will be removed in a future release.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *type* +
+_optional_
+a| 
+
+
+[markdown]
+--
+The type of the link. If this parameter is omitted, all link types are retrieved, excluding the `Local` link.
+
+
+--
+
+[%hardbreaks]
+*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+{blank}
+
+| String
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-parameters-after.adoc[opts=optional]
+
+
+[#get_all-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-responses-before.adoc[opts=optional]
+
+
+[#get_all-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_all/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success. Returns an array of objects, each of which contains information about a link. 
+--
+| <<All>>
+list
+
+| 400
+a| [markdown]
+--
+Bad request. A parameter has an incorrect value. 
+--
+| <<Wrong>>
+
+| 500
+a| [markdown]
+--
+Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
+--
+| <<Wrong>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-security-before.adoc[opts=optional]
+
+
+[#get_all-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_all/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}get_all/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get_all/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_all/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-before.adoc[opts=optional]
+
+
+[#get_scope]
+= Query Scope Links
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_scope/operation-begin.adoc[opts=optional]
+
+
+....
+GET /analytics/link/{scope}
+....
+
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-description-before.adoc[opts=optional]
+
+
+[#get_scope-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_scope/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns information about all links in the specified Analytics scope.
+--
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-parameters-before.adoc[opts=optional]
+
+
+[#get_scope-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_scope/operation-parameters-begin.adoc[opts=optional]
+
+
+[#get_scope-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *scope* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+[#get_scope-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *type* +
+_optional_
+a| 
+
+
+[markdown]
+--
+The type of the link. If this parameter is omitted, all link types are retrieved, excluding the `Local` link.
+
+
+--
+
+[%hardbreaks]
+*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+{blank}
+
+| String
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-parameters-after.adoc[opts=optional]
+
+
+[#get_scope-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-responses-before.adoc[opts=optional]
+
+
+[#get_scope-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_scope/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success. Returns an array of objects, each of which contains information about a link. 
+--
+| <<All>>
+list
+
+| 400
+a| [markdown]
+--
+Bad request. A parameter has an incorrect value. 
+--
+| <<Wrong>>
+
+| 500
+a| [markdown]
+--
+Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
+--
+| <<Wrong>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-security-before.adoc[opts=optional]
+
+
+[#get_scope-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_scope/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}get_scope/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get_scope/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_scope/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-SingleLinks]
+= Single Links
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<delete_link>>
+<<get_link>>
+<<post_link>>
+<<put_link>>
+
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-before.adoc[opts=optional]
+
+
+[#delete_link]
+= Delete Link
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_link/operation-begin.adoc[opts=optional]
+
+
+....
+DELETE /analytics/link/{scope}/{name}
+....
+
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-description-before.adoc[opts=optional]
+
+
+[#delete_link-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_link/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Deletes a link in the specified Analytics scope. The link cannot be deleted if any other entities are using it, such as an Analytics collection. The entities using the link need to be disconnected from the link, otherwise, the delete operation fails.
+
+--
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-parameters-before.adoc[opts=optional]
+
+
+[#delete_link-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_link/operation-parameters-begin.adoc[opts=optional]
+
+
+[#delete_link-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *scope* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *name* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the link.
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-parameters-after.adoc[opts=optional]
+
+
+[#delete_link-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-responses-before.adoc[opts=optional]
+
+
+[#delete_link-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_link/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+| 
+
+| 400
+a| [markdown]
+--
+Bad request. A parameter has an incorrect value. 
+--
+| <<Wrong>>
+
+| 500
+a| [markdown]
+--
+Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
+--
+| <<Wrong>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-security-before.adoc[opts=optional]
+
+
+[#delete_link-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_link/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}delete_link/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}delete_link/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/delete_link/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-before.adoc[opts=optional]
+
+
+[#get_link]
+= Query Link
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_link/operation-begin.adoc[opts=optional]
+
+
+....
+GET /analytics/link/{scope}/{name}
+....
+
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-description-before.adoc[opts=optional]
+
+
+[#get_link-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_link/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns information about a link in the specified Analytics scope.
+--
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-parameters-before.adoc[opts=optional]
+
+
+[#get_link-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_link/operation-parameters-begin.adoc[opts=optional]
+
+
+[#get_link-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *scope* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *name* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the link.
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+[#get_link-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *type* +
+_optional_
+a| 
+
+
+[markdown]
+--
+The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.
+
+
+--
+
+[%hardbreaks]
+*Values:* `"couchbase"`, `"S3"`, `"azureblob"`, `"gcs"`
+{blank}
+
+| String
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-parameters-after.adoc[opts=optional]
+
+
+[#get_link-produces]
+= Produces
+
+* application/json
+
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-responses-before.adoc[opts=optional]
+
+
+[#get_link-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_link/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success. Returns an array of objects, each of which contains information about a link. 
+--
+| <<All>>
+list
+
+| 400
+a| [markdown]
+--
+Bad request. A parameter has an incorrect value. 
+--
+| <<Wrong>>
+
+| 500
+a| [markdown]
+--
+Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
+--
+| <<Wrong>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-security-before.adoc[opts=optional]
+
+
+[#get_link-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_link/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}get_link/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get_link/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_link/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-before.adoc[opts=optional]
+
+
+[#post_link]
+= Create Link
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_link/operation-begin.adoc[opts=optional]
+
+
+....
+POST /analytics/link/{scope}/{name}
+....
+
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-description-before.adoc[opts=optional]
+
+
+[#post_link-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_link/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Creates a link in the specified Analytics scope.
+--
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+include::{specDir}paths/post_link/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-parameters-before.adoc[opts=optional]
+
+
+[#post_link-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_link/operation-parameters-begin.adoc[opts=optional]
+
+
+[#post_link-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *scope* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *name* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the link.
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+[#post_link-form]
+.Form Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *type* +
+_required_
+a| 
+
+
+[markdown]
+--
+The type of the link. For details, see [type](#type).
+
+--
+
+[%hardbreaks]
+*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+{blank}
+
+| String
+
+
+a| *hostname* +
+_required_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The remote hostname. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *encryption* +
+_required_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The type of encryption used by the link. For details, see [encryption](#encryption).
+
+--
+
+[%hardbreaks]
+*Values:* `"none"`, `"half"`, `"full"`
+{blank}
+
+| String
+
+
+a| *username* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *password* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *certificate* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.  You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientCertificate* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientKey* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *accessKeyId* +
+_required_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 access key ID. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *secretAccessKey* +
+_required_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 secret access key.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *sessionToken* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.  Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *region* +
+_required_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 region. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *serviceEndpoint* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 service endpoint. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *accountName* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *accountKey* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *sharedAccessSignature* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *managedIdentityId* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientId* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *tenantId* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientSecret* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientCertificatePassword* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *endpoint* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *applicationDefaultCredentials* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+
+--
+
+[%hardbreaks]
+*Values:* `"true"`
+{blank}
+
+| String
+
+
+a| *jsonCredentials* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Google Cloud Storage links only. The JSON credentials of the link.  This parameter is not allowed if `applicationDefaultCredentials` is provided. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-parameters-after.adoc[opts=optional]
+
+
+[#post_link-produces]
+= Produces
+
+* application/json
+
+[#post_link-consumes]
+= Consumes
+
+* application/x-www-form-urlencoded
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-responses-before.adoc[opts=optional]
+
+
+[#post_link-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_link/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+| 
+
+| 400
+a| [markdown]
+--
+Bad request. A parameter has an incorrect value. 
+--
+| <<Wrong>>
+
+| 500
+a| [markdown]
+--
+Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
+--
+| <<Wrong>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-security-before.adoc[opts=optional]
+
+
+[#post_link-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_link/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}post_link/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}post_link/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_link/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-before.adoc[opts=optional]
+
+
+[#put_link]
+= Edit Link
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_link/operation-begin.adoc[opts=optional]
+
+
+....
+PUT /analytics/link/{scope}/{name}
+....
+
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-description-before.adoc[opts=optional]
+
+
+[#put_link-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_link/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Edits an existing link in the specified Analytics scope. The link name, type, and scope name cannot be modified.
+
+--
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-description-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-parameters-before.adoc[opts=optional]
+
+
+[#put_link-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_link/operation-parameters-begin.adoc[opts=optional]
+
+
+[#put_link-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *scope* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the Analytics scope.
+
+With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *name* +
+_required_
+a| 
+
+
+[markdown]
+--
+The name of the link.
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+[#put_link-form]
+.Form Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *type* +
+_optional_
+a| 
+
+
+[markdown]
+--
+The type of the link. If this parameter is specified, the value must match the type that was set when the link was created. 
+
+--
+
+[%hardbreaks]
+*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+{blank}
+
+| String
+
+
+a| *hostname* +
+_required_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The remote hostname. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *encryption* +
+_required_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The type of encryption used by the link. For details, see [encryption](#encryption).
+
+--
+
+[%hardbreaks]
+*Values:* `"none"`, `"half"`, `"full"`
+{blank}
+
+| String
+
+
+a| *username* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *password* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *certificate* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.  You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientCertificate* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientKey* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *accessKeyId* +
+_required_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 access key ID. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *secretAccessKey* +
+_required_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 secret access key.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *sessionToken* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.  Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *region* +
+_required_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 region. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *serviceEndpoint* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For S3 links only. The Amazon S3 service endpoint. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *accountName* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *accountKey* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *sharedAccessSignature* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *managedIdentityId* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientId* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *tenantId* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientSecret* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *clientCertificatePassword* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *endpoint* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+a| *applicationDefaultCredentials* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+
+--
+
+[%hardbreaks]
+*Values:* `"true"`
+{blank}
+
+| String
+
+
+a| *jsonCredentials* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Google Cloud Storage links only. The JSON credentials of the link.  This parameter is not allowed if `applicationDefaultCredentials` is provided. 
+
+--
+
+[%hardbreaks]
+{blank}
+
+| String
+
+
+|===
+
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-parameters-after.adoc[opts=optional]
+
+
+[#put_link-produces]
+= Produces
+
+* application/json
+
+[#put_link-consumes]
+= Consumes
+
+* application/x-www-form-urlencoded
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-responses-before.adoc[opts=optional]
+
+
+[#put_link-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_link/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+| 
+
+| 400
+a| [markdown]
+--
+Bad request. A parameter has an incorrect value. 
+--
+| <<Wrong>>
+
+| 500
+a| [markdown]
+--
+Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
+--
+| <<Wrong>>
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-security-before.adoc[opts=optional]
+
+
+[#put_link-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_link/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}put_link/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}put_link/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_link/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
+
+
+[#models]
+= Definitions
+
+:count-models: 16
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
+[.two-columns]
+endif::collapse-models[]
+[%hardbreaks]
+<<All>>
+<<azureblob>>
+<<azureblobSpecific>>
+<<couchbase>>
+<<couchbaseSpecific>>
+<<couchbaseSpecificNode>>
+<<couchbaseSpecificNodeServices>>
+<<gcs>>
+<<gcsSpecific>>
+<<s3>>
+<<s3Specific>>
+<<Wrong>>
+endif::[]
+
+
+
+// markup not found, no include::{specDir}definitions/All/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#All]
+= Links
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/All/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::All[]
+
+ifdef::model-descriptions[]
+//tag::desc-All[]
+These properties are common to all links.
+//end::desc-All[]
+endif::model-descriptions[]
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*scope* +
+_required_
+a| 
+
+[markdown]
+--
+The name of the Analytics scope containing the link.
+
+The scope name may contain one or two identifiers, separated by a slash (/).
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["travel-sample/inventory"]`
+{blank}
+| String
+
+a| 
+*name* +
+_required_
+a| 
+
+[markdown]
+--
+The name of the link.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["myLink"]`
+{blank}
+| String
+
+a| [#type]
+*type* +
+_required_
+a| 
+
+[markdown]
+--
+The type of the link.
+
+* `couchbase`: A link to a remote Couchbase cluster.
+* `s3`: A link to the Amazon S3 service.
+* `azureblob`: A link to Microsoft Azure Blob Storage.
+* `gcs`: A link to Google Cloud Storage.
+--
+
+[%hardbreaks]
+*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+{blank}
+| String
+
+|===
+
+//end::All[]
+
+This schema has different properties, depending on the value of *type*:
+
+* `azureblob` -- <<azureblob>>
+* `couchbase` -- <<couchbase>>
+* `gcs` -- <<gcs>>
+* `s3` -- <<s3>>
+
+
+
+// markup not found, no include::{specDir}definitions/All/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/All/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/azureblob/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#azureblob]
+= Azure Blob
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/azureblob/definition-begin.adoc[opts=optional]
+
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+All of the following:
+
+* <<All>>
+
+* <<azureblobSpecific>>
+
+
+
+// markup not found, no include::{specDir}definitions/azureblob/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/azureblob/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/azureblobSpecific/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#azureblobSpecific]
+= Azure Blob Specific
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/azureblobSpecific/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::azureblobSpecific[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*accountKey* +
+_optional_
+a| 
+
+[markdown]
+--
+The account key. Used for shared key authentication. This is redacted for the sake of security. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["<redacted sensitive entry>"]`
+{blank}
+| String
+
+a| 
+*accountName* +
+_optional_
+a| 
+
+[markdown]
+--
+The account name. Used for shared key authentication. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["myAccountName"]`
+{blank}
+| String
+
+a| 
+*clientCertificate* +
+_optional_
+a| 
+
+[markdown]
+--
+The client certificate for the registered application. Used for Azure Active Directory client certificate authentication. This is redacted for the sake of security. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["<redacted sensitive entry>"]`
+{blank}
+| String
+
+a| 
+*clientCertificatePassword* +
+_optional_
+a| 
+
+[markdown]
+--
+The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected. This is redacted for the sake of security. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["<redacted sensitive entry>"]`
+{blank}
+| String
+
+a| 
+*clientId* +
+_optional_
+a| 
+
+[markdown]
+--
+The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["myClientID"]`
+{blank}
+| String
+
+a| 
+*clientSecret* +
+_optional_
+a| 
+
+[markdown]
+--
+The client secret for the registered application. Used for Azure Active Directory client secret authentication. This is redacted for the sake of security. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["<redacted sensitive entry>"]`
+{blank}
+| String
+
+a| 
+*endpoint* +
+_required_
+a| 
+
+[markdown]
+--
+The endpoint URI.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["my.endpoint.uri"]`
+{blank}
+| String
+
+a| 
+*managedIdentityId* +
+_optional_
+a| 
+
+[markdown]
+--
+The managed identity ID. Used for managed identity authentication. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["myManagedIdentityID"]`
+{blank}
+| String
+
+a| 
+*sharedAccessSignature* +
+_optional_
+a| 
+
+[markdown]
+--
+A token that can be used for authentication. Used for shared access signature authentication. This is redacted for the sake of security. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["<redacted sensitive entry>"]`
+{blank}
+| String
+
+a| 
+*tenantId* +
+_optional_
+a| 
+
+[markdown]
+--
+The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["myTenantID"]`
+{blank}
+| String
+
+|===
+
+//end::azureblobSpecific[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/azureblobSpecific/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/azureblobSpecific/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/couchbase/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#couchbase]
+= Couchbase
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/couchbase/definition-begin.adoc[opts=optional]
+
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+All of the following:
+
+* <<All>>
+
+* <<couchbaseSpecific>>
+
+
+
+// markup not found, no include::{specDir}definitions/couchbase/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/couchbase/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/couchbaseSpecific/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#couchbaseSpecific]
+= Couchbase Specific
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/couchbaseSpecific/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::couchbaseSpecific[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*activeHostname* +
+_required_
+a| 
+
+[markdown]
+--
+The remote hostname.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["remoteHostName:8091"]`
+{blank}
+| String
+
+a| 
+*bootstrapAlternateAddress* +
+_required_
+a| 
+
+[markdown]
+--
+Specifies whether the provided (bootstrap) hostname is an alternative address.
+--
+
+[%hardbreaks]
+*Example:* `false`
+{blank}
+| Boolean
+
+a| 
+*bootstrapHostname* +
+_required_
+a| 
+
+[markdown]
+--
+The provided (bootstrap) hostname.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["remoteHostName:8091"]`
+{blank}
+| String
+
+a| 
+*certificate* +
+_required_
+a| 
+
+[markdown]
+--
+The content of the target cluster root certificate. Only set for links with full encryption. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+{blank}
+| String
+
+a| 
+*clientCertificate* +
+_required_
+a| 
+
+[markdown]
+--
+The content of the client certificate. Only set for links with full encryption using client certificate and client key. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+{blank}
+| String
+
+a| 
+*clientKey* +
+_required_
+a| 
+
+[markdown]
+--
+The content of the client key. Only set for links with full encryption using client certificate and client key. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+{blank}
+| String
+
+a| 
+*clusterCompatibility* +
+_required_
+a| 
+
+[markdown]
+--
+For internal use only.
+--
+
+[%hardbreaks]
+*Example:* `393221`
+{blank}
+| Integer
+
+a| [#encryption]
+*encryption* +
+_required_
+a| 
+
+[markdown]
+--
+The type of encryption used by the link.
+
+* `none`: Neither passwords nor data are encrypted.
+* `half`: Passwords are encrypted using SCRAM-SHA, but data is not.
+* `full`: All data and passwords are encrypted and TLS is used.
+
+--
+
+[%hardbreaks]
+*Values:* `"none"`, `"half"`, `"full"`
+{blank}
+| String
+
+a| 
+*nodes* +
+_required_
+a| 
+
+[markdown]
+--
+An array of objects, each of which contains information about a node in the target cluster.
+--
+
+[%hardbreaks]
+{blank}
+| <<couchbaseSpecificNode>>
+list
+
+a| 
+*password* +
+_required_
+a| 
+
+[markdown]
+--
+The password used to connect to the link. This is redacted for the sake of security. Not set for links with full encryption using client certificate and client key. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["<redacted sensitive entry>"]`
+{blank}
+| String
+
+a| 
+*username* +
+_required_
+a| 
+
+[markdown]
+--
+The remote username. Not set for links with full encryption using client certificate and client key. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["remote.user"]`
+{blank}
+| String
+
+a| 
+*uuid* +
+_required_
+a| 
+
+[markdown]
+--
+A UUID uniquely identifying the link.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["6331e2a390125b662f7bcfd63ecb3a73"]`
+{blank}
+| UUID (UUID)
+
+|===
+
+//end::couchbaseSpecific[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/couchbaseSpecific/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/couchbaseSpecific/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/couchbaseSpecificNode/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#couchbaseSpecificNode]
+= Nodes
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/couchbaseSpecificNode/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::couchbaseSpecificNode[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*alternateAddresses* +
+_optional_
+a| 
+
+[markdown]
+--
+The alternate address defined on the node, if any. If not defined, this property returns `null`.
+
+--
+
+[%hardbreaks]
+{blank}
+| String
+
+a| 
+*hostname* +
+_optional_
+a| 
+
+[markdown]
+--
+The hostname of the node. If not defined, this property returns `null`.
+
+--
+
+[%hardbreaks]
+{blank}
+| String
+
+a| 
+*services* +
+_optional_
+a| 
+
+[markdown]
+--
+include::index.adoc[tag=desc-couchbaseSpecificNodeServices, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+| <<couchbaseSpecificNodeServices>>
+
+|===
+
+//end::couchbaseSpecificNode[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/couchbaseSpecificNode/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/couchbaseSpecificNode/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/couchbaseSpecificNodeServices/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#couchbaseSpecificNodeServices]
+= Services
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/couchbaseSpecificNodeServices/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::couchbaseSpecificNodeServices[]
+
+ifdef::model-descriptions[]
+//tag::desc-couchbaseSpecificNodeServices[]
+An object giving information about the services and ports configured on this node.
+//end::desc-couchbaseSpecificNodeServices[]
+endif::model-descriptions[]
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*cbas* +
+_optional_
+a| 
+
+[markdown]
+--
+The port number for a connection to the Analytics service.
+--
+
+[%hardbreaks]
+*Example:* `8095`
+{blank}
+| Integer
+
+a| 
+*cbasSSL* +
+_optional_
+a| 
+
+[markdown]
+--
+The port number for an encrypted connection to the Analytics service.
+--
+
+[%hardbreaks]
+*Example:* `18095`
+{blank}
+| Integer
+
+a| 
+*kv* +
+_optional_
+a| 
+
+[markdown]
+--
+The port number for a connection to the Data service.
+--
+
+[%hardbreaks]
+*Example:* `11210`
+{blank}
+| Integer
+
+a| 
+*kvSSL* +
+_optional_
+a| 
+
+[markdown]
+--
+The port number for an encrypted connection to the Data service.
+--
+
+[%hardbreaks]
+*Example:* `11207`
+{blank}
+| Integer
+
+a| 
+*mgmt* +
+_optional_
+a| 
+
+[markdown]
+--
+The port number for a connection to the Cluster Manager service.
+--
+
+[%hardbreaks]
+*Example:* `8091`
+{blank}
+| Integer
+
+a| 
+*mgmtSSL* +
+_optional_
+a| 
+
+[markdown]
+--
+The port number for an encrypted connection to the Cluster Manager service.
+--
+
+[%hardbreaks]
+*Example:* `18091`
+{blank}
+| Integer
+
+|===
+
+//end::couchbaseSpecificNodeServices[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/couchbaseSpecificNodeServices/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/couchbaseSpecificNodeServices/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/gcs/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#gcs]
+= GCS
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/gcs/definition-begin.adoc[opts=optional]
+
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+All of the following:
+
+* <<All>>
+
+* <<gcsSpecific>>
+
+
+
+// markup not found, no include::{specDir}definitions/gcs/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/gcs/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/gcsSpecific/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#gcsSpecific]
+= GCS Specific
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/gcsSpecific/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::gcsSpecific[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*applicationDefaultCredentials* +
+_required_
+a| 
+
+[markdown]
+--
+If present, indicates that the link should use the Google Application Default Credentials for authenticating. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Values:* `"true"`
+*Example:* `pass:c["true"]`
+{blank}
+| String
+
+a| 
+*endpoint* +
+_required_
+a| 
+
+[markdown]
+--
+The endpoint URI. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["https://storage.googleapis.com"]`
+{blank}
+| String
+
+a| 
+*jsonCredentials* +
+_required_
+a| 
+
+[markdown]
+--
+The JSON credentials of the link. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["<redacted sensitive entry>"]`
+{blank}
+| String
+
+|===
+
+//end::gcsSpecific[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/gcsSpecific/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/gcsSpecific/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/s3/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#s3]
+= S3
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/s3/definition-begin.adoc[opts=optional]
+
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+All of the following:
+
+* <<All>>
+
+* <<s3Specific>>
+
+
+
+// markup not found, no include::{specDir}definitions/s3/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/s3/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/s3Specific/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#s3Specific]
+= S3 Specific
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/s3Specific/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::s3Specific[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*accessKeyId* +
+_required_
+a| 
+
+[markdown]
+--
+The Amazon S3 access key ID.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["myAccessKey"]`
+{blank}
+| String
+
+a| 
+*region* +
+_required_
+a| 
+
+[markdown]
+--
+The Amazon S3 region.
+--
+
+[%hardbreaks]
+*Example:* `pass:c["us-east-1"]`
+{blank}
+| String
+
+a| 
+*secretAccessKey* +
+_required_
+a| 
+
+[markdown]
+--
+The Amazon S3 secret access key. This is redacted for the sake of security.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["<redacted sensitive entry>"]`
+{blank}
+| String
+
+a| 
+*sessionToken* +
+_optional_
+a| 
+
+[markdown]
+--
+For S3 links only. The Amazon S3 session token. Indicates that the link has temporary access, and that the `accessKeyId` and `secretAccessKey` are temporary credentials. This is redacted for the sake of security.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["<redacted sensitive entry>"]`
+{blank}
+| String
+
+a| 
+*serviceEndpoint* +
+_required_
+a| 
+
+[markdown]
+--
+Amazon S3 service endpoint. If not set, this property returns `null`.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["my.endpoint.uri"]`
+{blank}
+| String
+
+|===
+
+//end::s3Specific[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/s3Specific/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/s3Specific/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Wrong/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#Wrong]
+= Errors
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Wrong/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Wrong[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*error* +
+_required_
+a| 
+
+[markdown]
+--
+An error message.
+--
+
+[%hardbreaks]
+{blank}
+| String
+
+|===
+
+//end::Wrong[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Wrong/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Wrong/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
+
+
+[[security]]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}security/document-begin.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-before.adoc[opts=optional]
+
+
+[[security-analyticsManage]]
+= Analytics Manage
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Users must have one of the following RBAC roles:
+
+* Full Admin
+* Cluster Admin
+* Analytics Admin
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-after.adoc[opts=optional]
+
+
+
+
+include::{specDir}security/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
