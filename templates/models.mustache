@@ -4,6 +4,17 @@
 [#models]
 = Definitions
 
+{{! Count the models }}
+{{#models}}
+{{#model}}
+{{^isEnum}}
+{{#-last}}
+:count-models: {{-index}}
+{{/-last}}
+{{/isEnum}}
+{{/model}}
+{{/models}}
+
 {{! include partial before definitions body }}
 :leveloffset: +1
 {{#specinclude}}/definitions/document-begin.adoc{{/specinclude}}
@@ -11,26 +22,32 @@
 {{! Table of contents }}
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 10]
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
 [.two-columns]
-endif::[]
+endif::collapse-models[]
 [%hardbreaks]
 {{#models}}
 {{#model}}
+{{^isEnum}}
 <<{{name}}>>
+{{/isEnum}}
 {{/model}}
 {{/models}}
+endif::[]
 
 {{! *** DEFINITION *** }}
 {{#models}}
 {{#model}}
+{{! omit enums from model list. Probably going to regret this }}
+{{^isEnum}}
 
 {{! include partial before definition }}
 {{#specinclude}}/definitions/{{name}}/definition-before.adoc{{/specinclude}}
 
-ifeval::[{count-models} > 10]
+ifdef::collapse-models[]
 [discrete]
-endif::[]
+endif::collapse-models[]
 [#{{name}}]
 = {{#title}}{{title}}{{/title}}{{^title}}{{classname}}{{/title}}
 
@@ -95,6 +112,7 @@ endif::[]
 :leveloffset: -1
 {{#specinclude}}/definitions/{{name}}/definition-after.adoc{{/specinclude}}
 
+{{/isEnum}}
 {{/model}}
 {{/models}}
 
