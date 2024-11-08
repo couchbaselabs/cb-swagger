@@ -7,18 +7,30 @@ info:
     This API enables you to view or set cluster-level Analytics settings.
 
 servers:
-  - url: 'http://{node}:8091'
-    description: The API schemes and host URLs are as follows.
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
     variables:
-      node:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
         default: localhost
         description: The host name or IP address of a node running the Analytics service.
-  - url: 'https://{node}:18091'
-    description: For secure access.
-    variables:
-      node:
-        default: localhost
-        description: The host name or IP address of a node running the Analytics service.
+      port:
+        default: "8091"
+        description: |-
+          The Cluster administration REST port.
+          Use `18091` for secure access.
+
+          Note that the port numbers for this REST API are different to the port numbers used by the other Analytics REST APIs.
+        enum:
+          - "8091"
+          - "18091"
 
 paths:
   /settings/analytics:

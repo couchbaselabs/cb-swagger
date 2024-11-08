@@ -7,18 +7,28 @@ info:
     This API enables you to retrieve statistics about the clusters and nodes running the Query service; view or specify node-level settings; and view or delete requests.
 
 servers:
-  - url: 'http://{node}:8093'
-    description: The API schemes and host URLs are as follows.
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
     variables:
-      node:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
         default: localhost
         description: The host name or IP address of a node running the Query service.
-  - url: 'https://{node}:18093'
-    description: For secure access.
-    variables:
-      node:
-        default: localhost
-        description: The host name or IP address of a node running the Query service.
+      port:
+        default: "8093"
+        description: |-
+          The Query service REST port.
+          Use `18093` for secure access.
+        enum:
+          - "8093"
+          - "18093"
 
 tags:
   - name: configuration
@@ -402,8 +412,6 @@ paths:
       description: Returns a minimal response, indicating that the service is running and reachable.
       tags:
         - default
-      security:
-        - None: []
       responses:
         200:
           description: An empty object.
@@ -537,8 +545,6 @@ paths:
       description: Currently unused.
       tags:
         - statistics
-      security:
-        - None: []
       responses:
         302:
           description: Redirects to the [Retrieve All Statistics](#get_stats) endpoint.
@@ -2232,8 +2238,3 @@ components:
     description: |
       The Admin API supports admin credentials.
       Credentials can be passed via HTTP headers (HTTP basic authentication).
-
-  None:
-    type: http
-    scheme: basic
-    description: No authentication is required for the [Ping](#get_ping) or [Get Debug Variables](#get_debug_vars) endpoints.

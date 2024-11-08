@@ -7,18 +7,28 @@ info:
     This API enables you to configure Analytics nodes and clusters.
 
 servers:
-  - url: 'http://{node}:8095'
-    description: The API schemes and host URLs are as follows.
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
     variables:
-      node:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
         default: localhost
         description: The host name or IP address of a node running the Analytics service.
-  - url: 'https://{node}:18095'
-    description: For secure access.
-    variables:
-      node:
-        default: localhost
-        description: The host name or IP address of a node running the Analytics service.
+      port:
+        default: "8095"
+        description: |-
+          The Analytics service REST port.
+          Use `18095` for secure access.
+        enum:
+          - "8095"
+          - "18095"
 
 paths:
   /analytics/config/service:
@@ -161,6 +171,7 @@ components:
       bindAddress:
         type: string
         description: The bind address to use.
+        nullable: true
         x-has-default: false
         default: null
       bindToHost:
@@ -291,6 +302,7 @@ components:
           [2]: /server/7.6/learn/clusters-and-availability/system-events.html
           [3]: https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-4856361B-8BFD-4964-AE84-121F5F6CF111
         type: string
+        nullable: true
         x-has-default: false
         default: null
       logLevel:
@@ -412,7 +424,7 @@ components:
         type: array
         items:
           type: string
-        x-has-default: false
+        x-has-default: true
         default: []
       txnDatasetCheckpointInterval:
         description: The interval (in seconds) after which an Analytics collection is considered idle and persisted to disk.
@@ -439,6 +451,7 @@ components:
           [2]: /server/7.6/learn/clusters-and-availability/system-events.html
           [3]: https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-4856361B-8BFD-4964-AE84-121F5F6CF111
         type: string
+        nullable: true
         x-has-default: false
         default: null
       storageBuffercacheSize:

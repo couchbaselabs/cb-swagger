@@ -2,23 +2,33 @@ openapi: 3.0.3
 info:
   title: Analytics Links REST API
   version: '7.6'
-  description: |
+  description: |-
     The Analytics Links REST API is provided by the Analytics service.
     This API enables you to manage the links to remote Couchbase clusters and external data sources.
 
 servers:
-  - url: 'http://{node}:8095'
-    description: The API schemes and host URLs are as follows.
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
     variables:
-      node:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
         default: localhost
         description: The host name or IP address of a node running the Analytics service.
-  - url: 'https://{node}:18095'
-    description: For secure access.
-    variables:
-      node:
-        default: localhost
-        description: The host name or IP address of a node running the Analytics service.
+      port:
+        default: "8095"
+        description: |-
+          The Analytics service REST port.
+          Use `18095` for secure access.
+        enum:
+          - "8095"
+          - "18095"
 
 tags:
   - name: Single Links

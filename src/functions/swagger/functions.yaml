@@ -7,18 +7,28 @@ info:
     This API enables you to manage the JavaScript libraries and objects that are used to create SQL++ user-defined functions.
 
 servers:
-  - url: 'http://{node}:8093'
-    description: The API schemes and host URLs are as follows.
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
     variables:
-      node:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
         default: localhost
         description: The host name or IP address of a node running the Query service.
-  - url: 'https://{node}:18093'
-    description: For secure access.
-    variables:
-      node:
-        default: localhost
-        description: The host name or IP address of a node running the Query service.
+      port:
+        default: "8093"
+        description: |-
+          The Query service REST port.
+          Use `18093` for secure access.
+        enum:
+          - "8093"
+          - "18093"
 
 paths:
   /evaluator/v1/libraries:

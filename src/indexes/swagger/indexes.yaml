@@ -7,18 +7,28 @@ info:
     This API enables you to get Index service statistics.
 
 servers:
-  - url: 'http://{node}:9102'
-    description: The API schemes and host URLs are as follows.
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
     variables:
-      node:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
         default: localhost
         description: The host name or IP address of a node running the Index service.
-  - url: 'https://{node}:19102'
-    description: For secure access.
-    variables:
-      node:
-        default: localhost
-        description: The host name or IP address of a node running the Index service.
+      port:
+        default: "9102"
+        description: |-
+          The Index service REST port.
+          Use `19102` for secure access.
+        enum:
+          - "9102"
+          - "19102"
 
 paths:
   /api/v1/stats:
@@ -386,13 +396,13 @@ components:
     type: http
     scheme: basic
     description: |
-      To get [Node statistics](#Node), users must have the Query System Catalog RBAC role.
+      To get [Node statistics](#NodeIdxNodeIndexer), users must have the Query System Catalog RBAC role.
 
   IndexStatistics:
     type: http
     scheme: basic
     description: |
-      To get [Index statistics](#Index) for all indexes in a bucket, scope, or collection, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on that bucket, scope, or collection.
+      To get [Index statistics](#PartIdxPartitionsIndex) for all indexes in a bucket, scope, or collection, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on that bucket, scope, or collection.
 
 
-      To get [Index statistics](#Index) for an individual index, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on the bucket, scope, and collection containing that index.
+      To get [Index statistics](#PartIdxPartitionsIndex) for an individual index, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on the bucket, scope, and collection containing that index.
