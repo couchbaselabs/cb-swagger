@@ -38,6 +38,9 @@ tags:
   - name: Legacy Methods
     description: Operations provided for backward compatibility.
 
+# Note that OpenAPI generator does not seem to handle required fields properly
+# in polymorphic Form parameters, so I have fallen back on a composite model.
+
 paths:
   /analytics/link:
     post:
@@ -51,7 +54,19 @@ paths:
         content:
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/LegacyCreateAll"
+              # oneOf:
+              allOf:
+                - $ref: "#/components/schemas/LegacyCreateCouchbase"
+                - $ref: "#/components/schemas/LegacyCreateS3"
+                - $ref: "#/components/schemas/LegacyCreateAzureBlob"
+                - $ref: "#/components/schemas/LegacyCreateGCS"
+              # discriminator:
+              #   propertyName: type
+              #   mapping:
+              #     couchbase: "#/components/schemas/LegacyCreateCouchbase"
+              #     s3: "#/components/schemas/LegacyCreateS3"
+              #     azureblob: "#/components/schemas/LegacyCreateAzureBlob"
+              #     gcs: "#/components/schemas/LegacyCreateGCS"
       security:
         - AnalyticsManage: []
       responses:
@@ -127,7 +142,19 @@ paths:
         content:
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/LegacyEditAll"
+              # oneOf:
+              allOf:
+                - $ref: "#/components/schemas/LegacyEditCouchbase"
+                - $ref: "#/components/schemas/LegacyEditS3"
+                - $ref: "#/components/schemas/LegacyEditAzureBlob"
+                - $ref: "#/components/schemas/LegacyEditGCS"
+              # discriminator:
+              #   propertyName: type
+              #   mapping:
+              #     couchbase: "#/components/schemas/LegacyEditCouchbase"
+              #     s3: "#/components/schemas/LegacyEditS3"
+              #     azureblob: "#/components/schemas/LegacyEditAzureBlob"
+              #     gcs: "#/components/schemas/LegacyEditGCS"
       security:
         - AnalyticsManage: []
       responses:
@@ -211,7 +238,19 @@ paths:
         content:
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/RequestCreateAll"
+              # oneOf:
+              allOf:
+                - $ref: "#/components/schemas/RequestCreateCouchbase"
+                - $ref: "#/components/schemas/RequestCreateS3"
+                - $ref: "#/components/schemas/RequestCreateAzureBlob"
+                - $ref: "#/components/schemas/RequestCreateGCS"
+              # discriminator:
+              #   propertyName: type
+              #   mapping:
+              #     couchbase: "#/components/schemas/RequestCreateCouchbase"
+              #     s3: "#/components/schemas/RequestCreateS3"
+              #     azureblob: "#/components/schemas/RequestCreateAzureBlob"
+              #     gcs: "#/components/schemas/RequestCreateGCS"
       security:
         - AnalyticsManage: []
       responses:
@@ -267,7 +306,19 @@ paths:
         content:
           application/x-www-form-urlencoded:
             schema:
-              $ref: "#/components/schemas/RequestEditAll"
+              # oneOf:
+              allOf:
+                - $ref: "#/components/schemas/RequestEditCouchbase"
+                - $ref: "#/components/schemas/RequestEditS3"
+                - $ref: "#/components/schemas/RequestEditAzureBlob"
+                - $ref: "#/components/schemas/RequestEditGCS"
+              # discriminator:
+              #   propertyName: type
+              #   mapping:
+              #     couchbase: "#/components/schemas/RequestEditCouchbase"
+              #     s3: "#/components/schemas/RequestEditS3"
+              #     azureblob: "#/components/schemas/RequestEditAzureBlob"
+              #     gcs: "#/components/schemas/RequestEditGCS"
       security:
         - AnalyticsManage: []
       responses:
@@ -766,15 +817,7 @@ components:
         description: An error message.
 
   RequestCreateAll:
-    description: Properties to create a link.
     type: object
-    discriminator:
-      propertyName: type
-      mapping:
-        couchbase: "#/components/schemas/RequestCreateCouchbase"
-        s3: "#/components/schemas/RequestCreateS3"
-        azureblob: "#/components/schemas/RequestCreateAzureBlob"
-        gcs: "#/components/schemas/RequestCreateGCS"
     required:
       - type
     properties:
@@ -806,15 +849,7 @@ components:
       - $ref: "#/components/schemas/RequestSpecificGCS"
 
   RequestEditAll:
-    description: Properties to edit a link.
     type: object
-    discriminator:
-      propertyName: type
-      mapping:
-        couchbase: "#/components/schemas/RequestEditCouchbase"
-        s3: "#/components/schemas/RequestEditS3"
-        azureblob: "#/components/schemas/RequestEditAzureBlob"
-        gcs: "#/components/schemas/RequestEditGCS"
     properties:
       type:
         $ref: "#/components/schemas/CommonTypeEdit"
@@ -844,15 +879,7 @@ components:
       - $ref: "#/components/schemas/RequestSpecificGCS"
 
   LegacyCreateAll:
-    description: Properties to create a legacy link.
     type: object
-    discriminator:
-      propertyName: type
-      mapping:
-        couchbase: "#/components/schemas/LegacyCreateCouchbase"
-        s3: "#/components/schemas/LegacyCreateS3"
-        azureblob: "#/components/schemas/LegacyCreateAzureBlob"
-        gcs: "#/components/schemas/LegacyCreateGCS"
     required:
       - dataverse
       - name
@@ -890,15 +917,7 @@ components:
       - $ref: "#/components/schemas/RequestSpecificGCS"
 
   LegacyEditAll:
-    description: Properties to edit a legacy link.
     type: object
-    discriminator:
-      propertyName: type
-      mapping:
-        couchbase: "#/components/schemas/LegacyEditCouchbase"
-        s3: "#/components/schemas/LegacyEditS3"
-        azureblob: "#/components/schemas/LegacyEditAzureBlob"
-        gcs: "#/components/schemas/LegacyEditGCS"
     required:
       - dataverse
       - name
@@ -947,6 +966,7 @@ components:
     description: The name of the link.
 
   CommonType:
+    title: Create Request Type
     type: string
     description: |-
       The type of the link.
@@ -962,6 +982,7 @@ components:
       - gcs
 
   CommonTypeEdit:
+    title: Edit Request Type
     type: string
     description: >
       The type of the link.
@@ -971,6 +992,27 @@ components:
       - s3
       - azureblob
       - gcs
+
+  # Workaround for OpenApi Generator. Should have separate parameters for Couchbase and Azure.
+  CommonClientCertificate:
+    type: string
+    description: |-
+      For Couchbase links, this is the content of the client certificate.
+      Required for links with full encryption if using a client key.
+
+      For Azure Blob links, this is the client certificate for the registered application.
+      Used for Azure Active Directory client certificate authentication.
+
+      You should URL-encode this parameter to escape any special characters.
+
+  # Workaround for OpenApi Generator. Should have separate parameters for Couchbase and Azure.
+  CommonEndpoint:
+    type: string
+    description: |-
+      For Azure Blob links and Google Cloud Storage links.
+      The endpoint URI.
+
+      Required for Azure Blob links; optional for Google Cloud Storage links.
 
   RequestSpecificCouchbase:
     title: Couchbase Specific Request
@@ -1010,9 +1052,11 @@ components:
           For Couchbase links only.
           The type of encryption used by the link.
 
-          * `none`: Neither passwords nor data are encrypted.
-          * `half`: Passwords are encrypted using SCRAM-SHA, but data is not.
-          * `full`: All data and passwords are encrypted and TLS is used.
+          For details, see [encryption](#encryption).
+
+        # * `none`: Neither passwords nor data are encrypted.
+        # * `half`: Passwords are encrypted using SCRAM-SHA, but data is not.
+        # * `full`: All data and passwords are encrypted and TLS is used.
         enum:
           - none
           - half
@@ -1028,13 +1072,14 @@ components:
           You should URL-encode this parameter to escape any special characters.
           If required, this parameter may contain multiple certificates, separated by new lines.
       clientCertificate:
-        type: string
-        description: >
-          For Couchbase links, this is the content of the client certificate.
-          Required for links with full encryption if using a client key.
+        $ref: "#/components/schemas/CommonClientCertificate"
+        # type: string
+        # description: >
+        #   For Couchbase links, this is the content of the client certificate.
+        #   Required for links with full encryption if using a client key.
 
 
-          You should URL-encode this parameter to escape any special characters.
+        #   You should URL-encode this parameter to escape any special characters.
       clientKey:
         type: string
         description: >
@@ -1094,9 +1139,9 @@ components:
       - endpoint
     properties:
       endpoint:
-        type: string
-        description: >
-          For Azure Blob links, this is the endpoint URI.
+        $ref: "#/components/schemas/CommonEndpoint"
+        # type: string
+        # description: For Azure Blob links, this is the endpoint URI.
       accountName:
         type: string
         description: >
@@ -1162,13 +1207,14 @@ components:
 
           You should URL-encode this parameter to escape any special characters.
       clientCertificate:
-        type: string
-        description: >
-          For Azure Blob links, this is the client certificate for the registered application.
-          Used for Azure Active Directory client certificate authentication.
+        $ref: "#/components/schemas/CommonClientCertificate"
+        # type: string
+        # description: >
+        #   For Azure Blob links, this is the client certificate for the registered application.
+        #   Used for Azure Active Directory client certificate authentication.
       
       
-          You should URL-encode this parameter to escape any special characters.
+        #   You should URL-encode this parameter to escape any special characters.
       clientCertificatePassword:
         type: string
         description: >
@@ -1184,9 +1230,9 @@ components:
     type: object
     properties:
       endpoint:
-        type: string
-        description: >
-          For Google Cloud Storage links, this is the endpoint URI.
+        $ref: "#/components/schemas/CommonEndpoint"
+        # type: string
+        # description: For Google Cloud Storage links, this is the endpoint URI.
       jsonCredentials:
         type: string
         description: >
@@ -1203,7 +1249,7 @@ components:
           For Google Cloud Storage links only.
           If present, indicates that the link should use the Google Application Default Credentials for authenticating.
 
-          This parameter may only have the value `"true"`.
+        # FIXME: This parameter may only have the value `"true"`.
 
  responses:
   OK:
