@@ -39,13 +39,55 @@ __Version__ : 7.6
 = Host information
 
 ....
-http://localhost:8095
+{scheme}://{host}:{port}
 ....
 
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
+
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `pass:c[http]`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Analytics service.
+--
+
+[%hardbreaks]
+
+*Example:* `pass:c[localhost]`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Analytics service REST port. Use `18095` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `8095`, `18095`
+*Example:* `pass:c[8095]`
+// end
+
+|===
 
 
-
-include::{specDir}overview/document-end.adoc[opts=optional]
+// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
@@ -136,13 +178,56 @@ An alternative endpoint for the [Read-Only Query Service](#get_service), provide
 :leveloffset: -1
 
 
-include::{specDir}paths/get_query/operation-description-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_query/operation-description-after.adoc[opts=optional]
 
 
 
 // markup not found, no include::{specDir}paths/get_query/operation-parameters-before.adoc[opts=optional]
 
 
+[#get_query-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_query/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#get_query-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *body* +
+_required_
+a| 
+
+
+[markdown]
+--
+Specify the parameters in the query URL in URL-encoded format.
+--
+
+[%hardbreaks]
+{blank}
+
+a| <<Parameters>>
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/get_query/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 
@@ -177,21 +262,24 @@ a| [markdown]
 --
 The operation was successful.
 --
-| <<Responses>>
+a| <<Responses>>
+
 
 | 400
 a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-| <<Responses>>
+a| <<Responses>>
+
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect. 
 --
-| <<Responses>>
+a| <<Responses>>
+
 
 
 |===
@@ -210,8 +298,27 @@ Unauthorized. The user name or password may be incorrect.
 // markup not found, no include::{specDir}paths/get_query/operation-security-before.adoc[opts=optional]
 
 
+[#get_query-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_query/operation-security-begin.adoc[opts=optional]
 
 
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsManageAnalyticsSelect>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_query/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_query/operation-security-after.adoc[opts=optional]
@@ -301,334 +408,21 @@ This is intended for situations where use of the `POST` method is restricted.
 |===
 |Name| Description| Schema
 
-a| *statement* +
+a| *body* +
 _required_
 a| 
 
 
 [markdown]
 --
-Specifies at least one valid SQL\+\+ for Analytics statement to run.
-
+Specify the parameters in the query URL in URL-encoded format.
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| <<Parameters>>
 
-
-a| *client_context_id* +
-_optional_
-a| 
-
-
-[markdown]
---
-An identifier passed by the client that is returned verbatim in the query response. Useful for matching a particular query to a specific caller.
-
-
---
-
-[%hardbreaks]
-{blank}
-
-| String
-
-
-a| *format* +
-_optional_
-a| 
-
-
-[markdown]
---
-Desired format for the query results.
-
-Note that the only possible format is `JSON`.
-
-
---
-
-[%hardbreaks]
-*Values:* `"JSON"`
-*Default:* `pass:c["JSON"]`
-{blank}
-
-| String
-
-
-a| *pretty* +
-_optional_
-a| 
-
-
-[markdown]
---
-If `true`, the result is indented.
-
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-| Boolean
-
-
-a| *query_context* +
-_optional_
-a| 
-
-
-[markdown]
---
-A scope for the statement. The value of this parameter must start with `default:`, followed by an Analytics scope name. The `default:` prefix is a dummy and is ignored when resolving an Analytics collection name or synonym name.
-
-
---
-
-[%hardbreaks]
-*Default:* `pass:c["default:Default"]`
-{blank}
-
-| String
-
-
-a| *readonly* +
-_optional_
-a| 
-
-
-[markdown]
---
-If `true`, then DDL statements are not allowed.
-
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-| Boolean
-
-
-a| *scan_consistency* +
-_optional_
-a| 
-
-
-[markdown]
---
-The consistency guarantee constraint for index scanning. If `not_bounded`, the query is executed immediately. If `request_plus`, the required datasets are updated with data available from the Data service at the time of the request before the query is executed.
-
-
---
-
-[%hardbreaks]
-*Values:* `"not_bounded"`, `"request_plus"`
-*Default:* `pass:c["not_bounded"]`
-{blank}
-
-| String
-
-
-a| *scan_wait* +
-_optional_
-a| 
-
-
-[markdown]
---
-The maximum time to wait for datasets to be updated before the query is executed. The format includes an amount and a unit: `ns`, `us`, `ms`, `s`, `m`, or `h`. The default is `""` (no timeout).
-
-
---
-
-[%hardbreaks]
-{blank}
-
-| String
-
-
-a| *timeout* +
-_optional_
-a| 
-
-
-[markdown]
---
-Maximum time to spend on the request before timing out. The format includes an amount and a unit: `ns`, `us`, `ms`, `s`, `m`, or `h`. The default is `""` (no timeout).
-
-
---
-
-[%hardbreaks]
-{blank}
-
-| String
-
-
-a| *args* +
-_optional_
-a| 
-
-
-[markdown]
---
-An array of positional parameter values.
-
---
-
-[%hardbreaks]
-{blank}
-
-| String (URL-encoded)
-list
-
-
-a| *$_identifier_* +
-_optional_
-a| 
-
-
-[markdown]
---
-A named parameter value.
-
---
-
-[%hardbreaks]
-{blank}
-
-| String
-
-
-a| *plan-format* +
-_optional_
-a| 
-
-
-[markdown]
---
-The plan format.
-
---
-
-[%hardbreaks]
-*Values:* `"JSON"`, `"STRING"`
-*Default:* `pass:c["JSON"]`
-{blank}
-
-| String
-
-
-a| *logical-plan* +
-_optional_
-a| 
-
-
-[markdown]
---
-If `true`, the logical plan is included in the query response.
-
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-| Boolean
-
-
-a| *organized-logical-plan* +
-_optional_
-a| 
-
-
-[markdown]
---
-If `true`, the optimized logical plan is included in the query response.
-
---
-
-[%hardbreaks]
-*Default:* `true`
-{blank}
-
-| Boolean
-
-
-a| *expression-tree* +
-_optional_
-a| 
-
-
-[markdown]
---
-If `true`, the expression tree is included in the query response.
-
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-| Boolean
-
-
-a| *rewritten-expression-tree* +
-_optional_
-a| 
-
-
-[markdown]
---
-If `true`, the rewritten expression tree is included in the query response.
-
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-| Boolean
-
-
-a| *job* +
-_optional_
-a| 
-
-
-[markdown]
---
-If `true`, the job details are included in the query response.
-
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-| Boolean
-
-
-a| *max-warnings* +
-_optional_
-a| 
-
-
-[markdown]
---
-An integer specifying the maximum number of warning messages to be included in the query response.
-
---
-
-[%hardbreaks]
-*Default:* `0`
-{blank}
-
-| Integer (int32)
 
 
 |===
@@ -674,21 +468,24 @@ a| [markdown]
 --
 The operation was successful.
 --
-| <<Responses>>
+a| <<Responses>>
+
 
 | 400
 a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-| <<Responses>>
+a| <<Responses>>
+
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect. 
 --
-| <<Responses>>
+a| <<Responses>>
+
 
 
 |===
@@ -824,14 +621,14 @@ a|
 
 [markdown]
 --
-
 An object specifying one or more query parameters.
 --
 
 [%hardbreaks]
 {blank}
 
-| <<Parameters>>
+a| <<Parameters>>
+
 
 
 |===
@@ -879,21 +676,24 @@ a| [markdown]
 --
 The operation was successful.
 --
-| <<Responses>>
+a| <<Responses>>
+
 
 | 400
 a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-| <<Responses>>
+a| <<Responses>>
+
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect. 
 --
-| <<Responses>>
+a| <<Responses>>
+
 
 
 |===
@@ -1011,14 +811,14 @@ a|
 
 [markdown]
 --
-
 An object specifying one or more query parameters.
 --
 
 [%hardbreaks]
 {blank}
 
-| <<Parameters>>
+a| <<Parameters>>
+
 
 
 |===
@@ -1066,21 +866,24 @@ a| [markdown]
 --
 The operation was successful.
 --
-| <<Responses>>
+a| <<Responses>>
+
 
 | 400
 a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-| <<Responses>>
+a| <<Responses>>
+
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect. 
 --
-| <<Responses>>
+a| <<Responses>>
+
 
 
 |===
@@ -1213,7 +1016,9 @@ All of the following:
 
 * <<ParametersCommon>>
 
+
 * <<ParametersLocal>>
+
 
 
 
@@ -1263,7 +1068,8 @@ Specifies at least one valid SQL\+\+ for Analytics statement to run.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *client_context_id* +
@@ -1278,7 +1084,8 @@ An identifier passed by the client that is returned verbatim in the query respon
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *format* +
@@ -1297,7 +1104,8 @@ Note that the only possible format is `JSON`.
 *Values:* `"JSON"`
 *Default:* `pass:c["JSON"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *pretty* +
@@ -1312,7 +1120,8 @@ If `true`, the result is indented.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *query_context* +
@@ -1328,7 +1137,8 @@ A scope for the statement. The value of this parameter must start with `default:
 [%hardbreaks]
 *Default:* `pass:c["default:Default"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *readonly* +
@@ -1343,7 +1153,8 @@ If `true`, then DDL statements are not allowed.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *scan_consistency* +
@@ -1360,7 +1171,8 @@ The consistency guarantee constraint for index scanning. If `not_bounded`, the q
 *Values:* `"not_bounded"`, `"request_plus"`
 *Default:* `pass:c["not_bounded"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *scan_wait* +
@@ -1374,8 +1186,10 @@ The maximum time to wait for datasets to be updated before the query is executed
 --
 
 [%hardbreaks]
+*Default:* `pass:c[""]`
 {blank}
-| String
+a| String
+
 
 a| 
 *timeout* +
@@ -1389,8 +1203,10 @@ Maximum time to spend on the request before timing out. The format includes an a
 --
 
 [%hardbreaks]
+*Default:* `pass:c[""]`
 {blank}
-| String
+a| String
+
 
 a| 
 *args* +
@@ -1404,8 +1220,8 @@ An array of positional parameter values.
 
 [%hardbreaks]
 {blank}
-| Object
-list
+a| Any Type
+ array
 
 a| 
 _additional +
@@ -1419,7 +1235,8 @@ A named parameter value.
 
 [%hardbreaks]
 {blank}
-| String
+a| Any Type
+
 
 |===
 
@@ -1476,7 +1293,8 @@ The plan format.
 *Values:* `"JSON"`, `"STRING"`
 *Default:* `pass:c["JSON"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *logical-plan* +
@@ -1491,7 +1309,8 @@ If `true`, the logical plan is included in the query response.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *optimized-logical-plan* +
@@ -1506,7 +1325,8 @@ If `true`, the optimized logical plan is included in the query response.
 [%hardbreaks]
 *Default:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *expression-tree* +
@@ -1521,7 +1341,8 @@ If `true`, the expression tree is included in the query response.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *rewritten-expression-tree* +
@@ -1536,7 +1357,8 @@ If `true`, the rewritten expression tree is included in the query response.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *job* +
@@ -1551,7 +1373,8 @@ If `true`, the job details are included in the query response.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *max-warnings* +
@@ -1566,7 +1389,8 @@ An integer specifying the maximum number of warning messages to be included in t
 [%hardbreaks]
 *Default:* `0`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 |===
 
@@ -1606,7 +1430,9 @@ All of the following:
 
 * <<ResponsesCommon>>
 
+
 * <<ResponsesLocal>>
+
 
 
 
@@ -1656,7 +1482,8 @@ A unique identifier for the response.
 
 [%hardbreaks]
 {blank}
-| UUID (UUID)
+a| UUID (UUID)
+
 
 a| 
 *clientContextID* +
@@ -1677,7 +1504,8 @@ refer to `client_context_id` in [Query Parameters][1].
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *signature* +
@@ -1692,7 +1520,8 @@ The schema of the results. Present only when the query completes successfully.
 
 [%hardbreaks]
 {blank}
-| Object
+a| Object
+
 
 a| 
 *results* +
@@ -1707,8 +1536,8 @@ An array of all the objects returned by the query. An object can be any JSON val
 
 [%hardbreaks]
 {blank}
-| Object
-list
+a| Any Type
+ array
 
 a| 
 *status* +
@@ -1723,7 +1552,8 @@ The status of the request.
 [%hardbreaks]
 *Values:* `"success"`, `"running"`, `"failed"`, `"timeout"`, `"fatal"`
 {blank}
-| String
+a| String
+
 
 a| 
 *errors* +
@@ -1738,8 +1568,8 @@ An array of error objects. Present only if 1 or more errors are returned during 
 
 [%hardbreaks]
 {blank}
-| <<ResponsesCommonErrors>>
-list
+a| <<ResponsesCommonErrors>>
+ array
 
 a| 
 *warnings* +
@@ -1765,8 +1595,8 @@ By default, no warnings are returned, even if warnings have occurred during proc
 
 [%hardbreaks]
 {blank}
-| <<ResponsesCommonWarnings>>
-list
+a| <<ResponsesCommonWarnings>>
+ array
 
 a| 
 *metrics* +
@@ -1780,7 +1610,8 @@ include::index.adoc[tag=desc-ResponsesCommonYardsticks, opts=optional]
 
 [%hardbreaks]
 {blank}
-| <<ResponsesCommonYardsticks>>
+a| <<ResponsesCommonYardsticks>>
+
 
 |===
 
@@ -1835,7 +1666,8 @@ A number that identifies the error.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *msg* +
@@ -1850,7 +1682,8 @@ A message describing the error in detail. Refer to [Error Codes](/server/7.6/ana
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -1905,7 +1738,8 @@ A number that identifies the warning.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *msg* +
@@ -1919,7 +1753,8 @@ A message describing the warning in detail.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -1980,7 +1815,8 @@ The total time taken for the request, that is the time from when the request was
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *executionTime* +
@@ -1995,7 +1831,8 @@ The time taken for the execution of the request, that is the time from when quer
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *resultCount* +
@@ -2009,7 +1846,8 @@ The total number of objects in the results.
 
 [%hardbreaks]
 {blank}
-| Integer (unsigned)
+a| Integer (unsigned)
+
 
 a| 
 *resultSize* +
@@ -2023,7 +1861,8 @@ The total number of bytes in the results.
 
 [%hardbreaks]
 {blank}
-| Integer (unsigned)
+a| Integer (unsigned)
+
 
 a| 
 *errorCount* +
@@ -2037,7 +1876,8 @@ The number of errors that occurred during the request.
 
 [%hardbreaks]
 {blank}
-| Integer (unsigned)
+a| Integer (unsigned)
+
 
 a| 
 *warningCount* +
@@ -2051,7 +1891,8 @@ The number of warnings that occurred during the request.
 
 [%hardbreaks]
 {blank}
-| Integer (unsigned)
+a| Integer (unsigned)
+
 
 |===
 
@@ -2106,7 +1947,8 @@ include::index.adoc[tag=desc-ResponsesLocalPlans, opts=optional]
 
 [%hardbreaks]
 {blank}
-| <<ResponsesLocalPlans>>
+a| <<ResponsesLocalPlans>>
+
 
 a| 
 *metrics* +
@@ -2120,7 +1962,8 @@ include::index.adoc[tag=desc-ResponsesLocalYardsticks, opts=optional]
 
 [%hardbreaks]
 {blank}
-| <<ResponsesLocalYardsticks>>
+a| <<ResponsesLocalYardsticks>>
+
 
 |===
 
@@ -2180,7 +2023,8 @@ The logical plan.
 
 [%hardbreaks]
 {blank}
-| Object
+a| Object
+
 
 a| 
 *optimizedLogicalPlan* +
@@ -2194,7 +2038,8 @@ The optimized logical plan.
 
 [%hardbreaks]
 {blank}
-| Object
+a| Object
+
 
 a| 
 *rewrittenExpressionTree* +
@@ -2208,7 +2053,8 @@ The rewritten expression tree.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *expressionTree* +
@@ -2222,7 +2068,8 @@ The expression tree.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *job* +
@@ -2236,7 +2083,8 @@ The job details.
 
 [%hardbreaks]
 {blank}
-| Object
+a| Object
+
 
 |===
 
@@ -2296,7 +2144,8 @@ Number of processed tuples during query execution.
 
 [%hardbreaks]
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 |===
 
@@ -2337,15 +2186,15 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}security/Analytics Manage / Analytics Select/security-scheme-before.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-before.adoc[opts=optional]
 
 
 [[security-analyticsManageAnalyticsSelect]]
-= Analytics Manage / Analytics Select
+= Analytics Manage Analytics Select
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Analytics Manage / Analytics Select/security-scheme-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-begin.adoc[opts=optional]
 
 
 [markdown]
@@ -2364,12 +2213,12 @@ Users must have one of the following RBAC roles:
 __Type__ : http
 
 
-// markup not found, no include::{specDir}security/Analytics Manage / Analytics Select/security-scheme-end.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}security/Analytics Manage / Analytics Select/security-scheme-after.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-after.adoc[opts=optional]
 
 
 

@@ -39,13 +39,55 @@ __Version__ : 7.6
 = Host information
 
 ....
-http://localhost:8095
+{scheme}://{host}:{port}
 ....
 
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
+
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `pass:c[http]`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Analytics service.
+--
+
+[%hardbreaks]
+
+*Example:* `pass:c[localhost]`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Analytics service REST port. Use `18095` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `8095`, `18095`
+*Example:* `pass:c[8095]`
+// end
+
+|===
 
 
-
-include::{specDir}overview/document-end.adoc[opts=optional]
+// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
@@ -177,14 +219,16 @@ a| [markdown]
 --
 Success. Returns an object listing the configurable node-level parameters and their current values. 
 --
-| <<Node>>
+a| <<Node>>
+
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
 --
-| Object
+a| Object
+
 
 
 |===
@@ -327,14 +371,16 @@ a| [markdown]
 --
 Success. Returns an object listing the configurable service-level parameters and their current values. 
 --
-| <<Service>>
+a| <<Service>>
+
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
 --
-| Object
+a| Object
+
 
 
 |===
@@ -477,14 +523,14 @@ a|
 
 [markdown]
 --
-
 An object specifying one or more of the configurable node-level parameters on this node.
 --
 
 [%hardbreaks]
 {blank}
 
-| <<Node>>
+a| <<Node>>
+
 
 
 |===
@@ -532,21 +578,22 @@ a| [markdown]
 --
 The operation was successful.
 --
-| 
-
+a| 
 | 400
 a| [markdown]
 --
 Bad request. Unknown parameter or incorrect value. 
 --
-| <<Errors>>
+a| <<Errors>>
+
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
 --
-| Object
+a| Object
+
 
 
 |===
@@ -687,14 +734,14 @@ a|
 
 [markdown]
 --
-
 An object specifying one or more of the configurable service-level parameters.
 --
 
 [%hardbreaks]
 {blank}
 
-| <<Service>>
+a| <<Service>>
+
 
 
 |===
@@ -742,21 +789,22 @@ a| [markdown]
 --
 The operation was successful.
 --
-| 
-
+a| 
 | 400
 a| [markdown]
 --
 Bad request. Unknown parameter or incorrect value. 
 --
-| <<Errors>>
+a| <<Errors>>
+
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
 --
-| Object
+a| Object
+
 
 
 |===
@@ -896,7 +944,8 @@ An error message.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -962,7 +1011,8 @@ To pass arguments opaquely, you may use [Java command-line argument files][3].
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *storageBuffercacheSize* +
@@ -979,7 +1029,8 @@ The default is 1/4 of the allocated Analytics Service memory.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *storageMemorycomponentGlobalbudget* +
@@ -996,7 +1047,8 @@ The default is 1/4 of the allocated Analytics Service memory.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 |===
 
@@ -1052,7 +1104,8 @@ The memory budget (in bytes) for the active runtime.
 [%hardbreaks]
 *Default:* `67108864`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *activeStopTimeout* +
@@ -1067,7 +1120,8 @@ The maximum time (in seconds) to wait for a graceful stop of an active runtime.
 [%hardbreaks]
 *Default:* `3600`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *activeSuspendTimeout* +
@@ -1082,7 +1136,8 @@ The maximum time (in seconds) to wait for a graceful suspend of an active runtim
 [%hardbreaks]
 *Default:* `3600`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *analyticsBroadcastDcpStateMutationCount* +
@@ -1097,7 +1152,8 @@ The number of processed mutations after which the DCP state is broadcast to stor
 [%hardbreaks]
 *Default:* `10000`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *analyticsHttpRequestQueueSize* +
@@ -1112,7 +1168,8 @@ The maximum number of HTTP requests to queue pending ability to execute.
 [%hardbreaks]
 *Default:* `256`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *analyticsHttpThreadCount* +
@@ -1127,7 +1184,8 @@ The number of threads to service HTTP requests.
 [%hardbreaks]
 *Default:* `16`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *bindAddress* +
@@ -1141,7 +1199,8 @@ The bind address to use.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *bindToHost* +
@@ -1156,7 +1215,8 @@ Bind to configured hostname instead of wildcard address.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *clusterConnectRetries* +
@@ -1171,7 +1231,8 @@ Number of attempts to contact CC before giving up.
 [%hardbreaks]
 *Default:* `5`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *collectDcpStateFromNodesTimeout* +
@@ -1186,7 +1247,8 @@ The maximum time to wait to collect DCP state from all nodes in seconds.
 [%hardbreaks]
 *Default:* `600`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *compilerFramesize* +
@@ -1201,7 +1263,8 @@ The page size (in bytes) for computation.
 [%hardbreaks]
 *Default:* `32768`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *compilerGroupmemory* +
@@ -1216,7 +1279,8 @@ The memory budget (in bytes) for a group by operator instance in a partition.
 [%hardbreaks]
 *Default:* `33554432`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *compilerJoinmemory* +
@@ -1231,7 +1295,8 @@ The memory budget (in bytes) for a join operator instance in a partition.
 [%hardbreaks]
 *Default:* `33554432`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *compilerParallelism* +
@@ -1247,7 +1312,8 @@ The degree of parallelism for query execution. Zero means to use the storage par
 [%hardbreaks]
 *Default:* `0`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *compilerSortParallel* +
@@ -1262,7 +1328,8 @@ Enables or disables full parallel sort.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *compilerSortmemory* +
@@ -1277,7 +1344,8 @@ The memory budget (in bytes) for a sort operator instance in a partition.
 [%hardbreaks]
 *Default:* `33554432`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *compilerWindowmemory* +
@@ -1292,7 +1360,8 @@ The memory budget (in bytes) for a window operator instance in a partition.
 [%hardbreaks]
 *Default:* `33554432`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *coresMultiplier* +
@@ -1307,7 +1376,8 @@ The factor to multiply by the number of cores to determine maximum query concurr
 [%hardbreaks]
 *Default:* `3`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *dcpBufferAckWatermark* +
@@ -1325,7 +1395,8 @@ The percentage of DCP connection buffer size at which to acknowledge bytes consu
 *Minimum:* `1`
 *Maximum:* `100`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *dcpChannelReconnectRemoteIdleSeconds* +
@@ -1341,7 +1412,8 @@ Reconnect remote DCP channels that are idle for the specified number of seconds 
 [%hardbreaks]
 *Default:* `120`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *dcpConnectionBufferSize* +
@@ -1358,7 +1430,8 @@ Otherwise, the default is 1% of the JVM maximum heap size divided by the number 
 
 [%hardbreaks]
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *deadlockWatchdogHaltDelaySeconds* +
@@ -1373,7 +1446,8 @@ The delay (in seconds) to wait for graceful shutdown due to deadlocked threads, 
 [%hardbreaks]
 *Default:* `120`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *deadlockWatchdogPollSeconds* +
@@ -1388,7 +1462,8 @@ The frequency (in seconds) to scan for deadlocked threads.
 [%hardbreaks]
 *Default:* `300`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *jobHistorySize* +
@@ -1403,7 +1478,8 @@ Limits the number of historical jobs remembered by the system to the specified v
 [%hardbreaks]
 *Default:* `10`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *jobQueueCapacity* +
@@ -1418,7 +1494,8 @@ The maximum number of jobs to queue before rejecting new jobs.
 [%hardbreaks]
 *Default:* `4096`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *jvmArgs* +
@@ -1440,7 +1517,8 @@ To pass arguments opaquely, you may use [Java command-line argument files][3].
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *logLevel* +
@@ -1455,7 +1533,8 @@ The logging level.
 [%hardbreaks]
 *Default:* `pass:c["DEBUG"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *maxWebRequestSize* +
@@ -1470,7 +1549,8 @@ The maximum accepted web request size in bytes.
 [%hardbreaks]
 *Default:* `52428800`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *netBufferCount* +
@@ -1485,7 +1565,8 @@ Number of network buffers per input/output channel.
 [%hardbreaks]
 *Default:* `1`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *netThreadCount* +
@@ -1500,7 +1581,8 @@ Number of threads to use for Network I/O.
 [%hardbreaks]
 *Default:* `1`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *rebalancePullDatasetSizeFrequency* +
@@ -1515,7 +1597,8 @@ The frequency at which the Analytics collection size is pulled from nodes during
 [%hardbreaks]
 *Default:* `5`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *remoteLinkConnectTimeoutSeconds* +
@@ -1531,7 +1614,8 @@ The maximum time (in seconds) to wait for a remote link connection to establish.
 [%hardbreaks]
 *Default:* `60`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *remoteLinkSocketTimeoutSeconds* +
@@ -1547,7 +1631,8 @@ The maximum time (in seconds) to wait after establishing the connection for remo
 [%hardbreaks]
 *Default:* `60`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *requestsArchiveSize* +
@@ -1562,7 +1647,8 @@ The maximum number of archived requests to maintain.
 [%hardbreaks]
 *Default:* `50`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *resultSweepThreshold* +
@@ -1577,7 +1663,8 @@ The duration within which an instance of the result cleanup should be invoked in
 [%hardbreaks]
 *Default:* `60000`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *resultTtl* +
@@ -1592,7 +1679,8 @@ Limits the amount of time results for asynchronous jobs should be retained by th
 [%hardbreaks]
 *Default:* `86400000`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *storageBuffercacheMaxopenfiles* +
@@ -1607,7 +1695,8 @@ The maximum number of open files in the buffer cache.
 [%hardbreaks]
 *Default:* `2147483647`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *storageBuffercachePagesize* +
@@ -1622,7 +1711,8 @@ The page size in bytes for pages in the buffer cache.
 [%hardbreaks]
 *Default:* `131072`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *storageCompressionBlock* +
@@ -1637,7 +1727,8 @@ The default compression scheme for the storage.
 [%hardbreaks]
 *Default:* `pass:c["snappy"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *storageMemorycomponentNumcomponents* +
@@ -1652,7 +1743,8 @@ The number of memory components to be used per LSM index.
 [%hardbreaks]
 *Default:* `2`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *storageMemorycomponentPagesize* +
@@ -1667,7 +1759,8 @@ The page size in bytes for pages allocated to memory components.
 [%hardbreaks]
 *Default:* `131072`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *storageWriteRateLimit* +
@@ -1683,7 +1776,8 @@ The maximum disk write rate for each storage partition in bytes per second. Disa
 [%hardbreaks]
 *Default:* `0`
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| 
 *threaddumpFrequencySeconds* +
@@ -1698,7 +1792,8 @@ The frequency (in seconds) at which to log diagnostic thread dumps.
 [%hardbreaks]
 *Default:* `300`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *threaddumpLogLevel* +
@@ -1713,7 +1808,8 @@ The log level at which to emit diagnostic thread dumps.
 [%hardbreaks]
 *Default:* `pass:c["DEBUG"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *traceCategories* +
@@ -1727,9 +1823,10 @@ Categories for tracing. The default is the empty array — no categories.
 --
 
 [%hardbreaks]
+*Default:* `[]`
 {blank}
-| String
-list
+a| String
+ array
 
 a| 
 *txnDatasetCheckpointInterval* +
@@ -1744,7 +1841,8 @@ The interval (in seconds) after which an Analytics collection is considered idle
 [%hardbreaks]
 *Default:* `3600`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 |===
 
@@ -1785,7 +1883,7 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-before.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-before.adoc[opts=optional]
 
 
 [[security-analyticsManage]]
@@ -1793,7 +1891,7 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-begin.adoc[opts=optional]
 
 
 [markdown]
@@ -1809,12 +1907,12 @@ Users must have one of the following RBAC roles:
 __Type__ : http
 
 
-// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-end.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-after.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-after.adoc[opts=optional]
 
 
 

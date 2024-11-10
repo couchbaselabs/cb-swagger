@@ -39,10 +39,52 @@ __Version__ : 7.6
 = Host information
 
 ....
-http://localhost:8093
+{scheme}://{host}:{port}
 ....
 
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
 
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `pass:c[http]`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Query service.
+--
+
+[%hardbreaks]
+
+*Example:* `pass:c[localhost]`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Query service REST port. Use `18093` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `8093`, `18093`
+*Example:* `pass:c[8093]`
+// end
+
+|===
 
 
 // markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
@@ -50,7 +92,7 @@ http://localhost:8093
 :leveloffset: -1
 
 
-include::{specDir}overview/document-after.adoc[opts=optional]
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
 
 
 
@@ -137,13 +179,57 @@ This endpoint is intended for situations where use of the `POST` method is restr
 :leveloffset: -1
 
 
-include::{specDir}paths/get_service/operation-description-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_service/operation-description-after.adoc[opts=optional]
 
 
 
 // markup not found, no include::{specDir}paths/get_service/operation-parameters-before.adoc[opts=optional]
 
 
+[#get_service-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_service/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#get_service-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+a| *body* +
+_required_
+a| 
+
+
+[markdown]
+--
+Specify the parameters in the query URL in URL-encoded format.
+The format for URL-encoded parameters is consistent with the syntax for variables according to RFC 6570.
+--
+
+[%hardbreaks]
+{blank}
+
+a| <<Request>>
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/get_service/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 
@@ -178,78 +264,69 @@ a| [markdown]
 --
 The operation was successful.
 --
-| <<Response>>
+a| <<Response>>
+
 
 | 400
 a| [markdown]
 --
 Bad Request. The request cannot be processed for one of the following reasons:  the statement contains a SQL++ syntax error;  the request has a missing or unrecognized HTTP parameter;  the request is badly formatted &mdash; for example, the request body contains a JSON syntax error.
 --
-| 
-
+a| 
 | 401
 a| [markdown]
 --
 Unauthorized. The credentials provided with the request are missing or invalid. 
 --
-| 
-
+a| 
 | 403
 a| [markdown]
 --
 Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement. 
 --
-| 
-
+a| 
 | 404
 a| [markdown]
 --
 Not found. The statement in the request references an invalid namespace or keyspace. 
 --
-| 
-
+a| 
 | 405
 a| [markdown]
 --
 Method not allowed. The statement in the request references an invalid namespace or keyspace. 
 --
-| 
-
+a| 
 | 409
 a| [markdown]
 --
 Conflict. There is an attempt to create an object (keyspace or index) that already exists. 
 --
-| 
-
+a| 
 | 410
 a| [markdown]
 --
 Gone. The server is shutting down gracefully. Previously made requests are being completed, but no new requests are being accepted. 
 --
-| 
-
+a| 
 | 413
 a| [markdown]
 --
 Payload too large. The query is too large for the Query Service to process. 
 --
-| 
-
+a| 
 | 500
 a| [markdown]
 --
 Internal server error. There was an unforeseen problem processing the request. 
 --
-| 
-
+a| 
 | 503
 a| [markdown]
 --
 Service unavailable. There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible. 
 --
-| 
-
+a| 
 
 |===
 
@@ -387,14 +464,14 @@ a|
 
 [markdown]
 --
-
 An object specifying one or more query parameters.
 --
 
 [%hardbreaks]
 {blank}
 
-| <<Request>>
+a| <<Request>>
+
 
 
 |===
@@ -442,78 +519,69 @@ a| [markdown]
 --
 The operation was successful.
 --
-| <<Response>>
+a| <<Response>>
+
 
 | 400
 a| [markdown]
 --
 Bad Request. The request cannot be processed for one of the following reasons:  the statement contains a SQL++ syntax error;  the request has a missing or unrecognized HTTP parameter;  the request is badly formatted &mdash; for example, the request body contains a JSON syntax error.
 --
-| 
-
+a| 
 | 401
 a| [markdown]
 --
 Unauthorized. The credentials provided with the request are missing or invalid. 
 --
-| 
-
+a| 
 | 403
 a| [markdown]
 --
 Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement. 
 --
-| 
-
+a| 
 | 404
 a| [markdown]
 --
 Not found. The statement in the request references an invalid namespace or keyspace. 
 --
-| 
-
+a| 
 | 405
 a| [markdown]
 --
 Method not allowed. The statement in the request references an invalid namespace or keyspace. 
 --
-| 
-
+a| 
 | 409
 a| [markdown]
 --
 Conflict. There is an attempt to create an object (keyspace or index) that already exists. 
 --
-| 
-
+a| 
 | 410
 a| [markdown]
 --
 Gone. The server is shutting down gracefully. Previously made requests are being completed, but no new requests are being accepted. 
 --
-| 
-
+a| 
 | 413
 a| [markdown]
 --
 Payload too large. The query is too large for the Query Service to process. 
 --
-| 
-
+a| 
 | 500
 a| [markdown]
 --
 Internal server error. There was an unforeseen problem processing the request. 
 --
-| 
-
+a| 
 | 503
 a| [markdown]
 --
 Service unavailable. There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible. 
 --
-| 
-
+a| 
 
 |===
 
@@ -666,7 +734,8 @@ A unique number that identifies the error or warning. The code ranges are partit
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *msg* +
@@ -681,7 +750,8 @@ A message describing the error or warning in detail. This property is always pre
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *name* +
@@ -697,7 +767,8 @@ Unique name that has a 1:1 mapping to the code. Uniquely identifies the conditio
 [%hardbreaks]
 *Example:* `pass:c["indexing.scan.io_failure"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *sev* +
@@ -717,7 +788,8 @@ One of the following SQL++ severity levels, listed in order of severity:
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *temp* +
@@ -732,7 +804,8 @@ Indicates if the condition is transient &mdash; for example, the queue is full. 
 
 [%hardbreaks]
 {blank}
-| Boolean
+a| Boolean
+
 
 |===
 
@@ -793,7 +866,8 @@ The value of the query setting Scan Consistency used for the query.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *use_cbo* +
@@ -807,7 +881,8 @@ Whether the cost-based optimizer was enabled for the query.
 
 [%hardbreaks]
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *memoryQuota* +
@@ -822,7 +897,8 @@ The memory quota for the request, in MB. This property is only returned if a mem
 
 [%hardbreaks]
 {blank}
-| Integer (unsigned)
+a| Integer (unsigned)
+
 
 a| 
 *stmtType* +
@@ -837,7 +913,8 @@ The type of query statement.
 [%hardbreaks]
 *Example:* `pass:c["SELECT"]`
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -894,7 +971,8 @@ An identity for authentication. Note that bucket names may be prefixed with `loc
 [%hardbreaks]
 *Example:* `pass:c["local:bucket-name"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *pass* +
@@ -909,7 +987,8 @@ A password for authentication.
 [%hardbreaks]
 *Example:* `pass:c["password"]`
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -973,7 +1052,8 @@ Name of the operator.
 [%hardbreaks]
 *Example:* `pass:c["Fetch"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *#stats* +
@@ -987,7 +1067,8 @@ include::index.adoc[tag=desc-Statistics, opts=optional]
 
 [%hardbreaks]
 {blank}
-| <<Statistics>>
+a| <<Statistics>>
+
 
 a| 
 *~child* +
@@ -1001,7 +1082,8 @@ Further nested operators, each with their own execution timings.
 
 [%hardbreaks]
 {blank}
-| Object
+a| Object
+
 
 |===
 
@@ -1061,7 +1143,8 @@ The total time taken for the request, that is the time from when the request was
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *executionTime* +
@@ -1075,7 +1158,8 @@ The time taken for the execution of the request, that is the time from when quer
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *resultCount* +
@@ -1089,7 +1173,8 @@ The total number of objects in the results.
 
 [%hardbreaks]
 {blank}
-| Integer (unsigned)
+a| Integer (unsigned)
+
 
 a| 
 *resultSize* +
@@ -1103,7 +1188,8 @@ The total number of bytes in the results.
 
 [%hardbreaks]
 {blank}
-| Integer (unsigned)
+a| Integer (unsigned)
+
 
 a| 
 *mutationCount* +
@@ -1117,7 +1203,8 @@ The number of mutations that were made during the request.
 
 [%hardbreaks]
 {blank}
-| Integer (unsigned)
+a| Integer (unsigned)
+
 
 a| 
 *sortCount* +
@@ -1134,7 +1221,8 @@ If a query includes ORDER BY, LIMIT, or OFFSET clauses, an application can use t
 
 [%hardbreaks]
 {blank}
-| Integer (unsigned)
+a| Integer (unsigned)
+
 
 a| 
 *usedMemory* +
@@ -1149,7 +1237,8 @@ The amount of document memory used to execute the request. This property is only
 
 [%hardbreaks]
 {blank}
-| Integer (unsigned)
+a| Integer (unsigned)
+
 
 a| 
 *errorCount* +
@@ -1163,7 +1252,8 @@ The number of errors that occurred during the request.
 
 [%hardbreaks]
 {blank}
-| Integer (unsigned)
+a| Integer (unsigned)
+
 
 a| 
 *warningCount* +
@@ -1177,7 +1267,8 @@ The number of warnings that occurred during the request.
 
 [%hardbreaks]
 {blank}
-| Integer (unsigned)
+a| Integer (unsigned)
+
 
 |===
 
@@ -1238,7 +1329,8 @@ Timestamp when the query was received.
 
 [%hardbreaks]
 {blank}
-| Date (date-time)
+a| Date (date-time)
+
 
 a| 
 *servicingHost* +
@@ -1252,7 +1344,8 @@ IP address and port number of the node where the query was executed.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *phaseCounts* +
@@ -1268,7 +1361,8 @@ Count of documents processed at selective phases involved in the query execution
 [%hardbreaks]
 *Example:* `{"fetch":16,"indexScan":187}`
 {blank}
-| Object
+a| Object
+
 
 a| 
 *phaseOperators* +
@@ -1290,7 +1384,8 @@ This is in essence the count of all the operators in the `executionTimings` obje
 [%hardbreaks]
 *Example:* `{"authorize":1,"fetch":1,"indexScan":2}`
 {blank}
-| Object
+a| Object
+
 
 a| 
 *phaseTimes* +
@@ -1306,7 +1401,8 @@ Cumulative execution times for various phases involved in the query execution, s
 [%hardbreaks]
 *Example:* `{"authorize":"823.631µs","fetch":"656.873µs","indexScan":"29.146543ms","instantiate":"236.221µs","parse":"826.382µs","plan":"11.831101ms","run":"16.892181ms"}`
 {blank}
-| Object
+a| Object
+
 
 a| 
 *executionTimings* +
@@ -1320,7 +1416,8 @@ include::index.adoc[tag=desc-Execution_Timings, opts=optional]
 
 [%hardbreaks]
 {blank}
-| <<Execution_Timings>>
+a| <<Execution_Timings>>
+
 
 |===
 
@@ -1382,9 +1479,10 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 --
 
 [%hardbreaks]
+*Example:* `["LAX",6]`
 {blank}
-| Object
-list
+a| Any Type
+ array
 
 a| [#atrcollection_req]
 *atrcollection* +
@@ -1416,7 +1514,8 @@ The request-level parameter overrides the node-level setting.
 [%hardbreaks]
 *Example:* `pass:c["default:`travel-sample`.transaction.test"]`
 {blank}
-| String
+a| String
+
 
 a| [#auto_execute]
 *auto_execute* +
@@ -1438,7 +1537,8 @@ Refer to [Auto-Execute][auto-execute] for more information.
 *Default:* `false`
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#client_context_id]
 *client_context_id* +
@@ -1457,7 +1557,8 @@ SQL++ is agnostic about the content of this parameter; it is just echoed in the 
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| [#compression]
 *compression* +
@@ -1477,7 +1578,8 @@ Values are case-insensitive.
 *Default:* `pass:c["NONE"]`
 *Example:* `pass:c["zip"]`
 {blank}
-| String
+a| String
+
 
 a| [#controls_req]
 *controls* +
@@ -1507,7 +1609,8 @@ The request-level parameter overrides the node-level setting.
 [%hardbreaks]
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#creds]
 *creds* +
@@ -1527,9 +1630,10 @@ If credentials are supplied in the request header, then HTTP Basic Authenticatio
 --
 
 [%hardbreaks]
+*Example:* `[{"user":"local:bucket-name","pass":"password"},{"user":"admin:admin-name","pass":"password"}]`
 {blank}
-| <<Credentials>>
-list
+a| <<Credentials>>
+ array
 
 a| [#durability_level]
 *durability_level* +
@@ -1557,7 +1661,8 @@ Set the durability level to `"none"` or `""` to specify no durability.
 *Default:* `pass:c["majority"]`
 *Example:* `pass:c["none"]`
 {blank}
-| String
+a| String
+
 
 a| [#encoded_plan]
 *encoded_plan* +
@@ -1573,7 +1678,8 @@ It is included for compatibility with previous versions of Couchbase Server.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| [#encoding]
 *encoding* +
@@ -1591,7 +1697,8 @@ Only possible value is `UTF-8` and is case-insensitive.
 [%hardbreaks]
 *Default:* `pass:c["UTF-8"]`
 {blank}
-| String
+a| String
+
 
 a| [#format]
 *format* +
@@ -1611,7 +1718,8 @@ Values are case-insensitive.
 *Default:* `pass:c["JSON"]`
 *Example:* `pass:c["XML"]`
 {blank}
-| String
+a| String
+
 
 a| [#kvtimeout]
 *kvtimeout* +
@@ -1645,7 +1753,8 @@ When disabled, no timeout is applied and the KV operation runs for however long 
 *Default:* `pass:c["2.5s"]`
 *Example:* `pass:c["10ms"]`
 {blank}
-| String
+a| String
+
 
 a| [#max_parallelism_req]
 *max_parallelism* +
@@ -1682,7 +1791,8 @@ The default value is the same as the number of partitions of the index selected 
 [%hardbreaks]
 *Example:* `3`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#memory_quota_req]
 *memory_quota* +
@@ -1724,7 +1834,8 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Default:* `0`
 *Example:* `4`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#metrics]
 *metrics* +
@@ -1740,7 +1851,8 @@ Specifies that metrics should be returned with query results.
 *Default:* `true`
 *Example:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#namespace]
 *namespace* +
@@ -1756,7 +1868,8 @@ Specifies the namespace to use. Currently, only the `default` namespace is avail
 [%hardbreaks]
 *Example:* `pass:c["default"]`
 {blank}
-| String
+a| String
+
 
 a| [#numatrs_req]
 *numatrs* +
@@ -1790,7 +1903,8 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Default:* `1024`
 *Example:* `512`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#pipeline_batch_req]
 *pipeline_batch* +
@@ -1821,7 +1935,8 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `64`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#pipeline_cap_req]
 *pipeline_cap* +
@@ -1852,7 +1967,8 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `1024`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#prepared]
 *prepared* +
@@ -1875,7 +1991,8 @@ If both `prepared` and `statement` are present and non-empty, an error is return
 [%hardbreaks]
 *Example:* `pass:c["[127.0.0.1:8091]pricy_hotel"]`
 {blank}
-| String
+a| String
+
 
 a| [#preserve_expiry]
 *preserve_expiry* +
@@ -1899,7 +2016,8 @@ Not supported for statements in a transaction.
 *Default:* `false`
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#pretty_req]
 *pretty* +
@@ -1925,7 +2043,8 @@ The request-level parameter overrides the node-level setting.
 [%hardbreaks]
 *Example:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#profile_req]
 *profile* +
@@ -1965,7 +2084,8 @@ The request-level parameter overrides the node-level setting.
 *Values:* `"off"`, `"phases"`, `"timings"`
 *Example:* `pass:c["phases"]`
 {blank}
-| String
+a| String
+
 
 a| [#query_context]
 *query_context* +
@@ -1986,7 +2106,8 @@ If the namespace name is omitted, the default namespace in the current session i
 *Default:* `pass:c["default:"]`
 *Example:* `pass:c["default:travel-sample.inventory"]`
 {blank}
-| String
+a| String
+
 
 a| [#readonly]
 *readonly* +
@@ -2014,7 +2135,8 @@ When using GET requests, it's best to set `readonly` to `true`.
 *Default:* `false`
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#scan_cap_req]
 *scan_cap* +
@@ -2049,7 +2171,8 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `1024`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#scan_consistency]
 *scan_consistency* +
@@ -2098,7 +2221,8 @@ Refer to [Transactional Scan Consistency][transactional-scan-consistency] for de
 *Default:* `pass:c["not_bounded"]`
 *Example:* `pass:c["at_plus"]`
 {blank}
-| String
+a| String
+
 
 a| [#scan_vector]
 *scan_vector* +
@@ -2130,7 +2254,8 @@ For queries referencing multiple keyspaces, use `scan_vectors`.
 [%hardbreaks]
 *Example:* `{"5":[5409393,"VB5ID"],"19":[47574574,"VB19ID"]}`
 {blank}
-| Object
+a| Object
+
 
 a| [#scan_vectors]
 *scan_vectors* +
@@ -2150,7 +2275,8 @@ The scan vectors can be Full or Sparse.
 
 [%hardbreaks]
 {blank}
-| Object
+a| Object
+
 
 a| [#scan_wait]
 *scan_wait* +
@@ -2184,7 +2310,8 @@ Specify `0` or a negative integer to disable.
 *Default:* `pass:c[""]`
 *Example:* `pass:c["30m"]`
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| [#signature]
 *signature* +
@@ -2200,7 +2327,8 @@ Include a header for the results schema in the response.
 *Default:* `true`
 *Example:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#sort_projection]
 *sort_projection* +
@@ -2219,7 +2347,8 @@ If `false` (the default), statement projection terms are returned in the order s
 *Default:* `false`
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#statement]
 *statement* +
@@ -2247,7 +2376,8 @@ This restriction does not apply when specifying the request parameters in JSON f
 [%hardbreaks]
 *Example:* `pass:c["SELECT * FROM `travel-sample`.inventory.hotel LIMIT 1"]`
 {blank}
-| String
+a| String
+
 
 a| [#timeout_req]
 *timeout* +
@@ -2296,7 +2426,8 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `pass:c["30m"]`
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| [#txdata]
 *txdata* +
@@ -2312,7 +2443,8 @@ For internal use only.
 
 [%hardbreaks]
 {blank}
-| Object
+a| Object
+
 
 a| [#txid]
 *txid* +
@@ -2335,7 +2467,8 @@ The transaction must be active and non-expired.
 [%hardbreaks]
 *Example:* `pass:c["d81d9b4a-b758-4f98-b007-87ba262d3a51"]`
 {blank}
-| UUID (UUID)
+a| UUID (UUID)
+
 
 a| [#tximplicit]
 *tximplicit* +
@@ -2358,7 +2491,8 @@ If the [txid](#txid) request-level parameter is set, the `tximplicit` parameter 
 *Default:* `false`
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#txstmtnum]
 *txstmtnum* +
@@ -2376,7 +2510,8 @@ If the transaction statement number is lower than the transaction statement numb
 [%hardbreaks]
 *Example:* `10`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#txtimeout_req]
 *txtimeout* +
@@ -2430,7 +2565,8 @@ The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sess
 [%hardbreaks]
 *Example:* `pass:c["30m"]`
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| [#use_cbo_req]
 *use_cbo* +
@@ -2461,7 +2597,8 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#use_fts]
 *use_fts* +
@@ -2488,7 +2625,8 @@ Refer to [Flex Indexes][flex-indexes] for more information.
 *Default:* `false`
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#use_replica_req]
 *use_replica* +
@@ -2538,7 +2676,8 @@ If a query uses sequential scan and a data node becomes unavailable, the query m
 *Default:* `pass:c["unset"]`
 *Example:* `pass:c["true"]`
 {blank}
-| String
+a| String
+
 
 a| [#identifier]
 _additional +
@@ -2566,7 +2705,8 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 
 [%hardbreaks]
 {blank}
-| String (any JSON value)
+a| Any Type
+
 
 |===
 
@@ -2626,7 +2766,8 @@ A unique identifier for the response.
 
 [%hardbreaks]
 {blank}
-| UUID (UUID)
+a| UUID (UUID)
+
 
 a| 
 *clientContextID* +
@@ -2640,7 +2781,8 @@ The client context ID of the request, if one was supplied &mdash; see `client_co
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *signature* +
@@ -2656,7 +2798,8 @@ The schema of the results. Present only when the query completes successfully.
 [%hardbreaks]
 *Example:* `{"id":"json"}`
 {blank}
-| Object
+a| Object
+
 
 a| 
 *results* +
@@ -2671,8 +2814,8 @@ An array of all the objects returned by the query. An object can be any JSON val
 
 [%hardbreaks]
 {blank}
-| Object
-list
+a| Any Type
+ array
 
 a| 
 *status* +
@@ -2687,7 +2830,8 @@ The status of the request.
 [%hardbreaks]
 *Values:* `"success"`, `"running"`, `"errors"`, `"completed"`, `"stopped"`, `"timeout"`, `"fatal"`
 {blank}
-| String
+a| String
+
 
 a| 
 *errors* +
@@ -2702,8 +2846,8 @@ An array of 0 or more error objects. If an error occurred during processing of t
 
 [%hardbreaks]
 {blank}
-| <<Conditions>>
-list
+a| <<Conditions>>
+ array
 
 a| 
 *warnings* +
@@ -2718,8 +2862,8 @@ An array of 0 or more warning objects. If a warning occurred during processing o
 
 [%hardbreaks]
 {blank}
-| <<Conditions>>
-list
+a| <<Conditions>>
+ array
 
 a| 
 *metrics* +
@@ -2733,7 +2877,8 @@ include::index.adoc[tag=desc-Metrics, opts=optional]
 
 [%hardbreaks]
 {blank}
-| <<Metrics>>
+a| <<Metrics>>
+
 
 a| 
 *controls* +
@@ -2747,7 +2892,8 @@ include::index.adoc[tag=desc-Controls, opts=optional]
 
 [%hardbreaks]
 {blank}
-| <<Controls>>
+a| <<Controls>>
+
 
 a| 
 *profile* +
@@ -2761,7 +2907,8 @@ include::index.adoc[tag=desc-Profile, opts=optional]
 
 [%hardbreaks]
 {blank}
-| <<Profile>>
+a| <<Profile>>
+
 
 |===
 
@@ -2822,7 +2969,8 @@ Number of input documents to the operator.
 [%hardbreaks]
 *Example:* `187`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *#itemsOut* +
@@ -2837,7 +2985,8 @@ Number of output documents after the operator processing.
 [%hardbreaks]
 *Example:* `16`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *#phaseSwitches* +
@@ -2852,7 +3001,8 @@ Number of switches between executing, waiting for services, or waiting for the g
 [%hardbreaks]
 *Example:* `413`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *execTime* +
@@ -2867,7 +3017,8 @@ Time spent executing the operator code inside SQL++ query engine.
 [%hardbreaks]
 *Example:* `pass:c["128.434µs"]`
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *kernTime* +
@@ -2882,7 +3033,8 @@ Time spent waiting to be scheduled for CPU time.
 [%hardbreaks]
 *Example:* `pass:c["15.027879ms"]`
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *servTime* +
@@ -2902,7 +3054,8 @@ For fetch, it is time spent waiting on the KV store.
 [%hardbreaks]
 *Example:* `pass:c["1.590934ms"]`
 {blank}
-| String (duration)
+a| String (duration)
+
 
 |===
 
