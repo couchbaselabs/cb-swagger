@@ -61,7 +61,7 @@ __Version__ : {{{version}}}
 {{#-first}}
 [cols="20,80"]
 |===
-| Variable | Description
+| Component | Description
 
 {{/-first}}
 a| *{{name}}*
@@ -277,7 +277,7 @@ a| [markdown]
 --
 {{{message}}}
 --
-| {{>schema}}
+a| {{#returnProperty}}{{>schemas}}{{/returnProperty}}
 {{/responses}}
 
 {{! If there are responses: table footer }}
@@ -403,7 +403,7 @@ endif::[]
 {{#specinclude}}/security/{{name}}/security-scheme-before.adoc{{/specinclude}}
 
 [[security-{{#lambda.camelcase}}{{name}}{{/lambda.camelcase}}]]
-= {{#lambda.titlecase}}{{name}}{{/lambda.titlecase}}
+= {{#lambda.uncamelize}}{{name}}{{/lambda.uncamelize}}
 
 {{! include partial before security scheme body }}
 :leveloffset: +1

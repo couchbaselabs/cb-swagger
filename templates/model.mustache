@@ -25,7 +25,7 @@ _{{#required}}required{{/required}}{{^required}}optional{{/required}}_
 {{! DEFINITION DESCRIPTION }}
 a| {{>property}}
 {{! DEFINITION SCHEMA }}
-| {{>schema}}
+a| {{>schemas}}
 {{/vars}}
 {{#additionalProperties}}
 {{! ADDITIONAL PROPERTY NAME }}
@@ -35,7 +35,7 @@ property_
 {{! ADDITIONAL PROPERTY DESCRIPTION }}
 a| {{>property}}
 {{! ADDITIONAL PROPERTY SCHEMA }}
-| {{>schema}}
+a| {{>schemas}}
 {{/additionalProperties}}
 |===
 
@@ -48,7 +48,7 @@ This schema has different properties, depending on the value of *{{discriminator
 {{#discriminator}}
 
 {{#mappedModels}}
-* `{{mappingName}}` -- <<{{mappingName}}>>
+* `{{mappingName}}` -- <<{{modelName}}>>
 {{/mappedModels}}
 {{/discriminator}}
 {{/hasDiscriminatorWithNonEmptyMapping}}
