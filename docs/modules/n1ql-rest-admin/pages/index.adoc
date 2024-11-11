@@ -33,16 +33,58 @@ This API enables you to retrieve statistics about the clusters and nodes running
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 7.6
+__Version__ : 8.0
 
 [discrete#host]
 = Host information
 
 ....
-http://localhost:8093
+{scheme}://{host}:{port}
 ....
 
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
 
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `pass:c[http]`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Query service.
+--
+
+[%hardbreaks]
+
+*Example:* `pass:c[localhost]`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Query service REST port. Use `18093` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `8093`, `18093`
+*Example:* `pass:c[8093]`
+// end
+
+|===
 
 
 // markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
@@ -50,7 +92,7 @@ http://localhost:8093
 :leveloffset: -1
 
 
-include::{specDir}overview/document-after.adoc[opts=optional]
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
 
 
 
@@ -176,13 +218,13 @@ a|
 The name of a request.
 This is the `requestID` that was assigned automatically when the statement was created.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -229,14 +271,14 @@ a| [markdown]
 --
 The active request was successfully terminated.
 --
-| 
-
+a| 
 | 500
 a| [markdown]
 --
 Returns an error message if the active request could not be found.
 --
-| Object
+a| Object
+
 
 
 |===
@@ -383,8 +425,8 @@ a| [markdown]
 --
 An array of strings, each of which is the requestID of an active index request.
 --
-| String
-list
+a| String
+ array
 
 
 |===
@@ -520,13 +562,13 @@ a|
 The name of a request.
 This is the `requestID` that was assigned automatically when the statement was created.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -573,7 +615,8 @@ a| [markdown]
 --
 An object containing information about the specified active request.
 --
-| <<Requests>>
+a| <<Requests>>
+
 
 
 |===
@@ -717,8 +760,8 @@ a| [markdown]
 --
 An array of objects, each of which contains information about one active request.
 --
-| <<Requests>>
-list
+a| <<Requests>>
+ array
 
 
 |===
@@ -879,13 +922,13 @@ a|
 The name of a request.
 This is the `requestID` that was assigned automatically when the statement was created.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -932,14 +975,14 @@ a| [markdown]
 --
 The completed request was successfully purged.
 --
-| 
-
+a| 
 | 500
 a| [markdown]
 --
 Returns an error message if the completed request could not be found.
 --
-| Object
+a| Object
+
 
 
 |===
@@ -1086,8 +1129,8 @@ a| [markdown]
 --
 An array of strings, each of which is the requestID of a completed index request.
 --
-| String
-list
+a| String
+ array
 
 
 |===
@@ -1223,13 +1266,13 @@ a|
 The name of a request.
 This is the `requestID` that was assigned automatically when the statement was created.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -1276,7 +1319,8 @@ a| [markdown]
 --
 An object containing information about the specified completed request.
 --
-| <<Requests>>
+a| <<Requests>>
+
 
 
 |===
@@ -1420,8 +1464,8 @@ a| [markdown]
 --
 An array of objects, each of which contains information about one completed request.
 --
-| <<Requests>>
-list
+a| <<Requests>>
+ array
 
 
 |===
@@ -1580,13 +1624,13 @@ a|
 [markdown]
 --
 The name of a cluster.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -1633,7 +1677,8 @@ a| [markdown]
 --
 An object giving information about the specified cluster.
 --
-| <<Clusters>>
+a| <<Clusters>>
+
 
 
 |===
@@ -1776,8 +1821,8 @@ a| [markdown]
 --
 An array of objects, each of which gives information about one cluster.
 --
-| <<Clusters>>
-list
+a| <<Clusters>>
+ array
 
 
 |===
@@ -1920,7 +1965,8 @@ a| [markdown]
 --
 An object giving information about the specified node.
 --
-| <<Nodes>>
+a| <<Nodes>>
+
 
 
 |===
@@ -2053,13 +2099,13 @@ a|
 [markdown]
 --
 The name of a cluster.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *node* +
@@ -2070,13 +2116,13 @@ a|
 [markdown]
 --
 The name of a node.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -2123,7 +2169,8 @@ a| [markdown]
 --
 An object giving information about the specified node.
 --
-| <<Nodes>>
+a| <<Nodes>>
+
 
 
 |===
@@ -2256,13 +2303,13 @@ a|
 [markdown]
 --
 The name of a cluster.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -2309,8 +2356,8 @@ a| [markdown]
 --
 An array of objects, each of which gives information about one node.
 --
-| <<Nodes>>
-list
+a| <<Nodes>>
+ array
 
 
 |===
@@ -2480,14 +2527,16 @@ a| [markdown]
 --
 Indicates that the garbage collector was invoked.
 --
-| <<Garbage>>
+a| <<Garbage>>
+
 
 | 401
 a| [markdown]
 --
 Error 10000: authentication failure. The invoking user is not a valid full-admin user. 
 --
-| Object
+a| Object
+
 
 
 |===
@@ -2630,7 +2679,8 @@ a| [markdown]
 --
 An empty object.
 --
-| Object
+a| Object
+
 
 
 |===
@@ -2646,30 +2696,11 @@ An empty object.
 
 
 
-// markup not found, no include::{specDir}paths/get_ping/operation-security-before.adoc[opts=optional]
+include::{specDir}paths/get_ping/operation-security-before.adoc[opts=optional]
 
 
-[#get_ping-security]
-= Security
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/get_ping/operation-security-begin.adoc[opts=optional]
 
 
-[cols="20,80"]
-|===
-| Type | Name
-
-| http (basic)
-| <<security-none>>
-
-|===
-
-
-// markup not found, no include::{specDir}paths/get_ping/operation-security-end.adoc[opts=optional]
-
-:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_ping/operation-security-after.adoc[opts=optional]
@@ -2776,14 +2807,16 @@ a| [markdown]
 --
 Indicates that the garbage collector was invoked.
 --
-| <<Garbage>>
+a| <<Garbage>>
+
 
 | 401
 a| [markdown]
 --
 Error 10000: authentication failure. The invoking user is not a valid full-admin user. 
 --
-| Object
+a| Object
+
 
 
 |===
@@ -2944,13 +2977,13 @@ a|
 The name of a prepared statement.
 This may be a UUID that was assigned automatically, or a name that was user-specified when the statement was created.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -2997,14 +3030,14 @@ a| [markdown]
 --
 The prepared statement was successfully deleted.
 --
-| 
-
+a| 
 | 500
 a| [markdown]
 --
 Returns an error message if the prepared statement could not be found.
 --
-| Object
+a| Object
+
 
 
 |===
@@ -3140,13 +3173,13 @@ a|
 The name of a prepared statement.
 This may be a UUID that was assigned automatically, or a name that was user-specified when the statement was created.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -3193,7 +3226,8 @@ a| [markdown]
 --
 An object containing information about the specified prepared statement.
 --
-| <<Statements>>
+a| <<Statements>>
+
 
 
 |===
@@ -3340,8 +3374,8 @@ a| [markdown]
 --
 An array of strings, each of which is the name of a prepared index statement.
 --
-| String
-list
+a| String
+ array
 
 
 |===
@@ -3485,8 +3519,8 @@ a| [markdown]
 --
 An array of objects, each of which contains information about one prepared statement.
 --
-| <<Statements>>
-list
+a| <<Statements>>
+ array
 
 
 |===
@@ -3653,7 +3687,8 @@ a| [markdown]
 --
 An object giving node-level query settings.
 --
-| <<Settings>>
+a| <<Settings>>
+
 
 
 |===
@@ -3790,14 +3825,14 @@ a|
 
 [markdown]
 --
-
 An object specifying node-level query settings.
 --
 
 [%hardbreaks]
 {blank}
 
-| <<Settings>>
+a| <<Settings>>
+
 
 
 |===
@@ -3845,7 +3880,8 @@ a| [markdown]
 --
 An object giving node-level query settings, including the latest changes.
 --
-| <<Settings>>
+a| <<Settings>>
+
 
 
 |===
@@ -3986,6 +4022,10 @@ Currently unused.
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-parameters-after.adoc[opts=optional]
 
 
+[#get_debug_vars-produces]
+= Produces
+
+* text/html
 
 
 
@@ -4009,7 +4049,8 @@ a| [markdown]
 --
 Redirects to the [Retrieve All Statistics](#get_stats) endpoint.
 --
-| 
+a| String (text/html)
+
 
 
 |===
@@ -4025,30 +4066,11 @@ Redirects to the [Retrieve All Statistics](#get_stats) endpoint.
 
 
 
-// markup not found, no include::{specDir}paths/get_debug_vars/operation-security-before.adoc[opts=optional]
+include::{specDir}paths/get_debug_vars/operation-security-before.adoc[opts=optional]
 
 
-[#get_debug_vars-security]
-= Security
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/get_debug_vars/operation-security-begin.adoc[opts=optional]
 
 
-[cols="20,80"]
-|===
-| Type | Name
-
-| http (basic)
-| <<security-none>>
-
-|===
-
-
-// markup not found, no include::{specDir}paths/get_debug_vars/operation-security-end.adoc[opts=optional]
-
-:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-security-after.adoc[opts=optional]
@@ -4145,14 +4167,14 @@ The name of a statistic.
 Only top-level statistic names can be used.
 You cannot specify a metric.
 
-
 --
 
 [%hardbreaks]
-*Values:* `"active_requests"`, `"at_plus"`, `"audit_actions"`, `"audit_actions_failed"`, `"audit_requests_filtered"`, `"audit_requests_total"`, `"cancelled"`, `"deletes"`, `"errors"`, `"index_scans"`, `"inserts"`, `"invalid_requests"`, `"mutations"`, `"prepared"`, `"primary_scans"`, `"queued_requests"`, `"request_time"`, `"request_timer"`, `"requests"`, `"requests_1000ms"`, `"requests_250ms"`, `"requests_5000ms"`, `"requests_500ms"`, `"result_count"`, `"result_size"`, `"scan_plus"`, `"selects"`, `"service_time"`, `"unbounded"`, `"updates"`, `"warnings"`
+*Values:* `&quot;active_requests&quot;`, `&quot;at_plus&quot;`, `&quot;audit_actions&quot;`, `&quot;audit_actions_failed&quot;`, `&quot;audit_requests_filtered&quot;`, `&quot;audit_requests_total&quot;`, `&quot;cancelled&quot;`, `&quot;deletes&quot;`, `&quot;errors&quot;`, `&quot;index_scans&quot;`, `&quot;inserts&quot;`, `&quot;invalid_requests&quot;`, `&quot;mutations&quot;`, `&quot;prepared&quot;`, `&quot;primary_scans&quot;`, `&quot;queued_requests&quot;`, `&quot;request_time&quot;`, `&quot;request_timer&quot;`, `&quot;requests&quot;`, `&quot;requests_1000ms&quot;`, `&quot;requests_250ms&quot;`, `&quot;requests_5000ms&quot;`, `&quot;requests_500ms&quot;`, `&quot;result_count&quot;`, `&quot;result_size&quot;`, `&quot;scan_plus&quot;`, `&quot;selects&quot;`, `&quot;service_time&quot;`, `&quot;unbounded&quot;`, `&quot;updates&quot;`, `&quot;warnings&quot;`
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -4199,7 +4221,8 @@ a| [markdown]
 --
 An object containing all metrics for the specified statistic. Each statistic has a different set of metrics. 
 --
-| <<Metrics>>
+a| <<Metrics>>
+
 
 
 |===
@@ -4342,7 +4365,8 @@ a| [markdown]
 --
 An object containing all statistics. Each statistic consists of a top-level statistic name and a metric name. Each statistic has a different set of metrics. 
 --
-| <<Statistics>>
+a| <<Statistics>>
+
 
 
 |===
@@ -4487,7 +4511,8 @@ a| [markdown]
 --
 An object containing all vital statistics.
 --
-| <<Vitals>>
+a| <<Vitals>>
+
 
 
 |===
@@ -4634,7 +4659,8 @@ The name of the cluster.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *datastore* +
@@ -4648,7 +4674,8 @@ The URL of the datastore.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *configstore* +
@@ -4662,7 +4689,8 @@ The URL of the configstore.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *accountstore* +
@@ -4676,7 +4704,8 @@ The URL of the accountstore.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *version* +
@@ -4689,7 +4718,8 @@ a|
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -4744,7 +4774,8 @@ The amount of memory freed.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *released* +
@@ -4760,7 +4791,8 @@ The amount of memory released to the OS.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *status* +
@@ -4774,7 +4806,8 @@ The status of the garbage collector.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -4819,7 +4852,7 @@ All completed requests that match these parameters are tracked in the completed 
 
 Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
 
-[sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+[sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
 
 //end::desc-Logging_Parameters[]
 endif::model-descriptions[]
@@ -4842,7 +4875,8 @@ If true, all requests that generate a panic are logged.
 *Default:* `null`
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *client* +
@@ -4860,7 +4894,8 @@ If specified, all completed requests from this IP address are logged.
 *Default:* `pass:c[""]`
 *Example:* `pass:c["172.1.2.3"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *context* +
@@ -4885,7 +4920,8 @@ Refer to the [request-level][client_context_id] `client_context_id` parameter fo
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *error* +
@@ -4903,7 +4939,8 @@ If specified, all completed queries returning this error number are logged.
 *Default:* `null`
 *Example:* `12003`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *tag* +
@@ -4916,7 +4953,7 @@ A unique string which tags a set of qualifiers.
 
 Refer to [Configure the Completed Requests][sys-completed-config] for more information.
 
-[sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+[sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
 
 --
 
@@ -4924,7 +4961,8 @@ Refer to [Configure the Completed Requests][sys-completed-config] for more infor
 *Default:* `pass:c[""]`
 *Example:* `pass:c["both_user_and_error"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *threshold* +
@@ -4944,7 +4982,8 @@ This is another way of specifying the [node-level](#completed-threshold) `comple
 *Default:* `1000`
 *Example:* `7000`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| 
 *user* +
@@ -4962,7 +5001,8 @@ If specified, all completed queries with this user name are logged.
 *Default:* `pass:c[""]`
 *Example:* `pass:c["marco"]`
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -5017,7 +5057,8 @@ A single value that represents the current state.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *15m.rate* +
@@ -5031,7 +5072,8 @@ a|
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *1m.rate* +
@@ -5045,7 +5087,8 @@ a|
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *5m.rate* +
@@ -5059,7 +5102,8 @@ a|
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *mean.rate* +
@@ -5073,7 +5117,8 @@ Mean rate since the query service started.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *max* +
@@ -5087,7 +5132,8 @@ The maximum value.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *mean* +
@@ -5101,7 +5147,8 @@ The mean value.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *median* +
@@ -5115,7 +5162,8 @@ The median value.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *min* +
@@ -5129,7 +5177,8 @@ The minimum value.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *stddev* +
@@ -5143,7 +5192,8 @@ The standard deviation.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *75%* +
@@ -5157,7 +5207,8 @@ The 75th percentile.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *95%* +
@@ -5171,7 +5222,8 @@ The 95th percentile.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *99%* +
@@ -5185,7 +5237,8 @@ The 99th percentile.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *99.9%* +
@@ -5199,7 +5252,8 @@ The 99.9th percentile.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 |===
 
@@ -5254,7 +5308,8 @@ The name of the cluster.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *name* +
@@ -5268,7 +5323,8 @@ The URL of the node, including port number.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *queryEndpoint* +
@@ -5282,7 +5338,8 @@ The HTTP URL of the query endpoint.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *adminEndpoint* +
@@ -5296,7 +5353,8 @@ The HTTP URL of the admin endpoint.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *querySecure* +
@@ -5310,7 +5368,8 @@ The HTTPS URL of the query endpoint.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *adminSecure* +
@@ -5324,7 +5383,8 @@ The HTTPS URL of the admin endpoint.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *options* +
@@ -5337,7 +5397,8 @@ a|
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -5401,7 +5462,8 @@ Refer to the [request-level][client_context_id] `client_context_id` parameter fo
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *elapsedTime* +
@@ -5417,7 +5479,8 @@ It includes the time taken by the service to schedule the request.
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *errorCount* +
@@ -5431,7 +5494,8 @@ Total number of errors encountered while executing the query.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *memoryQuota* +
@@ -5447,7 +5511,8 @@ This property is only returned if a memory quota is set for the query.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *node* +
@@ -5461,7 +5526,8 @@ IP address and port number of the node where the query is executed.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *phaseCounts* +
@@ -5480,7 +5546,8 @@ Polling the active requests again may return different values.
 [%hardbreaks]
 *Example:* `{"fetch":16,"indexScan":187}`
 {blank}
-| Object
+a| Object
+
 
 a| 
 *phaseOperators* +
@@ -5500,7 +5567,8 @@ A union select would have twice as many operator counts, one per each branch of 
 [%hardbreaks]
 *Example:* `{"authorize":1,"fetch":1,"indexScan":2}`
 {blank}
-| Object
+a| Object
+
 
 a| 
 *phaseTimes* +
@@ -5519,7 +5587,8 @@ Polling the active requests again may return different values.
 [%hardbreaks]
 *Example:* `{"authorize":"823.631µs","fetch":"656.873µs","indexScan":"29.146543ms","instantiate":"236.221µs","parse":"826.382µs","plan":"11.831101ms","run":"16.892181ms"}`
 {blank}
-| Object
+a| Object
+
 
 a| 
 *remoteAddr* +
@@ -5533,7 +5602,8 @@ IP address and port number of the client application, from where the query is re
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *requestId* +
@@ -5547,7 +5617,8 @@ Unique request ID internally generated for the query.
 
 [%hardbreaks]
 {blank}
-| UUID (uuid)
+a| UUID (uuid)
+
 
 a| 
 *requestTime* +
@@ -5561,7 +5632,8 @@ Timestamp when the query is received.
 
 [%hardbreaks]
 {blank}
-| Date (date-time)
+a| Date (date-time)
+
 
 a| 
 *resultCount* +
@@ -5575,7 +5647,8 @@ Total number of documents returned in the query result.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *resultSize* +
@@ -5589,7 +5662,8 @@ Total number of bytes returned in the query result.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *scanConsistency* +
@@ -5603,7 +5677,8 @@ The value of the query setting Scan Consistency used for the query.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *serviceTime* +
@@ -5617,7 +5692,8 @@ Total amount of calendar time taken to complete the query.
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *state* +
@@ -5637,7 +5713,8 @@ To find requests that were successful, use this field in conjunction with the `e
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *statement* +
@@ -5651,7 +5728,8 @@ The query statement being executed.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *useCBO* +
@@ -5665,7 +5743,8 @@ Whether the cost-based optimizer is enabled for the query.
 
 [%hardbreaks]
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *usedMemory* +
@@ -5681,7 +5760,8 @@ This property is only returned if a memory quota is set for the query.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *userAgent* +
@@ -5695,7 +5775,8 @@ Name of the client application or program that issued the query.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *users* +
@@ -5709,7 +5790,8 @@ Username with whose privileges the query is run.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -5774,7 +5856,7 @@ If any part of the path contains a special character, that part of the path must
 The [request-level][atrcollection_req] `atrcollection` parameter specifies this property per request.
 If a request does not include this parameter, the node-level `atrcollection` setting will be used.
 
-[additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
+[additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
 [atrcollection_req]: ../n1ql-rest-query/index.html#atrcollection_req
 
 --
@@ -5783,7 +5865,8 @@ If a request does not include this parameter, the node-level `atrcollection` set
 *Default:* `pass:c[""]`
 *Example:* `pass:c["default:`travel-sample`.transaction.test"]`
 {blank}
-| String
+a| String
+
 
 a| [#auto-prepare]
 *auto-prepare* +
@@ -5796,7 +5879,7 @@ Specifies whether the query engine should create a prepared statement every time
 
 Refer to [Auto-Prepare][auto-prepare] for more information.
 
-[auto-prepare]: /server/7.6/n1ql/n1ql-language-reference/prepare.html#auto-prepare
+[auto-prepare]: /server/8.0/n1ql/n1ql-language-reference/prepare.html#auto-prepare
 
 --
 
@@ -5804,7 +5887,8 @@ Refer to [Auto-Prepare][auto-prepare] for more information.
 *Default:* `false`
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#cleanupclientattempts]
 *cleanupclientattempts* +
@@ -5831,7 +5915,8 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `true`
 *Example:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#cleanuplostattempts]
 *cleanuplostattempts* +
@@ -5858,7 +5943,8 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `true`
 *Example:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#cleanupwindow]
 *cleanupwindow* +
@@ -5889,7 +5975,7 @@ Valid units are:
 The [cluster-level][queryCleanupWindow] `queryCleanupWindow` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-[additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
+[additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
 [queryCleanupWindow]: ../n1ql-rest-settings/index.html#queryCleanupWindow
 
 --
@@ -5898,7 +5984,8 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `pass:c["60s"]`
 *Example:* `pass:c["30s"]`
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| [#completed]
 *completed* +
@@ -5912,7 +5999,8 @@ include::index.adoc[tag=desc-Logging_Parameters, opts=optional]
 
 [%hardbreaks]
 {blank}
-| <<Logging_Parameters>>
+a| <<Logging_Parameters>>
+
 
 a| [#completed-limit]
 *completed-limit* +
@@ -5936,7 +6024,7 @@ Refer to [Configure the Completed Requests][sys-completed-config] for more infor
 The [cluster-level][queryCompletedLimit] `queryCompletedLimit` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-[sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+[sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
 [queryCompletedLimit]: ../n1ql-rest-settings/index.html#queryCompletedLimit
 
 --
@@ -5945,7 +6033,8 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `4000`
 *Example:* `7000`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#completed-max-plan-size]
 *completed-max-plan-size* +
@@ -5970,7 +6059,7 @@ Refer to [Configure the Completed Requests][sys-completed-config] for more infor
 The [cluster-level][queryCompletedMaxPlanSize] `queryCompletedMaxPlanSize` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-[sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+[sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
 [queryCompletedMaxPlanSize]: ../n1ql-rest-settings/index.html#queryCompletedMaxPlanSize
 
 --
@@ -5980,7 +6069,8 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Minimum:* `0`
 *Maximum:* `20840448`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#completed-threshold]
 *completed-threshold* +
@@ -6005,7 +6095,7 @@ Refer to [Configure the Completed Requests][sys-completed-config] for more infor
 The [cluster-level][queryCompletedThreshold] `queryCompletedThreshold` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-[sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
+[sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
 [queryCompletedThreshold]: ../n1ql-rest-settings/index.html#queryCompletedThreshold
 
 --
@@ -6014,7 +6104,8 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `1000`
 *Example:* `7000`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#controls-srv]
 *controls* +
@@ -6045,7 +6136,8 @@ If a request does not include this parameter, the node-level `controls` setting 
 *Default:* `false`
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#cpuprofile]
 *cpuprofile* +
@@ -6068,7 +6160,8 @@ To stop `cpuprofile`, run with the empty setting of `""`.
 *Default:* `pass:c[""]`
 *Example:* `pass:c["/tmp/info.txt"]`
 {blank}
-| String
+a| String
+
 
 a| [#debug]
 *debug* +
@@ -6087,7 +6180,8 @@ When set to `true`, extra logging is provided.
 *Default:* `false`
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#distribute]
 *distribute* +
@@ -6105,7 +6199,8 @@ The actual value of this field is ignored.
 [%hardbreaks]
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#functions-limit]
 *functions-limit* +
@@ -6121,7 +6216,8 @@ Maximum number of user-defined functions.
 *Default:* `16384`
 *Example:* `7000`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#keep-alive-length]
 *keep-alive-length* +
@@ -6137,7 +6233,8 @@ Maximum size of buffered result.
 *Default:* `16384`
 *Example:* `7000`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#loglevel]
 *loglevel* +
@@ -6187,7 +6284,8 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `pass:c["INFO"]`
 *Example:* `pass:c["DEBUG"]`
 {blank}
-| String
+a| String
+
 
 a| [#max-index-api]
 *max-index-api* +
@@ -6203,7 +6301,8 @@ This setting is provided for technical support only.
 
 [%hardbreaks]
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#max-parallelism-srv]
 *max-parallelism* +
@@ -6237,7 +6336,7 @@ NOTE: To enable queries to run in parallel, you must specify the cluster-level `
 
 Refer to [Max Parallelism][max-parallelism] for more information.
 
-[max-parallelism]: /server/7.6/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
+[max-parallelism]: /server/8.0/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
 [queryMaxParallelism]: ../n1ql-rest-settings/index.html#queryMaxParallelism
 [max_parallelism_req]: ../n1ql-rest-query/index.html#max_parallelism_req
 
@@ -6247,7 +6346,8 @@ Refer to [Max Parallelism][max-parallelism] for more information.
 *Default:* `1`
 *Example:* `0`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#memory-quota-srv]
 *memory-quota* +
@@ -6289,7 +6389,8 @@ If a request includes this parameter, it will be capped by the node-level `memor
 *Default:* `0`
 *Example:* `4`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#memprofile]
 *memprofile* +
@@ -6310,7 +6411,8 @@ To stop `memprofile`, run with the empty setting of `""`.
 *Default:* `pass:c[""]`
 *Example:* `pass:c["/tmp/memory-usage.log"]`
 {blank}
-| String
+a| String
+
 
 a| [#mutexprofile]
 *mutexprofile* +
@@ -6327,7 +6429,8 @@ This setting is provided for technical support only.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#n1ql-feat-ctrl]
 *n1ql-feat-ctrl* +
@@ -6356,7 +6459,8 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `76`
 *Example:* `16460`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#node-quota]
 *node-quota* +
@@ -6386,7 +6490,8 @@ When you change the cluster-level setting, the node-level setting is over-writte
 [%hardbreaks]
 *Default:* `0`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#node-quota-val-percent]
 *node-quota-val-percent* +
@@ -6415,7 +6520,8 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Minimum:* `0`
 *Maximum:* `100`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#num-cpus]
 *num-cpus* +
@@ -6448,7 +6554,8 @@ When you change the cluster-level setting, the node-level setting is over-writte
 [%hardbreaks]
 *Default:* `0`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#numatrs-srv]
 *numatrs* +
@@ -6471,7 +6578,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 In addition, the [request-level][numatrs_req] `numatrs` parameter specifies this property per request.
 The minimum of that and the node-level `numatrs` setting is applied.
 
-[additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
+[additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
 [queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
 [numatrs_req]: ../n1ql-rest-query/index.html#numatrs_req
 
@@ -6479,7 +6586,8 @@ The minimum of that and the node-level `numatrs` setting is applied.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| [#pipeline-batch-srv]
 *pipeline-batch* +
@@ -6511,7 +6619,8 @@ The minimum of that and the node-level `pipeline-batch` setting is applied.
 *Default:* `16`
 *Example:* `64`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#pipeline-cap-srv]
 *pipeline-cap* +
@@ -6543,7 +6652,8 @@ The minimum of that and the node-level `pipeline-cap` setting is applied.
 *Default:* `512`
 *Example:* `1024`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#plus-servicers]
 *plus-servicers* +
@@ -6560,7 +6670,8 @@ The default is 16 times the number of logical cores.
 [%hardbreaks]
 *Example:* `16`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#prepared-limit]
 *prepared-limit* +
@@ -6588,7 +6699,8 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `16384`
 *Example:* `65536`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#pretty-srv]
 *pretty* +
@@ -6615,7 +6727,8 @@ If a request does not include this parameter, the node-level setting is used, wh
 *Default:* `false`
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#profile-srv]
 *profile* +
@@ -6647,7 +6760,7 @@ Refer to [Monitoring and Profiling Details][monitor-profile-details] for more in
 The [request-level][profile_req] `profile` parameter specifies this property per request.
 If a request does not include this parameter, the node-level `profile` setting will be used.
 
-[monitor-profile-details]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#monitor-profile-details
+[monitor-profile-details]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#monitor-profile-details
 [profile_req]: ../n1ql-rest-query/index.html#profile_req
 
 --
@@ -6657,7 +6770,8 @@ If a request does not include this parameter, the node-level `profile` setting w
 *Default:* `pass:c["off"]`
 *Example:* `pass:c["phases"]`
 {blank}
-| String
+a| String
+
 
 a| [#request-size-cap]
 *request-size-cap* +
@@ -6673,7 +6787,8 @@ Maximum size of a request.
 *Default:* `67108864`
 *Example:* `70000`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#scan-cap-srv]
 *scan-cap* +
@@ -6709,7 +6824,8 @@ The minimum of that and the node-level `scan-cap` setting is applied.
 *Default:* `512`
 *Example:* `1024`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#servicers]
 *servicers* +
@@ -6729,7 +6845,8 @@ Note that the overall node memory quota is this setting multiplied by the [node-
 *Default:* `32`
 *Example:* `8`
 {blank}
-| Integer (int32)
+a| Integer (int32)
+
 
 a| [#timeout-srv]
 *timeout* +
@@ -6767,7 +6884,8 @@ The minimum of that and the node-level `timeout` setting is applied.
 *Default:* `0`
 *Example:* `500000000`
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| [#txtimeout-srv]
 *txtimeout* +
@@ -6809,7 +6927,8 @@ The minimum of that and the node-level `txtimeout` setting is applied.
 *Default:* `0`
 *Example:* `500000000`
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| [#use-cbo-srv]
 *use-cbo* +
@@ -6841,7 +6960,8 @@ If a request does not include this parameter, the node-level setting is used, wh
 *Default:* `true`
 *Example:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| [#use-replica-srv]
 *use-replica* +
@@ -6890,7 +7010,8 @@ If a query uses sequential scan and a data node becomes unavailable, the query m
 *Default:* `pass:c["unset"]`
 *Example:* `pass:c["on"]`
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -6945,7 +7066,8 @@ The full prepared statement in encoded format.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *featureControls* +
@@ -6961,7 +7083,8 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *indexApiVersion* +
@@ -6977,7 +7100,8 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *name* +
@@ -6993,7 +7117,8 @@ This may be a UUID that was assigned automatically, or a name that was user-spec
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *namespace* +
@@ -7009,7 +7134,8 @@ Currently, only the `default` namespace is available.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *node* +
@@ -7024,7 +7150,8 @@ The node on which the prepared statement is stored.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *statement* +
@@ -7038,7 +7165,8 @@ The text of the query.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *uses* +
@@ -7052,7 +7180,8 @@ The count of times the prepared statement has been executed.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *avgElapsedTime* +
@@ -7071,7 +7200,8 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *avgServiceTime* +
@@ -7089,7 +7219,8 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *lastUse* +
@@ -7106,7 +7237,8 @@ This property is only returned when the prepared statement has been executed.
 
 [%hardbreaks]
 {blank}
-| Date (date-time)
+a| Date (date-time)
+
 
 a| 
 *maxElapsedTime* +
@@ -7125,7 +7257,8 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *maxServiceTime* +
@@ -7143,7 +7276,8 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *minElapsedTime* +
@@ -7162,7 +7296,8 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *minServiceTime* +
@@ -7180,7 +7315,8 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 |===
 
@@ -7235,7 +7371,8 @@ Total number of active requests.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *at_plus.count* +
@@ -7249,7 +7386,8 @@ Total number of query requests with `at_plus` index consistency.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *audit_actions.count* +
@@ -7266,7 +7404,8 @@ Records in the output queue that have not yet been sent to the server are not co
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *audit_actions_failed.count* +
@@ -7280,7 +7419,8 @@ The total number of audit records sent to the server that failed.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *audit_requests_filtered.count* +
@@ -7294,7 +7434,8 @@ The number of potentially auditable requests that cause no audit action to be ta
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *audit_requests_total.count* +
@@ -7308,7 +7449,8 @@ The total number of potentially auditable requests sent to the query engine.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *cancelled.count* +
@@ -7322,7 +7464,8 @@ Total number of cancelled requests.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *deletes.count* +
@@ -7336,7 +7479,8 @@ Total number of DELETE operations.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *errors.count* +
@@ -7350,7 +7494,8 @@ The total number of query errors returned so far.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *index_scans.count* +
@@ -7364,7 +7509,8 @@ Total number of secondary index scans.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *inserts.count* +
@@ -7378,7 +7524,8 @@ Total number of INSERT operations.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *invalid_requests.count* +
@@ -7392,7 +7539,8 @@ Total number of requests for unsupported endpoints.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *mutations.count* +
@@ -7406,7 +7554,8 @@ Total number of document mutations.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *prepared.count* +
@@ -7420,7 +7569,8 @@ Total number of prepared statements executed.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *primary_scans.count* +
@@ -7434,7 +7584,8 @@ Total number of primary index scans.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *queued_requests.count* +
@@ -7448,7 +7599,8 @@ Total number of queued requests.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *request_time.count* +
@@ -7462,7 +7614,8 @@ Total end-to-end time to process all queries (ns).
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *request_timer.15m.rate* +
@@ -7478,7 +7631,8 @@ Number of query requests processed per second.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *request_timer.1m.rate* +
@@ -7494,7 +7648,8 @@ Number of query requests processed per second.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *request_timer.5m.rate* +
@@ -7510,7 +7665,8 @@ Number of query requests processed per second.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *request_timer.75%* +
@@ -7526,7 +7682,8 @@ The 75th percentile.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *request_timer.95%* +
@@ -7542,7 +7699,8 @@ The 95th percentile.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *request_timer.99%* +
@@ -7558,7 +7716,8 @@ The 99th percentile.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *request_timer.99.9%* +
@@ -7574,7 +7733,8 @@ The 99.9th percentile.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *request_timer.count* +
@@ -7588,7 +7748,8 @@ Total number of query requests.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *request_timer.max* +
@@ -7604,7 +7765,8 @@ The maximum value.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *request_timer.mean* +
@@ -7620,7 +7782,8 @@ The mean value.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *request_timer.mean.rate* +
@@ -7636,7 +7799,8 @@ Mean rate since the query service started.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *request_timer.median* +
@@ -7652,7 +7816,8 @@ The median value.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *request_timer.min* +
@@ -7668,7 +7833,8 @@ The minimum value.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *request_timer.stddev* +
@@ -7684,7 +7850,8 @@ The standard deviation.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *requests.count* +
@@ -7698,7 +7865,8 @@ Total number of query requests.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *requests_1000ms.count* +
@@ -7712,7 +7880,8 @@ Number of queries that take longer than 1000ms.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *requests_250ms.count* +
@@ -7726,7 +7895,8 @@ Number of queries that take longer than 250ms.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *requests_5000ms.count* +
@@ -7740,7 +7910,8 @@ Number of queries that take longer than 5000ms.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *requests_500ms.count* +
@@ -7754,7 +7925,8 @@ Number of queries that take longer than 500ms.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *result_count.count* +
@@ -7768,7 +7940,8 @@ Total number of results (documents) returned by the query engine.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *result_size.count* +
@@ -7782,7 +7955,8 @@ Total size of data returned by the query engine (bytes).
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *scan_plus.count* +
@@ -7796,7 +7970,8 @@ Total number of query requests with `request_plus` index consistency.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *selects.count* +
@@ -7810,7 +7985,8 @@ Total number of SELECT requests.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *service_time.count* +
@@ -7824,7 +8000,8 @@ Time to execute all queries (ns).
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *unbounded.count* +
@@ -7838,7 +8015,8 @@ Total number of query requests with `not_bounded` index consistency.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *updates.count* +
@@ -7852,7 +8030,8 @@ Total number of UPDATE requests.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *warnings.count* +
@@ -7866,7 +8045,8 @@ The total number of query warnings returned so far.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 |===
 
@@ -7921,7 +8101,8 @@ The number of reads and retries for each bucket.
 
 [%hardbreaks]
 {blank}
-| Object
+a| Object
+
 
 a| 
 *uptime* +
@@ -7935,7 +8116,8 @@ The uptime of the query engine.
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *local.time* +
@@ -7949,7 +8131,8 @@ The local time of the query engine.
 
 [%hardbreaks]
 {blank}
-| Date (date-time)
+a| Date (date-time)
+
 
 a| 
 *version* +
@@ -7963,7 +8146,8 @@ The version of the query engine.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *total.threads* +
@@ -7977,7 +8161,8 @@ The number of active threads used by the query engine.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *cores* +
@@ -7991,7 +8176,8 @@ The maximum number of logical cores available to the query engine.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *ffdc.total* +
@@ -8005,7 +8191,8 @@ The total number of times FFDC has been invoked since the last restart.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *gc.num* +
@@ -8019,7 +8206,8 @@ The target heap size of the next garbage collection cycle.
 
 [%hardbreaks]
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| 
 *gc.pause.time* +
@@ -8033,7 +8221,8 @@ The total time spent pausing for garbage collection since the query engine start
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *gc.pause.percent* +
@@ -8047,7 +8236,8 @@ The percentage of time spent pausing for garbage collection since the last time 
 
 [%hardbreaks]
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| 
 *healthy* +
@@ -8061,7 +8251,8 @@ False when either the unbounded or plus request queues are full; true otherwise.
 
 [%hardbreaks]
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *host.memory.free* +
@@ -8075,7 +8266,8 @@ Amount of free memory on the host.
 
 [%hardbreaks]
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| 
 *host.memory.quota* +
@@ -8091,7 +8283,8 @@ This reflects the node-quota setting.
 
 [%hardbreaks]
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| 
 *host.memory.total* +
@@ -8105,7 +8298,8 @@ Total memory on the host.
 
 [%hardbreaks]
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| 
 *host.memory.value_quota* +
@@ -8119,7 +8313,8 @@ This the total document memory quota on the node.
 
 [%hardbreaks]
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| 
 *load* +
@@ -8133,7 +8328,8 @@ A calculation for how busy the server is.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *loadfactor* +
@@ -8147,7 +8343,8 @@ The moving 15 minute average of the load calculation.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *memory.usage* +
@@ -8163,7 +8360,8 @@ This increases as heap objects are allocated, and decreases as objects are freed
 
 [%hardbreaks]
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| 
 *memory.total* +
@@ -8179,7 +8377,8 @@ This increases as heap objects are allocated, but does not decrease when objects
 
 [%hardbreaks]
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| 
 *memory.system* +
@@ -8195,7 +8394,8 @@ This measures the virtual address space reserved by the query engine for heaps, 
 
 [%hardbreaks]
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| 
 *node* +
@@ -8209,7 +8409,8 @@ The name or IP address and port of the node.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *node.allocated.values* +
@@ -8225,7 +8426,8 @@ The total number of values allocated to contain documents or computations around
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *node.memory.usage* +
@@ -8239,7 +8441,8 @@ The currently allocated document memory on the node.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *cpu.user.percent* +
@@ -8255,7 +8458,8 @@ The percentage of time spent executing user code since the last time the statist
 
 [%hardbreaks]
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| 
 *cpu.sys.percent* +
@@ -8271,7 +8475,8 @@ The percentage of time spent executing system code since the last time the stati
 
 [%hardbreaks]
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| 
 *process.memory.usage* +
@@ -8285,7 +8490,8 @@ Current process memory use.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *process.percore.cpupercent* +
@@ -8299,7 +8505,8 @@ Average CPU usage per core.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *process.rss* +
@@ -8313,7 +8520,8 @@ Process RSS (bytes)
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *process.service.usage* +
@@ -8327,7 +8535,8 @@ The number of active servicers for the dominant workload &mdash; unbound queue s
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *request.completed.count* +
@@ -8341,7 +8550,8 @@ Total number of completed requests.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *request.active.count* +
@@ -8355,7 +8565,8 @@ Total number of active requests.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *request.per.sec.1min* +
@@ -8371,7 +8582,8 @@ Number of query requests processed per second.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *request.per.sec.5min* +
@@ -8387,7 +8599,8 @@ Number of query requests processed per second.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *request.per.sec.15min* +
@@ -8403,7 +8616,8 @@ Number of query requests processed per second.
 
 [%hardbreaks]
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *request.queued.count* +
@@ -8417,7 +8631,8 @@ Number of queued requests.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *request.quota.used.hwm* +
@@ -8431,7 +8646,8 @@ High water mark for request quota use.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *request_time.mean* +
@@ -8447,7 +8663,8 @@ The mean value.
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *request_time.median* +
@@ -8463,7 +8680,8 @@ The median value.
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *request_time.80percentile* +
@@ -8479,7 +8697,8 @@ The 80th percentile.
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *request_time.95percentile* +
@@ -8495,7 +8714,8 @@ The 95th percentile.
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *request_time.99percentile* +
@@ -8511,7 +8731,8 @@ The 99th percentile.
 
 [%hardbreaks]
 {blank}
-| String (duration)
+a| String (duration)
+
 
 a| 
 *request.prepared.percent* +
@@ -8525,7 +8746,8 @@ Percentage of requests that are prepared statements.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *servicers.paused.count* +
@@ -8541,7 +8763,8 @@ Number of servicers temporarily paused due to memory pressure.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *servicers.paused.total* +
@@ -8557,7 +8780,8 @@ Number of times servicers have been temporarily paused.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *temp.hwm* +
@@ -8573,7 +8797,8 @@ High water mark for temp space use directly by query.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *temp.usage* +
@@ -8589,7 +8814,8 @@ Current Query temp space use.
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 |===
 
@@ -8662,37 +8888,7 @@ __Type__ : http
 
 
 
-// markup not found, no include::{specDir}security/None/security-scheme-before.adoc[opts=optional]
-
-
-[[security-none]]
-= None
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}security/None/security-scheme-begin.adoc[opts=optional]
-
-
-[markdown]
---
-No authentication is required for the [Ping](#get_ping) or [Get Debug Variables](#get_debug_vars) endpoints.
---
-
-[%hardbreaks]
-__Type__ : http
-
-
-// markup not found, no include::{specDir}security/None/security-scheme-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}security/None/security-scheme-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
+include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
