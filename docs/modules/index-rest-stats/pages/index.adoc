@@ -38,13 +38,55 @@ __Version__ : 7.6
 = Host information
 
 ....
-http://localhost:9102
+{scheme}://{host}:{port}
 ....
 
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
+
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `pass:c[http]`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Index service.
+--
+
+[%hardbreaks]
+
+*Example:* `pass:c[localhost]`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Index service REST port. Use `19102` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `9102`, `19102`
+*Example:* `pass:c[9102]`
+// end
+
+|===
 
 
-
-include::{specDir}overview/document-end.adoc[opts=optional]
+// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
@@ -172,13 +214,13 @@ For example, `bucket.scope.collection`.
 If any part of the keyspace name contains a dot, that part of the keyspace name must be wrapped in backticks.
 For example, `` `bucket.1`.scope.collection ``.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *index* +
@@ -189,13 +231,13 @@ a|
 [markdown]
 --
 The name of an index.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -216,14 +258,14 @@ a|
 [markdown]
 --
 Whether the output should be formatted with indentations and newlines.
-
 --
 
 [%hardbreaks]
 *Default:* `false`
 {blank}
 
-| Boolean
+a| Boolean
+
 
 
 a| *partition* +
@@ -234,14 +276,14 @@ a|
 [markdown]
 --
 Whether statistics for index partitions should be included.
-
 --
 
 [%hardbreaks]
 *Default:* `false`
 {blank}
 
-| Boolean
+a| Boolean
+
 
 
 a| *redact* +
@@ -253,14 +295,14 @@ a|
 --
 Whether keyspace and index names should be redacted in the output.
 
-
 --
 
 [%hardbreaks]
 *Default:* `false`
 {blank}
 
-| Boolean
+a| Boolean
+
 
 
 a| *skipEmpty* +
@@ -271,14 +313,14 @@ a|
 [markdown]
 --
 Whether empty, null, or zero statistics should be omitted from the output.
-
 --
 
 [%hardbreaks]
 *Default:* `false`
 {blank}
 
-| Boolean
+a| Boolean
+
 
 
 |===
@@ -324,15 +366,15 @@ a| [markdown]
 --
 Success. Returns an object containing one nested `<keyspace>:<index>` object.  If the [partition](#get_index_stats-parameters) query parameter was set to `true`, the returned object also contains one or more `Partition-<num>` objects &mdash; one for each index partition found on the specified node. 
 --
-| <<IndexPartitions>>
+a| <<PartIdx>>
+
 
 | 404
 a| [markdown]
 --
 Not found. Returns the complete specified keyspace name, and the specified index name if provided.  The keyspace name may be incorrect, the keyspace may contain no indexes, the index may not be located in the specified keyspace, or the index may be warming up after a restart. 
 --
-| 
-
+a| 
 
 |===
 
@@ -471,13 +513,13 @@ For example, `bucket.scope.collection`.
 If any part of the keyspace name contains a dot, that part of the keyspace name must be wrapped in backticks.
 For example, `` `bucket.1`.scope.collection ``.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -498,14 +540,14 @@ a|
 [markdown]
 --
 Whether the output should be formatted with indentations and newlines.
-
 --
 
 [%hardbreaks]
 *Default:* `false`
 {blank}
 
-| Boolean
+a| Boolean
+
 
 
 a| *redact* +
@@ -517,14 +559,14 @@ a|
 --
 Whether keyspace and index names should be redacted in the output.
 
-
 --
 
 [%hardbreaks]
 *Default:* `false`
 {blank}
 
-| Boolean
+a| Boolean
+
 
 
 a| *skipEmpty* +
@@ -535,14 +577,14 @@ a|
 [markdown]
 --
 Whether empty, null, or zero statistics should be omitted from the output.
-
 --
 
 [%hardbreaks]
 *Default:* `false`
 {blank}
 
-| Boolean
+a| Boolean
+
 
 
 |===
@@ -588,15 +630,15 @@ a| [markdown]
 --
 Success. Returns an object containing one or more nested `<keyspace>:<index>` objects &mdash; one for each index found within the specified bucket, scope, or collection. 
 --
-| <<Indexes>>
+a| <<PartIdxIndexes>>
+
 
 | 404
 a| [markdown]
 --
 Not found. Returns the complete specified keyspace name, and the specified index name if provided.  The keyspace name may be incorrect, the keyspace may contain no indexes, the index may not be located in the specified keyspace, or the index may be warming up after a restart. 
 --
-| 
-
+a| 
 
 |===
 
@@ -729,14 +771,14 @@ a|
 [markdown]
 --
 Whether the output should be formatted with indentations and newlines.
-
 --
 
 [%hardbreaks]
 *Default:* `false`
 {blank}
 
-| Boolean
+a| Boolean
+
 
 
 a| *redact* +
@@ -748,14 +790,14 @@ a|
 --
 Whether keyspace and index names should be redacted in the output.
 
-
 --
 
 [%hardbreaks]
 *Default:* `false`
 {blank}
 
-| Boolean
+a| Boolean
+
 
 
 a| *skipEmpty* +
@@ -766,14 +808,14 @@ a|
 [markdown]
 --
 Whether empty, null, or zero statistics should be omitted from the output.
-
 --
 
 [%hardbreaks]
 *Default:* `false`
 {blank}
 
-| Boolean
+a| Boolean
+
 
 
 |===
@@ -819,7 +861,8 @@ a| [markdown]
 --
 Success. Returns an object containing a nested `indexer` object, and usually one or more nested `<keyspace>:<index>` objects &mdash; one for each index found on the specified node. 
 --
-| <<NodeIndexes>>
+a| <<NodeIdx>>
+
 
 
 |===
@@ -851,9 +894,9 @@ Success. Returns an object containing a nested `indexer` object, and usually one
 | Type | Name
 
 | http (basic)
-| <<security-nodeStatistics>>
-| http (basic)
 | <<security-indexStatistics>>
+| http (basic)
+| <<security-nodeStatistics>>
 
 |===
 
@@ -918,492 +961,29 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-<<Index>>
-<<IndexPartitions>>
-<<Indexes>>
-<<Node>>
-<<NodeIndexes>>
-<<Nodes>>
-<<Partitions>>
+<<NodeIdx>>
+<<NodeIdxNode>>
+<<NodeIdxNodeIndexer>>
+<<PartIdx>>
+<<PartIdxIndexes>>
+<<PartIdxPartitions>>
+<<PartIdxPartitionsIndex>>
 endif::[]
 
 
 
-// markup not found, no include::{specDir}definitions/Index/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/NodeIdx/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#Index]
-= Index
+[#NodeIdx]
+= Node and Indexes
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/Index/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Index[]
-
-ifdef::model-descriptions[]
-//tag::desc-Index[]
-A nested object containing statistics for an index or index partition.
-//end::desc-Index[]
-endif::model-descriptions[]
-
-[cols="25,55,20"]
-|===
-| Property | | Schema
-
-a| 
-*avg_array_length* +
-_optional_
-a| 
-
-[markdown]
---
-(Array indexes only.)
-The average number of items indexed per document.
-
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*avg_drain_rate* +
-_optional_
-a| 
-
-[markdown]
---
-Average number of items flushed from memory to disk storage per second.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*avg_item_size* +
-_optional_
-a| 
-
-[markdown]
---
-Average size of the keys.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*avg_scan_latency* +
-_optional_
-a| 
-
-[markdown]
---
-Average time to serve a scan request (nanoseconds).
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*cache_hit_percent* +
-_optional_
-a| [.edition]##{enterprise}##
-
-[markdown]
---
-Percentage of memory accesses that were served from the managed cache.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*cache_hits* +
-_optional_
-a| 
-
-[markdown]
---
-Accesses to this index data from RAM.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*cache_misses* +
-_optional_
-a| 
-
-[markdown]
---
-Accesses to this index data from disk.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*data_size* +
-_optional_
-a| 
-
-[markdown]
---
-The size of indexable data that is maintained for the index or partition (bytes).
---
-
-[%hardbreaks]
-*Example:* `95728`
-{blank}
-| Integer
-
-a| 
-*disk_size* +
-_optional_
-a| 
-
-[markdown]
---
-Total disk file size consumed by the index or partition.
---
-
-[%hardbreaks]
-*Example:* `889054`
-{blank}
-| Integer
-
-a| 
-*docid_count* +
-_optional_
-a| 
-
-[markdown]
---
-(Array indexes only.)
-The number of documents currently indexed.
-
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*frag_percent* +
-_optional_
-a| 
-
-[markdown]
---
-Percentage fragmentation of the index.
-
-TIP: At small index sizes of less than a hundred kB, the static overhead of the index disk file will inflate the index fragmentation percentage.
-
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*initial_build_progress* +
-_optional_
-a| 
-
-[markdown]
---
-Percentage initial build progress for the index.
-When initial build is completed, the value is `100`.
-
-For an index partition, the value is listed as `0`.
-
---
-
-[%hardbreaks]
-*Example:* `100`
-{blank}
-| Integer
-
-a| 
-*items_count* +
-_optional_
-a| 
-
-[markdown]
---
-The number of items currently indexed.
---
-
-[%hardbreaks]
-*Example:* `2155`
-{blank}
-| Integer
-
-a| 
-*last_known_scan_time* +
-_optional_
-a| 
-
-[markdown]
---
-Time of the last scan request received for this index (Unix timestamp in nanoseconds).
-This may be useful for determining whether this index is currently unused.
-
-NOTE: This statistic is persisted to disk every 15 minutes, so it is preserved when the indexer restarts.
-
---
-
-[%hardbreaks]
-{blank}
-| Long (int64)
-
-a| 
-*num_docs_indexed* +
-_optional_
-a| 
-
-[markdown]
---
-Number of documents indexed by the indexer since last startup.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*num_docs_pending* +
-_optional_
-a| 
-
-[markdown]
---
-Number of documents pending to be indexed.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*num_docs_queued* +
-_optional_
-a| 
-
-[markdown]
---
-Number of documents queued to be indexed.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*num_items_flushed* +
-_optional_
-a| 
-
-[markdown]
---
-Number of items flushed from memory to disk storage.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*num_pending_requests* +
-_optional_
-a| 
-
-[markdown]
---
-Number of requests received but not yet served by the indexer.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*num_requests* +
-_optional_
-a| 
-
-[markdown]
---
-Number of requests served by the indexer since last startup.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*num_rows_returned* +
-_optional_
-a| 
-
-[markdown]
---
-Total number of rows returned so far by the indexer.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*num_scan_errors* +
-_optional_
-a| 
-
-[markdown]
---
-Number of requests that failed due to errors other than timeout.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*num_scan_timeouts* +
-_optional_
-a| 
-
-[markdown]
---
-Number of requests that timed out, either waiting for snapshots or during scan in progress.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*recs_in_mem* +
-_optional_
-a| [.edition]##{enterprise}##
-
-[markdown]
---
-For standard index storage, this is the number of records in this index that are stored in memory.
-
-For memory-optimized index storage, this is the same as `items_count`.
-
---
-
-[%hardbreaks]
-*Example:* `2155`
-{blank}
-| Integer
-
-a| 
-*recs_on_disk* +
-_optional_
-a| [.edition]##{enterprise}##
-
-[markdown]
---
-For standard index storage, this is the number of records in this index that are stored on disk.
-For memory-optimized index storage, this is `0`.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*resident_percent* +
-_optional_
-a| [.edition]##{enterprise}##
-
-[markdown]
---
-Percentage of the data held in memory.
---
-
-[%hardbreaks]
-*Example:* `100`
-{blank}
-| Integer
-
-a| 
-*scan_bytes_read* +
-_optional_
-a| 
-
-[markdown]
---
-Number of bytes read by a scan since last startup.
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-a| 
-*total_scan_duration* +
-_optional_
-a| 
-
-[markdown]
---
-Total time spent by the indexer in scanning rows since last startup (nanoseconds).
---
-
-[%hardbreaks]
-{blank}
-| Integer
-
-|===
-
-//end::Index[]
-
-
-
-
-// markup not found, no include::{specDir}definitions/Index/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/Index/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/IndexPartitions/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#IndexPartitions]
-= Index and Partitions
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/IndexPartitions/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/NodeIdx/definition-begin.adoc[opts=optional]
 
 
 .icon:bars[fw] Composite Schema
@@ -1411,40 +991,42 @@ endif::collapse-models[]
 
 All of the following:
 
-* <<Indexes>>
-
-* <<Partitions>>
+* <<NodeIdxNode>>
 
 
+* <<PartIdxIndexes>>
 
-// markup not found, no include::{specDir}definitions/IndexPartitions/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/NodeIdx/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/IndexPartitions/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/NodeIdx/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/Indexes/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/NodeIdxNode/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#Indexes]
-= Indexes
+[#NodeIdxNode]
+= Nodes
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/Indexes/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/NodeIdxNode/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::Indexes[]
+//tag::NodeIdxNode[]
 
 
 [cols="25,55,20"]
@@ -1452,59 +1034,60 @@ endif::collapse-models[]
 | Property | | Schema
 
 a| 
-_additional +
-property_
+*indexer* +
+_required_
 a| 
 
 [markdown]
 --
-include::index.adoc[tag=desc-Index, opts=optional]
+include::index.adoc[tag=desc-NodeIdxNodeIndexer, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-| <<Index>>
+a| <<NodeIdxNodeIndexer>>
+
 
 |===
 
-//end::Indexes[]
+//end::NodeIdxNode[]
 
 
 
 
-include::{specDir}definitions/Indexes/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/NodeIdxNode/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Indexes/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/NodeIdxNode/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/Node/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/NodeIdxNodeIndexer/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#Node]
+[#NodeIdxNodeIndexer]
 = Node
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/Node/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/NodeIdxNodeIndexer/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::Node[]
+//tag::NodeIdxNodeIndexer[]
 
 ifdef::model-descriptions[]
-//tag::desc-Node[]
+//tag::desc-NodeIdxNodeIndexer[]
 A nested object containing statistics for the current index node.
-//end::desc-Node[]
+//end::desc-NodeIdxNodeIndexer[]
 endif::model-descriptions[]
 
 [cols="25,55,20"]
@@ -1525,7 +1108,8 @@ Current state of the Index service on this node.
 *Values:* `"Active"`, `"Pause"`, `"Warmup"`
 *Example:* `pass:c["Active"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *memory_quota* +
@@ -1542,7 +1126,8 @@ Memory quota assigned to the Index service on this node by user configuration (b
 *Maximum:* `1099511992567`
 *Example:* `536870912`
 {blank}
-| Long (int64)
+a| Long (int64)
+
 
 a| 
 *memory_total_storage* +
@@ -1559,7 +1144,8 @@ This also accounts for memory fragmentation.
 [%hardbreaks]
 *Example:* `71794688`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *memory_used* +
@@ -1574,7 +1160,8 @@ Amount of memory used by the Index service on this node (bytes).
 [%hardbreaks]
 *Example:* `360192000`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *total_indexer_gc_pause_ns* +
@@ -1589,37 +1176,38 @@ The total time the indexer has spent in GC pause since last startup (ns).
 [%hardbreaks]
 *Example:* `309778455`
 {blank}
-| Integer
+a| Integer
+
 
 |===
 
-//end::Node[]
+//end::NodeIdxNodeIndexer[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/Node/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/NodeIdxNodeIndexer/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Node/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/NodeIdxNodeIndexer/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/NodeIndexes/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/PartIdx/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#NodeIndexes]
-= Node and Indexes
+[#PartIdx]
+= Index and Partitions
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/NodeIndexes/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/PartIdx/definition-begin.adoc[opts=optional]
 
 
 .icon:bars[fw] Composite Schema
@@ -1627,95 +1215,42 @@ endif::collapse-models[]
 
 All of the following:
 
-* <<Nodes>>
-
-* <<Indexes>>
+* <<PartIdxIndexes>>
 
 
+* <<PartIdxPartitions>>
 
-// markup not found, no include::{specDir}definitions/NodeIndexes/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/PartIdx/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/NodeIndexes/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/PartIdx/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/Nodes/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/PartIdxIndexes/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#Nodes]
-= Nodes
+[#PartIdxIndexes]
+= Indexes
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/Nodes/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/PartIdxIndexes/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::Nodes[]
-
-
-[cols="25,55,20"]
-|===
-| Property | | Schema
-
-a| 
-*indexer* +
-_required_
-a| 
-
-[markdown]
---
-include::index.adoc[tag=desc-Node, opts=optional]
---
-
-[%hardbreaks]
-{blank}
-| <<Node>>
-
-|===
-
-//end::Nodes[]
-
-
-
-
-// markup not found, no include::{specDir}definitions/Nodes/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/Nodes/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/Partitions/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#Partitions]
-= Partitions
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/Partitions/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Partitions[]
+//tag::PartIdxIndexes[]
 
 
 [cols="25,55,20"]
@@ -1729,26 +1264,574 @@ a|
 
 [markdown]
 --
-include::index.adoc[tag=desc-Index, opts=optional]
+include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-| <<Index>>
+a| <<PartIdxPartitionsIndex>>
+
 
 |===
 
-//end::Partitions[]
+//end::PartIdxIndexes[]
 
 
 
 
-include::{specDir}definitions/Partitions/definition-end.adoc[opts=optional]
+include::{specDir}definitions/PartIdxIndexes/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Partitions/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/PartIdxIndexes/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/PartIdxPartitions/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#PartIdxPartitions]
+= Partitions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/PartIdxPartitions/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::PartIdxPartitions[]
+
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+_additional +
+property_
+a| 
+
+[markdown]
+--
+include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a| <<PartIdxPartitionsIndex>>
+
+
+|===
+
+//end::PartIdxPartitions[]
+
+
+
+
+include::{specDir}definitions/PartIdxPartitions/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/PartIdxPartitions/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/PartIdxPartitionsIndex/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#PartIdxPartitionsIndex]
+= Index
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/PartIdxPartitionsIndex/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::PartIdxPartitionsIndex[]
+
+ifdef::model-descriptions[]
+//tag::desc-PartIdxPartitionsIndex[]
+A nested object containing statistics for an index or index partition.
+//end::desc-PartIdxPartitionsIndex[]
+endif::model-descriptions[]
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+*avg_array_length* +
+_optional_
+a| 
+
+[markdown]
+--
+(Array indexes only.)
+The average number of items indexed per document.
+
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*avg_drain_rate* +
+_optional_
+a| 
+
+[markdown]
+--
+Average number of items flushed from memory to disk storage per second.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*avg_item_size* +
+_optional_
+a| 
+
+[markdown]
+--
+Average size of the keys.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*avg_scan_latency* +
+_optional_
+a| 
+
+[markdown]
+--
+Average time to serve a scan request (nanoseconds).
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*cache_hit_percent* +
+_optional_
+a| [.edition]##{enterprise}##
+
+[markdown]
+--
+Percentage of memory accesses that were served from the managed cache.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*cache_hits* +
+_optional_
+a| 
+
+[markdown]
+--
+Accesses to this index data from RAM.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*cache_misses* +
+_optional_
+a| 
+
+[markdown]
+--
+Accesses to this index data from disk.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*data_size* +
+_optional_
+a| 
+
+[markdown]
+--
+The size of indexable data that is maintained for the index or partition (bytes).
+--
+
+[%hardbreaks]
+*Example:* `95728`
+{blank}
+a| Integer
+
+
+a| 
+*disk_size* +
+_optional_
+a| 
+
+[markdown]
+--
+Total disk file size consumed by the index or partition.
+--
+
+[%hardbreaks]
+*Example:* `889054`
+{blank}
+a| Integer
+
+
+a| 
+*docid_count* +
+_optional_
+a| 
+
+[markdown]
+--
+(Array indexes only.)
+The number of documents currently indexed.
+
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*frag_percent* +
+_optional_
+a| 
+
+[markdown]
+--
+Percentage fragmentation of the index.
+
+TIP: At small index sizes of less than a hundred kB, the static overhead of the index disk file will inflate the index fragmentation percentage.
+
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*initial_build_progress* +
+_optional_
+a| 
+
+[markdown]
+--
+Percentage initial build progress for the index.
+When initial build is completed, the value is `100`.
+
+For an index partition, the value is listed as `0`.
+
+--
+
+[%hardbreaks]
+*Example:* `100`
+{blank}
+a| Integer
+
+
+a| 
+*items_count* +
+_optional_
+a| 
+
+[markdown]
+--
+The number of items currently indexed.
+--
+
+[%hardbreaks]
+*Example:* `2155`
+{blank}
+a| Integer
+
+
+a| 
+*last_known_scan_time* +
+_optional_
+a| 
+
+[markdown]
+--
+Time of the last scan request received for this index (Unix timestamp in nanoseconds).
+This may be useful for determining whether this index is currently unused.
+
+NOTE: This statistic is persisted to disk every 15 minutes, so it is preserved when the indexer restarts.
+
+--
+
+[%hardbreaks]
+{blank}
+a| Long (int64)
+
+
+a| 
+*num_docs_indexed* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of documents indexed by the indexer since last startup.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*num_docs_pending* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of documents pending to be indexed.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*num_docs_queued* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of documents queued to be indexed.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*num_items_flushed* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of items flushed from memory to disk storage.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*num_pending_requests* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of requests received but not yet served by the indexer.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*num_requests* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of requests served by the indexer since last startup.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*num_rows_returned* +
+_optional_
+a| 
+
+[markdown]
+--
+Total number of rows returned so far by the indexer.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*num_scan_errors* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of requests that failed due to errors other than timeout.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*num_scan_timeouts* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of requests that timed out, either waiting for snapshots or during scan in progress.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*recs_in_mem* +
+_optional_
+a| [.edition]##{enterprise}##
+
+[markdown]
+--
+For standard index storage, this is the number of records in this index that are stored in memory.
+
+For memory-optimized index storage, this is the same as `items_count`.
+
+--
+
+[%hardbreaks]
+*Example:* `2155`
+{blank}
+a| Integer
+
+
+a| 
+*recs_on_disk* +
+_optional_
+a| [.edition]##{enterprise}##
+
+[markdown]
+--
+For standard index storage, this is the number of records in this index that are stored on disk.
+For memory-optimized index storage, this is `0`.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*resident_percent* +
+_optional_
+a| [.edition]##{enterprise}##
+
+[markdown]
+--
+Percentage of the data held in memory.
+--
+
+[%hardbreaks]
+*Example:* `100`
+{blank}
+a| Integer
+
+
+a| 
+*scan_bytes_read* +
+_optional_
+a| 
+
+[markdown]
+--
+Number of bytes read by a scan since last startup.
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+a| 
+*total_scan_duration* +
+_optional_
+a| 
+
+[markdown]
+--
+Total time spent by the indexer in scanning rows since last startup (nanoseconds).
+--
+
+[%hardbreaks]
+{blank}
+a| Integer
+
+
+|===
+
+//end::PartIdxPartitionsIndex[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/PartIdxPartitionsIndex/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/PartIdxPartitionsIndex/definition-after.adoc[opts=optional]
 
 
 
@@ -1775,7 +1858,7 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}security/Node Statistics/security-scheme-before.adoc[opts=optional]
+// markup not found, no include::{specDir}security/NodeStatistics/security-scheme-before.adoc[opts=optional]
 
 
 [[security-nodeStatistics]]
@@ -1783,12 +1866,12 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Node Statistics/security-scheme-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}security/NodeStatistics/security-scheme-begin.adoc[opts=optional]
 
 
 [markdown]
 --
-To get [Node statistics](#Node), users must have the Query System Catalog RBAC role.
+To get [Node statistics](#NodeIdxNodeIndexer), users must have the Query System Catalog RBAC role.
 
 --
 
@@ -1796,17 +1879,17 @@ To get [Node statistics](#Node), users must have the Query System Catalog RBAC r
 __Type__ : http
 
 
-// markup not found, no include::{specDir}security/Node Statistics/security-scheme-end.adoc[opts=optional]
+// markup not found, no include::{specDir}security/NodeStatistics/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}security/Node Statistics/security-scheme-after.adoc[opts=optional]
+// markup not found, no include::{specDir}security/NodeStatistics/security-scheme-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}security/Index Statistics/security-scheme-before.adoc[opts=optional]
+// markup not found, no include::{specDir}security/IndexStatistics/security-scheme-before.adoc[opts=optional]
 
 
 [[security-indexStatistics]]
@@ -1814,27 +1897,27 @@ __Type__ : http
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Index Statistics/security-scheme-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}security/IndexStatistics/security-scheme-begin.adoc[opts=optional]
 
 
 [markdown]
 --
-To get [Index statistics](#Index) for all indexes in a bucket, scope, or collection, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on that bucket, scope, or collection.
+To get [Index statistics](#PartIdxPartitionsIndex) for all indexes in a bucket, scope, or collection, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on that bucket, scope, or collection.
 
 
-To get [Index statistics](#Index) for an individual index, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on the bucket, scope, and collection containing that index.
+To get [Index statistics](#PartIdxPartitionsIndex) for an individual index, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on the bucket, scope, and collection containing that index.
 --
 
 [%hardbreaks]
 __Type__ : http
 
 
-// markup not found, no include::{specDir}security/Index Statistics/security-scheme-end.adoc[opts=optional]
+// markup not found, no include::{specDir}security/IndexStatistics/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}security/Index Statistics/security-scheme-after.adoc[opts=optional]
+// markup not found, no include::{specDir}security/IndexStatistics/security-scheme-after.adoc[opts=optional]
 
 
 

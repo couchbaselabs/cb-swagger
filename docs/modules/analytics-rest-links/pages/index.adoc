@@ -27,7 +27,6 @@ include::{specDir}overview/document-before.adoc[opts=optional]
 --
 The Analytics Links REST API is provided by the Analytics service.
 This API enables you to manage the links to remote Couchbase clusters and external data sources.
-
 --
 
 [discrete#version]
@@ -39,13 +38,55 @@ __Version__ : 7.6
 = Host information
 
 ....
-http://localhost:8095
+{scheme}://{host}:{port}
 ....
 
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
+
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `pass:c[http]`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Analytics service.
+--
+
+[%hardbreaks]
+
+*Example:* `pass:c[localhost]`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Analytics service REST port. Use `18095` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `8095`, `18095`
+*Example:* `pass:c[8095]`
+// end
+
+|===
 
 
-
-include::{specDir}overview/document-end.adoc[opts=optional]
+// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
@@ -173,13 +214,13 @@ a|
 [markdown]
 --
 The name of the Analytics scope containing the link.  With this parameter, the scope name may only contain a single identifier. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *name* +
@@ -190,13 +231,13 @@ a|
 [markdown]
 --
 The name of the link.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -244,21 +285,22 @@ a| [markdown]
 --
 The operation was successful.
 --
-| 
-
+a| 
 | 400
 a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 
 |===
@@ -395,13 +437,13 @@ a|
 [markdown]
 --
 The name of the Analytics scope containing the link.  With this parameter, the scope name may only contain a single identifier. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *name* +
@@ -412,13 +454,13 @@ a|
 [markdown]
 --
 The name of the link.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *type* +
@@ -428,15 +470,16 @@ a|
 
 [markdown]
 --
-The type of the link. For details, see [type](#type).
 
+include::index.adoc[tag=desc-CommonType, opts=optional]
 --
 
 [%hardbreaks]
-*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-| String
+a| 
+include::index.adoc[tag=type-CommonType, opts=optional]
 
 
 a| *hostname* +
@@ -447,31 +490,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The remote hostname. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
 
-
-a| *encryption* +
-_required_
-a| 
-
-
-[markdown]
---
-For Couchbase links only. The type of encryption used by the link. For details, see [encryption](#encryption).
-
---
-
-[%hardbreaks]
-*Values:* `"none"`, `"half"`, `"full"`
-{blank}
-
-| String
 
 
 a| *username* +
@@ -482,13 +507,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *password* +
@@ -499,13 +524,31 @@ a|
 [markdown]
 --
 For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
+
+
+a| *encryption* +
+_required_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The type of encryption used by the link.  For details, see [encryption](#encryption).
+--
+
+[%hardbreaks]
+*Values:* `&quot;none&quot;`, `&quot;half&quot;`, `&quot;full&quot;`
+{blank}
+
+a| String
+
 
 
 a| *certificate* +
@@ -516,13 +559,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.  You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientCertificate* +
@@ -532,14 +575,14 @@ a|
 
 [markdown]
 --
-For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
-
+For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientKey* +
@@ -550,13 +593,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *accessKeyId* +
@@ -567,13 +610,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 access key ID. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *secretAccessKey* +
@@ -584,13 +627,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 secret access key.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *sessionToken* +
@@ -601,13 +644,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.  Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *region* +
@@ -618,13 +661,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 region. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *serviceEndpoint* +
@@ -635,13 +678,30 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 service endpoint. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
+
+
+a| *endpoint* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links.
+--
+
+[%hardbreaks]
+{blank}
+
+a| String
+
 
 
 a| *accountName* +
@@ -652,13 +712,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *accountKey* +
@@ -669,13 +729,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *sharedAccessSignature* +
@@ -686,13 +746,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *managedIdentityId* +
@@ -703,13 +763,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientId* +
@@ -720,13 +780,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *tenantId* +
@@ -737,13 +797,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientSecret* +
@@ -754,13 +814,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientCertificatePassword* +
@@ -771,48 +831,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
 
-
-a| *endpoint* +
-_optional_
-a| 
-
-
-[markdown]
---
-For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links. 
-
---
-
-[%hardbreaks]
-{blank}
-
-| String
-
-
-a| *applicationDefaultCredentials* +
-_optional_
-a| 
-
-
-[markdown]
---
-For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
-
---
-
-[%hardbreaks]
-*Values:* `"true"`
-{blank}
-
-| String
 
 
 a| *jsonCredentials* +
@@ -823,13 +848,31 @@ a|
 [markdown]
 --
 For Google Cloud Storage links only. The JSON credentials of the link.  This parameter is not allowed if `applicationDefaultCredentials` is provided. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
+
+
+a| *applicationDefaultCredentials* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+--
+
+[%hardbreaks]
+*Values:* `&quot;true&quot;`
+{blank}
+
+a| String
+
 
 
 |===
@@ -877,21 +920,22 @@ a| [markdown]
 --
 The operation was successful.
 --
-| 
-
+a| 
 | 400
 a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 
 |===
@@ -1029,13 +1073,13 @@ a|
 [markdown]
 --
 The name of the Analytics scope containing the link.  With this parameter, the scope name may only contain a single identifier. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *name* +
@@ -1046,13 +1090,13 @@ a|
 [markdown]
 --
 The name of the link.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *type* +
@@ -1062,15 +1106,16 @@ a|
 
 [markdown]
 --
-The type of the link. If this parameter is specified, the value must match the type that was set when the link was created. 
 
+include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 --
 
 [%hardbreaks]
-*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-| String
+a| 
+include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
 
 
 a| *hostname* +
@@ -1081,31 +1126,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The remote hostname. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
 
-
-a| *encryption* +
-_required_
-a| 
-
-
-[markdown]
---
-For Couchbase links only. The type of encryption used by the link. For details, see [encryption](#encryption).
-
---
-
-[%hardbreaks]
-*Values:* `"none"`, `"half"`, `"full"`
-{blank}
-
-| String
 
 
 a| *username* +
@@ -1116,13 +1143,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *password* +
@@ -1133,13 +1160,31 @@ a|
 [markdown]
 --
 For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
+
+
+a| *encryption* +
+_required_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The type of encryption used by the link.  For details, see [encryption](#encryption).
+--
+
+[%hardbreaks]
+*Values:* `&quot;none&quot;`, `&quot;half&quot;`, `&quot;full&quot;`
+{blank}
+
+a| String
+
 
 
 a| *certificate* +
@@ -1150,13 +1195,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.  You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientCertificate* +
@@ -1166,14 +1211,14 @@ a|
 
 [markdown]
 --
-For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
-
+For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientKey* +
@@ -1184,13 +1229,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *accessKeyId* +
@@ -1201,13 +1246,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 access key ID. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *secretAccessKey* +
@@ -1218,13 +1263,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 secret access key.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *sessionToken* +
@@ -1235,13 +1280,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.  Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *region* +
@@ -1252,13 +1297,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 region. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *serviceEndpoint* +
@@ -1269,13 +1314,30 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 service endpoint. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
+
+
+a| *endpoint* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links.
+--
+
+[%hardbreaks]
+{blank}
+
+a| String
+
 
 
 a| *accountName* +
@@ -1286,13 +1348,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *accountKey* +
@@ -1303,13 +1365,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *sharedAccessSignature* +
@@ -1320,13 +1382,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *managedIdentityId* +
@@ -1337,13 +1399,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientId* +
@@ -1354,13 +1416,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *tenantId* +
@@ -1371,13 +1433,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientSecret* +
@@ -1388,13 +1450,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientCertificatePassword* +
@@ -1405,48 +1467,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
 
-
-a| *endpoint* +
-_optional_
-a| 
-
-
-[markdown]
---
-For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links. 
-
---
-
-[%hardbreaks]
-{blank}
-
-| String
-
-
-a| *applicationDefaultCredentials* +
-_optional_
-a| 
-
-
-[markdown]
---
-For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
-
---
-
-[%hardbreaks]
-*Values:* `"true"`
-{blank}
-
-| String
 
 
 a| *jsonCredentials* +
@@ -1457,13 +1484,31 @@ a|
 [markdown]
 --
 For Google Cloud Storage links only. The JSON credentials of the link.  This parameter is not allowed if `applicationDefaultCredentials` is provided. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
+
+
+a| *applicationDefaultCredentials* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+--
+
+[%hardbreaks]
+*Values:* `&quot;true&quot;`
+{blank}
+
+a| String
+
 
 
 |===
@@ -1511,21 +1556,22 @@ a| [markdown]
 --
 The operation was successful.
 --
-| 
-
+a| 
 | 400
 a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 
 |===
@@ -1687,13 +1733,13 @@ With this parameter, the scope name may only contain a single identifier.
 
 This parameter is provided for backward compatibility. Note that it is deprecated, and will be removed in a future release.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *name* +
@@ -1707,13 +1753,13 @@ The name of a link. When this parameter is included, the request only returns in
 
 This parameter is provided for backward compatibility. Note that it is deprecated, and will be removed in a future release.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *type* +
@@ -1725,14 +1771,14 @@ a|
 --
 The type of the link. If this parameter is omitted, all link types are retrieved, excluding the `Local` link.
 
-
 --
 
 [%hardbreaks]
-*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -1778,22 +1824,24 @@ a| [markdown]
 --
 Success. Returns an array of objects, each of which contains information about a link. 
 --
-| <<All>>
-list
+a| <<ResponseAll>>
+ array
 
 | 400
 a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 
 |===
@@ -1929,13 +1977,13 @@ The name of the Analytics scope.
 
 With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -1957,14 +2005,14 @@ a|
 --
 The type of the link. If this parameter is omitted, all link types are retrieved, excluding the `Local` link.
 
-
 --
 
 [%hardbreaks]
-*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -2010,22 +2058,24 @@ a| [markdown]
 --
 Success. Returns an array of objects, each of which contains information about a link. 
 --
-| <<All>>
-list
+a| <<ResponseAll>>
+ array
 
 | 400
 a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 
 |===
@@ -2187,13 +2237,13 @@ The name of the Analytics scope.
 
 With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *name* +
@@ -2204,13 +2254,13 @@ a|
 [markdown]
 --
 The name of the link.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -2257,21 +2307,22 @@ a| [markdown]
 --
 The operation was successful.
 --
-| 
-
+a| 
 | 400
 a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 
 |===
@@ -2407,13 +2458,13 @@ The name of the Analytics scope.
 
 With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *name* +
@@ -2424,13 +2475,13 @@ a|
 [markdown]
 --
 The name of the link.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -2450,16 +2501,16 @@ a|
 
 [markdown]
 --
-The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.
 
-
+include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 --
 
 [%hardbreaks]
-*Values:* `"couchbase"`, `"S3"`, `"azureblob"`, `"gcs"`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-| String
+a| 
+include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
 
 
 |===
@@ -2505,22 +2556,24 @@ a| [markdown]
 --
 Success. Returns an array of objects, each of which contains information about a link. 
 --
-| <<All>>
-list
+a| <<ResponseAll>>
+ array
 
 | 400
 a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 
 |===
@@ -2656,13 +2709,13 @@ The name of the Analytics scope.
 
 With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *name* +
@@ -2673,13 +2726,13 @@ a|
 [markdown]
 --
 The name of the link.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -2701,15 +2754,16 @@ a|
 
 [markdown]
 --
-The type of the link. For details, see [type](#type).
 
+include::index.adoc[tag=desc-CommonType, opts=optional]
 --
 
 [%hardbreaks]
-*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-| String
+a| 
+include::index.adoc[tag=type-CommonType, opts=optional]
 
 
 a| *hostname* +
@@ -2720,31 +2774,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The remote hostname. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
 
-
-a| *encryption* +
-_required_
-a| 
-
-
-[markdown]
---
-For Couchbase links only. The type of encryption used by the link. For details, see [encryption](#encryption).
-
---
-
-[%hardbreaks]
-*Values:* `"none"`, `"half"`, `"full"`
-{blank}
-
-| String
 
 
 a| *username* +
@@ -2755,13 +2791,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *password* +
@@ -2772,13 +2808,31 @@ a|
 [markdown]
 --
 For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
+
+
+a| *encryption* +
+_required_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The type of encryption used by the link.  For details, see [encryption](#encryption).
+--
+
+[%hardbreaks]
+*Values:* `&quot;none&quot;`, `&quot;half&quot;`, `&quot;full&quot;`
+{blank}
+
+a| String
+
 
 
 a| *certificate* +
@@ -2789,13 +2843,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.  You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientCertificate* +
@@ -2805,14 +2859,14 @@ a|
 
 [markdown]
 --
-For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
-
+For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientKey* +
@@ -2823,13 +2877,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *accessKeyId* +
@@ -2840,13 +2894,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 access key ID. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *secretAccessKey* +
@@ -2857,13 +2911,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 secret access key.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *sessionToken* +
@@ -2874,13 +2928,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.  Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *region* +
@@ -2891,13 +2945,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 region. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *serviceEndpoint* +
@@ -2908,13 +2962,30 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 service endpoint. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
+
+
+a| *endpoint* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links.
+--
+
+[%hardbreaks]
+{blank}
+
+a| String
+
 
 
 a| *accountName* +
@@ -2925,13 +2996,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *accountKey* +
@@ -2942,13 +3013,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *sharedAccessSignature* +
@@ -2959,13 +3030,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *managedIdentityId* +
@@ -2976,13 +3047,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientId* +
@@ -2993,13 +3064,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *tenantId* +
@@ -3010,13 +3081,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientSecret* +
@@ -3027,13 +3098,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientCertificatePassword* +
@@ -3044,48 +3115,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
 
-
-a| *endpoint* +
-_optional_
-a| 
-
-
-[markdown]
---
-For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links. 
-
---
-
-[%hardbreaks]
-{blank}
-
-| String
-
-
-a| *applicationDefaultCredentials* +
-_optional_
-a| 
-
-
-[markdown]
---
-For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
-
---
-
-[%hardbreaks]
-*Values:* `"true"`
-{blank}
-
-| String
 
 
 a| *jsonCredentials* +
@@ -3096,13 +3132,31 @@ a|
 [markdown]
 --
 For Google Cloud Storage links only. The JSON credentials of the link.  This parameter is not allowed if `applicationDefaultCredentials` is provided. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
+
+
+a| *applicationDefaultCredentials* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+--
+
+[%hardbreaks]
+*Values:* `&quot;true&quot;`
+{blank}
+
+a| String
+
 
 
 |===
@@ -3150,21 +3204,22 @@ a| [markdown]
 --
 The operation was successful.
 --
-| 
-
+a| 
 | 400
 a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 
 |===
@@ -3301,13 +3356,13 @@ The name of the Analytics scope.
 
 With this parameter, the scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *name* +
@@ -3318,13 +3373,13 @@ a|
 [markdown]
 --
 The name of the link.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -3346,15 +3401,16 @@ a|
 
 [markdown]
 --
-The type of the link. If this parameter is specified, the value must match the type that was set when the link was created. 
 
+include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 --
 
 [%hardbreaks]
-*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-| String
+a| 
+include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
 
 
 a| *hostname* +
@@ -3365,31 +3421,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The remote hostname. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
 
-
-a| *encryption* +
-_required_
-a| 
-
-
-[markdown]
---
-For Couchbase links only. The type of encryption used by the link. For details, see [encryption](#encryption).
-
---
-
-[%hardbreaks]
-*Values:* `"none"`, `"half"`, `"full"`
-{blank}
-
-| String
 
 
 a| *username* +
@@ -3400,13 +3438,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *password* +
@@ -3417,13 +3455,31 @@ a|
 [markdown]
 --
 For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
+
+
+a| *encryption* +
+_required_
+a| 
+
+
+[markdown]
+--
+For Couchbase links only. The type of encryption used by the link.  For details, see [encryption](#encryption).
+--
+
+[%hardbreaks]
+*Values:* `&quot;none&quot;`, `&quot;half&quot;`, `&quot;full&quot;`
+{blank}
+
+a| String
+
 
 
 a| *certificate* +
@@ -3434,13 +3490,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.  You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientCertificate* +
@@ -3450,14 +3506,14 @@ a|
 
 [markdown]
 --
-For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
-
+For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientKey* +
@@ -3468,13 +3524,13 @@ a|
 [markdown]
 --
 For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *accessKeyId* +
@@ -3485,13 +3541,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 access key ID. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *secretAccessKey* +
@@ -3502,13 +3558,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 secret access key.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *sessionToken* +
@@ -3519,13 +3575,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.  Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *region* +
@@ -3536,13 +3592,13 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 region. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *serviceEndpoint* +
@@ -3553,13 +3609,30 @@ a|
 [markdown]
 --
 For S3 links only. The Amazon S3 service endpoint. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
+
+
+a| *endpoint* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links.
+--
+
+[%hardbreaks]
+{blank}
+
+a| String
+
 
 
 a| *accountName* +
@@ -3570,13 +3643,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *accountKey* +
@@ -3587,13 +3660,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *sharedAccessSignature* +
@@ -3604,13 +3677,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *managedIdentityId* +
@@ -3621,13 +3694,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientId* +
@@ -3638,13 +3711,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *tenantId* +
@@ -3655,13 +3728,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientSecret* +
@@ -3672,13 +3745,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *clientCertificatePassword* +
@@ -3689,48 +3762,13 @@ a|
 [markdown]
 --
 For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
 
-
-a| *endpoint* +
-_optional_
-a| 
-
-
-[markdown]
---
-For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links. 
-
---
-
-[%hardbreaks]
-{blank}
-
-| String
-
-
-a| *applicationDefaultCredentials* +
-_optional_
-a| 
-
-
-[markdown]
---
-For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
-
---
-
-[%hardbreaks]
-*Values:* `"true"`
-{blank}
-
-| String
 
 
 a| *jsonCredentials* +
@@ -3741,13 +3779,31 @@ a|
 [markdown]
 --
 For Google Cloud Storage links only. The JSON credentials of the link.  This parameter is not allowed if `applicationDefaultCredentials` is provided. 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
+
+
+a| *applicationDefaultCredentials* +
+_optional_
+a| 
+
+
+[markdown]
+--
+For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+--
+
+[%hardbreaks]
+*Values:* `&quot;true&quot;`
+{blank}
+
+a| String
+
 
 
 |===
@@ -3795,21 +3851,22 @@ a| [markdown]
 --
 The operation was successful.
 --
-| 
-
+a| 
 | 400
 a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
-| <<Wrong>>
+a| <<Wrong>>
+
 
 
 |===
@@ -3892,7 +3949,7 @@ endif::[]
 [#models]
 = Definitions
 
-:count-models: 16
+:count-models: 14
 
 :leveloffset: +1
 
@@ -3906,45 +3963,93 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-<<All>>
-<<azureblob>>
-<<azureblobSpecific>>
-<<couchbase>>
-<<couchbaseSpecific>>
-<<couchbaseSpecificNode>>
-<<couchbaseSpecificNodeServices>>
-<<gcs>>
-<<gcsSpecific>>
-<<s3>>
-<<s3Specific>>
+ifdef::enum-definitions[]
+<<CommonType>>
+endif::enum-definitions[]
+ifdef::enum-definitions[]
+<<CommonTypeEdit>>
+endif::enum-definitions[]
+<<ResponseAll>>
+<<ResponseAzureBlob>>
+<<ResponseAzureBlobSpecific>>
+<<ResponseCouchbase>>
+<<ResponseCouchbaseSpecific>>
+<<ResponseCouchbaseSpecificNode>>
+<<ResponseCouchbaseSpecificNodeServices>>
+<<ResponseGCS>>
+<<ResponseGCSSpecific>>
+<<ResponseS3>>
+<<ResponseS3Specific>>
 <<Wrong>>
 endif::[]
 
+ifdef::enum-definitions[]
+[#CommonType]
+= Create Request Type
+
+.icon:menu[fw] Enumeration
+{blank}
+
+//tag::desc-CommonType[]
+The type of the link.
+
+* `couchbase`: A link to a remote Couchbase cluster.
+* `s3`: A link to the Amazon S3 service.
+* `azureblob`: A link to Azure Blob Storage.
+* `gcs`: A link to Google Cloud Storage.
+//end::desc-CommonType[]
+
+.Schema
+//tag::type-CommonType[]
+String
 
 
-// markup not found, no include::{specDir}definitions/All/definition-before.adoc[opts=optional]
+//end::type-CommonType[]
+endif::enum-definitions[]
+ifdef::enum-definitions[]
+[#CommonTypeEdit]
+= Edit Request Type
+
+.icon:menu[fw] Enumeration
+{blank}
+
+//tag::desc-CommonTypeEdit[]
+The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.
+
+//end::desc-CommonTypeEdit[]
+
+.Schema
+//tag::type-CommonTypeEdit[]
+String
+
+
+//end::type-CommonTypeEdit[]
+endif::enum-definitions[]
+
+
+// markup not found, no include::{specDir}definitions/ResponseAll/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#All]
+[#ResponseAll]
 = Links
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/All/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAll/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::All[]
+//tag::ResponseAll[]
 
 ifdef::model-descriptions[]
-//tag::desc-All[]
+//tag::desc-ResponseAll[]
 These properties are common to all links.
-//end::desc-All[]
+//end::desc-ResponseAll[]
 endif::model-descriptions[]
 
 [cols="25,55,20"]
@@ -3967,7 +4072,8 @@ The scope name may contain one or two identifiers, separated by a slash (/).
 [%hardbreaks]
 *Example:* `pass:c["travel-sample/inventory"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *name* +
@@ -3982,7 +4088,8 @@ The name of the link.
 [%hardbreaks]
 *Example:* `pass:c["myLink"]`
 {blank}
-| String
+a| String
+
 
 a| [#type]
 *type* +
@@ -4002,43 +4109,60 @@ The type of the link.
 [%hardbreaks]
 *Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
 {blank}
-| String
+a| String
+
 
 |===
 
-//end::All[]
+//end::ResponseAll[]
 
-This schema has different properties, depending on the value of *type*:
+This schema has alternative properties, depending on the value of *type*:
 
-* `azureblob` -- <<azureblob>>
-* `couchbase` -- <<couchbase>>
-* `gcs` -- <<gcs>>
-* `s3` -- <<s3>>
+[cols="25,55,20"]
+|===
+| Value | | Schema
+
+a| `azureblob`
+a| These properties are returned for Azure Blob links.
+a| <<ResponseAzureBlob>>
+
+a| `couchbase`
+a| These properties are returned for remote Couchbase links.
+a| <<ResponseCouchbase>>
+
+a| `gcs`
+a| These properties are returned for Google Cloud Storage links.
+a| <<ResponseGCS>>
+
+a| `s3`
+a| These properties are returned for S3 links.
+a| <<ResponseS3>>
+|===
 
 
 
-// markup not found, no include::{specDir}definitions/All/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAll/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/All/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAll/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/azureblob/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAzureBlob/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#azureblob]
-= Azure Blob
+[#ResponseAzureBlob]
+= Azure Blob Response
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/azureblob/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAzureBlob/definition-begin.adoc[opts=optional]
 
 
 .icon:bars[fw] Composite Schema
@@ -4046,40 +4170,42 @@ endif::collapse-models[]
 
 All of the following:
 
-* <<All>>
-
-* <<azureblobSpecific>>
+* <<ResponseAll>>
 
 
+* <<ResponseAzureBlobSpecific>>
 
-// markup not found, no include::{specDir}definitions/azureblob/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/ResponseAzureBlob/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/azureblob/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAzureBlob/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/azureblobSpecific/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAzureBlobSpecific/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#azureblobSpecific]
-= Azure Blob Specific
+[#ResponseAzureBlobSpecific]
+= Azure Blob Specific Response
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/azureblobSpecific/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAzureBlobSpecific/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::azureblobSpecific[]
+//tag::ResponseAzureBlobSpecific[]
 
 
 [cols="25,55,20"]
@@ -4100,7 +4226,8 @@ The account key. Used for shared key authentication. This is redacted for the sa
 [%hardbreaks]
 *Example:* `pass:c["<redacted sensitive entry>"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *accountName* +
@@ -4116,7 +4243,8 @@ The account name. Used for shared key authentication. If not set, this property 
 [%hardbreaks]
 *Example:* `pass:c["myAccountName"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *clientCertificate* +
@@ -4132,7 +4260,8 @@ The client certificate for the registered application. Used for Azure Active Dir
 [%hardbreaks]
 *Example:* `pass:c["<redacted sensitive entry>"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *clientCertificatePassword* +
@@ -4148,7 +4277,8 @@ The client certificate password for the registered application. Used for Azure A
 [%hardbreaks]
 *Example:* `pass:c["<redacted sensitive entry>"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *clientId* +
@@ -4164,7 +4294,8 @@ The client ID for the registered application. Used for Azure Active Directory cl
 [%hardbreaks]
 *Example:* `pass:c["myClientID"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *clientSecret* +
@@ -4180,7 +4311,8 @@ The client secret for the registered application. Used for Azure Active Director
 [%hardbreaks]
 *Example:* `pass:c["<redacted sensitive entry>"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *endpoint* +
@@ -4195,7 +4327,8 @@ The endpoint URI.
 [%hardbreaks]
 *Example:* `pass:c["my.endpoint.uri"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *managedIdentityId* +
@@ -4211,7 +4344,8 @@ The managed identity ID. Used for managed identity authentication. If not set, t
 [%hardbreaks]
 *Example:* `pass:c["myManagedIdentityID"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *sharedAccessSignature* +
@@ -4227,7 +4361,8 @@ A token that can be used for authentication. Used for shared access signature au
 [%hardbreaks]
 *Example:* `pass:c["<redacted sensitive entry>"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *tenantId* +
@@ -4243,37 +4378,38 @@ The tenant ID where the registered application is created. Used for Azure Active
 [%hardbreaks]
 *Example:* `pass:c["myTenantID"]`
 {blank}
-| String
+a| String
+
 
 |===
 
-//end::azureblobSpecific[]
+//end::ResponseAzureBlobSpecific[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/azureblobSpecific/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAzureBlobSpecific/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/azureblobSpecific/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAzureBlobSpecific/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/couchbase/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbase/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#couchbase]
-= Couchbase
+[#ResponseCouchbase]
+= Couchbase Response
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/couchbase/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbase/definition-begin.adoc[opts=optional]
 
 
 .icon:bars[fw] Composite Schema
@@ -4281,40 +4417,42 @@ endif::collapse-models[]
 
 All of the following:
 
-* <<All>>
-
-* <<couchbaseSpecific>>
+* <<ResponseAll>>
 
 
+* <<ResponseCouchbaseSpecific>>
 
-// markup not found, no include::{specDir}definitions/couchbase/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/ResponseCouchbase/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/couchbase/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbase/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/couchbaseSpecific/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecific/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#couchbaseSpecific]
-= Couchbase Specific
+[#ResponseCouchbaseSpecific]
+= Couchbase Specific Response
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/couchbaseSpecific/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecific/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::couchbaseSpecific[]
+//tag::ResponseCouchbaseSpecific[]
 
 
 [cols="25,55,20"]
@@ -4334,7 +4472,8 @@ The remote hostname.
 [%hardbreaks]
 *Example:* `pass:c["remoteHostName:8091"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *bootstrapAlternateAddress* +
@@ -4349,7 +4488,8 @@ Specifies whether the provided (bootstrap) hostname is an alternative address.
 [%hardbreaks]
 *Example:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *bootstrapHostname* +
@@ -4364,7 +4504,8 @@ The provided (bootstrap) hostname.
 [%hardbreaks]
 *Example:* `pass:c["remoteHostName:8091"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *certificate* +
@@ -4379,7 +4520,8 @@ The content of the target cluster root certificate. Only set for links with full
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *clientCertificate* +
@@ -4394,7 +4536,8 @@ The content of the client certificate. Only set for links with full encryption u
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *clientKey* +
@@ -4409,7 +4552,8 @@ The content of the client key. Only set for links with full encryption using cli
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *clusterCompatibility* +
@@ -4424,7 +4568,8 @@ For internal use only.
 [%hardbreaks]
 *Example:* `393221`
 {blank}
-| Integer
+a| Integer
+
 
 a| [#encryption]
 *encryption* +
@@ -4444,7 +4589,8 @@ The type of encryption used by the link.
 [%hardbreaks]
 *Values:* `"none"`, `"half"`, `"full"`
 {blank}
-| String
+a| String
+
 
 a| 
 *nodes* +
@@ -4458,8 +4604,8 @@ An array of objects, each of which contains information about a node in the targ
 
 [%hardbreaks]
 {blank}
-| <<couchbaseSpecificNode>>
-list
+a| <<ResponseCouchbaseSpecificNode>>
+ array
 
 a| 
 *password* +
@@ -4475,7 +4621,8 @@ The password used to connect to the link. This is redacted for the sake of secur
 [%hardbreaks]
 *Example:* `pass:c["<redacted sensitive entry>"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *username* +
@@ -4491,7 +4638,8 @@ The remote username. Not set for links with full encryption using client certifi
 [%hardbreaks]
 *Example:* `pass:c["remote.user"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *uuid* +
@@ -4506,43 +4654,44 @@ A UUID uniquely identifying the link.
 [%hardbreaks]
 *Example:* `pass:c["6331e2a390125b662f7bcfd63ecb3a73"]`
 {blank}
-| UUID (UUID)
+a| UUID (UUID)
+
 
 |===
 
-//end::couchbaseSpecific[]
+//end::ResponseCouchbaseSpecific[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/couchbaseSpecific/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecific/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/couchbaseSpecific/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecific/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/couchbaseSpecificNode/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#couchbaseSpecificNode]
+[#ResponseCouchbaseSpecificNode]
 = Nodes
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/couchbaseSpecificNode/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::couchbaseSpecificNode[]
+//tag::ResponseCouchbaseSpecificNode[]
 
 
 [cols="25,55,20"]
@@ -4562,7 +4711,8 @@ The alternate address defined on the node, if any. If not defined, this property
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *hostname* +
@@ -4577,7 +4727,8 @@ The hostname of the node. If not defined, this property returns `null`.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *services* +
@@ -4586,53 +4737,54 @@ a|
 
 [markdown]
 --
-include::index.adoc[tag=desc-couchbaseSpecificNodeServices, opts=optional]
+include::index.adoc[tag=desc-ResponseCouchbaseSpecificNodeServices, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-| <<couchbaseSpecificNodeServices>>
+a| <<ResponseCouchbaseSpecificNodeServices>>
+
 
 |===
 
-//end::couchbaseSpecificNode[]
+//end::ResponseCouchbaseSpecificNode[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/couchbaseSpecificNode/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/couchbaseSpecificNode/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/couchbaseSpecificNodeServices/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#couchbaseSpecificNodeServices]
+[#ResponseCouchbaseSpecificNodeServices]
 = Services
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/couchbaseSpecificNodeServices/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::couchbaseSpecificNodeServices[]
+//tag::ResponseCouchbaseSpecificNodeServices[]
 
 ifdef::model-descriptions[]
-//tag::desc-couchbaseSpecificNodeServices[]
+//tag::desc-ResponseCouchbaseSpecificNodeServices[]
 An object giving information about the services and ports configured on this node.
-//end::desc-couchbaseSpecificNodeServices[]
+//end::desc-ResponseCouchbaseSpecificNodeServices[]
 endif::model-descriptions[]
 
 [cols="25,55,20"]
@@ -4652,7 +4804,8 @@ The port number for a connection to the Analytics service.
 [%hardbreaks]
 *Example:* `8095`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *cbasSSL* +
@@ -4667,7 +4820,8 @@ The port number for an encrypted connection to the Analytics service.
 [%hardbreaks]
 *Example:* `18095`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *kv* +
@@ -4682,7 +4836,8 @@ The port number for a connection to the Data service.
 [%hardbreaks]
 *Example:* `11210`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *kvSSL* +
@@ -4697,7 +4852,8 @@ The port number for an encrypted connection to the Data service.
 [%hardbreaks]
 *Example:* `11207`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *mgmt* +
@@ -4712,7 +4868,8 @@ The port number for a connection to the Cluster Manager service.
 [%hardbreaks]
 *Example:* `8091`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *mgmtSSL* +
@@ -4727,37 +4884,38 @@ The port number for an encrypted connection to the Cluster Manager service.
 [%hardbreaks]
 *Example:* `18091`
 {blank}
-| Integer
+a| Integer
+
 
 |===
 
-//end::couchbaseSpecificNodeServices[]
+//end::ResponseCouchbaseSpecificNodeServices[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/couchbaseSpecificNodeServices/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/couchbaseSpecificNodeServices/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/gcs/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseGCS/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#gcs]
-= GCS
+[#ResponseGCS]
+= GCS Response
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/gcs/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseGCS/definition-begin.adoc[opts=optional]
 
 
 .icon:bars[fw] Composite Schema
@@ -4765,40 +4923,42 @@ endif::collapse-models[]
 
 All of the following:
 
-* <<All>>
-
-* <<gcsSpecific>>
+* <<ResponseAll>>
 
 
+* <<ResponseGCSSpecific>>
 
-// markup not found, no include::{specDir}definitions/gcs/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/ResponseGCS/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/gcs/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseGCS/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/gcsSpecific/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseGCSSpecific/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#gcsSpecific]
-= GCS Specific
+[#ResponseGCSSpecific]
+= GCS Specific Response
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/gcsSpecific/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseGCSSpecific/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::gcsSpecific[]
+//tag::ResponseGCSSpecific[]
 
 
 [cols="25,55,20"]
@@ -4820,7 +4980,8 @@ If present, indicates that the link should use the Google Application Default Cr
 *Values:* `"true"`
 *Example:* `pass:c["true"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *endpoint* +
@@ -4836,7 +4997,8 @@ The endpoint URI. If not set, this property returns `null`.
 [%hardbreaks]
 *Example:* `pass:c["https://storage.googleapis.com"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *jsonCredentials* +
@@ -4852,37 +5014,38 @@ The JSON credentials of the link. If not set, this property returns `null`.
 [%hardbreaks]
 *Example:* `pass:c["<redacted sensitive entry>"]`
 {blank}
-| String
+a| String
+
 
 |===
 
-//end::gcsSpecific[]
+//end::ResponseGCSSpecific[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/gcsSpecific/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseGCSSpecific/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/gcsSpecific/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseGCSSpecific/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/s3/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseS3/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#s3]
-= S3
+[#ResponseS3]
+= S3 Response
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/s3/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseS3/definition-begin.adoc[opts=optional]
 
 
 .icon:bars[fw] Composite Schema
@@ -4890,40 +5053,42 @@ endif::collapse-models[]
 
 All of the following:
 
-* <<All>>
-
-* <<s3Specific>>
+* <<ResponseAll>>
 
 
+* <<ResponseS3Specific>>
 
-// markup not found, no include::{specDir}definitions/s3/definition-end.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/ResponseS3/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/s3/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseS3/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/s3Specific/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseS3Specific/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#s3Specific]
-= S3 Specific
+[#ResponseS3Specific]
+= S3 Specific Response
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/s3Specific/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseS3Specific/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::s3Specific[]
+//tag::ResponseS3Specific[]
 
 
 [cols="25,55,20"]
@@ -4943,7 +5108,8 @@ The Amazon S3 access key ID.
 [%hardbreaks]
 *Example:* `pass:c["myAccessKey"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *region* +
@@ -4958,7 +5124,8 @@ The Amazon S3 region.
 [%hardbreaks]
 *Example:* `pass:c["us-east-1"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *secretAccessKey* +
@@ -4974,7 +5141,8 @@ The Amazon S3 secret access key. This is redacted for the sake of security.
 [%hardbreaks]
 *Example:* `pass:c["<redacted sensitive entry>"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *sessionToken* +
@@ -4983,14 +5151,15 @@ a|
 
 [markdown]
 --
-For S3 links only. The Amazon S3 session token. Indicates that the link has temporary access, and that the `accessKeyId` and `secretAccessKey` are temporary credentials. This is redacted for the sake of security.
+The Amazon S3 session token. Indicates that the link has temporary access, and that the `accessKeyId` and `secretAccessKey` are temporary credentials. This is redacted for the sake of security.
 
 --
 
 [%hardbreaks]
 *Example:* `pass:c["<redacted sensitive entry>"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *serviceEndpoint* +
@@ -5006,21 +5175,22 @@ Amazon S3 service endpoint. If not set, this property returns `null`.
 [%hardbreaks]
 *Example:* `pass:c["my.endpoint.uri"]`
 {blank}
-| String
+a| String
+
 
 |===
 
-//end::s3Specific[]
+//end::ResponseS3Specific[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/s3Specific/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseS3Specific/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/s3Specific/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseS3Specific/definition-after.adoc[opts=optional]
 
 
 
@@ -5061,7 +5231,8 @@ An error message.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -5102,7 +5273,7 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-before.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-before.adoc[opts=optional]
 
 
 [[security-analyticsManage]]
@@ -5110,7 +5281,7 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-begin.adoc[opts=optional]
 
 
 [markdown]
@@ -5126,12 +5297,12 @@ Users must have one of the following RBAC roles:
 __Type__ : http
 
 
-// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-end.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-after.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-after.adoc[opts=optional]
 
 
 
