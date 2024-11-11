@@ -389,6 +389,441 @@ components:
       If this parameter is omitted, all link types are retrieved, excluding the `Local` link.
 
  schemas:
+  CommonDataverse:
+    type: string
+    description: >
+      The name of the Analytics scope containing the link.
+
+
+      With this parameter, the scope name may only contain a single identifier.
+
+  CommonName:
+    type: string
+    description: The name of the link.
+
+  CommonType:
+    title: Create Request Type
+    type: string
+    description: |-
+      The type of the link.
+
+      * `couchbase`: A link to a remote Couchbase cluster.
+      * `s3`: A link to the Amazon S3 service.
+      * `azureblob`: A link to Azure Blob Storage.
+      * `gcs`: A link to Google Cloud Storage.
+    enum:
+      - couchbase
+      - s3
+      - azureblob
+      - gcs
+
+  CommonTypeEdit:
+    title: Edit Request Type
+    type: string
+    description: >
+      The type of the link.
+      If this parameter is specified, the value must match the type that was set when the link was created.
+    enum:
+      - couchbase
+      - s3
+      - azureblob
+      - gcs
+
+  # Workaround for OpenApi Generator. Should have separate parameters for Couchbase and Azure.
+  CommonClientCertificate:
+    type: string
+    description: |-
+      For Couchbase links, this is the content of the client certificate.
+      Required for links with full encryption if using a client key.
+
+      For Azure Blob links, this is the client certificate for the registered application.
+      Used for Azure Active Directory client certificate authentication.
+
+      You should URL-encode this parameter to escape any special characters.
+
+  # Workaround for OpenApi Generator. Should have separate parameters for Couchbase and Azure.
+  CommonEndpoint:
+    type: string
+    description: |-
+      For Azure Blob links and Google Cloud Storage links.
+      The endpoint URI.
+
+      Required for Azure Blob links; optional for Google Cloud Storage links.
+
+  RequestCreateAll:
+    type: object
+    required:
+      - type
+    properties:
+      type:
+        $ref: "#/components/schemas/CommonType"
+
+  RequestCreateCouchbase:
+    title: Create Couchbase Link Request
+    allOf:
+      - $ref: "#/components/schemas/RequestCreateAll"
+      - $ref: "#/components/schemas/RequestSpecificCouchbase"
+
+  RequestCreateS3:
+    title: Create S3 Link Request
+    allOf:
+      - $ref: "#/components/schemas/RequestCreateAll"
+      - $ref: "#/components/schemas/RequestSpecificS3"
+
+  RequestCreateAzureBlob:
+    title: Create Azure Blob Link Request
+    allOf:
+      - $ref: "#/components/schemas/RequestCreateAll"
+      - $ref: "#/components/schemas/RequestSpecificAzureBlob"
+
+  RequestCreateGCS:
+    title: Create GCS Link Request
+    allOf:
+      - $ref: "#/components/schemas/RequestCreateAll"
+      - $ref: "#/components/schemas/RequestSpecificGCS"
+
+  RequestEditAll:
+    type: object
+    properties:
+      type:
+        $ref: "#/components/schemas/CommonTypeEdit"
+
+  RequestEditCouchbase:
+    title: Edit Couchbase Link Request
+    allOf:
+      - $ref: "#/components/schemas/RequestEditAll"
+      - $ref: "#/components/schemas/RequestSpecificCouchbase"
+
+  RequestEditS3:
+    title: Edit S3 Link Request
+    allOf:
+      - $ref: "#/components/schemas/RequestEditAll"
+      - $ref: "#/components/schemas/RequestSpecificS3"
+
+  RequestEditAzureBlob:
+    title: Edit Azure Blob Link Request
+    allOf:
+      - $ref: "#/components/schemas/RequestEditAll"
+      - $ref: "#/components/schemas/RequestSpecificAzureBlob"
+
+  RequestEditGCS:
+    title: Edit GCS Link Request
+    allOf:
+      - $ref: "#/components/schemas/RequestEditAll"
+      - $ref: "#/components/schemas/RequestSpecificGCS"
+
+  LegacyCreateAll:
+    type: object
+    required:
+      - dataverse
+      - name
+      - type
+    properties:
+      dataverse:
+        $ref: "#/components/schemas/CommonDataverse"
+      name:
+        $ref: "#/components/schemas/CommonName"
+      type:
+        $ref: "#/components/schemas/CommonType"
+
+  LegacyCreateCouchbase:
+    title: Create Couchbase Link Request (Legacy)
+    allOf:
+      - $ref: "#/components/schemas/LegacyCreateAll"
+      - $ref: "#/components/schemas/RequestSpecificCouchbase"
+
+  LegacyCreateS3:
+    title: Create S3 Link Request (Legacy)
+    allOf:
+      - $ref: "#/components/schemas/LegacyCreateAll"
+      - $ref: "#/components/schemas/RequestSpecificS3"
+
+  LegacyCreateAzureBlob:
+    title: Create Azure Blob Link Request (Legacy)
+    allOf:
+      - $ref: "#/components/schemas/LegacyCreateAll"
+      - $ref: "#/components/schemas/RequestSpecificAzureBlob"
+
+  LegacyCreateGCS:
+    title: Create GCS Link Request (Legacy)
+    allOf:
+      - $ref: "#/components/schemas/LegacyCreateAll"
+      - $ref: "#/components/schemas/RequestSpecificGCS"
+
+  LegacyEditAll:
+    type: object
+    required:
+      - dataverse
+      - name
+    properties:
+      dataverse:
+        $ref: "#/components/schemas/CommonDataverse"
+      name:
+        $ref: "#/components/schemas/CommonName"
+      type:
+        $ref: "#/components/schemas/CommonTypeEdit"
+
+  LegacyEditCouchbase:
+    title: Edit Couchbase Link Request (Legacy)
+    allOf:
+      - $ref: "#/components/schemas/LegacyEditAll"
+      - $ref: "#/components/schemas/RequestSpecificCouchbase"
+
+  LegacyEditS3:
+    title: Edit S3 Link Request (Legacy)
+    allOf:
+      - $ref: "#/components/schemas/LegacyEditAll"
+      - $ref: "#/components/schemas/RequestSpecificS3"
+
+  LegacyEditAzureBlob:
+    title: Edit Azure Blob Link Request (Legacy)
+    allOf:
+      - $ref: "#/components/schemas/LegacyEditAll"
+      - $ref: "#/components/schemas/RequestSpecificAzureBlob"
+
+  LegacyEditGCS:
+    title: Edit GCS Link Request (Legacy)
+    allOf:
+      - $ref: "#/components/schemas/LegacyEditAll"
+      - $ref: "#/components/schemas/RequestSpecificGCS"
+
+  RequestSpecificCouchbase:
+    title: Couchbase Specific Request
+    type: object
+    required:
+      - hostname
+      - encryption
+    properties:
+      hostname:
+        type: string
+        description: >
+          For Couchbase links only.
+          The remote hostname.
+      username:
+        type: string
+        description: >
+          For Couchbase links only.
+          The remote username.
+          Required for links with no encryption or half encryption.
+          Required for links with full encryption if using a password.
+
+
+          You should URL-encode this parameter to escape any special characters.
+      password:
+        type: string
+        description: >
+          For Couchbase links only.
+          The remote password.
+          Required for links with no encryption or half encryption.
+          Required for links with full encryption if using a username.
+
+
+          You should URL-encode this parameter to escape any special characters.
+      encryption:
+        type: string
+        description: |-
+          For Couchbase links only.
+          The type of encryption used by the link.
+
+          For details, see [encryption](#encryption).
+
+        # * `none`: Neither passwords nor data are encrypted.
+        # * `half`: Passwords are encrypted using SCRAM-SHA, but data is not.
+        # * `full`: All data and passwords are encrypted and TLS is used.
+        enum:
+          - none
+          - half
+          - full
+      certificate:
+        type: string
+        description: >
+          For Couchbase links only.
+          The content of the target cluster root certificate.
+          Required for links with full encryption.
+
+
+          You should URL-encode this parameter to escape any special characters.
+          If required, this parameter may contain multiple certificates, separated by new lines.
+      clientCertificate:
+        $ref: "#/components/schemas/CommonClientCertificate"
+        # type: string
+        # description: >
+        #   For Couchbase links, this is the content of the client certificate.
+        #   Required for links with full encryption if using a client key.
+
+
+        #   You should URL-encode this parameter to escape any special characters.
+      clientKey:
+        type: string
+        description: >
+          For Couchbase links only.
+          The content of the client key.
+          Required for links with full encryption if using a client certificate.
+
+
+          You should URL-encode this parameter to escape any special characters.
+
+  RequestSpecificS3:
+    title: S3 Specific Request
+    type: object
+    required:
+      - accessKeyId
+      - secretAccessKey
+      - region
+    properties:
+      accessKeyId:
+        type: string
+        description: >
+          For S3 links only.
+          The Amazon S3 access key ID.
+      secretAccessKey:
+        type: string
+        description: >
+          For S3 links only.
+          The Amazon S3 secret access key.
+
+
+          You should URL-encode this parameter to escape any special characters.
+      sessionToken:
+        type: string
+        description: >
+          For S3 links only.
+          The Amazon S3 session token.
+          Use this parameter if you want the link to have temporary access.
+
+
+          Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials.
+          The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid.
+      region:
+        type: string
+        description: >
+          For S3 links only.
+          The Amazon S3 region.
+      serviceEndpoint:
+        type: string
+        description: >
+          For S3 links only.
+          The Amazon S3 service endpoint.
+
+  RequestSpecificAzureBlob:
+    title: Azure Blob Specific Request
+    type: object
+    # required:
+    #   - endpoint
+    properties:
+      endpoint:
+        $ref: "#/components/schemas/CommonEndpoint"
+        # type: string
+        # description: For Azure Blob links, this is the endpoint URI.
+      accountName:
+        type: string
+        description: >
+          For Azure Blob links only.
+          The account name.
+          Used for shared key authentication.
+
+
+          You should URL-encode this parameter to escape any special characters.
+      accountKey:
+        type: string
+        description: >
+          For Azure Blob links only.
+          The account key.
+          Used for shared key authentication.
+
+
+          You should URL-encode this parameter to escape any special characters.
+      sharedAccessSignature:
+        type: string
+        description: >
+          For Azure Blob links only.
+          A token that can be used for authentication.
+          Used for shared access signature authentication.
+
+
+          You should URL-encode this parameter to escape any special characters.
+      managedIdentityId:
+        type: string
+        description: >
+          For Azure Blob links only.
+          The managed identity ID.
+          Used for managed identity authentication.
+          Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.
+
+
+          You should URL-encode this parameter to escape any special characters.
+      clientId:
+        type: string
+        description: >
+          For Azure Blob links only.
+          The client ID for the registered application.
+          Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+
+          You should URL-encode this parameter to escape any special characters.
+      tenantId:
+        type: string
+        description: >
+          For Azure Blob links only.
+          The tenant ID where the registered application is created.
+          Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
+
+
+          You should URL-encode this parameter to escape any special characters.
+      clientSecret:
+        type: string
+        description: >
+          For Azure Blob links only.
+          The client secret for the registered application.
+          Used for Azure Active Directory client secret authentication.
+
+
+          You should URL-encode this parameter to escape any special characters.
+      clientCertificate:
+        $ref: "#/components/schemas/CommonClientCertificate"
+        # type: string
+        # description: >
+        #   For Azure Blob links, this is the client certificate for the registered application.
+        #   Used for Azure Active Directory client certificate authentication.
+      
+      
+        #   You should URL-encode this parameter to escape any special characters.
+      clientCertificatePassword:
+        type: string
+        description: >
+          For Azure Blob links only.
+          The client certificate password for the registered application.
+          Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
+
+
+          You should URL-encode this parameter to escape any special characters.
+
+  RequestSpecificGCS:
+    title: GCS Specific Request
+    type: object
+    properties:
+      endpoint:
+        $ref: "#/components/schemas/CommonEndpoint"
+        # type: string
+        # description: For Google Cloud Storage links, this is the endpoint URI.
+      jsonCredentials:
+        type: string
+        description: >
+          For Google Cloud Storage links only.
+          The JSON credentials of the link.
+
+
+          This parameter is not allowed if `applicationDefaultCredentials` is provided.
+      applicationDefaultCredentials:
+        type: string
+        enum:
+          - 'true'
+        description: |-
+          For Google Cloud Storage links only.
+          If present, indicates that the link should use the Google Application Default Credentials for authenticating.
+
+        # FIXME: This parameter may only have the value `"true"`.
+
   ResponseAll:
     title: Links
     description: These properties are common to all links.
@@ -625,9 +1060,7 @@ components:
         properties:
           accessKeyId:
             type: string
-            description: >
-              For S3 links only.
-              The Amazon S3 access key ID.
+            description: The Amazon S3 access key ID.
             x-has-example: true
             example: myAccessKey
           region:
@@ -645,7 +1078,6 @@ components:
           sessionToken:
             type: string
             description: >
-              For S3 links only.
               The Amazon S3 session token.
               Indicates that the link has temporary access, and that the `accessKeyId` and `secretAccessKey` are temporary credentials.
               This is redacted for the sake of security.
@@ -815,441 +1247,6 @@ components:
       error:
         type: string
         description: An error message.
-
-  RequestCreateAll:
-    type: object
-    required:
-      - type
-    properties:
-      type:
-        $ref: "#/components/schemas/CommonType"
-
-  RequestCreateCouchbase:
-    title: Create Couchbase Link Request
-    allOf:
-      - $ref: "#/components/schemas/RequestCreateAll"
-      - $ref: "#/components/schemas/RequestSpecificCouchbase"
-
-  RequestCreateS3:
-    title: Create S3 Link Request
-    allOf:
-      - $ref: "#/components/schemas/RequestCreateAll"
-      - $ref: "#/components/schemas/RequestSpecificS3"
-
-  RequestCreateAzureBlob:
-    title: Create Azure Blob Link Request
-    allOf:
-      - $ref: "#/components/schemas/RequestCreateAll"
-      - $ref: "#/components/schemas/RequestSpecificAzureBlob"
-
-  RequestCreateGCS:
-    title: Create GCS Link Request
-    allOf:
-      - $ref: "#/components/schemas/RequestCreateAll"
-      - $ref: "#/components/schemas/RequestSpecificGCS"
-
-  RequestEditAll:
-    type: object
-    properties:
-      type:
-        $ref: "#/components/schemas/CommonTypeEdit"
-
-  RequestEditCouchbase:
-    title: Edit Couchbase Link Request
-    allOf:
-      - $ref: "#/components/schemas/RequestEditAll"
-      - $ref: "#/components/schemas/RequestSpecificCouchbase"
-
-  RequestEditS3:
-    title: Edit S3 Link Request
-    allOf:
-      - $ref: "#/components/schemas/RequestEditAll"
-      - $ref: "#/components/schemas/RequestSpecificS3"
-
-  RequestEditAzureBlob:
-    title: Edit Azure Blob Link Request
-    allOf:
-      - $ref: "#/components/schemas/RequestEditAll"
-      - $ref: "#/components/schemas/RequestSpecificAzureBlob"
-
-  RequestEditGCS:
-    title: Edit GCS Link Request
-    allOf:
-      - $ref: "#/components/schemas/RequestEditAll"
-      - $ref: "#/components/schemas/RequestSpecificGCS"
-
-  LegacyCreateAll:
-    type: object
-    required:
-      - dataverse
-      - name
-      - type
-    properties:
-      dataverse:
-        $ref: "#/components/schemas/CommonDataverse"
-      name:
-        $ref: "#/components/schemas/CommonName"
-      type:
-        $ref: "#/components/schemas/CommonType"
-
-  LegacyCreateCouchbase:
-    title: Create Couchbase Link Request (Legacy)
-    allOf:
-      - $ref: "#/components/schemas/LegacyCreateAll"
-      - $ref: "#/components/schemas/RequestSpecificCouchbase"
-
-  LegacyCreateS3:
-    title: Create S3 Link Request (Legacy)
-    allOf:
-      - $ref: "#/components/schemas/LegacyCreateAll"
-      - $ref: "#/components/schemas/RequestSpecificS3"
-
-  LegacyCreateAzureBlob:
-    title: Create Azure Blob Link Request (Legacy)
-    allOf:
-      - $ref: "#/components/schemas/LegacyCreateAll"
-      - $ref: "#/components/schemas/RequestSpecificAzureBlob"
-
-  LegacyCreateGCS:
-    title: Create GCS Link Request (Legacy)
-    allOf:
-      - $ref: "#/components/schemas/LegacyCreateAll"
-      - $ref: "#/components/schemas/RequestSpecificGCS"
-
-  LegacyEditAll:
-    type: object
-    required:
-      - dataverse
-      - name
-    properties:
-      dataverse:
-        $ref: "#/components/schemas/CommonDataverse"
-      name:
-        $ref: "#/components/schemas/CommonName"
-      type:
-        $ref: "#/components/schemas/CommonTypeEdit"
-
-  LegacyEditCouchbase:
-    title: Edit Couchbase Link Request (Legacy)
-    allOf:
-      - $ref: "#/components/schemas/LegacyEditAll"
-      - $ref: "#/components/schemas/RequestSpecificCouchbase"
-
-  LegacyEditS3:
-    title: Edit S3 Link Request (Legacy)
-    allOf:
-      - $ref: "#/components/schemas/LegacyEditAll"
-      - $ref: "#/components/schemas/RequestSpecificS3"
-
-  LegacyEditAzureBlob:
-    title: Edit Azure Blob Link Request (Legacy)
-    allOf:
-      - $ref: "#/components/schemas/LegacyEditAll"
-      - $ref: "#/components/schemas/RequestSpecificAzureBlob"
-
-  LegacyEditGCS:
-    title: Edit GCS Link Request (Legacy)
-    allOf:
-      - $ref: "#/components/schemas/LegacyEditAll"
-      - $ref: "#/components/schemas/RequestSpecificGCS"
-
-  CommonDataverse:
-    type: string
-    description: >
-      The name of the Analytics scope containing the link.
-
-
-      With this parameter, the scope name may only contain a single identifier.
-
-  CommonName:
-    type: string
-    description: The name of the link.
-
-  CommonType:
-    title: Create Request Type
-    type: string
-    description: |-
-      The type of the link.
-
-      * `couchbase`: A link to a remote Couchbase cluster.
-      * `s3`: A link to the Amazon S3 service.
-      * `azureblob`: A link to Azure Blob Storage.
-      * `gcs`: A link to Google Cloud Storage.
-    enum:
-      - couchbase
-      - s3
-      - azureblob
-      - gcs
-
-  CommonTypeEdit:
-    title: Edit Request Type
-    type: string
-    description: >
-      The type of the link.
-      If this parameter is specified, the value must match the type that was set when the link was created.
-    enum:
-      - couchbase
-      - s3
-      - azureblob
-      - gcs
-
-  # Workaround for OpenApi Generator. Should have separate parameters for Couchbase and Azure.
-  CommonClientCertificate:
-    type: string
-    description: |-
-      For Couchbase links, this is the content of the client certificate.
-      Required for links with full encryption if using a client key.
-
-      For Azure Blob links, this is the client certificate for the registered application.
-      Used for Azure Active Directory client certificate authentication.
-
-      You should URL-encode this parameter to escape any special characters.
-
-  # Workaround for OpenApi Generator. Should have separate parameters for Couchbase and Azure.
-  CommonEndpoint:
-    type: string
-    description: |-
-      For Azure Blob links and Google Cloud Storage links.
-      The endpoint URI.
-
-      Required for Azure Blob links; optional for Google Cloud Storage links.
-
-  RequestSpecificCouchbase:
-    title: Couchbase Specific Request
-    type: object
-    required:
-      - hostname
-      - encryption
-    properties:
-      hostname:
-        type: string
-        description: >
-          For Couchbase links only.
-          The remote hostname.
-      username:
-        type: string
-        description: >
-          For Couchbase links only.
-          The remote username.
-          Required for links with no encryption or half encryption.
-          Required for links with full encryption if using a password.
-
-
-          You should URL-encode this parameter to escape any special characters.
-      password:
-        type: string
-        description: >
-          For Couchbase links only.
-          The remote password.
-          Required for links with no encryption or half encryption.
-          Required for links with full encryption if using a username.
-
-
-          You should URL-encode this parameter to escape any special characters.
-      encryption:
-        type: string
-        description: |-
-          For Couchbase links only.
-          The type of encryption used by the link.
-
-          For details, see [encryption](#encryption).
-
-        # * `none`: Neither passwords nor data are encrypted.
-        # * `half`: Passwords are encrypted using SCRAM-SHA, but data is not.
-        # * `full`: All data and passwords are encrypted and TLS is used.
-        enum:
-          - none
-          - half
-          - full
-      certificate:
-        type: string
-        description: >
-          For Couchbase links only.
-          The content of the target cluster root certificate.
-          Required for links with full encryption.
-
-
-          You should URL-encode this parameter to escape any special characters.
-          If required, this parameter may contain multiple certificates, separated by new lines.
-      clientCertificate:
-        $ref: "#/components/schemas/CommonClientCertificate"
-        # type: string
-        # description: >
-        #   For Couchbase links, this is the content of the client certificate.
-        #   Required for links with full encryption if using a client key.
-
-
-        #   You should URL-encode this parameter to escape any special characters.
-      clientKey:
-        type: string
-        description: >
-          For Couchbase links only.
-          The content of the client key.
-          Required for links with full encryption if using a client certificate.
-
-
-          You should URL-encode this parameter to escape any special characters.
-
-  RequestSpecificS3:
-    title: S3 Specific Request
-    type: object
-    required:
-      - accessKeyId
-      - secretAccessKey
-      - region
-    properties:
-      accessKeyId:
-        type: string
-        description: >
-          For S3 links only.
-          The Amazon S3 access key ID.
-      secretAccessKey:
-        type: string
-        description: >
-          For S3 links only.
-          The Amazon S3 secret access key.
-
-
-          You should URL-encode this parameter to escape any special characters.
-      sessionToken:
-        type: string
-        description: >
-          For S3 links only.
-          The Amazon S3 session token.
-          Use this parameter if you want the link to have temporary access.
-
-
-          Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials.
-          The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid.
-      region:
-        type: string
-        description: >
-          For S3 links only.
-          The Amazon S3 region.
-      serviceEndpoint:
-        type: string
-        description: >
-          For S3 links only.
-          The Amazon S3 service endpoint.
-
-  RequestSpecificAzureBlob:
-    title: Azure Blob Specific Request
-    type: object
-    required:
-      - endpoint
-    properties:
-      endpoint:
-        $ref: "#/components/schemas/CommonEndpoint"
-        # type: string
-        # description: For Azure Blob links, this is the endpoint URI.
-      accountName:
-        type: string
-        description: >
-          For Azure Blob links only.
-          The account name.
-          Used for shared key authentication.
-
-
-          You should URL-encode this parameter to escape any special characters.
-      accountKey:
-        type: string
-        description: >
-          For Azure Blob links only.
-          The account key.
-          Used for shared key authentication.
-
-
-          You should URL-encode this parameter to escape any special characters.
-      sharedAccessSignature:
-        type: string
-        description: >
-          For Azure Blob links only.
-          A token that can be used for authentication.
-          Used for shared access signature authentication.
-
-
-          You should URL-encode this parameter to escape any special characters.
-      managedIdentityId:
-        type: string
-        description: >
-          For Azure Blob links only.
-          The managed identity ID.
-          Used for managed identity authentication.
-          Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.
-
-
-          You should URL-encode this parameter to escape any special characters.
-      clientId:
-        type: string
-        description: >
-          For Azure Blob links only.
-          The client ID for the registered application.
-          Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
-
-
-          You should URL-encode this parameter to escape any special characters.
-      tenantId:
-        type: string
-        description: >
-          For Azure Blob links only.
-          The tenant ID where the registered application is created.
-          Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
-
-
-          You should URL-encode this parameter to escape any special characters.
-      clientSecret:
-        type: string
-        description: >
-          For Azure Blob links only.
-          The client secret for the registered application.
-          Used for Azure Active Directory client secret authentication.
-
-
-          You should URL-encode this parameter to escape any special characters.
-      clientCertificate:
-        $ref: "#/components/schemas/CommonClientCertificate"
-        # type: string
-        # description: >
-        #   For Azure Blob links, this is the client certificate for the registered application.
-        #   Used for Azure Active Directory client certificate authentication.
-      
-      
-        #   You should URL-encode this parameter to escape any special characters.
-      clientCertificatePassword:
-        type: string
-        description: >
-          For Azure Blob links only.
-          The client certificate password for the registered application.
-          Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
-
-
-          You should URL-encode this parameter to escape any special characters.
-
-  RequestSpecificGCS:
-    title: GCS Specific Request
-    type: object
-    properties:
-      endpoint:
-        $ref: "#/components/schemas/CommonEndpoint"
-        # type: string
-        # description: For Google Cloud Storage links, this is the endpoint URI.
-      jsonCredentials:
-        type: string
-        description: >
-          For Google Cloud Storage links only.
-          The JSON credentials of the link.
-
-
-          This parameter is not allowed if `applicationDefaultCredentials` is provided.
-      applicationDefaultCredentials:
-        type: string
-        enum:
-          - 'true'
-        description: |-
-          For Google Cloud Storage links only.
-          If present, indicates that the link should use the Google Application Default Credentials for authenticating.
-
-        # FIXME: This parameter may only have the value `"true"`.
 
  responses:
   OK:

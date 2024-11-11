@@ -44,11 +44,18 @@ a| {{>schemas}}
 
 {{! Polymorphism}}
 {{#hasDiscriminatorWithNonEmptyMapping}}
-This schema has different properties, depending on the value of *{{discriminatorName}}*:
+This schema has alternative properties, depending on the value of *{{discriminatorName}}*:
 {{#discriminator}}
 
+[cols="25,55,20"]
+|===
+| Value | | Schema
 {{#mappedModels}}
-* `{{mappingName}}` -- <<{{modelName}}>>
+
+a| `{{mappingName}}`
+a| {{{model.unescapedDescription}}}
+a| <<{{modelName}}>>
 {{/mappedModels}}
+|===
 {{/discriminator}}
 {{/hasDiscriminatorWithNonEmptyMapping}}

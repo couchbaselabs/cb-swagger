@@ -688,7 +688,7 @@ a| String
 
 
 a| *endpoint* +
-_required_
+_optional_
 a| 
 
 
@@ -1324,7 +1324,7 @@ a| String
 
 
 a| *endpoint* +
-_required_
+_optional_
 a| 
 
 
@@ -2972,7 +2972,7 @@ a| String
 
 
 a| *endpoint* +
-_required_
+_optional_
 a| 
 
 
@@ -3619,7 +3619,7 @@ a| String
 
 
 a| *endpoint* +
-_required_
+_optional_
 a| 
 
 
@@ -4116,12 +4116,28 @@ a| String
 
 //end::ResponseAll[]
 
-This schema has different properties, depending on the value of *type*:
+This schema has alternative properties, depending on the value of *type*:
 
-* `azureblob` -- <<ResponseAzureBlob>>
-* `couchbase` -- <<ResponseCouchbase>>
-* `gcs` -- <<ResponseGCS>>
-* `s3` -- <<ResponseS3>>
+[cols="25,55,20"]
+|===
+| Value | | Schema
+
+a| `azureblob`
+a| These properties are returned for Azure Blob links.
+a| <<ResponseAzureBlob>>
+
+a| `couchbase`
+a| These properties are returned for remote Couchbase links.
+a| <<ResponseCouchbase>>
+
+a| `gcs`
+a| These properties are returned for Google Cloud Storage links.
+a| <<ResponseGCS>>
+
+a| `s3`
+a| These properties are returned for S3 links.
+a| <<ResponseS3>>
+|===
 
 
 
@@ -5086,8 +5102,7 @@ a|
 
 [markdown]
 --
-For S3 links only. The Amazon S3 access key ID.
-
+The Amazon S3 access key ID.
 --
 
 [%hardbreaks]
@@ -5136,7 +5151,7 @@ a|
 
 [markdown]
 --
-For S3 links only. The Amazon S3 session token. Indicates that the link has temporary access, and that the `accessKeyId` and `secretAccessKey` are temporary credentials. This is redacted for the sake of security.
+The Amazon S3 session token. Indicates that the link has temporary access, and that the `accessKeyId` and `secretAccessKey` are temporary credentials. This is redacted for the sake of security.
 
 --
 
