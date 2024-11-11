@@ -32,16 +32,58 @@ This API enables you to manage the JavaScript libraries and objects that are use
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 7.6
+__Version__ : 8.0
 
 [discrete#host]
 = Host information
 
 ....
-http://localhost:8093
+{scheme}://{host}:{port}
 ....
 
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
 
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `pass:c[http]`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Query service.
+--
+
+[%hardbreaks]
+
+*Example:* `pass:c[localhost]`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Query service REST port. Use `18093` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `8093`, `18093`
+*Example:* `pass:c[8093]`
+// end
+
+|===
 
 
 // markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
@@ -49,7 +91,7 @@ http://localhost:8093
 :leveloffset: -1
 
 
-include::{specDir}overview/document-after.adoc[opts=optional]
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
 
 
 
@@ -170,13 +212,13 @@ a|
 [markdown]
 --
 The name of a library.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -198,13 +240,13 @@ a|
 --
 For scoped libraries only. The bucket in which the library is stored.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *scope* +
@@ -216,13 +258,13 @@ a|
 --
 For scoped libraries only. The scope in which the library is stored.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -264,22 +306,19 @@ a| [markdown]
 --
 The operation was successful.
 --
-| 
-
+a| 
 | 400
 a| [markdown]
 --
 Bad request. The path may not conform to the schema. 
 --
-| 
-
+a| 
 | 404
 a| [markdown]
 --
 Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly. 
 --
-| 
-
+a| 
 
 |===
 
@@ -418,13 +457,13 @@ a|
 --
 For scoped libraries only. The bucket from which to fetch libraries.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *scope* +
@@ -436,13 +475,13 @@ a|
 --
 For scoped libraries only. The scope from which to fetch libraries.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -488,16 +527,15 @@ a| [markdown]
 --
 An array of objects, each giving information about a single library.
 --
-| <<Libraries>>
-list
+a| <<Libraries>>
+ array
 
 | 400
 a| [markdown]
 --
 Bad request. The path may not conform to the schema. 
 --
-| 
-
+a| 
 
 |===
 
@@ -634,13 +672,13 @@ a|
 [markdown]
 --
 The name of a library.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -662,13 +700,13 @@ a|
 --
 For scoped libraries only. The bucket in which the library is stored.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *scope* +
@@ -680,13 +718,13 @@ a|
 --
 For scoped libraries only. The scope in which the library is stored.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -732,22 +770,21 @@ a| [markdown]
 --
 An object with a single property, giving information about the specified library.
 --
-| <<Functions>>
+a| <<Functions>>
+
 
 | 400
 a| [markdown]
 --
 Bad request. The path may not conform to the schema. 
 --
-| 
-
+a| 
 | 404
 a| [markdown]
 --
 Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly. 
 --
-| 
-
+a| 
 
 |===
 
@@ -884,13 +921,13 @@ a|
 [markdown]
 --
 The name of a library.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -912,13 +949,13 @@ a|
 --
 For scoped libraries only. The bucket in which the library is stored.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 a| *scope* +
@@ -930,13 +967,13 @@ a|
 --
 For scoped libraries only. The scope in which the library is stored.
 
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -958,14 +995,14 @@ a|
 
 [markdown]
 --
-
 The JavaScript code for all functions in the library.
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -1008,22 +1045,19 @@ a| [markdown]
 --
 The operation was successful.
 --
-| 
-
+a| 
 | 400
 a| [markdown]
 --
 Bad request. The body of the request may be incorrect, or the path may not conform to the schema. 
 --
-| 
-
+a| 
 | 404
 a| [markdown]
 --
 Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly. 
 --
-| 
-
+a| 
 
 |===
 
@@ -1167,7 +1201,8 @@ The name of the property is the name of the library.
 [%hardbreaks]
 *Example:* `pass:c["function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"]`
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -1223,7 +1258,8 @@ The name of a library.
 [%hardbreaks]
 *Example:* `pass:c["math"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *bucket* +
@@ -1239,7 +1275,8 @@ For scoped libraries, the bucket in which the library is stored. For global libr
 [%hardbreaks]
 *Example:* `pass:c["travel-sample"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *scope* +
@@ -1255,7 +1292,8 @@ For scoped libraries, the scope in which the library is stored. For global libra
 [%hardbreaks]
 *Example:* `pass:c["inventory"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *code* +
@@ -1271,7 +1309,8 @@ The JavaScript code for all functions in the library.
 [%hardbreaks]
 *Example:* `pass:c["function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"]`
 {blank}
-| String
+a| String
+
 
 |===
 

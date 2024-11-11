@@ -29,8 +29,12 @@ endif::collapse-models[]
 [%hardbreaks]
 {{#models}}
 {{#model}}
-{{^isEnum}}
+{{#isEnum}}
+ifdef::enum-definitions[]
+{{/isEnum}}
 <<{{name}}>>
+{{#isEnum}}
+endif::enum-definitions[]
 {{/isEnum}}
 {{/model}}
 {{/models}}
@@ -40,6 +44,26 @@ endif::[]
 {{#models}}
 {{#model}}
 {{! omit enums from model list. Probably going to regret this }}
+{{#isEnum}}
+ifdef::enum-definitions[]
+[#{{name}}]
+= {{#title}}{{title}}{{/title}}{{^title}}{{classname}}{{/title}}
+
+.icon:menu[fw] Enumeration
+{blank}
+
+{{#description}}
+//tag::desc-{{name}}[]
+{{{unescapedDescription}}}
+//end::desc-{{name}}[]
+
+{{/description}}
+.Schema
+//tag::type-{{name}}[]
+{{>schemas}}
+//end::type-{{name}}[]
+endif::enum-definitions[]
+{{/isEnum}}
 {{^isEnum}}
 
 {{! include partial before definition }}
@@ -77,7 +101,8 @@ endif::collapse-models[]
 {{>property}}
 
 {{#items}}
-{{>schema}} array
+.Schema
+{{>schemas}} array
 {{/items}}
 {{/isArray}}
 {{/composedSchemas}}
@@ -89,19 +114,19 @@ endif::collapse-models[]
 {{#-first}}One of the following:
 
 {{/-first}}
-* {{>schema}}
+* {{>schemas}}
 {{/oneOf}}
 {{#anyOf}}
 {{#-first}}Any of the following:
 
 {{/-first}}
-* {{>schema}}
+* {{>schemas}}
 {{/anyOf}}
 {{#allOf}}
 {{#-first}}All of the following:
 
 {{/-first}}
-* {{>schema}}
+* {{>schemas}}
 {{/allOf}}
 {{/composedSchemas}}
 

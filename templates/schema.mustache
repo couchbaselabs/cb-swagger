@@ -1,52 +1,29 @@
-{{! If this is not an array ... }}
-{{^isArray}}
-{{! ... but is a reference, create a link to that object; }}
+{{! If this has a reference, create a link to that object; }}
 {{#ref}}
 <<{{dataType}}>>
 {{/ref}}
-{{! ... if it's not a reference, but it is a model, create a link to that object; }}
+{{! ... if it has no reference, then: }}
 {{^ref}}
+{{! ... if it's a model, create a link to that object; }}
 {{#isModel}}
 <<{{dataType}}>>
 {{/isModel}}
-{{! ... otherwise, if it's neither a reference nor a model, then: }}
+{{! ... if it's not a model, then: }}
 {{^isModel}}
+{{! ... if it's a map, create a link to that object; }}
+{{#isMap}}
+<<{{dataType}}>>
+{{/isMap}}
+{{! ... if it isn't a map, then: }}
+{{^isMap}}
 {{! ... if this has a specific data type, output the data type and data format; }}
 {{^isAnyType}}
-{{dataType}}{{#dataFormat}} ({{{dataFormat}}}){{/dataFormat}}
+{{#lambda.uncamelize}}{{dataType}}{{/lambda.uncamelize}}{{#dataFormat}} ({{{dataFormat}}}){{/dataFormat}}
 {{/isAnyType}}
 {{! ... if not, just output the base type. }}
 {{#isAnyType}}
-{{baseType}}
+{{#lambda.uncamelize}}{{baseType}}{{/lambda.uncamelize}}
 {{/isAnyType}}
+{{/isMap}}
 {{/isModel}}
 {{/ref}}
-{{/isArray}}
-{{! If this is an array ... }}
-{{#isArray}}
-{{#items}}
-{{! ... and each item is a reference object, create a link to that object; }}
-{{#ref}}
-<<{{dataType}}>>
-{{/ref}}
-{{! ... if it's not a reference, but it is a model, create a link to that object; }}
-{{^ref}}
-{{#isModel}}
-<<{{dataType}}>>
-{{/isModel}}
-{{! ... otherwise, if it's neither a reference nor a model, then: }}
-{{^isModel}}
-{{! ... if the item has a specific data type, output the data type and data format; }}
-{{^isAnyType}}
-{{dataType}}{{#dataFormat}} ({{{dataFormat}}}){{/dataFormat}}
-{{/isAnyType}}
-{{! ... if not, just output each item's base type. }}
-{{#isAnyType}}
-{{baseType}}
-{{/isAnyType}}
-{{/isModel}}
-{{/ref}}
-{{/items}}
-{{! ... and finally, output the array data type. }}
-{{#lambda.lowercase}}{{dataType}}{{/lambda.lowercase}}
-{{/isArray}}
