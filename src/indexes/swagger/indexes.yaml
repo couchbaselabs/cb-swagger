@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.0.3
 info:
   title: Index Statistics REST API
   version: capella
@@ -6,73 +6,91 @@ info:
     The Index Statistics REST API is provided by the Index service.
     This API enables you to get Index service statistics.
 
-host: localhost:9102
-
-schemes:
-  - http
-
-produces:
-  - application/json
+servers:
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
+    variables:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+        description: The host name or IP address of a node running the Index service.
+      port:
+        default: "9102"
+        description: |-
+          The Index service REST port.
+          Use `19102` for secure access.
+        enum:
+          - "9102"
+          - "19102"
 
 paths:
   /api/v1/stats:
     parameters:
-      - $ref: "#/parameters/QueryPretty"
-      - $ref: "#/parameters/QueryRedact"
-      - $ref: "#/parameters/QuerySkipEmpty"
+      - $ref: "#/components/parameters/QueryPretty"
+      - $ref: "#/components/parameters/QueryRedact"
+      - $ref: "#/components/parameters/QuerySkipEmpty"
     get:
       operationId: get_node_stats
       summary: Get Statistics for an Index Node
       description: Returns statistics for an index node, and for all indexes on that node.
       security:
-        - Node Statistics: []
-        - Index Statistics: []
+        - NodeStatistics: []
+        - IndexStatistics: []
       responses:
         "200":
-          $ref: '#/responses/Node'
+          $ref: '#/components/responses/Node'
 
   /api/v1/stats/{keyspace}:
     parameters:
-      - $ref: "#/parameters/PathKeyspace"
-      - $ref: "#/parameters/QueryPretty"
-      - $ref: "#/parameters/QueryRedact"
-      - $ref: "#/parameters/QuerySkipEmpty"
+      - $ref: "#/components/parameters/PathKeyspace"
+      - $ref: "#/components/parameters/QueryPretty"
+      - $ref: "#/components/parameters/QueryRedact"
+      - $ref: "#/components/parameters/QuerySkipEmpty"
     get:
       operationId: get_keyspace_stats
       summary: Get Statistics for Indexes in a Keyspace
       description: Returns statistics for all indexes within a bucket, scope, or collection.
       security:
-        - Index Statistics: []
+        - IndexStatistics: []
       responses:
         "200":
-          $ref: '#/responses/Keyspace'
+          $ref: '#/components/responses/Keyspace'
         "404":
-          $ref: '#/responses/NotFound'
+          $ref: '#/components/responses/NotFound'
 
   /api/v1/stats/{keyspace}/{index}:
     parameters:
-      - $ref: "#/parameters/PathKeyspace"
-      - $ref: "#/parameters/PathIndex"
-      - $ref: "#/parameters/QueryPretty"
-      - $ref: "#/parameters/QueryPartition"
-      - $ref: "#/parameters/QueryRedact"
-      - $ref: "#/parameters/QuerySkipEmpty"
+      - $ref: "#/components/parameters/PathKeyspace"
+      - $ref: "#/components/parameters/PathIndex"
+      - $ref: "#/components/parameters/QueryPretty"
+      - $ref: "#/components/parameters/QueryPartition"
+      - $ref: "#/components/parameters/QueryRedact"
+      - $ref: "#/components/parameters/QuerySkipEmpty"
     get:
       operationId: get_index_stats
       summary: Get Statistics for an Index
       description: Returns statistics for an index.
       security:
-        - Index Statistics: []
+        - IndexStatistics: []
       responses:
         "200":
-          $ref: '#/responses/Index'
+          $ref: '#/components/responses/Index'
         "404":
-          $ref: '#/responses/NotFound'
+          $ref: '#/components/responses/NotFound'
 
-parameters:
+components:
+ parameters:
   PathKeyspace:
     name: keyspace
-    type: string
+    schema:
+      type: string
     in: path
     required: true
     description: |
@@ -86,67 +104,74 @@ parameters:
 
   PathIndex:
     name: index
-    type: string
+    schema:
+      type: string
     in: path
     required: true
     description: The name of an index.
 
   QueryPretty:
     name: pretty
-    type: boolean
+    schema:
+      type: boolean
+      default: false
     in: query
     required: false
     x-has-default: true
-    default: false
     description: Whether the output should be formatted with indentations and newlines.
     
   QueryPartition:
     name: partition
-    type: boolean
+    schema:
+      type: boolean
+      default: false
     in: query
     required: false
     x-has-default: true
-    default: false
     description: Whether statistics for index partitions should be included.
 
   QueryRedact:
     name: redact
-    type: boolean
+    schema:
+      type: boolean
+      default: false
     in: query
     required: false
     x-has-default: true
-    default: false
     description: >
       Whether keyspace and index names should be redacted in the output.
 
   QuerySkipEmpty:
     name: skipEmpty
-    type: boolean
+    schema:
+      type: boolean
+      default: false
     in: query
     required: false
     x-has-default: true
-    default: false
     description: Whether empty, null, or zero statistics should be omitted from the output.
 
-definitions:
+ schemas:
 
-  NodeIndexes:
+  NodeIdx:
     type: object
     title: Node and Indexes
     allOf:
-      - $ref: "#/definitions/Nodes"
-      - $ref: "#/definitions/Indexes"
+      - $ref: "#/components/schemas/NodeIdxNode"
+      - $ref: "#/components/schemas/PartIdxIndexes"
 
-  Nodes:
+  NodeIdxNode:
     type: object
+    title: Nodes
     required:
       - indexer
     properties:
       indexer:
-        $ref: "#/definitions/Node"
+        $ref: "#/components/schemas/NodeIdxNodeIndexer"
 
-  Node:
+  NodeIdxNodeIndexer:
     type: object
+    title: Node
     description: A nested object containing statistics for the current index node.
     properties:
       indexer_state:
@@ -182,27 +207,28 @@ definitions:
         x-has-example: true
         example: 309778455
 
-  IndexPartitions:
+  PartIdx:
     type: object
     title: Index and Partitions
     allOf:
-      - $ref: "#/definitions/Indexes"
-      - $ref: "#/definitions/Partitions"
+      - $ref: "#/components/schemas/PartIdxIndexes"
+      - $ref: "#/components/schemas/PartIdxPartitions"
 
-  Indexes:
+  PartIdxIndexes:
     type: object
     title: Indexes
     additionalProperties:
-      $ref: "#/definitions/Index"
+      $ref: "#/components/schemas/PartIdxPartitionsIndex"
 
-  Partitions:
+  PartIdxPartitions:
     type: object
     title: Partitions
     additionalProperties:
-      $ref: "#/definitions/Index"
+      $ref: "#/components/schemas/PartIdxPartitionsIndex"
 
-  Index:
+  PartIdxPartitionsIndex:
     type: object
+    title: Index
     description: A nested object containing statistics for an index or index partition.
     properties:
       avg_array_length:
@@ -323,7 +349,7 @@ definitions:
         type: integer
         description: Total time spent by the indexer in scanning rows since last startup (nanoseconds).
 
-responses:
+ responses:
   NotFound:
     description: |
       Not found.
@@ -335,15 +361,19 @@ responses:
     description: |
       Success.
       Returns an object containing a nested `indexer` object, and usually one or more nested `<keyspace>:<index>` objects &mdash; one for each index found on the specified node.
-    schema:
-      $ref: "#/definitions/NodeIndexes"
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/NodeIdx"
 
   Keyspace:
     description: |
       Success.
       Returns an object containing one or more nested `<keyspace>:<index>` objects &mdash; one for each index found within the specified bucket, scope, or collection.
-    schema:
-      $ref: "#/definitions/Indexes"
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/PartIdxIndexes"
 
   Index:
     description: |
@@ -351,19 +381,23 @@ responses:
       Returns an object containing one nested `<keyspace>:<index>` object.
 
       If the [partition](#get_index_stats-parameters) query parameter was set to `true`, the returned object also contains one or more `Partition-<num>` objects &mdash; one for each index partition found on the specified node.
-    schema:
-      $ref: "#/definitions/IndexPartitions"
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/PartIdx"
 
-securityDefinitions:
-  Node Statistics:
-    type: basic
+ securitySchemes:
+  NodeStatistics:
+    type: http
+    scheme: basic
     description: |
-      To get [Node statistics](#Node), users must have the Query System Catalog RBAC role.
+      To get [Node statistics](#NodeIdxNodeIndexer), users must have the Query System Catalog RBAC role.
 
-  Index Statistics:
-    type: basic
+  IndexStatistics:
+    type: http
+    scheme: basic
     description: |
-      To get [Index statistics](#Index) for all indexes in a bucket, scope, or collection, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on that bucket, scope, or collection.
+      To get [Index statistics](#PartIdxPartitionsIndex) for all indexes in a bucket, scope, or collection, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on that bucket, scope, or collection.
 
 
-      To get [Index statistics](#Index) for an individual index, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on the bucket, scope, and collection containing that index.
+      To get [Index statistics](#PartIdxPartitionsIndex) for an individual index, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on the bucket, scope, and collection containing that index.

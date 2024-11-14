@@ -6,15 +6,23 @@ a| {{#vendorExtensions}}
 
 [markdown]
 --
-{{#unescapedDescription}}{{{unescapedDescription}}}{{/unescapedDescription}}
-{{^unescapedDescription}}{{{description}}}{{/unescapedDescription}}
+{{#unescapedDescription}}
+{{{unescapedDescription}}}
+{{/unescapedDescription}}
+{{^unescapedDescription}}
+{{{description}}}
+{{/unescapedDescription}}
+{{! if this is an enum reference, fetch remote description}}
+{{#isEnumRef}}
+include::index.adoc[tag=desc-{{dataType}}, opts=optional]
+{{/isEnumRef}}
 --
 
 [%hardbreaks]
 {{! enumerated values}}
-{{#isEnum}}
-*Values:* {{#_enum}}{{^-last}}`{{#isString}}"{{/isString}}{{this}}{{#isString}}"{{/isString}}`, {{/-last}}{{#-last}}`{{#isString}}"{{/isString}}{{this}}{{#isString}}"{{/isString}}`{{/-last}}{{/_enum}}
-{{/isEnum}}
+{{#allowableValues}}
+*Values:* {{#enumVars}}{{^-last}}`{{value}}`, {{/-last}}{{#-last}}`{{value}}`{{/-last}}{{/enumVars}}
+{{/allowableValues}}
 {{! default value}}
 {{#vendorExtensions.x-has-default}}
 *Default:* `{{#isString}}pass:c["{{/isString}}{{{defaultValue}}}{{#isString}}"]{{/isString}}`
@@ -71,4 +79,4 @@ a| {{#vendorExtensions}}
 {{/isBodyParam}}
 {blank}
 
-| {{>schema}}
+a| {{>schemas}}
