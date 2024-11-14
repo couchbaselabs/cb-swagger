@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.0.3
 info:
   title: Query Admin REST API
   version: capella
@@ -6,17 +6,29 @@ info:
     The Query Admin REST API is a secondary API provided by the Query service.
     This API enables you to retrieve statistics about the clusters and nodes running the Query service; view or specify node-level settings; and view or delete requests.
 
-host: localhost:8093
-
-schemes:
-  - http
-
-produces:
-  - application/json
-
-consumes:
-  - application/json
-  - application/x-www-form-urlencoded
+servers:
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
+    variables:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+        description: The host name or IP address of a node running the Query service.
+      port:
+        default: "8093"
+        description: |-
+          The Query service REST port.
+          Use `18093` for secure access.
+        enum:
+          - "8093"
+          - "18093"
 
 tags:
   - name: configuration
@@ -55,17 +67,19 @@ paths:
       responses:
         200:
           description: An array of objects, each of which gives information about one cluster.
-          schema:
-            type: array
-            items:
-              $ref: "#/definitions/Clusters"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Clusters"
 
   /admin/clusters/{cluster}:
     get:
       operationId: get_cluster
       summary: Read a Cluster
       parameters:
-        - $ref: "#/parameters/PathCluster"
+        - $ref: "#/components/parameters/PathCluster"
       description: Returns information about the specified cluster.
       tags:
         - configuration
@@ -74,15 +88,17 @@ paths:
       responses:
         200:
           description: An object giving information about the specified cluster.
-          schema:
-            $ref: "#/definitions/Clusters"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Clusters"
 
   /admin/clusters/{cluster}/nodes:
     get:
       operationId: get_nodes
       summary: Read All Nodes
       parameters:
-        - $ref: "#/parameters/PathCluster"
+        - $ref: "#/components/parameters/PathCluster"
       description: Returns information about all nodes in the specified cluster.
       tags:
         - configuration
@@ -91,18 +107,20 @@ paths:
       responses:
         200:
           description: An array of objects, each of which gives information about one node.
-          schema:
-            type: array
-            items:
-              $ref: "#/definitions/Nodes"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Nodes"
 
   /admin/clusters/{cluster}/nodes/{node}:
     get:
       operationId: get_node
       summary: Read a Node
       parameters:
-        - $ref: "#/parameters/PathCluster"
-        - $ref: "#/parameters/PathNode"
+        - $ref: "#/components/parameters/PathCluster"
+        - $ref: "#/components/parameters/PathNode"
       description: Returns information about the specified node in the specified cluster.
       tags:
         - configuration
@@ -111,8 +129,10 @@ paths:
       responses:
         200:
           description: An object giving information about the specified node.
-          schema:
-            $ref: "#/definitions/Nodes"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Nodes"
 
   /admin/config:
     get:
@@ -126,8 +146,10 @@ paths:
       responses:
         200:
           description: An object giving information about the specified node.
-          schema:
-            $ref: "#/definitions/Nodes"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Nodes"
 
   /admin/prepareds:
     get:
@@ -142,17 +164,19 @@ paths:
       responses:
         200:
           description: An array of objects, each of which contains information about one prepared statement.
-          schema:
-            type: array
-            items:
-              $ref: "#/definitions/Statements"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Statements"
 
   /admin/prepareds/{name}:
     get:
       operationId: get_prepared
       summary: Retrieve a Prepared Statement
       parameters:
-        - $ref: "#/parameters/PathName"
+        - $ref: "#/components/parameters/PathName"
       description: |
         Returns the specified prepared statement.
       tags:
@@ -162,13 +186,15 @@ paths:
       responses:
         200:
           description: An object containing information about the specified prepared statement.
-          schema:
-            $ref: "#/definitions/Statements"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Statements"
     delete:
       operationId: delete_prepared
       summary: Delete a Prepared Statement
       parameters:
-        - $ref: "#/parameters/PathName"
+        - $ref: "#/components/parameters/PathName"
       description: |
         Deletes the specified prepared statement.
       tags:
@@ -180,8 +206,10 @@ paths:
           description: The prepared statement was successfully deleted.
         500:
           description: Returns an error message if the prepared statement could not be found.
-          schema:
-            type: object
+          content:
+            application/json:
+              schema:
+                type: object
 
   /admin/active_requests:
     get:
@@ -196,17 +224,19 @@ paths:
       responses:
         200:
           description: An array of objects, each of which contains information about one active request.
-          schema:
-            type: array
-            items:
-              $ref: "#/definitions/Requests"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Requests"
 
   /admin/active_requests/{request}:
     get:
       operationId: get_active_request
       summary: Retrieve an Active Request
       parameters:
-        - $ref: "#/parameters/PathRequest"
+        - $ref: "#/components/parameters/PathRequest"
       description: |
         Returns the specified active query request.
       tags:
@@ -216,13 +246,15 @@ paths:
       responses:
         200:
           description: An object containing information about the specified active request.
-          schema:
-            $ref: "#/definitions/Requests"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Requests"
     delete:
       operationId: delete_active_request
       summary: Delete an Active Request
       parameters:
-        - $ref: "#/parameters/PathRequest"
+        - $ref: "#/components/parameters/PathRequest"
       description: |
         Terminates the specified active query request.
       tags:
@@ -234,8 +266,10 @@ paths:
           description: The active request was successfully terminated.
         500:
           description: Returns an error message if the active request could not be found.
-          schema:
-            type: object
+          content:
+            application/json:
+              schema:
+                type: object
 
   /admin/completed_requests:
     get:
@@ -250,17 +284,19 @@ paths:
       responses:
         200:
           description: An array of objects, each of which contains information about one completed request.
-          schema:
-            type: array
-            items:
-              $ref: "#/definitions/Requests"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Requests"
 
   /admin/completed_requests/{request}:
     get:
       operationId: get_completed_request
       summary: Retrieve a Completed Request
       parameters:
-        - $ref: "#/parameters/PathRequest"
+        - $ref: "#/components/parameters/PathRequest"
       description: |
         Returns the specified completed request.
       tags:
@@ -270,13 +306,15 @@ paths:
       responses:
         200:
           description: An object containing information about the specified completed request.
-          schema:
-            $ref: "#/definitions/Requests"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Requests"
     delete:
       operationId: delete_completed_request
       summary: Delete a Completed Request
       parameters:
-        - $ref: "#/parameters/PathRequest"
+        - $ref: "#/components/parameters/PathRequest"
       description: |
         Purges the specified completed request.
       tags:
@@ -288,8 +326,10 @@ paths:
           description: The completed request was successfully purged.
         500:
           description: Returns an error message if the completed request could not be found.
-          schema:
-            type: object
+          content:
+            application/json:
+              schema:
+                type: object
 
   /admin/indexes/prepareds:
     get:
@@ -307,13 +347,15 @@ paths:
       responses:
         200:
           description: An array of strings, each of which is the name of a prepared index statement.
-          schema:
-            type: array
-            items:
-              type: string
-              description: |
-                The name of the prepared statement.
-                This may be a UUID that was assigned automatically, or a name that was user-specified when the statement was created.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  description: |
+                    The name of the prepared statement.
+                    This may be a UUID that was assigned automatically, or a name that was user-specified when the statement was created.
 
   /admin/indexes/active_requests:
     get:
@@ -331,11 +373,13 @@ paths:
       responses:
         200:
           description: An array of strings, each of which is the requestID of an active index request.
-          schema:
-            type: array
-            items:
-              type: string
-              description: Unique request ID internally generated for the query.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  description: Unique request ID internally generated for the query.
 
   /admin/indexes/completed_requests:
     get:
@@ -353,11 +397,13 @@ paths:
       responses:
         200:
           description: An array of strings, each of which is the requestID of a completed index request.
-          schema:
-            type: array
-            items:
-              type: string
-              description: Unique request ID internally generated for the query.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  description: Unique request ID internally generated for the query.
 
   /admin/ping:
     get:
@@ -366,13 +412,13 @@ paths:
       description: Returns a minimal response, indicating that the service is running and reachable.
       tags:
         - default
-      security:
-        - None: []
       responses:
         200:
           description: An empty object.
-          schema:
-            type: object
+          content:
+            application/json:
+              schema:
+                type: object
 
   /admin/gc:
     get:
@@ -391,14 +437,18 @@ paths:
       responses:
         200:
           description: Indicates that the garbage collector was invoked.
-          schema:
-            $ref: "#/definitions/Garbage"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Garbage"
         401:
           description: |
             Error 10000: authentication failure.
             The invoking user is not a valid full-admin user.
-          schema:
-            type: object
+          content:
+            application/json:
+              schema:
+                type: object
     post:
       operationId: post_gc
       summary: Run Garbage Collector and Release Memory
@@ -415,14 +465,18 @@ paths:
       responses:
         200:
           description: Indicates that the garbage collector was invoked.
-          schema:
-            $ref: "#/definitions/Garbage"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Garbage"
         401:
           description: |
             Error 10000: authentication failure.
             The invoking user is not a valid full-admin user.
-          schema:
-            type: object
+          content:
+            application/json:
+              schema:
+                type: object
 
   # /admin/ssl_cert:
   #   get:
@@ -442,8 +496,10 @@ paths:
       responses:
         200:
           description: An object containing all vital statistics.
-          schema:
-            $ref: "#/definitions/Vitals"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Vitals"
 
   /admin/stats:
     get:
@@ -460,15 +516,17 @@ paths:
             An object containing all statistics.
             Each statistic consists of a top-level statistic name and a metric name.
             Each statistic has a different set of metrics.
-          schema:
-            $ref: "#/definitions/Statistics"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Statistics"
 
   /admin/stats/{stat}:
     get:
       operationId: get_stat
       summary: Retrieve a Statistic
       parameters:
-        - $ref: "#/parameters/PathStat"
+        - $ref: "#/components/parameters/PathStat"
       description: Returns the specified statistic.
       tags:
         - statistics
@@ -479,8 +537,10 @@ paths:
           description: |
             An object containing all metrics for the specified statistic.
             Each statistic has a different set of metrics.
-          schema:
-            $ref: "#/definitions/Metrics"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Metrics"
 
   /debug/vars:
     get:
@@ -489,16 +549,14 @@ paths:
       description: Currently unused.
       tags:
         - statistics
-      security:
-        - None: []
-      produces:
-        - text/html
       responses:
         302:
           description: Redirects to the [Retrieve All Statistics](#get_stats) endpoint.
-          # schema:
-          #   type: string
-          #   format: text/html
+          content:
+            text/html:
+              schema:
+                type: string
+                format: text/html
 
   /admin/settings:
     get:
@@ -513,8 +571,10 @@ paths:
       responses:
         200:
           description: An object giving node-level query settings.
-          schema:
-            $ref: "#/definitions/Settings"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Settings"
     post:
       operationId: post_settings
       summary: Update Node-Level Query Settings
@@ -524,19 +584,25 @@ paths:
         - settings
       security:
         - Default: []
-      parameters:
-        - in: body
-          name: Settings
-          description: An object specifying node-level query settings.
-          schema:
-            $ref: "#/definitions/Settings"
+      requestBody:
+        description: An object specifying node-level query settings.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Settings"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Settings"
       responses:
         200:
           description: An object giving node-level query settings, including the latest changes.
-          schema:
-            $ref: "#/definitions/Settings"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Settings"
 
-definitions:
+components:
+ schemas:
   Clusters:
     type: object
     title: Cluster Information
@@ -2104,13 +2170,14 @@ definitions:
       - freed
       - status
 
-parameters:
+ parameters:
   PathStat:
     name: stat
     in: path
-    type: string
     required: true
-    enum:
+    schema:
+     type: string
+     enum:
       - active_requests
       - at_plus
       - audit_actions
@@ -2149,7 +2216,8 @@ parameters:
 
   PathName:
     name: name
-    type: string
+    schema:
+     type: string
     in: path
     required: true
     description: |
@@ -2158,7 +2226,8 @@ parameters:
 
   PathRequest:
     name: request
-    type: string
+    schema:
+     type: string
     in: path
     required: true
     description: |
@@ -2167,25 +2236,24 @@ parameters:
 
   PathCluster:
     name: cluster
-    type: string
+    schema:
+     type: string
     in: path
     required: true
     description: The name of a cluster.
 
   PathNode:
     name: node
-    type: string
+    schema:
+     type: string
     in: path
     required: true
     description: The name of a node.
 
-securityDefinitions:
+ securitySchemes:
   Default:
-    type: basic
+    type: http
+    scheme: basic
     description: |
       The Admin API supports admin credentials.
       Credentials can be passed via HTTP headers (HTTP basic authentication).
-
-  None:
-    type: basic
-    description: No authentication is required for the [Ping](#get_ping) or [Get Debug Variables](#get_debug_vars) endpoints.

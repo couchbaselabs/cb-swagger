@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.0.3
 info:
   title: Analytics Settings REST API
   version: capella
@@ -6,16 +6,31 @@ info:
     The Analytics Settings REST API is provided by the Analytics service.
     This API enables you to view or set cluster-level Analytics settings.
 
-host: localhost:8091
+servers:
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
+    variables:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+        description: The host name or IP address of a node running the Analytics service.
+      port:
+        default: "8091"
+        description: |-
+          The Cluster administration REST port.
+          Use `18091` for secure access.
 
-schemes:
-  - http
-
-produces:
-  - application/json
-
-consumes:
-  - application/x-www-form-urlencoded
+          Note that the port numbers for this REST API are different to the port numbers used by the other Analytics REST APIs.
+        enum:
+          - "8091"
+          - "18091"
 
 paths:
   /settings/analytics:
@@ -26,40 +41,37 @@ paths:
         Retrieves cluster-level Analytics settings.
         Note that only one setting is available: `numReplicas`.
       security:
-        - Cluster Read / Pools Read: []
+        - ClusterReadPoolsRead: []
       responses:
         "200":
-          $ref: '#/responses/OK'
+          $ref: '#/components/responses/OK'
         "401":
-          $ref: '#/responses/Unauthorized'
+          $ref: '#/components/responses/Unauthorized'
     post:
       operationId: post_settings
       summary: Modify Analytics Settings
       description: >
         Sets cluster-level Analytics settings.
         Note that only one setting is available: `numReplicas`.
-      parameters:
-        - name: numReplicas
-          in: formData
-          type: integer
-          minimum: 0
-          maximum: 3
-          description: Specifies the number of replicas for Analytics.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Settings"
       security:
-        - Cluster Read / Pools Read: []
+        - ClusterReadPoolsRead: []
       responses:
         "200":
-          $ref: '#/responses/OK'
+          $ref: '#/components/responses/OK'
         "400":
-          $ref: '#/responses/BadRequest'
+          $ref: '#/components/responses/BadRequest'
         "401":
-          $ref: '#/responses/Unauthorized'
+          $ref: '#/components/responses/Unauthorized'
 
-definitions:
+components:
+ schemas:
   Settings:
     type: object
-    required:
-      - numReplicas
     properties:
       numReplicas:
         type: integer
@@ -69,29 +81,36 @@ definitions:
         x-has-example: true
         example: 3
 
-responses:
+ responses:
   OK:
     description: The operation was successful.
-    schema:
-      $ref: "#/definitions/Settings"
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/Settings"
 
   BadRequest:
     description: >
       Bad request.
       A parameter has an incorrect value.
-    schema:
-      type: object
+    content:
+      application/json:
+        schema:
+          type: object
 
   Unauthorized:
     description: >
       Unauthorized.
       The user name or password may be incorrect.
-    schema:
-      type: object
+    content:
+      application/json:
+        schema:
+          type: object
 
-securityDefinitions:
-  Cluster Read / Pools Read:
-    type: basic
+ securitySchemes:
+  ClusterReadPoolsRead:
+    type: http
+    scheme: basic
     description: |-
       Users must have one of the following RBAC roles:
 

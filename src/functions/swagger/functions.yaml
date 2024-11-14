@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.0.3
 info:
   title: Query Functions REST API
   version: capella
@@ -6,17 +6,29 @@ info:
     The Query Functions REST API is a secondary API provided by the Query service.
     This API enables you to manage the JavaScript libraries and objects that are used to create SQL++ user-defined functions.
 
-produces:
-  - application/json
-
-consumes:
-  - application/json
-
-host: localhost:8093
-
-schemes:
-  - http
-#   - https
+servers:
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
+    variables:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+        description: The host name or IP address of a node running the Query service.
+      port:
+        default: "8093"
+        description: |-
+          The Query service REST port.
+          Use `18093` for secure access.
+        enum:
+          - "8093"
+          - "18093"
 
 paths:
   /evaluator/v1/libraries:
@@ -25,14 +37,16 @@ paths:
       summary: Read All Libraries
       parameters:
         - name: bucket
-          type: string
+          schema:
+            type: string
           in: query
           required: false
           description: >
             For scoped libraries only.
             The bucket from which to fetch libraries.
         - name: scope
-          type: string
+          schema:
+            type: string
           in: query
           required: false
           description: >
@@ -50,18 +64,20 @@ paths:
       responses:
         "200":
           description: An array of objects, each giving information about a single library.
-          schema:
-            type: array
-            items:
-              $ref: "#/definitions/Libraries"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Libraries"
         "400":
-          $ref: "#/responses/BadRequest"
+          $ref: "#/components/responses/BadRequest"
 
   /evaluator/v1/libraries/{library}:
     parameters:
-      - $ref: "#/parameters/PathLibrary"
-      - $ref: "#/parameters/QueryBucket"
-      - $ref: "#/parameters/QueryScope"
+      - $ref: "#/components/parameters/PathLibrary"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
     get:
       operationId: get_library
       summary: Read a Library
@@ -77,12 +93,14 @@ paths:
       responses:
         "200":
           description: An object with a single property, giving information about the specified library.
-          schema:
-            $ref: "#/definitions/Functions"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Functions"
         "400":
-          $ref: "#/responses/BadRequest"
+          $ref: "#/components/responses/BadRequest"
         "404":
-          $ref: "#/responses/LibraryNotFound"
+          $ref: "#/components/responses/LibraryNotFound"
     post:
       operationId: post_library
       summary: Create or Update a Library
@@ -93,20 +111,27 @@ paths:
 
         By default, this operation creates or updates a global library.
         For a scoped library, you must specify the bucket and scope.
-      parameters:
-        - $ref: "#/parameters/BodyLibrary"
+      requestBody:
+        required: true
+        description: The JavaScript code for all functions in the library.
+        content:
+          application/json:
+            schema:
+              type: string
+              example: function f2c(f) { return (5/9)*(f-32); }
+              x-has-example: true
       security:
         - Global: []
         - Scope: []
       responses:
         "200":
-          $ref: "#/responses/OK"
+          $ref: "#/components/responses/OK"
         "400":
           description: >
             Bad request.
             The body of the request may be incorrect, or the path may not conform to the schema.
         "404":
-          $ref: "#/responses/LibraryNotFound"
+          $ref: "#/components/responses/LibraryNotFound"
     delete:
       operationId: delete_library
       summary: Delete a Library
@@ -120,23 +145,26 @@ paths:
         - Scope: []
       responses:
         "200":
-          $ref: "#/responses/OK"
+          $ref: "#/components/responses/OK"
         "400":
-          $ref: "#/responses/BadRequest"
+          $ref: "#/components/responses/BadRequest"
         "404":
-          $ref: "#/responses/LibraryNotFound"
+          $ref: "#/components/responses/LibraryNotFound"
 
-parameters:
+components:
+ parameters:
   PathLibrary:
     name: library
-    type: string
+    schema:
+      type: string
     in: path
     required: true
     description: The name of a library.
 
   QueryBucket: &queryBucket
     name: bucket
-    type: string
+    schema:
+      type: string
     in: query
     required: false
     description: >
@@ -145,24 +173,15 @@ parameters:
     
   QueryScope: &queryScope
     name: scope
-    type: string
+    schema:
+      type: string
     in: query
     required: false
     description: >
       For scoped libraries only.
       The scope in which the library is stored.
 
-  BodyLibrary:
-    in: body
-    name: functions
-    required: true
-    description: The JavaScript code for all functions in the library.
-    schema:
-      type: string
-      example: function f2c(f) { return (5/9)*(f-32); }
-      x-has-example: true
-
-definitions:
+ schemas:
   Libraries:
     type: object
     title: Library
@@ -212,7 +231,7 @@ definitions:
                 function mul(a, b) { return a * b; }
       x-has-example: true
 
-responses:
+ responses:
   OK:
     description: The operation was successful.
 
@@ -226,16 +245,18 @@ responses:
       Bad request.
       The path may not conform to the schema.
 
-securityDefinitions:
+ securitySchemes:
   Global:
-    type: basic
+    type: http
+    scheme: basic
     description: |
       To manage global libraries, users must have the *Manage Global External Functions* RBAC role.
 
       This role enables you to create, read, update, or delete any global library, but does not give you access to any scoped libraries.
 
   Scope:
-    type: basic
+    type: http
+    scheme: basic
     description: |
       To manage scoped libraries, users must have the *Manage Scope External Functions* RBAC role, with permissions on the specified bucket and scope.
 

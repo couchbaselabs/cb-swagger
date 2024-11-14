@@ -39,13 +39,55 @@ __Version__ : capella
 = Host information
 
 ....
-http://localhost:8095
+{scheme}://{host}:{port}
 ....
 
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
+
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `pass:c[http]`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Analytics service.
+--
+
+[%hardbreaks]
+
+*Example:* `pass:c[localhost]`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Analytics service REST port. Use `18095` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `8095`, `18095`
+*Example:* `pass:c[8095]`
+// end
+
+|===
 
 
-
-include::{specDir}overview/document-end.adoc[opts=optional]
+// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
@@ -174,13 +216,13 @@ a|
 [markdown]
 --
 Identifier passed by the client that is used to identify an active request to be cancelled.
-
 --
 
 [%hardbreaks]
 {blank}
 
-| String
+a| String
+
 
 
 |===
@@ -228,29 +270,27 @@ a| [markdown]
 --
 The operation was successful. 
 --
-| 
-
+a| 
 | 400
 a| [markdown]
 --
 Bad request. Incorrect parameter or missing value. 
 --
-| 
-
+a| 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
 --
-| Object
+a| Object
+
 
 | 404
 a| [markdown]
 --
 Not found. The path may be incorrect, or there is no active request with the specified identifier. 
 --
-| 
-
+a| 
 
 |===
 
@@ -392,22 +432,23 @@ a| [markdown]
 --
 Success. Returns an object giving the current status of the Analytics Service. 
 --
-| <<Status>>
+a| <<Status>>
+
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
 --
-| Object
+a| Object
+
 
 | 404
 a| [markdown]
 --
 Not found. The path may be incorrect. 
 --
-| 
-
+a| 
 
 |===
 
@@ -549,23 +590,23 @@ a| [markdown]
 --
 Success. Returns a list of all completed analytic requests. 
 --
-| <<Request>>
-list
+a| <<Request>>
+ array
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
 --
-| Object
+a| Object
+
 
 | 404
 a| [markdown]
 --
 Not found. The path may be incorrect. 
 --
-| 
-
+a| 
 
 |===
 
@@ -707,22 +748,23 @@ a| [markdown]
 --
 Success. Returns an object giving the ingestion status of each Analytics collection. 
 --
-| <<Ingestion>>
+a| <<Ingestion>>
+
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
 --
-| Object
+a| Object
+
 
 | 404
 a| [markdown]
 --
 Not found. The path may be incorrect. 
 --
-| 
-
+a| 
 
 |===
 
@@ -868,22 +910,23 @@ a| [markdown]
 --
 Success. Returns an object giving the number of pending mutations for each Analytics collection. 
 --
-| <<Mutations>>
+a| <<Mutations>>
+
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
 --
-| Object
+a| Object
+
 
 | 404
 a| [markdown]
 --
 Not found. The path may be incorrect. 
 --
-| 
-
+a| 
 
 |===
 
@@ -1025,22 +1068,23 @@ a| [markdown]
 --
 Accepted. Returns an object showing the status of the cluster. 
 --
-| Object
+a| Object
+
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
 --
-| Object
+a| Object
+
 
 | 404
 a| [markdown]
 --
 Not found. The path may be incorrect. 
 --
-| 
-
+a| 
 
 |===
 
@@ -1182,22 +1226,23 @@ a| [markdown]
 --
 Accepted. Returns an object showing the status of the node. 
 --
-| Object
+a| Object
+
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
 --
-| Object
+a| Object
+
 
 | 404
 a| [markdown]
 --
 Not found. The path may be incorrect. 
 --
-| 
-
+a| 
 
 |===
 
@@ -1337,25 +1382,25 @@ Gets a list of the analytic requests that are running.
 | 200
 a| [markdown]
 --
-Success.  Returns an array id details on the running requests. 
+Success. Returns an array id details on the running requests. 
 --
-| <<Request>>
-list
+a| <<Request>>
+ array
 
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/cloud/analytics/error-codes.html). 
 --
-| Object
+a| Object
+
 
 | 404
 a| [markdown]
 --
 Not found. The path may be incorrect. 
 --
-| 
-
+a| 
 
 |===
 
@@ -1510,8 +1555,8 @@ An array of objects, each giving information about a single linked Analytics sco
 
 [%hardbreaks]
 {blank}
-| <<IngestionLink>>
-list
+a| <<IngestionLink>>
+ array
 
 |===
 
@@ -1567,7 +1612,8 @@ The name of the link.
 [%hardbreaks]
 *Example:* `pass:c["Local"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *scope* +
@@ -1582,7 +1628,8 @@ The name of the Analytics scope.
 [%hardbreaks]
 *Example:* `pass:c["travel-sample/inventory"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *status* +
@@ -1598,7 +1645,8 @@ The status of the Analytics scope.
 *Values:* `"healthy"`, `"stopped"`, `"unhealthy"`, `"suspended"`
 *Example:* `pass:c["healthy"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *state* +
@@ -1615,8 +1663,8 @@ Analytics collections which have the same ingestion state within this Analytics 
 
 [%hardbreaks]
 {blank}
-| <<IngestionLinkState>>
-list
+a| <<IngestionLinkState>>
+ array
 
 |===
 
@@ -1672,7 +1720,8 @@ The time since epoch that this sample was calculated, in milliseconds.
 [%hardbreaks]
 *Example:* `1631273689161`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *progress* +
@@ -1687,9 +1736,10 @@ The percentage (fraction from 0 to 1) of ingestion progress at the current time.
 [%hardbreaks]
 *Minimum:* `0`
 *Maximum:* `1`
-*Example:* `0.0`
+*Example:* `0`
 {blank}
-| Double (double)
+a| Double (double)
+
 
 a| 
 *timeLag* +
@@ -1705,7 +1755,8 @@ The estimated time that the ingestion lags behind the Data service, in milliseco
 [%hardbreaks]
 *Example:* `9744`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *itemsProcessed* +
@@ -1723,7 +1774,8 @@ Note that this value is reset on connect, so it may appear to get smaller.
 [%hardbreaks]
 *Example:* `12301`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *seqnoAdvances* +
@@ -1739,7 +1791,8 @@ The change in sequence number (seqno) since last connect. Only displayed for Ana
 [%hardbreaks]
 *Example:* `61`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *scopes* +
@@ -1753,8 +1806,8 @@ An array of objects, each one giving information about a single Analytics scope.
 
 [%hardbreaks]
 {blank}
-| <<IngestionLinkStateScope>>
-list
+a| <<IngestionLinkStateScope>>
+ array
 
 |===
 
@@ -1810,7 +1863,8 @@ The name of the Analytics scope.
 [%hardbreaks]
 *Example:* `pass:c["travel-sample/inventory"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *collections* +
@@ -1824,8 +1878,8 @@ An array of objects, each one giving information about a single Analytics collec
 
 [%hardbreaks]
 {blank}
-| <<IngestionLinkStateScopeColl>>
-list
+a| <<IngestionLinkStateScopeColl>>
+ array
 
 |===
 
@@ -1881,7 +1935,8 @@ The name of the Analytics collection.
 [%hardbreaks]
 *Example:* `pass:c["route"]`
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -1941,7 +1996,8 @@ include::index.adoc[tag=desc-MutationsColl, opts=optional]
 
 [%hardbreaks]
 {blank}
-| <<MutationsColl>>
+a| <<MutationsColl>>
+
 
 |===
 
@@ -2005,7 +2061,8 @@ The number of mutations in the DCP queue that have not yet been ingested. The na
 
 [%hardbreaks]
 {blank}
-| Integer
+a| Integer
+
 
 |===
 
@@ -2065,7 +2122,8 @@ Whether this request can be cancelled.
 
 [%hardbreaks]
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *clientContextID* +
@@ -2080,7 +2138,8 @@ A context ID for debugging purposes.
 [%hardbreaks]
 *Example:* `pass:c["28379d60-7139-44d6-b57a-95935540b586"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *elapsedTime* +
@@ -2095,7 +2154,8 @@ How long the request has been running in seconds.
 [%hardbreaks]
 *Example:* `0.126`
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *jobCreateTime* +
@@ -2110,7 +2170,8 @@ The date and time when the request's job was created.
 [%hardbreaks]
 *Example:* `pass:c["2024-05-28T19:47:02.512"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *jobId* +
@@ -2126,7 +2187,8 @@ The request's job ID. This value can be null if request did not run (for example
 [%hardbreaks]
 *Example:* `pass:c["JID:0.14"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *jobQueueTime* +
@@ -2139,9 +2201,10 @@ How long the request's job has been in the queue waiting to run in seconds.
 --
 
 [%hardbreaks]
-*Example:* `0.0`
+*Example:* `0`
 {blank}
-| BigDecimal
+a| Big Decimal
+
 
 a| 
 *jobRequiredCPUs* +
@@ -2156,7 +2219,8 @@ The number of CPU cores required to run this request.
 [%hardbreaks]
 *Example:* `1`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *jobRequiredMemory* +
@@ -2172,7 +2236,8 @@ The bytes of RAM being used to process this request.
 [%hardbreaks]
 *Example:* `34013184`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *jobStartTime* +
@@ -2187,7 +2252,8 @@ The date and time the request's job began running.
 [%hardbreaks]
 *Example:* `pass:c["2024-05-28T19:47:02.514"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *jobStatus* +
@@ -2200,10 +2266,11 @@ The state of the request's job.
 --
 
 [%hardbreaks]
-*Values:* `"PENDING"`, `"RUNNING"`, `"TERMINATED"`, `"FAILURE"`, `"FAILURE_BEFORE_EXECUTION"`
+*Values:* `"PENDING"`, `"RUNNING"`, `"TERMINATED"`, `"FAILURE"`, `"FAILURE_BEFORE_EXECUTION"`, `"null"`
 *Example:* `pass:c["RUNNING"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *plan* +
@@ -2217,7 +2284,8 @@ The query plan for this request.
 
 [%hardbreaks]
 {blank}
-| String
+a| String
+
 
 a| 
 *node* +
@@ -2232,7 +2300,8 @@ The Analytics node that received the request.
 [%hardbreaks]
 *Example:* `pass:c["172.20.0.2:8095"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *remoteAddr* +
@@ -2247,7 +2316,8 @@ The network address and port of the client that made the request.
 [%hardbreaks]
 *Example:* `pass:c["172.20.0.123:53612"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *requestTime* +
@@ -2262,7 +2332,8 @@ The date and time the request was received.
 [%hardbreaks]
 *Example:* `pass:c["2024-05-28T19:44:07.730"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *scanConsistency* +
@@ -2277,7 +2348,8 @@ The Scan Consistency setting used for the request's query.
 [%hardbreaks]
 *Example:* `pass:c["not_bounded"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *state* +
@@ -2293,7 +2365,8 @@ The state of the request.
 *Values:* `"received"`, `"running"`, `"cancelled"`, `"completed"`
 *Example:* `pass:c["running"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *statement* +
@@ -2308,7 +2381,8 @@ The SQL++ query statement being run by the request.
 [%hardbreaks]
 *Example:* `pass:c["select count(*) from hotel_endorsement_view;"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *userAgent* +
@@ -2323,7 +2397,8 @@ The user agent string of the browser that made the request.
 [%hardbreaks]
 *Example:* `pass:c["Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:126.0) Gecko/20100101 Firefox/126.0"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *users* +
@@ -2338,7 +2413,8 @@ The user who made the request.
 [%hardbreaks]
 *Example:* `pass:c["Administrator"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *uuid* +
@@ -2353,7 +2429,8 @@ The unique identifier for this request.
 [%hardbreaks]
 *Example:* `pass:c["91f60338-a3e0-4163-9287-5e723fda29ef"]`
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -2412,10 +2489,10 @@ An array of strings, each of which is the ID of an authorized Analytics node.
 --
 
 [%hardbreaks]
-*Example:* `[86586a966202b5aa4aed31633f330aba, 948fb3af810a9b7bc6c76e2a69ba35d9]`
+*Example:* `["86586a966202b5aa4aed31633f330aba","948fb3af810a9b7bc6c76e2a69ba35d9"]`
 {blank}
-| String
-list
+a| String
+ array
 
 a| 
 *ccNodeId* +
@@ -2430,7 +2507,8 @@ The ID of the cluster controller node.
 [%hardbreaks]
 *Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *nodeConfigUri* +
@@ -2445,7 +2523,8 @@ The path of the Analytics Node Configuration REST API.
 [%hardbreaks]
 *Example:* `pass:c["/analytics/config/node"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *nodeDiagnosticsUri* +
@@ -2461,7 +2540,8 @@ The path of the Analytics Node Diagnostics REST API. For internal use only.
 [%hardbreaks]
 *Example:* `pass:c["/analytics/node/diagnostics"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *nodeRestartUri* +
@@ -2476,7 +2556,8 @@ The path of the Analytics Node Restart REST API.
 [%hardbreaks]
 *Example:* `pass:c["/analytics/node/restart"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *nodeServiceUri* +
@@ -2491,7 +2572,8 @@ The path of the Analytics Query Service REST API.
 [%hardbreaks]
 *Example:* `pass:c["/analytics/service"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *serviceConfigUri* +
@@ -2506,7 +2588,8 @@ The path of the Analytics Service Configuration REST API.
 [%hardbreaks]
 *Example:* `pass:c["/analytics/config/service"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *serviceDiagnosticsUri* +
@@ -2522,7 +2605,8 @@ The full URI of the Analytics Service Diagnostics REST API. For internal use onl
 [%hardbreaks]
 *Example:* `pass:c["http://localhost:8095/analytics/cluster/diagnostics"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *serviceRestartUri* +
@@ -2537,7 +2621,8 @@ The full URI of the Analytics Cluster Restart REST API.
 [%hardbreaks]
 *Example:* `pass:c["http://localhost:8095/analytics/cluster/restart"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *state* +
@@ -2553,7 +2638,8 @@ The state of the Analytics Service.
 *Values:* `"ACTIVE"`, `"REBALANCE_REQUIRED"`, `"UNUSABLE"`, `"SHUTTING_DOWN"`
 *Example:* `pass:c["ACTIVE"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *nodes* +
@@ -2567,8 +2653,8 @@ An array of objects, each giving information about one Analytics node.
 
 [%hardbreaks]
 {blank}
-| <<StatusNodes>>
-list
+a| <<StatusNodes>>
+ array
 
 a| 
 *partitions* +
@@ -2582,8 +2668,8 @@ An array of objects, each giving information about one Analytics partition.
 
 [%hardbreaks]
 {blank}
-| <<StatusPartitions>>
-list
+a| <<StatusPartitions>>
+ array
 
 a| 
 *partitionsTopology* +
@@ -2597,7 +2683,8 @@ include::index.adoc[tag=desc-StatusTopology, opts=optional]
 
 [%hardbreaks]
 {blank}
-| <<StatusTopology>>
+a| <<StatusTopology>>
+
 
 |===
 
@@ -2653,7 +2740,8 @@ The URI scheme, host, and port for HTTP access to Analytics REST APIs on this no
 [%hardbreaks]
 *Example:* `pass:c["http://192.168.8.101:8095"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *apiBaseHttps* +
@@ -2668,7 +2756,8 @@ The URI scheme, host, and port for secure HTTPS access to Analytics REST APIs on
 [%hardbreaks]
 *Example:* `pass:c["https://192.168.8.101:18095"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *nodeId* +
@@ -2683,7 +2772,8 @@ The ID of the node.
 [%hardbreaks]
 *Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *nodeName* +
@@ -2698,7 +2788,8 @@ The name or IP address of the node, including the cluster administration port.
 [%hardbreaks]
 *Example:* `pass:c["192.168.8.101:8091"]`
 {blank}
-| String
+a| String
+
 
 |===
 
@@ -2754,7 +2845,8 @@ Indicates whether this partition is active.
 [%hardbreaks]
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *activeNodeId* +
@@ -2769,7 +2861,8 @@ The ID of the node where this partition is currently active.
 [%hardbreaks]
 *Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *iodeviceNum* +
@@ -2784,7 +2877,8 @@ The number of the IO Device where this partition is located.
 [%hardbreaks]
 *Example:* `0`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *nodeId* +
@@ -2799,7 +2893,8 @@ The ID of the node where this partition originated.
 [%hardbreaks]
 *Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *partitionId* +
@@ -2814,7 +2909,8 @@ The ID of this partition.
 [%hardbreaks]
 *Example:* `0`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *path* +
@@ -2829,7 +2925,8 @@ The path of the IO Device where this partition is located.
 [%hardbreaks]
 *Example:* `pass:c["/data/@analytics/v_iodevice_0"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *pendingActivation* +
@@ -2844,7 +2941,8 @@ Indicates whether this partition is waiting to become active.
 [%hardbreaks]
 *Example:* `false`
 {blank}
-| Boolean
+a| Boolean
+
 
 |===
 
@@ -2905,7 +3003,8 @@ Indicates whether the Analytics nodes are balanced.
 [%hardbreaks]
 *Example:* `true`
 {blank}
-| Boolean
+a| Boolean
+
 
 a| 
 *ccNodeId* +
@@ -2920,7 +3019,8 @@ The ID of the cluster controller node.
 [%hardbreaks]
 *Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *metadataPartition* +
@@ -2935,7 +3035,8 @@ The ID of the metadata partition.
 [%hardbreaks]
 *Example:* `-1`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *numReplicas* +
@@ -2950,7 +3051,8 @@ The number of Analytics replicas.
 [%hardbreaks]
 *Example:* `1`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *revision* +
@@ -2965,7 +3067,8 @@ The revision number of the partition topology.
 [%hardbreaks]
 *Example:* `1`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *version* +
@@ -2980,7 +3083,8 @@ The version number of the partition topology.
 [%hardbreaks]
 *Example:* `1`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *partitions* +
@@ -2994,8 +3098,8 @@ An array of objects, each giving information about the state of one Analytics pa
 
 [%hardbreaks]
 {blank}
-| <<StatusTopologyState>>
-list
+a| <<StatusTopologyState>>
+ array
 
 |===
 
@@ -3051,7 +3155,8 @@ The partition ID.
 [%hardbreaks]
 *Example:* `0`
 {blank}
-| Integer
+a| Integer
+
 
 a| 
 *master* +
@@ -3066,7 +3171,8 @@ The ID of the node where the partition is currently active.
 [%hardbreaks]
 *Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *origin* +
@@ -3081,7 +3187,8 @@ The ID of the node where the partition originated.
 [%hardbreaks]
 *Example:* `pass:c["86586a966202b5aa4aed31633f330aba"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *replicas* +
@@ -3095,8 +3202,8 @@ An array of objects, each giving information about the state of one Analytics re
 
 [%hardbreaks]
 {blank}
-| <<StatusTopologyStateReplicas>>
-list
+a| <<StatusTopologyStateReplicas>>
+ array
 
 |===
 
@@ -3152,7 +3259,8 @@ The name or IP address of the node where this replica is located, including the 
 [%hardbreaks]
 *Example:* `pass:c["192.168.8.102:9120"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *nodeId* +
@@ -3167,7 +3275,8 @@ The ID of the node where this replica is located.
 [%hardbreaks]
 *Example:* `pass:c["948fb3af810a9b7bc6c76e2a69ba35d9"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *status* +
@@ -3183,7 +3292,8 @@ The synchronization status of the replica.
 *Values:* `"IN_SYNC"`, `"CATCHING_UP"`, `"DISCONNECTED"`
 *Example:* `pass:c["IN_SYNC"]`
 {blank}
-| String
+a| String
+
 
 a| 
 *syncProgress* +
@@ -3198,9 +3308,10 @@ The percentage (fraction from 0 to 1) of synchronization progress for this repli
 [%hardbreaks]
 *Minimum:* `0`
 *Maximum:* `1`
-*Example:* `1.0`
+*Example:* `1`
 {blank}
-| Double (double)
+a| Double (double)
+
 
 |===
 
@@ -3241,15 +3352,15 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}security/Analytics Manage / Analytics Select/security-scheme-before.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-before.adoc[opts=optional]
 
 
 [[security-analyticsManageAnalyticsSelect]]
-= Analytics Manage / Analytics Select
+= Analytics Manage Analytics Select
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Analytics Manage / Analytics Select/security-scheme-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-begin.adoc[opts=optional]
 
 
 [markdown]
@@ -3269,25 +3380,25 @@ For the [Active Requests](#return_active_requests), [Request Cancellation](#canc
 __Type__ : http
 
 
-// markup not found, no include::{specDir}security/Analytics Manage / Analytics Select/security-scheme-end.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}security/Analytics Manage / Analytics Select/security-scheme-after.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}security/Cluster Read / Pools Read/security-scheme-before.adoc[opts=optional]
+// markup not found, no include::{specDir}security/ClusterReadPoolsRead/security-scheme-before.adoc[opts=optional]
 
 
 [[security-clusterReadPoolsRead]]
-= Cluster Read / Pools Read
+= Cluster Read Pools Read
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Cluster Read / Pools Read/security-scheme-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}security/ClusterReadPoolsRead/security-scheme-begin.adoc[opts=optional]
 
 
 [markdown]
@@ -3305,17 +3416,17 @@ For the [Cluster Status](#cluster_status) operation, users must have one of the 
 __Type__ : http
 
 
-// markup not found, no include::{specDir}security/Cluster Read / Pools Read/security-scheme-end.adoc[opts=optional]
+// markup not found, no include::{specDir}security/ClusterReadPoolsRead/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}security/Cluster Read / Pools Read/security-scheme-after.adoc[opts=optional]
+// markup not found, no include::{specDir}security/ClusterReadPoolsRead/security-scheme-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-before.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-before.adoc[opts=optional]
 
 
 [[security-analyticsManage]]
@@ -3323,7 +3434,7 @@ __Type__ : http
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-begin.adoc[opts=optional]
 
 
 [markdown]
@@ -3339,12 +3450,12 @@ For the [Cluster Restart](#restart_cluster) and [Node Restart](#restart_node) op
 __Type__ : http
 
 
-// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-end.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}security/Analytics Manage/security-scheme-after.adoc[opts=optional]
+// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-after.adoc[opts=optional]
 
 
 

@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.0.3
 info:
   title: Analytics Administration REST APIs
   version: capella
@@ -6,16 +6,30 @@ info:
     The Analytics Administration REST APIs are provided by the Analytics service.
     These APIs enables you to manage and monitor the Analytics service.
 
-host: localhost:8095
+servers:
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
+    variables:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+        description: The host name or IP address of a node running the Analytics service.
+      port:
+        default: "8095"
+        description: |-
+          The Analytics service REST port.
+          Use `18095` for secure access.
+        enum:
+          - "8095"
+          - "18095"
 
-schemes:
-  - http
-
-produces:
-  - application/json
-
-consumes:
-  - application/x-www-form-urlencoded
 
 paths:
   /analytics/admin/active_requests:
@@ -23,14 +37,19 @@ paths:
       operationId: cancel_request
       summary: Request Cancellation
       description: Cancels an active request.
-      parameters:
-        - name: client_context_id
-          in: formData
-          type: string
-          required: true
-          description: Identifier passed by the client that is used to identify an active request to be cancelled.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - client_context_id
+              properties:
+                client_context_id:
+                  type: string
+                  description: Identifier passed by the client that is used to identify an active request to be cancelled.
       security:
-        - Analytics Manage / Analytics Select: []
+        - AnalyticsManageAnalyticsSelect: []
       responses:
         "200":
           description: >
@@ -40,7 +59,7 @@ paths:
             Bad request.
             Incorrect parameter or missing value.
         "401":
-          $ref: '#/responses/Unauthorized'
+          $ref: '#/components/responses/Unauthorized'
         "404":
           description: >
             Not found.
@@ -50,18 +69,20 @@ paths:
       summary: Active Requests
       description: Gets a list of the analytic requests that are running.
       security:
-        - Analytics Manage / Analytics Select: []
+        - AnalyticsManageAnalyticsSelect: []
       responses:
         "200":
           description: >
-            Success. 
+            Success.
             Returns an array id details on the running requests.
-          schema:
-            type: array
-            items:
-              $ref: "#/definitions/Request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Request"
         "401":
-          $ref: '#/responses/Unauthorized'
+          $ref: '#/components/responses/Unauthorized'
         "404":
           description: >
             Not found.
@@ -73,17 +94,19 @@ paths:
       summary: Completed Requests
       description: Gets a list of all completed analytic requests.
       security:
-        - Analytics Manage / Analytics Select: []
+        - AnalyticsManageAnalyticsSelect: []
       responses:
         "200":
           description: >
             Success. Returns a list of all completed analytic requests.
-          schema:
-            type: array
-            items:
-              $ref: "#/definitions/Request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Request"
         "401":
-          $ref: '#/responses/Unauthorized'
+          $ref: '#/components/responses/Unauthorized'
         "404":
           description: >
             Not found.
@@ -95,18 +118,20 @@ paths:
       summary: Cluster Status
       description: Shows various details about the current status of the Analytics Service, such as the service state, the state of each node partition, and the replicas of each partition.
       security:
-        - Cluster Read / Pools Read: []
+        - ClusterReadPoolsRead: []
       responses:
         "200":
           description: >
             Success.
             Returns an object giving the current status of the Analytics Service.
-          schema:
-            $ref: "#/definitions/Status"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
         "401":
-          $ref: '#/responses/Unauthorized'
+          $ref: '#/components/responses/Unauthorized'
         "404":
-          $ref: '#/responses/NotFound'
+          $ref: '#/components/responses/NotFound'
 
   /analytics/cluster/restart:
     post:
@@ -114,18 +139,20 @@ paths:
       summary: Cluster Restart
       description: Restarts all Analytics Service nodes in the cluster.
       security:
-        - Analytics Manage: []
+        - AnalyticsManage: []
       responses:
         "202":
           description: >
             Accepted.
             Returns an object showing the status of the cluster.
-          schema:
-            type: object
+          content:
+            application/json:
+              schema:
+                type: object
         "401":
-          $ref: '#/responses/Unauthorized'
+          $ref: '#/components/responses/Unauthorized'
         "404":
-          $ref: '#/responses/NotFound'
+          $ref: '#/components/responses/NotFound'
 
   /analytics/node/restart:
     post:
@@ -133,18 +160,20 @@ paths:
       summary: Node Restart
       description: Restarts the specified Analytics Service node.
       security:
-        - Analytics Manage: []
+        - AnalyticsManage: []
       responses:
         "202":
           description: >
             Accepted.
             Returns an object showing the status of the node.
-          schema:
-            type: object
+          content:
+            application/json:
+              schema:
+                type: object
         "401":
-          $ref: '#/responses/Unauthorized'
+          $ref: '#/components/responses/Unauthorized'
         "404":
-          $ref: '#/responses/NotFound'
+          $ref: '#/components/responses/NotFound'
 
   /analytics/status/ingestion:
     get:
@@ -152,18 +181,20 @@ paths:
       summary: Ingestion Status
       description: Shows the progress of ingestion by the Analytics service, for each Analytics collection.
       security:
-        - Analytics Manage / Analytics Select: []
+        - AnalyticsManageAnalyticsSelect: []
       responses:
         "200":
           description: >
             Success.
             Returns an object giving the ingestion status of each Analytics collection.
-          schema:
-            $ref: "#/definitions/Ingestion"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Ingestion"
         "401":
-          $ref: '#/responses/Unauthorized'
+          $ref: '#/components/responses/Unauthorized'
         "404":
-          $ref: '#/responses/NotFound'
+          $ref: '#/components/responses/NotFound'
 
   /analytics/node/agg/stats/remaining:
     get:
@@ -178,20 +209,23 @@ paths:
         The reported number of mutations may be different to the actual number of mutations in the Analytics collection.
         For this reason, this endpoint has been deprecated, and you should use the [Ingestion Status](#ingestion_status) endpoint instead.
       security:
-        - Analytics Manage / Analytics Select: []
+        - AnalyticsManageAnalyticsSelect: []
       responses:
         "200":
           description: >
             Success.
             Returns an object giving the number of pending mutations for each Analytics collection.
-          schema:
-            $ref: "#/definitions/Mutations"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Mutations"
         "401":
-          $ref: '#/responses/Unauthorized'
+          $ref: '#/components/responses/Unauthorized'
         "404":
-          $ref: '#/responses/NotFound'
+          $ref: '#/components/responses/NotFound'
 
-definitions:
+components:
+ schemas:
   Status:
     description: An object giving information about the status of the Analytics service.
     type: object
@@ -263,14 +297,14 @@ definitions:
         type: array
         description: An array of objects, each giving information about one Analytics node.
         items:
-          $ref: '#/definitions/StatusNodes'
+          $ref: '#/components/schemas/StatusNodes'
       partitions:
         type: array
         description: An array of objects, each giving information about one Analytics partition.
         items:
-          $ref: '#/definitions/StatusPartitions'
+          $ref: '#/components/schemas/StatusPartitions'
       partitionsTopology:
-        $ref: '#/definitions/StatusTopology'
+        $ref: '#/components/schemas/StatusTopology'
 
   StatusNodes:
           type: object
@@ -376,7 +410,7 @@ definitions:
             type: array
             description: An array of objects, each giving information about the state of one Analytics partition.
             items:
-              $ref: '#/definitions/StatusTopologyState'
+              $ref: '#/components/schemas/StatusTopologyState'
 
   StatusTopologyState:
               type: object
@@ -401,7 +435,7 @@ definitions:
                   type: array
                   description: An array of objects, each giving information about the state of one Analytics replica.
                   items:
-                    $ref: '#/definitions/StatusTopologyStateReplicas'
+                    $ref: '#/components/schemas/StatusTopologyStateReplicas'
 
   StatusTopologyStateReplicas:
                     type: object
@@ -443,7 +477,7 @@ definitions:
         type: array
         description: An array of objects, each giving information about a single linked Analytics scope.
         items:
-          $ref: '#/definitions/IngestionLink'
+          $ref: '#/components/schemas/IngestionLink'
 
   IngestionLink:
           type: object
@@ -477,7 +511,7 @@ definitions:
 
                 Analytics collections which have the same ingestion state within this Analytics scope are aggregated together.
               items:
-                $ref: '#/definitions/IngestionLinkState'
+                $ref: '#/components/schemas/IngestionLinkState'
 
   IngestionLinkState:
                 type: object
@@ -528,7 +562,7 @@ definitions:
                     type: array
                     description: An array of objects, each one giving information about a single Analytics scope.
                     items:
-                      $ref: '#/definitions/IngestionLinkStateScope'
+                      $ref: '#/components/schemas/IngestionLinkStateScope'
 
   IngestionLinkStateScope:
                       type: object
@@ -546,7 +580,7 @@ definitions:
                           type: array
                           description: An array of objects, each one giving information about a single Analytics collection.
                           items:
-                            $ref: '#/definitions/IngestionLinkStateScopeColl'
+                            $ref: '#/components/schemas/IngestionLinkStateScopeColl'
 
   IngestionLinkStateScopeColl:
                             type: object
@@ -565,7 +599,7 @@ definitions:
     type: object
     title: Mutations
     additionalProperties:
-      $ref: '#/definitions/MutationsColl'
+      $ref: '#/components/schemas/MutationsColl'
     example:
       "`travel-sample`.inventory":
           hotel: 1
@@ -644,7 +678,7 @@ definitions:
           - TERMINATED
           - FAILURE
           - FAILURE_BEFORE_EXECUTION
-          - null
+          - "null"
         description: The state of the request's job.
         x-has-example: true
         example: RUNNING
@@ -702,7 +736,7 @@ definitions:
         x-has-example: true
         example: 91f60338-a3e0-4163-9287-5e723fda29ef
 
-responses:
+ responses:
   Unauthorized:
     description: >
       Unauthorized.
@@ -711,17 +745,20 @@ responses:
 
       Returns an object containing an error message.
       Refer to [Error Codes](/cloud/analytics/error-codes.html).
-    schema:
-      type: object
+    content:
+      application/json:
+        schema:
+          type: object
 
   NotFound:
     description: >
       Not found.
       The path may be incorrect.
 
-securityDefinitions:
-  Analytics Manage / Analytics Select:
-    type: basic
+ securitySchemes:
+  AnalyticsManageAnalyticsSelect:
+    type: http
+    scheme: basic
     description: |
       For the [Active Requests](#return_active_requests), [Request Cancellation](#cancel_request), [Completed Requests](#completed_requests), [Ingestion Status](#ingestion_status), and [Pending Mutations](#monitor_node) operations, users must have one of the following access roles:
 
@@ -732,8 +769,9 @@ securityDefinitions:
       * Analytics Select
       * Analytics Admin
 
-  Cluster Read / Pools Read:
-    type: basic
+  ClusterReadPoolsRead:
+    type: http
+    scheme: basic
     description: |
       For the [Cluster Status](#cluster_status) operation, users must have one of the following access roles:
 
@@ -742,8 +780,9 @@ securityDefinitions:
       * Read-Only Admin
       * Analytics Admin
 
-  Analytics Manage:
-    type: basic
+  AnalyticsManage:
+    type: http
+    scheme: basic
     description: |
       For the [Cluster Restart](#restart_cluster) and [Node Restart](#restart_node) operations, users must have one of the following RBAC roles:
 
