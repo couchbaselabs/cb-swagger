@@ -26,13 +26,13 @@
 |===
 {{/hasPathParams}}
 
-{{#hasBodyParam}}
-[#{{operationIdOriginal}}-body]
+{{#hasQueryParams}}
+[#{{operationIdOriginal}}-query]
 {{^useTableTitles}}
-= Body Parameter
+= Query Parameters
 {{/useTableTitles}}
 {{#useTableTitles}}
-.Body Parameter
+.Query Parameters
 {blank}
 {{/useTableTitles}}
 
@@ -40,31 +40,11 @@
 |===
 |Name| Description| Schema
 
-{{#bodyParams}}
+{{#queryParams}}
 {{>param}}
-{{/bodyParams}}
+{{/queryParams}}
 |===
-{{/hasBodyParam}}
-
-{{#hasFormParams}}
-[#{{operationIdOriginal}}-form]
-{{^useTableTitles}}
-= Form Parameters
-{{/useTableTitles}}
-{{#useTableTitles}}
-.Form Parameters
-{blank}
-{{/useTableTitles}}
-
-[cols="20,60,20"]
-|===
-|Name| Description| Schema
-
-{{#formParams}}
-{{>param}}
-{{/formParams}}
-|===
-{{/hasFormParams}}
+{{/hasQueryParams}}
 
 {{#hasHeaderParams}}
 [#{{operationIdOriginal}}-header]
@@ -86,13 +66,13 @@
 |===
 {{/hasHeaderParams}}
 
-{{#hasQueryParams}}
-[#{{operationIdOriginal}}-query]
+{{#hasFormParams}}
+[#{{operationIdOriginal}}-form]
 {{^useTableTitles}}
-= Query Parameters
+= Form Parameters
 {{/useTableTitles}}
 {{#useTableTitles}}
-.Query Parameters
+.Form Parameters
 {blank}
 {{/useTableTitles}}
 
@@ -100,11 +80,31 @@
 |===
 |Name| Description| Schema
 
-{{#queryParams}}
+{{#formParams}}
 {{>param}}
-{{/queryParams}}
+{{/formParams}}
 |===
-{{/hasQueryParams}}
+{{/hasFormParams}}
+
+{{#hasBodyParam}}
+[#{{operationIdOriginal}}-body]
+{{^useTableTitles}}
+= Body Parameter
+{{/useTableTitles}}
+{{#useTableTitles}}
+.Body Parameter
+{blank}
+{{/useTableTitles}}
+
+[cols="20,60,20"]
+|===
+|Name| Description| Schema
+
+{{#bodyParams}}
+{{>param}}
+{{/bodyParams}}
+|===
+{{/hasBodyParam}}
 
 {{! include partial after operation parameters body }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-parameters-end.adoc{{/specinclude}}

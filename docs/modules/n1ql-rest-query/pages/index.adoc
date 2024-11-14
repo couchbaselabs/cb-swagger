@@ -365,6 +365,9 @@ include::{specDir}paths/post_service/operation-parameters-begin.adoc[opts=option
 
 
 
+
+
+
 [#post_service-body]
 .Body Parameter
 {blank}
@@ -391,9 +394,6 @@ An object specifying one or more query parameters.
 
 
 |===
-
-
-
 
 
 // markup not found, no include::{specDir}paths/post_service/operation-parameters-end.adoc[opts=optional]
@@ -684,7 +684,7 @@ Unique name that has a 1:1 mapping to the code. Uniquely identifies the conditio
 --
 
 [%hardbreaks]
-*Example:* `"indexing.scan.io_failure"`
+*Example:* `pass:c["indexing.scan.io_failure"]`
 {blank}
 | String
 
@@ -726,6 +726,7 @@ Indicates if the condition is transient &mdash; for example, the queue is full. 
 |===
 
 //end::Conditions[]
+
 
 
 
@@ -823,13 +824,14 @@ The type of query statement.
 --
 
 [%hardbreaks]
-*Example:* `"SELECT"`
+*Example:* `pass:c["SELECT"]`
 {blank}
 | String
 
 |===
 
 //end::Controls[]
+
 
 
 
@@ -886,7 +888,7 @@ Name of the operator.
 --
 
 [%hardbreaks]
-*Example:* `"Fetch"`
+*Example:* `pass:c["Fetch"]`
 {blank}
 | String
 
@@ -922,6 +924,7 @@ Further nested operators, each with their own execution timings.
 |===
 
 //end::Execution_Timings[]
+
 
 
 
@@ -1100,6 +1103,7 @@ The number of warnings that occurred during the request.
 
 
 
+
 include::{specDir}definitions/Metrics/definition-end.adoc[opts=optional]
 
 
@@ -1243,6 +1247,7 @@ include::index.adoc[tag=desc-Execution_Timings, opts=optional]
 
 
 
+
 // markup not found, no include::{specDir}definitions/Profile/definition-end.adoc[opts=optional]
 
 
@@ -1320,7 +1325,7 @@ If any part of the path contains a special character, that part of the path must
 --
 
 [%hardbreaks]
-*Example:* `"default:&grave;travel-sample&grave;.transaction.test"`
+*Example:* `pass:c["default:`travel-sample`.transaction.test"]`
 {blank}
 | String
 
@@ -1380,8 +1385,8 @@ Values are case-insensitive.
 
 [%hardbreaks]
 *Values:* `"ZIP"`, `"RLE"`, `"LZMA"`, `"LZO"`, `"NONE"`
-*Default:* `"NONE"`
-*Example:* `"zip"`
+*Default:* `pass:c["NONE"]`
+*Example:* `pass:c["zip"]`
 {blank}
 | String
 
@@ -1428,8 +1433,8 @@ Set the durability level to `"none"` or `""` to specify no durability.
 
 [%hardbreaks]
 *Values:* `""`, `"none"`, `"majority"`, `"majorityAndPersistActive"`, `"persistToMajority"`
-*Default:* `"majority"`
-*Example:* `"none"`
+*Default:* `pass:c["majority"]`
+*Example:* `pass:c["none"]`
 {blank}
 | String
 
@@ -1463,7 +1468,7 @@ Only possible value is `UTF-8` and is case-insensitive.
 --
 
 [%hardbreaks]
-*Default:* `"UTF-8"`
+*Default:* `pass:c["UTF-8"]`
 {blank}
 | String
 
@@ -1482,8 +1487,8 @@ Values are case-insensitive.
 
 [%hardbreaks]
 *Values:* `"JSON"`, `"XML"`, `"CSV"`, `"TSV"`
-*Default:* `"JSON"`
-*Example:* `"XML"`
+*Default:* `pass:c["JSON"]`
+*Example:* `pass:c["XML"]`
 {blank}
 | String
 
@@ -1516,8 +1521,8 @@ When disabled, no timeout is applied and the KV operation runs for however long 
 --
 
 [%hardbreaks]
-*Default:* `"2.5s"`
-*Example:* `"10ms"`
+*Default:* `pass:c["2.5s"]`
+*Example:* `pass:c["10ms"]`
 {blank}
 | String
 
@@ -1594,7 +1599,7 @@ Specifies the namespace to use. Currently, only the `default` namespace is avail
 --
 
 [%hardbreaks]
-*Example:* `"default"`
+*Example:* `pass:c["default"]`
 {blank}
 | String
 
@@ -1669,7 +1674,7 @@ If both `prepared` and `statement` are present and non-empty, an error is return
 --
 
 [%hardbreaks]
-*Example:* `"[127.0.0.1:8091]pricy_hotel"`
+*Example:* `pass:c["[127.0.0.1:8091]pricy_hotel"]`
 {blank}
 | String
 
@@ -1739,7 +1744,7 @@ If `profile` is not set as one of the above values, then the profile setting doe
 
 [%hardbreaks]
 *Values:* `"off"`, `"phases"`, `"timings"`
-*Example:* `"phases"`
+*Example:* `pass:c["phases"]`
 {blank}
 | String
 
@@ -1759,8 +1764,8 @@ If the namespace name is omitted, the default namespace in the current session i
 --
 
 [%hardbreaks]
-*Default:* `"default:"`
-*Example:* `"default:travel-sample.inventory"`
+*Default:* `pass:c["default:"]`
+*Example:* `pass:c["default:travel-sample.inventory"]`
 {blank}
 | String
 
@@ -1856,8 +1861,8 @@ Refer to [Transactional Scan Consistency][transactional-scan-consistency] for de
 
 [%hardbreaks]
 *Values:* `"not_bounded"`, `"at_plus"`, `"request_plus"`, `"statement_plus"`
-*Default:* `"not_bounded"`
-*Example:* `"at_plus"`
+*Default:* `pass:c["not_bounded"]`
+*Example:* `pass:c["at_plus"]`
 {blank}
 | String
 
@@ -1942,8 +1947,8 @@ Specify `0` or a negative integer to disable.
 --
 
 [%hardbreaks]
-*Default:* `""`
-*Example:* `"30m"`
+*Default:* `pass:c[""]`
+*Example:* `pass:c["30m"]`
 {blank}
 | String (duration)
 
@@ -2006,7 +2011,7 @@ This restriction does not apply when specifying the request parameters in JSON f
 --
 
 [%hardbreaks]
-*Example:* `"SELECT * FROM &grave;travel-sample&grave;.inventory.hotel LIMIT 1"`
+*Example:* `pass:c["SELECT * FROM `travel-sample`.inventory.hotel LIMIT 1"]`
 {blank}
 | String
 
@@ -2039,7 +2044,7 @@ The request inherits the remaining time of the transaction as timeout.
 --
 
 [%hardbreaks]
-*Example:* `"30m"`
+*Example:* `pass:c["30m"]`
 {blank}
 | String (duration)
 
@@ -2078,7 +2083,7 @@ The transaction must be active and non-expired.
 --
 
 [%hardbreaks]
-*Example:* `"d81d9b4a-b758-4f98-b007-87ba262d3a51"`
+*Example:* `pass:c["d81d9b4a-b758-4f98-b007-87ba262d3a51"]`
 {blank}
 | UUID (UUID)
 
@@ -2157,7 +2162,7 @@ The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sess
 --
 
 [%hardbreaks]
-*Example:* `"30m"`
+*Example:* `pass:c["30m"]`
 {blank}
 | String (duration)
 
@@ -2233,8 +2238,8 @@ If a query uses sequential scan and a data node becomes unavailable, the query m
 
 [%hardbreaks]
 *Values:* `"off"`, `"on"`, `"unset"`
-*Default:* `"unset"`
-*Example:* `"true"`
+*Default:* `pass:c["unset"]`
+*Example:* `pass:c["true"]`
 {blank}
 | String
 
@@ -2270,6 +2275,7 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 |===
 
 //end::Request[]
+
 
 
 
@@ -2470,6 +2476,7 @@ include::index.adoc[tag=desc-Profile, opts=optional]
 
 
 
+
 // markup not found, no include::{specDir}definitions/Response/definition-end.adoc[opts=optional]
 
 
@@ -2565,7 +2572,7 @@ Time spent executing the operator code inside SQL++ query engine.
 --
 
 [%hardbreaks]
-*Example:* `"128.434µs"`
+*Example:* `pass:c["128.434µs"]`
 {blank}
 | String (duration)
 
@@ -2580,7 +2587,7 @@ Time spent waiting to be scheduled for CPU time.
 --
 
 [%hardbreaks]
-*Example:* `"15.027879ms"`
+*Example:* `pass:c["15.027879ms"]`
 {blank}
 | String (duration)
 
@@ -2600,13 +2607,14 @@ For fetch, it is time spent waiting on the KV store.
 --
 
 [%hardbreaks]
-*Example:* `"1.590934ms"`
+*Example:* `pass:c["1.590934ms"]`
 {blank}
 | String (duration)
 
 |===
 
 //end::Statistics[]
+
 
 
 
