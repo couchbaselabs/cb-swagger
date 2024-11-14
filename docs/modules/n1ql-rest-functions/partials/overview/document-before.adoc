@@ -15,10 +15,16 @@ ifdef::basebackend-html[]
     width: auto !important;
   }
 
+  /* Wrap inline code in tables */
+  td.tableblock p code,
+  p.tableblock code{
+    overflow-wrap: anywhere;
+  }
+
   /* Do not hyphenate words in the table */
   td.tableblock p,
   p.tableblock{
-    hyphens: manual !important;
+    hyphens: manual;
   }
 
   /* Vertical alignment */
@@ -26,16 +32,20 @@ ifdef::basebackend-html[]
     vertical-align: top !important;
   }
 
-  /* Hide content of tags section */
-  div.sect2 > h3#tags,
-  div.sect2 > h3#tags ~ *{
-    display: none;
+  /* Spacing for markdown blocks */
+  .doc .openblock > .content > p {
+    margin-top: 1rem;
   }
 
-  /* Hide content of uri-scheme section */
-  div.sect2 > h3#uri-scheme,
-  div.sect2 > h3#uri-scheme ~ *{
-    display: none;
+  .doc .openblock > .content > ul,
+  .doc .openblock > .content > ol {
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+  }
+
+  .doc .openblock > .content > ul li + li,
+  .doc .openblock > .content > ol li + li {
+    margin-top: 0.5rem;
   }
 </style>
 ++++

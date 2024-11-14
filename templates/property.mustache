@@ -1,19 +1,21 @@
-a| *{{#isBodyParam}}Body{{/isBodyParam}}{{^isBodyParam}}{{baseName}}{{/isBodyParam}}* +
-_{{#required}}required{{/required}}{{^required}}optional{{/required}}_
-a| {{#vendorExtensions}}
+{{#vendorExtensions}}
 {{#x-desc-edition}}[.edition]##{{this}}##{{/x-desc-edition}}{{#x-desc-status}}[.status]##{{this}}##{{/x-desc-status}}
 {{/vendorExtensions}}
 
 [markdown]
 --
-{{#unescapedDescription}}{{{unescapedDescription}}}{{/unescapedDescription}}
-{{^unescapedDescription}}{{{description}}}{{/unescapedDescription}}
+{{#description}}{{{unescapedDescription}}}{{/description}}
+{{#isModel}}
+include::index.adoc[tag=desc-{{dataType}}, opts=optional]
+{{/isModel}}
 --
 
 [%hardbreaks]
 {{! enumerated values}}
 {{#isEnum}}
-*Values:* {{#_enum}}{{^-last}}`{{#isString}}"{{/isString}}{{this}}{{#isString}}"{{/isString}}`, {{/-last}}{{#-last}}`{{#isString}}"{{/isString}}{{this}}{{#isString}}"{{/isString}}`{{/-last}}{{/_enum}}
+{{#allowableValues}}
+*Values:* {{#values}}{{^-last}}`{{#isString}}"{{/isString}}{{this}}{{#isString}}"{{/isString}}`, {{/-last}}{{#-last}}`{{#isString}}"{{/isString}}{{this}}{{#isString}}"{{/isString}}`{{/-last}}{{/values}}
+{{/allowableValues}}
 {{/isEnum}}
 {{! default value}}
 {{#vendorExtensions.x-has-default}}
@@ -64,11 +66,7 @@ a| {{#vendorExtensions}}
 *Unique items:* `{{{uniqueItems}}}`
 {{/uniqueItems}}
 {{! example -- deprecated}}
-{{#isBodyParam}}
 {{#vendorExtensions.x-has-example}}
 *Example:* `{{#isString}}pass:c["{{/isString}}{{{example}}}{{#isString}}"]{{/isString}}`
 {{/vendorExtensions.x-has-example}}
-{{/isBodyParam}}
 {blank}
-
-| {{>schema}}

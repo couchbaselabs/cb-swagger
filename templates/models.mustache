@@ -40,72 +40,24 @@ endif::[]
 
 {{^composedSchemas}}
 {{#hasVars}}
-.icon:brackets-curly[fw] Object
-{blank}
-
-{{! tag for partial}}
-//tag::{{name}}[]
-
-{{! Create partial model description }}
-{{#description}}
-ifdef::model-descriptions[]
-//tag::desc-{{name}}[]
-{{{unescapedDescription}}}
-//end::desc-{{name}}[]
-endif::model-descriptions[]
-{{/description}}
-
-[cols="25,55,20"]
-|===
-| Property | | Schema
-
-{{#vars}}
-{{! DEFINITION NAME }}
-a| {{#vendorExtensions}}{{#x-desc-name}}[#{{this}}]{{/x-desc-name}}{{/vendorExtensions}}
-*{{baseName}}* +
-_{{#required}}required{{/required}}{{^required}}optional{{/required}}_
-{{! DEFINITION DESCRIPTION }}
-a| {{>model}}
-{{! DEFINITION SCHEMA }}
-| {{>schema}}
-{{/vars}}
-{{#additionalProperties}}
-{{! ADDITIONAL PROPERTY NAME }}
-a| {{#vendorExtensions}}{{#x-desc-name}}[#{{this}}]{{/x-desc-name}}{{/vendorExtensions}}
-_additional +
-property_
-{{! ADDITIONAL PROPERTY DESCRIPTION }}
-a| {{>model}}
-{{! ADDITIONAL PROPERTY SCHEMA }}
-| {{>schema}}
-{{/additionalProperties}}
-|===
-
-{{! end tag for partial}}
-//end::{{name}}[]
-
-{{! Polymorphism}}
-{{#hasDiscriminatorWithNonEmptyMapping}}
-This schema has different properties, depending on the value of *{{discriminatorName}}*:
-{{#discriminator}}
-
-{{#mappedModels}}
-* `{{mappingName}}` -- <<{{modelName}}>>
-{{/mappedModels}}
-{{/discriminator}}
-{{/hasDiscriminatorWithNonEmptyMapping}}
+{{>model}}
+{{/hasVars}}
+{{^hasVars}}
+{{#isMap}}
+{{>model}}
+{{/isMap}}
 {{/hasVars}}
 {{#isString}}
 .icon:quote-left[fw] String
 {blank}
 
-{{>model}}
+{{>property}}
 {{/isString}}
 {{#isArray}}
 .icon:brackets[fw] Array
 {blank}
 
-{{>model}}
+{{>property}}
 
 {{#items}}
 {{>schema}} array
