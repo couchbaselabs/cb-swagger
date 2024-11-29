@@ -298,7 +298,13 @@ paths:
         - Unscoped: []
       responses:
         "200":
-          $ref: '#/components/responses/OK'
+          description: Returns an array containing one or more function definition objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/handler_schema"
         "404":
           $ref: '#/components/responses/Goof'
 
@@ -422,7 +428,7 @@ paths:
       summary: View Function Code
       description: |-
         Export only the JavaScript code for the specified function.
-        Note that unlike [View Function Definition](#adv_function_view), the JavaScript is not escaped, and the code is runnable in other environments.
+        Note that unlike [View a Function](#adv_function_view), the JavaScript is not escaped, and the code is runnable in other environments.
         The JavaScript code can be subsequently imported.
         However any changes to the function definition made to the file outside the UI are discouraged.
       tags:
@@ -606,9 +612,9 @@ paths:
   /api/v1/config:
     get:
       operationId: config_get
-      summary: List Global Configuration
+      summary: List Global Config
       description: |-
-        Shows all global Eventing settings.
+        Shows all global configuration settings.
         There are currently just two settings: `enable_debugger` and `ram_quota`.
         Both of these settings can also be adjusted via the UI.
       tags:
@@ -626,9 +632,9 @@ paths:
           $ref: '#/components/responses/Goof'
     post:
       operationId: config_update
-      summary: Modify Global Configuration
+      summary: Modify Global Config
       description: |-
-        Modify global configuration.
+        Modify global configuration settings.
         During an edit, settings provided are merged.
         Unspecified attributes retain their prior values.
         The response indicates whether the Eventing service must be restarted for the new changes to take effect.
@@ -870,7 +876,7 @@ components:
             $ref: "#/components/schemas/handler_schema"
 
     UnivConfig:
-      title: Global Configuration
+      title: Global Config
       type: object
       properties:
         ram_quota:

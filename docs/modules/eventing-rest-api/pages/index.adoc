@@ -2387,6 +2387,9 @@ If this API is run as a non-Administrator the results are filtered via RBAC to i
 
 
 
+[#adv_multiple_export-produces]
+.Produces
+* application/json
 
 :leveloffset: -1
 
@@ -2424,9 +2427,11 @@ If this API is run as a non-Administrator the results are filtered via RBAC to i
 | 200
 a| [markdown]
 --
-Success.
+Returns an array containing one or more function definition objects.
 --
-a| 
+a| <<handler_schema>>
+ array
+
 | 404
 a| [markdown]
 --
@@ -3739,7 +3744,7 @@ GET /api/v1/functions/{function}/appcode
 [markdown]
 --
 Export only the JavaScript code for the specified function.
-Note that unlike [View Function Definition](#adv_function_view), the JavaScript is not escaped, and the code is runnable in other environments.
+Note that unlike [View a Function](#adv_function_view), the JavaScript is not escaped, and the code is runnable in other environments.
 The JavaScript code can be subsequently imported.
 However any changes to the function definition made to the file outside the UI are discouraged.
 --
@@ -4244,7 +4249,7 @@ endif::[]
 
 
 [#config_get]
-= List Global Configuration
+= List Global Config
 
 :leveloffset: +1
 
@@ -4270,7 +4275,7 @@ GET /api/v1/config
 
 [markdown]
 --
-Shows all global Eventing settings.
+Shows all global configuration settings.
 There are currently just two settings: `enable_debugger` and `ram_quota`.
 Both of these settings can also be adjusted via the UI.
 --
@@ -4396,7 +4401,7 @@ include::{snippetDir}config_get/http-request.adoc[opts=optional]
 
 
 [#config_update]
-= Modify Global Configuration
+= Modify Global Config
 
 :leveloffset: +1
 
@@ -4422,7 +4427,7 @@ POST /api/v1/config
 
 [markdown]
 --
-Modify global configuration.
+Modify global configuration settings.
 During an edit, settings provided are merged.
 Unspecified attributes retain their prior values.
 The response indicates whether the Eventing service must be restarted for the new changes to take effect.
@@ -8378,7 +8383,7 @@ ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
 [#UnivConfig]
-= Global Configuration
+= Global Config
 
 :leveloffset: +1
 
