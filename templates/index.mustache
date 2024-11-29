@@ -196,6 +196,24 @@ CAUTION: This operation is deprecated, and will be removed in a future release.
 {{{unescapedNotes}}}
 --
 
+{{! *** OPERATION CONSUMES *** }}
+{{#hasConsumes}}
+[#{{operationIdOriginal}}-consumes]
+.Consumes
+{{#consumes}}
+* {{{mediaType}}}
+{{/consumes}}
+{{/hasConsumes}}
+
+{{! *** OPERATION PRODUCES *** }}
+{{#hasProduces}}
+[#{{operationIdOriginal}}-produces]
+.Produces
+{{#produces}}
+* {{{mediaType}}}
+{{/produces}}
+{{/hasProduces}}
+
 {{! include partials after operation description body }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-description-end.adoc{{/specinclude}}
 :leveloffset: -1
@@ -229,26 +247,6 @@ CAUTION: This operation is deprecated, and will be removed in a future release.
 
 {{! include partials after the operation parameters }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-parameters-after.adoc{{/specinclude}}
-
-{{! *** OPERATION PRODUCES *** }}
-{{#hasProduces}}
-[#{{operationIdOriginal}}-produces]
-= Produces
-
-{{#produces}}
-* {{{mediaType}}}
-{{/produces}}
-{{/hasProduces}}
-
-{{! *** OPERATION CONSUMES *** }}
-{{#hasConsumes}}
-[#{{operationIdOriginal}}-consumes]
-= Consumes
-
-{{#consumes}}
-* {{{mediaType}}}
-{{/consumes}}
-{{/hasConsumes}}
 
 {{! *** OPERATION RESPONSES *** }}
 {{! include partial before operation responses }}
