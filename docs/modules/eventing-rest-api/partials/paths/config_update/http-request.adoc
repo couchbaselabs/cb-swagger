@@ -22,25 +22,24 @@ curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
 
 .Allow interbucket recursion
 ====
-Note that allowing interbucket recursion is highly discouraged unless you have an advanced use case and follow strict non-production coding and verification.
-This will disable the safety checks that prevent basic infinite recursive Eventing functions.
+This example disables the safety checks that prevent basic infinite recursive Eventing functions.
 
 .Curl request
 [source,sh]
 ----
 curl -X POST -u $ADMIN:$PASSWORD "http://$HOST:8091/_p/event/api/v1/config" \
-  -d '{"allow_interbucket_recursion":true}'
+  -d '{"allow_interbucket_recursion": true}'
 ----
 ====
 
 .Disallow interbucket recursion
 ====
-This is the default setting of which applies some sanity checks to prevent basic infinite recursive Eventing functions.
+This example restores the default setting, which applies some sanity checks to prevent basic infinite recursive Eventing functions.
 
 .Curl request
 [source,sh]
 ----
 curl -X POST -u $ADMIN:$PASSWORD "http://$HOST:8091/_p/event/api/v1/config" 
-  -d '{"allow_interbucket_recursion":false}'
+  -d '{"allow_interbucket_recursion": false}'
 ----
 ====
