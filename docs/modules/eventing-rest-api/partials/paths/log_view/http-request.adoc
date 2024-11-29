@@ -1,0 +1,59 @@
+= Example HTTP Requests
+
+.View global function log from a single node
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/getAppLog?name=my_function"
+----
+====
+
+.View scoped function log from a single node
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$USER:$PASSWORD@$HOST:8096/getAppLog?name=my_function&bucket=bulk&scope=data"
+----
+====
+
+.View global function log from all Eventing nodes
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/getAppLog?name=my_function&aggregate=true"
+----
+====
+
+.View scoped function log from all Eventing nodes
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$USER:$PASSWORD@$HOST:8096/getAppLog?name=my_function&aggregate=true&bucket=bulk&scope=data"
+----
+====
+
+.View size-limited global function log
+====
+This example fetches recent Application log info from all Eventing nodes, limited to 2048 bytes.
+
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/getAppLog?name=my_function&aggregate=true&size=2048"
+----
+====
+
+.View size-limited scoped function log
+====
+This example fetches recent Application log info from all Eventing nodes, limited to 2048 bytes.
+
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$USER:$PASSWORD@$HOST:8096/getAppLog?name=my_function&aggregate=true&size=2048&bucket=bulk&scope=data"
+----
+====

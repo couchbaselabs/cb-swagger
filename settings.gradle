@@ -2,6 +2,7 @@ rootProject.name = 'cb-swagger'
 include 'admin',
         'query-settings',
         'query-service',
+        'eventing',
         'functions',
         'indexes',
         'analytics-admin',
@@ -16,6 +17,8 @@ project(':query-settings').projectDir = new File (settingsDir, 'src/query-settin
 project(':query-settings').buildFileName = 'query-settings.gradle'
 project(':query-service').projectDir = new File (settingsDir, 'src/query-service')
 project(':query-service').buildFileName = 'query-service.gradle'
+project(':eventing').projectDir = new File (settingsDir, 'src/eventing')
+project(':eventing').buildFileName = 'eventing.gradle'
 project(':functions').projectDir = new File (settingsDir, 'src/functions')
 project(':functions').buildFileName = 'functions.gradle'
 project(':indexes').projectDir = new File (settingsDir, 'src/indexes')

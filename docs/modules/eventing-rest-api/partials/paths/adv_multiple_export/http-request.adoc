@@ -1,0 +1,20 @@
+= Example HTTP Requests
+
+.View all function definitions
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/export"
+----
+====
+
+.Save all function definitions to file
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/export" \
+  -o array_of_functions.json
+----
+====

@@ -1,0 +1,71 @@
+= Example HTTP Requests
+
+.Update global function code
+====
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode" \
+  --data-binary 'function OnUpdate(doc, meta) { log("id",meta.id); }'
+----
+====
+
+.Update scoped function code
+====
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode?bucket=bulk&scope=data" \
+  --data-binary 'function OnUpdate(doc, meta) { log("id",meta.id); }'
+----
+====
+
+.Update global function code from file
+====
+This example uses the `--data-binary` option.
+Do not use `-d`.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/import" \
+  --data-binary @./my_function.json
+----
+====
+
+.Update scoped function code from file
+====
+This example uses the `--data-binary` option.
+Do not use `-d`.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/import?bucket=bulk&scope=data" \
+  --data-binary @./my_function.json
+----
+====
+
+.Update global function code from file -- alternative
+====
+This example uses the `--upload-file` option.
+
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/import" \
+  --upload-file ./my_function.json
+----
+====
+
+.Update scoped function code from file -- alternative
+====
+This example uses the `--upload-file` option.
+
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/import?bucket=bulk&scope=data" \
+  --upload-file ./my_function.json
+----
+====
