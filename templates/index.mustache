@@ -74,7 +74,7 @@ a| [markdown]
 {{! enumerated values}}
 {{#enumValues}}{{#-first}}*Values:* {{/-first}}{{^-last}}`{{this}}`, {{/-last}}{{#-last}}`{{this}}`{{/-last}}{{/enumValues}}
 {{! example }}
-{{#value}}*Example:* `pass:c[{{this}}]`{{/value}}
+{{#value}}*Example:* `+++{{this}}+++`{{/value}}
 // end
 
 {{#-last}}
@@ -198,6 +198,25 @@ CAUTION: This operation is deprecated, and will be removed in a future release.
 
 {{! include partials after operation description body }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-description-end.adoc{{/specinclude}}
+
+{{! *** OPERATION CONSUMES *** }}
+{{#hasConsumes}}
+[#{{operationIdOriginal}}-consumes]
+.Consumes
+{{#consumes}}
+* {{{mediaType}}}
+{{/consumes}}
+{{/hasConsumes}}
+
+{{! *** OPERATION PRODUCES *** }}
+{{#hasProduces}}
+[#{{operationIdOriginal}}-produces]
+.Produces
+{{#produces}}
+* {{{mediaType}}}
+{{/produces}}
+{{/hasProduces}}
+
 :leveloffset: -1
 
 {{! include partial after operation description }}
@@ -229,26 +248,6 @@ CAUTION: This operation is deprecated, and will be removed in a future release.
 
 {{! include partials after the operation parameters }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-parameters-after.adoc{{/specinclude}}
-
-{{! *** OPERATION PRODUCES *** }}
-{{#hasProduces}}
-[#{{operationIdOriginal}}-produces]
-= Produces
-
-{{#produces}}
-* {{{mediaType}}}
-{{/produces}}
-{{/hasProduces}}
-
-{{! *** OPERATION CONSUMES *** }}
-{{#hasConsumes}}
-[#{{operationIdOriginal}}-consumes]
-= Consumes
-
-{{#consumes}}
-* {{{mediaType}}}
-{{/consumes}}
-{{/hasConsumes}}
 
 {{! *** OPERATION RESPONSES *** }}
 {{! include partial before operation responses }}
@@ -458,3 +457,11 @@ __Key in__ : {{#isKeyInQuery}}query{{/isKeyInQuery}} {{#isKeyInHeader}}header{{/
 
 {{! include partial after security }}
 {{#specinclude}}/security/document-after.adoc{{/specinclude}}
+
+{{! *** EXTERNAL DOCS *** }}
+{{#externalDocs}}
+[[see-also]]
+= See Also
+
+* link:{{url}}[{{description}}]
+{{/externalDocs}}

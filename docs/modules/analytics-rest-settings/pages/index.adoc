@@ -59,7 +59,7 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `pass:c[http]`
+*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -70,7 +70,7 @@ The host name or IP address of a node running the Analytics service.
 
 [%hardbreaks]
 
-*Example:* `pass:c[localhost]`
+*Example:* `+++localhost+++`
 // end
 
 a| *port*
@@ -81,7 +81,7 @@ The Cluster administration REST port. Use `18091` for secure access.  Note that 
 
 [%hardbreaks]
 *Values:* `8091`, `18091`
-*Example:* `pass:c[8091]`
+*Example:* `+++8091+++`
 // end
 
 |===
@@ -174,6 +174,12 @@ Retrieves cluster-level Analytics settings. Note that only one setting is availa
 
 include::{specDir}paths/get_settings/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_settings-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -189,12 +195,6 @@ include::{specDir}paths/get_settings/operation-description-end.adoc[opts=optiona
 
 
 // markup not found, no include::{specDir}paths/get_settings/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_settings-produces]
-= Produces
-
-* application/json
 
 
 
@@ -327,6 +327,15 @@ Sets cluster-level Analytics settings. Note that only one setting is available: 
 
 include::{specDir}paths/post_settings/operation-description-end.adoc[opts=optional]
 
+
+[#post_settings-consumes]
+.Consumes
+* application/x-www-form-urlencoded
+
+[#post_settings-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -352,13 +361,13 @@ include::{specDir}paths/post_settings/operation-description-end.adoc[opts=option
 .Form Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *numReplicas* +
+a¦ *numReplicas* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -371,7 +380,7 @@ Specifies the number of replicas for Analytics.
 *Maximum:* `3`
 {blank}
 
-a| Integer
+a¦ Integer
 
 
 
@@ -388,16 +397,6 @@ a| Integer
 
 // markup not found, no include::{specDir}paths/post_settings/operation-parameters-after.adoc[opts=optional]
 
-
-[#post_settings-produces]
-= Produces
-
-* application/json
-
-[#post_settings-consumes]
-= Consumes
-
-* application/x-www-form-urlencoded
 
 
 // markup not found, no include::{specDir}paths/post_settings/operation-responses-before.adoc[opts=optional]
@@ -559,14 +558,14 @@ endif::collapse-models[]
 //tag::Settings[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *numReplicas* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -578,7 +577,7 @@ Specifies the number of replicas for Analytics.
 *Maximum:* `3`
 *Example:* `3`
 {blank}
-a| Integer
+a¦ Integer
 
 
 |===
@@ -662,4 +661,5 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 
 // markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
 

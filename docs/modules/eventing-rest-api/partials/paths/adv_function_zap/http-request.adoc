@@ -1,0 +1,19 @@
+= Example HTTP Requests
+
+.Delete a global function
+====
+.Curl request
+[source,sh]
+----
+curl -XDELETE "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function"
+----
+====
+
+.Delete a scoped function
+====
+.Curl request
+[source,sh]
+----
+curl -XDELETE "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function?bucket=bulk&scope=data"
+----
+====

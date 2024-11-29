@@ -1,0 +1,45 @@
+= Example HTTP Requests
+
+.Alter RAM quota
+====
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
+  -d '{"ram_quota": 512}'
+----
+====
+
+.Enable debugger
+====
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
+  -d '{"enable_debugger": true}'
+----
+====
+
+.Allow interbucket recursion
+====
+This example disables the safety checks that prevent basic infinite recursive Eventing functions.
+
+.Curl request
+[source,sh]
+----
+curl -X POST -u $ADMIN:$PASSWORD "http://$HOST:8091/_p/event/api/v1/config" \
+  -d '{"allow_interbucket_recursion": true}'
+----
+====
+
+.Disallow interbucket recursion
+====
+This example restores the default setting, which applies some sanity checks to prevent basic infinite recursive Eventing functions.
+
+.Curl request
+[source,sh]
+----
+curl -X POST -u $ADMIN:$PASSWORD "http://$HOST:8091/_p/event/api/v1/config" 
+  -d '{"allow_interbucket_recursion": false}'
+----
+====
