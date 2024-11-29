@@ -126,20 +126,13 @@ paths:
         - advanced
       requestBody:
        required: true
-       description: A single function definition object, or an array containing a single function definition object.
+       description: |-
+        A single function definition object, or an array containing a single function definition object.
+        The function name in the definition object must match that given by the path parameter.
        content:
         application/json:
           schema:
-            oneOf:
-              - type: object
-                description: |-
-                  The function definition, including current settings.
-                  The function name in the body must match that given by the query parameter.
-              - type: array
-                minItems: 1
-                maxItems: 1
-                items:
-                  type: object
+            $ref: '#/components/schemas/AddFunction'
       security:
         - Global: []
         - Scoped: []
@@ -163,7 +156,11 @@ paths:
         - Scoped: []
       responses:
         "200":
-          $ref: '#/components/responses/OK'
+          description: Returns a single function definition object.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler_schema"
         "404":
           $ref: '#/components/responses/Goof'
     delete:
@@ -196,21 +193,15 @@ paths:
         - advanced
       requestBody:
        required: true
-       description: A single function definition object, or an array containing one or more function definition objects.
+       description: |-
+        A single function definition object, or an array containing one or more function definition objects.
+
+        Function names must be unique.
+        When multiple functions have the same name, an error is reported.
        content:
         application/json:
           schema:
-            oneOf:
-              - type: object
-                description: |-
-                  The function definition, including current settings.
-                  Function names must be unique.
-                  When multiple functions have the same name, an error is reported.
-              - type: array
-                description: An array containing one or more JSON objects.
-                minItems: 1
-                items:
-                  type: object
+            $ref: '#/components/schemas/AddFunctions'
       security:
         - Unscoped: []
       responses:
@@ -234,7 +225,13 @@ paths:
         - Unscoped: []
       responses:
         "200":
-          $ref: '#/components/responses/OK'
+          description: Returns an array containing one or more function definition objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/handler_schema"
         "404":
           $ref: '#/components/responses/Goof'
     delete:
@@ -261,13 +258,21 @@ paths:
       summary: Import Multiple Functions
       description: |-
         Imports multiple functions.
-        Function names must be unique.
-        When multiple functions have the same name, an error is reported.
-        The POST data or POST data file must be either a single JSON object or an array containing a one or more JSON objects.
-        
+
         Note that if any function's `language_compatibility` field is missing, the value will be set to 6.0.0, unlike [Create or Import Multiple Functions](#adv_function_import_all).
       tags:
         - advanced
+      requestBody:
+       required: true
+       description: |-
+        A single function definition object, or an array containing one or more function definition objects.
+
+        Function names must be unique.
+        When multiple functions have the same name, an error is reported.
+       content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddFunctions'
       security:
         - Unscoped: []
       responses:
@@ -616,7 +621,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Global"
+                $ref: "#/components/schemas/UnivConfig"
         "404":
           $ref: '#/components/responses/Goof'
     post:
@@ -635,7 +640,7 @@ paths:
        content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Global"
+            $ref: "#/components/schemas/UnivConfig"
       security:
         - Unscoped: []
       responses:
@@ -835,12 +840,36 @@ components:
     depcfg_schema:
       $ref: 'https://raw.githubusercontent.com/couchbase/eventing/refs/heads/master/parser/depcfg_schema.json'
 
+    handler_schema:
+      $ref: 'https://raw.githubusercontent.com/couchbase/eventing/refs/heads/master/parser/handler_schema.json'
+
     AppCode:
       type: string
       example: function OnUpdate(doc, meta) { log("id",meta.id); }
       x-has-example: true
 
-    Global:
+    AddFunction:
+      title: Function Request
+      oneOf:
+        - $ref: "#/components/schemas/handler_schema"
+        - type: array
+          description: An array containing a single function definition object.
+          minItems: 1
+          maxItems: 1
+          items:
+            $ref: "#/components/schemas/handler_schema"
+
+    AddFunctions:
+      title: Functions Request
+      oneOf:
+        - $ref: "#/components/schemas/handler_schema"
+        - type: array
+          description: An array containing one or more function definition objects.
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/handler_schema"
+
+    UnivConfig:
       title: Global Configuration
       type: object
       properties:
@@ -858,8 +887,6 @@ components:
           description: |-
             Enables the Eventing service debugger.
             For details, see [Debugging and Diagnosability](/server/7.6/eventing/eventing-debugging-and-diagnosability.html).
-        allow_interbucket_recursion:
-          type: boolean
 
   responses:
     OK:
