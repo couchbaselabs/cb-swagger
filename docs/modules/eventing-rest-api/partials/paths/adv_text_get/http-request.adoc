@@ -1,0 +1,39 @@
+= Example HTTP Requests
+
+.View global function code
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode"
+----
+====
+
+.View scoped function code
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode?bucket=bulk&scope=data"
+----
+====
+
+.Save global function code to file
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode" \
+  -o my_function.json
+----
+====
+
+.Save scoped function code to file
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode?bucket=bulk&scope=data" \
+  -o my_function.json
+----
+====

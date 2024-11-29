@@ -59,7 +59,7 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `pass:c[http]`
+*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -70,7 +70,7 @@ The host name or IP address of a node running the Analytics service.
 
 [%hardbreaks]
 
-*Example:* `pass:c[localhost]`
+*Example:* `+++localhost+++`
 // end
 
 a| *port*
@@ -81,7 +81,7 @@ The Analytics service REST port. Use `18095` for secure access.
 
 [%hardbreaks]
 *Values:* `8095`, `18095`
-*Example:* `pass:c[8095]`
+*Example:* `+++8095+++`
 // end
 
 |===
@@ -174,6 +174,12 @@ Deletes the specified library entirely.
 
 // markup not found, no include::{specDir}paths/delete_library/operation-description-end.adoc[opts=optional]
 
+
+
+[#delete_library-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -196,13 +202,13 @@ Deletes the specified library entirely.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *library* +
+a¦ *library* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -213,13 +219,13 @@ The name of a library.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *scope* +
+a¦ *scope* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -233,7 +239,7 @@ The scope name may contain one or two identifiers, separated by a slash (/). You
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -252,12 +258,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/delete_library/operation-parameters-after.adoc[opts=optional]
-
-
-[#delete_library-produces]
-= Produces
-
-* application/json
 
 
 
@@ -395,6 +395,12 @@ Returns all libraries and functions.
 
 // markup not found, no include::{specDir}paths/get_collection/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_collection-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -410,12 +416,6 @@ Returns all libraries and functions.
 
 
 // markup not found, no include::{specDir}paths/get_collection/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_collection-produces]
-= Produces
-
-* application/json
 
 
 
@@ -554,6 +554,15 @@ Creates the specified library and its associated functions. If the specified lib
 
 include::{specDir}paths/post_library/operation-description-end.adoc[opts=optional]
 
+
+[#post_library-consumes]
+.Consumes
+* multipart/form-data
+
+[#post_library-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -576,13 +585,13 @@ include::{specDir}paths/post_library/operation-description-end.adoc[opts=optiona
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *library* +
+a¦ *library* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -593,13 +602,13 @@ The name of a library.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *scope* +
+a¦ *scope* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -613,7 +622,7 @@ The scope name may contain one or two identifiers, separated by a slash (/). You
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -625,13 +634,13 @@ a| String
 .Form Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *data* +
+a¦ *data* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -642,13 +651,13 @@ The library and all its dependencies, packaged by shiv.
 [%hardbreaks]
 {blank}
 
-a| File (binary)
+a¦ File (binary)
 
 
 
-a| *type* +
+a¦ *type* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -660,7 +669,7 @@ The language of the library.
 *Values:* `&quot;python&quot;`
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -677,16 +686,6 @@ a| String
 
 // markup not found, no include::{specDir}paths/post_library/operation-parameters-after.adoc[opts=optional]
 
-
-[#post_library-produces]
-= Produces
-
-* application/json
-
-[#post_library-consumes]
-= Consumes
-
-* multipart/form-data
 
 
 // markup not found, no include::{specDir}paths/post_library/operation-responses-before.adoc[opts=optional]
@@ -849,14 +848,14 @@ endif::collapse-models[]
 //tag::Errors[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *error* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -865,7 +864,7 @@ An error message.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -905,14 +904,14 @@ endif::collapse-models[]
 //tag::Libraries[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *scope* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -923,15 +922,15 @@ The scope name may contain one or two identifiers, separated by a slash (/).
 --
 
 [%hardbreaks]
-*Example:* `pass:c["travel-sample/inventory"]`
+*Example:* `+++"travel-sample/inventory"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *hash_md5* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -940,13 +939,13 @@ A MD5 hash of the library residing on the server.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *name* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -954,9 +953,9 @@ The name of the library.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["mylib"]`
+*Example:* `+++"mylib"+++`
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -1071,4 +1070,5 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 
 // markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
 
