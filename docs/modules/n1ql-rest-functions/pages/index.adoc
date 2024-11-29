@@ -58,7 +58,7 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `pass:c[http]`
+*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -69,7 +69,7 @@ The host name or IP address of a node running the Query service.
 
 [%hardbreaks]
 
-*Example:* `pass:c[localhost]`
+*Example:* `+++localhost+++`
 // end
 
 a| *port*
@@ -80,7 +80,7 @@ The Query service REST port. Use `18093` for secure access.
 
 [%hardbreaks]
 *Values:* `8093`, `18093`
-*Example:* `pass:c[8093]`
+*Example:* `+++8093+++`
 // end
 
 |===
@@ -178,6 +178,9 @@ For a scoped library, you must specify the bucket and scope.
 
 include::{specDir}paths/delete_library/operation-description-end.adoc[opts=optional]
 
+
+
+
 :leveloffset: -1
 
 
@@ -200,13 +203,13 @@ include::{specDir}paths/delete_library/operation-description-end.adoc[opts=optio
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *library* +
+a¦ *library* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -217,7 +220,7 @@ The name of a library.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -227,13 +230,13 @@ a| String
 .Query Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *bucket* +
+a¦ *bucket* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -245,13 +248,13 @@ For scoped libraries only. The bucket in which the library is stored.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *scope* +
+a¦ *scope* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -263,7 +266,7 @@ For scoped libraries only. The scope in which the library is stored.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -281,8 +284,6 @@ include::{specDir}paths/delete_library/operation-parameters-end.adoc[opts=option
 
 
 // markup not found, no include::{specDir}paths/delete_library/operation-parameters-after.adoc[opts=optional]
-
-
 
 
 
@@ -421,6 +422,12 @@ By default, this operation returns all global libraries and functions, and all s
 
 // markup not found, no include::{specDir}paths/get_collection/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_collection-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -444,13 +451,13 @@ By default, this operation returns all global libraries and functions, and all s
 .Query Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *bucket* +
+a¦ *bucket* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -462,13 +469,13 @@ For scoped libraries only. The bucket from which to fetch libraries.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *scope* +
+a¦ *scope* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -480,7 +487,7 @@ For scoped libraries only. The scope from which to fetch libraries.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -498,12 +505,6 @@ include::{specDir}paths/get_collection/operation-parameters-end.adoc[opts=option
 
 
 // markup not found, no include::{specDir}paths/get_collection/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_collection-produces]
-= Produces
-
-* application/json
 
 
 
@@ -638,6 +639,12 @@ By default, this operation returns a global library. For a scoped library, you m
 
 // markup not found, no include::{specDir}paths/get_library/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_library-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -660,13 +667,13 @@ By default, this operation returns a global library. For a scoped library, you m
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *library* +
+a¦ *library* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -677,7 +684,7 @@ The name of a library.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -687,13 +694,13 @@ a| String
 .Query Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *bucket* +
+a¦ *bucket* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -705,13 +712,13 @@ For scoped libraries only. The bucket in which the library is stored.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *scope* +
+a¦ *scope* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -723,7 +730,7 @@ For scoped libraries only. The scope in which the library is stored.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -741,12 +748,6 @@ include::{specDir}paths/get_library/operation-parameters-end.adoc[opts=optional]
 
 
 // markup not found, no include::{specDir}paths/get_library/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_library-produces]
-= Produces
-
-* application/json
 
 
 
@@ -887,6 +888,12 @@ By default, this operation creates or updates a global library. For a scoped lib
 
 include::{specDir}paths/post_library/operation-description-end.adoc[opts=optional]
 
+
+[#post_library-consumes]
+.Consumes
+* application/json
+
+
 :leveloffset: -1
 
 
@@ -909,13 +916,13 @@ include::{specDir}paths/post_library/operation-description-end.adoc[opts=optiona
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *library* +
+a¦ *library* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -926,7 +933,7 @@ The name of a library.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -936,13 +943,13 @@ a| String
 .Query Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *bucket* +
+a¦ *bucket* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -954,13 +961,13 @@ For scoped libraries only. The bucket in which the library is stored.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *scope* +
+a¦ *scope* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -972,7 +979,7 @@ For scoped libraries only. The scope in which the library is stored.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -984,13 +991,13 @@ a| String
 .Body Parameter
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *Body* +
+a¦ *Body* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1001,7 +1008,7 @@ The JavaScript code for all functions in the library.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -1017,12 +1024,6 @@ include::{specDir}paths/post_library/operation-parameters-end.adoc[opts=optional
 
 // markup not found, no include::{specDir}paths/post_library/operation-parameters-after.adoc[opts=optional]
 
-
-
-[#post_library-consumes]
-= Consumes
-
-* application/json
 
 
 // markup not found, no include::{specDir}paths/post_library/operation-responses-before.adoc[opts=optional]
@@ -1181,14 +1182,14 @@ endif::collapse-models[]
 //tag::Functions[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 _additional +
 property_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1199,9 +1200,9 @@ The name of the property is the name of the library.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"]`
+*Example:* `+++"function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"+++`
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -1241,14 +1242,14 @@ endif::collapse-models[]
 //tag::Libraries[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *name* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1256,15 +1257,15 @@ The name of a library.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["math"]`
+*Example:* `+++"math"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *bucket* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1273,15 +1274,15 @@ For scoped libraries, the bucket in which the library is stored. For global libr
 --
 
 [%hardbreaks]
-*Example:* `pass:c["travel-sample"]`
+*Example:* `+++"travel-sample"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *scope* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1290,15 +1291,15 @@ For scoped libraries, the scope in which the library is stored. For global libra
 --
 
 [%hardbreaks]
-*Example:* `pass:c["inventory"]`
+*Example:* `+++"inventory"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *code* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1307,9 +1308,9 @@ The JavaScript code for all functions in the library.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"]`
+*Example:* `+++"function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"+++`
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -1425,4 +1426,5 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 
 // markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
 

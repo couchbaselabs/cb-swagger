@@ -59,7 +59,7 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `pass:c[http]`
+*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -70,7 +70,7 @@ The host name or IP address of a node running the Query service.
 
 [%hardbreaks]
 
-*Example:* `pass:c[localhost]`
+*Example:* `+++localhost+++`
 // end
 
 a| *port*
@@ -81,7 +81,7 @@ The Query service REST port. Use `18093` for secure access.
 
 [%hardbreaks]
 *Values:* `8093`, `18093`
-*Example:* `pass:c[8093]`
+*Example:* `+++8093+++`
 // end
 
 |===
@@ -176,6 +176,12 @@ This endpoint is intended for situations where use of the `POST` method is restr
 
 // markup not found, no include::{specDir}paths/get_service/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_service-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -199,13 +205,13 @@ This endpoint is intended for situations where use of the `POST` method is restr
 .Query Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *body* +
+a¦ *body* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -217,7 +223,7 @@ The format for URL-encoded parameters is consistent with the syntax for variable
 [%hardbreaks]
 {blank}
 
-a| <<Request>>
+a¦ <<Request>>
 
 
 
@@ -235,12 +241,6 @@ a| <<Request>>
 
 
 // markup not found, no include::{specDir}paths/get_service/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_service-produces]
-= Produces
-
-* application/json
 
 
 
@@ -427,6 +427,16 @@ Enables you to execute a SQL++ statement. This method allows you to run queries 
 
 // markup not found, no include::{specDir}paths/post_service/operation-description-end.adoc[opts=optional]
 
+
+[#post_service-consumes]
+.Consumes
+* application/json
+* application/x-www-form-urlencoded
+
+[#post_service-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -453,13 +463,13 @@ include::{specDir}paths/post_service/operation-parameters-begin.adoc[opts=option
 .Body Parameter
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *Body* +
+a¦ *Body* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -470,7 +480,7 @@ An object specifying one or more query parameters.
 [%hardbreaks]
 {blank}
 
-a| <<Request>>
+a¦ <<Request>>
 
 
 
@@ -486,17 +496,6 @@ a| <<Request>>
 
 // markup not found, no include::{specDir}paths/post_service/operation-parameters-after.adoc[opts=optional]
 
-
-[#post_service-produces]
-= Produces
-
-* application/json
-
-[#post_service-consumes]
-= Consumes
-
-* application/json
-* application/x-www-form-urlencoded
 
 
 // markup not found, no include::{specDir}paths/post_service/operation-responses-before.adoc[opts=optional]
@@ -717,14 +716,14 @@ Errors and warnings have the following format.
 //end::desc-Conditions[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *code* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -734,13 +733,13 @@ A unique number that identifies the error or warning. The code ranges are partit
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *msg* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -750,13 +749,13 @@ A message describing the error or warning in detail. This property is always pre
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *name* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -765,15 +764,15 @@ Unique name that has a 1:1 mapping to the code. Uniquely identifies the conditio
 --
 
 [%hardbreaks]
-*Example:* `pass:c["indexing.scan.io_failure"]`
+*Example:* `+++"indexing.scan.io_failure"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *sev* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -788,13 +787,13 @@ One of the following SQL++ severity levels, listed in order of severity:
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *temp* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -804,7 +803,7 @@ Indicates if the condition is transient &mdash; for example, the queue is full. 
 
 [%hardbreaks]
 {blank}
-a| Boolean
+a¦ Boolean
 
 
 |===
@@ -850,14 +849,14 @@ An object containing runtime information provided along with the request. Presen
 //end::desc-Controls[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *scan_consistency* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -866,13 +865,13 @@ The value of the query setting Scan Consistency used for the query.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *use_cbo* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -881,13 +880,13 @@ Whether the cost-based optimizer was enabled for the query.
 
 [%hardbreaks]
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| 
+a¦ 
 *memoryQuota* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -897,13 +896,13 @@ The memory quota for the request, in MB. This property is only returned if a mem
 
 [%hardbreaks]
 {blank}
-a| Integer (unsigned)
+a¦ Integer (unsigned)
 
 
-a| 
+a¦ 
 *stmtType* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -911,9 +910,9 @@ The type of query statement.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["SELECT"]`
+*Example:* `+++"SELECT"+++`
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -953,14 +952,14 @@ endif::collapse-models[]
 //tag::Credentials[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *user* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -969,15 +968,15 @@ An identity for authentication. Note that bucket names may be prefixed with `loc
 --
 
 [%hardbreaks]
-*Example:* `pass:c["local:bucket-name"]`
+*Example:* `+++"local:bucket-name"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *pass* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -985,9 +984,9 @@ A password for authentication.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["password"]`
+*Example:* `+++"password"+++`
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -1035,14 +1034,14 @@ The execution details for various phases involved in the query execution, such a
 //end::desc-Execution_Timings[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *#operator* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1050,15 +1049,15 @@ Name of the operator.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["Fetch"]`
+*Example:* `+++"Fetch"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *#stats* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1067,13 +1066,13 @@ include::index.adoc[tag=desc-Statistics, opts=optional]
 
 [%hardbreaks]
 {blank}
-a| <<Statistics>>
+a¦ <<Statistics>>
 
 
-a| 
+a¦ 
 *~child* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1082,7 +1081,7 @@ Further nested operators, each with their own execution timings.
 
 [%hardbreaks]
 {blank}
-a| Object
+a¦ Object
 
 
 |===
@@ -1127,14 +1126,14 @@ An object containing metrics about the request.
 //end::desc-Metrics[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *elapsedTime* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1143,13 +1142,13 @@ The total time taken for the request, that is the time from when the request was
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *executionTime* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1158,13 +1157,13 @@ The time taken for the execution of the request, that is the time from when quer
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *resultCount* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1173,13 +1172,13 @@ The total number of objects in the results.
 
 [%hardbreaks]
 {blank}
-a| Integer (unsigned)
+a¦ Integer (unsigned)
 
 
-a| 
+a¦ 
 *resultSize* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1188,13 +1187,13 @@ The total number of bytes in the results.
 
 [%hardbreaks]
 {blank}
-a| Integer (unsigned)
+a¦ Integer (unsigned)
 
 
-a| 
+a¦ 
 *mutationCount* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1203,13 +1202,13 @@ The number of mutations that were made during the request.
 
 [%hardbreaks]
 {blank}
-a| Integer (unsigned)
+a¦ Integer (unsigned)
 
 
-a| 
+a¦ 
 *sortCount* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1221,13 +1220,13 @@ If a query includes ORDER BY, LIMIT, or OFFSET clauses, an application can use t
 
 [%hardbreaks]
 {blank}
-a| Integer (unsigned)
+a¦ Integer (unsigned)
 
 
-a| 
+a¦ 
 *usedMemory* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1237,13 +1236,13 @@ The amount of document memory used to execute the request. This property is only
 
 [%hardbreaks]
 {blank}
-a| Integer (unsigned)
+a¦ Integer (unsigned)
 
 
-a| 
+a¦ 
 *errorCount* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1252,13 +1251,13 @@ The number of errors that occurred during the request.
 
 [%hardbreaks]
 {blank}
-a| Integer (unsigned)
+a¦ Integer (unsigned)
 
 
-a| 
+a¦ 
 *warningCount* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1267,7 +1266,7 @@ The number of warnings that occurred during the request.
 
 [%hardbreaks]
 {blank}
-a| Integer (unsigned)
+a¦ Integer (unsigned)
 
 
 |===
@@ -1313,14 +1312,14 @@ An object containing monitoring and profiling information about the request. Pre
 //end::desc-Profile[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *requestTime* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1329,13 +1328,13 @@ Timestamp when the query was received.
 
 [%hardbreaks]
 {blank}
-a| Date (date-time)
+a¦ Date (date-time)
 
 
-a| 
+a¦ 
 *servicingHost* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1344,13 +1343,13 @@ IP address and port number of the node where the query was executed.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *phaseCounts* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1361,13 +1360,13 @@ Count of documents processed at selective phases involved in the query execution
 [%hardbreaks]
 *Example:* `{"fetch":16,"indexScan":187}`
 {blank}
-a| Object
+a¦ Object
 
 
-a| 
+a¦ 
 *phaseOperators* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1384,13 +1383,13 @@ This is in essence the count of all the operators in the `executionTimings` obje
 [%hardbreaks]
 *Example:* `{"authorize":1,"fetch":1,"indexScan":2}`
 {blank}
-a| Object
+a¦ Object
 
 
-a| 
+a¦ 
 *phaseTimes* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1401,13 +1400,13 @@ Cumulative execution times for various phases involved in the query execution, s
 [%hardbreaks]
 *Example:* `{"authorize":"823.631µs","fetch":"656.873µs","indexScan":"29.146543ms","instantiate":"236.221µs","parse":"826.382µs","plan":"11.831101ms","run":"16.892181ms"}`
 {blank}
-a| Object
+a¦ Object
 
 
-a| 
+a¦ 
 *executionTimings* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1416,7 +1415,7 @@ include::index.adoc[tag=desc-Execution_Timings, opts=optional]
 
 [%hardbreaks]
 {blank}
-a| <<Execution_Timings>>
+a¦ <<Execution_Timings>>
 
 
 |===
@@ -1456,14 +1455,14 @@ endif::collapse-models[]
 //tag::Request[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| [#args]
+a¦ [#args]
 *args* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1481,13 +1480,13 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 [%hardbreaks]
 *Example:* `["LAX",6]`
 {blank}
-a| Any Type
+a¦ Any Type
  array
 
-a| [#atrcollection_req]
+a¦ [#atrcollection_req]
 *atrcollection* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1512,15 +1511,15 @@ The request-level parameter overrides the node-level setting.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["default:`travel-sample`.transaction.test"]`
+*Example:* `+++"default:`travel-sample`.transaction.test"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#auto_execute]
+a¦ [#auto_execute]
 *auto_execute* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1537,13 +1536,13 @@ Refer to [Auto-Execute][auto-execute] for more information.
 *Default:* `false`
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#client_context_id]
+a¦ [#client_context_id]
 *client_context_id* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1557,13 +1556,13 @@ SQL++ is agnostic about the content of this parameter; it is just echoed in the 
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| [#compression]
+a¦ [#compression]
 *compression* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1575,16 +1574,16 @@ Values are case-insensitive.
 
 [%hardbreaks]
 *Values:* `"ZIP"`, `"RLE"`, `"LZMA"`, `"LZO"`, `"NONE"`
-*Default:* `pass:c["NONE"]`
-*Example:* `pass:c["zip"]`
+*Default:* `+++"NONE"+++`
+*Example:* `+++"zip"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#controls_req]
+a¦ [#controls_req]
 *controls* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1609,13 +1608,13 @@ The request-level parameter overrides the node-level setting.
 [%hardbreaks]
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#creds]
+a¦ [#creds]
 *creds* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1632,13 +1631,13 @@ If credentials are supplied in the request header, then HTTP Basic Authenticatio
 [%hardbreaks]
 *Example:* `[{"user":"local:bucket-name","pass":"password"},{"user":"admin:admin-name","pass":"password"}]`
 {blank}
-a| <<Credentials>>
+a¦ <<Credentials>>
  array
 
-a| [#durability_level]
+a¦ [#durability_level]
 *durability_level* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1658,16 +1657,16 @@ Set the durability level to `"none"` or `""` to specify no durability.
 
 [%hardbreaks]
 *Values:* `""`, `"none"`, `"majority"`, `"majorityAndPersistActive"`, `"persistToMajority"`
-*Default:* `pass:c["majority"]`
-*Example:* `pass:c["none"]`
+*Default:* `+++"majority"+++`
+*Example:* `+++"none"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#encoded_plan]
+a¦ [#encoded_plan]
 *encoded_plan* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1678,13 +1677,13 @@ It is included for compatibility with previous versions of Couchbase Server.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| [#encoding]
+a¦ [#encoding]
 *encoding* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1695,15 +1694,15 @@ Only possible value is `UTF-8` and is case-insensitive.
 --
 
 [%hardbreaks]
-*Default:* `pass:c["UTF-8"]`
+*Default:* `+++"UTF-8"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#format]
+a¦ [#format]
 *format* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1715,16 +1714,16 @@ Values are case-insensitive.
 
 [%hardbreaks]
 *Values:* `"JSON"`, `"XML"`, `"CSV"`, `"TSV"`
-*Default:* `pass:c["JSON"]`
-*Example:* `pass:c["XML"]`
+*Default:* `+++"JSON"+++`
+*Example:* `+++"XML"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#kvtimeout]
+a¦ [#kvtimeout]
 *kvtimeout* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1750,16 +1749,16 @@ When disabled, no timeout is applied and the KV operation runs for however long 
 --
 
 [%hardbreaks]
-*Default:* `pass:c["2.5s"]`
-*Example:* `pass:c["10ms"]`
+*Default:* `+++"2.5s"+++`
+*Example:* `+++"10ms"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#max_parallelism_req]
+a¦ [#max_parallelism_req]
 *max_parallelism* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1791,13 +1790,13 @@ The default value is the same as the number of partitions of the index selected 
 [%hardbreaks]
 *Example:* `3`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#memory_quota_req]
+a¦ [#memory_quota_req]
 *memory_quota* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1834,13 +1833,13 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Default:* `0`
 *Example:* `4`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#metrics]
+a¦ [#metrics]
 *metrics* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1851,13 +1850,13 @@ Specifies that metrics should be returned with query results.
 *Default:* `true`
 *Example:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#namespace]
+a¦ [#namespace]
 *namespace* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1866,15 +1865,15 @@ Specifies the namespace to use. Currently, only the `default` namespace is avail
 --
 
 [%hardbreaks]
-*Example:* `pass:c["default"]`
+*Example:* `+++"default"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#numatrs_req]
+a¦ [#numatrs_req]
 *numatrs* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1903,13 +1902,13 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Default:* `1024`
 *Example:* `512`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#pipeline_batch_req]
+a¦ [#pipeline_batch_req]
 *pipeline_batch* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1935,13 +1934,13 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `64`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#pipeline_cap_req]
+a¦ [#pipeline_cap_req]
 *pipeline_cap* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1967,13 +1966,13 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `1024`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#prepared]
+a¦ [#prepared]
 *prepared* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1989,15 +1988,15 @@ If both `prepared` and `statement` are present and non-empty, an error is return
 --
 
 [%hardbreaks]
-*Example:* `pass:c["[127.0.0.1:8091]pricy_hotel"]`
+*Example:* `+++"[127.0.0.1:8091]pricy_hotel"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#preserve_expiry]
+a¦ [#preserve_expiry]
 *preserve_expiry* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2016,13 +2015,13 @@ Not supported for statements in a transaction.
 *Default:* `false`
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#pretty_req]
+a¦ [#pretty_req]
 *pretty* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2043,13 +2042,13 @@ The request-level parameter overrides the node-level setting.
 [%hardbreaks]
 *Example:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#profile_req]
+a¦ [#profile_req]
 *profile* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2082,15 +2081,15 @@ The request-level parameter overrides the node-level setting.
 
 [%hardbreaks]
 *Values:* `"off"`, `"phases"`, `"timings"`
-*Example:* `pass:c["phases"]`
+*Example:* `+++"phases"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#query_context]
+a¦ [#query_context]
 *query_context* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2103,16 +2102,16 @@ If the namespace name is omitted, the default namespace in the current session i
 --
 
 [%hardbreaks]
-*Default:* `pass:c["default:"]`
-*Example:* `pass:c["default:travel-sample.inventory"]`
+*Default:* `+++"default:"+++`
+*Example:* `+++"default:travel-sample.inventory"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#readonly]
+a¦ [#readonly]
 *readonly* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2135,13 +2134,13 @@ When using GET requests, it's best to set `readonly` to `true`.
 *Default:* `false`
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#scan_cap_req]
+a¦ [#scan_cap_req]
 *scan_cap* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2171,13 +2170,13 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `1024`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#scan_consistency]
+a¦ [#scan_consistency]
 *scan_consistency* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2218,16 +2217,16 @@ Refer to [Transactional Scan Consistency][transactional-scan-consistency] for de
 
 [%hardbreaks]
 *Values:* `"not_bounded"`, `"at_plus"`, `"request_plus"`, `"statement_plus"`
-*Default:* `pass:c["not_bounded"]`
-*Example:* `pass:c["at_plus"]`
+*Default:* `+++"not_bounded"+++`
+*Example:* `+++"at_plus"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#scan_vector]
+a¦ [#scan_vector]
 *scan_vector* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2254,13 +2253,13 @@ For queries referencing multiple keyspaces, use `scan_vectors`.
 [%hardbreaks]
 *Example:* `{"5":[5409393,"VB5ID"],"19":[47574574,"VB19ID"]}`
 {blank}
-a| Object
+a¦ Object
 
 
-a| [#scan_vectors]
+a¦ [#scan_vectors]
 *scan_vectors* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2275,13 +2274,13 @@ The scan vectors can be Full or Sparse.
 
 [%hardbreaks]
 {blank}
-a| Object
+a¦ Object
 
 
-a| [#scan_wait]
+a¦ [#scan_wait]
 *scan_wait* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2307,16 +2306,16 @@ Specify `0` or a negative integer to disable.
 --
 
 [%hardbreaks]
-*Default:* `pass:c[""]`
-*Example:* `pass:c["30m"]`
+*Default:* `+++""+++`
+*Example:* `+++"30m"+++`
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| [#signature]
+a¦ [#signature]
 *signature* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2327,13 +2326,13 @@ Include a header for the results schema in the response.
 *Default:* `true`
 *Example:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#sort_projection]
+a¦ [#sort_projection]
 *sort_projection* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2347,13 +2346,13 @@ If `false` (the default), statement projection terms are returned in the order s
 *Default:* `false`
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#statement]
+a¦ [#statement]
 *statement* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2374,15 +2373,15 @@ This restriction does not apply when specifying the request parameters in JSON f
 --
 
 [%hardbreaks]
-*Example:* `pass:c["SELECT * FROM `travel-sample`.inventory.hotel LIMIT 1"]`
+*Example:* `+++"SELECT * FROM `travel-sample`.inventory.hotel LIMIT 1"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#timeout_req]
+a¦ [#timeout_req]
 *timeout* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2424,15 +2423,15 @@ When you change the cluster-level setting, the node-level setting is overwritten
 --
 
 [%hardbreaks]
-*Example:* `pass:c["30m"]`
+*Example:* `+++"30m"+++`
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| [#txdata]
+a¦ [#txdata]
 *txdata* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2443,13 +2442,13 @@ For internal use only.
 
 [%hardbreaks]
 {blank}
-a| Object
+a¦ Object
 
 
-a| [#txid]
+a¦ [#txid]
 *txid* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2465,15 +2464,15 @@ The transaction must be active and non-expired.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["d81d9b4a-b758-4f98-b007-87ba262d3a51"]`
+*Example:* `+++"d81d9b4a-b758-4f98-b007-87ba262d3a51"+++`
 {blank}
-a| UUID (UUID)
+a¦ UUID (UUID)
 
 
-a| [#tximplicit]
+a¦ [#tximplicit]
 *tximplicit* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2491,13 +2490,13 @@ If the [txid](#txid) request-level parameter is set, the `tximplicit` parameter 
 *Default:* `false`
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#txstmtnum]
+a¦ [#txstmtnum]
 *txstmtnum* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2510,13 +2509,13 @@ If the transaction statement number is lower than the transaction statement numb
 [%hardbreaks]
 *Example:* `10`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#txtimeout_req]
+a¦ [#txtimeout_req]
 *txtimeout* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2563,15 +2562,15 @@ The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sess
 --
 
 [%hardbreaks]
-*Example:* `pass:c["30m"]`
+*Example:* `+++"30m"+++`
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| [#use_cbo_req]
+a¦ [#use_cbo_req]
 *use_cbo* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2597,13 +2596,13 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#use_fts]
+a¦ [#use_fts]
 *use_fts* +
 _optional_
-a| [.edition]##{enterprise}##
+a¦ [.edition]##{enterprise}##
 
 [markdown]
 --
@@ -2625,13 +2624,13 @@ Refer to [Flex Indexes][flex-indexes] for more information.
 *Default:* `false`
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#use_replica_req]
+a¦ [#use_replica_req]
 *use_replica* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2673,16 +2672,16 @@ If a query uses sequential scan and a data node becomes unavailable, the query m
 
 [%hardbreaks]
 *Values:* `"off"`, `"on"`, `"unset"`
-*Default:* `pass:c["unset"]`
-*Example:* `pass:c["true"]`
+*Default:* `+++"unset"+++`
+*Example:* `+++"true"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#identifier]
+a¦ [#identifier]
 _additional +
 property_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2705,7 +2704,7 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 
 [%hardbreaks]
 {blank}
-a| Any Type
+a¦ Any Type
 
 
 |===
@@ -2750,14 +2749,14 @@ The response body has the following structure.
 //end::desc-Response[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *requestID* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2766,13 +2765,13 @@ A unique identifier for the response.
 
 [%hardbreaks]
 {blank}
-a| UUID (UUID)
+a¦ UUID (UUID)
 
 
-a| 
+a¦ 
 *clientContextID* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2781,13 +2780,13 @@ The client context ID of the request, if one was supplied &mdash; see `client_co
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *signature* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2798,13 +2797,13 @@ The schema of the results. Present only when the query completes successfully.
 [%hardbreaks]
 *Example:* `{"id":"json"}`
 {blank}
-a| Object
+a¦ Object
 
 
-a| 
+a¦ 
 *results* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2814,13 +2813,13 @@ An array of all the objects returned by the query. An object can be any JSON val
 
 [%hardbreaks]
 {blank}
-a| Any Type
+a¦ Any Type
  array
 
-a| 
+a¦ 
 *status* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2830,13 +2829,13 @@ The status of the request.
 [%hardbreaks]
 *Values:* `"success"`, `"running"`, `"errors"`, `"completed"`, `"stopped"`, `"timeout"`, `"fatal"`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *errors* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2846,13 +2845,13 @@ An array of 0 or more error objects. If an error occurred during processing of t
 
 [%hardbreaks]
 {blank}
-a| <<Conditions>>
+a¦ <<Conditions>>
  array
 
-a| 
+a¦ 
 *warnings* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2862,13 +2861,13 @@ An array of 0 or more warning objects. If a warning occurred during processing o
 
 [%hardbreaks]
 {blank}
-a| <<Conditions>>
+a¦ <<Conditions>>
  array
 
-a| 
+a¦ 
 *metrics* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2877,13 +2876,13 @@ include::index.adoc[tag=desc-Metrics, opts=optional]
 
 [%hardbreaks]
 {blank}
-a| <<Metrics>>
+a¦ <<Metrics>>
 
 
-a| 
+a¦ 
 *controls* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2892,13 +2891,13 @@ include::index.adoc[tag=desc-Controls, opts=optional]
 
 [%hardbreaks]
 {blank}
-a| <<Controls>>
+a¦ <<Controls>>
 
 
-a| 
+a¦ 
 *profile* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2907,7 +2906,7 @@ include::index.adoc[tag=desc-Profile, opts=optional]
 
 [%hardbreaks]
 {blank}
-a| <<Profile>>
+a¦ <<Profile>>
 
 
 |===
@@ -2952,14 +2951,14 @@ Statistics collected for the operator.
 //end::desc-Statistics[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *#itemsIn* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2969,13 +2968,13 @@ Number of input documents to the operator.
 [%hardbreaks]
 *Example:* `187`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| 
+a¦ 
 *#itemsOut* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2985,13 +2984,13 @@ Number of output documents after the operator processing.
 [%hardbreaks]
 *Example:* `16`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| 
+a¦ 
 *#phaseSwitches* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -3001,13 +3000,13 @@ Number of switches between executing, waiting for services, or waiting for the g
 [%hardbreaks]
 *Example:* `413`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| 
+a¦ 
 *execTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -3015,15 +3014,15 @@ Time spent executing the operator code inside SQL++ query engine.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["128.434µs"]`
+*Example:* `+++"128.434µs"+++`
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *kernTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -3031,15 +3030,15 @@ Time spent waiting to be scheduled for CPU time.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["15.027879ms"]`
+*Example:* `+++"15.027879ms"+++`
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *servTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -3052,9 +3051,9 @@ For fetch, it is time spent waiting on the KV store.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["1.590934ms"]`
+*Example:* `+++"1.590934ms"+++`
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
 |===
@@ -3168,4 +3167,5 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 
 include::{specDir}security/document-after.adoc[opts=optional]
+
 

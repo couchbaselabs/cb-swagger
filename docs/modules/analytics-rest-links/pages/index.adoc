@@ -58,7 +58,7 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `pass:c[http]`
+*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -69,7 +69,7 @@ The host name or IP address of a node running the Analytics service.
 
 [%hardbreaks]
 
-*Example:* `pass:c[localhost]`
+*Example:* `+++localhost+++`
 // end
 
 a| *port*
@@ -80,7 +80,7 @@ The Analytics service REST port. Use `18095` for secure access.
 
 [%hardbreaks]
 *Values:* `8095`, `18095`
-*Example:* `pass:c[8095]`
+*Example:* `+++8095+++`
 // end
 
 |===
@@ -177,6 +177,15 @@ An alternative endpoint for [deleting a link](#delete_link), provided for backwa
 
 // markup not found, no include::{specDir}paths/delete_alt/operation-description-end.adoc[opts=optional]
 
+
+[#delete_alt-consumes]
+.Consumes
+* application/x-www-form-urlencoded
+
+[#delete_alt-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -202,13 +211,13 @@ An alternative endpoint for [deleting a link](#delete_link), provided for backwa
 .Form Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *dataverse* +
+a¦ *dataverse* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -219,13 +228,13 @@ The name of the Analytics scope containing the link.  With this parameter, the s
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *name* +
+a¦ *name* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -236,7 +245,7 @@ The name of the link.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -253,16 +262,6 @@ a| String
 
 // markup not found, no include::{specDir}paths/delete_alt/operation-parameters-after.adoc[opts=optional]
 
-
-[#delete_alt-produces]
-= Produces
-
-* application/json
-
-[#delete_alt-consumes]
-= Consumes
-
-* application/x-www-form-urlencoded
 
 
 // markup not found, no include::{specDir}paths/delete_alt/operation-responses-before.adoc[opts=optional]
@@ -400,6 +399,15 @@ An alternative endpoint for [creating a link](#post_link), provided for backward
 
 // markup not found, no include::{specDir}paths/post_alt/operation-description-end.adoc[opts=optional]
 
+
+[#post_alt-consumes]
+.Consumes
+* application/x-www-form-urlencoded
+
+[#post_alt-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -425,13 +433,13 @@ An alternative endpoint for [creating a link](#post_link), provided for backward
 .Form Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *dataverse* +
+a¦ *dataverse* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -442,13 +450,13 @@ The name of the Analytics scope containing the link.  With this parameter, the s
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *name* +
+a¦ *name* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -459,13 +467,13 @@ The name of the link.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *type* +
+a¦ *type* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -478,13 +486,13 @@ include::index.adoc[tag=desc-CommonType, opts=optional]
 *Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-a| 
+a¦ 
 include::index.adoc[tag=type-CommonType, opts=optional]
 
 
-a| *hostname* +
+a¦ *hostname* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -495,13 +503,13 @@ For Couchbase links only. The remote hostname.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *username* +
+a¦ *username* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -512,13 +520,13 @@ For Couchbase links only. The remote username. Required for links with no encryp
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *password* +
+a¦ *password* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -529,13 +537,13 @@ For Couchbase links only. The remote password. Required for links with no encryp
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *encryption* +
+a¦ *encryption* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -547,13 +555,13 @@ For Couchbase links only. The type of encryption used by the link.  For details,
 *Values:* `&quot;none&quot;`, `&quot;half&quot;`, `&quot;full&quot;`
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *certificate* +
+a¦ *certificate* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -564,13 +572,13 @@ For Couchbase links only. The content of the target cluster root certificate. Re
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientCertificate* +
+a¦ *clientCertificate* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -581,13 +589,13 @@ For Couchbase links, this is the content of the client certificate. Required for
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientKey* +
+a¦ *clientKey* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -598,13 +606,13 @@ For Couchbase links only. The content of the client key. Required for links with
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *accessKeyId* +
+a¦ *accessKeyId* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -615,13 +623,13 @@ For S3 links only. The Amazon S3 access key ID.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *secretAccessKey* +
+a¦ *secretAccessKey* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -632,13 +640,13 @@ For S3 links only. The Amazon S3 secret access key.  You should URL-encode this 
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *sessionToken* +
+a¦ *sessionToken* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -649,13 +657,13 @@ For S3 links only. The Amazon S3 session token. Use this parameter if you want t
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *region* +
+a¦ *region* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -666,13 +674,13 @@ For S3 links only. The Amazon S3 region.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *serviceEndpoint* +
+a¦ *serviceEndpoint* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -683,13 +691,13 @@ For S3 links only. The Amazon S3 service endpoint.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *endpoint* +
+a¦ *endpoint* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -700,13 +708,13 @@ For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *accountName* +
+a¦ *accountName* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -717,13 +725,13 @@ For Azure Blob links only. The account name. Used for shared key authentication.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *accountKey* +
+a¦ *accountKey* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -734,13 +742,13 @@ For Azure Blob links only. The account key. Used for shared key authentication. 
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *sharedAccessSignature* +
+a¦ *sharedAccessSignature* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -751,13 +759,13 @@ For Azure Blob links only. A token that can be used for authentication. Used for
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *managedIdentityId* +
+a¦ *managedIdentityId* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -768,13 +776,13 @@ For Azure Blob links only. The managed identity ID. Used for managed identity au
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientId* +
+a¦ *clientId* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -785,13 +793,13 @@ For Azure Blob links only. The client ID for the registered application. Used fo
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *tenantId* +
+a¦ *tenantId* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -802,13 +810,13 @@ For Azure Blob links only. The tenant ID where the registered application is cre
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientSecret* +
+a¦ *clientSecret* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -819,13 +827,13 @@ For Azure Blob links only. The client secret for the registered application. Use
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientCertificatePassword* +
+a¦ *clientCertificatePassword* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -836,13 +844,13 @@ For Azure Blob links only. The client certificate password for the registered ap
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *jsonCredentials* +
+a¦ *jsonCredentials* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -853,13 +861,13 @@ For Google Cloud Storage links only. The JSON credentials of the link.  This par
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *applicationDefaultCredentials* +
+a¦ *applicationDefaultCredentials* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -871,7 +879,7 @@ For Google Cloud Storage links only. If present, indicates that the link should 
 *Values:* `&quot;true&quot;`
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -888,16 +896,6 @@ a| String
 
 // markup not found, no include::{specDir}paths/post_alt/operation-parameters-after.adoc[opts=optional]
 
-
-[#post_alt-produces]
-= Produces
-
-* application/json
-
-[#post_alt-consumes]
-= Consumes
-
-* application/x-www-form-urlencoded
 
 
 // markup not found, no include::{specDir}paths/post_alt/operation-responses-before.adoc[opts=optional]
@@ -1036,6 +1034,15 @@ An alternative endpoint for [editing a link](#put_link), provided for backward c
 
 // markup not found, no include::{specDir}paths/put_alt/operation-description-end.adoc[opts=optional]
 
+
+[#put_alt-consumes]
+.Consumes
+* application/x-www-form-urlencoded
+
+[#put_alt-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -1061,13 +1068,13 @@ An alternative endpoint for [editing a link](#put_link), provided for backward c
 .Form Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *dataverse* +
+a¦ *dataverse* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1078,13 +1085,13 @@ The name of the Analytics scope containing the link.  With this parameter, the s
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *name* +
+a¦ *name* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1095,13 +1102,13 @@ The name of the link.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *type* +
+a¦ *type* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1114,13 +1121,13 @@ include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 *Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-a| 
+a¦ 
 include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
 
 
-a| *hostname* +
+a¦ *hostname* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1131,13 +1138,13 @@ For Couchbase links only. The remote hostname.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *username* +
+a¦ *username* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1148,13 +1155,13 @@ For Couchbase links only. The remote username. Required for links with no encryp
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *password* +
+a¦ *password* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1165,13 +1172,13 @@ For Couchbase links only. The remote password. Required for links with no encryp
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *encryption* +
+a¦ *encryption* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1183,13 +1190,13 @@ For Couchbase links only. The type of encryption used by the link.  For details,
 *Values:* `&quot;none&quot;`, `&quot;half&quot;`, `&quot;full&quot;`
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *certificate* +
+a¦ *certificate* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1200,13 +1207,13 @@ For Couchbase links only. The content of the target cluster root certificate. Re
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientCertificate* +
+a¦ *clientCertificate* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1217,13 +1224,13 @@ For Couchbase links, this is the content of the client certificate. Required for
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientKey* +
+a¦ *clientKey* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1234,13 +1241,13 @@ For Couchbase links only. The content of the client key. Required for links with
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *accessKeyId* +
+a¦ *accessKeyId* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1251,13 +1258,13 @@ For S3 links only. The Amazon S3 access key ID.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *secretAccessKey* +
+a¦ *secretAccessKey* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1268,13 +1275,13 @@ For S3 links only. The Amazon S3 secret access key.  You should URL-encode this 
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *sessionToken* +
+a¦ *sessionToken* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1285,13 +1292,13 @@ For S3 links only. The Amazon S3 session token. Use this parameter if you want t
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *region* +
+a¦ *region* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1302,13 +1309,13 @@ For S3 links only. The Amazon S3 region.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *serviceEndpoint* +
+a¦ *serviceEndpoint* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1319,13 +1326,13 @@ For S3 links only. The Amazon S3 service endpoint.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *endpoint* +
+a¦ *endpoint* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1336,13 +1343,13 @@ For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *accountName* +
+a¦ *accountName* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1353,13 +1360,13 @@ For Azure Blob links only. The account name. Used for shared key authentication.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *accountKey* +
+a¦ *accountKey* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1370,13 +1377,13 @@ For Azure Blob links only. The account key. Used for shared key authentication. 
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *sharedAccessSignature* +
+a¦ *sharedAccessSignature* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1387,13 +1394,13 @@ For Azure Blob links only. A token that can be used for authentication. Used for
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *managedIdentityId* +
+a¦ *managedIdentityId* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1404,13 +1411,13 @@ For Azure Blob links only. The managed identity ID. Used for managed identity au
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientId* +
+a¦ *clientId* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1421,13 +1428,13 @@ For Azure Blob links only. The client ID for the registered application. Used fo
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *tenantId* +
+a¦ *tenantId* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1438,13 +1445,13 @@ For Azure Blob links only. The tenant ID where the registered application is cre
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientSecret* +
+a¦ *clientSecret* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1455,13 +1462,13 @@ For Azure Blob links only. The client secret for the registered application. Use
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientCertificatePassword* +
+a¦ *clientCertificatePassword* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1472,13 +1479,13 @@ For Azure Blob links only. The client certificate password for the registered ap
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *jsonCredentials* +
+a¦ *jsonCredentials* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1489,13 +1496,13 @@ For Google Cloud Storage links only. The JSON credentials of the link.  This par
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *applicationDefaultCredentials* +
+a¦ *applicationDefaultCredentials* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1507,7 +1514,7 @@ For Google Cloud Storage links only. If present, indicates that the link should 
 *Values:* `&quot;true&quot;`
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -1524,16 +1531,6 @@ a| String
 
 // markup not found, no include::{specDir}paths/put_alt/operation-parameters-after.adoc[opts=optional]
 
-
-[#put_alt-produces]
-= Produces
-
-* application/json
-
-[#put_alt-consumes]
-= Consumes
-
-* application/x-www-form-urlencoded
 
 
 // markup not found, no include::{specDir}paths/put_alt/operation-responses-before.adoc[opts=optional]
@@ -1693,6 +1690,12 @@ Returns information about all links in all Analytics scopes.
 
 // markup not found, no include::{specDir}paths/get_all/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_all-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -1716,13 +1719,13 @@ Returns information about all links in all Analytics scopes.
 .Query Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *dataverse* +
+a¦ *dataverse* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1738,13 +1741,13 @@ This parameter is provided for backward compatibility. Note that it is deprecate
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *name* +
+a¦ *name* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1758,13 +1761,13 @@ This parameter is provided for backward compatibility. Note that it is deprecate
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *type* +
+a¦ *type* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1777,7 +1780,7 @@ The type of the link. If this parameter is omitted, all link types are retrieved
 *Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -1795,12 +1798,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/get_all/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_all-produces]
-= Produces
-
-* application/json
 
 
 
@@ -1940,6 +1937,12 @@ Returns information about all links in the specified Analytics scope.
 
 // markup not found, no include::{specDir}paths/get_scope/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_scope-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -1962,13 +1965,13 @@ Returns information about all links in the specified Analytics scope.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *scope* +
+a¦ *scope* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1982,7 +1985,7 @@ With this parameter, the scope name may contain one or two identifiers, separate
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -1992,13 +1995,13 @@ a| String
 .Query Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *type* +
+a¦ *type* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2011,7 +2014,7 @@ The type of the link. If this parameter is omitted, all link types are retrieved
 *Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -2029,12 +2032,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/get_scope/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_scope-produces]
-= Produces
-
-* application/json
 
 
 
@@ -2200,6 +2197,12 @@ Deletes a link in the specified Analytics scope. The link cannot be deleted if a
 
 // markup not found, no include::{specDir}paths/delete_link/operation-description-end.adoc[opts=optional]
 
+
+
+[#delete_link-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -2222,13 +2225,13 @@ Deletes a link in the specified Analytics scope. The link cannot be deleted if a
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *scope* +
+a¦ *scope* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2242,13 +2245,13 @@ With this parameter, the scope name may contain one or two identifiers, separate
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *name* +
+a¦ *name* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2259,7 +2262,7 @@ The name of the link.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -2278,12 +2281,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/delete_link/operation-parameters-after.adoc[opts=optional]
-
-
-[#delete_link-produces]
-= Produces
-
-* application/json
 
 
 
@@ -2421,6 +2418,12 @@ Returns information about a link in the specified Analytics scope.
 
 // markup not found, no include::{specDir}paths/get_link/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_link-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -2443,13 +2446,13 @@ Returns information about a link in the specified Analytics scope.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *scope* +
+a¦ *scope* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2463,13 +2466,13 @@ With this parameter, the scope name may contain one or two identifiers, separate
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *name* +
+a¦ *name* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2480,7 +2483,7 @@ The name of the link.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -2490,13 +2493,13 @@ a| String
 .Query Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *type* +
+a¦ *type* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2509,7 +2512,7 @@ include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 *Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-a| 
+a¦ 
 include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
 
 
@@ -2527,12 +2530,6 @@ include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
 
 
 // markup not found, no include::{specDir}paths/get_link/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_link-produces]
-= Produces
-
-* application/json
 
 
 
@@ -2672,6 +2669,15 @@ Creates a link in the specified Analytics scope.
 
 // markup not found, no include::{specDir}paths/post_link/operation-description-end.adoc[opts=optional]
 
+
+[#post_link-consumes]
+.Consumes
+* application/x-www-form-urlencoded
+
+[#post_link-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -2694,13 +2700,13 @@ include::{specDir}paths/post_link/operation-description-after.adoc[opts=optional
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *scope* +
+a¦ *scope* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2714,13 +2720,13 @@ With this parameter, the scope name may contain one or two identifiers, separate
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *name* +
+a¦ *name* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2731,7 +2737,7 @@ The name of the link.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -2743,13 +2749,13 @@ a| String
 .Form Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *type* +
+a¦ *type* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2762,13 +2768,13 @@ include::index.adoc[tag=desc-CommonType, opts=optional]
 *Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-a| 
+a¦ 
 include::index.adoc[tag=type-CommonType, opts=optional]
 
 
-a| *hostname* +
+a¦ *hostname* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2779,13 +2785,13 @@ For Couchbase links only. The remote hostname.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *username* +
+a¦ *username* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2796,13 +2802,13 @@ For Couchbase links only. The remote username. Required for links with no encryp
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *password* +
+a¦ *password* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2813,13 +2819,13 @@ For Couchbase links only. The remote password. Required for links with no encryp
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *encryption* +
+a¦ *encryption* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2831,13 +2837,13 @@ For Couchbase links only. The type of encryption used by the link.  For details,
 *Values:* `&quot;none&quot;`, `&quot;half&quot;`, `&quot;full&quot;`
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *certificate* +
+a¦ *certificate* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2848,13 +2854,13 @@ For Couchbase links only. The content of the target cluster root certificate. Re
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientCertificate* +
+a¦ *clientCertificate* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2865,13 +2871,13 @@ For Couchbase links, this is the content of the client certificate. Required for
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientKey* +
+a¦ *clientKey* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2882,13 +2888,13 @@ For Couchbase links only. The content of the client key. Required for links with
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *accessKeyId* +
+a¦ *accessKeyId* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2899,13 +2905,13 @@ For S3 links only. The Amazon S3 access key ID.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *secretAccessKey* +
+a¦ *secretAccessKey* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2916,13 +2922,13 @@ For S3 links only. The Amazon S3 secret access key.  You should URL-encode this 
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *sessionToken* +
+a¦ *sessionToken* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2933,13 +2939,13 @@ For S3 links only. The Amazon S3 session token. Use this parameter if you want t
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *region* +
+a¦ *region* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2950,13 +2956,13 @@ For S3 links only. The Amazon S3 region.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *serviceEndpoint* +
+a¦ *serviceEndpoint* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2967,13 +2973,13 @@ For S3 links only. The Amazon S3 service endpoint.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *endpoint* +
+a¦ *endpoint* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2984,13 +2990,13 @@ For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *accountName* +
+a¦ *accountName* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3001,13 +3007,13 @@ For Azure Blob links only. The account name. Used for shared key authentication.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *accountKey* +
+a¦ *accountKey* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3018,13 +3024,13 @@ For Azure Blob links only. The account key. Used for shared key authentication. 
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *sharedAccessSignature* +
+a¦ *sharedAccessSignature* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3035,13 +3041,13 @@ For Azure Blob links only. A token that can be used for authentication. Used for
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *managedIdentityId* +
+a¦ *managedIdentityId* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3052,13 +3058,13 @@ For Azure Blob links only. The managed identity ID. Used for managed identity au
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientId* +
+a¦ *clientId* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3069,13 +3075,13 @@ For Azure Blob links only. The client ID for the registered application. Used fo
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *tenantId* +
+a¦ *tenantId* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3086,13 +3092,13 @@ For Azure Blob links only. The tenant ID where the registered application is cre
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientSecret* +
+a¦ *clientSecret* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3103,13 +3109,13 @@ For Azure Blob links only. The client secret for the registered application. Use
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientCertificatePassword* +
+a¦ *clientCertificatePassword* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3120,13 +3126,13 @@ For Azure Blob links only. The client certificate password for the registered ap
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *jsonCredentials* +
+a¦ *jsonCredentials* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3137,13 +3143,13 @@ For Google Cloud Storage links only. The JSON credentials of the link.  This par
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *applicationDefaultCredentials* +
+a¦ *applicationDefaultCredentials* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3155,7 +3161,7 @@ For Google Cloud Storage links only. If present, indicates that the link should 
 *Values:* `&quot;true&quot;`
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -3172,16 +3178,6 @@ a| String
 
 // markup not found, no include::{specDir}paths/post_link/operation-parameters-after.adoc[opts=optional]
 
-
-[#post_link-produces]
-= Produces
-
-* application/json
-
-[#post_link-consumes]
-= Consumes
-
-* application/x-www-form-urlencoded
 
 
 // markup not found, no include::{specDir}paths/post_link/operation-responses-before.adoc[opts=optional]
@@ -3319,6 +3315,15 @@ Edits an existing link in the specified Analytics scope. The link name, type, an
 
 // markup not found, no include::{specDir}paths/put_link/operation-description-end.adoc[opts=optional]
 
+
+[#put_link-consumes]
+.Consumes
+* application/x-www-form-urlencoded
+
+[#put_link-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -3341,13 +3346,13 @@ Edits an existing link in the specified Analytics scope. The link name, type, an
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *scope* +
+a¦ *scope* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3361,13 +3366,13 @@ With this parameter, the scope name may contain one or two identifiers, separate
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *name* +
+a¦ *name* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3378,7 +3383,7 @@ The name of the link.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -3390,13 +3395,13 @@ a| String
 .Form Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *type* +
+a¦ *type* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3409,13 +3414,13 @@ include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 *Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-a| 
+a¦ 
 include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
 
 
-a| *hostname* +
+a¦ *hostname* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3426,13 +3431,13 @@ For Couchbase links only. The remote hostname.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *username* +
+a¦ *username* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3443,13 +3448,13 @@ For Couchbase links only. The remote username. Required for links with no encryp
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *password* +
+a¦ *password* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3460,13 +3465,13 @@ For Couchbase links only. The remote password. Required for links with no encryp
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *encryption* +
+a¦ *encryption* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3478,13 +3483,13 @@ For Couchbase links only. The type of encryption used by the link.  For details,
 *Values:* `&quot;none&quot;`, `&quot;half&quot;`, `&quot;full&quot;`
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *certificate* +
+a¦ *certificate* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3495,13 +3500,13 @@ For Couchbase links only. The content of the target cluster root certificate. Re
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientCertificate* +
+a¦ *clientCertificate* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3512,13 +3517,13 @@ For Couchbase links, this is the content of the client certificate. Required for
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientKey* +
+a¦ *clientKey* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3529,13 +3534,13 @@ For Couchbase links only. The content of the client key. Required for links with
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *accessKeyId* +
+a¦ *accessKeyId* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3546,13 +3551,13 @@ For S3 links only. The Amazon S3 access key ID.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *secretAccessKey* +
+a¦ *secretAccessKey* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3563,13 +3568,13 @@ For S3 links only. The Amazon S3 secret access key.  You should URL-encode this 
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *sessionToken* +
+a¦ *sessionToken* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3580,13 +3585,13 @@ For S3 links only. The Amazon S3 session token. Use this parameter if you want t
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *region* +
+a¦ *region* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3597,13 +3602,13 @@ For S3 links only. The Amazon S3 region.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *serviceEndpoint* +
+a¦ *serviceEndpoint* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3614,13 +3619,13 @@ For S3 links only. The Amazon S3 service endpoint.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *endpoint* +
+a¦ *endpoint* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3631,13 +3636,13 @@ For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *accountName* +
+a¦ *accountName* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3648,13 +3653,13 @@ For Azure Blob links only. The account name. Used for shared key authentication.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *accountKey* +
+a¦ *accountKey* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3665,13 +3670,13 @@ For Azure Blob links only. The account key. Used for shared key authentication. 
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *sharedAccessSignature* +
+a¦ *sharedAccessSignature* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3682,13 +3687,13 @@ For Azure Blob links only. A token that can be used for authentication. Used for
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *managedIdentityId* +
+a¦ *managedIdentityId* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3699,13 +3704,13 @@ For Azure Blob links only. The managed identity ID. Used for managed identity au
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientId* +
+a¦ *clientId* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3716,13 +3721,13 @@ For Azure Blob links only. The client ID for the registered application. Used fo
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *tenantId* +
+a¦ *tenantId* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3733,13 +3738,13 @@ For Azure Blob links only. The tenant ID where the registered application is cre
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientSecret* +
+a¦ *clientSecret* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3750,13 +3755,13 @@ For Azure Blob links only. The client secret for the registered application. Use
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *clientCertificatePassword* +
+a¦ *clientCertificatePassword* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3767,13 +3772,13 @@ For Azure Blob links only. The client certificate password for the registered ap
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *jsonCredentials* +
+a¦ *jsonCredentials* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3784,13 +3789,13 @@ For Google Cloud Storage links only. The JSON credentials of the link.  This par
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *applicationDefaultCredentials* +
+a¦ *applicationDefaultCredentials* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3802,7 +3807,7 @@ For Google Cloud Storage links only. If present, indicates that the link should 
 *Values:* `&quot;true&quot;`
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -3819,16 +3824,6 @@ a| String
 
 // markup not found, no include::{specDir}paths/put_link/operation-parameters-after.adoc[opts=optional]
 
-
-[#put_link-produces]
-= Produces
-
-* application/json
-
-[#put_link-consumes]
-= Consumes
-
-* application/x-www-form-urlencoded
 
 
 // markup not found, no include::{specDir}paths/put_link/operation-responses-before.adoc[opts=optional]
@@ -4052,14 +4047,14 @@ These properties are common to all links.
 //end::desc-ResponseAll[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *scope* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4070,15 +4065,15 @@ The scope name may contain one or two identifiers, separated by a slash (/).
 --
 
 [%hardbreaks]
-*Example:* `pass:c["travel-sample/inventory"]`
+*Example:* `+++"travel-sample/inventory"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *name* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4086,15 +4081,15 @@ The name of the link.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["myLink"]`
+*Example:* `+++"myLink"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#type]
+a¦ [#type]
 *type* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4109,7 +4104,7 @@ The type of the link.
 [%hardbreaks]
 *Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -4208,14 +4203,14 @@ endif::collapse-models[]
 //tag::ResponseAzureBlobSpecific[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *accountKey* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4224,15 +4219,15 @@ The account key. Used for shared key authentication. This is redacted for the sa
 --
 
 [%hardbreaks]
-*Example:* `pass:c["<redacted sensitive entry>"]`
+*Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *accountName* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4241,15 +4236,15 @@ The account name. Used for shared key authentication. If not set, this property 
 --
 
 [%hardbreaks]
-*Example:* `pass:c["myAccountName"]`
+*Example:* `+++"myAccountName"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *clientCertificate* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4258,15 +4253,15 @@ The client certificate for the registered application. Used for Azure Active Dir
 --
 
 [%hardbreaks]
-*Example:* `pass:c["<redacted sensitive entry>"]`
+*Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *clientCertificatePassword* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4275,15 +4270,15 @@ The client certificate password for the registered application. Used for Azure A
 --
 
 [%hardbreaks]
-*Example:* `pass:c["<redacted sensitive entry>"]`
+*Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *clientId* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4292,15 +4287,15 @@ The client ID for the registered application. Used for Azure Active Directory cl
 --
 
 [%hardbreaks]
-*Example:* `pass:c["myClientID"]`
+*Example:* `+++"myClientID"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *clientSecret* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4309,15 +4304,15 @@ The client secret for the registered application. Used for Azure Active Director
 --
 
 [%hardbreaks]
-*Example:* `pass:c["<redacted sensitive entry>"]`
+*Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *endpoint* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4325,15 +4320,15 @@ The endpoint URI.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["my.endpoint.uri"]`
+*Example:* `+++"my.endpoint.uri"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *managedIdentityId* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4342,15 +4337,15 @@ The managed identity ID. Used for managed identity authentication. If not set, t
 --
 
 [%hardbreaks]
-*Example:* `pass:c["myManagedIdentityID"]`
+*Example:* `+++"myManagedIdentityID"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *sharedAccessSignature* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4359,15 +4354,15 @@ A token that can be used for authentication. Used for shared access signature au
 --
 
 [%hardbreaks]
-*Example:* `pass:c["<redacted sensitive entry>"]`
+*Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *tenantId* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4376,9 +4371,9 @@ The tenant ID where the registered application is created. Used for Azure Active
 --
 
 [%hardbreaks]
-*Example:* `pass:c["myTenantID"]`
+*Example:* `+++"myTenantID"+++`
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -4455,14 +4450,14 @@ endif::collapse-models[]
 //tag::ResponseCouchbaseSpecific[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *activeHostname* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4470,15 +4465,15 @@ The remote hostname.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["remoteHostName:8091"]`
+*Example:* `+++"remoteHostName:8091"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *bootstrapAlternateAddress* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4488,13 +4483,13 @@ Specifies whether the provided (bootstrap) hostname is an alternative address.
 [%hardbreaks]
 *Example:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| 
+a¦ 
 *bootstrapHostname* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4502,15 +4497,15 @@ The provided (bootstrap) hostname.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["remoteHostName:8091"]`
+*Example:* `+++"remoteHostName:8091"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *certificate* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4520,13 +4515,13 @@ The content of the target cluster root certificate. Only set for links with full
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *clientCertificate* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4536,13 +4531,13 @@ The content of the client certificate. Only set for links with full encryption u
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *clientKey* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4552,13 +4547,13 @@ The content of the client key. Only set for links with full encryption using cli
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *clusterCompatibility* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4568,13 +4563,13 @@ For internal use only.
 [%hardbreaks]
 *Example:* `393221`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| [#encryption]
+a¦ [#encryption]
 *encryption* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4589,13 +4584,13 @@ The type of encryption used by the link.
 [%hardbreaks]
 *Values:* `"none"`, `"half"`, `"full"`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *nodes* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4604,13 +4599,13 @@ An array of objects, each of which contains information about a node in the targ
 
 [%hardbreaks]
 {blank}
-a| <<ResponseCouchbaseSpecificNode>>
+a¦ <<ResponseCouchbaseSpecificNode>>
  array
 
-a| 
+a¦ 
 *password* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4619,15 +4614,15 @@ The password used to connect to the link. This is redacted for the sake of secur
 --
 
 [%hardbreaks]
-*Example:* `pass:c["<redacted sensitive entry>"]`
+*Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *username* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4636,15 +4631,15 @@ The remote username. Not set for links with full encryption using client certifi
 --
 
 [%hardbreaks]
-*Example:* `pass:c["remote.user"]`
+*Example:* `+++"remote.user"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *uuid* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4652,9 +4647,9 @@ A UUID uniquely identifying the link.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["6331e2a390125b662f7bcfd63ecb3a73"]`
+*Example:* `+++"6331e2a390125b662f7bcfd63ecb3a73"+++`
 {blank}
-a| UUID (UUID)
+a¦ UUID (UUID)
 
 
 |===
@@ -4694,14 +4689,14 @@ endif::collapse-models[]
 //tag::ResponseCouchbaseSpecificNode[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *alternateAddresses* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4711,13 +4706,13 @@ The alternate address defined on the node, if any. If not defined, this property
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *hostname* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4727,13 +4722,13 @@ The hostname of the node. If not defined, this property returns `null`.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *services* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4742,7 +4737,7 @@ include::index.adoc[tag=desc-ResponseCouchbaseSpecificNodeServices, opts=optiona
 
 [%hardbreaks]
 {blank}
-a| <<ResponseCouchbaseSpecificNodeServices>>
+a¦ <<ResponseCouchbaseSpecificNodeServices>>
 
 
 |===
@@ -4787,14 +4782,14 @@ An object giving information about the services and ports configured on this nod
 //end::desc-ResponseCouchbaseSpecificNodeServices[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *cbas* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4804,13 +4799,13 @@ The port number for a connection to the Analytics service.
 [%hardbreaks]
 *Example:* `8095`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *cbasSSL* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4820,13 +4815,13 @@ The port number for an encrypted connection to the Analytics service.
 [%hardbreaks]
 *Example:* `18095`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *kv* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4836,13 +4831,13 @@ The port number for a connection to the Data service.
 [%hardbreaks]
 *Example:* `11210`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *kvSSL* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4852,13 +4847,13 @@ The port number for an encrypted connection to the Data service.
 [%hardbreaks]
 *Example:* `11207`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *mgmt* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4868,13 +4863,13 @@ The port number for a connection to the Cluster Manager service.
 [%hardbreaks]
 *Example:* `8091`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *mgmtSSL* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4884,7 +4879,7 @@ The port number for an encrypted connection to the Cluster Manager service.
 [%hardbreaks]
 *Example:* `18091`
 {blank}
-a| Integer
+a¦ Integer
 
 
 |===
@@ -4961,14 +4956,14 @@ endif::collapse-models[]
 //tag::ResponseGCSSpecific[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *applicationDefaultCredentials* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4978,15 +4973,15 @@ If present, indicates that the link should use the Google Application Default Cr
 
 [%hardbreaks]
 *Values:* `"true"`
-*Example:* `pass:c["true"]`
+*Example:* `+++"true"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *endpoint* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4995,15 +4990,15 @@ The endpoint URI. If not set, this property returns `null`.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["https://storage.googleapis.com"]`
+*Example:* `+++"https://storage.googleapis.com"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *jsonCredentials* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5012,9 +5007,9 @@ The JSON credentials of the link. If not set, this property returns `null`.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["<redacted sensitive entry>"]`
+*Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -5091,14 +5086,14 @@ endif::collapse-models[]
 //tag::ResponseS3Specific[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *accessKeyId* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5106,15 +5101,15 @@ The Amazon S3 access key ID.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["myAccessKey"]`
+*Example:* `+++"myAccessKey"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *region* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5122,15 +5117,15 @@ The Amazon S3 region.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["us-east-1"]`
+*Example:* `+++"us-east-1"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *secretAccessKey* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5139,15 +5134,15 @@ The Amazon S3 secret access key. This is redacted for the sake of security.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["<redacted sensitive entry>"]`
+*Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *sessionToken* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5156,15 +5151,15 @@ The Amazon S3 session token. Indicates that the link has temporary access, and t
 --
 
 [%hardbreaks]
-*Example:* `pass:c["<redacted sensitive entry>"]`
+*Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *serviceEndpoint* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5173,9 +5168,9 @@ Amazon S3 service endpoint. If not set, this property returns `null`.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["my.endpoint.uri"]`
+*Example:* `+++"my.endpoint.uri"+++`
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -5215,14 +5210,14 @@ endif::collapse-models[]
 //tag::Wrong[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *error* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5231,7 +5226,7 @@ An error message.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -5314,4 +5309,5 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 
 // markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
 

@@ -1,0 +1,8577 @@
+= Eventing REST API
+:keywords: OpenAPI, REST
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+include::partial$header-attributes.adoc[opts=optional]
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+
+:leveloffset: 1
+
+include::{specDir}overview/document-before.adoc[opts=optional]
+
+
+[[overview]]
+= Overview
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+The Eventing REST API provides methods to work with and manipulate Couchbase Eventing functions.
+--
+
+[discrete#version]
+= Version information
+[%hardbreaks]
+__Version__ : 7.6
+
+[discrete#host]
+= Host information
+
+....
+{scheme}://{host}:{port}
+....
+
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
+
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `+++http+++`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Eventing service.
+--
+
+[%hardbreaks]
+
+*Example:* `+++localhost+++`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Eventing service REST port. Use `18096` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `8096`, `18096`
+*Example:* `+++8096+++`
+// end
+
+|===
+
+
+include::{specDir}overview/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
+
+
+[[resources]]
+= Resources
+
+:count-apis: 7
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
+
+This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+<<tag-Activation>>
+<<tag-Advanced>>
+<<tag-GlobalConfig>>
+<<tag-List>>
+<<tag-Logging>>
+<<tag-Statistics>>
+<<tag-Status>>
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Activation]
+= Activation
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<basic_deploy>>
+<<basic_pause>>
+<<basic_resume>>
+<<basic_undeploy>>
+
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-before.adoc[opts=optional]
+
+
+[#basic_deploy]
+= Deploy a Function
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/v1/functions/{function}/deploy
+....
+
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-description-before.adoc[opts=optional]
+
+
+[#basic_deploy-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Deploys an undeployed function.
+This is the preferred invocation.
+--
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-parameters-before.adoc[opts=optional]
+
+
+[#basic_deploy-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-parameters-begin.adoc[opts=optional]
+
+
+[#basic_deploy-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#basic_deploy-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-responses-before.adoc[opts=optional]
+
+
+[#basic_deploy-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-security-before.adoc[opts=optional]
+
+
+[#basic_deploy-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}basic_deploy/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}basic_deploy/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/basic_deploy/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-before.adoc[opts=optional]
+
+
+[#basic_pause]
+= Pause a Function
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/v1/functions/{function}/pause
+....
+
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-description-before.adoc[opts=optional]
+
+
+[#basic_pause-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Pauses a function and creates a DCP checkpoint such that on a subsequent resume no mutations will be lost.
+This is the preferred invocation.
+--
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-parameters-before.adoc[opts=optional]
+
+
+[#basic_pause-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-parameters-begin.adoc[opts=optional]
+
+
+[#basic_pause-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#basic_pause-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-responses-before.adoc[opts=optional]
+
+
+[#basic_pause-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-security-before.adoc[opts=optional]
+
+
+[#basic_pause-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}basic_pause/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}basic_pause/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/basic_pause/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-before.adoc[opts=optional]
+
+
+[#basic_resume]
+= Resume a Function
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/v1/functions/(function}/resume
+....
+
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-description-before.adoc[opts=optional]
+
+
+[#basic_resume-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Resumes a paused function from its paused DCP checkpoint.
+This is the preferred invocation.
+--
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-parameters-before.adoc[opts=optional]
+
+
+[#basic_resume-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-parameters-begin.adoc[opts=optional]
+
+
+[#basic_resume-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#basic_resume-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-responses-before.adoc[opts=optional]
+
+
+[#basic_resume-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-security-before.adoc[opts=optional]
+
+
+[#basic_resume-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}basic_resume/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}basic_resume/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/basic_resume/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-before.adoc[opts=optional]
+
+
+[#basic_undeploy]
+= Undeploy a Function
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/v1/functions/{function}/undeploy
+....
+
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-description-before.adoc[opts=optional]
+
+
+[#basic_undeploy-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Undeploys a function.
+This is the preferred invocation.
+--
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-parameters-before.adoc[opts=optional]
+
+
+[#basic_undeploy-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-parameters-begin.adoc[opts=optional]
+
+
+[#basic_undeploy-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#basic_undeploy-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-responses-before.adoc[opts=optional]
+
+
+[#basic_undeploy-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-security-before.adoc[opts=optional]
+
+
+[#basic_undeploy-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}basic_undeploy/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}basic_undeploy/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/basic_undeploy/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Advanced]
+= Advanced
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<adv_function_import>>
+<<adv_function_import_all>>
+<<adv_function_view>>
+<<adv_function_view_all>>
+<<adv_function_zap>>
+<<adv_function_zap_all>>
+<<adv_multiple_export>>
+<<adv_multiple_import>>
+<<adv_settings_get>>
+<<adv_settings_update>>
+<<adv_structure_get>>
+<<adv_structure_update>>
+<<adv_text_get>>
+<<adv_text_update>>
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-before.adoc[opts=optional]
+
+
+[#adv_function_import]
+= Create or Import a Function
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/v1/functions/{function}
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-description-before.adoc[opts=optional]
+
+
+[#adv_function_import-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Creates or imports a single function.
+--
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-description-end.adoc[opts=optional]
+
+
+[#adv_function_import-consumes]
+.Consumes
+* application/json
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-parameters-before.adoc[opts=optional]
+
+
+[#adv_function_import-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-parameters-begin.adoc[opts=optional]
+
+
+[#adv_function_import-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#adv_function_import-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+[#adv_function_import-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *Body* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+A single function definition object, or an array containing a single function definition object. The function name in the definition object must match that given by the path parameter.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ <<AddFunction>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_function_import-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-security-before.adoc[opts=optional]
+
+
+[#adv_function_import-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_function_import/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_function_import/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_import/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-before.adoc[opts=optional]
+
+
+[#adv_function_import_all]
+= Create or Import Multiple Functions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/v1/functions
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-description-before.adoc[opts=optional]
+
+
+[#adv_function_import_all-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Creates or imports multiple functions.
+
+Note that if any function's `language_compatibility` field is missing, the value will be set to the highest version supported by the server, unlike [Import Multiple Functions](#adv_multiple_import).
+--
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-description-end.adoc[opts=optional]
+
+
+[#adv_function_import_all-consumes]
+.Consumes
+* application/json
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-parameters-before.adoc[opts=optional]
+
+
+[#adv_function_import_all-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+
+[#adv_function_import_all-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *Body* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+A single function definition object, or an array containing one or more function definition objects.  Function names must be unique. When multiple functions have the same name, an error is reported.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ <<AddFunctions>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_function_import_all-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-security-before.adoc[opts=optional]
+
+
+[#adv_function_import_all-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-unscoped>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_function_import_all/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_function_import_all/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_import_all/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-before.adoc[opts=optional]
+
+
+[#adv_function_view]
+= View a Function
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/functions/{function}
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-description-before.adoc[opts=optional]
+
+
+[#adv_function_view-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Provides a listing of a complete function definition available in the cluster.
+The function could be in any state: deployed, undeployed, or paused.
+If saved to a file the function definition can be imported into the cluster or a different cluster.
+However any changes to the function definition made to the file outside the UI are discouraged.
+--
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-description-end.adoc[opts=optional]
+
+
+
+[#adv_function_view-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-parameters-before.adoc[opts=optional]
+
+
+[#adv_function_view-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-parameters-begin.adoc[opts=optional]
+
+
+[#adv_function_view-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#adv_function_view-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_function_view-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Returns a single function definition object.
+--
+a| <<handler_schema>>
+
+
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-security-before.adoc[opts=optional]
+
+
+[#adv_function_view-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_function_view/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_function_view/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_view/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-before.adoc[opts=optional]
+
+
+[#adv_function_view_all]
+= View Multiple Functions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/functions
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-description-before.adoc[opts=optional]
+
+
+[#adv_function_view_all-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Provides an array of definitions of all functions available in the cluster.
+The functions may be in any state: deployed, undeployed, or paused.
+If saved to a file the function definitions can be imported into the cluster or a different cluster.
+However any changes to the function definition made to the file outside the UI are discouraged.
+
+If this API is run as a non-Administrator, the results are filtered via RBAC to include only the function scopes the user has access to.
+--
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-description-end.adoc[opts=optional]
+
+
+
+[#adv_function_view_all-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_function_view_all-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Returns an array containing one or more function definition objects.
+--
+a| <<handler_schema>>
+ array
+
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-security-before.adoc[opts=optional]
+
+
+[#adv_function_view_all-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-unscoped>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_function_view_all/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_function_view_all/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_view_all/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-before.adoc[opts=optional]
+
+
+[#adv_function_zap]
+= Delete Function
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-begin.adoc[opts=optional]
+
+
+....
+DELETE /api/v1/functions/{function}
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-description-before.adoc[opts=optional]
+
+
+[#adv_function_zap-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Deletes a specific function from the cluster.
+
+WARNING: Use this API with caution, as it is irreversible.
+--
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-parameters-before.adoc[opts=optional]
+
+
+[#adv_function_zap-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-parameters-begin.adoc[opts=optional]
+
+
+[#adv_function_zap-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#adv_function_zap-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_function_zap-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-security-before.adoc[opts=optional]
+
+
+[#adv_function_zap-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_function_zap/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_function_zap/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-before.adoc[opts=optional]
+
+
+[#adv_function_zap_all]
+= Delete Multiple Functions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-begin.adoc[opts=optional]
+
+
+....
+DELETE /api/v1/functions
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-description-before.adoc[opts=optional]
+
+
+[#adv_function_zap_all-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Deletes **all functions** from the cluster.
+WARNING: Use this API with caution, as it is irreversible.
+
+If this API is run as a non-Administrator the deleted set will be filtered via RBAC to include only the function scopes the user has access to.
+--
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_function_zap_all-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-security-before.adoc[opts=optional]
+
+
+[#adv_function_zap_all-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-unscoped>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_function_zap_all/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_function_zap_all/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_function_zap_all/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-before.adoc[opts=optional]
+
+
+[#adv_multiple_export]
+= Export Multiple Functions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/export
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-description-before.adoc[opts=optional]
+
+
+[#adv_multiple_export-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+This is a convenience method to export all function definitions.
+Exported functions are always set to the undeployed state at the time of export, regardless of their state in the cluster.
+If saved to a file the function definitions can be imported into the cluster or a different cluster.
+However any changes to the function definition made to the file outside the UI are discouraged.
+
+If this API is run as a non-Administrator the results are filtered via RBAC to include only the function scopes the user has access to.
+--
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_multiple_export-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-security-before.adoc[opts=optional]
+
+
+[#adv_multiple_export-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-unscoped>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_multiple_export/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_multiple_export/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_export/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-before.adoc[opts=optional]
+
+
+[#adv_multiple_import]
+= Import Multiple Functions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/v1/import
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-description-before.adoc[opts=optional]
+
+
+[#adv_multiple_import-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Imports multiple functions.
+
+Note that if any function's `language_compatibility` field is missing, the value will be set to 6.0.0, unlike [Create or Import Multiple Functions](#adv_function_import_all).
+--
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-description-end.adoc[opts=optional]
+
+
+[#adv_multiple_import-consumes]
+.Consumes
+* application/json
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-parameters-before.adoc[opts=optional]
+
+
+[#adv_multiple_import-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+
+[#adv_multiple_import-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *Body* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+A single function definition object, or an array containing one or more function definition objects.  Function names must be unique. When multiple functions have the same name, an error is reported.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ <<AddFunctions>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_multiple_import-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-security-before.adoc[opts=optional]
+
+
+[#adv_multiple_import-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-unscoped>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_multiple_import/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_multiple_import/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_multiple_import/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-before.adoc[opts=optional]
+
+
+[#adv_settings_get]
+= View Function Settings
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/functions/{function}/settings
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-description-before.adoc[opts=optional]
+
+
+[#adv_settings_get-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Return or export the full settings for one eventing function in the cluster.
+The settings can be subsequently imported.
+However any changes to the function settings made to the file outside the UI are discouraged.
+--
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-description-end.adoc[opts=optional]
+
+
+
+[#adv_settings_get-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-parameters-before.adoc[opts=optional]
+
+
+[#adv_settings_get-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-parameters-begin.adoc[opts=optional]
+
+
+[#adv_settings_get-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#adv_settings_get-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_settings_get-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Returns an object showing settings for the specified function.
+--
+a| <<settings_schema>>
+
+
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-security-before.adoc[opts=optional]
+
+
+[#adv_settings_get-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_settings_get/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_settings_get/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_settings_get/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-before.adoc[opts=optional]
+
+
+[#adv_settings_update]
+= Update Function Settings
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/v1/functions/{function}/settings
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-description-before.adoc[opts=optional]
+
+
+[#adv_settings_update-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Updates an undeployed or paused function with the provided settings.
+You can only alter settings when the function is paused or undeployed; attempting to adjust a deployed function will result in an error.
+During an edit, settings provided are merged.
+Unspecified attributes retain their prior values.
+
+Note that you must always specify `deployment_status` and `processing_status` when using this REST endpoint to update any option or set of options.
+To get the current values of `deployment_status` and `processing_status`, see [View All Functions Status](#status_all) or [View Function Status](#status_function).
+
+By adjusting `deployment_status` and `processing_status` this command can also deploy or resume a function; however, it cannot pause or undeploy a function.
+--
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-description-end.adoc[opts=optional]
+
+
+[#adv_settings_update-consumes]
+.Consumes
+* application/json
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-parameters-before.adoc[opts=optional]
+
+
+[#adv_settings_update-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-parameters-begin.adoc[opts=optional]
+
+
+[#adv_settings_update-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#adv_settings_update-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+[#adv_settings_update-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *Body* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+An object providing settings for the specified function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ <<Function Settings>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_settings_update-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-security-before.adoc[opts=optional]
+
+
+[#adv_settings_update-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_settings_update/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_settings_update/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_settings_update/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-before.adoc[opts=optional]
+
+
+[#adv_structure_get]
+= View Function Config
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/functions/{function}/config
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-description-before.adoc[opts=optional]
+
+
+[#adv_structure_get-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Export or return the configuration of the source keyspace and the eventing storage (metadata) keyspace for the specified function.
+The definition can be subsequently imported.
+However any changes to the function definition made to the file outside the UI are discouraged.
+--
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-description-end.adoc[opts=optional]
+
+
+
+[#adv_structure_get-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-parameters-before.adoc[opts=optional]
+
+
+[#adv_structure_get-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-parameters-begin.adoc[opts=optional]
+
+
+[#adv_structure_get-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#adv_structure_get-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_structure_get-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Returns an object showing the configuration of the specified function.
+--
+a| <<depcfg_schema>>
+
+
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-security-before.adoc[opts=optional]
+
+
+[#adv_structure_get-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_structure_get/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_structure_get/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_structure_get/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-before.adoc[opts=optional]
+
+
+[#adv_structure_update]
+= Update Function Config
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/v1/functions/{function}/config
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-description-before.adoc[opts=optional]
+
+
+[#adv_structure_update-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Import the configuration and alter the source keyspace and the eventing storage (metadata) keyspace for the specified function.
+You can only change these values if a function is in the undeployed state and the two keyspaces exist.
+--
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-description-end.adoc[opts=optional]
+
+
+[#adv_structure_update-consumes]
+.Consumes
+* application/json
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-parameters-before.adoc[opts=optional]
+
+
+[#adv_structure_update-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-parameters-begin.adoc[opts=optional]
+
+
+[#adv_structure_update-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#adv_structure_update-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+[#adv_structure_update-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *Body* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+An object providing the configuration for the specified function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ <<Deployment Config>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_structure_update-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-security-before.adoc[opts=optional]
+
+
+[#adv_structure_update-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_structure_update/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_structure_update/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_structure_update/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-before.adoc[opts=optional]
+
+
+[#adv_text_get]
+= View Function Code
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/functions/{function}/appcode
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-description-before.adoc[opts=optional]
+
+
+[#adv_text_get-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Export only the JavaScript code for the specified function.
+Note that unlike [View Function Definition](#adv_function_view), the JavaScript is not escaped, and the code is runnable in other environments.
+The JavaScript code can be subsequently imported.
+However any changes to the function definition made to the file outside the UI are discouraged.
+--
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-description-end.adoc[opts=optional]
+
+
+
+[#adv_text_get-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-parameters-before.adoc[opts=optional]
+
+
+[#adv_text_get-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-parameters-begin.adoc[opts=optional]
+
+
+[#adv_text_get-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#adv_text_get-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_text_get-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Returns a string showing the code for the specified function.
+--
+a| String
+
+
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-security-before.adoc[opts=optional]
+
+
+[#adv_text_get-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_text_get/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_text_get/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_text_get/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-before.adoc[opts=optional]
+
+
+[#adv_text_update]
+= Update Function Code
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/v1/functions/{function}/appcode
+....
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-description-before.adoc[opts=optional]
+
+
+[#adv_text_update-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Import only the JavaScript code for the specified function.
+Note that unlike [Create or Import Function](#adv_function_import), the JavaScript is not escaped and could come from other environments.
+It is highly recommended that you use the flag `--data-binary` or `--upload-file` when importing your JavaScript appcode fragments to avoid potential encoding issues due to string escaping.
+--
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-description-end.adoc[opts=optional]
+
+
+[#adv_text_update-consumes]
+.Consumes
+* application/json
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-parameters-before.adoc[opts=optional]
+
+
+[#adv_text_update-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-parameters-begin.adoc[opts=optional]
+
+
+[#adv_text_update-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#adv_text_update-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+[#adv_text_update-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *Body* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+A string providing the code for the specified function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-responses-before.adoc[opts=optional]
+
+
+[#adv_text_update-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-security-before.adoc[opts=optional]
+
+
+[#adv_text_update-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}adv_text_update/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}adv_text_update/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/adv_text_update/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-GlobalConfig]
+= Global Config
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<config_get>>
+<<config_update>>
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-before.adoc[opts=optional]
+
+
+[#config_get]
+= List Global Configuration
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_get/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/config
+....
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-description-before.adoc[opts=optional]
+
+
+[#config_get-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_get/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Shows all global Eventing settings.
+There are currently just two settings: `enable_debugger` and `ram_quota`.
+Both of these settings can also be adjusted via the UI.
+--
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-description-end.adoc[opts=optional]
+
+
+
+[#config_get-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-responses-before.adoc[opts=optional]
+
+
+[#config_get-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_get/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Returns an object showing the global configuration settings.
+--
+a| <<UnivConfig>>
+
+
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-security-before.adoc[opts=optional]
+
+
+[#config_get-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_get/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-unscoped>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}config_get/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}config_get/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-before.adoc[opts=optional]
+
+
+[#config_update]
+= Modify Global Configuration
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_update/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/v1/config
+....
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-description-before.adoc[opts=optional]
+
+
+[#config_update-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_update/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Modify global configuration.
+During an edit, settings provided are merged.
+Unspecified attributes retain their prior values.
+The response indicates whether the Eventing service must be restarted for the new changes to take effect.
+--
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-description-end.adoc[opts=optional]
+
+
+[#config_update-consumes]
+.Consumes
+* application/json
+
+
+:leveloffset: -1
+
+
+include::{specDir}paths/config_update/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-parameters-before.adoc[opts=optional]
+
+
+[#config_update-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_update/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+
+[#config_update-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *Body* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+An object providing the global configuration settings.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ <<UnivConfig>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-responses-before.adoc[opts=optional]
+
+
+[#config_update-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_update/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-security-before.adoc[opts=optional]
+
+
+[#config_update-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_update/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-unscoped>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}config_update/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}config_update/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-List]
+= List
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<list_all>>
+<<list_query>>
+
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-before.adoc[opts=optional]
+
+
+[#list_all]
+= List All Functions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/list_all/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/list/functions
+....
+
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-description-before.adoc[opts=optional]
+
+
+[#list_all-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/list_all/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns a list (array) of the names of all Eventing functions in the cluster.
+The returned list can also be filtered &mdash; see [List Filtered Functions](#list_query).
+
+If this API is run as a non-Administrator the results are filtered via RBAC to include only the function scopes the user has access to.
+--
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-responses-before.adoc[opts=optional]
+
+
+[#list_all-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/list_all/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-security-before.adoc[opts=optional]
+
+
+[#list_all-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/list_all/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-unscoped>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}list_all/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}list_all/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/list_all/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-before.adoc[opts=optional]
+
+
+[#list_query]
+= List Filtered Functions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/list_query/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/list/functions/query
+....
+
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-description-before.adoc[opts=optional]
+
+
+[#list_query-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/list_query/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns a list (array) of the names of all Eventing functions in the cluster.
+The returned list can be filtered by the following:
+
+- Deployed status : in this case, paused is considered deployed.
+- Source bucket: the listen to keyspace.
+- Function type: whether the function modifies its own listen to keyspace.
+
+If this API is run as a non-Administrator the results are filtered via RBAC to include only the function scopes the user has access to.
+--
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-parameters-before.adoc[opts=optional]
+
+
+[#list_query-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/list_query/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#list_query-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *deployed* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+If `true`, returns the names of all deployed (or paused) functions.
+If `false`, returns the names of all undeployed functions.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ Boolean
+
+
+
+a¦ *source_bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+The name of a bucket.
+Returns the names of Eventing functions in the cluster that have a source keyspace under the specified bucket.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *function_type* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+The function type.
+
+- `sbm`: Returns the names of Eventing functions in the cluster that modify their own source keyspace.
+- `notsbm`: Returns the names of Eventing functions in the cluster that do not modify their own source keyspace.
+--
+
+[%hardbreaks]
+*Values:* `&quot;sbm&quot;`, `&quot;notsbm&quot;`
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-responses-before.adoc[opts=optional]
+
+
+[#list_query-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/list_query/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-security-before.adoc[opts=optional]
+
+
+[#list_query-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/list_query/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-unscoped>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}list_query/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}list_query/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/list_query/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Logging]
+= Logging
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<log_view>>
+
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-before.adoc[opts=optional]
+
+
+[#log_view]
+= Get Log for a Function
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/log_view/operation-begin.adoc[opts=optional]
+
+
+....
+GET /getAppLog
+....
+
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-description-before.adoc[opts=optional]
+
+
+[#log_view-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/log_view/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns the most recent application log messages for the specified function.
+--
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-parameters-before.adoc[opts=optional]
+
+
+[#log_view-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/log_view/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#log_view-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *name* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *aggregate* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+If `false`, the API accesses a single Eventing node.
+If `true`, the API accesses all Eventing nodes.
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+
+a¦ Boolean
+
+
+
+a¦ *size* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+The approximate amount of logging information returned.
+Note that when fetching from more than one Eventing node, the amount of logging information returned from each node is the `size` divided by the number of nodes.
+--
+
+[%hardbreaks]
+*Default:* `40960`
+{blank}
+
+a¦ Integer
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-responses-before.adoc[opts=optional]
+
+
+[#log_view-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/log_view/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-security-before.adoc[opts=optional]
+
+
+[#log_view-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/log_view/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}log_view/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}log_view/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/log_view/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Statistics]
+= Statistics
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<stats_all>>
+<<stats_execution>>
+<<stats_failure>>
+<<stats_latency>>
+<<stats_reset>>
+
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-before.adoc[opts=optional]
+
+
+[#stats_all]
+= Get All Statistics
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_all/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/stats
+....
+
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-description-before.adoc[opts=optional]
+
+
+[#stats_all-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_all/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Retrieve all statistics for the node.
+
+
+If this API is run as a non-Administrator the results are filtered via RBAC to include only the function scopes the user has access to.
+--
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-parameters-before.adoc[opts=optional]
+
+
+[#stats_all-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_all/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#stats_all-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *type* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+Including this parameter returns the full statistics set, inclusive of events processing, events remaining, execution, failure, latency, worker PIDs and sequence processed.
+
+Omitting this parameter excludes `dcp_event_backlog_per_vb`, `doc_timer_debug_stats`, `latency_stats`, `plasma_stats`, and `seqs_processed` from the response.
+--
+
+[%hardbreaks]
+*Values:* `&quot;full&quot;`
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-responses-before.adoc[opts=optional]
+
+
+[#stats_all-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_all/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-security-before.adoc[opts=optional]
+
+
+[#stats_all-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_all/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-unscoped>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}stats_all/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}stats_all/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_all/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-before.adoc[opts=optional]
+
+
+[#stats_execution]
+= Get Execution Statistics
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-begin.adoc[opts=optional]
+
+
+....
+GET /getExecutionStats
+....
+
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-description-before.adoc[opts=optional]
+
+
+[#stats_execution-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Retrieve only execution statistics.
+This returns the subset of statistics for the node.
+--
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-parameters-before.adoc[opts=optional]
+
+
+[#stats_execution-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#stats_execution-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *name* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-responses-before.adoc[opts=optional]
+
+
+[#stats_execution-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-security-before.adoc[opts=optional]
+
+
+[#stats_execution-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}stats_execution/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}stats_execution/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_execution/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-before.adoc[opts=optional]
+
+
+[#stats_failure]
+= Get Failure Statistics
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-begin.adoc[opts=optional]
+
+
+....
+GET /getFailureStats
+....
+
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-description-before.adoc[opts=optional]
+
+
+[#stats_failure-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Retrieve only failure statistics.
+This returns the subset of statistics for the node.
+--
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-parameters-before.adoc[opts=optional]
+
+
+[#stats_failure-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#stats_failure-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *name* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-responses-before.adoc[opts=optional]
+
+
+[#stats_failure-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-security-before.adoc[opts=optional]
+
+
+[#stats_failure-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}stats_failure/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}stats_failure/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_failure/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-before.adoc[opts=optional]
+
+
+[#stats_latency]
+= Get Latency Statistics
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-begin.adoc[opts=optional]
+
+
+....
+GET /getLatencyStats
+....
+
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-description-before.adoc[opts=optional]
+
+
+[#stats_latency-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Retrieve only latency statistics.
+This returns the subset of statistics for the node.
+--
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-parameters-before.adoc[opts=optional]
+
+
+[#stats_latency-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#stats_latency-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *name* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-responses-before.adoc[opts=optional]
+
+
+[#stats_latency-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-security-before.adoc[opts=optional]
+
+
+[#stats_latency-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}stats_latency/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}stats_latency/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_latency/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-before.adoc[opts=optional]
+
+
+[#stats_reset]
+= Reset Statistics
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-begin.adoc[opts=optional]
+
+
+....
+GET /resetStatsCounters
+....
+
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-description-before.adoc[opts=optional]
+
+
+[#stats_reset-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Resets statistics for the specified function.
+--
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-parameters-before.adoc[opts=optional]
+
+
+[#stats_reset-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#stats_reset-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *appName* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-responses-before.adoc[opts=optional]
+
+
+[#stats_reset-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-security-before.adoc[opts=optional]
+
+
+[#stats_reset-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}stats_reset/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}stats_reset/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/stats_reset/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Status]
+= Status
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<status_all>>
+<<status_function>>
+
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-before.adoc[opts=optional]
+
+
+[#status_all]
+= View All Functions Status
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/status_all/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/status
+....
+
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-description-before.adoc[opts=optional]
+
+
+[#status_all-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/status_all/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns a list (array) of all eventing functions, showing their corresponding `composite_status`.
+A function's status can have one of the following values: undeployed, deploying, deployed, undeploying, paused, and pausing.
+Note that there is no value of resuming; when resuming a paused eventing function, the `composite_status` returns `deploying` until it reaches the deployed state.
+
+If this API is run as a non-Administrator, the results are filtered via RBAC to include only the function scopes the user has access to.
+--
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-responses-before.adoc[opts=optional]
+
+
+[#status_all-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/status_all/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-security-before.adoc[opts=optional]
+
+
+[#status_all-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/status_all/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-unscoped>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}status_all/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}status_all/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/status_all/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-before.adoc[opts=optional]
+
+
+[#status_function]
+= View Function Status
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/status_function/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/status/{function}
+....
+
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-description-before.adoc[opts=optional]
+
+
+[#status_function-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/status_function/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns the specified function, showing its corresponding `composite_status`.
+It can have one of the following values: undeployed, deploying, deployed, undeploying, paused, and pausing.
+Note that there is no value of resuming; when resuming a paused eventing function, the `composite_status` returns `deploying` until it reaches the deployed state.
+--
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-parameters-before.adoc[opts=optional]
+
+
+[#status_function-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/status_function/operation-parameters-begin.adoc[opts=optional]
+
+
+[#status_function-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *function* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a function.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#status_function-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The bucket to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped functions only.
+The scope to which the function belongs.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-responses-before.adoc[opts=optional]
+
+
+[#status_function-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/status_function/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-security-before.adoc[opts=optional]
+
+
+[#status_function-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/status_function/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-scoped>>
+| http (basic)
+| <<security-global>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}status_function/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}status_function/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/status_function/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
+
+
+[#models]
+= Definitions
+
+:count-models: 10
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
+[.two-columns]
+endif::collapse-models[]
+[%hardbreaks]
+<<AddFunction>>
+<<AddFunctions>>
+<<depcfg_schema>>
+<<depcfg_schema_constants_inner>>
+<<depcfg_schema_buckets_inner>>
+<<depcfg_schema_curl_inner>>
+<<handler_schema>>
+<<function_scope_schema>>
+<<settings_schema>>
+<<UnivConfig>>
+endif::[]
+
+
+
+include::{specDir}definitions/AddFunction/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#AddFunction]
+= Function Request
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/AddFunction/definition-begin.adoc[opts=optional]
+
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+One of the following:
+
+* <<handler_schema>>
+
+
+* <<handler_schema>>
+ array
+
+
+
+// markup not found, no include::{specDir}definitions/AddFunction/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/AddFunction/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/AddFunctions/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#AddFunctions]
+= Functions Request
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/AddFunctions/definition-begin.adoc[opts=optional]
+
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+One of the following:
+
+* <<handler_schema>>
+
+
+* <<handler_schema>>
+ array
+
+
+
+// markup not found, no include::{specDir}definitions/AddFunctions/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/AddFunctions/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/depcfg_schema/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#depcfg_schema]
+= Deployment Config
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/depcfg_schema/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::depcfg_schema[]
+
+ifdef::model-descriptions[]
+//tag::desc-depcfg_schema[]
+deployment configuration
+//end::desc-depcfg_schema[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*buckets* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<depcfg_schema_buckets_inner>>
+ array
+
+a¦ 
+*curl* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<depcfg_schema_curl_inner>>
+ array
+
+a¦ 
+*metadata_bucket* +
+_required_
+a¦ 
+
+[markdown]
+--
+bucket to store eventing checkpoints and timers
+--
+
+[%hardbreaks]
+*Minimum length:* `1`
+{blank}
+a¦ String
+
+
+a¦ 
+*metadata_scope* +
+_optional_
+a¦ 
+
+[markdown]
+--
+scope to store eventing checkpoints and timers
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*metadata_collection* +
+_optional_
+a¦ 
+
+[markdown]
+--
+collection to store eventing checkpoints and timers
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*source_bucket* +
+_required_
+a¦ 
+
+[markdown]
+--
+bucket to listen to for document mutations
+--
+
+[%hardbreaks]
+*Minimum length:* `1`
+{blank}
+a¦ String
+
+
+a¦ 
+*source_scope* +
+_optional_
+a¦ 
+
+[markdown]
+--
+scope to listen to for document mutations
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*source_collection* +
+_optional_
+a¦ 
+
+[markdown]
+--
+collection to listen to for document mutations
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*constants* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<depcfg_schema_constants_inner>>
+ array
+
+|===
+
+//end::depcfg_schema[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/depcfg_schema/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/depcfg_schema/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/depcfg_schema_constants_inner/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#depcfg_schema_constants_inner]
+= Deployment Constants
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/depcfg_schema_constants_inner/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::depcfg_schema_constants_inner[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*value* +
+_required_
+a¦ 
+
+[markdown]
+--
+alias name of the constant binding
+--
+
+[%hardbreaks]
+*Pattern:* `+++/^[a-zA-Z_$][a-zA-Z0-9_$]*$/+++`
+*Minimum length:* `1`
+*Maximum length:* `64`
+{blank}
+a¦ String
+
+
+a¦ 
+*literal* +
+_required_
+a¦ 
+
+[markdown]
+--
+literal value bound to the alias name
+--
+
+[%hardbreaks]
+*Minimum length:* `1`
+{blank}
+a¦ String
+
+
+|===
+
+//end::depcfg_schema_constants_inner[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/depcfg_schema_constants_inner/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/depcfg_schema_constants_inner/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/depcfg_schema_buckets_inner/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#depcfg_schema_buckets_inner]
+= Deployment Keyspace
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/depcfg_schema_buckets_inner/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::depcfg_schema_buckets_inner[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*alias* +
+_required_
+a¦ 
+
+[markdown]
+--
+symbolic name used in code to refer to this binding
+--
+
+[%hardbreaks]
+*Pattern:* `+++/^[a-zA-Z_$][a-zA-Z0-9_$]*$/+++`
+*Minimum length:* `1`
+*Maximum length:* `64`
+{blank}
+a¦ String
+
+
+a¦ 
+*bucket_name* +
+_required_
+a¦ 
+
+[markdown]
+--
+name of the bucket this binding maps to
+--
+
+[%hardbreaks]
+*Minimum length:* `1`
+{blank}
+a¦ String
+
+
+a¦ 
+*scope_name* +
+_optional_
+a¦ 
+
+[markdown]
+--
+name of the scope this binding maps to
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*collection_name* +
+_optional_
+a¦ 
+
+[markdown]
+--
+name of the collection this binding maps to
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*access* +
+_required_
+a¦ 
+
+[markdown]
+--
+bucket access level (read or read+write)
+--
+
+[%hardbreaks]
+*Values:* `"r"`, `"rw"`
+{blank}
+a¦ String
+
+
+|===
+
+//end::depcfg_schema_buckets_inner[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/depcfg_schema_buckets_inner/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/depcfg_schema_buckets_inner/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/depcfg_schema_curl_inner/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#depcfg_schema_curl_inner]
+= Deployment URL
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/depcfg_schema_curl_inner/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::depcfg_schema_curl_inner[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*hostname* +
+_required_
+a¦ 
+
+[markdown]
+--
+full URL (including any path) that this binding connects
+--
+
+[%hardbreaks]
+*Pattern:* `+++/^https?:\/\//+++`
+*Minimum length:* `1`
+{blank}
+a¦ URI (uri)
+
+
+a¦ 
+*value* +
+_required_
+a¦ 
+
+[markdown]
+--
+symbolic name used in code to refer to this binding
+--
+
+[%hardbreaks]
+*Pattern:* `+++/^[a-zA-Z_$][a-zA-Z0-9_$]*$/+++`
+*Minimum length:* `1`
+*Maximum length:* `64`
+{blank}
+a¦ String
+
+
+a¦ 
+*auth_type* +
+_required_
+a¦ 
+
+[markdown]
+--
+http authentication method to use with this endpoint
+--
+
+[%hardbreaks]
+*Values:* `"no-auth"`, `"basic"`, `"bearer"`, `"digest"`
+{blank}
+a¦ String
+
+
+a¦ 
+*username* +
+_optional_
+a¦ 
+
+[markdown]
+--
+username for http auth methods that use it
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*password* +
+_optional_
+a¦ 
+
+[markdown]
+--
+password for http auth methods that use it
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*bearer_key* +
+_optional_
+a¦ 
+
+[markdown]
+--
+bearer key for bearer auth
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*allow_cookies* +
+_required_
+a¦ 
+
+[markdown]
+--
+allow cookies on the session
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*validate_ssl_certificate* +
+_required_
+a¦ 
+
+[markdown]
+--
+validate remote server certificate using OS mechanisms
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+|===
+
+//end::depcfg_schema_curl_inner[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/depcfg_schema_curl_inner/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/depcfg_schema_curl_inner/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/handler_schema/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#handler_schema]
+= Function Definition
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/handler_schema/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::handler_schema[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*appcode* +
+_required_
+a¦ 
+
+[markdown]
+--
+handler code
+--
+
+[%hardbreaks]
+*Minimum length:* `1`
+{blank}
+a¦ String
+
+
+a¦ 
+*depcfg* +
+_required_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-depcfg_schema, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<depcfg_schema>>
+
+
+a¦ 
+*version* +
+_required_
+a¦ 
+
+[markdown]
+--
+authoring tool. use 'external' if authored or edited outside eventing ui
+--
+
+[%hardbreaks]
+*Pattern:* `+++/^evt-[5-7].[0-9]+.[0-9]+-[0-9]{4}-(ee|ce)$/+++`
+{blank}
+a¦ String
+
+
+a¦ 
+*enforce_schema* +
+_optional_
+a¦ 
+
+[markdown]
+--
+enforces stricter validation for all settings and configuration fields.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*handleruuid* +
+_optional_
+a¦ 
+
+[markdown]
+--
+unique id of the the handler. generated by server
+--
+
+[%hardbreaks]
+*Minimum:* `0`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*function_instance_id* +
+_optional_
+a¦ 
+
+[markdown]
+--
+unique id of the deployment of the handler. generated by server
+--
+
+[%hardbreaks]
+*Minimum length:* `0`
+{blank}
+a¦ String
+
+
+a¦ 
+*appname* +
+_required_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+*Pattern:* `+++/^[a-zA-Z0-9][a-zA-Z0-9_-]*$/+++`
+*Minimum length:* `1`
+*Maximum length:* `100`
+{blank}
+a¦ String
+
+
+a¦ 
+*settings* +
+_required_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-settings_schema, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<settings_schema>>
+
+
+a¦ 
+*function_scope* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-function_scope_schema, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<function_scope_schema>>
+
+
+|===
+
+//end::handler_schema[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/handler_schema/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/handler_schema/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/function_scope_schema/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#function_scope_schema]
+= Function Scope
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/function_scope_schema/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::function_scope_schema[]
+
+ifdef::model-descriptions[]
+//tag::desc-function_scope_schema[]
+function scope
+//end::desc-function_scope_schema[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*bucket* +
+_required_
+a¦ 
+
+[markdown]
+--
+bucket to which function belongs
+--
+
+[%hardbreaks]
+*Minimum length:* `1`
+{blank}
+a¦ String
+
+
+a¦ 
+*scope* +
+_required_
+a¦ 
+
+[markdown]
+--
+scope to which function belongs
+--
+
+[%hardbreaks]
+*Minimum length:* `1`
+{blank}
+a¦ String
+
+
+|===
+
+//end::function_scope_schema[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/function_scope_schema/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/function_scope_schema/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/settings_schema/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#settings_schema]
+= Function Settings
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/settings_schema/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::settings_schema[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*cpp_worker_thread_count* +
+_optional_
+a¦ 
+
+[markdown]
+--
+number of threads each worker utilizes
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*dcp_stream_boundary* +
+_optional_
+a¦ 
+
+[markdown]
+--
+indicates where to start dcp stream from (beginning of time, present point) 'from_prior' is deprecated in 6.6.2
+--
+
+[%hardbreaks]
+*Values:* `"everything"`, `"from_now"`
+{blank}
+a¦ String
+
+
+a¦ 
+*deployment_status* +
+_optional_
+a¦ 
+
+[markdown]
+--
+indicates if the function is deployed. true=deployed, false=undeployed
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*description* +
+_optional_
+a¦ 
+
+[markdown]
+--
+free form text for user to describe the handler. no functional role
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*execution_timeout* +
+_optional_
+a¦ 
+
+[markdown]
+--
+maximum time the handler can run before it is forcefully terminated (in seconds)
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*on_deploy_timeout* +
+_optional_
+a¦ 
+
+[markdown]
+--
+maximum time the OnDeploy handler can run before it is terminated (in seconds)
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*language_compatibility* +
+_optional_
+a¦ 
+
+[markdown]
+--
+eventing language version this handler assumes in terms of syntax and behavior
+--
+
+[%hardbreaks]
+*Values:* `"6.6.2"`, `"6.0.0"`, `"6.5.0"`, `"7.2.0"`
+{blank}
+a¦ String
+
+
+a¦ 
+*lcb_inst_capacity* +
+_optional_
+a¦ 
+
+[markdown]
+--
+maximum number of libcouchbase connections that may be opened and pooled
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*lcb_retry_count* +
+_optional_
+a¦ 
+
+[markdown]
+--
+number of retries of retriable libcouchbase failures. 0 keeps trying till execution_timeout
+--
+
+[%hardbreaks]
+*Minimum:* `0`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*lcb_timeout* +
+_optional_
+a¦ 
+
+[markdown]
+--
+maximum time the lcb command is waited until completion before we terminate the request(in seconds)
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*log_level* +
+_optional_
+a¦ 
+
+[markdown]
+--
+level of detail in system logging
+--
+
+[%hardbreaks]
+*Values:* `"INFO"`, `"ERROR"`, `"WARNING"`, `"DEBUG"`, `"TRACE"`
+{blank}
+a¦ String
+
+
+a¦ 
+*n1ql_consistency* +
+_optional_
+a¦ 
+
+[markdown]
+--
+consistency level used by n1ql statements in the handler
+--
+
+[%hardbreaks]
+*Values:* `"none"`, `"request"`
+{blank}
+a¦ String
+
+
+a¦ 
+*num_timer_partitions* +
+_optional_
+a¦ 
+
+[markdown]
+--
+number of timer shards. defaults to number of vbuckets
+--
+
+[%hardbreaks]
+*Values:* `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, `1024`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*processing_status* +
+_optional_
+a¦ 
+
+[markdown]
+--
+indicates if the function is running (i.e., not paused). true=running, false=paused
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*sock_batch_size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+batch size for messages from producer to consumer. normally, this must not be specified
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*tick_duration* +
+_optional_
+a¦ 
+
+[markdown]
+--
+duration to log stats from this handler, in milliseconds
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*timer_context_size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+size limit of timer context object
+--
+
+[%hardbreaks]
+*Minimum:* `20`
+*Maximum:* `20971520`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*user_prefix* +
+_optional_
+a¦ 
+
+[markdown]
+--
+key prefix for all data stored in metadata by this handler
+--
+
+[%hardbreaks]
+*Minimum length:* `1`
+{blank}
+a¦ String
+
+
+a¦ 
+*worker_count* +
+_optional_
+a¦ 
+
+[markdown]
+--
+number of worker processes handler utilizes on each eventing node
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*n1ql_prepare_all* +
+_optional_
+a¦ 
+
+[markdown]
+--
+automatically prepare all n1ql statements in the handler
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*handler_headers* +
+_optional_
+a¦ 
+
+[markdown]
+--
+code to automatically prepend to top of handler code
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+ array
+
+a¦ 
+*handler_footers* +
+_optional_
+a¦ 
+
+[markdown]
+--
+code to automatically append to bottom of handler code
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+ array
+
+a¦ 
+*enable_applog_rotation* +
+_optional_
+a¦ 
+
+[markdown]
+--
+enable rotating this handlers log() message files
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*app_log_dir* +
+_optional_
+a¦ 
+
+[markdown]
+--
+directory to write content of log() message files
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*app_log_max_size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+rotate logs when file grows to this size in bytes approximately
+--
+
+[%hardbreaks]
+*Minimum:* `1024`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*app_log_max_files* +
+_optional_
+a¦ 
+
+[markdown]
+--
+number of log() message files to retain when rotating
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*checkpoint_interval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+number of seconds before writing a progress checkpoint
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*bucket_cache_size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+maximum size in bytes the bucket cache can grow to
+--
+
+[%hardbreaks]
+*Minimum:* `20971520`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*bucket_cache_age* +
+_optional_
+a¦ 
+
+[markdown]
+--
+time in milliseconds after which a cached bucket object is considered stale
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*curl_max_allowed_resp_size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+maximum allowable curl call response in 'MegaBytes'. Setting the value to 0 lifts the upper limit off. This parameters affects v8 engine stability since it defines the maximum amount of heap space acquired by a curl call
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*allow_transaction_mutations* +
+_optional_
+a¦ 
+
+[markdown]
+--
+allow staged transaction mutations
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*allow_sync_documents* +
+_optional_
+a¦ 
+
+[markdown]
+--
+allow sync gateway mutations
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*cursor_aware* +
+_optional_
+a¦ 
+
+[markdown]
+--
+syncgateway aware function
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*high_seq_check_interval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+number of milliseconds before checking for high seq number
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*max_unacked_bytes* +
+_optional_
+a¦ 
+
+[markdown]
+--
+max MBs to wait to send more bytes to c++ side
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*max_unacked_count* +
+_optional_
+a¦ 
+
+[markdown]
+--
+max number of messages on c++ side
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*message_flush_time* +
+_optional_
+a¦ 
+
+[markdown]
+--
+number of milliseconds before sending message to c++ side
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*max_parallel_vb* +
+_optional_
+a¦ 
+
+[markdown]
+--
+number of parallel vb request per cpp thread
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+|===
+
+//end::settings_schema[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/settings_schema/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/settings_schema/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/UnivConfig/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#UnivConfig]
+= Global Configuration
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/UnivConfig/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::UnivConfig[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*ram_quota* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The memory allocation for the Eventing Service, per node.
+--
+
+[%hardbreaks]
+*Default:* `256`
+*Example:* `512`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*enable_debugger* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Enables the Eventing service debugger.
+For details, see [Debugging and Diagnosability](/server/7.6/eventing/eventing-debugging-and-diagnosability.html).
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+a¦ Boolean
+
+
+|===
+
+//end::UnivConfig[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/UnivConfig/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/UnivConfig/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
+
+
+[[security]]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}security/document-begin.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Global/security-scheme-before.adoc[opts=optional]
+
+
+[[security-global]]
+= Global
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Global/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Global functions with a function scope of ``*.*`` can only be made or managed by users with the Full Admin or Eventing Full Admin role.
+For global functions, you do not need to pass the `bucket` and `scope` query parameters to specify the function scope.
+The credentials must be an administrator username and password.
+
+Note that this is the default function scope for all functions after an upgrade from a prior version.
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Global/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Global/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Scoped/security-scheme-before.adoc[opts=optional]
+
+
+[[security-scoped]]
+= Scoped
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Scoped/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+For scoped functions, you must pass the `bucket` and `scope` query parameters to specify the function scope.
+The credentials are the username and password of any authorized user.
+
+You can quote the REST call on the command line to escape the `&` and `?` characters.
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Scoped/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Scoped/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Unscoped/security-scheme-before.adoc[opts=optional]
+
+
+[[security-unscoped]]
+= Unscoped
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Unscoped/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Unscoped REST API calls do not require you to specify the function scope.
+The action is fully determined by the username and password credentials passed to the REST call.
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Unscoped/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Unscoped/security-scheme-after.adoc[opts=optional]
+
+
+
+
+include::{specDir}security/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
+
