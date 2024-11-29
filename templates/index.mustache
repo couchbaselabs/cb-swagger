@@ -196,6 +196,9 @@ CAUTION: This operation is deprecated, and will be removed in a future release.
 {{{unescapedNotes}}}
 --
 
+{{! include partials after operation description body }}
+{{#specinclude}}/paths/{{operationIdOriginal}}/operation-description-end.adoc{{/specinclude}}
+
 {{! *** OPERATION CONSUMES *** }}
 {{#hasConsumes}}
 [#{{operationIdOriginal}}-consumes]
@@ -214,8 +217,6 @@ CAUTION: This operation is deprecated, and will be removed in a future release.
 {{/produces}}
 {{/hasProduces}}
 
-{{! include partials after operation description body }}
-{{#specinclude}}/paths/{{operationIdOriginal}}/operation-description-end.adoc{{/specinclude}}
 :leveloffset: -1
 
 {{! include partial after operation description }}
