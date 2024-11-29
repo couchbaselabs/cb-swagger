@@ -1,0 +1,21 @@
+= Example HTTP Requests
+
+.Import a global function
+====
+.Curl request
+[source,sh]
+----
+curl -XPOST -d @./my_function.json \
+  "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function"
+----
+====
+
+.Import a scoped function
+====
+.Curl request
+[source,sh]
+----
+curl -XPOST -d @./my_function.json \
+  "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function?bucket=bulk&scope=data"
+----
+====

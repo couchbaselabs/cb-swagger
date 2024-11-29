@@ -58,7 +58,7 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `pass:c[http]`
+*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -69,7 +69,7 @@ The host name or IP address of a node running the Index service.
 
 [%hardbreaks]
 
-*Example:* `pass:c[localhost]`
+*Example:* `+++localhost+++`
 // end
 
 a| *port*
@@ -80,7 +80,7 @@ The Index service REST port. Use `19102` for secure access.
 
 [%hardbreaks]
 *Values:* `9102`, `19102`
-*Example:* `pass:c[9102]`
+*Example:* `+++9102+++`
 // end
 
 |===
@@ -173,6 +173,12 @@ Returns statistics for an index.
 
 // markup not found, no include::{specDir}paths/get_index_stats/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_index_stats-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -195,13 +201,13 @@ Returns statistics for an index.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *keyspace* +
+a¦ *keyspace* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -219,13 +225,13 @@ For example, `` `bucket.1`.scope.collection ``.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *index* +
+a¦ *index* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -236,7 +242,7 @@ The name of an index.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -246,13 +252,13 @@ a| String
 .Query Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *pretty* +
+a¦ *pretty* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -264,13 +270,13 @@ Whether the output should be formatted with indentations and newlines.
 *Default:* `false`
 {blank}
 
-a| Boolean
+a¦ Boolean
 
 
 
-a| *partition* +
+a¦ *partition* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -282,13 +288,13 @@ Whether statistics for index partitions should be included.
 *Default:* `false`
 {blank}
 
-a| Boolean
+a¦ Boolean
 
 
 
-a| *redact* +
+a¦ *redact* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -301,13 +307,13 @@ Whether keyspace and index names should be redacted in the output.
 *Default:* `false`
 {blank}
 
-a| Boolean
+a¦ Boolean
 
 
 
-a| *skipEmpty* +
+a¦ *skipEmpty* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -319,7 +325,7 @@ Whether empty, null, or zero statistics should be omitted from the output.
 *Default:* `false`
 {blank}
 
-a| Boolean
+a¦ Boolean
 
 
 
@@ -337,12 +343,6 @@ include::{specDir}paths/get_index_stats/operation-parameters-end.adoc[opts=optio
 
 
 // markup not found, no include::{specDir}paths/get_index_stats/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_index_stats-produces]
-= Produces
-
-* application/json
 
 
 
@@ -472,6 +472,12 @@ Returns statistics for all indexes within a bucket, scope, or collection.
 
 // markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_keyspace_stats-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -494,13 +500,13 @@ Returns statistics for all indexes within a bucket, scope, or collection.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *keyspace* +
+a¦ *keyspace* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -518,7 +524,7 @@ For example, `` `bucket.1`.scope.collection ``.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -528,13 +534,13 @@ a| String
 .Query Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *pretty* +
+a¦ *pretty* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -546,13 +552,13 @@ Whether the output should be formatted with indentations and newlines.
 *Default:* `false`
 {blank}
 
-a| Boolean
+a¦ Boolean
 
 
 
-a| *redact* +
+a¦ *redact* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -565,13 +571,13 @@ Whether keyspace and index names should be redacted in the output.
 *Default:* `false`
 {blank}
 
-a| Boolean
+a¦ Boolean
 
 
 
-a| *skipEmpty* +
+a¦ *skipEmpty* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -583,7 +589,7 @@ Whether empty, null, or zero statistics should be omitted from the output.
 *Default:* `false`
 {blank}
 
-a| Boolean
+a¦ Boolean
 
 
 
@@ -601,12 +607,6 @@ include::{specDir}paths/get_keyspace_stats/operation-parameters-end.adoc[opts=op
 
 
 // markup not found, no include::{specDir}paths/get_keyspace_stats/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_keyspace_stats-produces]
-= Produces
-
-* application/json
 
 
 
@@ -736,6 +736,12 @@ Returns statistics for an index node, and for all indexes on that node.
 
 // markup not found, no include::{specDir}paths/get_node_stats/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_node_stats-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -759,13 +765,13 @@ Returns statistics for an index node, and for all indexes on that node.
 .Query Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *pretty* +
+a¦ *pretty* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -777,13 +783,13 @@ Whether the output should be formatted with indentations and newlines.
 *Default:* `false`
 {blank}
 
-a| Boolean
+a¦ Boolean
 
 
 
-a| *redact* +
+a¦ *redact* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -796,13 +802,13 @@ Whether keyspace and index names should be redacted in the output.
 *Default:* `false`
 {blank}
 
-a| Boolean
+a¦ Boolean
 
 
 
-a| *skipEmpty* +
+a¦ *skipEmpty* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -814,7 +820,7 @@ Whether empty, null, or zero statistics should be omitted from the output.
 *Default:* `false`
 {blank}
 
-a| Boolean
+a¦ Boolean
 
 
 
@@ -832,12 +838,6 @@ a| Boolean
 
 
 // markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_node_stats-produces]
-= Produces
-
-* application/json
 
 
 
@@ -1029,14 +1029,14 @@ endif::collapse-models[]
 //tag::NodeIdxNode[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *indexer* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1045,7 +1045,7 @@ include::index.adoc[tag=desc-NodeIdxNodeIndexer, opts=optional]
 
 [%hardbreaks]
 {blank}
-a| <<NodeIdxNodeIndexer>>
+a¦ <<NodeIdxNodeIndexer>>
 
 
 |===
@@ -1090,14 +1090,14 @@ A nested object containing statistics for the current index node.
 //end::desc-NodeIdxNodeIndexer[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *indexer_state* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1106,15 +1106,15 @@ Current state of the Index service on this node.
 
 [%hardbreaks]
 *Values:* `"Active"`, `"Pause"`, `"Warmup"`
-*Example:* `pass:c["Active"]`
+*Example:* `+++"Active"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *memory_quota* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1126,13 +1126,13 @@ Memory quota assigned to the Index service on this node by user configuration (b
 *Maximum:* `1099511992567`
 *Example:* `536870912`
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| 
+a¦ 
 *memory_total_storage* +
 _optional_
-a| [.edition]##{enterprise}##
+a¦ [.edition]##{enterprise}##
 
 [markdown]
 --
@@ -1144,13 +1144,13 @@ This also accounts for memory fragmentation.
 [%hardbreaks]
 *Example:* `71794688`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *memory_used* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1160,13 +1160,13 @@ Amount of memory used by the Index service on this node (bytes).
 [%hardbreaks]
 *Example:* `360192000`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *total_indexer_gc_pause_ns* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1176,7 +1176,7 @@ The total time the indexer has spent in GC pause since last startup (ns).
 [%hardbreaks]
 *Example:* `309778455`
 {blank}
-a| Integer
+a¦ Integer
 
 
 |===
@@ -1253,14 +1253,14 @@ endif::collapse-models[]
 //tag::PartIdxIndexes[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 _additional +
 property_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1269,7 +1269,7 @@ include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
 
 [%hardbreaks]
 {blank}
-a| <<PartIdxPartitionsIndex>>
+a¦ <<PartIdxPartitionsIndex>>
 
 
 |===
@@ -1309,14 +1309,14 @@ endif::collapse-models[]
 //tag::PartIdxPartitions[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 _additional +
 property_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1325,7 +1325,7 @@ include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
 
 [%hardbreaks]
 {blank}
-a| <<PartIdxPartitionsIndex>>
+a¦ <<PartIdxPartitionsIndex>>
 
 
 |===
@@ -1370,14 +1370,14 @@ A nested object containing statistics for an index or index partition.
 //end::desc-PartIdxPartitionsIndex[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *avg_array_length* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1388,13 +1388,13 @@ The average number of items indexed per document.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *avg_drain_rate* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1403,13 +1403,13 @@ Average number of items flushed from memory to disk storage per second.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *avg_item_size* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1418,13 +1418,13 @@ Average size of the keys.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *avg_scan_latency* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1433,13 +1433,13 @@ Average time to serve a scan request (nanoseconds).
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *cache_hit_percent* +
 _optional_
-a| [.edition]##{enterprise}##
+a¦ [.edition]##{enterprise}##
 
 [markdown]
 --
@@ -1448,13 +1448,13 @@ Percentage of memory accesses that were served from the managed cache.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *cache_hits* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1463,13 +1463,13 @@ Accesses to this index data from RAM.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *cache_misses* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1478,13 +1478,13 @@ Accesses to this index data from disk.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *data_size* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1494,13 +1494,13 @@ The size of indexable data that is maintained for the index or partition (bytes)
 [%hardbreaks]
 *Example:* `95728`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *disk_size* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1510,13 +1510,13 @@ Total disk file size consumed by the index or partition.
 [%hardbreaks]
 *Example:* `889054`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *docid_count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1527,13 +1527,13 @@ The number of documents currently indexed.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *frag_percent* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1545,13 +1545,13 @@ TIP: At small index sizes of less than a hundred kB, the static overhead of the 
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *initial_build_progress* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1565,13 +1565,13 @@ For an index partition, the value is listed as `0`.
 [%hardbreaks]
 *Example:* `100`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *items_count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1581,13 +1581,13 @@ The number of items currently indexed.
 [%hardbreaks]
 *Example:* `2155`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *last_known_scan_time* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1600,13 +1600,13 @@ NOTE: This statistic is persisted to disk every 15 minutes, so it is preserved w
 
 [%hardbreaks]
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| 
+a¦ 
 *num_docs_indexed* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1615,13 +1615,13 @@ Number of documents indexed by the indexer since last startup.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *num_docs_pending* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1630,13 +1630,13 @@ Number of documents pending to be indexed.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *num_docs_queued* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1645,13 +1645,13 @@ Number of documents queued to be indexed.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *num_items_flushed* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1660,13 +1660,13 @@ Number of items flushed from memory to disk storage.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *num_pending_requests* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1675,13 +1675,13 @@ Number of requests received but not yet served by the indexer.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *num_requests* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1690,13 +1690,13 @@ Number of requests served by the indexer since last startup.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *num_rows_returned* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1705,13 +1705,13 @@ Total number of rows returned so far by the indexer.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *num_scan_errors* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1720,13 +1720,13 @@ Number of requests that failed due to errors other than timeout.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *num_scan_timeouts* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1735,13 +1735,13 @@ Number of requests that timed out, either waiting for snapshots or during scan i
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *recs_in_mem* +
 _optional_
-a| [.edition]##{enterprise}##
+a¦ [.edition]##{enterprise}##
 
 [markdown]
 --
@@ -1754,13 +1754,13 @@ For memory-optimized index storage, this is the same as `items_count`.
 [%hardbreaks]
 *Example:* `2155`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *recs_on_disk* +
 _optional_
-a| [.edition]##{enterprise}##
+a¦ [.edition]##{enterprise}##
 
 [markdown]
 --
@@ -1770,13 +1770,13 @@ For memory-optimized index storage, this is `0`.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *resident_percent* +
 _optional_
-a| [.edition]##{enterprise}##
+a¦ [.edition]##{enterprise}##
 
 [markdown]
 --
@@ -1786,13 +1786,13 @@ Percentage of the data held in memory.
 [%hardbreaks]
 *Example:* `100`
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *scan_bytes_read* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1801,13 +1801,13 @@ Number of bytes read by a scan since last startup.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *total_scan_duration* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1816,7 +1816,7 @@ Total time spent by the indexer in scanning rows since last startup (nanoseconds
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
 |===
@@ -1929,4 +1929,5 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 
 // markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
 

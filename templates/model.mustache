@@ -13,29 +13,29 @@ ifdef::model-descriptions[]
 endif::model-descriptions[]
 {{/description}}
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
 {{#vars}}
 {{! DEFINITION NAME }}
-a| {{#vendorExtensions}}{{#x-desc-name}}[#{{this}}]{{/x-desc-name}}{{/vendorExtensions}}
+a¦ {{#vendorExtensions}}{{#x-desc-name}}[#{{this}}]{{/x-desc-name}}{{/vendorExtensions}}
 *{{baseName}}* +
 _{{#required}}required{{/required}}{{^required}}optional{{/required}}_
 {{! DEFINITION DESCRIPTION }}
-a| {{>property}}
+a¦ {{>property}}
 {{! DEFINITION SCHEMA }}
-a| {{>schemas}}
+a¦ {{>schemas}}
 {{/vars}}
 {{#additionalProperties}}
 {{! ADDITIONAL PROPERTY NAME }}
-a| {{#vendorExtensions}}{{#x-desc-name}}[#{{this}}]{{/x-desc-name}}{{/vendorExtensions}}
+a¦ {{#vendorExtensions}}{{#x-desc-name}}[#{{this}}]{{/x-desc-name}}{{/vendorExtensions}}
 _additional +
 property_
 {{! ADDITIONAL PROPERTY DESCRIPTION }}
-a| {{>property}}
+a¦ {{>property}}
 {{! ADDITIONAL PROPERTY SCHEMA }}
-a| {{>schemas}}
+a¦ {{>schemas}}
 {{/additionalProperties}}
 |===
 

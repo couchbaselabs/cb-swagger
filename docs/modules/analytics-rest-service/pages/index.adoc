@@ -59,7 +59,7 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `pass:c[http]`
+*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -70,7 +70,7 @@ The host name or IP address of a node running the Analytics service.
 
 [%hardbreaks]
 
-*Example:* `pass:c[localhost]`
+*Example:* `+++localhost+++`
 // end
 
 a| *port*
@@ -81,7 +81,7 @@ The Analytics service REST port. Use `18095` for secure access.
 
 [%hardbreaks]
 *Values:* `8095`, `18095`
-*Example:* `pass:c[8095]`
+*Example:* `+++8095+++`
 // end
 
 |===
@@ -175,6 +175,12 @@ An alternative endpoint for the [Read-Only Query Service](#get_service), provide
 
 // markup not found, no include::{specDir}paths/get_query/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_query-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -198,13 +204,13 @@ An alternative endpoint for the [Read-Only Query Service](#get_service), provide
 .Query Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *body* +
+a¦ *body* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -215,7 +221,7 @@ Specify the parameters in the query URL in URL-encoded format.
 [%hardbreaks]
 {blank}
 
-a| <<Parameters>>
+a¦ <<Parameters>>
 
 
 
@@ -233,12 +239,6 @@ a| <<Parameters>>
 
 
 // markup not found, no include::{specDir}paths/get_query/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_query-produces]
-= Produces
-
-* application/json
 
 
 
@@ -381,6 +381,12 @@ This is intended for situations where use of the `POST` method is restricted.
 
 // markup not found, no include::{specDir}paths/get_service/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_service-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -404,13 +410,13 @@ This is intended for situations where use of the `POST` method is restricted.
 .Query Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *body* +
+a¦ *body* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -421,7 +427,7 @@ Specify the parameters in the query URL in URL-encoded format.
 [%hardbreaks]
 {blank}
 
-a| <<Parameters>>
+a¦ <<Parameters>>
 
 
 
@@ -439,12 +445,6 @@ a| <<Parameters>>
 
 
 // markup not found, no include::{specDir}paths/get_service/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_service-produces]
-= Produces
-
-* application/json
 
 
 
@@ -584,6 +584,16 @@ An alternative endpoint for the [Query Service](#post_service), provided for too
 
 // markup not found, no include::{specDir}paths/post_query/operation-description-end.adoc[opts=optional]
 
+
+[#post_query-consumes]
+.Consumes
+* application/json
+* application/x-www-form-urlencoded
+
+[#post_query-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -610,13 +620,13 @@ include::{specDir}paths/post_query/operation-parameters-begin.adoc[opts=optional
 .Body Parameter
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *Body* +
+a¦ *Body* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -627,7 +637,7 @@ An object specifying one or more query parameters.
 [%hardbreaks]
 {blank}
 
-a| <<Parameters>>
+a¦ <<Parameters>>
 
 
 
@@ -643,17 +653,6 @@ a| <<Parameters>>
 
 // markup not found, no include::{specDir}paths/post_query/operation-parameters-after.adoc[opts=optional]
 
-
-[#post_query-produces]
-= Produces
-
-* application/json
-
-[#post_query-consumes]
-= Consumes
-
-* application/json
-* application/x-www-form-urlencoded
 
 
 // markup not found, no include::{specDir}paths/post_query/operation-responses-before.adoc[opts=optional]
@@ -774,6 +773,16 @@ Enables you to execute a SQL\+\+ for Analytics statement. This method allows you
 
 // markup not found, no include::{specDir}paths/post_service/operation-description-end.adoc[opts=optional]
 
+
+[#post_service-consumes]
+.Consumes
+* application/json
+* application/x-www-form-urlencoded
+
+[#post_service-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -800,13 +809,13 @@ include::{specDir}paths/post_service/operation-parameters-begin.adoc[opts=option
 .Body Parameter
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *Body* +
+a¦ *Body* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -817,7 +826,7 @@ An object specifying one or more query parameters.
 [%hardbreaks]
 {blank}
 
-a| <<Parameters>>
+a¦ <<Parameters>>
 
 
 
@@ -833,17 +842,6 @@ a| <<Parameters>>
 
 // markup not found, no include::{specDir}paths/post_service/operation-parameters-after.adoc[opts=optional]
 
-
-[#post_service-produces]
-= Produces
-
-* application/json
-
-[#post_service-consumes]
-= Consumes
-
-* application/json
-* application/x-www-form-urlencoded
 
 
 // markup not found, no include::{specDir}paths/post_service/operation-responses-before.adoc[opts=optional]
@@ -1052,14 +1050,14 @@ endif::collapse-models[]
 //tag::ParametersCommon[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *statement* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1068,13 +1066,13 @@ Specifies at least one valid SQL\+\+ for Analytics statement to run.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *client_context_id* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1084,13 +1082,13 @@ An identifier passed by the client that is returned verbatim in the query respon
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *format* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1102,15 +1100,15 @@ Note that the only possible format is `JSON`.
 
 [%hardbreaks]
 *Values:* `"JSON"`
-*Default:* `pass:c["JSON"]`
+*Default:* `+++"JSON"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *pretty* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1120,13 +1118,13 @@ If `true`, the result is indented.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| 
+a¦ 
 *query_context* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1135,15 +1133,15 @@ A scope for the statement. The value of this parameter must start with `default:
 --
 
 [%hardbreaks]
-*Default:* `pass:c["default:Default"]`
+*Default:* `+++"default:Default"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *readonly* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1153,13 +1151,13 @@ If `true`, then DDL statements are not allowed.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| 
+a¦ 
 *scan_consistency* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1169,15 +1167,15 @@ The consistency guarantee constraint for index scanning. If `not_bounded`, the q
 
 [%hardbreaks]
 *Values:* `"not_bounded"`, `"request_plus"`
-*Default:* `pass:c["not_bounded"]`
+*Default:* `+++"not_bounded"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *scan_wait* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1186,15 +1184,15 @@ The maximum time to wait for datasets to be updated before the query is executed
 --
 
 [%hardbreaks]
-*Default:* `pass:c[""]`
+*Default:* `+++""+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *timeout* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1203,15 +1201,15 @@ Maximum time to spend on the request before timing out. The format includes an a
 --
 
 [%hardbreaks]
-*Default:* `pass:c[""]`
+*Default:* `+++""+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *args* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1220,13 +1218,13 @@ An array of positional parameter values.
 
 [%hardbreaks]
 {blank}
-a| Any Type
+a¦ Any Type
  array
 
-a| 
+a¦ 
 _additional +
 property_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1235,7 +1233,7 @@ A named parameter value.
 
 [%hardbreaks]
 {blank}
-a| Any Type
+a¦ Any Type
 
 
 |===
@@ -1275,14 +1273,14 @@ endif::collapse-models[]
 //tag::ParametersLocal[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *plan-format* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1291,15 +1289,15 @@ The plan format.
 
 [%hardbreaks]
 *Values:* `"JSON"`, `"STRING"`
-*Default:* `pass:c["JSON"]`
+*Default:* `+++"JSON"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *logical-plan* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1309,13 +1307,13 @@ If `true`, the logical plan is included in the query response.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| 
+a¦ 
 *optimized-logical-plan* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1325,13 +1323,13 @@ If `true`, the optimized logical plan is included in the query response.
 [%hardbreaks]
 *Default:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| 
+a¦ 
 *expression-tree* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1341,13 +1339,13 @@ If `true`, the expression tree is included in the query response.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| 
+a¦ 
 *rewritten-expression-tree* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1357,13 +1355,13 @@ If `true`, the rewritten expression tree is included in the query response.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| 
+a¦ 
 *job* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1373,13 +1371,13 @@ If `true`, the job details are included in the query response.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| 
+a¦ 
 *max-warnings* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1389,7 +1387,7 @@ An integer specifying the maximum number of warning messages to be included in t
 [%hardbreaks]
 *Default:* `0`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
 |===
@@ -1466,14 +1464,14 @@ endif::collapse-models[]
 //tag::ResponsesCommon[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *requestID* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1482,13 +1480,13 @@ A unique identifier for the response.
 
 [%hardbreaks]
 {blank}
-a| UUID (UUID)
+a¦ UUID (UUID)
 
 
-a| 
+a¦ 
 *clientContextID* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1504,13 +1502,13 @@ refer to `client_context_id` in [Query Parameters][1].
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *signature* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1520,13 +1518,13 @@ The schema of the results. Present only when the query completes successfully.
 
 [%hardbreaks]
 {blank}
-a| Object
+a¦ Object
 
 
-a| 
+a¦ 
 *results* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1536,13 +1534,13 @@ An array of all the objects returned by the query. An object can be any JSON val
 
 [%hardbreaks]
 {blank}
-a| Any Type
+a¦ Any Type
  array
 
-a| 
+a¦ 
 *status* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1552,13 +1550,13 @@ The status of the request.
 [%hardbreaks]
 *Values:* `"success"`, `"running"`, `"failed"`, `"timeout"`, `"fatal"`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *errors* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1568,13 +1566,13 @@ An array of error objects. Present only if 1 or more errors are returned during 
 
 [%hardbreaks]
 {blank}
-a| <<ResponsesCommonErrors>>
+a¦ <<ResponsesCommonErrors>>
  array
 
-a| 
+a¦ 
 *warnings* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1595,13 +1593,13 @@ By default, no warnings are returned, even if warnings have occurred during proc
 
 [%hardbreaks]
 {blank}
-a| <<ResponsesCommonWarnings>>
+a¦ <<ResponsesCommonWarnings>>
  array
 
-a| 
+a¦ 
 *metrics* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1610,7 +1608,7 @@ include::index.adoc[tag=desc-ResponsesCommonYardsticks, opts=optional]
 
 [%hardbreaks]
 {blank}
-a| <<ResponsesCommonYardsticks>>
+a¦ <<ResponsesCommonYardsticks>>
 
 
 |===
@@ -1650,14 +1648,14 @@ endif::collapse-models[]
 //tag::ResponsesCommonErrors[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *code* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1666,13 +1664,13 @@ A number that identifies the error.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *msg* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1682,7 +1680,7 @@ A message describing the error in detail. Refer to [Error Codes](/server/7.6/ana
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -1722,14 +1720,14 @@ endif::collapse-models[]
 //tag::ResponsesCommonWarnings[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *code* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1738,13 +1736,13 @@ A number that identifies the warning.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *msg* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1753,7 +1751,7 @@ A message describing the warning in detail.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -1798,14 +1796,14 @@ An object containing metrics about the request.
 //end::desc-ResponsesCommonYardsticks[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *elapsedTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1815,13 +1813,13 @@ The total time taken for the request, that is the time from when the request was
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *executionTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1831,13 +1829,13 @@ The time taken for the execution of the request, that is the time from when quer
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *resultCount* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1846,13 +1844,13 @@ The total number of objects in the results.
 
 [%hardbreaks]
 {blank}
-a| Integer (unsigned)
+a¦ Integer (unsigned)
 
 
-a| 
+a¦ 
 *resultSize* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1861,13 +1859,13 @@ The total number of bytes in the results.
 
 [%hardbreaks]
 {blank}
-a| Integer (unsigned)
+a¦ Integer (unsigned)
 
 
-a| 
+a¦ 
 *errorCount* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1876,13 +1874,13 @@ The number of errors that occurred during the request.
 
 [%hardbreaks]
 {blank}
-a| Integer (unsigned)
+a¦ Integer (unsigned)
 
 
-a| 
+a¦ 
 *warningCount* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1891,7 +1889,7 @@ The number of warnings that occurred during the request.
 
 [%hardbreaks]
 {blank}
-a| Integer (unsigned)
+a¦ Integer (unsigned)
 
 
 |===
@@ -1931,14 +1929,14 @@ endif::collapse-models[]
 //tag::ResponsesLocal[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *plans* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1947,13 +1945,13 @@ include::index.adoc[tag=desc-ResponsesLocalPlans, opts=optional]
 
 [%hardbreaks]
 {blank}
-a| <<ResponsesLocalPlans>>
+a¦ <<ResponsesLocalPlans>>
 
 
-a| 
+a¦ 
 *metrics* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -1962,7 +1960,7 @@ include::index.adoc[tag=desc-ResponsesLocalYardsticks, opts=optional]
 
 [%hardbreaks]
 {blank}
-a| <<ResponsesLocalYardsticks>>
+a¦ <<ResponsesLocalYardsticks>>
 
 
 |===
@@ -2007,14 +2005,14 @@ An object containing the query plans, if requested.
 //end::desc-ResponsesLocalPlans[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *logicalPlan* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2023,13 +2021,13 @@ The logical plan.
 
 [%hardbreaks]
 {blank}
-a| Object
+a¦ Object
 
 
-a| 
+a¦ 
 *optimizedLogicalPlan* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2038,13 +2036,13 @@ The optimized logical plan.
 
 [%hardbreaks]
 {blank}
-a| Object
+a¦ Object
 
 
-a| 
+a¦ 
 *rewrittenExpressionTree* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2053,13 +2051,13 @@ The rewritten expression tree.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *expressionTree* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2068,13 +2066,13 @@ The expression tree.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *job* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2083,7 +2081,7 @@ The job details.
 
 [%hardbreaks]
 {blank}
-a| Object
+a¦ Object
 
 
 |===
@@ -2128,14 +2126,14 @@ An object containing metrics about the request.
 //end::desc-ResponsesLocalYardsticks[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *processedObjects* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -2144,7 +2142,7 @@ Number of processed tuples during query execution.
 
 [%hardbreaks]
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
 |===
@@ -2230,4 +2228,5 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 
 // markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
 
