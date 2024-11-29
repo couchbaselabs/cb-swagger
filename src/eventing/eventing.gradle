@@ -1,0 +1,32 @@
+apply plugin: 'org.openapi.generator'
+
+openApiGenerate {
+    generatorName = "asciidoc"
+    inputSpec = file("swagger/eventing.yaml").getAbsolutePath().toString()
+    outputDir = "${rootDir}/docs/modules/eventing-rest-api/pages"
+    templateDir = "${rootDir}/templates"
+    gitRepoId = "cb-swagger"
+    gitUserId = "couchbase"
+    additionalProperties = [
+            specDir: "${rootDir}/docs/modules/eventing-rest-api/partials/",
+            snippetDir: "${rootDir}/docs/modules/eventing-rest-api/partials/paths/",
+            headerAttributes: "true",
+            useIntroduction: "true",
+            useTableTitles: "true",
+            skipExamples: "true",
+            legacyDiscriminatorBehavior: "true"
+    ]
+    globalProperties = [
+            generateAliasAsModel: "true"
+    ]
+    generateAliasAsModel = true
+    modelNameMappings = [
+            adv_function_import_request: "Function Request",
+            adv_function_import_all_request: "Functions Request",
+            settings_schema: "Settings",
+            depcfg_schema: "Config",
+            depcfg_schema_buckets_inner: "Config Buckets",
+            depcfg_schema_constants_inner: "Config Constants",
+            depcfg_schema_curl_inner: "Config cURL"
+    ]
+}
