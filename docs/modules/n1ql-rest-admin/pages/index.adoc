@@ -59,7 +59,7 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `pass:c[http]`
+*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -70,7 +70,7 @@ The host name or IP address of a node running the Query service.
 
 [%hardbreaks]
 
-*Example:* `pass:c[localhost]`
+*Example:* `+++localhost+++`
 // end
 
 a| *port*
@@ -81,7 +81,7 @@ The Query service REST port. Use `18093` for secure access.
 
 [%hardbreaks]
 *Values:* `8093`, `18093`
-*Example:* `pass:c[8093]`
+*Example:* `+++8093+++`
 // end
 
 |===
@@ -182,6 +182,12 @@ Terminates the specified active query request.
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-description-end.adoc[opts=optional]
 
+
+
+[#delete_active_request-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -204,13 +210,13 @@ Terminates the specified active query request.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *request* +
+a¦ *request* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -223,7 +229,7 @@ This is the `requestID` that was assigned automatically when the statement was c
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -242,12 +248,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-parameters-after.adoc[opts=optional]
-
-
-[#delete_active_request-produces]
-= Produces
-
-* application/json
 
 
 
@@ -381,6 +381,12 @@ Returns all active index requests.
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_active_indexes-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -396,12 +402,6 @@ Returns all active index requests.
 
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_active_indexes-produces]
-= Produces
-
-* application/json
 
 
 
@@ -526,6 +526,12 @@ Returns the specified active query request.
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_active_request-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -548,13 +554,13 @@ Returns the specified active query request.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *request* +
+a¦ *request* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -567,7 +573,7 @@ This is the `requestID` that was assigned automatically when the statement was c
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -586,12 +592,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_active_request-produces]
-= Produces
-
-* application/json
 
 
 
@@ -716,6 +716,12 @@ Returns all active query requests.
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_active_requests-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -731,12 +737,6 @@ Returns all active query requests.
 
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_active_requests-produces]
-= Produces
-
-* application/json
 
 
 
@@ -886,6 +886,12 @@ Purges the specified completed request.
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-description-end.adoc[opts=optional]
 
+
+
+[#delete_completed_request-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -908,13 +914,13 @@ Purges the specified completed request.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *request* +
+a¦ *request* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -927,7 +933,7 @@ This is the `requestID` that was assigned automatically when the statement was c
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -946,12 +952,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-parameters-after.adoc[opts=optional]
-
-
-[#delete_completed_request-produces]
-= Produces
-
-* application/json
 
 
 
@@ -1085,6 +1085,12 @@ Returns all completed index requests.
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_completed_indexes-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -1100,12 +1106,6 @@ Returns all completed index requests.
 
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_completed_indexes-produces]
-= Produces
-
-* application/json
 
 
 
@@ -1230,6 +1230,12 @@ Returns the specified completed request.
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_completed_request-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -1252,13 +1258,13 @@ Returns the specified completed request.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *request* +
+a¦ *request* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1271,7 +1277,7 @@ This is the `requestID` that was assigned automatically when the statement was c
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -1290,12 +1296,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_completed_request-produces]
-= Produces
-
-* application/json
 
 
 
@@ -1420,6 +1420,12 @@ Returns all completed requests.
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_completed_requests-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -1435,12 +1441,6 @@ Returns all completed requests.
 
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_completed_requests-produces]
-= Produces
-
-* application/json
 
 
 
@@ -1590,6 +1590,12 @@ Returns information about the specified cluster.
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_cluster-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -1612,13 +1618,13 @@ Returns information about the specified cluster.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *cluster* +
+a¦ *cluster* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -1629,7 +1635,7 @@ The name of a cluster.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -1648,12 +1654,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_cluster-produces]
-= Produces
-
-* application/json
 
 
 
@@ -1777,6 +1777,12 @@ Returns information about all clusters.
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_clusters-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -1792,12 +1798,6 @@ Returns information about all clusters.
 
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_clusters-produces]
-= Produces
-
-* application/json
 
 
 
@@ -1921,6 +1921,12 @@ Returns the configuration of the query service on the cluster.
 
 // markup not found, no include::{specDir}paths/get_config/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_config-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -1936,12 +1942,6 @@ Returns the configuration of the query service on the cluster.
 
 
 // markup not found, no include::{specDir}paths/get_config/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_config-produces]
-= Produces
-
-* application/json
 
 
 
@@ -2065,6 +2065,12 @@ Returns information about the specified node in the specified cluster.
 
 // markup not found, no include::{specDir}paths/get_node/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_node-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -2087,13 +2093,13 @@ Returns information about the specified node in the specified cluster.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *cluster* +
+a¦ *cluster* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2104,13 +2110,13 @@ The name of a cluster.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
-a| *node* +
+a¦ *node* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2121,7 +2127,7 @@ The name of a node.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -2140,12 +2146,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/get_node/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_node-produces]
-= Produces
-
-* application/json
 
 
 
@@ -2269,6 +2269,12 @@ Returns information about all nodes in the specified cluster.
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_nodes-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -2291,13 +2297,13 @@ Returns information about all nodes in the specified cluster.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *cluster* +
+a¦ *cluster* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2308,7 +2314,7 @@ The name of a cluster.
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -2327,12 +2333,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_nodes-produces]
-= Produces
-
-* application/json
 
 
 
@@ -2483,6 +2483,12 @@ A message is written to `query.log` whenever the garbage collector endpoint is i
 
 // markup not found, no include::{specDir}paths/get_gc/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_gc-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -2498,12 +2504,6 @@ A message is written to `query.log` whenever the garbage collector endpoint is i
 
 
 // markup not found, no include::{specDir}paths/get_gc/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_gc-produces]
-= Produces
-
-* application/json
 
 
 
@@ -2635,6 +2635,12 @@ Returns a minimal response, indicating that the service is running and reachable
 
 // markup not found, no include::{specDir}paths/get_ping/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_ping-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -2650,12 +2656,6 @@ Returns a minimal response, indicating that the service is running and reachable
 
 
 // markup not found, no include::{specDir}paths/get_ping/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_ping-produces]
-= Produces
-
-* application/json
 
 
 
@@ -2763,6 +2763,12 @@ A message is written to `query.log` whenever the garbage collector endpoint is i
 
 // markup not found, no include::{specDir}paths/post_gc/operation-description-end.adoc[opts=optional]
 
+
+
+[#post_gc-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -2778,12 +2784,6 @@ A message is written to `query.log` whenever the garbage collector endpoint is i
 
 
 // markup not found, no include::{specDir}paths/post_gc/operation-parameters-after.adoc[opts=optional]
-
-
-[#post_gc-produces]
-= Produces
-
-* application/json
 
 
 
@@ -2941,6 +2941,12 @@ Deletes the specified prepared statement.
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-description-end.adoc[opts=optional]
 
+
+
+[#delete_prepared-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -2963,13 +2969,13 @@ Deletes the specified prepared statement.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *name* +
+a¦ *name* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -2982,7 +2988,7 @@ This may be a UUID that was assigned automatically, or a name that was user-spec
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -3001,12 +3007,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-parameters-after.adoc[opts=optional]
-
-
-[#delete_prepared-produces]
-= Produces
-
-* application/json
 
 
 
@@ -3137,6 +3137,12 @@ Returns the specified prepared statement.
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_prepared-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -3159,13 +3165,13 @@ Returns the specified prepared statement.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *name* +
+a¦ *name* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3178,7 +3184,7 @@ This may be a UUID that was assigned automatically, or a name that was user-spec
 [%hardbreaks]
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -3197,12 +3203,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_prepared-produces]
-= Produces
-
-* application/json
 
 
 
@@ -3330,6 +3330,12 @@ Returns all prepared index statements.
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_prepared_indexes-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -3345,12 +3351,6 @@ Returns all prepared index statements.
 
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_prepared_indexes-produces]
-= Produces
-
-* application/json
 
 
 
@@ -3475,6 +3475,12 @@ Returns all prepared statements.
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_prepareds-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -3490,12 +3496,6 @@ Returns all prepared statements.
 
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_prepareds-produces]
-= Produces
-
-* application/json
 
 
 
@@ -3643,6 +3643,12 @@ Returns node-level query settings.
 
 // markup not found, no include::{specDir}paths/get_settings/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_settings-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -3658,12 +3664,6 @@ include::{specDir}paths/get_settings/operation-description-after.adoc[opts=optio
 
 
 // markup not found, no include::{specDir}paths/get_settings/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_settings-produces]
-= Produces
-
-* application/json
 
 
 
@@ -3788,6 +3788,16 @@ Updates node-level query settings.
 
 // markup not found, no include::{specDir}paths/post_settings/operation-description-end.adoc[opts=optional]
 
+
+[#post_settings-consumes]
+.Consumes
+* application/json
+* application/x-www-form-urlencoded
+
+[#post_settings-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -3814,13 +3824,13 @@ include::{specDir}paths/post_settings/operation-description-after.adoc[opts=opti
 .Body Parameter
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *Body* +
+a¦ *Body* +
 _optional_
-a| 
+a¦ 
 
 
 [markdown]
@@ -3831,7 +3841,7 @@ An object specifying node-level query settings.
 [%hardbreaks]
 {blank}
 
-a| <<Settings>>
+a¦ <<Settings>>
 
 
 
@@ -3847,17 +3857,6 @@ a| <<Settings>>
 
 // markup not found, no include::{specDir}paths/post_settings/operation-parameters-after.adoc[opts=optional]
 
-
-[#post_settings-produces]
-= Produces
-
-* application/json
-
-[#post_settings-consumes]
-= Consumes
-
-* application/json
-* application/x-www-form-urlencoded
 
 
 // markup not found, no include::{specDir}paths/post_settings/operation-responses-before.adoc[opts=optional]
@@ -4005,6 +4004,12 @@ Currently unused.
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_debug_vars-produces]
+.Produces
+* text/html
+
 :leveloffset: -1
 
 
@@ -4020,12 +4025,6 @@ Currently unused.
 
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_debug_vars-produces]
-= Produces
-
-* text/html
 
 
 
@@ -4130,6 +4129,12 @@ Returns the specified statistic.
 
 // markup not found, no include::{specDir}paths/get_stat/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_stat-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -4152,13 +4157,13 @@ Returns the specified statistic.
 .Path Parameters
 {blank}
 
-[cols="20,60,20"]
+[cols="20,60,20",separator=¦]
 |===
-|Name| Description| Schema
+¦ Name ¦ Description ¦ Schema
 
-a| *stat* +
+a¦ *stat* +
 _required_
-a| 
+a¦ 
 
 
 [markdown]
@@ -4173,7 +4178,7 @@ You cannot specify a metric.
 *Values:* `&quot;active_requests&quot;`, `&quot;at_plus&quot;`, `&quot;audit_actions&quot;`, `&quot;audit_actions_failed&quot;`, `&quot;audit_requests_filtered&quot;`, `&quot;audit_requests_total&quot;`, `&quot;cancelled&quot;`, `&quot;deletes&quot;`, `&quot;errors&quot;`, `&quot;index_scans&quot;`, `&quot;inserts&quot;`, `&quot;invalid_requests&quot;`, `&quot;mutations&quot;`, `&quot;prepared&quot;`, `&quot;primary_scans&quot;`, `&quot;queued_requests&quot;`, `&quot;request_time&quot;`, `&quot;request_timer&quot;`, `&quot;requests&quot;`, `&quot;requests_1000ms&quot;`, `&quot;requests_250ms&quot;`, `&quot;requests_5000ms&quot;`, `&quot;requests_500ms&quot;`, `&quot;result_count&quot;`, `&quot;result_size&quot;`, `&quot;scan_plus&quot;`, `&quot;selects&quot;`, `&quot;service_time&quot;`, `&quot;unbounded&quot;`, `&quot;updates&quot;`, `&quot;warnings&quot;`
 {blank}
 
-a| String
+a¦ String
 
 
 
@@ -4192,12 +4197,6 @@ a| String
 
 
 // markup not found, no include::{specDir}paths/get_stat/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_stat-produces]
-= Produces
-
-* application/json
 
 
 
@@ -4321,6 +4320,12 @@ Returns all statistics.
 
 // markup not found, no include::{specDir}paths/get_stats/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_stats-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -4336,12 +4341,6 @@ Returns all statistics.
 
 
 // markup not found, no include::{specDir}paths/get_stats/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_stats-produces]
-= Produces
-
-* application/json
 
 
 
@@ -4467,6 +4466,12 @@ This information can be very useful to assess the current workload and performan
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-description-end.adoc[opts=optional]
 
+
+
+[#get_vitals-produces]
+.Produces
+* application/json
+
 :leveloffset: -1
 
 
@@ -4482,12 +4487,6 @@ This information can be very useful to assess the current workload and performan
 
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-parameters-after.adoc[opts=optional]
-
-
-[#get_vitals-produces]
-= Produces
-
-* application/json
 
 
 
@@ -4645,14 +4644,14 @@ endif::collapse-models[]
 //tag::Clusters[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *name* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4661,13 +4660,13 @@ The name of the cluster.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *datastore* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4676,13 +4675,13 @@ The URL of the datastore.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *configstore* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4691,13 +4690,13 @@ The URL of the configstore.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *accountstore* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4706,13 +4705,13 @@ The URL of the accountstore.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *version* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4720,7 +4719,7 @@ a|
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -4760,14 +4759,14 @@ endif::collapse-models[]
 //tag::Garbage[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *freed* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4776,13 +4775,13 @@ The amount of memory freed.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *released* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4793,13 +4792,13 @@ The amount of memory released to the OS.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *status* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4808,7 +4807,7 @@ The status of the garbage collector.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -4852,21 +4851,21 @@ ifdef::model-descriptions[]
 A nested object that sets the parameters for the completed requests catalog.
 All completed requests that match these parameters are tracked in the completed requests catalog.
 
-Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
+Refer to [Configure Completed Requests][sys-completed-config] for more information and examples.
 
 [sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
 
 //end::desc-Logging_Parameters[]
 endif::model-descriptions[]
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *aborted* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4877,13 +4876,13 @@ If true, all requests that generate a panic are logged.
 *Default:* `null`
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| 
+a¦ 
 *client* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4893,16 +4892,16 @@ If specified, all completed requests from this IP address are logged.
 --
 
 [%hardbreaks]
-*Default:* `pass:c[""]`
-*Example:* `pass:c["172.1.2.3"]`
+*Default:* `+++""+++`
+*Example:* `+++"172.1.2.3"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *context* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4922,13 +4921,13 @@ Refer to the [request-level][client_context_id] `client_context_id` parameter fo
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *error* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4941,35 +4940,35 @@ If specified, all completed queries returning this error number are logged.
 *Default:* `null`
 *Example:* `12003`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| 
+a¦ 
 *tag* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
 A unique string which tags a set of qualifiers.
 
-Refer to [Configure the Completed Requests][sys-completed-config] for more information.
+Refer to [Configure Completed Requests][sys-completed-config] for more information.
 
 [sys-completed-config]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
 
 --
 
 [%hardbreaks]
-*Default:* `pass:c[""]`
-*Example:* `pass:c["both_user_and_error"]`
+*Default:* `+++""+++`
+*Example:* `+++"both_user_and_error"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *threshold* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -4984,13 +4983,13 @@ This is another way of specifying the [node-level](#completed-threshold) `comple
 *Default:* `1000`
 *Example:* `7000`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| 
+a¦ 
 *user* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5000,16 +4999,16 @@ If specified, all completed queries with this user name are logged.
 --
 
 [%hardbreaks]
-*Default:* `pass:c[""]`
-*Example:* `pass:c["marco"]`
+*Default:* `+++""+++`
+*Example:* `+++"marco"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *statement* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5019,16 +5018,16 @@ If specified, all completed queries where the pattern is found are logged.
 --
 
 [%hardbreaks]
-*Default:* `pass:c[""]`
-*Example:* `pass:c["%FIND USER%"]`
+*Default:* `+++""+++`
+*Example:* `+++"%FIND USER%"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *plan* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5037,7 +5036,7 @@ include::index.adoc[tag=desc-Logging_Parameters_Plan, opts=optional]
 
 [%hardbreaks]
 {blank}
-a| <<Logging_Parameters_Plan>>
+a¦ <<Logging_Parameters_Plan>>
 
 
 |===
@@ -5114,14 +5113,14 @@ endif::collapse-models[]
 //tag::Logging_Parameters_Plan_Pairs[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 _additional +
 property_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5138,7 +5137,7 @@ For example, `[{"index": "ix1"}, {"index": "ix2"}]` specifies that if the query 
 
 [%hardbreaks]
 {blank}
-a| Any Type
+a¦ Any Type
 
 
 |===
@@ -5178,14 +5177,14 @@ endif::collapse-models[]
 //tag::Metrics[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5194,13 +5193,13 @@ A single value that represents the current state.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *15m.rate* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5209,13 +5208,13 @@ a|
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *1m.rate* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5224,13 +5223,13 @@ a|
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *5m.rate* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5239,13 +5238,13 @@ a|
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *mean.rate* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5254,13 +5253,13 @@ Mean rate since the query service started.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *max* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5269,13 +5268,13 @@ The maximum value.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *mean* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5284,13 +5283,13 @@ The mean value.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *median* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5299,13 +5298,13 @@ The median value.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *min* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5314,13 +5313,13 @@ The minimum value.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *stddev* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5329,13 +5328,13 @@ The standard deviation.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *75%* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5344,13 +5343,13 @@ The 75th percentile.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *95%* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5359,13 +5358,13 @@ The 95th percentile.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *99%* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5374,13 +5373,13 @@ The 99th percentile.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *99.9%* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5389,7 +5388,7 @@ The 99.9th percentile.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
 |===
@@ -5429,14 +5428,14 @@ endif::collapse-models[]
 //tag::Nodes[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *cluster* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5445,13 +5444,13 @@ The name of the cluster.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *name* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5460,13 +5459,13 @@ The URL of the node, including port number.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *queryEndpoint* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5475,13 +5474,13 @@ The HTTP URL of the query endpoint.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *adminEndpoint* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5490,13 +5489,13 @@ The HTTP URL of the admin endpoint.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *querySecure* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5505,13 +5504,13 @@ The HTTPS URL of the query endpoint.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *adminSecure* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5520,13 +5519,13 @@ The HTTPS URL of the admin endpoint.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *options* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5534,7 +5533,7 @@ a|
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -5574,14 +5573,14 @@ endif::collapse-models[]
 //tag::Requests[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *clientContextID* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5599,13 +5598,13 @@ Refer to the [request-level][client_context_id] `client_context_id` parameter fo
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *cpuTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5616,15 +5615,15 @@ The total sum of [execTime][exec_time] across all operators.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["90.734075ms"]`
+*Example:* `+++"90.734075ms"+++`
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *elapsedTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5635,13 +5634,13 @@ It includes the time taken by the service to schedule the request.
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *errorCount* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5650,13 +5649,13 @@ Total number of errors encountered while executing the query.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *ioTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5667,15 +5666,15 @@ The total sum of [servTime][serv_time] across all operators.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["752.858519ms"]`
+*Example:* `+++"752.858519ms"+++`
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *memoryQuota* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5686,13 +5685,13 @@ This property is only returned if a memory quota is set for the query.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *node* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5701,13 +5700,13 @@ IP address and port number of the node where the query is executed.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *phaseCounts* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5721,13 +5720,13 @@ Polling the active requests again may return different values.
 [%hardbreaks]
 *Example:* `{"fetch":16,"indexScan":187}`
 {blank}
-a| Object
+a¦ Object
 
 
-a| 
+a¦ 
 *phaseOperators* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5742,13 +5741,13 @@ A union select would have twice as many operator counts, one per each branch of 
 [%hardbreaks]
 *Example:* `{"authorize":1,"fetch":1,"indexScan":2}`
 {blank}
-a| Object
+a¦ Object
 
 
-a| 
+a¦ 
 *phaseTimes* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5762,13 +5761,13 @@ Polling the active requests again may return different values.
 [%hardbreaks]
 *Example:* `{"authorize":"823.631µs","fetch":"656.873µs","indexScan":"29.146543ms","instantiate":"236.221µs","parse":"826.382µs","plan":"11.831101ms","run":"16.892181ms"}`
 {blank}
-a| Object
+a¦ Object
 
 
-a| 
+a¦ 
 *remoteAddr* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5777,13 +5776,13 @@ IP address and port number of the client application, from where the query is re
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *requestId* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5792,13 +5791,13 @@ Unique request ID internally generated for the query.
 
 [%hardbreaks]
 {blank}
-a| UUID (uuid)
+a¦ UUID (uuid)
 
 
-a| 
+a¦ 
 *requestTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5807,13 +5806,13 @@ Timestamp when the query is received.
 
 [%hardbreaks]
 {blank}
-a| Date (date-time)
+a¦ Date (date-time)
 
 
-a| 
+a¦ 
 *resultCount* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5822,13 +5821,13 @@ Total number of documents returned in the query result.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *resultSize* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5837,13 +5836,13 @@ Total number of bytes returned in the query result.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *scanConsistency* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5852,13 +5851,13 @@ The value of the query setting Scan Consistency used for the query.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *serviceTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5867,13 +5866,13 @@ Total amount of calendar time taken to complete the query.
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *sessionMemory* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5889,13 +5888,13 @@ This metric is available only when `node-quota` and `node-quota-val-percent` are
 
 [%hardbreaks]
 {blank}
-a| Integer (bytes)
+a¦ Integer (bytes)
 
 
-a| 
+a¦ 
 *state* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5910,13 +5909,13 @@ To find requests that were successful, use this field in conjunction with the `e
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *statement* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5925,13 +5924,13 @@ The query statement being executed.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *useCBO* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5940,13 +5939,13 @@ Whether the cost-based optimizer is enabled for the query.
 
 [%hardbreaks]
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| 
+a¦ 
 *usedMemory* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5957,13 +5956,13 @@ This property is only returned if a memory quota is set for the query.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *userAgent* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5972,13 +5971,13 @@ Name of the client application or program that issued the query.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *users* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -5987,13 +5986,13 @@ Username with whose privileges the query is run.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *waitTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6004,15 +6003,15 @@ The total sum of [kernTime][kern_time] across all operators.
 --
 
 [%hardbreaks]
-*Example:* `pass:c["1.201307s"]`
+*Example:* `+++"1.201307s"+++`
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *~analysis* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6024,7 +6023,7 @@ These phrases highlight notable aspects of the execution, such as high document 
 [%hardbreaks]
 *Example:* `["High IO time","High primary scan document count"]`
 {blank}
-a| String
+a¦ String
  array
 
 |===
@@ -6064,14 +6063,14 @@ endif::collapse-models[]
 //tag::Settings[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| [#atrcollection-srv]
+a¦ [#atrcollection-srv]
 *atrcollection* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6096,16 +6095,16 @@ If a request does not include this parameter, the node-level `atrcollection` set
 --
 
 [%hardbreaks]
-*Default:* `pass:c[""]`
-*Example:* `pass:c["default:`travel-sample`.transaction.test"]`
+*Default:* `+++""+++`
+*Example:* `+++"default:`travel-sample`.transaction.test"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#auto-prepare]
+a¦ [#auto-prepare]
 *auto-prepare* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6121,13 +6120,13 @@ Refer to [Auto-Prepare][auto-prepare] for more information.
 *Default:* `false`
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#cleanupclientattempts]
+a¦ [#cleanupclientattempts]
 *cleanupclientattempts* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6149,13 +6148,13 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `true`
 *Example:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#cleanuplostattempts]
+a¦ [#cleanuplostattempts]
 *cleanuplostattempts* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6177,13 +6176,13 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `true`
 *Example:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#cleanupwindow]
+a¦ [#cleanupwindow]
 *cleanupwindow* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6215,16 +6214,16 @@ When you change the cluster-level setting, the node-level setting is over-writte
 --
 
 [%hardbreaks]
-*Default:* `pass:c["60s"]`
-*Example:* `pass:c["30s"]`
+*Default:* `+++"60s"+++`
+*Example:* `+++"30s"+++`
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| [#completed]
+a¦ [#completed]
 *completed* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6233,13 +6232,13 @@ include::index.adoc[tag=desc-Logging_Parameters, opts=optional]
 
 [%hardbreaks]
 {blank}
-a| <<Logging_Parameters>>
+a¦ <<Logging_Parameters>>
 
 
-a| [#completed-limit]
+a¦ [#completed-limit]
 *completed-limit* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6253,7 +6252,7 @@ As new completed requests are added, old ones are removed.
 
 Increase this when the completed request keyspace is not big enough to track the slow requests, such as when you want a larger sample of slow requests.
 
-Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
+Refer to [Configure Completed Requests][sys-completed-config] for more information and examples.
 
 The [cluster-level][queryCompletedLimit] `queryCompletedLimit` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -6267,13 +6266,13 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `4000`
 *Example:* `7000`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#completed-max-plan-size]
+a¦ [#completed-max-plan-size]
 *completed-max-plan-size* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6288,7 +6287,7 @@ Values larger than the maximum limit are silently treated as the maximum limit.
 Queries with plans larger than this are not logged.
 You must obtain execution plans for such queries via profiling or using the EXPLAIN statement.
 
-Refer to [Configure the Completed Requests][sys-completed-config] for more information.
+Refer to [Configure Completed Requests][sys-completed-config] for more information.
 
 The [cluster-level][queryCompletedMaxPlanSize] `queryCompletedMaxPlanSize` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -6303,13 +6302,38 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Minimum:* `0`
 *Maximum:* `20840448`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#completed-threshold]
+a¦ [#completed-stream-size]
+*completed-stream-size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+A file size in MiB.
+When specified, completed requests are saved to the Couchbase Server `logs` directory.
+Completed requests are saved to GZIP archives with the prefix `local_request_log`.
+The value of this property determines the size of the data to retain, per node.
+
+Specify `0` (the default) to disable completed request streaming.
+
+Refer to [Stream Completed Requests][sys-history] for more information and examples.
+
+[sys-history]: /server/8.0/manage/monitor/monitoring-n1ql-query.html#sys-history
+
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ [#completed-threshold]
 *completed-threshold* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6324,7 +6348,7 @@ All completed queries lasting longer than this threshold are logged in the compl
 Specify `0` to track all requests, independent of duration.
 Specify any negative number to track none.
 
-Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
+Refer to [Configure Completed Requests][sys-completed-config] for more information and examples.
 
 The [cluster-level][queryCompletedThreshold] `queryCompletedThreshold` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -6338,13 +6362,13 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `1000`
 *Example:* `7000`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#controls-srv]
+a¦ [#controls-srv]
 *controls* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6370,13 +6394,13 @@ If a request does not include this parameter, the node-level `controls` setting 
 *Default:* `false`
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#cpuprofile]
+a¦ [#cpuprofile]
 *cpuprofile* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6391,16 +6415,16 @@ To stop `cpuprofile`, run with the empty setting of `""`.
 --
 
 [%hardbreaks]
-*Default:* `pass:c[""]`
-*Example:* `pass:c["/tmp/info.txt"]`
+*Default:* `+++""+++`
+*Example:* `+++"/tmp/info.txt"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#debug]
+a¦ [#debug]
 *debug* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6414,13 +6438,13 @@ When set to `true`, extra logging is provided.
 *Default:* `false`
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#distribute]
+a¦ [#distribute]
 *distribute* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6433,13 +6457,13 @@ The actual value of this field is ignored.
 [%hardbreaks]
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#functions-limit]
+a¦ [#functions-limit]
 *functions-limit* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6450,13 +6474,13 @@ Maximum number of user-defined functions.
 *Default:* `16384`
 *Example:* `7000`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#keep-alive-length]
+a¦ [#keep-alive-length]
 *keep-alive-length* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6467,13 +6491,13 @@ Maximum size of buffered result.
 *Default:* `16384`
 *Example:* `7000`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#loglevel]
+a¦ [#loglevel]
 *loglevel* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6515,16 +6539,16 @@ When you change the cluster-level setting, the node-level setting is over-writte
 
 [%hardbreaks]
 *Values:* `"DEBUG"`, `"TRACE"`, `"INFO"`, `"WARN"`, `"ERROR"`, `"SEVERE"`, `"NONE"`
-*Default:* `pass:c["INFO"]`
-*Example:* `pass:c["DEBUG"]`
+*Default:* `+++"INFO"+++`
+*Example:* `+++"DEBUG"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#max-index-api]
+a¦ [#max-index-api]
 *max-index-api* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6535,13 +6559,13 @@ This setting is provided for technical support only.
 
 [%hardbreaks]
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#max-parallelism-srv]
+a¦ [#max-parallelism-srv]
 *max-parallelism* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6580,13 +6604,13 @@ Refer to [Max Parallelism][max-parallelism] for more information.
 *Default:* `1`
 *Example:* `0`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#memory-quota-srv]
+a¦ [#memory-quota-srv]
 *memory-quota* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6623,13 +6647,13 @@ If a request includes this parameter, it will be capped by the node-level `memor
 *Default:* `0`
 *Example:* `4`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#memprofile]
+a¦ [#memprofile]
 *memprofile* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6642,16 +6666,16 @@ To stop `memprofile`, run with the empty setting of `""`.
 --
 
 [%hardbreaks]
-*Default:* `pass:c[""]`
-*Example:* `pass:c["/tmp/memory-usage.log"]`
+*Default:* `+++""+++`
+*Example:* `+++"/tmp/memory-usage.log"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#mutexprofile]
+a¦ [#mutexprofile]
 *mutexprofile* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6663,13 +6687,13 @@ This setting is provided for technical support only.
 [%hardbreaks]
 *Default:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#n1ql-feat-ctrl]
+a¦ [#n1ql-feat-ctrl]
 *n1ql-feat-ctrl* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6693,13 +6717,13 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `76`
 *Example:* `16460`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#node-quota]
+a¦ [#node-quota]
 *node-quota* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6724,13 +6748,13 @@ When you change the cluster-level setting, the node-level setting is over-writte
 [%hardbreaks]
 *Default:* `0`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#node-quota-val-percent]
+a¦ [#node-quota-val-percent]
 *node-quota-val-percent* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6754,13 +6778,13 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Minimum:* `0`
 *Maximum:* `100`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#num-cpus]
+a¦ [#num-cpus]
 *num-cpus* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6788,13 +6812,13 @@ When you change the cluster-level setting, the node-level setting is over-writte
 [%hardbreaks]
 *Default:* `0`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#numatrs-srv]
+a¦ [#numatrs-srv]
 *numatrs* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6820,13 +6844,13 @@ The minimum of that and the node-level `numatrs` setting is applied.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| [#pipeline-batch-srv]
+a¦ [#pipeline-batch-srv]
 *pipeline-batch* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6853,13 +6877,13 @@ The minimum of that and the node-level `pipeline-batch` setting is applied.
 *Default:* `16`
 *Example:* `64`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#pipeline-cap-srv]
+a¦ [#pipeline-cap-srv]
 *pipeline-cap* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6886,13 +6910,13 @@ The minimum of that and the node-level `pipeline-cap` setting is applied.
 *Default:* `512`
 *Example:* `1024`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#plus-servicers]
+a¦ [#plus-servicers]
 *plus-servicers* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6904,13 +6928,13 @@ The default is 16 times the number of logical cores.
 [%hardbreaks]
 *Example:* `16`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#prepared-limit]
+a¦ [#prepared-limit]
 *prepared-limit* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6933,13 +6957,13 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `16384`
 *Example:* `65536`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#pretty-srv]
+a¦ [#pretty-srv]
 *pretty* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -6961,13 +6985,13 @@ If a request does not include this parameter, the node-level setting is used, wh
 *Default:* `false`
 *Example:* `true`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#profile-srv]
+a¦ [#profile-srv]
 *profile* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7001,16 +7025,16 @@ If a request does not include this parameter, the node-level `profile` setting w
 
 [%hardbreaks]
 *Values:* `"off"`, `"phases"`, `"timings"`
-*Default:* `pass:c["off"]`
-*Example:* `pass:c["phases"]`
+*Default:* `+++"off"+++`
+*Example:* `+++"phases"+++`
 {blank}
-a| String
+a¦ String
 
 
-a| [#request-size-cap]
+a¦ [#request-size-cap]
 *request-size-cap* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7021,13 +7045,13 @@ Maximum size of a request.
 *Default:* `67108864`
 *Example:* `70000`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#scan-cap-srv]
+a¦ [#scan-cap-srv]
 *scan-cap* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7058,13 +7082,13 @@ The minimum of that and the node-level `scan-cap` setting is applied.
 *Default:* `512`
 *Example:* `1024`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#servicers]
+a¦ [#servicers]
 *servicers* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7079,13 +7103,13 @@ Note that the overall node memory quota is this setting multiplied by the [node-
 *Default:* `32`
 *Example:* `8`
 {blank}
-a| Integer (int32)
+a¦ Integer (int32)
 
 
-a| [#timeout-srv]
+a¦ [#timeout-srv]
 *timeout* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7118,13 +7142,13 @@ The minimum of that and the node-level `timeout` setting is applied.
 *Default:* `0`
 *Example:* `500000000`
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| [#txtimeout-srv]
+a¦ [#txtimeout-srv]
 *txtimeout* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7161,13 +7185,13 @@ The minimum of that and the node-level `txtimeout` setting is applied.
 *Default:* `0`
 *Example:* `500000000`
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| [#use-cbo-srv]
+a¦ [#use-cbo-srv]
 *use-cbo* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7194,13 +7218,13 @@ If a request does not include this parameter, the node-level setting is used, wh
 *Default:* `true`
 *Example:* `false`
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| [#use-replica-srv]
+a¦ [#use-replica-srv]
 *use-replica* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7241,10 +7265,10 @@ If a query uses sequential scan and a data node becomes unavailable, the query m
 
 [%hardbreaks]
 *Values:* `"off"`, `"on"`, `"unset"`
-*Default:* `pass:c["unset"]`
-*Example:* `pass:c["on"]`
+*Default:* `+++"unset"+++`
+*Example:* `+++"on"+++`
 {blank}
-a| String
+a¦ String
 
 
 |===
@@ -7284,14 +7308,14 @@ endif::collapse-models[]
 //tag::Statements[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *encoded_plan* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7300,13 +7324,13 @@ The full prepared statement in encoded format.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *featureControls* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7317,13 +7341,13 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *indexApiVersion* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7334,13 +7358,13 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *name* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7351,13 +7375,13 @@ This may be a UUID that was assigned automatically, or a name that was user-spec
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *namespace* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7368,13 +7392,13 @@ Currently, only the `default` namespace is available.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *node* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7384,13 +7408,13 @@ The node on which the prepared statement is stored.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *statement* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7399,13 +7423,13 @@ The text of the query.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *uses* +
 _required_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7414,13 +7438,13 @@ The count of times the prepared statement has been executed.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *avgElapsedTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7434,13 +7458,13 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *avgServiceTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7453,13 +7477,13 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *lastUse* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7471,13 +7495,13 @@ This property is only returned when the prepared statement has been executed.
 
 [%hardbreaks]
 {blank}
-a| Date (date-time)
+a¦ Date (date-time)
 
 
-a| 
+a¦ 
 *maxElapsedTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7491,13 +7515,13 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *maxServiceTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7510,13 +7534,13 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *minElapsedTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7530,13 +7554,13 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *minServiceTime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7549,7 +7573,7 @@ It is only returned when retrieving a specific prepared statement, not when retr
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
 |===
@@ -7589,14 +7613,14 @@ endif::collapse-models[]
 //tag::Statistics[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *active_requests.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7605,13 +7629,13 @@ Total number of active requests.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *at_plus.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7620,13 +7644,13 @@ Total number of query requests with `at_plus` index consistency.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *audit_actions.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7638,13 +7662,13 @@ Records in the output queue that have not yet been sent to the server are not co
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *audit_actions_failed.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7653,13 +7677,13 @@ The total number of audit records sent to the server that failed.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *audit_requests_filtered.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7668,13 +7692,13 @@ The number of potentially auditable requests that cause no audit action to be ta
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *audit_requests_total.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7683,13 +7707,13 @@ The total number of potentially auditable requests sent to the query engine.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *cancelled.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7698,13 +7722,13 @@ Total number of cancelled requests.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *deletes.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7713,13 +7737,13 @@ Total number of DELETE operations.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *errors.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7728,13 +7752,13 @@ The total number of query errors returned so far.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *index_scans.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7743,13 +7767,13 @@ Total number of secondary index scans.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *inserts.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7758,13 +7782,13 @@ Total number of INSERT operations.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *invalid_requests.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7773,13 +7797,13 @@ Total number of requests for unsupported endpoints.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *mutations.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7788,13 +7812,13 @@ Total number of document mutations.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *prepared.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7803,13 +7827,13 @@ Total number of prepared statements executed.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *primary_scans.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7818,13 +7842,13 @@ Total number of primary index scans.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *queued_requests.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7833,13 +7857,13 @@ Total number of queued requests.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *request_time.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7848,13 +7872,13 @@ Total end-to-end time to process all queries (ns).
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *request_timer.15m.rate* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7865,13 +7889,13 @@ Number of query requests processed per second.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *request_timer.1m.rate* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7882,13 +7906,13 @@ Number of query requests processed per second.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *request_timer.5m.rate* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7899,13 +7923,13 @@ Number of query requests processed per second.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *request_timer.75%* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7916,13 +7940,13 @@ The 75th percentile.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *request_timer.95%* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7933,13 +7957,13 @@ The 95th percentile.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *request_timer.99%* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7950,13 +7974,13 @@ The 99th percentile.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *request_timer.99.9%* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7967,13 +7991,13 @@ The 99.9th percentile.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *request_timer.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7982,13 +8006,13 @@ Total number of query requests.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *request_timer.max* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -7999,13 +8023,13 @@ The maximum value.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *request_timer.mean* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8016,13 +8040,13 @@ The mean value.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *request_timer.mean.rate* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8033,13 +8057,13 @@ Mean rate since the query service started.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *request_timer.median* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8050,13 +8074,13 @@ The median value.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *request_timer.min* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8067,13 +8091,13 @@ The minimum value.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *request_timer.stddev* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8084,13 +8108,13 @@ The standard deviation.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *requests.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8099,13 +8123,13 @@ Total number of query requests.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *requests_1000ms.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8114,13 +8138,13 @@ Number of queries that take longer than 1000ms.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *requests_250ms.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8129,13 +8153,13 @@ Number of queries that take longer than 250ms.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *requests_5000ms.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8144,13 +8168,13 @@ Number of queries that take longer than 5000ms.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *requests_500ms.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8159,13 +8183,13 @@ Number of queries that take longer than 500ms.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *result_count.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8174,13 +8198,13 @@ Total number of results (documents) returned by the query engine.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *result_size.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8189,13 +8213,13 @@ Total size of data returned by the query engine (bytes).
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *scan_plus.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8204,13 +8228,13 @@ Total number of query requests with `request_plus` index consistency.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *selects.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8219,13 +8243,13 @@ Total number of SELECT requests.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *service_time.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8234,13 +8258,13 @@ Time to execute all queries (ns).
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *unbounded.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8249,13 +8273,13 @@ Total number of query requests with `not_bounded` index consistency.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *updates.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8264,13 +8288,13 @@ Total number of UPDATE requests.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *warnings.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8279,7 +8303,7 @@ The total number of query warnings returned so far.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
 |===
@@ -8319,14 +8343,14 @@ endif::collapse-models[]
 //tag::Vitals[]
 
 
-[cols="25,55,20"]
+[cols="25,55,20",separator=¦]
 |===
-| Property | | Schema
+¦ Property ¦ ¦ Schema
 
-a| 
+a¦ 
 *bucket.IO.stats* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8335,13 +8359,13 @@ The number of reads and retries for each bucket.
 
 [%hardbreaks]
 {blank}
-a| Object
+a¦ Object
 
 
-a| 
+a¦ 
 *uptime* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8350,13 +8374,13 @@ The uptime of the query engine.
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *local.time* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8365,13 +8389,13 @@ The local time of the query engine.
 
 [%hardbreaks]
 {blank}
-a| Date (date-time)
+a¦ Date (date-time)
 
 
-a| 
+a¦ 
 *version* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8380,13 +8404,13 @@ The version of the query engine.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *total.threads* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8395,13 +8419,13 @@ The number of active threads used by the query engine.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *cores* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8410,13 +8434,13 @@ The maximum number of logical cores available to the query engine.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *ffdc.total* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8425,13 +8449,13 @@ The total number of times FFDC has been invoked since the last restart.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *gc.num* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8440,13 +8464,13 @@ The target heap size of the next garbage collection cycle.
 
 [%hardbreaks]
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| 
+a¦ 
 *gc.pause.time* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8455,13 +8479,13 @@ The total time spent pausing for garbage collection since the query engine start
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *gc.pause.percent* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8470,13 +8494,13 @@ The percentage of time spent pausing for garbage collection since the last time 
 
 [%hardbreaks]
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| 
+a¦ 
 *healthy* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8485,13 +8509,13 @@ False when either the unbounded or plus request queues are full; true otherwise.
 
 [%hardbreaks]
 {blank}
-a| Boolean
+a¦ Boolean
 
 
-a| 
+a¦ 
 *host.memory.free* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8500,13 +8524,13 @@ Amount of free memory on the host.
 
 [%hardbreaks]
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| 
+a¦ 
 *host.memory.quota* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8517,13 +8541,13 @@ This reflects the node-quota setting.
 
 [%hardbreaks]
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| 
+a¦ 
 *host.memory.total* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8532,13 +8556,13 @@ Total memory on the host.
 
 [%hardbreaks]
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| 
+a¦ 
 *host.memory.value_quota* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8547,13 +8571,13 @@ This the total document memory quota on the node.
 
 [%hardbreaks]
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| 
+a¦ 
 *load* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8562,13 +8586,13 @@ A calculation for how busy the server is.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *loadfactor* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8577,13 +8601,13 @@ The moving 15 minute average of the load calculation.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *memory.usage* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8594,13 +8618,13 @@ This increases as heap objects are allocated, and decreases as objects are freed
 
 [%hardbreaks]
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| 
+a¦ 
 *memory.total* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8611,13 +8635,13 @@ This increases as heap objects are allocated, but does not decrease when objects
 
 [%hardbreaks]
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| 
+a¦ 
 *memory.system* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8628,13 +8652,13 @@ This measures the virtual address space reserved by the query engine for heaps, 
 
 [%hardbreaks]
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| 
+a¦ 
 *node* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8643,13 +8667,13 @@ The name or IP address and port of the node.
 
 [%hardbreaks]
 {blank}
-a| String
+a¦ String
 
 
-a| 
+a¦ 
 *node.allocated.values* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8660,13 +8684,13 @@ The total number of values allocated to contain documents or computations around
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *node.memory.usage* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8675,13 +8699,13 @@ The currently allocated document memory on the node.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *cpu.user.percent* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8692,13 +8716,13 @@ The percentage of time spent executing user code since the last time the statist
 
 [%hardbreaks]
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| 
+a¦ 
 *cpu.sys.percent* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8709,13 +8733,13 @@ The percentage of time spent executing system code since the last time the stati
 
 [%hardbreaks]
 {blank}
-a| Long (int64)
+a¦ Long (int64)
 
 
-a| 
+a¦ 
 *process.memory.usage* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8724,13 +8748,13 @@ Current process memory use.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *process.percore.cpupercent* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8739,13 +8763,13 @@ Average CPU usage per core.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *process.rss* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8754,13 +8778,13 @@ Process RSS (bytes)
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *process.service.usage* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8769,13 +8793,13 @@ The number of active servicers for the dominant workload &mdash; unbound queue s
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *request.completed.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8784,13 +8808,13 @@ Total number of completed requests.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *request.active.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8799,13 +8823,13 @@ Total number of active requests.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *request.per.sec.1min* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8816,13 +8840,13 @@ Number of query requests processed per second.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *request.per.sec.5min* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8833,13 +8857,13 @@ Number of query requests processed per second.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *request.per.sec.15min* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8850,13 +8874,13 @@ Number of query requests processed per second.
 
 [%hardbreaks]
 {blank}
-a| Big Decimal
+a¦ Big Decimal
 
 
-a| 
+a¦ 
 *request.queued.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8865,13 +8889,13 @@ Number of queued requests.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *request.quota.used.hwm* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8880,13 +8904,13 @@ High water mark for request quota use.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *request_time.mean* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8897,13 +8921,13 @@ The mean value.
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *request_time.median* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8914,13 +8938,13 @@ The median value.
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *request_time.80percentile* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8931,13 +8955,13 @@ The 80th percentile.
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *request_time.95percentile* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8948,13 +8972,13 @@ The 95th percentile.
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *request_time.99percentile* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8965,13 +8989,13 @@ The 99th percentile.
 
 [%hardbreaks]
 {blank}
-a| String (duration)
+a¦ String (duration)
 
 
-a| 
+a¦ 
 *request.prepared.percent* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8980,13 +9004,13 @@ Percentage of requests that are prepared statements.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *servicers.paused.count* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -8997,13 +9021,13 @@ Number of servicers temporarily paused due to memory pressure.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *servicers.paused.total* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -9014,13 +9038,13 @@ Number of times servicers have been temporarily paused.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *temp.hwm* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -9031,13 +9055,13 @@ High water mark for temp space use directly by query.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
-a| 
+a¦ 
 *temp.usage* +
 _optional_
-a| 
+a¦ 
 
 [markdown]
 --
@@ -9048,7 +9072,7 @@ Current Query temp space use.
 
 [%hardbreaks]
 {blank}
-a| Integer
+a¦ Integer
 
 
 |===
@@ -9129,4 +9153,5 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 
 include::{specDir}security/document-after.adoc[opts=optional]
+
 

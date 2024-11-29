@@ -1,0 +1,19 @@
+= Example HTTP Requests
+
+.Undeploy a global function
+====
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/undeploy"
+----
+====
+
+.Undeploy a scoped function
+====
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/undeploy?bucket=bulk&scope=data"
+----
+====

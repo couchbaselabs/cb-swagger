@@ -1,0 +1,159 @@
+= Example HTTP Requests
+
+.Update global function settings
+====
+This example updates the `worker_count` setting.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST -d '{
+  "deployment_status": false,
+  "processing_status": false,
+  "worker_count": 6
+}' "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings"
+----
+====
+
+.Update scoped function settings
+====
+This example updates the `worker_count` setting.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST -d '{
+  "deployment_status": false,
+  "processing_status": false,
+  "worker_count": 6
+}' "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings?bucket=bulk&scope=data"
+----
+====
+
+.Update undeployed global function settings
+====
+This example updates the `app_log_max_files` and `app_log_max_size` settings.
+The function is currently undeployed.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST -d '{
+  "deployment_status": false,
+  "processing_status": false,
+  "app_log_max_files": 5
+  "app_log_max_size":10485760
+}' "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings"
+----
+====
+
+.Update undeployed scoped function settings
+====
+This example updates the `app_log_max_files` and `app_log_max_size` settings.
+The function is currently undeployed.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST -d '{
+  "deployment_status": false,
+  "processing_status": false,
+  "app_log_max_files": 5,
+  "app_log_max_size": 10485760
+}' "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings?bucket=bulk&scope=data"
+----
+====
+
+.Update paused global function settings
+====
+This example updates the `timer_context_size` setting.
+The function is currently paused.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST -d '{
+  "deployment_status": true,
+  "processing_status": false,
+  "timer_context_size": 2048
+}' "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings"
+----
+====
+
+.Update paused scoped function settings
+====
+This example updates the `timer_context_size` setting.
+The function is currently paused.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST -d '{
+  "deployment_status": true,
+  "processing_status": false,
+  "timer_context_size": 2048
+}' "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings?bucket=bulk&scope=data"
+----
+====
+
+.Update paused global function settings and resume
+====
+This example updates the `worker_count` setting and resumes.
+The function is currently paused.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST -d '{
+  "deployment_status": true,
+  "processing_status": true,
+  "worker_count": 8
+}' "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings"
+----
+====
+
+.Update paused scoped function settings and resume
+====
+This example updates the `worker_count` setting and resumes.
+The function is currently paused.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST -d '{
+  "deployment_status": true,
+  "processing_status": true,
+  "worker_count": 8
+}' "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings?bucket=bulk&scope=data"
+----
+====
+
+.Deploy an undeployed global function -- deprecated
+====
+.Curl request
+[source,sh]
+----
+curl -XPOST -d '{
+  "deployment_status": true,
+  "processing_status": true
+}' "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings"
+----
+
+Deprecated.
+See <<basic_deploy>> for the preferred invocation.
+====
+
+.Deploy an undeployed scoped function -- deprecated
+====
+.Curl request
+[source,sh]
+----
+curl -XPOST -d '{
+  "deployment_status": true,
+  "processing_status": true
+}' "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings?bucket=bulk&scope=data"
+----
+
+Deprecated.
+See <<basic_deploy>> for the preferred invocation.
+====
