@@ -7755,7 +7755,7 @@ endif::collapse-models[]
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/settings_schema/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/settings_schema/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -7838,6 +7838,38 @@ a¦
 [markdown]
 --
 maximum time the handler can run before it is forcefully terminated (in seconds)
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*cursor_checkpoint_timeout* +
+_optional_
+a¦ 
+
+[markdown]
+--
+maximum time the to checkpoint writer can run before it is forcefully terminated (in seconds)
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*on_deploy_timeout* +
+_optional_
+a¦ 
+
+[markdown]
+--
+maximum time the OnDeploy handler can run before it is terminated (in seconds)
 --
 
 [%hardbreaks]
@@ -8216,6 +8248,126 @@ a¦
 [markdown]
 --
 maximum allowable curl call response in 'MegaBytes'. Setting the value to 0 lifts the upper limit off. This parameters affects v8 engine stability since it defines the maximum amount of heap space acquired by a curl call
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*allow_transaction_mutations* +
+_optional_
+a¦ 
+
+[markdown]
+--
+allow staged transaction mutations
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*allow_sync_documents* +
+_optional_
+a¦ 
+
+[markdown]
+--
+allow sync gateway mutations
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*cursor_aware* +
+_optional_
+a¦ 
+
+[markdown]
+--
+syncgateway aware function
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*high_seq_check_interval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+number of milliseconds before checking for high seq number
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*max_unacked_bytes* +
+_optional_
+a¦ 
+
+[markdown]
+--
+max MBs to wait to send more bytes to c++ side
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*max_unacked_count* +
+_optional_
+a¦ 
+
+[markdown]
+--
+max number of messages on c++ side
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*message_flush_time* +
+_optional_
+a¦ 
+
+[markdown]
+--
+number of milliseconds before sending message to c++ side
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*max_parallel_vb* +
+_optional_
+a¦ 
+
+[markdown]
+--
+number of parallel vb request per cpp thread
 --
 
 [%hardbreaks]
