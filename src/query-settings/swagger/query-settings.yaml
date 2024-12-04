@@ -1,23 +1,36 @@
-swagger: '2.0'
+openapi: 3.0.3
 info:
   title: Query Settings REST API
   version: '7.6'
-  description: |
+  description: |-
     The Query Settings REST API is provided by the Query service.
     This API enables you to view or specify cluster-level Query settings.
 
-    The API schemes and host URLs are as follows:
+servers:
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
+    variables:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+        description: The host name or IP address of a node running the Query service.
+      port:
+        default: "8091"
+        description: |-
+          The Cluster administration REST port.
+          Use `18091` for secure access.
 
-    * http://node:8091/
-    * https://node:18091/ (for secure access)
-
-    where `node` is the host name or IP address of a node running the Query service.
-
-produces:
-  - application/json
-
-consumes:
-  - application/x-www-form-urlencoded
+          Note that the port numbers for this REST API are different to the port numbers used by the other Query REST APIs.
+        enum:
+          - "8091"
+          - "18091"
 
 paths:
   /settings/querySettings:
@@ -30,29 +43,38 @@ paths:
       responses:
         200:
           description: An object giving cluster-level query settings.
-          schema:
-            $ref: "#/definitions/Settings"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Settings"
     post:
       operationId: post_settings
       summary: Update Cluster-Level Query Settings
       description: Updates cluster-level query settings, including the CURL access settings.
       security:
         - Default: []
-      parameters:
-        - in: body
-          name: Settings
-          description: An object specifying cluster-level query settings.
-          schema:
-            $ref: "#/definitions/Settings"
+      requestBody:
+        description: An object specifying cluster-level query settings.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Settings"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Settings"
       responses:
         200:
           description: An object giving cluster-level query settings, including the latest changes.
-          schema:
-            $ref: "#/definitions/Settings"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Settings"
         400:
           description: Returns an error message if a parameter or value is incorrect.
-          schema:
-            type: object
+          content:
+            application/json:
+              schema:
+                type: object
 
   /settings/querySettings/curlWhitelist:
     get:
@@ -64,40 +86,49 @@ paths:
       responses:
         200:
           description: An object determining which URLs may be accessed by the `CURL()` function.
-          schema:
-            $ref: "#/definitions/Access"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Access"
     post:
       operationId: post_access
       summary: Update CURL Access List
       description: Updates the cluster-level CURL access settings only.
       security:
         - Default: []
-      parameters:
-        - in: body
-          name: Settings
-          description: An object determining which URLs may be accessed by the `CURL()` function.
-          schema:
-            $ref: "#/definitions/Access"
+      requestBody:
+        description: An object determining which URLs may be accessed by the `CURL()` function.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Access"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/Access"
       responses:
         200:
           description: An object determining which URLs may be accessed by the `CURL()` function, including the latest changes.
-          schema:
-            $ref: "#/definitions/Access"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Access"
         400:
           description: Returns an error message if a parameter or value is incorrect.
-          schema:
-            type: object
+          content:
+            application/json:
+              schema:
+                type: object
 
 # The output of this spec is used in more than one location, so Markdown cannot use relative links.
 # Absolute links begin with /server/7.6 -- this must be replaced for every branch.
-# Relative links are currently expected to point to a location in the same page.
-# The x-desc-refs attribute records links which point to other REST API references, for future use.
-# The x-desc-name attribute records the ID of the parameter description, also for future use.
+# Relative links point to a location relative to the REST API reference page by default.
+# The x-desc-refs attribute is used to override links when content is transcluded to other locations.
 
-# The swagger2markup Markdown converter does not recognize HTML tags like <a id="foo">.
-# For the moment we have to use the AsciiDoc markup [#foo], which is passed through unchanged.
+# The AsciiDoc Markdown converter does not recognize HTML tags like <a id="foo">.
+# Use the x-desc-name vendor extension to specify the anchor for a property.
 
-definitions:
+components:
+ schemas:
   Settings:
     type: object
     title: Settings
@@ -106,40 +137,43 @@ definitions:
         type: boolean
         default: true
         example: false
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryCleanupClientAttempts
         description: |
-          [#queryCleanupClientAttempts]
           When enabled, the Query service preferentially aims to clean up just transactions that it has created, leaving transactions for the distributed cleanup process only when it is forced to.
 
           The [node-level][cleanupclientattempts] `cleanupclientattempts` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [cleanupclientattempts]: #cleanupclientattempts
+          [cleanupclientattempts]: ../n1ql-rest-admin/index.html#cleanupclientattempts
         x-desc-refs: |
-          [cleanupclientattempts]: ../n1ql/n1ql-rest-api/admin.html#cleanupclientattempts
+          [cleanupclientattempts]: #cleanupclientattempts
       queryCleanupLostAttempts:
         type: boolean
         default: true
         example: false
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryCleanupLostAttempts
         description: |
-          [#queryCleanupLostAttempts]
           When enabled, the Query service takes part in the distributed cleanup process, and cleans up expired transactions created by any client.
 
           The [node-level][cleanuplostattempts] `cleanuplostattempts` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [cleanuplostattempts]: #cleanuplostattempts
+          [cleanuplostattempts]: ../n1ql-rest-admin/index.html#cleanuplostattempts
         x-desc-refs: |
-          [cleanuplostattempts]: ../n1ql/n1ql-rest-api/admin.html#cleanuplostattempts
+          [cleanuplostattempts]: #cleanuplostattempts
       queryCleanupWindow:
         type: string
         format: duration
         default: 60s
         example: 30s
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryCleanupWindow
         description: |
-          [#queryCleanupWindow]
           Specifies how frequently the Query service checks its subset of [active transaction records][additional-storage-use] for cleanup.
           Decreasing this setting causes expiration transactions to be found more swiftly, with the tradeoff of increasing the number of reads per second used for the scanning process.
 
@@ -158,17 +192,18 @@ definitions:
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
           [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
-          [cleanupwindow]: #cleanupwindow
+          [cleanupwindow]: ../n1ql-rest-admin/index.html#cleanupwindow
         x-desc-refs: |
-          [cleanupwindow]: ../n1ql/n1ql-rest-api/admin.html#cleanupwindow
+          [cleanupwindow]: #cleanupwindow
       queryCompletedLimit:
         type: integer
         format: int32
         default: 4000
         example: 7000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryCompletedLimit
         description: |
-          [#queryCompletedLimit]
           Sets the number of requests to be logged in the completed requests catalog.
           As new completed requests are added, old ones are removed.
 
@@ -180,18 +215,18 @@ definitions:
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
           [sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
-          [completed-limit]: #completed-limit
+          [completed-limit]: ../n1ql-rest-admin/index.html#completed-limit
         x-desc-refs: |
-          [completed-limit]: ../n1ql/n1ql-rest-api/admin.html#completed-limit
+          [completed-limit]: #completed-limit
       queryCompletedMaxPlanSize:
         type: integer
         format: int32
         default: 262144
         minimum: 0
         maximum: 20840448
+        x-has-default: true
         x-desc-name: queryCompletedMaxPlanSize
         description: |
-          [#queryCompletedMaxPlanSize]
           A plan size in bytes.
           Limits the size of query execution plans that can be logged in the completed requests catalog.
           Values larger than the maximum limit are silently treated as the maximum limit.
@@ -204,17 +239,18 @@ definitions:
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
           [sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
-          [completed-max-plan-size]: #completed-max-plan-size
+          [completed-max-plan-size]: ../n1ql-rest-admin/index.html#completed-max-plan-size
         x-desc-refs: |
-          [completed-max-plan-size]: ../n1ql/n1ql-rest-api/admin.html#completed-max-plan-size
+          [completed-max-plan-size]: #completed-max-plan-size
       queryCompletedThreshold:
         type: integer
         format: int32
         default: 1000
         example: 7000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryCompletedThreshold
         description: |
-          [#queryCompletedThreshold]
           A duration in milliseconds.
           All completed queries lasting longer than this threshold are logged in the completed requests catalog.
 
@@ -227,17 +263,18 @@ definitions:
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
           [sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
-          [completed-threshold]: #completed-threshold
+          [completed-threshold]: ../n1ql-rest-admin/index.html#completed-threshold
         x-desc-refs: |
-          [completed-threshold]: ../n1ql/n1ql-rest-api/admin.html#completed-threshold
+          [completed-threshold]: #completed-threshold
       queryLogLevel:
         type: string
         default: INFO
         enum: ["DEBUG","TRACE","INFO","WARN","ERROR","SEVERE","NONE"]
         example: DEBUG
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryLogLevel
         description: |
-          [#queryLogLevel]
           Log level used in the logger.
 
           All values, in descending order of data:
@@ -265,17 +302,18 @@ definitions:
           The [node-level][loglevel] `loglevel` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [loglevel]: #loglevel
+          [loglevel]: ../n1ql-rest-admin/index.html#loglevel
         x-desc-refs: |
-          [loglevel]: ../n1ql/n1ql-rest-api/admin.html#loglevel
+          [loglevel]: #loglevel
       queryMaxParallelism:
         type: integer
         format: int32
         default: 1
         example: 0
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryMaxParallelism
         description: |
-          [#queryMaxParallelism]
           Specifies the maximum parallelism for queries on all Query nodes in the cluster.
 
           If the value is zero or negative, the maximum parallelism is restricted to the number of allowed cores.
@@ -296,19 +334,20 @@ definitions:
           Refer to [Max Parallelism][max-parallelism] for more information.
 
           [max-parallelism]: /server/7.6/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
+          [max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
+          [max_parallelism_req]: ../n1ql-rest-query/index.html#max_parallelism_req
+        x-desc-refs: |
           [max-parallelism-srv]: #max-parallelism-srv
           [max_parallelism_req]: #max_parallelism_req
-        x-desc-refs: |
-          [max-parallelism-srv]: ../n1ql/n1ql-rest-api/admin.html#max-parallelism-srv
-          [max_parallelism_req]: ../n1ql/n1ql-rest-api/index.html#max_parallelism_req
       queryMemoryQuota:
         type: integer
         format: int32
         default: 0
         example: 4
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryMemoryQuota
         description: |
-          [#queryMemoryQuota]
           Specifies the maximum amount of memory a request may use on any Query node in the cluster, in MB.
 
           This parameter enforces a ceiling on the memory used for the tracked documents required for processing a request.
@@ -323,33 +362,32 @@ definitions:
           In addition, there is a [request-level][memory_quota_req] `memory_quota` parameter.
           If a request includes this parameter, it will be capped by the node-level `memory-quota` setting.
 
+          [memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
+          [memory_quota_req]: ../n1ql-rest-query/index.html#memory_quota_req
+        x-desc-refs: |
           [memory-quota-srv]: #memory-quota-srv
           [memory_quota_req]: #memory_quota_req
-        x-desc-refs: |
-          [memory-quota-srv]: ../n1ql/n1ql-rest-api/admin.html#memory-quota-srv
-          [memory_quota_req]: ../n1ql/n1ql-rest-api/index.html#memory_quota_req
       queryN1qlFeatCtrl:
         type: integer
         format: int32
         x-desc-name: queryN1qlFeatCtrl
         description: |
-          [#queryN1qlFeatCtrl]
           SQL++ feature control.
           This setting is provided for technical support only.
 
           The [node-level][n1ql-feat-ctrl] `n1ql-feat-ctrl` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [n1ql-feat-ctrl]: #n1ql-feat-ctrl
+          [n1ql-feat-ctrl]: ../n1ql-rest-admin/index.html#n1ql-feat-ctrl
         x-desc-refs: |
-          [n1ql-feat-ctrl]: ../n1ql/n1ql-rest-api/admin.html#n1ql-feat-ctrl
+          [n1ql-feat-ctrl]: #n1ql-feat-ctrl
       queryNodeQuota:
         type: integer
         format: int32
         default: 0
+        x-has-default: true
         x-desc-name: queryNodeQuota
         description: |
-          [#queryNodeQuota]
           Sets the soft memory limit for every Query node in the cluster, in MB.
           The garbage collector tries to keep below this target.
           It is not a hard, absolute limit, and memory usage may exceed this value.
@@ -359,27 +397,27 @@ definitions:
           The [node-level][node-quota] `node-quota` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [node-quota]: #node-quota
+          [node-quota]: ../n1ql-rest-admin/index.html#node-quota
         x-desc-refs: |
-          [node-quota]: ../n1ql/n1ql-rest-api/admin.html#node-quota
+          [node-quota]: #node-quota
       queryNodeQuotaValPercent:
         type: integer
         format: int32
         default: 67
         minimum: 0
         maximum: 100
+        x-has-default: true
         x-desc-name: queryNodeQuotaValPercent
         description: |
-          [#queryNodeQuotaValPercent]
           The percentage of the `queryNodeQuota` that is dedicated to tracked value content memory across all active requests for every Query node in the cluster.
           (The `queryMemoryQuota` setting specifies the maximum amount of document memory an individual request may use on any Query node in the cluster.)
 
           The [node-level][node-quota-val-percent] `node-quota-val-percent` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [node-quota-val-percent]: #node-quota-val-percent
+          [node-quota-val-percent]: ../n1ql-rest-admin/index.html#node-quota-val-percent
         x-desc-refs: |
-          [node-quota-val-percent]: ../n1ql/n1ql-rest-api/admin.html#node-quota-val-percent
+          [node-quota-val-percent]: #node-quota-val-percent
       queryNumAtrs:
         type: integer
         format: int32
@@ -387,9 +425,10 @@ definitions:
         exclusiveMinimum: true
         default: 1024
         example: 512
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryNumAtrs
         description: |
-          [#queryNumAtrs]
           Specifies the total number of [active transaction records][additional-storage-use] for all Query nodes in the cluster.
 
           The [node-level][numatrs-srv] `numatrs` setting specifies this property for a single node.
@@ -399,18 +438,18 @@ definitions:
           If a request includes this parameter, it will be capped by the node-level `numatrs` setting.
 
           [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
+          [numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
+          [numatrs_req]: ../n1ql-rest-query/index.html#numatrs_req
+        x-desc-refs: |
           [numatrs-srv]: #numatrs-srv
           [numatrs_req]: #numatrs_req
-        x-desc-refs: |
-          [numatrs-srv]: ../n1ql/n1ql-rest-api/admin.html#numatrs-srv
-          [numatrs_req]: ../n1ql/n1ql-rest-api/index.html#numatrs_req
       queryNumCpus:
         type: integer
         format: int32
         default: 0
+        x-has-default: true
         x-desc-name: queryNumCpus
         description: |
-          [#queryNumCpus]
           The number of CPUs the Query service can use on any Query node in the cluster.
           Note that this setting requires a restart of the Query service to take effect.
 
@@ -423,17 +462,18 @@ definitions:
           The [node-level][num-cpus] `num-cpus` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [num-cpus]: #num-cpus
+          [num-cpus]: ../n1ql-rest-admin/index.html#num-cpus
         x-desc-refs: |
-          [num-cpus]: ../n1ql/n1ql-rest-api/admin.html#num-cpus
+          [num-cpus]: #num-cpus
       queryPipelineBatch:
         type: integer
         format: int32
         default: 16
         example: 64
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryPipelineBatch
         description: |
-          [#queryPipelineBatch]
           Controls the number of items execution operators can batch for Fetch from the KV.
 
           The [node-level][pipeline-batch-srv] `pipeline-batch` setting specifies this property for a single node.
@@ -442,19 +482,20 @@ definitions:
           In addition, the [request-level][pipeline_batch_req] `pipeline_batch` parameter specifies this property per request.
           The minimum of that and the node-level `pipeline-batch` setting is applied.
 
+          [pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
+          [pipeline_batch_req]: ../n1ql-rest-query/index.html#pipeline_batch_req
+        x-desc-refs: |
           [pipeline-batch-srv]: #pipeline-batch-srv
           [pipeline_batch_req]: #pipeline_batch_req
-        x-desc-refs: |
-          [pipeline-batch-srv]: ../n1ql/n1ql-rest-api/admin.html#pipeline-batch-srv
-          [pipeline_batch_req]: ../n1ql/n1ql-rest-api/index.html#pipeline_batch_req
       queryPipelineCap:
         type: integer
         format: int32
         default: 512
         example: 1024
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryPipelineCap
         description: |
-          [#queryPipelineCap]
           Maximum number of items each execution operator can buffer between various operators.
 
           The [node-level][pipeline-cap-srv] `pipeline-cap` setting specifies this property for a single node.
@@ -463,36 +504,38 @@ definitions:
           In addition, the [request-level][pipeline_cap_req] `pipeline_cap` parameter specifies this property per request.
           The minimum of that and the node-level `pipeline-cap` setting is applied.
 
+          [pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
+          [pipeline_cap_req]: ../n1ql-rest-query/index.html#pipeline_cap_req
+        x-desc-refs: |
           [pipeline-cap-srv]: #pipeline-cap-srv
           [pipeline_cap_req]: #pipeline_cap_req
-        x-desc-refs: |
-          [pipeline-cap-srv]: ../n1ql/n1ql-rest-api/admin.html#pipeline-cap-srv
-          [pipeline_cap_req]: ../n1ql/n1ql-rest-api/index.html#pipeline_cap_req
       queryPreparedLimit:
         type: integer
         format: int32
         default: 16384
         example: 65536
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryPreparedLimit
         description: |
-          [#queryPreparedLimit]
           Maximum number of prepared statements in the cache.
           When this cache reaches the limit, the least recently used prepared statements will be discarded as new prepared statements are created.
 
           The [node-level][prepared-limit] `prepared-limit` setting specifies this property for a single node.
           When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-          [prepared-limit]: #prepared-limit
+          [prepared-limit]: ../n1ql-rest-admin/index.html#prepared-limit
         x-desc-refs: |
-          [prepared-limit]: ../n1ql/n1ql-rest-api/admin.html#prepared-limit
+          [prepared-limit]: #prepared-limit
       queryScanCap:
         type: integer
         format: int32
         default: 512
         example: 1024
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryScanCap
         description: |
-          [#queryScanCap]
           Maximum buffered channel size between the indexer client and the query service for index scans.
           This parameter controls when to use scan backfill.
 
@@ -505,19 +548,20 @@ definitions:
           In addition, the [request-level][scan_cap_req] `scan_cap` parameter specifies this property per request.
           The minimum of that and the node-level `scan-cap` setting is applied.
 
+          [scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
+          [scan_cap_req]: ../n1ql-rest-query/index.html#scan_cap_req
+        x-desc-refs: |
           [scan-cap-srv]: #scan-cap-srv
           [scan_cap_req]: #scan_cap_req
-        x-desc-refs: |
-          [scan-cap-srv]: ../n1ql/n1ql-rest-api/admin.html#scan-cap-srv
-          [scan_cap_req]: ../n1ql/n1ql-rest-api/index.html#scan_cap_req
       queryTimeout:
         type: integer
         format: int64
         default: 0
         example: 500000000
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryTimeout
         description: |
-          [#queryTimeout]
           Maximum time to spend on the request before timing out (ns).
 
           The value for this setting is an integer, representing a duration in nanoseconds.
@@ -532,19 +576,20 @@ definitions:
           In addition, the [request-level][timeout_req] `timeout` parameter specifies this property per request.
           The minimum of that and the node-level `timeout` setting is applied.
 
+          [timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
+          [timeout_req]: ../n1ql-rest-query/index.html#timeout_req
+        x-desc-refs: |
           [timeout-srv]: #timeout-srv
           [timeout_req]: #timeout_req
-        x-desc-refs: |
-          [timeout-srv]: ../n1ql/n1ql-rest-api/admin.html#timeout-srv
-          [timeout_req]: ../n1ql/n1ql-rest-api/index.html#timeout_req
       queryTxTimeout:
         type: string
         format: duration
         default: "0ms"
         example: "0.5s"
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryTxTimeout
         description: |
-          [#queryTxTimeout]
           Maximum time to spend on a transaction before timing out.
           This setting only applies to requests containing the `BEGIN TRANSACTION` statement, or to requests where the [tximplicit][tximplicit] parameter is set.
           For all other requests, it is ignored.
@@ -569,19 +614,19 @@ definitions:
           In addition, there is a [request-level][txtimeout_req] `txtimeout` parameter.
           If a request includes this parameter, it will be capped by the node-level `txtimeout` setting.
 
+          [tximplicit]: ../n1ql-rest-query/index.html#tximplicit
+          [txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
+          [txtimeout_req]: ../n1ql-rest-query/index.html#txtimeout_req
+        x-desc-refs: |
           [tximplicit]: #tximplicit
           [txtimeout-srv]: #txtimeout-srv
           [txtimeout_req]: #txtimeout_req
-        x-desc-refs: |
-          [tximplicit]: ../n1ql/n1ql-rest-api/index.html#tximplicit
-          [txtimeout-srv]: ../n1ql/n1ql-rest-api/admin.html#txtimeout-srv
-          [txtimeout_req]: ../n1ql/n1ql-rest-api/index.html#txtimeout_req
       queryTmpSpaceDir:
         type: string
         example: "/opt/couchbase/var/lib/couchbase/tmp"
+        x-has-example: true
         x-desc-name: queryTmpSpaceDir
         description: |
-          [#queryTmpSpaceDir]
           The path to which the indexer writes temporary backfill files, to store any transient data during query processing.
 
           The specified path must already exist.
@@ -593,9 +638,10 @@ definitions:
         format: int32
         default: 5120
         example: 2048
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryTmpSpaceSize
         description: |
-          [#queryTmpSpaceSize]
           The maximum size of temporary backfill files (MB).
 
           Setting the size to `0` disables backfill.
@@ -606,9 +652,10 @@ definitions:
         type: boolean
         default: true
         example: false
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryUseCBO
         description: |
-          [#queryUseCBO]
           Specifies whether the cost-based optimizer is enabled.
 
           The [node-level][use-cbo-srv] `use-cbo` setting specifies this property for a single node.
@@ -617,19 +664,20 @@ definitions:
           In addition, the [request-level][use_cbo_req] `use_cbo` parameter specifies this property per request.
           If a request does not include this parameter, the node-level setting is used, which defaults to `true`.
 
+          [use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
+          [use_cbo_req]: ../n1ql-rest-query/index.html#use_cbo_req
+        x-desc-refs: |
           [use-cbo-srv]: #use-cbo-srv
           [use_cbo_req]: #use_cbo_req
-        x-desc-refs: |
-          [use-cbo-srv]: ../n1ql/n1ql-rest-api/admin.html#use-cbo-srv
-          [use_cbo_req]: ../n1ql/n1ql-rest-api/index.html#use_cbo_req
       queryUseReplica:
         type: string
         default: unset
         enum: ["off","on","unset"]
-        example: on
+        example: "on"
+        x-has-default: true
+        x-has-example: true
         x-desc-name: queryUseReplica
         description: |
-          [#queryUseReplica]
           Specifies whether a query can fetch data from a replica vBucket if active vBuckets are inaccessible.
           The possible values are:
 
@@ -654,26 +702,23 @@ definitions:
           Note that KV range scans cannot currently be started on a replica vBucket.
           If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
 
+          [use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
+          [use_replica_req]: ../n1ql-rest-query/index.html#use_replica_req
+        x-desc-refs: |
           [use-replica-srv]: #use-replica-srv
           [use_replica_req]: #use_replica_req
-        x-desc-refs: |
-          [use-replica-srv]: ../n1ql/n1ql-rest-api/admin.html#use-replica-srv
-          [use_replica_req]: ../n1ql/n1ql-rest-api/index.html#use_replica_req
       queryCurlWhitelist:
-        x-desc-name: queryCurlWhitelist
-        description: |
-          [#queryCurlWhitelist]
-          An object which determines which URLs may be accessed by the `CURL()` function.
-        $ref: "#/definitions/Access"
+        $ref: "#/components/schemas/Access"
 
   Access:
     type: object
+    x-desc-name: queryCurlWhitelist
+    description: An object which determines which URLs may be accessed by the `CURL()` function.
     required:
       - all_access
     properties:
       all_access:
         type: boolean
-        default: false
         description: |
           Defines whether the user has access to all URLs, or only URLs specified by the access list.
 
@@ -687,8 +732,8 @@ definitions:
           Each URL is a prefix match.
           The CURL() function will allow any URL that starts with this value.
 
-          For example, if you wish to allow access to all Google APIs, add the URL https://maps.googleapis.com to the array.
-          To allow complete access to `localhost`, use http://localhost.
+          For example, if you wish to allow access to all Google APIs, add the URL `https://maps.googleapis.com` to the array.
+          To allow complete access to `localhost`, use `http://localhost`.
 
           Note that each URL must include the port, protocol, and all other components of the URL.
         default: []
@@ -708,10 +753,10 @@ definitions:
         items:
           type: string
 
-
-securityDefinitions:
+ securitySchemes:
   Default:
-    type: basic
+    type: http
+    scheme: basic
     description: |
       Users must have one of the following RBAC roles:
 

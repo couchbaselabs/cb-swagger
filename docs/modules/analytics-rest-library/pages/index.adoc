@@ -1,0 +1,1074 @@
+= Analytics Library REST API
+:keywords: OpenAPI, REST
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+include::partial$header-attributes.adoc[opts=optional]
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+
+:leveloffset: 1
+
+include::{specDir}overview/document-before.adoc[opts=optional]
+
+
+[[overview]]
+= Overview
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+The Analytics Library REST API is provided by the Analytics service.
+This API enables you to manage the libraries that are used to create SQL\+\+ for Analytics user-defined functions.
+
+--
+
+[discrete#version]
+= Version information
+[%hardbreaks]
+__Version__ : 0.1
+
+[discrete#host]
+= Host information
+
+....
+{scheme}://{host}:{port}
+....
+
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
+
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `+++http+++`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Analytics service.
+--
+
+[%hardbreaks]
+
+*Example:* `+++localhost+++`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Analytics service REST port. Use `18095` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `8095`, `18095`
+*Example:* `+++8095+++`
+// end
+
+|===
+
+
+// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
+
+
+[[resources]]
+= Resources
+
+:count-apis: 1
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
+
+This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+<<tag-Default>>
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Default]
+= Default
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<delete_library>>
+<<get_collection>>
+<<post_library>>
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-before.adoc[opts=optional]
+
+
+[#delete_library]
+= Delete a Library
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_library/operation-begin.adoc[opts=optional]
+
+
+....
+DELETE /analytics/library/{scope}/{library}
+....
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-description-before.adoc[opts=optional]
+
+
+[#delete_library-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_library/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Deletes the specified library entirely.
+--
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-description-end.adoc[opts=optional]
+
+
+
+[#delete_library-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-parameters-before.adoc[opts=optional]
+
+
+[#delete_library-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_library/operation-parameters-begin.adoc[opts=optional]
+
+
+[#delete_library-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *library* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a library.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of the Analytics scope containing the library.
+
+The scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-responses-before.adoc[opts=optional]
+
+
+[#delete_library-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_library/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+a| Object
+
+
+| 404
+a| [markdown]
+--
+Not found. The library name in the path may be incorrect. 
+--
+a| 
+| 500
+a| [markdown]
+--
+Internal server error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
+--
+a| <<Errors>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-security-before.adoc[opts=optional]
+
+
+[#delete_library-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/delete_library/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-fullAdmin>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}delete_library/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}delete_library/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/delete_library/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-before.adoc[opts=optional]
+
+
+[#get_collection]
+= Read All Libraries
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_collection/operation-begin.adoc[opts=optional]
+
+
+....
+GET /analytics/library
+....
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-description-before.adoc[opts=optional]
+
+
+[#get_collection-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_collection/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns all libraries and functions.
+--
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-description-end.adoc[opts=optional]
+
+
+
+[#get_collection-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-responses-before.adoc[opts=optional]
+
+
+[#get_collection-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_collection/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success. Returns an array of objects, each of which contains information about a single library. 
+--
+a| <<Libraries>>
+ array
+
+| 404
+a| [markdown]
+--
+Not found. The path may be missing its trailing slash. 
+--
+a| 
+| 500
+a| [markdown]
+--
+Internal server error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
+--
+a| <<Errors>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-security-before.adoc[opts=optional]
+
+
+[#get_collection-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/get_collection/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-analyticsAdmin>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}get_collection/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}get_collection/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/get_collection/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-before.adoc[opts=optional]
+
+
+[#post_library]
+= Create or Update a Library
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_library/operation-begin.adoc[opts=optional]
+
+
+....
+POST /analytics/library/{scope}/{library}
+....
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-description-before.adoc[opts=optional]
+
+
+[#post_library-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_library/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Creates the specified library and its associated functions. If the specified library exists, the existing library is overwritten.
+
+--
+
+
+include::{specDir}paths/post_library/operation-description-end.adoc[opts=optional]
+
+
+[#post_library-consumes]
+.Consumes
+* multipart/form-data
+
+[#post_library-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-parameters-before.adoc[opts=optional]
+
+
+[#post_library-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_library/operation-parameters-begin.adoc[opts=optional]
+
+
+[#post_library-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *library* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of a library.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of the Analytics scope containing the library.
+
+The scope name may contain one or two identifiers, separated by a slash (/). You must URL-encode this parameter to escape any special characters.
+
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+[#post_library-form]
+.Form Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *data* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The library and all its dependencies, packaged by shiv.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ File (binary)
+
+
+
+a¦ *type* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The language of the library.
+--
+
+[%hardbreaks]
+*Values:* `&quot;python&quot;`
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-responses-before.adoc[opts=optional]
+
+
+[#post_library-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_library/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+a| Object
+
+
+| 400
+a| [markdown]
+--
+Bad request. A parameter has an incorrect value. 
+--
+a| <<Errors>>
+
+
+| 500
+a| [markdown]
+--
+Internal server error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
+--
+a| <<Errors>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-security-before.adoc[opts=optional]
+
+
+[#post_library-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/post_library/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-fullAdmin>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}post_library/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}post_library/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/post_library/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
+
+
+[#models]
+= Definitions
+
+:count-models: 2
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
+[.two-columns]
+endif::collapse-models[]
+[%hardbreaks]
+<<Errors>>
+<<Libraries>>
+endif::[]
+
+
+
+// markup not found, no include::{specDir}definitions/Errors/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#Errors]
+= Errors
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Errors/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Errors[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*error* +
+_required_
+a¦ 
+
+[markdown]
+--
+An error message.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::Errors[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Errors/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Errors/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Libraries/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#Libraries]
+= Libraries
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Libraries/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Libraries[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*scope* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The name of the Analytics scope containing the library.
+
+The scope name may contain one or two identifiers, separated by a slash (/).
+
+--
+
+[%hardbreaks]
+*Example:* `+++"travel-sample/inventory"+++`
+{blank}
+a¦ String
+
+
+a¦ 
+*hash_md5* +
+_optional_
+a¦ 
+
+[markdown]
+--
+A MD5 hash of the library residing on the server.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*name* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The name of the library.
+--
+
+[%hardbreaks]
+*Example:* `+++"mylib"+++`
+{blank}
+a¦ String
+
+
+|===
+
+//end::Libraries[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Libraries/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Libraries/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
+
+
+[[security]]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}security/document-begin.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/FullAdmin/security-scheme-before.adoc[opts=optional]
+
+
+[[security-fullAdmin]]
+= Full Admin
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/FullAdmin/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+To [Create or Update a Library](#post_library) or [Delete a Library](#delete_library), users must have the Full Admin RBAC role.
+
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/FullAdmin/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/FullAdmin/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/AnalyticsAdmin/security-scheme-before.adoc[opts=optional]
+
+
+[[security-analyticsAdmin]]
+= Analytics Admin
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/AnalyticsAdmin/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+To [Read All Libraries](#get_collection), users must have one of the following RBAC roles:
+
+* Full Admin
+* Cluster Admin
+* Analytics Admin
+
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/AnalyticsAdmin/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/AnalyticsAdmin/security-scheme-after.adoc[opts=optional]
+
+
+
+
+include::{specDir}security/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
+

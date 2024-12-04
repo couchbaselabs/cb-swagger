@@ -1,0 +1,19 @@
+= Example HTTP Requests
+
+.View global function status
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/status/my_function"
+----
+====
+
+.View scoped function status
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/status/my_function?bucket=bulk&scope=data"
+----
+====

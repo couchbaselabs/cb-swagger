@@ -1,0 +1,30 @@
+= Example HTTP Requests
+
+.List all deployed functions
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/list/functions/query?deployed=true"
+----
+
+If you had specified `deployed=false`, you would get all undeployed functions.
+====
+
+.List all functions with source keyspace in a specific bucket
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/list/functions/query?source_bucket=bulk"
+----
+====
+
+.List all functions that do not modify their source keyspace
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/list/functions/query?function_type=notsbm"
+----
+====

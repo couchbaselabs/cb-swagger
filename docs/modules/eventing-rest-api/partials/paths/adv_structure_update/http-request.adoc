@@ -1,0 +1,63 @@
+= Example HTTP Requests
+
+.Update global function config
+====
+This example alters the source and eventing storage keyspaces.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config" \
+  -d '{
+  "source_bucket": "bulk",
+  "source_scope": "orders",
+  "source_collection": "customer01",
+  "metadata_bucket": "rr100",
+  "metadata_scope": "eventing",
+  "metadata_collection": "metadata"
+}'
+----
+====
+
+.Update scoped function config
+====
+This example alters the source and eventing storage keyspaces.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config?bucket=bulk&scope=data"\
+  -d '{
+  "source_bucket": "bulk",
+  "source_scope": "orders",
+  "source_collection": "customer01",
+  "metadata_bucket": "rr100",
+  "metadata_scope": "eventing",
+  "metadata_collection": "metadata"
+}'
+----
+====
+
+.Update global function config from file
+====
+This example alters the source and eventing storage keyspaces from a file.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config" \
+  -d @./my_function.json
+----
+====
+
+.Update scoped function config from file
+====
+This example alters the source and eventing storage keyspaces from a file.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config?bucket=bulk&scope=data" \
+  -d @./my_function.json
+----
+====

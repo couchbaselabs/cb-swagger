@@ -1,0 +1,929 @@
+openapi: 3.0.3
+info:
+  title: Eventing REST API
+  version: '7.6'
+  description: |-
+    The Eventing REST API provides methods to work with and manipulate Couchbase Eventing functions.
+
+servers:
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
+    variables:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+        description: The host name or IP address of a node running the Eventing service.
+      port:
+        default: "8096"
+        description: |-
+          The Eventing service REST port.
+          Use `18096` for secure access.
+        enum:
+          - "8096"
+          - "18096"
+
+paths:
+  /api/v1/functions/{function}/deploy:
+    parameters:
+      - $ref: "#/components/parameters/PathFunction"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+    post:
+      operationId: basic_deploy
+      summary: Deploy a Function
+      description: |-
+        Deploys an undeployed function.
+        This is the preferred invocation.
+      tags:
+        - activation
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+
+  /api/v1/functions/{function}/undeploy:
+    parameters:
+      - $ref: "#/components/parameters/PathFunction"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+    post:
+      operationId: basic_undeploy
+      summary: Undeploy a Function
+      description: |-
+        Undeploys a function.
+        This is the preferred invocation.
+      tags:
+        - activation
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+
+  /api/v1/functions/{function}/pause:
+    parameters:
+      - $ref: "#/components/parameters/PathFunction"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+    post:
+      operationId: basic_pause
+      summary: Pause a Function
+      description: |-
+        Pauses a function and creates a DCP checkpoint such that on a subsequent resume no mutations will be lost.
+        This is the preferred invocation.
+      tags:
+        - activation
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+
+  /api/v1/functions/(function}/resume:
+    parameters:
+      - $ref: "#/components/parameters/PathFunction"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+    post:
+      operationId: basic_resume
+      summary: Resume a Function
+      description: |-
+        Resumes a paused function from its paused DCP checkpoint.
+        This is the preferred invocation.
+      tags:
+        - activation
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /api/v1/functions/{function}:
+    parameters:
+      - $ref: "#/components/parameters/PathFunction"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+    post:
+      operationId: adv_function_import
+      summary: Create or Import a Function
+      description: |-
+        Creates or imports a single function.
+      tags:
+        - advanced
+      requestBody:
+       required: true
+       description: |-
+        A single function definition object, or an array containing a single function definition object.
+        The function name in the definition object must match that given by the path parameter.
+       content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddFunction'
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+    get:
+      operationId: adv_function_view
+      summary: View a Function
+      description: |-
+        Provides a listing of a complete function definition available in the cluster.
+        The function could be in any state: deployed, undeployed, or paused.
+        If saved to a file the function definition can be imported into the cluster or a different cluster.
+        However any changes to the function definition made to the file outside the UI are discouraged.
+      tags:
+        - advanced
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          description: Returns a single function definition object.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler_schema"
+        "404":
+          $ref: '#/components/responses/Goof'
+    delete:
+      operationId: adv_function_zap
+      summary: Delete Function
+      description: |-
+        Deletes a specific function from the cluster.
+        
+        WARNING: Use this API with caution, as it is irreversible.
+      tags:
+        - advanced
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /api/v1/functions:
+    post:
+      operationId: adv_function_import_all
+      summary: Create or Import Multiple Functions
+      description: |-
+        Creates or imports multiple functions.
+
+        Note that if any function's `language_compatibility` field is missing, the value will be set to the highest version supported by the server, unlike [Import Multiple Functions](#adv_multiple_import).
+      tags:
+        - advanced
+      requestBody:
+       required: true
+       description: |-
+        A single function definition object, or an array containing one or more function definition objects.
+
+        Function names must be unique.
+        When multiple functions have the same name, an error is reported.
+       content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddFunctions'
+      security:
+        - Unscoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+    get:
+      operationId: adv_function_view_all
+      summary: View Multiple Functions
+      description: |-
+        Provides an array of definitions of all functions available in the cluster.
+        The functions may be in any state: deployed, undeployed, or paused.
+        If saved to a file the function definitions can be imported into the cluster or a different cluster.
+        However any changes to the function definition made to the file outside the UI are discouraged.
+
+        If this API is run as a non-Administrator, the results are filtered via RBAC to include only the function scopes the user has access to.
+      tags:
+        - advanced
+      security:
+        - Unscoped: []
+      responses:
+        "200":
+          description: Returns an array containing one or more function definition objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/handler_schema"
+        "404":
+          $ref: '#/components/responses/Goof'
+    delete:
+      operationId: adv_function_zap_all
+      summary: Delete Multiple Functions
+      description: |-
+        Deletes **all functions** from the cluster.
+        WARNING: Use this API with caution, as it is irreversible.
+
+        If this API is run as a non-Administrator the deleted set will be filtered via RBAC to include only the function scopes the user has access to.
+      tags:
+        - advanced
+      security:
+        - Unscoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /api/v1/import:
+    post:
+      operationId: adv_multiple_import
+      summary: Import Multiple Functions
+      description: |-
+        Imports multiple functions.
+
+        Note that if any function's `language_compatibility` field is missing, the value will be set to 6.0.0, unlike [Create or Import Multiple Functions](#adv_function_import_all).
+      tags:
+        - advanced
+      requestBody:
+       required: true
+       description: |-
+        A single function definition object, or an array containing one or more function definition objects.
+
+        Function names must be unique.
+        When multiple functions have the same name, an error is reported.
+       content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddFunctions'
+      security:
+        - Unscoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /api/v1/export:
+    get:
+      operationId: adv_multiple_export
+      summary: Export Multiple Functions
+      description: |-
+        This is a convenience method to export all function definitions.
+        Exported functions are always set to the undeployed state at the time of export, regardless of their state in the cluster.
+        If saved to a file the function definitions can be imported into the cluster or a different cluster.
+        However any changes to the function definition made to the file outside the UI are discouraged.
+
+        If this API is run as a non-Administrator the results are filtered via RBAC to include only the function scopes the user has access to.
+      tags:
+        - advanced
+      security:
+        - Unscoped: []
+      responses:
+        "200":
+          description: Returns an array containing one or more function definition objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/handler_schema"
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /api/v1/functions/{function}/settings:
+    parameters:
+      - $ref: "#/components/parameters/PathFunction"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+    get:
+      operationId: adv_settings_get
+      summary: View Function Settings
+      description: |-
+        Return or export the full settings for one eventing function in the cluster.
+        The settings can be subsequently imported.
+        However any changes to the function settings made to the file outside the UI are discouraged.
+      tags:
+        - advanced
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          description: Returns an object showing settings for the specified function.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/settings_schema"
+        "404":
+          $ref: '#/components/responses/Goof'
+    post:
+      operationId: adv_settings_update
+      summary: Update Function Settings
+      description: |-
+        Updates an undeployed or paused function with the provided settings.
+        You can only alter settings when the function is paused or undeployed; attempting to adjust a deployed function will result in an error.
+        During an edit, settings provided are merged.
+        Unspecified attributes retain their prior values.
+
+        Note that you must always specify `deployment_status` and `processing_status` when using this REST endpoint to update any option or set of options.
+        To get the current values of `deployment_status` and `processing_status`, see [View All Functions Status](#status_all) or [View Function Status](#status_function).
+
+        By adjusting `deployment_status` and `processing_status` this command can also deploy or resume a function; however, it cannot pause or undeploy a function.
+      tags:
+        - advanced
+      requestBody:
+       required: true
+       description: |-
+        An object providing settings for the specified function.
+       content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/settings_schema"
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /api/v1/functions/{function}/config:
+    parameters:
+      - $ref: "#/components/parameters/PathFunction"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+    get:
+      operationId: adv_structure_get
+      summary: View Function Config
+      description: |-
+        Export or return the configuration of the source keyspace and the eventing storage (metadata) keyspace for the specified function.
+        The definition can be subsequently imported.
+        However any changes to the function definition made to the file outside the UI are discouraged.
+      tags:
+        - advanced
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          description: Returns an object showing the configuration of the specified function.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/depcfg_schema'
+
+        "404":
+          $ref: '#/components/responses/Goof'
+    post:
+      operationId: adv_structure_update
+      summary: Update Function Config
+      description: |-
+        Import the configuration and alter the source keyspace and the eventing storage (metadata) keyspace for the specified function.
+        You can only change these values if a function is in the undeployed state and the two keyspaces exist.
+      tags:
+        - advanced
+      requestBody:
+       required: true
+       description: |-
+        An object providing the configuration for the specified function.
+       content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/depcfg_schema'
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /api/v1/functions/{function}/appcode:
+    parameters:
+      - $ref: "#/components/parameters/PathFunction"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+    get:
+      operationId: adv_text_get
+      summary: View Function Code
+      description: |-
+        Export only the JavaScript code for the specified function.
+        Note that unlike [View a Function](#adv_function_view), the JavaScript is not escaped, and the code is runnable in other environments.
+        The JavaScript code can be subsequently imported.
+        However any changes to the function definition made to the file outside the UI are discouraged.
+      tags:
+        - advanced
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          description: Returns a string showing the code for the specified function.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppCode"
+        "404":
+          $ref: '#/components/responses/Goof'
+    post:
+      operationId: adv_text_update
+      summary: Update Function Code
+      description: |-
+        Import only the JavaScript code for the specified function.
+        Note that unlike [Create or Import Function](#adv_function_import), the JavaScript is not escaped and could come from other environments.
+        It is highly recommended that you use the flag `--data-binary` or `--upload-file` when importing your JavaScript appcode fragments to avoid potential encoding issues due to string escaping.
+      tags:
+        - advanced
+      requestBody:
+       required: true
+       description: A string providing the code for the specified function.
+       content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AppCode'
+
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /api/v1/status:
+    get:
+      operationId: status_all
+      summary: View All Functions Status
+      description: |-
+        Returns a list (array) of all eventing functions, showing their corresponding `composite_status`.
+        A function's status can have one of the following values: undeployed, deploying, deployed, undeploying, paused, and pausing.
+        Note that there is no value of resuming; when resuming a paused eventing function, the `composite_status` returns `deploying` until it reaches the deployed state.
+
+        If this API is run as a non-Administrator, the results are filtered via RBAC to include only the function scopes the user has access to.
+      tags:
+        - status
+      security:
+        - Unscoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /api/v1/status/{function}:
+    parameters:
+      - $ref: "#/components/parameters/PathFunction"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+    get:
+      operationId: status_function
+      summary: View Function Status
+      description: |-
+        Returns the specified function, showing its corresponding `composite_status`.
+        It can have one of the following values: undeployed, deploying, deployed, undeploying, paused, and pausing.
+        Note that there is no value of resuming; when resuming a paused eventing function, the `composite_status` returns `deploying` until it reaches the deployed state.
+      tags:
+        - status
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /getAppLog:
+    parameters:
+      - $ref: "#/components/parameters/QueryFunction"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+      - $ref: "#/components/parameters/QueryAggregate"
+      - $ref: "#/components/parameters/QuerySize"
+    get:
+      operationId: log_view
+      summary: Get Log for a Function
+      description: Returns the most recent application log messages for the specified function.
+      tags:
+        - logging
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /api/v1/list/functions:
+    get:
+      operationId: list_all
+      summary: List All Functions
+      description: |-
+        Returns a list (array) of the names of all Eventing functions in the cluster.
+        The returned list can also be filtered &mdash; see [List Filtered Functions](#list_query).
+
+        If this API is run as a non-Administrator the results are filtered via RBAC to include only the function scopes the user has access to.
+      tags:
+        - list
+      security:
+        - Unscoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /api/v1/list/functions/query:
+    get:
+      operationId: list_query
+      summary: List Filtered Functions
+      description: |-
+        Returns a list (array) of the names of all Eventing functions in the cluster.
+        The returned list can be filtered by the following:
+        
+        - Deployed status : in this case, paused is considered deployed.
+        - Source bucket: the listen to keyspace.
+        - Function type: whether the function modifies its own listen to keyspace.
+
+        If this API is run as a non-Administrator the results are filtered via RBAC to include only the function scopes the user has access to.
+      tags:
+        - list
+      parameters:
+        - name: deployed
+          schema:
+            type: boolean
+            default: false
+          in: query
+          required: false
+          description: |-
+            If `true`, returns the names of all deployed (or paused) functions.
+            If `false`, returns the names of all undeployed functions.
+        - name: source_bucket
+          schema:
+            type: string
+          in: query
+          required: false
+          description: |-
+            The name of a bucket.
+            Returns the names of Eventing functions in the cluster that have a source keyspace under the specified bucket.
+        - name: function_type
+          schema:
+            type: string
+            enum:
+              - sbm
+              - notsbm
+          in: query
+          required: false
+          description: |-
+            The function type.
+
+            - `sbm`: Returns the names of Eventing functions in the cluster that modify their own source keyspace.
+            - `notsbm`: Returns the names of Eventing functions in the cluster that do not modify their own source keyspace.
+      security:
+        - Unscoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /api/v1/config:
+    get:
+      operationId: config_get
+      summary: List Global Config
+      description: |-
+        Shows all global configuration settings.
+        There are currently just two settings: `enable_debugger` and `ram_quota`.
+        Both of these settings can also be adjusted via the UI.
+      tags:
+        - global config
+      security:
+        - Unscoped: []
+      responses:
+        "200":
+          description: Returns an object showing the global configuration settings.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnivConfig"
+        "404":
+          $ref: '#/components/responses/Goof'
+    post:
+      operationId: config_update
+      summary: Modify Global Config
+      description: |-
+        Modify global configuration settings.
+        During an edit, settings provided are merged.
+        Unspecified attributes retain their prior values.
+        The response indicates whether the Eventing service must be restarted for the new changes to take effect.
+      tags:
+        - global config
+      requestBody:
+       required: true
+       description: An object providing the global configuration settings.
+       content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/UnivConfig"
+      security:
+        - Unscoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /api/v1/stats:
+    get:
+      operationId: stats_all
+      summary: Get All Statistics
+      description: |-
+        Retrieve all statistics for the node.
+
+
+        If this API is run as a non-Administrator the results are filtered via RBAC to include only the function scopes the user has access to.
+      parameters:
+        - name: type
+          schema:
+            type: string
+            enum:
+              - full
+          in: query
+          required: false
+          description: |-
+            Including this parameter returns the full statistics set, inclusive of events processing, events remaining, execution, failure, latency, worker PIDs and sequence processed.
+
+            Omitting this parameter excludes `dcp_event_backlog_per_vb`, `doc_timer_debug_stats`, `latency_stats`, `plasma_stats`, and `seqs_processed` from the response.
+      tags:
+        - statistics
+      security:
+        - Unscoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /getExecutionStats:
+    parameters:
+      - $ref: "#/components/parameters/QueryFunction"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+    get:
+      operationId: stats_execution
+      summary: Get Execution Statistics
+      description: |-
+        Retrieve only execution statistics.
+        This returns the subset of statistics for the node.
+      tags:
+        - statistics
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /getLatencyStats:
+    parameters:
+      - $ref: "#/components/parameters/QueryFunction"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+    get:
+      operationId: stats_latency
+      summary: Get Latency Statistics
+      description: |-
+        Retrieve only latency statistics.
+        This returns the subset of statistics for the node.
+      tags:
+        - statistics
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /getFailureStats:
+    parameters:
+      - $ref: "#/components/parameters/QueryFunction"
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+    get:
+      operationId: stats_failure
+      summary: Get Failure Statistics
+      description: |-
+        Retrieve only failure statistics.
+        This returns the subset of statistics for the node.
+      tags:
+        - statistics
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+  /resetStatsCounters:
+    parameters:
+      - $ref: "#/components/parameters/QueryBucket"
+      - $ref: "#/components/parameters/QueryScope"
+      - name: appName
+        schema:
+          type: string
+        in: query
+        required: true
+        description: The name of a function.
+    get:
+      operationId: stats_reset
+      summary: Reset Statistics
+      description: Resets statistics for the specified function.
+      tags:
+        - statistics
+      security:
+        - Global: []
+        - Scoped: []
+      responses:
+        "200":
+          $ref: '#/components/responses/OK'
+        "404":
+          $ref: '#/components/responses/Goof'
+
+components:
+  parameters:
+    PathFunction:
+      name: function
+      schema:
+        type: string
+      in: path
+      required: true
+      description: The name of a function.
+
+    QueryBucket:
+      name: bucket
+      schema:
+        type: string
+      in: query
+      required: false
+      description: |-
+        For scoped functions only.
+        The bucket to which the function belongs.
+
+    QueryScope:
+      name: scope
+      schema:
+        type: string
+      in: query
+      required: false
+      description: |-
+        For scoped functions only.
+        The scope to which the function belongs.
+
+    QueryFunction:
+      name: name
+      schema:
+        type: string
+      in: query
+      required: true
+      description: The name of a function.
+
+    QueryAggregate:
+      name: aggregate
+      schema:
+        type: boolean
+        default: false
+      in: query
+      required: false
+      x-has-default: true
+      description: |-
+        If `false`, the API accesses a single Eventing node.
+        If `true`, the API accesses all Eventing nodes.
+
+    QuerySize:
+      name: size
+      schema:
+        type: integer
+        default: 40960
+      in: query
+      required: false
+      x-has-default: true
+      description: |-
+        The approximate amount of logging information returned.
+        Note that when fetching from more than one Eventing node, the amount of logging information returned from each node is the `size` divided by the number of nodes.
+
+  schemas:
+    settings_schema:
+      $ref: 'https://raw.githubusercontent.com/couchbase/eventing/refs/heads/7.6.3/parser/settings_schema.json'
+
+    depcfg_schema:
+      $ref: 'https://raw.githubusercontent.com/couchbase/eventing/refs/heads/7.6.3/parser/depcfg_schema.json'
+
+    handler_schema:
+      $ref: 'https://raw.githubusercontent.com/couchbase/eventing/refs/heads/7.6.3/parser/handler_schema.json'
+
+    AppCode:
+      type: string
+      example: function OnUpdate(doc, meta) { log("id",meta.id); }
+      x-has-example: true
+
+    AddFunction:
+      title: Function Request
+      oneOf:
+        - $ref: "#/components/schemas/handler_schema"
+        - type: array
+          description: An array containing a single function definition object.
+          minItems: 1
+          maxItems: 1
+          items:
+            $ref: "#/components/schemas/handler_schema"
+
+    AddFunctions:
+      title: Functions Request
+      oneOf:
+        - $ref: "#/components/schemas/handler_schema"
+        - type: array
+          description: An array containing one or more function definition objects.
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/handler_schema"
+
+    UnivConfig:
+      title: Global Config
+      type: object
+      properties:
+        ram_quota:
+          type: integer
+          default: 256
+          example: 512
+          x-has-example: true
+          x-has-default: true
+          description: The memory allocation for the Eventing Service, per node.
+        enable_debugger:
+          type: boolean
+          default: false
+          x-has-default: true
+          description: |-
+            Enables the Eventing service debugger.
+            For details, see [Debugging and Diagnosability](/server/7.6/eventing/eventing-debugging-and-diagnosability.html).
+
+  responses:
+    OK:
+      description: Success.
+
+    Goof:
+      description: Failure.
+
+  securitySchemes:
+    Global:
+      type: http
+      scheme: basic
+      description: |-
+        Global functions with a function scope of ``*.*`` can only be made or managed by users with the Full Admin or Eventing Full Admin role.
+        For global functions, you do not need to pass the `bucket` and `scope` query parameters to specify the function scope.
+        The credentials must be an administrator username and password.
+
+        Note that this is the default function scope for all functions after an upgrade from a prior version.
+
+    Scoped:
+      type: http
+      scheme: basic
+      description: |-
+        For scoped functions, you must pass the `bucket` and `scope` query parameters to specify the function scope.
+        The credentials are the username and password of any authorized user.
+
+        You can quote the REST call on the command line to escape the `&` and `?` characters.
+
+    Unscoped:
+      type: http
+      scheme: basic
+      description: |-
+        Unscoped REST API calls do not require you to specify the function scope.
+        The action is fully determined by the username and password credentials passed to the REST call.
