@@ -133,11 +133,8 @@ curl -XPOST -d '{
 ====
 [.status]#Couchbase Server 7.6.4#
 
-To enable compatibility with Sync Gateway:
-
-. Pause the function -- see <<basic_pause>>.
-. Set `allow_sync_documents` to `false`, as shown in this example.
-. Resume the function -- see <<basic_resume>>.
+This example sets `allow_sync_documents` to `false`, to enable compatibility with Sync Gateway.
+The function is currently paused.
 
 .Curl request
 [source,sh]
@@ -149,7 +146,7 @@ curl -XPOST -d '{
 }' "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings"
 ----
 
-For details, see xref:sync-gateway:server-compatibility-eventing.adoc[].
+For details, see xref:sync-gateway::server-compatibility-eventing.adoc[].
 ====
 
 [#ex-sync-gateway-scoped]
@@ -157,11 +154,8 @@ For details, see xref:sync-gateway:server-compatibility-eventing.adoc[].
 ====
 [.status]#Couchbase Server 7.6.4#
 
-To enable compatibility with Sync Gateway:
-
-. Pause the function -- see <<basic_pause>>.
-. Set `allow_sync_documents` to `false`, as shown in this example.
-. Resume the function -- see <<basic_resume>>.
+This example sets `allow_sync_documents` to `false`, to enable compatibility with Sync Gateway.
+The function is currently paused.
 
 .Curl request
 [source,sh]
@@ -173,7 +167,7 @@ curl -XPOST -d '{
 }' "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings?bucket=bulk&scope=data"
 ----
 
-For details, see xref:sync-gateway:server-compatibility-eventing.adoc[].
+For details, see xref:sync-gateway::server-compatibility-eventing.adoc[].
 ====
 
 .Deploy an undeployed global function -- deprecated
