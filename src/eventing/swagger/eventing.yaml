@@ -615,8 +615,7 @@ paths:
       summary: List Global Config
       description: |-
         Shows all global configuration settings.
-        There are currently just two settings: `enable_debugger` and `ram_quota`.
-        Both of these settings can also be adjusted via the UI.
+        Note that the `enable_debugger` and `ram_quota` settings can also be adjusted via the UI.
       tags:
         - global config
       security:
@@ -841,13 +840,13 @@ components:
 
   schemas:
     settings_schema:
-      $ref: 'https://raw.githubusercontent.com/couchbase/eventing/refs/heads/7.6.3/parser/settings_schema.json'
+      $ref: 'https://raw.githubusercontent.com/couchbase/eventing/refs/heads/master/parser/settings_schema.json'
 
     depcfg_schema:
-      $ref: 'https://raw.githubusercontent.com/couchbase/eventing/refs/heads/7.6.3/parser/depcfg_schema.json'
+      $ref: 'https://raw.githubusercontent.com/couchbase/eventing/refs/heads/master/parser/depcfg_schema.json'
 
     handler_schema:
-      $ref: 'https://raw.githubusercontent.com/couchbase/eventing/refs/heads/7.6.3/parser/handler_schema.json'
+      $ref: 'https://raw.githubusercontent.com/couchbase/eventing/refs/heads/master/parser/handler_schema.json'
 
     AppCode:
       type: string
@@ -893,6 +892,19 @@ components:
           description: |-
             Enables the Eventing service debugger.
             For details, see [Debugging and Diagnosability](/server/7.6/eventing/eventing-debugging-and-diagnosability.html).
+        cursor_limit:
+          type: integer
+          default: 5
+          maximum: 20
+          minimum: 1
+          x-has-default: true
+          x-desc-status: Couchbase Server 7.6.4
+          description: |-
+            The maximum number of cursor-aware Eventing functions that can coexist on a given source keyspace. (A cursor-aware Eventing function is one for which the `cursor_aware` setting is `true`.)
+
+            Increasing this setting enables more cursor-aware Eventing functions to register and listen to any given collection.
+
+            Decreasing this setting prevents further cursor-aware Eventing functions from being registered on any given collection; however, it doesn't unregister already registered cursor-aware Eventing functions.
 
   responses:
     OK:

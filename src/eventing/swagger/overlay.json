@@ -1,0 +1,30 @@
+{
+  "overlay": "1.0.0",
+  "info": {
+    "title": "Overlay for Eventing Settings Schema",
+    "version": 1.0
+  },
+  "actions": [
+    {
+      "target": "components.schemas.settings_schema.properties.allow_sync_documents",
+      "update": {
+        "x-desc-status": "Couchbase Server 7.6.4",
+        "description": "Specifies whether the function allows Sync Gateway mutations.\n\n* By default, this setting is `true`, for compatibility with previous versions of Couchbase Server.\n\n* When this setting is `false`, the specified function skips all internal Sync Gateway documents, whose IDs are prefixed with `_sync`.\nThis enables the function to work with Sync Gateway.\n\nYou must ensure that none of the documents which contain your own working data have IDs which are prefixed with `_sync`.\n(Note that internal Sync Gateway attachment documents, whose IDs are prefixed with `_sync:att`, are still processed by the specified function.)"
+      }
+    },
+    {
+      "target": "components.schemas.settings_schema.properties.cursor_aware",
+      "update": {
+        "x-desc-status": "Couchbase Server 7.6.4",
+        "description": "Specifies whether the function suppresses potential duplicate mutations caused by App Services or Sync Gateway book-keeping.\n\nEnabling this setting guarantees that the Eventing function will only trigger once for any given mutation received from App Services or Sync Gateway.\n\nNote that enabling this setting may have a noticeable impact on the performance of the Eventing function."
+      }
+    },
+    {
+      "target": "components.schemas.settings_schema.properties.cursor_checkpoint_timeout",
+      "update": {
+        "x-desc-status": "Couchbase Server 7.6.4",
+        "description": "The maximum time the checkpoint writer can run before it is forcefully terminated (in seconds)."
+      }
+    }
+  ]
+}

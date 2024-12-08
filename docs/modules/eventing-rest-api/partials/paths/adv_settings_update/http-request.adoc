@@ -128,6 +128,48 @@ curl -XPOST -d '{
 ----
 ====
 
+[#ex-sync-gateway-global]
+.Enable Sync Gateway compatibility for a global function
+====
+[.status]#Couchbase Server 7.6.4#
+
+This example sets `allow_sync_documents` to `false`, to enable compatibility with Sync Gateway.
+The function is currently paused.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST -d '{
+  "deployment_status": true,
+  "processing_status": false,
+  "allow_sync_documents": false
+}' "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings"
+----
+
+For details, see xref:sync-gateway::server-compatibility-eventing.adoc[].
+====
+
+[#ex-sync-gateway-scoped]
+.Enable Sync Gateway compatibility for a scoped function
+====
+[.status]#Couchbase Server 7.6.4#
+
+This example sets `allow_sync_documents` to `false`, to enable compatibility with Sync Gateway.
+The function is currently paused.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST -d '{
+  "deployment_status": true,
+  "processing_status": false,
+  "allow_sync_documents": false
+}' "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings?bucket=bulk&scope=data"
+----
+
+For details, see xref:sync-gateway::server-compatibility-eventing.adoc[].
+====
+
 .Deploy an undeployed global function -- deprecated
 ====
 .Curl request
