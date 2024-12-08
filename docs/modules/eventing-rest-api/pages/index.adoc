@@ -4276,8 +4276,7 @@ GET /api/v1/config
 [markdown]
 --
 Shows all global configuration settings.
-There are currently just two settings: `enable_debugger` and `ram_quota`.
-Both of these settings can also be adjusted via the UI.
+Note that the `enable_debugger` and `ram_quota` settings can also be adjusted via the UI.
 --
 
 
@@ -7755,7 +7754,7 @@ endif::collapse-models[]
 
 :leveloffset: +1
 
-include::{specDir}definitions/settings_schema/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/settings_schema/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -7849,11 +7848,11 @@ a¦ Integer
 a¦ 
 *cursor_checkpoint_timeout* +
 _optional_
-a¦ 
+a¦ [.status]##Couchbase Server 7.6.4##
 
 [markdown]
 --
-maximum time the to checkpoint writer can run before it is forcefully terminated (in seconds)
+The maximum time the checkpoint writer can run before it is forcefully terminated (in seconds).
 --
 
 [%hardbreaks]
@@ -8273,11 +8272,19 @@ a¦ Boolean
 a¦ 
 *allow_sync_documents* +
 _optional_
-a¦ 
+a¦ [.status]##Couchbase Server 7.6.4##
 
 [markdown]
 --
-allow sync gateway mutations
+Specifies whether the function allows Sync Gateway mutations.
+
+* By default, this setting is `true`, for compatibility with previous versions of Couchbase Server.
+
+* When this setting is `false`, the specified function skips all internal Sync Gateway documents, whose IDs are prefixed with `_sync`.
+This enables the function to work with Sync Gateway.
+
+You must ensure that none of the documents which contain your own working data have IDs which are prefixed with `_sync`.
+(Note that internal Sync Gateway attachment documents, whose IDs are prefixed with `_sync:att`, are still processed by the specified function.)
 --
 
 [%hardbreaks]
@@ -8288,11 +8295,15 @@ a¦ Boolean
 a¦ 
 *cursor_aware* +
 _optional_
-a¦ 
+a¦ [.status]##Couchbase Server 7.6.4##
 
 [markdown]
 --
-syncgateway aware function
+Specifies whether the function suppresses potential duplicate mutations caused by App Services or Sync Gateway book-keeping.
+
+Enabling this setting guarantees that the Eventing function will only trigger once for any given mutation received from App Services or Sync Gateway.
+
+Note that enabling this setting may have a noticeable impact on the performance of the Eventing function.
 --
 
 [%hardbreaks]
@@ -8448,6 +8459,28 @@ For details, see [Debugging and Diagnosability](/server/7.6/eventing/eventing-de
 *Default:* `false`
 {blank}
 a¦ Boolean
+
+
+a¦ 
+*cursor_limit* +
+_optional_
+a¦ [.status]##Couchbase Server 7.6.4##
+
+[markdown]
+--
+The maximum number of cursor-aware Eventing functions that can coexist on a given source keyspace. (A cursor-aware Eventing function is one for which the `cursor_aware` setting is `true`.)
+
+Increasing this setting enables more cursor-aware Eventing functions to register and listen to any given collection.
+
+Decreasing this setting prevents further cursor-aware Eventing functions from being registered on any given collection; however, it doesn't unregister already registered cursor-aware Eventing functions.
+--
+
+[%hardbreaks]
+*Default:* `5`
+*Minimum:* `1`
+*Maximum:* `20`
+{blank}
+a¦ Integer
 
 
 |===
