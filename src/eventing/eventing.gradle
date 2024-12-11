@@ -1,8 +1,31 @@
+plugins {
+    id("io.datapith.jayOverlay").version("0.1.11")
+}
+
+jayOverlay {
+    targetFile.set("${projectDir}/build/bundle/eventing.yaml")
+    overlayFile.set("${projectDir}/swagger/overlay.json")
+    outputDir.set("${projectDir}/build/overlay")
+}
+
 apply plugin: 'org.openapi.generator'
+
+task bundleSpec(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
+    generatorName = "openapi-yaml"
+    inputSpec = file("swagger/eventing.yaml").getAbsolutePath().toString()
+    outputDir = "${projectDir}/build/bundle"
+    globalProperties = [
+            generateAliasAsModel: "true"
+    ]
+    additionalProperties = [
+            outputFile: "eventing.yaml",
+    ]
+    generateAliasAsModel = true
+}
 
 openApiGenerate {
     generatorName = "asciidoc"
-    inputSpec = file("swagger/eventing.yaml").getAbsolutePath().toString()
+    inputSpec = file("build/overlay/eventing.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/eventing-rest-api/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cb-swagger"
@@ -30,3 +53,6 @@ openApiGenerate {
             depcfg_schema_curl_inner: "Deployment URL"
     ]
 }
+
+tasks.applyOverlay.dependsOn(bundleSpec)
+tasks.openApiGenerate.dependsOn(applyOverlay)

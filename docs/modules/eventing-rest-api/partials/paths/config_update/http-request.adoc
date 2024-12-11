@@ -20,6 +20,18 @@ curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
 ----
 ====
 
+.Set cursor limit
+====
+[.status]#Couchbase Server 7.6.4#
+
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
+  -d '{"cursor_limit": 10}'
+----
+====
+
 .Allow interbucket recursion
 ====
 This example disables the safety checks that prevent basic infinite recursive Eventing functions.

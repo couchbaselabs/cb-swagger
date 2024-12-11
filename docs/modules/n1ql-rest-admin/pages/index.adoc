@@ -4849,7 +4849,7 @@ ifdef::model-descriptions[]
 A nested object that sets the parameters for the completed requests catalog.
 All completed requests that match these parameters are tracked in the completed requests catalog.
 
-Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
+Refer to [Configure Completed Requests][sys-completed-config] for more information and examples.
 
 [sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
 
@@ -4950,7 +4950,7 @@ a¦
 --
 A unique string which tags a set of qualifiers.
 
-Refer to [Configure the Completed Requests][sys-completed-config] for more information.
+Refer to [Configure Completed Requests][sys-completed-config] for more information.
 
 [sys-completed-config]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-completed-config
 
@@ -6018,7 +6018,7 @@ As new completed requests are added, old ones are removed.
 
 Increase this when the completed request keyspace is not big enough to track the slow requests, such as when you want a larger sample of slow requests.
 
-Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
+Refer to [Configure Completed Requests][sys-completed-config] for more information and examples.
 
 The [cluster-level][queryCompletedLimit] `queryCompletedLimit` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -6053,7 +6053,7 @@ Values larger than the maximum limit are silently treated as the maximum limit.
 Queries with plans larger than this are not logged.
 You must obtain execution plans for such queries via profiling or using the EXPLAIN statement.
 
-Refer to [Configure the Completed Requests][sys-completed-config] for more information.
+Refer to [Configure Completed Requests][sys-completed-config] for more information.
 
 The [cluster-level][queryCompletedMaxPlanSize] `queryCompletedMaxPlanSize` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -6067,6 +6067,33 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `262144`
 *Minimum:* `0`
 *Maximum:* `20840448`
+{blank}
+a¦ Integer (int32)
+
+
+a¦ [#completed-stream-size]
+*completed-stream-size* +
+_optional_
+a¦ [.status]##Couchbase Server 7.6.4##
+
+[markdown]
+--
+A file size in MiB.
+When specified, completed requests are saved to the Couchbase Server `logs` directory.
+Completed requests are saved to GZIP archives with the prefix `local_request_log`.
+The value of this property determines the size of the data to retain, per node.
+
+Specify `0` (the default) to disable completed request streaming.
+
+Completed request streaming is available in Couchbase Server 7.6.4 and later.
+
+Refer to [Stream Completed Requests][sys-history] for more information and examples.
+
+[sys-history]: /server/7.6/manage/monitor/monitoring-n1ql-query.html#sys-history
+
+--
+
+[%hardbreaks]
 {blank}
 a¦ Integer (int32)
 
@@ -6089,7 +6116,7 @@ All completed queries lasting longer than this threshold are logged in the compl
 Specify `0` to track all requests, independent of duration.
 Specify any negative number to track none.
 
-Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
+Refer to [Configure Completed Requests][sys-completed-config] for more information and examples.
 
 The [cluster-level][queryCompletedThreshold] `queryCompletedThreshold` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
