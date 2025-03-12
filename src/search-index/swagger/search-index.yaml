@@ -1,0 +1,1414 @@
+openapi: 3.0.3
+info:
+  title: Couchbase Search Index Management and Monitoring API
+  description: |
+    Use the following endpoints in the Search Service API to manage and monitor your Search indexes.
+  version: 1.0.0
+
+servers:
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
+    variables:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+        description: The host name or IP address of a node running the Search service.
+      port:
+        default: "8094"
+        description: |-
+          The Search service REST port.
+          Use `18094` for secure access.
+        enum:
+          - "8094"
+          - "18094"
+
+tags:
+  - name: Definitions
+    description: Use the following APIs to retrieve Search index definitions, create new Search indexes, or delete an existing Search index.
+  - name: Management
+    description: Use the following endpoints to manage index controls, such as document ingestion, partition assignment, and queries.
+  - name: Monitoring
+    description: Use the following endpoints to get statistics about Search indexes for monitoring and debugging.
+  - name: Querying
+    description: Use the following endpoints to query the contents of a Search index.
+
+paths:
+  /api/index:
+    get:
+      operationId: g-api-index
+      summary: Get All Search Index Definitions
+      description: Returns all Search index definitions from the bucket where you have read permissions, as a JSON object.
+      tags:
+        - Definitions
+      responses:
+        '200':
+          description: A JSON object containing all Search index definitions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  indexDefs:
+                    type: object
+                    properties:
+                      implVersion:
+                        type: string
+                      indexDefs:
+                        type: object
+                        additionalProperties:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            params:
+                              type: string
+                            planParams:
+                              type: object
+                              properties:
+                                hierarchyRules:
+                                  type: string
+                                  nullable: true
+                                maxPartitionsPerPIndex:
+                                  type: integer
+                                nodePlanParams:
+                                  type: string
+                                  nullable: true
+                                numReplicas:
+                                  type: integer
+                                planFrozen:
+                                  type: boolean
+                            sourceName:
+                              type: string
+                            sourceParams:
+                              type: string
+                            sourceType:
+                              type: string
+                            sourceUUID:
+                              type: string
+                            type:
+                              type: string
+                            uuid:
+                              type: string
+                  status:
+                    type: string
+              example:
+                {
+                  "indexDefs": {
+                      "implVersion": "4.0.0",
+                      "indexDefs": {
+                          "myFirstIndex": {
+                          "name": "myFirstIndex",
+                          "params": "",
+                          "planParams": {
+                              "hierarchyRules": null,
+                              "maxPartitionsPerPIndex": 0,
+                              "nodePlanParams": null,
+                              "numReplicas": 0,
+                              "planFrozen": false
+                          },
+                          "sourceName": "",
+                          "sourceParams": "",
+                          "sourceType": "nil",
+                          "sourceUUID": "",
+                          "type": "fulltext-index",
+                          "uuid": "6cc599ab7a85bf3b"
+                        }
+                    },
+                    "uuid": "6cc599ab7a85bf3b"
+                  },
+                  "status": "ok"
+              }
+      security:
+        - Read: []
+
+  /api/bucket/{BUCKET_NAME}/scope/{SCOPE_NAME}/index:
+    get:
+      operationId: g-api-scoped-indexes
+      summary: Get All Search Index Definitions (Scoped)
+      description: Returns all Search index definitions inside the bucket and scope specified in the endpoint URL as a JSON object.
+      tags:
+        - Definitions
+      parameters:
+        - $ref: "#/components/parameters/PathBucket"
+        - $ref: "#/components/parameters/PathScope"
+      responses:
+        '200':
+          description: A JSON object containing all Search index definitions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  indexDefs:
+                    type: object
+                    properties:
+                      uuid:
+                        type: string
+                      indexDefs:
+                        type: object
+                        additionalProperties:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            name:
+                              type: string
+                            uuid:
+                              type: string
+                            sourceType:
+                              type: string
+                            sourceName:
+                              type: string
+                            sourceUUID:
+                              type: string
+                            planParams:
+                              type: object
+                              properties:
+                                maxPartitionsPerPIndex:
+                                  type: integer
+                                indexPartitions:
+                                  type: integer
+                            params:
+                              type: object
+                              properties:
+                                doc_config:
+                                  type: object
+                                  properties:
+                                    docid_prefix_delim:
+                                      type: string
+                                    docid_regexp:
+                                      type: string
+                                    mode:
+                                      type: string
+                                    type_field:
+                                      type: string
+                                mapping:
+                                  type: object
+                                  properties:
+                                    analysis:
+                                      type: object
+                                    default_analyzer:
+                                      type: string
+                                    default_datetime_parser:
+                                      type: string
+                                    default_field:
+                                      type: string
+                                    default_mapping:
+                                      type: object
+                                      properties:
+                                        dynamic:
+                                          type: boolean
+                                        enabled:
+                                          type: boolean
+                                    default_type:
+                                      type: string
+                                    docvalues_dynamic:
+                                      type: boolean
+                                    index_dynamic:
+                                      type: boolean
+                                    store_dynamic:
+                                      type: boolean
+                                    type_field:
+                                      type: string
+                                    types:
+                                      type: object
+                                      additionalProperties:
+                                        type: object
+                                        properties:
+                                          dynamic:
+                                            type: boolean
+                                          enabled:
+                                            type: boolean
+                                          properties:
+                                            type: object
+                                            additionalProperties:
+                                              type: object
+                                              properties:
+                                                dynamic:
+                                                  type: boolean
+                                                enabled:
+                                                  type: boolean
+                                                fields:
+                                                  type: array
+                                                  items:
+                                                    type: object
+                                                    properties:
+                                                      docvalues:
+                                                        type: boolean
+                                                      include_in_all:
+                                                        type: boolean
+                                                      include_term_vectors:
+                                                        type: boolean
+                                                      index:
+                                                        type: boolean
+                                                      name:
+                                                        type: string
+                                                      store:
+                                                        type: boolean
+                                                      type:
+                                                        type: string
+                                store:
+                                  type: object
+                                  properties:
+                                    indexType:
+                                      type: string
+                                    segmentVersion:
+                                      type: integer
+                            sourceParams:
+                              type: object
+              example:
+                {
+                    "status": "ok",
+                    "indexDefs": {
+                        "uuid": "23cf9530131858b8",
+                        "indexDefs": {
+                            "travel-sample.inventory.travel-hotel": {
+                                "type": "fulltext-index",
+                                "name": "travel-hotel",
+                                "uuid": "a04a16f178846bc4",
+                                "sourceType": "gocbcore",
+                                "sourceName": "travel-sample",
+                                "sourceUUID": "8f866261438f8b0d415a437552f3ae99",
+                                "planParams": {
+                                    "maxPartitionsPerPIndex": 1024,
+                                    "indexPartitions": 1
+                                },
+                                "params": {
+                                    "doc_config": {
+                                        "docid_prefix_delim": "",
+                                        "docid_regexp": "",
+                                        "mode": "scope.collection.type_field",
+                                        "type_field": "type"
+                                    },
+                                    "mapping": {
+                                        "analysis": {},
+                                        "default_analyzer": "standard",
+                                        "default_datetime_parser": "dateTimeOptional",
+                                        "default_field": "_all",
+                                        "default_mapping": {
+                                            "dynamic": true,
+                                            "enabled": false
+                                        },
+                                        "default_type": "_default",
+                                        "docvalues_dynamic": false,
+                                        "index_dynamic": true,
+                                        "store_dynamic": false,
+                                        "type_field": "_type",
+                                        "types": {
+                                            "inventory.hotel": {
+                                                "dynamic": false,
+                                                "enabled": true,
+                                                "properties": {
+                                                    "reviews": {
+                                                        "dynamic": false,
+                                                        "enabled": true,
+                                                        "properties": {
+                                                            "content": {
+                                                                "dynamic": false,
+                                                                "enabled": true,
+                                                                "fields": [
+                                                                    {
+                                                                        "docvalues": true,
+                                                                        "include_in_all": true,
+                                                                        "include_term_vectors": true,
+                                                                        "index": true,
+                                                                        "name": "content",
+                                                                        "store": true,
+                                                                        "type": "text"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "store": {
+                                        "indexType": "scorch",
+                                        "segmentVersion": 15
+                                    }
+                                },
+                                "sourceParams": {}
+                            },
+                            "travel-sample.inventory.travel-test": {
+                                "type": "fulltext-index",
+                                "name": "travel-test",
+                                "uuid": "766ddce5d41a3b41",
+                                "sourceType": "gocbcore",
+                                "sourceName": "travel-sample",
+                                "sourceUUID": "8f866261438f8b0d415a437552f3ae99",
+                                "planParams": {
+                                    "maxPartitionsPerPIndex": 1024,
+                                    "indexPartitions": 1
+                                },
+                                "params": {
+                                    "doc_config": {
+                                        "docid_prefix_delim": "",
+                                        "docid_regexp": "",
+                                        "mode": "scope.collection.type_field",
+                                        "type_field": "type"
+                                    },
+                                    "mapping": {
+                                    "analysis": {},
+                                    "default_analyzer": "standard",
+                                    "default_datetime_parser": "dateTimeOptional",
+                                    "default_field": "_all",
+                                    "default_mapping": {
+                                        "dynamic": true,
+                                        "enabled": true
+                                    },
+                                    "default_type": "_default",
+                                    "docvalues_dynamic": false,
+                                    "index_dynamic": true,
+                                    "store_dynamic": false,
+                                    "type_field": "_type"
+                                    },
+                                    "store": {
+                                        "indexType": "scorch",
+                                        "segmentVersion": 15
+                                    }
+                                },
+                                "sourceParams": {}
+                            }
+                        },
+                        "implVersion": "5.7.0"
+                    }
+                }
+      security:
+        - Read: []
+
+  /api/index/{INDEX_NAME}:
+    get:
+      operationId: g-api-index-name
+      summary: Get Index Definition
+      description: Returns the definition of the Search index specified in the endpoint URL as a JSON object.
+      tags:
+        - Definitions
+      parameters:
+        - $ref: "#/components/parameters/PathIndexFull"
+      responses:
+        '200':
+          description: A JSON object containing the Search index definition.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  indexDef:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      params:
+                        type: string
+                      planParams:
+                        type: object
+                        properties:
+                          hierarchyRules:
+                            type: string
+                            nullable: true
+                          maxPartitionsPerPIndex:
+                            type: integer
+                          nodePlanParams:
+                            type: string
+                            nullable: true
+                          numReplicas:
+                            type: integer
+                          planFrozen:
+                            type: boolean
+                      sourceName:
+                        type: string
+                      sourceParams:
+                        type: string
+                      sourceType:
+                        type: string
+                      sourceUUID:
+                        type: string
+                      type:
+                        type: string
+                      uuid:
+                        type: string
+                  planPIndexes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        indexName:
+                          type: string
+                        indexParams:
+                          type: string
+                        indexType:
+                          type: string
+                        indexUUID:
+                          type: string
+                        name:
+                          type: string
+                        nodes:
+                          type: object
+                          additionalProperties:
+                            type: object
+                            properties:
+                              canRead:
+                                type: boolean
+                              canWrite:
+                                type: boolean
+                              priority:
+                                type: integer
+                        sourceName:
+                          type: string
+                        sourceParams:
+                          type: string
+                        sourcePartitions:
+                          type: string
+                        sourceType:
+                          type: string
+                        sourceUUID:
+                          type: string
+                        uuid:
+                          type: string
+                  status:
+                    type: string
+                  warnings:
+                    type: array
+                    items:
+                      type: string
+              example:
+                {
+                  "indexDef": {
+                      "name": "myFirstIndex",
+                      "params": "",
+                      "planParams": {
+                          "hierarchyRules": null,
+                          "maxPartitionsPerPIndex": 0,
+                          "nodePlanParams": null,
+                          "numReplicas": 0,
+                          "planFrozen": false
+                      },
+                      "sourceName": "",
+                      "sourceParams": "",
+                      "source": "nil",
+                      "sourceUUID": "",
+                      "type": "fulltext-index",
+                      "uuid": "6cc599ab7a85bf3b"
+                    },
+                    "planPIndexes": [
+                      {
+                      "indexName": "myFirstIndex",
+                      "indexParams": "",
+                      "indexType": "bleve",
+                      "indexUUID": "6cc599ab7a85bf3b",
+                      "name": "myFirstIndex_6cc599ab7a85bf3b_0",
+                      "nodes": {
+                          "78fc2ffac2fd9401": {
+                            "canRead": true,
+                            "canWrite": true,
+                            "priority": 0
+                          }
+                      },
+                      "sourceName": "",
+                      "sourceParams": "",
+                      "sourcePartitions": "",
+                      "sourceType": "nil",
+                      "sourceUUID": "",
+                      "uuid": "64bed6e2edf354c3"
+                      }
+                    ],
+                    "status": "ok",
+                    "warnings": []
+                  }
+      security:
+        - Read: []
+
+    delete:
+      operationId: d-api-index-name
+      summary: Delete Index Definition
+      description: Deletes the Search index definition specified in the endpoint URL.
+      tags:
+        - Definitions
+      parameters:
+        - $ref: "#/components/parameters/PathIndexFull"
+      responses:
+        '200':
+          description: 'The Search Service returns a HTTP 200 status code with a response that includes "status": "ok".'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  uuid:
+                    type: string
+              example:
+                status: ok
+                uuid: 123294e5a4efbe39
+      security:
+        - Write: []
+
+    put:
+      operationId: p-api-index-name
+      summary: Create or Update an Index Definition
+      description: |-
+        If the Search index in the endpoint URL does not exist, this endpoint uses a JSON object in the request body to create a new index.
+        If the Search index already exists, this endpoint updates the Search index definition.
+      tags:
+        - Definitions
+      parameters:
+        - $ref: "#/components/parameters/PathIndexFull"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IndexDefinition'
+      responses:
+        '200':
+          description: A JSON object indicating the status of the operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  name:
+                    type: string
+                  uuid:
+                    type: string
+        default:
+          description: The Search Service returns a non-200 HTTP error code when a request fails.
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                {
+                    "error": "rest_create_index: index type is required, indexName: travel-test",
+                    "request": "",
+                    "status": "fail"
+                }
+      security:
+        - Write: []
+
+  /api/bucket/{BUCKET_NAME}/scope/{SCOPE_NAME}/index/{INDEX_NAME}:
+    get:
+      operationId: g-api-scoped-index-name
+      summary: Get Index Definition (Scoped)
+      description: |-
+        Returns the Search index definition for the Search index specified in the endpoint URL as a JSON object.
+        Unlike [Get Index Definition](#g-api-index-name), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+      tags:
+        - Definitions
+      parameters:
+        - $ref: "#/components/parameters/PathBucket"
+        - $ref: "#/components/parameters/PathScope"
+        - $ref: "#/components/parameters/PathIndex"
+      responses:
+        '200':
+          description: A JSON object containing the Search index definition.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  indexDef:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      params:
+                        type: string
+                      planParams:
+                        type: object
+                        properties:
+                          hierarchyRules:
+                            type: string
+                            nullable: true
+                          maxPartitionsPerPIndex:
+                            type: integer
+                          nodePlanParams:
+                            type: string
+                            nullable: true
+                          numReplicas:
+                            type: integer
+                          planFrozen:
+                            type: boolean
+                      sourceName:
+                        type: string
+                      sourceParams:
+                        type: string
+                      sourceType:
+                        type: string
+                      sourceUUID:
+                        type: string
+                      type:
+                        type: string
+                      uuid:
+                        type: string
+                  planPIndexes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        indexName:
+                          type: string
+                        indexParams:
+                          type: string
+                        indexType:
+                          type: string
+                        indexUUID:
+                          type: string
+                        name:
+                          type: string
+                        nodes:
+                          type: object
+                          additionalProperties:
+                            type: object
+                            properties:
+                              canRead:
+                                type: boolean
+                              canWrite:
+                                type: boolean
+                              priority:
+                                type: integer
+                        sourceName:
+                          type: string
+                        sourceParams:
+                          type: string
+                        sourcePartitions:
+                          type: string
+                        sourceType:
+                          type: string
+                        sourceUUID:
+                          type: string
+                        uuid:
+                          type: string
+                  status:
+                    type: string
+                  warnings:
+                    type: array
+                    items:
+                      type: string
+              examples:
+                vector:
+                  summary: Sample Response for a Vector Search index
+                  externalValue: 'https://raw.githubusercontent.com/couchbase/docs-server/refs/heads/release/7.6/modules/rest-api/examples/fts-sample-index-def-response.jsonc'
+      security:
+        - Read: []
+
+    put:
+      operationId: p-api-scoped-index-name
+      summary: Create or Update an Index Definition (Scoped)
+      description: |-
+        If the Search index in the endpoint URL does not exist, this endpoint uses a JSON object in the request body to create a new index.
+        If the Search index already exists, this endpoint updates the Search index definition.
+        Unlike [Create or Update an Index Definition](#p-api-index-name), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+      tags:
+        - Definitions
+      parameters:
+        - $ref: "#/components/parameters/PathBucket"
+        - $ref: "#/components/parameters/PathScope"
+        - $ref: "#/components/parameters/PathIndex"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IndexDefinition'
+      responses:
+        '200':
+          description: A JSON object indicating the status of the operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  name:
+                    type: string
+                  uuid:
+                    type: string
+      security:
+        - Write: []
+
+    delete:
+      operationId: d-api-scoped-index-name
+      summary: Delete Index Definition (Scoped)
+      description: |-
+        Delete the Search index definition from the bucket and scope specified in the endpoint URL.
+        Unlike [Delete Index Definition](#d-api-index-name), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+      tags:
+        - Definitions
+      parameters:
+        - $ref: "#/components/parameters/PathBucket"
+        - $ref: "#/components/parameters/PathScope"
+        - $ref: "#/components/parameters/PathIndex"
+      responses:
+        '200':
+          description: A JSON object indicating the status of the operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  uuid:
+                    type: string
+      security:
+        - Write: []
+
+  /api/index/{INDEX_NAME}/ingestControl/{OP}:
+    post:
+      operationId: p-api-idx-name-ingestcontrol
+      summary: Set Index Ingestion Control
+      description: |-
+        For the Search index specified in the endpoint URL, pause or resume index updates and maintenance.
+        While paused, the Search index does not load any new document mutations.
+      tags:
+        - Management
+      parameters:
+        - $ref: "#/components/parameters/PathIndexFull"
+        - $ref: "#/components/parameters/PathOpIngest"
+      responses:
+        '200':
+          description: A JSON object indicating the status of the operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+      security:
+        - Manage: []
+
+  /api/bucket/{BUCKET_NAME}/scope/{SCOPE_NAME}/index/{INDEX_NAME}/ingestControl/{OP}:
+    post:
+      operationId: p-api-scoped-ingestcontrol
+      summary: Set Index Ingestion Control (Scoped)
+      description: |-
+        For the Search index specified in the endpoint URL, pause or resume index updates and maintenance.
+        While paused, the Search index does not load any new document mutations.
+        Unlike [Set Index Ingestion Control](#p-api-idx-name-ingestcontrol), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+      tags:
+        - Management
+      parameters:
+        - $ref: "#/components/parameters/PathBucket"
+        - $ref: "#/components/parameters/PathScope"
+        - $ref: "#/components/parameters/PathIndex"
+        - $ref: "#/components/parameters/PathOpIngest"
+      responses:
+        '200':
+          description: A JSON object indicating the status of the operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+      security:
+        - Manage: []
+
+  /api/index/{INDEX_NAME}/planFreezeControl/{OP}:
+    post:
+      operationId: p-api-idx-name-planfreezecontrol
+      summary: Freeze Index Partition Assignment
+      description: |-
+        For the Search index specified in the endpoint URL, freeze or unfreeze the assignment of index partitions to nodes.
+        While frozen, the Search index stops assigning partitions during index rebalancing and index definition updates.
+      tags:
+        - Management
+      parameters:
+        - $ref: "#/components/parameters/PathIndexFull"
+        - $ref: "#/components/parameters/PathOpPartition"
+      responses:
+        '200':
+          description: A JSON object indicating the status of the operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+      security:
+        - Manage: []
+
+  /api/bucket/{BUCKET_NAME}/scope/{SCOPE_NAME}/index/{INDEX_NAME}/planFreezeControl/{OP}:
+    post:
+      operationId: p-api-scoped-planfreezecontrol
+      summary: Freeze Index Partition Assignment (Scoped)
+      description: |-
+        For the Search index specified in the endpoint URL, freeze or unfreeze the assignment of index partitions to nodes.
+        While frozen, the Search index stops assigning partitions during index rebalancing and index definition updates.
+        Unlike [Freeze Index Partition Assignment](#p-api-idx-name-planfreezecontrol), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+      tags:
+        - Management
+      parameters:
+        - $ref: "#/components/parameters/PathBucket"
+        - $ref: "#/components/parameters/PathScope"
+        - $ref: "#/components/parameters/PathIndex"
+        - $ref: "#/components/parameters/PathOpPartition"
+      responses:
+        '200':
+          description: A JSON object indicating the status of the operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+      security:
+        - Manage: []
+
+  /api/index/{INDEX_NAME}/queryControl/{OP}:
+    post:
+      operationId: p-api-idx-name-querycontrol
+      summary: Stop Queries on an Index
+      description: |-
+        For the Search index specified in the endpoint URL, disallow or allow queries.
+        While queries are disallowed, users see an error that the Search index's partitions could not be reached.
+      tags:
+        - Management
+      parameters:
+        - $ref: "#/components/parameters/PathIndexFull"
+        - $ref: "#/components/parameters/PathOpQuery"
+      responses:
+        '200':
+          description: A JSON object indicating the status of the operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+      security:
+        - Manage: []
+
+  /api/bucket/{BUCKET_NAME}/scope/{SCOPE_NAME}/index/{INDEX_NAME}/queryControl/{OP}:
+    post:
+      operationId: p-api-scoped-querycontrol
+      summary: Stop Queries on an Index (Scoped)
+      description: |-
+        For the Search index specified in the endpoint URL, disallow or allow queries.
+        While queries are disallowed, users see an error that the Search index's partitions could not be reached.
+        Unlike [Stop Queries on an Index](#p-api-idx-name-querycontrol), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+      tags:
+        - Management
+      parameters:
+        - $ref: "#/components/parameters/PathBucket"
+        - $ref: "#/components/parameters/PathScope"
+        - $ref: "#/components/parameters/PathIndex"
+        - $ref: "#/components/parameters/PathOpQuery"
+      responses:
+        '200':
+          description: A JSON object indicating the status of the operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+      security:
+        - Manage: []
+
+  /api/stats:
+    get:
+      operationId: g-api-stats
+      summary: Get Indexing and Data Metrics for All Indexes
+      description: |-
+        Use this endpoint to get indexing and data-related metrics, timings, and counters from the node running the Search Service, for all Search indexes.
+        The endpoint returns the data as a JSON object.
+      tags:
+        - Monitoring
+      responses:
+        '200':
+          description: A JSON object containing indexing and data metrics.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  feeds:
+                    type: object
+                    additionalProperties:
+                      type: object
+                  manager:
+                    type: object
+                    properties:
+                      TotCreateIndex:
+                        type: integer
+                      TotDeleteIndex:
+                        type: integer
+                      TotUpdateIndex:
+                        type: integer
+                      TotBatchIntro:
+                        type: integer
+                      TotBatchIntroFail:
+                        type: integer
+                      TotBatchUpdate:
+                        type: integer
+                      TotBatchUpdateFail:
+                        type: integer
+                      TotBatchDelete:
+                        type: integer
+                      TotBatchDeleteFail:
+                        type: integer
+                      TotBatchGet:
+                        type: integer
+                      TotBleveDestStart:
+                        type: integer
+                      TotBleveDestStop:
+                        type: integer
+                      TotBleveDestRemove:
+                        type: integer
+                      TotBleveDestUpdate:
+                        type: integer
+                      TotBleveDestUpdateFail:
+                        type: integer
+                      TotBleveDestIntro:
+                        type: integer
+                      TotBleveDestIntroFail:
+                        type: integer
+                      TotBleveDestBatch:
+                        type: integer
+                      TotBleveDestBatchFail:
+                        type: integer
+                      TotBleveDestDelete:
+                        type: integer
+                      TotBleveDestDeleteFail:
+                        type: integer
+                      TotBleveDestClose:
+                        type: integer
+                      TotBleveDestCloseFail:
+                        type: integer
+                      TotQuery:
+                        type: integer
+                      TotQueryFail:
+                        type: integer
+                  pindexes:
+                    type: object
+                    additionalProperties:
+                      type: object
+      security:
+        - Statistics: []
+
+  /api/nsstats/index/{INDEX_NAME}:
+    get:
+      operationId: g-api-nsstats-index-name
+      summary: Get Query, Mutation, Partition, and Other Index Statistics
+      description: |
+        Gets query, mutation, document, partition, and compaction statistics for the Search index specified in the endpoint URL.
+        The endpoint returns the data as a JSON object.
+
+        Use this endpoint for monitoring the number of requests, documents, and more for a specific index.
+        For more detailed partition information and more overall statistics for an index, see [Get Indexing and Data Metrics, Timings, and Other Statistics](#g-api-stats-index-name).
+      tags:
+        - Monitoring
+      parameters:
+        - $ref: "#/components/parameters/PathIndexFull"
+      responses:
+        '200':
+          description: A JSON object containing statistics for the specified index.
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+        - Statistics: []
+
+  /api/stats/index/{INDEX_NAME}:
+    get:
+      operationId: g-api-stats-index-name
+      summary: Get Indexing and Data Metrics, Timings, and Other Statistics
+      description: |
+        Return indexing and data related metrics, timings, and counters for the Search index specified in the endpoint URL.
+        The endpoint returns the data as a JSON object.
+
+        Use this endpoint for more detailed partition information and more available statistics than [Get Query, Mutation, Partition, and Other Index Statistics](#g-api-nsstats-index-name).
+      tags:
+        - Monitoring
+      parameters:
+        - $ref: "#/components/parameters/PathIndexFull"
+      responses:
+        '200':
+          description: A JSON object containing statistics for the specified Search index.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stats:
+                    type: object
+                    additionalProperties:
+                      type: object
+      security:
+        - Statistics: []
+
+  /api/bucket/${BUCKET_NAME}/scope/${SCOPE_NAME}/index/${INDEX_NAME}/status:
+    get:
+      operationId: g-api-scoped-status
+      summary: Get Index Status (Scoped)
+      description: |
+        Returns the status of the Search index specified in the endpoint URL, including whether all index partitions are created and ready to use.
+      tags:
+        - Monitoring
+      parameters:
+        - $ref: "#/components/parameters/PathBucket"
+        - $ref: "#/components/parameters/PathScope"
+        - $ref: "#/components/parameters/PathIndex"
+      responses:
+        '200':
+          description: 'The Search Service returns a HTTP 200 status code with a response that includes "status": "ok".'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: ok
+                indexStatus: Ready
+      security:
+        - Read: []
+
+  /api/index/{INDEX_NAME}/analyzeDoc:
+    post:
+      operationId: g-api-stats-index-name-analyzeDoc
+      summary: Analyze Document
+      description: |
+        Use the Search index specified in the endpoint URL to analyze a document from the request body.
+      tags:
+        - Monitoring
+      parameters:
+        - $ref: "#/components/parameters/PathIndexFull"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Add any valid JSON document to the request body.
+            example:
+              name: hello world
+              title: couchbase blr
+      responses:
+        '200':
+          description: A JSON object containing the analysis of the provided document.
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+        - Read: []
+
+  /api/index/{INDEX_NAME}/count:
+    get:
+      operationId: g-api-index-name-count
+      summary: Get Document Count for an Index
+      description: |
+        Returns the number of documents indexed in the specified Search index.
+      tags:
+        - Querying
+      parameters:
+        - $ref: "#/components/parameters/PathIndexFull"
+      responses:
+        '200':
+          description: A JSON object containing the document count for the specified index.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+      security:
+        - Statistics: []
+
+  /api/bucket/{BUCKET_NAME}/scope/{SCOPE_NAME}/index/{INDEX_NAME}/pindexLookup:
+    post:
+      operationId: p-api-pindex-lookup
+      summary: Return the Index Partition and ID for a Document (Scoped)
+      description: |
+        Send a document ID in the request body and return the Search index partition ID for where the document is stored.
+        The endpoint returns a JSON object as a response.
+      tags:
+        - Querying
+      parameters:
+        - $ref: "#/components/parameters/PathBucket"
+        - $ref: "#/components/parameters/PathScope"
+        - $ref: "#/components/parameters/PathIndex"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Add a valid JSON object that contains the docID property, with a value that matches the document ID for a document in the Search index.
+            example:
+              docID: hotel_5848
+      responses:
+        '200':
+          description: A JSON object containing the partition index information.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  pindexes:
+                    type: object
+                    additionalProperties:
+                      type: object
+              example:
+                status: ok
+                pindexes:
+                  travel-sample.inventory.travel-test:
+                    id: travel-sample.inventory.travel-test_123294e5a4efbe39_4c1c5584
+      security:
+        - Manage: []
+
+  /api/index/{INDEX_NAME}/query:
+    post:
+      operationId: p-api-index-name-query
+      summary: Query a Search Index
+      description: |
+        Run a query formatted as a JSON object against the Search index definition specified in the endpoint URL.
+        The endpoint returns a JSON object as a response.
+      tags:
+        - Querying
+      parameters:
+        - $ref: "#/components/parameters/PathIndexFull"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: For more detailed information about how to format the request body for the POST /api/index/${INDEX_NAME}/query endpoint, see [Search Request JSON Properties](../search/search-request-params.html).
+      responses:
+        '200':
+          description: |-
+            The response object has a status section that must be checked for every request.
+            Under nearly all circumstances, the query response will be HTTP 200 even though individual index shards (pindexes) may encounter a timeout or return an error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties:
+                        type: object
+      security:
+        - Manage: []
+
+  /api/bucket/{BUCKET_NAME}/scope/{SCOPE_NAME}/index/{INDEX_NAME}/query:
+    post:
+      operationId: p-api-scoped-query
+      summary: Query a Search Index (Scoped)
+      description: |
+        Run a query formatted as a JSON object against the Search index definition specified in the endpoint URL.
+        The endpoint returns a JSON object as a response.
+        Unlike [Query a Search Index](#p-api-index-name-query), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+      tags:
+        - Querying
+      parameters:
+        - $ref: "#/components/parameters/PathBucket"
+        - $ref: "#/components/parameters/PathScope"
+        - $ref: "#/components/parameters/PathIndex"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: |
+                Add a JSON object to define the settings for your Search query.
+                For more information about how to create a Search query JSON object, see [Search Request JSON Properties](../search/search-request-params.html).
+      responses:
+        '200':
+          description: A JSON object containing the scoped query results.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties:
+                        type: object
+      security:
+        - Manage: []
+
+components:
+  parameters:
+    PathBucket:
+      name: BUCKET_NAME
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The name of the bucket containing the Search index definition.
+
+    PathScope:
+      name: SCOPE_NAME
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The name of the scope containing the Search index definition.
+
+    PathIndex:
+      name: INDEX_NAME
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^[A-Za-z][0-9A-Za-z_\-]*$'
+      description: The name of the Search index definition.
+
+    PathIndexFull:
+      name: INDEX_NAME
+      in: path
+      required: true
+      schema:
+        type: string
+      description: |-
+        The name of the Search index definition.
+        You must use the fully qualified name for the index, which includes the bucket and scope.
+
+        To view the full, scoped name for an index for use with this endpoint:
+
+        1. Go to the **Search** tab in the Couchbase Server Web Console.
+        2. Point to the **Index Name** for an index.
+
+    PathOpIngest:
+      name: OP
+      in: path
+      required: true
+      schema:
+        type: string
+        enum:
+          - pause
+          - resume
+      description: |-
+        To pause ingestion and maintenance, set `${OP}` to `pause`.
+        To resume ingestion and maintenance on a paused index, set `${OP}` to `resume`.
+
+    PathOpPartition:
+      name: OP
+      in: path
+      required: true
+      schema:
+        type: string
+        enum:
+          - freeze
+          - unfreeze
+      description: |-
+        To freeze partition assignment, set `${OP}` to `freeze`.
+        To unfreeze partition assignment on a frozen index, set `${OP}` to `unfreeze`.
+
+    PathOpQuery:
+      name: OP
+      in: path
+      required: true
+      schema:
+        type: string
+        enum:
+          - allow
+          - disallow
+      description: |-
+        To allow queries against a Search index, set `${OP}` to `allow`.
+        To block queries against a Search index, set `${OP}` to `disallow`.
+
+  schemas:
+    IndexDefinition:
+      type: object
+      title: Index Definition
+      description: |-
+        The full Search index definition.
+        For a detailed list of all parameters for the request body, see [Search Index JSON Properties](../search/search-index-params.html).
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          description: |-
+            The type of the Search index.
+            For more information, see [Initial Settings](../search/search-index-params.html#initial).
+        sourceName:
+          type: string
+          description: |-
+            The name of the bucket where the Search index is stored.
+            For more information, see [Initial Settings](../search/search-index-params.html#initial).
+        sourceUUID:
+          type: string
+          description: |-
+            The UUID of the bucket where the Search index is stored.
+            For more information, see [Initial Settings](../search/search-index-params.html#initial).
+        sourceParams:
+          type: object
+        params:
+          type: object
+          description: |-
+            The Search index's type identifier, type mappings, and analyzers.
+            For more information, see [Params Object](../search/search-index-params.html#params).
+        planParams:
+          type: object
+          description: |-
+            The Search index's partitioning and replication settings.
+            For more information, see [Plan Params Object](../search/search-index-params.html#planParams).
+        prevIndexUUID:
+          type: string
+          description: |-
+            The UUID of the previous index.
+            Intended for clients that want to check that they are not overwriting the Search index definition updates of concurrent clients.
+
+  securitySchemes:
+    Manage:
+      type: http
+      scheme: basic
+      description: |-
+        You must have the **Search Admin** role, with `cluster.bucket[$BUCKET_NAME].fts!manage` permissions on the required bucket.
+
+    Statistics:
+      type: http
+      scheme: basic
+      description: |-
+        You must have the **Search Admin** role, with `cluster.bucket[$BUCKET_NAME].stats!read` permissions on the required bucket.
+
+    Read:
+      type: http
+      scheme: basic
+      description: |-
+        You must have the **Search Reader** or **Search Admin** role, with `cluster.bucket[$BUCKET_NAME].fts!read` permissions on the required bucket.
+
+    Write:
+      type: http
+      scheme: basic
+      description: |-
+        You must have the **Search Admin** role, with `cluster.bucket[$BUCKET_NAME].fts!write` permissions on the required bucket.
