@@ -1,0 +1,664 @@
+openapi: 3.0.3
+info:
+  title: Couchbase Search Node API
+  description: |
+    Use the following endpoints in the Search Service API to manage and monitor your Search nodes.
+  version: 1.0.0
+
+servers:
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
+    variables:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+        description: The host name or IP address of a node running the Search service.
+      port:
+        default: "8094"
+        description: |-
+          The Search service REST port.
+          Use `18094` for secure access.
+        enum:
+          - "8094"
+          - "18094"
+
+tags:
+  - name: configuration
+    x-displayName: Node Configuration
+  - name: diagnostics
+    x-displayName: Node Diagnostics
+  - name: management
+    x-displayName: Node Management
+  - name: monitoring
+    x-displayName: Node Monitoring
+
+paths:
+  /api/cfg:
+    get:
+      operationId: getClusterConfig
+      summary: Get Cluster Configuration
+      description: Returns the node's current view of the cluster's configuration as JSON.
+      tags:
+        - configuration
+      responses:
+        '200':
+          description: A JSON object containing the node's configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/clusterConfig'
+              example: {
+                  "indexDefs": {
+                      "implVersion": "4.0.0",
+                      "indexDefs": {
+                          "myFirstIndex": {
+                              "name": "myFirstIndex",
+                              "params": "",
+                              "planParams": {
+                                  "hierarchyRules": null,
+                                  "maxPartitionsPerPIndex": 0,
+                                  "nodePlanParams": null,
+                                  "numReplicas": 0,
+                                  "planFrozen": false
+                              },
+                              "sourceName": "",
+                              "sourceParams": "",
+                              "sourceType": "nil",
+                              "sourceUUID": "",
+                              "type": "blackhole",
+                              "uuid": "6cc599ab7a85bf3b"
+                          }
+                      },
+                      "uuid": "6cc599ab7a85bf3b"
+                  },
+                  "indexDefsCAS": 3,
+                  "indexDefsErr": null,
+                  "nodeDefsKnown": {
+                      "implVersion": "4.0.0",
+                      "nodeDefs": {
+                          "78fc2ffac2fd9401": {
+                              "container": "",
+                              "extras": "",
+                              "hostPort": "0.0.0.0:8094",
+                              "implVersion": "4.0.0",
+                              "tags": null,
+                              "uuid": "78fc2ffac2fd9401",
+                              "weight": 1
+                          }
+                      },
+                      "uuid": "2f0d18fb750b2d4a"
+                  },
+                  "nodeDefsKnownCAS": 1,
+                  "nodeDefsKnownErr": null,
+                  "nodeDefsWanted": {
+                      "implVersion": "4.0.0",
+                      "nodeDefs": {
+                          "78fc2ffac2fd9401": {
+                              "container": "",
+                              "extras": "",
+                              "hostPort": "0.0.0.0:8094",
+                              "implVersion": "4.0.0",
+                              "tags": null,
+                              "uuid": "78fc2ffac2fd9401",
+                              "weight": 1
+                          }
+                      },
+                      "uuid": "72d6750878551451"
+                  },
+                  "nodeDefsWantedCAS": 2,
+                  "nodeDefsWantedErr": null,
+                  "planPIndexes": {
+                      "implVersion": "4.0.0",
+                      "planPIndexes": {
+                          "myFirstIndex_6cc599ab7a85bf3b_0": {
+                              "indexName": "myFirstIndex",
+                              "indexParams": "",
+                              "indexType": "blackhole",
+                              "indexUUID": "6cc599ab7a85bf3b",
+                              "name": "myFirstIndex_6cc599ab7a85bf3b_0",
+                              "nodes": {
+                                  "78fc2ffac2fd9401": {
+                                      "canRead": true,
+                                      "canWrite": true,
+                                      "priority": 0
+                                  }
+                              },
+                              "sourceName": "",
+                              "sourceParams": "",
+                              "sourcePartitions": "",
+                              "sourceType": "nil",
+                              "sourceUUID": "",
+                              "uuid": "64bed6e2edf354c3"
+                          }
+                      },
+                      "uuid": "6327debf817a5ec7",
+                      "warnings": {
+                          "myFirstIndex": []
+                      }
+                  },
+                  "planPIndexesCAS": 5,
+                  "planPIndexesErr": null,
+                  "status": "ok"
+              }
+      security:
+        - readClusterSettings: []
+
+  /api/cfgRefresh:
+    post:
+      operationId: refreshClusterConfig
+      summary: Refresh Node Configuration
+      description: Requests the node to refresh its configuration from the configuration provider.
+      tags:
+        - configuration
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+      security:
+        - writeClusterSettings: []
+
+  /api/managerKick:
+    post:
+      operationId: managerKick
+      summary: Replan Resource Assignments
+      description: Forces the node to replan resource assignments, (by running the planner, if enabled) and update its runtime state to reflect the latest plan (by running the janitor, if enabled).
+      tags:
+        - configuration
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+      security:
+        - writeClusterSettings: []
+
+  /api/managerMeta:
+    get:
+      operationId: managerMeta
+      summary: Get Node Capabilities
+      description: |-
+        Returns information on the node's capabilities, including available indexing and storage options as JSON.
+        This operation is intended to help management tools and web UIs to be more dynamically metadata driven.
+      tags:
+        - configuration
+      responses:
+        '200':
+          description: A JSON object containing the node's capabilities.
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+        - writeClusterSettings: []
+
+  /api/diag:
+    get:
+      operationId: getDiagnostics
+      summary: Get Diagnostics
+      description: |-
+        Returns the full set of diagnostic information from the node in one shot as JSON.
+
+        The response is the union of the responses from the node's other REST API diagnostic and monitoring endpoints.
+
+        For example, for a three node cluster, you could capture diagnostics for each node with something like:
+
+        ```shell
+        curl http://cbft-01:8094/api/diag > cbft-01.json
+        curl http://cbft-02:8094/api/diag > cbft-02.json
+        curl http://cbft-03:8094/api/diag > cbft-03.json
+        ```
+
+        The response JSON object can be quite large, 100s of KB or much more.
+
+        The motivation for this operation is to simplify working with the Couchbase community, forums, technical support, and other engineers, by making data capture from each FTS node a single step.
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          description: A JSON object containing the node's diagnostics.
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+        - readClusterLogs: []
+
+  /api/log:
+    get:
+      operationId: getLogs
+      summary: Get Node Logs
+      description: Returns recent log messages and key events for the node as JSON.
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          description: A JSON object containing the node's logs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/logInfo'
+              example: {
+                  "events": [],
+                  "messages": []
+              }
+      security:
+        - readClusterLogs: []
+
+  /api/runtime:
+    get:
+      operationId: getRuntimeInfo
+      summary: Get Node Runtime Information
+      description: Returns information on the node's software, such as version strings and slow-changing runtime settings, as JSON.
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          description: A JSON object containing the node's runtime information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeInfo'
+              example: {
+                  "arch": "amd64",
+                  "go": {
+                      "GOMAXPROCS": 1,
+                      "GOROOT": "/usr/local/go",
+                      "compiler": "gc",
+                      "version": "go1.4"
+                  },
+                  "numCPU": 8,
+                  "os": "darwin",
+                  "versionData": "4.0.0",
+                  "versionMain": "v0.3.1"
+              }
+      security:
+        - readClusterSettings: []
+
+  /api/runtime/args:
+    get:
+      operationId: getRuntimeArgs
+      summary: Get Node Runtime Arguments
+      description: Returns information on the node's command-line, parameters, environment variables, and OS process values as JSON.
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          description: A JSON object containing the node's runtime arguments.
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+        - readClusterSettings: []
+
+  /api/runtime/profile/cpu:
+    post:
+      operationId: captureCpuProfile
+      summary: Capture CPU Profiling Information
+      description: Requests the node to capture local CPU usage profiling information.
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+      security:
+        - manageCluster: []
+
+  /api/runtime/profile/memory:
+    post:
+      operationId: captureMemoryProfile
+      summary: Capture Memory Profiling Information
+      description: Requests the node to capture local memory usage profiling information.
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+      security:
+        - manageCluster: []
+
+  /api/runtime/gc:
+    post:
+      operationId: performGC
+      summary: Perform Garbage Collection
+      description: Requests the node to perform a garbage collection.
+      tags:
+        - management
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+      security:
+        - manageCluster: []
+
+  /api/runtime/stats:
+    get:
+      operationId: getRuntimeStats
+      summary: Get Runtime Statistics
+      description: Returns information on the node's low-level runtime stats as JSON.
+      tags:
+        - monitoring
+      responses:
+        '200':
+          description: A JSON object containing the node's low-level runtime statistics.
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+        - manageCluster: []
+
+  /api/runtime/statsMem:
+    get:
+      operationId: getMemoryStats
+      summary: Get Memory Statistics
+      description: Returns information on the node's low-level garbage collection and memory-related runtime stats as JSON.
+      tags:
+        - monitoring
+      responses:
+        '200':
+          description: A JSON object containing the node's memory statistics.
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+        - manageCluster: []
+
+components:
+  responses:
+    OK:
+      description: Success.
+
+  schemas:
+    clusterConfig:
+      title: Cluster Configuration
+      type: object
+      properties:
+        indexDefs:
+          $ref: '#/components/schemas/clusterConfigIndexes'
+        indexDefsCAS:
+          type: integer
+        indexDefsErr:
+          type: string
+          nullable: true
+        nodeDefsKnown:
+          $ref: '#/components/schemas/clusterConfigNodesKnown'
+        nodeDefsKnownCAS:
+          type: integer
+        nodeDefsKnownErr:
+          type: string
+          nullable: true
+        nodeDefsWanted:
+          $ref: '#/components/schemas/clusterConfigNodesWanted'
+        nodeDefsWantedCAS:
+          type: integer
+        nodeDefsWantedErr:
+          type: string
+          nullable: true
+        planPIndexes:
+          $ref: '#/components/schemas/clusterConfigPlan'
+        planPIndexesCAS:
+          type: integer
+        planPIndexesErr:
+          type: string
+          nullable: true
+        status:
+          type: string
+
+    clusterConfigIndexes:
+      title: Index Definitions
+      type: object
+      properties:
+        implVersion:
+          type: string
+        indexDefs:
+          $ref: '#/components/schemas/clusterConfigIndexesWrapper'
+
+    clusterConfigIndexesWrapper:
+      title: Index Definitions Wrapper
+      type: object
+      additionalProperties:
+        x-additionalPropertiesName: index name
+        $ref: '#/components/schemas/clusterConfigIndexesWrapperIndex'
+
+    clusterConfigIndexesWrapperIndex:
+      title: Index Definition
+      type: object
+      properties:
+        name:
+          type: string
+        params:
+          type: string
+        planParams:
+          $ref: '#/components/schemas/clusterConfigIndexesWrapperIndexPlanParams'
+        sourceName:
+          type: string
+        sourceParams:
+          type: string
+        sourceType:
+          type: string
+        sourceUUID:
+          type: string
+        type:
+          type: string
+        uuid:
+          type: string
+
+    clusterConfigIndexesWrapperIndexPlanParams:
+      title: Plan Parameters
+      type: object
+      properties:
+        hierarchyRules:
+          type: string
+          nullable: true
+        maxPartitionsPerPIndex:
+          type: integer
+        nodePlanParams:
+          type: string
+          nullable: true
+        numReplicas:
+          type: integer
+        planFrozen:
+          type: boolean
+
+    clusterConfigNodesKnown:
+      title: Known Nodes
+      type: object
+      properties:
+        implVersion:
+          type: string
+        nodeDefs:
+          $ref: '#/components/schemas/clusterConfigNodesWrapper'
+        uuid:
+          type: string
+
+    clusterConfigNodesWanted:
+      title: Wanted Nodes
+      type: object
+      properties:
+        implVersion:
+          type: string
+        nodeDefs:
+          $ref: '#/components/schemas/clusterConfigNodesWrapper'
+        uuid:
+          type: string
+
+    clusterConfigNodesWrapper:
+      title: Node Definitions
+      type: object
+      additionalProperties:
+        x-additionalPropertiesName: node UUID
+        $ref: '#/components/schemas/clusterConfigNodesWrapperNode'
+
+    clusterConfigNodesWrapperNode:
+      title: Node Definition
+      type: object
+      properties:
+        container:
+          type: string
+        extras:
+          type: string
+        hostPort:
+          type: string
+        implVersion:
+          type: string
+        tags:
+          type: string
+          nullable: true
+        uuid:
+          type: string
+        weight:
+          type: integer
+
+    clusterConfigPlan:
+      type: object
+      title: Plan PIndexes
+      properties:
+        implVersion:
+          type: string
+        planPIndexes:
+          $ref: '#/components/schemas/clusterConfigPlanWrapper'
+        uuid:
+          type: string
+        warnings:
+          $ref: '#/components/schemas/clusterConfigPlanWarnings'
+
+    clusterConfigPlanWrapper:
+      type: object
+      title: Plan PIndexes Wrapper
+      additionalProperties:
+        x-additionalPropertiesName: pindex name
+        $ref: '#/components/schemas/clusterConfigPlanWrapperPIndex'
+
+    clusterConfigPlanWrapperPIndex:
+      type: object
+      title: Plan PIndex
+      properties:
+        indexName:
+          type: string
+        indexParams:
+          type: string
+        indexType:
+          type: string
+        indexUUID:
+          type: string
+        name:
+          type: string
+        nodes:
+          $ref: '#/components/schemas/clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper'
+        sourceName:
+          type: string
+        sourceParams:
+          type: string
+        sourcePartitions:
+          type: string
+        sourceType:
+          type: string
+        sourceUUID:
+          type: string
+        uuid:
+          type: string
+
+    clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper:
+      type: object
+      title: PIndex Nodes
+      additionalProperties:
+        x-additionalPropertiesName: node UUID
+        $ref: '#/components/schemas/clusterConfigPlanWrapperPIndexNodesWrapperNode'
+
+    clusterConfigPlanWrapperPIndexNodesWrapperNode:
+      type: object
+      title: Node
+      properties:
+        canRead:
+          type: boolean
+        canWrite:
+          type: boolean
+        priority:
+          type: integer
+
+    clusterConfigPlanWarnings:
+      type: object
+      title: Plan Warnings
+      description: |-
+        An object containing zero, one or more nested objects, each containing warnings that apply to a pindex.
+      additionalProperties:
+        x-additionalPropertiesName: index name
+        type: array
+        items:
+          type: string
+
+    runtimeInfo:
+      title: Runtime Information
+      type: object
+      properties:
+        arch:
+          type: string
+          description: The architecture of the node.
+        go:
+          $ref: '#/components/schemas/runtimeInfoGo'
+        numCPU:
+          type: integer
+          description: The number of CPUs on the node.
+        os:
+          type: string
+          description: The operating system of the node.
+        versionData:
+          type: string
+        versionMain:
+          type: string
+
+    runtimeInfoGo:
+      type: object
+      title: Go Runtime Information
+      properties:
+        GOMAXPROCS:
+          type: integer
+        GOROOT:
+          type: string
+        compiler:
+          type: string
+        version:
+          type: string
+
+    logInfo:
+      type: object
+      title: Log Messages
+      properties:
+        events:
+          type: array
+          items:
+            type: object
+        messages:
+          type: array
+          items:
+            type: object
+
+  securitySchemes:
+    manageCluster:
+      type: http
+      scheme: basic
+      description: |-
+        You must have the **Full Admin** or **Cluster Admin** role, with permissions to manage the cluster.
+
+    readClusterSettings:
+      type: http
+      scheme: basic
+      description: |-
+        You must have the **Full Admin** or **Cluster Admin** role, with permission to read cluster settings.
+
+    readClusterLogs:
+      type: http
+      scheme: basic
+      description: |-
+        You must have the **Full Admin** or **Cluster Admin** role, with permission to read cluster logs.
+
+    writeClusterSettings:
+      type: http
+      scheme: basic
+      description: |-
+        You must have the **Full Admin** or **Cluster Admin** role, with permission to write cluster settings.
