@@ -1,0 +1,229 @@
+openapi: 3.0.3
+info:
+  title: Couchbase Search Advanced API
+  description: |
+    Use the following endpoints in the Search Service API to manage and monitor advanced settings of your Search indexes.
+  version: 1.0.0
+
+servers:
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
+    variables:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+        description: The host name or IP address of a node running the Search service.
+      port:
+        default: "8094"
+        description: |-
+          The Search service REST port.
+          Use `18094` for secure access.
+        enum:
+          - "8094"
+          - "18094"
+
+tags:
+  - name: Definition
+    x-displayName: Index Partition Definition
+  - name: Query
+    x-displayName: Index Partition Querying
+  - name: Quota
+    x-displayName: FTS Memory Quota
+
+paths:
+  /api/pindex:
+    get:
+      operationId: getPartition
+      summary: Get Index Partition Information
+      description: Get information about an index partition.
+      tags:
+        - Definition
+      responses:
+        '200':
+          description: A JSON object containing the index partition information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/indexPartition'
+              example: {
+                  "pindexes": {
+                      "myFirstIndex_6cc599ab7a85bf3b_0": {
+                          "indexName": "myFirstIndex",
+                          "indexParams": "",
+                          "indexType": "blackhole",
+                          "indexUUID": "6cc599ab7a85bf3b",
+                          "name": "myFirstIndex_6cc599ab7a85bf3b_0",
+                          "sourceName": "",
+                          "sourceParams": "",
+                          "sourcePartitions": "",
+                          "sourceType": "nil",
+                          "sourceUUID": "",
+                          "uuid": "2d9ecb8b574a9f6a"
+                      }
+                  },
+                  "status": "ok"
+              }
+      security:
+        - Read: []
+
+  /api/pindex/{pindexName}:
+    get:
+      operationId: getPartitionName
+      summary: Get Index Partition by Name
+      description: Get information about a specific index partition by name.
+      tags:
+        - Definition
+      parameters:
+        - name: pindexName
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the index partition.
+      responses:
+        '200':
+          description: Success
+      security:
+        - Read: []
+
+  /api/pindex/{pindexName}/count:
+    get:
+      operationId: getPartitionCount
+      summary: Get Index Partition Document Count
+      description: Get the document count of a specific index partition.
+      tags:
+        - Query
+      parameters:
+        - name: pindexName
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the index partition.
+      responses:
+        '200':
+          description: Success
+      security:
+        - Read: []
+
+  /api/pindex/{pindexName}/query:
+    post:
+      operationId: queryPartition
+      summary: Query Index Partition
+      description: Execute a query against a specific index partition by name.
+      tags:
+        - Query
+      parameters:
+        - name: pindexName
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The name of the index partition.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: The query parameters and settings.
+      responses:
+        '200':
+          description: Success
+      security:
+        - Write: []
+
+  /pools/default:
+    post:
+      operationId: setFtsMemoryQuota
+      summary: Set FTS Memory Quota
+      description: Sets the memory quota for the full text search (FTS) service.
+      tags:
+        - Quota
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                ftsMemoryQuota:
+                  type: integer
+                  description: The memory quota for the FTS service.
+                  example: 512
+      responses:
+        '200':
+          description: Memory quota set.
+      security:
+        - Manage: []
+
+components:
+  schemas:
+    indexPartition:
+      type: object
+      title: Index Partition
+      properties:
+        pindexes:
+          $ref: '#/components/schemas/indexPartitionPIndex'
+        status:
+          type: string
+
+    indexPartitionPIndex:
+      type: object
+      title: PIndexes
+      additionalProperties:
+        x-additionalPropertiesName: pIndex
+        $ref: '#/components/schemas/indexPartitionPIndexInner'
+
+    indexPartitionPIndexInner:
+      type: object
+      title: PIndex
+      properties:
+        indexName:
+          type: string
+        indexParams:
+          type: string
+        indexType:
+          type: string
+        indexUUID:
+          type: string
+        name:
+          type: string
+        sourceName:
+          type: string
+        sourceParams:
+          type: string
+        sourcePartitions:
+          type: string
+        sourceType:
+          type: string
+        sourceUUID:
+          type: string
+        uuid:
+          type: string
+
+  securitySchemes:
+    Manage:
+      type: http
+      scheme: basic
+      description: |-
+        You must have the **Search Admin** role, with FTS Manage permissions on the required bucket.
+
+    Read:
+      type: http
+      scheme: basic
+      description: |-
+        You must have the **Search Reader** or **Search Admin** role, with FTS Read permissions on the required bucket.
+
+    Write:
+      type: http
+      scheme: basic
+      description: |-
+        You must have the **Search Admin** role, with FTS Write permissions on the required bucket.
