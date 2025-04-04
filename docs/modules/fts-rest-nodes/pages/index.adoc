@@ -1,0 +1,4202 @@
+= Couchbase Search Node API
+:keywords: OpenAPI, REST
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+include::partial$header-attributes.adoc[opts=optional]
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+
+:leveloffset: 1
+
+// markup not found, no include::{specDir}overview/document-before.adoc[opts=optional]
+
+
+[[overview]]
+= Overview
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Use the following endpoints in the Search Service API to manage and monitor your Search nodes.
+
+--
+
+[discrete#version]
+= Version information
+[%hardbreaks]
+__Version__ : 1.0.0
+
+[discrete#host]
+= Host information
+
+....
+{scheme}://{host}:{port}
+....
+
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
+
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `+++http+++`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Search service.
+--
+
+[%hardbreaks]
+
+*Example:* `+++localhost+++`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Search service REST port. Use `18094` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `8094`, `18094`
+*Example:* `+++8094+++`
+// end
+
+|===
+
+
+// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
+
+
+[[resources]]
+= Resources
+
+:count-apis: 4
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
+
+This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+<<tag-Configuration>>
+<<tag-Diagnostics>>
+<<tag-Management>>
+<<tag-Monitoring>>
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Configuration]
+= Configuration
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<getClusterConfig>>
+<<managerKick>>
+<<managerMeta>>
+<<refreshClusterConfig>>
+
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-before.adoc[opts=optional]
+
+
+[#getClusterConfig]
+= Get Cluster Configuration
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/cfg
+....
+
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-description-before.adoc[opts=optional]
+
+
+[#getClusterConfig-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns the node's current view of the cluster's configuration as JSON.
+--
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-description-end.adoc[opts=optional]
+
+
+
+[#getClusterConfig-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-responses-before.adoc[opts=optional]
+
+
+[#getClusterConfig-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A JSON object containing the node's configuration.
+--
+a| <<clusterConfig>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+//tag::example-clusterConfig[]
+====
+[source,json]
+----
+{
+  "nodeDefsWantedErr" : "nodeDefsWantedErr",
+  "planPIndexes" : {
+    "implVersion" : "implVersion",
+    "uuid" : "uuid"
+  },
+  "planPIndexesErr" : "planPIndexesErr",
+  "indexDefsCAS" : 0,
+  "nodeDefsKnown" : {
+    "implVersion" : "implVersion",
+    "uuid" : "uuid"
+  },
+  "nodeDefsKnownErr" : "nodeDefsKnownErr",
+  "nodeDefsWantedCAS" : 1,
+  "planPIndexesCAS" : 5,
+  "indexDefs" : {
+    "implVersion" : "implVersion"
+  },
+  "indexDefsErr" : "indexDefsErr",
+  "nodeDefsKnownCAS" : 6,
+  "nodeDefsWanted" : {
+    "implVersion" : "implVersion",
+    "uuid" : "uuid"
+  },
+  "status" : "status"
+}
+----
+====
+//end::example-clusterConfig[]
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-security-before.adoc[opts=optional]
+
+
+[#getClusterConfig-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-readClusterSettings>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}getClusterConfig/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}getClusterConfig/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getClusterConfig/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-before.adoc[opts=optional]
+
+
+[#managerKick]
+= Replan Resource Assignments
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/managerKick/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/managerKick
+....
+
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-description-before.adoc[opts=optional]
+
+
+[#managerKick-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/managerKick/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Forces the node to replan resource assignments, (by running the planner, if enabled) and update its runtime state to reflect the latest plan (by running the janitor, if enabled).
+--
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-responses-before.adoc[opts=optional]
+
+
+[#managerKick-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/managerKick/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-security-before.adoc[opts=optional]
+
+
+[#managerKick-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/managerKick/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-writeClusterSettings>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}managerKick/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}managerKick/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/managerKick/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-before.adoc[opts=optional]
+
+
+[#managerMeta]
+= Get Node Capabilities
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/managerMeta
+....
+
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-description-before.adoc[opts=optional]
+
+
+[#managerMeta-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns information on the node's capabilities, including available indexing and storage options as JSON.
+This operation is intended to help management tools and web UIs to be more dynamically metadata driven.
+--
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-description-end.adoc[opts=optional]
+
+
+
+[#managerMeta-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-responses-before.adoc[opts=optional]
+
+
+[#managerMeta-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A JSON object containing the node's capabilities.
+--
+a| Object
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-security-before.adoc[opts=optional]
+
+
+[#managerMeta-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-writeClusterSettings>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}managerMeta/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}managerMeta/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/managerMeta/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-before.adoc[opts=optional]
+
+
+[#refreshClusterConfig]
+= Refresh Node Configuration
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/cfgRefresh
+....
+
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-description-before.adoc[opts=optional]
+
+
+[#refreshClusterConfig-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Requests the node to refresh its configuration from the configuration provider.
+--
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-responses-before.adoc[opts=optional]
+
+
+[#refreshClusterConfig-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-security-before.adoc[opts=optional]
+
+
+[#refreshClusterConfig-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-writeClusterSettings>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}refreshClusterConfig/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}refreshClusterConfig/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/refreshClusterConfig/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Diagnostics]
+= Diagnostics
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<captureCpuProfile>>
+<<captureMemoryProfile>>
+<<getDiagnostics>>
+<<getLogs>>
+<<getRuntimeArgs>>
+<<getRuntimeInfo>>
+
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-before.adoc[opts=optional]
+
+
+[#captureCpuProfile]
+= Capture CPU Profiling Information
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/runtime/profile/cpu
+....
+
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-description-before.adoc[opts=optional]
+
+
+[#captureCpuProfile-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Requests the node to capture local CPU usage profiling information.
+--
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-responses-before.adoc[opts=optional]
+
+
+[#captureCpuProfile-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-security-before.adoc[opts=optional]
+
+
+[#captureCpuProfile-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-manageCluster>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}captureCpuProfile/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}captureCpuProfile/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/captureCpuProfile/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-before.adoc[opts=optional]
+
+
+[#captureMemoryProfile]
+= Capture Memory Profiling Information
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/runtime/profile/memory
+....
+
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-description-before.adoc[opts=optional]
+
+
+[#captureMemoryProfile-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Requests the node to capture local memory usage profiling information.
+--
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-responses-before.adoc[opts=optional]
+
+
+[#captureMemoryProfile-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-security-before.adoc[opts=optional]
+
+
+[#captureMemoryProfile-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-manageCluster>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}captureMemoryProfile/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}captureMemoryProfile/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/captureMemoryProfile/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-before.adoc[opts=optional]
+
+
+[#getDiagnostics]
+= Get Diagnostics
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/diag
+....
+
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-description-before.adoc[opts=optional]
+
+
+[#getDiagnostics-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns the full set of diagnostic information from the node in one shot as JSON.
+
+The response is the union of the responses from the node's other REST API diagnostic and monitoring endpoints.
+
+For example, for a three node cluster, you could capture diagnostics for each node with something like:
+
+```shell
+curl http://cbft-01:8094/api/diag > cbft-01.json
+curl http://cbft-02:8094/api/diag > cbft-02.json
+curl http://cbft-03:8094/api/diag > cbft-03.json
+```
+
+The response JSON object can be quite large, 100s of KB or much more.
+
+The motivation for this operation is to simplify working with the Couchbase community, forums, technical support, and other engineers, by making data capture from each FTS node a single step.
+--
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-description-end.adoc[opts=optional]
+
+
+
+[#getDiagnostics-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-responses-before.adoc[opts=optional]
+
+
+[#getDiagnostics-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A JSON object containing the node's diagnostics.
+--
+a| Object
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-security-before.adoc[opts=optional]
+
+
+[#getDiagnostics-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-readClusterLogs>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}getDiagnostics/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}getDiagnostics/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getDiagnostics/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-before.adoc[opts=optional]
+
+
+[#getLogs]
+= Get Node Logs
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getLogs/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/log
+....
+
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-description-before.adoc[opts=optional]
+
+
+[#getLogs-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getLogs/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns recent log messages and key events for the node as JSON.
+--
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-description-end.adoc[opts=optional]
+
+
+
+[#getLogs-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-responses-before.adoc[opts=optional]
+
+
+[#getLogs-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getLogs/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A JSON object containing the node's logs.
+--
+a| <<logInfo>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+//tag::example-logInfo[]
+====
+[source,json]
+----
+{
+  "messages" : [ "{}", "{}" ],
+  "events" : [ "{}", "{}" ]
+}
+----
+====
+//end::example-logInfo[]
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-security-before.adoc[opts=optional]
+
+
+[#getLogs-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getLogs/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-readClusterLogs>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}getLogs/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}getLogs/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getLogs/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-before.adoc[opts=optional]
+
+
+[#getRuntimeArgs]
+= Get Node Runtime Arguments
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/runtime/args
+....
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-description-before.adoc[opts=optional]
+
+
+[#getRuntimeArgs-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns information on the node's command-line, parameters, environment variables, and OS process values as JSON.
+--
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-description-end.adoc[opts=optional]
+
+
+
+[#getRuntimeArgs-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-responses-before.adoc[opts=optional]
+
+
+[#getRuntimeArgs-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A JSON object containing the node's runtime arguments.
+--
+a| Object
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-security-before.adoc[opts=optional]
+
+
+[#getRuntimeArgs-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-readClusterSettings>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}getRuntimeArgs/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}getRuntimeArgs/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getRuntimeArgs/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-before.adoc[opts=optional]
+
+
+[#getRuntimeInfo]
+= Get Node Runtime Information
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/runtime
+....
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-description-before.adoc[opts=optional]
+
+
+[#getRuntimeInfo-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns information on the node's software, such as version strings and slow-changing runtime settings, as JSON.
+--
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-description-end.adoc[opts=optional]
+
+
+
+[#getRuntimeInfo-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-responses-before.adoc[opts=optional]
+
+
+[#getRuntimeInfo-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A JSON object containing the node's runtime information.
+--
+a| <<runtimeInfo>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+//tag::example-runtimeInfo[]
+====
+[source,json]
+----
+{
+  "os" : "os",
+  "go" : {
+    "GOMAXPROCS" : 0,
+    "compiler" : "compiler",
+    "GOROOT" : "GOROOT",
+    "version" : "version"
+  },
+  "versionData" : "versionData",
+  "numCPU" : 6,
+  "arch" : "arch",
+  "versionMain" : "versionMain"
+}
+----
+====
+//end::example-runtimeInfo[]
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-security-before.adoc[opts=optional]
+
+
+[#getRuntimeInfo-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-readClusterSettings>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}getRuntimeInfo/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}getRuntimeInfo/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getRuntimeInfo/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Management]
+= Management
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<performGC>>
+
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-before.adoc[opts=optional]
+
+
+[#performGC]
+= Perform Garbage Collection
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/performGC/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/runtime/gc
+....
+
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-description-before.adoc[opts=optional]
+
+
+[#performGC-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/performGC/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Requests the node to perform a garbage collection.
+--
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-responses-before.adoc[opts=optional]
+
+
+[#performGC-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/performGC/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-security-before.adoc[opts=optional]
+
+
+[#performGC-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/performGC/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-manageCluster>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}performGC/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}performGC/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/performGC/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Monitoring]
+= Monitoring
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<getMemoryStats>>
+<<getRuntimeStats>>
+
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-before.adoc[opts=optional]
+
+
+[#getMemoryStats]
+= Get Memory Statistics
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/runtime/statsMem
+....
+
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-description-before.adoc[opts=optional]
+
+
+[#getMemoryStats-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns information on the node's low-level garbage collection and memory-related runtime stats as JSON.
+--
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-description-end.adoc[opts=optional]
+
+
+
+[#getMemoryStats-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-responses-before.adoc[opts=optional]
+
+
+[#getMemoryStats-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A JSON object containing the node's memory statistics.
+--
+a| Object
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-security-before.adoc[opts=optional]
+
+
+[#getMemoryStats-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-manageCluster>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}getMemoryStats/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}getMemoryStats/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getMemoryStats/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-before.adoc[opts=optional]
+
+
+[#getRuntimeStats]
+= Get Runtime Statistics
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/runtime/stats
+....
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-description-before.adoc[opts=optional]
+
+
+[#getRuntimeStats-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Returns information on the node's low-level runtime stats as JSON.
+--
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-description-end.adoc[opts=optional]
+
+
+
+[#getRuntimeStats-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-responses-before.adoc[opts=optional]
+
+
+[#getRuntimeStats-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A JSON object containing the node's low-level runtime statistics.
+--
+a| Object
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-security-before.adoc[opts=optional]
+
+
+[#getRuntimeStats-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-manageCluster>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}getRuntimeStats/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}getRuntimeStats/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getRuntimeStats/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
+
+
+[#models]
+= Definitions
+
+:count-models: 18
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
+[.two-columns]
+endif::collapse-models[]
+[%hardbreaks]
+<<clusterConfig>>
+<<clusterConfigIndexes>>
+<<clusterConfigIndexesWrapper>>
+<<clusterConfigIndexesWrapperIndex>>
+<<clusterConfigIndexesWrapperIndexPlanParams>>
+<<clusterConfigNodesKnown>>
+<<clusterConfigNodesWanted>>
+<<clusterConfigNodesWrapper>>
+<<clusterConfigNodesWrapperNode>>
+<<clusterConfigPlan>>
+<<clusterConfigPlanWarnings>>
+<<clusterConfigPlanWrapper>>
+<<clusterConfigPlanWrapperPIndex>>
+<<clusterConfigPlanWrapperPIndexNodesWrapperNode>>
+<<clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper>>
+<<logInfo>>
+<<runtimeInfo>>
+<<runtimeInfoGo>>
+endif::[]
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfig/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfig]
+= Cluster Configuration
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfig/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfig[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*indexDefs* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigIndexes, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigIndexes>>
+
+
+a¦ 
+*indexDefsCAS* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*indexDefsErr* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*nodeDefsKnown* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigNodesKnown, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigNodesKnown>>
+
+
+a¦ 
+*nodeDefsKnownCAS* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*nodeDefsKnownErr* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*nodeDefsWanted* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigNodesWanted, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigNodesWanted>>
+
+
+a¦ 
+*nodeDefsWantedCAS* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*nodeDefsWantedErr* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*planPIndexes* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigPlan, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigPlan>>
+
+
+a¦ 
+*planPIndexesCAS* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*planPIndexesErr* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*status* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::clusterConfig[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfig/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfig/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexes/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigIndexes]
+= Index Definitions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexes/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigIndexes[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*implVersion* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*indexDefs* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigIndexesWrapper, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigIndexesWrapper>>
+
+
+|===
+
+//end::clusterConfigIndexes[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexes/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexes/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapper/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigIndexesWrapper]
+= Index Definitions Wrapper
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapper/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigIndexesWrapper[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+_additional +
+property_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigIndexesWrapperIndex, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigIndexesWrapperIndex>>
+
+
+|===
+
+//end::clusterConfigIndexesWrapper[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapper/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapper/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndex/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigIndexesWrapperIndex]
+= Index Definition
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndex/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigIndexesWrapperIndex[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*name* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*params* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*planParams* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigIndexesWrapperIndexPlanParams, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigIndexesWrapperIndexPlanParams>>
+
+
+a¦ 
+*sourceName* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourceParams* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourceType* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourceUUID* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*type* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*uuid* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::clusterConfigIndexesWrapperIndex[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndex/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndex/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndexPlanParams/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigIndexesWrapperIndexPlanParams]
+= Plan Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndexPlanParams/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigIndexesWrapperIndexPlanParams[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*hierarchyRules* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*maxPartitionsPerPIndex* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*nodePlanParams* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*numReplicas* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*planFrozen* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+|===
+
+//end::clusterConfigIndexesWrapperIndexPlanParams[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndexPlanParams/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndexPlanParams/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesKnown/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigNodesKnown]
+= Known Nodes
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesKnown/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigNodesKnown[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*implVersion* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*nodeDefs* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigNodesWrapper, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigNodesWrapper>>
+
+
+a¦ 
+*uuid* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::clusterConfigNodesKnown[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesKnown/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesKnown/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesWanted/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigNodesWanted]
+= Wanted Nodes
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesWanted/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigNodesWanted[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*implVersion* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*nodeDefs* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigNodesWrapper, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigNodesWrapper>>
+
+
+a¦ 
+*uuid* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::clusterConfigNodesWanted[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesWanted/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesWanted/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesWrapper/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigNodesWrapper]
+= Node Definitions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesWrapper/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigNodesWrapper[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+_additional +
+property_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigNodesWrapperNode, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigNodesWrapperNode>>
+
+
+|===
+
+//end::clusterConfigNodesWrapper[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesWrapper/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesWrapper/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesWrapperNode/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigNodesWrapperNode]
+= Node Definition
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesWrapperNode/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigNodesWrapperNode[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*container* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*extras* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*hostPort* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*implVersion* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*tags* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*uuid* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*weight* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+|===
+
+//end::clusterConfigNodesWrapperNode[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesWrapperNode/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigNodesWrapperNode/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlan/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigPlan]
+= Plan PIndexes
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlan/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigPlan[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*implVersion* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*planPIndexes* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigPlanWrapper, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigPlanWrapper>>
+
+
+a¦ 
+*uuid* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*warnings* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigPlanWarnings, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigPlanWarnings>>
+
+
+|===
+
+//end::clusterConfigPlan[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlan/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlan/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWarnings/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigPlanWarnings]
+= Plan Warnings
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWarnings/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigPlanWarnings[]
+
+ifdef::model-descriptions[]
+//tag::desc-clusterConfigPlanWarnings[]
+An object containing zero, one or more nested objects, each containing warnings that apply to a pindex.
+//end::desc-clusterConfigPlanWarnings[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+_additional +
+property_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+ array
+
+|===
+
+//end::clusterConfigPlanWarnings[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWarnings/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWarnings/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapper/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigPlanWrapper]
+= Plan PIndexes Wrapper
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapper/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigPlanWrapper[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+_additional +
+property_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigPlanWrapperPIndex, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigPlanWrapperPIndex>>
+
+
+|===
+
+//end::clusterConfigPlanWrapper[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapper/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapper/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndex/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigPlanWrapperPIndex]
+= Plan PIndex
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndex/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigPlanWrapperPIndex[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*indexName* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*indexParams* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*indexType* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*indexUUID* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*name* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*nodes* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper>>
+
+
+a¦ 
+*sourceName* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourceParams* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourcePartitions* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourceType* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourceUUID* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*uuid* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::clusterConfigPlanWrapperPIndex[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndex/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndex/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNode/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigPlanWrapperPIndexNodesWrapperNode]
+= Node
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNode/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigPlanWrapperPIndexNodesWrapperNode[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*canRead* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*canWrite* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*priority* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+|===
+
+//end::clusterConfigPlanWrapperPIndexNodesWrapperNode[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNode/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNode/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper]
+= PIndex Nodes
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+_additional +
+property_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigPlanWrapperPIndexNodesWrapperNode, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigPlanWrapperPIndexNodesWrapperNode>>
+
+
+|===
+
+//end::clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/logInfo/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#logInfo]
+= Log Messages
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/logInfo/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::logInfo[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*events* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+ array
+
+a¦ 
+*messages* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+ array
+
+|===
+
+//end::logInfo[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/logInfo/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/logInfo/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/runtimeInfo/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#runtimeInfo]
+= Runtime Information
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/runtimeInfo/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::runtimeInfo[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*arch* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The architecture of the node.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*go* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-runtimeInfoGo, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<runtimeInfoGo>>
+
+
+a¦ 
+*numCPU* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The number of CPUs on the node.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*os* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The operating system of the node.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*versionData* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*versionMain* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::runtimeInfo[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/runtimeInfo/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/runtimeInfo/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/runtimeInfoGo/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#runtimeInfoGo]
+= Go Runtime Information
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/runtimeInfoGo/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::runtimeInfoGo[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*GOMAXPROCS* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*GOROOT* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*compiler* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*version* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::runtimeInfoGo[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/runtimeInfoGo/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/runtimeInfoGo/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
+
+
+[[security]]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/manageCluster/security-scheme-before.adoc[opts=optional]
+
+
+[[security-manageCluster]]
+= Manage Cluster
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/manageCluster/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+You must have the **Full Admin** or **Cluster Admin** role, with permissions to manage the cluster.
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/manageCluster/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/manageCluster/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/readClusterSettings/security-scheme-before.adoc[opts=optional]
+
+
+[[security-readClusterSettings]]
+= Read Cluster Settings
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/readClusterSettings/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+You must have the **Full Admin** or **Cluster Admin** role, with permission to read cluster settings.
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/readClusterSettings/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/readClusterSettings/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/readClusterLogs/security-scheme-before.adoc[opts=optional]
+
+
+[[security-readClusterLogs]]
+= Read Cluster Logs
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/readClusterLogs/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+You must have the **Full Admin** or **Cluster Admin** role, with permission to read cluster logs.
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/readClusterLogs/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/readClusterLogs/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/writeClusterSettings/security-scheme-before.adoc[opts=optional]
+
+
+[[security-writeClusterSettings]]
+= Write Cluster Settings
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/writeClusterSettings/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+You must have the **Full Admin** or **Cluster Admin** role, with permission to write cluster settings.
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/writeClusterSettings/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/writeClusterSettings/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
+
