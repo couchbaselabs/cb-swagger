@@ -1,0 +1,1559 @@
+= Couchbase Search Active Queries REST API
+:keywords: OpenAPI, REST
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+include::partial$header-attributes.adoc[opts=optional]
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+
+:leveloffset: 1
+
+// markup not found, no include::{specDir}overview/document-before.adoc[opts=optional]
+
+
+[[overview]]
+= Overview
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+The Active Queries REST API is provided by the Search service.
+This API enables you to get information about active FTS queries.
+--
+
+[discrete#version]
+= Version information
+[%hardbreaks]
+__Version__ : 7.6
+
+[discrete#host]
+= Host information
+
+....
+{scheme}://{host}:{port}
+....
+
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
+
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `+++http+++`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Search service.
+--
+
+[%hardbreaks]
+
+*Example:* `+++localhost+++`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Search service REST port. Use `18094` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `8094`, `18094`
+*Example:* `+++8094+++`
+// end
+
+|===
+
+
+// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
+
+
+[[resources]]
+= Resources
+
+:count-apis: 1
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
+
+This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+<<tag-Default>>
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Default]
+= Default
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<api-query>>
+<<api-query-cancel>>
+<<api-query-index>>
+
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-before.adoc[opts=optional]
+
+
+[#api-query]
+= View Active Node Queries
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/query
+....
+
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-description-before.adoc[opts=optional]
+
+
+[#api-query-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Gets the details of all the active queries in any FTS node in a cluster.
+--
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-description-end.adoc[opts=optional]
+
+
+
+[#api-query-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-parameters-before.adoc[opts=optional]
+
+
+[#api-query-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#api-query-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *longerThan* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+Filters the queries running beyond the given span of time.
+
+The duration string is a signed sequence of decimal numbers, each with optional fraction and a unit suffix, such as `20s`, `-1.5h` or `2h45m`.
+Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String (duration)
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-responses-before.adoc[opts=optional]
+
+
+[#api-query-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A list of all active full-text search queries across all nodes in the cluster.
+--
+a| <<ActiveResponse>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+//tag::example-ActiveResponse[]
+====
+[source,json]
+----
+{
+  "filteredActiveQueries" : {
+    "indexName" : "indexName",
+    "longerThan" : "longerThan",
+    "queryCount" : 6
+  },
+  "stats" : {
+    "total" : 3,
+    "successful" : 3
+  },
+  "totalActiveQueryCount" : 0,
+  "status" : "status"
+}
+----
+====
+//end::example-ActiveResponse[]
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-security-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}api-query/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api-query/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-before.adoc[opts=optional]
+
+
+[#api-query-cancel]
+= Cancel Active Queries
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/query/{queryID}/cancel
+....
+
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-description-before.adoc[opts=optional]
+
+
+[#api-query-cancel-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Allows the user to cancel an active query that's running longer than expected.
+Use the View Active Index Queries API or the View Active Node Queries API to get the parameters `queryID` and `uuid`, which are used to identify and cancel the query.
+--
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-description-end.adoc[opts=optional]
+
+
+[#api-query-cancel-consumes]
+.Consumes
+* application/json
+
+[#api-query-cancel-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-parameters-before.adoc[opts=optional]
+
+
+[#api-query-cancel-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-parameters-begin.adoc[opts=optional]
+
+
+[#api-query-cancel-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *queryID* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The ID of the active query.
+This ID is used to identify the query that you want to cancel.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ Integer
+
+
+
+|===
+
+
+
+
+[#api-query-cancel-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *Body* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+The body contains the UUID of the node where the query is running. This is optional and allows cancellation of queries on specific nodes.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ <<CancelRequest>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+//tag::example-CancelRequest[]
+====
+[source,json]
+----
+{
+  "uuid" : "uuid"
+}
+----
+====
+//end::example-CancelRequest[]
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-responses-before.adoc[opts=optional]
+
+
+[#api-query-cancel-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The query was successfully canceled.
+--
+a| <<CancelResponse>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+//tag::example-CancelResponse[]
+====
+[source,json]
+----
+{
+  "msg" : "msg",
+  "status" : "status"
+}
+----
+====
+//end::example-CancelResponse[]
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-security-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}api-query-cancel/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api-query-cancel/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-before.adoc[opts=optional]
+
+
+[#api-query-index]
+= View Active Index Queries
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/query/index/{indexName}
+....
+
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-description-before.adoc[opts=optional]
+
+
+[#api-query-index-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Gets the details of all the active queries for any given FTS index in the system.
+--
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-description-end.adoc[opts=optional]
+
+
+
+[#api-query-index-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-parameters-before.adoc[opts=optional]
+
+
+[#api-query-index-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-parameters-begin.adoc[opts=optional]
+
+
+[#api-query-index-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *indexName* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of the full-text index.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+[#api-query-index-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *longerThan* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+Filters the queries running beyond the given span of time.
+
+The duration string is a signed sequence of decimal numbers, each with optional fraction and a unit suffix, such as `20s`, `-1.5h` or `2h45m`.
+Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String (duration)
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-responses-before.adoc[opts=optional]
+
+
+[#api-query-index-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A list of active queries for the specified full-text search index.
+--
+a| <<ActiveResponse>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+//tag::example-ActiveResponse[]
+====
+[source,json]
+----
+{
+  "filteredActiveQueries" : {
+    "indexName" : "indexName",
+    "longerThan" : "longerThan",
+    "queryCount" : 6
+  },
+  "stats" : {
+    "total" : 3,
+    "successful" : 3
+  },
+  "totalActiveQueryCount" : 0,
+  "status" : "status"
+}
+----
+====
+//end::example-ActiveResponse[]
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-security-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}api-query-index/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api-query-index/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
+
+
+[#models]
+= Definitions
+
+:count-models: 9
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
+[.two-columns]
+endif::collapse-models[]
+[%hardbreaks]
+<<ActiveResponse>>
+<<ActiveResponseFilter>>
+<<ActiveResponseFilterMap>>
+<<ActiveResponseFilterMapItem>>
+<<ActiveResponseFilterMapItemContext>>
+<<ActiveResponseFilterMapItemContextQuery>>
+<<ActiveResponseStats>>
+<<CancelRequest>>
+<<CancelResponse>>
+endif::[]
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponse/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#ActiveResponse]
+= Active Response
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/ActiveResponse/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ActiveResponse[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*status* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The status of the request.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*stats* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-ActiveResponseStats, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<ActiveResponseStats>>
+
+
+a¦ 
+*totalActiveQueryCount* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The total number of active queries.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*filteredActiveQueries* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-ActiveResponseFilter, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<ActiveResponseFilter>>
+
+
+|===
+
+//end::ActiveResponse[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponse/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/ActiveResponse/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilter/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#ActiveResponseFilter]
+= Filtered Active Queries
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilter/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ActiveResponseFilter[]
+
+ifdef::model-descriptions[]
+//tag::desc-ActiveResponseFilter[]
+An object containing details of the filtered active queries.
+//end::desc-ActiveResponseFilter[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*indexName* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The name of the full-text index.
+Only included if viewing active queries for a specific index.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*longerThan* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The duration used to filter the active queries.
+Only included if the `longerThan` query parameter is used.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String (duration)
+
+
+a¦ 
+*queryCount* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The number of filtered active queries.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*queryMap* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-ActiveResponseFilterMap, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<ActiveResponseFilterMap>>
+
+
+|===
+
+//end::ActiveResponseFilter[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilter/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilter/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMap/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#ActiveResponseFilterMap]
+= Query Map
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMap/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ActiveResponseFilterMap[]
+
+ifdef::model-descriptions[]
+//tag::desc-ActiveResponseFilterMap[]
+Contains one or more nested objects, each containing the details of a single active query.
+//end::desc-ActiveResponseFilterMap[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+_additional +
+property_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-ActiveResponseFilterMapItem, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<ActiveResponseFilterMapItem>>
+
+
+|===
+
+//end::ActiveResponseFilterMap[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMap/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMap/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMapItem/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#ActiveResponseFilterMapItem]
+= Query Map Item
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMapItem/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ActiveResponseFilterMapItem[]
+
+ifdef::model-descriptions[]
+//tag::desc-ActiveResponseFilterMapItem[]
+The details of a single active query.
+The name of the property is the UUID of the node on which the query is running, and the ID of the query on that node, separated by a hyphen.
+//end::desc-ActiveResponseFilterMapItem[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*QueryContext* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-ActiveResponseFilterMapItemContext, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<ActiveResponseFilterMapItemContext>>
+
+
+a¦ 
+*executionTime* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The time taken to execute the query.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String (duration)
+
+
+|===
+
+//end::ActiveResponseFilterMapItem[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMapItem/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMapItem/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMapItemContext/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#ActiveResponseFilterMapItemContext]
+= Query Context
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMapItemContext/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ActiveResponseFilterMapItemContext[]
+
+ifdef::model-descriptions[]
+//tag::desc-ActiveResponseFilterMapItemContext[]
+The query context.
+//end::desc-ActiveResponseFilterMapItemContext[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*query* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-ActiveResponseFilterMapItemContextQuery, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<ActiveResponseFilterMapItemContextQuery>>
+
+
+a¦ 
+*size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*from* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*timeout* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*index* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The name of a full-text index.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::ActiveResponseFilterMapItemContext[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMapItemContext/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMapItemContext/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMapItemContextQuery/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#ActiveResponseFilterMapItemContextQuery]
+= Query
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMapItemContextQuery/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ActiveResponseFilterMapItemContextQuery[]
+
+ifdef::model-descriptions[]
+//tag::desc-ActiveResponseFilterMapItemContextQuery[]
+An object containing the text of the query.
+//end::desc-ActiveResponseFilterMapItemContextQuery[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*query* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The text of the query.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::ActiveResponseFilterMapItemContextQuery[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMapItemContextQuery/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/ActiveResponseFilterMapItemContextQuery/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponseStats/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#ActiveResponseStats]
+= Stats
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/ActiveResponseStats/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ActiveResponseStats[]
+
+ifdef::model-descriptions[]
+//tag::desc-ActiveResponseStats[]
+An object containing request statistics.
+//end::desc-ActiveResponseStats[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*total* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*successful* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+|===
+
+//end::ActiveResponseStats[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ActiveResponseStats/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/ActiveResponseStats/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/CancelRequest/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#CancelRequest]
+= Cancellation Request
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/CancelRequest/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::CancelRequest[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*uuid* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Represents the active query's coordinator node's UUID, where the query will be canceled.
+This parameter allows the user to cancel a query anywhere in the system by specifying its coordinator node's UUID.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::CancelRequest[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/CancelRequest/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/CancelRequest/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/CancelResponse/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#CancelResponse]
+= Cancellation Response
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/CancelResponse/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::CancelResponse[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*status* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The status of the request.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*msg* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The response message, giving details of the node UUID and query ID.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::CancelResponse[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/CancelResponse/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/CancelResponse/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
+
