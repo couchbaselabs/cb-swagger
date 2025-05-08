@@ -1,0 +1,31 @@
+= Example HTTP Request
+
+The following example disables the creation of new partitions by means of file transfer.
+
+====
+.Curl request
+[source,sh]
+----
+curl -X PUT http://$HOST:8094/api/managerOptions \
+-u $ADMIN:$PASSWORD \
+-H "Content-type:application/json" \
+-d '{"disableFileTransferRebalance": "true" }'
+----
+====
+
+From this point, Search Service index partitions are built on the new nodes assigned to them during rebalance.
+
+The following example re-enables the creation of new partitions by means of file transfer:
+
+====
+.Curl request
+[source,sh]
+----
+curl -X PUT http://$HOST:8094/api/managerOptions \
+-u $ADMIN:$PASSWORD \
+-H "Content-type:application/json" \
+-d '{"disableFileTransferRebalance": "true" }'
+----
+====
+
+From this point, Search Service index partitions are again created by file transfer, on the new nodes assigned to them during rebalance.
