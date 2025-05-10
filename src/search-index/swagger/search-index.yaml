@@ -100,32 +100,7 @@ paths:
                   status:
                     type: string
               example:
-                {
-                  "indexDefs": {
-                      "implVersion": "4.0.0",
-                      "indexDefs": {
-                          "myFirstIndex": {
-                          "name": "myFirstIndex",
-                          "params": "",
-                          "planParams": {
-                              "hierarchyRules": null,
-                              "maxPartitionsPerPIndex": 0,
-                              "nodePlanParams": null,
-                              "numReplicas": 0,
-                              "planFrozen": false
-                          },
-                          "sourceName": "",
-                          "sourceParams": "",
-                          "sourceType": "nil",
-                          "sourceUUID": "",
-                          "type": "fulltext-index",
-                          "uuid": "6cc599ab7a85bf3b"
-                        }
-                    },
-                    "uuid": "6cc599ab7a85bf3b"
-                  },
-                  "status": "ok"
-              }
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-index.json'
       security:
         - Read: []
 
@@ -267,124 +242,7 @@ paths:
                             sourceParams:
                               type: object
               example:
-                {
-                    "status": "ok",
-                    "indexDefs": {
-                        "uuid": "23cf9530131858b8",
-                        "indexDefs": {
-                            "travel-sample.inventory.travel-hotel": {
-                                "type": "fulltext-index",
-                                "name": "travel-hotel",
-                                "uuid": "a04a16f178846bc4",
-                                "sourceType": "gocbcore",
-                                "sourceName": "travel-sample",
-                                "sourceUUID": "8f866261438f8b0d415a437552f3ae99",
-                                "planParams": {
-                                    "maxPartitionsPerPIndex": 1024,
-                                    "indexPartitions": 1
-                                },
-                                "params": {
-                                    "doc_config": {
-                                        "docid_prefix_delim": "",
-                                        "docid_regexp": "",
-                                        "mode": "scope.collection.type_field",
-                                        "type_field": "type"
-                                    },
-                                    "mapping": {
-                                        "analysis": {},
-                                        "default_analyzer": "standard",
-                                        "default_datetime_parser": "dateTimeOptional",
-                                        "default_field": "_all",
-                                        "default_mapping": {
-                                            "dynamic": true,
-                                            "enabled": false
-                                        },
-                                        "default_type": "_default",
-                                        "docvalues_dynamic": false,
-                                        "index_dynamic": true,
-                                        "store_dynamic": false,
-                                        "type_field": "_type",
-                                        "types": {
-                                            "inventory.hotel": {
-                                                "dynamic": false,
-                                                "enabled": true,
-                                                "properties": {
-                                                    "reviews": {
-                                                        "dynamic": false,
-                                                        "enabled": true,
-                                                        "properties": {
-                                                            "content": {
-                                                                "dynamic": false,
-                                                                "enabled": true,
-                                                                "fields": [
-                                                                    {
-                                                                        "docvalues": true,
-                                                                        "include_in_all": true,
-                                                                        "include_term_vectors": true,
-                                                                        "index": true,
-                                                                        "name": "content",
-                                                                        "store": true,
-                                                                        "type": "text"
-                                                                    }
-                                                                ]
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "store": {
-                                        "indexType": "scorch",
-                                        "segmentVersion": 15
-                                    }
-                                },
-                                "sourceParams": {}
-                            },
-                            "travel-sample.inventory.travel-test": {
-                                "type": "fulltext-index",
-                                "name": "travel-test",
-                                "uuid": "766ddce5d41a3b41",
-                                "sourceType": "gocbcore",
-                                "sourceName": "travel-sample",
-                                "sourceUUID": "8f866261438f8b0d415a437552f3ae99",
-                                "planParams": {
-                                    "maxPartitionsPerPIndex": 1024,
-                                    "indexPartitions": 1
-                                },
-                                "params": {
-                                    "doc_config": {
-                                        "docid_prefix_delim": "",
-                                        "docid_regexp": "",
-                                        "mode": "scope.collection.type_field",
-                                        "type_field": "type"
-                                    },
-                                    "mapping": {
-                                    "analysis": {},
-                                    "default_analyzer": "standard",
-                                    "default_datetime_parser": "dateTimeOptional",
-                                    "default_field": "_all",
-                                    "default_mapping": {
-                                        "dynamic": true,
-                                        "enabled": true
-                                    },
-                                    "default_type": "_default",
-                                    "docvalues_dynamic": false,
-                                    "index_dynamic": true,
-                                    "store_dynamic": false,
-                                    "type_field": "_type"
-                                    },
-                                    "store": {
-                                        "indexType": "scorch",
-                                        "segmentVersion": 15
-                                    }
-                                },
-                                "sourceParams": {}
-                            }
-                        },
-                        "implVersion": "5.7.0"
-                    }
-                }
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-scoped-indexes.json'
       security:
         - Read: []
 
@@ -484,49 +342,7 @@ paths:
                     items:
                       type: string
               example:
-                {
-                  "indexDef": {
-                      "name": "myFirstIndex",
-                      "params": "",
-                      "planParams": {
-                          "hierarchyRules": null,
-                          "maxPartitionsPerPIndex": 0,
-                          "nodePlanParams": null,
-                          "numReplicas": 0,
-                          "planFrozen": false
-                      },
-                      "sourceName": "",
-                      "sourceParams": "",
-                      "source": "nil",
-                      "sourceUUID": "",
-                      "type": "fulltext-index",
-                      "uuid": "6cc599ab7a85bf3b"
-                    },
-                    "planPIndexes": [
-                      {
-                      "indexName": "myFirstIndex",
-                      "indexParams": "",
-                      "indexType": "bleve",
-                      "indexUUID": "6cc599ab7a85bf3b",
-                      "name": "myFirstIndex_6cc599ab7a85bf3b_0",
-                      "nodes": {
-                          "78fc2ffac2fd9401": {
-                            "canRead": true,
-                            "canWrite": true,
-                            "priority": 0
-                          }
-                      },
-                      "sourceName": "",
-                      "sourceParams": "",
-                      "sourcePartitions": "",
-                      "sourceType": "nil",
-                      "sourceUUID": "",
-                      "uuid": "64bed6e2edf354c3"
-                      }
-                    ],
-                    "status": "ok",
-                    "warnings": []
-                  }
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-index-name.json'
       security:
         - Read: []
 
@@ -586,6 +402,8 @@ paths:
                     type: string
                   uuid:
                     type: string
+              example:
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-index-name-200.json'
         default:
           description: The Search Service returns a non-200 HTTP error code when a request fails.
           content:
@@ -593,11 +411,7 @@ paths:
               schema:
                 type: object
               example:
-                {
-                    "error": "rest_create_index: index type is required, indexName: travel-test",
-                    "request": "",
-                    "status": "fail"
-                }
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-index-name-default.json'
       security:
         - Write: []
 
@@ -740,6 +554,16 @@ paths:
                     type: string
                   uuid:
                     type: string
+              example:
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-scoped-index-name-200.json'
+        default:
+          description: The Search Service returns a non-200 HTTP error code when a request fails.
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-scoped-index-name-default.json'
       security:
         - Write: []
 
@@ -767,6 +591,16 @@ paths:
                     type: string
                   uuid:
                     type: string
+              example:
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/d-api-scoped-index-name-200.json'
+        default:
+          description: The Search Service returns a non-200 HTTP error code when a request fails.
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/d-api-scoped-index-name-default.json'
       security:
         - Write: []
 
@@ -784,14 +618,7 @@ paths:
         - $ref: "#/components/parameters/PathOpIngest"
       responses:
         '200':
-          description: A JSON object indicating the status of the operation.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
+          $ref: "#/components/responses/OK"
       security:
         - Manage: []
 
@@ -812,14 +639,7 @@ paths:
         - $ref: "#/components/parameters/PathOpIngest"
       responses:
         '200':
-          description: A JSON object indicating the status of the operation.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
+          $ref: "#/components/responses/OK"
       security:
         - Manage: []
 
@@ -837,14 +657,7 @@ paths:
         - $ref: "#/components/parameters/PathOpPartition"
       responses:
         '200':
-          description: A JSON object indicating the status of the operation.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
+          $ref: "#/components/responses/OK"
       security:
         - Manage: []
 
@@ -865,14 +678,7 @@ paths:
         - $ref: "#/components/parameters/PathOpPartition"
       responses:
         '200':
-          description: A JSON object indicating the status of the operation.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
+          $ref: "#/components/responses/OK"
       security:
         - Manage: []
 
@@ -890,14 +696,7 @@ paths:
         - $ref: "#/components/parameters/PathOpQuery"
       responses:
         '200':
-          description: A JSON object indicating the status of the operation.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
+          $ref: "#/components/responses/OK"
       security:
         - Manage: []
 
@@ -918,14 +717,7 @@ paths:
         - $ref: "#/components/parameters/PathOpQuery"
       responses:
         '200':
-          description: A JSON object indicating the status of the operation.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
+          $ref: "#/components/responses/OK"
       security:
         - Manage: []
 
@@ -1007,6 +799,8 @@ paths:
                     type: object
                     additionalProperties:
                       type: object
+              example:
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-stats.json'
       security:
         - Statistics: []
 
@@ -1031,6 +825,8 @@ paths:
             application/json:
               schema:
                 type: object
+              example:
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-nsstats-index-name.json'
       security:
         - Statistics: []
 
@@ -1059,6 +855,8 @@ paths:
                     type: object
                     additionalProperties:
                       type: object
+              example:
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-stats-index-name.json'
       security:
         - Statistics: []
 
@@ -1082,8 +880,7 @@ paths:
               schema:
                 type: object
               example:
-                status: ok
-                indexStatus: Ready
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-scoped-status.json'
       security:
         - Read: []
 
@@ -1105,8 +902,7 @@ paths:
               type: object
               description: Add any valid JSON document to the request body.
             example:
-              name: hello world
-              title: couchbase blr
+              $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-stats-index-name-analyzeDoc-body.json'
       responses:
         '200':
           description: A JSON object containing the analysis of the provided document.
@@ -1114,6 +910,8 @@ paths:
             application/json:
               schema:
                 type: object
+              example:
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-stats-index-name-analyzeDoc-200.json'
       security:
         - Read: []
 
@@ -1129,7 +927,7 @@ paths:
         - $ref: "#/components/parameters/PathIndexFull"
       responses:
         '200':
-          description: A JSON object containing the document count for the specified index.
+          description: 'The Search Service returns a response that includes `"status": "ok"`.'
           content:
             application/json:
               schema:
@@ -1137,6 +935,9 @@ paths:
                 properties:
                   count:
                     type: integer
+                    description: The document count for the specified index.
+              example:
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-index-name-count.json'
       security:
         - Statistics: []
 
@@ -1155,16 +956,16 @@ paths:
         - $ref: "#/components/parameters/PathIndex"
       requestBody:
         required: true
+        description: A valid JSON object that contains the docID property, with a value that matches the document ID for a document in the Search index.
         content:
           application/json:
             schema:
               type: object
-              description: Add a valid JSON object that contains the docID property, with a value that matches the document ID for a document in the Search index.
             example:
-              docID: hotel_5848
+              $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-pindex-lookup-body.json'
       responses:
         '200':
-          description: A JSON object containing the partition index information.
+          description: 'The Search Service returns a response that includes `"status": "ok"`.'
           content:
             application/json:
               schema:
@@ -1174,13 +975,11 @@ paths:
                     type: string
                   pindexes:
                     type: object
+                    description: An object containing the partition index information.
                     additionalProperties:
                       type: object
               example:
-                status: ok
-                pindexes:
-                  travel-sample.inventory.travel-test:
-                    id: travel-sample.inventory.travel-test_123294e5a4efbe39_4c1c5584
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-pindex-lookup-200.json'
       security:
         - Manage: []
 
@@ -1197,11 +996,24 @@ paths:
         - $ref: "#/components/parameters/PathIndexFull"
       requestBody:
         required: true
+        description: For more detailed information about how to format the request body for the POST /api/index/{INDEX_NAME}/query endpoint, see [Search Request JSON Properties](../search/search-request-params.html).
         content:
           application/json:
             schema:
               type: object
-              description: For more detailed information about how to format the request body for the POST /api/index/${INDEX_NAME}/query endpoint, see [Search Request JSON Properties](../search/search-request-params.html).
+            examples:
+              regular:
+                summary: Regular Query
+                value:
+                  $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-index-name-query-regular.json'
+              options:
+                summary: Query with Options
+                value:
+                  $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-index-name-query-options.json'
+              hybrid:
+                summary: Hybrid Query
+                value:
+                  $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-index-name-query-hybrid.json'
       responses:
         '200':
           description: |-
@@ -1239,16 +1051,16 @@ paths:
         - $ref: "#/components/parameters/PathIndex"
       requestBody:
         required: true
+        description: |-
+          A JSON object to define the settings for your Search query.
+          For more information about how to create a Search query JSON object, see [Search Request JSON Properties](../search/search-request-params.html).
         content:
           application/json:
             schema:
               type: object
-              description: |
-                Add a JSON object to define the settings for your Search query.
-                For more information about how to create a Search query JSON object, see [Search Request JSON Properties](../search/search-request-params.html).
       responses:
         '200':
-          description: A JSON object containing the scoped query results.
+          description: 'The Search Service returns a response that includes `"status": "ok"`.'
           content:
             application/json:
               schema:
@@ -1262,6 +1074,19 @@ paths:
                       type: object
                       additionalProperties:
                         type: object
+              examples:
+                regular:
+                  summary: Success Response for a Regular Query
+                  externalValue: 'https://raw.githubusercontent.com/couchbase/docs-server/refs/heads/release/7.6/modules/rest-api/examples/fts-sample-success-response.jsonc'
+                hybrid:
+                  summary: Success Response for a Hybrid Query
+                  externalValue: 'https://raw.githubusercontent.com/couchbase/docs-server/refs/heads/release/7.6/modules/rest-api/examples/fts-sample-success-response-vector-search.jsonc'
+        default:
+          description: The Search Service returns a non-200 HTTP error code when a request fails.
+          content:
+            application/json:
+              example:
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-scoped-query-default.json'
       security:
         - Manage: []
 
@@ -1343,8 +1168,16 @@ components:
           - allow
           - disallow
       description: |-
-        To allow queries against a Search index, set `${OP}` to `allow`.
-        To block queries against a Search index, set `${OP}` to `disallow`.
+
+  responses:
+    OK:
+      description: 'The Search Service returns a response that includes `"status": "ok"`.'
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Response"
+          example:
+            $ref: "../../../docs/modules/fts-rest-indexing/examples/response-200.json"
 
   schemas:
     IndexDefinition:
@@ -1388,6 +1221,14 @@ components:
           description: |-
             The UUID of the previous index.
             Intended for clients that want to check that they are not overwriting the Search index definition updates of concurrent clients.
+
+    Response:
+      type: object
+      title: Response
+      properties:
+        status:
+          type: string
+          description: The status of the operation.
 
   securitySchemes:
     Manage:

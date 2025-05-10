@@ -6,10 +6,7 @@ The following example disables the creation of new partitions by means of file t
 .Curl request
 [source,sh]
 ----
-curl -X PUT http://$HOST:8094/api/managerOptions \
--u $ADMIN:$PASSWORD \
--H "Content-type:application/json" \
--d '{"disableFileTransferRebalance": "true" }'
+include::example$file-xfer-disable.sh[]
 ----
 ====
 
@@ -21,10 +18,7 @@ The following example re-enables the creation of new partitions by means of file
 .Curl request
 [source,sh]
 ----
-curl -X PUT http://$HOST:8094/api/managerOptions \
--u $ADMIN:$PASSWORD \
--H "Content-type:application/json" \
--d '{"disableFileTransferRebalance": "true" }'
+include::example$file-xfer-enable.sh[]
 ----
 ====
 

@@ -55,20 +55,14 @@ paths:
         "405":
           $ref: '#/components/responses/NotAllowed'
       x-codeSamples:
-        - lang: Shell
+        - lang: curl
           label: Disable
-          source: |-
-            curl -X PUT http://$HOST:8094/api/managerOptions \
-            -u $ADMIN:$PASSWORD \
-            -H "Content-type:application/json" \
-            -d '{"disableFileTransferRebalance": "true" }'
-        - lang: Shell
+          source:
+            $ref: '../../../docs/modules/fts-rest-manage/examples/file-xfer-disable.sh'
+        - lang: curl
           label: Re-enable
-          source: |-
-            curl -X PUT http://$HOST:8094/api/managerOptions \
-            -u $ADMIN:$PASSWORD \
-            -H "Content-type:application/json" \
-            -d '{"disableFileTransferRebalance": "false" }'
+          source:
+            $ref: '../../../docs/modules/fts-rest-manage/examples/file-xfer-enable.sh'
 
 components:
   schemas:
@@ -104,7 +98,7 @@ components:
           schema:
             $ref: "#/components/schemas/Response"
           example:
-            status: ok
+            $ref: "../../../docs/modules/fts-rest-manage/examples/file-xfer-200.json"
 
     NotFound:
       description: >
@@ -124,8 +118,7 @@ components:
           schema:
             $ref: "#/components/schemas/Response"
           example:
-            error: Method not allowed for endpoint
-            status: fail
+            $ref: "../../../docs/modules/fts-rest-manage/examples/file-xfer-405.json"
 
     Unauthorized:
       description: >

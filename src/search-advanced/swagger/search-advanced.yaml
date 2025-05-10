@@ -33,10 +33,13 @@ servers:
 tags:
   - name: Definition
     x-displayName: Index Partition Definition
+    description: Operations for index partition definition.
   - name: Query
     x-displayName: Index Partition Querying
+    description: Operations for querying index partitions.
   - name: Quota
     x-displayName: FTS Memory Quota
+    description: Operations for managing FTS memory quota.
 
 paths:
   /api/pindex:
@@ -53,24 +56,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/indexPartition'
-              example: {
-                  "pindexes": {
-                      "myFirstIndex_6cc599ab7a85bf3b_0": {
-                          "indexName": "myFirstIndex",
-                          "indexParams": "",
-                          "indexType": "blackhole",
-                          "indexUUID": "6cc599ab7a85bf3b",
-                          "name": "myFirstIndex_6cc599ab7a85bf3b_0",
-                          "sourceName": "",
-                          "sourceParams": "",
-                          "sourcePartitions": "",
-                          "sourceType": "nil",
-                          "sourceUUID": "",
-                          "uuid": "2d9ecb8b574a9f6a"
-                      }
-                  },
-                  "status": "ok"
-              }
+              example:
+                $ref: '../../../docs/modules/fts-rest-advanced/examples/get-partition.json'
       security:
         - Read: []
 
@@ -159,6 +146,7 @@ paths:
                   type: integer
                   description: The memory quota for the FTS service.
                   example: 512
+                  x-has-example: true
       responses:
         '200':
           description: Memory quota set.

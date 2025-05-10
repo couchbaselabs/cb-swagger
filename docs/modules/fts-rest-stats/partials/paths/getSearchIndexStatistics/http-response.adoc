@@ -1,0 +1,21 @@
+= Example HTTP Response
+
+A successful response returns an object like the following, which contains statistics on 2 indexes, `travel-sample-index` and `color-test`.
+
+====
+.Response 200
+[source,json]
+----
+include::example$get-stats-200.json[]
+----
+====
+
+If a user authenticates but does not have the appropriate permissions, the API returns a `403 Forbidden` response with an object similar to the following.
+
+====
+.Response 403
+[source,json]
+----
+include::example$get-stats-403.json[]
+----
+====

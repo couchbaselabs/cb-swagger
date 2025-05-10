@@ -41,12 +41,10 @@ paths:
         - $ref: '#/components/parameters/pathIndexName'
         - $ref: '#/components/parameters/queryLongerThan'
       x-codeSamples:
-        - lang: Shell
+        - lang: curl
           label: Request 1
-          source: |-
-            curl -XGET -H "Content-Type: application/json" \
-            -u $USER:$PASSWORD \
-            "http://$HOST:8094/api/query/index/DemoIndex1?longerThan=1ms"
+          source:
+            $ref: '../../../docs/modules/fts-rest-query/examples/api-query-index.sh'
       responses:
         "200":
           description: A list of active queries for the specified full-text search index.
@@ -54,45 +52,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActiveResponse'
-              example: {
-                "status": "ok",
-                "stats": {
-                  "total": 3,
-                  "successful": 3
-                },
-                "totalActiveQueryCount": 4,
-                "filteredActiveQueries": {
-                  "indexName": "DemoIndex1",
-                  "longerThan": "1ms",
-                  "queryCount": 2,
-                  "queryMap": {
-                    "b91d75480470f979f65f04e8f20a1f7b-16": {
-                      "QueryContext": {
-                        "query": {
-                          "query": "good restaurants in france"
-                        },
-                        "size": 10,
-                        "from": 0,
-                        "timeout": 120000,
-                        "index": "DemoIndex1"
-                      },
-                      "executionTime": "1.059754811s"
-                    },
-                    "f76b2d51397feee28c1e757ed426ef93-2": {
-                      "QueryContext": {
-                        "query": {
-                          "query": "mexican food in england"
-                        },
-                        "size": 10,
-                        "from": 0,
-                        "timeout": 120000,
-                        "index": "DemoIndex1"
-                      },
-                      "executionTime": "1.058247896s"
-                    }
-                  }
-                }
-              }
+              example:
+                $ref: '../../../docs/modules/fts-rest-query/examples/api-query-index.json'
 
   /api/query:
     get:
@@ -102,20 +63,14 @@ paths:
       parameters:
         - $ref: '#/components/parameters/queryLongerThan'
       x-codeSamples:
-        - lang: Shell
+        - lang: curl
           label: Request 2
-          summary: Find all active queries across the FTS cluster.
-          source: |-
-            curl -XGET -H "Content-Type: application/json" \
-            -u $USER:$PASSWORD \
-            "http://$HOST:8094/api/query"
-        - lang: Shell
+          source:
+            $ref: '../../../docs/modules/fts-rest-query/examples/api-query-all.sh'
+        - lang: curl
           label: Request 3
-          summary: Find all queries across cluster that have been running for longer than 7s.
-          source: |-
-            curl -XGET -H "Content-Type: application/json" \
-            -u $USER:$PASSWORD \
-            "http://$HOST:8094/api/query?longerThan=7s"
+          source:
+            $ref: '../../../docs/modules/fts-rest-query/examples/api-query-filter.sh'
       responses:
         "200":
           description: A list of all active full-text search queries across all nodes in the cluster.
@@ -126,95 +81,12 @@ paths:
               examples:
                 request2:
                   summary: Result of request 2
-                  value: {
-                    "status": "ok",
-                    "stats": {
-                      "total": 3,
-                      "successful": 3
-                    },
-                    "totalActiveQueryCount": 4,
-                    "filteredActiveQueries": {
-                      "queryCount": 4,
-                      "queryMap": {
-                        "b91d75480470f979f65f04e8f20a1f7b-17": {
-                          "QueryContext": {
-                            "query": {
-                              "query": "good restraunts in france"
-                            },
-                            "size": 10,
-                            "from": 0,
-                            "timeout": 120000,
-                            "index": "DemoIndex1"
-                          },
-                          "executionTime": "2.144802122s"
-                        },
-                        "b91d75480470f979f65f04e8f20a1f7b-18": {
-                          "QueryContext": {
-                            "query": {
-                              "query": "decent hotel with a pool in italy"
-                            },
-                            "size": 10,
-                            "from": 0,
-                            "timeout": 120000,
-                            "index": "DemoIndex2"
-                          },
-                          "executionTime": "2.144712787s"
-                        },
-                        "b91d75480470f979f65f04e8f20a1f7b-19": {
-                          "QueryContext": {
-                            "query": {
-                              "query": "germany"
-                            },
-                            "size": 10,
-                            "from": 0,
-                            "timeout": 120000,
-                            "index": "DemoIndex2"
-                          },
-                          "executionTime": "2.143957727s"
-                        },
-                        "f76b2d51397feee28c1e757ed426ef93-3": {
-                          "QueryContext": {
-                            "query": {
-                              "query": "mexican food in england"
-                            },
-                            "size": 10,
-                            "from": 0,
-                            "timeout": 120000,
-                            "index": "DemoIndex1"
-                          },
-                          "executionTime": "2.14286421s"
-                        }
-                      }
-                    }
-                  }
+                  value:
+                    $ref: '../../../docs/modules/fts-rest-query/examples/api-query-all.json'
                 request3:
                   summary: Result of request 3
-                  value: {
-                    "status": "ok",
-                    "stats": {
-                      "total": 3,
-                      "successful": 3
-                    },
-                    "totalActiveQueryCount": 3,
-                    "filteredActiveQueries": {
-                      "longerThan": "7s",
-                      "queryCount": 1,
-                      "queryMap": {
-                        "b91d75480470f979f65f04e8f20a1f7b-21": {
-                          "QueryContext": {
-                            "query": {
-                              "query": "decent hotel with a pool in italy"
-                            },
-                            "size": 10,
-                            "from": 0,
-                            "timeout": 120000,
-                            "index": "DemoIndex1"
-                          },
-                          "executionTime": "10.541956741s"
-                        }
-                      }
-                    }
-                  }
+                  value:
+                    $ref: '../../../docs/modules/fts-rest-query/examples/api-query-filter.json'
 
   /api/query/{queryID}/cancel:
     post:
@@ -237,12 +109,10 @@ paths:
             example:
               uuid: "b91d75480470f979f65f04e8f20a1f7b"
       x-codeSamples:
-        - lang: Shell
+        - lang: curl
           label: Request 4
-          source: |-
-            curl -X POST -H "Content-Type: application/json" -u $USER:$PASSWORD \
-            "http://$HOST:8094/api/query/24/cancel" -d \
-            '{ "uuid": "b91d75480470f979f65f04e8f20a1f7b" }'
+          source:
+            $ref: '../../../docs/modules/fts-rest-query/examples/api-query-cancel.sh'
       responses:
         "200":
           description: The query was successfully canceled.
@@ -250,10 +120,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelResponse'
-              example: {
-                "status": "ok",
-                "msg": "query with ID '24' on node 'b91d75480470f979f65f04e8f20a1f7b' was aborted!"
-              }
+              example:
+                $ref: '../../../docs/modules/fts-rest-query/examples/api-query-cancel.json'
 
 components:
   parameters:
@@ -309,9 +177,11 @@ components:
         total:
           type: integer
           example: 3
+          x-has-example: true
         successful:
           type: integer
           example: 3
+          x-has-example: true
     ActiveResponseFilter:
       type: object
       title: Filtered Active Queries
@@ -363,12 +233,15 @@ components:
         size:
           type: integer
           example: 10
+          x-has-example: true
         from:
           type: integer
           example: 0
+          x-has-example: true
         timeout:
           type: integer
           example: 120000
+          x-has-example: true
         index:
           type: string
           description: The name of a full-text index.
