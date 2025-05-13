@@ -12,7 +12,7 @@ DO NOT EDIT! See https://github.com/couchbase/cb-swagger
 
 :leveloffset: 1
 
-// markup not found, no include::{specDir}overview/document-before.adoc[opts=optional]
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 
 [[overview]]
@@ -25,8 +25,8 @@ DO NOT EDIT! See https://github.com/couchbase/cb-swagger
 
 [markdown]
 --
-Get statistics for the Search Service and your Search indexes.
-
+The Search Statistics REST API is provided by the Search service.
+This API enables you to get statistics for the Search Service and your Search indexes.
 --
 
 [discrete#version]
@@ -244,126 +244,6 @@ a|
 
 :leveloffset: -1
 
-//tag::example-searchStats[]
-====
-[source,json]
-----
-{
-  "tot_remote_grpc" : 6,
-  "BUCKET_NAME:INDEX_NAME:num_recs_to_persist" : 5,
-  "total_queries_timeout" : 0,
-  "BUCKET_NAME:INDEX_NAME:total_queries" : 6,
-  "curr_batches_blocked_by_herder" : 5,
-  "pct_used_ram" : 1.4894159098541704,
-  "BUCKET_NAME:INDEX_NAME:avg_internal_queries_latency" : 8,
-  "BUCKET_NAME:INDEX_NAME:num_bytes_used_disk_by_root" : 8,
-  "num_files_on_disk" : 2,
-  "total_bytes_query_results" : 6,
-  "BUCKET_NAME:INDEX_NAME:num_bytes_read_at_query_time" : 2,
-  "total_queries_search_in_context_error" : 0,
-  "BUCKET_NAME:INDEX_NAME:total_queries_timeout" : 9,
-  "BUCKET_NAME:INDEX_NAME:avg_grpc_queries_latency" : 6,
-  "tot_remote_http2" : 3,
-  "tot_https_limitlisteners_opened" : 2,
-  "BUCKET_NAME:INDEX_NAME:total_term_searchers_finished" : 3,
-  "avg_queries_latency" : 0.8008281904610115,
-  "total_internal_queries" : 4,
-  "BUCKET_NAME:INDEX_NAME:total_bytes_query_results" : 8,
-  "tot_grpc_queryreject_on_memquota" : 8,
-  "batch_bytes_removed" : 1,
-  "BUCKET_NAME:INDEX_NAME:num_mutations_to_index" : 3,
-  "tot_remote_grpc_ssl" : 5,
-  "total_queries_slow" : 9,
-  "BUCKET_NAME:INDEX_NAME:timer_snapshot_start_count" : 3,
-  "tot_remote_grpc_tls" : 6,
-  "total_queries" : 0,
-  "total_request_time" : 5,
-  "num_gocbcore_stats_agents" : 7,
-  "tot_grpcs_listeners_closed" : 9,
-  "total_queries_partial_results_error" : 7,
-  "BUCKET_NAME:INDEX_NAME:doc_count" : 3,
-  "BUCKET_NAME:INDEX_NAME:num_mem_merge_ops" : 1,
-  "tot_grpc_listeners_closed" : 9,
-  "BUCKET_NAME:INDEX_NAME:total_grpc_queries" : 0,
-  "BUCKET_NAME:INDEX_NAME:timer_data_delete_count" : 3,
-  "BUCKET_NAME:INDEX_NAME:timer_batch_store_count" : 3,
-  "BUCKET_NAME:INDEX_NAME:num_bytes_written_at_index_time" : 4,
-  "tot_remote_http_ssl" : 7,
-  "BUCKET_NAME:INDEX_NAME:timer_opaque_get_count" : 5,
-  "batch_bytes_added" : 6,
-  "total_queries_bad_request_error" : 6,
-  "BUCKET_NAME:INDEX_NAME:num_bytes_used_disk" : 1,
-  "tot_remote_http" : 3,
-  "num_bytes_ram_quota" : 2,
-  "tot_rollback_partial" : 7,
-  "BUCKET_NAME:INDEX_NAME:timer_data_update_count" : 9,
-  "BUCKET_NAME:INDEX_NAME:total_grpc_queries_error" : 7,
-  "BUCKET_NAME:INDEX_NAME:num_files_on_disk" : 9,
-  "BUCKET_NAME:INDEX_NAME:avg_queries_latency" : 4,
-  "tot_batches_merged" : 1,
-  "total_queries_consistency_error" : 4,
-  "tot_http_limitlisteners_closed" : 3,
-  "BUCKET_NAME:INDEX_NAME:timer_opaque_set_count" : 7,
-  "BUCKET_NAME:INDEX_NAME:total_grpc_internal_queries" : 0,
-  "total_create_index_internal_server_error" : 4,
-  "tot_http_limitlisteners_opened" : 6,
-  "BUCKET_NAME:INDEX_NAME:total_grpc_queries_slow" : 4,
-  "tot_batches_flushed_on_maxops" : 6,
-  "total_queries_error" : 1,
-  "tot_batches_flushed_on_timer" : 7,
-  "BUCKET_NAME:INDEX_NAME:total_internal_queries" : 0,
-  "pct_cpu_gc" : 1.0246457001441578,
-  "tot_grpcs_listeners_opened" : 6,
-  "BUCKET_NAME:INDEX_NAME:num_root_memorysegments" : 7,
-  "BUCKET_NAME:INDEX_NAME:total_term_searchers" : 1,
-  "BUCKET_NAME:INDEX_NAME:last_access_time" : 0,
-  "total_create_index_bad_request_error" : 0,
-  "tot_bleve_dest_closed" : 5,
-  "BUCKET_NAME:INDEX_NAME:num_persister_nap_merger_break" : 9,
-  "BUCKET_NAME:INDEX_NAME:num_bytes_used_disk_by_root_reclaimable" : 6,
-  "tot_https_limitlisteners_closed" : 1,
-  "BUCKET_NAME:INDEX_NAME:total_queries_slow" : 6,
-  "BUCKET_NAME:INDEX_NAME:num_pindexes_target" : 5,
-  "total_delete_index_internal_server_error" : 3,
-  "total_queries_max_result_window_exceeded_error" : 4,
-  "num_bytes_used_disk" : 7,
-  "num_gocbcore_dcp_agents" : 4,
-  "BUCKET_NAME:INDEX_NAME:num_persister_nap_pause_completed" : 8,
-  "total_queries_validation_error" : 7,
-  "tot_queryreject_on_memquota" : 6,
-  "BUCKET_NAME:INDEX_NAME:num_pindexes_actual" : 0,
-  "BUCKET_NAME:INDEX_NAME:total_queries_error" : 4,
-  "BUCKET_NAME:INDEX_NAME:num_root_filesegments" : 8,
-  "total_delete_index_request_ok" : 5,
-  "BUCKET_NAME:INDEX_NAME:total_bytes_indexed" : 3,
-  "BUCKET_NAME:INDEX_NAME:tot_seq_received" : 2,
-  "BUCKET_NAME:INDEX_NAME:total_grpc_queries_timeout" : 2,
-  "total_delete_index_request" : 7,
-  "BUCKET_NAME:INDEX_NAME:total_grpc_request_time" : 9,
-  "BUCKET_NAME:INDEX_NAME:total_compaction_written_bytes" : 4,
-  "BUCKET_NAME:INDEX_NAME:timer_rollback_count" : 0,
-  "BUCKET_NAME:INDEX_NAME:num_file_merge_ops" : 8,
-  "BUCKET_NAME:INDEX_NAME:total_knn_searches" : 2,
-  "tot_batches_new" : 4,
-  "total_create_index_request_ok" : 7,
-  "tot_bleve_dest_opened" : 9,
-  "num_knn_search_requests" : 1,
-  "total_gc" : 3,
-  "num_bytes_used_ram" : 9,
-  "BUCKET_NAME:INDEX_NAME:avg_grpc_internal_queries_latency" : 4,
-  "num_batches_introduced" : 5,
-  "total_queries_rejected_by_herder" : 9,
-  "num_bytes_used_ram_c" : 3,
-  "BUCKET_NAME:INDEX_NAME:total_vectors" : 5,
-  "tot_grpc_listeners_opened" : 6,
-  "tot_rollback_full" : 0,
-  "BUCKET_NAME:INDEX_NAME:total_request_time" : 1,
-  "total_delete_index_bad_request_error" : 3,
-  "total_create_index_request" : 8
-}
-----
-====
-//end::example-searchStats[]
 
 
 // markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-responses-after.adoc[opts=optional]
@@ -403,7 +283,7 @@ a|
 // markup not found, no include::{snippetDir}getSearchIndexStatistics/http-request.adoc[opts=optional]
 
 
-// markup not found, no include::{snippetDir}getSearchIndexStatistics/http-response.adoc[opts=optional]
+include::{snippetDir}getSearchIndexStatistics/http-response.adoc[opts=optional]
 
 
 
@@ -1420,7 +1300,7 @@ a¦
 
 [markdown]
 --
-The total number of Search queries that could only return partial results. 
+The total number of Search queries that could only return partial results.
 
 A Search query can return partial results if it times out before all partitions can respond.
 --
@@ -1437,7 +1317,7 @@ a¦
 
 [markdown]
 --
-The total number of queries rejected by the Search Service when the memory used approaches or exceeds the quota set for a query. 
+The total number of queries rejected by the Search Service when the memory used approaches or exceeds the quota set for a query.
 
 For more information about how to set the Search Service's memory quota, see [ftsMemoryQuota](https://docs.couchbase.com/server/7.6/fts/fts-advanced-settings-ftsMemoryQuota.html).
 
@@ -1456,9 +1336,9 @@ a¦
 
 [markdown]
 --
-The total number of Search queries that returned an error when running through the `SearchInContext` API. 
+The total number of Search queries that returned an error when running through the `SearchInContext` API.
 
-These errors are typically internal server errors. 
+These errors are typically internal server errors.
 --
 
 [%hardbreaks]
@@ -1522,7 +1402,7 @@ a¦
 
 [markdown]
 --
-The total time, in nanoseconds, spent processing Search queries across the cluster. 
+The total time, in nanoseconds, spent processing Search queries across the cluster.
 --
 
 [%hardbreaks]
@@ -1531,7 +1411,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:avg_grpc_internal_queries_latency* +
+*BUCKET:INDEX:avg_grpc_internal_queries_latency* +
 _optional_
 a¦ 
 
@@ -1540,7 +1420,7 @@ a¦
 The average time taken for a Search query's scatter-gather requests between the coordinator and other nodes running the Search Service.
 
 The Search Service uses gRPC to manage scatter-gather operations across nodes when there are multiple nodes running the Search Service in a cluster.
-The coordinator is the Search node that receives the Search request and scatters it to all other Search index partitions on other nodes. 
+The coordinator is the Search node that receives the Search request and scatters it to all other Search index partitions on other nodes.
 --
 
 [%hardbreaks]
@@ -1549,13 +1429,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:avg_grpc_queries_latency* +
+*BUCKET:INDEX:avg_grpc_queries_latency* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The average time taken for each Search query that uses gRPC, in milliseconds for the given Search index. 
+The average time taken for each Search query that uses gRPC, in milliseconds for the given Search index.
 
 The Search Service uses gRPC to manage scatter-gather operations across nodes when there are multiple nodes running the Search Service in a cluster.
 --
@@ -1566,7 +1446,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:avg_internal_queries_latency* +
+*BUCKET:INDEX:avg_internal_queries_latency* +
 _optional_
 a¦ 
 
@@ -1581,13 +1461,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:avg_queries_latency* +
+*BUCKET:INDEX:avg_queries_latency* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The average latency, in milliseconds, for all Search queries on the given Search index. 
+The average latency, in milliseconds, for all Search queries on the given Search index.
 
 This statistic appears on the Server Web Console dashboard as **Search Query Latency**.
 --
@@ -1598,13 +1478,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:doc_count* +
+*BUCKET:INDEX:doc_count* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of documents in the given Search index. 
+The total number of documents in the given Search index.
 
 This statistic appears on the Server Web Console dashboard as **Search Docs**.
 --
@@ -1615,7 +1495,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:last_access_time* +
+*BUCKET:INDEX:last_access_time* +
 _optional_
 a¦ 
 
@@ -1630,7 +1510,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_bytes_read_at_query_time* +
+*BUCKET:INDEX:num_bytes_read_at_query_time* +
 _optional_
 a¦ 
 
@@ -1645,13 +1525,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_bytes_used_disk* +
+*BUCKET:INDEX:num_bytes_used_disk* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of bytes used on disk by the given Search index. 
+The total number of bytes used on disk by the given Search index.
 
 This statistic appears on the Server Web Console dashboard as **Search Disk Size**.
 --
@@ -1662,7 +1542,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_bytes_used_disk_by_root* +
+*BUCKET:INDEX:num_bytes_used_disk_by_root* +
 _optional_
 a¦ 
 
@@ -1672,7 +1552,7 @@ The total number of bytes used on disk by the root segment of the given Search i
 
 The root segment includes all data for the Search index, excluding any segments that might be stale and will be removed by the persister or merger.
 Segments are stale when they're replaced by a new merged segment created by the merger.
-Stale segments are deleted when they're not used by any new queries. 
+Stale segments are deleted when they're not used by any new queries.
 
 The `num_bytes_used_disk_by_root` value will be less than the `num_bytes_used_disk` value.
 --
@@ -1683,13 +1563,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_bytes_used_disk_by_root_reclaimable* +
+*BUCKET:INDEX:num_bytes_used_disk_by_root_reclaimable* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of bytes used on disk by the latest root index segment snapshot, which can potentially be reclaimed by a file merge operation. 
+The total number of bytes used on disk by the latest root index segment snapshot, which can potentially be reclaimed by a file merge operation.
 
 The root segment includes all data for the Search index, excluding any segments that might be stale and will be removed by the persister or merger.
 Segments are stale when they're replaced by a new merged segment created by the merger.
@@ -1702,7 +1582,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_bytes_written_at_index_time* +
+*BUCKET:INDEX:num_bytes_written_at_index_time* +
 _optional_
 a¦ 
 
@@ -1717,17 +1597,17 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_file_merge_ops* +
+*BUCKET:INDEX:num_file_merge_ops* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The number of merge operations completed by the merger routine, over persisted files. 
+The number of merge operations completed by the merger routine, over persisted files.
 
-Each Search index partition has a merger and a persister. 
+Each Search index partition has a merger and a persister.
 
-The persister reads in-memory segments from the disk write queue and flushes them to disk. 
+The persister reads in-memory segments from the disk write queue and flushes them to disk.
 The merger consolidates flushed files from the persister and flushes the consolidated result to disk through the persister, while purging the smaller, older files.
 The persister and merger interact to continuously flush and merge new in-memory segments to disk.
 --
@@ -1738,13 +1618,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_files_on_disk* +
+*BUCKET:INDEX:num_files_on_disk* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of files on disk for the given Search index. 
+The total number of files on disk for the given Search index.
 
 This statistic appears on the Server Web Console dashboard as **Search Disk Files**.
 --
@@ -1755,17 +1635,17 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_mem_merge_ops* +
+*BUCKET:INDEX:num_mem_merge_ops* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The number of merge operations completed by the merger routine, over in-memory segments. 
+The number of merge operations completed by the merger routine, over in-memory segments.
 
-Each Search index partition has a merger and a persister. 
+Each Search index partition has a merger and a persister.
 
-The persister reads in-memory segments from the disk write queue and flushes them to disk. 
+The persister reads in-memory segments from the disk write queue and flushes them to disk.
 The merger consolidates flushed files from the persister and flushes the consolidated result to disk through the persister, while purging the smaller, older files.
 The persister and merger interact to continuously flush and merge new in-memory segments to disk.
 --
@@ -1776,13 +1656,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_mutations_to_index* +
+*BUCKET:INDEX:num_mutations_to_index* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The DCP sequence numbers of changes that have not yet been indexed for the given Search index. 
+The DCP sequence numbers of changes that have not yet been indexed for the given Search index.
 
 This statistic appears on the Server Web Console dashboard as **Search Mutations Remaining**.
 --
@@ -1793,19 +1673,19 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_persister_nap_merger_break* +
+*BUCKET:INDEX:num_persister_nap_merger_break* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The number of times the persister was interrupted by the merger during a nap period. 
+The number of times the persister was interrupted by the merger during a nap period.
 
-Each Search index partition has a merger and a persister. 
+Each Search index partition has a merger and a persister.
 
-The persister reads in-memory segments from the disk write queue and flushes them to disk. 
+The persister reads in-memory segments from the disk write queue and flushes them to disk.
 The merger consolidates flushed files from the persister and flushes the consolidated result to disk through the persister, while purging the smaller, older files.
-The persister and merger interact to continuously flush and merge new in-memory segments to disk. 
+The persister and merger interact to continuously flush and merge new in-memory segments to disk.
 --
 
 [%hardbreaks]
@@ -1814,7 +1694,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_persister_nap_pause_completed* +
+*BUCKET:INDEX:num_persister_nap_pause_completed* +
 _optional_
 a¦ 
 
@@ -1822,11 +1702,11 @@ a¦
 --
 The number of times the persister completed its configured nap period before flushing content to disk, without being interrupted by the merger.
 
-Each Search index partition has a merger and a persister. 
+Each Search index partition has a merger and a persister.
 
-The persister reads in-memory segments from the disk write queue and flushes them to disk. 
+The persister reads in-memory segments from the disk write queue and flushes them to disk.
 The merger consolidates the flushed files from the persister and flushes the consolidated result to disk through the persister, while purging the smaller, older files.
-The persister and merger interact to continuously flush and merge new in-memory segments to disk.  
+The persister and merger interact to continuously flush and merge new in-memory segments to disk.
 --
 
 [%hardbreaks]
@@ -1835,13 +1715,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_pindexes_actual* +
+*BUCKET:INDEX:num_pindexes_actual* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of partitions currently in the given Search index. 
+The total number of partitions currently in the given Search index.
 
 This statistic appears on the Server Web Console dashboard as **Search Partitions**.
 --
@@ -1852,7 +1732,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_pindexes_target* +
+*BUCKET:INDEX:num_pindexes_target* +
 _optional_
 a¦ 
 
@@ -1869,13 +1749,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_recs_to_persist* +
+*BUCKET:INDEX:num_recs_to_persist* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of entries, including terms, records, and dictionary rows, that have not yet been persisted to disk. 
+The total number of entries, including terms, records, and dictionary rows, that have not yet been persisted to disk.
 
 This statistic appears on the Server Web Console dashboard as **Search Records to Persist**.
 --
@@ -1886,13 +1766,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_root_filesegments* +
+*BUCKET:INDEX:num_root_filesegments* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of file segments in the root segment. 
+The total number of file segments in the root segment.
 
 The root segment includes all data for the Search index, excluding any segments that might be stale and will be removed by the persister or merger.
 
@@ -1905,13 +1785,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:num_root_memorysegments* +
+*BUCKET:INDEX:num_root_memorysegments* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of memory segments in the root segment. 
+The total number of memory segments in the root segment.
 
 The root segment includes all data for the Search index, excluding any segments that might be stale and will be removed by the persister or merger.
 
@@ -1924,16 +1804,16 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:timer_batch_store_count* +
+*BUCKET:INDEX:timer_batch_store_count* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of times batches were executed against the given Search index. 
+The total number of times batches were executed against the given Search index.
 
-Batches are a data structure in the Search Service, used for processing data coming in from DCP and the Data Service to the documents in a Search index. 
-A batch is executed when it's flushed to disk. 
+Batches are a data structure in the Search Service, used for processing data coming in from DCP and the Data Service to the documents in a Search index.
+A batch is executed when it's flushed to disk.
 --
 
 [%hardbreaks]
@@ -1942,7 +1822,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:timer_data_delete_count* +
+*BUCKET:INDEX:timer_data_delete_count* +
 _optional_
 a¦ 
 
@@ -1957,7 +1837,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:timer_data_update_count* +
+*BUCKET:INDEX:timer_data_update_count* +
 _optional_
 a¦ 
 
@@ -1972,7 +1852,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:timer_opaque_get_count* +
+*BUCKET:INDEX:timer_opaque_get_count* +
 _optional_
 a¦ 
 
@@ -1980,7 +1860,7 @@ a¦
 --
 The total number of times the DCP consumer had to retrieve stored metadata to aid in reconnection for the given Search index.
 
-If the DCP connection closes, the Search Service can use this stored metadata to resume from the last stable point. 
+If the DCP connection closes, the Search Service can use this stored metadata to resume from the last stable point.
 --
 
 [%hardbreaks]
@@ -1989,7 +1869,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:timer_opaque_set_count* +
+*BUCKET:INDEX:timer_opaque_set_count* +
 _optional_
 a¦ 
 
@@ -2004,7 +1884,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:timer_rollback_count* +
+*BUCKET:INDEX:timer_rollback_count* +
 _optional_
 a¦ 
 
@@ -2019,15 +1899,15 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:timer_snapshot_start_count* +
+*BUCKET:INDEX:timer_snapshot_start_count* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of DCP Snapshot markers received for the given Search index. 
+The total number of DCP Snapshot markers received for the given Search index.
 
-Snapshots contain a representation of document mutations on either a write queue or in storage. 
+Snapshots contain a representation of document mutations on either a write queue or in storage.
 --
 
 [%hardbreaks]
@@ -2036,7 +1916,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:tot_seq_received* +
+*BUCKET:INDEX:tot_seq_received* +
 _optional_
 a¦ 
 
@@ -2051,13 +1931,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_bytes_indexed* +
+*BUCKET:INDEX:total_bytes_indexed* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The rate, in bytes per second, of content indexed in the given Search index. 
+The rate, in bytes per second, of content indexed in the given Search index.
 
 This statistic appears on the Server Web Console dashboard as **Search Index Rate**.
 --
@@ -2068,14 +1948,14 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_bytes_query_results* +
+*BUCKET:INDEX:total_bytes_query_results* +
 _optional_
 a¦ 
 
 [markdown]
 --
 The size of results returned for Search queries on the given Search index.
-This includes the size of all JSON sent. 
+This includes the size of all JSON sent.
 
 This statistic appears on the Server Web Console dashboard as **Search Result Rate**.
 --
@@ -2086,7 +1966,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_compaction_written_bytes* +
+*BUCKET:INDEX:total_compaction_written_bytes* +
 _optional_
 a¦ 
 
@@ -2103,7 +1983,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_grpc_internal_queries* +
+*BUCKET:INDEX:total_grpc_internal_queries* +
 _optional_
 a¦ 
 
@@ -2113,7 +1993,7 @@ The total number of internal gRPC requests from the coordinating node for a Sear
 
 The Search Service uses gRPC to manage scatter-gather operations across nodes when there are multiple nodes running the Search Service in a cluster.
 The coordinating node is the Search node that receives the Search request and scatters it to all other Search index partitions on other nodes.
-The coordinating node applies filters to the results from all Search index partitions and returns the final result set. 
+The coordinating node applies filters to the results from all Search index partitions and returns the final result set.
 --
 
 [%hardbreaks]
@@ -2122,7 +2002,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_grpc_queries* +
+*BUCKET:INDEX:total_grpc_queries* +
 _optional_
 a¦ 
 
@@ -2137,7 +2017,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_grpc_queries_error* +
+*BUCKET:INDEX:total_grpc_queries_error* +
 _optional_
 a¦ 
 
@@ -2152,7 +2032,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_grpc_queries_slow* +
+*BUCKET:INDEX:total_grpc_queries_slow* +
 _optional_
 a¦ 
 
@@ -2167,7 +2047,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_grpc_queries_timeout* +
+*BUCKET:INDEX:total_grpc_queries_timeout* +
 _optional_
 a¦ 
 
@@ -2182,16 +2062,16 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_grpc_request_time* +
+*BUCKET:INDEX:total_grpc_request_time* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total time, in nanoseconds, for internal scatter-gather requests. 
+The total time, in nanoseconds, for internal scatter-gather requests.
 
 The Search Service uses gRPC to manage scatter-gather operations across nodes when there are multiple nodes running the Search Service in a cluster.
-The coordinating node is the Search node that receives the Search request and scatters it to all other Search index partitions on other nodes. 
+The coordinating node is the Search node that receives the Search request and scatters it to all other Search index partitions on other nodes.
 The coordinating node applies filters to the results from all Search index partitions and returns the final result set.
 --
 
@@ -2201,17 +2081,17 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_internal_queries* +
+*BUCKET:INDEX:total_internal_queries* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The number of internal queries from the coordinating node for a Search query to other nodes running the Search Service, for the given Search index. 
+The number of internal queries from the coordinating node for a Search query to other nodes running the Search Service, for the given Search index.
 
 The Search Service uses gRPC to manage scatter-gather operations across nodes when there are multiple nodes running the Search Service in a cluster.
-The coordinating node is the Search node that receives the Search request and scatters it to all other Search index partitions on other nodes. 
-The coordinating node applies filters to the results from all Search index partitions and returns the final result set. 
+The coordinating node is the Search node that receives the Search request and scatters it to all other Search index partitions on other nodes.
+The coordinating node applies filters to the results from all Search index partitions and returns the final result set.
 --
 
 [%hardbreaks]
@@ -2220,7 +2100,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_knn_searches* +
+*BUCKET:INDEX:total_knn_searches* +
 _optional_
 a¦ 
 
@@ -2235,7 +2115,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_queries* +
+*BUCKET:INDEX:total_queries* +
 _optional_
 a¦ 
 
@@ -2250,13 +2130,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_queries_error* +
+*BUCKET:INDEX:total_queries_error* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of Search queries on the given Search index that resulted in an error. 
+The total number of Search queries on the given Search index that resulted in an error.
 
 This statistic appears on the Server Web Console dashboard as **Search Query Error Rate**.
 --
@@ -2267,15 +2147,15 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_queries_slow* +
+*BUCKET:INDEX:total_queries_slow* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of Search queries on the given Search index in the slow query log. 
+The total number of Search queries on the given Search index in the slow query log.
 
-Slow queries are any queries that take longer than 5 seconds to run. 
+Slow queries are any queries that take longer than 5 seconds to run.
 
 This statistic appears on the Server Web Console dashboard as **Search Slow Queries**.
 --
@@ -2286,13 +2166,13 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_queries_timeout* +
+*BUCKET:INDEX:total_queries_timeout* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of Search queries on the given Search index that timed out. 
+The total number of Search queries on the given Search index that timed out.
 
 This statistic appears on the Server Web Console dashboard as **Search Query Timeout Rate**.
 --
@@ -2303,7 +2183,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_request_time* +
+*BUCKET:INDEX:total_request_time* +
 _optional_
 a¦ 
 
@@ -2318,18 +2198,18 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_term_searchers* +
+*BUCKET:INDEX:total_term_searchers* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total number of term searchers for the given Search index. 
+The total number of term searchers for the given Search index.
 
-Every Search query requires one or more term searchers. 
+Every Search query requires one or more term searchers.
 More complex Search queries typically require more term searchers.
 
-Use this statistic to approximate how complex a query is. 
+Use this statistic to approximate how complex a query is.
 
 This statistic appears on the Server Web Console dashboard as **Term Searchers Start Rate**.
 --
@@ -2340,7 +2220,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_term_searchers_finished* +
+*BUCKET:INDEX:total_term_searchers_finished* +
 _optional_
 a¦ 
 
@@ -2355,7 +2235,7 @@ a¦ Integer
 
 
 a¦ 
-*BUCKET_NAME:INDEX_NAME:total_vectors* +
+*BUCKET:INDEX:total_vectors* +
 _optional_
 a¦ 
 
@@ -2405,7 +2285,7 @@ a¦ Integer
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
+include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
@@ -2440,7 +2320,7 @@ __Type__ : http
 
 
 
-// markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
+include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 

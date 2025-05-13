@@ -12,7 +12,7 @@ DO NOT EDIT! See https://github.com/couchbase/cb-swagger
 
 :leveloffset: 1
 
-// markup not found, no include::{specDir}overview/document-before.adoc[opts=optional]
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 
 [[overview]]
@@ -25,8 +25,8 @@ DO NOT EDIT! See https://github.com/couchbase/cb-swagger
 
 [markdown]
 --
-Use the following endpoints in the Search Service API to manage and monitor advanced settings of your Search indexes.
-
+The Advanced Search REST APIs are provided by the Search service.
+These APIs enable you to manage and monitor advanced settings of your Search indexes.
 --
 
 [discrete#version]
@@ -124,10 +124,10 @@ ifeval::[{count-apis} > 1]
 = Definition
 :leveloffset: +1
 
-ifeval::["" != ""]
-
+ifeval::["Operations for index partition definition." != ""]
+Operations for index partition definition.
 endif::[]
-ifeval::["" == ""]
+ifeval::["Operations for index partition definition." == ""]
 **{toc-title}**
 endif::[]
 endif::[]
@@ -229,16 +229,6 @@ a| <<indexPartition>>
 
 :leveloffset: -1
 
-//tag::example-indexPartition[]
-====
-[source,json]
-----
-{
-  "status" : "status"
-}
-----
-====
-//end::example-indexPartition[]
 
 
 // markup not found, no include::{specDir}paths/getPartition/operation-responses-after.adoc[opts=optional]
@@ -278,7 +268,7 @@ a| <<indexPartition>>
 // markup not found, no include::{snippetDir}getPartition/http-request.adoc[opts=optional]
 
 
-// markup not found, no include::{snippetDir}getPartition/http-response.adoc[opts=optional]
+include::{snippetDir}getPartition/http-response.adoc[opts=optional]
 
 
 
@@ -483,10 +473,10 @@ ifeval::[{count-apis} > 1]
 = Query
 :leveloffset: +1
 
-ifeval::["" != ""]
-
+ifeval::["Operations for querying index partitions." != ""]
+Operations for querying index partitions.
 endif::[]
-ifeval::["" == ""]
+ifeval::["Operations for querying index partitions." == ""]
 **{toc-title}**
 endif::[]
 endif::[]
@@ -802,10 +792,6 @@ a¦ <<Object>>
 :leveloffset: -1
 
 
-//tag::example-Object[]
-====
-====
-//end::example-Object[]
 
 
 // markup not found, no include::{specDir}paths/queryPartition/operation-parameters-after.adoc[opts=optional]
@@ -903,10 +889,10 @@ ifeval::[{count-apis} > 1]
 = Quota
 :leveloffset: +1
 
-ifeval::["" != ""]
-
+ifeval::["Operations for managing FTS memory quota." != ""]
+Operations for managing FTS memory quota.
 endif::[]
-ifeval::["" == ""]
+ifeval::["Operations for managing FTS memory quota." == ""]
 **{toc-title}**
 endif::[]
 endif::[]
@@ -1149,7 +1135,7 @@ ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
 [#indexPartition]
-= Index Partition
+= Index Partitions
 
 :leveloffset: +1
 
@@ -1188,6 +1174,7 @@ a¦
 
 [markdown]
 --
+The status of the request.
 --
 
 [%hardbreaks]
@@ -1219,7 +1206,7 @@ ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
 [#indexPartitionPIndex]
-= PIndexes
+= Index Partitions Wrapper
 
 :leveloffset: +1
 
@@ -1275,7 +1262,7 @@ ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
 [#indexPartitionPIndexInner]
-= PIndex
+= Index Partition
 
 :leveloffset: +1
 
@@ -1480,7 +1467,7 @@ a¦ String
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
+include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
@@ -1575,7 +1562,7 @@ __Type__ : http
 
 
 
-// markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
+include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 

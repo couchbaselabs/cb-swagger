@@ -12,7 +12,7 @@ DO NOT EDIT! See https://github.com/couchbase/cb-swagger
 
 :leveloffset: 1
 
-// markup not found, no include::{specDir}overview/document-before.adoc[opts=optional]
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 
 [[overview]]
@@ -26,7 +26,7 @@ DO NOT EDIT! See https://github.com/couchbase/cb-swagger
 [markdown]
 --
 The Search Manager Options REST API is provided by the Search service.
-This API enables you to set cluster-level Search settings; in particular, to configure rebalance based on file transfer.
+This API enables you to set Search manager options; in particular, to configure rebalance based on file transfer.
 --
 
 [discrete#version]
@@ -165,7 +165,7 @@ PUT /api/managerOptions
 
 [markdown]
 --
-Sets cluster-level Search settings.
+Sets Search manager options.
 Note that only one setting is available: `disableFileTransferRebalance`.
 --
 
@@ -218,7 +218,7 @@ a¦
 
 [markdown]
 --
-
+An object specifying Search manager options.
 --
 
 [%hardbreaks]
@@ -336,7 +336,7 @@ a| <<Response>>
 include::{snippetDir}put_options/http-request.adoc[opts=optional]
 
 
-// markup not found, no include::{snippetDir}put_options/http-response.adoc[opts=optional]
+include::{snippetDir}put_options/http-response.adoc[opts=optional]
 
 
 
@@ -421,11 +421,13 @@ a¦
 
 [markdown]
 --
-If the value is `false` (the default), new Search-Service partitions are created during rebalance by means of partition-file transfer.
+If the value is `false` (the default), new Search Service partitions are created during rebalance by means of partition file transfer.
+
 If the value is `true`, partitions are created by means of partition build, from scratch, over DCP connections from the Data Service.
 --
 
 [%hardbreaks]
+*Default:* `false`
 {blank}
 a¦ Boolean
 
@@ -537,7 +539,7 @@ a¦ String
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
+include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
@@ -568,7 +570,7 @@ __Type__ : http
 
 
 
-// markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
+include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 

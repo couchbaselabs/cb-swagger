@@ -12,7 +12,7 @@ DO NOT EDIT! See https://github.com/couchbase/cb-swagger
 
 :leveloffset: 1
 
-// markup not found, no include::{specDir}overview/document-before.adoc[opts=optional]
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 
 [[overview]]
@@ -25,8 +25,8 @@ DO NOT EDIT! See https://github.com/couchbase/cb-swagger
 
 [markdown]
 --
-Use the following endpoints in the Search Service API to manage and monitor your Search nodes.
-
+The Search Node Configuration REST API is provided by the Search service.
+This API enables you to manage and monitor your Search nodes.
 --
 
 [discrete#version]
@@ -125,10 +125,10 @@ ifeval::[{count-apis} > 1]
 = Configuration
 :leveloffset: +1
 
-ifeval::["" != ""]
-
+ifeval::["Operations for node configuration." != ""]
+Operations for node configuration.
 endif::[]
-ifeval::["" == ""]
+ifeval::["Operations for node configuration." == ""]
 **{toc-title}**
 endif::[]
 endif::[]
@@ -232,39 +232,6 @@ a| <<clusterConfig>>
 
 :leveloffset: -1
 
-//tag::example-clusterConfig[]
-====
-[source,json]
-----
-{
-  "nodeDefsWantedErr" : "nodeDefsWantedErr",
-  "planPIndexes" : {
-    "implVersion" : "implVersion",
-    "uuid" : "uuid"
-  },
-  "planPIndexesErr" : "planPIndexesErr",
-  "indexDefsCAS" : 0,
-  "nodeDefsKnown" : {
-    "implVersion" : "implVersion",
-    "uuid" : "uuid"
-  },
-  "nodeDefsKnownErr" : "nodeDefsKnownErr",
-  "nodeDefsWantedCAS" : 1,
-  "planPIndexesCAS" : 5,
-  "indexDefs" : {
-    "implVersion" : "implVersion"
-  },
-  "indexDefsErr" : "indexDefsErr",
-  "nodeDefsKnownCAS" : 6,
-  "nodeDefsWanted" : {
-    "implVersion" : "implVersion",
-    "uuid" : "uuid"
-  },
-  "status" : "status"
-}
-----
-====
-//end::example-clusterConfig[]
 
 
 // markup not found, no include::{specDir}paths/getClusterConfig/operation-responses-after.adoc[opts=optional]
@@ -304,7 +271,7 @@ a| <<clusterConfig>>
 // markup not found, no include::{snippetDir}getClusterConfig/http-request.adoc[opts=optional]
 
 
-// markup not found, no include::{snippetDir}getClusterConfig/http-response.adoc[opts=optional]
+include::{snippetDir}getClusterConfig/http-response.adoc[opts=optional]
 
 
 
@@ -750,10 +717,10 @@ ifeval::[{count-apis} > 1]
 = Diagnostics
 :leveloffset: +1
 
-ifeval::["" != ""]
-
+ifeval::["Operations for node diagnostics." != ""]
+Operations for node diagnostics.
 endif::[]
-ifeval::["" == ""]
+ifeval::["Operations for node diagnostics." == ""]
 **{toc-title}**
 endif::[]
 endif::[]
@@ -1077,7 +1044,6 @@ GET /api/diag
 [markdown]
 --
 Returns the full set of diagnostic information from the node in one shot as JSON.
-
 The response is the union of the responses from the node's other REST API diagnostic and monitoring endpoints.
 
 For example, for a three node cluster, you could capture diagnostics for each node with something like:
@@ -1295,17 +1261,6 @@ a| <<logInfo>>
 
 :leveloffset: -1
 
-//tag::example-logInfo[]
-====
-[source,json]
-----
-{
-  "messages" : [ "{}", "{}" ],
-  "events" : [ "{}", "{}" ]
-}
-----
-====
-//end::example-logInfo[]
 
 
 // markup not found, no include::{specDir}paths/getLogs/operation-responses-after.adoc[opts=optional]
@@ -1345,7 +1300,7 @@ a| <<logInfo>>
 // markup not found, no include::{snippetDir}getLogs/http-request.adoc[opts=optional]
 
 
-// markup not found, no include::{snippetDir}getLogs/http-response.adoc[opts=optional]
+include::{snippetDir}getLogs/http-response.adoc[opts=optional]
 
 
 
@@ -1594,26 +1549,6 @@ a| <<runtimeInfo>>
 
 :leveloffset: -1
 
-//tag::example-runtimeInfo[]
-====
-[source,json]
-----
-{
-  "os" : "os",
-  "go" : {
-    "GOMAXPROCS" : 0,
-    "compiler" : "compiler",
-    "GOROOT" : "GOROOT",
-    "version" : "version"
-  },
-  "versionData" : "versionData",
-  "numCPU" : 6,
-  "arch" : "arch",
-  "versionMain" : "versionMain"
-}
-----
-====
-//end::example-runtimeInfo[]
 
 
 // markup not found, no include::{specDir}paths/getRuntimeInfo/operation-responses-after.adoc[opts=optional]
@@ -1653,7 +1588,7 @@ a| <<runtimeInfo>>
 // markup not found, no include::{snippetDir}getRuntimeInfo/http-request.adoc[opts=optional]
 
 
-// markup not found, no include::{snippetDir}getRuntimeInfo/http-response.adoc[opts=optional]
+include::{snippetDir}getRuntimeInfo/http-response.adoc[opts=optional]
 
 
 
@@ -1676,10 +1611,10 @@ ifeval::[{count-apis} > 1]
 = Management
 :leveloffset: +1
 
-ifeval::["" != ""]
-
+ifeval::["Operations for node management." != ""]
+Operations for node management.
 endif::[]
-ifeval::["" == ""]
+ifeval::["Operations for node management." == ""]
 **{toc-title}**
 endif::[]
 endif::[]
@@ -1837,10 +1772,10 @@ ifeval::[{count-apis} > 1]
 = Monitoring
 :leveloffset: +1
 
-ifeval::["" != ""]
-
+ifeval::["Operations for node monitoring." != ""]
+Operations for node monitoring.
 endif::[]
-ifeval::["" == ""]
+ifeval::["Operations for node monitoring." == ""]
 **{toc-title}**
 endif::[]
 endif::[]
@@ -2183,11 +2118,11 @@ endif::collapse-models[]
 <<clusterConfigNodesWrapper>>
 <<clusterConfigNodesWrapperNode>>
 <<clusterConfigPlan>>
-<<clusterConfigPlanWarnings>>
 <<clusterConfigPlanWrapper>>
 <<clusterConfigPlanWrapperPIndex>>
+<<clusterConfigPlanWrapperPIndexNodesWrapper>>
 <<clusterConfigPlanWrapperPIndexNodesWrapperNode>>
-<<clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper>>
+<<clusterConfigPlanWrng>>
 <<logInfo>>
 <<runtimeInfo>>
 <<runtimeInfoGo>>
@@ -3002,7 +2937,7 @@ ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
 [#clusterConfigNodesWrapper]
-= Node Definitions
+= Node Definitions Wrapper
 
 :leveloffset: +1
 
@@ -3264,12 +3199,12 @@ a¦
 
 [markdown]
 --
-include::index.adoc[tag=desc-clusterConfigPlanWarnings, opts=optional]
+include::index.adoc[tag=desc-clusterConfigPlanWrng, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigPlanWarnings>>
+a¦ <<clusterConfigPlanWrng>>
 
 
 |===
@@ -3285,66 +3220,6 @@ a¦ <<clusterConfigPlanWarnings>>
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/clusterConfigPlan/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWarnings/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#clusterConfigPlanWarnings]
-= Plan Warnings
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWarnings/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::clusterConfigPlanWarnings[]
-
-ifdef::model-descriptions[]
-//tag::desc-clusterConfigPlanWarnings[]
-An object containing zero, one or more nested objects, each containing warnings that apply to a pindex.
-//end::desc-clusterConfigPlanWarnings[]
-endif::model-descriptions[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ 
-_additional +
-property_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ String
- array
-
-|===
-
-//end::clusterConfigPlanWarnings[]
-
-
-
-
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWarnings/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWarnings/definition-after.adoc[opts=optional]
 
 
 
@@ -3506,12 +3381,12 @@ a¦
 
 [markdown]
 --
-include::index.adoc[tag=desc-clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper, opts=optional]
+include::index.adoc[tag=desc-clusterConfigPlanWrapperPIndexNodesWrapper, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper>>
+a¦ <<clusterConfigPlanWrapperPIndexNodesWrapper>>
 
 
 a¦ 
@@ -3615,6 +3490,62 @@ a¦ String
 
 
 
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapper/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterConfigPlanWrapperPIndexNodesWrapper]
+= PIndex Nodes Wrapper
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapper/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterConfigPlanWrapperPIndexNodesWrapper[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+_additional +
+property_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-clusterConfigPlanWrapperPIndexNodesWrapperNode, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<clusterConfigPlanWrapperPIndexNodesWrapperNode>>
+
+
+|===
+
+//end::clusterConfigPlanWrapperPIndexNodesWrapper[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapper/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapper/definition-after.adoc[opts=optional]
+
+
+
+
 // markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNode/definition-before.adoc[opts=optional]
 
 
@@ -3622,7 +3553,7 @@ ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
 [#clusterConfigPlanWrapperPIndexNodesWrapperNode]
-= Node
+= PIndex Node
 
 :leveloffset: +1
 
@@ -3698,25 +3629,30 @@ a¦ Integer
 
 
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrng/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper]
-= PIndex Nodes
+[#clusterConfigPlanWrng]
+= Plan Warnings
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrng/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper[]
+//tag::clusterConfigPlanWrng[]
 
+ifdef::model-descriptions[]
+//tag::desc-clusterConfigPlanWrng[]
+An object containing zero, one or more nested objects, each containing warnings that apply to a pindex.
+//end::desc-clusterConfigPlanWrng[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
@@ -3729,27 +3665,26 @@ a¦
 
 [markdown]
 --
-include::index.adoc[tag=desc-clusterConfigPlanWrapperPIndexNodesWrapperNode, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigPlanWrapperPIndexNodesWrapperNode>>
-
+a¦ String
+ array
 
 |===
 
-//end::clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper[]
+//end::clusterConfigPlanWrng[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrng/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/clusterConfigPlanWrng/definition-after.adoc[opts=optional]
 
 
 
@@ -4066,7 +4001,7 @@ a¦ String
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/document-begin.adoc[opts=optional]
+include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
@@ -4191,7 +4126,7 @@ __Type__ : http
 
 
 
-// markup not found, no include::{specDir}security/document-end.adoc[opts=optional]
+include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 

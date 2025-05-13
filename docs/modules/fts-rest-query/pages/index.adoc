@@ -12,7 +12,7 @@ DO NOT EDIT! See https://github.com/couchbase/cb-swagger
 
 :leveloffset: 1
 
-// markup not found, no include::{specDir}overview/document-before.adoc[opts=optional]
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 
 [[overview]]
@@ -25,7 +25,7 @@ DO NOT EDIT! See https://github.com/couchbase/cb-swagger
 
 [markdown]
 --
-The Active Queries REST API is provided by the Search service.
+The Search Active Queries REST API is provided by the Search service.
 This API enables you to get information about active FTS queries.
 --
 
@@ -274,26 +274,6 @@ a| <<ActiveResponse>>
 
 :leveloffset: -1
 
-//tag::example-ActiveResponse[]
-====
-[source,json]
-----
-{
-  "filteredActiveQueries" : {
-    "indexName" : "indexName",
-    "longerThan" : "longerThan",
-    "queryCount" : 6
-  },
-  "stats" : {
-    "total" : 3,
-    "successful" : 3
-  },
-  "totalActiveQueryCount" : 0,
-  "status" : "status"
-}
-----
-====
-//end::example-ActiveResponse[]
 
 
 // markup not found, no include::{specDir}paths/api-query/operation-responses-after.adoc[opts=optional]
@@ -303,18 +283,37 @@ a| <<ActiveResponse>>
 // markup not found, no include::{specDir}paths/api-query/operation-security-before.adoc[opts=optional]
 
 
+[#api-query-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query/operation-security-begin.adoc[opts=optional]
 
 
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-default>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/api-query/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/api-query/operation-security-after.adoc[opts=optional]
 
 
 
-// markup not found, no include::{snippetDir}api-query/http-request.adoc[opts=optional]
+include::{snippetDir}api-query/http-request.adoc[opts=optional]
 
 
-// markup not found, no include::{snippetDir}api-query/http-response.adoc[opts=optional]
+include::{snippetDir}api-query/http-response.adoc[opts=optional]
 
 
 
@@ -456,16 +455,6 @@ a¦ <<CancelRequest>>
 :leveloffset: -1
 
 
-//tag::example-CancelRequest[]
-====
-[source,json]
-----
-{
-  "uuid" : "uuid"
-}
-----
-====
-//end::example-CancelRequest[]
 
 
 // markup not found, no include::{specDir}paths/api-query-cancel/operation-parameters-after.adoc[opts=optional]
@@ -503,17 +492,6 @@ a| <<CancelResponse>>
 
 :leveloffset: -1
 
-//tag::example-CancelResponse[]
-====
-[source,json]
-----
-{
-  "msg" : "msg",
-  "status" : "status"
-}
-----
-====
-//end::example-CancelResponse[]
 
 
 // markup not found, no include::{specDir}paths/api-query-cancel/operation-responses-after.adoc[opts=optional]
@@ -523,18 +501,37 @@ a| <<CancelResponse>>
 // markup not found, no include::{specDir}paths/api-query-cancel/operation-security-before.adoc[opts=optional]
 
 
+[#api-query-cancel-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-security-begin.adoc[opts=optional]
 
 
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-default>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/api-query-cancel/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/api-query-cancel/operation-security-after.adoc[opts=optional]
 
 
 
-// markup not found, no include::{snippetDir}api-query-cancel/http-request.adoc[opts=optional]
+include::{snippetDir}api-query-cancel/http-request.adoc[opts=optional]
 
 
-// markup not found, no include::{snippetDir}api-query-cancel/http-response.adoc[opts=optional]
+include::{snippetDir}api-query-cancel/http-response.adoc[opts=optional]
 
 
 
@@ -711,26 +708,6 @@ a| <<ActiveResponse>>
 
 :leveloffset: -1
 
-//tag::example-ActiveResponse[]
-====
-[source,json]
-----
-{
-  "filteredActiveQueries" : {
-    "indexName" : "indexName",
-    "longerThan" : "longerThan",
-    "queryCount" : 6
-  },
-  "stats" : {
-    "total" : 3,
-    "successful" : 3
-  },
-  "totalActiveQueryCount" : 0,
-  "status" : "status"
-}
-----
-====
-//end::example-ActiveResponse[]
 
 
 // markup not found, no include::{specDir}paths/api-query-index/operation-responses-after.adoc[opts=optional]
@@ -740,18 +717,37 @@ a| <<ActiveResponse>>
 // markup not found, no include::{specDir}paths/api-query-index/operation-security-before.adoc[opts=optional]
 
 
+[#api-query-index-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-security-begin.adoc[opts=optional]
 
 
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-default>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/api-query-index/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 // markup not found, no include::{specDir}paths/api-query-index/operation-security-after.adoc[opts=optional]
 
 
 
-// markup not found, no include::{snippetDir}api-query-index/http-request.adoc[opts=optional]
+include::{snippetDir}api-query-index/http-request.adoc[opts=optional]
 
 
-// markup not found, no include::{snippetDir}api-query-index/http-response.adoc[opts=optional]
+include::{snippetDir}api-query-index/http-response.adoc[opts=optional]
 
 
 
@@ -1213,6 +1209,7 @@ a¦
 --
 
 [%hardbreaks]
+*Example:* `10`
 {blank}
 a¦ Integer
 
@@ -1227,6 +1224,7 @@ a¦
 --
 
 [%hardbreaks]
+*Example:* `0`
 {blank}
 a¦ Integer
 
@@ -1241,6 +1239,7 @@ a¦
 --
 
 [%hardbreaks]
+*Example:* `120000`
 {blank}
 a¦ Integer
 
@@ -1377,6 +1376,7 @@ a¦
 --
 
 [%hardbreaks]
+*Example:* `3`
 {blank}
 a¦ Integer
 
@@ -1391,6 +1391,7 @@ a¦
 --
 
 [%hardbreaks]
+*Example:* `3`
 {blank}
 a¦ Integer
 
@@ -1551,6 +1552,46 @@ a¦ String
 
 // markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
 
+
+[[security]]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}security/document-begin.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Default/security-scheme-before.adoc[opts=optional]
+
+
+[[security-default]]
+= Default
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Default/security-scheme-begin.adoc[opts=optional]
+
+
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Default/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Default/security-scheme-after.adoc[opts=optional]
+
+
+
+
+include::{specDir}security/document-end.adoc[opts=optional]
+
+:leveloffset: -1
 
 
 
