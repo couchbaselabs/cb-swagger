@@ -157,23 +157,24 @@ components:
   schemas:
     indexPartition:
       type: object
-      title: Index Partition
+      title: Index Partitions
       properties:
         pindexes:
           $ref: '#/components/schemas/indexPartitionPIndex'
         status:
+          description: The status of the request.
           type: string
 
     indexPartitionPIndex:
       type: object
-      title: PIndexes
+      title: Index Partitions Wrapper
       additionalProperties:
         x-additionalPropertiesName: pIndex
         $ref: '#/components/schemas/indexPartitionPIndexInner'
 
     indexPartitionPIndexInner:
       type: object
-      title: PIndex
+      title: Index Partition
       properties:
         indexName:
           type: string

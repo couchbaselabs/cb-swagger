@@ -4,7 +4,7 @@ info:
   version: '7.6'
   description: |-
     The Search Manager Options REST API is provided by the Search service.
-    This API enables you to set cluster-level Search settings; in particular, to configure rebalance based on file transfer.
+    This API enables you to set Search manager options; in particular, to configure rebalance based on file transfer.
 
 servers:
   - url: '{scheme}://{host}:{port}'
@@ -36,9 +36,10 @@ paths:
       operationId: put_options
       summary: Modify Search Manager Options
       description: |-
-        Sets cluster-level Search settings.
+        Sets Search manager options.
         Note that only one setting is available: `disableFileTransferRebalance`.
       requestBody:
+        description: An object specifying Search manager options.
         content:
           application/json:
             schema:
@@ -72,9 +73,11 @@ components:
         disableFileTransferRebalance:
           type: boolean
           description: |-
-            If the value is `false` (the default), new Search-Service partitions are created during rebalance by means of partition-file transfer.
+            If the value is `false` (the default), new Search Service partitions are created during rebalance by means of partition file transfer.
+
             If the value is `true`, partitions are created by means of partition build, from scratch, over DCP connections from the Data Service.
           default: false
+          x-has-default: true
 
     Response:
       type: object

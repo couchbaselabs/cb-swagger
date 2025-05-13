@@ -32,12 +32,16 @@ servers:
 
 tags:
   - name: Definitions
+    x-displayName: Search Index Definitions
     description: Use the following APIs to retrieve Search index definitions, create new Search indexes, or delete an existing Search index.
   - name: Management
+    x-displayName: Index Management
     description: Use the following endpoints to manage index controls, such as document ingestion, partition assignment, and queries.
   - name: Monitoring
+    x-displayName: Index Monitoring and Debugging
     description: Use the following endpoints to get statistics about Search indexes for monitoring and debugging.
   - name: Querying
+    x-displayName: Index Querying
     description: Use the following endpoints to query the contents of a Search index.
 
 paths:
@@ -54,51 +58,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  indexDefs:
-                    type: object
-                    properties:
-                      implVersion:
-                        type: string
-                      indexDefs:
-                        type: object
-                        additionalProperties:
-                          type: object
-                          properties:
-                            name:
-                              type: string
-                            params:
-                              type: string
-                            planParams:
-                              type: object
-                              properties:
-                                hierarchyRules:
-                                  type: string
-                                  nullable: true
-                                maxPartitionsPerPIndex:
-                                  type: integer
-                                nodePlanParams:
-                                  type: string
-                                  nullable: true
-                                numReplicas:
-                                  type: integer
-                                planFrozen:
-                                  type: boolean
-                            sourceName:
-                              type: string
-                            sourceParams:
-                              type: string
-                            sourceType:
-                              type: string
-                            sourceUUID:
-                              type: string
-                            type:
-                              type: string
-                            uuid:
-                              type: string
-                  status:
-                    type: string
+                $ref: '#/components/schemas/GetIndexesResponse'
               example:
                 $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-index.json'
       security:
@@ -120,127 +80,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                  indexDefs:
-                    type: object
-                    properties:
-                      uuid:
-                        type: string
-                      indexDefs:
-                        type: object
-                        additionalProperties:
-                          type: object
-                          properties:
-                            type:
-                              type: string
-                            name:
-                              type: string
-                            uuid:
-                              type: string
-                            sourceType:
-                              type: string
-                            sourceName:
-                              type: string
-                            sourceUUID:
-                              type: string
-                            planParams:
-                              type: object
-                              properties:
-                                maxPartitionsPerPIndex:
-                                  type: integer
-                                indexPartitions:
-                                  type: integer
-                            params:
-                              type: object
-                              properties:
-                                doc_config:
-                                  type: object
-                                  properties:
-                                    docid_prefix_delim:
-                                      type: string
-                                    docid_regexp:
-                                      type: string
-                                    mode:
-                                      type: string
-                                    type_field:
-                                      type: string
-                                mapping:
-                                  type: object
-                                  properties:
-                                    analysis:
-                                      type: object
-                                    default_analyzer:
-                                      type: string
-                                    default_datetime_parser:
-                                      type: string
-                                    default_field:
-                                      type: string
-                                    default_mapping:
-                                      type: object
-                                      properties:
-                                        dynamic:
-                                          type: boolean
-                                        enabled:
-                                          type: boolean
-                                    default_type:
-                                      type: string
-                                    docvalues_dynamic:
-                                      type: boolean
-                                    index_dynamic:
-                                      type: boolean
-                                    store_dynamic:
-                                      type: boolean
-                                    type_field:
-                                      type: string
-                                    types:
-                                      type: object
-                                      additionalProperties:
-                                        type: object
-                                        properties:
-                                          dynamic:
-                                            type: boolean
-                                          enabled:
-                                            type: boolean
-                                          properties:
-                                            type: object
-                                            additionalProperties:
-                                              type: object
-                                              properties:
-                                                dynamic:
-                                                  type: boolean
-                                                enabled:
-                                                  type: boolean
-                                                fields:
-                                                  type: array
-                                                  items:
-                                                    type: object
-                                                    properties:
-                                                      docvalues:
-                                                        type: boolean
-                                                      include_in_all:
-                                                        type: boolean
-                                                      include_term_vectors:
-                                                        type: boolean
-                                                      index:
-                                                        type: boolean
-                                                      name:
-                                                        type: string
-                                                      store:
-                                                        type: boolean
-                                                      type:
-                                                        type: string
-                                store:
-                                  type: object
-                                  properties:
-                                    indexType:
-                                      type: string
-                                    segmentVersion:
-                                      type: integer
-                            sourceParams:
-                              type: object
+                $ref: '#/components/schemas/GetIndexesResponse'
               example:
                 $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-scoped-indexes.json'
       security:
@@ -261,86 +101,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  indexDef:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      params:
-                        type: string
-                      planParams:
-                        type: object
-                        properties:
-                          hierarchyRules:
-                            type: string
-                            nullable: true
-                          maxPartitionsPerPIndex:
-                            type: integer
-                          nodePlanParams:
-                            type: string
-                            nullable: true
-                          numReplicas:
-                            type: integer
-                          planFrozen:
-                            type: boolean
-                      sourceName:
-                        type: string
-                      sourceParams:
-                        type: string
-                      sourceType:
-                        type: string
-                      sourceUUID:
-                        type: string
-                      type:
-                        type: string
-                      uuid:
-                        type: string
-                  planPIndexes:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        indexName:
-                          type: string
-                        indexParams:
-                          type: string
-                        indexType:
-                          type: string
-                        indexUUID:
-                          type: string
-                        name:
-                          type: string
-                        nodes:
-                          type: object
-                          additionalProperties:
-                            type: object
-                            properties:
-                              canRead:
-                                type: boolean
-                              canWrite:
-                                type: boolean
-                              priority:
-                                type: integer
-                        sourceName:
-                          type: string
-                        sourceParams:
-                          type: string
-                        sourcePartitions:
-                          type: string
-                        sourceType:
-                          type: string
-                        sourceUUID:
-                          type: string
-                        uuid:
-                          type: string
-                  status:
-                    type: string
-                  warnings:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/GetIndexResponse'
               example:
                 $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-index-name.json'
       security:
@@ -356,19 +117,21 @@ paths:
         - $ref: "#/components/parameters/PathIndexFull"
       responses:
         '200':
-          description: 'The Search Service returns a HTTP 200 status code with a response that includes "status": "ok".'
+          description: The Search Service returns a response that includes the status `ok`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteIndexResponse'
+              example:
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/d-api-index-name-200.json'
+        default:
+          description: The Search Service returns a non-200 HTTP error code when a request fails.
           content:
             application/json:
               schema:
                 type: object
-                properties:
-                  status:
-                    type: string
-                  uuid:
-                    type: string
               example:
-                status: ok
-                uuid: 123294e5a4efbe39
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/d-api-index-name-default.json'
       security:
         - Write: []
 
@@ -394,14 +157,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                  name:
-                    type: string
-                  uuid:
-                    type: string
+                $ref: '#/components/schemas/PutIndexResponse'
               example:
                 $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-index-name-200.json'
         default:
@@ -421,7 +177,7 @@ paths:
       summary: Get Index Definition (Scoped)
       description: |-
         Returns the Search index definition for the Search index specified in the endpoint URL as a JSON object.
-        Unlike [Get Index Definition](#g-api-index-name), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+        Unlike [Get Index Definition](#g-api-index-name), this endpoint is scoped and does not require a fully qualified `{INDEX_NAME}` value.
       tags:
         - Definitions
       parameters:
@@ -434,90 +190,9 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  indexDef:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      params:
-                        type: string
-                      planParams:
-                        type: object
-                        properties:
-                          hierarchyRules:
-                            type: string
-                            nullable: true
-                          maxPartitionsPerPIndex:
-                            type: integer
-                          nodePlanParams:
-                            type: string
-                            nullable: true
-                          numReplicas:
-                            type: integer
-                          planFrozen:
-                            type: boolean
-                      sourceName:
-                        type: string
-                      sourceParams:
-                        type: string
-                      sourceType:
-                        type: string
-                      sourceUUID:
-                        type: string
-                      type:
-                        type: string
-                      uuid:
-                        type: string
-                  planPIndexes:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        indexName:
-                          type: string
-                        indexParams:
-                          type: string
-                        indexType:
-                          type: string
-                        indexUUID:
-                          type: string
-                        name:
-                          type: string
-                        nodes:
-                          type: object
-                          additionalProperties:
-                            type: object
-                            properties:
-                              canRead:
-                                type: boolean
-                              canWrite:
-                                type: boolean
-                              priority:
-                                type: integer
-                        sourceName:
-                          type: string
-                        sourceParams:
-                          type: string
-                        sourcePartitions:
-                          type: string
-                        sourceType:
-                          type: string
-                        sourceUUID:
-                          type: string
-                        uuid:
-                          type: string
-                  status:
-                    type: string
-                  warnings:
-                    type: array
-                    items:
-                      type: string
-              examples:
-                vector:
-                  summary: Sample Response for a Vector Search index
-                  externalValue: 'https://raw.githubusercontent.com/couchbase/docs-server/refs/heads/release/7.6/modules/rest-api/examples/fts-sample-index-def-response.jsonc'
+                $ref: '#/components/schemas/GetIndexResponse'
+              example:
+                $ref: '../../../docs/modules/fts-rest-indexing/examples/fts-sample-index-def-response.json'
       security:
         - Read: []
 
@@ -527,7 +202,7 @@ paths:
       description: |-
         If the Search index in the endpoint URL does not exist, this endpoint uses a JSON object in the request body to create a new index.
         If the Search index already exists, this endpoint updates the Search index definition.
-        Unlike [Create or Update an Index Definition](#p-api-index-name), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+        Unlike [Create or Update an Index Definition](#p-api-index-name), this endpoint is scoped and does not require a fully qualified `{INDEX_NAME}` value.
       tags:
         - Definitions
       parameters:
@@ -546,14 +221,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                  name:
-                    type: string
-                  uuid:
-                    type: string
+                $ref: '#/components/schemas/PutIndexResponse'
               example:
                 $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-scoped-index-name-200.json'
         default:
@@ -572,7 +240,7 @@ paths:
       summary: Delete Index Definition (Scoped)
       description: |-
         Delete the Search index definition from the bucket and scope specified in the endpoint URL.
-        Unlike [Delete Index Definition](#d-api-index-name), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+        Unlike [Delete Index Definition](#d-api-index-name), this endpoint is scoped and does not require a fully qualified `{INDEX_NAME}` value.
       tags:
         - Definitions
       parameters:
@@ -585,12 +253,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                  uuid:
-                    type: string
+                $ref: '#/components/schemas/DeleteIndexResponse'
               example:
                 $ref: '../../../docs/modules/fts-rest-indexing/examples/d-api-scoped-index-name-200.json'
         default:
@@ -629,7 +292,7 @@ paths:
       description: |-
         For the Search index specified in the endpoint URL, pause or resume index updates and maintenance.
         While paused, the Search index does not load any new document mutations.
-        Unlike [Set Index Ingestion Control](#p-api-idx-name-ingestcontrol), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+        Unlike [Set Index Ingestion Control](#p-api-idx-name-ingestcontrol), this endpoint is scoped and does not require a fully qualified `{INDEX_NAME}` value.
       tags:
         - Management
       parameters:
@@ -668,7 +331,7 @@ paths:
       description: |-
         For the Search index specified in the endpoint URL, freeze or unfreeze the assignment of index partitions to nodes.
         While frozen, the Search index stops assigning partitions during index rebalancing and index definition updates.
-        Unlike [Freeze Index Partition Assignment](#p-api-idx-name-planfreezecontrol), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+        Unlike [Freeze Index Partition Assignment](#p-api-idx-name-planfreezecontrol), this endpoint is scoped and does not require a fully qualified `{INDEX_NAME}` value.
       tags:
         - Management
       parameters:
@@ -707,7 +370,7 @@ paths:
       description: |-
         For the Search index specified in the endpoint URL, disallow or allow queries.
         While queries are disallowed, users see an error that the Search index's partitions could not be reached.
-        Unlike [Stop Queries on an Index](#p-api-idx-name-querycontrol), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+        Unlike [Stop Queries on an Index](#p-api-idx-name-querycontrol), this endpoint is scoped and does not require a fully qualified `{INDEX_NAME}` value.
       tags:
         - Management
       parameters:
@@ -736,69 +399,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  feeds:
-                    type: object
-                    additionalProperties:
-                      type: object
-                  manager:
-                    type: object
-                    properties:
-                      TotCreateIndex:
-                        type: integer
-                      TotDeleteIndex:
-                        type: integer
-                      TotUpdateIndex:
-                        type: integer
-                      TotBatchIntro:
-                        type: integer
-                      TotBatchIntroFail:
-                        type: integer
-                      TotBatchUpdate:
-                        type: integer
-                      TotBatchUpdateFail:
-                        type: integer
-                      TotBatchDelete:
-                        type: integer
-                      TotBatchDeleteFail:
-                        type: integer
-                      TotBatchGet:
-                        type: integer
-                      TotBleveDestStart:
-                        type: integer
-                      TotBleveDestStop:
-                        type: integer
-                      TotBleveDestRemove:
-                        type: integer
-                      TotBleveDestUpdate:
-                        type: integer
-                      TotBleveDestUpdateFail:
-                        type: integer
-                      TotBleveDestIntro:
-                        type: integer
-                      TotBleveDestIntroFail:
-                        type: integer
-                      TotBleveDestBatch:
-                        type: integer
-                      TotBleveDestBatchFail:
-                        type: integer
-                      TotBleveDestDelete:
-                        type: integer
-                      TotBleveDestDeleteFail:
-                        type: integer
-                      TotBleveDestClose:
-                        type: integer
-                      TotBleveDestCloseFail:
-                        type: integer
-                      TotQuery:
-                        type: integer
-                      TotQueryFail:
-                        type: integer
-                  pindexes:
-                    type: object
-                    additionalProperties:
-                      type: object
+                $ref: '#/components/schemas/GetNodeStatsResponse'
               example:
                 $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-stats.json'
       security:
@@ -849,18 +450,13 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  stats:
-                    type: object
-                    additionalProperties:
-                      type: object
+                $ref: '#/components/schemas/GetIndexStatsResponse'
               example:
                 $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-stats-index-name.json'
       security:
         - Statistics: []
 
-  /api/bucket/${BUCKET_NAME}/scope/${SCOPE_NAME}/index/${INDEX_NAME}/status:
+  /api/bucket/{BUCKET_NAME}/scope/{SCOPE_NAME}/index/{INDEX_NAME}/status:
     get:
       operationId: g-api-scoped-status
       summary: Get Index Status (Scoped)
@@ -874,7 +470,7 @@ paths:
         - $ref: "#/components/parameters/PathIndex"
       responses:
         '200':
-          description: 'The Search Service returns a HTTP 200 status code with a response that includes "status": "ok".'
+          description: The Search Service returns a response that includes the status `ok`.
           content:
             application/json:
               schema:
@@ -927,15 +523,11 @@ paths:
         - $ref: "#/components/parameters/PathIndexFull"
       responses:
         '200':
-          description: 'The Search Service returns a response that includes `"status": "ok"`.'
+          description: The Search Service returns a response that includes the status `ok`.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  count:
-                    type: integer
-                    description: The document count for the specified index.
+                $ref: '#/components/schemas/DocumentCount'
               example:
                 $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-index-name-count.json'
       security:
@@ -960,24 +552,16 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              $ref: '#/components/schemas/LookupRequest'
             example:
               $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-pindex-lookup-body.json'
       responses:
         '200':
-          description: 'The Search Service returns a response that includes `"status": "ok"`.'
+          description: The Search Service returns a response that includes the status `ok`.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                  pindexes:
-                    type: object
-                    description: An object containing the partition index information.
-                    additionalProperties:
-                      type: object
+                $ref: '#/components/schemas/LookupResponse'
               example:
                 $ref: '../../../docs/modules/fts-rest-indexing/examples/p-api-pindex-lookup-200.json'
       security:
@@ -1022,16 +606,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                  results:
-                    type: array
-                    items:
-                      type: object
-                      additionalProperties:
-                        type: object
+                $ref: '#/components/schemas/QueryResponse'
       security:
         - Manage: []
 
@@ -1042,7 +617,7 @@ paths:
       description: |
         Run a query formatted as a JSON object against the Search index definition specified in the endpoint URL.
         The endpoint returns a JSON object as a response.
-        Unlike [Query a Search Index](#p-api-index-name-query), this endpoint is scoped and does not require a fully qualified `${INDEX_NAME}` value.
+        Unlike [Query a Search Index](#p-api-index-name-query), this endpoint is scoped and does not require a fully qualified `{INDEX_NAME}` value.
       tags:
         - Querying
       parameters:
@@ -1060,27 +635,20 @@ paths:
               type: object
       responses:
         '200':
-          description: 'The Search Service returns a response that includes `"status": "ok"`.'
+          description: The Search Service returns a response that includes the status `ok`.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                  results:
-                    type: array
-                    items:
-                      type: object
-                      additionalProperties:
-                        type: object
+                $ref: '#/components/schemas/QueryResponse'
               examples:
                 regular:
                   summary: Success Response for a Regular Query
-                  externalValue: 'https://raw.githubusercontent.com/couchbase/docs-server/refs/heads/release/7.6/modules/rest-api/examples/fts-sample-success-response.jsonc'
+                  value:
+                    $ref: '../../../docs/modules/fts-rest-indexing/examples/fts-sample-success-response.json'
                 hybrid:
                   summary: Success Response for a Hybrid Query
-                  externalValue: 'https://raw.githubusercontent.com/couchbase/docs-server/refs/heads/release/7.6/modules/rest-api/examples/fts-sample-success-response-vector-search.jsonc'
+                  value:
+                    $ref: '../../../docs/modules/fts-rest-indexing/examples/fts-sample-success-response-vector-search.json'
         default:
           description: The Search Service returns a non-200 HTTP error code when a request fails.
           content:
@@ -1142,8 +710,8 @@ components:
           - pause
           - resume
       description: |-
-        To pause ingestion and maintenance, set `${OP}` to `pause`.
-        To resume ingestion and maintenance on a paused index, set `${OP}` to `resume`.
+        To pause ingestion and maintenance, set `{OP}` to `pause`.
+        To resume ingestion and maintenance on a paused index, set `{OP}` to `resume`.
 
     PathOpPartition:
       name: OP
@@ -1155,8 +723,8 @@ components:
           - freeze
           - unfreeze
       description: |-
-        To freeze partition assignment, set `${OP}` to `freeze`.
-        To unfreeze partition assignment on a frozen index, set `${OP}` to `unfreeze`.
+        To freeze partition assignment, set `{OP}` to `freeze`.
+        To unfreeze partition assignment on a frozen index, set `{OP}` to `unfreeze`.
 
     PathOpQuery:
       name: OP
@@ -1168,10 +736,12 @@ components:
           - allow
           - disallow
       description: |-
+        To allow queries against a Search index, set `{OP}` to `allow`.
+        To block queries against a Search index, set `{OP}` to `disallow`.
 
   responses:
     OK:
-      description: 'The Search Service returns a response that includes `"status": "ok"`.'
+      description: The Search Service returns a response that includes the status `ok`.
       content:
         application/json:
           schema:
@@ -1180,6 +750,223 @@ components:
             $ref: "../../../docs/modules/fts-rest-indexing/examples/response-200.json"
 
   schemas:
+    DeleteIndexResponse:
+      type: object
+      title: Delete Index
+      properties:
+        status:
+          $ref: "#/components/schemas/CommonStatus"
+        uuid:
+          $ref: "#/components/schemas/CommonUUID"
+
+    GetIndexesResponse:
+      type: object
+      title: Get All Indexes
+      properties:
+        indexDefs:
+          $ref: '#/components/schemas/GetIndexesResponseIndexes'
+        status:
+          $ref: "#/components/schemas/CommonStatus"
+
+    GetIndexesResponseIndexes:
+      title: Index Definitions
+      type: object
+      properties:
+        implVersion:
+          type: string
+        indexDefs:
+          $ref: '#/components/schemas/GetIndexesResponseIndexesWrapper'
+        uuid:
+          type: string
+
+    GetIndexesResponseIndexesWrapper:
+      title: Index Definitions Wrapper
+      type: object
+      additionalProperties:
+        x-additionalPropertiesName: index name
+        $ref: '#/components/schemas/IndexDefinition'
+
+    GetIndexResponse:
+      type: object
+      title: Get Index
+      properties:
+        indexDef:
+          $ref: '#/components/schemas/IndexDefinition'
+        planPIndexes:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetIndexResponsePIndex'
+        status:
+          $ref: "#/components/schemas/CommonStatus"
+        warnings:
+          type: array
+          items:
+            type: string
+
+    GetIndexResponsePIndex:
+      type: object
+      title: Plan PIndex
+      properties:
+        indexName:
+          type: string
+        indexParams:
+          type: string
+        indexType:
+          type: string
+        indexUUID:
+          type: string
+        name:
+          type: string
+        nodes:
+          $ref: '#/components/schemas/GetIndexResponsePIndexNodesWrapper'
+        sourceName:
+          type: string
+        sourceParams:
+          type: string
+        sourcePartitions:
+          type: string
+        sourceType:
+          type: string
+        sourceUUID:
+          type: string
+        uuid:
+          type: string
+
+    GetIndexResponsePIndexNodesWrapper:
+      type: object
+      title: PIndex Nodes Wrapper
+      additionalProperties:
+        x-additionalPropertiesName: node UUID
+        $ref: '#/components/schemas/GetIndexResponsePIndexNodesWrapperNode'
+
+    GetIndexResponsePIndexNodesWrapperNode:
+      type: object
+      title: PIndex Node
+      properties:
+        canRead:
+          type: boolean
+        canWrite:
+          type: boolean
+        priority:
+          type: integer
+
+    GetNodeStatsResponse:
+      type: object
+      title: Node Statistics
+      properties:
+        feeds:
+          type: object
+        manager:
+          $ref: "#/components/schemas/GetNodeStatsResponseMgr"
+        pindexes:
+          type: object
+
+    GetNodeStatsResponseMgr:
+      type: object
+      title: Manager Statistics
+      properties:
+        TotCreateIndex:
+          type: integer
+        TotDeleteIndex:
+          type: integer
+        TotUpdateIndex:
+          type: integer
+        TotBatchIntro:
+          type: integer
+        TotBatchIntroFail:
+          type: integer
+        TotBatchUpdate:
+          type: integer
+        TotBatchUpdateFail:
+          type: integer
+        TotBatchDelete:
+          type: integer
+        TotBatchDeleteFail:
+          type: integer
+        TotBatchGet:
+          type: integer
+        TotBleveDestStart:
+          type: integer
+        TotBleveDestStop:
+          type: integer
+        TotBleveDestRemove:
+          type: integer
+        TotBleveDestUpdate:
+          type: integer
+        TotBleveDestUpdateFail:
+          type: integer
+        TotBleveDestIntro:
+          type: integer
+        TotBleveDestIntroFail:
+          type: integer
+        TotBleveDestBatch:
+          type: integer
+        TotBleveDestBatchFail:
+          type: integer
+        TotBleveDestDelete:
+          type: integer
+        TotBleveDestDeleteFail:
+          type: integer
+        TotBleveDestClose:
+          type: integer
+        TotBleveDestCloseFail:
+          type: integer
+        TotQuery:
+          type: integer
+        TotQueryFail:
+          type: integer
+
+    GetIndexStatsResponse:
+      type: object
+      title: Index Statistics
+      properties:
+        feeds:
+          type: object
+        pindexes:
+          type: object
+# FIXME: The pindexes is much more complex
+
+    LookupRequest:
+      type: object
+      title: Lookup Request
+      properties:
+        docID:
+          type: string
+          description: The document ID to look up in the Search index.
+
+    LookupResponse:
+      type: object
+      title: Lookup Response
+      properties:
+        status:
+          $ref: "#/components/schemas/CommonStatus"
+        pindexes:
+          type: object
+          description: An object containing the partition index information.
+          additionalProperties:
+            type: object
+
+    PutIndexResponse:
+      type: object
+      title: Create or Update Index
+      properties:
+        status:
+          $ref: "#/components/schemas/CommonStatus"
+        name:
+          type: string
+        uuid:
+          $ref: "#/components/schemas/CommonUUID"
+
+    DocumentCount:
+      type: object
+      title: Document Count
+      properties:
+        status:
+          $ref: "#/components/schemas/CommonStatus"
+        count:
+          type: integer
+          description: The document count for the specified index.
+
     IndexDefinition:
       type: object
       title: Index Definition
@@ -1206,6 +993,11 @@ components:
             For more information, see [Initial Settings](../search/search-index-params.html#initial).
         sourceParams:
           type: object
+        sourceType:
+          type: string
+          description: |-
+            The type of the bucket where the Search index is stored.
+            For more information, see [Initial Settings](../search/search-index-params.html#initial).
         params:
           type: object
           description: |-
@@ -1221,14 +1013,38 @@ components:
           description: |-
             The UUID of the previous index.
             Intended for clients that want to check that they are not overwriting the Search index definition updates of concurrent clients.
+        uuid:
+          type: string
+          description: |-
+            The UUID of the Search index.
+            For more information, see [Initial Settings](../search/search-index-params.html#initial).
+
+    QueryResponse:
+      type: object
+      title: Query Response
+      properties:
+        status:
+          $ref: "#/components/schemas/CommonStatus"
+        results:
+          type: array
+          description: The results of the Search query.
+          items:
+            type: object
 
     Response:
       type: object
       title: Response
       properties:
         status:
-          type: string
-          description: The status of the operation.
+          $ref: "#/components/schemas/CommonStatus"
+
+    CommonStatus:
+      type: string
+      description: The status of the operation.
+
+    CommonUUID:
+      type: string
+      description: The UUID of the Search index.
 
   securitySchemes:
     Manage:

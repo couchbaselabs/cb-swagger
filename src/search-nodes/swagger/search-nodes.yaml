@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Couchbase Search Node API
   description: |-
-    The Search Node Configuration REST API is provided by the Search service. \
+    The Search Node Configuration REST API is provided by the Search service.
     This API enables you to manage and monitor your Search nodes.
   version: 1.0.0
 
@@ -115,7 +115,6 @@ paths:
       summary: Get Diagnostics
       description: |-
         Returns the full set of diagnostic information from the node in one shot as JSON.
-
         The response is the union of the responses from the node's other REST API diagnostic and monitoring endpoints.
 
         For example, for a three node cluster, you could capture diagnostics for each node with something like:
@@ -389,7 +388,7 @@ components:
           type: string
 
     clusterConfigNodesWrapper:
-      title: Node Definitions
+      title: Node Definitions Wrapper
       type: object
       additionalProperties:
         x-additionalPropertiesName: node UUID
@@ -426,7 +425,7 @@ components:
         uuid:
           type: string
         warnings:
-          $ref: '#/components/schemas/clusterConfigPlanWarnings'
+          $ref: '#/components/schemas/clusterConfigPlanWrng'
 
     clusterConfigPlanWrapper:
       type: object
@@ -450,7 +449,7 @@ components:
         name:
           type: string
         nodes:
-          $ref: '#/components/schemas/clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper'
+          $ref: '#/components/schemas/clusterConfigPlanWrapperPIndexNodesWrapper'
         sourceName:
           type: string
         sourceParams:
@@ -464,16 +463,16 @@ components:
         uuid:
           type: string
 
-    clusterConfigPlanWrapperPIndexNodesWrapperNodesWrapper:
+    clusterConfigPlanWrapperPIndexNodesWrapper:
       type: object
-      title: PIndex Nodes
+      title: PIndex Nodes Wrapper
       additionalProperties:
         x-additionalPropertiesName: node UUID
         $ref: '#/components/schemas/clusterConfigPlanWrapperPIndexNodesWrapperNode'
 
     clusterConfigPlanWrapperPIndexNodesWrapperNode:
       type: object
-      title: Node
+      title: PIndex Node
       properties:
         canRead:
           type: boolean
@@ -482,7 +481,7 @@ components:
         priority:
           type: integer
 
-    clusterConfigPlanWarnings:
+    clusterConfigPlanWrng:
       type: object
       title: Plan Warnings
       description: |-
