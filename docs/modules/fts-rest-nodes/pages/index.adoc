@@ -2094,7 +2094,7 @@ endif::[]
 [#models]
 = Definitions
 
-:count-models: 18
+:count-models: 19
 
 :leveloffset: +1
 
@@ -2110,19 +2110,20 @@ endif::collapse-models[]
 [%hardbreaks]
 <<clusterConfig>>
 <<clusterConfigIndexes>>
-<<clusterConfigIndexesWrapper>>
-<<clusterConfigIndexesWrapperIndex>>
-<<clusterConfigIndexesWrapperIndexPlanParams>>
 <<clusterConfigNodesKnown>>
 <<clusterConfigNodesWanted>>
 <<clusterConfigNodesWrapper>>
 <<clusterConfigNodesWrapperNode>>
 <<clusterConfigPlan>>
 <<clusterConfigPlanWrapper>>
-<<clusterConfigPlanWrapperPIndex>>
-<<clusterConfigPlanWrapperPIndexNodesWrapper>>
-<<clusterConfigPlanWrapperPIndexNodesWrapperNode>>
-<<clusterConfigPlanWrng>>
+<<GetIndexResponsePIndex>>
+<<GetIndexResponsePIndexNodesWrapper>>
+<<GetIndexResponsePIndexNodesWrapperNode>>
+<<GetIndexResponsePlanWrng>>
+<<GetIndexResponsePlanWrngIndex>>
+<<GetIndexesResponseIndexesWrapper>>
+<<IndexDefinition>>
+<<IndexDefinitionPlanParams>>
 <<logInfo>>
 <<runtimeInfo>>
 <<runtimeInfoGo>>
@@ -2176,6 +2177,7 @@ a¦
 
 [markdown]
 --
+Index definition concurrency (compare and swap) value.
 --
 
 [%hardbreaks]
@@ -2190,6 +2192,7 @@ a¦
 
 [markdown]
 --
+Index definition error.
 --
 
 [%hardbreaks]
@@ -2219,6 +2222,7 @@ a¦
 
 [markdown]
 --
+Known node definition concurrency (compare and swap) value.
 --
 
 [%hardbreaks]
@@ -2233,6 +2237,7 @@ a¦
 
 [markdown]
 --
+Known node definition error.
 --
 
 [%hardbreaks]
@@ -2262,6 +2267,7 @@ a¦
 
 [markdown]
 --
+Wanted node definition concurrency (compare and swap) value.
 --
 
 [%hardbreaks]
@@ -2276,6 +2282,7 @@ a¦
 
 [markdown]
 --
+Wanted node definition error.
 --
 
 [%hardbreaks]
@@ -2305,6 +2312,7 @@ a¦
 
 [markdown]
 --
+Index partition concurrency (compare and swap) value.
 --
 
 [%hardbreaks]
@@ -2319,6 +2327,7 @@ a¦
 
 [markdown]
 --
+Index partition error.
 --
 
 [%hardbreaks]
@@ -2333,6 +2342,7 @@ a¦
 
 [markdown]
 --
+The status of the operation.
 --
 
 [%hardbreaks]
@@ -2376,6 +2386,11 @@ endif::collapse-models[]
 
 //tag::clusterConfigIndexes[]
 
+ifdef::model-descriptions[]
+//tag::desc-clusterConfigIndexes[]
+An object containing index definitions and related information.
+//end::desc-clusterConfigIndexes[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
@@ -2402,12 +2417,12 @@ a¦
 
 [markdown]
 --
-include::index.adoc[tag=desc-clusterConfigIndexesWrapper, opts=optional]
+include::index.adoc[tag=desc-GetIndexesResponseIndexesWrapper, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigIndexesWrapper>>
+a¦ <<GetIndexesResponseIndexesWrapper>>
 
 
 |===
@@ -2423,341 +2438,6 @@ a¦ <<clusterConfigIndexesWrapper>>
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/clusterConfigIndexes/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapper/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#clusterConfigIndexesWrapper]
-= Index Definitions Wrapper
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapper/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::clusterConfigIndexesWrapper[]
-
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ 
-_additional +
-property_
-a¦ 
-
-[markdown]
---
-include::index.adoc[tag=desc-clusterConfigIndexesWrapperIndex, opts=optional]
---
-
-[%hardbreaks]
-{blank}
-a¦ <<clusterConfigIndexesWrapperIndex>>
-
-
-|===
-
-//end::clusterConfigIndexesWrapper[]
-
-
-
-
-// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapper/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapper/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndex/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#clusterConfigIndexesWrapperIndex]
-= Index Definition
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndex/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::clusterConfigIndexesWrapperIndex[]
-
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ 
-*name* +
-_optional_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-
-
-a¦ 
-*params* +
-_optional_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-
-
-a¦ 
-*planParams* +
-_optional_
-a¦ 
-
-[markdown]
---
-include::index.adoc[tag=desc-clusterConfigIndexesWrapperIndexPlanParams, opts=optional]
---
-
-[%hardbreaks]
-{blank}
-a¦ <<clusterConfigIndexesWrapperIndexPlanParams>>
-
-
-a¦ 
-*sourceName* +
-_optional_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-
-
-a¦ 
-*sourceParams* +
-_optional_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-
-
-a¦ 
-*sourceType* +
-_optional_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-
-
-a¦ 
-*sourceUUID* +
-_optional_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-
-
-a¦ 
-*type* +
-_optional_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-
-
-a¦ 
-*uuid* +
-_optional_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-
-
-|===
-
-//end::clusterConfigIndexesWrapperIndex[]
-
-
-
-
-// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndex/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndex/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndexPlanParams/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#clusterConfigIndexesWrapperIndexPlanParams]
-= Plan Parameters
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndexPlanParams/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::clusterConfigIndexesWrapperIndexPlanParams[]
-
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ 
-*hierarchyRules* +
-_optional_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-
-
-a¦ 
-*maxPartitionsPerPIndex* +
-_optional_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*nodePlanParams* +
-_optional_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-
-
-a¦ 
-*numReplicas* +
-_optional_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*planFrozen* +
-_optional_
-a¦ 
-
-[markdown]
---
---
-
-[%hardbreaks]
-{blank}
-a¦ Boolean
-
-
-|===
-
-//end::clusterConfigIndexesWrapperIndexPlanParams[]
-
-
-
-
-// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndexPlanParams/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/clusterConfigIndexesWrapperIndexPlanParams/definition-after.adoc[opts=optional]
 
 
 
@@ -2781,6 +2461,11 @@ endif::collapse-models[]
 
 //tag::clusterConfigNodesKnown[]
 
+ifdef::model-descriptions[]
+//tag::desc-clusterConfigNodesKnown[]
+An object containing known node definitions and related information.
+//end::desc-clusterConfigNodesKnown[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
@@ -2865,6 +2550,11 @@ endif::collapse-models[]
 
 //tag::clusterConfigNodesWanted[]
 
+ifdef::model-descriptions[]
+//tag::desc-clusterConfigNodesWanted[]
+An object containing wanted node definitions and related information.
+//end::desc-clusterConfigNodesWanted[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
@@ -2949,6 +2639,11 @@ endif::collapse-models[]
 
 //tag::clusterConfigNodesWrapper[]
 
+ifdef::model-descriptions[]
+//tag::desc-clusterConfigNodesWrapper[]
+An object containing the definitions of one or more nodes.
+//end::desc-clusterConfigNodesWrapper[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
@@ -3005,6 +2700,12 @@ endif::collapse-models[]
 
 //tag::clusterConfigNodesWrapperNode[]
 
+ifdef::model-descriptions[]
+//tag::desc-clusterConfigNodesWrapperNode[]
+An object containing the definition of a single node.
+The name of the property is the UUID of the node.
+//end::desc-clusterConfigNodesWrapperNode[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
@@ -3132,7 +2833,7 @@ ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
 [#clusterConfigPlan]
-= Plan PIndexes
+= Plan Partitions
 
 :leveloffset: +1
 
@@ -3144,6 +2845,11 @@ endif::collapse-models[]
 
 //tag::clusterConfigPlan[]
 
+ifdef::model-descriptions[]
+//tag::desc-clusterConfigPlan[]
+An object containing index partitions and related information.
+//end::desc-clusterConfigPlan[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
@@ -3199,12 +2905,12 @@ a¦
 
 [markdown]
 --
-include::index.adoc[tag=desc-clusterConfigPlanWrng, opts=optional]
+include::index.adoc[tag=desc-GetIndexResponsePlanWrng, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigPlanWrng>>
+a¦ <<GetIndexResponsePlanWrng>>
 
 
 |===
@@ -3231,7 +2937,7 @@ ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
 [#clusterConfigPlanWrapper]
-= Plan PIndexes Wrapper
+= Plan Partitions Wrapper
 
 :leveloffset: +1
 
@@ -3243,6 +2949,11 @@ endif::collapse-models[]
 
 //tag::clusterConfigPlanWrapper[]
 
+ifdef::model-descriptions[]
+//tag::desc-clusterConfigPlanWrapper[]
+An object containing information about one or more index partitions.
+//end::desc-clusterConfigPlanWrapper[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
@@ -3255,12 +2966,12 @@ a¦
 
 [markdown]
 --
-include::index.adoc[tag=desc-clusterConfigPlanWrapperPIndex, opts=optional]
+include::index.adoc[tag=desc-GetIndexResponsePIndex, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigPlanWrapperPIndex>>
+a¦ <<GetIndexResponsePIndex>>
 
 
 |===
@@ -3280,25 +2991,30 @@ a¦ <<clusterConfigPlanWrapperPIndex>>
 
 
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndex/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePIndex/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#clusterConfigPlanWrapperPIndex]
-= Plan PIndex
+[#GetIndexResponsePIndex]
+= Plan Partition
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndex/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePIndex/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::clusterConfigPlanWrapperPIndex[]
+//tag::GetIndexResponsePIndex[]
 
+ifdef::model-descriptions[]
+//tag::desc-GetIndexResponsePIndex[]
+An object containing information about a single index partition.
+//end::desc-GetIndexResponsePIndex[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
@@ -3311,6 +3027,8 @@ a¦
 
 [markdown]
 --
+The name of the Search index.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
 --
 
 [%hardbreaks]
@@ -3325,11 +3043,13 @@ a¦
 
 [markdown]
 --
+The Search index's type identifier, type mappings, and analyzers.
+For more information, see [Params Object](../search/search-index-params.html#params).
 --
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ Object
 
 
 a¦ 
@@ -3339,6 +3059,8 @@ a¦
 
 [markdown]
 --
+The type of the Search index.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
 --
 
 [%hardbreaks]
@@ -3353,6 +3075,8 @@ a¦
 
 [markdown]
 --
+The UUID of the Search index.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
 --
 
 [%hardbreaks]
@@ -3367,6 +3091,7 @@ a¦
 
 [markdown]
 --
+The name of the index partition.
 --
 
 [%hardbreaks]
@@ -3381,12 +3106,12 @@ a¦
 
 [markdown]
 --
-include::index.adoc[tag=desc-clusterConfigPlanWrapperPIndexNodesWrapper, opts=optional]
+include::index.adoc[tag=desc-GetIndexResponsePIndexNodesWrapper, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigPlanWrapperPIndexNodesWrapper>>
+a¦ <<GetIndexResponsePIndexNodesWrapper>>
 
 
 a¦ 
@@ -3396,6 +3121,8 @@ a¦
 
 [markdown]
 --
+The name of the bucket where the Search index is stored.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
 --
 
 [%hardbreaks]
@@ -3410,11 +3137,13 @@ a¦
 
 [markdown]
 --
+Advanced settings for index behavior.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
 --
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ Object
 
 
 a¦ 
@@ -3438,6 +3167,8 @@ a¦
 
 [markdown]
 --
+The type of the bucket where the Search index is stored.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
 --
 
 [%hardbreaks]
@@ -3452,6 +3183,8 @@ a¦
 
 [markdown]
 --
+The UUID of the bucket where the Search index is stored.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
 --
 
 [%hardbreaks]
@@ -3466,6 +3199,7 @@ a¦
 
 [markdown]
 --
+The UUID of the index partition.
 --
 
 [%hardbreaks]
@@ -3475,40 +3209,45 @@ a¦ String
 
 |===
 
-//end::clusterConfigPlanWrapperPIndex[]
+//end::GetIndexResponsePIndex[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndex/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePIndex/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndex/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePIndex/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapper/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePIndexNodesWrapper/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#clusterConfigPlanWrapperPIndexNodesWrapper]
-= PIndex Nodes Wrapper
+[#GetIndexResponsePIndexNodesWrapper]
+= Partition Nodes Wrapper
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapper/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePIndexNodesWrapper/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::clusterConfigPlanWrapperPIndexNodesWrapper[]
+//tag::GetIndexResponsePIndexNodesWrapper[]
 
+ifdef::model-descriptions[]
+//tag::desc-GetIndexResponsePIndexNodesWrapper[]
+An object containing information about one or more index partition nodes.
+//end::desc-GetIndexResponsePIndexNodesWrapper[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
@@ -3521,50 +3260,56 @@ a¦
 
 [markdown]
 --
-include::index.adoc[tag=desc-clusterConfigPlanWrapperPIndexNodesWrapperNode, opts=optional]
+include::index.adoc[tag=desc-GetIndexResponsePIndexNodesWrapperNode, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigPlanWrapperPIndexNodesWrapperNode>>
+a¦ <<GetIndexResponsePIndexNodesWrapperNode>>
 
 
 |===
 
-//end::clusterConfigPlanWrapperPIndexNodesWrapper[]
+//end::GetIndexResponsePIndexNodesWrapper[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapper/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePIndexNodesWrapper/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapper/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePIndexNodesWrapper/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNode/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePIndexNodesWrapperNode/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#clusterConfigPlanWrapperPIndexNodesWrapperNode]
-= PIndex Node
+[#GetIndexResponsePIndexNodesWrapperNode]
+= Partition Node
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNode/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePIndexNodesWrapperNode/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::clusterConfigPlanWrapperPIndexNodesWrapperNode[]
+//tag::GetIndexResponsePIndexNodesWrapperNode[]
 
+ifdef::model-descriptions[]
+//tag::desc-GetIndexResponsePIndexNodesWrapperNode[]
+An object containing information about a single index partition node.
+The name of the property is the node UUID.
+//end::desc-GetIndexResponsePIndexNodesWrapperNode[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
@@ -3614,44 +3359,44 @@ a¦ Integer
 
 |===
 
-//end::clusterConfigPlanWrapperPIndexNodesWrapperNode[]
+//end::GetIndexResponsePIndexNodesWrapperNode[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNode/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePIndexNodesWrapperNode/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrapperPIndexNodesWrapperNode/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePIndexNodesWrapperNode/definition-after.adoc[opts=optional]
 
 
 
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrng/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePlanWrng/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#clusterConfigPlanWrng]
-= Plan Warnings
+[#GetIndexResponsePlanWrng]
+= Plan Warnings Wrapper
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrng/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/GetIndexResponsePlanWrng/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::clusterConfigPlanWrng[]
+//tag::GetIndexResponsePlanWrng[]
 
 ifdef::model-descriptions[]
-//tag::desc-clusterConfigPlanWrng[]
-An object containing zero, one or more nested objects, each containing warnings that apply to a pindex.
-//end::desc-clusterConfigPlanWrng[]
+//tag::desc-GetIndexResponsePlanWrng[]
+An object containing zero, one or more nested objects, each containing warnings that apply to an index.
+//end::desc-GetIndexResponsePlanWrng[]
 endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
@@ -3665,26 +3410,473 @@ a¦
 
 [markdown]
 --
+include::index.adoc[tag=desc-GetIndexResponsePlanWrngIndex, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<GetIndexResponsePlanWrngIndex>>
+
+
+|===
+
+//end::GetIndexResponsePlanWrng[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/GetIndexResponsePlanWrng/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/GetIndexResponsePlanWrng/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/GetIndexResponsePlanWrngIndex/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#GetIndexResponsePlanWrngIndex]
+= Plan Warnings
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/GetIndexResponsePlanWrngIndex/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets[fw] Array
+{blank}
+
+
+
+[markdown]
+--
+An array of warnings.
+The name of the property is the name of the index.
+--
+
+[%hardbreaks]
+{blank}
+
+.Schema
+String
+
+ array
+
+
+// markup not found, no include::{specDir}definitions/GetIndexResponsePlanWrngIndex/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/GetIndexResponsePlanWrngIndex/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/GetIndexesResponseIndexesWrapper/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#GetIndexesResponseIndexesWrapper]
+= Index Definitions Wrapper
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/GetIndexesResponseIndexesWrapper/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::GetIndexesResponseIndexesWrapper[]
+
+ifdef::model-descriptions[]
+//tag::desc-GetIndexesResponseIndexesWrapper[]
+An object containing one or more index definitions.
+//end::desc-GetIndexesResponseIndexesWrapper[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+_additional +
+property_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-IndexDefinition, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<IndexDefinition>>
+
+
+|===
+
+//end::GetIndexesResponseIndexesWrapper[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/GetIndexesResponseIndexesWrapper/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/GetIndexesResponseIndexesWrapper/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/IndexDefinition/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#IndexDefinition]
+= Index Definition
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/IndexDefinition/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::IndexDefinition[]
+
+ifdef::model-descriptions[]
+//tag::desc-IndexDefinition[]
+The full Search index definition.
+For a detailed list of all parameters, see [Search Index JSON Properties](../search/search-index-params.html).
+//end::desc-IndexDefinition[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*name* +
+_required_
+a¦ 
+
+[markdown]
+--
+The name of the Search index.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
 --
 
 [%hardbreaks]
 {blank}
 a¦ String
- array
+
+
+a¦ 
+*type* +
+_required_
+a¦ 
+
+[markdown]
+--
+The type of the Search index.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourceName* +
+_required_
+a¦ 
+
+[markdown]
+--
+The name of the bucket where the Search index is stored.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourceUUID* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The UUID of the bucket where the Search index is stored.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourceParams* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Advanced settings for index behavior.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+
+
+a¦ 
+*sourceType* +
+_required_
+a¦ 
+
+[markdown]
+--
+The type of the bucket where the Search index is stored.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*params* +
+_required_
+a¦ 
+
+[markdown]
+--
+The Search index's type identifier, type mappings, and analyzers.
+For more information, see [Params Object](../search/search-index-params.html#params).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+
+
+a¦ 
+*planParams* +
+_required_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-IndexDefinitionPlanParams, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<IndexDefinitionPlanParams>>
+
+
+a¦ 
+*prevIndexUUID* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The UUID of the previous index.
+Intended for clients that want to check that they are not overwriting the Search index definition updates of concurrent clients.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*uuid* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The UUID of the Search index.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
 
 |===
 
-//end::clusterConfigPlanWrng[]
+//end::IndexDefinition[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrng/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/IndexDefinition/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/clusterConfigPlanWrng/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/IndexDefinition/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/IndexDefinitionPlanParams/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#IndexDefinitionPlanParams]
+= Plan Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/IndexDefinitionPlanParams/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::IndexDefinitionPlanParams[]
+
+ifdef::model-descriptions[]
+//tag::desc-IndexDefinitionPlanParams[]
+The Search index's partitioning and replication settings.
+For more information, see [Plan Params Object](../search/search-index-params.html#planParams).
+//end::desc-IndexDefinitionPlanParams[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*hierarchyRules* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*maxPartitionsPerPIndex* +
+_optional_
+a¦ 
+
+[markdown]
+--
+This setting is deprecated.
+Use `indexPartitions` instead.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*indexPartitions* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The number of partitions to split the Search index into, across the nodes you have available in your database with the Search Service enabled.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*nodePlanParams* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*numReplicas* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The number of replicas the Search Service creates for the Search index to ensure high availability.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*planFrozen* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+|===
+
+//end::IndexDefinitionPlanParams[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/IndexDefinitionPlanParams/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/IndexDefinitionPlanParams/definition-after.adoc[opts=optional]
 
 
 
