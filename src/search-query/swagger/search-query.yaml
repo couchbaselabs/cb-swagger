@@ -214,7 +214,7 @@ components:
       title: Query Map
       description: Contains one or more nested objects, each containing the details of a single active query.
       additionalProperties:
-        x-additionalPropertiesName: nodeUUID-queryID
+        x-additionalPropertiesName: Node UUID - Query ID
         $ref: '#/components/schemas/ActiveResponseFilterMapItem'
     ActiveResponseFilterMapItem:
       type: object
@@ -235,7 +235,10 @@ components:
       description: The query context.
       properties:
         query:
-          $ref: '#/components/schemas/ActiveResponseFilterMapItemContextQuery'
+          type: object
+          description: |-
+            An object containing the search query.
+            For more information, see [Search Request JSON Properties](../search/search-request-params.html).
         size:
           type: integer
           example: 10
@@ -251,14 +254,6 @@ components:
         index:
           type: string
           description: The name of a full-text index.
-    ActiveResponseFilterMapItemContextQuery:
-      type: object
-      title: Query
-      description: An object containing the text of the query.
-      properties:
-        query:
-          type: string
-          description: The text of the query.
     CancelRequest:
       type: object
       title: Cancellation Request

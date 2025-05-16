@@ -282,92 +282,56 @@ components:
           $ref: '#/components/schemas/clusterConfigIndexes'
         indexDefsCAS:
           type: integer
+          description: Index definition concurrency (compare and swap) value.
         indexDefsErr:
           type: string
+          description: Index definition error.
           nullable: true
         nodeDefsKnown:
           $ref: '#/components/schemas/clusterConfigNodesKnown'
         nodeDefsKnownCAS:
           type: integer
+          description: Known node definition concurrency (compare and swap) value.
         nodeDefsKnownErr:
           type: string
+          description: Known node definition error.
           nullable: true
         nodeDefsWanted:
           $ref: '#/components/schemas/clusterConfigNodesWanted'
         nodeDefsWantedCAS:
           type: integer
+          description: Wanted node definition concurrency (compare and swap) value.
         nodeDefsWantedErr:
           type: string
+          description: Wanted node definition error.
           nullable: true
         planPIndexes:
           $ref: '#/components/schemas/clusterConfigPlan'
         planPIndexesCAS:
           type: integer
+          description: Index partition concurrency (compare and swap) value.
         planPIndexesErr:
           type: string
+          description: Index partition error.
           nullable: true
         status:
           type: string
+          description: The status of the operation.
 
     clusterConfigIndexes:
       title: Index Definitions
       type: object
+      description: An object containing index definitions and related information.
       properties:
         implVersion:
           type: string
         indexDefs:
-          $ref: '#/components/schemas/clusterConfigIndexesWrapper'
-
-    clusterConfigIndexesWrapper:
-      title: Index Definitions Wrapper
-      type: object
-      additionalProperties:
-        x-additionalPropertiesName: index name
-        $ref: '#/components/schemas/clusterConfigIndexesWrapperIndex'
-
-    clusterConfigIndexesWrapperIndex:
-      title: Index Definition
-      type: object
-      properties:
-        name:
-          type: string
-        params:
-          type: string
-        planParams:
-          $ref: '#/components/schemas/clusterConfigIndexesWrapperIndexPlanParams'
-        sourceName:
-          type: string
-        sourceParams:
-          type: string
-        sourceType:
-          type: string
-        sourceUUID:
-          type: string
-        type:
-          type: string
-        uuid:
-          type: string
-
-    clusterConfigIndexesWrapperIndexPlanParams:
-      title: Plan Parameters
-      type: object
-      properties:
-        hierarchyRules:
-          type: string
-          nullable: true
-        maxPartitionsPerPIndex:
-          type: integer
-        nodePlanParams:
-          type: string
-          nullable: true
-        numReplicas:
-          type: integer
-        planFrozen:
-          type: boolean
+          $ref: '../../search-index/swagger/search-index.yaml#/components/schemas/GetIndexesResponseIndexesWrapper'
 
     clusterConfigNodesKnown:
       title: Known Nodes
       type: object
+      description: An object containing known node definitions and related information.
       properties:
         implVersion:
           type: string
@@ -379,6 +343,7 @@ components:
     clusterConfigNodesWanted:
       title: Wanted Nodes
       type: object
+      description: An object containing wanted node definitions and related information.
       properties:
         implVersion:
           type: string
@@ -390,13 +355,17 @@ components:
     clusterConfigNodesWrapper:
       title: Node Definitions Wrapper
       type: object
+      description: An object containing the definitions of one or more nodes.
       additionalProperties:
-        x-additionalPropertiesName: node UUID
+        x-additionalPropertiesName: Node UUID
         $ref: '#/components/schemas/clusterConfigNodesWrapperNode'
 
     clusterConfigNodesWrapperNode:
       title: Node Definition
       type: object
+      description: |-
+        An object containing the definition of a single node.
+        The name of the property is the UUID of the node.
       properties:
         container:
           type: string
@@ -416,7 +385,8 @@ components:
 
     clusterConfigPlan:
       type: object
-      title: Plan PIndexes
+      title: Plan Partitions
+      description: An object containing index partitions and related information.
       properties:
         implVersion:
           type: string
@@ -425,72 +395,33 @@ components:
         uuid:
           type: string
         warnings:
-          $ref: '#/components/schemas/clusterConfigPlanWrng'
+          $ref: '#/components/schemas/GetIndexResponsePlanWrng'
 
     clusterConfigPlanWrapper:
       type: object
-      title: Plan PIndexes Wrapper
+      title: Plan Partitions Wrapper
+      description: An object containing information about one or more index partitions.
       additionalProperties:
-        x-additionalPropertiesName: pindex name
-        $ref: '#/components/schemas/clusterConfigPlanWrapperPIndex'
+        x-additionalPropertiesName: Partition Name
+        $ref: '../../search-index/swagger/search-index.yaml#/components/schemas/GetIndexResponsePIndex'
 
-    clusterConfigPlanWrapperPIndex:
+    GetIndexResponsePlanWrng:
       type: object
-      title: Plan PIndex
-      properties:
-        indexName:
-          type: string
-        indexParams:
-          type: string
-        indexType:
-          type: string
-        indexUUID:
-          type: string
-        name:
-          type: string
-        nodes:
-          $ref: '#/components/schemas/clusterConfigPlanWrapperPIndexNodesWrapper'
-        sourceName:
-          type: string
-        sourceParams:
-          type: string
-        sourcePartitions:
-          type: string
-        sourceType:
-          type: string
-        sourceUUID:
-          type: string
-        uuid:
-          type: string
-
-    clusterConfigPlanWrapperPIndexNodesWrapper:
-      type: object
-      title: PIndex Nodes Wrapper
+      title: Plan Warnings Wrapper
+      description: |-
+        An object containing zero, one or more nested objects, each containing warnings that apply to an index.
       additionalProperties:
-        x-additionalPropertiesName: node UUID
-        $ref: '#/components/schemas/clusterConfigPlanWrapperPIndexNodesWrapperNode'
+        x-additionalPropertiesName: Index Name
+        $ref: '#/components/schemas/GetIndexResponsePlanWrngIndex'
 
-    clusterConfigPlanWrapperPIndexNodesWrapperNode:
-      type: object
-      title: PIndex Node
-      properties:
-        canRead:
-          type: boolean
-        canWrite:
-          type: boolean
-        priority:
-          type: integer
-
-    clusterConfigPlanWrng:
-      type: object
+    GetIndexResponsePlanWrngIndex:
+      type: array
       title: Plan Warnings
       description: |-
-        An object containing zero, one or more nested objects, each containing warnings that apply to a pindex.
-      additionalProperties:
-        x-additionalPropertiesName: index name
-        type: array
-        items:
-          type: string
+        An array of warnings.
+        The name of the property is the name of the index.
+      items:
+        type: string
 
     runtimeInfo:
       title: Runtime Information
