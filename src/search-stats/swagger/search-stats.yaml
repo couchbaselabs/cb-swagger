@@ -33,18 +33,25 @@ servers:
 paths:
   /api/nsstats:
     get:
-      summary: Get Search Index Statistics
-      description: Retrieve statistics on documents, partition indexes, mutations, compactions, and queries for the Search Service and any Search indexes.
-      operationId: getSearchIndexStatistics
+      summary: Get Query, Mutation, and Partition Statistics for the Search Service
+      description: |-
+        Gets query, mutation, document, partition, and compaction statistics for the Search Service and any Search indexes.
+
+        This endpoint returns statistics provided by the Cluster Manager.
+        For additional statistics, including detailed partition information, see [Get Indexing and Data Metrics for All Indexes](../../fts-rest-indexing/index.html#g-api-stats).
+      operationId: g-api-nsstats
       responses:
         '200':
-          description: A JSON object containing search-related statistics.
+          description: |-
+            The Search Service returns statistics from the `nsstats` endpoint for the entire cluster, and for each Search index.
+
+            For each Search index, the names of the statistics are prefixed with the bucket name and index name, in the form `BUCKET:INDEX:statistic_name`.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/searchStats'
+                $ref: '#/components/schemas/allStats'
               example:
-                $ref: '../../../docs/modules/fts-rest-stats/examples/get-stats-200.json'
+                $ref: '../../../docs/modules/fts-rest-stats/examples/g-api-nsstats-200.json'
         '400':
           description: |-
             Object not found.
@@ -60,16 +67,60 @@ paths:
           content:
             application/json:
               example:
-                $ref: '../../../docs/modules/fts-rest-stats/examples/get-stats-403.json'
+                $ref: '../../../docs/modules/fts-rest-stats/examples/g-api-nsstats-403.json'
       security:
         - Admin: []
 
+  /api/nsstats/index/{INDEX_NAME}:
+    get:
+      operationId: g-api-nsstats-index-name
+      summary: Get Query, Mutation, and Partition Statistics for an Index
+      description: |-
+        Gets query, mutation, document, partition, and compaction statistics for the Search index specified in the endpoint URL.
+
+        This endpoint returns statistics provided by the Cluster Manager.
+        For additional statistics, including detailed partition information, see [Get Indexing and Data Metrics for an Index](../../fts-rest-indexing/index.html#g-api-stats-index-name).
+      parameters:
+        - name: INDEX_NAME
+          in: path
+          required: true
+          schema:
+            type: string
+          description: |-
+            The name of the Search index definition.
+            You must use the fully qualified name for the index, which includes the bucket and scope.
+
+            To view the full, scoped name for an index for use with this endpoint:
+
+            1. Go to the **Search** tab in the Couchbase Server Web Console.
+            2. Point to the **Index Name** for an index.
+      responses:
+        '200':
+          description: |-
+            The Search Service returns statistics from the `nsstats` endpoint for the specified index.
+
+            Note that for a single index, the names of the statistics are not prefixed with the bucket name or index name.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/indexStats'
+              example:
+                $ref: '../../../docs/modules/fts-rest-stats/examples/g-api-nsstats-index-name.json'
+      security:
+        - Statistics: []
+
 components:
   schemas:
-    searchStats:
+    allStats:
+      title: Service Statistics
+      allOf:
+        - $ref: '#/components/schemas/clusterStats'
+        - $ref: '#/components/schemas/indexStats'
+
+    clusterStats:
       type: object
-      title: Returned Statistics
-      description: The Search Service returns the following statistics from the `nsstats` endpoint.
+      title: Cluster Statistics
+      description: Statistics for the entire cluster.
       properties:
         avg_queries_latency:
           type: number
@@ -415,6 +466,14 @@ components:
           type: integer
           description: |-
             The total time, in nanoseconds, spent processing Search queries across the cluster.
+
+    indexStats:
+      type: object
+      title: Index Statistics
+      description: Statistics for a single Search index.
+      # patternProperties:
+      #   '(.*:.*:)?avg_grpc_internal_queries_latency':
+      properties:
         BUCKET:INDEX:avg_grpc_internal_queries_latency:
           type: integer
           description: |-
@@ -444,7 +503,8 @@ components:
 
             This statistic appears on the Server Web Console dashboard as **Search Docs**.
         BUCKET:INDEX:last_access_time:
-          type: integer
+          type: string
+          format: date-time
           description: The last date and time that a query ran against the given Search index.
         BUCKET:INDEX:num_bytes_read_at_query_time:
           type: integer
@@ -712,3 +772,9 @@ components:
       scheme: basic
       description: |-
         You must have the **Full Admin**, **Cluster Admin**, or **Bucket Admin** role, with FTS Read permissions on the required bucket.
+
+    Statistics:
+      type: http
+      scheme: basic
+      description: |-
+        You must have the **Search Admin** role, with Stats Read permissions on the required bucket.

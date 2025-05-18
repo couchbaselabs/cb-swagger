@@ -395,8 +395,10 @@ paths:
       operationId: g-api-stats
       summary: Get Indexing and Data Metrics for All Indexes
       description: |-
-        Use this endpoint to get indexing and data-related metrics, timings, and counters from the node running the Search Service, for all Search indexes.
-        The endpoint returns the data as a JSON object.
+        Returns indexing and data-related metrics, timings, counters, and detailed partition information for all Search indexes, from the node running the Search Service.
+
+        This endpoint returns statistics provided by the Search service.
+        For additional statistics, see [Get Query, Mutation, and Partition Statistics for the Search Service](../../fts-rest-stats/index.html#g-api-nsstats).
       tags:
         - Monitoring
       responses:
@@ -411,41 +413,15 @@ paths:
       security:
         - Statistics: []
 
-  /api/nsstats/index/{INDEX_NAME}:
-    get:
-      operationId: g-api-nsstats-index-name
-      summary: Get Query, Mutation, Partition, and Other Index Statistics
-      description: |
-        Gets query, mutation, document, partition, and compaction statistics for the Search index specified in the endpoint URL.
-        The endpoint returns the data as a JSON object.
-
-        Use this endpoint for monitoring the number of requests, documents, and more for a specific index.
-        For more detailed partition information and more overall statistics for an index, see [Get Indexing and Data Metrics, Timings, and Other Statistics](#g-api-stats-index-name).
-      tags:
-        - Monitoring
-      parameters:
-        - $ref: "#/components/parameters/PathIndexFull"
-      responses:
-        '200':
-          description: A JSON object containing statistics for the specified index.
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                $ref: '../../../docs/modules/fts-rest-indexing/examples/g-api-nsstats-index-name.json'
-      security:
-        - Statistics: []
-
   /api/stats/index/{INDEX_NAME}:
     get:
       operationId: g-api-stats-index-name
-      summary: Get Indexing and Data Metrics, Timings, and Other Statistics
-      description: |
-        Return indexing and data related metrics, timings, and counters for the Search index specified in the endpoint URL.
-        The endpoint returns the data as a JSON object.
+      summary: Get Indexing and Data Metrics for an Index
+      description: |-
+        Returns indexing and data-related metrics, timings, counters, and detailed partition information for the Search index specified in the endpoint URL.
 
-        Use this endpoint for more detailed partition information and more available statistics than [Get Query, Mutation, Partition, and Other Index Statistics](#g-api-nsstats-index-name).
+        This endpoint returns statistics provided by the Search service.
+        For additional statistics, see [Get Query, Mutation, and Partition Statistics for an Index](../../fts-rest-stats/index.html#g-api-nsstats-index-name).
       tags:
         - Monitoring
       parameters:
