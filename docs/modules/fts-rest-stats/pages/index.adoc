@@ -131,19 +131,20 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<getSearchIndexStatistics>>
+<<g-api-nsstats>>
+<<g-api-nsstats-index-name>>
 
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-before.adoc[opts=optional]
 
 
-[#getSearchIndexStatistics]
-= Get Search Index Statistics
+[#g-api-nsstats]
+= Get Query, Mutation, and Partition Statistics for the Search Service
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-begin.adoc[opts=optional]
 
 
 ....
@@ -152,58 +153,61 @@ GET /api/nsstats
 
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-description-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-description-before.adoc[opts=optional]
 
 
-[#getSearchIndexStatistics-description]
+[#g-api-nsstats-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-description-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-description-begin.adoc[opts=optional]
 
 
 [markdown]
 --
-Retrieve statistics on documents, partition indexes, mutations, compactions, and queries for the Search Service and any Search indexes.
+Gets query, mutation, document, partition, and compaction statistics for the Search Service and any Search indexes.
+
+This endpoint returns statistics provided by the Cluster Manager.
+For additional statistics, including detailed partition information, see [Get Indexing and Data Metrics for All Indexes](../../fts-rest-indexing/index.html#g-api-stats).
 --
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-description-end.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-description-end.adoc[opts=optional]
 
 
 
-[#getSearchIndexStatistics-produces]
+[#g-api-nsstats-produces]
 .Produces
 * application/json
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-description-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-description-after.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-parameters-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-parameters-before.adoc[opts=optional]
 
 
 
 
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-parameters-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-parameters-after.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-responses-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-responses-before.adoc[opts=optional]
 
 
-[#getSearchIndexStatistics-responses]
+[#g-api-nsstats-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-responses-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-responses-begin.adoc[opts=optional]
 
 
 [cols="20,60,20"]
@@ -213,9 +217,9 @@ Retrieve statistics on documents, partition indexes, mutations, compactions, and
 | 200
 a| [markdown]
 --
-A JSON object containing search-related statistics.
+The Search Service returns statistics from the `nsstats` endpoint for the entire cluster, and for each Search index.  For each Search index, the names of the statistics are prefixed with the bucket name and index name, in the form `BUCKET:INDEX:statistic_name`.
 --
-a| <<searchStats>>
+a| <<allStats>>
 
 
 | 400
@@ -240,25 +244,25 @@ a|
 |===
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-responses-end.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-responses-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-responses-after.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-security-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-security-before.adoc[opts=optional]
 
 
-[#getSearchIndexStatistics-security]
+[#g-api-nsstats-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-security-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-security-begin.adoc[opts=optional]
 
 
 [cols="20,80"]
@@ -271,28 +275,224 @@ a|
 |===
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-security-end.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-security-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-security-after.adoc[opts=optional]
 
 
 
-// markup not found, no include::{snippetDir}getSearchIndexStatistics/http-request.adoc[opts=optional]
+// markup not found, no include::{snippetDir}g-api-nsstats/http-request.adoc[opts=optional]
 
 
-include::{snippetDir}getSearchIndexStatistics/http-response.adoc[opts=optional]
+include::{snippetDir}g-api-nsstats/http-response.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-end.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}paths/getSearchIndexStatistics/operation-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/g-api-nsstats/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-before.adoc[opts=optional]
+
+
+[#g-api-nsstats-index-name]
+= Get Query, Mutation, and Partition Statistics for an Index
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/nsstats/index/{INDEX_NAME}
+....
+
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-description-before.adoc[opts=optional]
+
+
+[#g-api-nsstats-index-name-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Gets query, mutation, document, partition, and compaction statistics for the Search index specified in the endpoint URL.
+
+This endpoint returns statistics provided by the Cluster Manager.
+For additional statistics, including detailed partition information, see [Get Indexing and Data Metrics for an Index](../../fts-rest-indexing/index.html#g-api-stats-index-name).
+--
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-description-end.adoc[opts=optional]
+
+
+
+[#g-api-nsstats-index-name-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-before.adoc[opts=optional]
+
+
+[#g-api-nsstats-index-name-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-begin.adoc[opts=optional]
+
+
+[#g-api-nsstats-index-name-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *INDEX_NAME* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of the Search index definition.
+You must use the fully qualified name for the index, which includes the bucket and scope.
+
+To view the full, scoped name for an index for use with this endpoint:
+
+1. Go to the **Search** tab in the Couchbase Server Web Console.
+2. Point to the **Index Name** for an index.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-responses-before.adoc[opts=optional]
+
+
+[#g-api-nsstats-index-name-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The Search Service returns statistics from the `nsstats` endpoint for the specified index.  Note that for a single index, the names of the statistics are not prefixed with the bucket name or index name.
+--
+a| <<indexStats>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-security-before.adoc[opts=optional]
+
+
+[#g-api-nsstats-index-name-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-statistics>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}g-api-nsstats-index-name/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}g-api-nsstats-index-name/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-after.adoc[opts=optional]
 
 
 
@@ -317,7 +517,7 @@ endif::[]
 [#models]
 = Definitions
 
-:count-models: 1
+:count-models: 3
 
 :leveloffset: +1
 
@@ -331,34 +531,73 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-<<searchStats>>
+<<allStats>>
+<<clusterStats>>
+<<indexStats>>
 endif::[]
 
 
 
-// markup not found, no include::{specDir}definitions/searchStats/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/allStats/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#searchStats]
-= Returned Statistics
+[#allStats]
+= Service Statistics
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/searchStats/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/allStats/definition-begin.adoc[opts=optional]
+
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+All of the following:
+
+* <<clusterStats>>
+
+
+* <<indexStats>>
+
+
+
+
+// markup not found, no include::{specDir}definitions/allStats/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/allStats/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterStats/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#clusterStats]
+= Cluster Statistics
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/clusterStats/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::searchStats[]
+//tag::clusterStats[]
 
 ifdef::model-descriptions[]
-//tag::desc-searchStats[]
-The Search Service returns the following statistics from the `nsstats` endpoint.
-//end::desc-searchStats[]
+//tag::desc-clusterStats[]
+Statistics for the entire cluster.
+//end::desc-clusterStats[]
 endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
@@ -1410,6 +1649,52 @@ The total time, in nanoseconds, spent processing Search queries across the clust
 a¦ Integer
 
 
+|===
+
+//end::clusterStats[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/clusterStats/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/clusterStats/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/indexStats/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#indexStats]
+= Index Statistics
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/indexStats/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::indexStats[]
+
+ifdef::model-descriptions[]
+//tag::desc-indexStats[]
+Statistics for a single Search index.
+//end::desc-indexStats[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
 a¦ 
 *BUCKET:INDEX:avg_grpc_internal_queries_latency* +
 _optional_
@@ -1506,7 +1791,7 @@ The last date and time that a query ran against the given Search index.
 
 [%hardbreaks]
 {blank}
-a¦ Integer
+a¦ Date (date-time)
 
 
 a¦ 
@@ -2253,17 +2538,17 @@ a¦ Integer
 
 |===
 
-//end::searchStats[]
+//end::indexStats[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/searchStats/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/indexStats/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/searchStats/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/indexStats/definition-after.adoc[opts=optional]
 
 
 
@@ -2316,6 +2601,36 @@ __Type__ : http
 
 
 // markup not found, no include::{specDir}security/Admin/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Statistics/security-scheme-before.adoc[opts=optional]
+
+
+[[security-statistics]]
+= Statistics
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Statistics/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+You must have the **Search Admin** role, with Stats Read permissions on the required bucket.
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Statistics/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Statistics/security-scheme-after.adoc[opts=optional]
 
 
 
