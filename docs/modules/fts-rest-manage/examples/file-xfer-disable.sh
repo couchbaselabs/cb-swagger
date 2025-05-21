@@ -1,4 +1,4 @@
 curl -X PUT http://$HOST:8094/api/managerOptions \
--u $ADMIN:$PASSWORD \
+-u $USER:$PASSWORD \
 -H "Content-type:application/json" \
 -d '{"disableFileTransferRebalance": "true" }'
