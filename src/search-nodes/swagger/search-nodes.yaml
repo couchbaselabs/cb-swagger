@@ -20,11 +20,11 @@ servers:
           - https
       host:
         default: localhost
-        description: The host name or IP address of a node running the Search service.
+        description: The host name or IP address of a node running the Search Service.
       port:
         default: "8094"
         description: |-
-          The Search service REST port.
+          The Search Service REST port.
           Use `18094` for secure access.
         enum:
           - "8094"
@@ -114,10 +114,10 @@ paths:
       operationId: getDiagnostics
       summary: Get Diagnostics
       description: |-
-        Returns the full set of diagnostic information from the node in one shot as JSON.
+        Returns the full set of diagnostic information from the node as JSON.
         The response is the union of the responses from the node's other REST API diagnostic and monitoring endpoints.
 
-        For example, for a three node cluster, you could capture diagnostics for each node with something like:
+        For example, for a 3 node cluster, you could capture diagnostics for each node with something like:
 
         ```shell
         curl http://cbft-01:8094/api/diag > cbft-01.json
@@ -127,7 +127,7 @@ paths:
 
         The response JSON object can be quite large, 100s of KB or much more.
 
-        The motivation for this operation is to simplify working with the Couchbase community, forums, technical support, and other engineers, by making data capture from each FTS node a single step.
+        The motivation for this operation is to simplify working with the Couchbase community, forums, technical support, and other engineers, by making data capture from each Search node a single step.
       tags:
         - diagnostics
       responses:
@@ -282,10 +282,10 @@ components:
           $ref: '#/components/schemas/clusterConfigIndexes'
         indexDefsCAS:
           type: integer
-          description: Index definition concurrency (compare and swap) value.
+          description: Search index definition concurrency (compare and swap) value.
         indexDefsErr:
           type: string
-          description: Index definition error.
+          description: Search index definition error.
           nullable: true
         nodeDefsKnown:
           $ref: '#/components/schemas/clusterConfigNodesKnown'
@@ -309,10 +309,10 @@ components:
           $ref: '#/components/schemas/clusterConfigPlan'
         planPIndexesCAS:
           type: integer
-          description: Index partition concurrency (compare and swap) value.
+          description: Search index partition concurrency (compare and swap) value.
         planPIndexesErr:
           type: string
-          description: Index partition error.
+          description: Search index partition error.
           nullable: true
         status:
           type: string
@@ -321,7 +321,7 @@ components:
     clusterConfigIndexes:
       title: Index Definitions
       type: object
-      description: An object containing index definitions and related information.
+      description: An object containing Search index definitions and related information.
       properties:
         implVersion:
           type: string
@@ -355,7 +355,7 @@ components:
     clusterConfigNodesWrapper:
       title: Node Definitions Wrapper
       type: object
-      description: An object containing the definitions of one or more nodes.
+      description: An object containing the definitions of 1 or more nodes.
       additionalProperties:
         x-additionalPropertiesName: Node UUID
         $ref: '#/components/schemas/clusterConfigNodesWrapperNode'
@@ -386,7 +386,7 @@ components:
     clusterConfigPlan:
       type: object
       title: Plan Partitions
-      description: An object containing index partitions and related information.
+      description: An object containing Search index partitions and related information.
       properties:
         implVersion:
           type: string
@@ -400,7 +400,7 @@ components:
     clusterConfigPlanWrapper:
       type: object
       title: Plan Partitions Wrapper
-      description: An object containing information about one or more index partitions.
+      description: An object containing information about 1 or more Search index partitions.
       additionalProperties:
         x-additionalPropertiesName: Partition Name
         $ref: '../../search-index/swagger/search-index.yaml#/components/schemas/GetIndexResponsePIndex'
@@ -409,7 +409,7 @@ components:
       type: object
       title: Plan Warnings Wrapper
       description: |-
-        An object containing zero, one or more nested objects, each containing warnings that apply to an index.
+        An object containing 0, 1, or more nested objects, each containing warnings that apply to a Search index.
       additionalProperties:
         x-additionalPropertiesName: Index Name
         $ref: '#/components/schemas/GetIndexResponsePlanWrngIndex'
@@ -419,7 +419,7 @@ components:
       title: Plan Warnings
       description: |-
         An array of warnings.
-        The name of the property is the name of the index.
+        The name of the property is the name of the Search index.
       items:
         type: string
 

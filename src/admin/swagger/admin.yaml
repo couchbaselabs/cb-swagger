@@ -20,11 +20,11 @@ servers:
           - https
       host:
         default: localhost
-        description: The host name or IP address of a node running the Query service.
+        description: The host name or IP address of a node running the Query Service.
       port:
         default: "8093"
         description: |-
-          The Query service REST port.
+          The Query Service REST port.
           Use `18093` for secure access.
         enum:
           - "8093"
@@ -1064,12 +1064,12 @@ components:
         type: integer
         description: |
           High water mark for temp space use directly by query.
-          (Doesn't include use by the GSI and FTS clients.)
+          (Doesn't include use by the GSI and Search clients.)
       temp.usage:
         type: integer
         description: |
           Current Query temp space use.
-          (Doesn't include use by the GSI and FTS clients.)
+          (Doesn't include use by the GSI and Search clients.)
 
   Statistics:
     type: object

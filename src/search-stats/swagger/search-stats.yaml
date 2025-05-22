@@ -20,11 +20,11 @@ servers:
           - https
       host:
         default: localhost
-        description: The host name or IP address of a node running the Search service.
+        description: The host name or IP address of a node running the Search Service.
       port:
         default: "8094"
         description: |-
-          The Search service REST port.
+          The Search Service REST port.
           Use `18094` for secure access.
         enum:
           - "8094"
@@ -234,7 +234,7 @@ components:
           description: |-
             The total number of times Search index partitions were created or reopened for new Search requests, or for ingesting data coming in from DCP.
 
-            Opening an index partition creates a file lock for concurrent access requests.
+            Opening a Search index partition creates a file lock for concurrent access requests.
         tot_grpc_listeners_closed:
           type: integer
           description: |-
@@ -750,7 +750,7 @@ components:
           description: |-
             The total number of term searchers for the given Search index.
 
-            Every Search query requires one or more term searchers.
+            Every Search query requires 1 or more term searchers.
             More complex Search queries typically require more term searchers.
 
             Use this statistic to approximate how complex a query is.

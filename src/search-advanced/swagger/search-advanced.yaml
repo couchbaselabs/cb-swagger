@@ -20,11 +20,11 @@ servers:
           - https
       host:
         default: localhost
-        description: The host name or IP address of a node running the Search service.
+        description: The host name or IP address of a node running the Search Service.
       port:
         default: "8094"
         description: |-
-          The Search service REST port.
+          The Search Service REST port.
           Use `18094` for secure access.
         enum:
           - "8094"
@@ -33,25 +33,25 @@ servers:
 tags:
   - name: Definition
     x-displayName: Index Partition Definition
-    description: Operations for index partition definition.
+    description: Operations for Search index partition definition.
   - name: Query
     x-displayName: Index Partition Querying
-    description: Operations for querying index partitions.
+    description: Operations for querying Search index partitions.
   - name: Quota
-    x-displayName: FTS Memory Quota
-    description: Operations for managing FTS memory quota.
+    x-displayName: Search Memory Quota
+    description: Operations for managing Search memory quota.
 
 paths:
   /api/pindex:
     get:
       operationId: getPartition
       summary: Get Index Partition Information
-      description: Get information about an index partition.
+      description: Get information about a Search index partition.
       tags:
         - Definition
       responses:
         '200':
-          description: A JSON object containing the index partition information.
+          description: A JSON object containing the Search index partition information.
           content:
             application/json:
               schema:
@@ -65,7 +65,7 @@ paths:
     get:
       operationId: getPartitionName
       summary: Get Index Partition by Name
-      description: Get information about a specific index partition by name.
+      description: Get information about a specific Search index partition by name.
       tags:
         - Definition
       parameters:
@@ -74,7 +74,7 @@ paths:
           required: true
           schema:
             type: string
-          description: The name of the index partition.
+          description: The name of the Search index partition.
       responses:
         '200':
           description: Success
@@ -85,7 +85,7 @@ paths:
     get:
       operationId: getPartitionCount
       summary: Get Index Partition Document Count
-      description: Get the document count of a specific index partition.
+      description: Get the document count of a specific Search index partition.
       tags:
         - Query
       parameters:
@@ -94,7 +94,7 @@ paths:
           required: true
           schema:
             type: string
-          description: The name of the index partition.
+          description: The name of the Search index partition.
       responses:
         '200':
           description: The Search Service returns a response that includes the status `ok`.
@@ -109,7 +109,7 @@ paths:
     post:
       operationId: queryPartition
       summary: Query Index Partition
-      description: Execute a query against a specific index partition by name.
+      description: Execute a query against a specific Search index partition by name.
       tags:
         - Query
       parameters:
@@ -118,7 +118,7 @@ paths:
           required: true
           schema:
             type: string
-          description: The name of the index partition.
+          description: The name of the Search index partition.
       requestBody:
         required: true
         description: |-
@@ -143,8 +143,8 @@ paths:
   /pools/default:
     post:
       operationId: setFtsMemoryQuota
-      summary: Set FTS Memory Quota
-      description: Sets the memory quota for the full text search (FTS) service.
+      summary: Set Search Memory Quota
+      description: Sets the memory quota for the Search Service.
       tags:
         - Quota
       requestBody:
@@ -156,7 +156,7 @@ paths:
               properties:
                 ftsMemoryQuota:
                   type: integer
-                  description: The memory quota for the FTS service.
+                  description: The memory quota for the Search service.
                   example: 512
                   x-has-example: true
       responses:
@@ -180,7 +180,7 @@ components:
     indexPartitionPIndex:
       type: object
       title: Index Partitions Wrapper
-      description: An object containing information about one or more index partitions.
+      description: An object containing information about 1 or more Search index partitions.
       additionalProperties:
         x-additionalPropertiesName: Partition Name
         $ref: '#/components/schemas/indexPartitionPIndexInner'
@@ -189,8 +189,8 @@ components:
       type: object
       title: Index Partition
       description: |-
-        An object containing information about a single index partition.
-        The name of the property is the name of the index partition.
+        An object containing information about a single Search index partition.
+        The name of the property is the name of the Search index partition.
       properties:
         indexName:
           $ref: '../../search-index/swagger/search-index.yaml#/components/schemas/CommonIndexName'

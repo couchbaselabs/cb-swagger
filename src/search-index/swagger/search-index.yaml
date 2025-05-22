@@ -20,11 +20,11 @@ servers:
           - https
       host:
         default: localhost
-        description: The host name or IP address of a node running the Search service.
+        description: The host name or IP address of a node running the Search Service.
       port:
         default: "8094"
         description: |-
-          The Search service REST port.
+          The Search Service REST port.
           Use `18094` for secure access.
         enum:
           - "8094"
@@ -521,7 +521,7 @@ paths:
       operationId: p-api-pindex-lookup
       summary: Look Up the Index Partition for a Document (Scoped)
       description: |
-        Send a document ID in the request body and return the Search index partition ID for where the document is stored.
+        Send a document ID in the request body and return the Search index partition ID where the document is stored.
         The endpoint returns a JSON object as a response.
       tags:
         - Querying
@@ -758,7 +758,7 @@ components:
     GetIndexesResponseIndexes:
       title: Index Definitions
       type: object
-      description: An object containing index definitions and related information.
+      description: An object containing Search index definitions and related information.
       properties:
         implVersion:
           type: string
@@ -770,7 +770,7 @@ components:
     GetIndexesResponseIndexesWrapper:
       title: Index Definitions Wrapper
       type: object
-      description: An object containing one or more index definitions.
+      description: An object containing 1 or more Search index definitions.
       additionalProperties:
         x-additionalPropertiesName: Index Name
         $ref: '#/components/schemas/IndexDefinition'
@@ -783,7 +783,7 @@ components:
           $ref: '#/components/schemas/IndexDefinition'
         planPIndexes:
           type: array
-          description: An array of objects, each containing information about a single index partition.
+          description: An array of objects, each containing information about a single Search index partition.
           items:
             $ref: '#/components/schemas/GetIndexResponsePIndex'
         status:
@@ -797,7 +797,7 @@ components:
     GetIndexResponsePIndex:
       type: object
       title: Plan Partition
-      description: An object containing information about a single index partition.
+      description: An object containing information about a single Search index partition.
       properties:
         indexName:
           $ref: '#/components/schemas/CommonIndexName'
@@ -827,7 +827,7 @@ components:
     GetIndexResponsePIndexNodesWrapper:
       type: object
       title: Partition Nodes Wrapper
-      description: An object containing information about one or more index partition nodes.
+      description: An object containing information about 1 or more Search index partition nodes.
       additionalProperties:
         x-additionalPropertiesName: Node UUID
         $ref: '#/components/schemas/GetIndexResponsePIndexNodesWrapperNode'
@@ -836,7 +836,7 @@ components:
       type: object
       title: Partition Node
       description: |-
-        An object containing information about a single index partition node.
+        An object containing information about a single Search index partition node.
         The name of the property is the node UUID.
       properties:
         canRead:
@@ -941,7 +941,7 @@ components:
     LookupResponsePartitions:
       type: object
       title: Lookup Partition Wrapper
-      description: An object containing information about one or more index partitions.
+      description: An object containing information about 1 or more Search index partitions.
       additionalProperties:
         x-additionalPropertiesName: Partition Name
         $ref: "#/components/schemas/LookupResponsePartitionsID"
@@ -950,12 +950,12 @@ components:
       type: object
       title: Lookup Partition
       description: |-
-        An object containing information about a single index partition.
-        The name of the property is the index partition name.
+        An object containing information about a single Search index partition.
+        The name of the property is the Search index partition name.
       properties:
         id:
           type: string
-          description: The index partition ID.
+          description: The Search index partition ID.
 
     PutIndexResponse:
       type: object
@@ -983,7 +983,7 @@ components:
     DocumentAnalysisItem:
       type: object
       title: Analysis Item
-      description: An object containing one or more search terms or tokens from the analyzed document.
+      description: An object containing 1 or more search terms or tokens from the analyzed document.
       additionalProperties:
         x-additionalPropertiesName: Search Token
         $ref: "#/components/schemas/DocumentAnalysisItemToken"
@@ -1200,7 +1200,7 @@ components:
           $ref: "#/components/schemas/CommonStatus"
         indexStatus:
           type: string
-          description: The status of the index.
+          description: The status of the Search index.
 
     CommonStatus:
       type: string
@@ -1246,7 +1246,7 @@ components:
       type: object
       title: Source Parameters
       description: |-
-        Advanced settings for index behavior.
+        Advanced settings for Search index behavior.
         For more information, see [Initial Settings](../search/search-index-params.html#initial).
 
     CommonSourceType:
@@ -1266,12 +1266,12 @@ components:
     CommonPIndexName:
       type: string
       title: Partition Name
-      description: The name of the index partition.
+      description: The name of the Search index partition.
 
     CommonPIndexUUID:
       type: string
       title: Partition UUID
-      description: The UUID of the index partition.
+      description: The UUID of the Search index partition.
 
   securitySchemes:
     Manage:
