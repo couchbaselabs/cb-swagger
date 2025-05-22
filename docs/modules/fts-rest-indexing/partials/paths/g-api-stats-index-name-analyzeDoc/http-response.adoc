@@ -1,0 +1,15 @@
+= Example HTTP Response
+
+The following example shows the result of analyzing the document from the <<ex-g-api-stats-index-name-analyzeDoc,Example Request>> using a Search index with the following settings:
+
+* A `keyword` analyzer for the `title` field.
+
+* An `ngram` token filter with a `min` of 2 and a `max` of 5 for the `name` field.
+
+====
+.Response 200
+[source,json]
+----
+include::example$g-api-stats-index-name-analyzeDoc-200.json[]
+----
+====

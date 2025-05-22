@@ -1,0 +1,23 @@
+apply plugin: 'org.openapi.generator'
+
+openApiGenerate {
+    generatorName = "asciidoc"
+    inputSpec = file("swagger/search-nodes.yaml").getAbsolutePath().toString()
+    outputDir = "${rootDir}/docs/modules/fts-rest-nodes/pages"
+    templateDir = "${rootDir}/templates"
+    gitRepoId = "cb-swagger"
+    gitUserId = "couchbase"
+    additionalProperties = [
+            specDir: "${rootDir}/docs/modules/fts-rest-nodes/partials/",
+            snippetDir: "${rootDir}/docs/modules/fts-rest-nodes/partials/paths/",
+            headerAttributes: "true",
+            useIntroduction: "true",
+            useTableTitles: "true",
+            skipExamples: "true",
+            legacyDiscriminatorBehavior: "true"
+    ]
+    globalProperties = [
+            generateAliasAsModel: "true"
+    ]
+    generateAliasAsModel = true
+}

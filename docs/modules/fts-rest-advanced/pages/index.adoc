@@ -1,0 +1,2029 @@
+= Couchbase Search Advanced API
+:keywords: OpenAPI, REST
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+include::partial$header-attributes.adoc[opts=optional]
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+
+:leveloffset: 1
+
+include::{specDir}overview/document-before.adoc[opts=optional]
+
+
+[[overview]]
+= Overview
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+The Advanced Search REST APIs are provided by the Search service.
+These APIs enable you to manage and query Search index partitions and to specify advanced settings.
+--
+
+[discrete#version]
+= Version information
+[%hardbreaks]
+__Version__ : 7.6
+
+[discrete#host]
+= Host information
+
+....
+{scheme}://{host}:{port}
+....
+
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
+
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `+++http+++`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Search Service.
+--
+
+[%hardbreaks]
+
+*Example:* `+++localhost+++`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Search Service REST port. Use `18094` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `8094`, `18094`
+*Example:* `+++8094+++`
+// end
+
+|===
+
+
+// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
+
+
+[[resources]]
+= Resources
+
+:count-apis: 3
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
+
+This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+<<tag-Definition>>
+<<tag-Query>>
+<<tag-Quota>>
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Definition]
+= Definition
+:leveloffset: +1
+
+ifeval::["Operations for Search index partition definition." != ""]
+Operations for Search index partition definition.
+endif::[]
+ifeval::["Operations for Search index partition definition." == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<getPartition>>
+<<getPartitionName>>
+
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-before.adoc[opts=optional]
+
+
+[#getPartition]
+= Get Index Partition Information
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartition/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/pindex
+....
+
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-description-before.adoc[opts=optional]
+
+
+[#getPartition-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartition/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Get information about a Search index partition.
+--
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-description-end.adoc[opts=optional]
+
+
+
+[#getPartition-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-parameters-before.adoc[opts=optional]
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-responses-before.adoc[opts=optional]
+
+
+[#getPartition-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartition/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A JSON object containing the Search index partition information.
+--
+a| <<indexPartition>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-security-before.adoc[opts=optional]
+
+
+[#getPartition-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartition/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-read>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}getPartition/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}getPartition/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getPartition/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-before.adoc[opts=optional]
+
+
+[#getPartitionName]
+= Get Index Partition by Name
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/pindex/{pindexName}
+....
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-description-before.adoc[opts=optional]
+
+
+[#getPartitionName-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Get information about a specific Search index partition by name.
+--
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-description-end.adoc[opts=optional]
+
+
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-parameters-before.adoc[opts=optional]
+
+
+[#getPartitionName-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-parameters-begin.adoc[opts=optional]
+
+
+[#getPartitionName-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *pindexName* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of the Search index partition.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-responses-before.adoc[opts=optional]
+
+
+[#getPartitionName-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-security-before.adoc[opts=optional]
+
+
+[#getPartitionName-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-read>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}getPartitionName/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}getPartitionName/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getPartitionName/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Query]
+= Query
+:leveloffset: +1
+
+ifeval::["Operations for querying Search index partitions." != ""]
+Operations for querying Search index partitions.
+endif::[]
+ifeval::["Operations for querying Search index partitions." == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<getPartitionCount>>
+<<queryPartition>>
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-before.adoc[opts=optional]
+
+
+[#getPartitionCount]
+= Get Index Partition Document Count
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/pindex/{pindexName}/count
+....
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-description-before.adoc[opts=optional]
+
+
+[#getPartitionCount-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Get the document count of a specific Search index partition.
+--
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-description-end.adoc[opts=optional]
+
+
+
+[#getPartitionCount-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-parameters-before.adoc[opts=optional]
+
+
+[#getPartitionCount-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-parameters-begin.adoc[opts=optional]
+
+
+[#getPartitionCount-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *pindexName* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of the Search index partition.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-responses-before.adoc[opts=optional]
+
+
+[#getPartitionCount-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The Search Service returns a response that includes the status `ok`.
+--
+a| <<DocumentCount>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-security-before.adoc[opts=optional]
+
+
+[#getPartitionCount-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-read>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}getPartitionCount/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}getPartitionCount/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/getPartitionCount/operation-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-before.adoc[opts=optional]
+
+
+[#queryPartition]
+= Query Index Partition
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/pindex/{pindexName}/query
+....
+
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-description-before.adoc[opts=optional]
+
+
+[#queryPartition-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Execute a query against a specific Search index partition by name.
+--
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-description-end.adoc[opts=optional]
+
+
+[#queryPartition-consumes]
+.Consumes
+* application/json
+
+[#queryPartition-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-parameters-before.adoc[opts=optional]
+
+
+[#queryPartition-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-parameters-begin.adoc[opts=optional]
+
+
+[#queryPartition-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *pindexName* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+The name of the Search index partition.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+[#queryPartition-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *Body* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+A JSON object to define the settings for your Search query. For more information about how to create a Search query JSON object, see [Search Request JSON Properties](../search/search-request-params.html).
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ <<QueryRequest>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-responses-before.adoc[opts=optional]
+
+
+[#queryPartition-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The response object has a status section that must be checked for every request. Under nearly all circumstances, the query response will be HTTP 200 even though individual index shards (partitions) may encounter a timeout or return an error.
+--
+a| <<QueryResponse>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-security-before.adoc[opts=optional]
+
+
+[#queryPartition-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-write>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}queryPartition/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}queryPartition/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/queryPartition/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Quota]
+= Quota
+:leveloffset: +1
+
+ifeval::["Operations for managing Search memory quota." != ""]
+Operations for managing Search memory quota.
+endif::[]
+ifeval::["Operations for managing Search memory quota." == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<setFtsMemoryQuota>>
+
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-before.adoc[opts=optional]
+
+
+[#setFtsMemoryQuota]
+= Set Search Memory Quota
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-begin.adoc[opts=optional]
+
+
+....
+POST /pools/default
+....
+
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-description-before.adoc[opts=optional]
+
+
+[#setFtsMemoryQuota-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Sets the memory quota for the Search Service.
+--
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-description-end.adoc[opts=optional]
+
+
+[#setFtsMemoryQuota-consumes]
+.Consumes
+* application/x-www-form-urlencoded
+
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-parameters-before.adoc[opts=optional]
+
+
+[#setFtsMemoryQuota-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+[#setFtsMemoryQuota-form]
+.Form Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *ftsMemoryQuota* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+The memory quota for the Search service.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ Integer
+
+
+
+|===
+
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-responses-before.adoc[opts=optional]
+
+
+[#setFtsMemoryQuota-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Memory quota set.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-security-before.adoc[opts=optional]
+
+
+[#setFtsMemoryQuota-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-manage>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-security-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{snippetDir}setFtsMemoryQuota/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}setFtsMemoryQuota/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/setFtsMemoryQuota/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
+
+
+[#models]
+= Definitions
+
+:count-models: 6
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
+[.two-columns]
+endif::collapse-models[]
+[%hardbreaks]
+<<DocumentCount>>
+<<indexPartition>>
+<<indexPartitionPIndex>>
+<<indexPartitionPIndexInner>>
+<<QueryRequest>>
+<<QueryResponse>>
+endif::[]
+
+
+
+// markup not found, no include::{specDir}definitions/DocumentCount/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#DocumentCount]
+= Document Count
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/DocumentCount/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::DocumentCount[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*status* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The status of the operation.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*count* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The document count for the specified index.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+|===
+
+//end::DocumentCount[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/DocumentCount/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/DocumentCount/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/indexPartition/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#indexPartition]
+= Index Partitions
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/indexPartition/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::indexPartition[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*pindexes* +
+_optional_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-indexPartitionPIndex, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<indexPartitionPIndex>>
+
+
+a¦ 
+*status* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The status of the request.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::indexPartition[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/indexPartition/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/indexPartition/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/indexPartitionPIndex/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#indexPartitionPIndex]
+= Index Partitions Wrapper
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/indexPartitionPIndex/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::indexPartitionPIndex[]
+
+ifdef::model-descriptions[]
+//tag::desc-indexPartitionPIndex[]
+An object containing information about 1 or more Search index partitions.
+//end::desc-indexPartitionPIndex[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+_additional +
+property_
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-indexPartitionPIndexInner, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ <<indexPartitionPIndexInner>>
+
+
+|===
+
+//end::indexPartitionPIndex[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/indexPartitionPIndex/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/indexPartitionPIndex/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/indexPartitionPIndexInner/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#indexPartitionPIndexInner]
+= Index Partition
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/indexPartitionPIndexInner/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::indexPartitionPIndexInner[]
+
+ifdef::model-descriptions[]
+//tag::desc-indexPartitionPIndexInner[]
+An object containing information about a single Search index partition.
+The name of the property is the name of the Search index partition.
+//end::desc-indexPartitionPIndexInner[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*indexName* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The name of the Search index.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*indexParams* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The Search index's type identifier, type mappings, and analyzers.
+For more information, see [Params Object](../search/search-index-params.html#params).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+
+
+a¦ 
+*indexType* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The type of the Search index.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*indexUUID* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The UUID of the Search index.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*name* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The name of the Search index partition.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourceName* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The name of the bucket where the Search index is stored.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourceParams* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Advanced settings for Search index behavior.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+
+
+a¦ 
+*sourcePartitions* +
+_optional_
+a¦ 
+
+[markdown]
+--
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourceType* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The type of the bucket where the Search index is stored.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*sourceUUID* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The UUID of the bucket where the Search index is stored.
+For more information, see [Initial Settings](../search/search-index-params.html#initial).
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*uuid* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The UUID of the Search index partition.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::indexPartitionPIndexInner[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/indexPartitionPIndexInner/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/indexPartitionPIndexInner/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/QueryRequest/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#QueryRequest]
+= Query Request
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/QueryRequest/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::QueryRequest[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*query* +
+_optional_
+a¦ 
+
+[markdown]
+--
+An object that contains the properties for one of the supported query types.
+For more information, see [Query Object](../search/search-request-params.html#query-object).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+
+
+a¦ 
+*knn* +
+_optional_
+a¦ 
+
+[markdown]
+--
+An array that contains objects that describe a Vector Search query.
+For more information, see [Knn Objects](../search/search-request-params.html#knn-object).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+ array
+
+a¦ 
+*ctl* +
+_optional_
+a¦ 
+
+[markdown]
+--
+An object that contains properties for query consistency.
+For more information, see [Ctl Object](../search/search-request-params.html#ctl).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+
+
+a¦ 
+*size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Set the total number of results to return for a single page of search results.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*from* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Set an offset value to change where pagination starts for search results.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+
+a¦ 
+*highlight* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Contains properties to control search result highlighting.
+For more information, see [Highlight Objects](../search/search-request-params.html#highlight).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+
+
+a¦ 
+*fields* +
+_optional_
+a¦ 
+
+[markdown]
+--
+An array of strings to specify each indexed field you want to return in search results.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+ array
+
+a¦ 
+*facets* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Contains nested objects to define each facet you want to return with search results.
+For more information, see [Facet Objects](../search/search-request-params.html#facet-name).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+
+
+a¦ 
+*explain* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether to create an explanation for a search result's score in search results.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*sort* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Contains an array of strings or JSON objects to set how to sort search results.
+For more information, see [Sort Object](../search/search-request-params.html#sort).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Any Type
+ array
+
+a¦ 
+*includeLocations* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether to return the position of each occurrence of a search term inside a document.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*score* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether to include document relevancy scoring in search results.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*search_after* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Use to control pagination in search results.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+ array
+
+a¦ 
+*search_before* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Use to control pagination in search results.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+ array
+
+a¦ 
+*collections* +
+_optional_
+a¦ 
+
+[markdown]
+--
+An array of strings that specify the collections where you want to run the query.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+ array
+
+|===
+
+//end::QueryRequest[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/QueryRequest/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/QueryRequest/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/QueryResponse/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#QueryResponse]
+= Query Response
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/QueryResponse/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::QueryResponse[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*status* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The status of the operation.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*results* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The results of the Search query.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+ array
+
+|===
+
+//end::QueryResponse[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/QueryResponse/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/QueryResponse/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
+
+
+[[security]]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}security/document-begin.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Manage/security-scheme-before.adoc[opts=optional]
+
+
+[[security-manage]]
+= Manage
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Manage/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+You must have the **Search Admin** role, with FTS Manage permissions on the required bucket.
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Manage/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Manage/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Read/security-scheme-before.adoc[opts=optional]
+
+
+[[security-read]]
+= Read
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Read/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+You must have the **Search Reader** or **Search Admin** role, with FTS Read permissions on the required bucket.
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Read/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Read/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Write/security-scheme-before.adoc[opts=optional]
+
+
+[[security-write]]
+= Write
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Write/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+You must have the **Search Admin** role, with FTS Write permissions on the required bucket.
+--
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Write/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Write/security-scheme-after.adoc[opts=optional]
+
+
+
+
+include::{specDir}security/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+
+

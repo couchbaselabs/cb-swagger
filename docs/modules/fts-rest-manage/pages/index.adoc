@@ -1,0 +1,581 @@
+= Search Manager Options REST API
+:keywords: OpenAPI, REST
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+include::partial$header-attributes.adoc[opts=optional]
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+
+:leveloffset: 1
+
+include::{specDir}overview/document-before.adoc[opts=optional]
+
+
+[[overview]]
+= Overview
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+The Search Manager Options REST API is provided by the Search service.
+This API enables you to set Search manager options; in particular, to configure rebalance based on file transfer.
+--
+
+[discrete#version]
+= Version information
+[%hardbreaks]
+__Version__ : 7.6
+
+[discrete#host]
+= Host information
+
+....
+{scheme}://{host}:{port}
+....
+
+[markdown]
+--
+The URL scheme, host, and port are as follows.
+--
+
+[cols="20,80"]
+|===
+| Component | Description
+
+a| *scheme*
+a| [markdown]
+--
+The URL scheme. Use `https` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `http`, `https`
+*Example:* `+++http+++`
+// end
+
+a| *host*
+a| [markdown]
+--
+The host name or IP address of a node running the Search Service.
+--
+
+[%hardbreaks]
+
+*Example:* `+++localhost+++`
+// end
+
+a| *port*
+a| [markdown]
+--
+The Search Service REST port. Use `18094` for secure access.
+--
+
+[%hardbreaks]
+*Values:* `8094`, `18094`
+*Example:* `+++8094+++`
+// end
+
+|===
+
+
+include::{specDir}overview/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
+
+
+[[resources]]
+= Resources
+
+:count-apis: 1
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+
+
+This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 1]
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+<<tag-Default>>
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-Default]
+= Default
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+<<put_options>>
+
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-before.adoc[opts=optional]
+
+
+[#put_options]
+= Modify Search Manager Options
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_options/operation-begin.adoc[opts=optional]
+
+
+....
+PUT /api/managerOptions
+....
+
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-description-before.adoc[opts=optional]
+
+
+[#put_options-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_options/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Sets Search manager options.
+Note that only one setting is available: `disableFileTransferRebalance`.
+--
+
+
+include::{specDir}paths/put_options/operation-description-end.adoc[opts=optional]
+
+
+[#put_options-consumes]
+.Consumes
+* application/json
+
+[#put_options-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-parameters-before.adoc[opts=optional]
+
+
+[#put_options-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_options/operation-parameters-begin.adoc[opts=optional]
+
+
+
+
+
+
+[#put_options-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *Body* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+An object specifying Search manager options.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ <<Options>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-responses-before.adoc[opts=optional]
+
+
+[#put_options-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_options/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+The operation was successful.
+--
+a| <<Response>>
+
+
+| 401
+a| [markdown]
+--
+Failure to authenticate. The user name or password may be incorrect. 
+--
+a| <<Response>>
+
+
+| 404
+a| [markdown]
+--
+Object not found. The URL may be incorrectly specified. 
+--
+a| <<Response>>
+
+
+| 405
+a| [markdown]
+--
+Method not allowed. The method may be incorrectly specified. 
+--
+a| <<Response>>
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-security-before.adoc[opts=optional]
+
+
+[#put_options-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/put_options/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| <<security-default>>
+
+|===
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}put_options/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}put_options/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/put_options/operation-after.adoc[opts=optional]
+
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+
+// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
+
+
+[#models]
+= Definitions
+
+:count-models: 2
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 1]
+ifdef::collapse-models[]
+[.two-columns]
+endif::collapse-models[]
+[%hardbreaks]
+<<Options>>
+<<Response>>
+endif::[]
+
+
+
+// markup not found, no include::{specDir}definitions/Options/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#Options]
+= Options
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Options/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Options[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*disableFileTransferRebalance* +
+_optional_
+a¦ 
+
+[markdown]
+--
+If the value is `false` (the default), new Search Service partitions are created during rebalance by means of partition file transfer.
+
+If the value is `true`, partitions are created by means of partition build, from scratch, over DCP connections from the Data Service.
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+a¦ Boolean
+
+
+|===
+
+//end::Options[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Options/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Options/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Response/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#Response]
+= Response
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Response/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Response[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*status* +
+_required_
+a¦ 
+
+[markdown]
+--
+The status of the operation.
+
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*error* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The error message, if the operation was not successful.
+
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+|===
+
+//end::Response[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Response/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Response/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
+
+
+[[security]]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}security/document-begin.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Default/security-scheme-before.adoc[opts=optional]
+
+
+[[security-default]]
+= Default
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Default/security-scheme-begin.adoc[opts=optional]
+
+
+
+[%hardbreaks]
+__Type__ : http
+
+
+// markup not found, no include::{specDir}security/Default/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Default/security-scheme-after.adoc[opts=optional]
+
+
+
+
+include::{specDir}security/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+include::{specDir}security/document-after.adoc[opts=optional]
+
+
