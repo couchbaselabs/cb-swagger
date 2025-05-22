@@ -65,7 +65,7 @@ The URL scheme. Use `https` for secure access.
 a| *host*
 a| [markdown]
 --
-The host name or IP address of a node running the Query service.
+The host name or IP address of a node running the Query Service.
 --
 
 [%hardbreaks]
@@ -76,7 +76,7 @@ The host name or IP address of a node running the Query service.
 a| *port*
 a| [markdown]
 --
-The Query service REST port. Use `18093` for secure access.
+The Query Service REST port. Use `18093` for secure access.
 --
 
 [%hardbreaks]
@@ -2606,13 +2606,13 @@ a¦ [.edition]##{enterprise}##
 
 [markdown]
 --
-Specifies that the query should use a full-text index.
+Specifies that the query should use a Search index.
 
 If the query contains a `USING FTS` hint, that takes priority over this parameter.
 
-If the query does not contain a `USING FTS` hint, and this parameter is set to true, all full-text indexes are considered for the query.
-If a qualified full-text index is available, it is selected for the query.
-If none of the available full-text indexes are qualified, the available GSI indexes are considered instead.
+If the query does not contain a `USING FTS` hint, and this parameter is set to true, all Search indexes are considered for the query.
+If a qualified Search index is available, it is selected for the query.
+If none of the available Search indexes are qualified, the available GSI indexes are considered instead.
 
 Refer to [Flex Indexes][flex-indexes] for more information.
 

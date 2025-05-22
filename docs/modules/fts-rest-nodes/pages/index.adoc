@@ -64,7 +64,7 @@ The URL scheme. Use `https` for secure access.
 a| *host*
 a| [markdown]
 --
-The host name or IP address of a node running the Search service.
+The host name or IP address of a node running the Search Service.
 --
 
 [%hardbreaks]
@@ -75,7 +75,7 @@ The host name or IP address of a node running the Search service.
 a| *port*
 a| [markdown]
 --
-The Search service REST port. Use `18094` for secure access.
+The Search Service REST port. Use `18094` for secure access.
 --
 
 [%hardbreaks]
@@ -1043,10 +1043,10 @@ GET /api/diag
 
 [markdown]
 --
-Returns the full set of diagnostic information from the node in one shot as JSON.
+Returns the full set of diagnostic information from the node as JSON.
 The response is the union of the responses from the node's other REST API diagnostic and monitoring endpoints.
 
-For example, for a three node cluster, you could capture diagnostics for each node with something like:
+For example, for a 3 node cluster, you could capture diagnostics for each node with something like:
 
 ```shell
 curl http://cbft-01:8094/api/diag > cbft-01.json
@@ -1056,7 +1056,7 @@ curl http://cbft-03:8094/api/diag > cbft-03.json
 
 The response JSON object can be quite large, 100s of KB or much more.
 
-The motivation for this operation is to simplify working with the Couchbase community, forums, technical support, and other engineers, by making data capture from each FTS node a single step.
+The motivation for this operation is to simplify working with the Couchbase community, forums, technical support, and other engineers, by making data capture from each Search node a single step.
 --
 
 
@@ -2177,7 +2177,7 @@ a¦
 
 [markdown]
 --
-Index definition concurrency (compare and swap) value.
+Search index definition concurrency (compare and swap) value.
 --
 
 [%hardbreaks]
@@ -2192,7 +2192,7 @@ a¦
 
 [markdown]
 --
-Index definition error.
+Search index definition error.
 --
 
 [%hardbreaks]
@@ -2312,7 +2312,7 @@ a¦
 
 [markdown]
 --
-Index partition concurrency (compare and swap) value.
+Search index partition concurrency (compare and swap) value.
 --
 
 [%hardbreaks]
@@ -2327,7 +2327,7 @@ a¦
 
 [markdown]
 --
-Index partition error.
+Search index partition error.
 --
 
 [%hardbreaks]
@@ -2388,7 +2388,7 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-clusterConfigIndexes[]
-An object containing index definitions and related information.
+An object containing Search index definitions and related information.
 //end::desc-clusterConfigIndexes[]
 endif::model-descriptions[]
 
@@ -2641,7 +2641,7 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-clusterConfigNodesWrapper[]
-An object containing the definitions of one or more nodes.
+An object containing the definitions of 1 or more nodes.
 //end::desc-clusterConfigNodesWrapper[]
 endif::model-descriptions[]
 
@@ -2847,7 +2847,7 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-clusterConfigPlan[]
-An object containing index partitions and related information.
+An object containing Search index partitions and related information.
 //end::desc-clusterConfigPlan[]
 endif::model-descriptions[]
 
@@ -2951,7 +2951,7 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-clusterConfigPlanWrapper[]
-An object containing information about one or more index partitions.
+An object containing information about 1 or more Search index partitions.
 //end::desc-clusterConfigPlanWrapper[]
 endif::model-descriptions[]
 
@@ -3012,7 +3012,7 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-GetIndexResponsePIndex[]
-An object containing information about a single index partition.
+An object containing information about a single Search index partition.
 //end::desc-GetIndexResponsePIndex[]
 endif::model-descriptions[]
 
@@ -3091,7 +3091,7 @@ a¦
 
 [markdown]
 --
-The name of the index partition.
+The name of the Search index partition.
 --
 
 [%hardbreaks]
@@ -3137,7 +3137,7 @@ a¦
 
 [markdown]
 --
-Advanced settings for index behavior.
+Advanced settings for Search index behavior.
 For more information, see [Initial Settings](../search/search-index-params.html#initial).
 --
 
@@ -3199,7 +3199,7 @@ a¦
 
 [markdown]
 --
-The UUID of the index partition.
+The UUID of the Search index partition.
 --
 
 [%hardbreaks]
@@ -3245,7 +3245,7 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-GetIndexResponsePIndexNodesWrapper[]
-An object containing information about one or more index partition nodes.
+An object containing information about 1 or more Search index partition nodes.
 //end::desc-GetIndexResponsePIndexNodesWrapper[]
 endif::model-descriptions[]
 
@@ -3306,7 +3306,7 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-GetIndexResponsePIndexNodesWrapperNode[]
-An object containing information about a single index partition node.
+An object containing information about a single Search index partition node.
 The name of the property is the node UUID.
 //end::desc-GetIndexResponsePIndexNodesWrapperNode[]
 endif::model-descriptions[]
@@ -3395,7 +3395,7 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-GetIndexResponsePlanWrng[]
-An object containing zero, one or more nested objects, each containing warnings that apply to an index.
+An object containing 0, 1, or more nested objects, each containing warnings that apply to a Search index.
 //end::desc-GetIndexResponsePlanWrng[]
 endif::model-descriptions[]
 
@@ -3457,7 +3457,7 @@ endif::collapse-models[]
 [markdown]
 --
 An array of warnings.
-The name of the property is the name of the index.
+The name of the property is the name of the Search index.
 --
 
 [%hardbreaks]
@@ -3500,7 +3500,7 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-GetIndexesResponseIndexesWrapper[]
-An object containing one or more index definitions.
+An object containing 1 or more Search index definitions.
 //end::desc-GetIndexesResponseIndexesWrapper[]
 endif::model-descriptions[]
 
@@ -3641,7 +3641,7 @@ a¦
 
 [markdown]
 --
-Advanced settings for index behavior.
+Advanced settings for Search index behavior.
 For more information, see [Initial Settings](../search/search-index-params.html#initial).
 --
 

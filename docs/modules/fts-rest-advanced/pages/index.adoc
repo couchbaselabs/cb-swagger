@@ -64,7 +64,7 @@ The URL scheme. Use `https` for secure access.
 a| *host*
 a| [markdown]
 --
-The host name or IP address of a node running the Search service.
+The host name or IP address of a node running the Search Service.
 --
 
 [%hardbreaks]
@@ -75,7 +75,7 @@ The host name or IP address of a node running the Search service.
 a| *port*
 a| [markdown]
 --
-The Search service REST port. Use `18094` for secure access.
+The Search Service REST port. Use `18094` for secure access.
 --
 
 [%hardbreaks]
@@ -124,10 +124,10 @@ ifeval::[{count-apis} > 1]
 = Definition
 :leveloffset: +1
 
-ifeval::["Operations for index partition definition." != ""]
-Operations for index partition definition.
+ifeval::["Operations for Search index partition definition." != ""]
+Operations for Search index partition definition.
 endif::[]
-ifeval::["Operations for index partition definition." == ""]
+ifeval::["Operations for Search index partition definition." == ""]
 **{toc-title}**
 endif::[]
 endif::[]
@@ -168,7 +168,7 @@ GET /api/pindex
 
 [markdown]
 --
-Get information about an index partition.
+Get information about a Search index partition.
 --
 
 
@@ -216,7 +216,7 @@ Get information about an index partition.
 | 200
 a| [markdown]
 --
-A JSON object containing the index partition information.
+A JSON object containing the Search index partition information.
 --
 a| <<indexPartition>>
 
@@ -312,7 +312,7 @@ GET /api/pindex/{pindexName}
 
 [markdown]
 --
-Get information about a specific index partition by name.
+Get information about a specific Search index partition by name.
 --
 
 
@@ -354,7 +354,7 @@ a¦
 
 [markdown]
 --
-The name of the index partition.
+The name of the Search index partition.
 --
 
 [%hardbreaks]
@@ -473,10 +473,10 @@ ifeval::[{count-apis} > 1]
 = Query
 :leveloffset: +1
 
-ifeval::["Operations for querying index partitions." != ""]
-Operations for querying index partitions.
+ifeval::["Operations for querying Search index partitions." != ""]
+Operations for querying Search index partitions.
 endif::[]
-ifeval::["Operations for querying index partitions." == ""]
+ifeval::["Operations for querying Search index partitions." == ""]
 **{toc-title}**
 endif::[]
 endif::[]
@@ -517,7 +517,7 @@ GET /api/pindex/{pindexName}/count
 
 [markdown]
 --
-Get the document count of a specific index partition.
+Get the document count of a specific Search index partition.
 --
 
 
@@ -562,7 +562,7 @@ a¦
 
 [markdown]
 --
-The name of the index partition.
+The name of the Search index partition.
 --
 
 [%hardbreaks]
@@ -704,7 +704,7 @@ POST /api/pindex/{pindexName}/query
 
 [markdown]
 --
-Execute a query against a specific index partition by name.
+Execute a query against a specific Search index partition by name.
 --
 
 
@@ -752,7 +752,7 @@ a¦
 
 [markdown]
 --
-The name of the index partition.
+The name of the Search index partition.
 --
 
 [%hardbreaks]
@@ -899,10 +899,10 @@ ifeval::[{count-apis} > 1]
 = Quota
 :leveloffset: +1
 
-ifeval::["Operations for managing FTS memory quota." != ""]
-Operations for managing FTS memory quota.
+ifeval::["Operations for managing Search memory quota." != ""]
+Operations for managing Search memory quota.
 endif::[]
-ifeval::["Operations for managing FTS memory quota." == ""]
+ifeval::["Operations for managing Search memory quota." == ""]
 **{toc-title}**
 endif::[]
 endif::[]
@@ -916,7 +916,7 @@ endif::[]
 
 
 [#setFtsMemoryQuota]
-= Set FTS Memory Quota
+= Set Search Memory Quota
 
 :leveloffset: +1
 
@@ -942,7 +942,7 @@ POST /pools/default
 
 [markdown]
 --
-Sets the memory quota for the full text search (FTS) service.
+Sets the memory quota for the Search Service.
 --
 
 
@@ -990,7 +990,7 @@ a¦
 
 [markdown]
 --
-The memory quota for the FTS service.
+The memory quota for the Search service.
 --
 
 [%hardbreaks]
@@ -1304,7 +1304,7 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-indexPartitionPIndex[]
-An object containing information about one or more index partitions.
+An object containing information about 1 or more Search index partitions.
 //end::desc-indexPartitionPIndex[]
 endif::model-descriptions[]
 
@@ -1365,8 +1365,8 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-indexPartitionPIndexInner[]
-An object containing information about a single index partition.
-The name of the property is the name of the index partition.
+An object containing information about a single Search index partition.
+The name of the property is the name of the Search index partition.
 //end::desc-indexPartitionPIndexInner[]
 endif::model-descriptions[]
 
@@ -1445,7 +1445,7 @@ a¦
 
 [markdown]
 --
-The name of the index partition.
+The name of the Search index partition.
 --
 
 [%hardbreaks]
@@ -1476,7 +1476,7 @@ a¦
 
 [markdown]
 --
-Advanced settings for index behavior.
+Advanced settings for Search index behavior.
 For more information, see [Initial Settings](../search/search-index-params.html#initial).
 --
 
@@ -1538,7 +1538,7 @@ a¦
 
 [markdown]
 --
-The UUID of the index partition.
+The UUID of the Search index partition.
 --
 
 [%hardbreaks]
