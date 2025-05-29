@@ -50,6 +50,23 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               $ref: "#/components/schemas/Request"
+      x-codeSamples:
+        - lang: curl
+          label: Form Data
+          source:
+            $ref: '../../../docs/modules/n1ql-rest-query/examples/exsuccessful.sh'
+        - lang: curl
+          label: Named Parameters
+          source:
+            $ref: '../../../docs/modules/n1ql-rest-query/examples/exnamed.sh'
+        - lang: curl
+          label: Numbered Positional Parameters
+          source:
+            $ref: '../../../docs/modules/n1ql-rest-query/examples/exnumbered.sh'
+        - lang: curl
+          label: Unnumbered Positional Parameters
+          source:
+            $ref: '../../../docs/modules/n1ql-rest-query/examples/expositional.sh'
       security:
         - Header: []
         - Parameter: []
@@ -99,6 +116,11 @@ paths:
             The format for URL-encoded parameters is consistent with the syntax for variables according to RFC 6570.
           schema:
             $ref: "#/components/schemas/Request"
+      x-codeSamples:
+        - lang: curl
+          label: Read Only
+          source:
+            $ref: '../../../docs/modules/n1ql-rest-query/examples/exreadonly.sh'
       security:
         - Header: []
         - Parameter: []
@@ -142,6 +164,8 @@ components:
       application/json:
         schema:
           $ref: "#/components/schemas/Response"
+        example:
+          $ref: '../../../docs/modules/n1ql-rest-query/examples/exsuccessful.json'
 
   BadRequest:
     description: |-
@@ -151,8 +175,20 @@ components:
       the statement contains a SQL++ syntax error;
 
       the request has a missing or unrecognized HTTP parameter;
-
       the request is badly formatted &mdash; for example, the request body contains a JSON syntax error.
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/Response"
+        examples:
+          n1qlerror:
+            summary: SQL++ Error
+            value:
+              $ref: '../../../docs/modules/n1ql-rest-query/examples/exn1qlerror.json'
+          requesterror:
+            summary: Request Error
+            value:
+              $ref: '../../../docs/modules/n1ql-rest-query/examples/exrequesterror.json'
 
   Unauthorized:
     description: >
@@ -169,6 +205,12 @@ components:
     description: >
       Not found.
       The statement in the request references an invalid namespace or keyspace.
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/Response"
+        example:
+          $ref: '../../../docs/modules/n1ql-rest-query/examples/exnotfound.json'
 
   MethodNotAllowed:
     description: >
@@ -200,6 +242,12 @@ components:
     description: >
       Service unavailable.
       There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible.
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/Response"
+        example:
+          $ref: '../../../docs/modules/n1ql-rest-query/examples/exserviceerror.json'
 
  schemas:
   Request:
