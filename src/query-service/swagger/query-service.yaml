@@ -171,9 +171,7 @@ components:
     description: |-
       Bad Request.
       The request cannot be processed for one of the following reasons:
-
       the statement contains a SQL++ syntax error;
-
       the request has a missing or unrecognized HTTP parameter;
       the request is badly formatted &mdash; for example, the request body contains a JSON syntax error.
     content:
@@ -1062,6 +1060,7 @@ components:
           [queryUseReplica]: #queryUseReplica
     additionalProperties:
       x-desc-name: identifier
+      x-additionalPropertiesName: $identifier
       description: |
         Supplies the value for a named parameter in the statement.
         Applicable if the statement or prepared statement contains 1 or more named parameters.
