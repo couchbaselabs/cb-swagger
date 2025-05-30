@@ -2,13 +2,14 @@ openapi: 3.0.3
 info:
   title: Query Service REST API
   version: '7.6'
-  description: |
+  description: |-
+    # Introduction
     The Query Service REST API is provided by the Query service.
     This API enables you to run SQL++ queries and set request-level parameters.
 
 externalDocs:
-  description: Data API Overview
-  url: https://docs.couchbase.com/cloud/data-api-guide/data-api-intro.html
+  description: Data API
+  url: ../data-api-reference/index.html
 
 servers:
   - url: '{scheme}://{host}:{port}'
@@ -56,9 +57,13 @@ paths:
               $ref: "#/components/schemas/Request"
       x-codeSamples:
         - lang: Shell
-          label: Form Data
+          label: JSON
           source:
             $ref: '../../../docs/modules/n1ql-rest-query/examples/exsuccessful.sh'
+        - lang: Shell
+          label: Form Data
+          source:
+            $ref: '../../../docs/modules/n1ql-rest-query/examples/exformdata.sh'
         - lang: Shell
           label: Named Parameters
           source:
