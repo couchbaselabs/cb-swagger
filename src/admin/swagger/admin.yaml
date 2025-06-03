@@ -1486,13 +1486,13 @@ components:
             x-has-default: true
             x-has-example: true
             description: |
-              A JSON object containing one or more {field:value} pairs to match against the query plan.
+              A JSON object containing one or more field:value pairs to match against the query plan.
               Each pair describes a field in the query plan and the value it must have. 
               
-              If specified, all completed queries where the {field:value} pairs are found in the plan are logged.
-              If multiple {field:value} pairs are specified, then all pairs must be matched (using AND). 
+              If specified, all completed queries where the field:value pairs are found in the plan are logged.
+              If multiple field:value pairs are specified, then all pairs must be matched (using AND). 
               
-              Each {field:value} pair must be unique, but fields can be repeated.
+              Each field:value pair must be unique, but fields can be repeated.
               Values can be strings, numbers, arrays, or any other JSON values.
               For example, {"index":"ix1"},{"index":"ix2"} specifies that there should be an "index" field in the plan with the value "ix1" AND another "index" field with the value "ix2".
 
