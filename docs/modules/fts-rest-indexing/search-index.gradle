@@ -2,7 +2,7 @@ apply plugin: 'org.openapi.generator'
 
 openApiGenerate {
     generatorName = "asciidoc"
-    inputSpec = file("swagger/search-index.yaml").getAbsolutePath().toString()
+    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/master/docs/spec/index/index.yaml"
     outputDir = "${rootDir}/docs/modules/fts-rest-indexing/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cb-swagger"
