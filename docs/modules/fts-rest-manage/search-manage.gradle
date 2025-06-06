@@ -2,14 +2,14 @@ apply plugin: 'org.openapi.generator'
 
 openApiGenerate {
     generatorName = "asciidoc"
-    inputSpec = file("swagger/search-advanced.yaml").getAbsolutePath().toString()
-    outputDir = "${rootDir}/docs/modules/fts-rest-advanced/pages"
+    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/master/docs/spec/manage/manage.yaml"
+    outputDir = "${rootDir}/docs/modules/fts-rest-manage/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cb-swagger"
     gitUserId = "couchbase"
     additionalProperties = [
-            specDir: "${rootDir}/docs/modules/fts-rest-advanced/partials/",
-            snippetDir: "${rootDir}/docs/modules/fts-rest-advanced/partials/paths/",
+            specDir: "${rootDir}/docs/modules/fts-rest-manage/partials/",
+            snippetDir: "${rootDir}/docs/modules/fts-rest-manage/partials/paths/",
             headerAttributes: "true",
             useIntroduction: "true",
             useTableTitles: "true",
