@@ -5113,11 +5113,6 @@ endif::collapse-models[]
 
 //tag::Logging_Parameters_Plan_Pairs[]
 
-ifdef::model-descriptions[]
-//tag::desc-Logging_Parameters_Plan_Pairs[]
-An object which contains one or more field:value pairs to match against the query plan.
-//end::desc-Logging_Parameters_Plan_Pairs[]
-endif::model-descriptions[]
 
 [cols="25,55,20"]
 |===
@@ -5138,7 +5133,7 @@ Within a single JSON object, if multiple field:value pairs are specified, then a
 For example, `{"index": "ix1", "#operator": "IntersectScan"}` specifies that if the query plan has an `index` field with the value `"ix1"` AND has an `IntersectScan` operator, then the request should be logged.
 
 Within an array of JSON objects, each field:value pair must be unique, but fields can be repeated.
-For example, `[{"index": "ix1"},{"index": "ix2"}]` specifies that if the query plan has an `index` field with the value `"ix1"` AND another `index` field with the value `"ix2"`, then the request should be logged.
+For example, `[{"index": "ix1"}, {"index": "ix2"}]` specifies that if the query plan has an `index` field with the value `"ix1"` AND another `index` field with the value `"ix2"`, then the request should be logged.
 --
 
 [%hardbreaks]
