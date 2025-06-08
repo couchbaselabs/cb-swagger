@@ -2154,7 +2154,6 @@ components:
       - $ref: '#/components/schemas/Logging_Parameters_Plan_Pairs'
       - type: array
         title: 'Repeated Field:Value Pairs'
-        description: An array of objects, each of which contains one or more field:value pairs to match against the query plan.
         example:
           - index: ix1
           - index: ix2
@@ -2165,7 +2164,6 @@ components:
   Logging_Parameters_Plan_Pairs:
     type: object
     title: 'Field:Value Pairs'
-    description: An object which contains one or more field:value pairs to match against the query plan.
     default: {}
     example:
       index: ix1
@@ -2182,7 +2180,7 @@ components:
         For example, `{"index": "ix1", "#operator": "IntersectScan"}` specifies that if the query plan has an `index` field with the value `"ix1"` AND has an `IntersectScan` operator, then the request should be logged.
 
         Within an array of JSON objects, each field:value pair must be unique, but fields can be repeated.
-        For example, `[{"index": "ix1"},{"index": "ix2"}]` specifies that if the query plan has an `index` field with the value `"ix1"` AND another `index` field with the value `"ix2"`, then the request should be logged.
+        For example, `[{"index": "ix1"}, {"index": "ix2"}]` specifies that if the query plan has an `index` field with the value `"ix1"` AND another `index` field with the value `"ix2"`, then the request should be logged.
 
   Garbage:
     type: object
