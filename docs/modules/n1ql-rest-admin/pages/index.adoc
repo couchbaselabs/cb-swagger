@@ -4595,7 +4595,7 @@ endif::[]
 [#models]
 = Definitions
 
-:count-models: 10
+:count-models: 12
 
 :leveloffset: +1
 
@@ -4612,6 +4612,8 @@ endif::collapse-models[]
 <<Clusters>>
 <<Garbage>>
 <<Logging_Parameters>>
+<<Logging_Parameters_Plan>>
+<<Logging_Parameters_Plan_Pairs>>
 <<Metrics>>
 <<Nodes>>
 <<Requests>>
@@ -5030,23 +5032,12 @@ a|
 
 [markdown]
 --
-A JSON object containing one or more field:value pairs to match against the query plan.
-Each pair describes a field in the query plan and the value it must have. 
-
-If specified, all completed queries where the field:value pairs are found in the plan are logged.
-If multiple field:value pairs are specified, then all pairs must be matched (using AND). 
-
-Each field:value pair must be unique, but fields can be repeated.
-Values can be strings, numbers, arrays, or any other JSON values.
-For example, {"index":"ix1"},{"index":"ix2"} specifies that there should be an "index" field in the plan with the value "ix1" AND another "index" field with the value "ix2".
-
+include::index.adoc[tag=desc-Logging_Parameters_Plan, opts=optional]
 --
 
 [%hardbreaks]
-*Default:* `{}`
-*Example:* `{"index":"ix1"}`
 {blank}
-a| Object
+a| <<Logging_Parameters_Plan>>
 
 
 |===
@@ -5062,6 +5053,112 @@ a| Object
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/Logging_Parameters/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Logging_Parameters_Plan/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#Logging_Parameters_Plan]
+= Plan Qualifier
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Logging_Parameters_Plan/definition-begin.adoc[opts=optional]
+
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+One of the following:
+
+* <<Logging_Parameters_Plan_Pairs>>
+
+
+* <<Logging_Parameters_Plan_Pairs>>
+ array
+
+
+
+// markup not found, no include::{specDir}definitions/Logging_Parameters_Plan/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Logging_Parameters_Plan/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Logging_Parameters_Plan_Pairs/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#Logging_Parameters_Plan_Pairs]
+= Field:Value Pairs
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Logging_Parameters_Plan_Pairs/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Logging_Parameters_Plan_Pairs[]
+
+ifdef::model-descriptions[]
+//tag::desc-Logging_Parameters_Plan_Pairs[]
+An object which contains one or more field:value pairs to match against the query plan.
+//end::desc-Logging_Parameters_Plan_Pairs[]
+endif::model-descriptions[]
+
+[cols="25,55,20"]
+|===
+| Property | | Schema
+
+a| 
+_additional +
+property_
+a| 
+
+[markdown]
+--
+A field:value pair describing a field in the query plan, and the value that the field must have for the request to be logged.
+The name of the property is the name of the field in the query plan.
+The value may be a string, number, array, or any other JSON value.
+
+Within a single JSON object, if multiple field:value pairs are specified, then all pairs must be matched (using AND).
+For example, `{"index": "ix1", "#operator": "IntersectScan"}` specifies that if the query plan has an `index` field with the value `"ix1"` AND has an `IntersectScan` operator, then the request should be logged.
+
+Within an array of JSON objects, each field:value pair must be unique, but fields can be repeated.
+For example, `[{"index": "ix1"},{"index": "ix2"}]` specifies that if the query plan has an `index` field with the value `"ix1"` AND another `index` field with the value `"ix2"`, then the request should be logged.
+--
+
+[%hardbreaks]
+{blank}
+a| Any Type
+
+
+|===
+
+//end::Logging_Parameters_Plan_Pairs[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Logging_Parameters_Plan_Pairs/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Logging_Parameters_Plan_Pairs/definition-after.adoc[opts=optional]
 
 
 
