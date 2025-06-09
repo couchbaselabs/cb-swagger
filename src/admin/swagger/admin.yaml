@@ -660,7 +660,7 @@ components:
         type: string
         format: duration
         description: |
-          The total sum of [execTime](execution_time) across all operators.
+          The total sum of [execTime][execution_time] across all operators.
 
           [execution_time]: ../n1ql-rest-query/index.html#execution_time    
         x-desc-refs: |
@@ -680,7 +680,11 @@ components:
         type: string
         format: duration
         description: |
-          The total sum of [servTime](#Statistics) across all operators.
+          The total sum of [servTime][serv_time] across all operators.
+
+          [serv_time]: ../n1ql-rest-query/index.html#serv_time
+        x-desc-refs: |
+          [serv_time]: #serv_time  
         x-has-example: true
         example: "752.858519ms"  
       memoryQuota:
@@ -802,7 +806,11 @@ components:
         type: string
         format: duration
         description: |
-          The total sum of [kernTime](#Statistics) across all operators.
+          The total sum of [kernTime][kern_time] across all operators.
+
+          [kern_time]: ../n1ql-rest-query/index.html#kern_time
+        x-desc-refs: |
+          [kern_time]: #kern_time  
         x-has-example: true
         example: "1.201307s"  
       ~analysis:

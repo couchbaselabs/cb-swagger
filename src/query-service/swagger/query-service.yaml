@@ -1345,12 +1345,14 @@ components:
               kernTime:
                 type: string
                 format: duration
+                x-desc-name: kern_time
                 description: Time spent waiting to be scheduled for CPU time.
                 x-has-example: true
                 example: "15.027879ms"
               servTime:
                 type: string
                 format: duration
+                x-desc-name: serv_time
                 description: |
                   Time spent waiting for another service, such as index or data.
 
@@ -1366,21 +1368,21 @@ components:
         type: string
         format: duration
         description: |
-          The total sum of [servTime](#Statistics) across all operators.
+          The total sum of [servTime](#serv_time) across all operators.
         x-has-example: true
         example: "752.858519ms"
       waitTime:
         type: string
         format: duration
         description: |
-          The total sum of [kernTime](#Statistics) across all operators.
+          The total sum of [kernTime](#kern_time) across all operators.
         x-has-example: true
         example: "1.201307s"  
       cpuTime:
         type: string
         format: duration
         description: |
-          The total sum of [execTime](#Metrics) across all operators.
+          The total sum of [execTime](#execution_time) across all operators.
         x-has-example: true
         example: "90.734075ms"
       ~analysis:
