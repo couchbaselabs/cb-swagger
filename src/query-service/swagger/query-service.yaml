@@ -1161,6 +1161,7 @@ components:
         description: The total time taken for the request, that is the time from when the request was received until the results were returned.
       executionTime:
         type: string
+        x-desc-name: execution_time
         description: The time taken for the execution of the request, that is the time from when query execution started until the results were returned.
       resultCount:
         type: integer
@@ -1379,8 +1380,7 @@ components:
         type: string
         format: duration
         description: |
-          The total amount of time that all operators in the query plan spent executing their respective operator codes. 
-          A query plan consists of multiple operators, each responsible for a specific aspect of query processing.
+          The total sum of [execTime](#Metrics) across all operators.
         x-has-example: true
         example: "90.734075ms"
       ~analysis:
