@@ -1161,7 +1161,6 @@ components:
         description: The total time taken for the request, that is the time from when the request was received until the results were returned.
       executionTime:
         type: string
-        x-desc-name: execution_time
         description: The time taken for the execution of the request, that is the time from when query execution started until the results were returned.
       resultCount:
         type: integer
@@ -1339,6 +1338,7 @@ components:
               execTime:
                 type: string
                 format: duration
+                x-desc-name: exec_time
                 description: Time spent executing the operator code inside SQL++ query engine.
                 x-has-example: true
                 example: "128.434µs"
@@ -1382,7 +1382,7 @@ components:
         type: string
         format: duration
         description: |
-          The total sum of [execTime](#execution_time) across all operators.
+          The total sum of [execTime](#exec_time) across all operators.
         x-has-example: true
         example: "90.734075ms"
       ~analysis:
