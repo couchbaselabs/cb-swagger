@@ -1470,6 +1470,18 @@ components:
             description: |
               A user name, as given in the request credentials.
               If specified, all completed queries with this user name are logged.
+          statement: 
+            type: string
+            default: ""
+            example: "%FIND USER%"
+            x-has-default: true
+            x-has-example: true
+            description: |
+              A LIKE search pattern to match against the query text. 
+              If specified, all completed queries where the pattern is found are logged.
+          plan:
+            $ref: "#/components/schemas/Logging_Parameters_Plan"
+
       completed-limit:
         type: integer
         format: int32
@@ -2131,6 +2143,44 @@ components:
         x-desc-refs: |
           [queryUseReplica]: #queryUseReplica
           [use_replica_req]: #use_replica_req
+
+  Logging_Parameters_Plan:
+    title: Plan Qualifier
+    description: |-
+      An object, or an array of objects, containing one or more field:value pairs to match against the query plan.
+      Each pair describes a field in the query plan and the value it must have.
+      All completed queries where the specified field:value pairs are found in the plan are logged.
+    oneOf:
+      - $ref: '#/components/schemas/Logging_Parameters_Plan_Pairs'
+      - type: array
+        title: 'Repeated Field:Value Pairs'
+        example:
+          - index: ix1
+          - index: ix2
+        x-has-example: true
+        items:
+          $ref: '#/components/schemas/Logging_Parameters_Plan_Pairs'
+
+  Logging_Parameters_Plan_Pairs:
+    type: object
+    title: 'Field:Value Pairs'
+    default: {}
+    example:
+      index: ix1
+      '#operator': IntersectScan
+    x-has-default: true
+    x-has-example: true
+    additionalProperties:
+      description: |-
+        A field:value pair describing a field in the query plan, and the value that the field must have for the request to be logged.
+        The name of the property is the name of the field in the query plan.
+        The value may be a string, number, array, or any other JSON value.
+
+        Within a single JSON object, if multiple field:value pairs are specified, then all pairs must be matched (using AND).
+        For example, `{"index": "ix1", "#operator": "IntersectScan"}` specifies that if the query plan has an `index` field with the value `"ix1"` AND has an `IntersectScan` operator, then the request should be logged.
+
+        Within an array of JSON objects, each field:value pair must be unique, but fields can be repeated.
+        For example, `[{"index": "ix1"}, {"index": "ix2"}]` specifies that if the query plan has an `index` field with the value `"ix1"` AND another `index` field with the value `"ix2"`, then the request should be logged.
 
   Garbage:
     type: object
