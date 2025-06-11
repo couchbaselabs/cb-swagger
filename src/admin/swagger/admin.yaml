@@ -1470,6 +1470,16 @@ components:
             description: |
               A user name, as given in the request credentials.
               If specified, all completed queries with this user name are logged.
+          errors: 
+            type: integer
+            format: int32
+            example: 5
+            x-has-example: true
+            description: |
+              The number of errors.
+              If specified, all completed queries that return at least this many errors are logged. 
+              Queries with fewer errors are not logged.
+              
       completed-limit:
         type: integer
         format: int32
