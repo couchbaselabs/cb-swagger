@@ -1197,6 +1197,19 @@ components:
         type: integer
         format: unsigned
         description: The number of warnings that occurred during the request.
+      sessionMemory:
+        type: integer
+        format: bytes
+        description: >
+          The memory session size for the request, in bytes.
+
+          
+          Each request has a dedicated memory session. 
+          When a query requires a document or value, memory is allocated from this session based on the size of the document or value.
+          Once the document or value is processed, the allocated memory is returned back to the session, enabling it to be reused by the request. 
+
+          
+          This metric is available only when `node-quota` and `node-quota-val-percent` are configured for the node.
 
   Controls:
     type: object
@@ -1325,18 +1338,21 @@ components:
               execTime:
                 type: string
                 format: duration
+                x-desc-name: exec_time
                 description: Time spent executing the operator code inside SQL++ query engine.
                 x-has-example: true
                 example: "128.434µs"
               kernTime:
                 type: string
                 format: duration
+                x-desc-name: kern_time
                 description: Time spent waiting to be scheduled for CPU time.
                 x-has-example: true
                 example: "15.027879ms"
               servTime:
                 type: string
                 format: duration
+                x-desc-name: serv_time
                 description: |
                   Time spent waiting for another service, such as index or data.
 
@@ -1348,6 +1364,40 @@ components:
           '~child':
             type: object
             description: Further nested operators, each with their own execution timings.
+      ioTime:
+        type: string
+        format: duration
+        description: |
+          The total sum of [servTime](#serv_time) across all operators.
+        x-has-example: true
+        example: "752.858519ms"
+      waitTime:
+        type: string
+        format: duration
+        description: |
+          The total sum of [kernTime](#kern_time) across all operators.
+        x-has-example: true
+        example: "1.201307s"  
+      cpuTime:
+        type: string
+        format: duration
+        description: |
+          The total sum of [execTime](#exec_time) across all operators.
+        x-has-example: true
+        example: "90.734075ms"
+      ~analysis:
+          type: array
+          items:
+            type: string
+          description: |
+            An array of text phrases that provide a basic analysis of the request execution. 
+            These phrases highlight notable aspects of the execution, such as high document counts during primary scans or warnings related to memory and resource usages.
+          x-has-example: true
+          example: 
+              [                      
+                "High IO time",
+                "High primary scan document count"              
+              ]
 
  securitySchemes:
   Header:

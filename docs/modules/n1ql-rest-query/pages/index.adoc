@@ -1270,6 +1270,26 @@ The number of warnings that occurred during the request.
 a| Integer (unsigned)
 
 
+a| 
+*sessionMemory* +
+_optional_
+a| 
+
+[markdown]
+--
+The memory session size for the request, in bytes.
+
+Each request has a dedicated memory session.  When a query requires a document or value, memory is allocated from this session based on the size of the document or value. Once the document or value is processed, the allocated memory is returned back to the session, enabling it to be reused by the request. 
+
+This metric is available only when `node-quota` and `node-quota-val-percent` are configured for the node.
+
+--
+
+[%hardbreaks]
+{blank}
+a| Integer (bytes)
+
+
 |===
 
 //end::Metrics[]
@@ -1418,6 +1438,75 @@ include::index.adoc[tag=desc-Execution_Timings, opts=optional]
 {blank}
 a| <<Execution_Timings>>
 
+
+a| 
+*ioTime* +
+_optional_
+a| 
+
+[markdown]
+--
+The total sum of [servTime](#serv_time) across all operators.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["752.858519ms"]`
+{blank}
+a| String (duration)
+
+
+a| 
+*waitTime* +
+_optional_
+a| 
+
+[markdown]
+--
+The total sum of [kernTime](#kern_time) across all operators.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["1.201307s"]`
+{blank}
+a| String (duration)
+
+
+a| 
+*cpuTime* +
+_optional_
+a| 
+
+[markdown]
+--
+The total sum of [execTime](#exec_time) across all operators.
+
+--
+
+[%hardbreaks]
+*Example:* `pass:c["90.734075ms"]`
+{blank}
+a| String (duration)
+
+
+a| 
+*~analysis* +
+_optional_
+a| 
+
+[markdown]
+--
+An array of text phrases that provide a basic analysis of the request execution. 
+These phrases highlight notable aspects of the execution, such as high document counts during primary scans or warnings related to memory and resource usages.
+
+--
+
+[%hardbreaks]
+*Example:* `["High IO time","High primary scan document count"]`
+{blank}
+a| String
+ array
 
 |===
 
@@ -3004,7 +3093,7 @@ Number of switches between executing, waiting for services, or waiting for the g
 a| Integer (int32)
 
 
-a| 
+a| [#exec_time]
 *execTime* +
 _optional_
 a| 
@@ -3020,7 +3109,7 @@ Time spent executing the operator code inside SQL++ query engine.
 a| String (duration)
 
 
-a| 
+a| [#kern_time]
 *kernTime* +
 _optional_
 a| 
@@ -3036,7 +3125,7 @@ Time spent waiting to be scheduled for CPU time.
 a| String (duration)
 
 
-a| 
+a| [#serv_time]
 *servTime* +
 _optional_
 a| 
