@@ -1521,18 +1521,26 @@ components:
             description: |
               A user name, as given in the request credentials.
               If specified, all completed queries with this user name are logged.
-          statement: 
+          statement:
             type: string
             default: ""
             example: "%FIND USER%"
             x-has-default: true
             x-has-example: true
             description: |
-              A LIKE search pattern to match against the query text. 
+              A LIKE search pattern to match against the query text.
               If specified, all completed queries where the pattern is found are logged.
           plan:
             $ref: "#/components/schemas/Logging_Parameters_Plan"
-
+          errors: 
+            type: integer
+            format: int32
+            example: 5
+            x-has-example: true
+            description: |
+              The number of errors.
+              If specified, all completed queries that return at least this many errors are logged. 
+              Queries with fewer errors are not logged.
       completed-limit:
         type: integer
         format: int32
