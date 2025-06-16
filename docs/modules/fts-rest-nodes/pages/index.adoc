@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+DO NOT EDIT! See https://github.com/couchbase/cbft
 
 :leveloffset: 1
 
@@ -113,10 +113,10 @@ ifeval::[{count-apis} > 1]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
-<<tag-Configuration>>
-<<tag-Diagnostics>>
-<<tag-Management>>
-<<tag-Monitoring>>
+xref:tag-Configuration[]
+xref:tag-Diagnostics[]
+xref:tag-Management[]
+xref:tag-Monitoring[]
 endif::[]
 
 
@@ -134,11 +134,13 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<getClusterConfig>>
-<<managerKick>>
-<<managerMeta>>
-<<refreshClusterConfig>>
+xref:getClusterConfig[]
+xref:managerKick[]
+xref:managerMeta[]
+xref:refreshClusterConfig[]
 
+
+//tag::getClusterConfig[]
 
 
 // markup not found, no include::{specDir}paths/getClusterConfig/operation-before.adoc[opts=optional]
@@ -221,7 +223,7 @@ a| [markdown]
 --
 A JSON object containing the node's configuration.
 --
-a| <<clusterConfig>>
+a| xref:clusterConfig[]
 
 
 
@@ -254,7 +256,7 @@ a| <<clusterConfig>>
 | Type | Name
 
 | http (basic)
-| <<security-readClusterSettings>>
+| xref:security-readClusterSettings[]
 
 |===
 
@@ -283,6 +285,10 @@ include::{snippetDir}getClusterConfig/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/getClusterConfig/operation-after.adoc[opts=optional]
 
 
+//end::getClusterConfig[]
+
+
+//tag::managerKick[]
 
 
 // markup not found, no include::{specDir}paths/managerKick/operation-before.adoc[opts=optional]
@@ -393,7 +399,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-writeClusterSettings>>
+| xref:security-writeClusterSettings[]
 
 |===
 
@@ -422,6 +428,10 @@ a|
 // markup not found, no include::{specDir}paths/managerKick/operation-after.adoc[opts=optional]
 
 
+//end::managerKick[]
+
+
+//tag::managerMeta[]
 
 
 // markup not found, no include::{specDir}paths/managerMeta/operation-before.adoc[opts=optional]
@@ -538,7 +548,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-writeClusterSettings>>
+| xref:security-writeClusterSettings[]
 
 |===
 
@@ -567,6 +577,10 @@ a| Object
 // markup not found, no include::{specDir}paths/managerMeta/operation-after.adoc[opts=optional]
 
 
+//end::managerMeta[]
+
+
+//tag::refreshClusterConfig[]
 
 
 // markup not found, no include::{specDir}paths/refreshClusterConfig/operation-before.adoc[opts=optional]
@@ -677,7 +691,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-writeClusterSettings>>
+| xref:security-writeClusterSettings[]
 
 |===
 
@@ -706,6 +720,8 @@ a|
 // markup not found, no include::{specDir}paths/refreshClusterConfig/operation-after.adoc[opts=optional]
 
 
+//end::refreshClusterConfig[]
+
 
 ifeval::[{count-apis} > 1]
 :leveloffset: -1
@@ -726,13 +742,15 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<captureCpuProfile>>
-<<captureMemoryProfile>>
-<<getDiagnostics>>
-<<getLogs>>
-<<getRuntimeArgs>>
-<<getRuntimeInfo>>
+xref:captureCpuProfile[]
+xref:captureMemoryProfile[]
+xref:getDiagnostics[]
+xref:getLogs[]
+xref:getRuntimeArgs[]
+xref:getRuntimeInfo[]
 
+
+//tag::captureCpuProfile[]
 
 
 // markup not found, no include::{specDir}paths/captureCpuProfile/operation-before.adoc[opts=optional]
@@ -843,7 +861,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-manageCluster>>
+| xref:security-manageCluster[]
 
 |===
 
@@ -872,6 +890,10 @@ a|
 // markup not found, no include::{specDir}paths/captureCpuProfile/operation-after.adoc[opts=optional]
 
 
+//end::captureCpuProfile[]
+
+
+//tag::captureMemoryProfile[]
 
 
 // markup not found, no include::{specDir}paths/captureMemoryProfile/operation-before.adoc[opts=optional]
@@ -982,7 +1004,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-manageCluster>>
+| xref:security-manageCluster[]
 
 |===
 
@@ -1011,6 +1033,10 @@ a|
 // markup not found, no include::{specDir}paths/captureMemoryProfile/operation-after.adoc[opts=optional]
 
 
+//end::captureMemoryProfile[]
+
+
+//tag::getDiagnostics[]
 
 
 // markup not found, no include::{specDir}paths/getDiagnostics/operation-before.adoc[opts=optional]
@@ -1139,7 +1165,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-readClusterLogs>>
+| xref:security-readClusterLogs[]
 
 |===
 
@@ -1168,6 +1194,10 @@ a| Object
 // markup not found, no include::{specDir}paths/getDiagnostics/operation-after.adoc[opts=optional]
 
 
+//end::getDiagnostics[]
+
+
+//tag::getLogs[]
 
 
 // markup not found, no include::{specDir}paths/getLogs/operation-before.adoc[opts=optional]
@@ -1250,7 +1280,7 @@ a| [markdown]
 --
 A JSON object containing the node's logs.
 --
-a| <<logInfo>>
+a| xref:logInfo[]
 
 
 
@@ -1283,7 +1313,7 @@ a| <<logInfo>>
 | Type | Name
 
 | http (basic)
-| <<security-readClusterLogs>>
+| xref:security-readClusterLogs[]
 
 |===
 
@@ -1312,6 +1342,10 @@ include::{snippetDir}getLogs/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/getLogs/operation-after.adoc[opts=optional]
 
 
+//end::getLogs[]
+
+
+//tag::getRuntimeArgs[]
 
 
 // markup not found, no include::{specDir}paths/getRuntimeArgs/operation-before.adoc[opts=optional]
@@ -1427,7 +1461,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-readClusterSettings>>
+| xref:security-readClusterSettings[]
 
 |===
 
@@ -1456,6 +1490,10 @@ a| Object
 // markup not found, no include::{specDir}paths/getRuntimeArgs/operation-after.adoc[opts=optional]
 
 
+//end::getRuntimeArgs[]
+
+
+//tag::getRuntimeInfo[]
 
 
 // markup not found, no include::{specDir}paths/getRuntimeInfo/operation-before.adoc[opts=optional]
@@ -1538,7 +1576,7 @@ a| [markdown]
 --
 A JSON object containing the node's runtime information.
 --
-a| <<runtimeInfo>>
+a| xref:runtimeInfo[]
 
 
 
@@ -1571,7 +1609,7 @@ a| <<runtimeInfo>>
 | Type | Name
 
 | http (basic)
-| <<security-readClusterSettings>>
+| xref:security-readClusterSettings[]
 
 |===
 
@@ -1600,6 +1638,8 @@ include::{snippetDir}getRuntimeInfo/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/getRuntimeInfo/operation-after.adoc[opts=optional]
 
 
+//end::getRuntimeInfo[]
+
 
 ifeval::[{count-apis} > 1]
 :leveloffset: -1
@@ -1620,8 +1660,10 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<performGC>>
+xref:performGC[]
 
+
+//tag::performGC[]
 
 
 // markup not found, no include::{specDir}paths/performGC/operation-before.adoc[opts=optional]
@@ -1732,7 +1774,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-manageCluster>>
+| xref:security-manageCluster[]
 
 |===
 
@@ -1761,6 +1803,8 @@ a|
 // markup not found, no include::{specDir}paths/performGC/operation-after.adoc[opts=optional]
 
 
+//end::performGC[]
+
 
 ifeval::[{count-apis} > 1]
 :leveloffset: -1
@@ -1781,9 +1825,11 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<getMemoryStats>>
-<<getRuntimeStats>>
+xref:getMemoryStats[]
+xref:getRuntimeStats[]
 
+
+//tag::getMemoryStats[]
 
 
 // markup not found, no include::{specDir}paths/getMemoryStats/operation-before.adoc[opts=optional]
@@ -1899,7 +1945,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-manageCluster>>
+| xref:security-manageCluster[]
 
 |===
 
@@ -1928,6 +1974,10 @@ a| Object
 // markup not found, no include::{specDir}paths/getMemoryStats/operation-after.adoc[opts=optional]
 
 
+//end::getMemoryStats[]
+
+
+//tag::getRuntimeStats[]
 
 
 // markup not found, no include::{specDir}paths/getRuntimeStats/operation-before.adoc[opts=optional]
@@ -2043,7 +2093,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-manageCluster>>
+| xref:security-manageCluster[]
 
 |===
 
@@ -2071,6 +2121,8 @@ a| Object
 
 // markup not found, no include::{specDir}paths/getRuntimeStats/operation-after.adoc[opts=optional]
 
+
+//end::getRuntimeStats[]
 
 
 ifeval::[{count-apis} > 1]
@@ -2108,25 +2160,25 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-<<clusterConfig>>
-<<clusterConfigIndexes>>
-<<clusterConfigNodesKnown>>
-<<clusterConfigNodesWanted>>
-<<clusterConfigNodesWrapper>>
-<<clusterConfigNodesWrapperNode>>
-<<clusterConfigPlan>>
-<<clusterConfigPlanWrapper>>
-<<GetIndexResponsePIndex>>
-<<GetIndexResponsePIndexNodesWrapper>>
-<<GetIndexResponsePIndexNodesWrapperNode>>
-<<GetIndexResponsePlanWrng>>
-<<GetIndexResponsePlanWrngIndex>>
-<<GetIndexesResponseIndexesWrapper>>
-<<IndexDefinition>>
-<<IndexDefinitionPlanParams>>
-<<logInfo>>
-<<runtimeInfo>>
-<<runtimeInfoGo>>
+xref:clusterConfig[]
+xref:clusterConfigIndexes[]
+xref:clusterConfigNodesKnown[]
+xref:clusterConfigNodesWanted[]
+xref:clusterConfigNodesWrapper[]
+xref:clusterConfigNodesWrapperNode[]
+xref:clusterConfigPlan[]
+xref:clusterConfigPlanWrapper[]
+xref:GetIndexResponsePIndex[]
+xref:GetIndexResponsePIndexNodesWrapper[]
+xref:GetIndexResponsePIndexNodesWrapperNode[]
+xref:GetIndexResponsePlanWrng[]
+xref:GetIndexResponsePlanWrngIndex[]
+xref:GetIndexesResponseIndexesWrapper[]
+xref:IndexDefinition[]
+xref:IndexDefinitionPlanParams[]
+xref:logInfo[]
+xref:runtimeInfo[]
+xref:runtimeInfoGo[]
 endif::[]
 
 
@@ -2167,7 +2219,7 @@ include::index.adoc[tag=desc-clusterConfigIndexes, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigIndexes>>
+a¦ xref:clusterConfigIndexes[]
 
 
 a¦ 
@@ -2212,7 +2264,7 @@ include::index.adoc[tag=desc-clusterConfigNodesKnown, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigNodesKnown>>
+a¦ xref:clusterConfigNodesKnown[]
 
 
 a¦ 
@@ -2257,7 +2309,7 @@ include::index.adoc[tag=desc-clusterConfigNodesWanted, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigNodesWanted>>
+a¦ xref:clusterConfigNodesWanted[]
 
 
 a¦ 
@@ -2302,7 +2354,7 @@ include::index.adoc[tag=desc-clusterConfigPlan, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigPlan>>
+a¦ xref:clusterConfigPlan[]
 
 
 a¦ 
@@ -2422,7 +2474,7 @@ include::index.adoc[tag=desc-GetIndexesResponseIndexesWrapper, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<GetIndexesResponseIndexesWrapper>>
+a¦ xref:GetIndexesResponseIndexesWrapper[]
 
 
 |===
@@ -2497,7 +2549,7 @@ include::index.adoc[tag=desc-clusterConfigNodesWrapper, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigNodesWrapper>>
+a¦ xref:clusterConfigNodesWrapper[]
 
 
 a¦ 
@@ -2586,7 +2638,7 @@ include::index.adoc[tag=desc-clusterConfigNodesWrapper, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigNodesWrapper>>
+a¦ xref:clusterConfigNodesWrapper[]
 
 
 a¦ 
@@ -2661,7 +2713,7 @@ include::index.adoc[tag=desc-clusterConfigNodesWrapperNode, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigNodesWrapperNode>>
+a¦ xref:clusterConfigNodesWrapperNode[]
 
 
 |===
@@ -2881,7 +2933,7 @@ include::index.adoc[tag=desc-clusterConfigPlanWrapper, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<clusterConfigPlanWrapper>>
+a¦ xref:clusterConfigPlanWrapper[]
 
 
 a¦ 
@@ -2910,7 +2962,7 @@ include::index.adoc[tag=desc-GetIndexResponsePlanWrng, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<GetIndexResponsePlanWrng>>
+a¦ xref:GetIndexResponsePlanWrng[]
 
 
 |===
@@ -2971,7 +3023,7 @@ include::index.adoc[tag=desc-GetIndexResponsePIndex, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<GetIndexResponsePIndex>>
+a¦ xref:GetIndexResponsePIndex[]
 
 
 |===
@@ -3111,7 +3163,7 @@ include::index.adoc[tag=desc-GetIndexResponsePIndexNodesWrapper, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<GetIndexResponsePIndexNodesWrapper>>
+a¦ xref:GetIndexResponsePIndexNodesWrapper[]
 
 
 a¦ 
@@ -3265,7 +3317,7 @@ include::index.adoc[tag=desc-GetIndexResponsePIndexNodesWrapperNode, opts=option
 
 [%hardbreaks]
 {blank}
-a¦ <<GetIndexResponsePIndexNodesWrapperNode>>
+a¦ xref:GetIndexResponsePIndexNodesWrapperNode[]
 
 
 |===
@@ -3415,7 +3467,7 @@ include::index.adoc[tag=desc-GetIndexResponsePlanWrngIndex, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<GetIndexResponsePlanWrngIndex>>
+a¦ xref:GetIndexResponsePlanWrngIndex[]
 
 
 |===
@@ -3520,7 +3572,7 @@ include::index.adoc[tag=desc-IndexDefinition, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<IndexDefinition>>
+a¦ xref:IndexDefinition[]
 
 
 |===
@@ -3694,7 +3746,7 @@ include::index.adoc[tag=desc-IndexDefinitionPlanParams, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<IndexDefinitionPlanParams>>
+a¦ xref:IndexDefinitionPlanParams[]
 
 
 a¦ 
@@ -4001,7 +4053,7 @@ include::index.adoc[tag=desc-runtimeInfoGo, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<runtimeInfoGo>>
+a¦ xref:runtimeInfoGo[]
 
 
 a¦ 

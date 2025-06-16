@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
 
 :leveloffset: 1
 
@@ -114,13 +114,13 @@ ifeval::[{count-apis} > 1]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
-<<tag-ActiveRequests>>
-<<tag-CompletedRequests>>
-<<tag-Configuration>>
-<<tag-Default>>
-<<tag-PreparedStatements>>
-<<tag-Settings>>
-<<tag-Statistics>>
+xref:tag-ActiveRequests[]
+xref:tag-CompletedRequests[]
+xref:tag-Configuration[]
+xref:tag-Default[]
+xref:tag-PreparedStatements[]
+xref:tag-Settings[]
+xref:tag-Statistics[]
 endif::[]
 
 
@@ -138,11 +138,13 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<delete_active_request>>
-<<get_active_indexes>>
-<<get_active_request>>
-<<get_active_requests>>
+xref:delete_active_request[]
+xref:get_active_indexes[]
+xref:get_active_request[]
+xref:get_active_requests[]
 
+
+//tag::delete_active_request[]
 
 
 // markup not found, no include::{specDir}paths/delete_active_request/operation-before.adoc[opts=optional]
@@ -310,7 +312,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -339,6 +341,10 @@ include::{snippetDir}delete_active_request/http-request.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/delete_active_request/operation-after.adoc[opts=optional]
 
 
+//end::delete_active_request[]
+
+
+//tag::get_active_indexes[]
 
 
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-before.adoc[opts=optional]
@@ -458,7 +464,7 @@ a| String
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -487,6 +493,10 @@ a| String
 // markup not found, no include::{specDir}paths/get_active_indexes/operation-after.adoc[opts=optional]
 
 
+//end::get_active_indexes[]
+
+
+//tag::get_active_request[]
 
 
 // markup not found, no include::{specDir}paths/get_active_request/operation-before.adoc[opts=optional]
@@ -615,7 +625,7 @@ a| [markdown]
 --
 An object containing information about the specified active request.
 --
-a| <<Requests>>
+a| xref:Requests[]
 
 
 
@@ -648,7 +658,7 @@ a| <<Requests>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -677,6 +687,10 @@ include::{snippetDir}get_active_request/http-request.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_active_request/operation-after.adoc[opts=optional]
 
 
+//end::get_active_request[]
+
+
+//tag::get_active_requests[]
 
 
 // markup not found, no include::{specDir}paths/get_active_requests/operation-before.adoc[opts=optional]
@@ -760,7 +774,7 @@ a| [markdown]
 --
 An array of objects, each of which contains information about one active request.
 --
-a| <<Requests>>
+a| xref:Requests[]
  array
 
 
@@ -793,7 +807,7 @@ a| <<Requests>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -822,6 +836,8 @@ include::{snippetDir}get_active_requests/http-request.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_active_requests/operation-after.adoc[opts=optional]
 
 
+//end::get_active_requests[]
+
 
 ifeval::[{count-apis} > 1]
 :leveloffset: -1
@@ -842,11 +858,13 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<delete_completed_request>>
-<<get_completed_indexes>>
-<<get_completed_request>>
-<<get_completed_requests>>
+xref:delete_completed_request[]
+xref:get_completed_indexes[]
+xref:get_completed_request[]
+xref:get_completed_requests[]
 
+
+//tag::delete_completed_request[]
 
 
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-before.adoc[opts=optional]
@@ -1014,7 +1032,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -1043,6 +1061,10 @@ include::{snippetDir}delete_completed_request/http-request.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/delete_completed_request/operation-after.adoc[opts=optional]
 
 
+//end::delete_completed_request[]
+
+
+//tag::get_completed_indexes[]
 
 
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-before.adoc[opts=optional]
@@ -1162,7 +1184,7 @@ a| String
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -1191,6 +1213,10 @@ a| String
 // markup not found, no include::{specDir}paths/get_completed_indexes/operation-after.adoc[opts=optional]
 
 
+//end::get_completed_indexes[]
+
+
+//tag::get_completed_request[]
 
 
 // markup not found, no include::{specDir}paths/get_completed_request/operation-before.adoc[opts=optional]
@@ -1319,7 +1345,7 @@ a| [markdown]
 --
 An object containing information about the specified completed request.
 --
-a| <<Requests>>
+a| xref:Requests[]
 
 
 
@@ -1352,7 +1378,7 @@ a| <<Requests>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -1381,6 +1407,10 @@ include::{snippetDir}get_completed_request/http-request.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_completed_request/operation-after.adoc[opts=optional]
 
 
+//end::get_completed_request[]
+
+
+//tag::get_completed_requests[]
 
 
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-before.adoc[opts=optional]
@@ -1464,7 +1494,7 @@ a| [markdown]
 --
 An array of objects, each of which contains information about one completed request.
 --
-a| <<Requests>>
+a| xref:Requests[]
  array
 
 
@@ -1497,7 +1527,7 @@ a| <<Requests>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -1526,6 +1556,8 @@ include::{snippetDir}get_completed_requests/http-request.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_completed_requests/operation-after.adoc[opts=optional]
 
 
+//end::get_completed_requests[]
+
 
 ifeval::[{count-apis} > 1]
 :leveloffset: -1
@@ -1546,12 +1578,14 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<get_cluster>>
-<<get_clusters>>
-<<get_config>>
-<<get_node>>
-<<get_nodes>>
+xref:get_cluster[]
+xref:get_clusters[]
+xref:get_config[]
+xref:get_node[]
+xref:get_nodes[]
 
+
+//tag::get_cluster[]
 
 
 // markup not found, no include::{specDir}paths/get_cluster/operation-before.adoc[opts=optional]
@@ -1677,7 +1711,7 @@ a| [markdown]
 --
 An object giving information about the specified cluster.
 --
-a| <<Clusters>>
+a| xref:Clusters[]
 
 
 
@@ -1710,7 +1744,7 @@ a| <<Clusters>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -1739,6 +1773,10 @@ a| <<Clusters>>
 // markup not found, no include::{specDir}paths/get_cluster/operation-after.adoc[opts=optional]
 
 
+//end::get_cluster[]
+
+
+//tag::get_clusters[]
 
 
 // markup not found, no include::{specDir}paths/get_clusters/operation-before.adoc[opts=optional]
@@ -1821,7 +1859,7 @@ a| [markdown]
 --
 An array of objects, each of which gives information about one cluster.
 --
-a| <<Clusters>>
+a| xref:Clusters[]
  array
 
 
@@ -1854,7 +1892,7 @@ a| <<Clusters>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -1883,6 +1921,10 @@ a| <<Clusters>>
 // markup not found, no include::{specDir}paths/get_clusters/operation-after.adoc[opts=optional]
 
 
+//end::get_clusters[]
+
+
+//tag::get_config[]
 
 
 // markup not found, no include::{specDir}paths/get_config/operation-before.adoc[opts=optional]
@@ -1965,7 +2007,7 @@ a| [markdown]
 --
 An object giving information about the specified node.
 --
-a| <<Nodes>>
+a| xref:Nodes[]
 
 
 
@@ -1998,7 +2040,7 @@ a| <<Nodes>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -2027,6 +2069,10 @@ a| <<Nodes>>
 // markup not found, no include::{specDir}paths/get_config/operation-after.adoc[opts=optional]
 
 
+//end::get_config[]
+
+
+//tag::get_node[]
 
 
 // markup not found, no include::{specDir}paths/get_node/operation-before.adoc[opts=optional]
@@ -2169,7 +2215,7 @@ a| [markdown]
 --
 An object giving information about the specified node.
 --
-a| <<Nodes>>
+a| xref:Nodes[]
 
 
 
@@ -2202,7 +2248,7 @@ a| <<Nodes>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -2231,6 +2277,10 @@ a| <<Nodes>>
 // markup not found, no include::{specDir}paths/get_node/operation-after.adoc[opts=optional]
 
 
+//end::get_node[]
+
+
+//tag::get_nodes[]
 
 
 // markup not found, no include::{specDir}paths/get_nodes/operation-before.adoc[opts=optional]
@@ -2356,7 +2406,7 @@ a| [markdown]
 --
 An array of objects, each of which gives information about one node.
 --
-a| <<Nodes>>
+a| xref:Nodes[]
  array
 
 
@@ -2389,7 +2439,7 @@ a| <<Nodes>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -2418,6 +2468,8 @@ a| <<Nodes>>
 // markup not found, no include::{specDir}paths/get_nodes/operation-after.adoc[opts=optional]
 
 
+//end::get_nodes[]
+
 
 ifeval::[{count-apis} > 1]
 :leveloffset: -1
@@ -2438,10 +2490,12 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<get_gc>>
-<<get_ping>>
-<<post_gc>>
+xref:get_gc[]
+xref:get_ping[]
+xref:post_gc[]
 
+
+//tag::get_gc[]
 
 
 // markup not found, no include::{specDir}paths/get_gc/operation-before.adoc[opts=optional]
@@ -2527,7 +2581,7 @@ a| [markdown]
 --
 Indicates that the garbage collector was invoked.
 --
-a| <<Garbage>>
+a| xref:Garbage[]
 
 
 | 401
@@ -2568,7 +2622,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -2597,6 +2651,10 @@ include::{snippetDir}get_gc/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_gc/operation-after.adoc[opts=optional]
 
 
+//end::get_gc[]
+
+
+//tag::get_ping[]
 
 
 // markup not found, no include::{specDir}paths/get_ping/operation-before.adoc[opts=optional]
@@ -2722,6 +2780,10 @@ include::{snippetDir}get_ping/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_ping/operation-after.adoc[opts=optional]
 
 
+//end::get_ping[]
+
+
+//tag::post_gc[]
 
 
 // markup not found, no include::{specDir}paths/post_gc/operation-before.adoc[opts=optional]
@@ -2807,7 +2869,7 @@ a| [markdown]
 --
 Indicates that the garbage collector was invoked.
 --
-a| <<Garbage>>
+a| xref:Garbage[]
 
 
 | 401
@@ -2848,7 +2910,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -2877,6 +2939,8 @@ include::{snippetDir}post_gc/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/post_gc/operation-after.adoc[opts=optional]
 
 
+//end::post_gc[]
+
 
 ifeval::[{count-apis} > 1]
 :leveloffset: -1
@@ -2897,11 +2961,13 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<delete_prepared>>
-<<get_prepared>>
-<<get_prepared_indexes>>
-<<get_prepareds>>
+xref:delete_prepared[]
+xref:get_prepared[]
+xref:get_prepared_indexes[]
+xref:get_prepareds[]
 
+
+//tag::delete_prepared[]
 
 
 // markup not found, no include::{specDir}paths/delete_prepared/operation-before.adoc[opts=optional]
@@ -3069,7 +3135,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -3098,6 +3164,10 @@ include::{snippetDir}delete_prepared/http-request.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/delete_prepared/operation-after.adoc[opts=optional]
 
 
+//end::delete_prepared[]
+
+
+//tag::get_prepared[]
 
 
 // markup not found, no include::{specDir}paths/get_prepared/operation-before.adoc[opts=optional]
@@ -3226,7 +3296,7 @@ a| [markdown]
 --
 An object containing information about the specified prepared statement.
 --
-a| <<Statements>>
+a| xref:Statements[]
 
 
 
@@ -3259,7 +3329,7 @@ a| <<Statements>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -3288,6 +3358,10 @@ include::{snippetDir}get_prepared/http-request.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_prepared/operation-after.adoc[opts=optional]
 
 
+//end::get_prepared[]
+
+
+//tag::get_prepared_indexes[]
 
 
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-before.adoc[opts=optional]
@@ -3407,7 +3481,7 @@ a| String
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -3436,6 +3510,10 @@ a| String
 // markup not found, no include::{specDir}paths/get_prepared_indexes/operation-after.adoc[opts=optional]
 
 
+//end::get_prepared_indexes[]
+
+
+//tag::get_prepareds[]
 
 
 // markup not found, no include::{specDir}paths/get_prepareds/operation-before.adoc[opts=optional]
@@ -3519,7 +3597,7 @@ a| [markdown]
 --
 An array of objects, each of which contains information about one prepared statement.
 --
-a| <<Statements>>
+a| xref:Statements[]
  array
 
 
@@ -3552,7 +3630,7 @@ a| <<Statements>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -3581,6 +3659,8 @@ include::{snippetDir}get_prepareds/http-request.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_prepareds/operation-after.adoc[opts=optional]
 
 
+//end::get_prepareds[]
+
 
 ifeval::[{count-apis} > 1]
 :leveloffset: -1
@@ -3601,9 +3681,11 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<get_settings>>
-<<post_settings>>
+xref:get_settings[]
+xref:post_settings[]
 
+
+//tag::get_settings[]
 
 
 // markup not found, no include::{specDir}paths/get_settings/operation-before.adoc[opts=optional]
@@ -3687,7 +3769,7 @@ a| [markdown]
 --
 An object giving node-level query settings.
 --
-a| <<Settings>>
+a| xref:Settings[]
 
 
 
@@ -3720,7 +3802,7 @@ a| <<Settings>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -3749,6 +3831,10 @@ a| <<Settings>>
 // markup not found, no include::{specDir}paths/get_settings/operation-after.adoc[opts=optional]
 
 
+//end::get_settings[]
+
+
+//tag::post_settings[]
 
 
 // markup not found, no include::{specDir}paths/post_settings/operation-before.adoc[opts=optional]
@@ -3841,7 +3927,7 @@ An object specifying node-level query settings.
 [%hardbreaks]
 {blank}
 
-a¦ <<Settings>>
+a¦ xref:Settings[]
 
 
 
@@ -3879,7 +3965,7 @@ a| [markdown]
 --
 An object giving node-level query settings, including the latest changes.
 --
-a| <<Settings>>
+a| xref:Settings[]
 
 
 
@@ -3912,7 +3998,7 @@ a| <<Settings>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -3941,6 +4027,8 @@ a| <<Settings>>
 // markup not found, no include::{specDir}paths/post_settings/operation-after.adoc[opts=optional]
 
 
+//end::post_settings[]
+
 
 ifeval::[{count-apis} > 1]
 :leveloffset: -1
@@ -3961,11 +4049,13 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<get_debug_vars>>
-<<get_stat>>
-<<get_stats>>
-<<get_vitals>>
+xref:get_debug_vars[]
+xref:get_stat[]
+xref:get_stats[]
+xref:get_vitals[]
 
+
+//tag::get_debug_vars[]
 
 
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-before.adoc[opts=optional]
@@ -4091,6 +4181,10 @@ include::{snippetDir}get_debug_vars/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_debug_vars/operation-after.adoc[opts=optional]
 
 
+//end::get_debug_vars[]
+
+
+//tag::get_stat[]
 
 
 // markup not found, no include::{specDir}paths/get_stat/operation-before.adoc[opts=optional]
@@ -4220,7 +4314,7 @@ a| [markdown]
 --
 An object containing all metrics for the specified statistic. Each statistic has a different set of metrics. 
 --
-a| <<Metrics>>
+a| xref:Metrics[]
 
 
 
@@ -4253,7 +4347,7 @@ a| <<Metrics>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -4282,6 +4376,10 @@ a| <<Metrics>>
 // markup not found, no include::{specDir}paths/get_stat/operation-after.adoc[opts=optional]
 
 
+//end::get_stat[]
+
+
+//tag::get_stats[]
 
 
 // markup not found, no include::{specDir}paths/get_stats/operation-before.adoc[opts=optional]
@@ -4364,7 +4462,7 @@ a| [markdown]
 --
 An object containing all statistics. Each statistic consists of a top-level statistic name and a metric name. Each statistic has a different set of metrics. 
 --
-a| <<Statistics>>
+a| xref:Statistics[]
 
 
 
@@ -4397,7 +4495,7 @@ a| <<Statistics>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -4426,6 +4524,10 @@ a| <<Statistics>>
 // markup not found, no include::{specDir}paths/get_stats/operation-after.adoc[opts=optional]
 
 
+//end::get_stats[]
+
+
+//tag::get_vitals[]
 
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-before.adoc[opts=optional]
@@ -4510,7 +4612,7 @@ a| [markdown]
 --
 An object containing all vital statistics.
 --
-a| <<Vitals>>
+a| xref:Vitals[]
 
 
 
@@ -4543,7 +4645,7 @@ a| <<Vitals>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -4571,6 +4673,8 @@ include::{snippetDir}get_vitals/http-request.adoc[opts=optional]
 
 // markup not found, no include::{specDir}paths/get_vitals/operation-after.adoc[opts=optional]
 
+
+//end::get_vitals[]
 
 
 ifeval::[{count-apis} > 1]
@@ -4608,16 +4712,16 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-<<Clusters>>
-<<Garbage>>
-<<Logging_Parameters>>
-<<Metrics>>
-<<Nodes>>
-<<Requests>>
-<<Settings>>
-<<Statements>>
-<<Statistics>>
-<<Vitals>>
+xref:Clusters[]
+xref:Garbage[]
+xref:Logging_Parameters[]
+xref:Metrics[]
+xref:Nodes[]
+xref:Requests[]
+xref:Settings[]
+xref:Statements[]
+xref:Statistics[]
+xref:Vitals[]
 endif::[]
 
 
@@ -5998,7 +6102,7 @@ include::index.adoc[tag=desc-Logging_Parameters, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<Logging_Parameters>>
+a¦ xref:Logging_Parameters[]
 
 
 a¦ [#completed-limit]

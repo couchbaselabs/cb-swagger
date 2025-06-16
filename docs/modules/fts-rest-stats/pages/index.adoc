@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+DO NOT EDIT! See https://github.com/couchbase/cbft
 
 :leveloffset: 1
 
@@ -113,7 +113,7 @@ ifeval::[{count-apis} > 1]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
-<<tag-Default>>
+xref:tag-Default[]
 endif::[]
 
 
@@ -131,9 +131,11 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<g-api-nsstats>>
-<<g-api-nsstats-index-name>>
+xref:g-api-nsstats[]
+xref:g-api-nsstats-index-name[]
 
+
+//tag::g-api-nsstats[]
 
 
 // markup not found, no include::{specDir}paths/g-api-nsstats/operation-before.adoc[opts=optional]
@@ -219,7 +221,7 @@ a| [markdown]
 --
 The Search Service returns statistics from the `nsstats` endpoint for the entire cluster, and for each Search index.  For each Search index, the names of the statistics are prefixed with the bucket name and index name, in the form `BUCKET:INDEX:statistic_name`.
 --
-a| <<allStats>>
+a| xref:allStats[]
 
 
 | 400
@@ -270,7 +272,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-admin>>
+| xref:security-admin[]
 
 |===
 
@@ -299,6 +301,10 @@ include::{snippetDir}g-api-nsstats/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/g-api-nsstats/operation-after.adoc[opts=optional]
 
 
+//end::g-api-nsstats[]
+
+
+//tag::g-api-nsstats-index-name[]
 
 
 // markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-before.adoc[opts=optional]
@@ -433,7 +439,7 @@ a| [markdown]
 --
 The Search Service returns statistics from the `nsstats` endpoint for the specified index.  Note that for a single index, the names of the statistics are not prefixed with the bucket name or index name.
 --
-a| <<indexStats>>
+a| xref:indexStats[]
 
 
 
@@ -466,7 +472,7 @@ a| <<indexStats>>
 | Type | Name
 
 | http (basic)
-| <<security-statistics>>
+| xref:security-statistics[]
 
 |===
 
@@ -494,6 +500,8 @@ include::{snippetDir}g-api-nsstats-index-name/http-response.adoc[opts=optional]
 
 // markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-after.adoc[opts=optional]
 
+
+//end::g-api-nsstats-index-name[]
 
 
 ifeval::[{count-apis} > 1]
@@ -531,9 +539,9 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-<<allStats>>
-<<clusterStats>>
-<<indexStats>>
+xref:allStats[]
+xref:clusterStats[]
+xref:indexStats[]
 endif::[]
 
 
@@ -557,10 +565,10 @@ endif::collapse-models[]
 
 All of the following:
 
-* <<clusterStats>>
+* xref:clusterStats[]
 
 
-* <<indexStats>>
+* xref:indexStats[]
 
 
 

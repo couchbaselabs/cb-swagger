@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
 
 :leveloffset: 1
 
@@ -114,7 +114,7 @@ ifeval::[{count-apis} > 1]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
-<<tag-Default>>
+xref:tag-Default[]
 endif::[]
 
 
@@ -132,11 +132,13 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<get_node>>
-<<get_service>>
-<<put_node>>
-<<put_service>>
+xref:get_node[]
+xref:get_service[]
+xref:put_node[]
+xref:put_service[]
 
+
+//tag::get_node[]
 
 
 // markup not found, no include::{specDir}paths/get_node/operation-before.adoc[opts=optional]
@@ -219,7 +221,7 @@ a| [markdown]
 --
 Success. Returns an object listing the configurable node-level parameters and their current values. 
 --
-a| <<Node>>
+a| xref:Node[]
 
 
 | 401
@@ -260,7 +262,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-analyticsManage>>
+| xref:security-analyticsManage[]
 
 |===
 
@@ -289,6 +291,10 @@ include::{snippetDir}get_node/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_node/operation-after.adoc[opts=optional]
 
 
+//end::get_node[]
+
+
+//tag::get_service[]
 
 
 // markup not found, no include::{specDir}paths/get_service/operation-before.adoc[opts=optional]
@@ -371,7 +377,7 @@ a| [markdown]
 --
 Success. Returns an object listing the configurable service-level parameters and their current values. 
 --
-a| <<Service>>
+a| xref:Service[]
 
 
 | 401
@@ -412,7 +418,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-analyticsManage>>
+| xref:security-analyticsManage[]
 
 |===
 
@@ -441,6 +447,10 @@ include::{snippetDir}get_service/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_service/operation-after.adoc[opts=optional]
 
 
+//end::get_service[]
+
+
+//tag::put_node[]
 
 
 // markup not found, no include::{specDir}paths/put_node/operation-before.adoc[opts=optional]
@@ -539,7 +549,7 @@ An object specifying one or more of the configurable node-level parameters on th
 [%hardbreaks]
 {blank}
 
-a¦ <<Node>>
+a¦ xref:Node[]
 
 
 
@@ -583,7 +593,7 @@ a| [markdown]
 --
 Bad request. Unknown parameter or incorrect value. 
 --
-a| <<Errors>>
+a| xref:Errors[]
 
 
 | 401
@@ -624,7 +634,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-analyticsManage>>
+| xref:security-analyticsManage[]
 
 |===
 
@@ -653,6 +663,10 @@ include::{snippetDir}put_node/http-request.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/put_node/operation-after.adoc[opts=optional]
 
 
+//end::put_node[]
+
+
+//tag::put_service[]
 
 
 // markup not found, no include::{specDir}paths/put_service/operation-before.adoc[opts=optional]
@@ -749,7 +763,7 @@ An object specifying one or more of the configurable service-level parameters.
 [%hardbreaks]
 {blank}
 
-a¦ <<Service>>
+a¦ xref:Service[]
 
 
 
@@ -793,7 +807,7 @@ a| [markdown]
 --
 Bad request. Unknown parameter or incorrect value. 
 --
-a| <<Errors>>
+a| xref:Errors[]
 
 
 | 401
@@ -834,7 +848,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-analyticsManage>>
+| xref:security-analyticsManage[]
 
 |===
 
@@ -862,6 +876,8 @@ include::{snippetDir}put_service/http-request.adoc[opts=optional]
 
 // markup not found, no include::{specDir}paths/put_service/operation-after.adoc[opts=optional]
 
+
+//end::put_service[]
 
 
 ifeval::[{count-apis} > 1]
@@ -899,9 +915,9 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-<<Errors>>
-<<Node>>
-<<Service>>
+xref:Errors[]
+xref:Node[]
+xref:Service[]
 endif::[]
 
 
