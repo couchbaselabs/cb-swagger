@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+DO NOT EDIT! See https://github.com/couchbase/cbft
 
 :leveloffset: 1
 
@@ -113,7 +113,7 @@ ifeval::[{count-apis} > 1]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
-<<tag-Default>>
+xref:tag-Default[]
 endif::[]
 
 
@@ -131,10 +131,12 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<api-query>>
-<<api-query-cancel>>
-<<api-query-index>>
+xref:api-query[]
+xref:api-query-cancel[]
+xref:api-query-index[]
 
+
+//tag::api-query[]
 
 
 // markup not found, no include::{specDir}paths/api-query/operation-before.adoc[opts=optional]
@@ -263,7 +265,7 @@ a| [markdown]
 --
 A list of all active Search queries across all nodes in the cluster.
 --
-a| <<ActiveResponse>>
+a| xref:ActiveResponse[]
 
 
 
@@ -296,7 +298,7 @@ a| <<ActiveResponse>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -325,6 +327,10 @@ include::{snippetDir}api-query/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/api-query/operation-after.adoc[opts=optional]
 
 
+//end::api-query[]
+
+
+//tag::api-query-cancel[]
 
 
 // markup not found, no include::{specDir}paths/api-query-cancel/operation-before.adoc[opts=optional]
@@ -443,7 +449,7 @@ The body contains the UUID of the node where the query is running. This is optio
 [%hardbreaks]
 {blank}
 
-a¦ <<CancelRequest>>
+a¦ xref:CancelRequest[]
 
 
 
@@ -481,7 +487,7 @@ a| [markdown]
 --
 The query was successfully canceled.
 --
-a| <<CancelResponse>>
+a| xref:CancelResponse[]
 
 
 
@@ -514,7 +520,7 @@ a| <<CancelResponse>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -543,6 +549,10 @@ include::{snippetDir}api-query-cancel/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/api-query-cancel/operation-after.adoc[opts=optional]
 
 
+//end::api-query-cancel[]
+
+
+//tag::api-query-index[]
 
 
 // markup not found, no include::{specDir}paths/api-query-index/operation-before.adoc[opts=optional]
@@ -697,7 +707,7 @@ a| [markdown]
 --
 A list of active queries for the specified Search index.
 --
-a| <<ActiveResponse>>
+a| xref:ActiveResponse[]
 
 
 
@@ -730,7 +740,7 @@ a| <<ActiveResponse>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -758,6 +768,8 @@ include::{snippetDir}api-query-index/http-response.adoc[opts=optional]
 
 // markup not found, no include::{specDir}paths/api-query-index/operation-after.adoc[opts=optional]
 
+
+//end::api-query-index[]
 
 
 ifeval::[{count-apis} > 1]
@@ -795,14 +807,14 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-<<ActiveResponse>>
-<<ActiveResponseFilter>>
-<<ActiveResponseFilterMap>>
-<<ActiveResponseFilterMapItem>>
-<<ActiveResponseFilterMapItemContext>>
-<<ActiveResponseStats>>
-<<CancelRequest>>
-<<CancelResponse>>
+xref:ActiveResponse[]
+xref:ActiveResponseFilter[]
+xref:ActiveResponseFilterMap[]
+xref:ActiveResponseFilterMapItem[]
+xref:ActiveResponseFilterMapItemContext[]
+xref:ActiveResponseStats[]
+xref:CancelRequest[]
+xref:CancelResponse[]
 endif::[]
 
 
@@ -858,7 +870,7 @@ include::index.adoc[tag=desc-ActiveResponseStats, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<ActiveResponseStats>>
+a¦ xref:ActiveResponseStats[]
 
 
 a¦ 
@@ -888,7 +900,7 @@ include::index.adoc[tag=desc-ActiveResponseFilter, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<ActiveResponseFilter>>
+a¦ xref:ActiveResponseFilter[]
 
 
 |===
@@ -996,7 +1008,7 @@ include::index.adoc[tag=desc-ActiveResponseFilterMap, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<ActiveResponseFilterMap>>
+a¦ xref:ActiveResponseFilterMap[]
 
 
 |===
@@ -1057,7 +1069,7 @@ include::index.adoc[tag=desc-ActiveResponseFilterMapItem, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<ActiveResponseFilterMapItem>>
+a¦ xref:ActiveResponseFilterMapItem[]
 
 
 |===
@@ -1119,7 +1131,7 @@ include::index.adoc[tag=desc-ActiveResponseFilterMapItemContext, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<ActiveResponseFilterMapItemContext>>
+a¦ xref:ActiveResponseFilterMapItemContext[]
 
 
 a¦ 
