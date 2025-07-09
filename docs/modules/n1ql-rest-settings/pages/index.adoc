@@ -1355,8 +1355,8 @@ If a request includes this parameter, it will be capped by the node-level `memor
 a¦ Integer (int32)
 
 
-a¦ [#queryN1qlFeatCtrl]
-*queryN1qlFeatCtrl* +
+a¦ [#queryN1QLFeatCtrl]
+*queryN1QLFeatCtrl* +
 _optional_
 a¦ 
 
@@ -1396,11 +1396,18 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 This property is available in databases running Couchbase Server 7.6.0 and later.
 
-Sets the soft memory limit for every Query node in the cluster, in MB.
+Sets the soft memory limit for the Query service on every Query node in the cluster, in MB.
 The garbage collector tries to keep below this target.
 It is not a hard, absolute limit, and memory usage may exceed this value.
 
-When set to `0` (the default), there is no soft memory limit.
+When set to `0` (the default), the Query service sets a default soft memory limit for every node.
+To do this, the Query service calculates the difference between the total system RAM and 90% of the total system RAM:
+
+`Total System RAM - (0.9 * Total System RAM)`
+
+- If the difference is greater than 8 GiB, the default soft memory limit is set to the total system RAM minus 8 GiB.
+
+- If the difference is 8 GiB or less, the default soft memory limit is set to 90% of the total system RAM.
 
 The [node-level][node-quota] `node-quota` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.

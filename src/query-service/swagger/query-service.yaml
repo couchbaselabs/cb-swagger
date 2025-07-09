@@ -35,9 +35,9 @@ paths:
     post:
       operationId: post_service
       summary: Query Service
-      description: >
+      description: |-
         Enables you to execute a SQL++ statement.
-        This method allows you to run queries and modifying statements, and specify query parameters.
+        This method allows you to run SELECT queries and other DML statements, and specify query parameters.
       requestBody:
         required: true
         description: An object specifying one or more query parameters.
@@ -98,11 +98,9 @@ paths:
     get:
       operationId: get_service
       summary: Read-Only Query Service
-      description: >
+      description: |-
         Enables you to execute a SQL++ statement.
-        This method allows you to run queries and modifying statements, and specify query parameters.
-        It does not allow you to run modifying statements.
-
+        This method allows you to run SELECT queries, and specify query parameters.
 
         This endpoint is intended for situations where use of the `POST` method is restricted.
       parameters:
@@ -189,18 +187,18 @@ components:
               $ref: '../../../docs/modules/n1ql-rest-query/examples/exrequesterror.json'
 
   Unauthorized:
-    description: >
+    description: |-
       Unauthorized.
       The credentials provided with the request are missing or invalid.
 
   Forbidden:
-    description: >
+    description: |-
       Forbidden.
       There is a read-only violation.
       Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement.
 
   NotFound:
-    description: >
+    description: |-
       Not found.
       The statement in the request references an invalid namespace or keyspace.
     content:
@@ -211,33 +209,33 @@ components:
           $ref: '../../../docs/modules/n1ql-rest-query/examples/exnotfound.json'
 
   MethodNotAllowed:
-    description: >
+    description: |-
       Method not allowed.
       The statement in the request references an invalid namespace or keyspace.
 
   Conflict:
-    description: >
+    description: |-
       Conflict.
       There is an attempt to create an object (keyspace or index) that already exists.
 
   Gone:
-    description: >
+    description: |-
       Gone.
       The server is shutting down gracefully.
       Previously made requests are being completed, but no new requests are being accepted.
 
   InternalServerError:
-    description: >
+    description: |-
       Internal server error.
       There was an unforeseen problem processing the request.
 
   PayloadTooLarge:
-    description: >
+    description: |-
       Payload too large.
       The query is too large for the Query Service to process.
 
   ServiceUnavailable:
-    description: >
+    description: |-
       Service unavailable.
       There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible.
     content:
@@ -510,7 +508,7 @@ components:
       namespace:
         type: string
         x-desc-name: namespace
-        description: >
+        description: |-
           Specifies the namespace to use.
           Currently, only the `default` namespace is available.
         x-has-example: true
@@ -1088,7 +1086,7 @@ components:
 #   properties:
 #     user:
 #       type: string
-#       description: >
+#       description: |-
 #         An identity for authentication.
 #         Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
 #     pass:
@@ -1109,7 +1107,7 @@ components:
         description: The client context ID of the request, if one was supplied &mdash; see `client_context_id` in [Request Parameters](#Request).
       signature:
         type: object
-        description: >
+        description: |-
           The schema of the results.
           Present only when the query completes successfully.
         x-has-example: true
@@ -1118,7 +1116,7 @@ components:
       results:
         type: array
         items: {}
-        description: >
+        description: |-
           An array of all the objects returned by the query.
           An object can be any JSON value.
       status:
@@ -1134,14 +1132,14 @@ components:
           - fatal
       errors:
         type: array
-        description: >
+        description: |-
           An array of 0 or more error objects.
           If an error occurred during processing of the request, it will be represented by an error object in this list.
         items:
           $ref: "#/components/schemas/Conditions"
       warnings:
         type: array
-        description: >
+        description: |-
           An array of 0 or more warning objects.
           If a warning occurred during processing of the request, it is represented by a warning object in this list.
         items:
@@ -1162,19 +1160,19 @@ components:
     properties:
       code:
         type: integer
-        description: >
+        description: |-
           A unique number that identifies the error or warning.
           The code ranges are partitioned by component.
           The codes can also include parts that indicate severity and transience.
           This property is always present in every condition returned in the Query REST API or captured in a log.
       msg:
         type: string
-        description: >
+        description: |-
           A message describing the error or warning in detail.
           This property is always present in every condition returned in the Query REST API or captured in a log.
       name:
         type: string
-        description: >
+        description: |-
           Unique name that has a 1:1 mapping to the code.
           Uniquely identifies the condition.
           This property is helpful for pattern matching and can have meaning, making it more memorable than the code.
@@ -1195,7 +1193,7 @@ components:
            4. Info
       temp:
         type: boolean
-        description: >
+        description: |-
           Indicates if the condition is transient &mdash; for example, the queue is full.
           If the value is `false`, it tells clients and users that a retry without modification produces the same condition.
 
@@ -1229,16 +1227,15 @@ components:
       sortCount:
         type: integer
         format: unsigned
-        description: >
+        description: |-
           The number of objects that were sorted.
           Present only if the request includes `ORDER BY`.
-
 
           If a query includes ORDER BY, LIMIT, or OFFSET clauses, an application can use the `sortCount` value to give the overall number of results in a message such as `"page 1 of N"`.
       usedMemory:
         type: integer
         format: unsigned
-        description: >
+        description: |-
           The amount of document memory used to execute the request.
           This property is only returned if a memory quota was set for the query.
       errorCount:
@@ -1265,7 +1262,7 @@ components:
 
   Controls:
     type: object
-    description: >
+    description: |-
       An object containing runtime information provided along with the request.
       Present only if `controls` was set to true in the [Request Parameters](#Request).
     properties:
@@ -1278,7 +1275,7 @@ components:
       memoryQuota:
         type: integer
         format: unsigned
-        description: >
+        description: |-
           The memory quota for the request, in MB.
           This property is only returned if a memory quota was set for the query.
       stmtType:
@@ -1289,7 +1286,7 @@ components:
 
   Profile:
     type: object
-    description: >
+    description: |-
       An object containing monitoring and profiling information about the request.
       Present only if `profile` was set to `"phases"` or `"timings"` in the [Request Parameters](#Request).
     required:
@@ -1463,6 +1460,6 @@ components:
 #   type: apiKey
 #   name: creds
 #   in: query
-#   description: >
+#   description: |-
 #     Specify user names and passwords via the `creds` request parameter.
 #     This is the only method that can provide multiple credentials for a request.
