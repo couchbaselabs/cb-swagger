@@ -169,10 +169,10 @@ GET /query/service
 
 [markdown]
 --
-Enables you to execute a SQL++ statement. This method allows you to run queries and modifying statements, and specify query parameters. It does not allow you to run modifying statements.
+Enables you to execute a SQL++ statement.
+This method allows you to run SELECT queries, and specify query parameters.
 
 This endpoint is intended for situations where use of the `POST` method is restricted.
-
 --
 
 
@@ -274,65 +274,65 @@ a| [markdown]
 --
 Bad Request. The request cannot be processed for one of the following reasons: the statement contains a SQL++ syntax error; the request has a missing or unrecognized HTTP parameter; the request is badly formatted &mdash; for example, the request body contains a JSON syntax error.
 --
-a| <<Response>>
+a| xref:Response[]
 
 
 | 401
 a| [markdown]
 --
-Unauthorized. The credentials provided with the request are missing or invalid. 
+Unauthorized. The credentials provided with the request are missing or invalid.
 --
 a| 
 | 403
 a| [markdown]
 --
-Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement. 
+Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement.
 --
 a| 
 | 404
 a| [markdown]
 --
-Not found. The statement in the request references an invalid namespace or keyspace. 
+Not found. The statement in the request references an invalid namespace or keyspace.
 --
-a| <<Response>>
+a| xref:Response[]
 
 
 | 405
 a| [markdown]
 --
-Method not allowed. The statement in the request references an invalid namespace or keyspace. 
+Method not allowed. The statement in the request references an invalid namespace or keyspace.
 --
 a| 
 | 409
 a| [markdown]
 --
-Conflict. There is an attempt to create an object (keyspace or index) that already exists. 
+Conflict. There is an attempt to create an object (keyspace or index) that already exists.
 --
 a| 
 | 410
 a| [markdown]
 --
-Gone. The server is shutting down gracefully. Previously made requests are being completed, but no new requests are being accepted. 
+Gone. The server is shutting down gracefully. Previously made requests are being completed, but no new requests are being accepted.
 --
 a| 
 | 413
 a| [markdown]
 --
-Payload too large. The query is too large for the Query Service to process. 
+Payload too large. The query is too large for the Query Service to process.
 --
 a| 
 | 500
 a| [markdown]
 --
-Internal server error. There was an unforeseen problem processing the request. 
+Internal server error. There was an unforeseen problem processing the request.
 --
 a| 
 | 503
 a| [markdown]
 --
-Service unavailable. There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible. 
+Service unavailable. There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible.
 --
-a| <<Response>>
+a| xref:Response[]
 
 
 
@@ -432,8 +432,8 @@ POST /query/service
 
 [markdown]
 --
-Enables you to execute a SQL++ statement. This method allows you to run queries and modifying statements, and specify query parameters.
-
+Enables you to execute a SQL++ statement.
+This method allows you to run SELECT queries and other DML statements, and specify query parameters.
 --
 
 
@@ -538,65 +538,65 @@ a| [markdown]
 --
 Bad Request. The request cannot be processed for one of the following reasons: the statement contains a SQL++ syntax error; the request has a missing or unrecognized HTTP parameter; the request is badly formatted &mdash; for example, the request body contains a JSON syntax error.
 --
-a| <<Response>>
+a| xref:Response[]
 
 
 | 401
 a| [markdown]
 --
-Unauthorized. The credentials provided with the request are missing or invalid. 
+Unauthorized. The credentials provided with the request are missing or invalid.
 --
 a| 
 | 403
 a| [markdown]
 --
-Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement. 
+Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement.
 --
 a| 
 | 404
 a| [markdown]
 --
-Not found. The statement in the request references an invalid namespace or keyspace. 
+Not found. The statement in the request references an invalid namespace or keyspace.
 --
-a| <<Response>>
+a| xref:Response[]
 
 
 | 405
 a| [markdown]
 --
-Method not allowed. The statement in the request references an invalid namespace or keyspace. 
+Method not allowed. The statement in the request references an invalid namespace or keyspace.
 --
 a| 
 | 409
 a| [markdown]
 --
-Conflict. There is an attempt to create an object (keyspace or index) that already exists. 
+Conflict. There is an attempt to create an object (keyspace or index) that already exists.
 --
 a| 
 | 410
 a| [markdown]
 --
-Gone. The server is shutting down gracefully. Previously made requests are being completed, but no new requests are being accepted. 
+Gone. The server is shutting down gracefully. Previously made requests are being completed, but no new requests are being accepted.
 --
 a| 
 | 413
 a| [markdown]
 --
-Payload too large. The query is too large for the Query Service to process. 
+Payload too large. The query is too large for the Query Service to process.
 --
 a| 
 | 500
 a| [markdown]
 --
-Internal server error. There was an unforeseen problem processing the request. 
+Internal server error. There was an unforeseen problem processing the request.
 --
 a| 
 | 503
 a| [markdown]
 --
-Service unavailable. There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible. 
+Service unavailable. There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible.
 --
-a| <<Response>>
+a| xref:Response[]
 
 
 
@@ -747,8 +747,10 @@ a¦
 
 [markdown]
 --
-A unique number that identifies the error or warning. The code ranges are partitioned by component. The codes can also include parts that indicate severity and transience. This property is always present in every condition returned in the Query REST API or captured in a log.
-
+A unique number that identifies the error or warning.
+The code ranges are partitioned by component.
+The codes can also include parts that indicate severity and transience.
+This property is always present in every condition returned in the Query REST API or captured in a log.
 --
 
 [%hardbreaks]
@@ -763,8 +765,8 @@ a¦
 
 [markdown]
 --
-A message describing the error or warning in detail. This property is always present in every condition returned in the Query REST API or captured in a log.
-
+A message describing the error or warning in detail.
+This property is always present in every condition returned in the Query REST API or captured in a log.
 --
 
 [%hardbreaks]
@@ -779,8 +781,10 @@ a¦
 
 [markdown]
 --
-Unique name that has a 1:1 mapping to the code. Uniquely identifies the condition. This property is helpful for pattern matching and can have meaning, making it more memorable than the code. The name should be fully qualified.
-
+Unique name that has a 1:1 mapping to the code.
+Uniquely identifies the condition.
+This property is helpful for pattern matching and can have meaning, making it more memorable than the code.
+The name should be fully qualified.
 --
 
 [%hardbreaks]
@@ -817,8 +821,8 @@ a¦
 
 [markdown]
 --
-Indicates if the condition is transient &mdash; for example, the queue is full. If the value is `false`, it tells clients and users that a retry without modification produces the same condition.
-
+Indicates if the condition is transient &mdash; for example, the queue is full.
+If the value is `false`, it tells clients and users that a retry without modification produces the same condition.
 --
 
 [%hardbreaks]
@@ -864,8 +868,8 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-Controls[]
-An object containing runtime information provided along with the request. Present only if `controls` was set to true in the [Request Parameters](#Request).
-
+An object containing runtime information provided along with the request.
+Present only if `controls` was set to true in the [Request Parameters](#Request).
 //end::desc-Controls[]
 endif::model-descriptions[]
 
@@ -910,8 +914,8 @@ a¦
 
 [markdown]
 --
-The memory quota for the request, in MB. This property is only returned if a memory quota was set for the query.
-
+The memory quota for the request, in MB.
+This property is only returned if a memory quota was set for the query.
 --
 
 [%hardbreaks]
@@ -983,8 +987,8 @@ a¦
 
 [markdown]
 --
-An identity for authentication. Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
-
+An identity for authentication.
+Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
 --
 
 [%hardbreaks]
@@ -1232,10 +1236,10 @@ a¦
 
 [markdown]
 --
-The number of objects that were sorted. Present only if the request includes `ORDER BY`.
+The number of objects that were sorted.
+Present only if the request includes `ORDER BY`.
 
 If a query includes ORDER BY, LIMIT, or OFFSET clauses, an application can use the `sortCount` value to give the overall number of results in a message such as `"page 1 of N"`.
-
 --
 
 [%hardbreaks]
@@ -1250,8 +1254,8 @@ a¦
 
 [markdown]
 --
-The amount of document memory used to execute the request. This property is only returned if a memory quota was set for the query.
-
+The amount of document memory used to execute the request.
+This property is only returned if a memory quota was set for the query.
 --
 
 [%hardbreaks]
@@ -1347,8 +1351,8 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-Profile[]
-An object containing monitoring and profiling information about the request. Present only if `profile` was set to `"phases"` or `"timings"` in the [Request Parameters](#Request).
-
+An object containing monitoring and profiling information about the request.
+Present only if `profile` was set to `"phases"` or `"timings"` in the [Request Parameters](#Request).
 //end::desc-Profile[]
 endif::model-descriptions[]
 
@@ -1969,8 +1973,8 @@ a¦
 
 [markdown]
 --
-Specifies the namespace to use. Currently, only the `default` namespace is available.
-
+Specifies the namespace to use.
+Currently, only the `default` namespace is available.
 --
 
 [%hardbreaks]
@@ -2899,8 +2903,8 @@ a¦
 
 [markdown]
 --
-The schema of the results. Present only when the query completes successfully.
-
+The schema of the results.
+Present only when the query completes successfully.
 --
 
 [%hardbreaks]
@@ -2916,8 +2920,8 @@ a¦
 
 [markdown]
 --
-An array of all the objects returned by the query. An object can be any JSON value.
-
+An array of all the objects returned by the query.
+An object can be any JSON value.
 --
 
 [%hardbreaks]
@@ -2948,8 +2952,8 @@ a¦
 
 [markdown]
 --
-An array of 0 or more error objects. If an error occurred during processing of the request, it will be represented by an error object in this list.
-
+An array of 0 or more error objects.
+If an error occurred during processing of the request, it will be represented by an error object in this list.
 --
 
 [%hardbreaks]
@@ -2964,8 +2968,8 @@ a¦
 
 [markdown]
 --
-An array of 0 or more warning objects. If a warning occurred during processing of the request, it is represented by a warning object in this list.
-
+An array of 0 or more warning objects.
+If a warning occurred during processing of the request, it is represented by a warning object in this list.
 --
 
 [%hardbreaks]
@@ -3249,8 +3253,8 @@ __Type__ : http
 
 [markdown]
 --
-Specify user names and passwords via the `creds` request parameter. This is the only method that can provide multiple credentials for a request.
-
+Specify user names and passwords via the `creds` request parameter.
+This is the only method that can provide multiple credentials for a request.
 --
 
 .API Key
