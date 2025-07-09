@@ -1733,7 +1733,6 @@ components:
         x-desc-name: memory-quota-srv
         description: |
           Specifies the maximum amount of memory a request may use on this node, in MB.
-          Note that the overall node memory quota is this setting multiplied by the [node-level](#servicers) `servicers` setting.
 
           Specify `0` (the default value) to disable.
           When disabled, there is no quota.
@@ -2046,8 +2045,6 @@ components:
         description: |
           The number of service threads for the query.
           The default is 4 times the number of cores on the query node.
-
-          Note that the overall node memory quota is this setting multiplied by the [node-level](#memory-quota-srv) `memory-quota` setting.
       timeout:
         type: integer
         format: int64
