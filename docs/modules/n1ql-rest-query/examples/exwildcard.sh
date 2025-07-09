@@ -1,5 +1,5 @@
-curl -v http://localhost:8093/query/service \
-     -u Administrator:password \
+curl -v $BASEURL/_p/query/query/service \
+     -u $USER:$PASSWORD \
      -d 'statement=SELECT meta().id
                    FROM `travel-sample`.inventory.hotel
                    WHERE meta().id LIKE $pattern

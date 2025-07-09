@@ -1,3 +1,3 @@
-curl -v http://localhost:8093/query/service \
+curl -v $BASEURL/_p/query/query/service \
      -d 'statement=SELECT name FROM `travel-sample`.inventory.hotel LIMIT 1' \
-     -u Administrator:password
+     -u $USER:$PASSWORD
