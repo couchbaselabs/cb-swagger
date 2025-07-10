@@ -754,6 +754,7 @@ This property is always present in every condition returned in the Query REST AP
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer
 
 
@@ -770,6 +771,7 @@ This property is always present in every condition returned in the Query REST AP
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -789,6 +791,7 @@ The name should be fully qualified.
 [%hardbreaks]
 *Example:* `+++"indexing.scan.io_failure"+++`
 {blank}
+
 a¦ String
 
 
@@ -809,6 +812,7 @@ One of the following SQL++ severity levels, listed in order of severity:
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer
 
 
@@ -825,6 +829,7 @@ If the value is `false`, it tells clients and users that a retry without modific
 
 [%hardbreaks]
 {blank}
+
 a¦ Boolean
 
 
@@ -887,6 +892,7 @@ The value of the query setting Scan Consistency used for the query.
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -902,6 +908,7 @@ Whether the cost-based optimizer was enabled for the query.
 
 [%hardbreaks]
 {blank}
+
 a¦ Boolean
 
 
@@ -918,6 +925,7 @@ This property is only returned if a memory quota was set for the query.
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer (unsigned)
 
 
@@ -934,6 +942,7 @@ The type of query statement.
 [%hardbreaks]
 *Example:* `+++"SELECT"+++`
 {blank}
+
 a¦ String
 
 
@@ -992,6 +1001,7 @@ Note that bucket names may be prefixed with `local:`, and admin names may be pre
 [%hardbreaks]
 *Example:* `+++"local:bucket-name"+++`
 {blank}
+
 a¦ String
 
 
@@ -1008,6 +1018,7 @@ A password for authentication.
 [%hardbreaks]
 *Example:* `+++"password"+++`
 {blank}
+
 a¦ String
 
 
@@ -1072,6 +1083,7 @@ Name of the operator.
 [%hardbreaks]
 *Example:* `+++"Fetch"+++`
 {blank}
+
 a¦ String
 
 
@@ -1087,6 +1099,7 @@ include::index.adoc[tag=desc-Statistics, opts=optional]
 
 [%hardbreaks]
 {blank}
+
 a¦ xref:Statistics[]
 
 
@@ -1102,6 +1115,7 @@ Further nested operators, each with their own execution timings.
 
 [%hardbreaks]
 {blank}
+
 a¦ Object
 
 
@@ -1163,6 +1177,7 @@ The total time taken for the request, that is the time from when the request was
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -1178,6 +1193,7 @@ The time taken for the execution of the request, that is the time from when quer
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -1193,6 +1209,7 @@ The total number of objects in the results.
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer (unsigned)
 
 
@@ -1208,6 +1225,7 @@ The total number of bytes in the results.
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer (unsigned)
 
 
@@ -1223,6 +1241,7 @@ The number of mutations that were made during the request.
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer (unsigned)
 
 
@@ -1241,6 +1260,7 @@ If a query includes ORDER BY, LIMIT, or OFFSET clauses, an application can use t
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer (unsigned)
 
 
@@ -1257,6 +1277,7 @@ This property is only returned if a memory quota was set for the query.
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer (unsigned)
 
 
@@ -1272,6 +1293,7 @@ The number of errors that occurred during the request.
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer (unsigned)
 
 
@@ -1287,6 +1309,7 @@ The number of warnings that occurred during the request.
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer (unsigned)
 
 
@@ -1349,6 +1372,7 @@ Timestamp when the query was received.
 
 [%hardbreaks]
 {blank}
+
 a¦ Date (date-time)
 
 
@@ -1364,6 +1388,7 @@ IP address and port number of the node where the query was executed.
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -1380,6 +1405,7 @@ Count of documents processed at selective phases involved in the query execution
 [%hardbreaks]
 *Example:* `{"fetch":16,"indexScan":187}`
 {blank}
+
 a¦ Object
 
 
@@ -1402,6 +1428,7 @@ This is in essence the count of all the operators in the `executionTimings` obje
 [%hardbreaks]
 *Example:* `{"authorize":1,"fetch":1,"indexScan":2}`
 {blank}
+
 a¦ Object
 
 
@@ -1418,6 +1445,7 @@ Cumulative execution times for various phases involved in the query execution, s
 [%hardbreaks]
 *Example:* `{"authorize":"823.631µs","fetch":"656.873µs","indexScan":"29.146543ms","instantiate":"236.221µs","parse":"826.382µs","plan":"11.831101ms","run":"16.892181ms"}`
 {blank}
+
 a¦ Object
 
 
@@ -1433,6 +1461,7 @@ include::index.adoc[tag=desc-Execution_Timings, opts=optional]
 
 [%hardbreaks]
 {blank}
+
 a¦ xref:Execution_Timings[]
 
 
@@ -1497,6 +1526,7 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 [%hardbreaks]
 *Example:* `["LAX",6]`
 {blank}
+
 a¦ Any Type
  array
 
@@ -1529,6 +1559,7 @@ The request-level parameter overrides the node-level setting.
 [%hardbreaks]
 *Example:* `+++"default:`travel-sample`.transaction.test"+++`
 {blank}
+
 a¦ String
 
 
@@ -1551,6 +1582,7 @@ Refer to [Auto-Execute][auto-execute] for more information.
 *Default:* `false`
 *Example:* `true`
 {blank}
+
 a¦ Boolean
 
 
@@ -1570,6 +1602,7 @@ SQL++ is agnostic about the content of this parameter; it is just echoed in the 
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -1590,6 +1623,7 @@ Values are case-insensitive.
 *Default:* `+++"NONE"+++`
 *Example:* `+++"zip"+++`
 {blank}
+
 a¦ String
 
 
@@ -1619,6 +1653,7 @@ The request-level parameter overrides the node-level setting.
 [%hardbreaks]
 *Example:* `true`
 {blank}
+
 a¦ Boolean
 
 
@@ -1641,6 +1676,7 @@ If credentials are supplied in the request header, then HTTP Basic Authenticatio
 [%hardbreaks]
 *Example:* `[{"user":"local:bucket-name","pass":"password"},{"user":"admin:admin-name","pass":"password"}]`
 {blank}
+
 a¦ xref:Credentials[]
  array
 
@@ -1669,6 +1705,7 @@ Set the durability level to `"none"` or `""` to specify no durability.
 *Default:* `+++"majority"+++`
 *Example:* `+++"none"+++`
 {blank}
+
 a¦ String
 
 
@@ -1685,6 +1722,7 @@ It is included for compatibility with previous versions of Couchbase Server.
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -1703,6 +1741,7 @@ Only possible value is `UTF-8` and is case-insensitive.
 [%hardbreaks]
 *Default:* `+++"UTF-8"+++`
 {blank}
+
 a¦ String
 
 
@@ -1723,6 +1762,7 @@ Values are case-insensitive.
 *Default:* `+++"JSON"+++`
 *Example:* `+++"XML"+++`
 {blank}
+
 a¦ String
 
 
@@ -1757,6 +1797,7 @@ When disabled, no timeout is applied and the KV operation runs for however long 
 *Default:* `+++"2.5s"+++`
 *Example:* `+++"10ms"+++`
 {blank}
+
 a¦ String
 
 
@@ -1793,6 +1834,7 @@ To enable queries to run in parallel, you must specify the cluster-level `queryM
 [%hardbreaks]
 *Example:* `3`
 {blank}
+
 a¦ Integer (int32)
 
 
@@ -1834,6 +1876,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Default:* `0`
 *Example:* `4`
 {blank}
+
 a¦ Integer (int32)
 
 
@@ -1851,6 +1894,7 @@ Specifies that metrics should be returned with query results.
 *Default:* `true`
 *Example:* `false`
 {blank}
+
 a¦ Boolean
 
 
@@ -1868,6 +1912,7 @@ Currently, only the `default` namespace is available.
 [%hardbreaks]
 *Example:* `+++"default"+++`
 {blank}
+
 a¦ String
 
 
@@ -1902,6 +1947,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Default:* `1024`
 *Example:* `512`
 {blank}
+
 a¦ Integer (int32)
 
 
@@ -1932,6 +1978,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `64`
 {blank}
+
 a¦ Integer (int32)
 
 
@@ -1962,6 +2009,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `1024`
 {blank}
+
 a¦ Integer (int32)
 
 
@@ -1985,6 +2033,7 @@ If both `prepared` and `statement` are present and non-empty, an error is return
 [%hardbreaks]
 *Example:* `+++"[127.0.0.1:8091]pricy_hotel"+++`
 {blank}
+
 a¦ String
 
 
@@ -2009,6 +2058,7 @@ Not supported for statements in a transaction.
 *Default:* `false`
 *Example:* `true`
 {blank}
+
 a¦ Boolean
 
 
@@ -2034,6 +2084,7 @@ The request-level parameter overrides the node-level setting.
 [%hardbreaks]
 *Example:* `false`
 {blank}
+
 a¦ Boolean
 
 
@@ -2073,6 +2124,7 @@ The request-level parameter overrides the node-level setting.
 *Values:* `"off"`, `"phases"`, `"timings"`
 *Example:* `+++"phases"+++`
 {blank}
+
 a¦ String
 
 
@@ -2094,6 +2146,7 @@ If the namespace name is omitted, the default namespace in the current session i
 *Default:* `+++"default:"+++`
 *Example:* `+++"default:travel-sample.inventory"+++`
 {blank}
+
 a¦ String
 
 
@@ -2122,6 +2175,7 @@ When using GET requests, it's best to set `readonly` to `true`.
 *Default:* `false`
 *Example:* `true`
 {blank}
+
 a¦ Boolean
 
 
@@ -2156,6 +2210,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `1024`
 {blank}
+
 a¦ Integer (int32)
 
 
@@ -2205,6 +2260,7 @@ Refer to [Transactional Scan Consistency][transactional-scan-consistency] for de
 *Default:* `+++"not_bounded"+++`
 *Example:* `+++"at_plus"+++`
 {blank}
+
 a¦ String
 
 
@@ -2237,6 +2293,7 @@ For queries referencing multiple keyspaces, use `scan_vectors`.
 [%hardbreaks]
 *Example:* `{"5":[5409393,"VB5ID"],"19":[47574574,"VB19ID"]}`
 {blank}
+
 a¦ Object
 
 
@@ -2257,6 +2314,7 @@ The scan vectors can be Full or Sparse.
 
 [%hardbreaks]
 {blank}
+
 a¦ Object
 
 
@@ -2291,6 +2349,7 @@ Specify `0` or a negative integer to disable.
 *Default:* `+++""+++`
 *Example:* `+++"30m"+++`
 {blank}
+
 a¦ String (duration)
 
 
@@ -2308,6 +2367,7 @@ Include a header for the results schema in the response.
 *Default:* `true`
 *Example:* `false`
 {blank}
+
 a¦ Boolean
 
 
@@ -2327,6 +2387,7 @@ If `false` (the default), statement projection terms are returned in the order s
 *Default:* `false`
 *Example:* `true`
 {blank}
+
 a¦ Boolean
 
 
@@ -2355,6 +2416,7 @@ This restriction does not apply when specifying the request parameters in JSON f
 [%hardbreaks]
 *Example:* `+++"SELECT * FROM `travel-sample`.inventory.hotel LIMIT 1"+++`
 {blank}
+
 a¦ String
 
 
@@ -2403,6 +2465,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `+++"30m"+++`
 {blank}
+
 a¦ String (duration)
 
 
@@ -2419,6 +2482,7 @@ For internal use only.
 
 [%hardbreaks]
 {blank}
+
 a¦ Object
 
 
@@ -2442,6 +2506,7 @@ The transaction must be active and non-expired.
 [%hardbreaks]
 *Example:* `+++"d81d9b4a-b758-4f98-b007-87ba262d3a51"+++`
 {blank}
+
 a¦ UUID (UUID)
 
 
@@ -2465,6 +2530,7 @@ If the `txid` request-level parameter is set, the `tximplicit` parameter is igno
 *Default:* `false`
 *Example:* `true`
 {blank}
+
 a¦ Boolean
 
 
@@ -2483,6 +2549,7 @@ If the transaction statement number is lower than the transaction statement numb
 [%hardbreaks]
 *Example:* `10`
 {blank}
+
 a¦ Integer (int32)
 
 
@@ -2536,6 +2603,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `+++"30m"+++`
 {blank}
+
 a¦ String (duration)
 
 
@@ -2566,6 +2634,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 [%hardbreaks]
 *Example:* `true`
 {blank}
+
 a¦ Boolean
 
 
@@ -2593,6 +2662,7 @@ Refer to [Flex Indexes][flex-indexes] for more information.
 *Default:* `false`
 *Example:* `true`
 {blank}
+
 a¦ Boolean
 
 
@@ -2642,6 +2712,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Default:* `+++"unset"+++`
 *Example:* `+++"true"+++`
 {blank}
+
 a¦ String
 
 
@@ -2671,6 +2742,7 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 
 [%hardbreaks]
 {blank}
+
 a¦ Any Type
 
 
@@ -2732,6 +2804,7 @@ A unique identifier for the response.
 
 [%hardbreaks]
 {blank}
+
 a¦ UUID (UUID)
 
 
@@ -2747,6 +2820,7 @@ The client context ID of the request, if one was supplied &mdash; see `client_co
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -2764,6 +2838,7 @@ Present only when the query completes successfully.
 [%hardbreaks]
 *Example:* `{"id":"json"}`
 {blank}
+
 a¦ Object
 
 
@@ -2780,6 +2855,7 @@ An object can be any JSON value.
 
 [%hardbreaks]
 {blank}
+
 a¦ Any Type
  array
 
@@ -2796,6 +2872,7 @@ The status of the request.
 [%hardbreaks]
 *Values:* `"success"`, `"running"`, `"errors"`, `"completed"`, `"stopped"`, `"timeout"`, `"fatal"`
 {blank}
+
 a¦ String
 
 
@@ -2812,6 +2889,7 @@ If an error occurred during processing of the request, it will be represented by
 
 [%hardbreaks]
 {blank}
+
 a¦ xref:Conditions[]
  array
 
@@ -2828,6 +2906,7 @@ If a warning occurred during processing of the request, it is represented by a w
 
 [%hardbreaks]
 {blank}
+
 a¦ xref:Conditions[]
  array
 
@@ -2843,6 +2922,7 @@ include::index.adoc[tag=desc-Metrics, opts=optional]
 
 [%hardbreaks]
 {blank}
+
 a¦ xref:Metrics[]
 
 
@@ -2858,6 +2938,7 @@ include::index.adoc[tag=desc-Controls, opts=optional]
 
 [%hardbreaks]
 {blank}
+
 a¦ xref:Controls[]
 
 
@@ -2873,6 +2954,7 @@ include::index.adoc[tag=desc-Profile, opts=optional]
 
 [%hardbreaks]
 {blank}
+
 a¦ xref:Profile[]
 
 
@@ -2935,6 +3017,7 @@ Number of input documents to the operator.
 [%hardbreaks]
 *Example:* `187`
 {blank}
+
 a¦ Integer (int32)
 
 
@@ -2951,6 +3034,7 @@ Number of output documents after the operator processing.
 [%hardbreaks]
 *Example:* `16`
 {blank}
+
 a¦ Integer (int32)
 
 
@@ -2967,6 +3051,7 @@ Number of switches between executing, waiting for services, or waiting for the g
 [%hardbreaks]
 *Example:* `413`
 {blank}
+
 a¦ Integer (int32)
 
 
@@ -2983,6 +3068,7 @@ Time spent executing the operator code inside SQL++ query engine.
 [%hardbreaks]
 *Example:* `+++"128.434µs"+++`
 {blank}
+
 a¦ String (duration)
 
 
@@ -2999,6 +3085,7 @@ Time spent waiting to be scheduled for CPU time.
 [%hardbreaks]
 *Example:* `+++"15.027879ms"+++`
 {blank}
+
 a¦ String (duration)
 
 
@@ -3019,6 +3106,7 @@ For fetch, it is time spent waiting on the KV store.
 [%hardbreaks]
 *Example:* `+++"1.590934ms"+++`
 {blank}
+
 a¦ String (duration)
 
 

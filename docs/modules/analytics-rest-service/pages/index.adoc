@@ -1082,6 +1082,7 @@ Specifies at least one valid SQL\+\+ for Analytics statement to run.
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -1098,6 +1099,7 @@ An identifier passed by the client that is returned verbatim in the query respon
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -1118,6 +1120,7 @@ Note that the only possible format is `JSON`.
 *Values:* `"JSON"`
 *Default:* `+++"JSON"+++`
 {blank}
+
 a¦ String
 
 
@@ -1134,6 +1137,7 @@ If `true`, the result is indented.
 [%hardbreaks]
 *Default:* `false`
 {blank}
+
 a¦ Boolean
 
 
@@ -1151,6 +1155,7 @@ A scope for the statement. The value of this parameter must start with `default:
 [%hardbreaks]
 *Default:* `+++"default:Default"+++`
 {blank}
+
 a¦ String
 
 
@@ -1167,6 +1172,7 @@ If `true`, then DDL statements are not allowed.
 [%hardbreaks]
 *Default:* `false`
 {blank}
+
 a¦ Boolean
 
 
@@ -1185,6 +1191,7 @@ The consistency guarantee constraint for index scanning. If `not_bounded`, the q
 *Values:* `"not_bounded"`, `"request_plus"`
 *Default:* `+++"not_bounded"+++`
 {blank}
+
 a¦ String
 
 
@@ -1202,6 +1209,7 @@ The maximum time to wait for datasets to be updated before the query is executed
 [%hardbreaks]
 *Default:* `+++""+++`
 {blank}
+
 a¦ String
 
 
@@ -1219,6 +1227,7 @@ Maximum time to spend on the request before timing out. The format includes an a
 [%hardbreaks]
 *Default:* `+++""+++`
 {blank}
+
 a¦ String
 
 
@@ -1234,6 +1243,7 @@ An array of positional parameter values.
 
 [%hardbreaks]
 {blank}
+
 a¦ Any Type
  array
 
@@ -1250,6 +1260,7 @@ A named parameter value.
 
 [%hardbreaks]
 {blank}
+
 a¦ Any Type
 
 
@@ -1308,6 +1319,7 @@ The plan format.
 *Values:* `"JSON"`, `"STRING"`
 *Default:* `+++"JSON"+++`
 {blank}
+
 a¦ String
 
 
@@ -1324,6 +1336,7 @@ If `true`, the logical plan is included in the query response.
 [%hardbreaks]
 *Default:* `false`
 {blank}
+
 a¦ Boolean
 
 
@@ -1340,6 +1353,7 @@ If `true`, the optimized logical plan is included in the query response.
 [%hardbreaks]
 *Default:* `true`
 {blank}
+
 a¦ Boolean
 
 
@@ -1356,6 +1370,7 @@ If `true`, the expression tree is included in the query response.
 [%hardbreaks]
 *Default:* `false`
 {blank}
+
 a¦ Boolean
 
 
@@ -1372,6 +1387,7 @@ If `true`, the rewritten expression tree is included in the query response.
 [%hardbreaks]
 *Default:* `false`
 {blank}
+
 a¦ Boolean
 
 
@@ -1388,6 +1404,7 @@ If `true`, the job details are included in the query response.
 [%hardbreaks]
 *Default:* `false`
 {blank}
+
 a¦ Boolean
 
 
@@ -1404,6 +1421,7 @@ An integer specifying the maximum number of warning messages to be included in t
 [%hardbreaks]
 *Default:* `0`
 {blank}
+
 a¦ Integer (int32)
 
 
@@ -1497,6 +1515,7 @@ A unique identifier for the response.
 
 [%hardbreaks]
 {blank}
+
 a¦ UUID (UUID)
 
 
@@ -1519,6 +1538,7 @@ refer to `client_context_id` in [Query Parameters][1].
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -1535,6 +1555,7 @@ The schema of the results. Present only when the query completes successfully.
 
 [%hardbreaks]
 {blank}
+
 a¦ Object
 
 
@@ -1551,6 +1572,7 @@ An array of all the objects returned by the query. An object can be any JSON val
 
 [%hardbreaks]
 {blank}
+
 a¦ Any Type
  array
 
@@ -1567,6 +1589,7 @@ The status of the request.
 [%hardbreaks]
 *Values:* `"success"`, `"running"`, `"failed"`, `"timeout"`, `"fatal"`
 {blank}
+
 a¦ String
 
 
@@ -1583,6 +1606,7 @@ An array of error objects. Present only if 1 or more errors are returned during 
 
 [%hardbreaks]
 {blank}
+
 a¦ xref:ResponsesCommonErrors[]
  array
 
@@ -1610,6 +1634,7 @@ By default, no warnings are returned, even if warnings have occurred during proc
 
 [%hardbreaks]
 {blank}
+
 a¦ xref:ResponsesCommonWarnings[]
  array
 
@@ -1625,6 +1650,7 @@ include::index.adoc[tag=desc-ResponsesCommonYardsticks, opts=optional]
 
 [%hardbreaks]
 {blank}
+
 a¦ xref:ResponsesCommonYardsticks[]
 
 
@@ -1681,6 +1707,7 @@ A number that identifies the error.
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer
 
 
@@ -1697,6 +1724,7 @@ A message describing the error in detail. Refer to [Error Codes](/server/7.6/ana
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -1753,6 +1781,7 @@ A number that identifies the warning.
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer
 
 
@@ -1768,6 +1797,7 @@ A message describing the warning in detail.
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -1830,6 +1860,7 @@ The total time taken for the request, that is the time from when the request was
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -1846,6 +1877,7 @@ The time taken for the execution of the request, that is the time from when quer
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -1861,6 +1893,7 @@ The total number of objects in the results.
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer (unsigned)
 
 
@@ -1876,6 +1909,7 @@ The total number of bytes in the results.
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer (unsigned)
 
 
@@ -1891,6 +1925,7 @@ The number of errors that occurred during the request.
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer (unsigned)
 
 
@@ -1906,6 +1941,7 @@ The number of warnings that occurred during the request.
 
 [%hardbreaks]
 {blank}
+
 a¦ Integer (unsigned)
 
 
@@ -1962,6 +1998,7 @@ include::index.adoc[tag=desc-ResponsesLocalPlans, opts=optional]
 
 [%hardbreaks]
 {blank}
+
 a¦ xref:ResponsesLocalPlans[]
 
 
@@ -1977,6 +2014,7 @@ include::index.adoc[tag=desc-ResponsesLocalYardsticks, opts=optional]
 
 [%hardbreaks]
 {blank}
+
 a¦ xref:ResponsesLocalYardsticks[]
 
 
@@ -2038,6 +2076,7 @@ The logical plan.
 
 [%hardbreaks]
 {blank}
+
 a¦ Object
 
 
@@ -2053,6 +2092,7 @@ The optimized logical plan.
 
 [%hardbreaks]
 {blank}
+
 a¦ Object
 
 
@@ -2068,6 +2108,7 @@ The rewritten expression tree.
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -2083,6 +2124,7 @@ The expression tree.
 
 [%hardbreaks]
 {blank}
+
 a¦ String
 
 
@@ -2098,6 +2140,7 @@ The job details.
 
 [%hardbreaks]
 {blank}
+
 a¦ Object
 
 
@@ -2159,6 +2202,7 @@ Number of processed tuples during query execution.
 
 [%hardbreaks]
 {blank}
+
 a¦ Long (int64)
 
 
