@@ -27,7 +27,6 @@ include::{specDir}overview/document-before.adoc[opts=optional]
 --
 The Query Service REST API is provided by the Query service.
 This API enables you to run SQL++ queries and set request-level parameters.
-
 --
 
 [discrete#version]
@@ -806,7 +805,6 @@ One of the following SQL++ severity levels, listed in order of severity:
  2. Error
  3. Warn
  4. Info
-
 --
 
 [%hardbreaks]
@@ -1054,7 +1052,6 @@ ifdef::model-descriptions[]
 Present only if `profile` was set to `"timings"` in the [Request Parameters](#Request).
 
 The execution details for various phases involved in the query execution, such as kernel and service execution times, number of documents processed at each query operator in each phase, and number of phase switches.
-
 //end::desc-Execution_Timings[]
 endif::model-descriptions[]
 
@@ -1378,7 +1375,6 @@ a¦
 [markdown]
 --
 Count of documents processed at selective phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
-
 --
 
 [%hardbreaks]
@@ -1401,7 +1397,6 @@ A join would probably involve two or more fetches, one per keyspace.
 A union select would have twice as many operator counts, one per each branch of the union.
 
 This is in essence the count of all the operators in the `executionTimings` object.
-
 --
 
 [%hardbreaks]
@@ -1418,7 +1413,6 @@ a¦
 [markdown]
 --
 Cumulative execution times for various phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
-
 --
 
 [%hardbreaks]
@@ -1498,7 +1492,6 @@ The value is an array of JSON values, one for each positional parameter in the s
 Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
 [section_srh_tlm_n1b]: /server/7.6/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
-
 --
 
 [%hardbreaks]
@@ -1517,7 +1510,6 @@ a¦
 ifdef::alt-markdown-links[]
 [atrcollection-srv]: #atrcollection-srv
 
-
 endif::alt-markdown-links[]
 Specifies the collection where the [active transaction record][additional-storage-use] (ATR) is stored.
 The collection must be present.
@@ -1526,12 +1518,12 @@ If not specified, the ATR is stored in the default collection in the default sco
 The value must be a string in the form `"bucket.scope.collection"` or `"namespace:bucket.scope.collection"`.
 If any part of the path contains a special character, that part of the path must be delimited in backticks &grave;&grave;.
 
+[additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
+
 The [node-level][atrcollection-srv] `atrcollection` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
-[additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
 [atrcollection-srv]: ../n1ql-rest-admin/index.html#atrcollection-srv
-
 --
 
 [%hardbreaks]
@@ -1553,7 +1545,6 @@ This saves you from having to make two separate requests in cases where you want
 Refer to [Auto-Execute][auto-execute] for more information.
 
 [auto-execute]: /server/7.6/n1ql/n1ql-language-reference/prepare.html#auto-execute
-
 --
 
 [%hardbreaks]
@@ -1575,7 +1566,6 @@ SQL++ is agnostic about the content of this parameter; it is just echoed in the 
 
 * Maximum allowed size is 64 characters; all others will be cut.
 * If it contains an escape character `/` or quote `"`, it will be rejected as error code 1110.
-
 --
 
 [%hardbreaks]
@@ -1593,7 +1583,6 @@ a¦
 Compression format to use for response data on the wire.
 
 Values are case-insensitive.
-
 --
 
 [%hardbreaks]
@@ -1614,7 +1603,6 @@ a¦
 ifdef::alt-markdown-links[]
 [controls-srv]: #controls-srv
 
-
 endif::alt-markdown-links[]
 Specifies if there should be a controls section returned with the request results.
 
@@ -1626,7 +1614,6 @@ The [node-level][controls-srv] `controls` setting specifies the default for this
 The request-level parameter overrides the node-level setting.
 
 [controls-srv]: ../n1ql-rest-admin/index.html#controls-srv
-
 --
 
 [%hardbreaks]
@@ -1649,7 +1636,6 @@ The format is an identity and password.
 You can specify credentials for multiple identities.
 
 If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored.
-
 --
 
 [%hardbreaks]
@@ -1667,7 +1653,7 @@ a¦
 --
 The level of [durability][durability] for mutations produced by the request.
 
-If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the [tximplicit](#tximplicit) parameter set to `true`, the durability level is specified for all mutations within that transaction.
+If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the `tximplicit` parameter set to `true`, the durability level is specified for all mutations within that transaction.
 
 Durability is also supported for non-transactional DML statements.
 In this case, the `kvtimeout` parameter is used as the durability timeout.
@@ -1676,7 +1662,6 @@ If not specified, the default durability level is `"majority"`.
 Set the durability level to `"none"` or `""` to specify no durability.
 
 [durability]: /server/7.6/learn/data/durability.html
-
 --
 
 [%hardbreaks]
@@ -1696,7 +1681,6 @@ a¦
 --
 In Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
 It is included for compatibility with previous versions of Couchbase Server.
-
 --
 
 [%hardbreaks]
@@ -1714,7 +1698,6 @@ a¦
 Desired character encoding for the query results.
 
 Only possible value is `UTF-8` and is case-insensitive.
-
 --
 
 [%hardbreaks]
@@ -1733,7 +1716,6 @@ a¦
 Desired format for the query results.
 
 Values are case-insensitive.
-
 --
 
 [%hardbreaks]
@@ -1769,7 +1751,6 @@ Valid units are:
 
 Specify a duration of `0` or a negative duration to disable.
 When disabled, no timeout is applied and the KV operation runs for however long it takes.
-
 --
 
 [%hardbreaks]
@@ -1790,9 +1771,10 @@ ifdef::alt-markdown-links[]
 [max-parallelism-srv]: #max-parallelism-srv
 [queryMaxParallelism]: #queryMaxParallelism
 
-
 endif::alt-markdown-links[]
 Specifies the maximum parallelism for the query.
+
+The default value is the same as the number of partitions of the index selected for the query.
 
 The [node-level][max-parallelism-srv] `max-parallelism` setting specifies the ceiling for this parameter for a single node.
 If the request-level parameter is zero or negative, the parallelism for the query is set to the node-level setting.
@@ -1804,11 +1786,8 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 To enable queries to run in parallel, you must specify the cluster-level `queryMaxParallelism` parameter, or specify the node-level `max-parallelism` parameter on all Query nodes.
 
-The default value is the same as the number of partitions of the index selected for the query.
-
 [max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
 [queryMaxParallelism]: ../n1ql-rest-settings/index.html#queryMaxParallelism
-
 --
 
 [%hardbreaks]
@@ -1827,7 +1806,6 @@ a¦
 ifdef::alt-markdown-links[]
 [memory-quota-srv]: #memory-quota-srv
 [queryMemoryQuota]: #queryMemoryQuota
-
 
 endif::alt-markdown-links[]
 Specifies the maximum amount of memory the request may use, in MB.
@@ -1850,7 +1828,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
 [queryMemoryQuota]: ../n1ql-rest-settings/index.html#queryMemoryQuota
-
 --
 
 [%hardbreaks]
@@ -1905,10 +1882,11 @@ ifdef::alt-markdown-links[]
 [numatrs-srv]: #numatrs-srv
 [queryNumAtrs]: #queryNumAtrs
 
-
 endif::alt-markdown-links[]
 Specifies the total number of [active transaction records][additional-storage-use].
 Must be a positive integer.
+
+[additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
 
 The [node-level][numatrs-srv] `numatrs` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
@@ -1916,10 +1894,8 @@ The request-level parameter overrides the node-level setting.
 In addition, the [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-[additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
 [numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
 [queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
-
 --
 
 [%hardbreaks]
@@ -1940,7 +1916,6 @@ ifdef::alt-markdown-links[]
 [pipeline-batch-srv]: #pipeline-batch-srv
 [queryPipelineBatch]: #queryPipelineBatch
 
-
 endif::alt-markdown-links[]
 Controls the number of items execution operators can batch for Fetch from the KV.
 
@@ -1952,7 +1927,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
 [queryPipelineBatch]: ../n1ql-rest-settings/index.html#queryPipelineBatch
-
 --
 
 [%hardbreaks]
@@ -1972,7 +1946,6 @@ ifdef::alt-markdown-links[]
 [pipeline-cap-srv]: #pipeline-cap-srv
 [queryPipelineCap]: #queryPipelineCap
 
-
 endif::alt-markdown-links[]
 Maximum number of items each execution operator can buffer between various operators.
 
@@ -1984,7 +1957,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
 [queryPipelineCap]: ../n1ql-rest-settings/index.html#queryPipelineCap
-
 --
 
 [%hardbreaks]
@@ -2008,7 +1980,6 @@ Refer to [EXECUTE][execute] for examples.
 If both `prepared` and `statement` are present and non-empty, an error is returned.
 
 [execute]: /server/7.6/n1ql/n1ql-language-reference/execute.html
-
 --
 
 [%hardbreaks]
@@ -2032,7 +2003,6 @@ If the DML statement explicitly specifies the document expiration, the statement
 If `false`, document expiration is set to 0 when modified by a DML statement, unless the DML statement explicitly specifies the document expiration.
 
 Not supported for statements in a transaction.
-
 --
 
 [%hardbreaks]
@@ -2052,7 +2022,6 @@ a¦
 ifdef::alt-markdown-links[]
 [pretty-srv]: #pretty-srv
 
-
 endif::alt-markdown-links[]
 Specifies the query results returned in pretty format.
 
@@ -2060,7 +2029,6 @@ The [node-level][pretty-srv] `pretty` setting specifies the default for this par
 The request-level parameter overrides the node-level setting.
 
 [pretty-srv]: ../n1ql-rest-admin/index.html#pretty-srv
-
 --
 
 [%hardbreaks]
@@ -2078,7 +2046,6 @@ a¦
 --
 ifdef::alt-markdown-links[]
 [profile-srv]: #profile-srv
-
 
 endif::alt-markdown-links[]
 Specifies if there should be a profile section returned with the request results.
@@ -2100,7 +2067,6 @@ The [node-level][profile-srv] `profile` setting specifies the default for this p
 The request-level parameter overrides the node-level setting.
 
 [profile-srv]: ../n1ql-rest-admin/index.html#profile-srv
-
 --
 
 [%hardbreaks]
@@ -2122,7 +2088,6 @@ Specifies the namespace, bucket, and scope used to resolve partial keyspace refe
 The query context may be a _full path_, containing namespace, bucket, and scope; or a _relative path_, containing just the bucket and scope.
 Currently, only the `default` namespace is available.
 If the namespace name is omitted, the default namespace in the current session is used.
-
 --
 
 [%hardbreaks]
@@ -2151,7 +2116,6 @@ If `readonly` is `true`, then the following statements are not allowed:
 * UPSERT
 
 When using GET requests, it's best to set `readonly` to `true`.
-
 --
 
 [%hardbreaks]
@@ -2172,7 +2136,6 @@ ifdef::alt-markdown-links[]
 [scan-cap-srv]: #scan-cap-srv
 [queryScanCap]: #queryScanCap
 
-
 endif::alt-markdown-links[]
 Maximum buffered channel size between the indexer client and the query service for index scans.
 This parameter controls when to use scan backfill.
@@ -2188,7 +2151,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
 [queryScanCap]: ../n1ql-rest-settings/index.html#queryScanCap
-
 --
 
 [%hardbreaks]
@@ -2232,11 +2194,10 @@ Values are case-insensitive.
 For multi-statement requests, the default behavior is RYOW within each request.
 If you want to disable RYOW within a request, add a separate `request_consistency` parameter that can be set to `not_bounded`.
 
-If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the [tximplicit](#tximplicit) parameter set to `true`, then this parameter sets the transactional scan consistency.
+If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the `tximplicit` parameter set to `true`, then this parameter sets the transactional scan consistency.
 Refer to [Transactional Scan Consistency][transactional-scan-consistency] for details.
 
 [transactional-scan-consistency]: /server/7.6/n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency
-
 --
 
 [%hardbreaks]
@@ -2271,7 +2232,6 @@ Scan vectors have two forms:
 Note that `scan_vector` can only be used if the query uses at most one keyspace; if it is used for a query referencing more than one keyspace, the query will fail with an error.
 
 For queries referencing multiple keyspaces, use `scan_vectors`.
-
 --
 
 [%hardbreaks]
@@ -2293,7 +2253,6 @@ A map from keyspace names to scan vectors.
 See `scan_vector`.
 
 The scan vectors can be Full or Sparse.
-
 --
 
 [%hardbreaks]
@@ -2326,7 +2285,6 @@ Valid units are:
 * `h` (hours)
 
 Specify `0` or a negative integer to disable.
-
 --
 
 [%hardbreaks]
@@ -2363,7 +2321,6 @@ a¦
 If `true`, causes statement projection terms to be sorted alphabetically.
 
 If `false` (the default), statement projection terms are returned in the order specified by the query.
-
 --
 
 [%hardbreaks]
@@ -2393,7 +2350,6 @@ If it does, the Query Service responds with error 1040.
 To avoid this, either URL-encode the semicolon as `%3B`, or just omit the semicolon if possible.
 
 This restriction does not apply when specifying the request parameters in JSON format.
-
 --
 
 [%hardbreaks]
@@ -2413,7 +2369,6 @@ ifdef::alt-markdown-links[]
 [timeout-srv]: #timeout-srv
 [queryTimeout]: #queryTimeout
 
-
 endif::alt-markdown-links[]
 Maximum time to spend on the request before timing out.
 
@@ -2431,7 +2386,7 @@ Valid units are:
 Specify a duration of `0` or a negative duration to disable.
 When disabled, no timeout is applied and the request runs for however long it takes.
 
-If [tximplicit](#tximplicit) or [txid](#txid) is set, this parameter is ignored.
+If `tximplicit` or `txid` is set, this parameter is ignored.
 The request inherits the remaining time of the transaction as timeout.
 
 The [node-level][timeout-srv] `timeout` setting specifies the default for this parameter for a single node.
@@ -2443,7 +2398,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
 [queryTimeout]: ../n1ql-rest-settings/index.html#queryTimeout
-
 --
 
 [%hardbreaks]
@@ -2461,7 +2415,6 @@ a¦
 --
 Transaction data.
 For internal use only.
-
 --
 
 [%hardbreaks]
@@ -2484,7 +2437,6 @@ For use with DML statements within a transaction, rollbacks, and commits.
 
 The transaction ID should be the same as the transaction ID generated by the `BEGIN TRANSACTION` statement.
 The transaction must be active and non-expired.
-
 --
 
 [%hardbreaks]
@@ -2506,8 +2458,7 @@ When this parameter is true, the Query service starts a transaction and executes
 If execution is successful, the Query service commits the transaction; otherwise the transaction is rolled back.
 
 The statement may not be part of an ongoing transaction.
-If the [txid](#txid) request-level parameter is set, the `tximplicit` parameter is ignored.
-
+If the `txid` request-level parameter is set, the `tximplicit` parameter is ignored.
 --
 
 [%hardbreaks]
@@ -2527,7 +2478,6 @@ a¦
 Transaction statement number.
 The transaction statement number must be a positive integer, and must be higher than any previous transaction statement numbers in the transaction.
 If the transaction statement number is lower than the transaction statement number for any previous statement, an error is generated.
-
 --
 
 [%hardbreaks]
@@ -2547,13 +2497,12 @@ ifdef::alt-markdown-links[]
 [txtimeout-srv]: #txtimeout-srv
 [queryTxTimeout]: #queryTxTimeout
 
-
 endif::alt-markdown-links[]
 Maximum time to spend on a transaction before timing out.
-Only applies to `BEGIN TRANSACTION` statements, or DML statements for which [tximplicit](#tximplicit) is set.
+Only applies to `BEGIN TRANSACTION` statements, or DML statements for which `tximplicit` is set.
 For other statements, it is ignored.
 
-Within a transaction, the request-level [timeout](#timeout_req) parameter is ignored.
+Within a transaction, the request-level `timeout` parameter is ignored.
 The transaction timeout clock starts when the `BEGIN WORK` statement is successful.
 Once the transaction timeout is reached, no statement is allowed to continue in the transaction.
 
@@ -2571,6 +2520,8 @@ Valid units are:
 Specify a duration of `0` to disable.
 When disabled, the request-level timeout is set to the default.
 
+The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sessions or redirected input.
+
 The [node-level][txtimeout-srv] `txtimeout` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 However, if the node-level setting is greater than 0, the transaction timeout for the query is limited to the node-level setting.
@@ -2578,11 +2529,8 @@ However, if the node-level setting is greater than 0, the transaction timeout fo
 In addition, the [cluster-level][queryTxTimeout] `queryTxTimeout` setting specifies the default for this parameter for the whole cluster.
 When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sessions or redirected input.
-
 [txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
 [queryTxTimeout]: ../n1ql-rest-settings/index.html#queryTxTimeout
-
 --
 
 [%hardbreaks]
@@ -2602,7 +2550,6 @@ ifdef::alt-markdown-links[]
 [use-cbo-srv]: #use-cbo-srv
 [queryUseCBO]: #queryUseCBO
 
-
 endif::alt-markdown-links[]
 Specifies whether the cost-based optimizer is enabled.
 
@@ -2614,7 +2561,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
 [queryUseCBO]: ../n1ql-rest-settings/index.html#queryUseCBO
-
 --
 
 [%hardbreaks]
@@ -2641,7 +2587,6 @@ If none of the available Search indexes are qualified, the available GSI indexes
 Refer to [Flex Indexes][flex-indexes] for more information.
 
 [flex-indexes]: /server/7.6/n1ql/n1ql-language-reference/flex-indexes.html
-
 --
 
 [%hardbreaks]
@@ -2662,7 +2607,6 @@ ifdef::alt-markdown-links[]
 [use-replica-srv]: #use-replica-srv
 [queryUseReplica]: #queryUseReplica
 
-
 endif::alt-markdown-links[]
 Specifies whether a query can fetch data from a replica vBucket if active vBuckets are inaccessible.
 The possible values are:
@@ -2674,13 +2618,6 @@ The possible values are:
 * `unset` &mdash; read from replica is specified by the node-level setting.
 If the node-level setting is also `unset`, read from replica is disabled for this request.
 
-The [node-level][use-replica-srv] `use-replica` setting specifies the default for this property for a single node.
-The request-level parameter usually overrides the node-level setting.
-However, when the node-level setting is `off`, the request-level parameter cannot enable the property.
-
-In addition, the [cluster-level][queryUseReplica] `queryUseReplica` setting specifies the default for this property for the whole cluster.
-When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
-
 Do not enable read from replica when you require consistent results.
 Only SELECT queries that are not within a transaction can read from replica.
 
@@ -2689,9 +2626,15 @@ Reading from replica is only possible if the cluster uses Couchbase Server 7.6.0
 Note that KV range scans cannot currently be started on a replica vBucket.
 If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
 
+The [node-level][use-replica-srv] `use-replica` setting specifies the default for this property for a single node.
+The request-level parameter usually overrides the node-level setting.
+However, when the node-level setting is `off`, the request-level parameter cannot enable the property.
+
+In addition, the [cluster-level][queryUseReplica] `queryUseReplica` setting specifies the default for this property for the whole cluster.
+When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
+
 [use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
 [queryUseReplica]: ../n1ql-rest-settings/index.html#queryUseReplica
-
 --
 
 [%hardbreaks]
@@ -2703,6 +2646,7 @@ a¦ String
 
 
 a¦ [#identifier]
+*{lt}$identifier{gt}* +
 _additional +
 property_
 a¦ 
@@ -2723,7 +2667,6 @@ The value of the named parameter can be any JSON value.
 Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
 [section_srh_tlm_n1b]: /server/7.6/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
-
 --
 
 [%hardbreaks]
@@ -3071,7 +3014,6 @@ Time spent waiting for another service, such as index or data.
 For index scan, it is time spent waiting for GSI/indexer.
 
 For fetch, it is time spent waiting on the KV store.
-
 --
 
 [%hardbreaks]
@@ -3134,7 +3076,6 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 --
 Specify a user name and password via HTTP headers.
 This method can only be used to provide a single credential.
-
 --
 
 [%hardbreaks]
