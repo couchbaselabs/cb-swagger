@@ -921,7 +921,6 @@ Defines whether the user has access to all URLs, or only URLs specified by the a
 This field set must be set to `false` to enable the `allowed_urls` and `disallowed_urls` fields.
 
 Setting this field to `true` enables access to all endpoints.
-
 --
 
 [%hardbreaks]
@@ -944,7 +943,6 @@ For example, if you wish to allow access to all Google APIs, add the URL `https:
 To allow complete access to `localhost`, use `http://localhost`.
 
 Note that each URL must include the port, protocol, and all other components of the URL.
-
 --
 
 [%hardbreaks]
@@ -966,7 +964,6 @@ The CURL() function will disallow any URL that starts with this value.
 If both `allowed_urls` and `disallowed_urls` fields are populated, the `disallowed_urls` field takes precedence over `allowed_urls`.
 
 Note that each URL must include the port, protocol, and all other components of the URL.
-
 --
 
 [%hardbreaks]
@@ -1025,7 +1022,6 @@ a¦
 ifdef::alt-markdown-links[]
 [cleanupclientattempts]: #cleanupclientattempts
 
-
 endif::alt-markdown-links[]
 When enabled, the Query service preferentially aims to clean up just transactions that it has created, leaving transactions for the distributed cleanup process only when it is forced to.
 
@@ -1033,7 +1029,6 @@ The [node-level][cleanupclientattempts] `cleanupclientattempts` setting specifie
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [cleanupclientattempts]: ../n1ql-rest-admin/index.html#cleanupclientattempts
-
 --
 
 [%hardbreaks]
@@ -1053,7 +1048,6 @@ a¦
 ifdef::alt-markdown-links[]
 [cleanuplostattempts]: #cleanuplostattempts
 
-
 endif::alt-markdown-links[]
 When enabled, the Query service takes part in the distributed cleanup process, and cleans up expired transactions created by any client.
 
@@ -1061,7 +1055,6 @@ The [node-level][cleanuplostattempts] `cleanuplostattempts` setting specifies th
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [cleanuplostattempts]: ../n1ql-rest-admin/index.html#cleanuplostattempts
-
 --
 
 [%hardbreaks]
@@ -1081,7 +1074,6 @@ a¦
 ifdef::alt-markdown-links[]
 [cleanupwindow]: #cleanupwindow
 
-
 endif::alt-markdown-links[]
 Specifies how frequently the Query service checks its subset of [active transaction records][additional-storage-use] for cleanup.
 Decreasing this setting causes expiration transactions to be found more swiftly, with the tradeoff of increasing the number of reads per second used for the scanning process.
@@ -1097,12 +1089,12 @@ Valid units are:
 * `m` (minutes)
 * `h` (hours)
 
+[additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
+
 The [node-level][cleanupwindow] `cleanupwindow` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-[additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
 [cleanupwindow]: ../n1ql-rest-admin/index.html#cleanupwindow
-
 --
 
 [%hardbreaks]
@@ -1122,7 +1114,6 @@ a¦
 ifdef::alt-markdown-links[]
 [completed-limit]: #completed-limit
 
-
 endif::alt-markdown-links[]
 Sets the number of requests to be logged in the completed requests catalog.
 As new completed requests are added, old ones are removed.
@@ -1131,12 +1122,12 @@ Increase this when the completed request keyspace is not big enough to track the
 
 Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
 
+[sys-completed-config]: /server/8.0/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
+
 The [node-level][completed-limit] `completed-limit` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-[sys-completed-config]: /capella/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 [completed-limit]: ../n1ql-rest-admin/index.html#completed-limit
-
 --
 
 [%hardbreaks]
@@ -1156,10 +1147,7 @@ a¦
 ifdef::alt-markdown-links[]
 [completed-max-plan-size]: #completed-max-plan-size
 
-
 endif::alt-markdown-links[]
-This property is available in databases running Couchbase Server 7.6.0 and later.
-
 A plan size in bytes.
 Limits the size of query execution plans that can be logged in the completed requests catalog.
 Values larger than the maximum limit are silently treated as the maximum limit.
@@ -1168,12 +1156,12 @@ You must obtain execution plans for such queries via profiling or using the EXPL
 
 Refer to [Configure the Completed Requests][sys-completed-config] for more information.
 
+[sys-completed-config]: /server/8.0/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
+
 The [node-level][completed-max-plan-size] `completed-max-plan-size` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-[sys-completed-config]: /capella/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 [completed-max-plan-size]: ../n1ql-rest-admin/index.html#completed-max-plan-size
-
 --
 
 [%hardbreaks]
@@ -1194,7 +1182,6 @@ a¦
 ifdef::alt-markdown-links[]
 [completed-threshold]: #completed-threshold
 
-
 endif::alt-markdown-links[]
 A duration in milliseconds.
 All completed queries lasting longer than this threshold are logged in the completed requests catalog.
@@ -1204,12 +1191,12 @@ Specify any negative number to track none.
 
 Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
 
+[sys-completed-config]: /server/8.0/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
+
 The [node-level][completed-threshold] `completed-threshold` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-[sys-completed-config]: /capella/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 [completed-threshold]: ../n1ql-rest-admin/index.html#completed-threshold
-
 --
 
 [%hardbreaks]
@@ -1228,7 +1215,6 @@ a¦
 --
 ifdef::alt-markdown-links[]
 [loglevel]: #loglevel
-
 
 endif::alt-markdown-links[]
 Log level used in the logger.
@@ -1259,7 +1245,6 @@ The [node-level][loglevel] `loglevel` setting specifies this property for a sing
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [loglevel]: ../n1ql-rest-admin/index.html#loglevel
-
 --
 
 [%hardbreaks]
@@ -1281,7 +1266,6 @@ ifdef::alt-markdown-links[]
 [max-parallelism-srv]: #max-parallelism-srv
 [max_parallelism_req]: #max_parallelism_req
 
-
 endif::alt-markdown-links[]
 Specifies the maximum parallelism for queries on all Query nodes in the cluster.
 
@@ -1292,6 +1276,10 @@ Similarly, if the value is greater than the number of allowed cores, the maximum
 In Community Edition, the number of allowed cores cannot be greater than 4.
 In Enterprise Edition, there is no limit to the number of allowed cores.)
 
+Refer to [Max Parallelism][max-parallelism] for more information.
+
+[max-parallelism]: /server/8.0/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
+
 The [node-level][max-parallelism-srv] `max-parallelism` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
@@ -1300,12 +1288,8 @@ If a request includes this parameter, it will be capped by the node-level `max-p
 
 NOTE: To enable queries to run in parallel, you must specify the cluster-level `queryMaxParallelism` parameter, or specify the node-level `max-parallelism` parameter on all Query nodes.
 
-Refer to [Max Parallelism][max-parallelism] for more information.
-
-[max-parallelism]: /cloud/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
 [max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
 [max_parallelism_req]: ../n1ql-rest-query/index.html#max_parallelism_req
-
 --
 
 [%hardbreaks]
@@ -1326,7 +1310,6 @@ ifdef::alt-markdown-links[]
 [memory-quota-srv]: #memory-quota-srv
 [memory_quota_req]: #memory_quota_req
 
-
 endif::alt-markdown-links[]
 Specifies the maximum amount of memory a request may use on any Query node in the cluster, in MB.
 
@@ -1345,7 +1328,6 @@ If a request includes this parameter, it will be capped by the node-level `memor
 
 [memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
 [memory_quota_req]: ../n1ql-rest-query/index.html#memory_quota_req
-
 --
 
 [%hardbreaks]
@@ -1365,7 +1347,6 @@ a¦
 ifdef::alt-markdown-links[]
 [n1ql-feat-ctrl]: #n1ql-feat-ctrl
 
-
 endif::alt-markdown-links[]
 SQL++ feature control.
 This setting is provided for technical support only.
@@ -1374,7 +1355,6 @@ The [node-level][n1ql-feat-ctrl] `n1ql-feat-ctrl` setting specifies this propert
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [n1ql-feat-ctrl]: ../n1ql-rest-admin/index.html#n1ql-feat-ctrl
-
 --
 
 [%hardbreaks]
@@ -1392,10 +1372,7 @@ a¦
 ifdef::alt-markdown-links[]
 [node-quota]: #node-quota
 
-
 endif::alt-markdown-links[]
-This property is available in databases running Couchbase Server 7.6.0 and later.
-
 Sets the soft memory limit for the Query service on every Query node in the cluster, in MB.
 The garbage collector tries to keep below this target.
 It is not a hard, absolute limit, and memory usage may exceed this value.
@@ -1413,7 +1390,6 @@ The [node-level][node-quota] `node-quota` setting specifies this property for a 
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [node-quota]: ../n1ql-rest-admin/index.html#node-quota
-
 --
 
 [%hardbreaks]
@@ -1432,10 +1408,7 @@ a¦
 ifdef::alt-markdown-links[]
 [node-quota-val-percent]: #node-quota-val-percent
 
-
 endif::alt-markdown-links[]
-This property is available in databases running Couchbase Server 7.6.0 and later.
-
 The percentage of the `queryNodeQuota` that is dedicated to tracked value content memory across all active requests for every Query node in the cluster.
 (The `queryMemoryQuota` setting specifies the maximum amount of document memory an individual request may use on any Query node in the cluster.)
 
@@ -1443,7 +1416,6 @@ The [node-level][node-quota-val-percent] `node-quota-val-percent` setting specif
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [node-quota-val-percent]: ../n1ql-rest-admin/index.html#node-quota-val-percent
-
 --
 
 [%hardbreaks]
@@ -1465,9 +1437,10 @@ ifdef::alt-markdown-links[]
 [numatrs-srv]: #numatrs-srv
 [numatrs_req]: #numatrs_req
 
-
 endif::alt-markdown-links[]
 Specifies the total number of [active transaction records][additional-storage-use] for all Query nodes in the cluster.
+
+[additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
 
 The [node-level][numatrs-srv] `numatrs` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -1475,10 +1448,8 @@ When you change the cluster-level setting, the node-level setting is over-writte
 In addition, there is a [request-level][numatrs_req] `numatrs` parameter.
 If a request includes this parameter, it will be capped by the node-level `numatrs` setting.
 
-[additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
 [numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
 [numatrs_req]: ../n1ql-rest-query/index.html#numatrs_req
-
 --
 
 [%hardbreaks]
@@ -1500,10 +1471,7 @@ a¦
 ifdef::alt-markdown-links[]
 [num-cpus]: #num-cpus
 
-
 endif::alt-markdown-links[]
-This property is available in databases running Couchbase Server 7.6.0 and later.
-
 The number of CPUs the Query service can use on any Query node in the cluster.
 Note that this setting requires a restart of the Query service to take effect.
 
@@ -1517,7 +1485,6 @@ The [node-level][num-cpus] `num-cpus` setting specifies this property for a sing
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [num-cpus]: ../n1ql-rest-admin/index.html#num-cpus
-
 --
 
 [%hardbreaks]
@@ -1537,7 +1504,6 @@ ifdef::alt-markdown-links[]
 [pipeline-batch-srv]: #pipeline-batch-srv
 [pipeline_batch_req]: #pipeline_batch_req
 
-
 endif::alt-markdown-links[]
 Controls the number of items execution operators can batch for Fetch from the KV.
 
@@ -1549,7 +1515,6 @@ The minimum of that and the node-level `pipeline-batch` setting is applied.
 
 [pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
 [pipeline_batch_req]: ../n1ql-rest-query/index.html#pipeline_batch_req
-
 --
 
 [%hardbreaks]
@@ -1570,7 +1535,6 @@ ifdef::alt-markdown-links[]
 [pipeline-cap-srv]: #pipeline-cap-srv
 [pipeline_cap_req]: #pipeline_cap_req
 
-
 endif::alt-markdown-links[]
 Maximum number of items each execution operator can buffer between various operators.
 
@@ -1582,7 +1546,6 @@ The minimum of that and the node-level `pipeline-cap` setting is applied.
 
 [pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
 [pipeline_cap_req]: ../n1ql-rest-query/index.html#pipeline_cap_req
-
 --
 
 [%hardbreaks]
@@ -1602,7 +1565,6 @@ a¦
 ifdef::alt-markdown-links[]
 [prepared-limit]: #prepared-limit
 
-
 endif::alt-markdown-links[]
 Maximum number of prepared statements in the cache.
 When this cache reaches the limit, the least recently used prepared statements will be discarded as new prepared statements are created.
@@ -1611,7 +1573,6 @@ The [node-level][prepared-limit] `prepared-limit` setting specifies this propert
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [prepared-limit]: ../n1ql-rest-admin/index.html#prepared-limit
-
 --
 
 [%hardbreaks]
@@ -1632,7 +1593,6 @@ ifdef::alt-markdown-links[]
 [scan-cap-srv]: #scan-cap-srv
 [scan_cap_req]: #scan_cap_req
 
-
 endif::alt-markdown-links[]
 Maximum buffered channel size between the indexer client and the query service for index scans.
 This parameter controls when to use scan backfill.
@@ -1648,7 +1608,6 @@ The minimum of that and the node-level `scan-cap` setting is applied.
 
 [scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
 [scan_cap_req]: ../n1ql-rest-query/index.html#scan_cap_req
-
 --
 
 [%hardbreaks]
@@ -1669,7 +1628,6 @@ ifdef::alt-markdown-links[]
 [timeout-srv]: #timeout-srv
 [timeout_req]: #timeout_req
 
-
 endif::alt-markdown-links[]
 Maximum time to spend on the request before timing out (ns).
 
@@ -1687,7 +1645,6 @@ The minimum of that and the node-level `timeout` setting is applied.
 
 [timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
 [timeout_req]: ../n1ql-rest-query/index.html#timeout_req
-
 --
 
 [%hardbreaks]
@@ -1709,7 +1666,6 @@ ifdef::alt-markdown-links[]
 [txtimeout-srv]: #txtimeout-srv
 [txtimeout_req]: #txtimeout_req
 
-
 endif::alt-markdown-links[]
 Maximum time to spend on a transaction before timing out.
 This setting only applies to requests containing the `BEGIN TRANSACTION` statement, or to requests where the [tximplicit][tximplicit] parameter is set.
@@ -1729,16 +1685,16 @@ Valid units are:
 Specify `0ms` (the default value) to disable.
 When disabled, no timeout is applied and the transaction runs for however long it takes.
 
+[tximplicit]: ../n1ql-rest-query/index.html#tximplicit
+
 The [node-level][txtimeout-srv] `txtimeout` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 In addition, there is a [request-level][txtimeout_req] `txtimeout` parameter.
 If a request includes this parameter, it will be capped by the node-level `txtimeout` setting.
 
-[tximplicit]: ../n1ql-rest-query/index.html#tximplicit
 [txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
 [txtimeout_req]: ../n1ql-rest-query/index.html#txtimeout_req
-
 --
 
 [%hardbreaks]
@@ -1761,7 +1717,6 @@ The specified path must already exist.
 Only absolute paths are allowed.
 
 The default path is `var/lib/couchbase/tmp` within the Couchbase Server installation directory.
-
 --
 
 [%hardbreaks]
@@ -1783,7 +1738,6 @@ Setting the size to `0` disables backfill.
 Setting the size to `-1` means the size is unlimited.
 
 The maximum size is limited only by the available disk space.
-
 --
 
 [%hardbreaks]
@@ -1804,7 +1758,6 @@ ifdef::alt-markdown-links[]
 [use-cbo-srv]: #use-cbo-srv
 [use_cbo_req]: #use_cbo_req
 
-
 endif::alt-markdown-links[]
 Specifies whether the cost-based optimizer is enabled.
 
@@ -1816,7 +1769,6 @@ If a request does not include this parameter, the node-level setting is used, wh
 
 [use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
 [use_cbo_req]: ../n1ql-rest-query/index.html#use_cbo_req
-
 --
 
 [%hardbreaks]
@@ -1837,7 +1789,6 @@ ifdef::alt-markdown-links[]
 [use-replica-srv]: #use-replica-srv
 [use_replica_req]: #use_replica_req
 
-
 endif::alt-markdown-links[]
 Specifies whether a query can fetch data from a replica vBucket if active vBuckets are inaccessible.
 The possible values are:
@@ -1848,6 +1799,14 @@ The possible values are:
 
 * `unset` &mdash; read from replica is enabled or disabled at request level.
 
+Do not enable read from replica when you require consistent results.
+Only SELECT queries that are not within a transaction can read from replica.
+
+Reading from replica is only possible if the cluster uses Couchbase Server 7.6.0 or later.
+
+Note that KV range scans cannot currently be started on a replica vBucket.
+If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
+
 The [node-level][use-replica-srv] `use-replica` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
@@ -1855,17 +1814,8 @@ In addition, the [request-level][use_replica_req] `use_replica` parameter specif
 If a request does not include this parameter, or if the request-level parameter is `unset`, the node-level setting is used.
 If the request-level parameter and the node-level setting are both `unset`, read from replica is disabled for that request.
 
-Do not enable read from replica when you require consistent results.
-Only SELECT queries that are not within a transaction can read from replica.
-
-Reading from replica is only possible with databases running Couchbase Server 7.6.0 or later.
-
-Note that KV range scans cannot currently be started on a replica vBucket.
-If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
-
 [use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
 [use_replica_req]: ../n1ql-rest-query/index.html#use_replica_req
-
 --
 
 [%hardbreaks]
