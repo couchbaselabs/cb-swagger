@@ -29,7 +29,8 @@ a¦ {{>schemas}}
 {{/vars}}
 {{#additionalProperties}}
 {{! ADDITIONAL PROPERTY NAME }}
-a¦ {{#vendorExtensions}}{{#x-desc-name}}[#{{this}}]{{/x-desc-name}}{{/vendorExtensions}}
+a¦ {{#vendorExtensions}}{{#x-desc-name}}[#{{this}}]{{/x-desc-name}}
+{{#x-additionalPropertiesName}}*{lt}{{this}}{gt}* +{{/x-additionalPropertiesName}}{{/vendorExtensions}}
 _additional +
 property_
 {{! ADDITIONAL PROPERTY DESCRIPTION }}

@@ -15,11 +15,26 @@ endif::alt-markdown-links[]
 {{#description}}
 {{{unescapedDescription}}}
 {{/description}}
+{{#vendorExtensions}}
+{{#x-desc-more}}
+
+{{{this}}}
+{{/x-desc-more}}
+{{/vendorExtensions}}
 {{! if ref is present, fetch remote description}}
 {{#ref}}
 include::index.adoc[tag=desc-{{dataType}}, opts=optional]
 {{/ref}}
 --
+{{#vendorExtensions}}
+{{#x-enumDescriptions}}
+
+.Enum Descriptions
+....
+{{{this}}}
+....
+{{/x-enumDescriptions}}
+{{/vendorExtensions}}
 
 [%hardbreaks]
 {{! enumerated values}}
@@ -80,4 +95,5 @@ include::index.adoc[tag=desc-{{dataType}}, opts=optional]
 {{#vendorExtensions.x-has-example}}
 *Example:* `{{#isString}}+++"{{/isString}}{{{example}}}{{#isString}}"+++{{/isString}}`
 {{/vendorExtensions.x-has-example}}
+{{! OpenAPI generator doesn't support externalDocs in schemas, so don't try }}
 {blank}

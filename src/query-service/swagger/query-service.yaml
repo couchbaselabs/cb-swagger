@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Query Service REST API
   version: '7.6'
-  description: |
+  description: |-
     The Query Service REST API is provided by the Query service.
     This API enables you to run SQL++ queries and set request-level parameters.
 
@@ -254,7 +254,7 @@ components:
         type: array
         items: {}
         x-desc-name: args
-        description: |
+        description: |-
           Supplies the values for positional parameters in the statement.
           Applicable if the statement or prepared statement contains 1 or more positional parameters.
 
@@ -270,7 +270,7 @@ components:
       atrcollection:
         type: string
         x-desc-name: atrcollection_req
-        description: |
+        description: |-
           Specifies the collection where the [active transaction record][additional-storage-use] (ATR) is stored.
           The collection must be present.
           If not specified, the ATR is stored in the default collection in the default scope in the bucket containing the first mutated document within the transaction.
@@ -278,19 +278,20 @@ components:
           The value must be a string in the form `"bucket.scope.collection"` or `"namespace:bucket.scope.collection"`.
           If any part of the path contains a special character, that part of the path must be delimited in backticks &grave;&grave;.
 
+          [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
+        x-desc-more: |-
           The [node-level][atrcollection-srv] `atrcollection` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
 
-          [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
           [atrcollection-srv]: ../n1ql-rest-admin/index.html#atrcollection-srv
-        x-desc-refs: |
+        x-desc-refs: |-
           [atrcollection-srv]: #atrcollection-srv
         x-has-example: true
         example: default:`travel-sample`.transaction.test
       auto_execute:
         type: boolean
         x-desc-name: auto_execute
-        description: |
+        description: |-
           Specifies that prepared statements should be executed automatically as soon as they are created.
           This saves you from having to make two separate requests in cases where you want to prepare a statement and execute it immediately.
 
@@ -304,7 +305,7 @@ components:
       client_context_id:
         type: string
         x-desc-name: client_context_id
-        description: |
+        description: |-
           A piece of data supplied by the client that is echoed in the response, if present.
           SQL++ is agnostic about the content of this parameter; it is just echoed in the response.
 
@@ -313,7 +314,7 @@ components:
       compression:
         type: string
         x-desc-name: compression
-        description: |
+        description: |-
           Compression format to use for response data on the wire.
 
           Values are case-insensitive.
@@ -325,18 +326,18 @@ components:
       controls:
         type: boolean
         x-desc-name: controls_req
-        description: |
+        description: |-
           Specifies if there should be a controls section returned with the request results.
 
           When set to `true`, the query response document includes a controls section with runtime information provided along with the request, such as positional and named parameters or settings.
 
           If the request qualifies for caching, these values will also be cached in the `completed_requests` system keyspace.
-
+        x-desc-more: |-
           The [node-level][controls-srv] `controls` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
 
           [controls-srv]: ../n1ql-rest-admin/index.html#controls-srv
-        x-desc-refs: |
+        x-desc-refs: |-
           [controls-srv]: #controls-srv
         x-has-example: true
         example: true
@@ -345,7 +346,7 @@ components:
         items:
           $ref: "#/components/schemas/Credentials"
         x-desc-name: creds
-        description: |
+        description: |-
           Specifies the login credentials.
           The Query API supports two types of identity: local (or bucket) and admin.
 
@@ -362,10 +363,10 @@ components:
       durability_level:
         type: string
         x-desc-name: durability_level
-        description: |
+        description: |-
           The level of [durability][durability] for mutations produced by the request.
 
-          If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the [tximplicit](#tximplicit) parameter set to `true`, the durability level is specified for all mutations within that transaction.
+          If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the `tximplicit` parameter set to `true`, the durability level is specified for all mutations within that transaction.
 
           Durability is also supported for non-transactional DML statements.
           In this case, the `kvtimeout` parameter is used as the durability timeout.
@@ -387,13 +388,13 @@ components:
       encoded_plan:
         type: string
         x-desc-name: encoded_plan
-        description: |
+        description: |-
           In Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
           It is included for compatibility with previous versions of Couchbase Server.
       encoding:
         type: string
         x-desc-name: encoding
-        description: |
+        description: |-
           Desired character encoding for the query results.
 
           Only possible value is `UTF-8` and is case-insensitive.
@@ -402,7 +403,7 @@ components:
       format:
         type: string
         x-desc-name: format
-        description: |
+        description: |-
           Desired format for the query results.
 
           Values are case-insensitive.
@@ -414,7 +415,7 @@ components:
       kvtimeout:
         type: string
         x-desc-name: kvtimeout
-        description: |
+        description: |-
           The approximate time to wait for a KV get operation before timing out.
           This applies to statements within a transaction, and to non-transactional statements, whether `durability_level` is set or not.
 
@@ -441,9 +442,11 @@ components:
         type: integer
         format: int32
         x-desc-name: max_parallelism_req
-        description: |
+        description: |-
           Specifies the maximum parallelism for the query.
 
+          The default value is the same as the number of partitions of the index selected for the query.
+        x-desc-more: |-
           The [node-level][max-parallelism-srv] `max-parallelism` setting specifies the ceiling for this parameter for a single node.
           If the request-level parameter is zero or negative, the parallelism for the query is set to the node-level setting.
           If the request-level parameter is greater than zero and less than the node-level setting, the request-level parameter overrides the node-level setting.
@@ -454,11 +457,9 @@ components:
 
           To enable queries to run in parallel, you must specify the cluster-level `queryMaxParallelism` parameter, or specify the node-level `max-parallelism` parameter on all Query nodes.
 
-          The default value is the same as the number of partitions of the index selected for the query.
-
           [max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
           [queryMaxParallelism]: ../n1ql-rest-settings/index.html#queryMaxParallelism
-        x-desc-refs: |
+        x-desc-refs: |-
           [max-parallelism-srv]: #max-parallelism-srv
           [queryMaxParallelism]: #queryMaxParallelism
         x-has-example: true
@@ -467,7 +468,7 @@ components:
         type: integer
         format: int32
         x-desc-name: memory_quota_req
-        description: |
+        description: |-
           Specifies the maximum amount of memory the request may use, in MB.
 
           Specify `0` (the default value) to disable.
@@ -478,7 +479,7 @@ components:
 
           Within a transaction, this setting enforces the memory quota for the transaction by tracking the
           delta table and the transaction log (approximately).
-
+        x-desc-more: |-
           The [node-level][memory-quota-srv] `memory-quota` setting specifies the ceiling for this parameter for a single node.
           If the node-level setting is zero (the default), the request-level parameter overrides the node-level setting.
           If the node-level setting is greater than zero, the request-level parameter is capped by the node-level setting.
@@ -488,7 +489,7 @@ components:
 
           [memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
           [queryMemoryQuota]: ../n1ql-rest-settings/index.html#queryMemoryQuota
-        x-desc-refs: |
+        x-desc-refs: |-
           [memory-quota-srv]: #memory-quota-srv
           [queryMemoryQuota]: #queryMemoryQuota
         x-has-default: true
@@ -515,20 +516,21 @@ components:
         type: integer
         format: int32
         x-desc-name: numatrs_req
-        description: |
+        description: |-
           Specifies the total number of [active transaction records][additional-storage-use].
           Must be a positive integer.
 
+          [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
+        x-desc-more: |-
           The [node-level][numatrs-srv] `numatrs` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
 
           In addition, the [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
           When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-          [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
           [numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
           [queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
-        x-desc-refs: |
+        x-desc-refs: |-
           [numatrs-srv]: #numatrs-srv
           [queryNumAtrs]: #queryNumAtrs
         x-has-default: true
@@ -539,9 +541,9 @@ components:
         type: integer
         format: int32
         x-desc-name: pipeline_batch_req
-        description: |
+        description: |-
           Controls the number of items execution operators can batch for Fetch from the KV.
-
+        x-desc-more: |-
           The [node-level][pipeline-batch-srv] `pipeline-batch` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
@@ -550,7 +552,7 @@ components:
 
           [pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
           [queryPipelineBatch]: ../n1ql-rest-settings/index.html#queryPipelineBatch
-        x-desc-refs: |
+        x-desc-refs: |-
           [pipeline-batch-srv]: #pipeline-batch-srv
           [queryPipelineBatch]: #queryPipelineBatch
         x-has-example: true
@@ -559,9 +561,9 @@ components:
         type: integer
         format: int32
         x-desc-name: pipeline_cap_req
-        description: |
+        description: |-
           Maximum number of items each execution operator can buffer between various operators.
-
+        x-desc-more: |-
           The [node-level][pipeline-cap-srv] `pipeline-cap` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
@@ -570,7 +572,7 @@ components:
 
           [pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
           [queryPipelineCap]: ../n1ql-rest-settings/index.html#queryPipelineCap
-        x-desc-refs: |
+        x-desc-refs: |-
           [pipeline-cap-srv]: #pipeline-cap-srv
           [queryPipelineCap]: #queryPipelineCap
         x-has-example: true
@@ -578,7 +580,7 @@ components:
       prepared:
         type: string
         x-desc-name: prepared
-        description: |
+        description: |-
           _Required_ if `statement` not provided.
 
           The name of the prepared SQL++ statement to be executed.
@@ -592,7 +594,7 @@ components:
       preserve_expiry:
         type: boolean
         x-desc-name: preserve_expiry
-        description: |
+        description: |-
           Specifies whether documents should keep their current expiration setting when modified by a DML statement.
 
           If `true`, documents will keep any existing expiration setting when modified by a DML statement.
@@ -608,21 +610,21 @@ components:
       pretty:
         type: boolean
         x-desc-name: pretty_req
-        description: |
+        description: |-
           Specifies the query results returned in pretty format.
-
+        x-desc-more: |-
           The [node-level][pretty-srv] `pretty` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
 
           [pretty-srv]: ../n1ql-rest-admin/index.html#pretty-srv
-        x-desc-refs: |
+        x-desc-refs: |-
           [pretty-srv]: #pretty-srv
         x-has-example: true
         example: false
       profile:
         type: string
         x-desc-name: profile_req
-        description: |
+        description: |-
           Specifies if there should be a profile section returned with the request results.
           The valid values are:
 
@@ -637,12 +639,12 @@ components:
           This information will be included in the `system:active_requests` and `system:completed_requests` keyspaces.
 
           If `profile` is not set as one of the above values, then the profile setting does not change.
-
+        x-desc-more: |-
           The [node-level][profile-srv] `profile` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
 
           [profile-srv]: ../n1ql-rest-admin/index.html#profile-srv
-        x-desc-refs: |
+        x-desc-refs: |-
           [profile-srv]: #profile-srv
         enum: ["off", "phases", "timings"]
         x-has-example: true
@@ -650,7 +652,7 @@ components:
       query_context:
         type: string
         x-desc-name: query_context
-        description: |
+        description: |-
           Specifies the namespace, bucket, and scope used to resolve partial keyspace references within the request.
 
           The query context may be a _full path_, containing namespace, bucket, and scope; or a _relative path_, containing just the bucket and scope.
@@ -663,7 +665,7 @@ components:
       readonly:
         type: boolean
         x-desc-name: readonly
-        description: |
+        description: |-
           Controls whether a query can change a resulting recordset.
 
           If `readonly` is `true`, then the following statements are not allowed:
@@ -684,13 +686,13 @@ components:
         type: integer
         format: int32
         x-desc-name: scan_cap_req
-        description: |
+        description: |-
           Maximum buffered channel size between the indexer client and the query service for index scans.
           This parameter controls when to use scan backfill.
 
           Use `0` or a negative number to disable.
           Smaller values reduce GC, while larger values reduce indexer backfill.
-
+        x-desc-more: |-
           The [node-level][scan-cap-srv] `scan-cap` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
@@ -699,7 +701,7 @@ components:
 
           [scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
           [queryScanCap]: ../n1ql-rest-settings/index.html#queryScanCap
-        x-desc-refs: |
+        x-desc-refs: |-
           [scan-cap-srv]: #scan-cap-srv
           [queryScanCap]: #queryScanCap
         x-has-example: true
@@ -707,7 +709,7 @@ components:
       scan_consistency:
         type: string
         x-desc-name: scan_consistency
-        description: |
+        description: |-
           Specifies the consistency guarantee or constraint for index scanning.
           The valid values are:
 
@@ -736,7 +738,7 @@ components:
           For multi-statement requests, the default behavior is RYOW within each request.
           If you want to disable RYOW within a request, add a separate `request_consistency` parameter that can be set to `not_bounded`.
 
-          If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the [tximplicit](#tximplicit) parameter set to `true`, then this parameter sets the transactional scan consistency.
+          If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the `tximplicit` parameter set to `true`, then this parameter sets the transactional scan consistency.
           Refer to [Transactional Scan Consistency][transactional-scan-consistency] for details.
 
           [transactional-scan-consistency]: /server/7.6/n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency
@@ -749,7 +751,7 @@ components:
         type: object
         x-type: array
         x-desc-name: scan_vector
-        description: |
+        description: |-
           _Required_ if `scan_consistency` is `at_plus` and `scan_vectors` not provided.
 
           Specify the lower bound vector timestamp for one keyspace when using `at_plus` scan consistency.
@@ -779,7 +781,7 @@ components:
         type: object
         x-type: array
         x-desc-name: scan_vectors
-        description: |
+        description: |-
           _Required_ if `scan_consistency` is `at_plus` and `scan_vector` not provided.
 
           A map from keyspace names to scan vectors.
@@ -790,7 +792,7 @@ components:
         type: string
         format: duration
         x-desc-name: scan_wait
-        description: |
+        description: |-
           Can be supplied with `scan_consistency` values of `request_plus`, `statement_plus` and `at_plus`.
 
           Specifies the maximum time the client is willing to wait for an index to catch up to the vector timestamp in the request.
@@ -824,7 +826,7 @@ components:
       sort_projection:
         type: boolean
         x-desc-name: sort_projection
-        description: |
+        description: |-
           If `true`, causes statement projection terms to be sorted alphabetically.
 
           If `false` (the default), statement projection terms are returned in the order specified by the query.
@@ -835,7 +837,7 @@ components:
       statement:
         type: string
         x-desc-name: statement
-        description: |
+        description: |-
           _Required_ if `prepared` not provided.
 
           Any valid SQL++ statement for a POST request, or a read-only SQL++ statement (SELECT, EXPLAIN) for a GET request.
@@ -855,7 +857,7 @@ components:
         type: string
         format: duration
         x-desc-name: timeout_req
-        description: |
+        description: |-
           Maximum time to spend on the request before timing out.
 
           The value for this parameter is a string.
@@ -872,9 +874,9 @@ components:
           Specify a duration of `0` or a negative duration to disable.
           When disabled, no timeout is applied and the request runs for however long it takes.
 
-          If [tximplicit](#tximplicit) or [txid](#txid) is set, this parameter is ignored.
+          If `tximplicit` or `txid` is set, this parameter is ignored.
           The request inherits the remaining time of the transaction as timeout.
-
+        x-desc-more: |-
           The [node-level][timeout-srv] `timeout` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
           However, if the node-level setting is greater than 0, the timeout for the query is limited to the node-level setting.
@@ -884,7 +886,7 @@ components:
 
           [timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
           [queryTimeout]: ../n1ql-rest-settings/index.html#queryTimeout
-        x-desc-refs: |
+        x-desc-refs: |-
           [timeout-srv]: #timeout-srv
           [queryTimeout]: #queryTimeout
         x-has-example: true
@@ -892,14 +894,14 @@ components:
       txdata:
         type: object
         x-desc-name: txdata
-        description: |
+        description: |-
           Transaction data.
           For internal use only.
       txid:
         type: string
         format: UUID
         x-desc-name: txid
-        description: |
+        description: |-
           _Required_ for statements within a transaction.
 
           Transaction ID.
@@ -913,14 +915,14 @@ components:
       tximplicit:
         type: boolean
         x-desc-name: tximplicit
-        description: |
+        description: |-
           Specifies that a DML statement is a singleton transaction.
 
           When this parameter is true, the Query service starts a transaction and executes the statement.
           If execution is successful, the Query service commits the transaction; otherwise the transaction is rolled back.
 
           The statement may not be part of an ongoing transaction.
-          If the [txid](#txid) request-level parameter is set, the `tximplicit` parameter is ignored.
+          If the `txid` request-level parameter is set, the `tximplicit` parameter is ignored.
         x-has-default: true
         x-has-example: true
         default: false
@@ -929,7 +931,7 @@ components:
         type: integer
         format: int32
         x-desc-name: txstmtnum
-        description: |
+        description: |-
           Transaction statement number.
           The transaction statement number must be a positive integer, and must be higher than any previous transaction statement numbers in the transaction.
           If the transaction statement number is lower than the transaction statement number for any previous statement, an error is generated.
@@ -939,12 +941,12 @@ components:
         type: string
         format: duration
         x-desc-name: txtimeout_req
-        description: |
+        description: |-
           Maximum time to spend on a transaction before timing out.
-          Only applies to `BEGIN TRANSACTION` statements, or DML statements for which [tximplicit](#tximplicit) is set.
+          Only applies to `BEGIN TRANSACTION` statements, or DML statements for which `tximplicit` is set.
           For other statements, it is ignored.
 
-          Within a transaction, the request-level [timeout](#timeout_req) parameter is ignored.
+          Within a transaction, the request-level `timeout` parameter is ignored.
           The transaction timeout clock starts when the `BEGIN WORK` statement is successful.
           Once the transaction timeout is reached, no statement is allowed to continue in the transaction.
 
@@ -962,6 +964,8 @@ components:
           Specify a duration of `0` to disable.
           When disabled, the request-level timeout is set to the default.
 
+          The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sessions or redirected input.
+        x-desc-more: |-
           The [node-level][txtimeout-srv] `txtimeout` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
           However, if the node-level setting is greater than 0, the transaction timeout for the query is limited to the node-level setting.
@@ -969,11 +973,9 @@ components:
           In addition, the [cluster-level][queryTxTimeout] `queryTxTimeout` setting specifies the default for this parameter for the whole cluster.
           When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
-          The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sessions or redirected input.
-
           [txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
           [queryTxTimeout]: ../n1ql-rest-settings/index.html#queryTxTimeout
-        x-desc-refs: |
+        x-desc-refs: |-
           [txtimeout-srv]: #txtimeout-srv
           [queryTxTimeout]: #queryTxTimeout
         x-has-example: true
@@ -981,9 +983,9 @@ components:
       use_cbo:
         type: boolean
         x-desc-name: use_cbo_req
-        description: |
+        description: |-
           Specifies whether the cost-based optimizer is enabled.
-
+        x-desc-more: |-
           The [node-level][use-cbo-srv] `use-cbo` setting specifies the default for this parameter for a single node.
           The request-level parameter overrides the node-level setting.
 
@@ -992,7 +994,7 @@ components:
 
           [use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
           [queryUseCBO]: ../n1ql-rest-settings/index.html#queryUseCBO
-        x-desc-refs: |
+        x-desc-refs: |-
           [use-cbo-srv]: #use-cbo-srv
           [queryUseCBO]: #queryUseCBO
         x-has-example: true
@@ -1001,7 +1003,7 @@ components:
         type: boolean
         x-desc-name: use_fts
         x-desc-edition: "{enterprise}"
-        description: |
+        description: |-
           Specifies that the query should use a Search index.
 
           If the query contains a `USING FTS` hint, that takes priority over this parameter.
@@ -1025,7 +1027,7 @@ components:
         default: unset
         example: on
         x-desc-name: use_replica_req
-        description: |
+        description: |-
           Specifies whether a query can fetch data from a replica vBucket if active vBuckets are inaccessible.
           The possible values are:
 
@@ -1036,13 +1038,6 @@ components:
           * `unset` &mdash; read from replica is specified by the node-level setting.
           If the node-level setting is also `unset`, read from replica is disabled for this request.
 
-          The [node-level][use-replica-srv] `use-replica` setting specifies the default for this property for a single node.
-          The request-level parameter usually overrides the node-level setting.
-          However, when the node-level setting is `off`, the request-level parameter cannot enable the property.
-
-          In addition, the [cluster-level][queryUseReplica] `queryUseReplica` setting specifies the default for this property for the whole cluster.
-          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
-
           Do not enable read from replica when you require consistent results.
           Only SELECT queries that are not within a transaction can read from replica.
 
@@ -1050,16 +1045,23 @@ components:
 
           Note that KV range scans cannot currently be started on a replica vBucket.
           If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
+        x-desc-more: |-
+          The [node-level][use-replica-srv] `use-replica` setting specifies the default for this property for a single node.
+          The request-level parameter usually overrides the node-level setting.
+          However, when the node-level setting is `off`, the request-level parameter cannot enable the property.
+
+          In addition, the [cluster-level][queryUseReplica] `queryUseReplica` setting specifies the default for this property for the whole cluster.
+          When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
 
           [use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
           [queryUseReplica]: ../n1ql-rest-settings/index.html#queryUseReplica
-        x-desc-refs: |
+        x-desc-refs: |-
           [use-replica-srv]: #use-replica-srv
           [queryUseReplica]: #queryUseReplica
     additionalProperties:
       x-desc-name: identifier
       x-additionalPropertiesName: $identifier
-      description: |
+      description: |-
         Supplies the value for a named parameter in the statement.
         Applicable if the statement or prepared statement contains 1 or more named parameters.
 
@@ -1183,7 +1185,7 @@ components:
           query.execute.index_not_found
       sev:
         type: integer
-        description: |
+        description: |-
           One of the following SQL++ severity levels, listed in order of severity:
 
            1. Severe
@@ -1291,7 +1293,7 @@ components:
         description: IP address and port number of the node where the query was executed.
       phaseCounts:
         type: object
-        description: |
+        description: |-
           Count of documents processed at selective phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
         x-has-example: true
         example:
@@ -1301,7 +1303,7 @@ components:
           }
       phaseOperators:
         type: object
-        description: |
+        description: |-
           Indicates the numbers of each kind of query operator involved in different phases of the query processing.
 
           For instance, a non-covering index path might involve one index scan and one fetch operator.
@@ -1318,7 +1320,7 @@ components:
           }
       phaseTimes:
         type: object
-        description: |
+        description: |-
           Cumulative execution times for various phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
         x-has-example: true
         example:
@@ -1334,7 +1336,7 @@ components:
       executionTimings:
         type: object
         title: Execution Timings
-        description: |
+        description: |-
           Present only if `profile` was set to `"timings"` in the [Request Parameters](#Request).
 
           The execution details for various phases involved in the query execution, such as kernel and service execution times, number of documents processed at each query operator in each phase, and number of phase switches.
@@ -1385,7 +1387,7 @@ components:
               servTime:
                 type: string
                 format: duration
-                description: |
+                description: |-
                   Time spent waiting for another service, such as index or data.
 
                   For index scan, it is time spent waiting for GSI/indexer.
@@ -1401,7 +1403,7 @@ components:
   Header:
     type: http
     scheme: basic
-    description: |
+    description: |-
       Specify a user name and password via HTTP headers.
       This method can only be used to provide a single credential.
 
