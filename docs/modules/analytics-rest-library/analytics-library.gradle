@@ -2,7 +2,7 @@ apply plugin: 'org.openapi.generator'
 
 openApiGenerate {
     generatorName = "asciidoc"
-    inputSpec = file("swagger/analytics-library.yaml").getAbsolutePath().toString()
+    inputSpec = file("attachments/analytics-library.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/analytics-rest-library/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cb-swagger"

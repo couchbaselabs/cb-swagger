@@ -2,7 +2,7 @@ apply plugin: 'org.openapi.generator'
 
 openApiGenerate {
     generatorName = "asciidoc"
-    inputSpec = file("swagger/admin.yaml").getAbsolutePath().toString()
+    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/admin/admin.yaml"
     outputDir = "${rootDir}/docs/modules/n1ql-rest-admin/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cb-swagger"
