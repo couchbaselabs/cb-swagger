@@ -5,7 +5,7 @@ This project uses the https://openapi-generator.tech/docs/plugins/#gradle[OpenAP
 == Usage guide
 
 This repository handles several OpenAPI subprojects.
-Each subproject is stored in its own subfolder within the `src` folder.
+Each subproject is stored in its own subfolder within the `docs/modules` folder.
 
 === Build Script
 
@@ -19,12 +19,12 @@ These do not have a gradle build script.
 
 === OpenAPI Specification
 
-Within each subproject, the OpenAPI Specification (JSON or YAML) is stored in a folder called `swagger`.
+Within each subproject, the OpenAPI Specification (JSON or YAML) is stored in a folder called `attachments`.
 (For some subprojects, the OpenAPI specification file may be stored remotely, i.e. alongside the development source files.)
 
 === AsciiDoc Content
 
-Each generated AsciiDoc page is stored in its own folder in the `docs` folder.
+Within each subproject, the generated AsciiDoc page is stored in the `pages` folder.
 (In Antora terms, each generated AsciiDoc page is stored in its own module.)
 For each subproject, additional AsciiDoc content may be stored in the `partials` folder and its subfolders.
 
