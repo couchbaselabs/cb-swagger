@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
+DO NOT EDIT! See https://github.com/couchbase/query
 
 :leveloffset: 1
 
@@ -32,7 +32,7 @@ This API enables you to retrieve statistics about the clusters and nodes running
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : capella
+__Version__ : 8.0
 
 [discrete#host]
 = Host information
@@ -2515,8 +2515,6 @@ GET /admin/gc
 
 [markdown]
 --
-This endpoint is available in databases running Couchbase Server 7.6.0 and later.
-
 Runs the garbage collector.
 
 A message is written to `query.log` whenever the garbage collector endpoint is invoked.
@@ -2804,9 +2802,7 @@ POST /admin/gc
 
 [markdown]
 --
-This endpoint is available in databases running Couchbase Server 7.6.0 and later.
-
-Runs the garbage collector and attempts to return freed memory to the OS.
+Run the garbage collector and attempts to return freed memory to the OS.
 
 A message is written to `query.log` whenever the garbage collector endpoint is invoked.
 --
@@ -4935,7 +4931,7 @@ All completed requests that match these parameters are tracked in the completed 
 
 Refer to [Configure Completed Requests][sys-completed-config] for more information and examples.
 
-[sys-completed-config]: /server/8.0/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
+[sys-completed-config]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 //end::desc-Logging_Parameters[]
 endif::model-descriptions[]
 
@@ -5031,7 +5027,7 @@ A unique string which tags a set of qualifiers.
 
 Refer to [Configure Completed Requests][sys-completed-config] for more information.
 
-[sys-completed-config]: /server/8.0/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
+[sys-completed-config]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 --
 
 [%hardbreaks]
@@ -5088,7 +5084,6 @@ a¦
 --
 A LIKE search pattern to match against the query text.
 If specified, all completed queries where the pattern is found are logged.
-
 --
 
 [%hardbreaks]
@@ -5121,7 +5116,7 @@ a¦
 [markdown]
 --
 The number of errors.
-If specified, all completed queries that return at least this many errors are logged. 
+If specified, all completed queries that return at least this many errors are logged.
 Queries with fewer errors are not logged.
 --
 
@@ -5204,13 +5199,18 @@ endif::collapse-models[]
 
 //tag::Logging_Parameters_Plan_Pairs[]
 
+ifdef::model-descriptions[]
+//tag::desc-Logging_Parameters_Plan_Pairs[]
+An object containing one or more field:value pairs.
+//end::desc-Logging_Parameters_Plan_Pairs[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-
+*{lt}field{gt}* +
 _additional +
 property_
 a¦ 
@@ -5694,6 +5694,24 @@ a¦ String
 
 
 a¦ 
+*cpuTime* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The total sum of [execTime][exec_time] across all operators.
+
+[exec_time]: ../n1ql-rest-query/index.html#exec_time
+--
+
+[%hardbreaks]
+*Example:* `+++"90.734075ms"+++`
+{blank}
+a¦ String (duration)
+
+
+a¦ 
 *elapsedTime* +
 _optional_
 a¦ 
@@ -5733,8 +5751,7 @@ a¦
 --
 The total sum of [servTime][serv_time] across all operators.
 
-[serv_time]: ../n1ql-rest-query/index.html#serv_time  
-
+[serv_time]: ../n1ql-rest-query/index.html#serv_time
 --
 
 [%hardbreaks]
@@ -5946,12 +5963,11 @@ a¦
 --
 The memory session size for the request, in bytes.
 
-Each request has a dedicated memory session. 
+Each request has a dedicated memory session.
 When a query requires a document or value, memory is allocated from this session based on the size of the document or value.
-Once the document or value is processed, the allocated memory is returned back to the session, enabling it to be reused by the request. 
+Once the document or value is processed, the allocated memory is returned back to the session, enabling it to be reused by the request.
 
 This metric is available only when `node-quota` and `node-quota-val-percent` are configured for the node.
-
 --
 
 [%hardbreaks]
@@ -6064,8 +6080,7 @@ a¦
 --
 The total sum of [kernTime][kern_time] across all operators.
 
-[kern_time]: ../n1ql-rest-query/index.html#kern_time  
-
+[kern_time]: ../n1ql-rest-query/index.html#kern_time
 --
 
 [%hardbreaks]
@@ -6081,9 +6096,8 @@ a¦
 
 [markdown]
 --
-An array of text phrases that provide a basic analysis of the request execution. 
+An array of text phrases that provide a basic analysis of the request execution.
 These phrases highlight notable aspects of the execution, such as high document counts during primary scans or warnings related to memory and resource usages.
-
 --
 
 [%hardbreaks]
@@ -6177,7 +6191,7 @@ Specifies whether the query engine should create a prepared statement every time
 
 Refer to [Auto-Prepare][auto-prepare] for more information.
 
-[auto-prepare]: /cloud/n1ql/n1ql-language-reference/prepare.html#auto-prepare
+[auto-prepare]: ../n1ql/n1ql-language-reference/prepare.html#auto-prepare
 --
 
 [%hardbreaks]
@@ -6312,7 +6326,7 @@ Increase this when the completed request keyspace is not big enough to track the
 
 Refer to [Configure Completed Requests][sys-completed-config] for more information and examples.
 
-[sys-completed-config]: /cloud/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
+[sys-completed-config]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 
 The [cluster-level][queryCompletedLimit] `queryCompletedLimit` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -6330,7 +6344,7 @@ a¦ Integer (int32)
 a¦ [#completed-max-plan-size]
 *completed-max-plan-size* +
 _optional_
-a¦ [.status]##Couchbase Server 7.6##
+a¦ 
 
 [markdown]
 --
@@ -6338,8 +6352,6 @@ ifdef::alt-markdown-links[]
 [queryCompletedMaxPlanSize]: #queryCompletedMaxPlanSize
 
 endif::alt-markdown-links[]
-This property is available in databases running Couchbase Server 7.6.0 and later.
-
 A plan size in bytes.
 Limits the size of query execution plans that can be logged in the completed requests catalog.
 Values larger than the maximum limit are silently treated as the maximum limit.
@@ -6348,7 +6360,7 @@ You must obtain execution plans for such queries via profiling or using the EXPL
 
 Refer to [Configure Completed Requests][sys-completed-config] for more information.
 
-[sys-completed-config]: /cloud/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
+[sys-completed-config]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 
 The [cluster-level][queryCompletedMaxPlanSize] `queryCompletedMaxPlanSize` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -6380,7 +6392,7 @@ Specify `0` (the default) to disable completed request streaming.
 
 Refer to [Stream Completed Requests][sys-history] for more information and examples.
 
-[sys-history]: /server/8.0/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-history
+[sys-history]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-history
 --
 
 [%hardbreaks]
@@ -6407,7 +6419,7 @@ Specify any negative number to track none.
 
 Refer to [Configure Completed Requests][sys-completed-config] for more information and examples.
 
-[sys-completed-config]: /cloud/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
+[sys-completed-config]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 
 The [cluster-level][queryCompletedThreshold] `queryCompletedThreshold` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -6633,7 +6645,7 @@ In Community Edition, the number of allowed cores cannot be greater than 4.
 In Enterprise Edition, there is no limit to the number of allowed cores.)
 Refer to [Max Parallelism][max-parallelism] for more information.
 
-[max-parallelism]: /cloud/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
+[max-parallelism]: ../n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
 
 The [cluster-level][queryMaxParallelism] `queryMaxParallelism` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -6671,9 +6683,8 @@ Specifies the maximum amount of memory a request may use on this node, in MB.
 Specify `0` (the default value) to disable.
 When disabled, there is no quota.
 
-This parameter enforces a ceiling on the memory used for the tracked documents required for 
-processing a request. It does not take into account any other memory that might be used to 
-process a request, such as the stack, the operators, or some intermediate values.
+This parameter enforces a ceiling on the memory used for the tracked documents required for processing a request.
+It does not take into account any other memory that might be used to process a request, such as the stack, the operators, or some intermediate values.
 
 Within a transaction, this setting enforces the memory quota for the transaction by tracking the
 delta table and the transaction log (approximately).
@@ -6746,8 +6757,7 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 SQL++ feature control.
 This setting is provided for technical support only.
-The value may be an integer.
-On databases running Couchbase Server 7.6 or later, it may also be a string representing a hexadecimal number.
+The value may be an integer, or a string representing a hexadecimal number.
 
 The [cluster-level][queryN1QLFeatCtrl] `queryN1QLFeatCtrl` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -6765,7 +6775,7 @@ a¦ Integer (int32)
 a¦ [#node-quota]
 *node-quota* +
 _optional_
-a¦ [.status]##Couchbase Server 7.6##
+a¦ 
 
 [markdown]
 --
@@ -6773,8 +6783,6 @@ ifdef::alt-markdown-links[]
 [queryNodeQuota]: #queryNodeQuota
 
 endif::alt-markdown-links[]
-This property is available in databases running Couchbase Server 7.6.0 and later.
-
 Sets the soft memory limit for the Query service on this node, in MB.
 The garbage collector tries to keep below this target.
 It is not a hard, absolute limit, and memory usage may exceed this value.
@@ -6803,7 +6811,7 @@ a¦ Integer (int32)
 a¦ [#node-quota-val-percent]
 *node-quota-val-percent* +
 _optional_
-a¦ [.status]##Couchbase Server 7.6##
+a¦ 
 
 [markdown]
 --
@@ -6811,8 +6819,6 @@ ifdef::alt-markdown-links[]
 [queryNodeQuotaValPercent]: #queryNodeQuotaValPercent
 
 endif::alt-markdown-links[]
-This property is available in databases running Couchbase Server 7.6.0 and later.
-
 The percentage of the `node-quota` that is dedicated to tracked value content memory across all active requests on this node.
 (The `memory-quota` setting specifies the maximum amount of document memory an individual request may use on this node.)
 
@@ -6833,7 +6839,7 @@ a¦ Integer (int32)
 a¦ [#num-cpus]
 *num-cpus* +
 _optional_
-a¦ [.status]##Couchbase Server 7.6##
+a¦ 
 
 [markdown]
 --
@@ -6841,8 +6847,6 @@ ifdef::alt-markdown-links[]
 [queryNumCpus]: #queryNumCpus
 
 endif::alt-markdown-links[]
-This property is available in databases running Couchbase Server 7.6.0 and later.
-
 The number of CPUs the Query service can use on this node.
 Note that this setting requires a restart of the Query service to take effect.
 
@@ -6878,7 +6882,7 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 Specifies the total number of [active transaction records][additional-storage-use].
 
-[additional-storage-use]: /cloud/learn/data/transactions.html#active-transaction-record-entries
+[additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
 
 The [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -7053,7 +7057,7 @@ NOTE: If `profile` is not set as one of the above values, then the profile setti
 
 Refer to [Monitoring and Profiling Details][monitor-profile-details] for more information and examples.
 
-[monitor-profile-details]: /cloud/n1ql/n1ql-manage/monitoring-n1ql-query.html#monitor-profile-details
+[monitor-profile-details]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#monitor-profile-details
 
 The [request-level][profile_req] `profile` parameter specifies this property per request.
 If a request does not include this parameter, the node-level `profile` setting will be used.
@@ -7252,7 +7256,7 @@ a¦ Boolean
 a¦ [#use-replica-srv]
 *use-replica* +
 _optional_
-a¦ [.status]##Couchbase Server 7.6##
+a¦ 
 
 [markdown]
 --
@@ -7273,7 +7277,7 @@ The possible values are:
 Do not enable read from replica when you require consistent results.
 Only SELECT queries that are not within a transaction can read from replica.
 
-Reading from replica is only possible with databases running Couchbase Server 7.6.0 or later.
+Reading from replica is only possible if the cluster uses Couchbase Server 7.6.0 or later.
 
 Note that KV range scans cannot currently be started on a replica vBucket.
 If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.

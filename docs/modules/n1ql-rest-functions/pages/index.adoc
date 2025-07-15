@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
+DO NOT EDIT! See https://github.com/couchbase/query
 
 :leveloffset: 1
 
@@ -32,7 +32,7 @@ This API enables you to manage the JavaScript libraries and objects that are use
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : capella
+__Version__ : 8.0
 
 [discrete#host]
 = Host information
@@ -174,7 +174,6 @@ Deletes the specified library entirely.
 
 By default, this operation deletes a global library.
 For a scoped library, you must specify the bucket and scope.
-
 --
 
 
@@ -243,8 +242,8 @@ a¦
 
 [markdown]
 --
-For scoped libraries only. The bucket in which the library is stored.
-
+For scoped libraries only.
+The bucket in which the library is stored.
 --
 
 [%hardbreaks]
@@ -261,8 +260,8 @@ a¦
 
 [markdown]
 --
-For scoped libraries only. The scope in which the library is stored.
-
+For scoped libraries only.
+The scope in which the library is stored.
 --
 
 [%hardbreaks]
@@ -313,13 +312,13 @@ a|
 | 400
 a| [markdown]
 --
-Bad request. The path may not conform to the schema. 
+Bad request. The path may not conform to the schema.
 --
 a| 
 | 404
 a| [markdown]
 --
-Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly. 
+Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly.
 --
 a| 
 
@@ -421,8 +420,9 @@ GET /evaluator/v1/libraries
 --
 Returns all libraries and functions.
 
-By default, this operation returns all global libraries and functions, and all scoped libraries and functions. To return all the libraries and functions in a single scope, specify a bucket and scope.
 
+By default, this operation returns all global libraries and functions, and all scoped libraries and functions.
+To return all the libraries and functions in a single scope, specify a bucket and scope.
 --
 
 
@@ -468,8 +468,8 @@ a¦
 
 [markdown]
 --
-For scoped libraries only. The bucket from which to fetch libraries.
-
+For scoped libraries only.
+The bucket from which to fetch libraries.
 --
 
 [%hardbreaks]
@@ -486,8 +486,8 @@ a¦
 
 [markdown]
 --
-For scoped libraries only. The scope from which to fetch libraries.
-
+For scoped libraries only.
+The scope from which to fetch libraries.
 --
 
 [%hardbreaks]
@@ -540,7 +540,7 @@ a| xref:Libraries[]
 | 400
 a| [markdown]
 --
-Bad request. The path may not conform to the schema. 
+Bad request. The path may not conform to the schema.
 --
 a| 
 
@@ -642,8 +642,9 @@ GET /evaluator/v1/libraries/{library}
 --
 Returns a library with all its functions.
 
-By default, this operation returns a global library. For a scoped library, you must specify the bucket and scope.
 
+By default, this operation returns a global library.
+For a scoped library, you must specify the bucket and scope.
 --
 
 
@@ -715,8 +716,8 @@ a¦
 
 [markdown]
 --
-For scoped libraries only. The bucket in which the library is stored.
-
+For scoped libraries only.
+The bucket in which the library is stored.
 --
 
 [%hardbreaks]
@@ -733,8 +734,8 @@ a¦
 
 [markdown]
 --
-For scoped libraries only. The scope in which the library is stored.
-
+For scoped libraries only.
+The scope in which the library is stored.
 --
 
 [%hardbreaks]
@@ -787,13 +788,13 @@ a| xref:Functions[]
 | 400
 a| [markdown]
 --
-Bad request. The path may not conform to the schema. 
+Bad request. The path may not conform to the schema.
 --
 a| 
 | 404
 a| [markdown]
 --
-Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly. 
+Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly.
 --
 a| 
 
@@ -893,10 +894,12 @@ POST /evaluator/v1/libraries/{library}
 
 [markdown]
 --
-Creates the specified library and its associated functions. If the specified library exists, the existing library is overwritten.
+Creates the specified library and its associated functions.
+If the specified library exists, the existing library is overwritten.
 
-By default, this operation creates or updates a global library. For a scoped library, you must specify the bucket and scope.
 
+By default, this operation creates or updates a global library.
+For a scoped library, you must specify the bucket and scope.
 --
 
 
@@ -968,8 +971,8 @@ a¦
 
 [markdown]
 --
-For scoped libraries only. The bucket in which the library is stored.
-
+For scoped libraries only.
+The bucket in which the library is stored.
 --
 
 [%hardbreaks]
@@ -986,8 +989,8 @@ a¦
 
 [markdown]
 --
-For scoped libraries only. The scope in which the library is stored.
-
+For scoped libraries only.
+The scope in which the library is stored.
 --
 
 [%hardbreaks]
@@ -1064,13 +1067,13 @@ a|
 | 400
 a| [markdown]
 --
-Bad request. The body of the request may be incorrect, or the path may not conform to the schema. 
+Bad request. The body of the request may be incorrect, or the path may not conform to the schema.
 --
 a| 
 | 404
 a| [markdown]
 --
-Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly. 
+Not found. The library name in the path may be incorrect, or the bucket and scope may be specified incorrectly.
 --
 a| 
 
@@ -1203,7 +1206,7 @@ endif::collapse-models[]
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-
+*{lt}library{gt}* +
 _additional +
 property_
 a¦ 
@@ -1213,7 +1216,6 @@ a¦
 The JavaScript code for all functions in the library.
 
 The name of the property is the name of the library.
-
 --
 
 [%hardbreaks]
@@ -1286,8 +1288,8 @@ a¦
 
 [markdown]
 --
-For scoped libraries, the bucket in which the library is stored. For global libraries, this string is empty.
-
+For scoped libraries, the bucket in which the library is stored.
+For global libraries, this string is empty.
 --
 
 [%hardbreaks]
@@ -1303,8 +1305,8 @@ a¦
 
 [markdown]
 --
-For scoped libraries, the scope in which the library is stored. For global libraries, this string is empty.
-
+For scoped libraries, the scope in which the library is stored.
+For global libraries, this string is empty.
 --
 
 [%hardbreaks]
@@ -1321,7 +1323,6 @@ a¦
 [markdown]
 --
 The JavaScript code for all functions in the library.
-
 --
 
 [%hardbreaks]
@@ -1385,7 +1386,6 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 To manage global libraries, users must have the *Manage Global External Functions* RBAC role.
 
 This role enables you to create, read, update, or delete any global library, but does not give you access to any scoped libraries.
-
 --
 
 [%hardbreaks]
@@ -1419,7 +1419,6 @@ To manage scoped libraries, users must have the *Manage Scope External Functions
 
 This role enables you to create, read, update, or delete any library in the scope to which you have access, but does not give you access to any other scoped libraries.
 In addition, this role enables you to read any global library, but not to create, update, or delete them.
-
 --
 
 [%hardbreaks]
