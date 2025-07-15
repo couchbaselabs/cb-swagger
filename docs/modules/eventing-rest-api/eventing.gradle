@@ -4,7 +4,7 @@ plugins {
 
 jayOverlay {
     targetFile.set("${projectDir}/build/bundle/eventing.yaml")
-    overlayFile.set("${projectDir}/swagger/overlay.json")
+    overlayFile.set("${projectDir}/attachments/overlay.json")
     outputDir.set("${projectDir}/build/overlay")
 }
 
@@ -12,7 +12,7 @@ apply plugin: 'org.openapi.generator'
 
 task bundleSpec(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
     generatorName = "openapi-yaml"
-    inputSpec = file("swagger/eventing.yaml").getAbsolutePath().toString()
+    inputSpec = file("attachments/eventing.yaml").getAbsolutePath().toString()
     outputDir = "${projectDir}/build/bundle"
     globalProperties = [
             generateAliasAsModel: "true"
