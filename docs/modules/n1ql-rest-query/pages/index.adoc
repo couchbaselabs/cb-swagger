@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
+DO NOT EDIT! See https://github.com/couchbase/query
 
 :leveloffset: 1
 
@@ -365,6 +365,8 @@ a| xref:Response[]
 
 | http (basic)
 | xref:security-header[]
+| apiKey
+| xref:security-parameter[]
 
 |===
 
@@ -627,6 +629,8 @@ a| xref:Response[]
 
 | http (basic)
 | xref:security-header[]
+| apiKey
+| xref:security-parameter[]
 
 |===
 
@@ -679,7 +683,7 @@ endif::[]
 [#models]
 = Definitions
 
-:count-models: 8
+:count-models: 9
 
 :leveloffset: +1
 
@@ -695,6 +699,7 @@ endif::collapse-models[]
 [%hardbreaks]
 xref:Conditions[]
 xref:Controls[]
+xref:Credentials[]
 xref:Execution_Timings[]
 xref:Metrics[]
 xref:Profile[]
@@ -949,6 +954,80 @@ include::{specDir}definitions/Controls/definition-end.adoc[opts=optional]
 
 
 
+// markup not found, no include::{specDir}definitions/Credentials/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#Credentials]
+= Credentials
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/Credentials/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Credentials[]
+
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+*user* +
+_optional_
+a¦ 
+
+[markdown]
+--
+An identity for authentication.
+Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
+--
+
+[%hardbreaks]
+*Example:* `+++"local:bucket-name"+++`
+{blank}
+a¦ String
+
+
+a¦ 
+*pass* +
+_optional_
+a¦ 
+
+[markdown]
+--
+A password for authentication.
+--
+
+[%hardbreaks]
+*Example:* `+++"password"+++`
+{blank}
+a¦ String
+
+
+|===
+
+//end::Credentials[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/Credentials/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/Credentials/definition-after.adoc[opts=optional]
+
+
+
+
 // markup not found, no include::{specDir}definitions/Execution_Timings/definition-before.adoc[opts=optional]
 
 
@@ -1084,7 +1163,7 @@ The total time taken for the request, that is the time from when the request was
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ String (duration)
 
 
 a¦ 
@@ -1099,7 +1178,7 @@ The time taken for the execution of the request, that is the time from when quer
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ String (duration)
 
 
 a¦ 
@@ -1130,6 +1209,22 @@ The total number of bytes in the results.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
+
+
+a¦ 
+*naturalLanguageProcessingTime* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The total time spent processing a natural language request.
+The cumulation of authentication, collecting schema, and time waiting for the response from the LLM, or wait time for the natural language request to be serviced.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String (duration)
 
 
 a¦ 
@@ -1220,10 +1315,11 @@ a¦
 --
 The memory session size for the request, in bytes.
 
-Each request has a dedicated memory session.  When a query requires a document or value, memory is allocated from this session based on the size of the document or value. Once the document or value is processed, the allocated memory is returned back to the session, enabling it to be reused by the request. 
+Each request has a dedicated memory session.
+When a query requires a document or value, memory is allocated from this session based on the size of the document or value.
+Once the document or value is processed, the allocated memory is returned back to the session, enabling it to be reused by the request.
 
 This metric is available only when `node-quota` and `node-quota-val-percent` are configured for the node.
-
 --
 
 [%hardbreaks]
@@ -1435,7 +1531,7 @@ a¦
 
 [markdown]
 --
-An array of text phrases that provide a basic analysis of the request execution. 
+An array of text phrases that provide a basic analysis of the request execution.
 These phrases highlight notable aspects of the execution, such as high document counts during primary scans or warnings related to memory and resource usages.
 
 --
@@ -1501,7 +1597,7 @@ The value is an array of JSON values, one for each positional parameter in the s
 
 Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
-[section_srh_tlm_n1b]: /cloud/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
+[section_srh_tlm_n1b]: ../n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
 --
 
 [%hardbreaks]
@@ -1554,7 +1650,7 @@ This saves you from having to make two separate requests in cases where you want
 
 Refer to [Auto-Execute][auto-execute] for more information.
 
-[auto-execute]: /cloud/n1ql/n1ql-language-reference/prepare.html#auto-execute
+[auto-execute]: ../n1ql/n1ql-language-reference/prepare.html#auto-execute
 --
 
 [%hardbreaks]
@@ -1632,6 +1728,28 @@ The request-level parameter overrides the node-level setting.
 a¦ Boolean
 
 
+a¦ [#creds]
+*creds* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Specifies the login credentials.
+The Query API supports two types of identity: local (or bucket) and admin.
+
+The format is an identity and password.
+You can specify credentials for multiple identities.
+
+If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored.
+--
+
+[%hardbreaks]
+*Example:* `[{"user":"local:bucket-name","pass":"password"},{"user":"admin:admin-name","pass":"password"}]`
+{blank}
+a¦ xref:Credentials[]
+ array
+
 a¦ [#durability_level]
 *durability_level* +
 _optional_
@@ -1649,7 +1767,7 @@ In this case, the `kvtimeout` parameter is used as the durability timeout.
 If not specified, the default durability level is `"majority"`.
 Set the durability level to `"none"` or `""` to specify no durability.
 
-[durability]: /server/7.6/learn/data/durability.html
+[durability]: /server/8.0/learn/data/durability.html
 --
 
 [%hardbreaks]
@@ -1667,8 +1785,8 @@ a¦
 
 [markdown]
 --
-In Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
-It is included for compatibility with previous versions of Couchbase Server.
+In clusters running Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
+It is included for compatibility with previous versions.
 --
 
 [%hardbreaks]
@@ -1801,9 +1919,8 @@ Specifies the maximum amount of memory the request may use, in MB.
 Specify `0` (the default value) to disable.
 When disabled, there is no quota.
 
-This parameter enforces a ceiling on the memory used for the tracked documents required for 
-processing a request. It does not take into account any other memory that might be used to 
-process a request, such as the stack, the operators, or some intermediate values.
+This parameter enforces a ceiling on the memory used for the tracked documents required for processing a request.
+It does not take into account any other memory that might be used to process a request, such as the stack, the operators, or some intermediate values.
 
 Within a transaction, this setting enforces the memory quota for the transaction by tracking the
 delta table and the transaction log (approximately).
@@ -1856,6 +1973,151 @@ Currently, only the `default` namespace is available.
 
 [%hardbreaks]
 *Example:* `+++"default"+++`
+{blank}
+a¦ String
+
+
+a¦ [#natural]
+*natural* +
+_optional_
+a¦ [.status]##Couchbase Server 8.0##
+
+[markdown]
+--
+The prompt for a natural language request.
+The Query Service uses the prompt to generate a SQL++ statement.
+
+If the generated statement is a SELECT statement, the generated statement is returned and executed automatically.
+
+If the generated statement is not a SELECT statement, the generated statement is returned, but not executed.
+In this case, you must verify the statement and execute it in a separate request.
+
+Natural language requests use the Couchbase Capella iQ service as a backend.
+You must have a Couchbase Capella account to make a natural language request.
+
+This parameter is available in clusters running Couchbase Server 8.0 and later.
+
+To use this parameter, you must also specify the `natural_cred`, `natural_orgid`, and `natural_context` parameters.
+If you don't specify all four parameters, the Query Service returns an error.
+--
+
+[%hardbreaks]
+*Example:* `+++"Show me count of airlines per country"+++`
+{blank}
+a¦ String
+
+
+a¦ [#natural_cred]
+*natural_cred* +
+_optional_
+a¦ [.status]##Couchbase Server 8.0##
+
+[markdown]
+--
+The Couchbase Capella credentials for a natural language request, in the form `username:password`.
+Be careful not to expose the credentials in log files or other output.
+
+Natural language requests use the Couchbase Capella iQ service as a backend.
+You must have a Couchbase Capella account to make a natural language request.
+
+This parameter is available in clusters running Couchbase Server 8.0 and later.
+
+To use this parameter, you must also specify the `natural`, `natural_orgid`, and `natural_context` parameters.
+If you don't specify all four parameters, the Query Service returns an error.
+--
+
+[%hardbreaks]
+*Example:* `+++"username:password"+++`
+{blank}
+a¦ String (password)
+
+
+a¦ [#natural_orgid]
+*natural_orgid* +
+_optional_
+a¦ [.status]##Couchbase Server 8.0##
+
+[markdown]
+--
+The Couchbase Capella organization ID for a natural language request.
+
+Natural language requests use the Couchbase Capella iQ service as a backend.
+You must have a Couchbase Capella account to make a natural language request.
+
+This parameter is available in clusters running Couchbase Server 8.0 and later.
+
+To use this parameter, you must also specify the `natural`, `natural_cred`, and `natural_context` parameters.
+If you don't specify all four parameters, the Query Service returns an error.
+--
+
+[%hardbreaks]
+{blank}
+a¦ UUID (uuid)
+
+
+a¦ [#natural_context]
+*natural_context* +
+_optional_
+a¦ [.status]##Couchbase Server 8.0##
+
+[markdown]
+--
+A list of paths specifying keyspaces for a natural language request.
+The Query Service infers the schema of each keyspace, in order to give more precise responses from the natural language request.
+
+The parameter may contain up to four paths, separated by commas.
+Spaces are allowed.
+Each path may be:
+
+* A full path, in the form `bucket.scope.collection` or `namespace:bucket.scope.collection`.
+
+* A path prefix, in the form `namespace:bucket` or `bucket`, to specify the default collection in the default scope.
+
+* A partial path, in the form `collection`.
+  In this case, you must specify the `query_context` parameter to provide the bucket and scope.
+
+Natural language requests use the Couchbase Capella iQ service as a backend.
+You must have a Couchbase Capella account to make a natural language request.
+
+This parameter is available in clusters running Couchbase Server 8.0 and later.
+
+To use this parameter, you must also specify the `natural`, `natural_cred`, and `natural_orgid` parameters.
+If you don't specify all four parameters, the Query Service returns an error.
+--
+
+[%hardbreaks]
+*Example:* `+++"travel-sample, travel-sample.inventory.airline, airline"+++`
+{blank}
+a¦ String
+
+
+a¦ [#natural_output]
+*natural_output* +
+_optional_
+a¦ [.status]##Couchbase Server 8.0##
+
+[markdown]
+--
+Specifies the required output for a natural language request.
+
+* `sql` &mdash;
+  The output is a SQL++ statement.
+
+* `jsudf` &mdash;
+  The output is a `CREATE FUNCTION` statement which you can use to generate a SQL++ managed JavaScript user-defined function.
+
+* `ftssql` &mdash;
+  The output is a SQL++ statement which can use a Flex index, if available.
+
+Natural language requests use the Couchbase Capella iQ service as a backend.
+You must have a Couchbase Capella account to make a natural language request.
+
+This parameter is available in clusters running Couchbase Server 8.0 and later.
+--
+
+[%hardbreaks]
+*Values:* `"sql"`, `"jsudf"`, `"ftssql"`
+*Default:* `+++"sql"+++`
 {blank}
 a¦ String
 
@@ -1961,18 +2223,18 @@ a¦
 
 [markdown]
 --
-_Required_ if `statement` not provided.
+_Required_ if `statement` or `natural` not provided.
 
 The name of the prepared SQL++ statement to be executed.
 Refer to [EXECUTE][execute] for examples.
 
 If both `prepared` and `statement` are present and non-empty, an error is returned.
 
-[execute]: /cloud/n1ql/n1ql-language-reference/execute.html
+[execute]: ../n1ql/n1ql-language-reference/execute.html
 --
 
 [%hardbreaks]
-*Example:* `+++"a1355198-2576-4e3d-af04-5acc77d8a681"+++`
+*Example:* `+++"[127.0.0.1:8091]pricy_hotel"+++`
 {blank}
 a¦ String
 
@@ -2186,7 +2448,7 @@ If you want to disable RYOW within a request, add a separate `request_consistenc
 If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the `tximplicit` parameter set to `true`, then this parameter sets the transactional scan consistency.
 Refer to [Transactional Scan Consistency][transactional-scan-consistency] for details.
 
-[transactional-scan-consistency]: /cloud/n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency
+[transactional-scan-consistency]: ../n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency
 --
 
 [%hardbreaks]
@@ -2326,7 +2588,7 @@ a¦
 
 [markdown]
 --
-_Required_ if `prepared` not provided.
+_Required_ if `prepared` or `natural` not provided.
 
 Any valid SQL++ statement for a POST request, or a read-only SQL++ statement (SELECT, EXPLAIN) for a GET request.
 
@@ -2575,7 +2837,7 @@ If none of the available Search indexes are qualified, the available GSI indexes
 
 Refer to [Flex Indexes][flex-indexes] for more information.
 
-[flex-indexes]: /cloud/n1ql/n1ql-language-reference/flex-indexes.html
+[flex-indexes]: ../n1ql/n1ql-language-reference/flex-indexes.html
 --
 
 [%hardbreaks]
@@ -2610,7 +2872,7 @@ If the node-level setting is also `unset`, read from replica is disabled for thi
 Do not enable read from replica when you require consistent results.
 Only SELECT queries that are not within a transaction can read from replica.
 
-Reading from replica is only possible with databases running Couchbase Server 7.6.0 or later.
+Reading from replica is only possible if the cluster uses Couchbase Server 7.6.0 or later.
 
 Note that KV range scans cannot currently be started on a replica vBucket.
 If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
@@ -2647,19 +2909,24 @@ Applicable if the statement or prepared statement contains 1 or more named param
 
 The name of this property consists of two parts:
 
-1. The `$` character.
-    In databases running Couchbase Server 7.6.0 and later, this may be the `$` character or the `@` character.
+1. The `$` character or the `@` character.
 2. An identifier that specifies the name of the parameter.
-    This must start with an alpha character, followed by one or more alphanumeric characters.
+    This starts with an optional underscore (`_`), followed by an alpha character, followed by one or more alphanumeric characters, and ends with an optional underscore (`_`).
+
+If the named parameter contains sensitive information, start and end the name of the parameter (after the initial `$` or `@`) with an underscore (`_`).
+This masks the parameter value in the active requests catalog, the completed requests catalog, the response `controls` section, the cbq shell file history, and the query logs.
+When masked, a string parameter value is replaced by asterisks (`*`); other parameter values are replaced by `null`.
+Parameter masking is available in clusters running Couchbase Server 7.6.8 and later.
 
 The value of the named parameter can be any JSON value.
 
 Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
-[section_srh_tlm_n1b]: /cloud/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
+[section_srh_tlm_n1b]: ../n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
 --
 
 [%hardbreaks]
+*Example:* `LAX`
 {blank}
 a¦ Any Type
 
@@ -2736,6 +3003,22 @@ The client context ID of the request, if one was supplied &mdash; see `client_co
 --
 
 [%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*generated_statement* +
+_optional_
+a¦ [.status]##Couchbase Server 8.0##
+
+[markdown]
+--
+The generated statement, if the request was a natural language prompt.
+--
+
+[%hardbreaks]
+*Example:* `+++"SELECT country, COUNT(*) AS `airline_count` FROM `travel-sample`.`inventory`.`airline` AS `a` GROUP BY country"+++`
 {blank}
 a¦ String
 
@@ -2992,7 +3275,7 @@ Time spent waiting to be scheduled for CPU time.
 a¦ String (duration)
 
 
-a¦ 
+a¦ [#serv_time]
 *servTime* +
 _optional_
 a¦ 
@@ -3078,6 +3361,39 @@ __Type__ : http
 
 
 // markup not found, no include::{specDir}security/Header/security-scheme-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}security/Parameter/security-scheme-before.adoc[opts=optional]
+
+
+[[security-parameter]]
+= Parameter
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}security/Parameter/security-scheme-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Specify user names and passwords via the `creds` request parameter.
+This is the only method that can provide multiple credentials for a request.
+--
+
+.API Key
+[%hardbreaks]
+__Key parameter__ : creds
+__Key in__ : query 
+
+
+// markup not found, no include::{specDir}security/Parameter/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}security/Parameter/security-scheme-after.adoc[opts=optional]
 
 
 

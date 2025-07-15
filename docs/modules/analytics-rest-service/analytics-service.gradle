@@ -2,14 +2,14 @@ apply plugin: 'org.openapi.generator'
 
 openApiGenerate {
     generatorName = "asciidoc"
-    inputSpec = file("swagger/functions.yaml").getAbsolutePath().toString()
-    outputDir = "${rootDir}/docs/modules/n1ql-rest-functions/pages"
+    inputSpec = file("attachments/analytics-service.yaml").getAbsolutePath().toString()
+    outputDir = "${rootDir}/docs/modules/analytics-rest-service/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cb-swagger"
     gitUserId = "couchbaselabs"
     additionalProperties = [
-            specDir: "${rootDir}/docs/modules/n1ql-rest-functions/partials/",
-            snippetDir: "${rootDir}/docs/modules/n1ql-rest-functions/partials/paths/",
+            specDir: "${rootDir}/docs/modules/analytics-rest-service/partials/",
+            snippetDir: "${rootDir}/docs/modules/analytics-rest-service/partials/paths/",
             headerAttributes: "true",
             useIntroduction: "true",
             useTableTitles: "true",

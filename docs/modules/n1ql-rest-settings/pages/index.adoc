@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
+DO NOT EDIT! See https://github.com/couchbase/query
 
 :leveloffset: 1
 
@@ -32,7 +32,7 @@ This API enables you to view or specify cluster-level Query settings.
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : capella
+__Version__ : 8.0
 
 [discrete#host]
 = Host information
@@ -1122,7 +1122,7 @@ Increase this when the completed request keyspace is not big enough to track the
 
 Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
 
-[sys-completed-config]: /server/8.0/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
+[sys-completed-config]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 
 The [node-level][completed-limit] `completed-limit` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -1156,7 +1156,7 @@ You must obtain execution plans for such queries via profiling or using the EXPL
 
 Refer to [Configure the Completed Requests][sys-completed-config] for more information.
 
-[sys-completed-config]: /server/8.0/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
+[sys-completed-config]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 
 The [node-level][completed-max-plan-size] `completed-max-plan-size` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -1191,7 +1191,7 @@ Specify any negative number to track none.
 
 Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
 
-[sys-completed-config]: /server/8.0/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
+[sys-completed-config]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 
 The [node-level][completed-threshold] `completed-threshold` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -1278,7 +1278,7 @@ In Enterprise Edition, there is no limit to the number of allowed cores.)
 
 Refer to [Max Parallelism][max-parallelism] for more information.
 
-[max-parallelism]: /server/8.0/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
+[max-parallelism]: ../n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
 
 The [node-level][max-parallelism-srv] `max-parallelism` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
@@ -1313,9 +1313,8 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 Specifies the maximum amount of memory a request may use on any Query node in the cluster, in MB.
 
-This parameter enforces a ceiling on the memory used for the tracked documents required for 
-processing a request. It does not take into account any other memory that might be used to 
-process a request, such as the stack, the operators, or some intermediate values.
+This parameter enforces a ceiling on the memory used for the tracked documents required for processing a request.
+It does not take into account any other memory that might be used to process a request, such as the stack, the operators, or some intermediate values.
 
 Within a transaction, this setting enforces the memory quota for the transaction by tracking the
 delta table and the transaction log (approximately).
@@ -1711,7 +1710,7 @@ a¦
 
 [markdown]
 --
-The path to which the indexer writes temporary backfill files, to store any transient data during query processing.
+The path to which the Index Service writes temporary backfill files, and the Query Service writes spill files, to store any transient data during query processing.
 
 The specified path must already exist.
 Only absolute paths are allowed.
@@ -1732,7 +1731,8 @@ a¦
 
 [markdown]
 --
-The maximum size of temporary backfill files (MB).
+In MiB, the maximum size of temporary backfill files for each indexer, and the maximum size of temporary files for spilled sorting and other operations.
+In a cluster with both secondary indexing and full text search, the limit for disk space use is three times this setting.
 
 Setting the size to `0` disables backfill.
 Setting the size to `-1` means the size is unlimited.
