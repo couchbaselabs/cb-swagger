@@ -2,14 +2,14 @@ apply plugin: 'org.openapi.generator'
 
 openApiGenerate {
     generatorName = "asciidoc"
-    inputSpec = file("swagger/query-service.yaml").getAbsolutePath().toString()
-    outputDir = "${rootDir}/docs/modules/n1ql-rest-query/pages"
+    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/settings/settings.yaml"
+    outputDir = "${rootDir}/docs/modules/n1ql-rest-settings/pages"
     templateDir = "${rootDir}/templates"
-    gitRepoId = "cb-swagger"
-    gitUserId = "couchbaselabs"
+    gitRepoId = "query"
+    gitUserId = "couchbase"
     additionalProperties = [
-            specDir: "${rootDir}/docs/modules/n1ql-rest-query/partials/",
-            snippetDir: "${rootDir}/docs/modules/n1ql-rest-query/partials/paths/",
+            specDir: "${rootDir}/docs/modules/n1ql-rest-settings/partials/",
+            snippetDir: "${rootDir}/docs/modules/n1ql-rest-settings/partials/paths/",
             headerAttributes: "true",
             useIntroduction: "true",
             useTableTitles: "true",
