@@ -1,0 +1,31 @@
+= Example Request Body
+
+The following request body searches for the text a sample query in the documents included in the Search index.
+
+====
+[source,json]
+----
+include::example$p-api-index-name-query-regular.json[]
+----
+====
+
+The following request body uses from/size for results paging, uses `ctl` for a timeout and the `"at_plus"` consistency level.
+On consistency, the index must have incorporated at least mutation sequence-number 123 for partition (vbucket) 0 and mutation sequence-number 234 for partition (vbucket) 1, where vbucket 1 should have a `vbucketUUID` of `a0b1c2`.
+
+====
+[source,json]
+----
+include::example$p-api-index-name-query-options.json[]
+----
+====
+
+The following hybrid search request body searches for a specified normalized color vector in `colorvect_dot`, but uses regular query parameters to limit the `brightness` value of the returned color to the range of `70-80`:
+
+====
+[source,json]
+----
+include::example$p-api-index-name-query-hybrid.json[]
+----
+====
+
+For more information about vector searches, see xref:vector-search:vector-search.adoc[].
