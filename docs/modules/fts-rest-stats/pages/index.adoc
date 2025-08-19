@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+DO NOT EDIT! See https://github.com/couchbase/cbft
 
 :leveloffset: 1
 
@@ -32,7 +32,7 @@ This API enables you to get statistics for the Search Service and your Search in
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+__Version__ : 7.6
 
 [discrete#host]
 = Host information
@@ -113,7 +113,7 @@ ifeval::[{count-apis} > 1]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
-<<tag-Default>>
+xref:tag-Default[]
 endif::[]
 
 
@@ -131,9 +131,11 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<g-api-nsstats>>
-<<g-api-nsstats-index-name>>
+xref:g-api-nsstats[]
+xref:g-api-nsstats-index-name[]
 
+
+//tag::g-api-nsstats[]
 
 
 // markup not found, no include::{specDir}paths/g-api-nsstats/operation-before.adoc[opts=optional]
@@ -219,7 +221,7 @@ a| [markdown]
 --
 The Search Service returns statistics from the `nsstats` endpoint for the entire cluster, and for each Search index.  For each Search index, the names of the statistics are prefixed with the bucket name and index name, in the form `BUCKET:INDEX:statistic_name`.
 --
-a| <<allStats>>
+a| xref:allStats[]
 
 
 | 400
@@ -270,7 +272,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-admin>>
+| xref:security-admin[]
 
 |===
 
@@ -299,6 +301,10 @@ include::{snippetDir}g-api-nsstats/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/g-api-nsstats/operation-after.adoc[opts=optional]
 
 
+//end::g-api-nsstats[]
+
+
+//tag::g-api-nsstats-index-name[]
 
 
 // markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-before.adoc[opts=optional]
@@ -433,7 +439,7 @@ a| [markdown]
 --
 The Search Service returns statistics from the `nsstats` endpoint for the specified index.  Note that for a single index, the names of the statistics are not prefixed with the bucket name or index name.
 --
-a| <<indexStats>>
+a| xref:indexStats[]
 
 
 
@@ -466,7 +472,7 @@ a| <<indexStats>>
 | Type | Name
 
 | http (basic)
-| <<security-statistics>>
+| xref:security-statistics[]
 
 |===
 
@@ -494,6 +500,8 @@ include::{snippetDir}g-api-nsstats-index-name/http-response.adoc[opts=optional]
 
 // markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-after.adoc[opts=optional]
 
+
+//end::g-api-nsstats-index-name[]
 
 
 ifeval::[{count-apis} > 1]
@@ -531,9 +539,9 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-<<allStats>>
-<<clusterStats>>
-<<indexStats>>
+xref:allStats[]
+xref:clusterStats[]
+xref:indexStats[]
 endif::[]
 
 
@@ -557,10 +565,10 @@ endif::collapse-models[]
 
 All of the following:
 
-* <<clusterStats>>
+* xref:clusterStats[]
 
 
-* <<indexStats>>
+* xref:indexStats[]
 
 
 
@@ -813,7 +821,7 @@ a¦
 
 [markdown]
 --
-The total number of [Vector Search](https://docs.couchbase.com/server/8.0/vector-search/vector-search.html) requests made across all Search indexes in the cluster.
+The total number of [Vector Search](https://docs.couchbase.com/server/7.6/vector-search/vector-search.html) requests made across all Search indexes in the cluster.
 --
 
 [%hardbreaks]
@@ -1001,7 +1009,7 @@ a¦
 --
 The total number of gRPC queries rejected because of the available memory quota for the Search Service being less than the estimated memory required for merging search results from all partitions.
 
-For more information about how to set the Search Service's quota, see [ftsMemoryQuota](https://docs.couchbase.com/server/8.0/fts/fts-advanced-settings-ftsMemoryQuota.html).
+For more information about how to set the Search Service's quota, see [ftsMemoryQuota](https://docs.couchbase.com/server/7.6/fts/fts-advanced-settings-ftsMemoryQuota.html).
 
 The Search Service uses gRPC to manage scatter-gather operations across nodes when there are multiple nodes running the Search Service in a cluster.
 --
@@ -1126,7 +1134,7 @@ a¦
 --
 The total number of Search queries rejected because of the available memory quota for the Search Service being less than the estimated memory required for merging search results from all partitions.
 
-For more information about how to set the Search Service's quota, see [ftsMemoryQuota](https://docs.couchbase.com/server/8.0/fts/fts-advanced-settings-ftsMemoryQuota.html).
+For more information about how to set the Search Service's quota, see [ftsMemoryQuota](https://docs.couchbase.com/server/7.6/fts/fts-advanced-settings-ftsMemoryQuota.html).
 --
 
 [%hardbreaks]
@@ -1494,7 +1502,7 @@ a¦
 --
 The total number of Search queries that encountered consistency errors on the cluster.
 
-For more information about consistency in Search queries, see [Search Request JSON Properties](https://docs.couchbase.com/server/8.0/search/search-request-params.html#ctl).
+For more information about consistency in Search queries, see [Search Request JSON Properties](https://docs.couchbase.com/server/7.6/search/search-request-params.html#ctl).
 --
 
 [%hardbreaks]
@@ -1524,7 +1532,7 @@ a¦
 
 [markdown]
 --
-The total number of Search queries that exceeded the [bleveMaxResultWindow](https://docs.couchbase.com/server/8.0/fts/fts-advanced-settings-bleveMaxResultWindow.html) setting.
+The total number of Search queries that exceeded the [bleveMaxResultWindow](https://docs.couchbase.com/server/7.6/fts/fts-advanced-settings-bleveMaxResultWindow.html) setting.
 --
 
 [%hardbreaks]
@@ -1558,7 +1566,7 @@ a¦
 --
 The total number of queries rejected by the Search Service when the memory used approaches or exceeds the quota set for a query.
 
-For more information about how to set the Search Service's memory quota, see [ftsMemoryQuota](https://docs.couchbase.com/server/8.0/fts/fts-advanced-settings-ftsMemoryQuota.html).
+For more information about how to set the Search Service's memory quota, see [ftsMemoryQuota](https://docs.couchbase.com/server/7.6/fts/fts-advanced-settings-ftsMemoryQuota.html).
 
 This statistic appears on the Server Web Console dashboard as **Rejected Queries**.
 --
@@ -1609,7 +1617,7 @@ a¦
 --
 The total number of Search queries that timed out.
 
-You can set the timeout for a query with the [ctl object](https://docs.couchbase.com/server/8.0/search/search-request-params.html#ctl).
+You can set the timeout for a query with the [ctl object](https://docs.couchbase.com/server/7.6/search/search-request-params.html#ctl).
 --
 
 [%hardbreaks]
@@ -1626,7 +1634,7 @@ a¦
 --
 The total number of queries that encountered a validation error, when the query request included a `validate` property in the `ctl` object.
 
-For more information, see the [validate property](https://docs.couchbase.com/server/8.0/search/search-request-params.html#validate).
+For more information, see the [validate property](https://docs.couchbase.com/server/7.6/search/search-request-params.html#validate).
 --
 
 [%hardbreaks]
@@ -2391,7 +2399,7 @@ a¦
 
 [markdown]
 --
-The total number of [Vector Search](https://docs.couchbase.com/server/8.0/vector-search/vector-search.html) requests made to the given Search index.
+The total number of [Vector Search](https://docs.couchbase.com/server/7.6/vector-search/vector-search.html) requests made to the given Search index.
 --
 
 [%hardbreaks]

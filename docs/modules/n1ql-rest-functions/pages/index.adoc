@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
 
 :leveloffset: 1
 
@@ -113,7 +113,7 @@ ifeval::[{count-apis} > 1]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
-<<tag-Default>>
+xref:tag-Default[]
 endif::[]
 
 
@@ -131,11 +131,13 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<delete_library>>
-<<get_collection>>
-<<get_library>>
-<<post_library>>
+xref:delete_library[]
+xref:get_collection[]
+xref:get_library[]
+xref:post_library[]
 
+
+//tag::delete_library[]
 
 
 // markup not found, no include::{specDir}paths/delete_library/operation-before.adoc[opts=optional]
@@ -350,9 +352,9 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-scope>>
+| xref:security-scope[]
 | http (basic)
-| <<security-global>>
+| xref:security-global[]
 
 |===
 
@@ -381,6 +383,10 @@ include::{snippetDir}delete_library/http-request.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/delete_library/operation-after.adoc[opts=optional]
 
 
+//end::delete_library[]
+
+
+//tag::get_collection[]
 
 
 // markup not found, no include::{specDir}paths/get_collection/operation-before.adoc[opts=optional]
@@ -528,7 +534,7 @@ a| [markdown]
 --
 An array of objects, each giving information about a single library.
 --
-a| <<Libraries>>
+a| xref:Libraries[]
  array
 
 | 400
@@ -567,9 +573,9 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-scope>>
+| xref:security-scope[]
 | http (basic)
-| <<security-global>>
+| xref:security-global[]
 
 |===
 
@@ -598,6 +604,10 @@ include::{snippetDir}get_collection/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_collection/operation-after.adoc[opts=optional]
 
 
+//end::get_collection[]
+
+
+//tag::get_library[]
 
 
 // markup not found, no include::{specDir}paths/get_library/operation-before.adoc[opts=optional]
@@ -771,7 +781,7 @@ a| [markdown]
 --
 An object with a single property, giving information about the specified library.
 --
-a| <<Functions>>
+a| xref:Functions[]
 
 
 | 400
@@ -816,9 +826,9 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-scope>>
+| xref:security-scope[]
 | http (basic)
-| <<security-global>>
+| xref:security-global[]
 
 |===
 
@@ -847,6 +857,10 @@ include::{snippetDir}get_library/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_library/operation-after.adoc[opts=optional]
 
 
+//end::get_library[]
+
+
+//tag::post_library[]
 
 
 // markup not found, no include::{specDir}paths/post_library/operation-before.adoc[opts=optional]
@@ -1089,9 +1103,9 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-scope>>
+| xref:security-scope[]
 | http (basic)
-| <<security-global>>
+| xref:security-global[]
 
 |===
 
@@ -1119,6 +1133,8 @@ include::{snippetDir}post_library/http-request.adoc[opts=optional]
 
 // markup not found, no include::{specDir}paths/post_library/operation-after.adoc[opts=optional]
 
+
+//end::post_library[]
 
 
 ifeval::[{count-apis} > 1]
@@ -1156,8 +1172,8 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-<<Functions>>
-<<Libraries>>
+xref:Functions[]
+xref:Libraries[]
 endif::[]
 
 

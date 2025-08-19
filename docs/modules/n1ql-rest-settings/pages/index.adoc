@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
 
 :leveloffset: 1
 
@@ -113,7 +113,7 @@ ifeval::[{count-apis} > 1]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
-<<tag-Default>>
+xref:tag-Default[]
 endif::[]
 
 
@@ -131,11 +131,13 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<get_access>>
-<<get_settings>>
-<<post_access>>
-<<post_settings>>
+xref:get_access[]
+xref:get_settings[]
+xref:post_access[]
+xref:post_settings[]
 
+
+//tag::get_access[]
 
 
 // markup not found, no include::{specDir}paths/get_access/operation-before.adoc[opts=optional]
@@ -218,7 +220,7 @@ a| [markdown]
 --
 An object determining which URLs may be accessed by the `CURL()` function.
 --
-a| <<Access>>
+a| xref:Access[]
 
 
 
@@ -251,7 +253,7 @@ a| <<Access>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -280,6 +282,10 @@ include::{snippetDir}get_access/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_access/operation-after.adoc[opts=optional]
 
 
+//end::get_access[]
+
+
+//tag::get_settings[]
 
 
 // markup not found, no include::{specDir}paths/get_settings/operation-before.adoc[opts=optional]
@@ -362,7 +368,7 @@ a| [markdown]
 --
 An object giving cluster-level query settings.
 --
-a| <<Settings>>
+a| xref:Settings[]
 
 
 
@@ -395,7 +401,7 @@ a| <<Settings>>
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -424,6 +430,10 @@ include::{snippetDir}get_settings/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_settings/operation-after.adoc[opts=optional]
 
 
+//end::get_settings[]
+
+
+//tag::post_access[]
 
 
 // markup not found, no include::{specDir}paths/post_access/operation-before.adoc[opts=optional]
@@ -515,7 +525,7 @@ An object determining which URLs may be accessed by the `CURL()` function.
 [%hardbreaks]
 {blank}
 
-a¦ <<Access>>
+a¦ xref:Access[]
 
 
 
@@ -553,7 +563,7 @@ a| [markdown]
 --
 An object determining which URLs may be accessed by the `CURL()` function, including the latest changes.
 --
-a| <<Access>>
+a| xref:Access[]
 
 
 | 400
@@ -594,7 +604,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -623,6 +633,10 @@ include::{snippetDir}post_access/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/post_access/operation-after.adoc[opts=optional]
 
 
+//end::post_access[]
+
+
+//tag::post_settings[]
 
 
 // markup not found, no include::{specDir}paths/post_settings/operation-before.adoc[opts=optional]
@@ -714,7 +728,7 @@ An object specifying cluster-level query settings.
 [%hardbreaks]
 {blank}
 
-a¦ <<Settings>>
+a¦ xref:Settings[]
 
 
 
@@ -752,7 +766,7 @@ a| [markdown]
 --
 An object giving cluster-level query settings, including the latest changes.
 --
-a| <<Settings>>
+a| xref:Settings[]
 
 
 | 400
@@ -793,7 +807,7 @@ a| Object
 | Type | Name
 
 | http (basic)
-| <<security-default>>
+| xref:security-default[]
 
 |===
 
@@ -821,6 +835,8 @@ include::{snippetDir}post_settings/http-response.adoc[opts=optional]
 
 // markup not found, no include::{specDir}paths/post_settings/operation-after.adoc[opts=optional]
 
+
+//end::post_settings[]
 
 
 ifeval::[{count-apis} > 1]
@@ -858,8 +874,8 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-<<Access>>
-<<Settings>>
+xref:Access[]
+xref:Settings[]
 endif::[]
 
 
@@ -1856,7 +1872,7 @@ include::index.adoc[tag=desc-Access, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<Access>>
+a¦ xref:Access[]
 
 
 |===
