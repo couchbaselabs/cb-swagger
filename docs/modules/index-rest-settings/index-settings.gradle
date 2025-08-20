@@ -1,0 +1,23 @@
+apply plugin: 'org.openapi.generator'
+
+openApiGenerate {
+    generatorName = "asciidoc"
+    inputSpec = file("attachments/index-settings.yaml").getAbsolutePath().toString()
+    outputDir = "${rootDir}/docs/modules/index-rest-settings/pages"
+    templateDir = "${rootDir}/templates"
+    gitRepoId = "cb-swagger"
+    gitUserId = "couchbaselabs"
+    additionalProperties = [
+            specDir: "${rootDir}/docs/modules/index-rest-settings/partials/",
+            snippetDir: "${rootDir}/docs/modules/index-rest-settings/partials/paths/",
+            headerAttributes: "true",
+            useIntroduction: "true",
+            useTableTitles: "true",
+            skipExamples: "true",
+            legacyDiscriminatorBehavior: "true"
+    ]
+    globalProperties = [
+            generateAliasAsModel: "true"
+    ]
+    generateAliasAsModel = true
+}

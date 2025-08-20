@@ -1,0 +1,214 @@
+openapi: 3.0.3
+info:
+  title: Index Settings REST API
+  version: '8.0'
+  description: |-
+    The Index Settings REST API is provided by the index service.
+    This API enables you to retrieve or set index service settings.
+
+servers:
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
+    variables:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+        description: The host name or IP address of a node running the Index Service.
+      port:
+        default: "9102"
+        description: |-
+          The Index Service REST port.
+          Use `19102` for secure access.
+        enum:
+          - "9102"
+          - "19102"
+
+paths:
+  /settings:
+    get:
+      operationId: get_settings
+      summary: Retrieve Index Settings
+      description: Returns index service settings.
+      security:
+        - Default: []
+      responses:
+        200:
+          description: An object giving index service settings.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Settings"
+    post:
+      operationId: post_settings
+      summary: Update Index Settings
+      description: Updates index service settings.
+      security:
+        - Default: []
+      requestBody:
+        required: true
+        description: An object specifying index service settings.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Settings"
+      responses:
+        200:
+          description: An object giving index service settings, including the latest changes.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Settings"
+
+components:
+  schemas:
+    Settings:
+      type: object
+      properties:
+        indexer.settings.allow_large_keys:
+          type: boolean
+          default: true
+          description: |-
+            Whether the size of index keys is unlimited.
+
+            * If true, index keys may have unlimited size.
+            * If false, the maximum size for index keys and array index keys is specified by `indexer.settings.max_seckey_size` and `indexer.settings.max_array_seckey_size`.
+
+            In Couchbase Server 6.5 and later, the index service does not need to restart when you update this setting.
+        indexer.settings.bufferPoolBlockSize:
+          type: integer
+          format: int32
+          default: 16384
+          description: Buffer pool block size.
+        indexer.settings.build.batch_size:
+          default: 2
+          description: For standard indexes using Plasma, the maximum number of committed rollback points.
+        indexer.settings.recovery.max_rollbacks:
+          type: integer
+          format: int32
+          default: 2
+          description: The maximum number of committed rollback points.
+        indexer.settings.scan_getseqnos_retries:
+          type: integer
+          format: int32
+          default: 30
+          description: Scan get sequence numbers retries.
+        indexer.settings.scan_timeout:
+          type: integer
+          format: int32
+          default: 120000
+          description: The default timeout for the indexer service.
+        indexer.settings.send_buffer_size:
+          type: integer
+          format: int32
+          default: 1024
+          description: Send buffer size.
+        indexer.settings.sliceBufSize:
+          type: integer
+          format: int32
+          default: 50000
+          description: Slice buffer size.
+        indexer.settings.smallSnapshotThreshold:
+          type: integer
+          format: int32
+          default: 30
+          description: Small snapshot threshold.
+        indexer.settings.statsLogDumpInterval:
+          type: integer
+          format: int32
+          default: 60
+          description: Statistics log dump interval.
+        indexer.settings.storage_mode:
+          type: string
+          default: plasma
+          description: |-
+            The storage mode to be used for the index service on this node.
+
+            ---
+
+            If you are using [Enterprise Edition](https://www.couchbase.com/products/editions/), the possible values are:
+            
+            * `plasma` &mdash;
+              Sets the index storage mode to use the Plasma storage engine, which can utilize both memory and persistent storage for index maintenance and index scans.
+
+            * `memory_optimized` &mdash;
+              Sets the index storage mode to use memory optimized global secondary indexes, which can perform index maintenance and index scan faster at in-memory speeds.
+
+            This setting can only be changed while there are no index nodes in the cluster.
+            To change from standard GSI to memory optimized GSI or vice versa, you need to remove all the index service nodes in the cluster.
+
+            ---
+
+            If you are using [Community Edition](https://www.couchbase.com/products/editions/), the default (and only) value is `forestdb`.
+          enum:
+            - plasma
+            - memory_optimized
+            - forestdb
+        indexer.settings.storage_mode.disable_upgrade:
+          type: boolean
+          default: false
+          description: Whether upgrade of the index storage mode is disabled.
+        indexer.settings.wal_size:
+          type: integer
+          format: int32
+          default: 4096
+          description: Write-ahead log size.
+        projector.settings.log_level:
+          type: string
+          default: info
+          description: Projector logging level.
+        queryport.client.settings.backfillLimit:
+          type: integer
+          format: int32
+          default: 5120
+          description: |-
+            The maximum size of the backfill file (MB).
+
+            * A value of `0` disables backfill.
+            * A value of `-1` means the size is unlimited.
+
+            The maximum size is limited only by the available disk space.
+        queryport.client.settings.minPoolSizeWM:
+          type: integer
+          format: int32
+          default: 1000
+          description: Minimum pool size.
+        queryport.client.settings.poolOverflow:
+          type: integer
+          format: int32
+          default: 30
+          description: Maximum number of connections in a pool.
+        queryport.client.settings.poolSize:
+          type: integer
+          format: int32
+          default: 5000
+          description: Number of simultaneous active connections connections in a pool.
+        queryport.client.settings.relConnBatchSize:
+          type: integer
+          format: int32
+          default: 100
+          description: Connection batch size.
+
+  responses:
+    NotFound:
+      description: |-
+        Not found.
+        Returns the path with the specified keyspace and index name.
+
+        The keyspace name may be incorrect, the index may not be located on the specified node, or the index may be warming up after a restart.
+      content:
+        application/json:
+          schema:
+            type: string
+
+  securitySchemes:
+    Default:
+      type: http
+      scheme: basic
+      description: Users must have Cluster Read and Bucket INDEX List privileges.
