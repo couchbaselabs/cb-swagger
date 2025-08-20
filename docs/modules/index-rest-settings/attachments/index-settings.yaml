@@ -6,6 +6,8 @@ info:
     The Index Settings REST API is provided by the index service.
     This API enables you to retrieve or set index service settings.
 
+    Changes automatically propagate to all Index Service nodes, and will be remembered across node and cluster restarts.
+
 servers:
   - url: '{scheme}://{host}:{port}'
     description: The URL scheme, host, and port are as follows.
@@ -39,12 +41,16 @@ paths:
       security:
         - Default: []
       responses:
-        200:
+        "200":
           description: An object giving index service settings.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Settings"
+        "404":
+          $ref: '#/components/responses/NotFound'
+        "401":
+          $ref: '#/components/responses/Unauthorized'
     post:
       operationId: post_settings
       summary: Update Index Settings
@@ -59,18 +65,36 @@ paths:
             schema:
               $ref: "#/components/schemas/Settings"
       responses:
-        200:
+        "200":
           description: An object giving index service settings, including the latest changes.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Settings"
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "404":
+          $ref: '#/components/responses/NotFound'
 
 components:
   schemas:
     Settings:
       type: object
       properties:
+        indexer.rebalance.transferBatchSize:
+          type: integer
+          format: int32
+          default: 3
+          example: 7
+          description: |-
+            Sets the batch size Couchbase Server uses when rebuilding index files during rebalance.
+            This setting has no effect on file-based rebalance.
+
+            Couchbase Server breaks the rebuilding of indexes during a rebalance into batches to limit the performance impact.
+            This setting controls the maximum number of indexes that a rebalance rebuilds concurrently.
+            You must have the Full Admin or the Cluster Admin role to set this value.
+
+            For an overview of rebalance as it affects the Index Service, including an overview of smart batching, see [Rebalance](/server/8.0/learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service).
         indexer.settings.allow_large_keys:
           type: boolean
           default: true
@@ -199,16 +223,17 @@ components:
     NotFound:
       description: |-
         Not found.
-        Returns the path with the specified keyspace and index name.
-
-        The keyspace name may be incorrect, the index may not be located on the specified node, or the index may be warming up after a restart.
-      content:
-        application/json:
-          schema:
-            type: string
+        The URL may be specified incorrectly.
+    Unauthorized:
+      description: |-
+        Unauthorized.
+        Failure to authenticate.
 
   securitySchemes:
     Default:
       type: http
       scheme: basic
-      description: Users must have Cluster Read and Bucket INDEX List privileges.
+      description: |-
+        Users must have Cluster Read and Bucket INDEX List privileges.
+
+        To modify the index batch size, users must have the Full Admin or Cluster Admin role.

@@ -1,14 +1,29 @@
 = Example HTTP Request
 
 ====
-The example below sets the current index settings.
+This example sets the current index settings.
 
 .Curl request
 [source,shell]
 ----
-$ curl -X POST http://localhost:9102/settings \
+curl -X POST http://localhost:9102/settings \
   -u Administrator:password \
   -H 'content-type: application/json' \
-  -d '{ "indexer.settings.allow_large_keys" : false }'
+  -d '{ "indexer.settings.allow_large_keys": false }'
 ----
+====
+
+====
+This example sets the index batch size for rebalance.
+
+.Curl request
+[source,shell]
+----
+curl -X POST http://localhost:9102/settings \
+  -u Administrator:password \
+  -H 'content-type: application/json' \
+  -d '{ "indexer.rebalance.transferBatchSize": 7 }'
+----
+
+If successful, the call returns `200 OK` and no object.
 ====
