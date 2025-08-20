@@ -1,4 +1,4 @@
-= Index Statistics REST API
+= Index Settings REST API
 :keywords: OpenAPI, REST
 :specDir: partial$
 :snippetDir: partial$paths/
@@ -25,8 +25,13 @@ include::{specDir}overview/document-before.adoc[opts=optional]
 
 [markdown]
 --
-The Index Statistics REST API is provided by the Index service.
-This API enables you to get Index service statistics.
+The Index Settings REST API is provided by the Index Service.
+This API enables you to retrieve or set Index Service settings.
+
+Changes automatically propagate to all Index Service nodes, and will be remembered across node and cluster restarts.
+
+Most of the settings provided by this REST API intentionally have minimal documentation.
+Unless otherwise noted, you should only change the Index Service settings when advised to do so by Couchbase Support.
 --
 
 [discrete#version]
@@ -86,7 +91,7 @@ The Index Service REST port. Use `19102` for secure access.
 |===
 
 
-// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
@@ -131,232 +136,82 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-xref:get_index_stats[]
-xref:get_keyspace_stats[]
-xref:get_node_stats[]
+xref:get_settings[]
+xref:post_settings[]
 
 
-//tag::get_index_stats[]
+//tag::get_settings[]
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-before.adoc[opts=optional]
 
 
-[#get_index_stats]
-= Get Statistics for an Index
+[#get_settings]
+= Retrieve Index Settings
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-begin.adoc[opts=optional]
 
 
 ....
-GET /api/v1/stats/{keyspace}/{index}
+GET /settings
 ....
 
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-description-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-description-before.adoc[opts=optional]
 
 
-[#get_index_stats-description]
+[#get_settings-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-description-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-description-begin.adoc[opts=optional]
 
 
 [markdown]
 --
-Returns statistics for an index.
+Returns Index Service settings.
 --
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-description-end.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-description-end.adoc[opts=optional]
 
 
 
-[#get_index_stats-produces]
+[#get_settings-produces]
 .Produces
 * application/json
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-description-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-description-after.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-parameters-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-parameters-before.adoc[opts=optional]
 
 
-[#get_index_stats-parameters]
-= Parameters
 
-:leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-parameters-begin.adoc[opts=optional]
 
 
-[#get_index_stats-path]
-.Path Parameters
-{blank}
+// markup not found, no include::{specDir}paths/get_settings/operation-parameters-after.adoc[opts=optional]
 
-[cols="20,60,20",separator=¦]
-|===
-¦ Name ¦ Description ¦ Schema
 
-a¦ *keyspace* +
-_required_
-a¦ 
 
+// markup not found, no include::{specDir}paths/get_settings/operation-responses-before.adoc[opts=optional]
 
-[markdown]
---
-The name of a keyspace.
-This must contain a bucket name, which may be followed by an optional scope name and an optional collection name, separated by dots.
-For example, `bucket.scope.collection`.
 
-
-If any part of the keyspace name contains a dot, that part of the keyspace name must be wrapped in backticks.
-For example, `` `bucket.1`.scope.collection ``.
-
---
-
-[%hardbreaks]
-{blank}
-
-a¦ String
-
-
-
-a¦ *index* +
-_required_
-a¦ 
-
-
-[markdown]
---
-The name of an index.
---
-
-[%hardbreaks]
-{blank}
-
-a¦ String
-
-
-
-|===
-
-[#get_index_stats-query]
-.Query Parameters
-{blank}
-
-[cols="20,60,20",separator=¦]
-|===
-¦ Name ¦ Description ¦ Schema
-
-a¦ *pretty* +
-_optional_
-a¦ 
-
-
-[markdown]
---
-Whether the output should be formatted with indentations and newlines.
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-a¦ Boolean
-
-
-
-a¦ *partition* +
-_optional_
-a¦ 
-
-
-[markdown]
---
-Whether statistics for index partitions should be included.
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-a¦ Boolean
-
-
-
-a¦ *redact* +
-_optional_
-a¦ 
-
-
-[markdown]
---
-Whether keyspace and index names should be redacted in the output.
-
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-a¦ Boolean
-
-
-
-a¦ *skipEmpty* +
-_optional_
-a¦ 
-
-
-[markdown]
---
-Whether empty, null, or zero statistics should be omitted from the output.
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-a¦ Boolean
-
-
-
-|===
-
-
-
-
-
-include::{specDir}paths/get_index_stats/operation-parameters-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-
-
-// markup not found, no include::{specDir}paths/get_index_stats/operation-parameters-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/get_index_stats/operation-responses-before.adoc[opts=optional]
-
-
-[#get_index_stats-responses]
+[#get_settings-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-responses-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-responses-begin.adoc[opts=optional]
 
 
 [cols="20,60,20"]
@@ -366,40 +221,46 @@ include::{specDir}paths/get_index_stats/operation-parameters-end.adoc[opts=optio
 | 200
 a| [markdown]
 --
-Success. Returns an object containing one nested `<keyspace>:<index>` object.  If the [partition](#get_index_stats-parameters) query parameter was set to `true`, the returned object also contains one or more `Partition-<num>` objects &mdash; one for each index partition found on the specified node. 
+Success. Returns an object giving Index Service settings.
 --
-a| xref:PartIdx[]
+a| xref:Settings[]
 
 
 | 404
 a| [markdown]
 --
-Not found. Returns the complete specified keyspace name, and the specified index name if provided.  The keyspace name may be incorrect, the keyspace may contain no indexes, the index may not be located in the specified keyspace, or the index may be warming up after a restart. 
+Not found. The URL may be specified incorrectly.
+--
+a| 
+| 401
+a| [markdown]
+--
+Unauthorized. Failure to authenticate.
 --
 a| 
 
 |===
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-responses-end.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-responses-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-responses-after.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-security-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-security-before.adoc[opts=optional]
 
 
-[#get_index_stats-security]
+[#get_settings-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-security-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-security-begin.adoc[opts=optional]
 
 
 [cols="20,80"]
@@ -407,224 +268,153 @@ a|
 | Type | Name
 
 | http (basic)
-| xref:security-indexStatistics[]
+| xref:security-default[]
 
 |===
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-security-end.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-security-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-security-after.adoc[opts=optional]
 
 
 
-include::{snippetDir}get_index_stats/http-request.adoc[opts=optional]
+include::{snippetDir}get_settings/http-request.adoc[opts=optional]
 
 
-include::{snippetDir}get_index_stats/http-response.adoc[opts=optional]
+include::{snippetDir}get_settings/http-response.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-end.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/get_settings/operation-after.adoc[opts=optional]
 
 
-//end::get_index_stats[]
+//end::get_settings[]
 
 
-//tag::get_keyspace_stats[]
+//tag::post_settings[]
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-before.adoc[opts=optional]
 
 
-[#get_keyspace_stats]
-= Get Statistics for Indexes in a Keyspace
+[#post_settings]
+= Update Index Settings
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-begin.adoc[opts=optional]
 
 
 ....
-GET /api/v1/stats/{keyspace}
+POST /settings
 ....
 
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-description-before.adoc[opts=optional]
 
 
-[#get_keyspace_stats-description]
+[#post_settings-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-description-begin.adoc[opts=optional]
 
 
 [markdown]
 --
-Returns statistics for all indexes within a bucket, scope, or collection.
+Updates Index Service settings.
 --
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-end.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-description-end.adoc[opts=optional]
 
 
-
-[#get_keyspace_stats-produces]
-.Produces
+[#post_settings-consumes]
+.Consumes
 * application/json
+
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-description-after.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-parameters-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-parameters-before.adoc[opts=optional]
 
 
-[#get_keyspace_stats-parameters]
+[#post_settings-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-parameters-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-parameters-begin.adoc[opts=optional]
 
 
-[#get_keyspace_stats-path]
-.Path Parameters
+
+
+
+
+[#post_settings-body]
+.Body Parameter
 {blank}
 
 [cols="20,60,20",separator=¦]
 |===
 ¦ Name ¦ Description ¦ Schema
 
-a¦ *keyspace* +
+a¦ *Body* +
 _required_
 a¦ 
 
 
 [markdown]
 --
-The name of a keyspace.
-This must contain a bucket name, which may be followed by an optional scope name and an optional collection name, separated by dots.
-For example, `bucket.scope.collection`.
-
-
-If any part of the keyspace name contains a dot, that part of the keyspace name must be wrapped in backticks.
-For example, `` `bucket.1`.scope.collection ``.
-
+An object specifying Index Service settings. You only need to specify the settings you want to change.
 --
 
 [%hardbreaks]
 {blank}
 
-a¦ String
-
-
-
-|===
-
-[#get_keyspace_stats-query]
-.Query Parameters
-{blank}
-
-[cols="20,60,20",separator=¦]
-|===
-¦ Name ¦ Description ¦ Schema
-
-a¦ *pretty* +
-_optional_
-a¦ 
-
-
-[markdown]
---
-Whether the output should be formatted with indentations and newlines.
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-a¦ Boolean
-
-
-
-a¦ *redact* +
-_optional_
-a¦ 
-
-
-[markdown]
---
-Whether keyspace and index names should be redacted in the output.
-
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-a¦ Boolean
-
-
-
-a¦ *skipEmpty* +
-_optional_
-a¦ 
-
-
-[markdown]
---
-Whether empty, null, or zero statistics should be omitted from the output.
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-a¦ Boolean
+a¦ xref:Settings[]
 
 
 
 |===
 
 
-
-
-
-include::{specDir}paths/get_keyspace_stats/operation-parameters-end.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-parameters-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-parameters-after.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-responses-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-responses-before.adoc[opts=optional]
 
 
-[#get_keyspace_stats-responses]
+[#post_settings-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-responses-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-responses-begin.adoc[opts=optional]
 
 
 [cols="20,60,20"]
@@ -634,40 +424,44 @@ include::{specDir}paths/get_keyspace_stats/operation-parameters-end.adoc[opts=op
 | 200
 a| [markdown]
 --
-Success. Returns an object containing one or more nested `<keyspace>:<index>` objects &mdash; one for each index found within the specified bucket, scope, or collection. 
+Success. Returns the string `OK`.
 --
-a| xref:PartIdxIndexes[]
-
-
+a| 
+| 401
+a| [markdown]
+--
+Unauthorized. Failure to authenticate.
+--
+a| 
 | 404
 a| [markdown]
 --
-Not found. Returns the complete specified keyspace name, and the specified index name if provided.  The keyspace name may be incorrect, the keyspace may contain no indexes, the index may not be located in the specified keyspace, or the index may be warming up after a restart. 
+Not found. The URL may be specified incorrectly.
 --
 a| 
 
 |===
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-responses-end.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-responses-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-responses-after.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-security-before.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-security-before.adoc[opts=optional]
 
 
-[#get_keyspace_stats-security]
+[#post_settings-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-security-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-security-begin.adoc[opts=optional]
 
 
 [cols="20,80"]
@@ -675,267 +469,36 @@ a|
 | Type | Name
 
 | http (basic)
-| xref:security-indexStatistics[]
+| xref:security-default[]
 
 |===
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-security-end.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-security-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-security-after.adoc[opts=optional]
 
 
 
-include::{snippetDir}get_keyspace_stats/http-request.adoc[opts=optional]
+include::{snippetDir}post_settings/http-request.adoc[opts=optional]
 
 
-include::{snippetDir}get_keyspace_stats/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-after.adoc[opts=optional]
-
-
-//end::get_keyspace_stats[]
-
-
-//tag::get_node_stats[]
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-before.adoc[opts=optional]
-
-
-[#get_node_stats]
-= Get Statistics for an Index Node
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-begin.adoc[opts=optional]
-
-
-....
-GET /api/v1/stats
-....
+// markup not found, no include::{snippetDir}post_settings/http-response.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}paths/get_node_stats/operation-description-before.adoc[opts=optional]
-
-
-[#get_node_stats-description]
-= Description
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-description-begin.adoc[opts=optional]
-
-
-[markdown]
---
-Returns statistics for an index node, and for all indexes on that node.
---
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-description-end.adoc[opts=optional]
-
-
-
-[#get_node_stats-produces]
-.Produces
-* application/json
+// markup not found, no include::{specDir}paths/post_settings/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}paths/get_node_stats/operation-description-after.adoc[opts=optional]
+// markup not found, no include::{specDir}paths/post_settings/operation-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-before.adoc[opts=optional]
-
-
-[#get_node_stats-parameters]
-= Parameters
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-begin.adoc[opts=optional]
-
-
-
-[#get_node_stats-query]
-.Query Parameters
-{blank}
-
-[cols="20,60,20",separator=¦]
-|===
-¦ Name ¦ Description ¦ Schema
-
-a¦ *pretty* +
-_optional_
-a¦ 
-
-
-[markdown]
---
-Whether the output should be formatted with indentations and newlines.
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-a¦ Boolean
-
-
-
-a¦ *redact* +
-_optional_
-a¦ 
-
-
-[markdown]
---
-Whether keyspace and index names should be redacted in the output.
-
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-a¦ Boolean
-
-
-
-a¦ *skipEmpty* +
-_optional_
-a¦ 
-
-
-[markdown]
---
-Whether empty, null, or zero statistics should be omitted from the output.
---
-
-[%hardbreaks]
-*Default:* `false`
-{blank}
-
-a¦ Boolean
-
-
-
-|===
-
-
-
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-responses-before.adoc[opts=optional]
-
-
-[#get_node_stats-responses]
-= Responses
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-responses-begin.adoc[opts=optional]
-
-
-[cols="20,60,20"]
-|===
-| HTTP Code | Description | Schema
-
-| 200
-a| [markdown]
---
-Success. Returns an object containing a nested `indexer` object, and usually one or more nested `<keyspace>:<index>` objects &mdash; one for each index found on the specified node. 
---
-a| xref:NodeIdx[]
-
-
-
-|===
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-responses-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-responses-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-security-before.adoc[opts=optional]
-
-
-[#get_node_stats-security]
-= Security
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-security-begin.adoc[opts=optional]
-
-
-[cols="20,80"]
-|===
-| Type | Name
-
-| http (basic)
-| xref:security-indexStatistics[]
-| http (basic)
-| xref:security-nodeStatistics[]
-
-|===
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-security-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-security-after.adoc[opts=optional]
-
-
-
-include::{snippetDir}get_node_stats/http-request.adoc[opts=optional]
-
-
-include::{snippetDir}get_node_stats/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-after.adoc[opts=optional]
-
-
-//end::get_node_stats[]
+//end::post_settings[]
 
 
 ifeval::[{count-apis} > 1]
@@ -959,7 +522,7 @@ endif::[]
 [#models]
 = Definitions
 
-:count-models: 7
+:count-models: 1
 
 :leveloffset: +1
 
@@ -973,72 +536,29 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-xref:NodeIdx[]
-xref:NodeIdxNode[]
-xref:NodeIdxNodeIndexer[]
-xref:PartIdx[]
-xref:PartIdxIndexes[]
-xref:PartIdxPartitions[]
-xref:PartIdxPartitionsIndex[]
+xref:Settings[]
 endif::[]
 
 
 
-// markup not found, no include::{specDir}definitions/NodeIdx/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/Settings/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#NodeIdx]
-= Node and Indexes
+[#Settings]
+= Settings
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/NodeIdx/definition-begin.adoc[opts=optional]
-
-
-.icon:bars[fw] Composite Schema
-{blank}
-
-All of the following:
-
-* xref:NodeIdxNode[]
-
-
-* xref:PartIdxIndexes[]
-
-
-
-
-// markup not found, no include::{specDir}definitions/NodeIdx/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/NodeIdx/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/NodeIdxNode/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#NodeIdxNode]
-= Nodes
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/NodeIdxNode/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/Settings/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::NodeIdxNode[]
+//tag::Settings[]
 
 
 [cols="25,55,20",separator=¦]
@@ -1046,806 +566,1340 @@ endif::collapse-models[]
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-*indexer* +
-_required_
-a¦ 
-
-[markdown]
---
-include::index.adoc[tag=desc-NodeIdxNodeIndexer, opts=optional]
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:NodeIdxNodeIndexer[]
-
-
-|===
-
-//end::NodeIdxNode[]
-
-
-
-
-// markup not found, no include::{specDir}definitions/NodeIdxNode/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/NodeIdxNode/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/NodeIdxNodeIndexer/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#NodeIdxNodeIndexer]
-= Node
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/NodeIdxNodeIndexer/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::NodeIdxNodeIndexer[]
-
-ifdef::model-descriptions[]
-//tag::desc-NodeIdxNodeIndexer[]
-A nested object containing statistics for the current index node.
-//end::desc-NodeIdxNodeIndexer[]
-endif::model-descriptions[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ 
-*indexer_state* +
+*indexer.rebalance.transferBatchSize* +
 _optional_
 a¦ 
 
 [markdown]
 --
-Current state of the Index service on this node.
+Sets the batch size Couchbase Server uses when rebuilding index files during rebalance.
+This setting has no effect on file-based rebalance.
+
+Couchbase Server breaks the rebuilding of indexes during a rebalance into batches to limit the performance impact.
+This setting controls the maximum number of indexes that a rebalance rebuilds concurrently.
+You must have the Full Admin or the Cluster Admin role to set this value.
+
+For an overview of rebalance as it affects the Index Service, including an overview of smart batching, see [Rebalance](/server/8.0/learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service).
 --
 
 [%hardbreaks]
-*Values:* `"Active"`, `"Pause"`, `"Warmup"`
-*Example:* `+++"Active"+++`
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.allow_large_keys* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether the size of index keys is unlimited.
+
+* If true, index keys may have unlimited size.
+* If false, the maximum size for index keys and array index keys is specified by `indexer.settings.max_seckey_size` and `indexer.settings.max_array_seckey_size`.
+
+In Couchbase Server 6.5 and later, the Index Service does not need to restart when you update this setting.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*indexer.settings.bufferPoolBlockSize* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Buffer pool block size.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.build.batch_size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Build batch size.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.compaction.abort_exceed_interval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether to abort index compaction if it is still running after the end of the index compaction interval.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*indexer.settings.compaction.check_period* +
+_optional_
+a¦ 
+
+[markdown]
+--
+An interval, specifying how frequently the Index Service checks whether the compaction threshold has been reached (seconds).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.compaction.compaction_mode* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The compaction mode for indexes.
+--
+
+[%hardbreaks]
+*Values:* `"standard"`, `"circular"`
 {blank}
 a¦ String
 
 
 a¦ 
-*memory_quota* +
+*indexer.settings.compaction.days_of_week* +
 _optional_
 a¦ 
 
 [markdown]
 --
-Memory quota assigned to the Index service on this node by user configuration (bytes).
+The days of the week on which circular compaction is to run, if specified.
+Individual values must be day-names, each specified with an initial capital, and otherwise lower-case.
+Multiple values must be separated by a single comma, with no spaces.
 --
 
 [%hardbreaks]
-*Default:* `268435456`
-*Maximum:* `1099511992567`
-*Example:* `536870912`
 {blank}
-a¦ Long (int64)
+a¦ String
 
 
 a¦ 
-*memory_total_storage* +
-_optional_
-a¦ [.edition]##{enterprise}##
-
-[markdown]
---
-The total size allocated in the indexer across all indexes (bytes).
-This also accounts for memory fragmentation.
-
---
-
-[%hardbreaks]
-*Example:* `71794688`
-{blank}
-a¦ Integer
-
-
-a¦ 
-*memory_used* +
+*indexer.settings.compaction.interval* +
 _optional_
 a¦ 
 
 [markdown]
 --
-Amount of memory used by the Index service on this node (bytes).
+A string in the form `fromHour:fromMinute,toHour:toMinute`, specifying the interval during which index compaction can run.
+
+* `fromHour` &mdash;
+  An integer between 0 and 23 inclusive, specifying the starting hour of the interval.
+* `fromMinute` &mdash;
+  An integer between 0 and 59 inclusive, specifying the starting minute of the interval, within the specified starting hour.
+* `toHour` &mdash;
+  An integer between 0 and 23 inclusive, specifying the concluding hour of the interval.
+* `toMinute` &mdash;
+  An integer between 0 and 59 inclusive, specifying the concluding minute of the interval, within the specified concluding hour.
+
+The default value means any time.
 --
 
 [%hardbreaks]
-*Example:* `360192000`
 {blank}
-a¦ Integer
+a¦ String
 
 
 a¦ 
-*total_indexer_gc_pause_ns* +
+*indexer.settings.compaction.min_frag* +
 _optional_
 a¦ 
 
 [markdown]
 --
-The total time the indexer has spent in GC pause since last startup (ns).
+The minimum fragmentation threshold to trigger compaction (percentage).
 --
 
 [%hardbreaks]
-*Example:* `309778455`
+*Minimum:* `5`
 {blank}
-a¦ Integer
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.compaction.min_size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Compaction minimum file size.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.compaction.plasma.manual* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For standard indexes using Plasma, whether compaction should be triggered manually.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*indexer.settings.compaction.plasma.optional.decrement* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For standard indexes using Plasma, the optional decrement.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.compaction.plasma.optional.min_frag* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For standard indexes using Plasma, the minimum fragmentation threshold to trigger compaction (percentage).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.compaction.plasma.optional.quota* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For standard indexes using Plasma, the optional quota.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.corrupt_index_num_backups* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Corrupt index number of backups.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.cpuProfDir* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The name of the directory where local CPU usage profiling information is captured.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*indexer.settings.cpuProfile* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether the Index Service should capture local CPU usage profiling information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*indexer.settings.defer_build* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The default setting for the `defer_build` option for index creation.
+
+* If this setting is true, and you create an index without specifying `defer_build`, the index is not built immediately.
+* If this setting false, and you create an index without specifying `defer_build`, the index is built immediately.
+
+You can override this setting by specifying the `defer_build` option when you create an index.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*indexer.settings.eTagPeriod* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The ETag (entity tag) period.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.enable_corrupt_index_backup* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether corrupt index backup is enabled.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*indexer.settings.enable_page_bloom_filter* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether page Bloom filter is enabled.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*indexer.settings.enable_shard_affinity* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether shard affinity is enabled.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*indexer.settings.fast_flush_mode* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether fast flush mode is enabled.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*indexer.settings.gc_percent* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Garbage collection percentage.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.inmemory_snapshot.fdb.interval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For standard indexes using ForestDB, the in-memory snapshotting interval (ms).
+This determines the earliest possibility of a scan seeing a given KV mutation.
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+*Exclusive minimum:* `true`
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.inmemory_snapshot.interval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The in-memory snapshotting interval (ms).
+This determines the earliest possibility of a scan seeing a given KV mutation.
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+*Exclusive minimum:* `true`
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.inmemory_snapshot.moi.interval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For memory-optimized indexes, the in-memory snapshotting interval (ms).
+This determines the earliest possibility of a scan seeing a given KV mutation.
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+*Exclusive minimum:* `true`
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.largeSnapshotThreshold* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The large snapshot threshold.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.log_level* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Indexer logging level.
+--
+
+[%hardbreaks]
+*Values:* `"silent"`, `"fatal"`, `"error"`, `"warn"`, `"info"`, `"verbose"`, `"timing"`, `"debug"`, `"trace"`
+{blank}
+a¦ String
+
+
+a¦ 
+*indexer.settings.maxNumPartitions* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Maximum number of partitions.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.maxVbQueueLength* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Maximum vBucket queue length.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.max_array_seckey_size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+If `indexer.settings.allow_large_keys` is false, this setting specifies the maximum size for array index keys.
+
+In Couchbase Server 6.5 and later, the Index Service does not need to restart when you update this setting.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.max_cpu_percent* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The CPU capacity that the Index Service should use (percentage).
+If set to `0`, the indexer will use all CPUs.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.max_seckey_size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+If `indexer.settings.allow_large_keys` is false, this setting specifies the maximum size for index keys.
+
+In Couchbase Server 6.5 and later, the Index Service does not need to restart when you update this setting.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.max_writer_lock_prob* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Maximum writer lock prob.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.memProfDir* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The name of the directory where local memory usage profiling information is captured.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*indexer.settings.memProfile* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether the Index Service should capture local memory usage profiling information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*indexer.settings.memory_quota* +
+_optional_
+a¦ 
+
+[markdown]
+--
+How much RAM is allocated to the Index Service for the current node.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.minVbQueueLength* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Minimum vBucket queue length.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.moi.debug* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Debug memory-optimized index storage.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*indexer.settings.moi.persistence_threads* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For memory-optimized index storage, the number of persistence threads.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.moi.recovery.max_rollbacks* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For memory-optimized index storage, the maximum number of committed rollback points.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.moi.recovery_threads* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For memory-optimized index storage, the number of recovery threads.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.num_replica* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The default number of index replicas to be created by the Index Service whenever `CREATE INDEX` is invoked.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.percentage_memory_quota* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Percentage memory quota.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.persisted_snapshot.fdb.interval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For standard indexes using ForestDB, the persisted snapshotting interval (ms).
+This must be a multiple of the in-memory snapshot interval.
+--
+
+[%hardbreaks]
+*Minimum:* `100`
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.persisted_snapshot.interval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The persisted snapshotting interval (ms).
+This must be a multiple of the in-memory snapshot interval.
+--
+
+[%hardbreaks]
+*Minimum:* `100`
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.persisted_snapshot.moi.interval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For memory-optimized indexes, the persisted snapshotting interval (ms).
+This must be a multiple of the in-memory snapshot interval.
+--
+
+[%hardbreaks]
+*Minimum:* `100`
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.persisted_snapshot_init_build.fdb.interval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For standard indexes using ForestDB, the persisted snapshotting interval for the initial build (ms).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.persisted_snapshot_init_build.interval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The persisted snapshotting interval for the initial build (ms).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.persisted_snapshot_init_build.moi.interval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For memory-optimized indexes, the persisted snapshotting interval for the initial build (ms).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.plasma.recovery.max_rollbacks* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For standard indexes using Plasma, the maximum number of committed rollback points.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.rebalance.blob_storage_bucket* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Rebalance blob storage bucket.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*indexer.settings.rebalance.blob_storage_prefix* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Rebalance blob storage prefix.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*indexer.settings.rebalance.blob_storage_region* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Rebalance blob storage region.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*indexer.settings.rebalance.blob_storage_scheme* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Rebalance blob storage scheme.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*indexer.settings.rebalance.redistribute_indexes* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether to redistribute indexes on rebalance.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*indexer.settings.recovery.max_rollbacks* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The maximum number of committed rollback points.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.scan_getseqnos_retries* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Scan get sequence numbers retries.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.scan_timeout* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The default timeout for the indexer.
+An index scan may time out if the query timeout is higher than the indexer timeout.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.send_buffer_size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Send buffer size.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.serverless.indexLimit* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Serverless index limit.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.sliceBufSize* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Slice buffer size.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.smallSnapshotThreshold* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Small snapshot threshold.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.snapshotListeners* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Snapshot listeners.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.snapshotRequestWorkers* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Snapshot request workers.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.statsLogDumpInterval* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Statistics log dump interval.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.storage_mode* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The storage mode to be used for the Index Service on this node.
+
+---
+
+If you are using [Enterprise Edition](https://www.couchbase.com/products/editions/), the possible values are:
+
+* `plasma` &mdash;
+  Sets the index storage mode to use the Plasma storage engine, which can utilize both memory and persistent storage for index maintenance and index scans.
+
+* `memory_optimized` &mdash;
+  Sets the index storage mode to use memory optimized global secondary indexes, which can perform index maintenance and index scan faster at in-memory speeds.
+
+This setting can only be changed while there are no index nodes in the cluster.
+To change from standard GSI to memory optimized GSI or vice versa, you need to remove all the Index Service nodes in the cluster.
+
+---
+
+If you are using [Community Edition](https://www.couchbase.com/products/editions/), the default (and only) value is `forestdb`.
+--
+
+[%hardbreaks]
+*Values:* `"plasma"`, `"memory_optimized"`, `"forestdb"`
+{blank}
+a¦ String
+
+
+a¦ 
+*indexer.settings.storage_mode.disable_upgrade* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether upgrade of the index storage mode is disabled.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*indexer.settings.thresholds.mem_high* +
+_optional_
+a¦ 
+
+[markdown]
+--
+High memory threshold.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.thresholds.mem_low* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Low memory threshold.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.thresholds.units_high* +
+_optional_
+a¦ 
+
+[markdown]
+--
+High units threshold.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.thresholds.units_low* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Low units threshold.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.units_quota* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Units quota.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*indexer.settings.wal_size* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Write-ahead log size.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*projector.settings.log_level* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Projector logging level.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*queryport.client.settings.backfillLimit* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The maximum size of the backfill file (MB).
+
+* A value of `0` disables backfill.
+* A value of `-1` means the size is unlimited.
+
+The maximum size is limited only by the available disk space.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*queryport.client.settings.closeActiveConnections* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Whether to close active connections.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+
+a¦ 
+*queryport.client.settings.minPoolSizeWM* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Minimum pool size.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*queryport.client.settings.poolOverflow* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Maximum number of connections in a pool.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*queryport.client.settings.poolSize* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Number of simultaneous active connections connections in a pool.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+
+
+a¦ 
+*queryport.client.settings.relConnBatchSize* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Connection batch size.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
 
 
 |===
 
-//end::NodeIdxNodeIndexer[]
+//end::Settings[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/NodeIdxNodeIndexer/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/Settings/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/NodeIdxNodeIndexer/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/PartIdx/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#PartIdx]
-= Index and Partitions
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/PartIdx/definition-begin.adoc[opts=optional]
-
-
-.icon:bars[fw] Composite Schema
-{blank}
-
-All of the following:
-
-* xref:PartIdxIndexes[]
-
-
-* xref:PartIdxPartitions[]
-
-
-
-
-// markup not found, no include::{specDir}definitions/PartIdx/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/PartIdx/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/PartIdxIndexes/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#PartIdxIndexes]
-= Indexes
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/PartIdxIndexes/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::PartIdxIndexes[]
-
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ 
-
-_additional +
-property_
-a¦ 
-
-[markdown]
---
-include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:PartIdxPartitionsIndex[]
-
-
-|===
-
-//end::PartIdxIndexes[]
-
-
-
-
-include::{specDir}definitions/PartIdxIndexes/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/PartIdxIndexes/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/PartIdxPartitions/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#PartIdxPartitions]
-= Partitions
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/PartIdxPartitions/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::PartIdxPartitions[]
-
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ 
-
-_additional +
-property_
-a¦ 
-
-[markdown]
---
-include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:PartIdxPartitionsIndex[]
-
-
-|===
-
-//end::PartIdxPartitions[]
-
-
-
-
-include::{specDir}definitions/PartIdxPartitions/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/PartIdxPartitions/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/PartIdxPartitionsIndex/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#PartIdxPartitionsIndex]
-= Index
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/PartIdxPartitionsIndex/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::PartIdxPartitionsIndex[]
-
-ifdef::model-descriptions[]
-//tag::desc-PartIdxPartitionsIndex[]
-A nested object containing statistics for an index or index partition.
-//end::desc-PartIdxPartitionsIndex[]
-endif::model-descriptions[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ 
-*avg_array_length* +
-_optional_
-a¦ 
-
-[markdown]
---
-(Array indexes only.)
-The average number of items indexed per document.
-
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*avg_drain_rate* +
-_optional_
-a¦ 
-
-[markdown]
---
-Average number of items flushed from memory to disk storage per second.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*avg_item_size* +
-_optional_
-a¦ 
-
-[markdown]
---
-Average size of the keys.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*avg_scan_latency* +
-_optional_
-a¦ 
-
-[markdown]
---
-Average time to serve a scan request (nanoseconds).
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*cache_hit_percent* +
-_optional_
-a¦ [.edition]##{enterprise}##
-
-[markdown]
---
-Percentage of memory accesses that were served from the managed cache.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*cache_hits* +
-_optional_
-a¦ 
-
-[markdown]
---
-Accesses to this index data from RAM.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*cache_misses* +
-_optional_
-a¦ 
-
-[markdown]
---
-Accesses to this index data from disk.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*data_size* +
-_optional_
-a¦ 
-
-[markdown]
---
-The size of indexable data that is maintained for the index or partition (bytes).
---
-
-[%hardbreaks]
-*Example:* `95728`
-{blank}
-a¦ Integer
-
-
-a¦ 
-*disk_size* +
-_optional_
-a¦ 
-
-[markdown]
---
-Total disk file size consumed by the index or partition.
---
-
-[%hardbreaks]
-*Example:* `889054`
-{blank}
-a¦ Integer
-
-
-a¦ 
-*docid_count* +
-_optional_
-a¦ 
-
-[markdown]
---
-(Array indexes only.)
-The number of documents currently indexed.
-
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*frag_percent* +
-_optional_
-a¦ 
-
-[markdown]
---
-Percentage fragmentation of the index.
-
-TIP: At small index sizes of less than a hundred kB, the static overhead of the index disk file will inflate the index fragmentation percentage.
-
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*initial_build_progress* +
-_optional_
-a¦ 
-
-[markdown]
---
-Percentage initial build progress for the index.
-When initial build is completed, the value is `100`.
-
-For an index partition, the value is listed as `0`.
-
---
-
-[%hardbreaks]
-*Example:* `100`
-{blank}
-a¦ Integer
-
-
-a¦ 
-*items_count* +
-_optional_
-a¦ 
-
-[markdown]
---
-The number of items currently indexed.
---
-
-[%hardbreaks]
-*Example:* `2155`
-{blank}
-a¦ Integer
-
-
-a¦ 
-*last_known_scan_time* +
-_optional_
-a¦ 
-
-[markdown]
---
-Time of the last scan request received for this index (Unix timestamp in nanoseconds).
-This may be useful for determining whether this index is currently unused.
-
-NOTE: This statistic is persisted to disk every 15 minutes, so it is preserved when the indexer restarts.
-
---
-
-[%hardbreaks]
-{blank}
-a¦ Long (int64)
-
-
-a¦ 
-*num_docs_indexed* +
-_optional_
-a¦ 
-
-[markdown]
---
-Number of documents indexed by the indexer since last startup.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*num_docs_pending* +
-_optional_
-a¦ 
-
-[markdown]
---
-Number of documents pending to be indexed.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*num_docs_queued* +
-_optional_
-a¦ 
-
-[markdown]
---
-Number of documents queued to be indexed.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*num_items_flushed* +
-_optional_
-a¦ 
-
-[markdown]
---
-Number of items flushed from memory to disk storage.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*num_pending_requests* +
-_optional_
-a¦ 
-
-[markdown]
---
-Number of requests received but not yet served by the indexer.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*num_requests* +
-_optional_
-a¦ 
-
-[markdown]
---
-Number of requests served by the indexer since last startup.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*num_rows_returned* +
-_optional_
-a¦ 
-
-[markdown]
---
-Total number of rows returned so far by the indexer.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*num_scan_errors* +
-_optional_
-a¦ 
-
-[markdown]
---
-Number of requests that failed due to errors other than timeout.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*num_scan_timeouts* +
-_optional_
-a¦ 
-
-[markdown]
---
-Number of requests that timed out, either waiting for snapshots or during scan in progress.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*recs_in_mem* +
-_optional_
-a¦ [.edition]##{enterprise}##
-
-[markdown]
---
-For standard index storage, this is the number of records in this index that are stored in memory.
-
-For memory-optimized index storage, this is the same as `items_count`.
-
---
-
-[%hardbreaks]
-*Example:* `2155`
-{blank}
-a¦ Integer
-
-
-a¦ 
-*recs_on_disk* +
-_optional_
-a¦ [.edition]##{enterprise}##
-
-[markdown]
---
-For standard index storage, this is the number of records in this index that are stored on disk.
-For memory-optimized index storage, this is `0`.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*resident_percent* +
-_optional_
-a¦ [.edition]##{enterprise}##
-
-[markdown]
---
-Percentage of the data held in memory.
---
-
-[%hardbreaks]
-*Example:* `100`
-{blank}
-a¦ Integer
-
-
-a¦ 
-*scan_bytes_read* +
-_optional_
-a¦ 
-
-[markdown]
---
-Number of bytes read by a scan since last startup.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-a¦ 
-*total_scan_duration* +
-_optional_
-a¦ 
-
-[markdown]
---
-Total time spent by the indexer in scanning rows since last startup (nanoseconds).
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-
-|===
-
-//end::PartIdxPartitionsIndex[]
-
-
-
-
-// markup not found, no include::{specDir}definitions/PartIdxPartitionsIndex/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/PartIdxPartitionsIndex/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/Settings/definition-after.adoc[opts=optional]
 
 
 
@@ -1872,66 +1926,34 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 
 
 
-// markup not found, no include::{specDir}security/NodeStatistics/security-scheme-before.adoc[opts=optional]
+// markup not found, no include::{specDir}security/Default/security-scheme-before.adoc[opts=optional]
 
 
-[[security-nodeStatistics]]
-= Node Statistics
+[[security-default]]
+= Default
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/NodeStatistics/security-scheme-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}security/Default/security-scheme-begin.adoc[opts=optional]
 
 
 [markdown]
 --
-To get [Node statistics](#NodeIdxNodeIndexer), users must have the Query System Catalog RBAC role.
+Users must have Cluster Read and Bucket INDEX List privileges.
 
+To modify the index batch size, users must have the Full Admin or Cluster Admin role.
 --
 
 [%hardbreaks]
 __Type__ : http
 
 
-// markup not found, no include::{specDir}security/NodeStatistics/security-scheme-end.adoc[opts=optional]
+// markup not found, no include::{specDir}security/Default/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
-// markup not found, no include::{specDir}security/NodeStatistics/security-scheme-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}security/IndexStatistics/security-scheme-before.adoc[opts=optional]
-
-
-[[security-indexStatistics]]
-= Index Statistics
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}security/IndexStatistics/security-scheme-begin.adoc[opts=optional]
-
-
-[markdown]
---
-To get [Index statistics](#PartIdxPartitionsIndex) for all indexes in a bucket, scope, or collection, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on that bucket, scope, or collection.
-
-
-To get [Index statistics](#PartIdxPartitionsIndex) for an individual index, users must have the Query System Catalog RBAC role, or the Query Manage Index RBAC role with permissions on the bucket, scope, and collection containing that index.
---
-
-[%hardbreaks]
-__Type__ : http
-
-
-// markup not found, no include::{specDir}security/IndexStatistics/security-scheme-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}security/IndexStatistics/security-scheme-after.adoc[opts=optional]
+// markup not found, no include::{specDir}security/Default/security-scheme-after.adoc[opts=optional]
 
 
 
