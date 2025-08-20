@@ -14,27 +14,29 @@ curl -X POST http://$HOST:9102/settings \
 ----
 ====
 
+[#ex-scan-timeout]
 ====
-This example sets the current index settings.
+This example sets the indexer scan timeout.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
-curl -X POST http://localhost:9102/settings \
-  -u Administrator:password \
+curl -X POST http://$HOST:9102/settings \
+  -u $USER:$PASSWORD \
   -H 'content-type: application/json' \
-  -d '{ "indexer.settings.allow_large_keys": false }'
+  -d '{"indexer.settings.scan_timeout": 15000}'
 ----
 ====
 
+[#ex-modify-index-batch-size]
 ====
-This example sets the index batch size for rebalance.
+This example modifies the index batch size for rebalance.
 
 .Curl request
-[source,shell]
+[source,sh]
 ----
-curl -X POST http://localhost:9102/settings \
-  -u Administrator:password \
+curl -X POST http://$HOST:9102/settings \
+  -u $USER:$PASSWORD \
   -H 'content-type: application/json' \
   -d '{ "indexer.rebalance.transferBatchSize": 7 }'
 ----

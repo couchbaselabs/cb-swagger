@@ -137,7 +137,11 @@ components:
           type: integer
           format: int32
           default: 120000
-          description: The default timeout for the indexer service.
+          description: |-
+            The default timeout for the indexer service.
+            You should not usually change this setting unless advised to do so by Couchbase Support.
+
+            It is possible that a scan may time out if the query timeout is higher than the indexer service timeout.
         indexer.settings.send_buffer_size:
           type: integer
           format: int32
