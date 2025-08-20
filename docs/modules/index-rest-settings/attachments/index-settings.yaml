@@ -113,6 +113,16 @@ components:
         indexer.settings.build.batch_size:
           default: 2
           description: For standard indexes using Plasma, the maximum number of committed rollback points.
+        indexer.settings.defer_build:
+          type: boolean
+          default: false
+          description: |-
+            The default setting for the `defer_build` option for index creation.
+
+            * If this setting is true, and you create an index without specifying `defer_build`, the index is not built immediately.
+            * If this setting false, and you create an index without specifying `defer_build`, the index is built immediately.
+
+            You can override this setting by specifying the `defer_build` option when you create an index.
         indexer.settings.recovery.max_rollbacks:
           type: integer
           format: int32

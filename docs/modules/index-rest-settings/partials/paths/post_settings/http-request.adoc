@@ -1,5 +1,19 @@
 = Example HTTP Request
 
+[#ex-defer-build]
+====
+This example specifies the default setting for deferred builds.
+
+.Curl request
+[source,sh]
+----
+curl -X POST http://$HOST:9102/settings \
+  -u $USER:$PASSWORD \
+  -H 'content-type: application/json' \
+  -d '{"indexer.settings.defer_build": true}'
+----
+====
+
 ====
 This example sets the current index settings.
 
