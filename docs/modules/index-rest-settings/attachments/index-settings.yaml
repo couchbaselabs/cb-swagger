@@ -578,32 +578,7 @@ components:
           default: 60
           description: Statistics log dump interval.
         indexer.settings.storage_mode:
-          type: string
-          x-has-default: true
-          default: plasma
-          description: |-
-            The storage mode to be used for the Index Service on this node.
-
-            ---
-
-            If you are using [Enterprise Edition](https://www.couchbase.com/products/editions/), the possible values are:
-            
-            * `plasma` &mdash;
-              Sets the index storage mode to use the Plasma storage engine, which can utilize both memory and persistent storage for index maintenance and index scans.
-
-            * `memory_optimized` &mdash;
-              Sets the index storage mode to use memory optimized global secondary indexes, which can perform index maintenance and index scan faster at in-memory speeds.
-
-            This setting can only be changed while there are no index nodes in the cluster.
-            To change from standard GSI to memory optimized GSI or vice versa, you need to remove all the Index Service nodes in the cluster.
-
-            ---
-
-            If you are using [Community Edition](https://www.couchbase.com/products/editions/), the default (and only) value is `forestdb`.
-          enum:
-            - plasma
-            - memory_optimized
-            - forestdb
+          $ref: "#/components/schemas/SettingsStorageMode"
         indexer.settings.storage_mode.disable_upgrade:
           type: boolean
           x-has-default: true
@@ -691,6 +666,40 @@ components:
           x-has-default: true
           default: 100
           description: Connection batch size.
+    SettingsStorageMode:
+      title: Storage Mode
+      description: The storage mode to be used for the index service on this node.
+      oneOf:
+        - $ref: "#/components/schemas/SettingsStorageModeEE"
+        - $ref: "#/components/schemas/SettingsStorageModeCE"
+    SettingsStorageModeEE:
+      title: Storage Mode EE
+      type: string
+      default: plasma
+      x-desc-edition: "{enterprise}"
+      description: |-
+        If you are using Enterprise Edition, the possible values are:
+        
+        * `plasma` &mdash;
+          Sets the index storage mode to use the Plasma storage engine (the default), which can utilize both memory and persistent storage for index maintenance and index scans.
+
+        * `memory_optimized` &mdash;
+          Sets the index storage mode to use memory optimized global secondary indexes, which can perform index maintenance and index scan faster at in-memory speeds.
+
+        This setting can only be changed while there are no index nodes in the cluster.
+        To change from standard GSI to memory optimized GSI or vice versa, you need to remove all the Index Service nodes in the cluster.
+      enum:
+        - plasma
+        - memory_optimized
+    SettingsStorageModeCE:
+      title: Storage Mode CE
+      type: string
+      default: forestdb
+      x-desc-edition: "{community}"
+      description: |-
+        If you are using Community Edition, the default (and only) value is `forestdb`.
+      enum:
+        - forestdb
 
   responses:
     NotFound:
