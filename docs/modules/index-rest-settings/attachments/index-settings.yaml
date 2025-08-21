@@ -67,7 +67,7 @@ paths:
         required: true
         description: |-
           An object specifying Index Service settings.
-          You only need to specify the settings you want to change.
+          You only need to specify the settings you want to change; settings which are not specified are left unchanged.
         content:
           application/json:
             schema:
@@ -76,7 +76,7 @@ paths:
         "200":
           description: |-
             Success.
-            Returns the string `OK`.
+            Returns `OK` and no object.
         "401":
           $ref: '#/components/responses/Unauthorized'
         "404":
