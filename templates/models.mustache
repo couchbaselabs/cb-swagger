@@ -111,22 +111,46 @@ endif::collapse-models[]
 {blank}
 
 {{#oneOf}}
-{{#-first}}One of the following:
+{{#-first}}
+[cols="25,55,20",separator=¦]
+|===
+¦ One of ¦ ¦ Schema
 
 {{/-first}}
-* {{>schemas}}
+a¦ {{^-first}}_or_{{/-first}}
+a¦ {{>property}}
+a¦ {{>schemas}}
+{{#-last}}
+|===
+{{/-last}}
 {{/oneOf}}
 {{#anyOf}}
-{{#-first}}Any of the following:
+{{#-first}}
+[cols="25,55,20",separator=¦]
+|===
+¦ Any of ¦ ¦ Schema
 
 {{/-first}}
-* {{>schemas}}
+a¦ {{^-first}}_and{nbsp}/ or_{{/-first}}
+a¦ {{>property}}
+a¦ {{>schemas}}
+{{#-last}}
+|===
+{{/-last}}
 {{/anyOf}}
 {{#allOf}}
-{{#-first}}All of the following:
+{{#-first}}
+[cols="25,55,20",separator=¦]
+|===
+¦ All of ¦ ¦ Schema
 
 {{/-first}}
-* {{>schemas}}
+a¦ {{^-first}}_and_{{/-first}}
+a¦ {{>property}}
+a¦ {{>schemas}}
+{{#-last}}
+|===
+{{/-last}}
 {{/allOf}}
 {{/composedSchemas}}
 
