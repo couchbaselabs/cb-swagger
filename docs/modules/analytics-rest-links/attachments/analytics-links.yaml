@@ -826,7 +826,7 @@ components:
 
   ResponseAll:
     title: Links
-    description: These properties are common to all links.
+    description: Properties common to all links.
     type: object
     discriminator:
       propertyName: type
@@ -879,6 +879,7 @@ components:
 
   ResponseCouchbaseSpecific:
         title: Couchbase Specific Response
+        description: Properties specific to remote Couchbase links.
         type: object
         required:
           - activeHostname
@@ -1051,6 +1052,7 @@ components:
 
   ResponseS3Specific:
         title: S3 Specific Response
+        description: Properties specific to S3 links.
         type: object
         required:
           - accessKeyId
@@ -1101,6 +1103,7 @@ components:
 
   ResponseAzureBlobSpecific:
         title: Azure Blob Specific Response
+        description: Properties specific to Azure Blob links.
         type: object
         required:
           - endpoint
@@ -1205,6 +1208,7 @@ components:
 
   ResponseGCSSpecific:
         title: GCS Specific Response
+        description: Properties specific to Google Cloud Storage links.
         type: object
         required:
           - applicationDefaultCredentials
