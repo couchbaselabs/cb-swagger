@@ -30,7 +30,6 @@ This API enables you to retrieve or set Index Service settings.
 
 Changes automatically propagate to all Index Service nodes, and will be remembered across node and cluster restarts.
 
-Most of the settings provided by this REST API intentionally have minimal documentation.
 Unless otherwise noted, you should only change the Index Service settings when advised to do so by Couchbase Support.
 --
 
@@ -382,7 +381,7 @@ a¦
 
 [markdown]
 --
-An object specifying Index Service settings. You only need to specify the settings you want to change.
+An object specifying Index Service settings. You only need to specify the settings you want to change; settings which are not specified are left unchanged.
 --
 
 [%hardbreaks]
@@ -424,7 +423,7 @@ a¦ xref:Settings[]
 | 200
 a| [markdown]
 --
-Success. Returns the string `OK`.
+Success. Returns `OK` and no object.
 --
 a| 
 | 401
@@ -522,7 +521,6 @@ endif::[]
 [#models]
 = Definitions
 
-:count-models: 1
 
 :leveloffset: +1
 
@@ -537,6 +535,13 @@ ifdef::collapse-models[]
 endif::collapse-models[]
 [%hardbreaks]
 xref:Settings[]
+xref:SettingsStorageMode[]
+ifdef::enum-definitions[]
+xref:SettingsStorageModeCE[]
+endif::enum-definitions[]
+ifdef::enum-definitions[]
+xref:SettingsStorageModeEE[]
+endif::enum-definitions[]
 endif::[]
 
 
@@ -583,6 +588,8 @@ For an overview of rebalance as it affects the Index Service, including an overv
 --
 
 [%hardbreaks]
+*Default:* `3`
+*Example:* `7`
 {blank}
 a¦ Integer (int32)
 
@@ -603,6 +610,7 @@ In Couchbase Server 6.5 and later, the Index Service does not need to restart wh
 --
 
 [%hardbreaks]
+*Default:* `true`
 {blank}
 a¦ Boolean
 
@@ -618,6 +626,7 @@ Buffer pool block size.
 --
 
 [%hardbreaks]
+*Default:* `16384`
 {blank}
 a¦ Integer (int32)
 
@@ -633,6 +642,7 @@ Build batch size.
 --
 
 [%hardbreaks]
+*Default:* `5`
 {blank}
 a¦ Integer (int32)
 
@@ -648,6 +658,7 @@ Whether to abort index compaction if it is still running after the end of the in
 --
 
 [%hardbreaks]
+*Default:* `false`
 {blank}
 a¦ Boolean
 
@@ -663,6 +674,7 @@ An interval, specifying how frequently the Index Service checks whether the comp
 --
 
 [%hardbreaks]
+*Default:* `30`
 {blank}
 a¦ Integer (int32)
 
@@ -679,6 +691,7 @@ The compaction mode for indexes.
 
 [%hardbreaks]
 *Values:* `"standard"`, `"circular"`
+*Default:* `+++"circular"+++`
 {blank}
 a¦ String
 
@@ -696,6 +709,8 @@ Multiple values must be separated by a single comma, with no spaces.
 --
 
 [%hardbreaks]
+*Default:* `+++"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"+++`
+*Example:* `+++"Saturday,Sunday"+++`
 {blank}
 a¦ String
 
@@ -722,6 +737,8 @@ The default value means any time.
 --
 
 [%hardbreaks]
+*Default:* `+++"00:00,00:00"+++`
+*Example:* `+++"01:00,05:59"+++`
 {blank}
 a¦ String
 
@@ -737,6 +754,7 @@ The minimum fragmentation threshold to trigger compaction (percentage).
 --
 
 [%hardbreaks]
+*Default:* `30`
 *Minimum:* `5`
 {blank}
 a¦ Integer (int32)
@@ -753,6 +771,7 @@ Compaction minimum file size.
 --
 
 [%hardbreaks]
+*Default:* `524288000`
 {blank}
 a¦ Integer (int32)
 
@@ -768,6 +787,7 @@ For standard indexes using Plasma, whether compaction should be triggered manual
 --
 
 [%hardbreaks]
+*Default:* `false`
 {blank}
 a¦ Boolean
 
@@ -783,6 +803,7 @@ For standard indexes using Plasma, the optional decrement.
 --
 
 [%hardbreaks]
+*Default:* `5`
 {blank}
 a¦ Integer (int32)
 
@@ -798,6 +819,7 @@ For standard indexes using Plasma, the minimum fragmentation threshold to trigge
 --
 
 [%hardbreaks]
+*Default:* `20`
 {blank}
 a¦ Integer (int32)
 
@@ -813,6 +835,7 @@ For standard indexes using Plasma, the optional quota.
 --
 
 [%hardbreaks]
+*Default:* `25`
 {blank}
 a¦ Integer (int32)
 
@@ -828,6 +851,7 @@ Corrupt index number of backups.
 --
 
 [%hardbreaks]
+*Default:* `1`
 {blank}
 a¦ Integer (int32)
 
@@ -858,6 +882,7 @@ Whether the Index Service should capture local CPU usage profiling information.
 --
 
 [%hardbreaks]
+*Default:* `false`
 {blank}
 a¦ Boolean
 
@@ -878,6 +903,7 @@ You can override this setting by specifying the `defer_build` option when you cr
 --
 
 [%hardbreaks]
+*Default:* `false`
 {blank}
 a¦ Boolean
 
@@ -893,6 +919,7 @@ The ETag (entity tag) period.
 --
 
 [%hardbreaks]
+*Default:* `240`
 {blank}
 a¦ Integer (int32)
 
@@ -908,6 +935,7 @@ Whether corrupt index backup is enabled.
 --
 
 [%hardbreaks]
+*Default:* `false`
 {blank}
 a¦ Boolean
 
@@ -919,10 +947,13 @@ a¦
 
 [markdown]
 --
-Whether page Bloom filter is enabled.
+Whether Bloom filters are enabled for memory management.
+
+For details, see [Per Page Bloom Filters](/server/8.0/learn/services-and-indexes/indexes/storage-modes.html#per-page-bloom-filters).
 --
 
 [%hardbreaks]
+*Default:* `true`
 {blank}
 a¦ Boolean
 
@@ -934,10 +965,19 @@ a¦
 
 [markdown]
 --
-Whether shard affinity is enabled.
+Selects the index rebalance method.
+See [Index Rebalance Methods](/server/8.0/learn/clusters-and-availability/rebalance.html#index-rebalance-methods).
+
+* If false (the default), Index Service nodes rebuild indexes that are newly assigned to them during a rebalance.
+
+* If true, Couchbase Server moves a reassigned index's files between Index Service nodes.
+
+If set to true, when you create an index, you can use the `WITH` clause to specify which node should contain the index.
+However, when you alter an index, you cannot use the `WITH` clause to specify which node should contain the index.
 --
 
 [%hardbreaks]
+*Default:* `false`
 {blank}
 a¦ Boolean
 
@@ -953,6 +993,7 @@ Whether fast flush mode is enabled.
 --
 
 [%hardbreaks]
+*Default:* `true`
 {blank}
 a¦ Boolean
 
@@ -968,6 +1009,7 @@ Garbage collection percentage.
 --
 
 [%hardbreaks]
+*Default:* `100`
 {blank}
 a¦ Integer (int32)
 
@@ -984,8 +1026,8 @@ This determines the earliest possibility of a scan seeing a given KV mutation.
 --
 
 [%hardbreaks]
-*Minimum:* `1`
-*Exclusive minimum:* `true`
+*Default:* `200`
+*Minimum:* `1` (exclusive)
 {blank}
 a¦ Integer (int32)
 
@@ -1002,8 +1044,8 @@ This determines the earliest possibility of a scan seeing a given KV mutation.
 --
 
 [%hardbreaks]
-*Minimum:* `1`
-*Exclusive minimum:* `true`
+*Default:* `200`
+*Minimum:* `1` (exclusive)
 {blank}
 a¦ Integer (int32)
 
@@ -1020,8 +1062,8 @@ This determines the earliest possibility of a scan seeing a given KV mutation.
 --
 
 [%hardbreaks]
-*Minimum:* `1`
-*Exclusive minimum:* `true`
+*Default:* `10`
+*Minimum:* `1` (exclusive)
 {blank}
 a¦ Integer (int32)
 
@@ -1037,6 +1079,7 @@ The large snapshot threshold.
 --
 
 [%hardbreaks]
+*Default:* `200`
 {blank}
 a¦ Integer (int32)
 
@@ -1053,6 +1096,7 @@ Indexer logging level.
 
 [%hardbreaks]
 *Values:* `"silent"`, `"fatal"`, `"error"`, `"warn"`, `"info"`, `"verbose"`, `"timing"`, `"debug"`, `"trace"`
+*Default:* `+++"info"+++`
 {blank}
 a¦ String
 
@@ -1068,6 +1112,7 @@ Maximum number of partitions.
 --
 
 [%hardbreaks]
+*Default:* `64`
 {blank}
 a¦ Integer (int32)
 
@@ -1083,6 +1128,7 @@ Maximum vBucket queue length.
 --
 
 [%hardbreaks]
+*Default:* `0`
 {blank}
 a¦ Integer (int32)
 
@@ -1100,6 +1146,7 @@ In Couchbase Server 6.5 and later, the Index Service does not need to restart wh
 --
 
 [%hardbreaks]
+*Default:* `10240`
 {blank}
 a¦ Integer (int32)
 
@@ -1116,6 +1163,7 @@ If set to `0`, the indexer will use all CPUs.
 --
 
 [%hardbreaks]
+*Default:* `0`
 {blank}
 a¦ Integer (int32)
 
@@ -1133,6 +1181,7 @@ In Couchbase Server 6.5 and later, the Index Service does not need to restart wh
 --
 
 [%hardbreaks]
+*Default:* `4608`
 {blank}
 a¦ Integer (int32)
 
@@ -1148,6 +1197,7 @@ Maximum writer lock prob.
 --
 
 [%hardbreaks]
+*Default:* `20`
 {blank}
 a¦ Integer (int32)
 
@@ -1178,6 +1228,7 @@ Whether the Index Service should capture local memory usage profiling informatio
 --
 
 [%hardbreaks]
+*Default:* `false`
 {blank}
 a¦ Boolean
 
@@ -1193,6 +1244,7 @@ How much RAM is allocated to the Index Service for the current node.
 --
 
 [%hardbreaks]
+*Default:* `536870912`
 {blank}
 a¦ Integer (int32)
 
@@ -1208,6 +1260,7 @@ Minimum vBucket queue length.
 --
 
 [%hardbreaks]
+*Default:* `30`
 {blank}
 a¦ Integer (int32)
 
@@ -1223,6 +1276,7 @@ Debug memory-optimized index storage.
 --
 
 [%hardbreaks]
+*Default:* `false`
 {blank}
 a¦ Boolean
 
@@ -1238,6 +1292,7 @@ For memory-optimized index storage, the number of persistence threads.
 --
 
 [%hardbreaks]
+*Default:* `4`
 {blank}
 a¦ Integer (int32)
 
@@ -1253,6 +1308,7 @@ For memory-optimized index storage, the maximum number of committed rollback poi
 --
 
 [%hardbreaks]
+*Default:* `2`
 {blank}
 a¦ Integer (int32)
 
@@ -1268,6 +1324,7 @@ For memory-optimized index storage, the number of recovery threads.
 --
 
 [%hardbreaks]
+*Default:* `8`
 {blank}
 a¦ Integer (int32)
 
@@ -1283,6 +1340,8 @@ The default number of index replicas to be created by the Index Service whenever
 --
 
 [%hardbreaks]
+*Default:* `0`
+*Example:* `2`
 {blank}
 a¦ Integer (int32)
 
@@ -1298,6 +1357,7 @@ Percentage memory quota.
 --
 
 [%hardbreaks]
+*Default:* `0`
 {blank}
 a¦ Integer (int32)
 
@@ -1314,6 +1374,7 @@ This must be a multiple of the in-memory snapshot interval.
 --
 
 [%hardbreaks]
+*Default:* `5000`
 *Minimum:* `100`
 {blank}
 a¦ Integer (int32)
@@ -1331,6 +1392,7 @@ This must be a multiple of the in-memory snapshot interval.
 --
 
 [%hardbreaks]
+*Default:* `5000`
 *Minimum:* `100`
 {blank}
 a¦ Integer (int32)
@@ -1348,6 +1410,7 @@ This must be a multiple of the in-memory snapshot interval.
 --
 
 [%hardbreaks]
+*Default:* `600000`
 *Minimum:* `100`
 {blank}
 a¦ Integer (int32)
@@ -1364,6 +1427,7 @@ For standard indexes using ForestDB, the persisted snapshotting interval for the
 --
 
 [%hardbreaks]
+*Default:* `5000`
 {blank}
 a¦ Integer (int32)
 
@@ -1379,6 +1443,7 @@ The persisted snapshotting interval for the initial build (ms).
 --
 
 [%hardbreaks]
+*Default:* `5000`
 {blank}
 a¦ Integer (int32)
 
@@ -1394,6 +1459,7 @@ For memory-optimized indexes, the persisted snapshotting interval for the initia
 --
 
 [%hardbreaks]
+*Default:* `600000`
 {blank}
 a¦ Integer (int32)
 
@@ -1409,6 +1475,7 @@ For standard indexes using Plasma, the maximum number of committed rollback poin
 --
 
 [%hardbreaks]
+*Default:* `2`
 {blank}
 a¦ Integer (int32)
 
@@ -1424,6 +1491,7 @@ Rebalance blob storage bucket.
 --
 
 [%hardbreaks]
+*Default:* `+++""+++`
 {blank}
 a¦ String
 
@@ -1439,6 +1507,7 @@ Rebalance blob storage prefix.
 --
 
 [%hardbreaks]
+*Default:* `+++""+++`
 {blank}
 a¦ String
 
@@ -1454,6 +1523,7 @@ Rebalance blob storage region.
 --
 
 [%hardbreaks]
+*Default:* `+++""+++`
 {blank}
 a¦ String
 
@@ -1469,6 +1539,7 @@ Rebalance blob storage scheme.
 --
 
 [%hardbreaks]
+*Default:* `+++""+++`
 {blank}
 a¦ String
 
@@ -1481,9 +1552,16 @@ a¦
 [markdown]
 --
 Whether to redistribute indexes on rebalance.
+
+* When true, Couchbase Server redistributes indexes when rebalance occurs, in order to optimize performance.
+
+* When false (the default), such redistribution does not occur.
+
+For details, see [Rebalance](/server/8.0/learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service).
 --
 
 [%hardbreaks]
+*Default:* `false`
 {blank}
 a¦ Boolean
 
@@ -1499,6 +1577,7 @@ The maximum number of committed rollback points.
 --
 
 [%hardbreaks]
+*Default:* `2`
 {blank}
 a¦ Integer (int32)
 
@@ -1514,6 +1593,7 @@ Scan get sequence numbers retries.
 --
 
 [%hardbreaks]
+*Default:* `30`
 {blank}
 a¦ Integer (int32)
 
@@ -1530,6 +1610,7 @@ An index scan may time out if the query timeout is higher than the indexer timeo
 --
 
 [%hardbreaks]
+*Default:* `120000`
 {blank}
 a¦ Integer (int32)
 
@@ -1545,6 +1626,7 @@ Send buffer size.
 --
 
 [%hardbreaks]
+*Default:* `1024`
 {blank}
 a¦ Integer (int32)
 
@@ -1560,6 +1642,7 @@ Serverless index limit.
 --
 
 [%hardbreaks]
+*Default:* `201`
 {blank}
 a¦ Integer (int32)
 
@@ -1575,6 +1658,7 @@ Slice buffer size.
 --
 
 [%hardbreaks]
+*Default:* `1600`
 {blank}
 a¦ Integer (int32)
 
@@ -1590,6 +1674,7 @@ Small snapshot threshold.
 --
 
 [%hardbreaks]
+*Default:* `30`
 {blank}
 a¦ Integer (int32)
 
@@ -1605,6 +1690,7 @@ Snapshot listeners.
 --
 
 [%hardbreaks]
+*Default:* `4`
 {blank}
 a¦ Integer (int32)
 
@@ -1620,6 +1706,7 @@ Snapshot request workers.
 --
 
 [%hardbreaks]
+*Default:* `4`
 {blank}
 a¦ Integer (int32)
 
@@ -1635,6 +1722,7 @@ Statistics log dump interval.
 --
 
 [%hardbreaks]
+*Default:* `60`
 {blank}
 a¦ Integer (int32)
 
@@ -1646,30 +1734,12 @@ a¦
 
 [markdown]
 --
-The storage mode to be used for the Index Service on this node.
-
----
-
-If you are using [Enterprise Edition](https://www.couchbase.com/products/editions/), the possible values are:
-
-* `plasma` &mdash;
-  Sets the index storage mode to use the Plasma storage engine, which can utilize both memory and persistent storage for index maintenance and index scans.
-
-* `memory_optimized` &mdash;
-  Sets the index storage mode to use memory optimized global secondary indexes, which can perform index maintenance and index scan faster at in-memory speeds.
-
-This setting can only be changed while there are no index nodes in the cluster.
-To change from standard GSI to memory optimized GSI or vice versa, you need to remove all the Index Service nodes in the cluster.
-
----
-
-If you are using [Community Edition](https://www.couchbase.com/products/editions/), the default (and only) value is `forestdb`.
+include::index.adoc[tag=desc-SettingsStorageMode, opts=optional]
 --
 
 [%hardbreaks]
-*Values:* `"plasma"`, `"memory_optimized"`, `"forestdb"`
 {blank}
-a¦ String
+a¦ xref:SettingsStorageMode[]
 
 
 a¦ 
@@ -1683,6 +1753,7 @@ Whether upgrade of the index storage mode is disabled.
 --
 
 [%hardbreaks]
+*Default:* `false`
 {blank}
 a¦ Boolean
 
@@ -1698,6 +1769,7 @@ High memory threshold.
 --
 
 [%hardbreaks]
+*Default:* `70`
 {blank}
 a¦ Integer (int32)
 
@@ -1713,6 +1785,7 @@ Low memory threshold.
 --
 
 [%hardbreaks]
+*Default:* `50`
 {blank}
 a¦ Integer (int32)
 
@@ -1728,6 +1801,7 @@ High units threshold.
 --
 
 [%hardbreaks]
+*Default:* `60`
 {blank}
 a¦ Integer (int32)
 
@@ -1743,6 +1817,7 @@ Low units threshold.
 --
 
 [%hardbreaks]
+*Default:* `40`
 {blank}
 a¦ Integer (int32)
 
@@ -1758,6 +1833,7 @@ Units quota.
 --
 
 [%hardbreaks]
+*Default:* `10000`
 {blank}
 a¦ Integer (int32)
 
@@ -1773,6 +1849,7 @@ Write-ahead log size.
 --
 
 [%hardbreaks]
+*Default:* `4096`
 {blank}
 a¦ Integer (int32)
 
@@ -1788,6 +1865,7 @@ Projector logging level.
 --
 
 [%hardbreaks]
+*Default:* `+++"info"+++`
 {blank}
 a¦ String
 
@@ -1808,6 +1886,7 @@ The maximum size is limited only by the available disk space.
 --
 
 [%hardbreaks]
+*Default:* `5120`
 {blank}
 a¦ Integer (int32)
 
@@ -1823,6 +1902,7 @@ Whether to close active connections.
 --
 
 [%hardbreaks]
+*Default:* `true`
 {blank}
 a¦ Boolean
 
@@ -1838,6 +1918,7 @@ Minimum pool size.
 --
 
 [%hardbreaks]
+*Default:* `1000`
 {blank}
 a¦ Integer (int32)
 
@@ -1853,6 +1934,7 @@ Maximum number of connections in a pool.
 --
 
 [%hardbreaks]
+*Default:* `30`
 {blank}
 a¦ Integer (int32)
 
@@ -1864,10 +1946,11 @@ a¦
 
 [markdown]
 --
-Number of simultaneous active connections connections in a pool.
+Number of simultaneous active connections in a pool.
 --
 
 [%hardbreaks]
+*Default:* `5000`
 {blank}
 a¦ Integer (int32)
 
@@ -1883,6 +1966,7 @@ Connection batch size.
 --
 
 [%hardbreaks]
+*Default:* `100`
 {blank}
 a¦ Integer (int32)
 
@@ -1902,6 +1986,121 @@ a¦ Integer (int32)
 // markup not found, no include::{specDir}definitions/Settings/definition-after.adoc[opts=optional]
 
 
+
+
+// markup not found, no include::{specDir}definitions/SettingsStorageMode/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#SettingsStorageMode]
+= Storage Mode
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/SettingsStorageMode/definition-begin.adoc[opts=optional]
+
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+//tag::SettingsStorageMode[]
+
+ifdef::model-descriptions[]
+//tag::desc-SettingsStorageMode[]
+The storage mode to be used for the Index Service on this node.
+//end::desc-SettingsStorageMode[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
+
+a¦ 
+a¦ [.edition]##{enterprise}##
+
+[markdown]
+--
+include::index.adoc[tag=desc-SettingsStorageModeEE, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ 
+include::index.adoc[tag=type-SettingsStorageModeEE, opts=optional]
+
+a¦ _or_
+a¦ [.edition]##{community}##
+
+[markdown]
+--
+include::index.adoc[tag=desc-SettingsStorageModeCE, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ 
+include::index.adoc[tag=type-SettingsStorageModeCE, opts=optional]
+
+|===
+
+//end::SettingsStorageMode[]
+
+
+// markup not found, no include::{specDir}definitions/SettingsStorageMode/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/SettingsStorageMode/definition-after.adoc[opts=optional]
+
+
+ifdef::enum-definitions[]
+[#SettingsStorageModeCE]
+= Community Edition
+
+.icon:menu[fw] Enumeration
+{blank}
+
+//tag::desc-SettingsStorageModeCE[]
+If you are using Community Edition, the default (and only) value is `forestdb`.
+//end::desc-SettingsStorageModeCE[]
+
+.Schema
+//tag::type-SettingsStorageModeCE[]
+String
+
+
+//end::type-SettingsStorageModeCE[]
+endif::enum-definitions[]
+ifdef::enum-definitions[]
+[#SettingsStorageModeEE]
+= Enterprise Edition
+
+.icon:menu[fw] Enumeration
+{blank}
+
+//tag::desc-SettingsStorageModeEE[]
+If you are using Enterprise Edition, the possible values are:
+
+* `plasma` (the default) &mdash;
+  Sets the index storage mode to use the Plasma storage engine, which can utilize both memory and persistent storage for index maintenance and index scans.
+
+* `memory_optimized` &mdash;
+  Sets the index storage mode to use memory optimized global secondary indexes, which can perform index maintenance and index scan faster at in-memory speeds.
+
+This setting can only be changed while there are no index nodes in the cluster.
+To change from standard GSI to memory optimized GSI or vice versa, you need to remove all the Index Service nodes in the cluster.
+//end::desc-SettingsStorageModeEE[]
+
+.Schema
+//tag::type-SettingsStorageModeEE[]
+String
+
+
+//end::type-SettingsStorageModeEE[]
+endif::enum-definitions[]
 
 
 // markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
@@ -1939,9 +2138,7 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 
 [markdown]
 --
-Users must have Cluster Read and Bucket INDEX List privileges.
-
-To modify the index batch size, users must have the Full Admin or Cluster Admin role.
+Users must have the Full Admin or Cluster Admin role, with Cluster Read and Bucket INDEX List privileges.
 --
 
 [%hardbreaks]
