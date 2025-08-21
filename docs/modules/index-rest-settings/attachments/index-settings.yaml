@@ -164,7 +164,7 @@ components:
           default: 00:00,00:00
           description: |-
             A string in the form `fromHour:fromMinute,toHour:toMinute`, specifying the interval during which index compaction can run.
-            
+
             * `fromHour` &mdash;
               An integer between 0 and 23 inclusive, specifying the starting hour of the interval.
             * `fromMinute` &mdash;
@@ -173,7 +173,7 @@ components:
               An integer between 0 and 23 inclusive, specifying the concluding hour of the interval.
             * `toMinute` &mdash;
               An integer between 0 and 59 inclusive, specifying the concluding minute of the interval, within the specified concluding hour.
-            
+
             The default value means any time.
         indexer.settings.compaction.min_frag:
           type: integer
@@ -668,20 +668,20 @@ components:
           description: Connection batch size.
     SettingsStorageMode:
       title: Storage Mode
-      description: The storage mode to be used for the index service on this node.
+      description: The storage mode to be used for the Index Service on this node.
       oneOf:
         - $ref: "#/components/schemas/SettingsStorageModeEE"
         - $ref: "#/components/schemas/SettingsStorageModeCE"
     SettingsStorageModeEE:
-      title: Storage Mode EE
+      title: Enterprise Edition
       type: string
       default: plasma
       x-desc-edition: "{enterprise}"
       description: |-
         If you are using Enterprise Edition, the possible values are:
-        
-        * `plasma` &mdash;
-          Sets the index storage mode to use the Plasma storage engine (the default), which can utilize both memory and persistent storage for index maintenance and index scans.
+
+        * `plasma` (the default) &mdash;
+          Sets the index storage mode to use the Plasma storage engine, which can utilize both memory and persistent storage for index maintenance and index scans.
 
         * `memory_optimized` &mdash;
           Sets the index storage mode to use memory optimized global secondary indexes, which can perform index maintenance and index scan faster at in-memory speeds.
@@ -692,7 +692,7 @@ components:
         - plasma
         - memory_optimized
     SettingsStorageModeCE:
-      title: Storage Mode CE
+      title: Community Edition
       type: string
       default: forestdb
       x-desc-edition: "{community}"
