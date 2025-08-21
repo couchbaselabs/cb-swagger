@@ -110,11 +110,23 @@ endif::collapse-models[]
 .icon:bars[fw] Composite Schema
 {blank}
 
+{{! tag for partial}}
+//tag::{{name}}[]
+
+{{! Create partial model description }}
+{{#description}}
+ifdef::model-descriptions[]
+//tag::desc-{{name}}[]
+{{{unescapedDescription}}}
+//end::desc-{{name}}[]
+endif::model-descriptions[]
+{{/description}}
+
 {{#oneOf}}
 {{#-first}}
 [cols="25,55,20",separator=¦]
 |===
-¦ One of ... ¦ ¦ Schema
+¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
 
 {{/-first}}
 a¦ {{^-first}}_or_{{/-first}}
@@ -128,7 +140,7 @@ a¦ {{>schemas}}
 {{#-first}}
 [cols="25,55,20",separator=¦]
 |===
-¦ Any of ... ¦ ¦ Schema
+¦ Any{nbsp}of{nbsp}... ¦ ¦ Schema
 
 {{/-first}}
 a¦ {{^-first}}_and{nbsp}/ or_{{/-first}}
@@ -142,7 +154,7 @@ a¦ {{>schemas}}
 {{#-first}}
 [cols="25,55,20",separator=¦]
 |===
-¦ All of ... ¦ ¦ Schema
+¦ All{nbsp}of{nbsp}... ¦ ¦ Schema
 
 {{/-first}}
 a¦ {{^-first}}_and_{{/-first}}
@@ -152,6 +164,9 @@ a¦ {{>schemas}}
 |===
 {{/-last}}
 {{/allOf}}
+
+{{! end tag for partial}}
+//end::{{name}}[]
 {{/composedSchemas}}
 
 {{! include partial after definition body }}
