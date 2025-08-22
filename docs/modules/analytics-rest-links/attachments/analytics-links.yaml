@@ -59,6 +59,7 @@ paths:
                 - $ref: "#/components/schemas/LegacyCreateCouchbase"
                 - $ref: "#/components/schemas/LegacyCreateS3"
                 - $ref: "#/components/schemas/LegacyCreateAzureBlob"
+                - $ref: "#/components/schemas/LegacyCreateAzureDataLake"
                 - $ref: "#/components/schemas/LegacyCreateGCS"
               # discriminator:
               #   propertyName: type
@@ -147,6 +148,7 @@ paths:
                 - $ref: "#/components/schemas/LegacyEditCouchbase"
                 - $ref: "#/components/schemas/LegacyEditS3"
                 - $ref: "#/components/schemas/LegacyEditAzureBlob"
+                - $ref: "#/components/schemas/LegacyEditAzureDataLake"
                 - $ref: "#/components/schemas/LegacyEditGCS"
               # discriminator:
               #   propertyName: type
@@ -243,6 +245,7 @@ paths:
                 - $ref: "#/components/schemas/RequestCreateCouchbase"
                 - $ref: "#/components/schemas/RequestCreateS3"
                 - $ref: "#/components/schemas/RequestCreateAzureBlob"
+                - $ref: "#/components/schemas/RequestCreateAzureDataLake"
                 - $ref: "#/components/schemas/RequestCreateGCS"
               # discriminator:
               #   propertyName: type
@@ -311,6 +314,7 @@ paths:
                 - $ref: "#/components/schemas/RequestEditCouchbase"
                 - $ref: "#/components/schemas/RequestEditS3"
                 - $ref: "#/components/schemas/RequestEditAzureBlob"
+                - $ref: "#/components/schemas/RequestEditAzureDataLake"
                 - $ref: "#/components/schemas/RequestEditGCS"
               # discriminator:
               #   propertyName: type
@@ -381,6 +385,7 @@ components:
         - couchbase
         - s3
         - azureblob
+        - azuredatalake
         - gcs
     in: query
     required: false
@@ -410,11 +415,15 @@ components:
       * `couchbase`: A link to a remote Couchbase cluster.
       * `s3`: A link to the Amazon S3 service.
       * `azureblob`: A link to Azure Blob Storage.
+      * `azuredatalake`: A link to Azure Data Lake.
       * `gcs`: A link to Google Cloud Storage.
+
+      (Azure Data Lake links are available in Developer Preview.)
     enum:
       - couchbase
       - s3
       - azureblob
+      - azuredatalake
       - gcs
 
   CommonTypeEdit:
@@ -427,6 +436,7 @@ components:
       - couchbase
       - s3
       - azureblob
+      - azuredatalake
       - gcs
 
   # Workaround for OpenApi Generator. Should have separate parameters for Couchbase and Azure.
@@ -436,19 +446,19 @@ components:
       For Couchbase links, this is the content of the client certificate.
       Required for links with full encryption if using a client key.
 
-      For Azure Blob links, this is the client certificate for the registered application.
+      For Azure Blob and Azure Data Lake links, this is the client certificate for the registered application.
       Used for Azure Active Directory client certificate authentication.
 
       You should URL-encode this parameter to escape any special characters.
 
-  # Workaround for OpenApi Generator. Should have separate parameters for Couchbase and Azure.
+  # Workaround for OpenApi Generator. Should have separate parameters for Azure and Google Cloud.
   CommonEndpoint:
     type: string
     description: |-
-      For Azure Blob links and Google Cloud Storage links.
+      For Azure Blob, Azure Data Lake, and Google Cloud Storage links.
       The endpoint URI.
 
-      Required for Azure Blob links; optional for Google Cloud Storage links.
+      Required for Azure Blob and Azure Data Lake links; optional for Google Cloud Storage links.
 
   RequestCreateAll:
     type: object
@@ -474,7 +484,13 @@ components:
     title: Create Azure Blob Link Request
     allOf:
       - $ref: "#/components/schemas/RequestCreateAll"
-      - $ref: "#/components/schemas/RequestSpecificAzureBlob"
+      - $ref: "#/components/schemas/RequestSpecificAzure"
+
+  RequestCreateAzureDataLake:
+    title: Create Azure Data Lake Link Request
+    allOf:
+      - $ref: "#/components/schemas/RequestCreateAll"
+      - $ref: "#/components/schemas/RequestSpecificAzure"
 
   RequestCreateGCS:
     title: Create GCS Link Request
@@ -504,7 +520,13 @@ components:
     title: Edit Azure Blob Link Request
     allOf:
       - $ref: "#/components/schemas/RequestEditAll"
-      - $ref: "#/components/schemas/RequestSpecificAzureBlob"
+      - $ref: "#/components/schemas/RequestSpecificAzure"
+
+  RequestEditAzureDataLake:
+    title: Edit Azure Data Lake Link Request
+    allOf:
+      - $ref: "#/components/schemas/RequestEditAll"
+      - $ref: "#/components/schemas/RequestSpecificAzure"
 
   RequestEditGCS:
     title: Edit GCS Link Request
@@ -542,7 +564,13 @@ components:
     title: Create Azure Blob Link Request (Legacy)
     allOf:
       - $ref: "#/components/schemas/LegacyCreateAll"
-      - $ref: "#/components/schemas/RequestSpecificAzureBlob"
+      - $ref: "#/components/schemas/RequestSpecificAzure"
+
+  LegacyCreateAzureDataLake:
+    title: Create Azure Data Lake Link Request (Legacy)
+    allOf:
+      - $ref: "#/components/schemas/LegacyCreateAll"
+      - $ref: "#/components/schemas/RequestSpecificAzure"
 
   LegacyCreateGCS:
     title: Create GCS Link Request (Legacy)
@@ -579,7 +607,13 @@ components:
     title: Edit Azure Blob Link Request (Legacy)
     allOf:
       - $ref: "#/components/schemas/LegacyEditAll"
-      - $ref: "#/components/schemas/RequestSpecificAzureBlob"
+      - $ref: "#/components/schemas/RequestSpecificAzure"
+
+  LegacyEditAzureDataLake:
+    title: Edit Azure Data Lake Link Request (Legacy)
+    allOf:
+      - $ref: "#/components/schemas/LegacyEditAll"
+      - $ref: "#/components/schemas/RequestSpecificAzure"
 
   LegacyEditGCS:
     title: Edit GCS Link Request (Legacy)
@@ -705,8 +739,8 @@ components:
           For S3 links only.
           The Amazon S3 service endpoint.
 
-  RequestSpecificAzureBlob:
-    title: Azure Blob Specific Request
+  RequestSpecificAzure:
+    title: Azure Specific Request
     type: object
     # required:
     #   - endpoint
@@ -714,11 +748,11 @@ components:
       endpoint:
         $ref: "#/components/schemas/CommonEndpoint"
         # type: string
-        # description: For Azure Blob links, this is the endpoint URI.
+        # description: For Azure Blob and Azure Data Lake links, this is the endpoint URI.
       accountName:
         type: string
         description: >
-          For Azure Blob links only.
+          For Azure Blob and Azure Data Lake links.
           The account name.
           Used for shared key authentication.
 
@@ -727,7 +761,7 @@ components:
       accountKey:
         type: string
         description: >
-          For Azure Blob links only.
+          For Azure Blob and Azure Data Lake links.
           The account key.
           Used for shared key authentication.
 
@@ -736,7 +770,7 @@ components:
       sharedAccessSignature:
         type: string
         description: >
-          For Azure Blob links only.
+          For Azure Blob and Azure Data Lake links.
           A token that can be used for authentication.
           Used for shared access signature authentication.
 
@@ -745,7 +779,7 @@ components:
       managedIdentityId:
         type: string
         description: >
-          For Azure Blob links only.
+          For Azure Blob and Azure Data Lake links.
           The managed identity ID.
           Used for managed identity authentication.
           Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.
@@ -755,7 +789,7 @@ components:
       clientId:
         type: string
         description: >
-          For Azure Blob links only.
+          For Azure Blob and Azure Data Lake links.
           The client ID for the registered application.
           Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
 
@@ -764,7 +798,7 @@ components:
       tenantId:
         type: string
         description: >
-          For Azure Blob links only.
+          For Azure Blob and Azure Data Lake links.
           The tenant ID where the registered application is created.
           Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.
 
@@ -773,7 +807,7 @@ components:
       clientSecret:
         type: string
         description: >
-          For Azure Blob links only.
+          For Azure Blob and Azure Data Lake links.
           The client secret for the registered application.
           Used for Azure Active Directory client secret authentication.
 
@@ -783,7 +817,7 @@ components:
         $ref: "#/components/schemas/CommonClientCertificate"
         # type: string
         # description: >
-        #   For Azure Blob links, this is the client certificate for the registered application.
+        #   For Azure Blob and Azure Data Lake links, this is the client certificate for the registered application.
         #   Used for Azure Active Directory client certificate authentication.
       
       
@@ -791,7 +825,7 @@ components:
       clientCertificatePassword:
         type: string
         description: >
-          For Azure Blob links only.
+          For Azure Blob and Azure Data Lake links.
           The client certificate password for the registered application.
           Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.
 
@@ -834,6 +868,7 @@ components:
         couchbase: "#/components/schemas/ResponseCouchbase"
         s3: "#/components/schemas/ResponseS3"
         azureblob: "#/components/schemas/ResponseAzureBlob"
+        azuredatalake: "#/components/schemas/ResponseAzureDataLake"
         gcs: "#/components/schemas/ResponseGCS"
     required:
       - scope
@@ -863,11 +898,15 @@ components:
           * `couchbase`: A link to a remote Couchbase cluster.
           * `s3`: A link to the Amazon S3 service.
           * `azureblob`: A link to Microsoft Azure Blob Storage.
+          * `azuredatalake`: A link to Microsoft Azure Data Lake.
           * `gcs`: A link to Google Cloud Storage.
+
+          (Azure Data Lake links are available in Developer Preview.)
         enum:
           - couchbase
           - s3
           - azureblob
+          - azuredatalake
           - gcs
 
   ResponseCouchbase:
@@ -1097,10 +1136,21 @@ components:
     description: These properties are returned for Azure Blob links.
     allOf:
       - $ref: "#/components/schemas/ResponseAll"
-      - $ref: "#/components/schemas/ResponseAzureBlobSpecific"
+      - $ref: "#/components/schemas/ResponseAzureSpecific"
 
-  ResponseAzureBlobSpecific:
-        title: Azure Blob Specific Response
+  ResponseAzureDataLake:
+    title: Azure Data Lake Response
+    description: |-
+      These properties are returned for Azure Data Lake links.
+
+      (Azure Data Lake links are available in Developer Preview.)
+    allOf:
+      - $ref: "#/components/schemas/ResponseAll"
+      - $ref: "#/components/schemas/ResponseAzureSpecific"
+
+  ResponseAzureSpecific:
+        title: Azure Specific Response
+        description: Properties specific to Azure Blob and Azure Data Lake links.
         type: object
         required:
           - endpoint
