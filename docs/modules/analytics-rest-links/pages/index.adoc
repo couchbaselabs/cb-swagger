@@ -489,7 +489,7 @@ include::index.adoc[tag=desc-CommonType, opts=optional]
 --
 
 [%hardbreaks]
-*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;azuredatalake&quot;`, `&quot;gcs&quot;`
 {blank}
 
 a¦ 
@@ -589,7 +589,7 @@ a¦
 
 [markdown]
 --
-For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
+For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob and Azure Data Lake links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
 --
 
 [%hardbreaks]
@@ -708,7 +708,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links.
+For Azure Blob, Azure Data Lake, and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob and Azure Data Lake links; optional for Google Cloud Storage links.
 --
 
 [%hardbreaks]
@@ -725,7 +725,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -742,7 +742,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -759,7 +759,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -776,7 +776,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -793,7 +793,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -810,7 +810,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -827,7 +827,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -844,7 +844,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -1128,7 +1128,7 @@ include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 --
 
 [%hardbreaks]
-*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;azuredatalake&quot;`, `&quot;gcs&quot;`
 {blank}
 
 a¦ 
@@ -1228,7 +1228,7 @@ a¦
 
 [markdown]
 --
-For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
+For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob and Azure Data Lake links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
 --
 
 [%hardbreaks]
@@ -1347,7 +1347,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links.
+For Azure Blob, Azure Data Lake, and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob and Azure Data Lake links; optional for Google Cloud Storage links.
 --
 
 [%hardbreaks]
@@ -1364,7 +1364,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -1381,7 +1381,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -1398,7 +1398,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -1415,7 +1415,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -1432,7 +1432,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -1449,7 +1449,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -1466,7 +1466,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -1483,7 +1483,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -1791,7 +1791,7 @@ The type of the link. If this parameter is omitted, all link types are retrieved
 --
 
 [%hardbreaks]
-*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;azuredatalake&quot;`, `&quot;gcs&quot;`
 {blank}
 
 a¦ String
@@ -2029,7 +2029,7 @@ The type of the link. If this parameter is omitted, all link types are retrieved
 --
 
 [%hardbreaks]
-*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;azuredatalake&quot;`, `&quot;gcs&quot;`
 {blank}
 
 a¦ String
@@ -2535,7 +2535,7 @@ include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 --
 
 [%hardbreaks]
-*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;azuredatalake&quot;`, `&quot;gcs&quot;`
 {blank}
 
 a¦ 
@@ -2795,7 +2795,7 @@ include::index.adoc[tag=desc-CommonType, opts=optional]
 --
 
 [%hardbreaks]
-*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;azuredatalake&quot;`, `&quot;gcs&quot;`
 {blank}
 
 a¦ 
@@ -2895,7 +2895,7 @@ a¦
 
 [markdown]
 --
-For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
+For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob and Azure Data Lake links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
 --
 
 [%hardbreaks]
@@ -3014,7 +3014,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links.
+For Azure Blob, Azure Data Lake, and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob and Azure Data Lake links; optional for Google Cloud Storage links.
 --
 
 [%hardbreaks]
@@ -3031,7 +3031,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3048,7 +3048,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3065,7 +3065,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3082,7 +3082,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3099,7 +3099,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3116,7 +3116,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3133,7 +3133,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3150,7 +3150,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3445,7 +3445,7 @@ include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 --
 
 [%hardbreaks]
-*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
+*Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;azuredatalake&quot;`, `&quot;gcs&quot;`
 {blank}
 
 a¦ 
@@ -3545,7 +3545,7 @@ a¦
 
 [markdown]
 --
-For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
+For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob and Azure Data Lake links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
 --
 
 [%hardbreaks]
@@ -3664,7 +3664,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links.
+For Azure Blob, Azure Data Lake, and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob and Azure Data Lake links; optional for Google Cloud Storage links.
 --
 
 [%hardbreaks]
@@ -3681,7 +3681,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3698,7 +3698,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3715,7 +3715,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3732,7 +3732,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3749,7 +3749,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3766,7 +3766,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3783,7 +3783,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3800,7 +3800,7 @@ a¦
 
 [markdown]
 --
-For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
+For Azure Blob and Azure Data Lake links. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
 --
 
 [%hardbreaks]
@@ -3980,7 +3980,7 @@ endif::[]
 [#models]
 = Definitions
 
-:count-models: 14
+:count-models: 15
 
 :leveloffset: +1
 
@@ -4002,7 +4002,8 @@ xref:CommonTypeEdit[]
 endif::enum-definitions[]
 xref:ResponseAll[]
 xref:ResponseAzureBlob[]
-xref:ResponseAzureBlobSpecific[]
+xref:ResponseAzureDataLake[]
+xref:ResponseAzureSpecific[]
 xref:ResponseCouchbase[]
 xref:ResponseCouchbaseSpecific[]
 xref:ResponseCouchbaseSpecificNode[]
@@ -4027,7 +4028,10 @@ The type of the link.
 * `couchbase`: A link to a remote Couchbase cluster.
 * `s3`: A link to the Amazon S3 service.
 * `azureblob`: A link to Azure Blob Storage.
+* `azuredatalake`: A link to Azure Data Lake.
 * `gcs`: A link to Google Cloud Storage.
+
+(Azure Data Lake links are available in Developer Preview.)
 //end::desc-CommonType[]
 
 .Schema
@@ -4134,11 +4138,14 @@ The type of the link.
 * `couchbase`: A link to a remote Couchbase cluster.
 * `s3`: A link to the Amazon S3 service.
 * `azureblob`: A link to Microsoft Azure Blob Storage.
+* `azuredatalake`: A link to Microsoft Azure Data Lake.
 * `gcs`: A link to Google Cloud Storage.
+
+(Azure Data Lake links are available in Developer Preview.)
 --
 
 [%hardbreaks]
-*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"azuredatalake"`, `"gcs"`
 {blank}
 a¦ String
 
@@ -4156,6 +4163,12 @@ This schema has alternative properties, depending on the value of *type*:
 a| `azureblob`
 a| These properties are returned for Azure Blob links.
 a| xref:ResponseAzureBlob[]
+
+a| `azuredatalake`
+a| These properties are returned for Azure Data Lake links.
+
+(Azure Data Lake links are available in Developer Preview.)
+a| xref:ResponseAzureDataLake[]
 
 a| `couchbase`
 a| These properties are returned for remote Couchbase links.
@@ -4204,7 +4217,7 @@ All of the following:
 * xref:ResponseAll[]
 
 
-* xref:ResponseAzureBlobSpecific[]
+* xref:ResponseAzureSpecific[]
 
 
 
@@ -4219,25 +4232,67 @@ All of the following:
 
 
 
-// markup not found, no include::{specDir}definitions/ResponseAzureBlobSpecific/definition-before.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAzureDataLake/definition-before.adoc[opts=optional]
 
 
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
-[#ResponseAzureBlobSpecific]
-= Azure Blob Specific Response
+[#ResponseAzureDataLake]
+= Azure Data Lake Response
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponseAzureBlobSpecific/definition-begin.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAzureDataLake/definition-begin.adoc[opts=optional]
+
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+All of the following:
+
+* xref:ResponseAll[]
+
+
+* xref:ResponseAzureSpecific[]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ResponseAzureDataLake/definition-end.adoc[opts=optional]
+
+
+:leveloffset: -1
+
+// markup not found, no include::{specDir}definitions/ResponseAzureDataLake/definition-after.adoc[opts=optional]
+
+
+
+
+// markup not found, no include::{specDir}definitions/ResponseAzureSpecific/definition-before.adoc[opts=optional]
+
+
+ifdef::collapse-models[]
+[discrete]
+endif::collapse-models[]
+[#ResponseAzureSpecific]
+= Azure Specific Response
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}definitions/ResponseAzureSpecific/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::ResponseAzureBlobSpecific[]
+//tag::ResponseAzureSpecific[]
 
+ifdef::model-descriptions[]
+//tag::desc-ResponseAzureSpecific[]
+Properties specific to Azure Blob and Azure Data Lake links.
+//end::desc-ResponseAzureSpecific[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
@@ -4414,17 +4469,17 @@ a¦ String
 
 |===
 
-//end::ResponseAzureBlobSpecific[]
+//end::ResponseAzureSpecific[]
 
 
 
 
-// markup not found, no include::{specDir}definitions/ResponseAzureBlobSpecific/definition-end.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAzureSpecific/definition-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponseAzureBlobSpecific/definition-after.adoc[opts=optional]
+// markup not found, no include::{specDir}definitions/ResponseAzureSpecific/definition-after.adoc[opts=optional]
 
 
 
