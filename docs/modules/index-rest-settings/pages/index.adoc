@@ -1605,8 +1605,11 @@ a¦
 
 [markdown]
 --
-The default timeout for the indexer.
-An index scan may time out if the query timeout is higher than the indexer timeout.
+The default timeout for the indexer, in milliseconds.
+This is distinct from the Query Service timeout.
+The Index Service has its own timeout because index scans consume resources such as memory and CPU while holding snapshots and performing range scan.
+
+An index scan may time out if the Index Service timeout is lower than the Query Service timeout.
 --
 
 [%hardbreaks]
