@@ -6,6 +6,12 @@
   },
   "actions": [
     {
+      "target": "components.schemas.handler_schema",
+      "update": {
+        "description": "An object which defines a function."
+      }
+    },
+    {
       "target": "components.schemas.settings_schema.properties.allow_sync_documents",
       "update": {
         "description": "Specifies whether the function allows Sync Gateway mutations.\n\n* By default, this setting is `true`, for compatibility with previous versions of Couchbase Server.\n\n* When this setting is `false`, the specified function skips all internal Sync Gateway documents, whose IDs are prefixed with `_sync`.\nThis enables the function to work with Sync Gateway.\n\nYou must ensure that none of the documents which contain your own working data have IDs which are prefixed with `_sync`.\n(Note that internal Sync Gateway attachment documents, whose IDs are prefixed with `_sync:att`, are still processed by the specified function.)"
