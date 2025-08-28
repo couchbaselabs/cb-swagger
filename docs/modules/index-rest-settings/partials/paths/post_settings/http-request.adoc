@@ -1,0 +1,46 @@
+= Example HTTP Requests
+
+[#ex-defer-build]
+.Defer Index Builds by Default
+====
+This example specifies the default setting for deferred builds.
+
+.Curl request
+[source,sh]
+----
+curl -X POST http://$HOST:9102/settings \
+  -u $USER:$PASSWORD \
+  -H 'content-type: application/json' \
+  -d '{"indexer.settings.defer_build": true}'
+----
+====
+
+[#ex-scan-timeout]
+.Set the Indexer Scan Timeout
+====
+This example sets the indexer scan timeout.
+
+.Curl request
+[source,sh]
+----
+curl -X POST http://$HOST:9102/settings \
+  -u $USER:$PASSWORD \
+  -H 'content-type: application/json' \
+  -d '{"indexer.settings.scan_timeout": 15000}'
+----
+====
+
+[#ex-modify-index-batch-size]
+.Modify Index Batch Size
+====
+This example modifies the index batch size for rebalance.
+
+.Curl request
+[source,sh]
+----
+curl -X POST http://$HOST:9102/settings \
+  -u $USER:$PASSWORD \
+  -H 'content-type: application/json' \
+  -d '{ "indexer.rebalance.transferBatchSize": 7 }'
+----
+====

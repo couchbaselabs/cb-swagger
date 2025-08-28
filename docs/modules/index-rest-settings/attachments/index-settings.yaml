@@ -1,0 +1,722 @@
+openapi: 3.0.3
+info:
+  title: Index Settings REST API
+  version: '8.0'
+  description: |-
+    The Index Settings REST API is provided by the Index Service.
+    This API enables you to retrieve or set Index Service settings.
+
+    Changes automatically propagate to all Index Service nodes, and will be remembered across node and cluster restarts.
+
+    Unless otherwise noted, you should only change the Index Service settings when advised to do so by Couchbase Support.
+
+servers:
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
+    variables:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+        description: The host name or IP address of a node running the Index Service.
+      port:
+        default: "9102"
+        description: |-
+          The Index Service REST port.
+          Use `19102` for secure access.
+        enum:
+          - "9102"
+          - "19102"
+
+paths:
+  /settings:
+    get:
+      operationId: get_settings
+      summary: Retrieve Index Settings
+      description: Returns Index Service settings.
+      security:
+        - Default: []
+      responses:
+        "200":
+          description: |-
+            Success.
+            Returns an object giving Index Service settings.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Settings"
+              example:
+                $ref: "../examples/get_settings.json"
+        "404":
+          $ref: '#/components/responses/NotFound'
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: post_settings
+      summary: Update Index Settings
+      description: Updates Index Service settings.
+      security:
+        - Default: []
+      requestBody:
+        required: true
+        description: |-
+          An object specifying Index Service settings.
+          You only need to specify the settings you want to change; settings which are not specified are left unchanged.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Settings"
+      responses:
+        "200":
+          description: |-
+            Success.
+            Returns `OK` and no object.
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "404":
+          $ref: '#/components/responses/NotFound'
+
+components:
+  schemas:
+    Settings:
+      type: object
+      properties:
+        indexer.rebalance.transferBatchSize:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 3
+          x-has-example: true
+          example: 7
+          writeOnly: true
+          description: |-
+            Sets the batch size Couchbase Server uses when rebuilding index files during rebalance.
+            This setting has no effect on file-based rebalance.
+
+            Couchbase Server breaks the rebuilding of indexes during a rebalance into batches to limit the performance impact.
+            This setting controls the maximum number of indexes that a rebalance rebuilds concurrently.
+            You must have the Full Admin or the Cluster Admin role to set this value.
+
+            For an overview of rebalance as it affects the Index Service, including an overview of smart batching, see [Rebalance](/server/8.0/learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service).
+        indexer.settings.allow_large_keys:
+          type: boolean
+          x-has-default: true
+          default: true
+          description: |-
+            Whether the size of index keys is unlimited.
+
+            * If true, index keys may have unlimited size.
+            * If false, the maximum size for index keys and array index keys is specified by `indexer.settings.max_seckey_size` and `indexer.settings.max_array_seckey_size`.
+
+            In Couchbase Server 6.5 and later, the Index Service does not need to restart when you update this setting.
+        indexer.settings.bufferPoolBlockSize:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 16384
+          description: Buffer pool block size.
+        indexer.settings.build.batch_size:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 5
+          description: Build batch size.
+        indexer.settings.compaction.abort_exceed_interval:
+          type: boolean
+          x-has-default: true
+          default: false
+          description: Whether to abort index compaction if it is still running after the end of the index compaction interval.
+        indexer.settings.compaction.check_period:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 30
+          description: An interval, specifying how frequently the Index Service checks whether the compaction threshold has been reached (seconds).
+        indexer.settings.compaction.compaction_mode:
+          type: string
+          x-has-default: true
+          default: circular
+          description: The compaction mode for indexes.
+          enum:
+            - standard
+            - circular
+        indexer.settings.compaction.days_of_week:
+          type: string
+          x-has-example: true
+          example: Saturday,Sunday
+          x-has-default: true
+          default: Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday
+          description: |-
+            The days of the week on which circular compaction is to run, if specified.
+            Individual values must be day-names, each specified with an initial capital, and otherwise lower-case.
+            Multiple values must be separated by a single comma, with no spaces.
+        indexer.settings.compaction.interval:
+          type: string
+          x-has-example: true
+          example: 01:00,05:59
+          x-has-default: true
+          default: 00:00,00:00
+          description: |-
+            A string in the form `fromHour:fromMinute,toHour:toMinute`, specifying the interval during which index compaction can run.
+
+            * `fromHour` &mdash;
+              An integer between 0 and 23 inclusive, specifying the starting hour of the interval.
+            * `fromMinute` &mdash;
+              An integer between 0 and 59 inclusive, specifying the starting minute of the interval, within the specified starting hour.
+            * `toHour` &mdash;
+              An integer between 0 and 23 inclusive, specifying the concluding hour of the interval.
+            * `toMinute` &mdash;
+              An integer between 0 and 59 inclusive, specifying the concluding minute of the interval, within the specified concluding hour.
+
+            The default value means any time.
+        indexer.settings.compaction.min_frag:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 30
+          minimum: 5
+          description: The minimum fragmentation threshold to trigger compaction (percentage).
+        indexer.settings.compaction.min_size:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 524288000
+          description: Compaction minimum file size.
+        indexer.settings.compaction.plasma.manual:
+          type: boolean
+          x-has-default: true
+          default: false
+          description: For standard indexes using Plasma, whether compaction should be triggered manually.
+        indexer.settings.compaction.plasma.optional.decrement:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 5
+          description: For standard indexes using Plasma, the optional decrement.
+        indexer.settings.compaction.plasma.optional.min_frag:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 20
+          description: For standard indexes using Plasma, the minimum fragmentation threshold to trigger compaction (percentage).
+        indexer.settings.compaction.plasma.optional.quota:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 25
+          description: For standard indexes using Plasma, the optional quota.
+        indexer.settings.corrupt_index_num_backups:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 1
+          description: Corrupt index number of backups.
+        indexer.settings.cpuProfDir:
+          type: string
+          description: The name of the directory where local CPU usage profiling information is captured.
+        indexer.settings.cpuProfile:
+          type: boolean
+          x-has-default: true
+          default: false
+          description: Whether the Index Service should capture local CPU usage profiling information.
+        indexer.settings.defer_build:
+          type: boolean
+          x-has-default: true
+          default: false
+          description: |-
+            The default setting for the `defer_build` option for index creation.
+
+            * If this setting is true, and you create an index without specifying `defer_build`, the index is not built immediately.
+            * If this setting false, and you create an index without specifying `defer_build`, the index is built immediately.
+
+            You can override this setting by specifying the `defer_build` option when you create an index.
+        indexer.settings.eTagPeriod:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 240
+          description: The ETag (entity tag) period.
+        indexer.settings.enable_corrupt_index_backup:
+          type: boolean
+          x-has-default: true
+          default: false
+          description: Whether corrupt index backup is enabled.
+        indexer.settings.enable_page_bloom_filter:
+          type: boolean
+          x-has-default: true
+          default: true
+          description: |-
+            Whether Bloom filters are enabled for memory management.
+
+            For details, see [Per Page Bloom Filters](/server/8.0/learn/services-and-indexes/indexes/storage-modes.html#per-page-bloom-filters).
+        indexer.settings.enable_shard_affinity:
+          type: boolean
+          x-has-default: true
+          default: false
+          description: |-
+            Selects the index rebalance method.
+            See [Index Rebalance Methods](/server/8.0/learn/clusters-and-availability/rebalance.html#index-rebalance-methods).
+
+            * If false (the default), Index Service nodes rebuild indexes that are newly assigned to them during a rebalance.
+
+            * If true, Couchbase Server moves a reassigned index's files between Index Service nodes.
+
+            If set to true, when you create an index, you can use the `WITH` clause to specify which node should contain the index.
+            However, when you alter an index, you cannot use the `WITH` clause to specify which node should contain the index.
+        indexer.settings.fast_flush_mode:
+          type: boolean
+          x-has-default: true
+          default: true
+          description: Whether fast flush mode is enabled.
+        indexer.settings.gc_percent:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 100
+          description: Garbage collection percentage.
+        indexer.settings.inmemory_snapshot.fdb.interval:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 200
+          minimum: 1
+          exclusiveMinimum: true
+          description: |-
+            For standard indexes using ForestDB, the in-memory snapshotting interval (ms).
+            This determines the earliest possibility of a scan seeing a given KV mutation.
+        indexer.settings.inmemory_snapshot.interval:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 200
+          minimum: 1
+          exclusiveMinimum: true
+          description: |-
+            The in-memory snapshotting interval (ms).
+            This determines the earliest possibility of a scan seeing a given KV mutation.
+        indexer.settings.inmemory_snapshot.moi.interval:
+          type: integer
+          format: int32
+          minimum: 1
+          exclusiveMinimum: true
+          x-has-default: true
+          default: 10
+          description: |-
+            For memory-optimized indexes, the in-memory snapshotting interval (ms).
+            This determines the earliest possibility of a scan seeing a given KV mutation.
+        indexer.settings.largeSnapshotThreshold:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 200
+          description: The large snapshot threshold.
+        indexer.settings.log_level:
+          type: string
+          x-has-default: true
+          default: info
+          description: Indexer logging level.
+          enum:
+            - silent
+            - fatal
+            - error
+            - warn
+            - info
+            - verbose
+            - timing
+            - debug
+            - trace
+        indexer.settings.maxNumPartitions:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 64
+          description: Maximum number of partitions.
+        indexer.settings.maxVbQueueLength:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 0
+          description: Maximum vBucket queue length.
+        indexer.settings.max_array_seckey_size:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 10240
+          description: |-
+            If `indexer.settings.allow_large_keys` is false, this setting specifies the maximum size for array index keys.
+
+            In Couchbase Server 6.5 and later, the Index Service does not need to restart when you update this setting.
+        indexer.settings.max_cpu_percent:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 0
+          description: |-
+            The CPU capacity that the Index Service should use (percentage).
+            If set to `0`, the indexer will use all CPUs.
+        indexer.settings.max_seckey_size:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 4608
+          description: |-
+            If `indexer.settings.allow_large_keys` is false, this setting specifies the maximum size for index keys.
+
+            In Couchbase Server 6.5 and later, the Index Service does not need to restart when you update this setting.
+        indexer.settings.max_writer_lock_prob:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 20
+          description: Maximum writer lock prob.
+        indexer.settings.memProfDir:
+          type: string
+          description: The name of the directory where local memory usage profiling information is captured.
+        indexer.settings.memProfile:
+          type: boolean
+          x-has-default: true
+          default: false
+          description: Whether the Index Service should capture local memory usage profiling information.
+        indexer.settings.memory_quota:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 536870912
+          description: How much RAM is allocated to the Index Service for the current node.
+        indexer.settings.minVbQueueLength:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 30
+          description: Minimum vBucket queue length.
+        indexer.settings.moi.debug:
+          type: boolean
+          x-has-default: true
+          default: false
+          description: Debug memory-optimized index storage.
+        indexer.settings.moi.persistence_threads:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 4
+          description: For memory-optimized index storage, the number of persistence threads.
+        indexer.settings.moi.recovery.max_rollbacks:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 2
+          description: For memory-optimized index storage, the maximum number of committed rollback points.
+        indexer.settings.moi.recovery_threads:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 8
+          description: For memory-optimized index storage, the number of recovery threads.
+        indexer.settings.num_replica:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 0
+          x-has-example: true
+          example: 2
+          description: The default number of index replicas to be created by the Index Service whenever `CREATE INDEX` is invoked.
+        indexer.settings.percentage_memory_quota:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 0
+          description: Percentage memory quota.
+        indexer.settings.persisted_snapshot.fdb.interval:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 5000
+          minimum: 100
+          description: |-
+            For standard indexes using ForestDB, the persisted snapshotting interval (ms).
+            This must be a multiple of the in-memory snapshot interval.
+        indexer.settings.persisted_snapshot.interval:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 5000
+          minimum: 100
+          description: |-
+            The persisted snapshotting interval (ms).
+            This must be a multiple of the in-memory snapshot interval.
+        indexer.settings.persisted_snapshot.moi.interval:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 600000
+          minimum: 100
+          description: |-
+            For memory-optimized indexes, the persisted snapshotting interval (ms).
+            This must be a multiple of the in-memory snapshot interval.
+        indexer.settings.persisted_snapshot_init_build.fdb.interval:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 5000
+          description: For standard indexes using ForestDB, the persisted snapshotting interval for the initial build (ms).
+        indexer.settings.persisted_snapshot_init_build.interval:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 5000
+          description: The persisted snapshotting interval for the initial build (ms).
+        indexer.settings.persisted_snapshot_init_build.moi.interval:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 600000
+          description: For memory-optimized indexes, the persisted snapshotting interval for the initial build (ms).
+        indexer.settings.plasma.recovery.max_rollbacks:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 2
+          description: For standard indexes using Plasma, the maximum number of committed rollback points.
+        indexer.settings.rebalance.blob_storage_bucket:
+          type: string
+          x-has-default: true
+          default: ""
+          description: Rebalance blob storage bucket.
+        indexer.settings.rebalance.blob_storage_prefix:
+          type: string
+          x-has-default: true
+          default: ""
+          description: Rebalance blob storage prefix.
+        indexer.settings.rebalance.blob_storage_region:
+          type: string
+          x-has-default: true
+          default: ""
+          description: Rebalance blob storage region.
+        indexer.settings.rebalance.blob_storage_scheme:
+          type: string
+          x-has-default: true
+          default: ""
+          description: Rebalance blob storage scheme.
+        indexer.settings.rebalance.redistribute_indexes:
+          type: boolean
+          x-has-default: true
+          default: false
+          description: |-
+            Whether to redistribute indexes on rebalance.
+
+            * When true, Couchbase Server redistributes indexes when rebalance occurs, in order to optimize performance.
+
+            * When false (the default), such redistribution does not occur.
+
+            For details, see [Rebalance](/server/8.0/learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service).
+        indexer.settings.recovery.max_rollbacks:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 2
+          description: The maximum number of committed rollback points.
+        indexer.settings.scan_getseqnos_retries:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 30
+          description: Scan get sequence numbers retries.
+        indexer.settings.scan_timeout:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 120000
+          description: |-
+            The default timeout for the indexer, in milliseconds.
+            This is distinct from the Query Service timeout.
+            The Index Service has its own timeout because index scans consume resources such as memory and CPU while holding snapshots and performing range scan.
+
+            An index scan may time out if the Index Service timeout is lower than the Query Service timeout.
+        indexer.settings.send_buffer_size:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 1024
+          description: Send buffer size.
+        indexer.settings.serverless.indexLimit:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 201
+          description: Serverless index limit.
+        indexer.settings.sliceBufSize:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 1600
+          description: Slice buffer size.
+        indexer.settings.smallSnapshotThreshold:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 30
+          description: Small snapshot threshold.
+        indexer.settings.snapshotListeners:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 4
+          description: Snapshot listeners.
+        indexer.settings.snapshotRequestWorkers:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 4
+          description: Snapshot request workers.
+        indexer.settings.statsLogDumpInterval:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 60
+          description: Statistics log dump interval.
+        indexer.settings.storage_mode:
+          $ref: "#/components/schemas/SettingsStorageMode"
+        indexer.settings.storage_mode.disable_upgrade:
+          type: boolean
+          x-has-default: true
+          default: false
+          description: Whether upgrade of the index storage mode is disabled.
+        indexer.settings.thresholds.mem_high:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 70
+          description: High memory threshold.
+        indexer.settings.thresholds.mem_low:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 50
+          description: Low memory threshold.
+        indexer.settings.thresholds.units_high:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 60
+          description: High units threshold.
+        indexer.settings.thresholds.units_low:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 40
+          description: Low units threshold.
+        indexer.settings.units_quota:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 10000
+          description: Units quota.
+        indexer.settings.wal_size:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 4096
+          description: Write-ahead log size.
+        projector.settings.log_level:
+          type: string
+          x-has-default: true
+          default: info
+          description: Projector logging level.
+        queryport.client.settings.backfillLimit:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 5120
+          description: |-
+            The maximum size of the backfill file (MB).
+
+            * A value of `0` disables backfill.
+            * A value of `-1` means the size is unlimited.
+
+            The maximum size is limited only by the available disk space.
+        queryport.client.settings.closeActiveConnections:
+          type: boolean
+          x-has-default: true
+          default: true
+          description: Whether to close active connections.
+        queryport.client.settings.minPoolSizeWM:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 1000
+          description: Minimum pool size.
+        queryport.client.settings.poolOverflow:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 30
+          description: Maximum number of connections in a pool.
+        queryport.client.settings.poolSize:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 5000
+          description: Number of simultaneous active connections in a pool.
+        queryport.client.settings.relConnBatchSize:
+          type: integer
+          format: int32
+          x-has-default: true
+          default: 100
+          description: Connection batch size.
+    SettingsStorageMode:
+      title: Storage Mode
+      description: The storage mode to be used for the Index Service on this node.
+      oneOf:
+        - $ref: "#/components/schemas/SettingsStorageModeEE"
+        - $ref: "#/components/schemas/SettingsStorageModeCE"
+    SettingsStorageModeEE:
+      title: Enterprise Edition
+      type: string
+      default: plasma
+      x-desc-edition: "{enterprise}"
+      description: |-
+        If you are using Enterprise Edition, the possible values are:
+
+        * `plasma` (the default) &mdash;
+          Sets the index storage mode to use the Plasma storage engine, which can utilize both memory and persistent storage for index maintenance and index scans.
+
+        * `memory_optimized` &mdash;
+          Sets the index storage mode to use memory optimized global secondary indexes, which can perform index maintenance and index scan faster at in-memory speeds.
+
+        This setting can only be changed while there are no index nodes in the cluster.
+        To change from standard GSI to memory optimized GSI or vice versa, you need to remove all the Index Service nodes in the cluster.
+      enum:
+        - plasma
+        - memory_optimized
+    SettingsStorageModeCE:
+      title: Community Edition
+      type: string
+      default: forestdb
+      x-desc-edition: "{community}"
+      description: |-
+        If you are using Community Edition, the default (and only) value is `forestdb`.
+      enum:
+        - forestdb
+
+  responses:
+    NotFound:
+      description: |-
+        Not found.
+        The URL may be specified incorrectly.
+    Unauthorized:
+      description: |-
+        Unauthorized.
+        Failure to authenticate.
+
+  securitySchemes:
+    Default:
+      type: http
+      scheme: basic
+      description: |-
+        Users must have the Full Admin or Cluster Admin role, with Cluster Read and Bucket INDEX List privileges.
