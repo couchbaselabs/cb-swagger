@@ -642,7 +642,7 @@ components:
         x-has-example: true
         x-desc-name: queryTmpSpaceDir
         description: |-
-          The path to which the indexer writes temporary backfill files, to store any transient data during query processing.
+          The path to which the Index Service writes temporary backfill files, and the Query Service writes spill files, to store any transient data during query processing.
 
           The specified path must already exist.
           Only absolute paths are allowed.
@@ -657,7 +657,8 @@ components:
         x-has-example: true
         x-desc-name: queryTmpSpaceSize
         description: |-
-          The maximum size of temporary backfill files (MB).
+          In MiB, the maximum size of temporary backfill files for each indexer, and the maximum size of temporary files for spilled sorting and other operations.
+          In a cluster with both secondary indexing and full text search, the limit for disk space use is three times this setting.
 
           Setting the size to `0` disables backfill.
           Setting the size to `-1` means the size is unlimited.
