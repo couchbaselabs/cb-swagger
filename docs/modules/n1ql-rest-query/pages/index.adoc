@@ -32,7 +32,7 @@ This API enables you to run SQL++ queries and set request-level parameters.
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 7.6
+__Version__ : 8.0
 
 [discrete#host]
 = Host information
@@ -1163,7 +1163,7 @@ The total time taken for the request, that is the time from when the request was
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ String (duration)
 
 
 a¦ 
@@ -1178,7 +1178,7 @@ The time taken for the execution of the request, that is the time from when quer
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ String (duration)
 
 
 a¦ 
@@ -1209,6 +1209,22 @@ The total number of bytes in the results.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
+
+
+a¦ 
+*naturalLanguageProcessingTime* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The total time spent processing a natural language request.
+The cumulation of authentication, collecting schema, and time waiting for the response from the LLM, or wait time for the natural language request to be serviced.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String (duration)
 
 
 a¦ 
@@ -1288,6 +1304,27 @@ The number of warnings that occurred during the request.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
+
+
+a¦ 
+*sessionMemory* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The memory session size for the request, in bytes.
+
+Each request has a dedicated memory session.
+When a query requires a document or value, memory is allocated from this session based on the size of the document or value.
+Once the document or value is processed, the allocated memory is returned back to the session, enabling it to be reused by the request.
+
+This metric is available only when `node-quota` and `node-quota-val-percent` are configured for the node.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (bytes)
 
 
 |===
@@ -1436,6 +1473,75 @@ include::index.adoc[tag=desc-Execution_Timings, opts=optional]
 a¦ xref:Execution_Timings[]
 
 
+a¦ 
+*ioTime* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The total sum of [servTime](#serv_time) across all operators.
+
+--
+
+[%hardbreaks]
+*Example:* `+++"752.858519ms"+++`
+{blank}
+a¦ String (duration)
+
+
+a¦ 
+*waitTime* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The total sum of [kernTime](#kern_time) across all operators.
+
+--
+
+[%hardbreaks]
+*Example:* `+++"1.201307s"+++`
+{blank}
+a¦ String (duration)
+
+
+a¦ 
+*cpuTime* +
+_optional_
+a¦ 
+
+[markdown]
+--
+The total sum of [execTime](#exec_time) across all operators.
+
+--
+
+[%hardbreaks]
+*Example:* `+++"90.734075ms"+++`
+{blank}
+a¦ String (duration)
+
+
+a¦ 
+*~analysis* +
+_optional_
+a¦ 
+
+[markdown]
+--
+An array of text phrases that provide a basic analysis of the request execution.
+These phrases highlight notable aspects of the execution, such as high document counts during primary scans or warnings related to memory and resource usages.
+
+--
+
+[%hardbreaks]
+*Example:* `["High IO time","High primary scan document count"]`
+{blank}
+a¦ String
+ array
+
 |===
 
 //end::Profile[]
@@ -1491,7 +1597,7 @@ The value is an array of JSON values, one for each positional parameter in the s
 
 Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
-[section_srh_tlm_n1b]: /server/7.6/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
+[section_srh_tlm_n1b]: ../n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
 --
 
 [%hardbreaks]
@@ -1518,7 +1624,7 @@ If not specified, the ATR is stored in the default collection in the default sco
 The value must be a string in the form `"bucket.scope.collection"` or `"namespace:bucket.scope.collection"`.
 If any part of the path contains a special character, that part of the path must be delimited in backticks &grave;&grave;.
 
-[additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
+[additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
 
 The [node-level][atrcollection-srv] `atrcollection` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
@@ -1544,7 +1650,7 @@ This saves you from having to make two separate requests in cases where you want
 
 Refer to [Auto-Execute][auto-execute] for more information.
 
-[auto-execute]: /server/7.6/n1ql/n1ql-language-reference/prepare.html#auto-execute
+[auto-execute]: ../n1ql/n1ql-language-reference/prepare.html#auto-execute
 --
 
 [%hardbreaks]
@@ -1661,7 +1767,7 @@ In this case, the `kvtimeout` parameter is used as the durability timeout.
 If not specified, the default durability level is `"majority"`.
 Set the durability level to `"none"` or `""` to specify no durability.
 
-[durability]: /server/7.6/learn/data/durability.html
+[durability]: /server/8.0/learn/data/durability.html
 --
 
 [%hardbreaks]
@@ -1679,8 +1785,8 @@ a¦
 
 [markdown]
 --
-In Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
-It is included for compatibility with previous versions of Couchbase Server.
+In clusters running Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
+It is included for compatibility with previous versions.
 --
 
 [%hardbreaks]
@@ -1871,6 +1977,151 @@ Currently, only the `default` namespace is available.
 a¦ String
 
 
+a¦ [#natural]
+*natural* +
+_optional_
+a¦ [.status]##Couchbase Server 8.0##
+
+[markdown]
+--
+The prompt for a natural language request.
+The Query Service uses the prompt to generate a SQL++ statement.
+
+If the generated statement is a SELECT statement, the generated statement is returned and executed automatically.
+
+If the generated statement is not a SELECT statement, the generated statement is returned, but not executed.
+In this case, you must verify the statement and execute it in a separate request.
+
+Natural language requests use the Couchbase Capella iQ service as a backend.
+You must have a Couchbase Capella account to make a natural language request.
+
+This parameter is available in clusters running Couchbase Server 8.0 and later.
+
+To use this parameter, you must also specify the `natural_cred`, `natural_orgid`, and `natural_context` parameters.
+If you don't specify all four parameters, the Query Service returns an error.
+--
+
+[%hardbreaks]
+*Example:* `+++"Show me count of airlines per country"+++`
+{blank}
+a¦ String
+
+
+a¦ [#natural_cred]
+*natural_cred* +
+_optional_
+a¦ [.status]##Couchbase Server 8.0##
+
+[markdown]
+--
+The Couchbase Capella credentials for a natural language request, in the form `username:password`.
+Be careful not to expose the credentials in log files or other output.
+
+Natural language requests use the Couchbase Capella iQ service as a backend.
+You must have a Couchbase Capella account to make a natural language request.
+
+This parameter is available in clusters running Couchbase Server 8.0 and later.
+
+To use this parameter, you must also specify the `natural`, `natural_orgid`, and `natural_context` parameters.
+If you don't specify all four parameters, the Query Service returns an error.
+--
+
+[%hardbreaks]
+*Example:* `+++"username:password"+++`
+{blank}
+a¦ String (password)
+
+
+a¦ [#natural_orgid]
+*natural_orgid* +
+_optional_
+a¦ [.status]##Couchbase Server 8.0##
+
+[markdown]
+--
+The Couchbase Capella organization ID for a natural language request.
+
+Natural language requests use the Couchbase Capella iQ service as a backend.
+You must have a Couchbase Capella account to make a natural language request.
+
+This parameter is available in clusters running Couchbase Server 8.0 and later.
+
+To use this parameter, you must also specify the `natural`, `natural_cred`, and `natural_context` parameters.
+If you don't specify all four parameters, the Query Service returns an error.
+--
+
+[%hardbreaks]
+{blank}
+a¦ UUID (uuid)
+
+
+a¦ [#natural_context]
+*natural_context* +
+_optional_
+a¦ [.status]##Couchbase Server 8.0##
+
+[markdown]
+--
+A list of paths specifying keyspaces for a natural language request.
+The Query Service infers the schema of each keyspace, in order to give more precise responses from the natural language request.
+
+The parameter may contain up to four paths, separated by commas.
+Spaces are allowed.
+Each path may be:
+
+* A full path, in the form `bucket.scope.collection` or `namespace:bucket.scope.collection`.
+
+* A path prefix, in the form `namespace:bucket` or `bucket`, to specify the default collection in the default scope.
+
+* A partial path, in the form `collection`.
+  In this case, you must specify the `query_context` parameter to provide the bucket and scope.
+
+Natural language requests use the Couchbase Capella iQ service as a backend.
+You must have a Couchbase Capella account to make a natural language request.
+
+This parameter is available in clusters running Couchbase Server 8.0 and later.
+
+To use this parameter, you must also specify the `natural`, `natural_cred`, and `natural_orgid` parameters.
+If you don't specify all four parameters, the Query Service returns an error.
+--
+
+[%hardbreaks]
+*Example:* `+++"travel-sample, travel-sample.inventory.airline, airline"+++`
+{blank}
+a¦ String
+
+
+a¦ [#natural_output]
+*natural_output* +
+_optional_
+a¦ [.status]##Couchbase Server 8.0##
+
+[markdown]
+--
+Specifies the required output for a natural language request.
+
+* `sql` &mdash;
+  The output is a SQL++ statement.
+
+* `jsudf` &mdash;
+  The output is a `CREATE FUNCTION` statement which you can use to generate a SQL++ managed JavaScript user-defined function.
+
+* `ftssql` &mdash;
+  The output is a SQL++ statement which can use a Flex index, if available.
+
+Natural language requests use the Couchbase Capella iQ service as a backend.
+You must have a Couchbase Capella account to make a natural language request.
+
+This parameter is available in clusters running Couchbase Server 8.0 and later.
+--
+
+[%hardbreaks]
+*Values:* `"sql"`, `"jsudf"`, `"ftssql"`
+*Default:* `+++"sql"+++`
+{blank}
+a¦ String
+
+
 a¦ [#numatrs_req]
 *numatrs* +
 _optional_
@@ -1886,7 +2137,7 @@ endif::alt-markdown-links[]
 Specifies the total number of [active transaction records][additional-storage-use].
 Must be a positive integer.
 
-[additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
+[additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
 
 The [node-level][numatrs-srv] `numatrs` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
@@ -1972,14 +2223,14 @@ a¦
 
 [markdown]
 --
-_Required_ if `statement` not provided.
+_Required_ if `statement` or `natural` not provided.
 
 The name of the prepared SQL++ statement to be executed.
 Refer to [EXECUTE][execute] for examples.
 
 If both `prepared` and `statement` are present and non-empty, an error is returned.
 
-[execute]: /server/7.6/n1ql/n1ql-language-reference/execute.html
+[execute]: ../n1ql/n1ql-language-reference/execute.html
 --
 
 [%hardbreaks]
@@ -2197,7 +2448,7 @@ If you want to disable RYOW within a request, add a separate `request_consistenc
 If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the `tximplicit` parameter set to `true`, then this parameter sets the transactional scan consistency.
 Refer to [Transactional Scan Consistency][transactional-scan-consistency] for details.
 
-[transactional-scan-consistency]: /server/7.6/n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency
+[transactional-scan-consistency]: ../n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency
 --
 
 [%hardbreaks]
@@ -2337,7 +2588,7 @@ a¦
 
 [markdown]
 --
-_Required_ if `prepared` not provided.
+_Required_ if `prepared` or `natural` not provided.
 
 Any valid SQL++ statement for a POST request, or a read-only SQL++ statement (SELECT, EXPLAIN) for a GET request.
 
@@ -2586,7 +2837,7 @@ If none of the available Search indexes are qualified, the available GSI indexes
 
 Refer to [Flex Indexes][flex-indexes] for more information.
 
-[flex-indexes]: /server/7.6/n1ql/n1ql-language-reference/flex-indexes.html
+[flex-indexes]: ../n1ql/n1ql-language-reference/flex-indexes.html
 --
 
 [%hardbreaks]
@@ -2646,7 +2897,7 @@ a¦ String
 
 
 a¦ [#identifier]
-*{lt}$identifier{gt}* +
+*<$identifier>* +
 _additional +
 property_
 a¦ 
@@ -2660,13 +2911,18 @@ The name of this property consists of two parts:
 
 1. The `$` character or the `@` character.
 2. An identifier that specifies the name of the parameter.
-    This must start with an alpha character, followed by one or more alphanumeric characters.
+    This starts with an optional underscore (`_`), followed by an alpha character, followed by one or more alphanumeric characters, and ends with an optional underscore (`_`).
+
+If the named parameter contains sensitive information, start and end the name of the parameter (after the initial `$` or `@`) with an underscore (`_`).
+This masks the parameter value in the active requests catalog, the completed requests catalog, the response `controls` section, the cbq shell file history, and the query logs.
+When masked, a string parameter value is replaced by asterisks (`*`); other parameter values are replaced by `null`.
+Parameter masking is available in clusters running Couchbase Server 7.6.8 and later.
 
 The value of the named parameter can be any JSON value.
 
 Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
 
-[section_srh_tlm_n1b]: /server/7.6/n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
+[section_srh_tlm_n1b]: ../n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
 --
 
 [%hardbreaks]
@@ -2747,6 +3003,22 @@ The client context ID of the request, if one was supplied &mdash; see `client_co
 --
 
 [%hardbreaks]
+{blank}
+a¦ String
+
+
+a¦ 
+*generated_statement* +
+_optional_
+a¦ [.status]##Couchbase Server 8.0##
+
+[markdown]
+--
+The generated statement, if the request was a natural language prompt.
+--
+
+[%hardbreaks]
+*Example:* `+++"SELECT country, COUNT(*) AS `airline_count` FROM `travel-sample`.`inventory`.`airline` AS `a` GROUP BY country"+++`
 {blank}
 a¦ String
 
@@ -2971,7 +3243,7 @@ Number of switches between executing, waiting for services, or waiting for the g
 a¦ Integer (int32)
 
 
-a¦ 
+a¦ [#exec_time]
 *execTime* +
 _optional_
 a¦ 
@@ -2987,7 +3259,7 @@ Time spent executing the operator code inside SQL++ query engine.
 a¦ String (duration)
 
 
-a¦ 
+a¦ [#kern_time]
 *kernTime* +
 _optional_
 a¦ 
@@ -3003,7 +3275,7 @@ Time spent waiting to be scheduled for CPU time.
 a¦ String (duration)
 
 
-a¦ 
+a¦ [#serv_time]
 *servTime* +
 _optional_
 a¦ 
