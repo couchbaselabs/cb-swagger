@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Analytics Administration REST APIs
-  version: capella
+  version: "8.0"
   description: |
     The Analytics Administration REST APIs are provided by the Analytics service.
     These APIs enables you to manage and monitor the Analytics service.
@@ -606,6 +606,7 @@ components:
           landmark: 7
 
   MutationsColl:
+        x-additionalPropertiesName: scope
         type: object
         description: >
           An object containing one or more collection properties, one for each Analytics collection in the Analytics scope.
@@ -615,6 +616,7 @@ components:
           For example, `` `travel-sample`.inventory ``.
         title: Collections
         additionalProperties:
+            x-additionalPropertiesName: collection
             type: integer
             description: >
               The number of mutations in the DCP queue that have not yet been ingested.

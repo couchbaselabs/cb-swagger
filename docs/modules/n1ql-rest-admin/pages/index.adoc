@@ -5160,14 +5160,49 @@ endif::collapse-models[]
 .icon:bars[fw] Composite Schema
 {blank}
 
-One of the following:
+//tag::Logging_Parameters_Plan[]
 
-* xref:Logging_Parameters_Plan_Pairs[]
+ifdef::model-descriptions[]
+//tag::desc-Logging_Parameters_Plan[]
+An object, or an array of objects, containing one or more field:value pairs to match against the query plan.
+Each pair describes a field in the query plan and the value it must have.
+All completed queries where the specified field:value pairs are found in the plan are logged.
+//end::desc-Logging_Parameters_Plan[]
+endif::model-descriptions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
+
+a¦ 
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-Logging_Parameters_Plan_Pairs, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:Logging_Parameters_Plan_Pairs[]
 
 
-* xref:Logging_Parameters_Plan_Pairs[]
+a¦ _or_
+a¦ 
+
+[markdown]
+--
+An array of objects, each containing one or more field:value pairs.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:Logging_Parameters_Plan_Pairs[]
  array
 
+|===
+
+//end::Logging_Parameters_Plan[]
 
 
 // markup not found, no include::{specDir}definitions/Logging_Parameters_Plan/definition-end.adoc[opts=optional]
@@ -5210,7 +5245,7 @@ endif::model-descriptions[]
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-*{lt}field{gt}* +
+*<field>* +
 _additional +
 property_
 a¦ 
