@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
 
 :leveloffset: 1
 
@@ -114,7 +114,7 @@ ifeval::[{count-apis} > 1]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
-<<tag-Default>>
+xref:tag-Default[]
 endif::[]
 
 
@@ -132,15 +132,17 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<cancel_request>>
-<<cluster_status>>
-<<completed_requests>>
-<<ingestion_status>>
-<<monitor_node>>
-<<restart_cluster>>
-<<restart_node>>
-<<return_active_requests>>
+xref:cancel_request[]
+xref:cluster_status[]
+xref:completed_requests[]
+xref:ingestion_status[]
+xref:monitor_node[]
+xref:restart_cluster[]
+xref:restart_node[]
+xref:return_active_requests[]
 
+
+//tag::cancel_request[]
 
 
 // markup not found, no include::{specDir}paths/cancel_request/operation-before.adoc[opts=optional]
@@ -320,7 +322,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-analyticsManageAnalyticsSelect>>
+| xref:security-analyticsManageAnalyticsSelect[]
 
 |===
 
@@ -349,6 +351,10 @@ include::{snippetDir}cancel_request/http-request.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/cancel_request/operation-after.adoc[opts=optional]
 
 
+//end::cancel_request[]
+
+
+//tag::cluster_status[]
 
 
 // markup not found, no include::{specDir}paths/cluster_status/operation-before.adoc[opts=optional]
@@ -431,7 +437,7 @@ a| [markdown]
 --
 Success. Returns an object giving the current status of the Analytics Service. 
 --
-a| <<Status>>
+a| xref:Status[]
 
 
 | 401
@@ -478,7 +484,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-clusterReadPoolsRead>>
+| xref:security-clusterReadPoolsRead[]
 
 |===
 
@@ -507,6 +513,10 @@ include::{snippetDir}cluster_status/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/cluster_status/operation-after.adoc[opts=optional]
 
 
+//end::cluster_status[]
+
+
+//tag::completed_requests[]
 
 
 // markup not found, no include::{specDir}paths/completed_requests/operation-before.adoc[opts=optional]
@@ -589,7 +599,7 @@ a| [markdown]
 --
 Success. Returns a list of all completed analytic requests. 
 --
-a| <<Request>>
+a| xref:Request[]
  array
 
 | 401
@@ -636,7 +646,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-analyticsManageAnalyticsSelect>>
+| xref:security-analyticsManageAnalyticsSelect[]
 
 |===
 
@@ -665,6 +675,10 @@ include::{snippetDir}completed_requests/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/completed_requests/operation-after.adoc[opts=optional]
 
 
+//end::completed_requests[]
+
+
+//tag::ingestion_status[]
 
 
 // markup not found, no include::{specDir}paths/ingestion_status/operation-before.adoc[opts=optional]
@@ -747,7 +761,7 @@ a| [markdown]
 --
 Success. Returns an object giving the ingestion status of each Analytics collection. 
 --
-a| <<Ingestion>>
+a| xref:Ingestion[]
 
 
 | 401
@@ -794,7 +808,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-analyticsManageAnalyticsSelect>>
+| xref:security-analyticsManageAnalyticsSelect[]
 
 |===
 
@@ -823,6 +837,10 @@ include::{snippetDir}ingestion_status/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/ingestion_status/operation-after.adoc[opts=optional]
 
 
+//end::ingestion_status[]
+
+
+//tag::monitor_node[]
 
 
 // markup not found, no include::{specDir}paths/monitor_node/operation-before.adoc[opts=optional]
@@ -909,7 +927,7 @@ a| [markdown]
 --
 Success. Returns an object giving the number of pending mutations for each Analytics collection. 
 --
-a| <<Mutations>>
+a| xref:Mutations[]
 
 
 | 401
@@ -956,7 +974,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-analyticsManageAnalyticsSelect>>
+| xref:security-analyticsManageAnalyticsSelect[]
 
 |===
 
@@ -985,6 +1003,10 @@ include::{snippetDir}monitor_node/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/monitor_node/operation-after.adoc[opts=optional]
 
 
+//end::monitor_node[]
+
+
+//tag::restart_cluster[]
 
 
 // markup not found, no include::{specDir}paths/restart_cluster/operation-before.adoc[opts=optional]
@@ -1114,7 +1136,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-analyticsManage>>
+| xref:security-analyticsManage[]
 
 |===
 
@@ -1143,6 +1165,10 @@ include::{snippetDir}restart_cluster/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/restart_cluster/operation-after.adoc[opts=optional]
 
 
+//end::restart_cluster[]
+
+
+//tag::restart_node[]
 
 
 // markup not found, no include::{specDir}paths/restart_node/operation-before.adoc[opts=optional]
@@ -1272,7 +1298,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-analyticsManage>>
+| xref:security-analyticsManage[]
 
 |===
 
@@ -1301,6 +1327,10 @@ include::{snippetDir}restart_node/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/restart_node/operation-after.adoc[opts=optional]
 
 
+//end::restart_node[]
+
+
+//tag::return_active_requests[]
 
 
 // markup not found, no include::{specDir}paths/return_active_requests/operation-before.adoc[opts=optional]
@@ -1383,7 +1413,7 @@ a| [markdown]
 --
 Success. Returns an array id details on the running requests. 
 --
-a| <<Request>>
+a| xref:Request[]
  array
 
 | 401
@@ -1430,7 +1460,7 @@ a|
 | Type | Name
 
 | http (basic)
-| <<security-analyticsManageAnalyticsSelect>>
+| xref:security-analyticsManageAnalyticsSelect[]
 
 |===
 
@@ -1458,6 +1488,8 @@ include::{snippetDir}return_active_requests/http-response.adoc[opts=optional]
 
 // markup not found, no include::{specDir}paths/return_active_requests/operation-after.adoc[opts=optional]
 
+
+//end::return_active_requests[]
 
 
 ifeval::[{count-apis} > 1]
@@ -1495,20 +1527,20 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-<<Ingestion>>
-<<IngestionLink>>
-<<IngestionLinkState>>
-<<IngestionLinkStateScope>>
-<<IngestionLinkStateScopeColl>>
-<<Mutations>>
-<<MutationsColl>>
-<<Request>>
-<<Status>>
-<<StatusNodes>>
-<<StatusPartitions>>
-<<StatusTopology>>
-<<StatusTopologyState>>
-<<StatusTopologyStateReplicas>>
+xref:Ingestion[]
+xref:IngestionLink[]
+xref:IngestionLinkState[]
+xref:IngestionLinkStateScope[]
+xref:IngestionLinkStateScopeColl[]
+xref:Mutations[]
+xref:MutationsColl[]
+xref:Request[]
+xref:Status[]
+xref:StatusNodes[]
+xref:StatusPartitions[]
+xref:StatusTopology[]
+xref:StatusTopologyState[]
+xref:StatusTopologyStateReplicas[]
 endif::[]
 
 
@@ -1554,7 +1586,7 @@ An array of objects, each giving information about a single linked Analytics sco
 
 [%hardbreaks]
 {blank}
-a¦ <<IngestionLink>>
+a¦ xref:IngestionLink[]
  array
 
 |===
@@ -1662,7 +1694,7 @@ Analytics collections which have the same ingestion state within this Analytics 
 
 [%hardbreaks]
 {blank}
-a¦ <<IngestionLinkState>>
+a¦ xref:IngestionLinkState[]
  array
 
 |===
@@ -1805,7 +1837,7 @@ An array of objects, each one giving information about a single Analytics scope.
 
 [%hardbreaks]
 {blank}
-a¦ <<IngestionLinkStateScope>>
+a¦ xref:IngestionLinkStateScope[]
  array
 
 |===
@@ -1877,7 +1909,7 @@ An array of objects, each one giving information about a single Analytics collec
 
 [%hardbreaks]
 {blank}
-a¦ <<IngestionLinkStateScopeColl>>
+a¦ xref:IngestionLinkStateScopeColl[]
  array
 
 |===
@@ -1995,7 +2027,7 @@ include::index.adoc[tag=desc-MutationsColl, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<MutationsColl>>
+a¦ xref:MutationsColl[]
 
 
 |===
@@ -2652,7 +2684,7 @@ An array of objects, each giving information about one Analytics node.
 
 [%hardbreaks]
 {blank}
-a¦ <<StatusNodes>>
+a¦ xref:StatusNodes[]
  array
 
 a¦ 
@@ -2667,7 +2699,7 @@ An array of objects, each giving information about one Analytics partition.
 
 [%hardbreaks]
 {blank}
-a¦ <<StatusPartitions>>
+a¦ xref:StatusPartitions[]
  array
 
 a¦ 
@@ -2682,7 +2714,7 @@ include::index.adoc[tag=desc-StatusTopology, opts=optional]
 
 [%hardbreaks]
 {blank}
-a¦ <<StatusTopology>>
+a¦ xref:StatusTopology[]
 
 
 |===
@@ -3097,7 +3129,7 @@ An array of objects, each giving information about the state of one Analytics pa
 
 [%hardbreaks]
 {blank}
-a¦ <<StatusTopologyState>>
+a¦ xref:StatusTopologyState[]
  array
 
 |===
@@ -3201,7 +3233,7 @@ An array of objects, each giving information about the state of one Analytics re
 
 [%hardbreaks]
 {blank}
-a¦ <<StatusTopologyStateReplicas>>
+a¦ xref:StatusTopologyStateReplicas[]
  array
 
 |===
