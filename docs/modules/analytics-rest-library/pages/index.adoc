@@ -8,7 +8,7 @@ include::partial$header-attributes.adoc[opts=optional]
 
 [comment]
 This file is created automatically by OpenAPI Generator.
-DO NOT EDIT! See https://github.com/couchbase/cb-swagger
+DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
 
 :leveloffset: 1
 
@@ -114,7 +114,7 @@ ifeval::[{count-apis} > 1]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
-<<tag-Default>>
+xref:tag-Default[]
 endif::[]
 
 
@@ -132,10 +132,12 @@ endif::[]
 endif::[]
 
 [%hardbreaks]
-<<delete_library>>
-<<get_collection>>
-<<post_library>>
+xref:delete_library[]
+xref:get_collection[]
+xref:post_library[]
 
+
+//tag::delete_library[]
 
 
 // markup not found, no include::{specDir}paths/delete_library/operation-before.adoc[opts=optional]
@@ -295,7 +297,7 @@ a| [markdown]
 --
 Internal server error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
-a| <<Errors>>
+a| xref:Errors[]
 
 
 
@@ -328,7 +330,7 @@ a| <<Errors>>
 | Type | Name
 
 | http (basic)
-| <<security-fullAdmin>>
+| xref:security-fullAdmin[]
 
 |===
 
@@ -357,6 +359,10 @@ include::{snippetDir}delete_library/http-request.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/delete_library/operation-after.adoc[opts=optional]
 
 
+//end::delete_library[]
+
+
+//tag::get_collection[]
 
 
 // markup not found, no include::{specDir}paths/get_collection/operation-before.adoc[opts=optional]
@@ -439,7 +445,7 @@ a| [markdown]
 --
 Success. Returns an array of objects, each of which contains information about a single library. 
 --
-a| <<Libraries>>
+a| xref:Libraries[]
  array
 
 | 404
@@ -453,7 +459,7 @@ a| [markdown]
 --
 Internal server error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
-a| <<Errors>>
+a| xref:Errors[]
 
 
 
@@ -486,7 +492,7 @@ a| <<Errors>>
 | Type | Name
 
 | http (basic)
-| <<security-analyticsAdmin>>
+| xref:security-analyticsAdmin[]
 
 |===
 
@@ -515,6 +521,10 @@ include::{snippetDir}get_collection/http-response.adoc[opts=optional]
 // markup not found, no include::{specDir}paths/get_collection/operation-after.adoc[opts=optional]
 
 
+//end::get_collection[]
+
+
+//tag::post_library[]
 
 
 // markup not found, no include::{specDir}paths/post_library/operation-before.adoc[opts=optional]
@@ -716,7 +726,7 @@ a| [markdown]
 --
 Bad request. A parameter has an incorrect value. 
 --
-a| <<Errors>>
+a| xref:Errors[]
 
 
 | 500
@@ -724,7 +734,7 @@ a| [markdown]
 --
 Internal server error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
-a| <<Errors>>
+a| xref:Errors[]
 
 
 
@@ -757,7 +767,7 @@ a| <<Errors>>
 | Type | Name
 
 | http (basic)
-| <<security-fullAdmin>>
+| xref:security-fullAdmin[]
 
 |===
 
@@ -785,6 +795,8 @@ include::{snippetDir}post_library/http-request.adoc[opts=optional]
 
 // markup not found, no include::{specDir}paths/post_library/operation-after.adoc[opts=optional]
 
+
+//end::post_library[]
 
 
 ifeval::[{count-apis} > 1]
@@ -822,8 +834,8 @@ ifdef::collapse-models[]
 [.two-columns]
 endif::collapse-models[]
 [%hardbreaks]
-<<Errors>>
-<<Libraries>>
+xref:Errors[]
+xref:Libraries[]
 endif::[]
 
 

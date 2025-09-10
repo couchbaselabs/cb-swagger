@@ -118,7 +118,7 @@ The operations are grouped in the following categories.
 [%hardbreaks]
 {{#apiInfo}}
 {{#apis}}
-<<tag-{{baseName}}>>
+xref:tag-{{baseName}}[]
 {{/apis}}
 {{/apiInfo}}
 endif::[]
@@ -145,11 +145,13 @@ endif::[]
 {{! Table of contents for operations }}
 [%hardbreaks]
 {{#operation}}
-<<{{operationIdOriginal}}>>
+xref:{{operationIdOriginal}}[]
 {{/operation}}
 
 {{! Operation body }}
 {{#operation}}
+
+//tag::{{operationIdOriginal}}[]
 
 {{! include partial before operation }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-before.adoc{{/specinclude}}
@@ -334,7 +336,7 @@ a| {{#returnProperty}}{{>schemas}}{{/returnProperty}}
 {{! Iterate through operation security }}
 {{#authMethods}}
 | {{type}}{{#scheme}} ({{scheme}}){{/scheme}}
-| <<security-{{#lambda.camelcase}}{{name}}{{/lambda.camelcase}}>>
+| xref:security-{{#lambda.camelcase}}{{name}}{{/lambda.camelcase}}[]
 {{/authMethods}}
 
 {{! If there is operation security: table footer }}
@@ -363,6 +365,8 @@ a| {{#returnProperty}}{{>schemas}}{{/returnProperty}}
 
 {{! include partials after the operation }}
 {{#specinclude}}/paths/{{operationIdOriginal}}/operation-after.adoc{{/specinclude}}
+
+//end::{{operationIdOriginal}}[]
 
 {{/operation}}
 {{/operations}}
