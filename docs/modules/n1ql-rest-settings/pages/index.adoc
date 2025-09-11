@@ -1025,10 +1025,12 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 When enabled, the Query service preferentially aims to clean up just transactions that it has created, leaving transactions for the distributed cleanup process only when it is forced to.
 
+// tag::desc-more[]
 The [node-level][cleanupclientattempts] `cleanupclientattempts` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [cleanupclientattempts]: ../n1ql-rest-admin/index.html#cleanupclientattempts
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1051,10 +1053,12 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 When enabled, the Query service takes part in the distributed cleanup process, and cleans up expired transactions created by any client.
 
+// tag::desc-more[]
 The [node-level][cleanuplostattempts] `cleanuplostattempts` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [cleanuplostattempts]: ../n1ql-rest-admin/index.html#cleanuplostattempts
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1091,10 +1095,12 @@ Valid units are:
 
 [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
 
+// tag::desc-more[]
 The [node-level][cleanupwindow] `cleanupwindow` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [cleanupwindow]: ../n1ql-rest-admin/index.html#cleanupwindow
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1124,10 +1130,12 @@ Refer to [Configure the Completed Requests][sys-completed-config] for more infor
 
 [sys-completed-config]: /server/7.6/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 
+// tag::desc-more[]
 The [node-level][completed-limit] `completed-limit` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [completed-limit]: ../n1ql-rest-admin/index.html#completed-limit
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1158,10 +1166,12 @@ Refer to [Configure the Completed Requests][sys-completed-config] for more infor
 
 [sys-completed-config]: /server/7.6/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 
+// tag::desc-more[]
 The [node-level][completed-max-plan-size] `completed-max-plan-size` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [completed-max-plan-size]: ../n1ql-rest-admin/index.html#completed-max-plan-size
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1193,10 +1203,12 @@ Refer to [Configure the Completed Requests][sys-completed-config] for more infor
 
 [sys-completed-config]: /server/7.6/n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 
+// tag::desc-more[]
 The [node-level][completed-threshold] `completed-threshold` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [completed-threshold]: ../n1ql-rest-admin/index.html#completed-threshold
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1241,10 +1253,12 @@ Major items, like crashes.
 
 * `NONE` &mdash; Doesn't write anything.
 
+// tag::desc-more[]
 The [node-level][loglevel] `loglevel` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [loglevel]: ../n1ql-rest-admin/index.html#loglevel
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1280,6 +1294,7 @@ Refer to [Max Parallelism][max-parallelism] for more information.
 
 [max-parallelism]: /server/7.6/n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
 
+// tag::desc-more[]
 The [node-level][max-parallelism-srv] `max-parallelism` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
@@ -1290,6 +1305,7 @@ NOTE: To enable queries to run in parallel, you must specify the cluster-level `
 
 [max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
 [max_parallelism_req]: ../n1ql-rest-query/index.html#max_parallelism_req
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1319,6 +1335,7 @@ It does not take into account any other memory that might be used to process a r
 Within a transaction, this setting enforces the memory quota for the transaction by tracking the
 delta table and the transaction log (approximately).
 
+// tag::desc-more[]
 The [node-level][memory-quota-srv] `memory-quota` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
@@ -1327,6 +1344,7 @@ If a request includes this parameter, it will be capped by the node-level `memor
 
 [memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
 [memory_quota_req]: ../n1ql-rest-query/index.html#memory_quota_req
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1350,10 +1368,12 @@ endif::alt-markdown-links[]
 SQL++ feature control.
 This setting is provided for technical support only.
 
+// tag::desc-more[]
 The [node-level][n1ql-feat-ctrl] `n1ql-feat-ctrl` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [n1ql-feat-ctrl]: ../n1ql-rest-admin/index.html#n1ql-feat-ctrl
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1385,10 +1405,12 @@ To do this, the Query service calculates the difference between the total system
 
 - If the difference is 8 GiB or less, the default soft memory limit is set to 90% of the total system RAM.
 
+// tag::desc-more[]
 The [node-level][node-quota] `node-quota` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [node-quota]: ../n1ql-rest-admin/index.html#node-quota
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1411,10 +1433,12 @@ endif::alt-markdown-links[]
 The percentage of the `queryNodeQuota` that is dedicated to tracked value content memory across all active requests for every Query node in the cluster.
 (The `queryMemoryQuota` setting specifies the maximum amount of document memory an individual request may use on any Query node in the cluster.)
 
+// tag::desc-more[]
 The [node-level][node-quota-val-percent] `node-quota-val-percent` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [node-quota-val-percent]: ../n1ql-rest-admin/index.html#node-quota-val-percent
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1441,6 +1465,7 @@ Specifies the total number of [active transaction records][additional-storage-us
 
 [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
 
+// tag::desc-more[]
 The [node-level][numatrs-srv] `numatrs` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
@@ -1449,6 +1474,7 @@ If a request includes this parameter, it will be capped by the node-level `numat
 
 [numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
 [numatrs_req]: ../n1ql-rest-query/index.html#numatrs_req
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1480,10 +1506,12 @@ The number of CPUs can never be greater than the number of logical CPUs.
 In Community Edition, the number of allowed CPUs cannot be greater than 4.
 In Enterprise Edition, there is no limit to the number of allowed CPUs.
 
+// tag::desc-more[]
 The [node-level][num-cpus] `num-cpus` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [num-cpus]: ../n1ql-rest-admin/index.html#num-cpus
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1506,6 +1534,7 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 Controls the number of items execution operators can batch for Fetch from the KV.
 
+// tag::desc-more[]
 The [node-level][pipeline-batch-srv] `pipeline-batch` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
@@ -1514,6 +1543,7 @@ The minimum of that and the node-level `pipeline-batch` setting is applied.
 
 [pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
 [pipeline_batch_req]: ../n1ql-rest-query/index.html#pipeline_batch_req
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1537,6 +1567,7 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 Maximum number of items each execution operator can buffer between various operators.
 
+// tag::desc-more[]
 The [node-level][pipeline-cap-srv] `pipeline-cap` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
@@ -1545,6 +1576,7 @@ The minimum of that and the node-level `pipeline-cap` setting is applied.
 
 [pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
 [pipeline_cap_req]: ../n1ql-rest-query/index.html#pipeline_cap_req
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1568,10 +1600,12 @@ endif::alt-markdown-links[]
 Maximum number of prepared statements in the cache.
 When this cache reaches the limit, the least recently used prepared statements will be discarded as new prepared statements are created.
 
+// tag::desc-more[]
 The [node-level][prepared-limit] `prepared-limit` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
 [prepared-limit]: ../n1ql-rest-admin/index.html#prepared-limit
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1599,6 +1633,7 @@ This parameter controls when to use scan backfill.
 Use `0` or a negative number to disable.
 Smaller values reduce GC, while larger values reduce indexer backfill.
 
+// tag::desc-more[]
 The [node-level][scan-cap-srv] `scan-cap` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
@@ -1607,6 +1642,7 @@ The minimum of that and the node-level `scan-cap` setting is applied.
 
 [scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
 [scan_cap_req]: ../n1ql-rest-query/index.html#scan_cap_req
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1636,6 +1672,7 @@ It must not be delimited by quotes, and must not include a unit.
 Specify `0` (the default value) or a negative integer to disable.
 When disabled, no timeout is applied and the request runs for however long it takes.
 
+// tag::desc-more[]
 The [node-level][timeout-srv] `timeout` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
@@ -1644,6 +1681,7 @@ The minimum of that and the node-level `timeout` setting is applied.
 
 [timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
 [timeout_req]: ../n1ql-rest-query/index.html#timeout_req
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1686,6 +1724,7 @@ When disabled, no timeout is applied and the transaction runs for however long i
 
 [tximplicit]: ../n1ql-rest-query/index.html#tximplicit
 
+// tag::desc-more[]
 The [node-level][txtimeout-srv] `txtimeout` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
@@ -1694,6 +1733,7 @@ If a request includes this parameter, it will be capped by the node-level `txtim
 
 [txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
 [txtimeout_req]: ../n1ql-rest-query/index.html#txtimeout_req
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1760,6 +1800,7 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 Specifies whether the cost-based optimizer is enabled.
 
+// tag::desc-more[]
 The [node-level][use-cbo-srv] `use-cbo` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
@@ -1768,6 +1809,7 @@ If a request does not include this parameter, the node-level setting is used, wh
 
 [use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
 [use_cbo_req]: ../n1ql-rest-query/index.html#use_cbo_req
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1806,6 +1848,7 @@ Reading from replica is only possible if the cluster uses Couchbase Server 7.6.0
 Note that KV range scans cannot currently be started on a replica vBucket.
 If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
 
+// tag::desc-more[]
 The [node-level][use-replica-srv] `use-replica` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
@@ -1815,6 +1858,7 @@ If the request-level parameter and the node-level setting are both `unset`, read
 
 [use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
 [use_replica_req]: ../n1ql-rest-query/index.html#use_replica_req
+// end::desc-more[]
 --
 
 [%hardbreaks]
