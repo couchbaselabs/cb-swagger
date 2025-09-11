@@ -1520,10 +1520,12 @@ If any part of the path contains a special character, that part of the path must
 
 [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
 
+// tag::desc-more[]
 The [node-level][atrcollection-srv] `atrcollection` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
 [atrcollection-srv]: ../n1ql-rest-admin/index.html#atrcollection-srv
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1610,10 +1612,12 @@ When set to `true`, the query response document includes a controls section with
 
 If the request qualifies for caching, these values will also be cached in the `completed_requests` system keyspace.
 
+// tag::desc-more[]
 The [node-level][controls-srv] `controls` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
 [controls-srv]: ../n1ql-rest-admin/index.html#controls-srv
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1776,6 +1780,7 @@ Specifies the maximum parallelism for the query.
 
 The default value is the same as the number of partitions of the index selected for the query.
 
+// tag::desc-more[]
 The [node-level][max-parallelism-srv] `max-parallelism` setting specifies the ceiling for this parameter for a single node.
 If the request-level parameter is zero or negative, the parallelism for the query is set to the node-level setting.
 If the request-level parameter is greater than zero and less than the node-level setting, the request-level parameter overrides the node-level setting.
@@ -1788,6 +1793,7 @@ To enable queries to run in parallel, you must specify the cluster-level `queryM
 
 [max-parallelism-srv]: ../n1ql-rest-admin/index.html#max-parallelism-srv
 [queryMaxParallelism]: ../n1ql-rest-settings/index.html#queryMaxParallelism
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1819,6 +1825,7 @@ It does not take into account any other memory that might be used to process a r
 Within a transaction, this setting enforces the memory quota for the transaction by tracking the
 delta table and the transaction log (approximately).
 
+// tag::desc-more[]
 The [node-level][memory-quota-srv] `memory-quota` setting specifies the ceiling for this parameter for a single node.
 If the node-level setting is zero (the default), the request-level parameter overrides the node-level setting.
 If the node-level setting is greater than zero, the request-level parameter is capped by the node-level setting.
@@ -1828,6 +1835,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [memory-quota-srv]: ../n1ql-rest-admin/index.html#memory-quota-srv
 [queryMemoryQuota]: ../n1ql-rest-settings/index.html#queryMemoryQuota
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1888,6 +1896,7 @@ Must be a positive integer.
 
 [additional-storage-use]: /server/7.6/learn/data/transactions.html#active-transaction-record-entries
 
+// tag::desc-more[]
 The [node-level][numatrs-srv] `numatrs` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
@@ -1896,6 +1905,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
 [queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1919,6 +1929,7 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 Controls the number of items execution operators can batch for Fetch from the KV.
 
+// tag::desc-more[]
 The [node-level][pipeline-batch-srv] `pipeline-batch` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
@@ -1927,6 +1938,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [pipeline-batch-srv]: ../n1ql-rest-admin/index.html#pipeline-batch-srv
 [queryPipelineBatch]: ../n1ql-rest-settings/index.html#queryPipelineBatch
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -1949,6 +1961,7 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 Maximum number of items each execution operator can buffer between various operators.
 
+// tag::desc-more[]
 The [node-level][pipeline-cap-srv] `pipeline-cap` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
@@ -1957,6 +1970,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [pipeline-cap-srv]: ../n1ql-rest-admin/index.html#pipeline-cap-srv
 [queryPipelineCap]: ../n1ql-rest-settings/index.html#queryPipelineCap
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -2025,10 +2039,12 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 Specifies the query results returned in pretty format.
 
+// tag::desc-more[]
 The [node-level][pretty-srv] `pretty` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
 [pretty-srv]: ../n1ql-rest-admin/index.html#pretty-srv
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -2063,10 +2079,12 @@ This information will be included in the `system:active_requests` and `system:co
 
 If `profile` is not set as one of the above values, then the profile setting does not change.
 
+// tag::desc-more[]
 The [node-level][profile-srv] `profile` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
 [profile-srv]: ../n1ql-rest-admin/index.html#profile-srv
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -2143,6 +2161,7 @@ This parameter controls when to use scan backfill.
 Use `0` or a negative number to disable.
 Smaller values reduce GC, while larger values reduce indexer backfill.
 
+// tag::desc-more[]
 The [node-level][scan-cap-srv] `scan-cap` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting, but only if it is lower than the node-level setting.
 
@@ -2151,6 +2170,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [scan-cap-srv]: ../n1ql-rest-admin/index.html#scan-cap-srv
 [queryScanCap]: ../n1ql-rest-settings/index.html#queryScanCap
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -2389,6 +2409,7 @@ When disabled, no timeout is applied and the request runs for however long it ta
 If `tximplicit` or `txid` is set, this parameter is ignored.
 The request inherits the remaining time of the transaction as timeout.
 
+// tag::desc-more[]
 The [node-level][timeout-srv] `timeout` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 However, if the node-level setting is greater than 0, the timeout for the query is limited to the node-level setting.
@@ -2398,6 +2419,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [timeout-srv]: ../n1ql-rest-admin/index.html#timeout-srv
 [queryTimeout]: ../n1ql-rest-settings/index.html#queryTimeout
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -2522,6 +2544,7 @@ When disabled, the request-level timeout is set to the default.
 
 The default is `"15s"` for cbq files or scripts, `"2m"` for interactive cbq sessions or redirected input.
 
+// tag::desc-more[]
 The [node-level][txtimeout-srv] `txtimeout` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 However, if the node-level setting is greater than 0, the transaction timeout for the query is limited to the node-level setting.
@@ -2531,6 +2554,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [txtimeout-srv]: ../n1ql-rest-admin/index.html#txtimeout-srv
 [queryTxTimeout]: ../n1ql-rest-settings/index.html#queryTxTimeout
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -2553,6 +2577,7 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 Specifies whether the cost-based optimizer is enabled.
 
+// tag::desc-more[]
 The [node-level][use-cbo-srv] `use-cbo` setting specifies the default for this parameter for a single node.
 The request-level parameter overrides the node-level setting.
 
@@ -2561,6 +2586,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [use-cbo-srv]: ../n1ql-rest-admin/index.html#use-cbo-srv
 [queryUseCBO]: ../n1ql-rest-settings/index.html#queryUseCBO
+// end::desc-more[]
 --
 
 [%hardbreaks]
@@ -2626,6 +2652,7 @@ Reading from replica is only possible if the cluster uses Couchbase Server 7.6.0
 Note that KV range scans cannot currently be started on a replica vBucket.
 If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
 
+// tag::desc-more[]
 The [node-level][use-replica-srv] `use-replica` setting specifies the default for this property for a single node.
 The request-level parameter usually overrides the node-level setting.
 However, when the node-level setting is `off`, the request-level parameter cannot enable the property.
@@ -2635,6 +2662,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 
 [use-replica-srv]: ../n1ql-rest-admin/index.html#use-replica-srv
 [queryUseReplica]: ../n1ql-rest-settings/index.html#queryUseReplica
+// end::desc-more[]
 --
 
 [%hardbreaks]
