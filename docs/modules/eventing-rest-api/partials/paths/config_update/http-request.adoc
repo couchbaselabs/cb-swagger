@@ -30,6 +30,19 @@ curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
 ----
 ====
 
+.Set service configuration settings for a scope
+====
+This example specifies that 3 Eventing nodes should run the functions in this scope.
+If fewer than 3 nodes are available, the functions will run on all Eventing nodes.
+
+.Curl request
+[source,sh]
+----
+curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config?bucket=bulk&scope=data" \
+  -d '{"num_nodes_running": 3}'
+----
+====
+
 .Allow interbucket recursion
 ====
 This example disables the safety checks that prevent basic infinite recursive Eventing functions.
