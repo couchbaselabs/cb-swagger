@@ -610,19 +610,45 @@ paths:
           $ref: '#/components/responses/Goof'
 
   /api/v1/config:
+    parameters:
+      - name: bucket
+        schema:
+          type: string
+        in: query
+        required: false
+        description: |-
+          For scoped configuration settings only.
+          The bucket to which the configuration settings apply.
+      - name: scope
+        schema:
+          type: string
+        in: query
+        required: false
+        description: |-
+          For scoped configuration settings only.
+          The scope to which the configuration settings apply.
     get:
       operationId: config_get
-      summary: List Global Config
+      summary: List Service Config
       description: |-
-        Shows all global configuration settings.
-        Note that the `enable_debugger` and `ram_quota` settings can also be adjusted via the UI.
+        Shows all service configuration settings.
+
+        In Couchbase Server 8.0 and later, you can list service configuration settings globally, or at the function scope level.
+        When you list settings at the function scope level, the settings apply only to functions within that function scope.
+        Some service configuration settings are only available globally.
+
+        Service configuration settings at the function scope level take precendence over global service configuration settings.
+        If a setting is not specified at the function scope level, the Eventing service checks at the bucket level, and then falls back to the global level.
+
+        You can also see the current values of the `enable_debugger` and `ram_quota` settings via the UI.
       tags:
-        - global config
+        - service config
       security:
-        - Unscoped: []
+        - Global: []
+        - Scoped: []
       responses:
         "200":
-          description: Returns an object showing the global configuration settings.
+          description: Returns an object showing the service configuration settings.
           content:
             application/json:
               schema:
@@ -631,23 +657,33 @@ paths:
           $ref: '#/components/responses/Goof'
     post:
       operationId: config_update
-      summary: Modify Global Config
+      summary: Modify Service Config
       description: |-
-        Modify global configuration settings.
+        Modify service configuration settings.
         During an edit, settings provided are merged.
         Unspecified attributes retain their prior values.
         The response indicates whether the Eventing service must be restarted for the new changes to take effect.
+
+        In Couchbase Server 8.0 and later, you can modify service configuration settings globally, or at the function scope level.
+        When you modify settings at the function scope level, the settings apply only to functions within that function scope.
+        Some service configuration settings are only available globally.
+
+        Service configuration settings at the function scope level take precendence over global service configuration settings.
+        If a setting is not specified at the function scope level, the Eventing service checks at the bucket level, and then falls back to the global level.
+
+        You can also modify the `enable_debugger` and `ram_quota` settings via the UI.
       tags:
-        - global config
+        - service config
       requestBody:
        required: true
-       description: An object providing the global configuration settings.
+       description: An object providing the service configuration settings.
        content:
         application/json:
           schema:
             $ref: "#/components/schemas/UnivConfig"
       security:
-        - Unscoped: []
+        - Global: []
+        - Scoped: []
       responses:
         "200":
           $ref: '#/components/responses/OK'
@@ -875,7 +911,7 @@ components:
             $ref: "#/components/schemas/handler_schema"
 
     UnivConfig:
-      title: Global Config
+      title: Service Config
       type: object
       properties:
         ram_quota:
@@ -884,7 +920,17 @@ components:
           example: 512
           x-has-example: true
           x-has-default: true
-          description: The memory allocation for the Eventing Service, per node.
+          description: |-
+            The memory allocation for the Eventing Service, per node.
+
+            This setting is only available globally.
+        enable_curl:
+          type: boolean
+          description: |-
+            Enables the Eventing curl function.
+            For details, see [cURL](/server/8.0/eventing/eventing-curl-spec.html).
+
+            This setting is available globally or at the function scope level.
         enable_debugger:
           type: boolean
           default: false
@@ -892,6 +938,8 @@ components:
           description: |-
             Enables the Eventing service debugger.
             For details, see [Debugging and Diagnosability](/server/8.0/eventing/eventing-debugging-and-diagnosability.html).
+
+            This setting is available globally or at the function scope level.
         cursor_limit:
           type: integer
           default: 5
@@ -899,12 +947,27 @@ components:
           minimum: 1
           x-has-default: true
           description: |-
-            The maximum number of cursor-aware Eventing functions that can coexist on a given source keyspace. (A cursor-aware Eventing function is one for which the `cursor_aware` setting is `true`.)
+            The maximum number of cursor-aware Eventing functions that can coexist on a given source keyspace.
+            (A cursor-aware Eventing function is one for which the `cursor_aware` setting is `true`.)
 
             Increasing this setting enables more cursor-aware Eventing functions to register and listen to any given collection.
 
             Decreasing this setting prevents further cursor-aware Eventing functions from being registered on any given collection; however, it doesn't unregister already registered cursor-aware Eventing functions.
 
+            This setting is only available globally.
+        num_nodes_running:
+          type: integer
+          example: 3
+          x-has-example: true
+          x-desc-status: Couchbase Server 8.0
+          description: |-
+            The number of Eventing nodes on which the functions in scope execute.
+
+            By default, all Eventing functions run on all Eventing nodes.
+            If this setting is specified, the Evening Service attempts to run the functions in scope on the specified number of nodes.
+            If fewer nodes are available, the functions run on all available nodes.
+
+            This setting is available globally or at the function scope level.
   responses:
     OK:
       description: Success.
@@ -917,8 +980,8 @@ components:
       type: http
       scheme: basic
       description: |-
-        Global functions with a function scope of ``*.*`` can only be made or managed by users with the Full Admin or Eventing Full Admin role.
-        For global functions, you do not need to pass the `bucket` and `scope` query parameters to specify the function scope.
+        Global functions and service configuration settings with a function scope of ``*.*`` can only be made or managed by users with the Full Admin or Eventing Full Admin role.
+        For global functions and service configuration settings, you do not need to pass the `bucket` and `scope` query parameters to specify the function scope.
         The credentials must be an administrator username and password.
 
         Note that this is the default function scope for all functions after an upgrade from a prior version.
@@ -927,7 +990,7 @@ components:
       type: http
       scheme: basic
       description: |-
-        For scoped functions, you must pass the `bucket` and `scope` query parameters to specify the function scope.
+        For scoped functions and service configuration settings, you must pass the `bucket` and `scope` query parameters to specify the function scope.
         The credentials are the username and password of any authorized user.
 
         You can quote the REST call on the command line to escape the `&` and `?` characters.
