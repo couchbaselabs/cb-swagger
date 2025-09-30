@@ -163,6 +163,7 @@ components:
   NodeIdxNode:
     type: object
     title: Nodes
+    description: Node statistics.
     required:
       - indexer
     properties:
@@ -218,12 +219,14 @@ components:
   PartIdxIndexes:
     type: object
     title: Indexes
+    description: Index statistics.
     additionalProperties:
       $ref: "#/components/schemas/PartIdxPartitionsIndex"
 
   PartIdxPartitions:
     type: object
     title: Partitions
+    description: Index partition statistics.
     additionalProperties:
       $ref: "#/components/schemas/PartIdxPartitionsIndex"
 
