@@ -1,10 +1,19 @@
 = Example HTTP Requests
 
-.View global configuration
+.View global service configuration settings
 ====
 .Curl request
 [source,sh]
 ----
 curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config"
+----
+====
+
+.View scoped service configuration settings
+====
+.Curl request
+[source,sh]
+----
+curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config?bucket=bulk&scope=data"
 ----
 ====

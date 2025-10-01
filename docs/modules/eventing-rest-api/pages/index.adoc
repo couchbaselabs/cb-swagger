@@ -114,9 +114,9 @@ The operations are grouped in the following categories.
 [%hardbreaks]
 xref:tag-Activation[]
 xref:tag-Advanced[]
-xref:tag-GlobalConfig[]
 xref:tag-List[]
 xref:tag-Logging[]
+xref:tag-ServiceConfig[]
 xref:tag-Statistics[]
 xref:tag-Status[]
 endif::[]
@@ -4299,382 +4299,6 @@ endif::[]
 
 
 ifeval::[{count-apis} > 1]
-[#tag-GlobalConfig]
-= Global Config
-:leveloffset: +1
-
-ifeval::["" != ""]
-
-endif::[]
-ifeval::["" == ""]
-**{toc-title}**
-endif::[]
-endif::[]
-
-[%hardbreaks]
-xref:config_get[]
-xref:config_update[]
-
-
-//tag::config_get[]
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-before.adoc[opts=optional]
-
-
-[#config_get]
-= List Global Config
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/config_get/operation-begin.adoc[opts=optional]
-
-
-....
-GET /api/v1/config
-....
-
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-description-before.adoc[opts=optional]
-
-
-[#config_get-description]
-= Description
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/config_get/operation-description-begin.adoc[opts=optional]
-
-
-[markdown]
---
-Shows all global configuration settings.
-Note that the `enable_debugger` and `ram_quota` settings can also be adjusted via the UI.
---
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-description-end.adoc[opts=optional]
-
-
-
-[#config_get-produces]
-.Produces
-* application/json
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-description-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-parameters-before.adoc[opts=optional]
-
-
-
-
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-parameters-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-responses-before.adoc[opts=optional]
-
-
-[#config_get-responses]
-= Responses
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/config_get/operation-responses-begin.adoc[opts=optional]
-
-
-[cols="20,60,20"]
-|===
-| HTTP Code | Description | Schema
-
-| 200
-a| [markdown]
---
-Returns an object showing the global configuration settings.
---
-a| xref:UnivConfig[]
-
-
-| 404
-a| [markdown]
---
-Failure.
---
-a| 
-
-|===
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-responses-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-responses-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-security-before.adoc[opts=optional]
-
-
-[#config_get-security]
-= Security
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/config_get/operation-security-begin.adoc[opts=optional]
-
-
-[cols="20,80"]
-|===
-| Type | Name
-
-| http (basic)
-| xref:security-unscoped[]
-
-|===
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-security-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-security-after.adoc[opts=optional]
-
-
-
-include::{snippetDir}config_get/http-request.adoc[opts=optional]
-
-
-// markup not found, no include::{snippetDir}config_get/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}paths/config_get/operation-after.adoc[opts=optional]
-
-
-//end::config_get[]
-
-
-//tag::config_update[]
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-before.adoc[opts=optional]
-
-
-[#config_update]
-= Modify Global Config
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/config_update/operation-begin.adoc[opts=optional]
-
-
-....
-POST /api/v1/config
-....
-
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-description-before.adoc[opts=optional]
-
-
-[#config_update-description]
-= Description
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/config_update/operation-description-begin.adoc[opts=optional]
-
-
-[markdown]
---
-Modify global configuration settings.
-During an edit, settings provided are merged.
-Unspecified attributes retain their prior values.
-The response indicates whether the Eventing service must be restarted for the new changes to take effect.
---
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-description-end.adoc[opts=optional]
-
-
-[#config_update-consumes]
-.Consumes
-* application/json
-
-
-:leveloffset: -1
-
-
-include::{specDir}paths/config_update/operation-description-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-parameters-before.adoc[opts=optional]
-
-
-[#config_update-parameters]
-= Parameters
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/config_update/operation-parameters-begin.adoc[opts=optional]
-
-
-
-
-
-
-[#config_update-body]
-.Body Parameter
-{blank}
-
-[cols="20,60,20",separator=¦]
-|===
-¦ Name ¦ Description ¦ Schema
-
-a¦ *Body* +
-_required_
-a¦ 
-
-
-[markdown]
---
-An object providing the global configuration settings.
---
-
-[%hardbreaks]
-{blank}
-
-a¦ xref:UnivConfig[]
-
-
-
-|===
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-parameters-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-parameters-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-responses-before.adoc[opts=optional]
-
-
-[#config_update-responses]
-= Responses
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/config_update/operation-responses-begin.adoc[opts=optional]
-
-
-[cols="20,60,20"]
-|===
-| HTTP Code | Description | Schema
-
-| 200
-a| [markdown]
---
-Success.
---
-a| 
-| 404
-a| [markdown]
---
-Failure.
---
-a| 
-
-|===
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-responses-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-responses-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-security-before.adoc[opts=optional]
-
-
-[#config_update-security]
-= Security
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}paths/config_update/operation-security-begin.adoc[opts=optional]
-
-
-[cols="20,80"]
-|===
-| Type | Name
-
-| http (basic)
-| xref:security-unscoped[]
-
-|===
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-security-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-security-after.adoc[opts=optional]
-
-
-
-include::{snippetDir}config_update/http-request.adoc[opts=optional]
-
-
-// markup not found, no include::{snippetDir}config_update/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}paths/config_update/operation-after.adoc[opts=optional]
-
-
-//end::config_update[]
-
-
-ifeval::[{count-apis} > 1]
-:leveloffset: -1
-endif::[]
-
-
-ifeval::[{count-apis} > 1]
 [#tag-List]
 = List
 :leveloffset: +1
@@ -5371,6 +4995,510 @@ include::{snippetDir}log_view/http-request.adoc[opts=optional]
 
 
 //end::log_view[]
+
+
+ifeval::[{count-apis} > 1]
+:leveloffset: -1
+endif::[]
+
+
+ifeval::[{count-apis} > 1]
+[#tag-ServiceConfig]
+= Service Config
+:leveloffset: +1
+
+ifeval::["" != ""]
+
+endif::[]
+ifeval::["" == ""]
+**{toc-title}**
+endif::[]
+endif::[]
+
+[%hardbreaks]
+xref:config_get[]
+xref:config_update[]
+
+
+//tag::config_get[]
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-before.adoc[opts=optional]
+
+
+[#config_get]
+= List Service Config
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_get/operation-begin.adoc[opts=optional]
+
+
+....
+GET /api/v1/config
+....
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-description-before.adoc[opts=optional]
+
+
+[#config_get-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_get/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Shows all service configuration settings.
+
+In Couchbase Server 8.0 and later, you can list service configuration settings globally, or at the function scope level.
+When you list settings at the function scope level, the settings apply only to functions within that function scope.
+Some service configuration settings are only available globally.
+
+Service configuration settings at the function scope level take precedence over global service configuration settings.
+If a setting is not specified at the function scope level, the Eventing service checks at the bucket level, and then falls back to the global level.
+
+You can also see the current values of the `enable_debugger` and `ram_quota` settings via the UI.
+--
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-description-end.adoc[opts=optional]
+
+
+
+[#config_get-produces]
+.Produces
+* application/json
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-parameters-before.adoc[opts=optional]
+
+
+[#config_get-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_get/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#config_get-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped configuration settings only.
+The bucket to which the configuration settings apply.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped configuration settings only.
+The scope to which the configuration settings apply.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-responses-before.adoc[opts=optional]
+
+
+[#config_get-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_get/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Returns an object showing the service configuration settings.
+--
+a| xref:UnivConfig[]
+
+
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-security-before.adoc[opts=optional]
+
+
+[#config_get-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_get/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| xref:security-scoped[]
+| http (basic)
+| xref:security-global[]
+
+|===
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}config_get/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}config_get/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/config_get/operation-after.adoc[opts=optional]
+
+
+//end::config_get[]
+
+
+//tag::config_update[]
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-before.adoc[opts=optional]
+
+
+[#config_update]
+= Modify Service Config
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_update/operation-begin.adoc[opts=optional]
+
+
+....
+POST /api/v1/config
+....
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-description-before.adoc[opts=optional]
+
+
+[#config_update-description]
+= Description
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_update/operation-description-begin.adoc[opts=optional]
+
+
+[markdown]
+--
+Modify service configuration settings.
+During an edit, settings provided are merged.
+Unspecified attributes retain their prior values.
+The response indicates whether the Eventing service must be restarted for the new changes to take effect.
+
+In Couchbase Server 8.0 and later, you can modify service configuration settings globally, or at the function scope level.
+When you modify settings at the function scope level, the settings apply only to functions within that function scope.
+Some service configuration settings are only available globally.
+
+Service configuration settings at the function scope level take precedence over global service configuration settings.
+If a setting is not specified at the function scope level, the Eventing service checks at the bucket level, and then falls back to the global level.
+
+You can also modify the `enable_debugger` and `ram_quota` settings via the UI.
+--
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-description-end.adoc[opts=optional]
+
+
+[#config_update-consumes]
+.Consumes
+* application/json
+
+
+:leveloffset: -1
+
+
+include::{specDir}paths/config_update/operation-description-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-parameters-before.adoc[opts=optional]
+
+
+[#config_update-parameters]
+= Parameters
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_update/operation-parameters-begin.adoc[opts=optional]
+
+
+
+[#config_update-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *bucket* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped configuration settings only.
+The bucket to which the configuration settings apply.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+a¦ *scope* +
+_optional_
+a¦ 
+
+
+[markdown]
+--
+For scoped configuration settings only.
+The scope to which the configuration settings apply.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+
+
+|===
+
+
+
+[#config_update-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *Body* +
+_required_
+a¦ 
+
+
+[markdown]
+--
+An object providing the service configuration settings.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ xref:UnivConfig[]
+
+
+
+|===
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-parameters-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-responses-before.adoc[opts=optional]
+
+
+[#config_update-responses]
+= Responses
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_update/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+Success.
+--
+a| 
+| 404
+a| [markdown]
+--
+Failure.
+--
+a| 
+
+|===
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-responses-after.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-security-before.adoc[opts=optional]
+
+
+[#config_update-security]
+= Security
+
+:leveloffset: +1
+
+// markup not found, no include::{specDir}paths/config_update/operation-security-begin.adoc[opts=optional]
+
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| xref:security-scoped[]
+| http (basic)
+| xref:security-global[]
+
+|===
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-security-after.adoc[opts=optional]
+
+
+
+include::{snippetDir}config_update/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}config_update/http-response.adoc[opts=optional]
+
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+// markup not found, no include::{specDir}paths/config_update/operation-after.adoc[opts=optional]
+
+
+//end::config_update[]
 
 
 ifeval::[{count-apis} > 1]
@@ -8594,7 +8722,7 @@ ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
 [#UnivConfig]
-= Global Config
+= Service Config
 
 :leveloffset: +1
 
@@ -8619,6 +8747,8 @@ a¦
 [markdown]
 --
 The memory allocation for the Eventing Service, per node.
+
+This setting is only available globally.
 --
 
 [%hardbreaks]
@@ -8626,6 +8756,24 @@ The memory allocation for the Eventing Service, per node.
 *Example:* `512`
 {blank}
 a¦ Integer
+
+
+a¦ 
+*enable_curl* +
+_optional_
+a¦ 
+
+[markdown]
+--
+Enables the Eventing curl function.
+For details, see [cURL](/cloud/eventing/eventing-curl-spec.html).
+
+This setting is available globally or at the function scope level.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
 
 
 a¦ 
@@ -8637,6 +8785,8 @@ a¦
 --
 Enables the Eventing service debugger.
 For details, see [Debugging and Diagnosability](/cloud/eventing/eventing-debugging-and-diagnosability.html).
+
+This setting is available globally or at the function scope level.
 --
 
 [%hardbreaks]
@@ -8652,17 +8802,42 @@ a¦
 
 [markdown]
 --
-The maximum number of cursor-aware Eventing functions that can coexist on a given source keyspace. (A cursor-aware Eventing function is one for which the `cursor_aware` setting is `true`.)
+The maximum number of cursor-aware Eventing functions that can coexist on a given source keyspace.
+(A cursor-aware Eventing function is one for which the `cursor_aware` setting is `true`.)
 
 Increasing this setting enables more cursor-aware Eventing functions to register and listen to any given collection.
 
 Decreasing this setting prevents further cursor-aware Eventing functions from being registered on any given collection; however, it doesn't unregister already registered cursor-aware Eventing functions.
+
+This setting is only available globally.
 --
 
 [%hardbreaks]
 *Default:* `5`
 *Minimum:* `1`
 *Maximum:* `20`
+{blank}
+a¦ Integer
+
+
+a¦ 
+*num_nodes_running* +
+_optional_
+a¦ [.status]##Couchbase Server 8.0##
+
+[markdown]
+--
+The number of Eventing nodes on which the functions in scope execute.
+
+By default, all Eventing functions run on all Eventing nodes.
+If this setting is specified, the Evening Service attempts to run the functions in scope on the specified number of nodes.
+If fewer nodes are available, the functions run on all available nodes.
+
+This setting is available globally or at the function scope level.
+--
+
+[%hardbreaks]
+*Example:* `3`
 {blank}
 a¦ Integer
 
@@ -8719,8 +8894,8 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 
 [markdown]
 --
-Global functions with a function scope of ``*.*`` can only be made or managed by users with the Full Admin or Eventing Full Admin role.
-For global functions, you do not need to pass the `bucket` and `scope` query parameters to specify the function scope.
+Global functions and service configuration settings with a function scope of ``*.*`` can only be made or managed by users with the Full Admin or Eventing Full Admin role.
+For global functions and service configuration settings, you do not need to pass the `bucket` and `scope` query parameters to specify the function scope.
 The credentials must be an administrator username and password.
 
 Note that this is the default function scope for all functions after an upgrade from a prior version.
@@ -8753,7 +8928,7 @@ __Type__ : http
 
 [markdown]
 --
-For scoped functions, you must pass the `bucket` and `scope` query parameters to specify the function scope.
+For scoped functions and service configuration settings, you must pass the `bucket` and `scope` query parameters to specify the function scope.
 The credentials are the username and password of any authorized user.
 
 You can quote the REST call on the command line to escape the `&` and `?` characters.
