@@ -867,7 +867,7 @@ endif::collapse-models[]
 ifdef::model-descriptions[]
 //tag::desc-Controls[]
 An object containing runtime information provided along with the request.
-Present only if `controls` was set to true in the [Request Parameters](#Request).
+Present only if `controls` was set to true in the request parameters.
 //end::desc-Controls[]
 endif::model-descriptions[]
 
@@ -1049,7 +1049,7 @@ endif::collapse-models[]
 
 ifdef::model-descriptions[]
 //tag::desc-Execution_Timings[]
-Present only if `profile` was set to `"timings"` in the [Request Parameters](#Request).
+Present only if `profile` was set to `"timings"` in the request parameters.
 
 The execution details for various phases involved in the query execution, such as kernel and service execution times, number of documents processed at each query operator in each phase, and number of phase switches.
 //end::desc-Execution_Timings[]
@@ -1329,7 +1329,7 @@ endif::collapse-models[]
 ifdef::model-descriptions[]
 //tag::desc-Profile[]
 An object containing monitoring and profiling information about the request.
-Present only if `profile` was set to `"phases"` or `"timings"` in the [Request Parameters](#Request).
+Present only if `profile` was set to `"phases"` or `"timings"` in the request parameters.
 //end::desc-Profile[]
 endif::model-descriptions[]
 
@@ -1484,6 +1484,10 @@ a¦
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[section_srh_tlm_n1b]: #section_srh_tlm_n1b
+
+endif::alt-markdown-links[]
 Supplies the values for positional parameters in the statement.
 Applicable if the statement or prepared statement contains 1 or more positional parameters.
 
@@ -1541,6 +1545,10 @@ a¦
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[auto-execute]: ../n1ql-language-reference/prepare.html#auto-execute
+
+endif::alt-markdown-links[]
 Specifies that prepared statements should be executed automatically as soon as they are created.
 This saves you from having to make two separate requests in cases where you want to prepare a statement and execute it immediately.
 
@@ -1986,6 +1994,10 @@ a¦
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[execute]: ../n1ql-language-reference/execute.html
+
+endif::alt-markdown-links[]
 _Required_ if `statement` not provided.
 
 The name of the prepared SQL++ statement to be executed.
@@ -2186,6 +2198,10 @@ a¦
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[transactional-scan-consistency]: #transactional-scan-consistency
+
+endif::alt-markdown-links[]
 Specifies the consistency guarantee or constraint for index scanning.
 The valid values are:
 
@@ -2602,6 +2618,10 @@ a¦ [.edition]##{enterprise}##
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[flex-indexes]: ../n1ql-language-reference/flex-indexes.html
+
+endif::alt-markdown-links[]
 Specifies that the query should use a Search index.
 
 If the query contains a `USING FTS` hint, that takes priority over this parameter.
@@ -2681,6 +2701,10 @@ a¦
 
 [markdown]
 --
+ifdef::alt-markdown-links[]
+[section_srh_tlm_n1b]: #section_srh_tlm_n1b
+
+endif::alt-markdown-links[]
 Supplies the value for a named parameter in the statement.
 Applicable if the statement or prepared statement contains 1 or more named parameters.
 
@@ -2771,7 +2795,7 @@ a¦
 
 [markdown]
 --
-The client context ID of the request, if one was supplied &mdash; see `client_context_id` in [Request Parameters](#Request).
+The client context ID of the request, if one was supplied &mdash; see `client_context_id` in the request parameters.
 --
 
 [%hardbreaks]

@@ -7003,14 +7003,44 @@ endif::collapse-models[]
 .icon:bars[fw] Composite Schema
 {blank}
 
-One of the following:
-
-* xref:handler_schema[]
+//tag::AddFunction[]
 
 
-* xref:handler_schema[]
+[cols="25,55,20",separator=¦]
+|===
+¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
+
+a¦ 
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-handler_schema, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:handler_schema[]
+
+
+a¦ _or_
+a¦ 
+
+[markdown]
+--
+An array containing a single function definition object.
+--
+
+[%hardbreaks]
+*Minimum items:* `1`
+*Maximum items:* `1`
+{blank}
+a¦ xref:handler_schema[]
  array
 
+|===
+
+//end::AddFunction[]
 
 
 // markup not found, no include::{specDir}definitions/AddFunction/definition-end.adoc[opts=optional]
@@ -7040,14 +7070,43 @@ endif::collapse-models[]
 .icon:bars[fw] Composite Schema
 {blank}
 
-One of the following:
-
-* xref:handler_schema[]
+//tag::AddFunctions[]
 
 
-* xref:handler_schema[]
+[cols="25,55,20",separator=¦]
+|===
+¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
+
+a¦ 
+a¦ 
+
+[markdown]
+--
+include::index.adoc[tag=desc-handler_schema, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:handler_schema[]
+
+
+a¦ _or_
+a¦ 
+
+[markdown]
+--
+An array containing one or more function definition objects.
+--
+
+[%hardbreaks]
+*Minimum items:* `1`
+{blank}
+a¦ xref:handler_schema[]
  array
 
+|===
+
+//end::AddFunctions[]
 
 
 // markup not found, no include::{specDir}definitions/AddFunctions/definition-end.adoc[opts=optional]
@@ -7622,6 +7681,11 @@ endif::collapse-models[]
 
 //tag::handler_schema[]
 
+ifdef::model-descriptions[]
+//tag::desc-handler_schema[]
+An object which defines a function.
+//end::desc-handler_schema[]
+endif::model-descriptions[]
 
 [cols="25,55,20",separator=¦]
 |===
