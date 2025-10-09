@@ -1,0 +1,31 @@
+{
+  "overlay": "1.0.0",
+  "info": {
+    "title": "Overlay for Query Service Schema",
+    "version": 1.0
+  },
+  "actions": [
+    {
+      "description": "Update `creds` parameter for Query operations",
+      "target": "components.schemas.Request.properties",
+      "update": {
+        "creds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Credentials"
+          },
+          "x-desc-name": "creds",
+          "description": "In the cbq shell, this parameter specifies credentials within a session.\nThe format is a list of one or more credentials.\nEach credential consists of a username and a password.\nHowever, if you specify multiple credentials, Couchbase Capella only recognizes the first credential.\n\nIn the Data API, this parameter is ignored and has no effect."
+        }
+      }
+    },
+    {
+      "description": "Update `Credentials` schema",
+      "target": "components.schemas.Credentials.properties.user",
+      "update": {
+        "description": "An identity for authentication.",
+        "example": "admin-name"
+      }
+    }
+  ]
+}
