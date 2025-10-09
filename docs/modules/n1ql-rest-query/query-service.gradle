@@ -1,8 +1,31 @@
+plugins {
+    id("io.datapith.jayOverlay").version("0.1.11")
+}
+
 apply plugin: 'org.openapi.generator'
+
+task bundleSpec(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
+    generatorName = "openapi-yaml"
+    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/query/refs/heads/morpheus/docs/spec/service/service.yaml"
+    outputDir = "${projectDir}/build/bundle"
+    globalProperties = [
+            generateAliasAsModel: "true"
+    ]
+    additionalProperties = [
+            outputFile: "service.yaml",
+    ]
+    generateAliasAsModel = true
+}
+
+jayOverlay {
+    targetFile.set("${projectDir}/build/bundle/service.yaml")
+    overlayFile.set("${projectDir}/attachments/_overlay.json")
+    outputDir.set("${projectDir}/build/overlay")
+}
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/query/refs/heads/morpheus/docs/spec/service/service.yaml"
+    inputSpec = file("build/overlay/service.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/n1ql-rest-query/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "query"
@@ -21,3 +44,6 @@ openApiGenerate {
     ]
     generateAliasAsModel = true
 }
+
+tasks.applyOverlay.dependsOn(bundleSpec)
+tasks.openApiGenerate.dependsOn(applyOverlay)
