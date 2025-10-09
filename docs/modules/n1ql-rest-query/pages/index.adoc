@@ -986,11 +986,10 @@ a¦
 [markdown]
 --
 An identity for authentication.
-Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
 --
 
 [%hardbreaks]
-*Example:* `+++"local:bucket-name"+++`
+*Example:* `+++"admin-name"+++`
 {blank}
 a¦ String
 
@@ -1747,17 +1746,15 @@ a¦
 
 [markdown]
 --
-Specifies the login credentials.
-The Query API supports two types of identity: local (or bucket) and admin.
+In the cbq shell, this parameter specifies credentials within a session.
+The format is a list of one or more credentials.
+Each credential consists of a username and a password.
+However, if you specify multiple credentials, Couchbase Capella only recognizes the first credential.
 
-The format is an identity and password.
-You can specify credentials for multiple identities.
-
-If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored.
+In the Data API, this parameter is ignored and has no effect.
 --
 
 [%hardbreaks]
-*Example:* `[{"user":"local:bucket-name","pass":"password"},{"user":"admin:admin-name","pass":"password"}]`
 {blank}
 a¦ xref:Credentials[]
  array
