@@ -683,7 +683,7 @@ endif::[]
 [#models]
 = Definitions
 
-:count-models: 9
+:count-models: 8
 
 :leveloffset: +1
 
@@ -699,7 +699,6 @@ endif::collapse-models[]
 [%hardbreaks]
 xref:Conditions[]
 xref:Controls[]
-xref:Credentials[]
 xref:Execution_Timings[]
 xref:Metrics[]
 xref:Profile[]
@@ -950,80 +949,6 @@ include::{specDir}definitions/Controls/definition-end.adoc[opts=optional]
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/Controls/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/Credentials/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#Credentials]
-= Credentials
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/Credentials/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Credentials[]
-
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ 
-*user* +
-_optional_
-a¦ 
-
-[markdown]
---
-An identity for authentication.
-Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
---
-
-[%hardbreaks]
-*Example:* `+++"local:bucket-name"+++`
-{blank}
-a¦ String
-
-
-a¦ 
-*pass* +
-_optional_
-a¦ 
-
-[markdown]
---
-A password for authentication.
---
-
-[%hardbreaks]
-*Example:* `+++"password"+++`
-{blank}
-a¦ String
-
-
-|===
-
-//end::Credentials[]
-
-
-
-
-// markup not found, no include::{specDir}definitions/Credentials/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/Credentials/definition-after.adoc[opts=optional]
 
 
 
@@ -1747,20 +1672,16 @@ a¦
 
 [markdown]
 --
-Specifies the login credentials.
-The Query API supports two types of identity: local (or bucket) and admin.
+In the Data API, this parameter is ignored and has no effect.
 
-The format is an identity and password.
-You can specify credentials for multiple identities.
-
-If credentials are supplied in the request header, then HTTP Basic Authentication takes precedence and `creds` is ignored.
+In the cbq shell, this parameter specifies credentials within a session.
+For more information, see [Switch Between Credentials](../n1ql-intro/cbq.html#cbq-multiple-creds).
 --
 
 [%hardbreaks]
-*Example:* `[{"user":"local:bucket-name","pass":"password"},{"user":"admin:admin-name","pass":"password"}]`
 {blank}
-a¦ xref:Credentials[]
- array
+a¦ Any Type
+
 
 a¦ [#durability_level]
 *durability_level* +
@@ -2865,7 +2786,7 @@ a¦ Boolean
 a¦ [#use_fts]
 *use_fts* +
 _optional_
-a¦ [.edition]##{enterprise}##
+a¦ 
 
 [markdown]
 --

@@ -12,7 +12,7 @@ apply plugin: 'org.openapi.generator'
 
 task bundleSpec(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
     generatorName = "openapi-yaml"
-    inputSpec = file("attachments/eventing.yaml").getAbsolutePath().toString()
+    inputSpec = file("attachments/_eventing.yaml").getAbsolutePath().toString()
     outputDir = "${projectDir}/build/bundle"
     globalProperties = [
             generateAliasAsModel: "true"

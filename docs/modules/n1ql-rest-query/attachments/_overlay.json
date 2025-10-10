@@ -1,0 +1,31 @@
+{
+  "overlay": "1.0.0",
+  "info": {
+    "title": "Overlay for Query Service Schema",
+    "version": 1.0
+  },
+  "actions": [
+    {
+      "description": "Update `creds` parameter for Query operations",
+      "target": "components.schemas.Request.properties",
+      "update": {
+        "creds": {
+          "x-desc-name": "creds",
+          "description": "In the Data API, this parameter is ignored and has no effect.\n\nIn the cbq shell, this parameter specifies credentials within a session.\nFor more information, see [Switch Between Credentials](../n1ql-intro/cbq.html#cbq-multiple-creds)."
+        }
+      }
+    },
+    {
+      "description": "Remove `Credentials` schema",
+      "target": "components.schemas.Credentials",
+      "remove": true
+    },
+    {
+      "description": "Remove badge from `use_fts` parameter",
+      "target": "components.schemas.Request.properties.use_fts",
+      "update": {
+        "x-desc-edition": false
+      }
+    }
+  ]
+}
