@@ -683,7 +683,7 @@ endif::[]
 [#models]
 = Definitions
 
-:count-models: 9
+:count-models: 8
 
 :leveloffset: +1
 
@@ -699,7 +699,6 @@ endif::collapse-models[]
 [%hardbreaks]
 xref:Conditions[]
 xref:Controls[]
-xref:Credentials[]
 xref:Execution_Timings[]
 xref:Metrics[]
 xref:Profile[]
@@ -950,79 +949,6 @@ include::{specDir}definitions/Controls/definition-end.adoc[opts=optional]
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/Controls/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/Credentials/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#Credentials]
-= Credentials
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/Credentials/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Credentials[]
-
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ 
-*user* +
-_optional_
-a¦ 
-
-[markdown]
---
-An identity for authentication.
---
-
-[%hardbreaks]
-*Example:* `+++"admin-name"+++`
-{blank}
-a¦ String
-
-
-a¦ 
-*pass* +
-_optional_
-a¦ 
-
-[markdown]
---
-A password for authentication.
---
-
-[%hardbreaks]
-*Example:* `+++"password"+++`
-{blank}
-a¦ String
-
-
-|===
-
-//end::Credentials[]
-
-
-
-
-// markup not found, no include::{specDir}definitions/Credentials/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/Credentials/definition-after.adoc[opts=optional]
 
 
 
@@ -1746,18 +1672,16 @@ a¦
 
 [markdown]
 --
-In the cbq shell, this parameter specifies credentials within a session.
-The format is a list of one or more credentials.
-Each credential consists of a username and a password.
-However, if you specify multiple credentials, Couchbase Capella only recognizes the first credential.
-
 In the Data API, this parameter is ignored and has no effect.
+
+In the cbq shell, this parameter specifies credentials within a session.
+For more information, see [Switch Between Credentials](../n1ql-intro/cbq.html#cbq-multiple-creds).
 --
 
 [%hardbreaks]
 {blank}
-a¦ xref:Credentials[]
- array
+a¦ Any Type
+
 
 a¦ [#durability_level]
 *durability_level* +
