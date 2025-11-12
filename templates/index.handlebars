@@ -317,6 +317,42 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 
 include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 
+{{#responses.content.application/json.example}}
+= Example HTTP Response
+{{/responses.content.application/json.example}}
+{{#responses}}
+{{#content}}
+{{#application/json}}
+{{#examples}}
+{{{this}}}
+
+.Response {{code}}
+====
+{{#summary}}
+.{{{summary}}}
+{{/summary}}
+[source,json]
+----
+{{{value}}}
+----
+====
+{{/examples}}
+{{#example}}
+{{#-first}}
+
+.Response {{code}}
+====
+[source,json]
+----
+{{{example}}}
+----
+====
+{{/-first}}
+{{/example}}
+{{/application/json}}
+{{/content}}
+{{/responses}}
+
 include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
 
 include::{specDir}paths/{{operationIdOriginal}}/operation-end.adoc[opts=optional]
