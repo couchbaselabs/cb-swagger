@@ -1,5 +1,19 @@
 apply plugin: 'org.openapi.generator'
 
+tasks.register('getExamples') {
+  doLast {
+    ant.property(name: "srcUrl",
+                value: "https://raw.githubusercontent.com/couchbase/query/refs/heads/trinity/docs/spec/functions/examples")
+    ant.echo("Fetching from ${ant.srcUrl}")
+    ant.get(dest: "examples") {
+      ant.url(url: "${ant.srcUrl}/get_collection_all.json")
+      ant.url(url: "${ant.srcUrl}/get_collection_scope.json")
+      ant.url(url: "${ant.srcUrl}/get_library_global.json")
+      ant.url(url: "${ant.srcUrl}/get_library_scope.json")
+    }
+  }
+}
+
 openApiGenerate {
     generatorName = "asciidoc"
     remoteInputSpec = "https://raw.githubusercontent.com/couchbase/query/refs/heads/trinity/docs/spec/functions/functions.yaml"
@@ -21,3 +35,5 @@ openApiGenerate {
     ]
     generateAliasAsModel = true
 }
+
+tasks.openApiGenerate.dependsOn(getExamples)

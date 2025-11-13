@@ -1,5 +1,20 @@
 apply plugin: 'org.openapi.generator'
 
+tasks.register('getExamples') {
+  doLast {
+    ant.property(name: "srcUrl",
+                value: "https://raw.githubusercontent.com/couchbase/query/refs/heads/trinity/docs/spec/settings/examples")
+    ant.echo("Fetching from ${ant.srcUrl}")
+    ant.get(dest: "examples") {
+      ant.url(url: "${ant.srcUrl}/query-settings-post-access.jsonc")
+      ant.url(url: "${ant.srcUrl}/query-settings-post-access.sh")
+      ant.url(url: "${ant.srcUrl}/query-settings-post-settings.jsonc")
+      ant.url(url: "${ant.srcUrl}/query-settings-post-settings.sh")
+      ant.url(url: "${ant.srcUrl}/query-settings-post-snippet.jsonc")
+    }
+  }
+}
+
 openApiGenerate {
     generatorName = "asciidoc"
     remoteInputSpec = "https://raw.githubusercontent.com/couchbase/query/refs/heads/trinity/docs/spec/settings/settings.yaml"
@@ -21,3 +36,5 @@ openApiGenerate {
     ]
     generateAliasAsModel = true
 }
+
+tasks.openApiGenerate.dependsOn(getExamples)

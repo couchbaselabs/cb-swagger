@@ -1,5 +1,19 @@
 apply plugin: 'org.openapi.generator'
 
+tasks.register('getExamples') {
+  doLast {
+    ant.property(name: "srcUrl",
+                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/trinity/docs/spec/manage/examples")
+    ant.echo("Fetching from ${ant.srcUrl}")
+    ant.get(dest: "examples") {
+      ant.url(url: "${ant.srcUrl}/file-xfer-200.json")
+      ant.url(url: "${ant.srcUrl}/file-xfer-405.json")
+      ant.url(url: "${ant.srcUrl}/file-xfer-disable.sh")
+      ant.url(url: "${ant.srcUrl}/file-xfer-enable.sh")
+    }
+  }
+}
+
 openApiGenerate {
     generatorName = "asciidoc"
     remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/trinity/docs/spec/manage/manage.yaml"
@@ -21,3 +35,5 @@ openApiGenerate {
     ]
     generateAliasAsModel = true
 }
+
+tasks.openApiGenerate.dependsOn(getExamples)
