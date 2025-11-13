@@ -1,8 +1,4 @@
-#!/bin/sh
-
-# tag::request[]
-curl -v -X POST -u Administrator:password \
-http://localhost:8091/settings/querySettings \
--d 'queryTmpSpaceDir=/tmp' \
--d 'queryTmpSpaceSize=2048'
-# end::request[]
+curl -v -X POST -u $USER:$PASSWORD \
+  $BASEPATH/settings/querySettings \
+  -d 'queryTmpSpaceDir=/tmp' \
+  -d 'queryTmpSpaceSize=2048'
