@@ -195,7 +195,6 @@ Returns the cluster-level CURL access settings only.
 
 
 
-
 // markup not found, no include::{specDir}paths/get_access/operation-parameters-after.adoc[opts=optional]
 
 
@@ -221,7 +220,6 @@ a| [markdown]
 An object determining which URLs may be accessed by the `CURL()` function.
 --
 a| xref:Access[]
-
 
 
 |===
@@ -343,7 +341,6 @@ Returns all cluster-level query settings, including the CURL access settings.
 
 
 
-
 // markup not found, no include::{specDir}paths/get_settings/operation-parameters-after.adoc[opts=optional]
 
 
@@ -369,7 +366,6 @@ a| [markdown]
 An object giving cluster-level query settings.
 --
 a| xref:Settings[]
-
 
 
 |===
@@ -527,15 +523,12 @@ An object determining which URLs may be accessed by the `CURL()` function.
 
 a¦ xref:Access[]
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/post_access/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -565,14 +558,12 @@ An object determining which URLs may be accessed by the `CURL()` function, inclu
 --
 a| xref:Access[]
 
-
 | 400
 a| [markdown]
 --
 Returns an error message if a parameter or value is incorrect.
 --
 a| Object
-
 
 
 |===
@@ -730,15 +721,12 @@ An object specifying cluster-level query settings.
 
 a¦ xref:Settings[]
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/post_settings/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -768,14 +756,12 @@ An object giving cluster-level query settings, including the latest changes.
 --
 a| xref:Settings[]
 
-
 | 400
 a| [markdown]
 --
 Returns an error message if a parameter or value is incorrect.
 --
 a| Object
-
 
 
 |===
@@ -927,7 +913,6 @@ Setting this field to `true` enables access to all endpoints.
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *allowed_urls* +
 _optional_
@@ -974,7 +959,6 @@ a¦ String
 |===
 
 //end::Access[]
-
 
 
 
@@ -1039,7 +1023,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 {blank}
 a¦ Boolean
 
-
 a¦ [#queryCleanupLostAttempts]
 *queryCleanupLostAttempts* +
 _optional_
@@ -1066,7 +1049,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Example:* `false`
 {blank}
 a¦ Boolean
-
 
 a¦ [#queryCleanupWindow]
 *queryCleanupWindow* +
@@ -1109,7 +1091,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 {blank}
 a¦ String (duration)
 
-
 a¦ [#queryCompletedLimit]
 *queryCompletedLimit* +
 _optional_
@@ -1144,7 +1125,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Example:* `7000`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ [#queryCompletedMaxPlanSize]
 *queryCompletedMaxPlanSize* +
@@ -1183,7 +1163,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 {blank}
 a¦ Integer (int32)
 
-
 a¦ [#queryCompletedThreshold]
 *queryCompletedThreshold* +
 _optional_
@@ -1219,7 +1198,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Example:* `7000`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ [#queryLogLevel]
 *queryLogLevel* +
@@ -1271,7 +1249,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 {blank}
 a¦ String
 
-
 a¦ [#queryMaxParallelism]
 *queryMaxParallelism* +
 _optional_
@@ -1318,7 +1295,6 @@ NOTE: To enable queries to run in parallel, you must specify the cluster-level `
 {blank}
 a¦ Integer (int32)
 
-
 a¦ [#queryMemoryQuota]
 *queryMemoryQuota* +
 _optional_
@@ -1357,7 +1333,6 @@ If a request includes this parameter, it will be capped by the node-level `memor
 {blank}
 a¦ Integer (int32)
 
-
 a¦ [#queryN1QLFeatCtrl]
 *queryN1QLFeatCtrl* +
 _optional_
@@ -1383,7 +1358,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 [%hardbreaks]
 {blank}
 a¦ Integer (int32)
-
 
 a¦ [#queryNodeQuota]
 *queryNodeQuota* +
@@ -1422,7 +1396,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 {blank}
 a¦ Integer (int32)
 
-
 a¦ [#queryNodeQuotaValPercent]
 *queryNodeQuotaValPercent* +
 _optional_
@@ -1451,7 +1424,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Maximum:* `100`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ [#queryNumAtrs]
 *queryNumAtrs* +
@@ -1488,7 +1460,6 @@ If a request includes this parameter, it will be capped by the node-level `numat
 {blank}
 a¦ Integer (int32)
 
-
 a¦ [#queryNumCpus]
 *queryNumCpus* +
 _optional_
@@ -1522,7 +1493,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 {blank}
 a¦ Integer (int32)
 
-
 a¦ [#queryPipelineBatch]
 *queryPipelineBatch* +
 _optional_
@@ -1554,7 +1524,6 @@ The minimum of that and the node-level `pipeline-batch` setting is applied.
 *Example:* `64`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ [#queryPipelineCap]
 *queryPipelineCap* +
@@ -1588,7 +1557,6 @@ The minimum of that and the node-level `pipeline-cap` setting is applied.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ [#queryPreparedLimit]
 *queryPreparedLimit* +
 _optional_
@@ -1616,7 +1584,6 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Example:* `65536`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ [#queryScanCap]
 *queryScanCap* +
@@ -1653,7 +1620,6 @@ The minimum of that and the node-level `scan-cap` setting is applied.
 *Example:* `1024`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ [#queryTimeout]
 *queryTimeout* +
@@ -1692,7 +1658,6 @@ The minimum of that and the node-level `timeout` setting is applied.
 *Example:* `500000000`
 {blank}
 a¦ Long (int64)
-
 
 a¦ [#queryTxTimeout]
 *queryTxTimeout* +
@@ -1745,7 +1710,6 @@ If a request includes this parameter, it will be capped by the node-level `txtim
 {blank}
 a¦ String (duration)
 
-
 a¦ [#queryTmpSpaceDir]
 *queryTmpSpaceDir* +
 _optional_
@@ -1765,7 +1729,6 @@ The default path is `var/lib/couchbase/tmp` within the Couchbase Server installa
 *Example:* `+++"/opt/couchbase/var/lib/couchbase/tmp"+++`
 {blank}
 a¦ String
-
 
 a¦ [#queryTmpSpaceSize]
 *queryTmpSpaceSize* +
@@ -1787,7 +1750,6 @@ The maximum size is limited only by the available disk space.
 *Example:* `2048`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ [#queryUseCBO]
 *queryUseCBO* +
@@ -1820,7 +1782,6 @@ If a request does not include this parameter, the node-level setting is used, wh
 *Example:* `false`
 {blank}
 a¦ Boolean
-
 
 a¦ [#queryUseReplica]
 *queryUseReplica* +
@@ -1871,7 +1832,6 @@ If the request-level parameter and the node-level setting are both `unset`, read
 {blank}
 a¦ String
 
-
 a¦ [#queryCurlWhitelist]
 *queryCurlWhitelist* +
 _optional_
@@ -1886,11 +1846,9 @@ include::index.adoc[tag=desc-Access, opts=optional]
 {blank}
 a¦ xref:Access[]
 
-
 |===
 
 //end::Settings[]
-
 
 
 
@@ -1910,7 +1868,6 @@ a¦ xref:Access[]
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
-
 
 
 // markup not found, no include::{specDir}security/document-before.adoc[opts=optional]

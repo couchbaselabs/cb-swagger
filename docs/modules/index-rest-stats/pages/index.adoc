@@ -229,8 +229,6 @@ For example, `` `bucket.1`.scope.collection ``.
 
 a¦ String
 
-
-
 a¦ *index* +
 _required_
 a¦ 
@@ -245,8 +243,6 @@ The name of an index.
 {blank}
 
 a¦ String
-
-
 
 |===
 
@@ -274,8 +270,6 @@ Whether the output should be formatted with indentations and newlines.
 
 a¦ Boolean
 
-
-
 a¦ *partition* +
 _optional_
 a¦ 
@@ -291,8 +285,6 @@ Whether statistics for index partitions should be included.
 {blank}
 
 a¦ Boolean
-
-
 
 a¦ *redact* +
 _optional_
@@ -311,8 +303,6 @@ Whether keyspace and index names should be redacted in the output.
 
 a¦ Boolean
 
-
-
 a¦ *skipEmpty* +
 _optional_
 a¦ 
@@ -329,8 +319,6 @@ Whether empty, null, or zero statistics should be omitted from the output.
 
 a¦ Boolean
 
-
-
 |===
 
 
@@ -340,7 +328,6 @@ a¦ Boolean
 include::{specDir}paths/get_index_stats/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -369,7 +356,6 @@ a| [markdown]
 Success. Returns an object containing one nested `<keyspace>:<index>` object.  If the [partition](#get_index_stats-parameters) query parameter was set to `true`, the returned object also contains one or more `Partition-<num>` objects &mdash; one for each index partition found on the specified node. 
 --
 a| xref:PartIdx[]
-
 
 | 404
 a| [markdown]
@@ -532,8 +518,6 @@ For example, `` `bucket.1`.scope.collection ``.
 
 a¦ String
 
-
-
 |===
 
 [#get_keyspace_stats-query]
@@ -560,8 +544,6 @@ Whether the output should be formatted with indentations and newlines.
 
 a¦ Boolean
 
-
-
 a¦ *redact* +
 _optional_
 a¦ 
@@ -579,8 +561,6 @@ Whether keyspace and index names should be redacted in the output.
 
 a¦ Boolean
 
-
-
 a¦ *skipEmpty* +
 _optional_
 a¦ 
@@ -597,8 +577,6 @@ Whether empty, null, or zero statistics should be omitted from the output.
 
 a¦ Boolean
 
-
-
 |===
 
 
@@ -608,7 +586,6 @@ a¦ Boolean
 include::{specDir}paths/get_keyspace_stats/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -637,7 +614,6 @@ a| [markdown]
 Success. Returns an object containing one or more nested `<keyspace>:<index>` objects &mdash; one for each index found within the specified bucket, scope, or collection. 
 --
 a| xref:PartIdxIndexes[]
-
 
 | 404
 a| [markdown]
@@ -795,8 +771,6 @@ Whether the output should be formatted with indentations and newlines.
 
 a¦ Boolean
 
-
-
 a¦ *redact* +
 _optional_
 a¦ 
@@ -814,8 +788,6 @@ Whether keyspace and index names should be redacted in the output.
 
 a¦ Boolean
 
-
-
 a¦ *skipEmpty* +
 _optional_
 a¦ 
@@ -832,8 +804,6 @@ Whether empty, null, or zero statistics should be omitted from the output.
 
 a¦ Boolean
 
-
-
 |===
 
 
@@ -843,7 +813,6 @@ a¦ Boolean
 // markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -872,7 +841,6 @@ a| [markdown]
 Success. Returns an object containing a nested `indexer` object, and usually one or more nested `<keyspace>:<index>` objects &mdash; one for each index found on the specified node. 
 --
 a| xref:NodeIdx[]
-
 
 
 |===
@@ -1020,7 +988,6 @@ include::index.adoc[tag=desc-NodeIdxNode, opts=optional]
 {blank}
 a¦ xref:NodeIdxNode[]
 
-
 a¦ _and_
 a¦ 
 
@@ -1032,7 +999,6 @@ include::index.adoc[tag=desc-PartIdxIndexes, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:PartIdxIndexes[]
-
 
 |===
 
@@ -1092,11 +1058,9 @@ include::index.adoc[tag=desc-NodeIdxNodeIndexer, opts=optional]
 {blank}
 a¦ xref:NodeIdxNodeIndexer[]
 
-
 |===
 
 //end::NodeIdxNode[]
-
 
 
 
@@ -1155,7 +1119,6 @@ Current state of the Index service on this node.
 {blank}
 a¦ String
 
-
 a¦ 
 *memory_quota* +
 _optional_
@@ -1172,7 +1135,6 @@ Memory quota assigned to the Index service on this node by user configuration (b
 *Example:* `536870912`
 {blank}
 a¦ Long (int64)
-
 
 a¦ 
 *memory_total_storage* +
@@ -1191,7 +1153,6 @@ This also accounts for memory fragmentation.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *memory_used* +
 _optional_
@@ -1206,7 +1167,6 @@ Amount of memory used by the Index service on this node (bytes).
 *Example:* `360192000`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *total_indexer_gc_pause_ns* +
@@ -1223,11 +1183,9 @@ The total time the indexer has spent in GC pause since last startup (ns).
 {blank}
 a¦ Integer
 
-
 |===
 
 //end::NodeIdxNodeIndexer[]
-
 
 
 
@@ -1277,7 +1235,6 @@ include::index.adoc[tag=desc-PartIdxIndexes, opts=optional]
 {blank}
 a¦ xref:PartIdxIndexes[]
 
-
 a¦ _and_
 a¦ 
 
@@ -1289,7 +1246,6 @@ include::index.adoc[tag=desc-PartIdxPartitions, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:PartIdxPartitions[]
-
 
 |===
 
@@ -1350,11 +1306,9 @@ include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
 {blank}
 a¦ xref:PartIdxPartitionsIndex[]
 
-
 |===
 
 //end::PartIdxIndexes[]
-
 
 
 
@@ -1412,11 +1366,9 @@ include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
 {blank}
 a¦ xref:PartIdxPartitionsIndex[]
 
-
 |===
 
 //end::PartIdxPartitions[]
-
 
 
 
@@ -1475,7 +1427,6 @@ The average number of items indexed per document.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *avg_drain_rate* +
 _optional_
@@ -1489,7 +1440,6 @@ Average number of items flushed from memory to disk storage per second.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *avg_item_size* +
@@ -1505,7 +1455,6 @@ Average size of the keys.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *avg_scan_latency* +
 _optional_
@@ -1519,7 +1468,6 @@ Average time to serve a scan request (nanoseconds).
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *cache_hit_percent* +
@@ -1535,7 +1483,6 @@ Percentage of memory accesses that were served from the managed cache.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *cache_hits* +
 _optional_
@@ -1550,7 +1497,6 @@ Accesses to this index data from RAM.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *cache_misses* +
 _optional_
@@ -1564,7 +1510,6 @@ Accesses to this index data from disk.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *data_size* +
@@ -1581,7 +1526,6 @@ The size of indexable data that is maintained for the index or partition (bytes)
 {blank}
 a¦ Integer
 
-
 a¦ 
 *disk_size* +
 _optional_
@@ -1596,7 +1540,6 @@ Total disk file size consumed by the index or partition.
 *Example:* `889054`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *docid_count* +
@@ -1614,7 +1557,6 @@ The number of documents currently indexed.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *frag_percent* +
 _optional_
@@ -1631,7 +1573,6 @@ TIP: At small index sizes of less than a hundred kB, the static overhead of the 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *initial_build_progress* +
@@ -1652,7 +1593,6 @@ For an index partition, the value is listed as `0`.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *items_count* +
 _optional_
@@ -1667,7 +1607,6 @@ The number of items currently indexed.
 *Example:* `2155`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *last_known_scan_time* +
@@ -1687,7 +1626,6 @@ NOTE: This statistic is persisted to disk every 15 minutes, so it is preserved w
 {blank}
 a¦ Long (int64)
 
-
 a¦ 
 *num_docs_indexed* +
 _optional_
@@ -1701,7 +1639,6 @@ Number of documents indexed by the indexer since last startup.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *num_docs_pending* +
@@ -1717,7 +1654,6 @@ Number of documents pending to be indexed.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *num_docs_queued* +
 _optional_
@@ -1731,7 +1667,6 @@ Number of documents queued to be indexed.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *num_items_flushed* +
@@ -1747,7 +1682,6 @@ Number of items flushed from memory to disk storage.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *num_pending_requests* +
 _optional_
@@ -1761,7 +1695,6 @@ Number of requests received but not yet served by the indexer.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *num_requests* +
@@ -1777,7 +1710,6 @@ Number of requests served by the indexer since last startup.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *num_rows_returned* +
 _optional_
@@ -1791,7 +1723,6 @@ Total number of rows returned so far by the indexer.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *num_scan_errors* +
@@ -1807,7 +1738,6 @@ Number of requests that failed due to errors other than timeout.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *num_scan_timeouts* +
 _optional_
@@ -1821,7 +1751,6 @@ Number of requests that timed out, either waiting for snapshots or during scan i
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *recs_in_mem* +
@@ -1841,7 +1770,6 @@ For memory-optimized index storage, this is the same as `items_count`.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *recs_on_disk* +
 _optional_
@@ -1856,7 +1784,6 @@ For memory-optimized index storage, this is `0`.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *resident_percent* +
@@ -1873,7 +1800,6 @@ Percentage of the data held in memory.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *scan_bytes_read* +
 _optional_
@@ -1887,7 +1813,6 @@ Number of bytes read by a scan since last startup.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *total_scan_duration* +
@@ -1903,11 +1828,9 @@ Total time spent by the indexer in scanning rows since last startup (nanoseconds
 {blank}
 a¦ Integer
 
-
 |===
 
 //end::PartIdxPartitionsIndex[]
-
 
 
 
@@ -1927,7 +1850,6 @@ a¦ Integer
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
-
 
 
 // markup not found, no include::{specDir}security/document-before.adoc[opts=optional]

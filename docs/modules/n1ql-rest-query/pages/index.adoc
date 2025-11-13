@@ -226,8 +226,6 @@ The format for URL-encoded parameters is consistent with the syntax for variable
 
 a¦ xref:Request[]
 
-
-
 |===
 
 
@@ -237,7 +235,6 @@ a¦ xref:Request[]
 // markup not found, no include::{specDir}paths/get_service/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -267,14 +264,12 @@ The operation was successful.
 --
 a| xref:Response[]
 
-
 | 400
 a| [markdown]
 --
 Bad Request. The request cannot be processed for one of the following reasons: the statement contains a SQL++ syntax error; the request has a missing or unrecognized HTTP parameter; the request is badly formatted &mdash; for example, the request body contains a JSON syntax error.
 --
 a| xref:Response[]
-
 
 | 401
 a| [markdown]
@@ -294,7 +289,6 @@ a| [markdown]
 Not found. The statement in the request references an invalid namespace or keyspace.
 --
 a| xref:Response[]
-
 
 | 405
 a| [markdown]
@@ -332,7 +326,6 @@ a| [markdown]
 Service unavailable. There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible.
 --
 a| xref:Response[]
-
 
 
 |===
@@ -493,15 +486,12 @@ An object specifying one or more query parameters.
 
 a¦ xref:Request[]
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/post_service/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -531,14 +521,12 @@ The operation was successful.
 --
 a| xref:Response[]
 
-
 | 400
 a| [markdown]
 --
 Bad Request. The request cannot be processed for one of the following reasons: the statement contains a SQL++ syntax error; the request has a missing or unrecognized HTTP parameter; the request is badly formatted &mdash; for example, the request body contains a JSON syntax error.
 --
 a| xref:Response[]
-
 
 | 401
 a| [markdown]
@@ -558,7 +546,6 @@ a| [markdown]
 Not found. The statement in the request references an invalid namespace or keyspace.
 --
 a| xref:Response[]
-
 
 | 405
 a| [markdown]
@@ -596,7 +583,6 @@ a| [markdown]
 Service unavailable. There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible.
 --
 a| xref:Response[]
-
 
 
 |===
@@ -756,7 +742,6 @@ This property is always present in every condition returned in the Query REST AP
 {blank}
 a¦ Integer
 
-
 a¦ 
 *msg* +
 _required_
@@ -771,7 +756,6 @@ This property is always present in every condition returned in the Query REST AP
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *name* +
@@ -790,7 +774,6 @@ The name should be fully qualified.
 *Example:* `+++"indexing.scan.io_failure"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *sev* +
@@ -811,7 +794,6 @@ One of the following SQL++ severity levels, listed in order of severity:
 {blank}
 a¦ Integer
 
-
 a¦ 
 *temp* +
 _optional_
@@ -827,11 +809,9 @@ If the value is `false`, it tells clients and users that a retry without modific
 {blank}
 a¦ Boolean
 
-
 |===
 
 //end::Conditions[]
-
 
 
 
@@ -889,7 +869,6 @@ The value of the query setting Scan Consistency used for the query.
 {blank}
 a¦ String
 
-
 a¦ 
 *use_cbo* +
 _optional_
@@ -903,7 +882,6 @@ Whether the cost-based optimizer was enabled for the query.
 [%hardbreaks]
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *memoryQuota* +
@@ -920,7 +898,6 @@ This property is only returned if a memory quota was set for the query.
 {blank}
 a¦ Integer (unsigned)
 
-
 a¦ 
 *stmtType* +
 _optional_
@@ -936,11 +913,9 @@ The type of query statement.
 {blank}
 a¦ String
 
-
 |===
 
 //end::Controls[]
-
 
 
 
@@ -994,7 +969,6 @@ Note that bucket names may be prefixed with `local:`, and admin names may be pre
 {blank}
 a¦ String
 
-
 a¦ 
 *pass* +
 _optional_
@@ -1010,11 +984,9 @@ A password for authentication.
 {blank}
 a¦ String
 
-
 |===
 
 //end::Credentials[]
-
 
 
 
@@ -1074,7 +1046,6 @@ Name of the operator.
 {blank}
 a¦ String
 
-
 a¦ 
 *#stats* +
 _required_
@@ -1088,7 +1059,6 @@ include::index.adoc[tag=desc-Statistics, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:Statistics[]
-
 
 a¦ 
 *~child* +
@@ -1104,11 +1074,9 @@ Further nested operators, each with their own execution timings.
 {blank}
 a¦ Object
 
-
 |===
 
 //end::Execution_Timings[]
-
 
 
 
@@ -1165,7 +1133,6 @@ The total time taken for the request, that is the time from when the request was
 {blank}
 a¦ String
 
-
 a¦ 
 *executionTime* +
 _required_
@@ -1179,7 +1146,6 @@ The time taken for the execution of the request, that is the time from when quer
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *resultCount* +
@@ -1195,7 +1161,6 @@ The total number of objects in the results.
 {blank}
 a¦ Integer (unsigned)
 
-
 a¦ 
 *resultSize* +
 _required_
@@ -1210,7 +1175,6 @@ The total number of bytes in the results.
 {blank}
 a¦ Integer (unsigned)
 
-
 a¦ 
 *mutationCount* +
 _optional_
@@ -1224,7 +1188,6 @@ The number of mutations that were made during the request.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
-
 
 a¦ 
 *sortCount* +
@@ -1243,7 +1206,6 @@ If a query includes ORDER BY, LIMIT, or OFFSET clauses, an application can use t
 {blank}
 a¦ Integer (unsigned)
 
-
 a¦ 
 *usedMemory* +
 _optional_
@@ -1259,7 +1221,6 @@ This property is only returned if a memory quota was set for the query.
 {blank}
 a¦ Integer (unsigned)
 
-
 a¦ 
 *errorCount* +
 _optional_
@@ -1273,7 +1234,6 @@ The number of errors that occurred during the request.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
-
 
 a¦ 
 *warningCount* +
@@ -1289,11 +1249,9 @@ The number of warnings that occurred during the request.
 {blank}
 a¦ Integer (unsigned)
 
-
 |===
 
 //end::Metrics[]
-
 
 
 
@@ -1351,7 +1309,6 @@ Timestamp when the query was received.
 {blank}
 a¦ Date (date-time)
 
-
 a¦ 
 *servicingHost* +
 _required_
@@ -1365,7 +1322,6 @@ IP address and port number of the node where the query was executed.
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *phaseCounts* +
@@ -1381,7 +1337,6 @@ Count of documents processed at selective phases involved in the query execution
 *Example:* `{"fetch":16,"indexScan":187}`
 {blank}
 a¦ Object
-
 
 a¦ 
 *phaseOperators* +
@@ -1404,7 +1359,6 @@ This is in essence the count of all the operators in the `executionTimings` obje
 {blank}
 a¦ Object
 
-
 a¦ 
 *phaseTimes* +
 _required_
@@ -1420,7 +1374,6 @@ Cumulative execution times for various phases involved in the query execution, s
 {blank}
 a¦ Object
 
-
 a¦ 
 *executionTimings* +
 _optional_
@@ -1435,11 +1388,9 @@ include::index.adoc[tag=desc-Execution_Timings, opts=optional]
 {blank}
 a¦ xref:Execution_Timings[]
 
-
 |===
 
 //end::Profile[]
-
 
 
 
@@ -1537,7 +1488,6 @@ The request-level parameter overrides the node-level setting.
 {blank}
 a¦ String
 
-
 a¦ [#auto_execute]
 *auto_execute* +
 _optional_
@@ -1563,7 +1513,6 @@ Refer to [Auto-Execute][auto-execute] for more information.
 {blank}
 a¦ Boolean
 
-
 a¦ [#client_context_id]
 *client_context_id* +
 _optional_
@@ -1581,7 +1530,6 @@ SQL++ is agnostic about the content of this parameter; it is just echoed in the 
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ [#compression]
 *compression* +
@@ -1601,7 +1549,6 @@ Values are case-insensitive.
 *Example:* `+++"zip"+++`
 {blank}
 a¦ String
-
 
 a¦ [#controls_req]
 *controls* +
@@ -1632,7 +1579,6 @@ The request-level parameter overrides the node-level setting.
 *Example:* `true`
 {blank}
 a¦ Boolean
-
 
 a¦ [#creds]
 *creds* +
@@ -1683,7 +1629,6 @@ Set the durability level to `"none"` or `""` to specify no durability.
 {blank}
 a¦ String
 
-
 a¦ [#encoded_plan]
 *encoded_plan* +
 _optional_
@@ -1698,7 +1643,6 @@ It is included for compatibility with previous versions of Couchbase Server.
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ [#encoding]
 *encoding* +
@@ -1716,7 +1660,6 @@ Only possible value is `UTF-8` and is case-insensitive.
 *Default:* `+++"UTF-8"+++`
 {blank}
 a¦ String
-
 
 a¦ [#format]
 *format* +
@@ -1736,7 +1679,6 @@ Values are case-insensitive.
 *Example:* `+++"XML"+++`
 {blank}
 a¦ String
-
 
 a¦ [#kvtimeout]
 *kvtimeout* +
@@ -1770,7 +1712,6 @@ When disabled, no timeout is applied and the KV operation runs for however long 
 *Example:* `+++"10ms"+++`
 {blank}
 a¦ String
-
 
 a¦ [#max_parallelism_req]
 *max_parallelism* +
@@ -1808,7 +1749,6 @@ To enable queries to run in parallel, you must specify the cluster-level `queryM
 *Example:* `3`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ [#memory_quota_req]
 *memory_quota* +
@@ -1852,7 +1792,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 {blank}
 a¦ Integer (int32)
 
-
 a¦ [#metrics]
 *metrics* +
 _optional_
@@ -1869,7 +1808,6 @@ Specifies that metrics should be returned with query results.
 {blank}
 a¦ Boolean
 
-
 a¦ [#namespace]
 *namespace* +
 _optional_
@@ -1885,7 +1823,6 @@ Currently, only the `default` namespace is available.
 *Example:* `+++"default"+++`
 {blank}
 a¦ String
-
 
 a¦ [#numatrs_req]
 *numatrs* +
@@ -1922,7 +1859,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 {blank}
 a¦ Integer (int32)
 
-
 a¦ [#pipeline_batch_req]
 *pipeline_batch* +
 _optional_
@@ -1953,7 +1889,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Example:* `64`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ [#pipeline_cap_req]
 *pipeline_cap* +
@@ -1986,7 +1921,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 {blank}
 a¦ Integer (int32)
 
-
 a¦ [#prepared]
 *prepared* +
 _optional_
@@ -2013,7 +1947,6 @@ If both `prepared` and `statement` are present and non-empty, an error is return
 {blank}
 a¦ String
 
-
 a¦ [#preserve_expiry]
 *preserve_expiry* +
 _optional_
@@ -2036,7 +1969,6 @@ Not supported for statements in a transaction.
 *Example:* `true`
 {blank}
 a¦ Boolean
-
 
 a¦ [#pretty_req]
 *pretty* +
@@ -2063,7 +1995,6 @@ The request-level parameter overrides the node-level setting.
 *Example:* `false`
 {blank}
 a¦ Boolean
-
 
 a¦ [#profile_req]
 *profile* +
@@ -2105,7 +2036,6 @@ The request-level parameter overrides the node-level setting.
 {blank}
 a¦ String
 
-
 a¦ [#query_context]
 *query_context* +
 _optional_
@@ -2125,7 +2055,6 @@ If the namespace name is omitted, the default namespace in the current session i
 *Example:* `+++"default:travel-sample.inventory"+++`
 {blank}
 a¦ String
-
 
 a¦ [#readonly]
 *readonly* +
@@ -2153,7 +2082,6 @@ When using GET requests, it's best to set `readonly` to `true`.
 *Example:* `true`
 {blank}
 a¦ Boolean
-
 
 a¦ [#scan_cap_req]
 *scan_cap* +
@@ -2189,7 +2117,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Example:* `1024`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ [#scan_consistency]
 *scan_consistency* +
@@ -2243,7 +2170,6 @@ Refer to [Transactional Scan Consistency][transactional-scan-consistency] for de
 {blank}
 a¦ String
 
-
 a¦ [#scan_vector]
 *scan_vector* +
 _optional_
@@ -2275,7 +2201,6 @@ For queries referencing multiple keyspaces, use `scan_vectors`.
 {blank}
 a¦ Object
 
-
 a¦ [#scan_vectors]
 *scan_vectors* +
 _optional_
@@ -2294,7 +2219,6 @@ The scan vectors can be Full or Sparse.
 [%hardbreaks]
 {blank}
 a¦ Object
-
 
 a¦ [#scan_wait]
 *scan_wait* +
@@ -2329,7 +2253,6 @@ Specify `0` or a negative integer to disable.
 {blank}
 a¦ String (duration)
 
-
 a¦ [#signature]
 *signature* +
 _optional_
@@ -2345,7 +2268,6 @@ Include a header for the results schema in the response.
 *Example:* `false`
 {blank}
 a¦ Boolean
-
 
 a¦ [#sort_projection]
 *sort_projection* +
@@ -2364,7 +2286,6 @@ If `false` (the default), statement projection terms are returned in the order s
 *Example:* `true`
 {blank}
 a¦ Boolean
-
 
 a¦ [#statement]
 *statement* +
@@ -2392,7 +2313,6 @@ This restriction does not apply when specifying the request parameters in JSON f
 *Example:* `+++"SELECT * FROM `travel-sample`.inventory.hotel LIMIT 1"+++`
 {blank}
 a¦ String
-
 
 a¦ [#timeout_req]
 *timeout* +
@@ -2443,7 +2363,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 {blank}
 a¦ String (duration)
 
-
 a¦ [#txdata]
 *txdata* +
 _optional_
@@ -2458,7 +2377,6 @@ For internal use only.
 [%hardbreaks]
 {blank}
 a¦ Object
-
 
 a¦ [#txid]
 *txid* +
@@ -2482,7 +2400,6 @@ The transaction must be active and non-expired.
 {blank}
 a¦ UUID (UUID)
 
-
 a¦ [#tximplicit]
 *tximplicit* +
 _optional_
@@ -2505,7 +2422,6 @@ If the `txid` request-level parameter is set, the `tximplicit` parameter is igno
 {blank}
 a¦ Boolean
 
-
 a¦ [#txstmtnum]
 *txstmtnum* +
 _optional_
@@ -2522,7 +2438,6 @@ If the transaction statement number is lower than the transaction statement numb
 *Example:* `10`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ [#txtimeout_req]
 *txtimeout* +
@@ -2578,7 +2493,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 {blank}
 a¦ String (duration)
 
-
 a¦ [#use_cbo_req]
 *use_cbo* +
 _optional_
@@ -2610,7 +2524,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 {blank}
 a¦ Boolean
 
-
 a¦ [#use_fts]
 *use_fts* +
 _optional_
@@ -2640,7 +2553,6 @@ Refer to [Flex Indexes][flex-indexes] for more information.
 *Example:* `true`
 {blank}
 a¦ Boolean
-
 
 a¦ [#use_replica_req]
 *use_replica* +
@@ -2692,7 +2604,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 {blank}
 a¦ String
 
-
 a¦ [#identifier]
 *{lt}$identifier{gt}* +
 _additional +
@@ -2726,11 +2637,9 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 {blank}
 a¦ Any Type
 
-
 |===
 
 //end::Request[]
-
 
 
 
@@ -2787,7 +2696,6 @@ A unique identifier for the response.
 {blank}
 a¦ UUID (UUID)
 
-
 a¦ 
 *clientContextID* +
 _optional_
@@ -2801,7 +2709,6 @@ The client context ID of the request, if one was supplied &mdash; see `client_co
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *signature* +
@@ -2818,7 +2725,6 @@ Present only when the query completes successfully.
 *Example:* `{"id":"json"}`
 {blank}
 a¦ Object
-
 
 a¦ 
 *results* +
@@ -2850,7 +2756,6 @@ The status of the request.
 *Values:* `"success"`, `"running"`, `"errors"`, `"completed"`, `"stopped"`, `"timeout"`, `"fatal"`
 {blank}
 a¦ String
-
 
 a¦ 
 *errors* +
@@ -2898,7 +2803,6 @@ include::index.adoc[tag=desc-Metrics, opts=optional]
 {blank}
 a¦ xref:Metrics[]
 
-
 a¦ 
 *controls* +
 _optional_
@@ -2912,7 +2816,6 @@ include::index.adoc[tag=desc-Controls, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:Controls[]
-
 
 a¦ 
 *profile* +
@@ -2928,11 +2831,9 @@ include::index.adoc[tag=desc-Profile, opts=optional]
 {blank}
 a¦ xref:Profile[]
 
-
 |===
 
 //end::Response[]
-
 
 
 
@@ -2990,7 +2891,6 @@ Number of input documents to the operator.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *#itemsOut* +
 _optional_
@@ -3005,7 +2905,6 @@ Number of output documents after the operator processing.
 *Example:* `16`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *#phaseSwitches* +
@@ -3022,7 +2921,6 @@ Number of switches between executing, waiting for services, or waiting for the g
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *execTime* +
 _optional_
@@ -3038,7 +2936,6 @@ Time spent executing the operator code inside SQL++ query engine.
 {blank}
 a¦ String (duration)
 
-
 a¦ 
 *kernTime* +
 _optional_
@@ -3053,7 +2950,6 @@ Time spent waiting to be scheduled for CPU time.
 *Example:* `+++"15.027879ms"+++`
 {blank}
 a¦ String (duration)
-
 
 a¦ 
 *servTime* +
@@ -3074,11 +2970,9 @@ For fetch, it is time spent waiting on the KV store.
 {blank}
 a¦ String (duration)
 
-
 |===
 
 //end::Statistics[]
-
 
 
 
@@ -3098,7 +2992,6 @@ include::{specDir}definitions/Statistics/definition-end.adoc[opts=optional]
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
-
 
 
 // markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
