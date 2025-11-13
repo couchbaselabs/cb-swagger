@@ -7,9 +7,7 @@ POST request with parameters as form data
 .Curl request
 [source,sh]
 ----
-curl -v http://localhost:8093/query/service \
-     -d 'statement=SELECT name FROM `travel-sample`.inventory.hotel LIMIT 1' \
-     -u Administrator:password
+include::example$exformdata.sh[]
 ----
 
 Because it is sent as form data, the statement in this example avoids using a semicolon.
@@ -22,10 +20,7 @@ POST request with parameters in JSON format
 .Curl request
 [source,sh]
 ----
-curl http://localhost:8093/query/service \
-    -H 'Content-Type: application/json' \
-    -d '{ "statement": "SELECT name FROM `travel-sample`.inventory.hotel LIMIT 1;" }' \
-    -u Administrator:password
+include::example$exsuccessful.sh[]
 ----
 
 Conversely, because it is sent as a JSON object, the statement in this example can contain a semicolon.
