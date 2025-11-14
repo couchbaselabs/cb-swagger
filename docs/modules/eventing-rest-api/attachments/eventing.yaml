@@ -169,7 +169,7 @@ paths:
       description: |-
         Deletes a specific function from the cluster.
         
-        WARNING: Use this API with caution, as it is irreversible.
+        Use this API with caution, as it's irreversible.
       tags:
         - advanced
       security:
@@ -188,7 +188,7 @@ paths:
       description: |-
         Creates or imports multiple functions.
 
-        Note that if any function's `language_compatibility` field is missing, the value will be set to the highest version supported by the server, unlike [Import Multiple Functions](#adv_multiple_import).
+        If any function's `language_compatibility` field is missing, the value will be set to the highest version supported by the server, unlike [Import Multiple Functions](#adv_multiple_import).
       tags:
         - advanced
       requestBody:
@@ -239,7 +239,7 @@ paths:
       summary: Delete Multiple Functions
       description: |-
         Deletes **all functions** from the cluster.
-        WARNING: Use this API with caution, as it is irreversible.
+        Use this API with caution, as it's irreversible.
 
         If this API is run as a non-Administrator the deleted set will be filtered via RBAC to include only the function scopes the user has access to.
       tags:
@@ -259,7 +259,7 @@ paths:
       description: |-
         Imports multiple functions.
 
-        Note that if any function's `language_compatibility` field is missing, the value will be set to 6.0.0, unlike [Create or Import Multiple Functions](#adv_function_import_all).
+        If any function's `language_compatibility` field is missing, the value will be set to 6.0.0, unlike [Create or Import Multiple Functions](#adv_function_import_all).
       tags:
         - advanced
       requestBody:
@@ -343,7 +343,7 @@ paths:
         During an edit, settings provided are merged.
         Unspecified attributes retain their prior values.
 
-        Note that you must always specify `deployment_status` and `processing_status` when using this REST endpoint to update any option or set of options.
+        You must always specify `deployment_status` and `processing_status` when using this REST endpoint to update any option or set of options.
         To get the current values of `deployment_status` and `processing_status`, see [View All Functions Status](#status_all) or [View Function Status](#status_function).
 
         By adjusting `deployment_status` and `processing_status` this command can also deploy or resume a function; however, it cannot pause or undeploy a function.
@@ -428,7 +428,7 @@ paths:
       summary: View Function Code
       description: |-
         Export only the JavaScript code for the specified function.
-        Note that unlike [View a Function](#adv_function_view), the JavaScript is not escaped, and the code is runnable in other environments.
+        Unlike [View a Function](#adv_function_view), the JavaScript is not escaped, and the code is runnable in other environments.
         The JavaScript code can be subsequently imported.
         However any changes to the function definition made to the file outside the UI are discouraged.
       tags:
@@ -450,7 +450,7 @@ paths:
       summary: Update Function Code
       description: |-
         Import only the JavaScript code for the specified function.
-        Note that unlike [Create or Import Function](#adv_function_import), the JavaScript is not escaped and could come from other environments.
+        Unlike [Create or Import Function](#adv_function_import), the JavaScript is not escaped and could come from other environments.
         It is highly recommended that you use the flag `--data-binary` or `--upload-file` when importing your JavaScript appcode fragments to avoid potential encoding issues due to string escaping.
       tags:
         - advanced
@@ -478,7 +478,7 @@ paths:
       description: |-
         Returns a list (array) of all eventing functions, showing their corresponding `composite_status`.
         A function's status can have one of the following values: undeployed, deploying, deployed, undeploying, paused, and pausing.
-        Note that there is no value of resuming; when resuming a paused eventing function, the `composite_status` returns `deploying` until it reaches the deployed state.
+        There's no value of resuming; when resuming a paused eventing function, the `composite_status` returns `deploying` until it reaches the deployed state.
 
         If this API is run as a non-Administrator, the results are filtered via RBAC to include only the function scopes the user has access to.
       tags:
@@ -502,7 +502,7 @@ paths:
       description: |-
         Returns the specified function, showing its corresponding `composite_status`.
         It can have one of the following values: undeployed, deploying, deployed, undeploying, paused, and pausing.
-        Note that there is no value of resuming; when resuming a paused eventing function, the `composite_status` returns `deploying` until it reaches the deployed state.
+        There's no value of resuming; when resuming a paused eventing function, the `composite_status` returns `deploying` until it reaches the deployed state.
       tags:
         - status
       security:
@@ -615,7 +615,7 @@ paths:
       summary: List Global Config
       description: |-
         Shows all global configuration settings.
-        Note that the `enable_debugger` and `ram_quota` settings can also be adjusted via the UI.
+        The `enable_debugger` and `ram_quota` settings can also be adjusted via the UI.
       tags:
         - global config
       security:
@@ -836,7 +836,7 @@ components:
       x-has-default: true
       description: |-
         The approximate amount of logging information returned.
-        Note that when fetching from more than one Eventing node, the amount of logging information returned from each node is the `size` divided by the number of nodes.
+        When fetching from more than one Eventing node, the amount of logging information returned from each node is the `size` divided by the number of nodes.
 
   schemas:
     settings_schema:
@@ -904,7 +904,7 @@ components:
 
             Increasing this setting enables more cursor-aware Eventing functions to register and listen to any given collection.
 
-            Decreasing this setting prevents further cursor-aware Eventing functions from being registered on any given collection; however, it doesn't unregister already registered cursor-aware Eventing functions.
+            Decreasing this setting prevents further cursor-aware Eventing functions from being registered on any given collection; however, it does not unregister already registered cursor-aware Eventing functions.
 
   responses:
     OK:
@@ -922,7 +922,7 @@ components:
         For global functions, you do not need to pass the `bucket` and `scope` query parameters to specify the function scope.
         The credentials must be an administrator username and password.
 
-        Note that this is the default function scope for all functions after an upgrade from a prior version.
+        This is the default function scope for all functions after an upgrade from a prior version.
 
     Scoped:
       type: http

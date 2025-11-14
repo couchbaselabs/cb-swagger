@@ -2,7 +2,7 @@
 
 .Alter RAM quota
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
@@ -12,7 +12,7 @@ curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
 
 .Enable debugger
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
@@ -24,7 +24,7 @@ curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
 ====
 [.status]#Couchbase Server 7.6.4#
 
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
@@ -36,7 +36,7 @@ curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
 ====
 This example disables the safety checks that prevent basic infinite recursive Eventing functions.
 
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -X POST -u $ADMIN:$PASSWORD "http://$HOST:8091/_p/event/api/v1/config" \
@@ -48,7 +48,7 @@ curl -X POST -u $ADMIN:$PASSWORD "http://$HOST:8091/_p/event/api/v1/config" \
 ====
 This example restores the default setting, which applies some sanity checks to prevent basic infinite recursive Eventing functions.
 
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -X POST -u $ADMIN:$PASSWORD "http://$HOST:8091/_p/event/api/v1/config" 

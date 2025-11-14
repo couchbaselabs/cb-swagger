@@ -2,7 +2,7 @@
 
 .View global function code
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode"
@@ -11,7 +11,7 @@ curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appc
 
 .View scoped function code
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode?bucket=bulk&scope=data"
@@ -20,7 +20,7 @@ curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appco
 
 .Save global function code to file
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode" \
@@ -30,7 +30,7 @@ curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appc
 
 .Save scoped function code to file
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode?bucket=bulk&scope=data" \
