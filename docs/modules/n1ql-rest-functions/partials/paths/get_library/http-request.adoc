@@ -7,9 +7,7 @@ Request {counter:example}: Get all functions in the specified global library.
 .curl request
 [source,sh]
 ----
-curl -X GET \
-"http://localhost:8093/evaluator/v1/libraries/math" \
--u Administrator:password
+include::example$get_library_global.sh[]
 ----
 ====
 
@@ -20,8 +18,6 @@ Request {counter:example}: Get all functions in the specified scoped library.
 .curl request
 [source,sh]
 ----
-curl -X GET \
-"http://localhost:8093/evaluator/v1/libraries/science?bucket=travel-sample&scope=inventory" \
--u Administrator:password
+include::example$get_library_scope.sh[]
 ----
 ====
