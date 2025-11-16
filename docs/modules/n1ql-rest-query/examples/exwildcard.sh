@@ -1,4 +1,4 @@
-curl -v $BASEURL/_p/query/query/service \
+curl -v $BASEPATH/query/service \
      -u $USER:$PASSWORD \
      -d 'statement=SELECT meta().id
                    FROM `travel-sample`.inventory.hotel

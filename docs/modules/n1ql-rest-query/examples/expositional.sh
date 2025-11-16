@@ -1,4 +1,4 @@
-curl -v $BASEURL/_p/query/query/service \
+curl -v $BASEPATH/query/service \
      -d 'statement=SELECT airline FROM `travel-sample`.inventory.route
                    WHERE sourceairport = ? AND distance > ?
        & args=["LAX", 13000]' \

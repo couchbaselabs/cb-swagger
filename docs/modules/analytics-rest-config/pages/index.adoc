@@ -59,7 +59,6 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -81,7 +80,6 @@ The Analytics Service REST port. Use `18095` for secure access.
 
 [%hardbreaks]
 *Values:* `8095`, `18095`
-*Example:* `+++8095+++`
 // end
 
 |===
@@ -196,7 +194,6 @@ Views node-specific parameters, which apply to the node receiving the request.
 
 
 
-
 // markup not found, no include::{specDir}paths/get_node/operation-parameters-after.adoc[opts=optional]
 
 
@@ -223,14 +220,12 @@ Success. Returns an object listing the configurable node-level parameters and th
 --
 a| xref:Node[]
 
-
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
 --
 a| Object
-
 
 
 |===
@@ -352,7 +347,6 @@ Views service-level parameters, which apply to all nodes running the Analytics s
 
 
 
-
 // markup not found, no include::{specDir}paths/get_service/operation-parameters-after.adoc[opts=optional]
 
 
@@ -379,14 +373,12 @@ Success. Returns an object listing the configurable service-level parameters and
 --
 a| xref:Service[]
 
-
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
 --
 a| Object
-
 
 
 |===
@@ -551,15 +543,12 @@ An object specifying one or more of the configurable node-level parameters on th
 
 a¦ xref:Node[]
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/put_node/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -595,14 +584,12 @@ Bad request. Unknown parameter or incorrect value.
 --
 a| xref:Errors[]
 
-
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
 --
 a| Object
-
 
 
 |===
@@ -765,15 +752,12 @@ An object specifying one or more of the configurable service-level parameters.
 
 a¦ xref:Service[]
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/put_service/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -809,14 +793,12 @@ Bad request. Unknown parameter or incorrect value.
 --
 a| xref:Errors[]
 
-
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
 --
 a| Object
-
 
 
 |===
@@ -960,11 +942,9 @@ An error message.
 {blank}
 a¦ String
 
-
 |===
 
 //end::Errors[]
-
 
 
 
@@ -1027,7 +1007,6 @@ To pass arguments opaquely, you may use [Java command-line argument files][3].
 {blank}
 a¦ String
 
-
 a¦ 
 *storageBuffercacheSize* +
 _optional_
@@ -1044,7 +1023,6 @@ The default is 1/4 of the allocated Analytics Service memory.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *storageMemorycomponentGlobalbudget* +
@@ -1063,11 +1041,9 @@ The default is 1/4 of the allocated Analytics Service memory.
 {blank}
 a¦ Integer
 
-
 |===
 
 //end::Node[]
-
 
 
 
@@ -1120,7 +1096,6 @@ The memory budget (in bytes) for the active runtime.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *activeStopTimeout* +
 _optional_
@@ -1135,7 +1110,6 @@ The maximum time (in seconds) to wait for a graceful stop of an active runtime.
 *Default:* `3600`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *activeSuspendTimeout* +
@@ -1152,7 +1126,6 @@ The maximum time (in seconds) to wait for a graceful suspend of an active runtim
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *analyticsBroadcastDcpStateMutationCount* +
 _optional_
@@ -1167,7 +1140,6 @@ The number of processed mutations after which the DCP state is broadcast to stor
 *Default:* `10000`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *analyticsHttpRequestQueueSize* +
@@ -1184,7 +1156,6 @@ The maximum number of HTTP requests to queue pending ability to execute.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *analyticsHttpThreadCount* +
 _optional_
@@ -1200,7 +1171,6 @@ The number of threads to service HTTP requests.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *bindAddress* +
 _optional_
@@ -1214,7 +1184,6 @@ The bind address to use.
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *bindToHost* +
@@ -1231,7 +1200,6 @@ Bind to configured hostname instead of wildcard address.
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *clusterConnectRetries* +
 _optional_
@@ -1246,7 +1214,6 @@ Number of attempts to contact CC before giving up.
 *Default:* `5`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *collectDcpStateFromNodesTimeout* +
@@ -1263,7 +1230,6 @@ The maximum time to wait to collect DCP state from all nodes in seconds.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *compilerFramesize* +
 _optional_
@@ -1278,7 +1244,6 @@ The page size (in bytes) for computation.
 *Default:* `32768`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *compilerGroupmemory* +
@@ -1295,7 +1260,6 @@ The memory budget (in bytes) for a group by operator instance in a partition.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *compilerJoinmemory* +
 _optional_
@@ -1310,7 +1274,6 @@ The memory budget (in bytes) for a join operator instance in a partition.
 *Default:* `33554432`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *compilerParallelism* +
@@ -1328,7 +1291,6 @@ The degree of parallelism for query execution. Zero means to use the storage par
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *compilerSortParallel* +
 _optional_
@@ -1343,7 +1305,6 @@ Enables or disables full parallel sort.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *compilerSortmemory* +
@@ -1360,7 +1321,6 @@ The memory budget (in bytes) for a sort operator instance in a partition.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *compilerWindowmemory* +
 _optional_
@@ -1376,7 +1336,6 @@ The memory budget (in bytes) for a window operator instance in a partition.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *coresMultiplier* +
 _optional_
@@ -1391,7 +1350,6 @@ The factor to multiply by the number of cores to determine maximum query concurr
 *Default:* `3`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *dcpBufferAckWatermark* +
@@ -1411,7 +1369,6 @@ The percentage of DCP connection buffer size at which to acknowledge bytes consu
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *dcpChannelReconnectRemoteIdleSeconds* +
 _optional_
@@ -1427,7 +1384,6 @@ Reconnect remote DCP channels that are idle for the specified number of seconds 
 *Default:* `120`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *dcpConnectionBufferSize* +
@@ -1446,7 +1402,6 @@ Otherwise, the default is 1% of the JVM maximum heap size divided by the number 
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *deadlockWatchdogHaltDelaySeconds* +
 _optional_
@@ -1461,7 +1416,6 @@ The delay (in seconds) to wait for graceful shutdown due to deadlocked threads, 
 *Default:* `120`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *deadlockWatchdogPollSeconds* +
@@ -1478,7 +1432,6 @@ The frequency (in seconds) to scan for deadlocked threads.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *jobHistorySize* +
 _optional_
@@ -1494,7 +1447,6 @@ Limits the number of historical jobs remembered by the system to the specified v
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *jobQueueCapacity* +
 _optional_
@@ -1509,7 +1461,6 @@ The maximum number of jobs to queue before rejecting new jobs.
 *Default:* `4096`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *jvmArgs* +
@@ -1533,7 +1484,6 @@ To pass arguments opaquely, you may use [Java command-line argument files][3].
 {blank}
 a¦ String
 
-
 a¦ 
 *logLevel* +
 _optional_
@@ -1548,7 +1498,6 @@ The logging level.
 *Default:* `+++"DEBUG"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *maxWebRequestSize* +
@@ -1565,7 +1514,6 @@ The maximum accepted web request size in bytes.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *netBufferCount* +
 _optional_
@@ -1580,7 +1528,6 @@ Number of network buffers per input/output channel.
 *Default:* `1`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *netThreadCount* +
@@ -1597,7 +1544,6 @@ Number of threads to use for Network I/O.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *rebalancePullDatasetSizeFrequency* +
 _optional_
@@ -1612,7 +1558,6 @@ The frequency at which the Analytics collection size is pulled from nodes during
 *Default:* `5`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *remoteLinkConnectTimeoutSeconds* +
@@ -1630,7 +1575,6 @@ The maximum time (in seconds) to wait for a remote link connection to establish.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *remoteLinkSocketTimeoutSeconds* +
 _optional_
@@ -1647,7 +1591,6 @@ The maximum time (in seconds) to wait after establishing the connection for remo
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *requestsArchiveSize* +
 _optional_
@@ -1662,7 +1605,6 @@ The maximum number of archived requests to maintain.
 *Default:* `50`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *resultSweepThreshold* +
@@ -1679,7 +1621,6 @@ The duration within which an instance of the result cleanup should be invoked in
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *resultTtl* +
 _optional_
@@ -1694,7 +1635,6 @@ Limits the amount of time results for asynchronous jobs should be retained by th
 *Default:* `86400000`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *storageBuffercacheMaxopenfiles* +
@@ -1711,7 +1651,6 @@ The maximum number of open files in the buffer cache.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *storageBuffercachePagesize* +
 _optional_
@@ -1726,7 +1665,6 @@ The page size in bytes for pages in the buffer cache.
 *Default:* `131072`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *storageCompressionBlock* +
@@ -1743,7 +1681,6 @@ The default compression scheme for the storage.
 {blank}
 a¦ String
 
-
 a¦ 
 *storageMemorycomponentNumcomponents* +
 _optional_
@@ -1759,7 +1696,6 @@ The number of memory components to be used per LSM index.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *storageMemorycomponentPagesize* +
 _optional_
@@ -1774,7 +1710,6 @@ The page size in bytes for pages allocated to memory components.
 *Default:* `131072`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *storageWriteRateLimit* +
@@ -1792,7 +1727,6 @@ The maximum disk write rate for each storage partition in bytes per second. Disa
 {blank}
 a¦ Long (int64)
 
-
 a¦ 
 *threaddumpFrequencySeconds* +
 _optional_
@@ -1808,7 +1742,6 @@ The frequency (in seconds) at which to log diagnostic thread dumps.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *threaddumpLogLevel* +
 _optional_
@@ -1823,7 +1756,6 @@ The log level at which to emit diagnostic thread dumps.
 *Default:* `+++"DEBUG"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *traceCategories* +
@@ -1857,11 +1789,9 @@ The interval (in seconds) after which an Analytics collection is considered idle
 {blank}
 a¦ Integer (int32)
 
-
 |===
 
 //end::Service[]
-
 
 
 
@@ -1881,7 +1811,6 @@ a¦ Integer (int32)
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
-
 
 
 // markup not found, no include::{specDir}security/document-before.adoc[opts=optional]

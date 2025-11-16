@@ -58,7 +58,6 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -80,7 +79,6 @@ The Analytics Service REST port. Use `18095` for secure access.
 
 [%hardbreaks]
 *Values:* `8095`, `18095`
-*Example:* `+++8095+++`
 // end
 
 |===
@@ -232,8 +230,6 @@ The name of the Analytics scope containing the link.  With this parameter, the s
 
 a¦ String
 
-
-
 a¦ *name* +
 _required_
 a¦ 
@@ -249,8 +245,6 @@ The name of the link.
 
 a¦ String
 
-
-
 |===
 
 
@@ -258,7 +252,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/delete_alt/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -294,14 +287,12 @@ Bad request. A parameter has an incorrect value.
 --
 a| xref:Wrong[]
 
-
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
 a| xref:Wrong[]
-
 
 
 |===
@@ -458,8 +449,6 @@ The name of the Analytics scope containing the link.  With this parameter, the s
 
 a¦ String
 
-
-
 a¦ *name* +
 _required_
 a¦ 
@@ -474,8 +463,6 @@ The name of the link.
 {blank}
 
 a¦ String
-
-
 
 a¦ *type* +
 _required_
@@ -495,7 +482,6 @@ include::index.adoc[tag=desc-CommonType, opts=optional]
 a¦ 
 include::index.adoc[tag=type-CommonType, opts=optional]
 
-
 a¦ *hostname* +
 _required_
 a¦ 
@@ -510,8 +496,6 @@ For Couchbase links only. The remote hostname.
 {blank}
 
 a¦ String
-
-
 
 a¦ *username* +
 _optional_
@@ -528,8 +512,6 @@ For Couchbase links only. The remote username. Required for links with no encryp
 
 a¦ String
 
-
-
 a¦ *password* +
 _optional_
 a¦ 
@@ -544,8 +526,6 @@ For Couchbase links only. The remote password. Required for links with no encryp
 {blank}
 
 a¦ String
-
-
 
 a¦ *encryption* +
 _required_
@@ -563,8 +543,6 @@ For Couchbase links only. The type of encryption used by the link.  For details,
 
 a¦ String
 
-
-
 a¦ *certificate* +
 _optional_
 a¦ 
@@ -579,8 +557,6 @@ For Couchbase links only. The content of the target cluster root certificate. Re
 {blank}
 
 a¦ String
-
-
 
 a¦ *clientCertificate* +
 _optional_
@@ -597,8 +573,6 @@ For Couchbase links, this is the content of the client certificate. Required for
 
 a¦ String
 
-
-
 a¦ *clientKey* +
 _optional_
 a¦ 
@@ -613,8 +587,6 @@ For Couchbase links only. The content of the client key. Required for links with
 {blank}
 
 a¦ String
-
-
 
 a¦ *accessKeyId* +
 _required_
@@ -631,8 +603,6 @@ For S3 links only. The Amazon S3 access key ID.
 
 a¦ String
 
-
-
 a¦ *secretAccessKey* +
 _required_
 a¦ 
@@ -647,8 +617,6 @@ For S3 links only. The Amazon S3 secret access key.  You should URL-encode this 
 {blank}
 
 a¦ String
-
-
 
 a¦ *sessionToken* +
 _optional_
@@ -665,8 +633,6 @@ For S3 links only. The Amazon S3 session token. Use this parameter if you want t
 
 a¦ String
 
-
-
 a¦ *region* +
 _required_
 a¦ 
@@ -681,8 +647,6 @@ For S3 links only. The Amazon S3 region.
 {blank}
 
 a¦ String
-
-
 
 a¦ *serviceEndpoint* +
 _optional_
@@ -699,8 +663,6 @@ For S3 links only. The Amazon S3 service endpoint.
 
 a¦ String
 
-
-
 a¦ *endpoint* +
 _optional_
 a¦ 
@@ -715,8 +677,6 @@ For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required
 {blank}
 
 a¦ String
-
-
 
 a¦ *accountName* +
 _optional_
@@ -733,8 +693,6 @@ For Azure Blob links only. The account name. Used for shared key authentication.
 
 a¦ String
 
-
-
 a¦ *accountKey* +
 _optional_
 a¦ 
@@ -749,8 +707,6 @@ For Azure Blob links only. The account key. Used for shared key authentication. 
 {blank}
 
 a¦ String
-
-
 
 a¦ *sharedAccessSignature* +
 _optional_
@@ -767,8 +723,6 @@ For Azure Blob links only. A token that can be used for authentication. Used for
 
 a¦ String
 
-
-
 a¦ *managedIdentityId* +
 _optional_
 a¦ 
@@ -783,8 +737,6 @@ For Azure Blob links only. The managed identity ID. Used for managed identity au
 {blank}
 
 a¦ String
-
-
 
 a¦ *clientId* +
 _optional_
@@ -801,8 +753,6 @@ For Azure Blob links only. The client ID for the registered application. Used fo
 
 a¦ String
 
-
-
 a¦ *tenantId* +
 _optional_
 a¦ 
@@ -817,8 +767,6 @@ For Azure Blob links only. The tenant ID where the registered application is cre
 {blank}
 
 a¦ String
-
-
 
 a¦ *clientSecret* +
 _optional_
@@ -835,8 +783,6 @@ For Azure Blob links only. The client secret for the registered application. Use
 
 a¦ String
 
-
-
 a¦ *clientCertificatePassword* +
 _optional_
 a¦ 
@@ -852,8 +798,6 @@ For Azure Blob links only. The client certificate password for the registered ap
 
 a¦ String
 
-
-
 a¦ *jsonCredentials* +
 _optional_
 a¦ 
@@ -868,8 +812,6 @@ For Google Cloud Storage links only. The JSON credentials of the link.  This par
 {blank}
 
 a¦ String
-
-
 
 a¦ *applicationDefaultCredentials* +
 _optional_
@@ -887,8 +829,6 @@ For Google Cloud Storage links only. If present, indicates that the link should 
 
 a¦ String
 
-
-
 |===
 
 
@@ -896,7 +836,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/post_alt/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -932,14 +871,12 @@ Bad request. A parameter has an incorrect value.
 --
 a| xref:Wrong[]
 
-
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
 a| xref:Wrong[]
-
 
 
 |===
@@ -1097,8 +1034,6 @@ The name of the Analytics scope containing the link.  With this parameter, the s
 
 a¦ String
 
-
-
 a¦ *name* +
 _required_
 a¦ 
@@ -1113,8 +1048,6 @@ The name of the link.
 {blank}
 
 a¦ String
-
-
 
 a¦ *type* +
 _optional_
@@ -1134,7 +1067,6 @@ include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 a¦ 
 include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
 
-
 a¦ *hostname* +
 _required_
 a¦ 
@@ -1149,8 +1081,6 @@ For Couchbase links only. The remote hostname.
 {blank}
 
 a¦ String
-
-
 
 a¦ *username* +
 _optional_
@@ -1167,8 +1097,6 @@ For Couchbase links only. The remote username. Required for links with no encryp
 
 a¦ String
 
-
-
 a¦ *password* +
 _optional_
 a¦ 
@@ -1183,8 +1111,6 @@ For Couchbase links only. The remote password. Required for links with no encryp
 {blank}
 
 a¦ String
-
-
 
 a¦ *encryption* +
 _required_
@@ -1202,8 +1128,6 @@ For Couchbase links only. The type of encryption used by the link.  For details,
 
 a¦ String
 
-
-
 a¦ *certificate* +
 _optional_
 a¦ 
@@ -1218,8 +1142,6 @@ For Couchbase links only. The content of the target cluster root certificate. Re
 {blank}
 
 a¦ String
-
-
 
 a¦ *clientCertificate* +
 _optional_
@@ -1236,8 +1158,6 @@ For Couchbase links, this is the content of the client certificate. Required for
 
 a¦ String
 
-
-
 a¦ *clientKey* +
 _optional_
 a¦ 
@@ -1252,8 +1172,6 @@ For Couchbase links only. The content of the client key. Required for links with
 {blank}
 
 a¦ String
-
-
 
 a¦ *accessKeyId* +
 _required_
@@ -1270,8 +1188,6 @@ For S3 links only. The Amazon S3 access key ID.
 
 a¦ String
 
-
-
 a¦ *secretAccessKey* +
 _required_
 a¦ 
@@ -1286,8 +1202,6 @@ For S3 links only. The Amazon S3 secret access key.  You should URL-encode this 
 {blank}
 
 a¦ String
-
-
 
 a¦ *sessionToken* +
 _optional_
@@ -1304,8 +1218,6 @@ For S3 links only. The Amazon S3 session token. Use this parameter if you want t
 
 a¦ String
 
-
-
 a¦ *region* +
 _required_
 a¦ 
@@ -1320,8 +1232,6 @@ For S3 links only. The Amazon S3 region.
 {blank}
 
 a¦ String
-
-
 
 a¦ *serviceEndpoint* +
 _optional_
@@ -1338,8 +1248,6 @@ For S3 links only. The Amazon S3 service endpoint.
 
 a¦ String
 
-
-
 a¦ *endpoint* +
 _optional_
 a¦ 
@@ -1354,8 +1262,6 @@ For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required
 {blank}
 
 a¦ String
-
-
 
 a¦ *accountName* +
 _optional_
@@ -1372,8 +1278,6 @@ For Azure Blob links only. The account name. Used for shared key authentication.
 
 a¦ String
 
-
-
 a¦ *accountKey* +
 _optional_
 a¦ 
@@ -1388,8 +1292,6 @@ For Azure Blob links only. The account key. Used for shared key authentication. 
 {blank}
 
 a¦ String
-
-
 
 a¦ *sharedAccessSignature* +
 _optional_
@@ -1406,8 +1308,6 @@ For Azure Blob links only. A token that can be used for authentication. Used for
 
 a¦ String
 
-
-
 a¦ *managedIdentityId* +
 _optional_
 a¦ 
@@ -1422,8 +1322,6 @@ For Azure Blob links only. The managed identity ID. Used for managed identity au
 {blank}
 
 a¦ String
-
-
 
 a¦ *clientId* +
 _optional_
@@ -1440,8 +1338,6 @@ For Azure Blob links only. The client ID for the registered application. Used fo
 
 a¦ String
 
-
-
 a¦ *tenantId* +
 _optional_
 a¦ 
@@ -1456,8 +1352,6 @@ For Azure Blob links only. The tenant ID where the registered application is cre
 {blank}
 
 a¦ String
-
-
 
 a¦ *clientSecret* +
 _optional_
@@ -1474,8 +1368,6 @@ For Azure Blob links only. The client secret for the registered application. Use
 
 a¦ String
 
-
-
 a¦ *clientCertificatePassword* +
 _optional_
 a¦ 
@@ -1491,8 +1383,6 @@ For Azure Blob links only. The client certificate password for the registered ap
 
 a¦ String
 
-
-
 a¦ *jsonCredentials* +
 _optional_
 a¦ 
@@ -1507,8 +1397,6 @@ For Google Cloud Storage links only. The JSON credentials of the link.  This par
 {blank}
 
 a¦ String
-
-
 
 a¦ *applicationDefaultCredentials* +
 _optional_
@@ -1526,8 +1414,6 @@ For Google Cloud Storage links only. If present, indicates that the link should 
 
 a¦ String
 
-
-
 |===
 
 
@@ -1535,7 +1421,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/put_alt/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -1571,14 +1456,12 @@ Bad request. A parameter has an incorrect value.
 --
 a| xref:Wrong[]
 
-
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
 a| xref:Wrong[]
-
 
 
 |===
@@ -1757,8 +1640,6 @@ This parameter is provided for backward compatibility. Note that it is deprecate
 
 a¦ String
 
-
-
 a¦ *name* +
 _optional_
 a¦ 
@@ -1777,8 +1658,6 @@ This parameter is provided for backward compatibility. Note that it is deprecate
 
 a¦ String
 
-
-
 a¦ *type* +
 _optional_
 a¦ 
@@ -1796,8 +1675,6 @@ The type of the link. If this parameter is omitted, all link types are retrieved
 
 a¦ String
 
-
-
 |===
 
 
@@ -1807,7 +1684,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/get_all/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -1845,14 +1721,12 @@ Bad request. A parameter has an incorrect value.
 --
 a| xref:Wrong[]
 
-
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
 a| xref:Wrong[]
-
 
 
 |===
@@ -2005,8 +1879,6 @@ With this parameter, the scope name may contain one or two identifiers, separate
 
 a¦ String
 
-
-
 |===
 
 [#get_scope-query]
@@ -2034,8 +1906,6 @@ The type of the link. If this parameter is omitted, all link types are retrieved
 
 a¦ String
 
-
-
 |===
 
 
@@ -2045,7 +1915,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/get_scope/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -2083,14 +1952,12 @@ Bad request. A parameter has an incorrect value.
 --
 a| xref:Wrong[]
 
-
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
 a| xref:Wrong[]
-
 
 
 |===
@@ -2269,8 +2136,6 @@ With this parameter, the scope name may contain one or two identifiers, separate
 
 a¦ String
 
-
-
 a¦ *name* +
 _required_
 a¦ 
@@ -2286,8 +2151,6 @@ The name of the link.
 
 a¦ String
 
-
-
 |===
 
 
@@ -2298,7 +2161,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/delete_link/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -2334,14 +2196,12 @@ Bad request. A parameter has an incorrect value.
 --
 a| xref:Wrong[]
 
-
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
 a| xref:Wrong[]
-
 
 
 |===
@@ -2494,8 +2354,6 @@ With this parameter, the scope name may contain one or two identifiers, separate
 
 a¦ String
 
-
-
 a¦ *name* +
 _required_
 a¦ 
@@ -2510,8 +2368,6 @@ The name of the link.
 {blank}
 
 a¦ String
-
-
 
 |===
 
@@ -2541,7 +2397,6 @@ include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 a¦ 
 include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
 
-
 |===
 
 
@@ -2551,7 +2406,6 @@ include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
 // markup not found, no include::{specDir}paths/get_link/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -2589,14 +2443,12 @@ Bad request. A parameter has an incorrect value.
 --
 a| xref:Wrong[]
 
-
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
 a| xref:Wrong[]
-
 
 
 |===
@@ -2752,8 +2604,6 @@ With this parameter, the scope name may contain one or two identifiers, separate
 
 a¦ String
 
-
-
 a¦ *name* +
 _required_
 a¦ 
@@ -2768,8 +2618,6 @@ The name of the link.
 {blank}
 
 a¦ String
-
-
 
 |===
 
@@ -2801,7 +2649,6 @@ include::index.adoc[tag=desc-CommonType, opts=optional]
 a¦ 
 include::index.adoc[tag=type-CommonType, opts=optional]
 
-
 a¦ *hostname* +
 _required_
 a¦ 
@@ -2816,8 +2663,6 @@ For Couchbase links only. The remote hostname.
 {blank}
 
 a¦ String
-
-
 
 a¦ *username* +
 _optional_
@@ -2834,8 +2679,6 @@ For Couchbase links only. The remote username. Required for links with no encryp
 
 a¦ String
 
-
-
 a¦ *password* +
 _optional_
 a¦ 
@@ -2850,8 +2693,6 @@ For Couchbase links only. The remote password. Required for links with no encryp
 {blank}
 
 a¦ String
-
-
 
 a¦ *encryption* +
 _required_
@@ -2869,8 +2710,6 @@ For Couchbase links only. The type of encryption used by the link.  For details,
 
 a¦ String
 
-
-
 a¦ *certificate* +
 _optional_
 a¦ 
@@ -2885,8 +2724,6 @@ For Couchbase links only. The content of the target cluster root certificate. Re
 {blank}
 
 a¦ String
-
-
 
 a¦ *clientCertificate* +
 _optional_
@@ -2903,8 +2740,6 @@ For Couchbase links, this is the content of the client certificate. Required for
 
 a¦ String
 
-
-
 a¦ *clientKey* +
 _optional_
 a¦ 
@@ -2919,8 +2754,6 @@ For Couchbase links only. The content of the client key. Required for links with
 {blank}
 
 a¦ String
-
-
 
 a¦ *accessKeyId* +
 _required_
@@ -2937,8 +2770,6 @@ For S3 links only. The Amazon S3 access key ID.
 
 a¦ String
 
-
-
 a¦ *secretAccessKey* +
 _required_
 a¦ 
@@ -2953,8 +2784,6 @@ For S3 links only. The Amazon S3 secret access key.  You should URL-encode this 
 {blank}
 
 a¦ String
-
-
 
 a¦ *sessionToken* +
 _optional_
@@ -2971,8 +2800,6 @@ For S3 links only. The Amazon S3 session token. Use this parameter if you want t
 
 a¦ String
 
-
-
 a¦ *region* +
 _required_
 a¦ 
@@ -2987,8 +2814,6 @@ For S3 links only. The Amazon S3 region.
 {blank}
 
 a¦ String
-
-
 
 a¦ *serviceEndpoint* +
 _optional_
@@ -3005,8 +2830,6 @@ For S3 links only. The Amazon S3 service endpoint.
 
 a¦ String
 
-
-
 a¦ *endpoint* +
 _optional_
 a¦ 
@@ -3021,8 +2844,6 @@ For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required
 {blank}
 
 a¦ String
-
-
 
 a¦ *accountName* +
 _optional_
@@ -3039,8 +2860,6 @@ For Azure Blob links only. The account name. Used for shared key authentication.
 
 a¦ String
 
-
-
 a¦ *accountKey* +
 _optional_
 a¦ 
@@ -3055,8 +2874,6 @@ For Azure Blob links only. The account key. Used for shared key authentication. 
 {blank}
 
 a¦ String
-
-
 
 a¦ *sharedAccessSignature* +
 _optional_
@@ -3073,8 +2890,6 @@ For Azure Blob links only. A token that can be used for authentication. Used for
 
 a¦ String
 
-
-
 a¦ *managedIdentityId* +
 _optional_
 a¦ 
@@ -3089,8 +2904,6 @@ For Azure Blob links only. The managed identity ID. Used for managed identity au
 {blank}
 
 a¦ String
-
-
 
 a¦ *clientId* +
 _optional_
@@ -3107,8 +2920,6 @@ For Azure Blob links only. The client ID for the registered application. Used fo
 
 a¦ String
 
-
-
 a¦ *tenantId* +
 _optional_
 a¦ 
@@ -3123,8 +2934,6 @@ For Azure Blob links only. The tenant ID where the registered application is cre
 {blank}
 
 a¦ String
-
-
 
 a¦ *clientSecret* +
 _optional_
@@ -3141,8 +2950,6 @@ For Azure Blob links only. The client secret for the registered application. Use
 
 a¦ String
 
-
-
 a¦ *clientCertificatePassword* +
 _optional_
 a¦ 
@@ -3158,8 +2965,6 @@ For Azure Blob links only. The client certificate password for the registered ap
 
 a¦ String
 
-
-
 a¦ *jsonCredentials* +
 _optional_
 a¦ 
@@ -3174,8 +2979,6 @@ For Google Cloud Storage links only. The JSON credentials of the link.  This par
 {blank}
 
 a¦ String
-
-
 
 a¦ *applicationDefaultCredentials* +
 _optional_
@@ -3193,8 +2996,6 @@ For Google Cloud Storage links only. If present, indicates that the link should 
 
 a¦ String
 
-
-
 |===
 
 
@@ -3202,7 +3003,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/post_link/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -3238,14 +3038,12 @@ Bad request. A parameter has an incorrect value.
 --
 a| xref:Wrong[]
 
-
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
 a| xref:Wrong[]
-
 
 
 |===
@@ -3402,8 +3200,6 @@ With this parameter, the scope name may contain one or two identifiers, separate
 
 a¦ String
 
-
-
 a¦ *name* +
 _required_
 a¦ 
@@ -3418,8 +3214,6 @@ The name of the link.
 {blank}
 
 a¦ String
-
-
 
 |===
 
@@ -3451,7 +3245,6 @@ include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 a¦ 
 include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
 
-
 a¦ *hostname* +
 _required_
 a¦ 
@@ -3466,8 +3259,6 @@ For Couchbase links only. The remote hostname.
 {blank}
 
 a¦ String
-
-
 
 a¦ *username* +
 _optional_
@@ -3484,8 +3275,6 @@ For Couchbase links only. The remote username. Required for links with no encryp
 
 a¦ String
 
-
-
 a¦ *password* +
 _optional_
 a¦ 
@@ -3500,8 +3289,6 @@ For Couchbase links only. The remote password. Required for links with no encryp
 {blank}
 
 a¦ String
-
-
 
 a¦ *encryption* +
 _required_
@@ -3519,8 +3306,6 @@ For Couchbase links only. The type of encryption used by the link.  For details,
 
 a¦ String
 
-
-
 a¦ *certificate* +
 _optional_
 a¦ 
@@ -3535,8 +3320,6 @@ For Couchbase links only. The content of the target cluster root certificate. Re
 {blank}
 
 a¦ String
-
-
 
 a¦ *clientCertificate* +
 _optional_
@@ -3553,8 +3336,6 @@ For Couchbase links, this is the content of the client certificate. Required for
 
 a¦ String
 
-
-
 a¦ *clientKey* +
 _optional_
 a¦ 
@@ -3569,8 +3350,6 @@ For Couchbase links only. The content of the client key. Required for links with
 {blank}
 
 a¦ String
-
-
 
 a¦ *accessKeyId* +
 _required_
@@ -3587,8 +3366,6 @@ For S3 links only. The Amazon S3 access key ID.
 
 a¦ String
 
-
-
 a¦ *secretAccessKey* +
 _required_
 a¦ 
@@ -3603,8 +3380,6 @@ For S3 links only. The Amazon S3 secret access key.  You should URL-encode this 
 {blank}
 
 a¦ String
-
-
 
 a¦ *sessionToken* +
 _optional_
@@ -3621,8 +3396,6 @@ For S3 links only. The Amazon S3 session token. Use this parameter if you want t
 
 a¦ String
 
-
-
 a¦ *region* +
 _required_
 a¦ 
@@ -3637,8 +3410,6 @@ For S3 links only. The Amazon S3 region.
 {blank}
 
 a¦ String
-
-
 
 a¦ *serviceEndpoint* +
 _optional_
@@ -3655,8 +3426,6 @@ For S3 links only. The Amazon S3 service endpoint.
 
 a¦ String
 
-
-
 a¦ *endpoint* +
 _optional_
 a¦ 
@@ -3671,8 +3440,6 @@ For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required
 {blank}
 
 a¦ String
-
-
 
 a¦ *accountName* +
 _optional_
@@ -3689,8 +3456,6 @@ For Azure Blob links only. The account name. Used for shared key authentication.
 
 a¦ String
 
-
-
 a¦ *accountKey* +
 _optional_
 a¦ 
@@ -3705,8 +3470,6 @@ For Azure Blob links only. The account key. Used for shared key authentication. 
 {blank}
 
 a¦ String
-
-
 
 a¦ *sharedAccessSignature* +
 _optional_
@@ -3723,8 +3486,6 @@ For Azure Blob links only. A token that can be used for authentication. Used for
 
 a¦ String
 
-
-
 a¦ *managedIdentityId* +
 _optional_
 a¦ 
@@ -3739,8 +3500,6 @@ For Azure Blob links only. The managed identity ID. Used for managed identity au
 {blank}
 
 a¦ String
-
-
 
 a¦ *clientId* +
 _optional_
@@ -3757,8 +3516,6 @@ For Azure Blob links only. The client ID for the registered application. Used fo
 
 a¦ String
 
-
-
 a¦ *tenantId* +
 _optional_
 a¦ 
@@ -3773,8 +3530,6 @@ For Azure Blob links only. The tenant ID where the registered application is cre
 {blank}
 
 a¦ String
-
-
 
 a¦ *clientSecret* +
 _optional_
@@ -3791,8 +3546,6 @@ For Azure Blob links only. The client secret for the registered application. Use
 
 a¦ String
 
-
-
 a¦ *clientCertificatePassword* +
 _optional_
 a¦ 
@@ -3808,8 +3561,6 @@ For Azure Blob links only. The client certificate password for the registered ap
 
 a¦ String
 
-
-
 a¦ *jsonCredentials* +
 _optional_
 a¦ 
@@ -3824,8 +3575,6 @@ For Google Cloud Storage links only. The JSON credentials of the link.  This par
 {blank}
 
 a¦ String
-
-
 
 a¦ *applicationDefaultCredentials* +
 _optional_
@@ -3843,8 +3592,6 @@ For Google Cloud Storage links only. If present, indicates that the link should 
 
 a¦ String
 
-
-
 |===
 
 
@@ -3852,7 +3599,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/put_link/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -3888,14 +3634,12 @@ Bad request. A parameter has an incorrect value.
 --
 a| xref:Wrong[]
 
-
 | 500
 a| [markdown]
 --
 Internal Server Error. Incorrect path or port number, incorrect credentials, badly formatted parameters, or missing arguments. 
 --
 a| xref:Wrong[]
-
 
 
 |===
@@ -4033,8 +3777,6 @@ The type of the link.
 .Schema
 //tag::type-CommonType[]
 String
-
-
 //end::type-CommonType[]
 endif::enum-definitions[]
 ifdef::enum-definitions[]
@@ -4052,8 +3794,6 @@ The type of the link. If this parameter is specified, the value must match the t
 .Schema
 //tag::type-CommonTypeEdit[]
 String
-
-
 //end::type-CommonTypeEdit[]
 endif::enum-definitions[]
 
@@ -4105,7 +3845,6 @@ The scope name may contain one or two identifiers, separated by a slash (/).
 {blank}
 a¦ String
 
-
 a¦ 
 *name* +
 _required_
@@ -4120,7 +3859,6 @@ The name of the link.
 *Example:* `+++"myLink"+++`
 {blank}
 a¦ String
-
 
 a¦ [#type]
 *type* +
@@ -4141,7 +3879,6 @@ The type of the link.
 *Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
 {blank}
 a¦ String
-
 
 |===
 
@@ -4169,7 +3906,6 @@ a| `s3`
 a| These properties are returned for S3 links.
 a| xref:ResponseS3[]
 |===
-
 
 
 // markup not found, no include::{specDir}definitions/ResponseAll/definition-end.adoc[opts=optional]
@@ -4223,7 +3959,6 @@ include::index.adoc[tag=desc-ResponseAll, opts=optional]
 {blank}
 a¦ xref:ResponseAll[]
 
-
 a¦ _and_
 a¦ 
 
@@ -4235,7 +3970,6 @@ include::index.adoc[tag=desc-ResponseAzureBlobSpecific, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:ResponseAzureBlobSpecific[]
-
 
 |===
 
@@ -4297,7 +4031,6 @@ The account key. Used for shared key authentication. This is redacted for the sa
 {blank}
 a¦ String
 
-
 a¦ 
 *accountName* +
 _optional_
@@ -4313,7 +4046,6 @@ The account name. Used for shared key authentication. If not set, this property 
 *Example:* `+++"myAccountName"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *clientCertificate* +
@@ -4331,7 +4063,6 @@ The client certificate for the registered application. Used for Azure Active Dir
 {blank}
 a¦ String
 
-
 a¦ 
 *clientCertificatePassword* +
 _optional_
@@ -4347,7 +4078,6 @@ The client certificate password for the registered application. Used for Azure A
 *Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *clientId* +
@@ -4365,7 +4095,6 @@ The client ID for the registered application. Used for Azure Active Directory cl
 {blank}
 a¦ String
 
-
 a¦ 
 *clientSecret* +
 _optional_
@@ -4382,7 +4111,6 @@ The client secret for the registered application. Used for Azure Active Director
 {blank}
 a¦ String
 
-
 a¦ 
 *endpoint* +
 _required_
@@ -4397,7 +4125,6 @@ The endpoint URI.
 *Example:* `+++"my.endpoint.uri"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *managedIdentityId* +
@@ -4415,7 +4142,6 @@ The managed identity ID. Used for managed identity authentication. If not set, t
 {blank}
 a¦ String
 
-
 a¦ 
 *sharedAccessSignature* +
 _optional_
@@ -4431,7 +4157,6 @@ A token that can be used for authentication. Used for shared access signature au
 *Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *tenantId* +
@@ -4449,11 +4174,9 @@ The tenant ID where the registered application is created. Used for Azure Active
 {blank}
 a¦ String
 
-
 |===
 
 //end::ResponseAzureBlobSpecific[]
-
 
 
 
@@ -4508,7 +4231,6 @@ include::index.adoc[tag=desc-ResponseAll, opts=optional]
 {blank}
 a¦ xref:ResponseAll[]
 
-
 a¦ _and_
 a¦ 
 
@@ -4520,7 +4242,6 @@ include::index.adoc[tag=desc-ResponseCouchbaseSpecific, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:ResponseCouchbaseSpecific[]
-
 
 |===
 
@@ -4581,7 +4302,6 @@ The remote hostname.
 {blank}
 a¦ String
 
-
 a¦ 
 *bootstrapAlternateAddress* +
 _required_
@@ -4596,7 +4316,6 @@ Specifies whether the provided (bootstrap) hostname is an alternative address.
 *Example:* `false`
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *bootstrapHostname* +
@@ -4613,7 +4332,6 @@ The provided (bootstrap) hostname.
 {blank}
 a¦ String
 
-
 a¦ 
 *certificate* +
 _required_
@@ -4628,7 +4346,6 @@ The content of the target cluster root certificate. Only set for links with full
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *clientCertificate* +
@@ -4645,7 +4362,6 @@ The content of the client certificate. Only set for links with full encryption u
 {blank}
 a¦ String
 
-
 a¦ 
 *clientKey* +
 _required_
@@ -4661,7 +4377,6 @@ The content of the client key. Only set for links with full encryption using cli
 {blank}
 a¦ String
 
-
 a¦ 
 *clusterCompatibility* +
 _required_
@@ -4676,7 +4391,6 @@ For internal use only.
 *Example:* `393221`
 {blank}
 a¦ Integer
-
 
 a¦ [#encryption]
 *encryption* +
@@ -4697,7 +4411,6 @@ The type of encryption used by the link.
 *Values:* `"none"`, `"half"`, `"full"`
 {blank}
 a¦ String
-
 
 a¦ 
 *nodes* +
@@ -4730,7 +4443,6 @@ The password used to connect to the link. This is redacted for the sake of secur
 {blank}
 a¦ String
 
-
 a¦ 
 *username* +
 _required_
@@ -4747,7 +4459,6 @@ The remote username. Not set for links with full encryption using client certifi
 {blank}
 a¦ String
 
-
 a¦ 
 *uuid* +
 _required_
@@ -4763,11 +4474,9 @@ A UUID uniquely identifying the link.
 {blank}
 a¦ UUID (UUID)
 
-
 |===
 
 //end::ResponseCouchbaseSpecific[]
-
 
 
 
@@ -4820,7 +4529,6 @@ The alternate address defined on the node, if any. If not defined, this property
 {blank}
 a¦ String
 
-
 a¦ 
 *hostname* +
 _optional_
@@ -4836,7 +4544,6 @@ The hostname of the node. If not defined, this property returns `null`.
 {blank}
 a¦ String
 
-
 a¦ 
 *services* +
 _optional_
@@ -4851,11 +4558,9 @@ include::index.adoc[tag=desc-ResponseCouchbaseSpecificNodeServices, opts=optiona
 {blank}
 a¦ xref:ResponseCouchbaseSpecificNodeServices[]
 
-
 |===
 
 //end::ResponseCouchbaseSpecificNode[]
-
 
 
 
@@ -4913,7 +4618,6 @@ The port number for a connection to the Analytics service.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *cbasSSL* +
 _optional_
@@ -4928,7 +4632,6 @@ The port number for an encrypted connection to the Analytics service.
 *Example:* `18095`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *kv* +
@@ -4945,7 +4648,6 @@ The port number for a connection to the Data service.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *kvSSL* +
 _optional_
@@ -4960,7 +4662,6 @@ The port number for an encrypted connection to the Data service.
 *Example:* `11207`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *mgmt* +
@@ -4977,7 +4678,6 @@ The port number for a connection to the Cluster Manager service.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *mgmtSSL* +
 _optional_
@@ -4993,11 +4693,9 @@ The port number for an encrypted connection to the Cluster Manager service.
 {blank}
 a¦ Integer
 
-
 |===
 
 //end::ResponseCouchbaseSpecificNodeServices[]
-
 
 
 
@@ -5052,7 +4750,6 @@ include::index.adoc[tag=desc-ResponseAll, opts=optional]
 {blank}
 a¦ xref:ResponseAll[]
 
-
 a¦ _and_
 a¦ 
 
@@ -5064,7 +4761,6 @@ include::index.adoc[tag=desc-ResponseGCSSpecific, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:ResponseGCSSpecific[]
-
 
 |===
 
@@ -5127,7 +4823,6 @@ If present, indicates that the link should use the Google Application Default Cr
 {blank}
 a¦ String
 
-
 a¦ 
 *endpoint* +
 _required_
@@ -5143,7 +4838,6 @@ The endpoint URI. If not set, this property returns `null`.
 *Example:* `+++"https://storage.googleapis.com"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *jsonCredentials* +
@@ -5161,11 +4855,9 @@ The JSON credentials of the link. If not set, this property returns `null`.
 {blank}
 a¦ String
 
-
 |===
 
 //end::ResponseGCSSpecific[]
-
 
 
 
@@ -5220,7 +4912,6 @@ include::index.adoc[tag=desc-ResponseAll, opts=optional]
 {blank}
 a¦ xref:ResponseAll[]
 
-
 a¦ _and_
 a¦ 
 
@@ -5232,7 +4923,6 @@ include::index.adoc[tag=desc-ResponseS3Specific, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:ResponseS3Specific[]
-
 
 |===
 
@@ -5293,7 +4983,6 @@ The Amazon S3 access key ID.
 {blank}
 a¦ String
 
-
 a¦ 
 *region* +
 _required_
@@ -5308,7 +4997,6 @@ The Amazon S3 region.
 *Example:* `+++"us-east-1"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *secretAccessKey* +
@@ -5326,7 +5014,6 @@ The Amazon S3 secret access key. This is redacted for the sake of security.
 {blank}
 a¦ String
 
-
 a¦ 
 *sessionToken* +
 _optional_
@@ -5342,7 +5029,6 @@ The Amazon S3 session token. Indicates that the link has temporary access, and t
 *Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *serviceEndpoint* +
@@ -5360,11 +5046,9 @@ Amazon S3 service endpoint. If not set, this property returns `null`.
 {blank}
 a¦ String
 
-
 |===
 
 //end::ResponseS3Specific[]
-
 
 
 
@@ -5416,11 +5100,9 @@ An error message.
 {blank}
 a¦ String
 
-
 |===
 
 //end::Wrong[]
-
 
 
 
@@ -5440,7 +5122,6 @@ a¦ String
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
-
 
 
 // markup not found, no include::{specDir}security/document-before.adoc[opts=optional]

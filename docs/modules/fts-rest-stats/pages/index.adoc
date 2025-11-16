@@ -58,7 +58,6 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -80,7 +79,6 @@ The Search Service REST port. Use `18094` for secure access.
 
 [%hardbreaks]
 *Values:* `8094`, `18094`
-*Example:* `+++8094+++`
 // end
 
 |===
@@ -196,7 +194,6 @@ For additional statistics, including detailed partition information, see [Get In
 
 
 
-
 // markup not found, no include::{specDir}paths/g-api-nsstats/operation-parameters-after.adoc[opts=optional]
 
 
@@ -222,7 +219,6 @@ a| [markdown]
 The Search Service returns statistics from the `nsstats` endpoint for the entire cluster, and for each Search index.  For each Search index, the names of the statistics are prefixed with the bucket name and index name, in the form `BUCKET:INDEX:statistic_name`.
 --
 a| xref:allStats[]
-
 
 | 400
 a| [markdown]
@@ -399,8 +395,6 @@ To view the full, scoped name for an index for use with this endpoint:
 
 a¦ String
 
-
-
 |===
 
 
@@ -411,7 +405,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -440,7 +433,6 @@ a| [markdown]
 The Search Service returns statistics from the `nsstats` endpoint for the specified index.  Note that for a single index, the names of the statistics are not prefixed with the bucket name or index name.
 --
 a| xref:indexStats[]
-
 
 
 |===
@@ -582,7 +574,6 @@ include::index.adoc[tag=desc-clusterStats, opts=optional]
 {blank}
 a¦ xref:clusterStats[]
 
-
 a¦ _and_
 a¦ 
 
@@ -594,7 +585,6 @@ include::index.adoc[tag=desc-indexStats, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:indexStats[]
-
 
 |===
 
@@ -654,7 +644,6 @@ The average latency of all Search queries run on the cluster, in milliseconds.
 {blank}
 a¦ Big Decimal
 
-
 a¦ 
 *batch_bytes_added* +
 _optional_
@@ -670,7 +659,6 @@ Batches are a data structure in the Search Service, used for processing data com
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *batch_bytes_removed* +
@@ -690,7 +678,6 @@ Batches are a data structure in the Search Service, used for processing data com
 {blank}
 a¦ Integer
 
-
 a¦ 
 *curr_batches_blocked_by_herder* +
 _optional_
@@ -709,7 +696,6 @@ This statistic appears on the Server Web Console dashboard as **DCP Batches Bloc
 {blank}
 a¦ Integer
 
-
 a¦ 
 *num_batches_introduced* +
 _optional_
@@ -725,7 +711,6 @@ Batches are a data structure in the Search Service, used for processing data com
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *num_bytes_ram_quota* +
@@ -743,7 +728,6 @@ This statistic appears on the Server Web Console dashboard as **RAM Quota for Se
 {blank}
 a¦ Integer
 
-
 a¦ 
 *num_bytes_used_disk* +
 _optional_
@@ -757,7 +741,6 @@ The total number of bytes used on disk by Search indexes in the cluster.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *num_bytes_used_ram* +
@@ -775,7 +758,6 @@ This statistic appears on the Server Web Console dashboard as **RAM Used by Sear
 {blank}
 a¦ Integer
 
-
 a¦ 
 *num_bytes_used_ram_c* +
 _optional_
@@ -792,7 +774,6 @@ This amount is included as part of the total number of bytes used in memory, giv
 {blank}
 a¦ Integer
 
-
 a¦ 
 *num_files_on_disk* +
 _optional_
@@ -806,7 +787,6 @@ The total number of files on disk for all Search indexes.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *num_gocbcore_dcp_agents* +
@@ -824,7 +804,6 @@ The number of Go SDK DCP agents should be less than or equal to the number of Se
 {blank}
 a¦ Integer
 
-
 a¦ 
 *num_gocbcore_stats_agents* +
 _optional_
@@ -841,7 +820,6 @@ Typically, the Search Service uses one agent pair for each bucket on a node.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *num_knn_search_requests* +
 _optional_
@@ -855,7 +833,6 @@ The total number of [Vector Search](https://docs.couchbase.com/server/7.6/vector
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *pct_cpu_gc* +
@@ -872,7 +849,6 @@ Garbage collection involves cleanup actions like removing unnecessary index entr
 {blank}
 a¦ Big Decimal
 
-
 a¦ 
 *pct_used_ram* +
 _optional_
@@ -888,7 +864,6 @@ This statistic appears on the Server Web Console dashboard as **Pct RAM Used by 
 [%hardbreaks]
 {blank}
 a¦ Big Decimal
-
 
 a¦ 
 *tot_batches_flushed_on_maxops* +
@@ -907,7 +882,6 @@ A batch is executed when it's flushed to disk.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *tot_batches_flushed_on_timer* +
 _optional_
@@ -921,7 +895,6 @@ The total number of batches executed at regular intervals.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *tot_batches_merged* +
@@ -940,7 +913,6 @@ A batch is executed when it's flushed to disk.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *tot_batches_new* +
 _optional_
@@ -957,7 +929,6 @@ Batches are a data structure in the Search Service, used for processing data com
 {blank}
 a¦ Integer
 
-
 a¦ 
 *tot_bleve_dest_closed* +
 _optional_
@@ -971,7 +942,6 @@ The total number of times a Search index partition closed to new Search requests
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *tot_bleve_dest_opened* +
@@ -988,7 +958,6 @@ Opening a Search index partition creates a file lock for concurrent access reque
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *tot_grpc_listeners_closed* +
@@ -1008,7 +977,6 @@ The Search Service uses gRPC to manage scatter-gather operations across nodes wh
 {blank}
 a¦ Integer
 
-
 a¦ 
 *tot_grpc_listeners_opened* +
 _optional_
@@ -1026,7 +994,6 @@ The Search Service uses gRPC to manage scatter-gather operations across nodes wh
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *tot_grpc_queryreject_on_memquota* +
@@ -1046,7 +1013,6 @@ The Search Service uses gRPC to manage scatter-gather operations across nodes wh
 {blank}
 a¦ Integer
 
-
 a¦ 
 *tot_grpcs_listeners_closed* +
 _optional_
@@ -1064,7 +1030,6 @@ The Search Service uses gRPC to manage scatter-gather operations across nodes wh
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *tot_grpcs_listeners_opened* +
@@ -1084,7 +1049,6 @@ The Search Service uses gRPC to manage scatter-gather operations across nodes wh
 {blank}
 a¦ Integer
 
-
 a¦ 
 *tot_http_limitlisteners_closed* +
 _optional_
@@ -1100,7 +1064,6 @@ HTTP limit listeners manage limits on incoming HTTP requests to the Search Servi
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *tot_http_limitlisteners_opened* +
@@ -1118,7 +1081,6 @@ HTTP limit listeners manage limits on incoming HTTP requests to the Search Servi
 {blank}
 a¦ Integer
 
-
 a¦ 
 *tot_https_limitlisteners_closed* +
 _optional_
@@ -1134,7 +1096,6 @@ HTTPS limit listeners manage limits on incoming HTTPS requests to the Search Ser
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *tot_https_limitlisteners_opened* +
@@ -1152,7 +1113,6 @@ HTTPS limit listeners manage limits on incoming HTTPS requests to the Search Ser
 {blank}
 a¦ Integer
 
-
 a¦ 
 *tot_queryreject_on_memquota* +
 _optional_
@@ -1168,7 +1128,6 @@ For more information about how to set the Search Service's quota, see [ftsMemory
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *tot_remote_grpc* +
@@ -1186,7 +1145,6 @@ A request is remote if it comes from a different node in the cluster.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *tot_remote_grpc_ssl* +
 _optional_
@@ -1203,7 +1161,6 @@ A request is remote if it comes from a different node in the cluster.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *tot_remote_grpc_tls* +
 _optional_
@@ -1217,7 +1174,6 @@ This metric is deprecated.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *tot_remote_http* +
@@ -1238,7 +1194,6 @@ Use gRPC requests, instead.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *tot_remote_http2* +
 _optional_
@@ -1257,7 +1212,6 @@ Use gRPC requests, instead.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *tot_remote_http_ssl* +
@@ -1278,7 +1232,6 @@ Use gRPC requests, instead.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *tot_rollback_full* +
 _optional_
@@ -1297,7 +1250,6 @@ If the Search Service's index snapshots are too far ahead of the Data Service's 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *tot_rollback_partial* +
@@ -1318,7 +1270,6 @@ If the Search Service's index snapshots are too far ahead of the Data Service's 
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_bytes_query_results* +
 _optional_
@@ -1334,7 +1285,6 @@ This includes the size of all JSON sent.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_create_index_bad_request_error* +
 _optional_
@@ -1348,7 +1298,6 @@ The total number of bad request errors returned for requests to create new Searc
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *total_create_index_internal_server_error* +
@@ -1364,7 +1313,6 @@ The total number of internal server errors returned for requests to create new S
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_create_index_request* +
 _optional_
@@ -1378,7 +1326,6 @@ The total number of requests received by the Search Service for creating new Sea
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *total_create_index_request_ok* +
@@ -1394,7 +1341,6 @@ The total number of requests received by the Search Service for creating new Sea
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_delete_index_bad_request_error* +
 _optional_
@@ -1408,7 +1354,6 @@ The total number of bad request errors returned for requests to delete Search in
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *total_delete_index_internal_server_error* +
@@ -1424,7 +1369,6 @@ The total number of internal server errors returned for requests to delete Searc
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_delete_index_request* +
 _optional_
@@ -1439,7 +1383,6 @@ The total number of requests received by the Search Service to delete Search ind
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_delete_index_request_ok* +
 _optional_
@@ -1453,7 +1396,6 @@ The total number of requests received by the Search Service to delete Search ind
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *total_gc* +
@@ -1470,7 +1412,6 @@ Garbage collection events include removing unnecessary index entries.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *total_internal_queries* +
@@ -1490,7 +1431,6 @@ The coordinating node applies filters to the results from all Search index parti
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_queries* +
 _optional_
@@ -1505,7 +1445,6 @@ The total number of Search queries per second across all Search indexes in the c
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_queries_bad_request_error* +
 _optional_
@@ -1519,7 +1458,6 @@ The total number of bad request errors returned for Search queries on the cluste
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *total_queries_consistency_error* +
@@ -1537,7 +1475,6 @@ For more information about consistency in Search queries, see [Search Request JS
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_queries_error* +
 _optional_
@@ -1552,7 +1489,6 @@ The total number of Search queries that encountered an error on the cluster.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_queries_max_result_window_exceeded_error* +
 _optional_
@@ -1566,7 +1502,6 @@ The total number of Search queries that exceeded the [bleveMaxResultWindow](http
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *total_queries_partial_results_error* +
@@ -1583,7 +1518,6 @@ A Search query can return partial results if it times out before all partitions 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *total_queries_rejected_by_herder* +
@@ -1603,7 +1537,6 @@ This statistic appears on the Server Web Console dashboard as **Rejected Queries
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_queries_search_in_context_error* +
 _optional_
@@ -1620,7 +1553,6 @@ These errors are typically internal server errors.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_queries_slow* +
 _optional_
@@ -1634,7 +1566,6 @@ The total number of Search queries that were added to the slow query log.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *total_queries_timeout* +
@@ -1652,7 +1583,6 @@ You can set the timeout for a query with the [ctl object](https://docs.couchbase
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_queries_validation_error* +
 _optional_
@@ -1669,7 +1599,6 @@ For more information, see the [validate property](https://docs.couchbase.com/ser
 {blank}
 a¦ Integer
 
-
 a¦ 
 *total_request_time* +
 _optional_
@@ -1684,11 +1613,9 @@ The total time, in nanoseconds, spent processing Search queries across the clust
 {blank}
 a¦ Integer
 
-
 |===
 
 //end::clusterStats[]
-
 
 
 
@@ -1748,7 +1675,6 @@ The coordinator is the Search node that receives the Search request and scatters
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:avg_grpc_queries_latency* +
 _optional_
@@ -1765,7 +1691,6 @@ The Search Service uses gRPC to manage scatter-gather operations across nodes wh
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:avg_internal_queries_latency* +
 _optional_
@@ -1779,7 +1704,6 @@ The average latency, in milliseconds, for inter-node queries for the given Searc
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:avg_queries_latency* +
@@ -1797,7 +1721,6 @@ This statistic appears on the Server Web Console dashboard as **Search Query Lat
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:doc_count* +
 _optional_
@@ -1814,7 +1737,6 @@ This statistic appears on the Server Web Console dashboard as **Search Docs**.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:last_access_time* +
 _optional_
@@ -1829,7 +1751,6 @@ The last date and time that a query ran against the given Search index.
 {blank}
 a¦ Date (date-time)
 
-
 a¦ 
 *BUCKET:INDEX:num_bytes_read_at_query_time* +
 _optional_
@@ -1843,7 +1764,6 @@ The total number of bytes read by all queries against the given Search index.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:num_bytes_used_disk* +
@@ -1860,7 +1780,6 @@ This statistic appears on the Server Web Console dashboard as **Search Disk Size
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:num_bytes_used_disk_by_root* +
@@ -1882,7 +1801,6 @@ The `num_bytes_used_disk_by_root` value will be less than the `num_bytes_used_di
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:num_bytes_used_disk_by_root_reclaimable* +
 _optional_
@@ -1901,7 +1819,6 @@ Stale segments are deleted when they're not used by any new queries.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:num_bytes_written_at_index_time* +
 _optional_
@@ -1915,7 +1832,6 @@ The total cumulative number of bytes written to disk as part of introducing segm
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:num_file_merge_ops* +
@@ -1937,7 +1853,6 @@ The persister and merger interact to continuously flush and merge new in-memory 
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:num_files_on_disk* +
 _optional_
@@ -1953,7 +1868,6 @@ This statistic appears on the Server Web Console dashboard as **Search Disk File
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:num_mem_merge_ops* +
@@ -1975,7 +1889,6 @@ The persister and merger interact to continuously flush and merge new in-memory 
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:num_mutations_to_index* +
 _optional_
@@ -1991,7 +1904,6 @@ This statistic appears on the Server Web Console dashboard as **Search Mutations
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:num_persister_nap_merger_break* +
@@ -2013,7 +1925,6 @@ The persister and merger interact to continuously flush and merge new in-memory 
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:num_persister_nap_pause_completed* +
 _optional_
@@ -2034,7 +1945,6 @@ The persister and merger interact to continuously flush and merge new in-memory 
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:num_pindexes_actual* +
 _optional_
@@ -2050,7 +1960,6 @@ This statistic appears on the Server Web Console dashboard as **Search Partition
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:num_pindexes_target* +
@@ -2068,7 +1977,6 @@ This statistic appears on the Server Web Console dashboard as **Search Partition
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:num_recs_to_persist* +
 _optional_
@@ -2084,7 +1992,6 @@ This statistic appears on the Server Web Console dashboard as **Search Records t
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:num_root_filesegments* +
@@ -2104,7 +2011,6 @@ This statistic appears on the Server Web Console dashboard as **Search Disk Segm
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:num_root_memorysegments* +
 _optional_
@@ -2123,7 +2029,6 @@ This statistic appears on the Server Web Console dashboard as **Search Memory Se
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:timer_batch_store_count* +
 _optional_
@@ -2141,7 +2046,6 @@ A batch is executed when it's flushed to disk.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:timer_data_delete_count* +
 _optional_
@@ -2156,7 +2060,6 @@ The total number of delete operations received from DCP for the given Search ind
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:timer_data_update_count* +
 _optional_
@@ -2170,7 +2073,6 @@ The total number of create or update operations received from DCP for the given 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:timer_opaque_get_count* +
@@ -2188,7 +2090,6 @@ If the DCP connection closes, the Search Service can use this stored metadata to
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:timer_opaque_set_count* +
 _optional_
@@ -2203,7 +2104,6 @@ The total number of times the DCP consumer updated stored metadata, based on cha
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:timer_rollback_count* +
 _optional_
@@ -2217,7 +2117,6 @@ The total number of DCP Rollback messages received for the given Search index.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:timer_snapshot_start_count* +
@@ -2235,7 +2134,6 @@ Snapshots contain a representation of document mutations on either a write queue
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:tot_seq_received* +
 _optional_
@@ -2249,7 +2147,6 @@ This metric is no longer used and will soon be deprecated.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:total_bytes_indexed* +
@@ -2266,7 +2163,6 @@ This statistic appears on the Server Web Console dashboard as **Search Index Rat
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:total_bytes_query_results* +
@@ -2285,7 +2181,6 @@ This statistic appears on the Server Web Console dashboard as **Search Result Ra
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:total_compaction_written_bytes* +
 _optional_
@@ -2301,7 +2196,6 @@ This statistic appears on the Server Web Console dashboard as **Search Compactio
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:total_grpc_internal_queries* +
@@ -2321,7 +2215,6 @@ The coordinating node applies filters to the results from all Search index parti
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:total_grpc_queries* +
 _optional_
@@ -2335,7 +2228,6 @@ The total number of queries, using gRPC for streaming, for the given Search inde
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:total_grpc_queries_error* +
@@ -2351,7 +2243,6 @@ The total number of queries that resulted in an error that used gRPC for streami
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:total_grpc_queries_slow* +
 _optional_
@@ -2366,7 +2257,6 @@ The total number of queries added to the slow query log that used gRPC for strea
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:total_grpc_queries_timeout* +
 _optional_
@@ -2380,7 +2270,6 @@ The total number of queries that timed out that used gRPC for streaming on the g
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:total_grpc_request_time* +
@@ -2400,7 +2289,6 @@ The coordinating node applies filters to the results from all Search index parti
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:total_internal_queries* +
 _optional_
@@ -2419,7 +2307,6 @@ The coordinating node applies filters to the results from all Search index parti
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:total_knn_searches* +
 _optional_
@@ -2434,7 +2321,6 @@ The total number of [Vector Search](https://docs.couchbase.com/server/7.6/vector
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:total_queries* +
 _optional_
@@ -2448,7 +2334,6 @@ The total number of Search queries per second on the given Search index.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:total_queries_error* +
@@ -2465,7 +2350,6 @@ This statistic appears on the Server Web Console dashboard as **Search Query Err
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:total_queries_slow* +
@@ -2485,7 +2369,6 @@ This statistic appears on the Server Web Console dashboard as **Search Slow Quer
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:total_queries_timeout* +
 _optional_
@@ -2502,7 +2385,6 @@ This statistic appears on the Server Web Console dashboard as **Search Query Tim
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:total_request_time* +
 _optional_
@@ -2516,7 +2398,6 @@ The total time, in nanoseconds, spent processing Search query requests for the g
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:total_term_searchers* +
@@ -2539,7 +2420,6 @@ This statistic appears on the Server Web Console dashboard as **Term Searchers S
 {blank}
 a¦ Integer
 
-
 a¦ 
 *BUCKET:INDEX:total_term_searchers_finished* +
 _optional_
@@ -2553,7 +2433,6 @@ The total number of term searchers on the given Search index that have finished 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *BUCKET:INDEX:total_vectors* +
@@ -2571,11 +2450,9 @@ If there are no vectors inside the Search index, the REST API does not return th
 {blank}
 a¦ Integer
 
-
 |===
 
 //end::indexStats[]
-
 
 
 
@@ -2595,7 +2472,6 @@ a¦ Integer
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
-
 
 
 // markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
