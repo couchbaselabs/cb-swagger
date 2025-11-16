@@ -5,6 +5,7 @@ tasks.register('getExamples') {
     ant.property(name: "srcUrl",
                 value: "https://raw.githubusercontent.com/couchbase/query/refs/heads/trinity/docs/spec/functions/examples")
     ant.echo("Fetching from ${ant.srcUrl}")
+    ant.get(dest: "examples", ignoreerrors: "true") {
       ant.url(url: "${ant.srcUrl}/delete_library_global.sh")
       ant.url(url: "${ant.srcUrl}/delete_library_scope.sh")
       ant.url(url: "${ant.srcUrl}/get_collection_all.sh")

@@ -5,7 +5,7 @@ tasks.register('getExamples') {
     ant.property(name: "srcUrl",
                 value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/trinity/docs/spec/manage/examples")
     ant.echo("Fetching from ${ant.srcUrl}")
-    ant.get(dest: "examples") {
+    ant.get(dest: "examples", ignoreerrors: "true") {
       ant.url(url: "${ant.srcUrl}/file-xfer-200.json")
       ant.url(url: "${ant.srcUrl}/file-xfer-405.json")
       ant.url(url: "${ant.srcUrl}/file-xfer-disable.sh")

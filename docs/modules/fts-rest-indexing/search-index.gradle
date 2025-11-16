@@ -5,7 +5,7 @@ tasks.register('getExamples') {
     ant.property(name: "srcUrl",
                 value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/trinity/docs/spec/index/examples")
     ant.echo("Fetching from ${ant.srcUrl}")
-    ant.get(dest: "examples") {
+    ant.get(dest: "examples", ignoreerrors: "true") {
       ant.url(url: "${ant.srcUrl}/d-api-index-name-200.json")
       ant.url(url: "${ant.srcUrl}/d-api-index-name-default.json")
       ant.url(url: "${ant.srcUrl}/d-api-scoped-index-name-200.json")

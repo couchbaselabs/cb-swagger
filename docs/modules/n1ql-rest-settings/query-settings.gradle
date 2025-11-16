@@ -5,6 +5,7 @@ tasks.register('getExamples') {
     ant.property(name: "srcUrl",
                 value: "https://raw.githubusercontent.com/couchbase/query/refs/heads/trinity/docs/spec/settings/examples")
     ant.echo("Fetching from ${ant.srcUrl}")
+    ant.get(dest: "examples", ignoreerrors: "true") {
       ant.url(url: "${ant.srcUrl}/query-settings-get-access.jsonc")
       ant.url(url: "${ant.srcUrl}/query-settings-get-access.sh")
       ant.url(url: "${ant.srcUrl}/query-settings-get-settings.jsonc")
