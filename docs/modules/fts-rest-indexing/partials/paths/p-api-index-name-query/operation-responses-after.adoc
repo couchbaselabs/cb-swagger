@@ -11,8 +11,8 @@ This section explains how this affects the query behavior and how to handle the 
 This will start whenever the first phase completes.
 At this point, request will return 200 HTTP response code unless there is an internal server error.
 
-* Client must check response status, which will return any errors or timeouts for each pindex.
+* The client must check response status, which returns any errors or timeouts for each pindex.
 If the response includes the number of errors, and the client can determine whether they need the complete results or can continue as long as enough pindexes return to give a reasonable user experience.
-Note that the query return status will be 200 even if all pindexes return errors so it's critical to check the response status and code accordingly.
+The query return status is 200 even if all pindexes return errors, so it's critical to check the response status and code accordingly.
 
-* If client sets timeout very low, e.g. 1ms, you may receive a 200 error with all timeouts instead of a consistency wait timeout.
+* If the client sets timeout low, for example 1{nbsp}ms, you may receive a 200 error with all timeouts instead of a consistency wait timeout.

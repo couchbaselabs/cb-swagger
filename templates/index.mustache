@@ -73,8 +73,10 @@ a| [markdown]
 [%hardbreaks]
 {{! enumerated values}}
 {{#enumValues}}{{#-first}}*Values:* {{/-first}}{{^-last}}`{{this}}`, {{/-last}}{{#-last}}`{{this}}`{{/-last}}{{/enumValues}}
-{{! example }}
+{{! default value if no enumerated values }}
+{{^enumValues}}
 {{#value}}*Example:* `+++{{this}}+++`{{/value}}
+{{/enumValues}}
 // end
 
 {{#-last}}

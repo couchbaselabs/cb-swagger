@@ -57,7 +57,6 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -79,7 +78,6 @@ The Eventing Service REST port. Use `18096` for secure access.
 
 [%hardbreaks]
 *Values:* `8096`, `18096`
-*Example:* `+++8096+++`
 // end
 
 |===
@@ -226,8 +224,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#basic_deploy-query]
@@ -254,8 +250,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -272,8 +266,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 |===
 
 
@@ -283,7 +275,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/basic_deploy/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -460,8 +451,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#basic_pause-query]
@@ -488,8 +477,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -506,8 +493,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 |===
 
 
@@ -517,7 +502,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/basic_pause/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -694,8 +678,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#basic_resume-query]
@@ -722,8 +704,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -740,8 +720,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 |===
 
 
@@ -751,7 +729,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/basic_resume/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -934,8 +911,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#basic_undeploy-query]
@@ -962,8 +937,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -980,8 +953,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 |===
 
 
@@ -991,7 +962,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/basic_undeploy/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -1205,8 +1175,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#adv_function_import-query]
@@ -1233,8 +1201,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -1250,8 +1216,6 @@ The scope to which the function belongs.
 {blank}
 
 a¦ String
-
-
 
 |===
 
@@ -1280,15 +1244,12 @@ A single function definition object, or an array containing a single function de
 
 a¦ xref:AddFunction[]
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/adv_function_import/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -1422,7 +1383,7 @@ POST /api/v1/functions
 --
 Creates or imports multiple functions.
 
-Note that if any function's `language_compatibility` field is missing, the value will be set to the highest version supported by the server, unlike [Import Multiple Functions](#adv_multiple_import).
+If any function's `language_compatibility` field is missing, the value will be set to the highest version supported by the server, unlike [Import Multiple Functions](#adv_multiple_import).
 --
 
 
@@ -1479,15 +1440,12 @@ A single function definition object, or an array containing one or more function
 
 a¦ xref:AddFunctions[]
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/adv_function_import_all/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -1673,8 +1631,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#adv_function_view-query]
@@ -1701,8 +1657,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -1719,8 +1673,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 |===
 
 
@@ -1730,7 +1682,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/adv_function_view/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -1759,7 +1710,6 @@ a| [markdown]
 Returns a single function definition object.
 --
 a| xref:handler_schema[]
-
 
 | 404
 a| [markdown]
@@ -1889,7 +1839,6 @@ If this API is run as a non-Administrator, the results are filtered via RBAC to 
 
 
 // markup not found, no include::{specDir}paths/adv_function_view_all/operation-parameters-before.adoc[opts=optional]
-
 
 
 
@@ -2025,7 +1974,7 @@ DELETE /api/v1/functions/{function}
 --
 Deletes a specific function from the cluster.
 
-WARNING: Use this API with caution, as it is irreversible.
+Use this API with caution, as it's irreversible.
 --
 
 
@@ -2075,8 +2024,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#adv_function_zap-query]
@@ -2103,8 +2050,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -2121,8 +2066,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 |===
 
 
@@ -2132,7 +2075,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/adv_function_zap/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -2265,7 +2207,7 @@ DELETE /api/v1/functions
 [markdown]
 --
 Deletes **all functions** from the cluster.
-WARNING: Use this API with caution, as it is irreversible.
+Use this API with caution, as it's irreversible.
 
 If this API is run as a non-Administrator the deleted set will be filtered via RBAC to include only the function scopes the user has access to.
 --
@@ -2284,7 +2226,6 @@ If this API is run as a non-Administrator the deleted set will be filtered via R
 
 
 // markup not found, no include::{specDir}paths/adv_function_zap_all/operation-parameters-before.adoc[opts=optional]
-
 
 
 
@@ -2446,7 +2387,6 @@ If this API is run as a non-Administrator the results are filtered via RBAC to i
 
 
 
-
 // markup not found, no include::{specDir}paths/adv_multiple_export/operation-parameters-after.adoc[opts=optional]
 
 
@@ -2577,7 +2517,7 @@ POST /api/v1/import
 --
 Imports multiple functions.
 
-Note that if any function's `language_compatibility` field is missing, the value will be set to 6.0.0, unlike [Create or Import Multiple Functions](#adv_function_import_all).
+If any function's `language_compatibility` field is missing, the value will be set to 6.0.0, unlike [Create or Import Multiple Functions](#adv_function_import_all).
 --
 
 
@@ -2634,15 +2574,12 @@ A single function definition object, or an array containing one or more function
 
 a¦ xref:AddFunctions[]
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/adv_multiple_import/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -2827,8 +2764,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#adv_settings_get-query]
@@ -2855,8 +2790,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -2873,8 +2806,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 |===
 
 
@@ -2884,7 +2815,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/adv_settings_get/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -2913,7 +2843,6 @@ a| [markdown]
 Returns an object showing settings for the specified function.
 --
 a| xref:settings_schema[]
-
 
 | 404
 a| [markdown]
@@ -3023,7 +2952,7 @@ You can only alter settings when the function is paused or undeployed; attemptin
 During an edit, settings provided are merged.
 Unspecified attributes retain their prior values.
 
-Note that you must always specify `deployment_status` and `processing_status` when using this REST endpoint to update any option or set of options.
+You must always specify `deployment_status` and `processing_status` when using this REST endpoint to update any option or set of options.
 To get the current values of `deployment_status` and `processing_status`, see [View All Functions Status](#status_all) or [View Function Status](#status_function).
 
 By adjusting `deployment_status` and `processing_status` this command can also deploy or resume a function; however, it cannot pause or undeploy a function.
@@ -3079,8 +3008,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#adv_settings_update-query]
@@ -3107,8 +3034,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -3124,8 +3049,6 @@ The scope to which the function belongs.
 {blank}
 
 a¦ String
-
-
 
 |===
 
@@ -3154,15 +3077,12 @@ An object providing settings for the specified function.
 
 a¦ xref:Function Settings[]
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/adv_settings_update/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -3349,8 +3269,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#adv_structure_get-query]
@@ -3377,8 +3295,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -3395,8 +3311,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 |===
 
 
@@ -3406,7 +3320,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/adv_structure_get/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -3435,7 +3348,6 @@ a| [markdown]
 Returns an object showing the configuration of the specified function.
 --
 a| xref:depcfg_schema[]
-
 
 | 404
 a| [markdown]
@@ -3594,8 +3506,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#adv_structure_update-query]
@@ -3622,8 +3532,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -3639,8 +3547,6 @@ The scope to which the function belongs.
 {blank}
 
 a¦ String
-
-
 
 |===
 
@@ -3669,15 +3575,12 @@ An object providing the configuration for the specified function.
 
 a¦ xref:Deployment Config[]
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/adv_structure_update/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -3810,7 +3713,7 @@ GET /api/v1/functions/{function}/appcode
 [markdown]
 --
 Export only the JavaScript code for the specified function.
-Note that unlike [View a Function](#adv_function_view), the JavaScript is not escaped, and the code is runnable in other environments.
+Unlike [View a Function](#adv_function_view), the JavaScript is not escaped, and the code is runnable in other environments.
 The JavaScript code can be subsequently imported.
 However any changes to the function definition made to the file outside the UI are discouraged.
 --
@@ -3865,8 +3768,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#adv_text_get-query]
@@ -3893,8 +3794,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -3911,8 +3810,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 |===
 
 
@@ -3922,7 +3819,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/adv_text_get/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -3951,7 +3847,6 @@ a| [markdown]
 Returns a string showing the code for the specified function.
 --
 a| String
-
 
 | 404
 a| [markdown]
@@ -4057,7 +3952,7 @@ POST /api/v1/functions/{function}/appcode
 [markdown]
 --
 Import only the JavaScript code for the specified function.
-Note that unlike [Create or Import Function](#adv_function_import), the JavaScript is not escaped and could come from other environments.
+Unlike [Create or Import Function](#adv_function_import), the JavaScript is not escaped and could come from other environments.
 It is highly recommended that you use the flag `--data-binary` or `--upload-file` when importing your JavaScript appcode fragments to avoid potential encoding issues due to string escaping.
 --
 
@@ -4111,8 +4006,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#adv_text_update-query]
@@ -4139,8 +4032,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -4156,8 +4047,6 @@ The scope to which the function belongs.
 {blank}
 
 a¦ String
-
-
 
 |===
 
@@ -4186,15 +4075,12 @@ A string providing the code for the specified function.
 
 a¦ String
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/adv_text_update/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -4369,7 +4255,6 @@ If this API is run as a non-Administrator the results are filtered via RBAC to i
 
 
 // markup not found, no include::{specDir}paths/list_all/operation-parameters-before.adoc[opts=optional]
-
 
 
 
@@ -4560,8 +4445,6 @@ If `false`, returns the names of all undeployed functions.
 
 a¦ Boolean
 
-
-
 a¦ *source_bucket* +
 _optional_
 a¦ 
@@ -4577,8 +4460,6 @@ Returns the names of Eventing functions in the cluster that have a source keyspa
 {blank}
 
 a¦ String
-
-
 
 a¦ *function_type* +
 _optional_
@@ -4599,8 +4480,6 @@ The function type.
 
 a¦ String
 
-
-
 |===
 
 
@@ -4610,7 +4489,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/list_query/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -4813,8 +4691,6 @@ The name of a function.
 
 a¦ String
 
-
-
 a¦ *bucket* +
 _optional_
 a¦ 
@@ -4831,8 +4707,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -4848,8 +4722,6 @@ The scope to which the function belongs.
 {blank}
 
 a¦ String
-
-
 
 a¦ *aggregate* +
 _optional_
@@ -4868,8 +4740,6 @@ If `true`, the API accesses all Eventing nodes.
 
 a¦ Boolean
 
-
-
 a¦ *size* +
 _optional_
 a¦ 
@@ -4878,7 +4748,7 @@ a¦
 [markdown]
 --
 The approximate amount of logging information returned.
-Note that when fetching from more than one Eventing node, the amount of logging information returned from each node is the `size` divided by the number of nodes.
+When fetching from more than one Eventing node, the amount of logging information returned from each node is the `size` divided by the number of nodes.
 --
 
 [%hardbreaks]
@@ -4886,8 +4756,6 @@ Note that when fetching from more than one Eventing node, the amount of logging 
 {blank}
 
 a¦ Integer
-
-
 
 |===
 
@@ -4898,7 +4766,6 @@ a¦ Integer
 // markup not found, no include::{specDir}paths/log_view/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -5117,8 +4984,6 @@ The bucket to which the configuration settings apply.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -5135,8 +5000,6 @@ The scope to which the configuration settings apply.
 
 a¦ String
 
-
-
 |===
 
 
@@ -5146,7 +5009,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/config_get/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -5175,7 +5037,6 @@ a| [markdown]
 Returns an object showing the service configuration settings.
 --
 a| xref:UnivConfig[]
-
 
 | 404
 a| [markdown]
@@ -5347,8 +5208,6 @@ The bucket to which the configuration settings apply.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -5364,8 +5223,6 @@ The scope to which the configuration settings apply.
 {blank}
 
 a¦ String
-
-
 
 |===
 
@@ -5394,15 +5251,12 @@ An object providing the service configuration settings.
 
 a¦ xref:UnivConfig[]
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/config_update/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -5617,8 +5471,6 @@ Omitting this parameter excludes `dcp_event_backlog_per_vb`, `doc_timer_debug_st
 
 a¦ String
 
-
-
 |===
 
 
@@ -5628,7 +5480,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/stats_all/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -5810,8 +5661,6 @@ The name of a function.
 
 a¦ String
 
-
-
 a¦ *bucket* +
 _optional_
 a¦ 
@@ -5827,8 +5676,6 @@ The bucket to which the function belongs.
 {blank}
 
 a¦ String
-
-
 
 a¦ *scope* +
 _optional_
@@ -5846,8 +5693,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 |===
 
 
@@ -5857,7 +5702,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/stats_execution/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -6041,8 +5885,6 @@ The name of a function.
 
 a¦ String
 
-
-
 a¦ *bucket* +
 _optional_
 a¦ 
@@ -6058,8 +5900,6 @@ The bucket to which the function belongs.
 {blank}
 
 a¦ String
-
-
 
 a¦ *scope* +
 _optional_
@@ -6077,8 +5917,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 |===
 
 
@@ -6088,7 +5926,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/stats_failure/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -6272,8 +6109,6 @@ The name of a function.
 
 a¦ String
 
-
-
 a¦ *bucket* +
 _optional_
 a¦ 
@@ -6289,8 +6124,6 @@ The bucket to which the function belongs.
 {blank}
 
 a¦ String
-
-
 
 a¦ *scope* +
 _optional_
@@ -6308,8 +6141,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 |===
 
 
@@ -6319,7 +6150,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/stats_latency/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -6503,8 +6333,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -6521,8 +6349,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *appName* +
 _required_
 a¦ 
@@ -6538,8 +6364,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 
@@ -6549,7 +6373,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/stats_reset/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -6706,7 +6529,7 @@ GET /api/v1/status
 --
 Returns a list (array) of all eventing functions, showing their corresponding `composite_status`.
 A function's status can have one of the following values: undeployed, deploying, deployed, undeploying, paused, and pausing.
-Note that there is no value of resuming; when resuming a paused eventing function, the `composite_status` returns `deploying` until it reaches the deployed state.
+There's no value of resuming; when resuming a paused eventing function, the `composite_status` returns `deploying` until it reaches the deployed state.
 
 If this API is run as a non-Administrator, the results are filtered via RBAC to include only the function scopes the user has access to.
 --
@@ -6725,7 +6548,6 @@ If this API is run as a non-Administrator, the results are filtered via RBAC to 
 
 
 // markup not found, no include::{specDir}paths/status_all/operation-parameters-before.adoc[opts=optional]
-
 
 
 
@@ -6859,7 +6681,7 @@ GET /api/v1/status/{function}
 --
 Returns the specified function, showing its corresponding `composite_status`.
 It can have one of the following values: undeployed, deploying, deployed, undeploying, paused, and pausing.
-Note that there is no value of resuming; when resuming a paused eventing function, the `composite_status` returns `deploying` until it reaches the deployed state.
+There's no value of resuming; when resuming a paused eventing function, the `composite_status` returns `deploying` until it reaches the deployed state.
 --
 
 
@@ -6909,8 +6731,6 @@ The name of a function.
 
 a¦ String
 
-
-
 |===
 
 [#status_function-query]
@@ -6937,8 +6757,6 @@ The bucket to which the function belongs.
 
 a¦ String
 
-
-
 a¦ *scope* +
 _optional_
 a¦ 
@@ -6955,8 +6773,6 @@ The scope to which the function belongs.
 
 a¦ String
 
-
-
 |===
 
 
@@ -6966,7 +6782,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/status_function/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -7150,7 +6965,6 @@ include::index.adoc[tag=desc-handler_schema, opts=optional]
 {blank}
 a¦ xref:handler_schema[]
 
-
 a¦ _or_
 a¦ 
 
@@ -7216,7 +7030,6 @@ include::index.adoc[tag=desc-handler_schema, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:handler_schema[]
-
 
 a¦ _or_
 a¦ 
@@ -7319,7 +7132,6 @@ bucket to store eventing checkpoints and timers
 {blank}
 a¦ String
 
-
 a¦ 
 *metadata_scope* +
 _optional_
@@ -7334,7 +7146,6 @@ scope to store eventing checkpoints and timers
 {blank}
 a¦ String
 
-
 a¦ 
 *metadata_collection* +
 _optional_
@@ -7348,7 +7159,6 @@ collection to store eventing checkpoints and timers
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *source_bucket* +
@@ -7365,7 +7175,6 @@ bucket to listen to for document mutations
 {blank}
 a¦ String
 
-
 a¦ 
 *source_scope* +
 _optional_
@@ -7380,7 +7189,6 @@ scope to listen to for document mutations
 {blank}
 a¦ String
 
-
 a¦ 
 *source_collection* +
 _optional_
@@ -7394,7 +7202,6 @@ collection to listen to for document mutations
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *constants* +
@@ -7413,7 +7220,6 @@ a¦ xref:depcfg_schema_constants_inner[]
 |===
 
 //end::depcfg_schema[]
-
 
 
 
@@ -7468,7 +7274,6 @@ alias name of the constant binding
 {blank}
 a¦ String
 
-
 a¦ 
 *literal* +
 _required_
@@ -7484,11 +7289,9 @@ literal value bound to the alias name
 {blank}
 a¦ String
 
-
 |===
 
 //end::depcfg_schema_constants_inner[]
-
 
 
 
@@ -7543,7 +7346,6 @@ symbolic name used in code to refer to this binding
 {blank}
 a¦ String
 
-
 a¦ 
 *bucket_name* +
 _required_
@@ -7559,7 +7361,6 @@ name of the bucket this binding maps to
 {blank}
 a¦ String
 
-
 a¦ 
 *scope_name* +
 _optional_
@@ -7574,7 +7375,6 @@ name of the scope this binding maps to
 {blank}
 a¦ String
 
-
 a¦ 
 *collection_name* +
 _optional_
@@ -7588,7 +7388,6 @@ name of the collection this binding maps to
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *access* +
@@ -7605,11 +7404,9 @@ bucket access level (read or read+write)
 {blank}
 a¦ String
 
-
 |===
 
 //end::depcfg_schema_buckets_inner[]
-
 
 
 
@@ -7663,7 +7460,6 @@ full URL (including any path) that this binding connects
 {blank}
 a¦ URI (uri)
 
-
 a¦ 
 *value* +
 _required_
@@ -7681,7 +7477,6 @@ symbolic name used in code to refer to this binding
 {blank}
 a¦ String
 
-
 a¦ 
 *auth_type* +
 _required_
@@ -7697,7 +7492,6 @@ http authentication method to use with this endpoint
 {blank}
 a¦ String
 
-
 a¦ 
 *username* +
 _optional_
@@ -7711,7 +7505,6 @@ username for http auth methods that use it
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *password* +
@@ -7727,7 +7520,6 @@ password for http auth methods that use it
 {blank}
 a¦ String
 
-
 a¦ 
 *bearer_key* +
 _optional_
@@ -7741,7 +7533,6 @@ bearer key for bearer auth
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *allow_cookies* +
@@ -7757,7 +7548,6 @@ allow cookies on the session
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *validate_ssl_certificate* +
 _required_
@@ -7772,11 +7562,9 @@ validate remote server certificate using OS mechanisms
 {blank}
 a¦ Boolean
 
-
 |===
 
 //end::depcfg_schema_curl_inner[]
-
 
 
 
@@ -7834,7 +7622,6 @@ handler code
 {blank}
 a¦ String
 
-
 a¦ 
 *depcfg* +
 _required_
@@ -7848,7 +7635,6 @@ include::index.adoc[tag=desc-depcfg_schema, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:depcfg_schema[]
-
 
 a¦ 
 *version* +
@@ -7865,7 +7651,6 @@ authoring tool. use 'external' if authored or edited outside eventing ui
 {blank}
 a¦ String
 
-
 a¦ 
 *enforce_schema* +
 _optional_
@@ -7879,7 +7664,6 @@ enforces stricter validation for all settings and configuration fields.
 [%hardbreaks]
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *handleruuid* +
@@ -7896,7 +7680,6 @@ unique id of the the handler. generated by server
 {blank}
 a¦ Integer
 
-
 a¦ 
 *function_instance_id* +
 _optional_
@@ -7911,7 +7694,6 @@ unique id of the deployment of the handler. generated by server
 *Minimum length:* `0`
 {blank}
 a¦ String
-
 
 a¦ 
 *appname* +
@@ -7929,7 +7711,6 @@ a¦
 {blank}
 a¦ String
 
-
 a¦ 
 *settings* +
 _required_
@@ -7943,7 +7724,6 @@ include::index.adoc[tag=desc-settings_schema, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:settings_schema[]
-
 
 a¦ 
 *function_scope* +
@@ -7959,11 +7739,9 @@ include::index.adoc[tag=desc-function_scope_schema, opts=optional]
 {blank}
 a¦ xref:function_scope_schema[]
 
-
 |===
 
 //end::handler_schema[]
-
 
 
 
@@ -8021,7 +7799,6 @@ bucket to which function belongs
 {blank}
 a¦ String
 
-
 a¦ 
 *scope* +
 _required_
@@ -8037,11 +7814,9 @@ scope to which function belongs
 {blank}
 a¦ String
 
-
 |===
 
 //end::function_scope_schema[]
-
 
 
 
@@ -8094,7 +7869,6 @@ number of threads each worker utilizes
 {blank}
 a¦ Integer
 
-
 a¦ 
 *dcp_stream_boundary* +
 _optional_
@@ -8110,7 +7884,6 @@ indicates where to start dcp stream from (beginning of time, present point) 'fro
 {blank}
 a¦ String
 
-
 a¦ 
 *deployment_status* +
 _optional_
@@ -8125,7 +7898,6 @@ indicates if the function is deployed. true=deployed, false=undeployed
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *description* +
 _optional_
@@ -8139,7 +7911,6 @@ free form text for user to describe the handler. no functional role
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *execution_timeout* +
@@ -8156,7 +7927,6 @@ maximum time the handler can run before it is forcefully terminated (in seconds)
 {blank}
 a¦ Integer
 
-
 a¦ 
 *cursor_checkpoint_timeout* +
 _optional_
@@ -8164,14 +7934,13 @@ a¦
 
 [markdown]
 --
-The maximum time the checkpoint writer can run before it is forcefully terminated (in seconds).
+The maximum time the checkpoint writer can run before it's forcefully terminated (in seconds).
 --
 
 [%hardbreaks]
 *Minimum:* `1`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *on_deploy_timeout* +
@@ -8188,7 +7957,6 @@ maximum time the OnDeploy handler can run before it is terminated (in seconds)
 {blank}
 a¦ Integer
 
-
 a¦ 
 *language_compatibility* +
 _optional_
@@ -8203,7 +7971,6 @@ eventing language version this handler assumes in terms of syntax and behavior
 *Values:* `"6.6.2"`, `"6.0.0"`, `"6.5.0"`, `"7.2.0"`
 {blank}
 a¦ String
-
 
 a¦ 
 *lcb_inst_capacity* +
@@ -8220,7 +7987,6 @@ maximum number of libcouchbase connections that may be opened and pooled
 {blank}
 a¦ Integer
 
-
 a¦ 
 *lcb_retry_count* +
 _optional_
@@ -8235,7 +8001,6 @@ number of retries of retriable libcouchbase failures. 0 keeps trying till execut
 *Minimum:* `0`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *lcb_timeout* +
@@ -8252,7 +8017,6 @@ maximum time the lcb command is waited until completion before we terminate the 
 {blank}
 a¦ Integer
 
-
 a¦ 
 *log_level* +
 _optional_
@@ -8267,7 +8031,6 @@ level of detail in system logging
 *Values:* `"INFO"`, `"ERROR"`, `"WARNING"`, `"DEBUG"`, `"TRACE"`
 {blank}
 a¦ String
-
 
 a¦ 
 *n1ql_consistency* +
@@ -8284,7 +8047,6 @@ consistency level used by n1ql statements in the handler
 {blank}
 a¦ String
 
-
 a¦ 
 *num_timer_partitions* +
 _optional_
@@ -8300,7 +8062,6 @@ number of timer shards. defaults to number of vbuckets
 {blank}
 a¦ Integer
 
-
 a¦ 
 *processing_status* +
 _optional_
@@ -8314,7 +8075,6 @@ indicates if the function is running (i.e., not paused). true=running, false=pau
 [%hardbreaks]
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *sock_batch_size* +
@@ -8331,7 +8091,6 @@ batch size for messages from producer to consumer. normally, this must not be sp
 {blank}
 a¦ Integer
 
-
 a¦ 
 *tick_duration* +
 _optional_
@@ -8345,7 +8104,6 @@ duration to log stats from this handler, in milliseconds
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *timer_context_size* +
@@ -8363,7 +8121,6 @@ size limit of timer context object
 {blank}
 a¦ Integer
 
-
 a¦ 
 *user_prefix* +
 _optional_
@@ -8378,7 +8135,6 @@ key prefix for all data stored in metadata by this handler
 *Minimum length:* `1`
 {blank}
 a¦ String
-
 
 a¦ 
 *worker_count* +
@@ -8395,7 +8151,6 @@ number of worker processes handler utilizes on each eventing node
 {blank}
 a¦ Integer
 
-
 a¦ 
 *n1ql_prepare_all* +
 _optional_
@@ -8409,7 +8164,6 @@ automatically prepare all n1ql statements in the handler
 [%hardbreaks]
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *handler_headers* +
@@ -8455,7 +8209,6 @@ enable rotating this handlers log() message files
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *app_log_dir* +
 _optional_
@@ -8469,7 +8222,6 @@ directory to write content of log() message files
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *app_log_max_size* +
@@ -8486,7 +8238,6 @@ rotate logs when file grows to this size in bytes approximately
 {blank}
 a¦ Integer
 
-
 a¦ 
 *app_log_max_files* +
 _optional_
@@ -8501,7 +8252,6 @@ number of log() message files to retain when rotating
 *Minimum:* `1`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *checkpoint_interval* +
@@ -8518,7 +8268,6 @@ number of seconds before writing a progress checkpoint
 {blank}
 a¦ Integer
 
-
 a¦ 
 *bucket_cache_size* +
 _optional_
@@ -8533,7 +8282,6 @@ maximum size in bytes the bucket cache can grow to
 *Minimum:* `20971520`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *bucket_cache_age* +
@@ -8550,7 +8298,6 @@ time in milliseconds after which a cached bucket object is considered stale
 {blank}
 a¦ Integer
 
-
 a¦ 
 *curl_max_allowed_resp_size* +
 _optional_
@@ -8565,7 +8312,6 @@ maximum allowable curl call response in 'MegaBytes'. Setting the value to 0 lift
 {blank}
 a¦ Integer
 
-
 a¦ 
 *allow_transaction_mutations* +
 _optional_
@@ -8579,7 +8325,6 @@ allow staged transaction mutations
 [%hardbreaks]
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *allow_sync_documents* +
@@ -8596,13 +8341,12 @@ Specifies whether the function allows Sync Gateway mutations.
 This enables the function to work with Sync Gateway.
 
 You must ensure that none of the documents which contain your own working data have IDs which are prefixed with `_sync`.
-(Note that internal Sync Gateway attachment documents, whose IDs are prefixed with `_sync:att`, are still processed by the specified function.)
+(Internal Sync Gateway attachment documents, whose IDs are prefixed with `_sync:att`, are still processed by the specified function.)
 --
 
 [%hardbreaks]
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *cursor_aware* +
@@ -8615,13 +8359,12 @@ Specifies whether the function suppresses potential duplicate mutations caused b
 
 Enabling this setting guarantees that the Eventing function will only trigger once for any given mutation received from App Services or Sync Gateway.
 
-Note that enabling this setting may have a noticeable impact on the performance of the Eventing function.
+Enabling this setting may have a noticeable effect on the performance of the Eventing function.
 --
 
 [%hardbreaks]
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *high_seq_check_interval* +
@@ -8637,7 +8380,6 @@ number of milliseconds before checking for high seq number
 {blank}
 a¦ Integer
 
-
 a¦ 
 *max_unacked_bytes* +
 _optional_
@@ -8651,7 +8393,6 @@ max MBs to wait to send more bytes to c++ side
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *max_unacked_count* +
@@ -8667,7 +8408,6 @@ max number of messages on c++ side
 {blank}
 a¦ Integer
 
-
 a¦ 
 *message_flush_time* +
 _optional_
@@ -8681,7 +8421,6 @@ number of milliseconds before sending message to c++ side
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *max_parallel_vb* +
@@ -8697,11 +8436,9 @@ number of parallel vb request per cpp thread
 {blank}
 a¦ Integer
 
-
 |===
 
 //end::settings_schema[]
-
 
 
 
@@ -8757,7 +8494,6 @@ This setting is only available globally.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *enable_curl* +
 _optional_
@@ -8774,7 +8510,6 @@ This setting is available globally or at the function scope level.
 [%hardbreaks]
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *enable_debugger* +
@@ -8794,7 +8529,6 @@ This setting is available globally or at the function scope level.
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *cursor_limit* +
 _optional_
@@ -8807,7 +8541,7 @@ The maximum number of cursor-aware Eventing functions that can coexist on a give
 
 Increasing this setting enables more cursor-aware Eventing functions to register and listen to any given collection.
 
-Decreasing this setting prevents further cursor-aware Eventing functions from being registered on any given collection; however, it doesn't unregister already registered cursor-aware Eventing functions.
+Decreasing this setting prevents further cursor-aware Eventing functions from being registered on any given collection; however, it does not unregister already registered cursor-aware Eventing functions.
 
 This setting is only available globally.
 --
@@ -8818,7 +8552,6 @@ This setting is only available globally.
 *Maximum:* `20`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *num_nodes_running* +
@@ -8841,11 +8574,9 @@ This setting is available globally or at the function scope level.
 {blank}
 a¦ Integer
 
-
 |===
 
 //end::UnivConfig[]
-
 
 
 
@@ -8865,7 +8596,6 @@ a¦ Integer
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
-
 
 
 // markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
@@ -8898,7 +8628,7 @@ Global functions and service configuration settings with a function scope of ``*
 For global functions and service configuration settings, you do not need to pass the `bucket` and `scope` query parameters to specify the function scope.
 The credentials must be an administrator username and password.
 
-Note that this is the default function scope for all functions after an upgrade from a prior version.
+This is the default function scope for all functions after an upgrade from a prior version.
 --
 
 [%hardbreaks]

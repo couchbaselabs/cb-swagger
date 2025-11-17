@@ -1,5 +1,23 @@
 apply plugin: 'org.openapi.generator'
 
+tasks.register('getExamples') {
+  doLast {
+    ant.property(name: "srcUrl",
+                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/query/examples")
+    ant.echo("Fetching from ${ant.srcUrl}")
+    ant.get(dest: "examples", ignoreerrors: "true") {
+      ant.url(url: "${ant.srcUrl}/api-query-all.json")
+      ant.url(url: "${ant.srcUrl}/api-query-all.sh")
+      ant.url(url: "${ant.srcUrl}/api-query-cancel.json")
+      ant.url(url: "${ant.srcUrl}/api-query-cancel.sh")
+      ant.url(url: "${ant.srcUrl}/api-query-filter.json")
+      ant.url(url: "${ant.srcUrl}/api-query-filter.sh")
+      ant.url(url: "${ant.srcUrl}/api-query-index.json")
+      ant.url(url: "${ant.srcUrl}/api-query-index.sh")
+    }
+  }
+}
+
 openApiGenerate {
     generatorName = "asciidoc"
     remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/query/query.yaml"
@@ -21,3 +39,5 @@ openApiGenerate {
     ]
     generateAliasAsModel = true
 }
+
+tasks.openApiGenerate.dependsOn(getExamples)

@@ -59,7 +59,6 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -81,7 +80,6 @@ The Analytics Service REST port. Use `18095` for secure access.
 
 [%hardbreaks]
 *Values:* `8095`, `18095`
-*Example:* `+++8095+++`
 // end
 
 |===
@@ -234,8 +232,6 @@ Identifier passed by the client that is used to identify an active request to be
 
 a¦ String
 
-
-
 |===
 
 
@@ -243,7 +239,6 @@ a¦ String
 // markup not found, no include::{specDir}paths/cancel_request/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -284,7 +279,6 @@ a| [markdown]
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/8.0/analytics/error-codes.html). 
 --
 a| Object
-
 
 | 404
 a| [markdown]
@@ -412,7 +406,6 @@ Shows various details about the current status of the Analytics Service, such as
 
 
 
-
 // markup not found, no include::{specDir}paths/cluster_status/operation-parameters-after.adoc[opts=optional]
 
 
@@ -439,14 +432,12 @@ Success. Returns an object giving the current status of the Analytics Service.
 --
 a| xref:Status[]
 
-
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/8.0/analytics/error-codes.html). 
 --
 a| Object
-
 
 | 404
 a| [markdown]
@@ -574,7 +565,6 @@ Gets a list of all completed analytic requests.
 
 
 
-
 // markup not found, no include::{specDir}paths/completed_requests/operation-parameters-after.adoc[opts=optional]
 
 
@@ -608,7 +598,6 @@ a| [markdown]
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/8.0/analytics/error-codes.html). 
 --
 a| Object
-
 
 | 404
 a| [markdown]
@@ -736,7 +725,6 @@ Shows the progress of ingestion by the Analytics service, for each Analytics col
 
 
 
-
 // markup not found, no include::{specDir}paths/ingestion_status/operation-parameters-after.adoc[opts=optional]
 
 
@@ -763,14 +751,12 @@ Success. Returns an object giving the ingestion status of each Analytics collect
 --
 a| xref:Ingestion[]
 
-
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/8.0/analytics/error-codes.html). 
 --
 a| Object
-
 
 | 404
 a| [markdown]
@@ -902,7 +888,6 @@ NOTE: This endpoint may not return meaningful results in Couchbase Server 7.0 an
 
 
 
-
 // markup not found, no include::{specDir}paths/monitor_node/operation-parameters-after.adoc[opts=optional]
 
 
@@ -929,14 +914,12 @@ Success. Returns an object giving the number of pending mutations for each Analy
 --
 a| xref:Mutations[]
 
-
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/8.0/analytics/error-codes.html). 
 --
 a| Object
-
 
 | 404
 a| [markdown]
@@ -1064,7 +1047,6 @@ Restarts all Analytics Service nodes in the cluster.
 
 
 
-
 // markup not found, no include::{specDir}paths/restart_cluster/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1091,14 +1073,12 @@ Accepted. Returns an object showing the status of the cluster.
 --
 a| Object
 
-
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/8.0/analytics/error-codes.html). 
 --
 a| Object
-
 
 | 404
 a| [markdown]
@@ -1226,7 +1206,6 @@ Restarts the specified Analytics Service node.
 
 
 
-
 // markup not found, no include::{specDir}paths/restart_node/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1253,14 +1232,12 @@ Accepted. Returns an object showing the status of the node.
 --
 a| Object
 
-
 | 401
 a| [markdown]
 --
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/8.0/analytics/error-codes.html). 
 --
 a| Object
-
 
 | 404
 a| [markdown]
@@ -1388,7 +1365,6 @@ Gets a list of the analytic requests that are running.
 
 
 
-
 // markup not found, no include::{specDir}paths/return_active_requests/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1422,7 +1398,6 @@ a| [markdown]
 Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/8.0/analytics/error-codes.html). 
 --
 a| Object
-
 
 | 404
 a| [markdown]
@@ -1595,7 +1570,6 @@ a¦ xref:IngestionLink[]
 
 
 
-
 // markup not found, no include::{specDir}definitions/Ingestion/definition-end.adoc[opts=optional]
 
 
@@ -1645,7 +1619,6 @@ The name of the link.
 {blank}
 a¦ String
 
-
 a¦ 
 *scope* +
 _optional_
@@ -1660,7 +1633,6 @@ The name of the Analytics scope.
 *Example:* `+++"travel-sample/inventory"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *status* +
@@ -1677,7 +1649,6 @@ The status of the Analytics scope.
 *Example:* `+++"healthy"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *state* +
@@ -1700,7 +1671,6 @@ a¦ xref:IngestionLinkState[]
 |===
 
 //end::IngestionLink[]
-
 
 
 
@@ -1753,7 +1723,6 @@ The time since epoch that this sample was calculated, in milliseconds.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *progress* +
 _required_
@@ -1771,7 +1740,6 @@ The percentage (fraction from 0 to 1) of ingestion progress at the current time.
 {blank}
 a¦ Double (double)
 
-
 a¦ 
 *timeLag* +
 _optional_
@@ -1787,7 +1755,6 @@ The estimated time that the ingestion lags behind the Data service, in milliseco
 *Example:* `9744`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *itemsProcessed* +
@@ -1807,7 +1774,6 @@ Note that this value is reset on connect, so it may appear to get smaller.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *seqnoAdvances* +
 _optional_
@@ -1823,7 +1789,6 @@ The change in sequence number (seqno) since last connect. Only displayed for Ana
 *Example:* `61`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *scopes* +
@@ -1843,7 +1808,6 @@ a¦ xref:IngestionLinkStateScope[]
 |===
 
 //end::IngestionLinkState[]
-
 
 
 
@@ -1896,7 +1860,6 @@ The name of the Analytics scope.
 {blank}
 a¦ String
 
-
 a¦ 
 *collections* +
 _required_
@@ -1915,7 +1878,6 @@ a¦ xref:IngestionLinkStateScopeColl[]
 |===
 
 //end::IngestionLinkStateScope[]
-
 
 
 
@@ -1968,11 +1930,9 @@ The name of the Analytics collection.
 {blank}
 a¦ String
 
-
 |===
 
 //end::IngestionLinkStateScopeColl[]
-
 
 
 
@@ -2030,11 +1990,9 @@ include::index.adoc[tag=desc-MutationsColl, opts=optional]
 {blank}
 a¦ xref:MutationsColl[]
 
-
 |===
 
 //end::Mutations[]
-
 
 
 
@@ -2096,11 +2054,9 @@ The number of mutations in the DCP queue that have not yet been ingested. The na
 {blank}
 a¦ Integer
 
-
 |===
 
 //end::MutationsColl[]
-
 
 
 
@@ -2157,7 +2113,6 @@ Whether this request can be cancelled.
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *clientContextID* +
 _optional_
@@ -2172,7 +2127,6 @@ A context ID for debugging purposes.
 *Example:* `+++"28379d60-7139-44d6-b57a-95935540b586"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *elapsedTime* +
@@ -2189,7 +2143,6 @@ How long the request has been running in seconds.
 {blank}
 a¦ Big Decimal
 
-
 a¦ 
 *jobCreateTime* +
 _optional_
@@ -2204,7 +2157,6 @@ The date and time when the request's job was created.
 *Example:* `+++"2024-05-28T19:47:02.512"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *jobId* +
@@ -2222,7 +2174,6 @@ The request's job ID. This value can be null if request did not run (for example
 {blank}
 a¦ String
 
-
 a¦ 
 *jobQueueTime* +
 _optional_
@@ -2238,7 +2189,6 @@ How long the request's job has been in the queue waiting to run in seconds.
 {blank}
 a¦ Big Decimal
 
-
 a¦ 
 *jobRequiredCPUs* +
 _optional_
@@ -2253,7 +2203,6 @@ The number of CPU cores required to run this request.
 *Example:* `1`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *jobRequiredMemory* +
@@ -2271,7 +2220,6 @@ The bytes of RAM being used to process this request.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *jobStartTime* +
 _optional_
@@ -2286,7 +2234,6 @@ The date and time the request's job began running.
 *Example:* `+++"2024-05-28T19:47:02.514"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *jobStatus* +
@@ -2304,7 +2251,6 @@ The state of the request's job.
 {blank}
 a¦ String
 
-
 a¦ 
 *plan* +
 _optional_
@@ -2318,7 +2264,6 @@ The query plan for this request.
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *node* +
@@ -2335,7 +2280,6 @@ The Analytics node that received the request.
 {blank}
 a¦ String
 
-
 a¦ 
 *remoteAddr* +
 _optional_
@@ -2350,7 +2294,6 @@ The network address and port of the client that made the request.
 *Example:* `+++"172.20.0.123:53612"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *requestTime* +
@@ -2367,7 +2310,6 @@ The date and time the request was received.
 {blank}
 a¦ String
 
-
 a¦ 
 *scanConsistency* +
 _optional_
@@ -2382,7 +2324,6 @@ The Scan Consistency setting used for the request's query.
 *Example:* `+++"not_bounded"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *state* +
@@ -2400,7 +2341,6 @@ The state of the request.
 {blank}
 a¦ String
 
-
 a¦ 
 *statement* +
 _optional_
@@ -2415,7 +2355,6 @@ The SQL++ query statement being run by the request.
 *Example:* `+++"select count(*) from hotel_endorsement_view;"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *userAgent* +
@@ -2432,7 +2371,6 @@ The user agent string of the browser that made the request.
 {blank}
 a¦ String
 
-
 a¦ 
 *users* +
 _optional_
@@ -2447,7 +2385,6 @@ The user who made the request.
 *Example:* `+++"Administrator"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *uuid* +
@@ -2464,11 +2401,9 @@ The unique identifier for this request.
 {blank}
 a¦ String
 
-
 |===
 
 //end::Request[]
-
 
 
 
@@ -2542,7 +2477,6 @@ The ID of the cluster controller node.
 {blank}
 a¦ String
 
-
 a¦ 
 *nodeConfigUri* +
 _optional_
@@ -2557,7 +2491,6 @@ The path of the Analytics Node Configuration REST API.
 *Example:* `+++"/analytics/config/node"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *nodeDiagnosticsUri* +
@@ -2575,7 +2508,6 @@ The path of the Analytics Node Diagnostics REST API. For internal use only.
 {blank}
 a¦ String
 
-
 a¦ 
 *nodeRestartUri* +
 _optional_
@@ -2590,7 +2522,6 @@ The path of the Analytics Node Restart REST API.
 *Example:* `+++"/analytics/node/restart"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *nodeServiceUri* +
@@ -2607,7 +2538,6 @@ The path of the Analytics Query Service REST API.
 {blank}
 a¦ String
 
-
 a¦ 
 *serviceConfigUri* +
 _optional_
@@ -2622,7 +2552,6 @@ The path of the Analytics Service Configuration REST API.
 *Example:* `+++"/analytics/config/service"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *serviceDiagnosticsUri* +
@@ -2640,7 +2569,6 @@ The full URI of the Analytics Service Diagnostics REST API. For internal use onl
 {blank}
 a¦ String
 
-
 a¦ 
 *serviceRestartUri* +
 _optional_
@@ -2655,7 +2583,6 @@ The full URI of the Analytics Cluster Restart REST API.
 *Example:* `+++"http://localhost:8095/analytics/cluster/restart"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *state* +
@@ -2672,7 +2599,6 @@ The state of the Analytics Service.
 *Example:* `+++"ACTIVE"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *nodes* +
@@ -2718,11 +2644,9 @@ include::index.adoc[tag=desc-StatusTopology, opts=optional]
 {blank}
 a¦ xref:StatusTopology[]
 
-
 |===
 
 //end::Status[]
-
 
 
 
@@ -2775,7 +2699,6 @@ The URI scheme, host, and port for HTTP access to Analytics REST APIs on this no
 {blank}
 a¦ String
 
-
 a¦ 
 *apiBaseHttps* +
 _optional_
@@ -2790,7 +2713,6 @@ The URI scheme, host, and port for secure HTTPS access to Analytics REST APIs on
 *Example:* `+++"https://192.168.8.101:18095"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *nodeId* +
@@ -2807,7 +2729,6 @@ The ID of the node.
 {blank}
 a¦ String
 
-
 a¦ 
 *nodeName* +
 _optional_
@@ -2823,11 +2744,9 @@ The name or IP address of the node, including the cluster administration port.
 {blank}
 a¦ String
 
-
 |===
 
 //end::StatusNodes[]
-
 
 
 
@@ -2880,7 +2799,6 @@ Indicates whether this partition is active.
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *activeNodeId* +
 _optional_
@@ -2895,7 +2813,6 @@ The ID of the node where this partition is currently active.
 *Example:* `+++"86586a966202b5aa4aed31633f330aba"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *iodeviceNum* +
@@ -2912,7 +2829,6 @@ The number of the IO Device where this partition is located.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *nodeId* +
 _optional_
@@ -2927,7 +2843,6 @@ The ID of the node where this partition originated.
 *Example:* `+++"86586a966202b5aa4aed31633f330aba"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *partitionId* +
@@ -2944,7 +2859,6 @@ The ID of this partition.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *path* +
 _optional_
@@ -2959,7 +2873,6 @@ The path of the IO Device where this partition is located.
 *Example:* `+++"/data/@analytics/v_iodevice_0"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *pendingActivation* +
@@ -2976,11 +2889,9 @@ Indicates whether this partition is waiting to become active.
 {blank}
 a¦ Boolean
 
-
 |===
 
 //end::StatusPartitions[]
-
 
 
 
@@ -3038,7 +2949,6 @@ Indicates whether the Analytics nodes are balanced.
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *ccNodeId* +
 _optional_
@@ -3053,7 +2963,6 @@ The ID of the cluster controller node.
 *Example:* `+++"86586a966202b5aa4aed31633f330aba"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *metadataPartition* +
@@ -3070,7 +2979,6 @@ The ID of the metadata partition.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *numReplicas* +
 _optional_
@@ -3085,7 +2993,6 @@ The number of Analytics replicas.
 *Example:* `1`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *revision* +
@@ -3102,7 +3009,6 @@ The revision number of the partition topology.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *version* +
 _optional_
@@ -3117,7 +3023,6 @@ The version number of the partition topology.
 *Example:* `1`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *partitions* +
@@ -3137,7 +3042,6 @@ a¦ xref:StatusTopologyState[]
 |===
 
 //end::StatusTopology[]
-
 
 
 
@@ -3190,7 +3094,6 @@ The partition ID.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *master* +
 _optional_
@@ -3206,7 +3109,6 @@ The ID of the node where the partition is currently active.
 {blank}
 a¦ String
 
-
 a¦ 
 *origin* +
 _optional_
@@ -3221,7 +3123,6 @@ The ID of the node where the partition originated.
 *Example:* `+++"86586a966202b5aa4aed31633f330aba"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *replicas* +
@@ -3241,7 +3142,6 @@ a¦ xref:StatusTopologyStateReplicas[]
 |===
 
 //end::StatusTopologyState[]
-
 
 
 
@@ -3294,7 +3194,6 @@ The name or IP address of the node where this replica is located, including the 
 {blank}
 a¦ String
 
-
 a¦ 
 *nodeId* +
 _optional_
@@ -3309,7 +3208,6 @@ The ID of the node where this replica is located.
 *Example:* `+++"948fb3af810a9b7bc6c76e2a69ba35d9"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *status* +
@@ -3326,7 +3224,6 @@ The synchronization status of the replica.
 *Example:* `+++"IN_SYNC"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *syncProgress* +
@@ -3345,11 +3242,9 @@ The percentage (fraction from 0 to 1) of synchronization progress for this repli
 {blank}
 a¦ Double (double)
 
-
 |===
 
 //end::StatusTopologyStateReplicas[]
-
 
 
 
@@ -3369,7 +3264,6 @@ a¦ Double (double)
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
-
 
 
 // markup not found, no include::{specDir}security/document-before.adoc[opts=optional]

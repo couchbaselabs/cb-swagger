@@ -4,12 +4,10 @@
 ====
 Request {counter:example}: Delete a global library entirely.
 
-.Curl request
+.curl request
 [source,sh]
 ----
-curl -X DELETE \
-"http://localhost:8093/evaluator/v1/libraries/math" \
--u Administrator:password
+include::example$delete_library_global.sh[]
 ----
 ====
 
@@ -17,11 +15,9 @@ curl -X DELETE \
 ====
 Request {counter:example}: Delete a scoped library entirely.
 
-.Curl request
+.curl request
 [source,sh]
 ----
-curl -X DELETE \
-"http://localhost:8093/evaluator/v1/libraries/science?bucket=travel-sample&scope=inventory" \
--u Administrator:password
+include::example$delete_library_scope.sh[]
 ----
 ====
