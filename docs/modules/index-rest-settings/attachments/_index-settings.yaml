@@ -99,7 +99,7 @@ components:
             Sets the batch size Couchbase Server uses when rebuilding index files during rebalance.
             This setting has no effect on file-based rebalance.
 
-            Couchbase Server breaks the rebuilding of indexes during a rebalance into batches to limit the performance impact.
+            Couchbase Server breaks the rebuilding of indexes during a rebalance into batches to limit the effect on performance.
             This setting controls the maximum number of indexes that a rebalance rebuilds concurrently.
             You must have the Full Admin or the Cluster Admin role to set this value.
 
@@ -131,7 +131,7 @@ components:
           type: boolean
           x-has-default: true
           default: false
-          description: Whether to abort index compaction if it is still running after the end of the index compaction interval.
+          description: Whether to abort index compaction if it's still running after the end of the index compaction interval.
         indexer.settings.compaction.check_period:
           type: integer
           format: int32
@@ -288,7 +288,7 @@ components:
           minimum: 1
           exclusiveMinimum: true
           description: |-
-            For standard indexes using ForestDB, the in-memory snapshotting interval (ms).
+            For standard indexes using Forestdb, the in-memory snapshot interval (ms).
             This determines the earliest possibility of a scan seeing a given KV mutation.
         indexer.settings.inmemory_snapshot.interval:
           type: integer
@@ -298,7 +298,7 @@ components:
           minimum: 1
           exclusiveMinimum: true
           description: |-
-            The in-memory snapshotting interval (ms).
+            The in-memory snapshot interval (ms).
             This determines the earliest possibility of a scan seeing a given KV mutation.
         indexer.settings.inmemory_snapshot.moi.interval:
           type: integer
@@ -308,7 +308,7 @@ components:
           x-has-default: true
           default: 10
           description: |-
-            For memory-optimized indexes, the in-memory snapshotting interval (ms).
+            For memory-optimized indexes, the in-memory snapshot interval (ms).
             This determines the earliest possibility of a scan seeing a given KV mutation.
         indexer.settings.largeSnapshotThreshold:
           type: integer
@@ -439,7 +439,7 @@ components:
           default: 5000
           minimum: 100
           description: |-
-            For standard indexes using ForestDB, the persisted snapshotting interval (ms).
+            For standard indexes using Forestdb, the persisted snapshot interval (ms).
             This must be a multiple of the in-memory snapshot interval.
         indexer.settings.persisted_snapshot.interval:
           type: integer
@@ -448,7 +448,7 @@ components:
           default: 5000
           minimum: 100
           description: |-
-            The persisted snapshotting interval (ms).
+            The persisted snapshot interval (ms).
             This must be a multiple of the in-memory snapshot interval.
         indexer.settings.persisted_snapshot.moi.interval:
           type: integer
@@ -457,26 +457,26 @@ components:
           default: 600000
           minimum: 100
           description: |-
-            For memory-optimized indexes, the persisted snapshotting interval (ms).
+            For memory-optimized indexes, the persisted snapshot interval (ms).
             This must be a multiple of the in-memory snapshot interval.
         indexer.settings.persisted_snapshot_init_build.fdb.interval:
           type: integer
           format: int32
           x-has-default: true
           default: 5000
-          description: For standard indexes using ForestDB, the persisted snapshotting interval for the initial build (ms).
+          description: For standard indexes using Forestdb, the persisted snapshot interval for the initial build (ms).
         indexer.settings.persisted_snapshot_init_build.interval:
           type: integer
           format: int32
           x-has-default: true
           default: 5000
-          description: The persisted snapshotting interval for the initial build (ms).
+          description: The persisted snapshot interval for the initial build (ms).
         indexer.settings.persisted_snapshot_init_build.moi.interval:
           type: integer
           format: int32
           x-has-default: true
           default: 600000
-          description: For memory-optimized indexes, the persisted snapshotting interval for the initial build (ms).
+          description: For memory-optimized indexes, the persisted snapshot interval for the initial build (ms).
         indexer.settings.plasma.recovery.max_rollbacks:
           type: integer
           format: int32
@@ -581,7 +581,30 @@ components:
           default: 60
           description: Statistics log dump interval.
         indexer.settings.storage_mode:
-          $ref: "#/components/schemas/SettingsStorageMode"
+          type: string
+          description: |-
+            The storage mode to be used for the Index Service on this node.
+
+            ---
+
+            If you're using Couchbase Server Enterprise Edition, the possible values are:
+
+            * `plasma` (the default) &mdash;
+              Sets the index storage mode to use the Plasma storage engine, which can utilize both memory and persistent storage for index maintenance and index scans.
+
+            * `memory_optimized` &mdash;
+              Sets the index storage mode to use memory optimized Global Secondary Indexes, which can perform index maintenance and index scan faster at in-memory speeds.
+
+            This setting can only be changed while there are no index nodes in the cluster.
+            To change from standard GSI to memory optimized GSI or vice versa, you need to remove all the Index Service nodes in the cluster.
+
+            ---
+
+            If you're using Couchbase Server Community Edition, the default (and only) value is `forestdb`.
+          enum:
+            - plasma
+            - memory_optimized
+            - forestdb
         indexer.settings.storage_mode.disable_upgrade:
           type: boolean
           x-has-default: true
@@ -669,40 +692,6 @@ components:
           x-has-default: true
           default: 100
           description: Connection batch size.
-    SettingsStorageMode:
-      title: Storage Mode
-      description: The storage mode to be used for the Index Service on this node.
-      oneOf:
-        - $ref: "#/components/schemas/SettingsStorageModeEE"
-        - $ref: "#/components/schemas/SettingsStorageModeCE"
-    SettingsStorageModeEE:
-      title: Enterprise Edition
-      type: string
-      default: plasma
-      x-desc-edition: "{enterprise}"
-      description: |-
-        If you are using Enterprise Edition, the possible values are:
-
-        * `plasma` (the default) &mdash;
-          Sets the index storage mode to use the Plasma storage engine, which can utilize both memory and persistent storage for index maintenance and index scans.
-
-        * `memory_optimized` &mdash;
-          Sets the index storage mode to use memory optimized global secondary indexes, which can perform index maintenance and index scan faster at in-memory speeds.
-
-        This setting can only be changed while there are no index nodes in the cluster.
-        To change from standard GSI to memory optimized GSI or vice versa, you need to remove all the Index Service nodes in the cluster.
-      enum:
-        - plasma
-        - memory_optimized
-    SettingsStorageModeCE:
-      title: Community Edition
-      type: string
-      default: forestdb
-      x-desc-edition: "{community}"
-      description: |-
-        If you are using Community Edition, the default (and only) value is `forestdb`.
-      enum:
-        - forestdb
 
   responses:
     NotFound:

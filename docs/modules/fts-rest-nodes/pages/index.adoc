@@ -58,7 +58,6 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -80,7 +79,6 @@ The Search Service REST port. Use `18094` for secure access.
 
 [%hardbreaks]
 *Values:* `8094`, `18094`
-*Example:* `+++8094+++`
 // end
 
 |===
@@ -198,7 +196,6 @@ Returns the node's current view of the cluster's configuration as JSON.
 
 
 
-
 // markup not found, no include::{specDir}paths/getClusterConfig/operation-parameters-after.adoc[opts=optional]
 
 
@@ -224,7 +221,6 @@ a| [markdown]
 A JSON object containing the node's configuration.
 --
 a| xref:clusterConfig[]
-
 
 
 |===
@@ -338,7 +334,6 @@ Forces the node to replan resource assignments, (by running the planner, if enab
 
 
 // markup not found, no include::{specDir}paths/managerKick/operation-parameters-before.adoc[opts=optional]
-
 
 
 
@@ -490,7 +485,6 @@ This operation is intended to help management tools and web UIs to be more dynam
 
 
 
-
 // markup not found, no include::{specDir}paths/managerMeta/operation-parameters-after.adoc[opts=optional]
 
 
@@ -516,7 +510,6 @@ a| [markdown]
 A JSON object containing the node's capabilities.
 --
 a| Object
-
 
 
 |===
@@ -630,7 +623,6 @@ Requests the node to refresh its configuration from the configuration provider.
 
 
 // markup not found, no include::{specDir}paths/refreshClusterConfig/operation-parameters-before.adoc[opts=optional]
-
 
 
 
@@ -805,7 +797,6 @@ Requests the node to capture local CPU usage profiling information.
 
 
 
-
 // markup not found, no include::{specDir}paths/captureCpuProfile/operation-parameters-after.adoc[opts=optional]
 
 
@@ -943,7 +934,6 @@ Requests the node to capture local memory usage profiling information.
 
 
 // markup not found, no include::{specDir}paths/captureMemoryProfile/operation-parameters-before.adoc[opts=optional]
-
 
 
 
@@ -1107,7 +1097,6 @@ The motivation for this operation is to simplify working with the Couchbase comm
 
 
 
-
 // markup not found, no include::{specDir}paths/getDiagnostics/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1133,7 +1122,6 @@ a| [markdown]
 A JSON object containing the node's diagnostics.
 --
 a| Object
-
 
 
 |===
@@ -1255,7 +1243,6 @@ Returns recent log messages and key events for the node as JSON.
 
 
 
-
 // markup not found, no include::{specDir}paths/getLogs/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1281,7 +1268,6 @@ a| [markdown]
 A JSON object containing the node's logs.
 --
 a| xref:logInfo[]
-
 
 
 |===
@@ -1403,7 +1389,6 @@ Returns information on the node's command-line, parameters, environment variable
 
 
 
-
 // markup not found, no include::{specDir}paths/getRuntimeArgs/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1429,7 +1414,6 @@ a| [markdown]
 A JSON object containing the node's runtime arguments.
 --
 a| Object
-
 
 
 |===
@@ -1551,7 +1535,6 @@ Returns information on the node's software, such as version strings and slow-cha
 
 
 
-
 // markup not found, no include::{specDir}paths/getRuntimeInfo/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1577,7 +1560,6 @@ a| [markdown]
 A JSON object containing the node's runtime information.
 --
 a| xref:runtimeInfo[]
-
 
 
 |===
@@ -1713,7 +1695,6 @@ Requests the node to perform a garbage collection.
 
 
 // markup not found, no include::{specDir}paths/performGC/operation-parameters-before.adoc[opts=optional]
-
 
 
 
@@ -1887,7 +1868,6 @@ Returns information on the node's low-level garbage collection and memory-relate
 
 
 
-
 // markup not found, no include::{specDir}paths/getMemoryStats/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1913,7 +1893,6 @@ a| [markdown]
 A JSON object containing the node's memory statistics.
 --
 a| Object
-
 
 
 |===
@@ -2035,7 +2014,6 @@ Returns information on the node's low-level runtime stats as JSON.
 
 
 
-
 // markup not found, no include::{specDir}paths/getRuntimeStats/operation-parameters-after.adoc[opts=optional]
 
 
@@ -2061,7 +2039,6 @@ a| [markdown]
 A JSON object containing the node's low-level runtime statistics.
 --
 a| Object
-
 
 
 |===
@@ -2221,7 +2198,6 @@ include::index.adoc[tag=desc-clusterConfigIndexes, opts=optional]
 {blank}
 a¦ xref:clusterConfigIndexes[]
 
-
 a¦ 
 *indexDefsCAS* +
 _optional_
@@ -2235,7 +2211,6 @@ Search index definition concurrency (compare and swap) value.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *indexDefsErr* +
@@ -2251,7 +2226,6 @@ Search index definition error.
 {blank}
 a¦ String
 
-
 a¦ 
 *nodeDefsKnown* +
 _optional_
@@ -2265,7 +2239,6 @@ include::index.adoc[tag=desc-clusterConfigNodesKnown, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:clusterConfigNodesKnown[]
-
 
 a¦ 
 *nodeDefsKnownCAS* +
@@ -2281,7 +2254,6 @@ Known node definition concurrency (compare and swap) value.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *nodeDefsKnownErr* +
 _optional_
@@ -2295,7 +2267,6 @@ Known node definition error.
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *nodeDefsWanted* +
@@ -2311,7 +2282,6 @@ include::index.adoc[tag=desc-clusterConfigNodesWanted, opts=optional]
 {blank}
 a¦ xref:clusterConfigNodesWanted[]
 
-
 a¦ 
 *nodeDefsWantedCAS* +
 _optional_
@@ -2325,7 +2295,6 @@ Wanted node definition concurrency (compare and swap) value.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *nodeDefsWantedErr* +
@@ -2341,7 +2310,6 @@ Wanted node definition error.
 {blank}
 a¦ String
 
-
 a¦ 
 *planPIndexes* +
 _optional_
@@ -2355,7 +2323,6 @@ include::index.adoc[tag=desc-clusterConfigPlan, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:clusterConfigPlan[]
-
 
 a¦ 
 *planPIndexesCAS* +
@@ -2371,7 +2338,6 @@ Search index partition concurrency (compare and swap) value.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *planPIndexesErr* +
 _optional_
@@ -2385,7 +2351,6 @@ Search index partition error.
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *status* +
@@ -2401,11 +2366,9 @@ The status of the operation.
 {blank}
 a¦ String
 
-
 |===
 
 //end::clusterConfig[]
-
 
 
 
@@ -2461,7 +2424,6 @@ a¦
 {blank}
 a¦ String
 
-
 a¦ 
 *indexDefs* +
 _optional_
@@ -2476,11 +2438,9 @@ include::index.adoc[tag=desc-GetIndexesResponseIndexesWrapper, opts=optional]
 {blank}
 a¦ xref:GetIndexesResponseIndexesWrapper[]
 
-
 |===
 
 //end::clusterConfigIndexes[]
-
 
 
 
@@ -2536,7 +2496,6 @@ a¦
 {blank}
 a¦ String
 
-
 a¦ 
 *nodeDefs* +
 _optional_
@@ -2551,7 +2510,6 @@ include::index.adoc[tag=desc-clusterConfigNodesWrapper, opts=optional]
 {blank}
 a¦ xref:clusterConfigNodesWrapper[]
 
-
 a¦ 
 *uuid* +
 _optional_
@@ -2565,11 +2523,9 @@ a¦
 {blank}
 a¦ String
 
-
 |===
 
 //end::clusterConfigNodesKnown[]
-
 
 
 
@@ -2625,7 +2581,6 @@ a¦
 {blank}
 a¦ String
 
-
 a¦ 
 *nodeDefs* +
 _optional_
@@ -2640,7 +2595,6 @@ include::index.adoc[tag=desc-clusterConfigNodesWrapper, opts=optional]
 {blank}
 a¦ xref:clusterConfigNodesWrapper[]
 
-
 a¦ 
 *uuid* +
 _optional_
@@ -2654,11 +2608,9 @@ a¦
 {blank}
 a¦ String
 
-
 |===
 
 //end::clusterConfigNodesWanted[]
-
 
 
 
@@ -2716,11 +2668,9 @@ include::index.adoc[tag=desc-clusterConfigNodesWrapperNode, opts=optional]
 {blank}
 a¦ xref:clusterConfigNodesWrapperNode[]
 
-
 |===
 
 //end::clusterConfigNodesWrapper[]
-
 
 
 
@@ -2777,7 +2727,6 @@ a¦
 {blank}
 a¦ String
 
-
 a¦ 
 *extras* +
 _optional_
@@ -2790,7 +2739,6 @@ a¦
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *hostPort* +
@@ -2805,7 +2753,6 @@ a¦
 {blank}
 a¦ String
 
-
 a¦ 
 *implVersion* +
 _optional_
@@ -2818,7 +2765,6 @@ a¦
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *tags* +
@@ -2833,7 +2779,6 @@ a¦
 {blank}
 a¦ String
 
-
 a¦ 
 *uuid* +
 _optional_
@@ -2846,7 +2791,6 @@ a¦
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *weight* +
@@ -2861,11 +2805,9 @@ a¦
 {blank}
 a¦ Integer
 
-
 |===
 
 //end::clusterConfigNodesWrapperNode[]
-
 
 
 
@@ -2921,7 +2863,6 @@ a¦
 {blank}
 a¦ String
 
-
 a¦ 
 *planPIndexes* +
 _optional_
@@ -2936,7 +2877,6 @@ include::index.adoc[tag=desc-clusterConfigPlanWrapper, opts=optional]
 {blank}
 a¦ xref:clusterConfigPlanWrapper[]
 
-
 a¦ 
 *uuid* +
 _optional_
@@ -2949,7 +2889,6 @@ a¦
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *warnings* +
@@ -2965,11 +2904,9 @@ include::index.adoc[tag=desc-GetIndexResponsePlanWrng, opts=optional]
 {blank}
 a¦ xref:GetIndexResponsePlanWrng[]
 
-
 |===
 
 //end::clusterConfigPlan[]
-
 
 
 
@@ -3027,11 +2964,9 @@ include::index.adoc[tag=desc-GetIndexResponsePIndex, opts=optional]
 {blank}
 a¦ xref:GetIndexResponsePIndex[]
 
-
 |===
 
 //end::clusterConfigPlanWrapper[]
-
 
 
 
@@ -3089,7 +3024,6 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 
-
 a¦ 
 *indexParams* +
 _optional_
@@ -3104,7 +3038,6 @@ For more information, see [Params Object](../search/search-index-params.html#par
 [%hardbreaks]
 {blank}
 a¦ Object
-
 
 a¦ 
 *indexType* +
@@ -3121,7 +3054,6 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 
-
 a¦ 
 *indexUUID* +
 _optional_
@@ -3137,7 +3069,6 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 
-
 a¦ 
 *name* +
 _optional_
@@ -3152,7 +3083,6 @@ The name of the Search index partition.
 {blank}
 a¦ String
 
-
 a¦ 
 *nodes* +
 _optional_
@@ -3166,7 +3096,6 @@ include::index.adoc[tag=desc-GetIndexResponsePIndexNodesWrapper, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:GetIndexResponsePIndexNodesWrapper[]
-
 
 a¦ 
 *sourceName* +
@@ -3183,7 +3112,6 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 
-
 a¦ 
 *sourceParams* +
 _optional_
@@ -3199,7 +3127,6 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ Object
 
-
 a¦ 
 *sourcePartitions* +
 _optional_
@@ -3212,7 +3139,6 @@ a¦
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *sourceType* +
@@ -3229,7 +3155,6 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 
-
 a¦ 
 *sourceUUID* +
 _optional_
@@ -3245,7 +3170,6 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 
-
 a¦ 
 *uuid* +
 _optional_
@@ -3260,11 +3184,9 @@ The UUID of the Search index partition.
 {blank}
 a¦ String
 
-
 |===
 
 //end::GetIndexResponsePIndex[]
-
 
 
 
@@ -3322,11 +3244,9 @@ include::index.adoc[tag=desc-GetIndexResponsePIndexNodesWrapperNode, opts=option
 {blank}
 a¦ xref:GetIndexResponsePIndexNodesWrapperNode[]
 
-
 |===
 
 //end::GetIndexResponsePIndexNodesWrapper[]
-
 
 
 
@@ -3383,7 +3303,6 @@ a¦
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *canWrite* +
 _optional_
@@ -3396,7 +3315,6 @@ a¦
 [%hardbreaks]
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *priority* +
@@ -3411,11 +3329,9 @@ a¦
 {blank}
 a¦ Integer
 
-
 |===
 
 //end::GetIndexResponsePIndexNodesWrapperNode[]
-
 
 
 
@@ -3473,11 +3389,9 @@ include::index.adoc[tag=desc-GetIndexResponsePlanWrngIndex, opts=optional]
 {blank}
 a¦ xref:GetIndexResponsePlanWrngIndex[]
 
-
 |===
 
 //end::GetIndexResponsePlanWrng[]
-
 
 
 
@@ -3518,7 +3432,6 @@ The name of the property is the name of the Search index.
 
 [%hardbreaks]
 {blank}
-
 .Schema
 String
  array
@@ -3578,11 +3491,9 @@ include::index.adoc[tag=desc-IndexDefinition, opts=optional]
 {blank}
 a¦ xref:IndexDefinition[]
 
-
 |===
 
 //end::GetIndexesResponseIndexesWrapper[]
-
 
 
 
@@ -3641,7 +3552,6 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 
-
 a¦ 
 *type* +
 _required_
@@ -3656,7 +3566,6 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *sourceName* +
@@ -3673,7 +3582,6 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 
-
 a¦ 
 *sourceUUID* +
 _optional_
@@ -3688,7 +3596,6 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *sourceParams* +
@@ -3705,7 +3612,6 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ Object
 
-
 a¦ 
 *sourceType* +
 _required_
@@ -3720,7 +3626,6 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *params* +
@@ -3737,7 +3642,6 @@ For more information, see [Params Object](../search/search-index-params.html#par
 {blank}
 a¦ Object
 
-
 a¦ 
 *planParams* +
 _required_
@@ -3751,7 +3655,6 @@ include::index.adoc[tag=desc-IndexDefinitionPlanParams, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:IndexDefinitionPlanParams[]
-
 
 a¦ 
 *prevIndexUUID* +
@@ -3768,7 +3671,6 @@ Intended for clients that want to check that they are not overwriting the Search
 {blank}
 a¦ String
 
-
 a¦ 
 *uuid* +
 _optional_
@@ -3784,11 +3686,9 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 
-
 |===
 
 //end::IndexDefinition[]
-
 
 
 
@@ -3845,7 +3745,6 @@ a¦
 {blank}
 a¦ String
 
-
 a¦ 
 *maxPartitionsPerPIndex* +
 _optional_
@@ -3861,7 +3760,6 @@ Use `indexPartitions` instead.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *indexPartitions* +
 _optional_
@@ -3876,7 +3774,6 @@ The number of partitions to split the Search index into, across the nodes you ha
 {blank}
 a¦ Integer
 
-
 a¦ 
 *nodePlanParams* +
 _optional_
@@ -3889,7 +3786,6 @@ a¦
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *numReplicas* +
@@ -3905,7 +3801,6 @@ The number of replicas the Search Service creates for the Search index to ensure
 {blank}
 a¦ Integer
 
-
 a¦ 
 *planFrozen* +
 _optional_
@@ -3919,11 +3814,9 @@ a¦
 {blank}
 a¦ Boolean
 
-
 |===
 
 //end::IndexDefinitionPlanParams[]
-
 
 
 
@@ -3995,7 +3888,6 @@ a¦ Object
 
 
 
-
 // markup not found, no include::{specDir}definitions/logInfo/definition-end.adoc[opts=optional]
 
 
@@ -4044,7 +3936,6 @@ The architecture of the node.
 {blank}
 a¦ String
 
-
 a¦ 
 *go* +
 _optional_
@@ -4058,7 +3949,6 @@ include::index.adoc[tag=desc-runtimeInfoGo, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:runtimeInfoGo[]
-
 
 a¦ 
 *numCPU* +
@@ -4074,7 +3964,6 @@ The number of CPUs on the node.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *os* +
 _optional_
@@ -4089,7 +3978,6 @@ The operating system of the node.
 {blank}
 a¦ String
 
-
 a¦ 
 *versionData* +
 _optional_
@@ -4102,7 +3990,6 @@ a¦
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *versionMain* +
@@ -4117,11 +4004,9 @@ a¦
 {blank}
 a¦ String
 
-
 |===
 
 //end::runtimeInfo[]
-
 
 
 
@@ -4172,7 +4057,6 @@ a¦
 {blank}
 a¦ Integer
 
-
 a¦ 
 *GOROOT* +
 _optional_
@@ -4185,7 +4069,6 @@ a¦
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *compiler* +
@@ -4200,7 +4083,6 @@ a¦
 {blank}
 a¦ String
 
-
 a¦ 
 *version* +
 _optional_
@@ -4214,11 +4096,9 @@ a¦
 {blank}
 a¦ String
 
-
 |===
 
 //end::runtimeInfoGo[]
-
 
 
 
@@ -4238,7 +4118,6 @@ a¦ String
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
-
 
 
 // markup not found, no include::{specDir}security/document-before.adoc[opts=optional]

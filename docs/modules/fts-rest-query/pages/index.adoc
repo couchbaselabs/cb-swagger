@@ -58,7 +58,6 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -80,7 +79,6 @@ The Search Service REST port. Use `18094` for secure access.
 
 [%hardbreaks]
 *Values:* `8094`, `18094`
-*Example:* `+++8094+++`
 // end
 
 |===
@@ -226,8 +224,6 @@ Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 
 a¦ String (duration)
 
-
-
 |===
 
 
@@ -237,7 +233,6 @@ a¦ String (duration)
 // markup not found, no include::{specDir}paths/api-query/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -266,7 +261,6 @@ a| [markdown]
 A list of all active Search queries across all nodes in the cluster.
 --
 a| xref:ActiveResponse[]
-
 
 
 |===
@@ -421,8 +415,6 @@ This ID is used to identify the query that you want to cancel.
 
 a¦ Integer
 
-
-
 |===
 
 
@@ -451,15 +443,12 @@ The body contains the UUID of the node where the query is running. This is optio
 
 a¦ xref:CancelRequest[]
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/api-query-cancel/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -488,7 +477,6 @@ a| [markdown]
 The query was successfully canceled.
 --
 a| xref:CancelResponse[]
-
 
 
 |===
@@ -638,8 +626,6 @@ The name of the Search index.
 
 a¦ String
 
-
-
 |===
 
 [#api-query-index-query]
@@ -668,8 +654,6 @@ Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 
 a¦ String (duration)
 
-
-
 |===
 
 
@@ -679,7 +663,6 @@ a¦ String (duration)
 // markup not found, no include::{specDir}paths/api-query-index/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -708,7 +691,6 @@ a| [markdown]
 A list of active queries for the specified Search index.
 --
 a| xref:ActiveResponse[]
-
 
 
 |===
@@ -857,7 +839,6 @@ The status of the request.
 {blank}
 a¦ String
 
-
 a¦ 
 *stats* +
 _optional_
@@ -871,7 +852,6 @@ include::index.adoc[tag=desc-ActiveResponseStats, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:ActiveResponseStats[]
-
 
 a¦ 
 *totalActiveQueryCount* +
@@ -887,7 +867,6 @@ The total number of active queries.
 {blank}
 a¦ Integer
 
-
 a¦ 
 *filteredActiveQueries* +
 _optional_
@@ -902,11 +881,9 @@ include::index.adoc[tag=desc-ActiveResponseFilter, opts=optional]
 {blank}
 a¦ xref:ActiveResponseFilter[]
 
-
 |===
 
 //end::ActiveResponse[]
-
 
 
 
@@ -964,7 +941,6 @@ Only included if viewing active queries for a specific index.
 {blank}
 a¦ String
 
-
 a¦ 
 *longerThan* +
 _optional_
@@ -980,7 +956,6 @@ Only included if the `longerThan` query parameter is used.
 {blank}
 a¦ String (duration)
 
-
 a¦ 
 *queryCount* +
 _optional_
@@ -994,7 +969,6 @@ The number of filtered active queries.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
 
 a¦ 
 *queryMap* +
@@ -1010,11 +984,9 @@ include::index.adoc[tag=desc-ActiveResponseFilterMap, opts=optional]
 {blank}
 a¦ xref:ActiveResponseFilterMap[]
 
-
 |===
 
 //end::ActiveResponseFilter[]
-
 
 
 
@@ -1072,11 +1044,9 @@ include::index.adoc[tag=desc-ActiveResponseFilterMapItem, opts=optional]
 {blank}
 a¦ xref:ActiveResponseFilterMapItem[]
 
-
 |===
 
 //end::ActiveResponseFilterMap[]
-
 
 
 
@@ -1134,7 +1104,6 @@ include::index.adoc[tag=desc-ActiveResponseFilterMapItemContext, opts=optional]
 {blank}
 a¦ xref:ActiveResponseFilterMapItemContext[]
 
-
 a¦ 
 *executionTime* +
 _optional_
@@ -1149,11 +1118,9 @@ The time taken to execute the query.
 {blank}
 a¦ String (duration)
 
-
 |===
 
 //end::ActiveResponseFilterMapItem[]
-
 
 
 
@@ -1211,7 +1178,6 @@ For more information, see [Search Request JSON Properties](../search/search-requ
 {blank}
 a¦ Object
 
-
 a¦ 
 *size* +
 _optional_
@@ -1225,7 +1191,6 @@ a¦
 *Example:* `10`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *from* +
@@ -1241,7 +1206,6 @@ a¦
 {blank}
 a¦ Integer
 
-
 a¦ 
 *timeout* +
 _optional_
@@ -1255,7 +1219,6 @@ a¦
 *Example:* `120000`
 {blank}
 a¦ Integer
-
 
 a¦ 
 *index* +
@@ -1271,11 +1234,9 @@ The name of a Search index.
 {blank}
 a¦ String
 
-
 |===
 
 //end::ActiveResponseFilterMapItemContext[]
-
 
 
 
@@ -1332,7 +1293,6 @@ a¦
 {blank}
 a¦ Integer
 
-
 a¦ 
 *successful* +
 _optional_
@@ -1347,11 +1307,9 @@ a¦
 {blank}
 a¦ Integer
 
-
 |===
 
 //end::ActiveResponseStats[]
-
 
 
 
@@ -1404,11 +1362,9 @@ This parameter allows the user to cancel a query anywhere in the system by speci
 {blank}
 a¦ String
 
-
 |===
 
 //end::CancelRequest[]
-
 
 
 
@@ -1460,7 +1416,6 @@ The status of the request.
 {blank}
 a¦ String
 
-
 a¦ 
 *msg* +
 _optional_
@@ -1475,11 +1430,9 @@ The response message, giving details of the node UUID and query ID.
 {blank}
 a¦ String
 
-
 |===
 
 //end::CancelResponse[]
-
 
 
 
@@ -1499,7 +1452,6 @@ a¦ String
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
-
 
 
 // markup not found, no include::{specDir}security/document-before.adoc[opts=optional]

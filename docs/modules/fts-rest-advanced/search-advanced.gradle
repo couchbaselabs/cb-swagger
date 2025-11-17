@@ -1,5 +1,16 @@
 apply plugin: 'org.openapi.generator'
 
+tasks.register('getExamples') {
+  doLast {
+    ant.property(name: "srcUrl",
+                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/advanced/examples")
+    ant.echo("Fetching from ${ant.srcUrl}")
+    ant.get(dest: "examples", ignoreerrors: "true") {
+      ant.url(url: "${ant.srcUrl}/get-partition.json")
+    }
+  }
+}
+
 openApiGenerate {
     generatorName = "asciidoc"
     remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/advanced/advanced.yaml"
@@ -21,3 +32,5 @@ openApiGenerate {
     ]
     generateAliasAsModel = true
 }
+
+tasks.openApiGenerate.dependsOn(getExamples)

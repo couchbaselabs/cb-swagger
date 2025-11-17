@@ -2,7 +2,7 @@
 
 .View global function config
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config"
@@ -11,7 +11,7 @@ curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/conf
 
 .View scoped function config
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config?bucket=bulk&scope=data"
@@ -20,7 +20,7 @@ curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/confi
 
 .Save global function config to file
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config" \
@@ -30,7 +30,7 @@ curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/conf
 
 .Save scoped function config to file
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config?bucket=bulk&scope=data" \

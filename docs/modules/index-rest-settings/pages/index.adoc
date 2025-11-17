@@ -62,7 +62,6 @@ The URL scheme. Use `https` for secure access.
 
 [%hardbreaks]
 *Values:* `http`, `https`
-*Example:* `+++http+++`
 // end
 
 a| *host*
@@ -84,7 +83,6 @@ The Index Service REST port. Use `19102` for secure access.
 
 [%hardbreaks]
 *Values:* `9102`, `19102`
-*Example:* `+++9102+++`
 // end
 
 |===
@@ -197,7 +195,6 @@ Returns Index Service settings.
 
 
 
-
 // markup not found, no include::{specDir}paths/get_settings/operation-parameters-after.adoc[opts=optional]
 
 
@@ -223,7 +220,6 @@ a| [markdown]
 Success. Returns an object giving Index Service settings.
 --
 a| xref:Settings[]
-
 
 | 404
 a| [markdown]
@@ -389,15 +385,12 @@ An object specifying Index Service settings. You only need to specify the settin
 
 a¦ xref:Settings[]
 
-
-
 |===
 
 
 // markup not found, no include::{specDir}paths/post_settings/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
 
 
 
@@ -521,6 +514,7 @@ endif::[]
 [#models]
 = Definitions
 
+:count-models: 1
 
 :leveloffset: +1
 
@@ -535,13 +529,6 @@ ifdef::collapse-models[]
 endif::collapse-models[]
 [%hardbreaks]
 xref:Settings[]
-xref:SettingsStorageMode[]
-ifdef::enum-definitions[]
-xref:SettingsStorageModeCE[]
-endif::enum-definitions[]
-ifdef::enum-definitions[]
-xref:SettingsStorageModeEE[]
-endif::enum-definitions[]
 endif::[]
 
 
@@ -580,7 +567,7 @@ a¦
 Sets the batch size Couchbase Server uses when rebuilding index files during rebalance.
 This setting has no effect on file-based rebalance.
 
-Couchbase Server breaks the rebuilding of indexes during a rebalance into batches to limit the performance impact.
+Couchbase Server breaks the rebuilding of indexes during a rebalance into batches to limit the effect on performance.
 This setting controls the maximum number of indexes that a rebalance rebuilds concurrently.
 You must have the Full Admin or the Cluster Admin role to set this value.
 
@@ -592,7 +579,6 @@ For an overview of rebalance as it affects the Index Service, including an overv
 *Example:* `7`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.allow_large_keys* +
@@ -614,7 +600,6 @@ In Couchbase Server 6.5 and later, the Index Service does not need to restart wh
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *indexer.settings.bufferPoolBlockSize* +
 _optional_
@@ -629,7 +614,6 @@ Buffer pool block size.
 *Default:* `16384`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.build.batch_size* +
@@ -646,7 +630,6 @@ Build batch size.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.compaction.abort_exceed_interval* +
 _optional_
@@ -654,14 +637,13 @@ a¦
 
 [markdown]
 --
-Whether to abort index compaction if it is still running after the end of the index compaction interval.
+Whether to abort index compaction if it's still running after the end of the index compaction interval.
 --
 
 [%hardbreaks]
 *Default:* `false`
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *indexer.settings.compaction.check_period* +
@@ -678,7 +660,6 @@ An interval, specifying how frequently the Index Service checks whether the comp
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.compaction.compaction_mode* +
 _optional_
@@ -694,7 +675,6 @@ The compaction mode for indexes.
 *Default:* `+++"circular"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *indexer.settings.compaction.days_of_week* +
@@ -713,7 +693,6 @@ Multiple values must be separated by a single comma, with no spaces.
 *Example:* `+++"Saturday,Sunday"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *indexer.settings.compaction.interval* +
@@ -742,7 +721,6 @@ The default value means any time.
 {blank}
 a¦ String
 
-
 a¦ 
 *indexer.settings.compaction.min_frag* +
 _optional_
@@ -759,7 +737,6 @@ The minimum fragmentation threshold to trigger compaction (percentage).
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.compaction.min_size* +
 _optional_
@@ -774,7 +751,6 @@ Compaction minimum file size.
 *Default:* `524288000`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.compaction.plasma.manual* +
@@ -791,7 +767,6 @@ For standard indexes using Plasma, whether compaction should be triggered manual
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *indexer.settings.compaction.plasma.optional.decrement* +
 _optional_
@@ -806,7 +781,6 @@ For standard indexes using Plasma, the optional decrement.
 *Default:* `5`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.compaction.plasma.optional.min_frag* +
@@ -823,7 +797,6 @@ For standard indexes using Plasma, the minimum fragmentation threshold to trigge
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.compaction.plasma.optional.quota* +
 _optional_
@@ -838,7 +811,6 @@ For standard indexes using Plasma, the optional quota.
 *Default:* `25`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.corrupt_index_num_backups* +
@@ -855,7 +827,6 @@ Corrupt index number of backups.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.cpuProfDir* +
 _optional_
@@ -869,7 +840,6 @@ The name of the directory where local CPU usage profiling information is capture
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *indexer.settings.cpuProfile* +
@@ -885,7 +855,6 @@ Whether the Index Service should capture local CPU usage profiling information.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *indexer.settings.defer_build* +
@@ -907,7 +876,6 @@ You can override this setting by specifying the `defer_build` option when you cr
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *indexer.settings.eTagPeriod* +
 _optional_
@@ -923,7 +891,6 @@ The ETag (entity tag) period.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.enable_corrupt_index_backup* +
 _optional_
@@ -938,7 +905,6 @@ Whether corrupt index backup is enabled.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *indexer.settings.enable_page_bloom_filter* +
@@ -956,7 +922,6 @@ For details, see [Per Page Bloom Filters](/server/8.0/learn/services-and-indexes
 *Default:* `true`
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *indexer.settings.enable_shard_affinity* +
@@ -981,7 +946,6 @@ However, when you alter an index, you cannot use the `WITH` clause to specify wh
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *indexer.settings.fast_flush_mode* +
 _optional_
@@ -996,7 +960,6 @@ Whether fast flush mode is enabled.
 *Default:* `true`
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *indexer.settings.gc_percent* +
@@ -1013,7 +976,6 @@ Garbage collection percentage.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.inmemory_snapshot.fdb.interval* +
 _optional_
@@ -1021,7 +983,7 @@ a¦
 
 [markdown]
 --
-For standard indexes using ForestDB, the in-memory snapshotting interval (ms).
+For standard indexes using Forestdb, the in-memory snapshot interval (ms).
 This determines the earliest possibility of a scan seeing a given KV mutation.
 --
 
@@ -1030,7 +992,6 @@ This determines the earliest possibility of a scan seeing a given KV mutation.
 *Minimum:* `1` (exclusive)
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.inmemory_snapshot.interval* +
@@ -1039,7 +1000,7 @@ a¦
 
 [markdown]
 --
-The in-memory snapshotting interval (ms).
+The in-memory snapshot interval (ms).
 This determines the earliest possibility of a scan seeing a given KV mutation.
 --
 
@@ -1049,7 +1010,6 @@ This determines the earliest possibility of a scan seeing a given KV mutation.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.inmemory_snapshot.moi.interval* +
 _optional_
@@ -1057,7 +1017,7 @@ a¦
 
 [markdown]
 --
-For memory-optimized indexes, the in-memory snapshotting interval (ms).
+For memory-optimized indexes, the in-memory snapshot interval (ms).
 This determines the earliest possibility of a scan seeing a given KV mutation.
 --
 
@@ -1066,7 +1026,6 @@ This determines the earliest possibility of a scan seeing a given KV mutation.
 *Minimum:* `1` (exclusive)
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.largeSnapshotThreshold* +
@@ -1082,7 +1041,6 @@ The large snapshot threshold.
 *Default:* `200`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.log_level* +
@@ -1100,7 +1058,6 @@ Indexer logging level.
 {blank}
 a¦ String
 
-
 a¦ 
 *indexer.settings.maxNumPartitions* +
 _optional_
@@ -1116,7 +1073,6 @@ Maximum number of partitions.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.maxVbQueueLength* +
 _optional_
@@ -1131,7 +1087,6 @@ Maximum vBucket queue length.
 *Default:* `0`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.max_array_seckey_size* +
@@ -1150,7 +1105,6 @@ In Couchbase Server 6.5 and later, the Index Service does not need to restart wh
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.max_cpu_percent* +
 _optional_
@@ -1166,7 +1120,6 @@ If set to `0`, the indexer will use all CPUs.
 *Default:* `0`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.max_seckey_size* +
@@ -1185,7 +1138,6 @@ In Couchbase Server 6.5 and later, the Index Service does not need to restart wh
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.max_writer_lock_prob* +
 _optional_
@@ -1201,7 +1153,6 @@ Maximum writer lock prob.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.memProfDir* +
 _optional_
@@ -1215,7 +1166,6 @@ The name of the directory where local memory usage profiling information is capt
 [%hardbreaks]
 {blank}
 a¦ String
-
 
 a¦ 
 *indexer.settings.memProfile* +
@@ -1232,7 +1182,6 @@ Whether the Index Service should capture local memory usage profiling informatio
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *indexer.settings.memory_quota* +
 _optional_
@@ -1247,7 +1196,6 @@ How much RAM is allocated to the Index Service for the current node.
 *Default:* `536870912`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.minVbQueueLength* +
@@ -1264,7 +1212,6 @@ Minimum vBucket queue length.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.moi.debug* +
 _optional_
@@ -1279,7 +1226,6 @@ Debug memory-optimized index storage.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *indexer.settings.moi.persistence_threads* +
@@ -1296,7 +1242,6 @@ For memory-optimized index storage, the number of persistence threads.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.moi.recovery.max_rollbacks* +
 _optional_
@@ -1312,7 +1257,6 @@ For memory-optimized index storage, the maximum number of committed rollback poi
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.moi.recovery_threads* +
 _optional_
@@ -1327,7 +1271,6 @@ For memory-optimized index storage, the number of recovery threads.
 *Default:* `8`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.num_replica* +
@@ -1345,7 +1288,6 @@ The default number of index replicas to be created by the Index Service whenever
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.percentage_memory_quota* +
 _optional_
@@ -1361,7 +1303,6 @@ Percentage memory quota.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.persisted_snapshot.fdb.interval* +
 _optional_
@@ -1369,7 +1310,7 @@ a¦
 
 [markdown]
 --
-For standard indexes using ForestDB, the persisted snapshotting interval (ms).
+For standard indexes using Forestdb, the persisted snapshot interval (ms).
 This must be a multiple of the in-memory snapshot interval.
 --
 
@@ -1378,7 +1319,6 @@ This must be a multiple of the in-memory snapshot interval.
 *Minimum:* `100`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.persisted_snapshot.interval* +
@@ -1387,7 +1327,7 @@ a¦
 
 [markdown]
 --
-The persisted snapshotting interval (ms).
+The persisted snapshot interval (ms).
 This must be a multiple of the in-memory snapshot interval.
 --
 
@@ -1396,7 +1336,6 @@ This must be a multiple of the in-memory snapshot interval.
 *Minimum:* `100`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.persisted_snapshot.moi.interval* +
@@ -1405,7 +1344,7 @@ a¦
 
 [markdown]
 --
-For memory-optimized indexes, the persisted snapshotting interval (ms).
+For memory-optimized indexes, the persisted snapshot interval (ms).
 This must be a multiple of the in-memory snapshot interval.
 --
 
@@ -1415,7 +1354,6 @@ This must be a multiple of the in-memory snapshot interval.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.persisted_snapshot_init_build.fdb.interval* +
 _optional_
@@ -1423,14 +1361,13 @@ a¦
 
 [markdown]
 --
-For standard indexes using ForestDB, the persisted snapshotting interval for the initial build (ms).
+For standard indexes using Forestdb, the persisted snapshot interval for the initial build (ms).
 --
 
 [%hardbreaks]
 *Default:* `5000`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.persisted_snapshot_init_build.interval* +
@@ -1439,14 +1376,13 @@ a¦
 
 [markdown]
 --
-The persisted snapshotting interval for the initial build (ms).
+The persisted snapshot interval for the initial build (ms).
 --
 
 [%hardbreaks]
 *Default:* `5000`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.persisted_snapshot_init_build.moi.interval* +
@@ -1455,14 +1391,13 @@ a¦
 
 [markdown]
 --
-For memory-optimized indexes, the persisted snapshotting interval for the initial build (ms).
+For memory-optimized indexes, the persisted snapshot interval for the initial build (ms).
 --
 
 [%hardbreaks]
 *Default:* `600000`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.plasma.recovery.max_rollbacks* +
@@ -1479,7 +1414,6 @@ For standard indexes using Plasma, the maximum number of committed rollback poin
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.rebalance.blob_storage_bucket* +
 _optional_
@@ -1494,7 +1428,6 @@ Rebalance blob storage bucket.
 *Default:* `+++""+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *indexer.settings.rebalance.blob_storage_prefix* +
@@ -1511,7 +1444,6 @@ Rebalance blob storage prefix.
 {blank}
 a¦ String
 
-
 a¦ 
 *indexer.settings.rebalance.blob_storage_region* +
 _optional_
@@ -1527,7 +1459,6 @@ Rebalance blob storage region.
 {blank}
 a¦ String
 
-
 a¦ 
 *indexer.settings.rebalance.blob_storage_scheme* +
 _optional_
@@ -1542,7 +1473,6 @@ Rebalance blob storage scheme.
 *Default:* `+++""+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *indexer.settings.rebalance.redistribute_indexes* +
@@ -1565,7 +1495,6 @@ For details, see [Rebalance](/server/8.0/learn/clusters-and-availability/rebalan
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *indexer.settings.recovery.max_rollbacks* +
 _optional_
@@ -1581,7 +1510,6 @@ The maximum number of committed rollback points.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.scan_getseqnos_retries* +
 _optional_
@@ -1596,7 +1524,6 @@ Scan get sequence numbers retries.
 *Default:* `30`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.scan_timeout* +
@@ -1617,7 +1544,6 @@ An index scan may time out if the Index Service timeout is lower than the Query 
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.send_buffer_size* +
 _optional_
@@ -1632,7 +1558,6 @@ Send buffer size.
 *Default:* `1024`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.serverless.indexLimit* +
@@ -1649,7 +1574,6 @@ Serverless index limit.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.sliceBufSize* +
 _optional_
@@ -1664,7 +1588,6 @@ Slice buffer size.
 *Default:* `1600`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.smallSnapshotThreshold* +
@@ -1681,7 +1604,6 @@ Small snapshot threshold.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.snapshotListeners* +
 _optional_
@@ -1696,7 +1618,6 @@ Snapshot listeners.
 *Default:* `4`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.snapshotRequestWorkers* +
@@ -1713,7 +1634,6 @@ Snapshot request workers.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.statsLogDumpInterval* +
 _optional_
@@ -1729,7 +1649,6 @@ Statistics log dump interval.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.storage_mode* +
 _optional_
@@ -1737,13 +1656,30 @@ a¦
 
 [markdown]
 --
-include::index.adoc[tag=desc-SettingsStorageMode, opts=optional]
+The storage mode to be used for the Index Service on this node.
+
+---
+
+If you're using Couchbase Server Enterprise Edition, the possible values are:
+
+* `plasma` (the default) &mdash;
+  Sets the index storage mode to use the Plasma storage engine, which can utilize both memory and persistent storage for index maintenance and index scans.
+
+* `memory_optimized` &mdash;
+  Sets the index storage mode to use memory optimized Global Secondary Indexes, which can perform index maintenance and index scan faster at in-memory speeds.
+
+This setting can only be changed while there are no index nodes in the cluster.
+To change from standard GSI to memory optimized GSI or vice versa, you need to remove all the Index Service nodes in the cluster.
+
+---
+
+If you're using Couchbase Server Community Edition, the default (and only) value is `forestdb`.
 --
 
 [%hardbreaks]
+*Values:* `"plasma"`, `"memory_optimized"`, `"forestdb"`
 {blank}
-a¦ xref:SettingsStorageMode[]
-
+a¦ String
 
 a¦ 
 *indexer.settings.storage_mode.disable_upgrade* +
@@ -1760,7 +1696,6 @@ Whether upgrade of the index storage mode is disabled.
 {blank}
 a¦ Boolean
 
-
 a¦ 
 *indexer.settings.thresholds.mem_high* +
 _optional_
@@ -1775,7 +1710,6 @@ High memory threshold.
 *Default:* `70`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.thresholds.mem_low* +
@@ -1792,7 +1726,6 @@ Low memory threshold.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.thresholds.units_high* +
 _optional_
@@ -1807,7 +1740,6 @@ High units threshold.
 *Default:* `60`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.thresholds.units_low* +
@@ -1824,7 +1756,6 @@ Low units threshold.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *indexer.settings.units_quota* +
 _optional_
@@ -1839,7 +1770,6 @@ Units quota.
 *Default:* `10000`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *indexer.settings.wal_size* +
@@ -1856,7 +1786,6 @@ Write-ahead log size.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *projector.settings.log_level* +
 _optional_
@@ -1871,7 +1800,6 @@ Projector logging level.
 *Default:* `+++"info"+++`
 {blank}
 a¦ String
-
 
 a¦ 
 *queryport.client.settings.backfillLimit* +
@@ -1893,7 +1821,6 @@ The maximum size is limited only by the available disk space.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *queryport.client.settings.closeActiveConnections* +
 _optional_
@@ -1908,7 +1835,6 @@ Whether to close active connections.
 *Default:* `true`
 {blank}
 a¦ Boolean
-
 
 a¦ 
 *queryport.client.settings.minPoolSizeWM* +
@@ -1925,7 +1851,6 @@ Minimum pool size.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *queryport.client.settings.poolOverflow* +
 _optional_
@@ -1940,7 +1865,6 @@ Maximum number of connections in a pool.
 *Default:* `30`
 {blank}
 a¦ Integer (int32)
-
 
 a¦ 
 *queryport.client.settings.poolSize* +
@@ -1957,7 +1881,6 @@ Number of simultaneous active connections in a pool.
 {blank}
 a¦ Integer (int32)
 
-
 a¦ 
 *queryport.client.settings.relConnBatchSize* +
 _optional_
@@ -1973,11 +1896,9 @@ Connection batch size.
 {blank}
 a¦ Integer (int32)
 
-
 |===
 
 //end::Settings[]
-
 
 
 
@@ -1991,128 +1912,12 @@ a¦ Integer (int32)
 
 
 
-// markup not found, no include::{specDir}definitions/SettingsStorageMode/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#SettingsStorageMode]
-= Storage Mode
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/SettingsStorageMode/definition-begin.adoc[opts=optional]
-
-
-.icon:bars[fw] Composite Schema
-{blank}
-
-//tag::SettingsStorageMode[]
-
-ifdef::model-descriptions[]
-//tag::desc-SettingsStorageMode[]
-The storage mode to be used for the Index Service on this node.
-//end::desc-SettingsStorageMode[]
-endif::model-descriptions[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
-
-a¦ 
-a¦ [.edition]##{enterprise}##
-
-[markdown]
---
-include::index.adoc[tag=desc-SettingsStorageModeEE, opts=optional]
---
-
-[%hardbreaks]
-{blank}
-a¦ 
-include::index.adoc[tag=type-SettingsStorageModeEE, opts=optional]
-
-a¦ _or_
-a¦ [.edition]##{community}##
-
-[markdown]
---
-include::index.adoc[tag=desc-SettingsStorageModeCE, opts=optional]
---
-
-[%hardbreaks]
-{blank}
-a¦ 
-include::index.adoc[tag=type-SettingsStorageModeCE, opts=optional]
-
-|===
-
-//end::SettingsStorageMode[]
-
-
-// markup not found, no include::{specDir}definitions/SettingsStorageMode/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/SettingsStorageMode/definition-after.adoc[opts=optional]
-
-
-ifdef::enum-definitions[]
-[#SettingsStorageModeCE]
-= Community Edition
-
-.icon:menu[fw] Enumeration
-{blank}
-
-//tag::desc-SettingsStorageModeCE[]
-If you are using Community Edition, the default (and only) value is `forestdb`.
-//end::desc-SettingsStorageModeCE[]
-
-.Schema
-//tag::type-SettingsStorageModeCE[]
-String
-
-
-//end::type-SettingsStorageModeCE[]
-endif::enum-definitions[]
-ifdef::enum-definitions[]
-[#SettingsStorageModeEE]
-= Enterprise Edition
-
-.icon:menu[fw] Enumeration
-{blank}
-
-//tag::desc-SettingsStorageModeEE[]
-If you are using Enterprise Edition, the possible values are:
-
-* `plasma` (the default) &mdash;
-  Sets the index storage mode to use the Plasma storage engine, which can utilize both memory and persistent storage for index maintenance and index scans.
-
-* `memory_optimized` &mdash;
-  Sets the index storage mode to use memory optimized global secondary indexes, which can perform index maintenance and index scan faster at in-memory speeds.
-
-This setting can only be changed while there are no index nodes in the cluster.
-To change from standard GSI to memory optimized GSI or vice versa, you need to remove all the Index Service nodes in the cluster.
-//end::desc-SettingsStorageModeEE[]
-
-.Schema
-//tag::type-SettingsStorageModeEE[]
-String
-
-
-//end::type-SettingsStorageModeEE[]
-endif::enum-definitions[]
-
-
 // markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
 
 
 :leveloffset: -1
 
 // markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
-
 
 
 // markup not found, no include::{specDir}security/document-before.adoc[opts=optional]

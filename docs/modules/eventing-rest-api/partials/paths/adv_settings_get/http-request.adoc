@@ -2,7 +2,7 @@
 
 .View global function settings
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings"
@@ -11,7 +11,7 @@ curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/sett
 
 .View scoped function settings
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings?bucket=bulk&scope=data"
@@ -20,7 +20,7 @@ curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/setti
 
 .Save global function settings to file
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings" \
@@ -30,7 +30,7 @@ curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/sett
 
 .Save scoped function settings to file
 ====
-.Curl request
+.curl request
 [source,sh]
 ----
 curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings?bucket=bulk&scope=data" \
