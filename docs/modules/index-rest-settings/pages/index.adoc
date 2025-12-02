@@ -564,11 +564,11 @@ a¦
 
 [markdown]
 --
-For standard indexes using Plasma, the maximum size for Log Structured Store segment files (MB).
+For standard indexes using Plasma, the maximum size for Log Structured Store segment files, in bytes.
 Index compaction and space reclamation are triggered when the segment file size reaches this value.
 
-The default value is 512MB on Microsoft Windows and 4GB on GNU Linux and macOS.
-Specifying a lower value (for example, 64 MB) may trigger index compaction more frequently in cases where an index uses a lot of disk space, or index fragmentation is high.
+The default value is 512&nbsp;MiB on Microsoft Windows and 4&nbsp;GiB on GNU Linux and macOS.
+Specifying a lower value (for example, 64&nbsp;MiB) may trigger index compaction more frequently in cases where an index uses a lot of disk space, or index fragmentation is high.
 
 This setting only applies to indexes created after the setting is changed.
 For existing indexes, you must rebuild the index after changing the setting.
