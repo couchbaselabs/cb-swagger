@@ -558,6 +558,30 @@ endif::collapse-models[]
 ¦ Property ¦ ¦ Schema
 
 a¦ 
+*indexer.&#8203;plasma.&#8203;LSSSegmentFileSize* +
+_optional_
+a¦ 
+
+[markdown]
+--
+For standard indexes using Plasma, the maximum size for Log Structured Store segment files, in bytes.
+Index compaction and space reclamation are triggered when the segment file size reaches this value.
+
+The default value is 512&nbsp;MiB on Microsoft Windows and 4&nbsp;GiB on GNU Linux and macOS.
+Specifying a lower value (for example, 64&nbsp;MiB) may trigger index compaction more frequently in cases where an index uses a lot of disk space, or index fragmentation is high.
+
+This setting only applies to indexes created after the setting is changed.
+For existing indexes, you must rebuild the index after changing the setting.
+
+For more information, see [Standard Index Storage](/server/8.0/indexes/storage-modes.html#standard-index-storage).
+--
+
+[%hardbreaks]
+*Example:* `67108864`
+{blank}
+a¦ Integer (int32)
+
+a¦ 
 *indexer.&#8203;rebalance.&#8203;transferBatchSize* +
 _optional_
 a¦ 
@@ -915,7 +939,7 @@ a¦
 --
 Whether Bloom filters are enabled for memory management.
 
-For details, see [Per Page Bloom Filters](/server/8.0/learn/services-and-indexes/indexes/storage-modes.html#per-page-bloom-filters).
+For more information, see [Per Page Bloom Filters](/server/8.0/indexes/storage-modes.html#per-page-bloom-filters).
 --
 
 [%hardbreaks]
@@ -1487,7 +1511,7 @@ Whether to redistribute indexes on rebalance.
 
 * When false (the default), such redistribution does not occur.
 
-For details, see [Rebalance](/server/8.0/learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service).
+For more information, see [Rebalance](/server/8.0/learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service).
 --
 
 [%hardbreaks]
