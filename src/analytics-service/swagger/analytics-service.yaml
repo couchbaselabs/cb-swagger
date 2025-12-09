@@ -188,7 +188,7 @@ definitions:
         type: boolean
         description: If `true`, the logical plan is included in the query response.
         default: false
-      optimized-logical-plan: &organized_logical_plan
+      optimized-logical-plan: &optimized_logical_plan
         type: boolean
         description: If `true`, the optimized logical plan is included in the query response.
         default: true
@@ -479,8 +479,8 @@ parameters:
     required: false
 
   AnalyticsOptimizedLogicalPlan:
-    <<: *organized_logical_plan
-    name: organized-logical-plan
+    <<: *optimized_logical_plan
+    name: optimized-logical-plan
     in: query
     required: false
 
