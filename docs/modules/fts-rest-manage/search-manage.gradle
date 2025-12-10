@@ -3,7 +3,7 @@ apply plugin: 'org.openapi.generator'
 tasks.register('getExamples') {
   doLast {
     ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/manage/examples")
+                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/master/docs/spec/manage/examples")
     ant.echo("Fetching from ${ant.srcUrl}")
     ant.get(dest: "examples", ignoreerrors: "true") {
       ant.url(url: "${ant.srcUrl}/file-xfer-200.json")
@@ -16,7 +16,7 @@ tasks.register('getExamples') {
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/manage/manage.yaml"
+    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/master/docs/spec/manage/manage.yaml"
     outputDir = "${rootDir}/docs/modules/fts-rest-manage/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cbft"

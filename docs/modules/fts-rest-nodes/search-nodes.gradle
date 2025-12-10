@@ -3,7 +3,7 @@ apply plugin: 'org.openapi.generator'
 tasks.register('getExamples') {
   doLast {
     ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/nodes/examples")
+                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/master/docs/spec/nodes/examples")
     ant.echo("Fetching from ${ant.srcUrl}")
     ant.get(dest: "examples", ignoreerrors: "true") {
       ant.url(url: "${ant.srcUrl}/get-cluster-config.json")
@@ -15,7 +15,7 @@ tasks.register('getExamples') {
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/nodes/nodes.yaml"
+    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/master/docs/spec/nodes/nodes.yaml"
     outputDir = "${rootDir}/docs/modules/fts-rest-nodes/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cbft"

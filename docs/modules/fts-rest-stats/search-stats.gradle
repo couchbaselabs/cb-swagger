@@ -3,7 +3,7 @@ apply plugin: 'org.openapi.generator'
 tasks.register('getExamples') {
   doLast {
     ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/stats/examples")
+                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/master/docs/spec/stats/examples")
     ant.echo("Fetching from ${ant.srcUrl}")
     ant.get(dest: "examples", ignoreerrors: "true") {
       ant.url(url: "${ant.srcUrl}/g-api-nsstats-200.json")
@@ -15,7 +15,7 @@ tasks.register('getExamples') {
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/stats/stats.yaml"
+    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/master/docs/spec/stats/stats.yaml"
     outputDir = "${rootDir}/docs/modules/fts-rest-stats/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cbft"
