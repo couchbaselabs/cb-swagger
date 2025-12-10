@@ -3,7 +3,7 @@ apply plugin: 'org.openapi.generator'
 tasks.register('getExamples') {
   doLast {
     ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/query/refs/heads/morpheus/docs/spec/admin/examples")
+                value: "https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/admin/examples")
     ant.echo("Fetching from ${ant.srcUrl}")
     ant.get(dest: "examples", ignoreerrors: "true") {
       ant.url(url: "${ant.srcUrl}/get_debug_vars.html")
@@ -16,7 +16,7 @@ tasks.register('getExamples') {
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/query/refs/heads/morpheus/docs/spec/admin/admin.yaml"
+    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/admin/admin.yaml"
     outputDir = "${rootDir}/docs/modules/n1ql-rest-admin/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "query"

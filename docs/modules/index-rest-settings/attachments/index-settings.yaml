@@ -1,10 +1,10 @@
 openapi: 3.0.3
 info:
   title: Index Settings REST API
-  version: '8.0'
+  version: '8.1'
   license:
     name: Business Source License 1.1
-    url: https://github.com/couchbaselabs/cb-swagger/blob/release/8.0/licenses/BSL-Couchbase.txt
+    url: https://github.com/couchbaselabs/cb-swagger/blob/release/8.1/licenses/BSL-Couchbase.txt
   description: |-
     The Index Settings REST API is provided by the Index Service.
     This API enables you to retrieve or set Index Service settings.
@@ -106,7 +106,7 @@ components:
             This setting only applies to indexes created after the setting is changed.
             For existing indexes, you must rebuild the index after changing the setting.
 
-            For more information, see [Standard Index Storage](/server/8.0/indexes/storage-modes.html#standard-index-storage).
+            For more information, see [Standard Index Storage](/server/8.1/indexes/storage-modes.html#standard-index-storage).
         indexer.rebalance.transferBatchSize:
           x-alt-title: indexer.&#8203;rebalance.&#8203;transferBatchSize
           type: integer
@@ -124,7 +124,7 @@ components:
             This setting controls the maximum number of indexes that a rebalance rebuilds concurrently.
             You must have the Full Admin or the Cluster Admin role to set this value.
 
-            For an overview of rebalance as it affects the Index Service, including an overview of smart batching, see [Rebalance](/server/8.0/learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service).
+            For an overview of rebalance as it affects the Index Service, including an overview of smart batching, see [Rebalance](/server/8.1/learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service).
         indexer.settings.allow_large_keys:
           x-alt-title: indexer.&#8203;settings.&#8203;allow_large_keys
           type: boolean
@@ -296,7 +296,7 @@ components:
           description: |-
             Whether Bloom filters are enabled for memory management.
 
-            For more information, see [Per Page Bloom Filters](/server/8.0/indexes/storage-modes.html#per-page-bloom-filters).
+            For more information, see [Per Page Bloom Filters](/server/8.1/indexes/storage-modes.html#per-page-bloom-filters).
         indexer.settings.enable_shard_affinity:
           x-alt-title: indexer.&#8203;settings.&#8203;enable_shard_affinity
           type: boolean
@@ -304,7 +304,7 @@ components:
           default: false
           description: |-
             Selects the index rebalance method.
-            See [Index Rebalance Methods](/server/8.0/learn/clusters-and-availability/rebalance.html#index-rebalance-methods).
+            See [Index Rebalance Methods](/server/8.1/learn/clusters-and-availability/rebalance.html#index-rebalance-methods).
 
             * If false (the default), Index Service nodes rebuild indexes that are newly assigned to them during a rebalance.
 
@@ -592,7 +592,7 @@ components:
 
             * When false (the default), such redistribution does not occur.
 
-            For more information, see [Rebalance](/server/8.0/learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service).
+            For more information, see [Rebalance](/server/8.1/learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service).
         indexer.settings.recovery.max_rollbacks:
           x-alt-title: indexer.&#8203;settings.&#8203;recovery.&#8203;max_rollbacks
           type: integer
