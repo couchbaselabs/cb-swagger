@@ -2070,31 +2070,11 @@ a¦
 
 [markdown]
 --
-ifdef::alt-markdown-links[]
-[numatrs-srv]: #numatrs-srv
-[queryNumAtrs]: #queryNumAtrs
-
-endif::alt-markdown-links[]
-Specifies the total number of [active transaction records][additional-storage-use].
-Must be a positive integer.
-
-[additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
-
-// tag::desc-more[]
-The [node-level][numatrs-srv] `numatrs` setting specifies the default for this parameter for a single node.
-The request-level parameter overrides the node-level setting.
-
-In addition, the [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies the default for this parameter for the whole cluster.
-When you change the cluster-level setting, the node-level setting is overwritten for all nodes in the cluster.
-
-[numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
-[queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
-// end::desc-more[]
+Reserved for future use.
+This parameter is ignored and has no effect.
 --
 
 [%hardbreaks]
-*Default:* `1024`
-*Example:* `512`
 {blank}
 a¦ Integer (int32)
 
@@ -2565,10 +2545,11 @@ ifdef::alt-markdown-links[]
 [queryTimeout]: #queryTimeout
 
 endif::alt-markdown-links[]
-Maximum time to spend on the request before timing out.
+Maximum time to spend on the request before timing out (s).
 
 The value for this parameter is a string.
-Its format includes an amount and a mandatory unit, e.g. `10ms` (10 milliseconds) or `0.5s` (half a second).
+Its format includes an amount and an optional unit: for example, `10ms` (10 milliseconds) or `0.5s` (half a second).
+If not specified, the default unit is `s` (seconds).
 Valid units are:
 
 * `ns` (nanoseconds)
