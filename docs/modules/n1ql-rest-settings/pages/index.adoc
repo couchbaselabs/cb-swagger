@@ -63,7 +63,7 @@ The URL scheme. Use `https` for secure access.
 a| *host*
 a| [markdown]
 --
-The host name or IP address of a node running the Query Service.
+The host name or IP address of any node in the Couchbase cluster.
 --
 
 [%hardbreaks]
@@ -1432,7 +1432,6 @@ a¦
 --
 ifdef::alt-markdown-links[]
 [numatrs-srv]: #numatrs-srv
-[numatrs_req]: #numatrs_req
 
 endif::alt-markdown-links[]
 Specifies the total number of [active transaction records][additional-storage-use] for all Query nodes in the cluster.
@@ -1443,11 +1442,7 @@ Specifies the total number of [active transaction records][additional-storage-us
 The [node-level][numatrs-srv] `numatrs` setting specifies this property for a single node.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-In addition, there is a [request-level][numatrs_req] `numatrs` parameter.
-If a request includes this parameter, it will be capped by the node-level `numatrs` setting.
-
 [numatrs-srv]: ../n1ql-rest-admin/index.html#numatrs-srv
-[numatrs_req]: ../n1ql-rest-query/index.html#numatrs_req
 // end::desc-more[]
 --
 
