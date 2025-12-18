@@ -6537,7 +6537,6 @@ a¦
 --
 ifdef::alt-markdown-links[]
 [queryNumAtrs]: #queryNumAtrs
-[numatrs_req]: #numatrs_req
 
 endif::alt-markdown-links[]
 Specifies the total number of [active transaction records][additional-storage-use].
@@ -6548,11 +6547,7 @@ Specifies the total number of [active transaction records][additional-storage-us
 The [cluster-level][queryNumAtrs] `queryNumAtrs` setting specifies this property for the whole cluster.
 When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
 
-In addition, the [request-level][numatrs_req] `numatrs` parameter specifies this property per request.
-The minimum of that and the node-level `numatrs` setting is applied.
-
 [queryNumAtrs]: ../n1ql-rest-settings/index.html#queryNumAtrs
-[numatrs_req]: ../n1ql-rest-query/index.html#numatrs_req
 // end::desc-more[]
 --
 
