@@ -1,0 +1,45 @@
+{{#each vendorExtensions ~}}
+{{#with x-desc-edition}}[.edition]##{{this}}##{{/with}}{{#each x-desc-status}}[.status]##{{this}}##{{/each}}
+{{~/each}}
+
+[markdown]
+--
+{{#with vendorExtensions.x-desc-refs ~}}
+ifdef::alt-markdown-links[]
+{{this}}
+
+endif::alt-markdown-links[]
+{{/with ~}}
+{{#with description~}}
+{{{unescapedDescription}}}
+{{~/with}}
+{{~#with vendorExtensions.x-desc-more}}
+
+// tag::desc-more[]
+{{{this}}}
+// end::desc-more[]
+{{/with ~}}
+{{! if ref is present, fetch remote description}}
+{{~#with ref ~}}
+include::index.adoc[tag=desc-{{dataType}}, opts=optional]
+{{/with}}
+--
+{{~#with vendorExtensions ~}}
+{{#each x-enumDescriptions ~}}
+
+.Enum Descriptions
+....
+{{{this}}}
+....
+{{~/each}}
+{{~/with}}
+
+[%hardbreaks]
+{{! values}}
+{{~#if isEnum ~}}
+{{#with allowableValues ~}}
+*Values:* {{#each values}}{{#unless @last}}`{{#if isString}}"{{/if}}{{this}}{{#if isString}}"{{/if}}`, {{/unless}}{{#if @last}}`{{#if isString}}"{{/if}}{{this}}{{#if isString}}"{{/if}}`{{/if}}{{/each}}
+{{~/with}}
+{{/if ~}}
+{{>values ~}}
+{blank}

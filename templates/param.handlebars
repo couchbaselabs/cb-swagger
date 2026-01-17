@@ -1,0 +1,30 @@
+a¦ *{{#if isBodyParam}}Body{{/if}}{{#unless isBodyParam}}{{baseName}}{{/unless}}* +
+_{{#with required}}required{{/with}}{{#unless required}}optional{{/unless}}_
+a¦ {{#each vendorExtensions ~}}
+{{#with x-desc-edition}}[.edition]##{{this}}##{{/with}}{{#with x-desc-status}}[.status]##{{this}}##{{/with}}
+{{~/each}}
+
+
+[markdown]
+--
+{{#with unescapedDescription ~}}
+{{{this}}}
+{{~/with}}
+{{~#unless unescapedDescription ~}}
+{{{description}}}
+{{~/unless ~}}
+{{! if this is an enum reference, fetch remote description}}
+{{~#if isEnumRef ~}}
+include::index.adoc[tag=desc-{{dataType}}, opts=optional]
+{{~/if}}
+--
+
+[%hardbreaks]
+{{! values}}
+{{~#with allowableValues ~}}
+*Values:* {{#each enumVars}}{{#unless @last}}`{{value}}`, {{/unless}}{{#if @last}}`{{value}}`{{/if}}{{/each}}
+{{/with ~}}
+{{>values ~}}
+{blank}
+
+a¦ {{>schemas}}

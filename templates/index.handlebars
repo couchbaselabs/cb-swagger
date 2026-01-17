@@ -1,0 +1,476 @@
+= {{{appName}}}
+:keywords: OpenAPI, REST
+:specDir: partial$
+:snippetDir: partial$paths/
+:page-topic-type: reference
+:page-toclevels: 2
+{{! If headerAttributes is true, include document attributes from the named partial}}
+{{~#if headerAttributes ~}}
+include::partial$header-attributes.adoc[opts=optional]
+{{~/if}}
+
+[comment]
+This file is created automatically by OpenAPI Generator.
+DO NOT EDIT! See https://{{gitHost}}/{{gitUserId}}/{{gitRepoId}}
+{{! include partial before overview }}
+:leveloffset: 1
+
+include::{specDir}overview/document-before.adoc[opts=optional]
+
+{{! *** OVERVIEW *** }}
+[[overview]]
+= Overview
+{{! include partial before overview body }}
+:leveloffset: +1
+
+include::{specDir}overview/document-begin.adoc[opts=optional]
+
+{{! If useIntroduction is true, include the API description }}
+{{~#if useIntroduction}}
+[markdown]
+--
+{{{unescapedAppDescription}}}
+--
+{{~/if}}
+
+{{#with version ~}}
+[discrete#version]
+= Version information
+[%hardbreaks]
+__Version__ : {{{this}}}
+{{~/with}}
+
+{{#each servers ~}}
+[discrete#host]
+{{#if @first ~}}
+= Host information
+{{/if}}
+....
+{{url}}
+....
+
+{{#with description ~}}
+[markdown]
+--
+{{{this}}}
+--
+{{~/with}}
+
+{{#each variables ~}}
+{{#if @first ~}}
+[cols="20,80"]
+|===
+| Component | Description
+
+{{/if ~}}
+a| *{{name}}*
+a| [markdown]
+--
+{{{description}}}
+--
+
+[%hardbreaks]
+{{! enumerated values}}
+{{~#each enumValues}}{{#if @first}}*Values:* {{/if}}{{#unless @last}}`{{this}}`, {{/unless}}{{#if @last}}`{{this}}`{{/if}}{{/each ~}}
+{{! default value if no enumerated values}}
+{{~#unless enumValues}}
+{{#with value}}*Example:* `+++{{this}}+++`{{/with}}
+{{~/unless}}
+// end
+
+{{#if @last ~}}
+|===
+{{~/if}}
+{{~/each}}
+{{~/each}}
+
+{{! include partial after overview body }}
+include::{specDir}overview/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+{{! include partial after overview }}
+include::{specDir}overview/document-after.adoc[opts=optional]
+
+{{! include partial before paths }}
+include::{specDir}paths/document-before.adoc[opts=optional]
+
+{{! *** PATHS *** }}
+[[resources]]
+= Resources
+
+{{! Count the APIs }}
+{{~#with apiInfo ~}}
+{{#each apis ~}}
+{{#if @last ~}}
+:count-apis: {{@index}}
+{{~/if}}
+{{~/each}}
+{{~/with ~}}
+
+{{! include partial before paths body }}
+:leveloffset: +1
+
+include::{specDir}paths/document-begin.adoc[opts=optional]
+
+{{! Table of contents for endpoints }}
+This section describes the operations available with this REST API.
+ifeval::[{count-apis} > 0]
+The operations are grouped in the following categories.
+
+[%hardbreaks]
+{{#with apiInfo ~}}
+{{#each apis ~}}
+xref:tag-{{baseName}}[]
+{{~/each}}
+{{~/with}}
+endif::[]
+
+{{! Endpoint body }}
+{{#with apiInfo ~}}
+{{#each apis ~}}
+
+{{! tag description ~}}
+ifeval::[{count-apis} > 0]
+[#tag-{{baseName}}]
+= {{#with lambda.uncamelize}}{{baseName}}{{/with}}
+:leveloffset: +1
+
+{{#if operationTagDescription ~}}
+{{this}}
+{{~ else ~}}
+**{toc-title}**
+{{~/if}}
+endif::[]
+
+{{~#with operations}}
+{{! Table of contents for operations }}
+[%hardbreaks]
+{{~#each operation}}
+xref:{{operationIdOriginal}}[]
+{{~/each ~}}
+
+{{! Operation body }}
+{{#each operation}}
+
+//tag::{{operationIdOriginal}}[]
+
+{{! include partial before operation }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-before.adoc[opts=optional]
+
+
+[#{{operationIdOriginal}}]
+{{#if useMethodAndPath ~}}
+= {{httpMethod}} {{path}}
+{{~else ~}}
+= {{summary}}
+{{~/if}}
+
+:leveloffset: +1
+{{! include partial before operation body }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-begin.adoc[opts=optional]
+
+
+{{#if useMethodAndPath ~}}
+{{summary}}
+{{~else ~}}
+....
+{{httpMethod}} {{path}}
+....
+{{~/if}}
+
+{{! Deprecation caution }}
+{{~#if isDeprecated ~}}
+CAUTION: This operation is deprecated, and will be removed in a future release.
+{{~/if ~}}
+
+{{! *** OPERATION DESCRIPTION *** }}
+{{!~ include partial before operation description }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-description-before.adoc[opts=optional]
+
+[#{{operationIdOriginal}}-description]
+= Description
+{{! include partial before operation description body }}
+:leveloffset: +1
+include::{specDir}paths/{{operationIdOriginal}}/operation-description-begin.adoc[opts=optional]
+
+[markdown]
+--
+{{{unescapedNotes}}}
+--
+
+{{! include partials after operation description body }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-description-end.adoc[opts=optional]
+
+{{! *** OPERATION CONSUMES *** }}
+{{~#if hasConsumes ~}}
+[#{{operationIdOriginal}}-consumes]
+.Consumes
+{{#each consumes ~}}
+* {{{mediaType}}}
+{{~/each}}
+{{~/if}}
+
+{{! *** OPERATION PRODUCES *** }}
+{{~#if hasProduces ~}}
+[#{{operationIdOriginal}}-produces]
+.Produces
+{{#each produces ~}}
+* {{{mediaType}}}
+{{~/each}}
+{{~/if}}
+
+:leveloffset: -1
+
+{{! include partial after operation description }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-description-after.adoc[opts=optional]
+
+{{! *** OPERATION PARAMETERS *** }}
+{{!~ include partial before operation parameters }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-before.adoc[opts=optional]
+
+{{> params}}
+
+{{! request body example }}
+{{~#unless skipExamples ~}}
+{{#if hasBodyParam ~}}
+//tag::example-{{bodyParam.dataType}}[]
+{{#each requestBodyExamples ~}}
+====
+{{#with example ~}}
+[source,json]
+----
+{{{this}}}
+----
+{{~/with}}
+====
+{{~/each}}
+//end::example-{{bodyParam.dataType}}[]
+{{~/if}}
+{{~/unless}}
+
+
+{{! include partials after the operation parameters }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-after.adoc[opts=optional]
+
+{{! *** OPERATION RESPONSES *** }}
+{{! include partial before operation responses }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-responses-before.adoc[opts=optional]
+
+{{! If there are responses: anchor, title, and table header }}
+{{#each responses ~}}
+{{#if @first ~}}
+[#{{operationIdOriginal}}-responses]
+= Responses
+
+:leveloffset: +1
+{{! include partial before operation responses body }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-responses-begin.adoc[opts=optional]
+
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+{{~/if}}
+{{~/each}}
+
+{{! Iterate through responses }}
+{{~#each responses ~}}
+| {{code}}
+a| [markdown]
+--
+{{{message}}}
+--
+a| {{#with returnProperty}}{{>schemas}}{{/with}}
+{{~/each}}
+
+{{! If there are responses: table footer }}
+{{~#each responses}}
+{{#if @last ~}}
+|===
+
+{{! include partials after operation responses body }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-responses-end.adoc[opts=optional]
+:leveloffset: -1
+{{~/if}}
+{{~/each}}
+
+{{! Response example }}
+{{~#unless skipExamples ~}}
+{{#if hasExamples ~}}
+//tag::example-{{returnProperty.dataType}}[]
+{{#each examples ~}}
+====
+{{#with example ~}}
+[source,json]
+----
+{{{this}}}
+----
+{{~/with}}
+====
+{{~/each}}
+//end::example-{{returnProperty.dataType}}[]
+{{~/if}}
+{{~/unless}}
+
+{{! include partials after operation responses }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-responses-after.adoc[opts=optional]
+
+{{! *** OPERATION SECURITY *** ~}}
+{{! include partial before operation security }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-security-before.adoc[opts=optional]
+
+{{! If there is operation security: anchor, title, and table header }}
+{{~#each authMethods ~}}
+{{#if @first ~}}
+[#{{operationIdOriginal}}-security]
+= Security
+{{! include partial before operation security body }}
+:leveloffset: +1
+include::{specDir}paths/{{operationIdOriginal}}/operation-security-begin.adoc[opts=optional]
+
+[cols="20,80"]
+|===
+| Type | Name
+{{~/if}}
+{{~/each}}
+
+{{! Iterate through operation security }}
+{{~#each authMethods ~}}
+| {{type}}{{#with scheme}} ({{this}}){{/with}}
+| xref:security-{{#with lambda.camelcase}}{{name}}{{/with}}[]
+{{~/each}}
+
+{{! If there is operation security: table footer }}
+{{~#each authMethods ~}}
+{{#if @last ~}}
+|===
+
+{{! include partials after operation security body }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-security-end.adoc[opts=optional]
+:leveloffset: -1
+{{~/if}}
+{{~/each}}
+
+{{! include partials after operation security }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[opts=optional]
+
+{{! *** OPERATION SAMPLES *** }}
+{{!~ Include partials for operation sample requests and responses }}
+{{!~ The partials should have a level 1 title; the level offset pushes the title down to the correct section level. }}
+
+include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
+
+
+include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
+
+{{! include partials after operation body }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-end.adoc[opts=optional]
+:leveloffset: -1
+
+{{! include partials after the operation }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-after.adoc[opts=optional]
+
+//end::{{operationIdOriginal}}[]
+
+{{~/each}}
+{{~/with}}
+
+ifeval::[{count-apis} > 0]
+:leveloffset: -1
+endif::[]
+
+{{/each}}
+{{/with}}
+
+{{! include partial after paths body }}
+include::{specDir}paths/document-end.adoc[opts=optional]
+:leveloffset: -1
+
+{{! include partial after paths }}
+include::{specDir}paths/document-after.adoc[opts=optional]
+
+{{! *** MODELS *** }}
+{{> models}}
+
+{{! include partial before security }}
+include::{specDir}security/document-before.adoc[opts=optional]
+
+{{! *** SECURITY *** }}
+{{#if hasAuthMethods}}
+[[security]]
+= Security
+
+:leveloffset: +1
+{{! include partial before security body }}
+include::{specDir}security/document-begin.adoc[opts=optional]
+
+{{#each authMethods}}
+
+{{! include partial before security scheme }}
+include::{specDir}security/{{name}}/security-scheme-before.adoc[opts=optional]
+
+[[security-{{#with lambda.camelcase}}{{name}}{{/with}}]]
+= {{#with lambda.uncamelize}}{{name}}{{/with}}
+
+:leveloffset: +1
+{{! include partial before security scheme body }}
+include::{specDir}security/{{name}}/security-scheme-begin.adoc[opts=optional]
+
+{{#with description ~}}
+[markdown]
+--
+{{{this}}}
+--
+{{~/with}}
+
+{{#if isBasic ~}}
+{{#if isBasicBasic ~}}
+[%hardbreaks]
+__Type__ : {{type}}
+{{~/if}}
+{{~#if isBasicBearer ~}}
+[%hardbreaks]
+__Type__ : {{type}}
+__Scheme__ : {{scheme}}
+{{#with bearerFormat}}__Format__: {{this}}{{/with}}
+{{~/if}}
+{{~/if}}
+{{~#if isOAuth ~}}
+.OAuth
+[%hardbreaks]
+__Authorization URL__ : {{authorizationUrl}}
+__Token URL__ : {{tokenUrl}}
+{{~/if}}
+{{~#if isApiKey ~}}
+.API Key
+[%hardbreaks]
+__Key parameter__ : {{keyParamName}}
+__Key in__ : {{#if isKeyInQuery}}query{{/if}} {{#if isKeyInHeader}}header{{/if}}
+{{~/if}}
+
+{{! include partial after security scheme body }}
+include::{specDir}security/{{name}}/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+{{! include partial after security scheme }}
+include::{specDir}security/{{name}}/security-scheme-after.adoc[opts=optional]
+{{/each}}
+
+{{! include partial after security body }}
+include::{specDir}security/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+{{/if}}
+
+{{! include partial after security }}
+include::{specDir}security/document-after.adoc[opts=optional]
+
+{{! *** EXTERNAL DOCS *** }}
+{{~#each externalDocs ~}}
+[[see-also]]
+= See Also
+
+* link:{{url}}[{{description}}]
+{{~/each}}

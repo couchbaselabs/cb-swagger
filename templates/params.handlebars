@@ -1,0 +1,110 @@
+{{#if hasParams ~}}
+[#{{operationIdOriginal}}-parameters]
+= Parameters
+
+:leveloffset: +1
+{{! include partial before operation parameters body }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-begin.adoc[opts=optional]
+
+{{#if hasPathParams ~}}
+[#{{operationIdOriginal}}-path]
+{{~#if useTableTitles ~}}
+.Path Parameters
+{blank}
+{{~else ~}}
+= Path Parameters
+{{~/if}}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+{{#each pathParams ~}}
+{{>param}}
+{{~/each}}
+|===
+{{~/if ~}}
+
+{{#if hasQueryParams ~}}
+[#{{operationIdOriginal}}-query]
+{{~#if useTableTitles ~}}
+.Query Parameters
+{blank}
+{{~else ~}}
+= Query Parameters
+{{~/if}}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+{{#each queryParams ~}}
+{{>param}}
+{{~/each}}
+|===
+{{/if ~}}
+
+{{#if hasHeaderParams ~}}
+[#{{operationIdOriginal}}-header]
+{{#unless useTableTitles ~}}
+= Header Parameters
+{{~/unless}}
+{{~#if useTableTitles ~}}
+.Header Parameters
+{blank}
+{{~/if}}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+{{#each headerParams ~}}
+{{>param}}
+{{~/each}}
+|===
+{{/if ~}}
+
+{{#if hasFormParams ~}}
+[#{{operationIdOriginal}}-form]
+{{#unless useTableTitles ~}}
+= Form Parameters
+{{~/unless}}
+{{~#if useTableTitles ~}}
+.Form Parameters
+{blank}
+{{~/if}}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+{{#each formParams ~}}
+{{>param}}
+{{~/each}}
+|===
+{{~/if ~}}
+
+{{#if hasBodyParam ~}}
+[#{{operationIdOriginal}}-body]
+{{#unless useTableTitles ~}}
+= Body Parameter
+{{~/unless}}
+{{~#if useTableTitles ~}}
+.Body Parameter
+{blank}
+{{~/if}}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+{{#each bodyParams ~}}
+{{>param}}
+{{~/each}}
+|===
+{{~/if}}
+
+{{! include partial after operation parameters body }}
+include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-end.adoc[opts=optional]
+:leveloffset: -1
+{{~/if}}
