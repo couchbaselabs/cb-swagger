@@ -153,6 +153,7 @@ xref:{{operationIdOriginal}}[]
 {{! Operation body }}
 {{#each operation}}
 
+
 //tag::{{operationIdOriginal}}[]
 
 {{! include partial before operation }}
@@ -226,15 +227,13 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-description-end.adoc[o
 include::{specDir}paths/{{operationIdOriginal}}/operation-description-after.adoc[opts=optional]
 
 {{! *** OPERATION PARAMETERS *** }}
-{{!~ include partial before operation parameters }}
+{{! include partial before operation parameters }}
 include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-before.adoc[opts=optional]
 
 {{> params}}
-
 {{! request body example }}
-{{~#unless skipExamples ~}}
+{{#unless skipExamples ~}}
 {{#if hasBodyParam ~}}
-//tag::example-{{bodyParam.dataType}}[]
 {{#each requestBodyExamples ~}}
 ====
 {{#with example ~}}
@@ -245,11 +244,8 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-before.adoc
 {{~/with}}
 ====
 {{~/each}}
-//end::example-{{bodyParam.dataType}}[]
 {{~/if}}
 {{~/unless}}
-
-
 {{! include partials after the operation parameters }}
 include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-after.adoc[opts=optional]
 
@@ -257,7 +253,7 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-after.adoc[
 {{! include partial before operation responses }}
 include::{specDir}paths/{{operationIdOriginal}}/operation-responses-before.adoc[opts=optional]
 
-{{! If there are responses: anchor, title, and table header }}
+{{! If there are responses }}
 {{#each responses ~}}
 {{#if @first ~}}
 [#{{operationIdOriginal}}-responses]
@@ -271,22 +267,14 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-responses-begin.adoc[o
 [cols="20,60,20"]
 |===
 | HTTP Code | Description | Schema
-{{~/if}}
-{{~/each}}
-
-{{! Iterate through responses }}
-{{~#each responses ~}}
+{{/if}}
 | {{code}}
 a| [markdown]
 --
 {{{message}}}
 --
 a| {{#with returnProperty}}{{>schemas}}{{/with}}
-{{~/each}}
-
-{{! If there are responses: table footer }}
-{{~#each responses}}
-{{#if @last ~}}
+{{#if @last}}
 |===
 
 {{! include partials after operation responses body }}
@@ -294,11 +282,9 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-responses-end.adoc[opt
 :leveloffset: -1
 {{~/if}}
 {{~/each}}
-
 {{! Response example }}
-{{~#unless skipExamples ~}}
+{{#unless skipExamples ~}}
 {{#if hasExamples ~}}
-//tag::example-{{returnProperty.dataType}}[]
 {{#each examples ~}}
 ====
 {{#with example ~}}
@@ -309,19 +295,17 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-responses-end.adoc[opt
 {{~/with}}
 ====
 {{~/each}}
-//end::example-{{returnProperty.dataType}}[]
 {{~/if}}
 {{~/unless}}
-
 {{! include partials after operation responses }}
 include::{specDir}paths/{{operationIdOriginal}}/operation-responses-after.adoc[opts=optional]
 
-{{! *** OPERATION SECURITY *** ~}}
+{{! *** OPERATION SECURITY *** }}
 {{! include partial before operation security }}
 include::{specDir}paths/{{operationIdOriginal}}/operation-security-before.adoc[opts=optional]
 
-{{! If there is operation security: anchor, title, and table header }}
-{{~#each authMethods ~}}
+{{! If there is operation security }}
+{{#each authMethods ~}}
 {{#if @first ~}}
 [#{{operationIdOriginal}}-security]
 = Security
@@ -333,16 +317,10 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-begin.adoc[op
 |===
 | Type | Name
 {{~/if}}
-{{~/each}}
 
-{{! Iterate through operation security }}
-{{~#each authMethods ~}}
 | {{type}}{{#with scheme}} ({{this}}){{/with}}
 | xref:security-{{#with lambda.camelcase}}{{name}}{{/with}}[]
-{{~/each}}
 
-{{! If there is operation security: table footer }}
-{{~#each authMethods ~}}
 {{#if @last ~}}
 |===
 
@@ -376,15 +354,18 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-after.adoc[opts=option
 {{~/each}}
 {{~/with}}
 
+
 ifeval::[{count-apis} > 0]
 :leveloffset: -1
 endif::[]
 
-{{/each}}
-{{/with}}
+{{~/each}}
+{{~/with}}
+
 
 {{! include partial after paths body }}
 include::{specDir}paths/document-end.adoc[opts=optional]
+
 :leveloffset: -1
 
 {{! include partial after paths }}
@@ -397,7 +378,7 @@ include::{specDir}paths/document-after.adoc[opts=optional]
 include::{specDir}security/document-before.adoc[opts=optional]
 
 {{! *** SECURITY *** }}
-{{#if hasAuthMethods}}
+{{#if hasAuthMethods ~}}
 [[security]]
 = Security
 

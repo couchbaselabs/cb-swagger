@@ -1,6 +1,7 @@
 {{! include partial before definitions }}
 include::{specDir}definitions/document-before.adoc[opts=optional]
 
+
 [#models]
 = Definitions
 
@@ -32,10 +33,9 @@ endif::collapse-models[]
 ifdef::enum-definitions[]
 xref:{{name}}[]
 endif::enum-definitions[]
-{{~/if}}
-{{~#unless isEnum ~}}
+{{~else ~}}
 xref:{{name}}[]
-{{~/unless}}
+{{~/if}}
 {{~/with}}
 {{~/each}}
 endif::[]
@@ -43,6 +43,9 @@ endif::[]
 {{! *** DEFINITION *** }}
 {{#each models ~}}
 {{#with model ~}}
+{{! include partial before definition }}
+include::{specDir}definitions/{{name}}/definition-before.adoc[opts=optional]
+
 {{! omit enums from model list. Probably going to regret this }}
 {{#if isEnum ~}}
 ifdef::enum-definitions[]
@@ -63,50 +66,18 @@ ifdef::enum-definitions[]
 {{>schemas}}
 //end::type-{{name}}[]
 endif::enum-definitions[]
-{{~/if}}
-{{~#unless isEnum ~}}
-
-{{! include partial before definition }}
-include::{specDir}definitions/{{name}}/definition-before.adoc[opts=optional]
-
+{{~else ~}}
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
 [#{{name}}]
 = {{#with title}}{{title}}{{/with}}{{#unless title}}{{classname}}{{/unless}}
 
-{{! include partial before definition body }}
 :leveloffset: +1
+{{! include partial before definition body }}
 include::{specDir}definitions/{{name}}/definition-begin.adoc[opts=optional]
 
-{{#unless composedSchemas ~}}
-{{#if hasVars ~}}
-{{>model}}
-{{~/if}}
-{{~#unless hasVars ~}}
-{{#if isMap ~}}
-{{>model}}
-{{~/if}}
-{{~/unless}}
-{{~#if isString ~}}
-.icon:quote-left[fw] String
-{blank}
-
-{{>property}}
-{{~/if}}
-{{~#if isArray ~}}
-.icon:brackets[fw] Array
-{blank}
-
-{{>property}}
-
-{{#each items ~}}
-.Schema
-{{>schema}} array
-{{~/each}}
-{{~/if}}
-{{~/unless}}
-{{~#each composedSchemas ~}}
+{{#each composedSchemas ~}}
 .icon:bars[fw] Composite Schema
 {blank}
 
@@ -167,18 +138,42 @@ a¦ {{>schemas}}
 
 {{! end tag for partial}}
 //end::{{name}}[]
-{{~/each}}
+{{~else ~}}
+{{#if hasVars ~}}
+{{>model ~}}
+{{~else ~}}
+{{#if isMap ~}}
+{{>model ~}}
+{{~/if}}
+{{~/if}}
+{{~#if isString ~}}
+.icon:quote-left[fw] String
+{blank}
 
+{{>property}}
+{{~/if}}
+{{~#if isArray ~}}
+.icon:brackets[fw] Array
+{blank}
+
+{{>property}}
+
+{{#each items ~}}
+.Schema
+{{>schema}} array
+{{~/each}}
+{{~/if}}
+{{~/each}}
 {{! include partial after definition body }}
 include::{specDir}definitions/{{name}}/definition-end.adoc[opts=optional]
+{{~/if}}{{! isEnum }}
 
 {{! include partial after definition }}
 :leveloffset: -1
 include::{specDir}definitions/{{name}}/definition-after.adoc[opts=optional]
 
-{{~/unless}}
-{{~/with}}
-{{~/each}}
+{{~/with}}{{! model }}
+{{~/each}}{{! models }}
 
 {{! include partial after definitions body }}
 include::{specDir}definitions/document-end.adoc[opts=optional]
