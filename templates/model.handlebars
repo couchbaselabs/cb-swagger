@@ -17,21 +17,21 @@ endif::model-descriptions[]
 ¦ Property ¦ ¦ Schema
 {{#each vars ~}}
 {{! DEFINITION NAME }}
-a¦ {{#each vendorExtensions}}{{#with x-desc-name}}[#{{this}}]{{/with}}{{/each}}
+a¦ {{#with vendorExtensions.x-desc-name}}[#{{this}}]{{/with}}
 {{#with vendorExtensions.x-alt-title}}*{{{this}}}*{{else}}*{{baseName}}*{{/with}} +
 _{{#with required}}required{{else}}optional{{/with}}_
 a¦ {{>property}}
 a¦ {{>schemas}}
 {{/each}}
-{{~#each additionalProperties ~}}
+{{~#with additionalProperties ~}}
 {{! ADDITIONAL PROPERTY NAME }}
-a¦ {{#each vendorExtensions}}{{#with x-desc-name}}[#{{this}}]{{/with}}
-{{#with x-additionalPropertiesName}}*<{{this}}>* +{{/with}}{{/each}}
+a¦ {{#with vendorExtensions.x-desc-name}}[#{{this}}]{{/with}}
+{{#with vendorExtensions.x-additionalPropertiesName}}*<{{this}}>* +{{/with}}
 _additional +
 property_
 a¦ {{>property}}
 a¦ {{>schemas}}
-{{/each}}
+{{/with}}
 |===
 {{! end tag for partial}}
 //end::{{name}}[]

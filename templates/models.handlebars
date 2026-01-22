@@ -33,9 +33,9 @@ endif::collapse-models[]
 ifdef::enum-definitions[]
 xref:{{name}}[]
 endif::enum-definitions[]
-{{~else ~}}
+{{else ~}}
 xref:{{name}}[]
-{{~/if}}
+{{/if}}
 {{~/with}}
 {{~/each}}
 endif::[]
@@ -50,7 +50,7 @@ include::{specDir}definitions/{{name}}/definition-before.adoc[opts=optional]
 {{#if isEnum ~}}
 ifdef::enum-definitions[]
 [#{{name}}]
-= {{#with title}}{{this}}{{/with}}{{#unless title}}{{classname}}{{/unless}}
+= {{#with title}}{{this}}{{else}}{{classname}}{{/with}}
 
 .icon:menu[fw] Enumeration
 {blank}
@@ -71,13 +71,13 @@ ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
 [#{{name}}]
-= {{#with title}}{{title}}{{/with}}{{#unless title}}{{classname}}{{/unless}}
+= {{#with title}}{{this}}{{else}}{{classname}}{{/with}}
 
 :leveloffset: +1
 {{! include partial before definition body }}
 include::{specDir}definitions/{{name}}/definition-begin.adoc[opts=optional]
 
-{{#each composedSchemas ~}}
+{{#with composedSchemas ~}}
 .icon:bars[fw] Composite Schema
 {blank}
 
@@ -93,48 +93,45 @@ ifdef::model-descriptions[]
 endif::model-descriptions[]
 {{~/with}}
 
-{{#with oneOf ~}}
+{{#each oneOf ~}}
 {{#if @first ~}}
 [cols="25,55,20",separator=¦]
 |===
 ¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
-
-{{~/if}}
+{{/if}}
 a¦ {{#unless @first}}_or_{{/unless}}
 a¦ {{>property}}
 a¦ {{>schemas}}
-{{~#if @last ~}}
+{{#if @last ~}}
 |===
-{{~/if}}
-{{~/with}}
-{{~#with anyOf ~}}
+{{/if}}
+{{~/each}}
+{{~#each anyOf ~}}
 {{#if @first }}
 [cols="25,55,20",separator=¦]
 |===
 ¦ Any{nbsp}of{nbsp}... ¦ ¦ Schema
-
-{{~/if}}
+{{/if}}
 a¦ {{#unless @first}}_and{nbsp}/ or_{{/unless}}
 a¦ {{>property}}
 a¦ {{>schemas}}
-{{#if @last}}
+{{#if @last ~}}
 |===
-{{~/if}}
-{{~/with}}
-{{~#with allOf ~}}
+{{/if}}
+{{~/each}}
+{{~#each allOf ~}}
 {{#if @first ~}}
 [cols="25,55,20",separator=¦]
 |===
 ¦ All{nbsp}of{nbsp}... ¦ ¦ Schema
-
-{{~/if}}
+{{/if}}
 a¦ {{#unless @first}}_and_{{/unless}}
 a¦ {{>property}}
 a¦ {{>schemas}}
-{{~#if @last ~}}
+{{#if @last ~}}
 |===
-{{~/if}}
-{{~/with}}
+{{/if}}
+{{~/each}}
 
 {{! end tag for partial}}
 //end::{{name}}[]
@@ -158,12 +155,12 @@ a¦ {{>schemas}}
 
 {{>property}}
 
-{{#each items ~}}
+{{#with items ~}}
 .Schema
 {{>schema}} array
-{{~/each}}
+{{~/with}}
 {{~/if}}
-{{~/each}}
+{{~/with}} {{! composedSchemas }}
 {{! include partial after definition body }}
 include::{specDir}definitions/{{name}}/definition-end.adoc[opts=optional]
 {{~/if}}{{! isEnum }}

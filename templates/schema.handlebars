@@ -10,9 +10,9 @@ xref:{{dataType}}[]
 {{~#if isMap ~}}
 xref:{{dataType}}[]
 {{~else ~}}
-{{! ... if this has no specific data type, just output the base type; }}
+{{! ... if this has no specific data type, just say so; }}
 {{~#if isAnyType ~}}
-{{#with lambda.uncamelize}}{{baseType}}{{/with}}
+Any Type
 {{~else ~}}
 {{! ... output the data type and data format. }}
 {{~#with lambda.uncamelize}}{{dataType}}{{/with}}{{#with dataFormat}} ({{{.}}}){{/with}}

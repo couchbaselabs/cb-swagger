@@ -2,7 +2,7 @@
 include::index.adoc[tag=type-{{dataType}}, opts=optional]
 {{~else ~}}
 {{~#if isArray ~}}
-{{#each items}}{{>schema}}{{/each}} array
+{{#with items}}{{>schema}}{{/with}} array
 {{~else ~}}
 {{>schema}}
 {{~/if}}

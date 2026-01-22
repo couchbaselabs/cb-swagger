@@ -1,6 +1,5 @@
-{{#each vendorExtensions ~}}
-{{#with x-desc-edition}}[.edition]##{{this}}##{{/with}}{{#each x-desc-status}}[.status]##{{this}}##{{/each}}
-{{~/each}}
+{{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{/with ~}}
+{{#with vendorExtensions.x-desc-status}}[.status]##{{this}}##{{/with}}
 
 [markdown]
 --
@@ -38,7 +37,7 @@ include::index.adoc[tag=desc-{{dataType}}, opts=optional]
 {{! values}}
 {{~#if isEnum ~}}
 {{#with allowableValues ~}}
-*Values:* {{#each values}}{{#unless @last}}`{{#if isString}}"{{/if}}{{this}}{{#if isString}}"{{/if}}`, {{/unless}}{{#if @last}}`{{#if isString}}"{{/if}}{{this}}{{#if isString}}"{{/if}}`{{/if}}{{/each}}
+*Values:* {{#each values}}`{{#if isString}}"{{/if}}{{this}}{{#if isString}}"{{/if}}`{{#unless @last}}, {{/unless}}{{/each}}
 {{~/with}}
 {{/if ~}}
 {{>values ~}}

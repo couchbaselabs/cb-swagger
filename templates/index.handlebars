@@ -70,12 +70,11 @@ a| [markdown]
 --
 
 [%hardbreaks]
-{{! enumerated values}}
-{{~#each enumValues}}{{#if @first}}*Values:* {{/if}}{{#unless @last}}`{{this}}`, {{/unless}}{{#if @last}}`{{this}}`{{/if}}{{/each ~}}
-{{! default value if no enumerated values}}
-{{~#unless enumValues}}
+{{! enumerated values, or default value if no enumerated values }}
+{{~#each enumValues}}{{#if @first}}*Values:* {{/if}}`{{this}}`{{#unless @last}}, {{/unless}}
+{{~else ~}}
 {{#with value}}*Example:* `+++{{this}}+++`{{/with}}
-{{~/unless}}
+{{~/each}}
 // end
 
 {{#if @last ~}}
@@ -122,28 +121,27 @@ The operations are grouped in the following categories.
 {{#with apiInfo ~}}
 {{#each apis ~}}
 xref:tag-{{baseName}}[]
-{{~/each}}
-{{~/with}}
+{{/each}}{{~/with ~}}
 endif::[]
 
 {{! Endpoint body }}
 {{#with apiInfo ~}}
 {{#each apis ~}}
 
-{{! tag description ~}}
+{{! tag description }}
 ifeval::[{count-apis} > 0]
 [#tag-{{baseName}}]
 = {{#with lambda.uncamelize}}{{baseName}}{{/with}}
 :leveloffset: +1
 
-{{#if operationTagDescription ~}}
+{{#with operationTagDescription ~}}
 {{this}}
 {{~ else ~}}
 **{toc-title}**
-{{~/if}}
+{{~/with}}
 endif::[]
 
-{{~#with operations}}
+{{#with operations}}
 {{! Table of contents for operations }}
 [%hardbreaks]
 {{~#each operation}}
@@ -181,12 +179,12 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-begin.adoc[opts=option
 {{~/if}}
 
 {{! Deprecation caution }}
-{{~#if isDeprecated ~}}
+{{#if isDeprecated ~}}
 CAUTION: This operation is deprecated, and will be removed in a future release.
 {{~/if ~}}
 
 {{! *** OPERATION DESCRIPTION *** }}
-{{!~ include partial before operation description }}
+{{! include partial before operation description }}
 include::{specDir}paths/{{operationIdOriginal}}/operation-description-before.adoc[opts=optional]
 
 [#{{operationIdOriginal}}-description]
@@ -209,7 +207,7 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-description-end.adoc[o
 .Consumes
 {{#each consumes ~}}
 * {{{mediaType}}}
-{{~/each}}
+{{/each}}
 {{~/if}}
 
 {{! *** OPERATION PRODUCES *** }}
@@ -218,7 +216,7 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-description-end.adoc[o
 .Produces
 {{#each produces ~}}
 * {{{mediaType}}}
-{{~/each}}
+{{/each}}
 {{~/if}}
 
 :leveloffset: -1

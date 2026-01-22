@@ -8,7 +8,7 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-begin.adoc[
 
 {{#if hasPathParams ~}}
 [#{{operationIdOriginal}}-path]
-{{~#if useTableTitles ~}}
+{{#if useTableTitles ~}}
 .Path Parameters
 {blank}
 {{~else ~}}
@@ -23,11 +23,11 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-begin.adoc[
 {{>param}}
 {{~/each}}
 |===
-{{~/if ~}}
+{{/if ~}}
 
 {{#if hasQueryParams ~}}
 [#{{operationIdOriginal}}-query]
-{{~#if useTableTitles ~}}
+{{#if useTableTitles ~}}
 .Query Parameters
 {blank}
 {{~else ~}}
@@ -46,12 +46,11 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-begin.adoc[
 
 {{#if hasHeaderParams ~}}
 [#{{operationIdOriginal}}-header]
-{{#unless useTableTitles ~}}
-= Header Parameters
-{{~/unless}}
-{{~#if useTableTitles ~}}
+{{#if useTableTitles ~}}
 .Header Parameters
 {blank}
+{{~else ~}}
+= Header Parameters
 {{~/if}}
 
 [cols="20,60,20",separator=¦]
@@ -66,12 +65,11 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-begin.adoc[
 
 {{#if hasFormParams ~}}
 [#{{operationIdOriginal}}-form]
-{{#unless useTableTitles ~}}
-= Form Parameters
-{{~/unless}}
-{{~#if useTableTitles ~}}
+{{#if useTableTitles ~}}
 .Form Parameters
 {blank}
+{{~else ~}}
+= Form Parameters
 {{~/if}}
 
 [cols="20,60,20",separator=¦]
@@ -82,16 +80,15 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-begin.adoc[
 {{>param}}
 {{~/each}}
 |===
-{{~/if ~}}
+{{/if ~}}
 
 {{#if hasBodyParam ~}}
 [#{{operationIdOriginal}}-body]
-{{#unless useTableTitles ~}}
-= Body Parameter
-{{~/unless}}
-{{~#if useTableTitles ~}}
+{{#if useTableTitles ~}}
 .Body Parameter
 {blank}
+{{~else ~}}
+= Body Parameter
 {{~/if}}
 
 [cols="20,60,20",separator=¦]
@@ -102,7 +99,7 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-begin.adoc[
 {{>param}}
 {{~/each}}
 |===
-{{~/if}}
+{{/if}}
 
 {{! include partial after operation parameters body }}
 include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-end.adoc[opts=optional]
