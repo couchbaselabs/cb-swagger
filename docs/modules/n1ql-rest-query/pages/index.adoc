@@ -12,16 +12,15 @@ DO NOT EDIT! See https://github.com/couchbase/query
 
 :leveloffset: 1
 
-include::{specDir}overview/document-before.adoc[opts=optional]
 
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 [[overview]]
 = Overview
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
-
+include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -67,7 +66,6 @@ The host name or IP address of a node running the Query Service.
 --
 
 [%hardbreaks]
-
 *Example:* `+++localhost+++`
 // end
 
@@ -83,31 +81,26 @@ The Query Service REST port. Use `18093` for secure access.
 
 |===
 
-
 include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
-
+include::{specDir}overview/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
-
+include::{specDir}paths/document-before.adoc[opts=optional]
 
 [[resources]]
 = Resources
 
-:count-apis: 1
-
+:count-apis: 0
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
@@ -115,54 +108,45 @@ xref:tag-Default[]
 endif::[]
 
 
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 [#tag-Default]
-= Default
+= default
 :leveloffset: +1
 
-ifeval::["" != ""]
-
-endif::[]
-ifeval::["" == ""]
 **{toc-title}**
 endif::[]
-endif::[]
+
 
 [%hardbreaks]
 xref:get_service[]
 xref:post_service[]
 
 
+
 //tag::get_service[]
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-before.adoc[opts=optional]
 
 [#get_service]
 = Read-Only Query Service
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_service/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-begin.adoc[opts=optional]
 
 ....
 GET /query/service
 ....
 
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-description-before.adoc[opts=optional]
 
 [#get_service-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_service/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -172,8 +156,7 @@ This method allows you to run SELECT queries, and specify query parameters.
 This endpoint is intended for situations where use of the `POST` method is restricted.
 --
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/get_service/operation-description-end.adoc[opts=optional]
 
 
 
@@ -181,24 +164,20 @@ This endpoint is intended for situations where use of the `POST` method is restr
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/get_service/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-parameters-before.adoc[opts=optional]
 
 [#get_service-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_service/operation-parameters-begin.adoc[opts=optional]
-
-
+include::{specDir}paths/get_service/operation-parameters-begin.adoc[opts=optional]
 
 [#get_service-query]
 .Query Parameters
@@ -210,10 +189,7 @@ This endpoint is intended for situations where use of the `POST` method is restr
 
 a¦ *body* +
 _required_
-a¦ 
-
-
-[markdown]
+a¦ [markdown]
 --
 Specify the parameters in the query URL in URL-encoded format.
 The format for URL-encoded parameters is consistent with the syntax for variables according to RFC 6570.
@@ -227,21 +203,18 @@ a¦ xref:Request[]
 |===
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_service/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/get_service/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Request:
 
 
 
-// markup not found, no include::{specDir}paths/get_service/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/get_service/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-responses-before.adoc[opts=optional]
 
 [#get_service-responses]
 = Responses
@@ -249,7 +222,6 @@ a¦ xref:Request[]
 :leveloffset: +1
 
 include::{specDir}paths/get_service/operation-responses-begin.adoc[opts=optional]
-
 
 [cols="20,60,20"]
 |===
@@ -275,12 +247,14 @@ a| [markdown]
 Unauthorized. The credentials provided with the request are missing or invalid.
 --
 a| 
+
 | 403
 a| [markdown]
 --
 Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement.
 --
 a| 
+
 | 404
 a| [markdown]
 --
@@ -294,30 +268,35 @@ a| [markdown]
 Method not allowed. The statement in the request references an invalid namespace or keyspace.
 --
 a| 
+
 | 409
 a| [markdown]
 --
 Conflict. There is an attempt to create an object (keyspace or index) that already exists.
 --
 a| 
+
 | 410
 a| [markdown]
 --
 Gone. The server is shutting down gracefully. Previously made requests are being completed, but no new requests are being accepted.
 --
 a| 
+
 | 413
 a| [markdown]
 --
 Payload too large. The query is too large for the Query Service to process.
 --
 a| 
+
 | 500
 a| [markdown]
 --
 Internal server error. There was an unforeseen problem processing the request.
 --
 a| 
+
 | 503
 a| [markdown]
 --
@@ -325,100 +304,87 @@ Service unavailable. There is an issue (that is possibly temporary) preventing t
 --
 a| xref:Response[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/get_service/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Response:
+:show-Response:
+:show-Response:
+:show-Response:
 
 
 
-// markup not found, no include::{specDir}paths/get_service/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/get_service/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-security-before.adoc[opts=optional]
 
 [#get_service-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_service/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-header[]
+| xref:security-Header[]
+
+
+
 | apiKey
-| xref:security-parameter[]
+| xref:security-Parameter[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/get_service/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/get_service/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_service/http-request.adoc[opts=optional]
 
+include::{snippetDir}get_service/http-response.adoc[opts=optional]
 
-// markup not found, no include::{snippetDir}get_service/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/get_service/operation-end.adoc[opts=optional]
+include::{specDir}paths/get_service/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-after.adoc[opts=optional]
 
 //end::get_service[]
 
-
 //tag::post_service[]
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-before.adoc[opts=optional]
 
 [#post_service]
 = Query Service
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_service/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-begin.adoc[opts=optional]
 
 ....
 POST /query/service
 ....
 
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-description-before.adoc[opts=optional]
 
 [#post_service-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_service/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -426,8 +392,7 @@ Enables you to execute a SQL++ statement.
 This method allows you to run SELECT queries and other DML statements, and specify query parameters.
 --
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/post_service/operation-description-end.adoc[opts=optional]
 
 
 [#post_service-consumes]
@@ -439,15 +404,13 @@ This method allows you to run SELECT queries and other DML statements, and speci
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/post_service/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-parameters-before.adoc[opts=optional]
 
 [#post_service-parameters]
 = Parameters
@@ -455,11 +418,6 @@ This method allows you to run SELECT queries and other DML statements, and speci
 :leveloffset: +1
 
 include::{specDir}paths/post_service/operation-parameters-begin.adoc[opts=optional]
-
-
-
-
-
 
 [#post_service-body]
 .Body Parameter
@@ -471,12 +429,9 @@ include::{specDir}paths/post_service/operation-parameters-begin.adoc[opts=option
 
 a¦ *Body* +
 _required_
-a¦ 
-
-
-[markdown]
+a¦ [markdown]
 --
-An object specifying one or more query parameters.
+
 --
 
 [%hardbreaks]
@@ -487,18 +442,18 @@ a¦ xref:Request[]
 |===
 
 
-// markup not found, no include::{specDir}paths/post_service/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/post_service/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Request:
 
 
 
-// markup not found, no include::{specDir}paths/post_service/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/post_service/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-responses-before.adoc[opts=optional]
 
 [#post_service-responses]
 = Responses
@@ -506,7 +461,6 @@ a¦ xref:Request[]
 :leveloffset: +1
 
 include::{specDir}paths/post_service/operation-responses-begin.adoc[opts=optional]
-
 
 [cols="20,60,20"]
 |===
@@ -532,12 +486,14 @@ a| [markdown]
 Unauthorized. The credentials provided with the request are missing or invalid.
 --
 a| 
+
 | 403
 a| [markdown]
 --
 Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement.
 --
 a| 
+
 | 404
 a| [markdown]
 --
@@ -551,30 +507,35 @@ a| [markdown]
 Method not allowed. The statement in the request references an invalid namespace or keyspace.
 --
 a| 
+
 | 409
 a| [markdown]
 --
 Conflict. There is an attempt to create an object (keyspace or index) that already exists.
 --
 a| 
+
 | 410
 a| [markdown]
 --
 Gone. The server is shutting down gracefully. Previously made requests are being completed, but no new requests are being accepted.
 --
 a| 
+
 | 413
 a| [markdown]
 --
 Payload too large. The query is too large for the Query Service to process.
 --
 a| 
+
 | 500
 a| [markdown]
 --
 Internal server error. There was an unforeseen problem processing the request.
 --
 a| 
+
 | 503
 a| [markdown]
 --
@@ -582,104 +543,94 @@ Service unavailable. There is an issue (that is possibly temporary) preventing t
 --
 a| xref:Response[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/post_service/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Response:
+:show-Response:
+:show-Response:
+:show-Response:
 
 
 
-// markup not found, no include::{specDir}paths/post_service/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/post_service/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-security-before.adoc[opts=optional]
 
 [#post_service-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_service/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-header[]
+| xref:security-Header[]
+
+
+
 | apiKey
-| xref:security-parameter[]
+| xref:security-Parameter[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/post_service/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/post_service/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}post_service/http-request.adoc[opts=optional]
 
+include::{snippetDir}post_service/http-response.adoc[opts=optional]
 
-// markup not found, no include::{snippetDir}post_service/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/post_service/operation-end.adoc[opts=optional]
+include::{specDir}paths/post_service/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-after.adoc[opts=optional]
 
 //end::post_service[]
 
 
-ifeval::[{count-apis} > 1]
+
+ifeval::[{count-apis} > 0]
 :leveloffset: -1
 endif::[]
 
 
 
-// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+include::{specDir}paths/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
-
+include::{specDir}paths/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
-
+include::{specDir}definitions/document-before.adoc[opts=optional]
 
 [#models]
 = Definitions
 
-:count-models: 9
-
+:count-models: 8
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
-
+include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 1]
-ifdef::collapse-models[]
+ifeval::[{count-models} > 0]
+ifeval::[{count-models} > 8]
 [.two-columns]
-endif::collapse-models[]
+endif::[]
 [%hardbreaks]
 xref:Conditions[]
 xref:Controls[]
@@ -693,25 +644,13 @@ xref:Statistics[]
 endif::[]
 
 
+include::{specDir}definitions/Conditions/definition-before.adoc[opts=optional]
 
-// markup not found, no include::{specDir}definitions/Conditions/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-Conditions[]
 [discrete]
-endif::collapse-models[]
+endif::show-Conditions[]
 [#Conditions]
 = Conditions
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/Conditions/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Conditions[]
 
 ifdef::model-descriptions[]
 //tag::desc-Conditions[]
@@ -719,16 +658,23 @@ Errors and warnings have the following format.
 //end::desc-Conditions[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/Conditions/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Conditions[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*code* +
+a¦ *code* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 A unique number that identifies the error or warning.
 The code ranges are partitioned by component.
@@ -739,13 +685,9 @@ This property is always present in every condition returned in the Query REST AP
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*msg* +
+a¦ *msg* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 A message describing the error or warning in detail.
 This property is always present in every condition returned in the Query REST API or captured in a log.
@@ -754,13 +696,9 @@ This property is always present in every condition returned in the Query REST AP
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*name* +
+a¦ *name* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Unique name that has a 1:1 mapping to the code.
 Uniquely identifies the condition.
@@ -772,13 +710,9 @@ The name should be fully qualified.
 *Example:* `+++"indexing.scan.io_failure"+++`
 {blank}
 a¦ String
-
-a¦ 
-*sev* +
+a¦ *sev* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 One of the following SQL++ severity levels, listed in order of severity:
 
@@ -791,13 +725,9 @@ One of the following SQL++ severity levels, listed in order of severity:
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*temp* +
+a¦ *temp* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Indicates if the condition is transient &mdash; for example, the queue is full.
 If the value is `false`, it tells clients and users that a retry without modification produces the same condition.
@@ -815,32 +745,17 @@ a¦ Boolean
 
 include::{specDir}definitions/Conditions/definition-end.adoc[opts=optional]
 
-
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Conditions/definition-after.adoc[opts=optional]
+include::{specDir}definitions/Conditions/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Controls/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/Controls/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-Controls[]
 [discrete]
-endif::collapse-models[]
+endif::show-Controls[]
 [#Controls]
 = Controls
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/Controls/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Controls[]
 
 ifdef::model-descriptions[]
 //tag::desc-Controls[]
@@ -849,16 +764,23 @@ Present only if `controls` was set to true in the request parameters.
 //end::desc-Controls[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/Controls/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Controls[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*scan_consistency* +
+a¦ *scan_consistency* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The value of the query setting Scan Consistency used for the query.
 --
@@ -866,13 +788,9 @@ The value of the query setting Scan Consistency used for the query.
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*use_cbo* +
+a¦ *use_cbo* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Whether the cost-based optimizer was enabled for the query.
 --
@@ -880,13 +798,9 @@ Whether the cost-based optimizer was enabled for the query.
 [%hardbreaks]
 {blank}
 a¦ Boolean
-
-a¦ 
-*memoryQuota* +
+a¦ *memoryQuota* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The memory quota for the request, in MB.
 This property is only returned if a memory quota was set for the query.
@@ -895,13 +809,9 @@ This property is only returned if a memory quota was set for the query.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
-
-a¦ 
-*stmtType* +
+a¦ *stmtType* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The type of query statement.
 --
@@ -919,26 +829,21 @@ a¦ String
 
 include::{specDir}definitions/Controls/definition-end.adoc[opts=optional]
 
-
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Controls/definition-after.adoc[opts=optional]
+include::{specDir}definitions/Controls/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Credentials/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/Credentials/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-Credentials[]
 [discrete]
-endif::collapse-models[]
+endif::show-Credentials[]
 [#Credentials]
 = Credentials
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/Credentials/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/Credentials/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -946,17 +851,13 @@ endif::collapse-models[]
 
 //tag::Credentials[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*user* +
+a¦ *user* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An identity for authentication.
 Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
@@ -966,13 +867,9 @@ Note that bucket names may be prefixed with `local:`, and admin names may be pre
 *Example:* `+++"local:bucket-name"+++`
 {blank}
 a¦ String
-
-a¦ 
-*pass* +
+a¦ *pass* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 A password for authentication.
 --
@@ -988,34 +885,19 @@ a¦ String
 
 
 
-// markup not found, no include::{specDir}definitions/Credentials/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/Credentials/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Credentials/definition-after.adoc[opts=optional]
+include::{specDir}definitions/Credentials/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Execution_Timings/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/Execution_Timings/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-Execution_Timings[]
 [discrete]
-endif::collapse-models[]
+endif::show-Execution_Timings[]
 [#Execution_Timings]
 = Execution Timings
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/Execution_Timings/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Execution_Timings[]
 
 ifdef::model-descriptions[]
 //tag::desc-Execution_Timings[]
@@ -1025,16 +907,23 @@ The execution details for various phases involved in the query execution, such a
 //end::desc-Execution_Timings[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/Execution_Timings/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Execution_Timings[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*#operator* +
+a¦ *#operator* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Name of the operator.
 --
@@ -1043,13 +932,9 @@ Name of the operator.
 *Example:* `+++"Fetch"+++`
 {blank}
 a¦ String
-
-a¦ 
-*#stats* +
+a¦ *#stats* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-Statistics, opts=optional]
 --
@@ -1057,13 +942,9 @@ include::index.adoc[tag=desc-Statistics, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:Statistics[]
-
-a¦ 
-*~child* +
+a¦ *~child* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Further nested operators, each with their own execution timings.
 --
@@ -1078,34 +959,19 @@ a¦ Object
 
 
 
-// markup not found, no include::{specDir}definitions/Execution_Timings/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/Execution_Timings/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Execution_Timings/definition-after.adoc[opts=optional]
+include::{specDir}definitions/Execution_Timings/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Metrics/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/Metrics/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-Metrics[]
 [discrete]
-endif::collapse-models[]
+endif::show-Metrics[]
 [#Metrics]
 = Metrics
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/Metrics/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Metrics[]
 
 ifdef::model-descriptions[]
 //tag::desc-Metrics[]
@@ -1113,16 +979,23 @@ An object containing metrics about the request.
 //end::desc-Metrics[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/Metrics/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Metrics[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*elapsedTime* +
+a¦ *elapsedTime* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The total time taken for the request, that is the time from when the request was received until the results were returned.
 --
@@ -1130,13 +1003,9 @@ The total time taken for the request, that is the time from when the request was
 [%hardbreaks]
 {blank}
 a¦ String (duration)
-
-a¦ 
-*executionTime* +
+a¦ *executionTime* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The time taken for the execution of the request, that is the time from when query execution started until the results were returned.
 --
@@ -1144,13 +1013,9 @@ The time taken for the execution of the request, that is the time from when quer
 [%hardbreaks]
 {blank}
 a¦ String (duration)
-
-a¦ 
-*resultCount* +
+a¦ *resultCount* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The total number of objects in the results.
 --
@@ -1158,13 +1023,9 @@ The total number of objects in the results.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
-
-a¦ 
-*resultSize* +
+a¦ *resultSize* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The total number of bytes in the results.
 --
@@ -1172,13 +1033,9 @@ The total number of bytes in the results.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
-
-a¦ 
-*naturalLanguageProcessingTime* +
+a¦ *naturalLanguageProcessingTime* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The total time spent processing a natural language request.
 The cumulation of authentication, collecting schema, and time waiting for the response from the LLM, or wait time for the natural language request to be serviced.
@@ -1187,13 +1044,9 @@ The cumulation of authentication, collecting schema, and time waiting for the re
 [%hardbreaks]
 {blank}
 a¦ String (duration)
-
-a¦ 
-*mutationCount* +
+a¦ *mutationCount* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The number of mutations that were made during the request.
 --
@@ -1201,13 +1054,9 @@ The number of mutations that were made during the request.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
-
-a¦ 
-*sortCount* +
+a¦ *sortCount* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The number of objects that were sorted.
 Present only if the request includes `ORDER BY`.
@@ -1218,13 +1067,9 @@ If a query includes ORDER BY, LIMIT, or OFFSET clauses, an application can use t
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
-
-a¦ 
-*usedMemory* +
+a¦ *usedMemory* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The amount of document memory used to execute the request.
 This property is only returned if a memory quota was set for the query.
@@ -1233,13 +1078,9 @@ This property is only returned if a memory quota was set for the query.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
-
-a¦ 
-*errorCount* +
+a¦ *errorCount* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The number of errors that occurred during the request.
 --
@@ -1247,13 +1088,9 @@ The number of errors that occurred during the request.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
-
-a¦ 
-*warningCount* +
+a¦ *warningCount* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The number of warnings that occurred during the request.
 --
@@ -1261,13 +1098,9 @@ The number of warnings that occurred during the request.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
-
-a¦ 
-*sessionMemory* +
+a¦ *sessionMemory* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The memory session size for the request, in bytes.
 
@@ -1290,32 +1123,17 @@ a¦ Integer (bytes)
 
 include::{specDir}definitions/Metrics/definition-end.adoc[opts=optional]
 
-
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Metrics/definition-after.adoc[opts=optional]
+include::{specDir}definitions/Metrics/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Profile/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/Profile/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-Profile[]
 [discrete]
-endif::collapse-models[]
+endif::show-Profile[]
 [#Profile]
 = Profile
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/Profile/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Profile[]
 
 ifdef::model-descriptions[]
 //tag::desc-Profile[]
@@ -1324,16 +1142,23 @@ Present only if `profile` was set to `"phases"` or `"timings"` in the request pa
 //end::desc-Profile[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/Profile/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Profile[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*requestTime* +
+a¦ *requestTime* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Timestamp when the query was received.
 --
@@ -1341,13 +1166,9 @@ Timestamp when the query was received.
 [%hardbreaks]
 {blank}
 a¦ Date (date-time)
-
-a¦ 
-*servicingHost* +
+a¦ *servicingHost* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 IP address and port number of the node where the query was executed.
 --
@@ -1355,13 +1176,9 @@ IP address and port number of the node where the query was executed.
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*phaseCounts* +
+a¦ *phaseCounts* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Count of documents processed at selective phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
 --
@@ -1370,13 +1187,9 @@ Count of documents processed at selective phases involved in the query execution
 *Example:* `{"fetch":16,"indexScan":187}`
 {blank}
 a¦ Object
-
-a¦ 
-*phaseOperators* +
+a¦ *phaseOperators* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Indicates the numbers of each kind of query operator involved in different phases of the query processing.
 
@@ -1391,13 +1204,9 @@ This is in essence the count of all the operators in the `executionTimings` obje
 *Example:* `{"authorize":1,"fetch":1,"indexScan":2}`
 {blank}
 a¦ Object
-
-a¦ 
-*phaseTimes* +
+a¦ *phaseTimes* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Cumulative execution times for various phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
 --
@@ -1406,13 +1215,9 @@ Cumulative execution times for various phases involved in the query execution, s
 *Example:* `{"authorize":"823.631µs","fetch":"656.873µs","indexScan":"29.146543ms","instantiate":"236.221µs","parse":"826.382µs","plan":"11.831101ms","run":"16.892181ms"}`
 {blank}
 a¦ Object
-
-a¦ 
-*executionTimings* +
+a¦ *executionTimings* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-Execution_Timings, opts=optional]
 --
@@ -1420,13 +1225,9 @@ include::index.adoc[tag=desc-Execution_Timings, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:Execution_Timings[]
-
-a¦ 
-*ioTime* +
+a¦ *ioTime* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The total sum of [servTime](#serv_time) across all operators.
 
@@ -1436,13 +1237,9 @@ The total sum of [servTime](#serv_time) across all operators.
 *Example:* `+++"752.858519ms"+++`
 {blank}
 a¦ String (duration)
-
-a¦ 
-*waitTime* +
+a¦ *waitTime* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The total sum of [kernTime](#kern_time) across all operators.
 
@@ -1452,13 +1249,9 @@ The total sum of [kernTime](#kern_time) across all operators.
 *Example:* `+++"1.201307s"+++`
 {blank}
 a¦ String (duration)
-
-a¦ 
-*cpuTime* +
+a¦ *cpuTime* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The total sum of [execTime](#exec_time) across all operators.
 
@@ -1468,13 +1261,9 @@ The total sum of [execTime](#exec_time) across all operators.
 *Example:* `+++"90.734075ms"+++`
 {blank}
 a¦ String (duration)
-
-a¦ 
-*~analysis* +
+a¦ *~analysis* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An array of text phrases that provide a basic analysis of the request execution.
 These phrases highlight notable aspects of the execution, such as high document counts during primary scans or warnings related to memory and resource usages.
@@ -1484,8 +1273,7 @@ These phrases highlight notable aspects of the execution, such as high document 
 [%hardbreaks]
 *Example:* `["High IO time","High primary scan document count"]`
 {blank}
-a¦ String
- array
+a¦ String array
 
 |===
 
@@ -1493,35 +1281,29 @@ a¦ String
 
 
 
-// markup not found, no include::{specDir}definitions/Profile/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/Profile/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Profile/definition-after.adoc[opts=optional]
+include::{specDir}definitions/Profile/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Request/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/Request/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-Request[]
 [discrete]
-endif::collapse-models[]
+endif::show-Request[]
 [#Request]
 = Request Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/Request/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/Request/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
 //tag::Request[]
-
 
 [cols="25,55,20",separator=¦]
 |===
@@ -1530,9 +1312,7 @@ endif::collapse-models[]
 a¦ [#args]
 *args* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [section_srh_tlm_n1b]: #section_srh_tlm_n1b
@@ -1551,15 +1331,11 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 [%hardbreaks]
 *Example:* `["LAX",6]`
 {blank}
-a¦ Any Type
- array
-
+a¦ Any Type array
 a¦ [#atrcollection_req]
 *atrcollection* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [atrcollection-srv]: #atrcollection-srv
@@ -1586,13 +1362,10 @@ The request-level parameter overrides the node-level setting.
 *Example:* `+++"default:`travel-sample`.transaction.test"+++`
 {blank}
 a¦ String
-
 a¦ [#auto_execute]
 *auto_execute* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [auto-execute]: ../n1ql-language-reference/prepare.html#auto-execute
@@ -1611,13 +1384,10 @@ Refer to [Auto-Execute][auto-execute] for more information.
 *Example:* `true`
 {blank}
 a¦ Boolean
-
 a¦ [#client_context_id]
 *client_context_id* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 A piece of data supplied by the client that is echoed in the response, if present.
 SQL++ is agnostic about the content of this parameter; it is just echoed in the response.
@@ -1629,13 +1399,10 @@ SQL++ is agnostic about the content of this parameter; it is just echoed in the 
 [%hardbreaks]
 {blank}
 a¦ String
-
 a¦ [#compression]
 *compression* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Compression format to use for response data on the wire.
 
@@ -1648,13 +1415,10 @@ Values are case-insensitive.
 *Example:* `+++"zip"+++`
 {blank}
 a¦ String
-
 a¦ [#controls_req]
 *controls* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [controls-srv]: #controls-srv
@@ -1678,13 +1442,10 @@ The request-level parameter overrides the node-level setting.
 *Example:* `true`
 {blank}
 a¦ Boolean
-
 a¦ [#creds]
 *creds* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Specifies the login credentials.
 The Query API supports two types of identity: local (or bucket) and admin.
@@ -1698,15 +1459,11 @@ If credentials are supplied in the request header, then HTTP Basic Authenticatio
 [%hardbreaks]
 *Example:* `[{"user":"local:bucket-name","pass":"password"},{"user":"admin:admin-name","pass":"password"}]`
 {blank}
-a¦ xref:Credentials[]
- array
-
+a¦ xref:Credentials[] array
 a¦ [#durability_level]
 *durability_level* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The level of [durability][durability] for mutations produced by the request.
 
@@ -1727,13 +1484,10 @@ Set the durability level to `"none"` or `""` to specify no durability.
 *Example:* `+++"none"+++`
 {blank}
 a¦ String
-
 a¦ [#encoded_plan]
 *encoded_plan* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 In clusters running Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
 It is included for compatibility with previous versions.
@@ -1742,13 +1496,10 @@ It is included for compatibility with previous versions.
 [%hardbreaks]
 {blank}
 a¦ String
-
 a¦ [#encoding]
 *encoding* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Desired character encoding for the query results.
 
@@ -1759,13 +1510,10 @@ Only possible value is `UTF-8` and is case-insensitive.
 *Default:* `+++"UTF-8"+++`
 {blank}
 a¦ String
-
 a¦ [#format]
 *format* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Desired format for the query results.
 
@@ -1778,13 +1526,10 @@ Values are case-insensitive.
 *Example:* `+++"XML"+++`
 {blank}
 a¦ String
-
 a¦ [#kvtimeout]
 *kvtimeout* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The approximate time to wait for a KV get operation before timing out.
 This applies to statements within a transaction, and to non-transactional statements, whether `durability_level` is set or not.
@@ -1811,13 +1556,10 @@ When disabled, no timeout is applied and the KV operation runs for however long 
 *Example:* `+++"10ms"+++`
 {blank}
 a¦ String
-
 a¦ [#max_parallelism_req]
 *max_parallelism* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [max-parallelism-srv]: #max-parallelism-srv
@@ -1848,13 +1590,10 @@ To enable queries to run in parallel, you must specify the cluster-level `queryM
 *Example:* `3`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#memory_quota_req]
 *memory_quota* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [memory-quota-srv]: #memory-quota-srv
@@ -1890,13 +1629,10 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Example:* `4`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#metrics]
 *metrics* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Specifies that metrics should be returned with query results.
 --
@@ -1906,13 +1642,10 @@ Specifies that metrics should be returned with query results.
 *Example:* `false`
 {blank}
 a¦ Boolean
-
 a¦ [#namespace]
 *namespace* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Specifies the namespace to use.
 Currently, only the `default` namespace is available.
@@ -1922,7 +1655,6 @@ Currently, only the `default` namespace is available.
 *Example:* `+++"default"+++`
 {blank}
 a¦ String
-
 a¦ [#natural]
 *natural* +
 _optional_
@@ -1951,7 +1683,6 @@ If you don't specify all four parameters, the Query Service returns an error.
 *Example:* `+++"Show me count of airlines per country"+++`
 {blank}
 a¦ String
-
 a¦ [#natural_cred]
 *natural_cred* +
 _optional_
@@ -1975,7 +1706,6 @@ If you don't specify all four parameters, the Query Service returns an error.
 *Example:* `+++"username:password"+++`
 {blank}
 a¦ String (password)
-
 a¦ [#natural_orgid]
 *natural_orgid* +
 _optional_
@@ -1997,7 +1727,6 @@ If you don't specify all four parameters, the Query Service returns an error.
 [%hardbreaks]
 {blank}
 a¦ UUID (uuid)
-
 a¦ [#natural_context]
 *natural_context* +
 _optional_
@@ -2032,7 +1761,6 @@ If you don't specify all four parameters, the Query Service returns an error.
 *Example:* `+++"travel-sample, travel-sample.inventory.airline, airline"+++`
 {blank}
 a¦ String
-
 a¦ [#natural_output]
 *natural_output* +
 _optional_
@@ -2062,13 +1790,10 @@ This parameter is available in clusters running Couchbase Server 8.0 and later.
 *Default:* `+++"sql"+++`
 {blank}
 a¦ String
-
 a¦ [#numatrs_req]
 *numatrs* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Reserved for future use.
 This parameter is ignored and has no effect.
@@ -2077,13 +1802,10 @@ This parameter is ignored and has no effect.
 [%hardbreaks]
 {blank}
 a¦ Integer (int32)
-
 a¦ [#pipeline_batch_req]
 *pipeline_batch* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [pipeline-batch-srv]: #pipeline-batch-srv
@@ -2108,13 +1830,10 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Example:* `64`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#pipeline_cap_req]
 *pipeline_cap* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [pipeline-cap-srv]: #pipeline-cap-srv
@@ -2139,13 +1858,10 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Example:* `1024`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#prepared]
 *prepared* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [execute]: ../n1ql-language-reference/execute.html
@@ -2165,13 +1881,10 @@ If both `prepared` and `statement` are present and non-empty, an error is return
 *Example:* `+++"[127.0.0.1:8091]pricy_hotel"+++`
 {blank}
 a¦ String
-
 a¦ [#preserve_expiry]
 *preserve_expiry* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Specifies whether documents should keep their current expiration setting when modified by a DML statement.
 
@@ -2188,13 +1901,10 @@ Not supported for statements in a transaction.
 *Example:* `true`
 {blank}
 a¦ Boolean
-
 a¦ [#pretty_req]
 *pretty* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [pretty-srv]: #pretty-srv
@@ -2214,13 +1924,10 @@ The request-level parameter overrides the node-level setting.
 *Example:* `false`
 {blank}
 a¦ Boolean
-
 a¦ [#profile_req]
 *profile* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [profile-srv]: #profile-srv
@@ -2254,13 +1961,10 @@ The request-level parameter overrides the node-level setting.
 *Example:* `+++"phases"+++`
 {blank}
 a¦ String
-
 a¦ [#query_context]
 *query_context* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Specifies the namespace, bucket, and scope used to resolve partial keyspace references within the request.
 
@@ -2274,13 +1978,10 @@ If the namespace name is omitted, the default namespace in the current session i
 *Example:* `+++"default:travel-sample.inventory"+++`
 {blank}
 a¦ String
-
 a¦ [#readonly]
 *readonly* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Controls whether a query can change a resulting recordset.
 
@@ -2301,13 +2002,10 @@ When using GET requests, it's best to set `readonly` to `true`.
 *Example:* `true`
 {blank}
 a¦ Boolean
-
 a¦ [#scan_cap_req]
 *scan_cap* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [scan-cap-srv]: #scan-cap-srv
@@ -2336,13 +2034,10 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Example:* `1024`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#scan_consistency]
 *scan_consistency* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [transactional-scan-consistency]: #transactional-scan-consistency
@@ -2388,13 +2083,10 @@ Refer to [Transactional Scan Consistency][transactional-scan-consistency] for de
 *Example:* `+++"at_plus"+++`
 {blank}
 a¦ String
-
 a¦ [#scan_vector]
 *scan_vector* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 _Required_ if `scan_consistency` is `at_plus` and `scan_vectors` not provided.
 
@@ -2419,13 +2111,10 @@ For queries referencing multiple keyspaces, use `scan_vectors`.
 *Example:* `{"5":[5409393,"VB5ID"],"19":[47574574,"VB19ID"]}`
 {blank}
 a¦ Object
-
 a¦ [#scan_vectors]
 *scan_vectors* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 _Required_ if `scan_consistency` is `at_plus` and `scan_vector` not provided.
 
@@ -2438,13 +2127,10 @@ The scan vectors can be Full or Sparse.
 [%hardbreaks]
 {blank}
 a¦ Object
-
 a¦ [#scan_wait]
 *scan_wait* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Can be supplied with `scan_consistency` values of `request_plus`, `statement_plus` and `at_plus`.
 
@@ -2471,13 +2157,10 @@ Specify `0` or a negative integer to disable.
 *Example:* `+++"30m"+++`
 {blank}
 a¦ String (duration)
-
 a¦ [#signature]
 *signature* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Include a header for the results schema in the response.
 --
@@ -2487,13 +2170,10 @@ Include a header for the results schema in the response.
 *Example:* `false`
 {blank}
 a¦ Boolean
-
 a¦ [#sort_projection]
 *sort_projection* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 If `true`, causes statement projection terms to be sorted alphabetically.
 
@@ -2505,13 +2185,10 @@ If `false` (the default), statement projection terms are returned in the order s
 *Example:* `true`
 {blank}
 a¦ Boolean
-
 a¦ [#statement]
 *statement* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 _Required_ if `prepared` or `natural` not provided.
 
@@ -2532,13 +2209,10 @@ This restriction does not apply when specifying the request parameters in JSON f
 *Example:* `+++"SELECT * FROM `travel-sample`.inventory.hotel LIMIT 1"+++`
 {blank}
 a¦ String
-
 a¦ [#timeout_req]
 *timeout* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [timeout-srv]: #timeout-srv
@@ -2582,13 +2256,10 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Example:* `+++"30m"+++`
 {blank}
 a¦ String (duration)
-
 a¦ [#txdata]
 *txdata* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Transaction data.
 For internal use only.
@@ -2597,13 +2268,10 @@ For internal use only.
 [%hardbreaks]
 {blank}
 a¦ Object
-
 a¦ [#txid]
 *txid* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 _Required_ for statements within a transaction.
 
@@ -2619,13 +2287,10 @@ The transaction must be active and non-expired.
 *Example:* `+++"d81d9b4a-b758-4f98-b007-87ba262d3a51"+++`
 {blank}
 a¦ UUID (UUID)
-
 a¦ [#tximplicit]
 *tximplicit* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Specifies that a DML statement is a singleton transaction.
 
@@ -2641,13 +2306,10 @@ If the `txid` request-level parameter is set, the `tximplicit` parameter is igno
 *Example:* `true`
 {blank}
 a¦ Boolean
-
 a¦ [#txstmtnum]
 *txstmtnum* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Transaction statement number.
 The transaction statement number must be a positive integer, and must be higher than any previous transaction statement numbers in the transaction.
@@ -2658,13 +2320,10 @@ If the transaction statement number is lower than the transaction statement numb
 *Example:* `10`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#txtimeout_req]
 *txtimeout* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [txtimeout-srv]: #txtimeout-srv
@@ -2712,13 +2371,10 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Example:* `+++"30m"+++`
 {blank}
 a¦ String (duration)
-
 a¦ [#use_cbo_req]
 *use_cbo* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [use-cbo-srv]: #use-cbo-srv
@@ -2743,7 +2399,6 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Example:* `true`
 {blank}
 a¦ Boolean
-
 a¦ [#use_fts]
 *use_fts* +
 _optional_
@@ -2773,13 +2428,10 @@ Refer to [Flex Indexes][flex-indexes] for more information.
 *Example:* `true`
 {blank}
 a¦ Boolean
-
 a¦ [#use_replica_req]
 *use_replica* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [use-replica-srv]: #use-replica-srv
@@ -2823,14 +2475,11 @@ When you change the cluster-level setting, the node-level setting is overwritten
 *Example:* `+++"true"+++`
 {blank}
 a¦ String
-
 a¦ [#identifier]
 *<$identifier>* +
 _additional +
 property_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [section_srh_tlm_n1b]: #section_srh_tlm_n1b
@@ -2858,6 +2507,7 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 --
 
 [%hardbreaks]
+*Nullable:* `true`
 *Example:* `LAX`
 {blank}
 a¦ Any Type
@@ -2868,34 +2518,19 @@ a¦ Any Type
 
 
 
-// markup not found, no include::{specDir}definitions/Request/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/Request/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Request/definition-after.adoc[opts=optional]
+include::{specDir}definitions/Request/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Response/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/Response/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-Response[]
 [discrete]
-endif::collapse-models[]
+endif::show-Response[]
 [#Response]
 = Response Body
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/Response/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Response[]
 
 ifdef::model-descriptions[]
 //tag::desc-Response[]
@@ -2903,16 +2538,23 @@ The response body has the following structure.
 //end::desc-Response[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/Response/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Response[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*requestID* +
+a¦ *requestID* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 A unique identifier for the response.
 --
@@ -2920,13 +2562,9 @@ A unique identifier for the response.
 [%hardbreaks]
 {blank}
 a¦ UUID (UUID)
-
-a¦ 
-*clientContextID* +
+a¦ *clientContextID* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The client context ID of the request, if one was supplied &mdash; see `client_context_id` in the request parameters.
 --
@@ -2934,9 +2572,7 @@ The client context ID of the request, if one was supplied &mdash; see `client_co
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*generated_statement* +
+a¦ *generated_statement* +
 _optional_
 a¦ [.status]##Couchbase Server 8.0##
 
@@ -2949,13 +2585,9 @@ The generated statement, if the request was a natural language prompt.
 *Example:* `+++"SELECT country, COUNT(*) AS `airline_count` FROM `travel-sample`.`inventory`.`airline` AS `a` GROUP BY country"+++`
 {blank}
 a¦ String
-
-a¦ 
-*signature* +
+a¦ *signature* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The schema of the results.
 Present only when the query completes successfully.
@@ -2965,13 +2597,9 @@ Present only when the query completes successfully.
 *Example:* `{"id":"json"}`
 {blank}
 a¦ Object
-
-a¦ 
-*results* +
+a¦ *results* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An array of all the objects returned by the query.
 An object can be any JSON value.
@@ -2979,15 +2607,10 @@ An object can be any JSON value.
 
 [%hardbreaks]
 {blank}
-a¦ Any Type
- array
-
-a¦ 
-*status* +
+a¦ Any Type array
+a¦ *status* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The status of the request.
 --
@@ -2996,13 +2619,9 @@ The status of the request.
 *Values:* `"success"`, `"running"`, `"errors"`, `"completed"`, `"stopped"`, `"timeout"`, `"fatal"`
 {blank}
 a¦ String
-
-a¦ 
-*errors* +
+a¦ *errors* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An array of 0 or more error objects.
 If an error occurred during processing of the request, it will be represented by an error object in this list.
@@ -3010,15 +2629,10 @@ If an error occurred during processing of the request, it will be represented by
 
 [%hardbreaks]
 {blank}
-a¦ xref:Conditions[]
- array
-
-a¦ 
-*warnings* +
+a¦ xref:Conditions[] array
+a¦ *warnings* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An array of 0 or more warning objects.
 If a warning occurred during processing of the request, it is represented by a warning object in this list.
@@ -3026,15 +2640,10 @@ If a warning occurred during processing of the request, it is represented by a w
 
 [%hardbreaks]
 {blank}
-a¦ xref:Conditions[]
- array
-
-a¦ 
-*metrics* +
+a¦ xref:Conditions[] array
+a¦ *metrics* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-Metrics, opts=optional]
 --
@@ -3042,13 +2651,9 @@ include::index.adoc[tag=desc-Metrics, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:Metrics[]
-
-a¦ 
-*controls* +
+a¦ *controls* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-Controls, opts=optional]
 --
@@ -3056,13 +2661,9 @@ include::index.adoc[tag=desc-Controls, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:Controls[]
-
-a¦ 
-*profile* +
+a¦ *profile* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-Profile, opts=optional]
 --
@@ -3077,34 +2678,19 @@ a¦ xref:Profile[]
 
 
 
-// markup not found, no include::{specDir}definitions/Response/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/Response/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Response/definition-after.adoc[opts=optional]
+include::{specDir}definitions/Response/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Statistics/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/Statistics/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-Statistics[]
 [discrete]
-endif::collapse-models[]
+endif::show-Statistics[]
 [#Statistics]
 = Statistics
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/Statistics/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Statistics[]
 
 ifdef::model-descriptions[]
 //tag::desc-Statistics[]
@@ -3112,16 +2698,23 @@ Statistics collected for the operator.
 //end::desc-Statistics[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/Statistics/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Statistics[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*#itemsIn* +
+a¦ *#itemsIn* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Number of input documents to the operator.
 --
@@ -3130,13 +2723,9 @@ Number of input documents to the operator.
 *Example:* `187`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*#itemsOut* +
+a¦ *#itemsOut* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Number of output documents after the operator processing.
 --
@@ -3145,13 +2734,9 @@ Number of output documents after the operator processing.
 *Example:* `16`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*#phaseSwitches* +
+a¦ *#phaseSwitches* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Number of switches between executing, waiting for services, or waiting for the goroutine scheduler.
 --
@@ -3160,13 +2745,10 @@ Number of switches between executing, waiting for services, or waiting for the g
 *Example:* `413`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#exec_time]
 *execTime* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Time spent executing the operator code inside SQL++ query engine.
 --
@@ -3175,13 +2757,10 @@ Time spent executing the operator code inside SQL++ query engine.
 *Example:* `+++"128.434µs"+++`
 {blank}
 a¦ String (duration)
-
 a¦ [#kern_time]
 *kernTime* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Time spent waiting to be scheduled for CPU time.
 --
@@ -3190,13 +2769,10 @@ Time spent waiting to be scheduled for CPU time.
 *Example:* `+++"15.027879ms"+++`
 {blank}
 a¦ String (duration)
-
 a¦ [#serv_time]
 *servTime* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Time spent waiting for another service, such as index or data.
 
@@ -3218,24 +2794,20 @@ a¦ String (duration)
 
 include::{specDir}definitions/Statistics/definition-end.adoc[opts=optional]
 
+:leveloffset: -1
+
+include::{specDir}definitions/Statistics/definition-after.adoc[opts=optional]
+
+
+
+include::{specDir}definitions/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Statistics/definition-after.adoc[opts=optional]
+include::{specDir}definitions/document-after.adoc[opts=optional]
 
 
-
-
-// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
-
-
-// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
-
+include::{specDir}security/document-before.adoc[opts=optional]
 
 [[security]]
 = Security
@@ -3245,18 +2817,14 @@ include::{specDir}definitions/Statistics/definition-end.adoc[opts=optional]
 include::{specDir}security/document-begin.adoc[opts=optional]
 
 
+include::{specDir}security/Header/security-scheme-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}security/Header/security-scheme-before.adoc[opts=optional]
-
-
-[[security-header]]
+[[security-Header]]
 = Header
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Header/security-scheme-begin.adoc[opts=optional]
-
+include::{specDir}security/Header/security-scheme-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -3267,27 +2835,20 @@ This method can only be used to provide a single credential.
 [%hardbreaks]
 __Type__ : http
 
-
-// markup not found, no include::{specDir}security/Header/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/Header/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+include::{specDir}security/Header/security-scheme-after.adoc[opts=optional]
 
-// markup not found, no include::{specDir}security/Header/security-scheme-after.adoc[opts=optional]
+include::{specDir}security/Parameter/security-scheme-before.adoc[opts=optional]
 
-
-
-
-// markup not found, no include::{specDir}security/Parameter/security-scheme-before.adoc[opts=optional]
-
-
-[[security-parameter]]
+[[security-Parameter]]
 = Parameter
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Parameter/security-scheme-begin.adoc[opts=optional]
-
+include::{specDir}security/Parameter/security-scheme-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -3300,22 +2861,17 @@ This is the only method that can provide multiple credentials for a request.
 __Key parameter__ : creds
 __Key in__ : query 
 
-
-// markup not found, no include::{specDir}security/Parameter/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/Parameter/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}security/Parameter/security-scheme-after.adoc[opts=optional]
-
+include::{specDir}security/Parameter/security-scheme-after.adoc[opts=optional]
 
 
 
 include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
-
-
 
 include::{specDir}security/document-after.adoc[opts=optional]
 

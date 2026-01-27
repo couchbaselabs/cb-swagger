@@ -12,16 +12,15 @@ DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
 
 :leveloffset: 1
 
-include::{specDir}overview/document-before.adoc[opts=optional]
 
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 [[overview]]
 = Overview
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
-
+include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -68,7 +67,6 @@ The host name or IP address of a node running the Analytics Service.
 --
 
 [%hardbreaks]
-
 *Example:* `+++localhost+++`
 // end
 
@@ -84,31 +82,26 @@ The Analytics Service REST port. Use `18095` for secure access.
 
 |===
 
-
-// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
-
+include::{specDir}overview/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
-
+include::{specDir}paths/document-before.adoc[opts=optional]
 
 [[resources]]
 = Resources
 
-:count-apis: 1
-
+:count-apis: 0
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
@@ -116,18 +109,14 @@ xref:tag-Default[]
 endif::[]
 
 
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 [#tag-Default]
-= Default
+= default
 :leveloffset: +1
 
-ifeval::["" != ""]
-
-endif::[]
-ifeval::["" == ""]
 **{toc-title}**
 endif::[]
-endif::[]
+
 
 [%hardbreaks]
 xref:cancel_request[]
@@ -140,44 +129,38 @@ xref:restart_node[]
 xref:return_active_requests[]
 
 
+
 //tag::cancel_request[]
 
-
-// markup not found, no include::{specDir}paths/cancel_request/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/cancel_request/operation-before.adoc[opts=optional]
 
 [#cancel_request]
 = Request Cancellation
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/cancel_request/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/cancel_request/operation-begin.adoc[opts=optional]
 
 ....
 DELETE /analytics/admin/active_requests
 ....
 
 
-
-// markup not found, no include::{specDir}paths/cancel_request/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/cancel_request/operation-description-before.adoc[opts=optional]
 
 [#cancel_request-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/cancel_request/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/cancel_request/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Cancels an active request.
 --
 
-
-// markup not found, no include::{specDir}paths/cancel_request/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/cancel_request/operation-description-end.adoc[opts=optional]
 
 
 [#cancel_request-consumes]
@@ -188,26 +171,20 @@ Cancels an active request.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/cancel_request/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/cancel_request/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/cancel_request/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/cancel_request/operation-parameters-before.adoc[opts=optional]
 
 [#cancel_request-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/cancel_request/operation-parameters-begin.adoc[opts=optional]
-
-
-
-
+include::{specDir}paths/cancel_request/operation-parameters-begin.adoc[opts=optional]
 
 [#cancel_request-form]
 .Form Parameters
@@ -219,10 +196,7 @@ Cancels an active request.
 
 a¦ *client_context_id* +
 _required_
-a¦ 
-
-
-[markdown]
+a¦ [markdown]
 --
 Identifier passed by the client that is used to identify an active request to be cancelled.
 --
@@ -235,27 +209,24 @@ a¦ String
 |===
 
 
-
-// markup not found, no include::{specDir}paths/cancel_request/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/cancel_request/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/cancel_request/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/cancel_request/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/cancel_request/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/cancel_request/operation-responses-before.adoc[opts=optional]
 
 [#cancel_request-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/cancel_request/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/cancel_request/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -267,12 +238,14 @@ a| [markdown]
 The operation was successful. 
 --
 a| 
+
 | 400
 a| [markdown]
 --
 Bad request. Incorrect parameter or missing value. 
 --
 a| 
+
 | 401
 a| [markdown]
 --
@@ -289,103 +262,83 @@ a|
 
 |===
 
-
-// markup not found, no include::{specDir}paths/cancel_request/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/cancel_request/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/cancel_request/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/cancel_request/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/cancel_request/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/cancel_request/operation-security-before.adoc[opts=optional]
 
 [#cancel_request-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/cancel_request/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/cancel_request/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManageAnalyticsSelect[]
+| xref:security-AnalyticsManageAnalyticsSelect[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/cancel_request/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/cancel_request/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/cancel_request/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/cancel_request/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}cancel_request/http-request.adoc[opts=optional]
 
+include::{snippetDir}cancel_request/http-response.adoc[opts=optional]
 
-// markup not found, no include::{snippetDir}cancel_request/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/cancel_request/operation-end.adoc[opts=optional]
+include::{specDir}paths/cancel_request/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/cancel_request/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/cancel_request/operation-after.adoc[opts=optional]
 
 //end::cancel_request[]
 
-
 //tag::cluster_status[]
 
-
-// markup not found, no include::{specDir}paths/cluster_status/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/cluster_status/operation-before.adoc[opts=optional]
 
 [#cluster_status]
 = Cluster Status
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/cluster_status/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/cluster_status/operation-begin.adoc[opts=optional]
 
 ....
 GET /analytics/cluster
 ....
 
 
-
-// markup not found, no include::{specDir}paths/cluster_status/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/cluster_status/operation-description-before.adoc[opts=optional]
 
 [#cluster_status-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/cluster_status/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/cluster_status/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Shows various details about the current status of the Analytics Service, such as the service state, the state of each node partition, and the replicas of each partition.
 --
 
-
-// markup not found, no include::{specDir}paths/cluster_status/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/cluster_status/operation-description-end.adoc[opts=optional]
 
 
 
@@ -393,33 +346,29 @@ Shows various details about the current status of the Analytics Service, such as
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/cluster_status/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/cluster_status/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/cluster_status/operation-parameters-before.adoc[opts=optional]
+include::{specDir}paths/cluster_status/operation-parameters-before.adoc[opts=optional]
 
 
 
 
 
-// markup not found, no include::{specDir}paths/cluster_status/operation-parameters-after.adoc[opts=optional]
+include::{specDir}paths/cluster_status/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/cluster_status/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/cluster_status/operation-responses-before.adoc[opts=optional]
 
 [#cluster_status-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/cluster_status/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/cluster_status/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -448,103 +397,84 @@ a|
 
 |===
 
-
-// markup not found, no include::{specDir}paths/cluster_status/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/cluster_status/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Status:
 
 
 
-// markup not found, no include::{specDir}paths/cluster_status/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/cluster_status/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/cluster_status/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/cluster_status/operation-security-before.adoc[opts=optional]
 
 [#cluster_status-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/cluster_status/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/cluster_status/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-clusterReadPoolsRead[]
+| xref:security-ClusterReadPoolsRead[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/cluster_status/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/cluster_status/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/cluster_status/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/cluster_status/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}cluster_status/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}cluster_status/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/cluster_status/operation-end.adoc[opts=optional]
+include::{specDir}paths/cluster_status/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/cluster_status/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/cluster_status/operation-after.adoc[opts=optional]
 
 //end::cluster_status[]
 
-
 //tag::completed_requests[]
 
-
-// markup not found, no include::{specDir}paths/completed_requests/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/completed_requests/operation-before.adoc[opts=optional]
 
 [#completed_requests]
 = Completed Requests
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/completed_requests/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/completed_requests/operation-begin.adoc[opts=optional]
 
 ....
 GET /analytics/admin/completed_requests
 ....
 
 
-
-// markup not found, no include::{specDir}paths/completed_requests/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/completed_requests/operation-description-before.adoc[opts=optional]
 
 [#completed_requests-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/completed_requests/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/completed_requests/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Gets a list of all completed analytic requests.
 --
 
-
-// markup not found, no include::{specDir}paths/completed_requests/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/completed_requests/operation-description-end.adoc[opts=optional]
 
 
 
@@ -552,33 +482,29 @@ Gets a list of all completed analytic requests.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/completed_requests/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/completed_requests/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/completed_requests/operation-parameters-before.adoc[opts=optional]
+include::{specDir}paths/completed_requests/operation-parameters-before.adoc[opts=optional]
 
 
 
 
 
-// markup not found, no include::{specDir}paths/completed_requests/operation-parameters-after.adoc[opts=optional]
+include::{specDir}paths/completed_requests/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/completed_requests/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/completed_requests/operation-responses-before.adoc[opts=optional]
 
 [#completed_requests-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/completed_requests/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/completed_requests/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -589,8 +515,7 @@ a| [markdown]
 --
 Success. Returns a list of all completed analytic requests. 
 --
-a| xref:Request[]
- array
+a| xref:Request[] array
 
 | 401
 a| [markdown]
@@ -608,103 +533,84 @@ a|
 
 |===
 
-
-// markup not found, no include::{specDir}paths/completed_requests/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/completed_requests/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Request:
 
 
 
-// markup not found, no include::{specDir}paths/completed_requests/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/completed_requests/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/completed_requests/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/completed_requests/operation-security-before.adoc[opts=optional]
 
 [#completed_requests-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/completed_requests/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/completed_requests/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManageAnalyticsSelect[]
+| xref:security-AnalyticsManageAnalyticsSelect[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/completed_requests/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/completed_requests/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/completed_requests/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/completed_requests/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}completed_requests/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}completed_requests/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/completed_requests/operation-end.adoc[opts=optional]
+include::{specDir}paths/completed_requests/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/completed_requests/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/completed_requests/operation-after.adoc[opts=optional]
 
 //end::completed_requests[]
 
-
 //tag::ingestion_status[]
 
-
-// markup not found, no include::{specDir}paths/ingestion_status/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/ingestion_status/operation-before.adoc[opts=optional]
 
 [#ingestion_status]
 = Ingestion Status
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/ingestion_status/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/ingestion_status/operation-begin.adoc[opts=optional]
 
 ....
 GET /analytics/status/ingestion
 ....
 
 
-
-// markup not found, no include::{specDir}paths/ingestion_status/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/ingestion_status/operation-description-before.adoc[opts=optional]
 
 [#ingestion_status-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/ingestion_status/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/ingestion_status/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Shows the progress of ingestion by the Analytics service, for each Analytics collection.
 --
 
-
-// markup not found, no include::{specDir}paths/ingestion_status/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/ingestion_status/operation-description-end.adoc[opts=optional]
 
 
 
@@ -712,33 +618,29 @@ Shows the progress of ingestion by the Analytics service, for each Analytics col
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/ingestion_status/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/ingestion_status/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/ingestion_status/operation-parameters-before.adoc[opts=optional]
+include::{specDir}paths/ingestion_status/operation-parameters-before.adoc[opts=optional]
 
 
 
 
 
-// markup not found, no include::{specDir}paths/ingestion_status/operation-parameters-after.adoc[opts=optional]
+include::{specDir}paths/ingestion_status/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/ingestion_status/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/ingestion_status/operation-responses-before.adoc[opts=optional]
 
 [#ingestion_status-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/ingestion_status/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/ingestion_status/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -767,78 +669,63 @@ a|
 
 |===
 
-
-// markup not found, no include::{specDir}paths/ingestion_status/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/ingestion_status/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Ingestion:
 
 
 
-// markup not found, no include::{specDir}paths/ingestion_status/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/ingestion_status/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/ingestion_status/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/ingestion_status/operation-security-before.adoc[opts=optional]
 
 [#ingestion_status-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/ingestion_status/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/ingestion_status/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManageAnalyticsSelect[]
+| xref:security-AnalyticsManageAnalyticsSelect[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/ingestion_status/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/ingestion_status/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/ingestion_status/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/ingestion_status/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}ingestion_status/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}ingestion_status/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/ingestion_status/operation-end.adoc[opts=optional]
+include::{specDir}paths/ingestion_status/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/ingestion_status/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/ingestion_status/operation-after.adoc[opts=optional]
 
 //end::ingestion_status[]
 
-
 //tag::monitor_node[]
 
-
-// markup not found, no include::{specDir}paths/monitor_node/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/monitor_node/operation-before.adoc[opts=optional]
 
 [#monitor_node]
 = Pending Mutations
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/monitor_node/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/monitor_node/operation-begin.adoc[opts=optional]
 
 ....
 GET /analytics/node/agg/stats/remaining
@@ -847,16 +734,14 @@ GET /analytics/node/agg/stats/remaining
 CAUTION: This operation is deprecated, and will be removed in a future release.
 
 
-// markup not found, no include::{specDir}paths/monitor_node/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/monitor_node/operation-description-before.adoc[opts=optional]
 
 [#monitor_node-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/monitor_node/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/monitor_node/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -866,8 +751,7 @@ NOTE: This endpoint may not return meaningful results in Couchbase Server 7.0 an
 
 --
 
-
-// markup not found, no include::{specDir}paths/monitor_node/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/monitor_node/operation-description-end.adoc[opts=optional]
 
 
 
@@ -875,33 +759,29 @@ NOTE: This endpoint may not return meaningful results in Couchbase Server 7.0 an
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/monitor_node/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/monitor_node/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/monitor_node/operation-parameters-before.adoc[opts=optional]
+include::{specDir}paths/monitor_node/operation-parameters-before.adoc[opts=optional]
 
 
 
 
 
-// markup not found, no include::{specDir}paths/monitor_node/operation-parameters-after.adoc[opts=optional]
+include::{specDir}paths/monitor_node/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/monitor_node/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/monitor_node/operation-responses-before.adoc[opts=optional]
 
 [#monitor_node-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/monitor_node/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/monitor_node/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -930,103 +810,84 @@ a|
 
 |===
 
-
-// markup not found, no include::{specDir}paths/monitor_node/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/monitor_node/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Mutations:
 
 
 
-// markup not found, no include::{specDir}paths/monitor_node/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/monitor_node/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/monitor_node/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/monitor_node/operation-security-before.adoc[opts=optional]
 
 [#monitor_node-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/monitor_node/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/monitor_node/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManageAnalyticsSelect[]
+| xref:security-AnalyticsManageAnalyticsSelect[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/monitor_node/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/monitor_node/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/monitor_node/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/monitor_node/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}monitor_node/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}monitor_node/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/monitor_node/operation-end.adoc[opts=optional]
+include::{specDir}paths/monitor_node/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/monitor_node/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/monitor_node/operation-after.adoc[opts=optional]
 
 //end::monitor_node[]
 
-
 //tag::restart_cluster[]
 
-
-// markup not found, no include::{specDir}paths/restart_cluster/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/restart_cluster/operation-before.adoc[opts=optional]
 
 [#restart_cluster]
 = Cluster Restart
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/restart_cluster/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/restart_cluster/operation-begin.adoc[opts=optional]
 
 ....
 POST /analytics/cluster/restart
 ....
 
 
-
-// markup not found, no include::{specDir}paths/restart_cluster/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/restart_cluster/operation-description-before.adoc[opts=optional]
 
 [#restart_cluster-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/restart_cluster/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/restart_cluster/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Restarts all Analytics Service nodes in the cluster.
 --
 
-
-// markup not found, no include::{specDir}paths/restart_cluster/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/restart_cluster/operation-description-end.adoc[opts=optional]
 
 
 
@@ -1034,33 +895,29 @@ Restarts all Analytics Service nodes in the cluster.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/restart_cluster/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/restart_cluster/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/restart_cluster/operation-parameters-before.adoc[opts=optional]
+include::{specDir}paths/restart_cluster/operation-parameters-before.adoc[opts=optional]
 
 
 
 
 
-// markup not found, no include::{specDir}paths/restart_cluster/operation-parameters-after.adoc[opts=optional]
+include::{specDir}paths/restart_cluster/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/restart_cluster/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/restart_cluster/operation-responses-before.adoc[opts=optional]
 
 [#restart_cluster-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/restart_cluster/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/restart_cluster/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -1089,103 +946,83 @@ a|
 
 |===
 
-
-// markup not found, no include::{specDir}paths/restart_cluster/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/restart_cluster/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/restart_cluster/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/restart_cluster/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/restart_cluster/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/restart_cluster/operation-security-before.adoc[opts=optional]
 
 [#restart_cluster-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/restart_cluster/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/restart_cluster/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManage[]
+| xref:security-AnalyticsManage[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/restart_cluster/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/restart_cluster/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/restart_cluster/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/restart_cluster/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}restart_cluster/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}restart_cluster/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/restart_cluster/operation-end.adoc[opts=optional]
+include::{specDir}paths/restart_cluster/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/restart_cluster/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/restart_cluster/operation-after.adoc[opts=optional]
 
 //end::restart_cluster[]
 
-
 //tag::restart_node[]
 
-
-// markup not found, no include::{specDir}paths/restart_node/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/restart_node/operation-before.adoc[opts=optional]
 
 [#restart_node]
 = Node Restart
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/restart_node/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/restart_node/operation-begin.adoc[opts=optional]
 
 ....
 POST /analytics/node/restart
 ....
 
 
-
-// markup not found, no include::{specDir}paths/restart_node/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/restart_node/operation-description-before.adoc[opts=optional]
 
 [#restart_node-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/restart_node/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/restart_node/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Restarts the specified Analytics Service node.
 --
 
-
-// markup not found, no include::{specDir}paths/restart_node/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/restart_node/operation-description-end.adoc[opts=optional]
 
 
 
@@ -1193,33 +1030,29 @@ Restarts the specified Analytics Service node.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/restart_node/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/restart_node/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/restart_node/operation-parameters-before.adoc[opts=optional]
+include::{specDir}paths/restart_node/operation-parameters-before.adoc[opts=optional]
 
 
 
 
 
-// markup not found, no include::{specDir}paths/restart_node/operation-parameters-after.adoc[opts=optional]
+include::{specDir}paths/restart_node/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/restart_node/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/restart_node/operation-responses-before.adoc[opts=optional]
 
 [#restart_node-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/restart_node/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/restart_node/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -1248,103 +1081,83 @@ a|
 
 |===
 
-
-// markup not found, no include::{specDir}paths/restart_node/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/restart_node/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/restart_node/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/restart_node/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/restart_node/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/restart_node/operation-security-before.adoc[opts=optional]
 
 [#restart_node-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/restart_node/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/restart_node/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManage[]
+| xref:security-AnalyticsManage[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/restart_node/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/restart_node/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/restart_node/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/restart_node/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}restart_node/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}restart_node/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/restart_node/operation-end.adoc[opts=optional]
+include::{specDir}paths/restart_node/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/restart_node/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/restart_node/operation-after.adoc[opts=optional]
 
 //end::restart_node[]
 
-
 //tag::return_active_requests[]
 
-
-// markup not found, no include::{specDir}paths/return_active_requests/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/return_active_requests/operation-before.adoc[opts=optional]
 
 [#return_active_requests]
 = Active Requests
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/return_active_requests/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/return_active_requests/operation-begin.adoc[opts=optional]
 
 ....
 GET /analytics/admin/active_requests
 ....
 
 
-
-// markup not found, no include::{specDir}paths/return_active_requests/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/return_active_requests/operation-description-before.adoc[opts=optional]
 
 [#return_active_requests-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/return_active_requests/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/return_active_requests/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Gets a list of the analytic requests that are running.
 --
 
-
-// markup not found, no include::{specDir}paths/return_active_requests/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/return_active_requests/operation-description-end.adoc[opts=optional]
 
 
 
@@ -1352,33 +1165,29 @@ Gets a list of the analytic requests that are running.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/return_active_requests/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/return_active_requests/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/return_active_requests/operation-parameters-before.adoc[opts=optional]
+include::{specDir}paths/return_active_requests/operation-parameters-before.adoc[opts=optional]
 
 
 
 
 
-// markup not found, no include::{specDir}paths/return_active_requests/operation-parameters-after.adoc[opts=optional]
+include::{specDir}paths/return_active_requests/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/return_active_requests/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/return_active_requests/operation-responses-before.adoc[opts=optional]
 
 [#return_active_requests-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/return_active_requests/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/return_active_requests/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -1389,8 +1198,7 @@ a| [markdown]
 --
 Success. Returns an array id details on the running requests. 
 --
-a| xref:Request[]
- array
+a| xref:Request[] array
 
 | 401
 a| [markdown]
@@ -1408,99 +1216,84 @@ a|
 
 |===
 
-
-// markup not found, no include::{specDir}paths/return_active_requests/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/return_active_requests/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Request:
 
 
 
-// markup not found, no include::{specDir}paths/return_active_requests/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/return_active_requests/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/return_active_requests/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/return_active_requests/operation-security-before.adoc[opts=optional]
 
 [#return_active_requests-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/return_active_requests/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/return_active_requests/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManageAnalyticsSelect[]
+| xref:security-AnalyticsManageAnalyticsSelect[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/return_active_requests/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/return_active_requests/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/return_active_requests/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/return_active_requests/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}return_active_requests/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}return_active_requests/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/return_active_requests/operation-end.adoc[opts=optional]
+include::{specDir}paths/return_active_requests/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/return_active_requests/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/return_active_requests/operation-after.adoc[opts=optional]
 
 //end::return_active_requests[]
 
 
-ifeval::[{count-apis} > 1]
+
+ifeval::[{count-apis} > 0]
 :leveloffset: -1
 endif::[]
 
 
 
-// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+include::{specDir}paths/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
-
+include::{specDir}paths/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
-
+include::{specDir}definitions/document-before.adoc[opts=optional]
 
 [#models]
 = Definitions
 
-:count-models: 14
-
+:count-models: 13
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
-
+include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 1]
-ifdef::collapse-models[]
+ifeval::[{count-models} > 0]
+ifeval::[{count-models} > 8]
 [.two-columns]
-endif::collapse-models[]
+endif::[]
 [%hardbreaks]
 xref:Ingestion[]
 xref:IngestionLink[]
@@ -1519,25 +1312,13 @@ xref:StatusTopologyStateReplicas[]
 endif::[]
 
 
+include::{specDir}definitions/Ingestion/definition-before.adoc[opts=optional]
 
-// markup not found, no include::{specDir}definitions/Ingestion/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-Ingestion[]
 [discrete]
-endif::collapse-models[]
+endif::show-Ingestion[]
 [#Ingestion]
 = Ingestion
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/Ingestion/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Ingestion[]
 
 ifdef::model-descriptions[]
 //tag::desc-Ingestion[]
@@ -1545,24 +1326,30 @@ An object containing a single links property.
 //end::desc-Ingestion[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/Ingestion/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Ingestion[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*links* +
+a¦ *links* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An array of objects, each giving information about a single linked Analytics scope.
 --
 
 [%hardbreaks]
 {blank}
-a¦ xref:IngestionLink[]
- array
+a¦ xref:IngestionLink[] array
 
 |===
 
@@ -1570,28 +1357,23 @@ a¦ xref:IngestionLink[]
 
 
 
-// markup not found, no include::{specDir}definitions/Ingestion/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/Ingestion/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Ingestion/definition-after.adoc[opts=optional]
+include::{specDir}definitions/Ingestion/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/IngestionLink/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/IngestionLink/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-IngestionLink[]
 [discrete]
-endif::collapse-models[]
+endif::show-IngestionLink[]
 [#IngestionLink]
 = Links
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/IngestionLink/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/IngestionLink/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -1599,17 +1381,13 @@ endif::collapse-models[]
 
 //tag::IngestionLink[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*name* +
+a¦ *name* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The name of the link.
 --
@@ -1618,13 +1396,9 @@ The name of the link.
 *Example:* `+++"Local"+++`
 {blank}
 a¦ String
-
-a¦ 
-*scope* +
+a¦ *scope* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The name of the Analytics scope.
 --
@@ -1633,13 +1407,9 @@ The name of the Analytics scope.
 *Example:* `+++"travel-sample/inventory"+++`
 {blank}
 a¦ String
-
-a¦ 
-*status* +
+a¦ *status* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The status of the Analytics scope.
 --
@@ -1649,13 +1419,9 @@ The status of the Analytics scope.
 *Example:* `+++"healthy"+++`
 {blank}
 a¦ String
-
-a¦ 
-*state* +
+a¦ *state* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An array of objects, each giving the ingestion state of one or more Analytics collections.
 
@@ -1665,8 +1431,7 @@ Analytics collections which have the same ingestion state within this Analytics 
 
 [%hardbreaks]
 {blank}
-a¦ xref:IngestionLinkState[]
- array
+a¦ xref:IngestionLinkState[] array
 
 |===
 
@@ -1674,28 +1439,23 @@ a¦ xref:IngestionLinkState[]
 
 
 
-// markup not found, no include::{specDir}definitions/IngestionLink/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/IngestionLink/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/IngestionLink/definition-after.adoc[opts=optional]
+include::{specDir}definitions/IngestionLink/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/IngestionLinkState/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/IngestionLinkState/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-IngestionLinkState[]
 [discrete]
-endif::collapse-models[]
+endif::show-IngestionLinkState[]
 [#IngestionLinkState]
 = States
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/IngestionLinkState/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/IngestionLinkState/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -1703,17 +1463,13 @@ endif::collapse-models[]
 
 //tag::IngestionLinkState[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*timestamp* +
+a¦ *timestamp* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The time since epoch that this sample was calculated, in milliseconds.
 --
@@ -1722,13 +1478,9 @@ The time since epoch that this sample was calculated, in milliseconds.
 *Example:* `1631273689161`
 {blank}
 a¦ Integer
-
-a¦ 
-*progress* +
+a¦ *progress* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The percentage (fraction from 0 to 1) of ingestion progress at the current time.
 --
@@ -1739,13 +1491,9 @@ The percentage (fraction from 0 to 1) of ingestion progress at the current time.
 *Example:* `0`
 {blank}
 a¦ Double (double)
-
-a¦ 
-*timeLag* +
+a¦ *timeLag* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The estimated time that the ingestion lags behind the Data service, in milliseconds. Only displayed for Analytics collections that are not fully ingested.
 
@@ -1755,13 +1503,9 @@ The estimated time that the ingestion lags behind the Data service, in milliseco
 *Example:* `9744`
 {blank}
 a¦ Integer
-
-a¦ 
-*itemsProcessed* +
+a¦ *itemsProcessed* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The number of items ingested since last connect; that is, the total number of mutations and deletions processed. Only displayed for Analytics collections that are not fully ingested.
 
@@ -1773,13 +1517,9 @@ Note that this value is reset on connect, so it may appear to get smaller.
 *Example:* `12301`
 {blank}
 a¦ Integer
-
-a¦ 
-*seqnoAdvances* +
+a¦ *seqnoAdvances* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The change in sequence number (seqno) since last connect. Only displayed for Analytics collections that are not fully ingested.
 
@@ -1789,21 +1529,16 @@ The change in sequence number (seqno) since last connect. Only displayed for Ana
 *Example:* `61`
 {blank}
 a¦ Integer
-
-a¦ 
-*scopes* +
+a¦ *scopes* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An array of objects, each one giving information about a single Analytics scope.
 --
 
 [%hardbreaks]
 {blank}
-a¦ xref:IngestionLinkStateScope[]
- array
+a¦ xref:IngestionLinkStateScope[] array
 
 |===
 
@@ -1811,28 +1546,23 @@ a¦ xref:IngestionLinkStateScope[]
 
 
 
-// markup not found, no include::{specDir}definitions/IngestionLinkState/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/IngestionLinkState/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/IngestionLinkState/definition-after.adoc[opts=optional]
+include::{specDir}definitions/IngestionLinkState/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/IngestionLinkStateScope/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/IngestionLinkStateScope/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-IngestionLinkStateScope[]
 [discrete]
-endif::collapse-models[]
+endif::show-IngestionLinkStateScope[]
 [#IngestionLinkStateScope]
 = State Scopes
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/IngestionLinkStateScope/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/IngestionLinkStateScope/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -1840,17 +1570,13 @@ endif::collapse-models[]
 
 //tag::IngestionLinkStateScope[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*name* +
+a¦ *name* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The name of the Analytics scope.
 --
@@ -1859,21 +1585,16 @@ The name of the Analytics scope.
 *Example:* `+++"travel-sample/inventory"+++`
 {blank}
 a¦ String
-
-a¦ 
-*collections* +
+a¦ *collections* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An array of objects, each one giving information about a single Analytics collection.
 --
 
 [%hardbreaks]
 {blank}
-a¦ xref:IngestionLinkStateScopeColl[]
- array
+a¦ xref:IngestionLinkStateScopeColl[] array
 
 |===
 
@@ -1881,28 +1602,23 @@ a¦ xref:IngestionLinkStateScopeColl[]
 
 
 
-// markup not found, no include::{specDir}definitions/IngestionLinkStateScope/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/IngestionLinkStateScope/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/IngestionLinkStateScope/definition-after.adoc[opts=optional]
+include::{specDir}definitions/IngestionLinkStateScope/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/IngestionLinkStateScopeColl/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/IngestionLinkStateScopeColl/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-IngestionLinkStateScopeColl[]
 [discrete]
-endif::collapse-models[]
+endif::show-IngestionLinkStateScopeColl[]
 [#IngestionLinkStateScopeColl]
 = State Collections
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/IngestionLinkStateScopeColl/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/IngestionLinkStateScopeColl/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -1910,17 +1626,13 @@ endif::collapse-models[]
 
 //tag::IngestionLinkStateScopeColl[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*name* +
+a¦ *name* +
 _required_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The name of the Analytics collection.
 --
@@ -1936,24 +1648,25 @@ a¦ String
 
 
 
-// markup not found, no include::{specDir}definitions/IngestionLinkStateScopeColl/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/IngestionLinkStateScopeColl/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/IngestionLinkStateScopeColl/definition-after.adoc[opts=optional]
+include::{specDir}definitions/IngestionLinkStateScopeColl/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Mutations/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/Mutations/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-Mutations[]
 [discrete]
-endif::collapse-models[]
+endif::show-Mutations[]
 [#Mutations]
 = Mutations
+
+ifdef::model-descriptions[]
+//tag::desc-Mutations[]
+An object containing one or more nested scope objects, one for each available Analytics scope.
+//end::desc-Mutations[]
+endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -1965,23 +1678,14 @@ include::{specDir}definitions/Mutations/definition-begin.adoc[opts=optional]
 
 //tag::Mutations[]
 
-ifdef::model-descriptions[]
-//tag::desc-Mutations[]
-An object containing one or more nested scope objects, one for each available Analytics scope.
-//end::desc-Mutations[]
-endif::model-descriptions[]
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*<scope>* +
+a¦ *<scope>* +
 _additional +
 property_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-MutationsColl, opts=optional]
 --
@@ -1996,34 +1700,19 @@ a¦ xref:MutationsColl[]
 
 
 
-// markup not found, no include::{specDir}definitions/Mutations/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/Mutations/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Mutations/definition-after.adoc[opts=optional]
+include::{specDir}definitions/Mutations/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/MutationsColl/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/MutationsColl/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-MutationsColl[]
 [discrete]
-endif::collapse-models[]
+endif::show-MutationsColl[]
 [#MutationsColl]
 = Collections
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/MutationsColl/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::MutationsColl[]
 
 ifdef::model-descriptions[]
 //tag::desc-MutationsColl[]
@@ -2034,17 +1723,24 @@ The name of the object is the name of the Analytics scope, in display form. For 
 //end::desc-MutationsColl[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/MutationsColl/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::MutationsColl[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*<collection>* +
+a¦ *<collection>* +
 _additional +
 property_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The number of mutations in the DCP queue that have not yet been ingested. The name of the property is the name of the Analytics collection.
 
@@ -2060,34 +1756,19 @@ a¦ Integer
 
 
 
-// markup not found, no include::{specDir}definitions/MutationsColl/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/MutationsColl/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/MutationsColl/definition-after.adoc[opts=optional]
+include::{specDir}definitions/MutationsColl/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Request/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/Request/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-Request[]
 [discrete]
-endif::collapse-models[]
+endif::show-Request[]
 [#Request]
 = Request
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/Request/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Request[]
 
 ifdef::model-descriptions[]
 //tag::desc-Request[]
@@ -2095,16 +1776,23 @@ An object giving information about an Analytics service request.
 //end::desc-Request[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/Request/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Request[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*cancellable* +
+a¦ *cancellable* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Whether this request can be cancelled.
 --
@@ -2112,13 +1800,9 @@ Whether this request can be cancelled.
 [%hardbreaks]
 {blank}
 a¦ Boolean
-
-a¦ 
-*clientContextID* +
+a¦ *clientContextID* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 A context ID for debugging purposes.
 --
@@ -2127,13 +1811,9 @@ A context ID for debugging purposes.
 *Example:* `+++"28379d60-7139-44d6-b57a-95935540b586"+++`
 {blank}
 a¦ String
-
-a¦ 
-*elapsedTime* +
+a¦ *elapsedTime* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 How long the request has been running in seconds.
 --
@@ -2141,14 +1821,10 @@ How long the request has been running in seconds.
 [%hardbreaks]
 *Example:* `0.126`
 {blank}
-a¦ Big Decimal
-
-a¦ 
-*jobCreateTime* +
+a¦ BigDecimal
+a¦ *jobCreateTime* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The date and time when the request's job was created.
 --
@@ -2157,13 +1833,9 @@ The date and time when the request's job was created.
 *Example:* `+++"2024-05-28T19:47:02.512"+++`
 {blank}
 a¦ String
-
-a¦ 
-*jobId* +
+a¦ *jobId* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The request's job ID. This value can be null if request did not run (for example, due to an error).
 
@@ -2173,13 +1845,9 @@ The request's job ID. This value can be null if request did not run (for example
 *Example:* `+++"JID:0.14"+++`
 {blank}
 a¦ String
-
-a¦ 
-*jobQueueTime* +
+a¦ *jobQueueTime* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 How long the request's job has been in the queue waiting to run in seconds.
 --
@@ -2187,14 +1855,10 @@ How long the request's job has been in the queue waiting to run in seconds.
 [%hardbreaks]
 *Example:* `0`
 {blank}
-a¦ Big Decimal
-
-a¦ 
-*jobRequiredCPUs* +
+a¦ BigDecimal
+a¦ *jobRequiredCPUs* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The number of CPU cores required to run this request.
 --
@@ -2203,13 +1867,9 @@ The number of CPU cores required to run this request.
 *Example:* `1`
 {blank}
 a¦ Integer
-
-a¦ 
-*jobRequiredMemory* +
+a¦ *jobRequiredMemory* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The bytes of RAM being used to process this request.
 
@@ -2219,13 +1879,9 @@ The bytes of RAM being used to process this request.
 *Example:* `34013184`
 {blank}
 a¦ Integer
-
-a¦ 
-*jobStartTime* +
+a¦ *jobStartTime* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The date and time the request's job began running.
 --
@@ -2234,13 +1890,9 @@ The date and time the request's job began running.
 *Example:* `+++"2024-05-28T19:47:02.514"+++`
 {blank}
 a¦ String
-
-a¦ 
-*jobStatus* +
+a¦ *jobStatus* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The state of the request's job.
 --
@@ -2250,13 +1902,9 @@ The state of the request's job.
 *Example:* `+++"RUNNING"+++`
 {blank}
 a¦ String
-
-a¦ 
-*plan* +
+a¦ *plan* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The query plan for this request.
 --
@@ -2264,13 +1912,9 @@ The query plan for this request.
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*node* +
+a¦ *node* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The Analytics node that received the request.
 --
@@ -2279,13 +1923,9 @@ The Analytics node that received the request.
 *Example:* `+++"172.20.0.2:8095"+++`
 {blank}
 a¦ String
-
-a¦ 
-*remoteAddr* +
+a¦ *remoteAddr* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The network address and port of the client that made the request.
 --
@@ -2294,13 +1934,9 @@ The network address and port of the client that made the request.
 *Example:* `+++"172.20.0.123:53612"+++`
 {blank}
 a¦ String
-
-a¦ 
-*requestTime* +
+a¦ *requestTime* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The date and time the request was received.
 --
@@ -2309,13 +1945,9 @@ The date and time the request was received.
 *Example:* `+++"2024-05-28T19:44:07.730"+++`
 {blank}
 a¦ String
-
-a¦ 
-*scanConsistency* +
+a¦ *scanConsistency* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The Scan Consistency setting used for the request's query.
 --
@@ -2324,13 +1956,9 @@ The Scan Consistency setting used for the request's query.
 *Example:* `+++"not_bounded"+++`
 {blank}
 a¦ String
-
-a¦ 
-*state* +
+a¦ *state* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The state of the request.
 --
@@ -2340,13 +1968,9 @@ The state of the request.
 *Example:* `+++"running"+++`
 {blank}
 a¦ String
-
-a¦ 
-*statement* +
+a¦ *statement* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The SQL++ query statement being run by the request.
 --
@@ -2355,13 +1979,9 @@ The SQL++ query statement being run by the request.
 *Example:* `+++"select count(*) from hotel_endorsement_view;"+++`
 {blank}
 a¦ String
-
-a¦ 
-*userAgent* +
+a¦ *userAgent* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The user agent string of the browser that made the request.
 --
@@ -2370,13 +1990,9 @@ The user agent string of the browser that made the request.
 *Example:* `+++"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:126.0) Gecko/20100101 Firefox/126.0"+++`
 {blank}
 a¦ String
-
-a¦ 
-*users* +
+a¦ *users* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The user who made the request.
 --
@@ -2385,13 +2001,9 @@ The user who made the request.
 *Example:* `+++"Administrator"+++`
 {blank}
 a¦ String
-
-a¦ 
-*uuid* +
+a¦ *uuid* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The unique identifier for this request.
 --
@@ -2407,34 +2019,19 @@ a¦ String
 
 
 
-// markup not found, no include::{specDir}definitions/Request/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/Request/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Request/definition-after.adoc[opts=optional]
+include::{specDir}definitions/Request/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Status/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/Status/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-Status[]
 [discrete]
-endif::collapse-models[]
+endif::show-Status[]
 [#Status]
 = Status
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/Status/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Status[]
 
 ifdef::model-descriptions[]
 //tag::desc-Status[]
@@ -2442,16 +2039,23 @@ An object giving information about the status of the Analytics service.
 //end::desc-Status[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/Status/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Status[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*authorizedNodes* +
+a¦ *authorizedNodes* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An array of strings, each of which is the ID of an authorized Analytics node.
 --
@@ -2459,15 +2063,10 @@ An array of strings, each of which is the ID of an authorized Analytics node.
 [%hardbreaks]
 *Example:* `["86586a966202b5aa4aed31633f330aba","948fb3af810a9b7bc6c76e2a69ba35d9"]`
 {blank}
-a¦ String
- array
-
-a¦ 
-*ccNodeId* +
+a¦ String array
+a¦ *ccNodeId* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The ID of the cluster controller node.
 --
@@ -2476,13 +2075,9 @@ The ID of the cluster controller node.
 *Example:* `+++"86586a966202b5aa4aed31633f330aba"+++`
 {blank}
 a¦ String
-
-a¦ 
-*nodeConfigUri* +
+a¦ *nodeConfigUri* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The path of the Analytics Node Configuration REST API.
 --
@@ -2491,13 +2086,9 @@ The path of the Analytics Node Configuration REST API.
 *Example:* `+++"/analytics/config/node"+++`
 {blank}
 a¦ String
-
-a¦ 
-*nodeDiagnosticsUri* +
+a¦ *nodeDiagnosticsUri* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The path of the Analytics Node Diagnostics REST API. For internal use only.
 
@@ -2507,13 +2098,9 @@ The path of the Analytics Node Diagnostics REST API. For internal use only.
 *Example:* `+++"/analytics/node/diagnostics"+++`
 {blank}
 a¦ String
-
-a¦ 
-*nodeRestartUri* +
+a¦ *nodeRestartUri* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The path of the Analytics Node Restart REST API.
 --
@@ -2522,13 +2109,9 @@ The path of the Analytics Node Restart REST API.
 *Example:* `+++"/analytics/node/restart"+++`
 {blank}
 a¦ String
-
-a¦ 
-*nodeServiceUri* +
+a¦ *nodeServiceUri* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The path of the Analytics Query Service REST API.
 --
@@ -2537,13 +2120,9 @@ The path of the Analytics Query Service REST API.
 *Example:* `+++"/analytics/service"+++`
 {blank}
 a¦ String
-
-a¦ 
-*serviceConfigUri* +
+a¦ *serviceConfigUri* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The path of the Analytics Service Configuration REST API.
 --
@@ -2552,13 +2131,9 @@ The path of the Analytics Service Configuration REST API.
 *Example:* `+++"/analytics/config/service"+++`
 {blank}
 a¦ String
-
-a¦ 
-*serviceDiagnosticsUri* +
+a¦ *serviceDiagnosticsUri* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The full URI of the Analytics Service Diagnostics REST API. For internal use only.
 
@@ -2568,13 +2143,9 @@ The full URI of the Analytics Service Diagnostics REST API. For internal use onl
 *Example:* `+++"http://localhost:8095/analytics/cluster/diagnostics"+++`
 {blank}
 a¦ String
-
-a¦ 
-*serviceRestartUri* +
+a¦ *serviceRestartUri* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The full URI of the Analytics Cluster Restart REST API.
 --
@@ -2583,13 +2154,9 @@ The full URI of the Analytics Cluster Restart REST API.
 *Example:* `+++"http://localhost:8095/analytics/cluster/restart"+++`
 {blank}
 a¦ String
-
-a¦ 
-*state* +
+a¦ *state* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The state of the Analytics Service.
 --
@@ -2599,43 +2166,29 @@ The state of the Analytics Service.
 *Example:* `+++"ACTIVE"+++`
 {blank}
 a¦ String
-
-a¦ 
-*nodes* +
+a¦ *nodes* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An array of objects, each giving information about one Analytics node.
 --
 
 [%hardbreaks]
 {blank}
-a¦ xref:StatusNodes[]
- array
-
-a¦ 
-*partitions* +
+a¦ xref:StatusNodes[] array
+a¦ *partitions* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An array of objects, each giving information about one Analytics partition.
 --
 
 [%hardbreaks]
 {blank}
-a¦ xref:StatusPartitions[]
- array
-
-a¦ 
-*partitionsTopology* +
+a¦ xref:StatusPartitions[] array
+a¦ *partitionsTopology* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-StatusTopology, opts=optional]
 --
@@ -2650,28 +2203,23 @@ a¦ xref:StatusTopology[]
 
 
 
-// markup not found, no include::{specDir}definitions/Status/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/Status/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Status/definition-after.adoc[opts=optional]
+include::{specDir}definitions/Status/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/StatusNodes/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/StatusNodes/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-StatusNodes[]
 [discrete]
-endif::collapse-models[]
+endif::show-StatusNodes[]
 [#StatusNodes]
 = Nodes
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/StatusNodes/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/StatusNodes/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -2679,17 +2227,13 @@ endif::collapse-models[]
 
 //tag::StatusNodes[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*apiBase* +
+a¦ *apiBase* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The URI scheme, host, and port for HTTP access to Analytics REST APIs on this node.
 --
@@ -2698,13 +2242,9 @@ The URI scheme, host, and port for HTTP access to Analytics REST APIs on this no
 *Example:* `+++"http://192.168.8.101:8095"+++`
 {blank}
 a¦ String
-
-a¦ 
-*apiBaseHttps* +
+a¦ *apiBaseHttps* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The URI scheme, host, and port for secure HTTPS access to Analytics REST APIs on this node.
 --
@@ -2713,13 +2253,9 @@ The URI scheme, host, and port for secure HTTPS access to Analytics REST APIs on
 *Example:* `+++"https://192.168.8.101:18095"+++`
 {blank}
 a¦ String
-
-a¦ 
-*nodeId* +
+a¦ *nodeId* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The ID of the node.
 --
@@ -2728,13 +2264,9 @@ The ID of the node.
 *Example:* `+++"86586a966202b5aa4aed31633f330aba"+++`
 {blank}
 a¦ String
-
-a¦ 
-*nodeName* +
+a¦ *nodeName* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The name or IP address of the node, including the cluster administration port.
 --
@@ -2750,28 +2282,23 @@ a¦ String
 
 
 
-// markup not found, no include::{specDir}definitions/StatusNodes/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/StatusNodes/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/StatusNodes/definition-after.adoc[opts=optional]
+include::{specDir}definitions/StatusNodes/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/StatusPartitions/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/StatusPartitions/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-StatusPartitions[]
 [discrete]
-endif::collapse-models[]
+endif::show-StatusPartitions[]
 [#StatusPartitions]
 = Partitions
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/StatusPartitions/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/StatusPartitions/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -2779,17 +2306,13 @@ endif::collapse-models[]
 
 //tag::StatusPartitions[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*active* +
+a¦ *active* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Indicates whether this partition is active.
 --
@@ -2798,13 +2321,9 @@ Indicates whether this partition is active.
 *Example:* `true`
 {blank}
 a¦ Boolean
-
-a¦ 
-*activeNodeId* +
+a¦ *activeNodeId* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The ID of the node where this partition is currently active.
 --
@@ -2813,13 +2332,9 @@ The ID of the node where this partition is currently active.
 *Example:* `+++"86586a966202b5aa4aed31633f330aba"+++`
 {blank}
 a¦ String
-
-a¦ 
-*iodeviceNum* +
+a¦ *iodeviceNum* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The number of the IO Device where this partition is located.
 --
@@ -2828,13 +2343,9 @@ The number of the IO Device where this partition is located.
 *Example:* `0`
 {blank}
 a¦ Integer
-
-a¦ 
-*nodeId* +
+a¦ *nodeId* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The ID of the node where this partition originated.
 --
@@ -2843,13 +2354,9 @@ The ID of the node where this partition originated.
 *Example:* `+++"86586a966202b5aa4aed31633f330aba"+++`
 {blank}
 a¦ String
-
-a¦ 
-*partitionId* +
+a¦ *partitionId* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The ID of this partition.
 --
@@ -2858,13 +2365,9 @@ The ID of this partition.
 *Example:* `0`
 {blank}
 a¦ Integer
-
-a¦ 
-*path* +
+a¦ *path* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The path of the IO Device where this partition is located.
 --
@@ -2873,13 +2376,9 @@ The path of the IO Device where this partition is located.
 *Example:* `+++"/data/@analytics/v_iodevice_0"+++`
 {blank}
 a¦ String
-
-a¦ 
-*pendingActivation* +
+a¦ *pendingActivation* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Indicates whether this partition is waiting to become active.
 --
@@ -2895,34 +2394,19 @@ a¦ Boolean
 
 
 
-// markup not found, no include::{specDir}definitions/StatusPartitions/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/StatusPartitions/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/StatusPartitions/definition-after.adoc[opts=optional]
+include::{specDir}definitions/StatusPartitions/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/StatusTopology/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/StatusTopology/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-StatusTopology[]
 [discrete]
-endif::collapse-models[]
+endif::show-StatusTopology[]
 [#StatusTopology]
 = Partition Topology
-
-:leveloffset: +1
-
-// markup not found, no include::{specDir}definitions/StatusTopology/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::StatusTopology[]
 
 ifdef::model-descriptions[]
 //tag::desc-StatusTopology[]
@@ -2930,16 +2414,23 @@ An object giving information about the partition topology.
 //end::desc-StatusTopology[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/StatusTopology/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::StatusTopology[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*balanced* +
+a¦ *balanced* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 Indicates whether the Analytics nodes are balanced.
 --
@@ -2948,13 +2439,9 @@ Indicates whether the Analytics nodes are balanced.
 *Example:* `true`
 {blank}
 a¦ Boolean
-
-a¦ 
-*ccNodeId* +
+a¦ *ccNodeId* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The ID of the cluster controller node.
 --
@@ -2963,13 +2450,9 @@ The ID of the cluster controller node.
 *Example:* `+++"86586a966202b5aa4aed31633f330aba"+++`
 {blank}
 a¦ String
-
-a¦ 
-*metadataPartition* +
+a¦ *metadataPartition* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The ID of the metadata partition.
 --
@@ -2978,13 +2461,9 @@ The ID of the metadata partition.
 *Example:* `-1`
 {blank}
 a¦ Integer
-
-a¦ 
-*numReplicas* +
+a¦ *numReplicas* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The number of Analytics replicas.
 --
@@ -2993,13 +2472,9 @@ The number of Analytics replicas.
 *Example:* `1`
 {blank}
 a¦ Integer
-
-a¦ 
-*revision* +
+a¦ *revision* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The revision number of the partition topology.
 --
@@ -3008,13 +2483,9 @@ The revision number of the partition topology.
 *Example:* `1`
 {blank}
 a¦ Integer
-
-a¦ 
-*version* +
+a¦ *version* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The version number of the partition topology.
 --
@@ -3023,21 +2494,16 @@ The version number of the partition topology.
 *Example:* `1`
 {blank}
 a¦ Integer
-
-a¦ 
-*partitions* +
+a¦ *partitions* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An array of objects, each giving information about the state of one Analytics partition.
 --
 
 [%hardbreaks]
 {blank}
-a¦ xref:StatusTopologyState[]
- array
+a¦ xref:StatusTopologyState[] array
 
 |===
 
@@ -3045,28 +2511,23 @@ a¦ xref:StatusTopologyState[]
 
 
 
-// markup not found, no include::{specDir}definitions/StatusTopology/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/StatusTopology/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/StatusTopology/definition-after.adoc[opts=optional]
+include::{specDir}definitions/StatusTopology/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/StatusTopologyState/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/StatusTopologyState/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-StatusTopologyState[]
 [discrete]
-endif::collapse-models[]
+endif::show-StatusTopologyState[]
 [#StatusTopologyState]
 = Partition States
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/StatusTopologyState/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/StatusTopologyState/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -3074,17 +2535,13 @@ endif::collapse-models[]
 
 //tag::StatusTopologyState[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*id* +
+a¦ *id* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The partition ID.
 --
@@ -3093,13 +2550,9 @@ The partition ID.
 *Example:* `0`
 {blank}
 a¦ Integer
-
-a¦ 
-*master* +
+a¦ *master* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The ID of the node where the partition is currently active.
 --
@@ -3108,13 +2561,9 @@ The ID of the node where the partition is currently active.
 *Example:* `+++"86586a966202b5aa4aed31633f330aba"+++`
 {blank}
 a¦ String
-
-a¦ 
-*origin* +
+a¦ *origin* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The ID of the node where the partition originated.
 --
@@ -3123,21 +2572,16 @@ The ID of the node where the partition originated.
 *Example:* `+++"86586a966202b5aa4aed31633f330aba"+++`
 {blank}
 a¦ String
-
-a¦ 
-*replicas* +
+a¦ *replicas* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 An array of objects, each giving information about the state of one Analytics replica.
 --
 
 [%hardbreaks]
 {blank}
-a¦ xref:StatusTopologyStateReplicas[]
- array
+a¦ xref:StatusTopologyStateReplicas[] array
 
 |===
 
@@ -3145,28 +2589,23 @@ a¦ xref:StatusTopologyStateReplicas[]
 
 
 
-// markup not found, no include::{specDir}definitions/StatusTopologyState/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/StatusTopologyState/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/StatusTopologyState/definition-after.adoc[opts=optional]
+include::{specDir}definitions/StatusTopologyState/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/StatusTopologyStateReplicas/definition-before.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}definitions/StatusTopologyStateReplicas/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
+ifndef::show-StatusTopologyStateReplicas[]
 [discrete]
-endif::collapse-models[]
+endif::show-StatusTopologyStateReplicas[]
 [#StatusTopologyStateReplicas]
 = Replicas
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/StatusTopologyStateReplicas/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/StatusTopologyStateReplicas/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -3174,17 +2613,13 @@ endif::collapse-models[]
 
 //tag::StatusTopologyStateReplicas[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*location* +
+a¦ *location* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The name or IP address of the node where this replica is located, including the Analytics replication port.
 --
@@ -3193,13 +2628,9 @@ The name or IP address of the node where this replica is located, including the 
 *Example:* `+++"192.168.8.102:9120"+++`
 {blank}
 a¦ String
-
-a¦ 
-*nodeId* +
+a¦ *nodeId* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The ID of the node where this replica is located.
 --
@@ -3208,13 +2639,9 @@ The ID of the node where this replica is located.
 *Example:* `+++"948fb3af810a9b7bc6c76e2a69ba35d9"+++`
 {blank}
 a¦ String
-
-a¦ 
-*status* +
+a¦ *status* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The synchronization status of the replica.
 --
@@ -3224,13 +2651,9 @@ The synchronization status of the replica.
 *Example:* `+++"IN_SYNC"+++`
 {blank}
 a¦ String
-
-a¦ 
-*syncProgress* +
+a¦ *syncProgress* +
 _optional_
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 The percentage (fraction from 0 to 1) of synchronization progress for this replica at the current time.
 --
@@ -3248,26 +2671,22 @@ a¦ Double (double)
 
 
 
-// markup not found, no include::{specDir}definitions/StatusTopologyStateReplicas/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/StatusTopologyStateReplicas/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
-
+include::{specDir}definitions/StatusTopologyStateReplicas/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+include::{specDir}definitions/StatusTopologyStateReplicas/definition-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
 
+include::{specDir}definitions/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+include::{specDir}security/document-before.adoc[opts=optional]
 
 [[security]]
 = Security
@@ -3277,18 +2696,14 @@ a¦ Double (double)
 include::{specDir}security/document-begin.adoc[opts=optional]
 
 
+include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-before.adoc[opts=optional]
-
-
-[[security-analyticsManageAnalyticsSelect]]
-= Analytics Manage Analytics Select
+[[security-AnalyticsManageAnalyticsSelect]]
+= AnalyticsManageAnalyticsSelect
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-begin.adoc[opts=optional]
-
+include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -3306,27 +2721,20 @@ For the [Active Requests](#return_active_requests), [Request Cancellation](#canc
 [%hardbreaks]
 __Type__ : http
 
-
-// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-after.adoc[opts=optional]
 
-// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-after.adoc[opts=optional]
+include::{specDir}security/ClusterReadPoolsRead/security-scheme-before.adoc[opts=optional]
 
-
-
-
-// markup not found, no include::{specDir}security/ClusterReadPoolsRead/security-scheme-before.adoc[opts=optional]
-
-
-[[security-clusterReadPoolsRead]]
-= Cluster Read Pools Read
+[[security-ClusterReadPoolsRead]]
+= ClusterReadPoolsRead
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/ClusterReadPoolsRead/security-scheme-begin.adoc[opts=optional]
-
+include::{specDir}security/ClusterReadPoolsRead/security-scheme-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -3342,27 +2750,20 @@ For the [Cluster Status](#cluster_status) operation, users must have one of the 
 [%hardbreaks]
 __Type__ : http
 
-
-// markup not found, no include::{specDir}security/ClusterReadPoolsRead/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/ClusterReadPoolsRead/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+include::{specDir}security/ClusterReadPoolsRead/security-scheme-after.adoc[opts=optional]
 
-// markup not found, no include::{specDir}security/ClusterReadPoolsRead/security-scheme-after.adoc[opts=optional]
+include::{specDir}security/AnalyticsManage/security-scheme-before.adoc[opts=optional]
 
-
-
-
-// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-before.adoc[opts=optional]
-
-
-[[security-analyticsManage]]
-= Analytics Manage
+[[security-AnalyticsManage]]
+= AnalyticsManage
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-begin.adoc[opts=optional]
-
+include::{specDir}security/AnalyticsManage/security-scheme-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -3376,14 +2777,11 @@ For the [Cluster Restart](#restart_cluster) and [Node Restart](#restart_node) op
 [%hardbreaks]
 __Type__ : http
 
-
-// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/AnalyticsManage/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-after.adoc[opts=optional]
-
+include::{specDir}security/AnalyticsManage/security-scheme-after.adoc[opts=optional]
 
 
 
@@ -3391,8 +2789,6 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-
-// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+include::{specDir}security/document-after.adoc[opts=optional]
 
 
