@@ -41,13 +41,12 @@ endif::[]
 {{#with model ~}}
 include::{specDir}definitions/{{name}}/definition-before.adoc[opts=optional]
 
-{{! omit enums from model list. Probably going to regret this }}
 {{#if isEnum ~}}
-ifdef::enum-definitions[]
+ifdef::enum-definitions[]{{! omit enums from model list. Probably going to regret this }}
 {{/if~}}
-ifdef::collapse-models[]
+ifndef::show-{{name}}[]
 [discrete]
-endif::collapse-models[]
+endif::show-{{name}}[]
 [#{{name}}]
 = {{#with title}}{{this}}{{else}}{{classname}}{{/with}}
 
