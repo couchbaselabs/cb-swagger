@@ -36,7 +36,7 @@ include::{specDir}overview/document-begin.adoc[opts=optional]
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : {{{this}}}
+*Version:* {{{this}}}
 {{~/with}}
 
 {{#each servers ~}}
@@ -378,23 +378,23 @@ include::{specDir}security/{{name}}/security-scheme-begin.adoc[opts=optional]
 {{#if isBasic ~}}
 {{#if isBasicBasic ~}}
 [%hardbreaks]
-__Type__ : {{type}}
+*Type:* {{type}}
 {{~else if isBasicBearer ~}}
 [%hardbreaks]
-__Type__ : {{type}}
-__Scheme__ : {{scheme}}
+*Type:* {{type}}
+*Scheme:* {{scheme}}
 {{#with bearerFormat}}__Format__: {{this}}{{/with}}
 {{~/if}}
 {{~else if isOAuth ~}}
 .OAuth
 [%hardbreaks]
-__Authorization URL__ : {{authorizationUrl}}
-__Token URL__ : {{tokenUrl}}
+*Authorization URL:* {{authorizationUrl}}
+*Token URL:* {{tokenUrl}}
 {{~else if isApiKey ~}}
 .API Key
 [%hardbreaks]
-__Key parameter__ : {{keyParamName}}
-__Key in__ : {{#if isKeyInQuery}}query{{/if}} {{#if isKeyInHeader}}header{{/if}}
+*Key parameter:* {{keyParamName}}
+*Key in:* {{#if isKeyInQuery}}query{{/if}} {{#if isKeyInHeader}}header{{/if}}
 {{~/if}}
 
 include::{specDir}security/{{name}}/security-scheme-end.adoc[opts=optional]

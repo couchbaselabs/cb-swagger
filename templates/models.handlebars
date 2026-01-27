@@ -78,7 +78,7 @@ include::{specDir}definitions/{{name}}/definition-begin.adoc[opts=optional]
 |===
 ¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
 {{/if}}
-a¦ {{#unless @first}}_or_{{/unless}}
+a¦ {{#unless @first}}or{{/unless}}
 a¦ {{>property}}
 a¦ {{>schemas}}
 {{#if @last ~}}
@@ -91,7 +91,7 @@ a¦ {{>schemas}}
 |===
 ¦ Any{nbsp}of{nbsp}... ¦ ¦ Schema
 {{/if}}
-a¦ {{#unless @first}}_and{nbsp}/ or_{{/unless}}
+a¦ {{#unless @first}}and{nbsp}/ or{{/unless}}
 a¦ {{>property}}
 a¦ {{>schemas}}
 {{#if @last ~}}
@@ -104,7 +104,7 @@ a¦ {{>schemas}}
 |===
 ¦ All{nbsp}of{nbsp}... ¦ ¦ Schema
 {{/if}}
-a¦ {{#unless @first}}_and_{{/unless}}
+a¦ {{#unless @first}}and{{/unless}}
 a¦ {{>property}}
 a¦ {{>schemas}}
 {{#if @last ~}}
