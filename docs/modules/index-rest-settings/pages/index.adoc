@@ -35,7 +35,7 @@ Unless otherwise noted, you should only change the Index Service settings when a
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+*Version:* 8.0
 
 [discrete#host]
 = Host information
@@ -162,7 +162,7 @@ include::{specDir}paths/get_settings/operation-description-end.adoc[opts=optiona
 
 
 [#get_settings-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -297,7 +297,7 @@ include::{specDir}paths/post_settings/operation-description-end.adoc[opts=option
 
 
 [#post_settings-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 * application/json
 
 
@@ -317,7 +317,7 @@ include::{specDir}paths/post_settings/operation-parameters-before.adoc[opts=opti
 include::{specDir}paths/post_settings/operation-parameters-begin.adoc[opts=optional]
 
 [#post_settings-body]
-.Body Parameter
+.icon:file-lines[fw] Body Parameter
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -325,7 +325,7 @@ include::{specDir}paths/post_settings/operation-parameters-begin.adoc[opts=optio
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_required_
+required
 a¦ [markdown]
 --
 
@@ -495,7 +495,7 @@ include::{specDir}definitions/Settings/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *indexer.&#8203;plasma.&#8203;LSSSegmentFileSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 For standard indexes using Plasma, the maximum size for Log Structured Store segment files, in bytes.
@@ -515,7 +515,7 @@ For more information, see [Standard Index Storage](/server/8.0/indexes/storage-m
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;rebalance.&#8203;transferBatchSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 Sets the batch size Couchbase Server uses when rebuilding index files during rebalance.
@@ -534,7 +534,7 @@ For an overview of rebalance as it affects the Index Service, including an overv
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;allow_large_keys* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether the size of index keys is unlimited.
@@ -550,7 +550,7 @@ In Couchbase Server 6.5 and later, the Index Service does not need to restart wh
 {blank}
 a¦ Boolean
 a¦ *indexer.&#8203;settings.&#8203;bufferPoolBlockSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 Buffer pool block size.
@@ -561,7 +561,7 @@ Buffer pool block size.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;build.&#8203;batch_size* +
-_optional_
+optional
 a¦ [markdown]
 --
 Build batch size.
@@ -572,7 +572,7 @@ Build batch size.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;abort_exceed_interval* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether to abort index compaction if it's still running after the end of the index compaction interval.
@@ -583,7 +583,7 @@ Whether to abort index compaction if it's still running after the end of the ind
 {blank}
 a¦ Boolean
 a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;check_period* +
-_optional_
+optional
 a¦ [markdown]
 --
 An interval, specifying how frequently the Index Service checks whether the compaction threshold has been reached (seconds).
@@ -594,7 +594,7 @@ An interval, specifying how frequently the Index Service checks whether the comp
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;compaction_mode* +
-_optional_
+optional
 a¦ [markdown]
 --
 The compaction mode for indexes.
@@ -606,7 +606,7 @@ The compaction mode for indexes.
 {blank}
 a¦ String
 a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;days_of_week* +
-_optional_
+optional
 a¦ [markdown]
 --
 The days of the week on which circular compaction is to run, if specified.
@@ -620,7 +620,7 @@ Multiple values must be separated by a single comma, with no spaces.
 {blank}
 a¦ String
 a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;interval* +
-_optional_
+optional
 a¦ [markdown]
 --
 A string in the form `fromHour:fromMinute,toHour:toMinute`, specifying the interval during which index compaction can run.
@@ -643,7 +643,7 @@ The default value means any time.
 {blank}
 a¦ String
 a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;min_frag* +
-_optional_
+optional
 a¦ [markdown]
 --
 The minimum fragmentation threshold to trigger compaction (percentage).
@@ -655,7 +655,7 @@ The minimum fragmentation threshold to trigger compaction (percentage).
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;min_size* +
-_optional_
+optional
 a¦ [markdown]
 --
 Compaction minimum file size.
@@ -666,7 +666,7 @@ Compaction minimum file size.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;plasma.&#8203;manual* +
-_optional_
+optional
 a¦ [markdown]
 --
 For standard indexes using Plasma, whether compaction should be triggered manually.
@@ -677,7 +677,7 @@ For standard indexes using Plasma, whether compaction should be triggered manual
 {blank}
 a¦ Boolean
 a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;plasma.&#8203;optional.&#8203;decrement* +
-_optional_
+optional
 a¦ [markdown]
 --
 For standard indexes using Plasma, the optional decrement.
@@ -688,7 +688,7 @@ For standard indexes using Plasma, the optional decrement.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;plasma.&#8203;optional.&#8203;min_frag* +
-_optional_
+optional
 a¦ [markdown]
 --
 For standard indexes using Plasma, the minimum fragmentation threshold to trigger compaction (percentage).
@@ -699,7 +699,7 @@ For standard indexes using Plasma, the minimum fragmentation threshold to trigge
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;plasma.&#8203;optional.&#8203;quota* +
-_optional_
+optional
 a¦ [markdown]
 --
 For standard indexes using Plasma, the optional quota.
@@ -710,7 +710,7 @@ For standard indexes using Plasma, the optional quota.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;corrupt_index_num_backups* +
-_optional_
+optional
 a¦ [markdown]
 --
 Corrupt index number of backups.
@@ -721,7 +721,7 @@ Corrupt index number of backups.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;cpuProfDir* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of the directory where local CPU usage profiling information is captured.
@@ -731,7 +731,7 @@ The name of the directory where local CPU usage profiling information is capture
 {blank}
 a¦ String
 a¦ *indexer.&#8203;settings.&#8203;cpuProfile* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether the Index Service should capture local CPU usage profiling information.
@@ -742,7 +742,7 @@ Whether the Index Service should capture local CPU usage profiling information.
 {blank}
 a¦ Boolean
 a¦ *indexer.&#8203;settings.&#8203;defer_build* +
-_optional_
+optional
 a¦ [markdown]
 --
 The default setting for the `defer_build` option for index creation.
@@ -758,7 +758,7 @@ You can override this setting by specifying the `defer_build` option when you cr
 {blank}
 a¦ Boolean
 a¦ *indexer.&#8203;settings.&#8203;eTagPeriod* +
-_optional_
+optional
 a¦ [markdown]
 --
 The ETag (entity tag) period.
@@ -769,7 +769,7 @@ The ETag (entity tag) period.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;enable_corrupt_index_backup* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether corrupt index backup is enabled.
@@ -780,7 +780,7 @@ Whether corrupt index backup is enabled.
 {blank}
 a¦ Boolean
 a¦ *indexer.&#8203;settings.&#8203;enable_page_bloom_filter* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether Bloom filters are enabled for memory management.
@@ -793,7 +793,7 @@ For more information, see [Per Page Bloom Filters](/server/8.0/indexes/storage-m
 {blank}
 a¦ Boolean
 a¦ *indexer.&#8203;settings.&#8203;enable_shard_affinity* +
-_optional_
+optional
 a¦ [markdown]
 --
 Selects the index rebalance method.
@@ -812,7 +812,7 @@ However, when you alter an index, you cannot use the `WITH` clause to specify wh
 {blank}
 a¦ Boolean
 a¦ *indexer.&#8203;settings.&#8203;fast_flush_mode* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether fast flush mode is enabled.
@@ -823,7 +823,7 @@ Whether fast flush mode is enabled.
 {blank}
 a¦ Boolean
 a¦ *indexer.&#8203;settings.&#8203;gc_percent* +
-_optional_
+optional
 a¦ [markdown]
 --
 Garbage collection percentage.
@@ -834,7 +834,7 @@ Garbage collection percentage.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;inmemory_snapshot.&#8203;fdb.&#8203;interval* +
-_optional_
+optional
 a¦ [markdown]
 --
 For standard indexes using Forestdb, the in-memory snapshot interval (ms).
@@ -847,7 +847,7 @@ This determines the earliest possibility of a scan seeing a given KV mutation.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;inmemory_snapshot.&#8203;interval* +
-_optional_
+optional
 a¦ [markdown]
 --
 The in-memory snapshot interval (ms).
@@ -860,7 +860,7 @@ This determines the earliest possibility of a scan seeing a given KV mutation.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;inmemory_snapshot.&#8203;moi.&#8203;interval* +
-_optional_
+optional
 a¦ [markdown]
 --
 For memory-optimized indexes, the in-memory snapshot interval (ms).
@@ -873,7 +873,7 @@ This determines the earliest possibility of a scan seeing a given KV mutation.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;largeSnapshotThreshold* +
-_optional_
+optional
 a¦ [markdown]
 --
 The large snapshot threshold.
@@ -884,7 +884,7 @@ The large snapshot threshold.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;log_level* +
-_optional_
+optional
 a¦ [markdown]
 --
 Indexer logging level.
@@ -896,7 +896,7 @@ Indexer logging level.
 {blank}
 a¦ String
 a¦ *indexer.&#8203;settings.&#8203;maxNumPartitions* +
-_optional_
+optional
 a¦ [markdown]
 --
 Maximum number of partitions.
@@ -907,7 +907,7 @@ Maximum number of partitions.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;maxVbQueueLength* +
-_optional_
+optional
 a¦ [markdown]
 --
 Maximum vBucket queue length.
@@ -918,7 +918,7 @@ Maximum vBucket queue length.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;max_array_seckey_size* +
-_optional_
+optional
 a¦ [markdown]
 --
 If `indexer.settings.allow_large_keys` is false, this setting specifies the maximum size for array index keys.
@@ -931,7 +931,7 @@ In Couchbase Server 6.5 and later, the Index Service does not need to restart wh
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;max_cpu_percent* +
-_optional_
+optional
 a¦ [markdown]
 --
 The CPU capacity that the Index Service should use (percentage).
@@ -943,7 +943,7 @@ If set to `0`, the indexer will use all CPUs.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;max_seckey_size* +
-_optional_
+optional
 a¦ [markdown]
 --
 If `indexer.settings.allow_large_keys` is false, this setting specifies the maximum size for index keys.
@@ -956,7 +956,7 @@ In Couchbase Server 6.5 and later, the Index Service does not need to restart wh
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;max_writer_lock_prob* +
-_optional_
+optional
 a¦ [markdown]
 --
 Maximum writer lock prob.
@@ -967,7 +967,7 @@ Maximum writer lock prob.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;memProfDir* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of the directory where local memory usage profiling information is captured.
@@ -977,7 +977,7 @@ The name of the directory where local memory usage profiling information is capt
 {blank}
 a¦ String
 a¦ *indexer.&#8203;settings.&#8203;memProfile* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether the Index Service should capture local memory usage profiling information.
@@ -988,7 +988,7 @@ Whether the Index Service should capture local memory usage profiling informatio
 {blank}
 a¦ Boolean
 a¦ *indexer.&#8203;settings.&#8203;memory_quota* +
-_optional_
+optional
 a¦ [markdown]
 --
 How much RAM is allocated to the Index Service for the current node.
@@ -999,7 +999,7 @@ How much RAM is allocated to the Index Service for the current node.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;minVbQueueLength* +
-_optional_
+optional
 a¦ [markdown]
 --
 Minimum vBucket queue length.
@@ -1010,7 +1010,7 @@ Minimum vBucket queue length.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;moi.&#8203;debug* +
-_optional_
+optional
 a¦ [markdown]
 --
 Debug memory-optimized index storage.
@@ -1021,7 +1021,7 @@ Debug memory-optimized index storage.
 {blank}
 a¦ Boolean
 a¦ *indexer.&#8203;settings.&#8203;moi.&#8203;persistence_threads* +
-_optional_
+optional
 a¦ [markdown]
 --
 For memory-optimized index storage, the number of persistence threads.
@@ -1032,7 +1032,7 @@ For memory-optimized index storage, the number of persistence threads.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;moi.&#8203;recovery.&#8203;max_rollbacks* +
-_optional_
+optional
 a¦ [markdown]
 --
 For memory-optimized index storage, the maximum number of committed rollback points.
@@ -1043,7 +1043,7 @@ For memory-optimized index storage, the maximum number of committed rollback poi
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;moi.&#8203;recovery_threads* +
-_optional_
+optional
 a¦ [markdown]
 --
 For memory-optimized index storage, the number of recovery threads.
@@ -1054,7 +1054,7 @@ For memory-optimized index storage, the number of recovery threads.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;num_replica* +
-_optional_
+optional
 a¦ [markdown]
 --
 The default number of index replicas to be created by the Index Service whenever `CREATE INDEX` is invoked.
@@ -1066,7 +1066,7 @@ The default number of index replicas to be created by the Index Service whenever
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;percentage_memory_quota* +
-_optional_
+optional
 a¦ [markdown]
 --
 Percentage memory quota.
@@ -1077,7 +1077,7 @@ Percentage memory quota.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;persisted_snapshot.&#8203;fdb.&#8203;interval* +
-_optional_
+optional
 a¦ [markdown]
 --
 For standard indexes using Forestdb, the persisted snapshot interval (ms).
@@ -1090,7 +1090,7 @@ This must be a multiple of the in-memory snapshot interval.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;persisted_snapshot.interval* +
-_optional_
+optional
 a¦ [markdown]
 --
 The persisted snapshot interval (ms).
@@ -1103,7 +1103,7 @@ This must be a multiple of the in-memory snapshot interval.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;persisted_snapshot.&#8203;moi.&#8203;interval* +
-_optional_
+optional
 a¦ [markdown]
 --
 For memory-optimized indexes, the persisted snapshot interval (ms).
@@ -1116,7 +1116,7 @@ This must be a multiple of the in-memory snapshot interval.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;persisted_snapshot_init_build.&#8203;fdb.&#8203;interval* +
-_optional_
+optional
 a¦ [markdown]
 --
 For standard indexes using Forestdb, the persisted snapshot interval for the initial build (ms).
@@ -1127,7 +1127,7 @@ For standard indexes using Forestdb, the persisted snapshot interval for the ini
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;persisted_snapshot_init_build.&#8203;interval* +
-_optional_
+optional
 a¦ [markdown]
 --
 The persisted snapshot interval for the initial build (ms).
@@ -1138,7 +1138,7 @@ The persisted snapshot interval for the initial build (ms).
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;persisted_snapshot_init_build.&#8203;moi.&#8203;interval* +
-_optional_
+optional
 a¦ [markdown]
 --
 For memory-optimized indexes, the persisted snapshot interval for the initial build (ms).
@@ -1149,7 +1149,7 @@ For memory-optimized indexes, the persisted snapshot interval for the initial bu
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;plasma.&#8203;recovery.&#8203;max_rollbacks* +
-_optional_
+optional
 a¦ [markdown]
 --
 For standard indexes using Plasma, the maximum number of committed rollback points.
@@ -1160,7 +1160,7 @@ For standard indexes using Plasma, the maximum number of committed rollback poin
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;rebalance.&#8203;blob_storage_bucket* +
-_optional_
+optional
 a¦ [markdown]
 --
 Rebalance blob storage bucket.
@@ -1171,7 +1171,7 @@ Rebalance blob storage bucket.
 {blank}
 a¦ String
 a¦ *indexer.&#8203;settings.&#8203;rebalance.&#8203;blob_storage_prefix* +
-_optional_
+optional
 a¦ [markdown]
 --
 Rebalance blob storage prefix.
@@ -1182,7 +1182,7 @@ Rebalance blob storage prefix.
 {blank}
 a¦ String
 a¦ *indexer.&#8203;settings.&#8203;rebalance.&#8203;blob_storage_region* +
-_optional_
+optional
 a¦ [markdown]
 --
 Rebalance blob storage region.
@@ -1193,7 +1193,7 @@ Rebalance blob storage region.
 {blank}
 a¦ String
 a¦ *indexer.&#8203;settings.&#8203;rebalance.&#8203;blob_storage_scheme* +
-_optional_
+optional
 a¦ [markdown]
 --
 Rebalance blob storage scheme.
@@ -1204,7 +1204,7 @@ Rebalance blob storage scheme.
 {blank}
 a¦ String
 a¦ *indexer.&#8203;settings.&#8203;rebalance.&#8203;redistribute_indexes* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether to redistribute indexes on rebalance.
@@ -1221,7 +1221,7 @@ For more information, see [Rebalance](/server/8.0/learn/clusters-and-availabilit
 {blank}
 a¦ Boolean
 a¦ *indexer.&#8203;settings.&#8203;recovery.&#8203;max_rollbacks* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum number of committed rollback points.
@@ -1232,7 +1232,7 @@ The maximum number of committed rollback points.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;scan_getseqnos_retries* +
-_optional_
+optional
 a¦ [markdown]
 --
 Scan get sequence numbers retries.
@@ -1243,7 +1243,7 @@ Scan get sequence numbers retries.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;scan_timeout* +
-_optional_
+optional
 a¦ [markdown]
 --
 The default timeout for the indexer, in milliseconds.
@@ -1258,7 +1258,7 @@ An index scan may time out if the Index Service timeout is lower than the Query 
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;send_buffer_size* +
-_optional_
+optional
 a¦ [markdown]
 --
 Send buffer size.
@@ -1269,7 +1269,7 @@ Send buffer size.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;serverless.&#8203;indexLimit* +
-_optional_
+optional
 a¦ [markdown]
 --
 Serverless index limit.
@@ -1280,7 +1280,7 @@ Serverless index limit.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;sliceBufSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 Slice buffer size.
@@ -1291,7 +1291,7 @@ Slice buffer size.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;smallSnapshotThreshold* +
-_optional_
+optional
 a¦ [markdown]
 --
 Small snapshot threshold.
@@ -1302,7 +1302,7 @@ Small snapshot threshold.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;snapshotListeners* +
-_optional_
+optional
 a¦ [markdown]
 --
 Snapshot listeners.
@@ -1313,7 +1313,7 @@ Snapshot listeners.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;snapshotRequestWorkers* +
-_optional_
+optional
 a¦ [markdown]
 --
 Snapshot request workers.
@@ -1324,7 +1324,7 @@ Snapshot request workers.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;statsLogDumpInterval* +
-_optional_
+optional
 a¦ [markdown]
 --
 Statistics log dump interval.
@@ -1335,7 +1335,7 @@ Statistics log dump interval.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;storage_mode* +
-_optional_
+optional
 a¦ [markdown]
 --
 The storage mode to be used for the Index Service on this node.
@@ -1363,7 +1363,7 @@ If you're using Couchbase Server Community Edition, the default (and only) value
 {blank}
 a¦ String
 a¦ *indexer.&#8203;settings.&#8203;storage_mode.&#8203;disable_upgrade* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether upgrade of the index storage mode is disabled.
@@ -1374,7 +1374,7 @@ Whether upgrade of the index storage mode is disabled.
 {blank}
 a¦ Boolean
 a¦ *indexer.&#8203;settings.&#8203;thresholds.&#8203;mem_high* +
-_optional_
+optional
 a¦ [markdown]
 --
 High memory threshold.
@@ -1385,7 +1385,7 @@ High memory threshold.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;thresholds.&#8203;mem_low* +
-_optional_
+optional
 a¦ [markdown]
 --
 Low memory threshold.
@@ -1396,7 +1396,7 @@ Low memory threshold.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;thresholds.&#8203;units_high* +
-_optional_
+optional
 a¦ [markdown]
 --
 High units threshold.
@@ -1407,7 +1407,7 @@ High units threshold.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;thresholds.&#8203;units_low* +
-_optional_
+optional
 a¦ [markdown]
 --
 Low units threshold.
@@ -1418,7 +1418,7 @@ Low units threshold.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;units_quota* +
-_optional_
+optional
 a¦ [markdown]
 --
 Units quota.
@@ -1429,7 +1429,7 @@ Units quota.
 {blank}
 a¦ Integer (int32)
 a¦ *indexer.&#8203;settings.&#8203;wal_size* +
-_optional_
+optional
 a¦ [markdown]
 --
 Write-ahead log size.
@@ -1440,7 +1440,7 @@ Write-ahead log size.
 {blank}
 a¦ Integer (int32)
 a¦ *projector.&#8203;settings.&#8203;log_level* +
-_optional_
+optional
 a¦ [markdown]
 --
 Projector logging level.
@@ -1451,7 +1451,7 @@ Projector logging level.
 {blank}
 a¦ String
 a¦ *queryport.&#8203;client.&#8203;settings.&#8203;backfillLimit* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum size of the backfill file (MB).
@@ -1467,7 +1467,7 @@ The maximum size is limited only by the available disk space.
 {blank}
 a¦ Integer (int32)
 a¦ *queryport.&#8203;client.&#8203;settings.&#8203;closeActiveConnections* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether to close active connections.
@@ -1478,7 +1478,7 @@ Whether to close active connections.
 {blank}
 a¦ Boolean
 a¦ *queryport.&#8203;client.&#8203;settings.&#8203;minPoolSizeWM* +
-_optional_
+optional
 a¦ [markdown]
 --
 Minimum pool size.
@@ -1489,7 +1489,7 @@ Minimum pool size.
 {blank}
 a¦ Integer (int32)
 a¦ *queryport.&#8203;client.&#8203;settings.&#8203;poolOverflow* +
-_optional_
+optional
 a¦ [markdown]
 --
 Maximum number of connections in a pool.
@@ -1500,7 +1500,7 @@ Maximum number of connections in a pool.
 {blank}
 a¦ Integer (int32)
 a¦ *queryport.&#8203;client.&#8203;settings.&#8203;poolSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of simultaneous active connections in a pool.
@@ -1511,7 +1511,7 @@ Number of simultaneous active connections in a pool.
 {blank}
 a¦ Integer (int32)
 a¦ *queryport.&#8203;client.&#8203;settings.&#8203;relConnBatchSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 Connection batch size.
@@ -1572,7 +1572,7 @@ Users must have the Full Admin or Cluster Admin role, with Cluster Read and Buck
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/Default/security-scheme-end.adoc[opts=optional]
 

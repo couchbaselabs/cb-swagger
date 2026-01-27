@@ -31,7 +31,7 @@ This API enables you to get Index service statistics.
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+*Version:* 8.0
 
 [discrete#host]
 = Host information
@@ -159,7 +159,7 @@ include::{specDir}paths/get_index_stats/operation-description-end.adoc[opts=opti
 
 
 [#get_index_stats-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -178,7 +178,7 @@ include::{specDir}paths/get_index_stats/operation-parameters-before.adoc[opts=op
 include::{specDir}paths/get_index_stats/operation-parameters-begin.adoc[opts=optional]
 
 [#get_index_stats-path]
-.Path Parameters
+.icon:slash-forward[fw] Path Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -186,7 +186,7 @@ include::{specDir}paths/get_index_stats/operation-parameters-begin.adoc[opts=opt
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *keyspace* +
-_required_
+required
 a¦ [markdown]
 --
 The name of a keyspace.
@@ -204,7 +204,7 @@ For example, `` `bucket.1`.scope.collection ``.
 
 a¦ String
 a¦ *index* +
-_required_
+required
 a¦ [markdown]
 --
 The name of an index.
@@ -217,7 +217,7 @@ a¦ String
 
 |===
 [#get_index_stats-query]
-.Query Parameters
+.icon:question[fw] Query Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -225,7 +225,7 @@ a¦ String
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *pretty* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether the output should be formatted with indentations and newlines.
@@ -237,7 +237,7 @@ Whether the output should be formatted with indentations and newlines.
 
 a¦ Boolean
 a¦ *partition* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether statistics for index partitions should be included.
@@ -249,7 +249,7 @@ Whether statistics for index partitions should be included.
 
 a¦ Boolean
 a¦ *redact* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether keyspace and index names should be redacted in the output.
@@ -262,7 +262,7 @@ Whether keyspace and index names should be redacted in the output.
 
 a¦ Boolean
 a¦ *skipEmpty* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether empty, null, or zero statistics should be omitted from the output.
@@ -398,7 +398,7 @@ include::{specDir}paths/get_keyspace_stats/operation-description-end.adoc[opts=o
 
 
 [#get_keyspace_stats-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -417,7 +417,7 @@ include::{specDir}paths/get_keyspace_stats/operation-parameters-before.adoc[opts
 include::{specDir}paths/get_keyspace_stats/operation-parameters-begin.adoc[opts=optional]
 
 [#get_keyspace_stats-path]
-.Path Parameters
+.icon:slash-forward[fw] Path Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -425,7 +425,7 @@ include::{specDir}paths/get_keyspace_stats/operation-parameters-begin.adoc[opts=
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *keyspace* +
-_required_
+required
 a¦ [markdown]
 --
 The name of a keyspace.
@@ -445,7 +445,7 @@ a¦ String
 
 |===
 [#get_keyspace_stats-query]
-.Query Parameters
+.icon:question[fw] Query Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -453,7 +453,7 @@ a¦ String
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *pretty* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether the output should be formatted with indentations and newlines.
@@ -465,7 +465,7 @@ Whether the output should be formatted with indentations and newlines.
 
 a¦ Boolean
 a¦ *redact* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether keyspace and index names should be redacted in the output.
@@ -478,7 +478,7 @@ Whether keyspace and index names should be redacted in the output.
 
 a¦ Boolean
 a¦ *skipEmpty* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether empty, null, or zero statistics should be omitted from the output.
@@ -614,7 +614,7 @@ include::{specDir}paths/get_node_stats/operation-description-end.adoc[opts=optio
 
 
 [#get_node_stats-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -633,7 +633,7 @@ include::{specDir}paths/get_node_stats/operation-parameters-before.adoc[opts=opt
 include::{specDir}paths/get_node_stats/operation-parameters-begin.adoc[opts=optional]
 
 [#get_node_stats-query]
-.Query Parameters
+.icon:question[fw] Query Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -641,7 +641,7 @@ include::{specDir}paths/get_node_stats/operation-parameters-begin.adoc[opts=opti
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *pretty* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether the output should be formatted with indentations and newlines.
@@ -653,7 +653,7 @@ Whether the output should be formatted with indentations and newlines.
 
 a¦ Boolean
 a¦ *redact* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether keyspace and index names should be redacted in the output.
@@ -666,7 +666,7 @@ Whether keyspace and index names should be redacted in the output.
 
 a¦ Boolean
 a¦ *skipEmpty* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether empty, null, or zero statistics should be omitted from the output.
@@ -841,7 +841,7 @@ include::index.adoc[tag=desc-NodeIdxNode, opts=optional]
 {blank}
 a¦ xref:NodeIdxNode[]
 
-a¦ _and_
+a¦ and
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-PartIdxIndexes, opts=optional]
@@ -897,7 +897,7 @@ include::{specDir}definitions/NodeIdxNode/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *indexer* +
-_required_
+required
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-NodeIdxNodeIndexer, opts=optional]
@@ -956,7 +956,7 @@ include::{specDir}definitions/NodeIdxNodeIndexer/definition-begin.adoc[opts=opti
 ¦ Property ¦ ¦ Schema
 
 a¦ *indexer_state* +
-_optional_
+optional
 a¦ [markdown]
 --
 Current state of the Index service on this node.
@@ -968,7 +968,7 @@ Current state of the Index service on this node.
 {blank}
 a¦ String
 a¦ *memory_quota* +
-_optional_
+optional
 a¦ [markdown]
 --
 Memory quota assigned to the Index service on this node by user configuration (bytes).
@@ -981,7 +981,7 @@ Memory quota assigned to the Index service on this node by user configuration (b
 {blank}
 a¦ Long (int64)
 a¦ *memory_total_storage* +
-_optional_
+optional
 a¦ [.edition]##{enterprise}##
 
 [markdown]
@@ -996,7 +996,7 @@ This also accounts for memory fragmentation.
 {blank}
 a¦ Integer
 a¦ *memory_used* +
-_optional_
+optional
 a¦ [markdown]
 --
 Amount of memory used by the Index service on this node (bytes).
@@ -1007,7 +1007,7 @@ Amount of memory used by the Index service on this node (bytes).
 {blank}
 a¦ Integer
 a¦ *total_indexer_gc_pause_ns* +
-_optional_
+optional
 a¦ [markdown]
 --
 The total time the indexer has spent in GC pause since last startup (ns).
@@ -1068,7 +1068,7 @@ include::index.adoc[tag=desc-PartIdxIndexes, opts=optional]
 {blank}
 a¦ xref:PartIdxIndexes[]
 
-a¦ _and_
+a¦ and
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-PartIdxPartitions, opts=optional]
@@ -1124,8 +1124,8 @@ include::{specDir}definitions/PartIdxIndexes/definition-begin.adoc[opts=optional
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-_additional +
-property_
+additional +
+property
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
@@ -1184,8 +1184,8 @@ include::{specDir}definitions/PartIdxPartitions/definition-begin.adoc[opts=optio
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-_additional +
-property_
+additional +
+property
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
@@ -1244,7 +1244,7 @@ include::{specDir}definitions/PartIdxPartitionsIndex/definition-begin.adoc[opts=
 ¦ Property ¦ ¦ Schema
 
 a¦ *avg_array_length* +
-_optional_
+optional
 a¦ [markdown]
 --
 (Array indexes only.)
@@ -1256,7 +1256,7 @@ The average number of items indexed per document.
 {blank}
 a¦ Integer
 a¦ *avg_drain_rate* +
-_optional_
+optional
 a¦ [markdown]
 --
 Average number of items flushed from memory to disk storage per second.
@@ -1266,7 +1266,7 @@ Average number of items flushed from memory to disk storage per second.
 {blank}
 a¦ Integer
 a¦ *avg_item_size* +
-_optional_
+optional
 a¦ [markdown]
 --
 Average size of the keys.
@@ -1276,7 +1276,7 @@ Average size of the keys.
 {blank}
 a¦ Integer
 a¦ *avg_scan_latency* +
-_optional_
+optional
 a¦ [markdown]
 --
 Average time to serve a scan request (nanoseconds).
@@ -1286,7 +1286,7 @@ Average time to serve a scan request (nanoseconds).
 {blank}
 a¦ Integer
 a¦ *cache_hit_percent* +
-_optional_
+optional
 a¦ [.edition]##{enterprise}##
 
 [markdown]
@@ -1298,7 +1298,7 @@ Percentage of memory accesses that were served from the managed cache.
 {blank}
 a¦ Integer
 a¦ *cache_hits* +
-_optional_
+optional
 a¦ [markdown]
 --
 Accesses to this index data from RAM.
@@ -1308,7 +1308,7 @@ Accesses to this index data from RAM.
 {blank}
 a¦ Integer
 a¦ *cache_misses* +
-_optional_
+optional
 a¦ [markdown]
 --
 Accesses to this index data from disk.
@@ -1318,7 +1318,7 @@ Accesses to this index data from disk.
 {blank}
 a¦ Integer
 a¦ *data_size* +
-_optional_
+optional
 a¦ [markdown]
 --
 The size of indexable data that is maintained for the index or partition (bytes).
@@ -1329,7 +1329,7 @@ The size of indexable data that is maintained for the index or partition (bytes)
 {blank}
 a¦ Integer
 a¦ *disk_size* +
-_optional_
+optional
 a¦ [markdown]
 --
 Total disk file size consumed by the index or partition.
@@ -1340,7 +1340,7 @@ Total disk file size consumed by the index or partition.
 {blank}
 a¦ Integer
 a¦ *docid_count* +
-_optional_
+optional
 a¦ [markdown]
 --
 (Array indexes only.)
@@ -1352,7 +1352,7 @@ The number of documents currently indexed.
 {blank}
 a¦ Integer
 a¦ *frag_percent* +
-_optional_
+optional
 a¦ [markdown]
 --
 Percentage fragmentation of the index.
@@ -1365,7 +1365,7 @@ TIP: At small index sizes of less than a hundred kB, the static overhead of the 
 {blank}
 a¦ Integer
 a¦ *initial_build_progress* +
-_optional_
+optional
 a¦ [markdown]
 --
 Percentage initial build progress for the index.
@@ -1380,7 +1380,7 @@ For an index partition, the value is listed as `0`.
 {blank}
 a¦ Integer
 a¦ *items_count* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of items currently indexed.
@@ -1391,7 +1391,7 @@ The number of items currently indexed.
 {blank}
 a¦ Integer
 a¦ *last_known_scan_time* +
-_optional_
+optional
 a¦ [markdown]
 --
 Time of the last scan request received for this index (Unix timestamp in nanoseconds).
@@ -1405,7 +1405,7 @@ NOTE: This statistic is persisted to disk every 15 minutes, so it is preserved w
 {blank}
 a¦ Long (int64)
 a¦ *num_docs_indexed* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of documents indexed by the indexer since last startup.
@@ -1415,7 +1415,7 @@ Number of documents indexed by the indexer since last startup.
 {blank}
 a¦ Integer
 a¦ *num_docs_pending* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of documents pending to be indexed.
@@ -1425,7 +1425,7 @@ Number of documents pending to be indexed.
 {blank}
 a¦ Integer
 a¦ *num_docs_queued* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of documents queued to be indexed.
@@ -1435,7 +1435,7 @@ Number of documents queued to be indexed.
 {blank}
 a¦ Integer
 a¦ *num_items_flushed* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of items flushed from memory to disk storage.
@@ -1445,7 +1445,7 @@ Number of items flushed from memory to disk storage.
 {blank}
 a¦ Integer
 a¦ *num_pending_requests* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of requests received but not yet served by the indexer.
@@ -1455,7 +1455,7 @@ Number of requests received but not yet served by the indexer.
 {blank}
 a¦ Integer
 a¦ *num_requests* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of requests served by the indexer since last startup.
@@ -1465,7 +1465,7 @@ Number of requests served by the indexer since last startup.
 {blank}
 a¦ Integer
 a¦ *num_rows_returned* +
-_optional_
+optional
 a¦ [markdown]
 --
 Total number of rows returned so far by the indexer.
@@ -1475,7 +1475,7 @@ Total number of rows returned so far by the indexer.
 {blank}
 a¦ Integer
 a¦ *num_scan_errors* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of requests that failed due to errors other than timeout.
@@ -1485,7 +1485,7 @@ Number of requests that failed due to errors other than timeout.
 {blank}
 a¦ Integer
 a¦ *num_scan_timeouts* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of requests that timed out, either waiting for snapshots or during scan in progress.
@@ -1495,7 +1495,7 @@ Number of requests that timed out, either waiting for snapshots or during scan i
 {blank}
 a¦ Integer
 a¦ *recs_in_mem* +
-_optional_
+optional
 a¦ [.edition]##{enterprise}##
 
 [markdown]
@@ -1511,7 +1511,7 @@ For memory-optimized index storage, this is the same as `items_count`.
 {blank}
 a¦ Integer
 a¦ *recs_on_disk* +
-_optional_
+optional
 a¦ [.edition]##{enterprise}##
 
 [markdown]
@@ -1524,7 +1524,7 @@ For memory-optimized index storage, this is `0`.
 {blank}
 a¦ Integer
 a¦ *resident_percent* +
-_optional_
+optional
 a¦ [.edition]##{enterprise}##
 
 [markdown]
@@ -1537,7 +1537,7 @@ Percentage of the data held in memory.
 {blank}
 a¦ Integer
 a¦ *scan_bytes_read* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of bytes read by a scan since last startup.
@@ -1547,7 +1547,7 @@ Number of bytes read by a scan since last startup.
 {blank}
 a¦ Integer
 a¦ *total_scan_duration* +
-_optional_
+optional
 a¦ [markdown]
 --
 Total time spent by the indexer in scanning rows since last startup (nanoseconds).
@@ -1608,7 +1608,7 @@ To get [Node statistics](#NodeIdxNodeIndexer), users must have the Query System 
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/NodeStatistics/security-scheme-end.adoc[opts=optional]
 
@@ -1634,7 +1634,7 @@ To get [Index statistics](#PartIdxPartitionsIndex) for an individual index, user
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/IndexStatistics/security-scheme-end.adoc[opts=optional]
 

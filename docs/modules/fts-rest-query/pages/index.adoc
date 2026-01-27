@@ -31,7 +31,7 @@ This API enables you to get information about active Search queries.
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+*Version:* 8.0
 
 [discrete#host]
 = Host information
@@ -159,7 +159,7 @@ include::{specDir}paths/api-query/operation-description-end.adoc[opts=optional]
 
 
 [#api-query-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -178,7 +178,7 @@ include::{specDir}paths/api-query/operation-parameters-before.adoc[opts=optional
 include::{specDir}paths/api-query/operation-parameters-begin.adoc[opts=optional]
 
 [#api-query-query]
-.Query Parameters
+.icon:question[fw] Query Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -186,7 +186,7 @@ include::{specDir}paths/api-query/operation-parameters-begin.adoc[opts=optional]
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *longerThan* +
-_optional_
+optional
 a¦ [markdown]
 --
 Filters the queries running beyond the given span of time.
@@ -317,11 +317,11 @@ include::{specDir}paths/api-query-cancel/operation-description-end.adoc[opts=opt
 
 
 [#api-query-cancel-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 * application/json
 
 [#api-query-cancel-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -340,7 +340,7 @@ include::{specDir}paths/api-query-cancel/operation-parameters-before.adoc[opts=o
 include::{specDir}paths/api-query-cancel/operation-parameters-begin.adoc[opts=optional]
 
 [#api-query-cancel-path]
-.Path Parameters
+.icon:slash-forward[fw] Path Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -348,7 +348,7 @@ include::{specDir}paths/api-query-cancel/operation-parameters-begin.adoc[opts=op
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *queryID* +
-_required_
+required
 a¦ [markdown]
 --
 The ID of the active query.
@@ -362,7 +362,7 @@ a¦ Integer
 
 |===
 [#api-query-cancel-body]
-.Body Parameter
+.icon:file-lines[fw] Body Parameter
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -370,7 +370,7 @@ a¦ Integer
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -499,7 +499,7 @@ include::{specDir}paths/api-query-index/operation-description-end.adoc[opts=opti
 
 
 [#api-query-index-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -518,7 +518,7 @@ include::{specDir}paths/api-query-index/operation-parameters-before.adoc[opts=op
 include::{specDir}paths/api-query-index/operation-parameters-begin.adoc[opts=optional]
 
 [#api-query-index-path]
-.Path Parameters
+.icon:slash-forward[fw] Path Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -526,7 +526,7 @@ include::{specDir}paths/api-query-index/operation-parameters-begin.adoc[opts=opt
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *indexName* +
-_required_
+required
 a¦ [markdown]
 --
 The name of the Search index.
@@ -539,7 +539,7 @@ a¦ String
 
 |===
 [#api-query-index-query]
-.Query Parameters
+.icon:question[fw] Query Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -547,7 +547,7 @@ a¦ String
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *longerThan* +
-_optional_
+optional
 a¦ [markdown]
 --
 Filters the queries running beyond the given span of time.
@@ -713,7 +713,7 @@ include::{specDir}definitions/ActiveResponse/definition-begin.adoc[opts=optional
 ¦ Property ¦ ¦ Schema
 
 a¦ *status* +
-_optional_
+optional
 a¦ [markdown]
 --
 The status of the request.
@@ -723,7 +723,7 @@ The status of the request.
 {blank}
 a¦ String
 a¦ *stats* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-ActiveResponseStats, opts=optional]
@@ -733,7 +733,7 @@ include::index.adoc[tag=desc-ActiveResponseStats, opts=optional]
 {blank}
 a¦ xref:ActiveResponseStats[]
 a¦ *totalActiveQueryCount* +
-_optional_
+optional
 a¦ [markdown]
 --
 The total number of active queries.
@@ -743,7 +743,7 @@ The total number of active queries.
 {blank}
 a¦ Integer
 a¦ *filteredActiveQueries* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-ActiveResponseFilter, opts=optional]
@@ -802,7 +802,7 @@ include::{specDir}definitions/ActiveResponseFilter/definition-begin.adoc[opts=op
 ¦ Property ¦ ¦ Schema
 
 a¦ *indexName* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of the Search index.
@@ -813,7 +813,7 @@ Only included if viewing active queries for a specific index.
 {blank}
 a¦ String
 a¦ *longerThan* +
-_optional_
+optional
 a¦ [markdown]
 --
 The duration used to filter the active queries.
@@ -824,7 +824,7 @@ Only included if the `longerThan` query parameter is used.
 {blank}
 a¦ String (duration)
 a¦ *queryCount* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of filtered active queries.
@@ -834,7 +834,7 @@ The number of filtered active queries.
 {blank}
 a¦ Integer
 a¦ *queryMap* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-ActiveResponseFilterMap, opts=optional]
@@ -893,8 +893,8 @@ include::{specDir}definitions/ActiveResponseFilterMap/definition-begin.adoc[opts
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-_additional +
-property_
+additional +
+property
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-ActiveResponseFilterMapItem, opts=optional]
@@ -954,7 +954,7 @@ include::{specDir}definitions/ActiveResponseFilterMapItem/definition-begin.adoc[
 ¦ Property ¦ ¦ Schema
 
 a¦ *QueryContext* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-ActiveResponseFilterMapItemContext, opts=optional]
@@ -964,7 +964,7 @@ include::index.adoc[tag=desc-ActiveResponseFilterMapItemContext, opts=optional]
 {blank}
 a¦ xref:ActiveResponseFilterMapItemContext[]
 a¦ *executionTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 The time taken to execute the query.
@@ -1023,7 +1023,7 @@ include::{specDir}definitions/ActiveResponseFilterMapItemContext/definition-begi
 ¦ Property ¦ ¦ Schema
 
 a¦ *query* +
-_optional_
+optional
 a¦ [markdown]
 --
 An object containing the Search query.
@@ -1034,7 +1034,7 @@ For more information, see [Search Request JSON Properties](../search/search-requ
 {blank}
 a¦ Object
 a¦ *size* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -1045,7 +1045,7 @@ a¦ [markdown]
 {blank}
 a¦ Integer
 a¦ *from* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -1056,7 +1056,7 @@ a¦ [markdown]
 {blank}
 a¦ Integer
 a¦ *timeout* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -1067,7 +1067,7 @@ a¦ [markdown]
 {blank}
 a¦ Integer
 a¦ *index* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of a Search index.
@@ -1126,7 +1126,7 @@ include::{specDir}definitions/ActiveResponseStats/definition-begin.adoc[opts=opt
 ¦ Property ¦ ¦ Schema
 
 a¦ *total* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -1137,7 +1137,7 @@ a¦ [markdown]
 {blank}
 a¦ Integer
 a¦ *successful* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -1191,7 +1191,7 @@ include::{specDir}definitions/CancelRequest/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *uuid* +
-_optional_
+optional
 a¦ [markdown]
 --
 Represents the active query's coordinator node's UUID, where the query will be canceled.
@@ -1245,7 +1245,7 @@ include::{specDir}definitions/CancelResponse/definition-begin.adoc[opts=optional
 ¦ Property ¦ ¦ Schema
 
 a¦ *status* +
-_optional_
+optional
 a¦ [markdown]
 --
 The status of the request.
@@ -1255,7 +1255,7 @@ The status of the request.
 {blank}
 a¦ String
 a¦ *msg* +
-_optional_
+optional
 a¦ [markdown]
 --
 The response message, giving details of the node UUID and query ID.
@@ -1312,7 +1312,7 @@ include::{specDir}security/Default/security-scheme-begin.adoc[opts=optional]
 
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/Default/security-scheme-end.adoc[opts=optional]
 

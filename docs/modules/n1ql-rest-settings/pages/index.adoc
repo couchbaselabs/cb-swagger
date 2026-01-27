@@ -31,7 +31,7 @@ This API enables you to view or specify cluster-level Query settings.
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+*Version:* 8.0
 
 [discrete#host]
 = Host information
@@ -160,7 +160,7 @@ include::{specDir}paths/get_access/operation-description-end.adoc[opts=optional]
 
 
 [#get_access-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -282,7 +282,7 @@ include::{specDir}paths/get_settings/operation-description-end.adoc[opts=optiona
 
 
 [#get_settings-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -403,12 +403,12 @@ include::{specDir}paths/post_access/operation-description-end.adoc[opts=optional
 
 
 [#post_access-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 * application/json
 * application/x-www-form-urlencoded
 
 [#post_access-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -427,7 +427,7 @@ include::{specDir}paths/post_access/operation-parameters-before.adoc[opts=option
 include::{specDir}paths/post_access/operation-parameters-begin.adoc[opts=optional]
 
 [#post_access-body]
-.Body Parameter
+.icon:file-lines[fw] Body Parameter
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -435,7 +435,7 @@ include::{specDir}paths/post_access/operation-parameters-begin.adoc[opts=optiona
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -570,12 +570,12 @@ include::{specDir}paths/post_settings/operation-description-end.adoc[opts=option
 
 
 [#post_settings-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 * application/json
 * application/x-www-form-urlencoded
 
 [#post_settings-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -594,7 +594,7 @@ include::{specDir}paths/post_settings/operation-parameters-before.adoc[opts=opti
 include::{specDir}paths/post_settings/operation-parameters-begin.adoc[opts=optional]
 
 [#post_settings-body]
-.Body Parameter
+.icon:file-lines[fw] Body Parameter
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -602,7 +602,7 @@ include::{specDir}paths/post_settings/operation-parameters-begin.adoc[opts=optio
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -773,7 +773,7 @@ include::{specDir}definitions/Access/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *all_access* +
-_required_
+required
 a¦ [markdown]
 --
 Defines whether the user has access to all URLs, or only URLs specified by the access list.
@@ -787,7 +787,7 @@ Setting this field to `true` enables access to all endpoints.
 {blank}
 a¦ Boolean
 a¦ *allowed_urls* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of strings, each of which is a URL to which you wish to grant access.
@@ -804,7 +804,7 @@ Note that each URL must include the port, protocol, and all other components of 
 {blank}
 a¦ String array
 a¦ *disallowed_urls* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of strings, each of which is a URL that will be restricted for all roles.
@@ -864,7 +864,7 @@ include::{specDir}definitions/Settings/definition-begin.adoc[opts=optional]
 
 a¦ [#queryCleanupClientAttempts]
 *queryCleanupClientAttempts* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -888,7 +888,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 a¦ Boolean
 a¦ [#queryCleanupLostAttempts]
 *queryCleanupLostAttempts* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -912,7 +912,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 a¦ Boolean
 a¦ [#queryCleanupWindow]
 *queryCleanupWindow* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -950,7 +950,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 a¦ String (duration)
 a¦ [#queryCompletedLimit]
 *queryCompletedLimit* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -982,7 +982,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 a¦ Integer (int32)
 a¦ [#queryCompletedMaxPlanSize]
 *queryCompletedMaxPlanSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1016,7 +1016,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 a¦ Integer (int32)
 a¦ [#queryCompletedThreshold]
 *queryCompletedThreshold* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1049,7 +1049,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 a¦ Integer (int32)
 a¦ [#queryLogLevel]
 *queryLogLevel* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1096,7 +1096,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 a¦ String
 a¦ [#queryMaxParallelism]
 *queryMaxParallelism* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1139,7 +1139,7 @@ NOTE: To enable queries to run in parallel, you must specify the cluster-level `
 a¦ Integer (int32)
 a¦ [#queryMemoryQuota]
 *queryMemoryQuota* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1174,7 +1174,7 @@ If a request includes this parameter, it will be capped by the node-level `memor
 a¦ Integer (int32)
 a¦ [#queryN1QLFeatCtrl]
 *queryN1QLFeatCtrl* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1197,7 +1197,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 a¦ Integer (int32)
 a¦ [#queryNodeQuota]
 *queryNodeQuota* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1231,7 +1231,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 a¦ Integer (int32)
 a¦ [#queryNodeQuotaValPercent]
 *queryNodeQuotaValPercent* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1257,7 +1257,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 a¦ Integer (int32)
 a¦ [#queryNumAtrs]
 *queryNumAtrs* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1284,7 +1284,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 a¦ Integer (int32)
 a¦ [#queryNumCpus]
 *queryNumCpus* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1314,7 +1314,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 a¦ Integer (int32)
 a¦ [#queryPipelineBatch]
 *queryPipelineBatch* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1343,7 +1343,7 @@ The minimum of that and the node-level `pipeline-batch` setting is applied.
 a¦ Integer (int32)
 a¦ [#queryPipelineCap]
 *queryPipelineCap* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1372,7 +1372,7 @@ The minimum of that and the node-level `pipeline-cap` setting is applied.
 a¦ Integer (int32)
 a¦ [#queryPreparedLimit]
 *queryPreparedLimit* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1397,7 +1397,7 @@ When you change the cluster-level setting, the node-level setting is over-writte
 a¦ Integer (int32)
 a¦ [#queryScanCap]
 *queryScanCap* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1430,7 +1430,7 @@ The minimum of that and the node-level `scan-cap` setting is applied.
 a¦ Integer (int32)
 a¦ [#queryTimeout]
 *queryTimeout* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1465,7 +1465,7 @@ The minimum of that and the node-level `timeout` setting is applied.
 a¦ Long (int64)
 a¦ [#queryTxTimeout]
 *queryTxTimeout* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1513,7 +1513,7 @@ If a request includes this parameter, it will be capped by the node-level `txtim
 a¦ String (duration)
 a¦ [#queryTmpSpaceDir]
 *queryTmpSpaceDir* +
-_optional_
+optional
 a¦ [markdown]
 --
 The path to which the Index Service writes temporary backfill files, and the Query Service writes spill files, to store any transient data during query processing.
@@ -1530,7 +1530,7 @@ The default path is `var/lib/couchbase/tmp` within the Couchbase Server installa
 a¦ String
 a¦ [#queryTmpSpaceSize]
 *queryTmpSpaceSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 In MiB, the maximum size of temporary backfill files for each indexer, and the maximum size of temporary files for spilled sorting and other operations.
@@ -1549,7 +1549,7 @@ The maximum size is limited only by the available disk space.
 a¦ Integer (int32)
 a¦ [#queryUseCBO]
 *queryUseCBO* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1578,7 +1578,7 @@ If a request does not include this parameter, the node-level setting is used, wh
 a¦ Boolean
 a¦ [#queryUseReplica]
 *queryUseReplica* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1624,7 +1624,7 @@ If the request-level parameter and the node-level setting are both `unset`, read
 a¦ String
 a¦ [#queryCurlWhitelist]
 *queryCurlWhitelist* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-Access, opts=optional]
@@ -1687,7 +1687,7 @@ Users must have one of the following RBAC roles:
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/Default/security-scheme-end.adoc[opts=optional]
 

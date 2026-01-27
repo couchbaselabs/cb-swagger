@@ -31,7 +31,7 @@ These APIs enable you to manage and query Search index partitions and to specify
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+*Version:* 8.0
 
 [discrete#host]
 = Host information
@@ -160,7 +160,7 @@ include::{specDir}paths/getPartition/operation-description-end.adoc[opts=optiona
 
 
 [#getPartition-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -298,7 +298,7 @@ include::{specDir}paths/getPartitionName/operation-parameters-before.adoc[opts=o
 include::{specDir}paths/getPartitionName/operation-parameters-begin.adoc[opts=optional]
 
 [#getPartitionName-path]
-.Path Parameters
+.icon:slash-forward[fw] Path Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -306,7 +306,7 @@ include::{specDir}paths/getPartitionName/operation-parameters-begin.adoc[opts=op
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *pindexName* +
-_required_
+required
 a¦ [markdown]
 --
 The name of the Search index partition.
@@ -454,7 +454,7 @@ include::{specDir}paths/getPartitionCount/operation-description-end.adoc[opts=op
 
 
 [#getPartitionCount-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -473,7 +473,7 @@ include::{specDir}paths/getPartitionCount/operation-parameters-before.adoc[opts=
 include::{specDir}paths/getPartitionCount/operation-parameters-begin.adoc[opts=optional]
 
 [#getPartitionCount-path]
-.Path Parameters
+.icon:slash-forward[fw] Path Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -481,7 +481,7 @@ include::{specDir}paths/getPartitionCount/operation-parameters-begin.adoc[opts=o
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *pindexName* +
-_required_
+required
 a¦ [markdown]
 --
 The name of the Search index partition.
@@ -608,11 +608,11 @@ include::{specDir}paths/queryPartition/operation-description-end.adoc[opts=optio
 
 
 [#queryPartition-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 * application/json
 
 [#queryPartition-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -631,7 +631,7 @@ include::{specDir}paths/queryPartition/operation-parameters-before.adoc[opts=opt
 include::{specDir}paths/queryPartition/operation-parameters-begin.adoc[opts=optional]
 
 [#queryPartition-path]
-.Path Parameters
+.icon:slash-forward[fw] Path Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -639,7 +639,7 @@ include::{specDir}paths/queryPartition/operation-parameters-begin.adoc[opts=opti
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *pindexName* +
-_required_
+required
 a¦ [markdown]
 --
 The name of the Search index partition.
@@ -652,7 +652,7 @@ a¦ String
 
 |===
 [#queryPartition-body]
-.Body Parameter
+.icon:file-lines[fw] Body Parameter
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -660,7 +660,7 @@ a¦ String
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_required_
+required
 a¦ [markdown]
 --
 
@@ -808,7 +808,7 @@ include::{specDir}paths/setFtsMemoryQuota/operation-description-end.adoc[opts=op
 
 
 [#setFtsMemoryQuota-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 * application/x-www-form-urlencoded
 
 
@@ -828,7 +828,7 @@ include::{specDir}paths/setFtsMemoryQuota/operation-parameters-before.adoc[opts=
 include::{specDir}paths/setFtsMemoryQuota/operation-parameters-begin.adoc[opts=optional]
 
 [#setFtsMemoryQuota-form]
-.Form Parameters
+.icon:table-list[fw] Form Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -836,7 +836,7 @@ include::{specDir}paths/setFtsMemoryQuota/operation-parameters-begin.adoc[opts=o
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *ftsMemoryQuota* +
-_optional_
+optional
 a¦ [markdown]
 --
 The memory quota for the Search service.
@@ -997,7 +997,7 @@ include::{specDir}definitions/DocumentCount/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *status* +
-_optional_
+optional
 a¦ [markdown]
 --
 The status of the operation.
@@ -1007,7 +1007,7 @@ The status of the operation.
 {blank}
 a¦ String
 a¦ *count* +
-_optional_
+optional
 a¦ [markdown]
 --
 The document count for the specified index.
@@ -1060,7 +1060,7 @@ include::{specDir}definitions/indexPartition/definition-begin.adoc[opts=optional
 ¦ Property ¦ ¦ Schema
 
 a¦ *pindexes* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-indexPartitionPIndex, opts=optional]
@@ -1070,7 +1070,7 @@ include::index.adoc[tag=desc-indexPartitionPIndex, opts=optional]
 {blank}
 a¦ xref:indexPartitionPIndex[]
 a¦ *status* +
-_optional_
+optional
 a¦ [markdown]
 --
 The status of the request.
@@ -1129,8 +1129,8 @@ include::{specDir}definitions/indexPartitionPIndex/definition-begin.adoc[opts=op
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-_additional +
-property_
+additional +
+property
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-indexPartitionPIndexInner, opts=optional]
@@ -1190,7 +1190,7 @@ include::{specDir}definitions/indexPartitionPIndexInner/definition-begin.adoc[op
 ¦ Property ¦ ¦ Schema
 
 a¦ *indexName* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of the Search index.
@@ -1201,7 +1201,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *indexParams* +
-_optional_
+optional
 a¦ [markdown]
 --
 The Search index's type identifier, type mappings, and analyzers.
@@ -1212,7 +1212,7 @@ For more information, see [Params Object](../search/search-index-params.html#par
 {blank}
 a¦ Object
 a¦ *indexType* +
-_optional_
+optional
 a¦ [markdown]
 --
 The type of the Search index.
@@ -1223,7 +1223,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *indexUUID* +
-_optional_
+optional
 a¦ [markdown]
 --
 The UUID of the Search index.
@@ -1234,7 +1234,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *name* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of the Search index partition.
@@ -1244,7 +1244,7 @@ The name of the Search index partition.
 {blank}
 a¦ String
 a¦ *sourceName* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of the bucket where the Search index is stored.
@@ -1255,7 +1255,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *sourceParams* +
-_optional_
+optional
 a¦ [markdown]
 --
 Advanced settings for Search index behavior.
@@ -1266,7 +1266,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ Object
 a¦ *sourcePartitions* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -1276,7 +1276,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *sourceType* +
-_optional_
+optional
 a¦ [markdown]
 --
 The type of the bucket where the Search index is stored.
@@ -1287,7 +1287,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *sourceUUID* +
-_optional_
+optional
 a¦ [markdown]
 --
 The UUID of the bucket where the Search index is stored.
@@ -1298,7 +1298,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *uuid* +
-_optional_
+optional
 a¦ [markdown]
 --
 The UUID of the Search index partition.
@@ -1351,7 +1351,7 @@ include::{specDir}definitions/QueryRequest/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *query* +
-_optional_
+optional
 a¦ [markdown]
 --
 An object that contains the properties for one of the supported query types.
@@ -1362,7 +1362,7 @@ For more information, see [Query Object](../search/search-request-params.html#qu
 {blank}
 a¦ Object
 a¦ *knn* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array that contains objects that describe a Vector Search query.
@@ -1373,7 +1373,7 @@ For more information, see [Knn Objects](../search/search-request-params.html#knn
 {blank}
 a¦ Object array
 a¦ *ctl* +
-_optional_
+optional
 a¦ [markdown]
 --
 An object that contains properties for query consistency.
@@ -1384,7 +1384,7 @@ For more information, see [Ctl Object](../search/search-request-params.html#ctl)
 {blank}
 a¦ Object
 a¦ *size* +
-_optional_
+optional
 a¦ [markdown]
 --
 Set the total number of results to return for a single page of search results.
@@ -1394,7 +1394,7 @@ Set the total number of results to return for a single page of search results.
 {blank}
 a¦ Integer
 a¦ *from* +
-_optional_
+optional
 a¦ [markdown]
 --
 Set an offset value to change where pagination starts for search results.
@@ -1404,7 +1404,7 @@ Set an offset value to change where pagination starts for search results.
 {blank}
 a¦ Integer
 a¦ *highlight* +
-_optional_
+optional
 a¦ [markdown]
 --
 Contains properties to control search result highlighting.
@@ -1415,7 +1415,7 @@ For more information, see [Highlight Objects](../search/search-request-params.ht
 {blank}
 a¦ Object
 a¦ *fields* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of strings to specify each indexed field you want to return in search results.
@@ -1425,7 +1425,7 @@ An array of strings to specify each indexed field you want to return in search r
 {blank}
 a¦ String array
 a¦ *facets* +
-_optional_
+optional
 a¦ [markdown]
 --
 Contains nested objects to define each facet you want to return with search results.
@@ -1436,7 +1436,7 @@ For more information, see [Facet Objects](../search/search-request-params.html#f
 {blank}
 a¦ Object
 a¦ *explain* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether to create an explanation for a search result's score in search results.
@@ -1446,7 +1446,7 @@ Whether to create an explanation for a search result's score in search results.
 {blank}
 a¦ Boolean
 a¦ *sort* +
-_optional_
+optional
 a¦ [markdown]
 --
 Contains an array of strings or JSON objects to set how to sort search results.
@@ -1457,7 +1457,7 @@ For more information, see [Sort Object](../search/search-request-params.html#sor
 {blank}
 a¦ Any Type array
 a¦ *includeLocations* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether to return the position of each occurrence of a search term inside a document.
@@ -1467,7 +1467,7 @@ Whether to return the position of each occurrence of a search term inside a docu
 {blank}
 a¦ Boolean
 a¦ *score* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether to include document relevancy scoring in search results.
@@ -1477,7 +1477,7 @@ Whether to include document relevancy scoring in search results.
 {blank}
 a¦ String
 a¦ *search_after* +
-_optional_
+optional
 a¦ [markdown]
 --
 Use to control pagination in search results.
@@ -1487,7 +1487,7 @@ Use to control pagination in search results.
 {blank}
 a¦ String array
 a¦ *search_before* +
-_optional_
+optional
 a¦ [markdown]
 --
 Use to control pagination in search results.
@@ -1497,7 +1497,7 @@ Use to control pagination in search results.
 {blank}
 a¦ String array
 a¦ *collections* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of strings that specify the collections where you want to run the query.
@@ -1550,7 +1550,7 @@ include::{specDir}definitions/QueryResponse/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *status* +
-_optional_
+optional
 a¦ [markdown]
 --
 The status of the operation.
@@ -1560,7 +1560,7 @@ The status of the operation.
 {blank}
 a¦ String
 a¦ *results* +
-_optional_
+optional
 a¦ [markdown]
 --
 The results of the Search query.
@@ -1620,7 +1620,7 @@ You must have the **Search Admin** role, with FTS Manage permissions on the requ
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/Manage/security-scheme-end.adoc[opts=optional]
 
@@ -1643,7 +1643,7 @@ You must have the **Search Reader** or **Search Admin** role, with FTS Read perm
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/Read/security-scheme-end.adoc[opts=optional]
 
@@ -1666,7 +1666,7 @@ You must have the **Search Admin** role, with FTS Write permissions on the requi
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/Write/security-scheme-end.adoc[opts=optional]
 

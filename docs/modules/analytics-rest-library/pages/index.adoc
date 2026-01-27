@@ -32,7 +32,7 @@ This API enables you to manage the libraries that are used to create SQL\+\+ for
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 0.1
+*Version:* 0.1
 
 [discrete#host]
 = Host information
@@ -160,7 +160,7 @@ include::{specDir}paths/delete_library/operation-description-end.adoc[opts=optio
 
 
 [#delete_library-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -179,7 +179,7 @@ include::{specDir}paths/delete_library/operation-parameters-before.adoc[opts=opt
 include::{specDir}paths/delete_library/operation-parameters-begin.adoc[opts=optional]
 
 [#delete_library-path]
-.Path Parameters
+.icon:slash-forward[fw] Path Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -187,7 +187,7 @@ include::{specDir}paths/delete_library/operation-parameters-begin.adoc[opts=opti
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *library* +
-_required_
+required
 a¦ [markdown]
 --
 The name of a library.
@@ -198,7 +198,7 @@ The name of a library.
 
 a¦ String
 a¦ *scope* +
-_required_
+required
 a¦ [markdown]
 --
 The name of the Analytics scope containing the library.
@@ -343,7 +343,7 @@ include::{specDir}paths/get_collection/operation-description-end.adoc[opts=optio
 
 
 [#get_collection-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -480,11 +480,11 @@ include::{specDir}paths/post_library/operation-description-end.adoc[opts=optiona
 
 
 [#post_library-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 * multipart/form-data
 
 [#post_library-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -503,7 +503,7 @@ include::{specDir}paths/post_library/operation-parameters-before.adoc[opts=optio
 include::{specDir}paths/post_library/operation-parameters-begin.adoc[opts=optional]
 
 [#post_library-path]
-.Path Parameters
+.icon:slash-forward[fw] Path Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -511,7 +511,7 @@ include::{specDir}paths/post_library/operation-parameters-begin.adoc[opts=option
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *library* +
-_required_
+required
 a¦ [markdown]
 --
 The name of a library.
@@ -522,7 +522,7 @@ The name of a library.
 
 a¦ String
 a¦ *scope* +
-_required_
+required
 a¦ [markdown]
 --
 The name of the Analytics scope containing the library.
@@ -538,7 +538,7 @@ a¦ String
 
 |===
 [#post_library-form]
-.Form Parameters
+.icon:table-list[fw] Form Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -546,7 +546,7 @@ a¦ String
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *data* +
-_required_
+required
 a¦ [markdown]
 --
 The library and all its dependencies, packaged by shiv.
@@ -557,7 +557,7 @@ The library and all its dependencies, packaged by shiv.
 
 a¦ File (binary)
 a¦ *type* +
-_required_
+required
 a¦ [markdown]
 --
 The language of the library.
@@ -730,7 +730,7 @@ include::{specDir}definitions/Errors/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *error* +
-_required_
+required
 a¦ [markdown]
 --
 An error message.
@@ -783,7 +783,7 @@ include::{specDir}definitions/Libraries/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *scope* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of the Analytics scope containing the library.
@@ -797,7 +797,7 @@ The scope name may contain one or two identifiers, separated by a slash (/).
 {blank}
 a¦ String
 a¦ *hash_md5* +
-_optional_
+optional
 a¦ [markdown]
 --
 A MD5 hash of the library residing on the server.
@@ -807,7 +807,7 @@ A MD5 hash of the library residing on the server.
 {blank}
 a¦ String
 a¦ *name* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of the library.
@@ -869,7 +869,7 @@ To [Create or Update a Library](#post_library) or [Delete a Library](#delete_lib
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/FullAdmin/security-scheme-end.adoc[opts=optional]
 
@@ -897,7 +897,7 @@ To [Read All Libraries](#get_collection), users must have one of the following R
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/AnalyticsAdmin/security-scheme-end.adoc[opts=optional]
 

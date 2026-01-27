@@ -32,7 +32,7 @@ These APIs enables you to manage and monitor the Analytics service.
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+*Version:* 8.0
 
 [discrete#host]
 = Host information
@@ -164,11 +164,11 @@ include::{specDir}paths/cancel_request/operation-description-end.adoc[opts=optio
 
 
 [#cancel_request-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 * application/x-www-form-urlencoded
 
 [#cancel_request-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -187,7 +187,7 @@ include::{specDir}paths/cancel_request/operation-parameters-before.adoc[opts=opt
 include::{specDir}paths/cancel_request/operation-parameters-begin.adoc[opts=optional]
 
 [#cancel_request-form]
-.Form Parameters
+.icon:table-list[fw] Form Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -195,7 +195,7 @@ include::{specDir}paths/cancel_request/operation-parameters-begin.adoc[opts=opti
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *client_context_id* +
-_required_
+required
 a¦ [markdown]
 --
 Identifier passed by the client that is used to identify an active request to be cancelled.
@@ -343,7 +343,7 @@ include::{specDir}paths/cluster_status/operation-description-end.adoc[opts=optio
 
 
 [#cluster_status-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -479,7 +479,7 @@ include::{specDir}paths/completed_requests/operation-description-end.adoc[opts=o
 
 
 [#completed_requests-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -615,7 +615,7 @@ include::{specDir}paths/ingestion_status/operation-description-end.adoc[opts=opt
 
 
 [#ingestion_status-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -756,7 +756,7 @@ include::{specDir}paths/monitor_node/operation-description-end.adoc[opts=optiona
 
 
 [#monitor_node-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -892,7 +892,7 @@ include::{specDir}paths/restart_cluster/operation-description-end.adoc[opts=opti
 
 
 [#restart_cluster-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -1027,7 +1027,7 @@ include::{specDir}paths/restart_node/operation-description-end.adoc[opts=optiona
 
 
 [#restart_node-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -1162,7 +1162,7 @@ include::{specDir}paths/return_active_requests/operation-description-end.adoc[op
 
 
 [#return_active_requests-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -1345,7 +1345,7 @@ include::{specDir}definitions/Ingestion/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *links* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of objects, each giving information about a single linked Analytics scope.
@@ -1398,7 +1398,7 @@ include::{specDir}definitions/IngestionLink/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *name* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of the link.
@@ -1409,7 +1409,7 @@ The name of the link.
 {blank}
 a¦ String
 a¦ *scope* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of the Analytics scope.
@@ -1420,7 +1420,7 @@ The name of the Analytics scope.
 {blank}
 a¦ String
 a¦ *status* +
-_optional_
+optional
 a¦ [markdown]
 --
 The status of the Analytics scope.
@@ -1432,7 +1432,7 @@ The status of the Analytics scope.
 {blank}
 a¦ String
 a¦ *state* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of objects, each giving the ingestion state of one or more Analytics collections.
@@ -1488,7 +1488,7 @@ include::{specDir}definitions/IngestionLinkState/definition-begin.adoc[opts=opti
 ¦ Property ¦ ¦ Schema
 
 a¦ *timestamp* +
-_required_
+required
 a¦ [markdown]
 --
 The time since epoch that this sample was calculated, in milliseconds.
@@ -1499,7 +1499,7 @@ The time since epoch that this sample was calculated, in milliseconds.
 {blank}
 a¦ Integer
 a¦ *progress* +
-_required_
+required
 a¦ [markdown]
 --
 The percentage (fraction from 0 to 1) of ingestion progress at the current time.
@@ -1512,7 +1512,7 @@ The percentage (fraction from 0 to 1) of ingestion progress at the current time.
 {blank}
 a¦ Double (double)
 a¦ *timeLag* +
-_optional_
+optional
 a¦ [markdown]
 --
 The estimated time that the ingestion lags behind the Data service, in milliseconds. Only displayed for Analytics collections that are not fully ingested.
@@ -1524,7 +1524,7 @@ The estimated time that the ingestion lags behind the Data service, in milliseco
 {blank}
 a¦ Integer
 a¦ *itemsProcessed* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of items ingested since last connect; that is, the total number of mutations and deletions processed. Only displayed for Analytics collections that are not fully ingested.
@@ -1538,7 +1538,7 @@ Note that this value is reset on connect, so it may appear to get smaller.
 {blank}
 a¦ Integer
 a¦ *seqnoAdvances* +
-_optional_
+optional
 a¦ [markdown]
 --
 The change in sequence number (seqno) since last connect. Only displayed for Analytics collections that are not fully ingested.
@@ -1550,7 +1550,7 @@ The change in sequence number (seqno) since last connect. Only displayed for Ana
 {blank}
 a¦ Integer
 a¦ *scopes* +
-_required_
+required
 a¦ [markdown]
 --
 An array of objects, each one giving information about a single Analytics scope.
@@ -1603,7 +1603,7 @@ include::{specDir}definitions/IngestionLinkStateScope/definition-begin.adoc[opts
 ¦ Property ¦ ¦ Schema
 
 a¦ *name* +
-_required_
+required
 a¦ [markdown]
 --
 The name of the Analytics scope.
@@ -1614,7 +1614,7 @@ The name of the Analytics scope.
 {blank}
 a¦ String
 a¦ *collections* +
-_required_
+required
 a¦ [markdown]
 --
 An array of objects, each one giving information about a single Analytics collection.
@@ -1667,7 +1667,7 @@ include::{specDir}definitions/IngestionLinkStateScopeColl/definition-begin.adoc[
 ¦ Property ¦ ¦ Schema
 
 a¦ *name* +
-_required_
+required
 a¦ [markdown]
 --
 The name of the Analytics collection.
@@ -1727,8 +1727,8 @@ include::{specDir}definitions/Mutations/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *<scope>* +
-_additional +
-property_
+additional +
+property
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-MutationsColl, opts=optional]
@@ -1790,8 +1790,8 @@ include::{specDir}definitions/MutationsColl/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *<collection>* +
-_additional +
-property_
+additional +
+property
 a¦ [markdown]
 --
 The number of mutations in the DCP queue that have not yet been ingested. The name of the property is the name of the Analytics collection.
@@ -1851,7 +1851,7 @@ include::{specDir}definitions/Request/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *cancellable* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether this request can be cancelled.
@@ -1861,7 +1861,7 @@ Whether this request can be cancelled.
 {blank}
 a¦ Boolean
 a¦ *clientContextID* +
-_optional_
+optional
 a¦ [markdown]
 --
 A context ID for debugging purposes.
@@ -1872,7 +1872,7 @@ A context ID for debugging purposes.
 {blank}
 a¦ String
 a¦ *elapsedTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 How long the request has been running in seconds.
@@ -1883,7 +1883,7 @@ How long the request has been running in seconds.
 {blank}
 a¦ BigDecimal
 a¦ *jobCreateTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 The date and time when the request's job was created.
@@ -1894,7 +1894,7 @@ The date and time when the request's job was created.
 {blank}
 a¦ String
 a¦ *jobId* +
-_optional_
+optional
 a¦ [markdown]
 --
 The request's job ID. This value can be null if request did not run (for example, due to an error).
@@ -1906,7 +1906,7 @@ The request's job ID. This value can be null if request did not run (for example
 {blank}
 a¦ String
 a¦ *jobQueueTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 How long the request's job has been in the queue waiting to run in seconds.
@@ -1917,7 +1917,7 @@ How long the request's job has been in the queue waiting to run in seconds.
 {blank}
 a¦ BigDecimal
 a¦ *jobRequiredCPUs* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of CPU cores required to run this request.
@@ -1928,7 +1928,7 @@ The number of CPU cores required to run this request.
 {blank}
 a¦ Integer
 a¦ *jobRequiredMemory* +
-_optional_
+optional
 a¦ [markdown]
 --
 The bytes of RAM being used to process this request.
@@ -1940,7 +1940,7 @@ The bytes of RAM being used to process this request.
 {blank}
 a¦ Integer
 a¦ *jobStartTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 The date and time the request's job began running.
@@ -1951,7 +1951,7 @@ The date and time the request's job began running.
 {blank}
 a¦ String
 a¦ *jobStatus* +
-_optional_
+optional
 a¦ [markdown]
 --
 The state of the request's job.
@@ -1963,7 +1963,7 @@ The state of the request's job.
 {blank}
 a¦ String
 a¦ *plan* +
-_optional_
+optional
 a¦ [markdown]
 --
 The query plan for this request.
@@ -1973,7 +1973,7 @@ The query plan for this request.
 {blank}
 a¦ String
 a¦ *node* +
-_optional_
+optional
 a¦ [markdown]
 --
 The Analytics node that received the request.
@@ -1984,7 +1984,7 @@ The Analytics node that received the request.
 {blank}
 a¦ String
 a¦ *remoteAddr* +
-_optional_
+optional
 a¦ [markdown]
 --
 The network address and port of the client that made the request.
@@ -1995,7 +1995,7 @@ The network address and port of the client that made the request.
 {blank}
 a¦ String
 a¦ *requestTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 The date and time the request was received.
@@ -2006,7 +2006,7 @@ The date and time the request was received.
 {blank}
 a¦ String
 a¦ *scanConsistency* +
-_optional_
+optional
 a¦ [markdown]
 --
 The Scan Consistency setting used for the request's query.
@@ -2017,7 +2017,7 @@ The Scan Consistency setting used for the request's query.
 {blank}
 a¦ String
 a¦ *state* +
-_optional_
+optional
 a¦ [markdown]
 --
 The state of the request.
@@ -2029,7 +2029,7 @@ The state of the request.
 {blank}
 a¦ String
 a¦ *statement* +
-_optional_
+optional
 a¦ [markdown]
 --
 The SQL++ query statement being run by the request.
@@ -2040,7 +2040,7 @@ The SQL++ query statement being run by the request.
 {blank}
 a¦ String
 a¦ *userAgent* +
-_optional_
+optional
 a¦ [markdown]
 --
 The user agent string of the browser that made the request.
@@ -2051,7 +2051,7 @@ The user agent string of the browser that made the request.
 {blank}
 a¦ String
 a¦ *users* +
-_optional_
+optional
 a¦ [markdown]
 --
 The user who made the request.
@@ -2062,7 +2062,7 @@ The user who made the request.
 {blank}
 a¦ String
 a¦ *uuid* +
-_optional_
+optional
 a¦ [markdown]
 --
 The unique identifier for this request.
@@ -2122,7 +2122,7 @@ include::{specDir}definitions/Status/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *authorizedNodes* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of strings, each of which is the ID of an authorized Analytics node.
@@ -2133,7 +2133,7 @@ An array of strings, each of which is the ID of an authorized Analytics node.
 {blank}
 a¦ String array
 a¦ *ccNodeId* +
-_optional_
+optional
 a¦ [markdown]
 --
 The ID of the cluster controller node.
@@ -2144,7 +2144,7 @@ The ID of the cluster controller node.
 {blank}
 a¦ String
 a¦ *nodeConfigUri* +
-_optional_
+optional
 a¦ [markdown]
 --
 The path of the Analytics Node Configuration REST API.
@@ -2155,7 +2155,7 @@ The path of the Analytics Node Configuration REST API.
 {blank}
 a¦ String
 a¦ *nodeDiagnosticsUri* +
-_optional_
+optional
 a¦ [markdown]
 --
 The path of the Analytics Node Diagnostics REST API. For internal use only.
@@ -2167,7 +2167,7 @@ The path of the Analytics Node Diagnostics REST API. For internal use only.
 {blank}
 a¦ String
 a¦ *nodeRestartUri* +
-_optional_
+optional
 a¦ [markdown]
 --
 The path of the Analytics Node Restart REST API.
@@ -2178,7 +2178,7 @@ The path of the Analytics Node Restart REST API.
 {blank}
 a¦ String
 a¦ *nodeServiceUri* +
-_optional_
+optional
 a¦ [markdown]
 --
 The path of the Analytics Query Service REST API.
@@ -2189,7 +2189,7 @@ The path of the Analytics Query Service REST API.
 {blank}
 a¦ String
 a¦ *serviceConfigUri* +
-_optional_
+optional
 a¦ [markdown]
 --
 The path of the Analytics Service Configuration REST API.
@@ -2200,7 +2200,7 @@ The path of the Analytics Service Configuration REST API.
 {blank}
 a¦ String
 a¦ *serviceDiagnosticsUri* +
-_optional_
+optional
 a¦ [markdown]
 --
 The full URI of the Analytics Service Diagnostics REST API. For internal use only.
@@ -2212,7 +2212,7 @@ The full URI of the Analytics Service Diagnostics REST API. For internal use onl
 {blank}
 a¦ String
 a¦ *serviceRestartUri* +
-_optional_
+optional
 a¦ [markdown]
 --
 The full URI of the Analytics Cluster Restart REST API.
@@ -2223,7 +2223,7 @@ The full URI of the Analytics Cluster Restart REST API.
 {blank}
 a¦ String
 a¦ *state* +
-_optional_
+optional
 a¦ [markdown]
 --
 The state of the Analytics Service.
@@ -2235,7 +2235,7 @@ The state of the Analytics Service.
 {blank}
 a¦ String
 a¦ *nodes* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of objects, each giving information about one Analytics node.
@@ -2245,7 +2245,7 @@ An array of objects, each giving information about one Analytics node.
 {blank}
 a¦ xref:StatusNodes[] array
 a¦ *partitions* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of objects, each giving information about one Analytics partition.
@@ -2255,7 +2255,7 @@ An array of objects, each giving information about one Analytics partition.
 {blank}
 a¦ xref:StatusPartitions[] array
 a¦ *partitionsTopology* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-StatusTopology, opts=optional]
@@ -2308,7 +2308,7 @@ include::{specDir}definitions/StatusNodes/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *apiBase* +
-_optional_
+optional
 a¦ [markdown]
 --
 The URI scheme, host, and port for HTTP access to Analytics REST APIs on this node.
@@ -2319,7 +2319,7 @@ The URI scheme, host, and port for HTTP access to Analytics REST APIs on this no
 {blank}
 a¦ String
 a¦ *apiBaseHttps* +
-_optional_
+optional
 a¦ [markdown]
 --
 The URI scheme, host, and port for secure HTTPS access to Analytics REST APIs on this node.
@@ -2330,7 +2330,7 @@ The URI scheme, host, and port for secure HTTPS access to Analytics REST APIs on
 {blank}
 a¦ String
 a¦ *nodeId* +
-_optional_
+optional
 a¦ [markdown]
 --
 The ID of the node.
@@ -2341,7 +2341,7 @@ The ID of the node.
 {blank}
 a¦ String
 a¦ *nodeName* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name or IP address of the node, including the cluster administration port.
@@ -2395,7 +2395,7 @@ include::{specDir}definitions/StatusPartitions/definition-begin.adoc[opts=option
 ¦ Property ¦ ¦ Schema
 
 a¦ *active* +
-_optional_
+optional
 a¦ [markdown]
 --
 Indicates whether this partition is active.
@@ -2406,7 +2406,7 @@ Indicates whether this partition is active.
 {blank}
 a¦ Boolean
 a¦ *activeNodeId* +
-_optional_
+optional
 a¦ [markdown]
 --
 The ID of the node where this partition is currently active.
@@ -2417,7 +2417,7 @@ The ID of the node where this partition is currently active.
 {blank}
 a¦ String
 a¦ *iodeviceNum* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of the IO Device where this partition is located.
@@ -2428,7 +2428,7 @@ The number of the IO Device where this partition is located.
 {blank}
 a¦ Integer
 a¦ *nodeId* +
-_optional_
+optional
 a¦ [markdown]
 --
 The ID of the node where this partition originated.
@@ -2439,7 +2439,7 @@ The ID of the node where this partition originated.
 {blank}
 a¦ String
 a¦ *partitionId* +
-_optional_
+optional
 a¦ [markdown]
 --
 The ID of this partition.
@@ -2450,7 +2450,7 @@ The ID of this partition.
 {blank}
 a¦ Integer
 a¦ *path* +
-_optional_
+optional
 a¦ [markdown]
 --
 The path of the IO Device where this partition is located.
@@ -2461,7 +2461,7 @@ The path of the IO Device where this partition is located.
 {blank}
 a¦ String
 a¦ *pendingActivation* +
-_optional_
+optional
 a¦ [markdown]
 --
 Indicates whether this partition is waiting to become active.
@@ -2521,7 +2521,7 @@ include::{specDir}definitions/StatusTopology/definition-begin.adoc[opts=optional
 ¦ Property ¦ ¦ Schema
 
 a¦ *balanced* +
-_optional_
+optional
 a¦ [markdown]
 --
 Indicates whether the Analytics nodes are balanced.
@@ -2532,7 +2532,7 @@ Indicates whether the Analytics nodes are balanced.
 {blank}
 a¦ Boolean
 a¦ *ccNodeId* +
-_optional_
+optional
 a¦ [markdown]
 --
 The ID of the cluster controller node.
@@ -2543,7 +2543,7 @@ The ID of the cluster controller node.
 {blank}
 a¦ String
 a¦ *metadataPartition* +
-_optional_
+optional
 a¦ [markdown]
 --
 The ID of the metadata partition.
@@ -2554,7 +2554,7 @@ The ID of the metadata partition.
 {blank}
 a¦ Integer
 a¦ *numReplicas* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of Analytics replicas.
@@ -2565,7 +2565,7 @@ The number of Analytics replicas.
 {blank}
 a¦ Integer
 a¦ *revision* +
-_optional_
+optional
 a¦ [markdown]
 --
 The revision number of the partition topology.
@@ -2576,7 +2576,7 @@ The revision number of the partition topology.
 {blank}
 a¦ Integer
 a¦ *version* +
-_optional_
+optional
 a¦ [markdown]
 --
 The version number of the partition topology.
@@ -2587,7 +2587,7 @@ The version number of the partition topology.
 {blank}
 a¦ Integer
 a¦ *partitions* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of objects, each giving information about the state of one Analytics partition.
@@ -2640,7 +2640,7 @@ include::{specDir}definitions/StatusTopologyState/definition-begin.adoc[opts=opt
 ¦ Property ¦ ¦ Schema
 
 a¦ *id* +
-_optional_
+optional
 a¦ [markdown]
 --
 The partition ID.
@@ -2651,7 +2651,7 @@ The partition ID.
 {blank}
 a¦ Integer
 a¦ *master* +
-_optional_
+optional
 a¦ [markdown]
 --
 The ID of the node where the partition is currently active.
@@ -2662,7 +2662,7 @@ The ID of the node where the partition is currently active.
 {blank}
 a¦ String
 a¦ *origin* +
-_optional_
+optional
 a¦ [markdown]
 --
 The ID of the node where the partition originated.
@@ -2673,7 +2673,7 @@ The ID of the node where the partition originated.
 {blank}
 a¦ String
 a¦ *replicas* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of objects, each giving information about the state of one Analytics replica.
@@ -2726,7 +2726,7 @@ include::{specDir}definitions/StatusTopologyStateReplicas/definition-begin.adoc[
 ¦ Property ¦ ¦ Schema
 
 a¦ *location* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name or IP address of the node where this replica is located, including the Analytics replication port.
@@ -2737,7 +2737,7 @@ The name or IP address of the node where this replica is located, including the 
 {blank}
 a¦ String
 a¦ *nodeId* +
-_optional_
+optional
 a¦ [markdown]
 --
 The ID of the node where this replica is located.
@@ -2748,7 +2748,7 @@ The ID of the node where this replica is located.
 {blank}
 a¦ String
 a¦ *status* +
-_optional_
+optional
 a¦ [markdown]
 --
 The synchronization status of the replica.
@@ -2760,7 +2760,7 @@ The synchronization status of the replica.
 {blank}
 a¦ String
 a¦ *syncProgress* +
-_optional_
+optional
 a¦ [markdown]
 --
 The percentage (fraction from 0 to 1) of synchronization progress for this replica at the current time.
@@ -2831,7 +2831,7 @@ For the [Active Requests](#return_active_requests), [Request Cancellation](#canc
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-end.adoc[opts=optional]
 
@@ -2860,7 +2860,7 @@ For the [Cluster Status](#cluster_status) operation, users must have one of the 
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/ClusterReadPoolsRead/security-scheme-end.adoc[opts=optional]
 
@@ -2887,7 +2887,7 @@ For the [Cluster Restart](#restart_cluster) and [Node Restart](#restart_node) op
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/AnalyticsManage/security-scheme-end.adoc[opts=optional]
 

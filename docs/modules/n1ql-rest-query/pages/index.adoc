@@ -31,7 +31,7 @@ This API enables you to run SQL++ queries and set request-level parameters.
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+*Version:* 8.0
 
 [discrete#host]
 = Host information
@@ -161,7 +161,7 @@ include::{specDir}paths/get_service/operation-description-end.adoc[opts=optional
 
 
 [#get_service-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -180,7 +180,7 @@ include::{specDir}paths/get_service/operation-parameters-before.adoc[opts=option
 include::{specDir}paths/get_service/operation-parameters-begin.adoc[opts=optional]
 
 [#get_service-query]
-.Query Parameters
+.icon:question[fw] Query Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -188,7 +188,7 @@ include::{specDir}paths/get_service/operation-parameters-begin.adoc[opts=optiona
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *body* +
-_required_
+required
 a¦ [markdown]
 --
 Specify the parameters in the query URL in URL-encoded format.
@@ -396,12 +396,12 @@ include::{specDir}paths/post_service/operation-description-end.adoc[opts=optiona
 
 
 [#post_service-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 * application/json
 * application/x-www-form-urlencoded
 
 [#post_service-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -420,7 +420,7 @@ include::{specDir}paths/post_service/operation-parameters-before.adoc[opts=optio
 include::{specDir}paths/post_service/operation-parameters-begin.adoc[opts=optional]
 
 [#post_service-body]
-.Body Parameter
+.icon:file-lines[fw] Body Parameter
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -428,7 +428,7 @@ include::{specDir}paths/post_service/operation-parameters-begin.adoc[opts=option
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_required_
+required
 a¦ [markdown]
 --
 
@@ -677,7 +677,7 @@ include::{specDir}definitions/Conditions/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *code* +
-_required_
+required
 a¦ [markdown]
 --
 A unique number that identifies the error or warning.
@@ -690,7 +690,7 @@ This property is always present in every condition returned in the Query REST AP
 {blank}
 a¦ Integer
 a¦ *msg* +
-_required_
+required
 a¦ [markdown]
 --
 A message describing the error or warning in detail.
@@ -701,7 +701,7 @@ This property is always present in every condition returned in the Query REST AP
 {blank}
 a¦ String
 a¦ *name* +
-_optional_
+optional
 a¦ [markdown]
 --
 Unique name that has a 1:1 mapping to the code.
@@ -715,7 +715,7 @@ The name should be fully qualified.
 {blank}
 a¦ String
 a¦ *sev* +
-_optional_
+optional
 a¦ [markdown]
 --
 One of the following SQL++ severity levels, listed in order of severity:
@@ -730,7 +730,7 @@ One of the following SQL++ severity levels, listed in order of severity:
 {blank}
 a¦ Integer
 a¦ *temp* +
-_optional_
+optional
 a¦ [markdown]
 --
 Indicates if the condition is transient &mdash; for example, the queue is full.
@@ -791,7 +791,7 @@ include::{specDir}definitions/Controls/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *scan_consistency* +
-_optional_
+optional
 a¦ [markdown]
 --
 The value of the query setting Scan Consistency used for the query.
@@ -801,7 +801,7 @@ The value of the query setting Scan Consistency used for the query.
 {blank}
 a¦ String
 a¦ *use_cbo* +
-_optional_
+optional
 a¦ [markdown]
 --
 Whether the cost-based optimizer was enabled for the query.
@@ -811,7 +811,7 @@ Whether the cost-based optimizer was enabled for the query.
 {blank}
 a¦ Boolean
 a¦ *memoryQuota* +
-_optional_
+optional
 a¦ [markdown]
 --
 The memory quota for the request, in MB.
@@ -822,7 +822,7 @@ This property is only returned if a memory quota was set for the query.
 {blank}
 a¦ Integer (unsigned)
 a¦ *stmtType* +
-_optional_
+optional
 a¦ [markdown]
 --
 The type of query statement.
@@ -876,7 +876,7 @@ include::{specDir}definitions/Credentials/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *user* +
-_optional_
+optional
 a¦ [markdown]
 --
 An identity for authentication.
@@ -888,7 +888,7 @@ Note that bucket names may be prefixed with `local:`, and admin names may be pre
 {blank}
 a¦ String
 a¦ *pass* +
-_optional_
+optional
 a¦ [markdown]
 --
 A password for authentication.
@@ -950,7 +950,7 @@ include::{specDir}definitions/Execution_Timings/definition-begin.adoc[opts=optio
 ¦ Property ¦ ¦ Schema
 
 a¦ *#operator* +
-_required_
+required
 a¦ [markdown]
 --
 Name of the operator.
@@ -961,7 +961,7 @@ Name of the operator.
 {blank}
 a¦ String
 a¦ *#stats* +
-_required_
+required
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-Statistics, opts=optional]
@@ -971,7 +971,7 @@ include::index.adoc[tag=desc-Statistics, opts=optional]
 {blank}
 a¦ xref:Statistics[]
 a¦ *~child* +
-_optional_
+optional
 a¦ [markdown]
 --
 Further nested operators, each with their own execution timings.
@@ -1030,7 +1030,7 @@ include::{specDir}definitions/Metrics/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *elapsedTime* +
-_required_
+required
 a¦ [markdown]
 --
 The total time taken for the request, that is the time from when the request was received until the results were returned.
@@ -1040,7 +1040,7 @@ The total time taken for the request, that is the time from when the request was
 {blank}
 a¦ String (duration)
 a¦ *executionTime* +
-_required_
+required
 a¦ [markdown]
 --
 The time taken for the execution of the request, that is the time from when query execution started until the results were returned.
@@ -1050,7 +1050,7 @@ The time taken for the execution of the request, that is the time from when quer
 {blank}
 a¦ String (duration)
 a¦ *resultCount* +
-_required_
+required
 a¦ [markdown]
 --
 The total number of objects in the results.
@@ -1060,7 +1060,7 @@ The total number of objects in the results.
 {blank}
 a¦ Integer (unsigned)
 a¦ *resultSize* +
-_required_
+required
 a¦ [markdown]
 --
 The total number of bytes in the results.
@@ -1070,7 +1070,7 @@ The total number of bytes in the results.
 {blank}
 a¦ Integer (unsigned)
 a¦ *naturalLanguageProcessingTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 The total time spent processing a natural language request.
@@ -1081,7 +1081,7 @@ The cumulation of authentication, collecting schema, and time waiting for the re
 {blank}
 a¦ String (duration)
 a¦ *mutationCount* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of mutations that were made during the request.
@@ -1091,7 +1091,7 @@ The number of mutations that were made during the request.
 {blank}
 a¦ Integer (unsigned)
 a¦ *sortCount* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of objects that were sorted.
@@ -1104,7 +1104,7 @@ If a query includes ORDER BY, LIMIT, or OFFSET clauses, an application can use t
 {blank}
 a¦ Integer (unsigned)
 a¦ *usedMemory* +
-_optional_
+optional
 a¦ [markdown]
 --
 The amount of document memory used to execute the request.
@@ -1115,7 +1115,7 @@ This property is only returned if a memory quota was set for the query.
 {blank}
 a¦ Integer (unsigned)
 a¦ *errorCount* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of errors that occurred during the request.
@@ -1125,7 +1125,7 @@ The number of errors that occurred during the request.
 {blank}
 a¦ Integer (unsigned)
 a¦ *warningCount* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of warnings that occurred during the request.
@@ -1135,7 +1135,7 @@ The number of warnings that occurred during the request.
 {blank}
 a¦ Integer (unsigned)
 a¦ *sessionMemory* +
-_optional_
+optional
 a¦ [markdown]
 --
 The memory session size for the request, in bytes.
@@ -1201,7 +1201,7 @@ include::{specDir}definitions/Profile/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *requestTime* +
-_required_
+required
 a¦ [markdown]
 --
 Timestamp when the query was received.
@@ -1211,7 +1211,7 @@ Timestamp when the query was received.
 {blank}
 a¦ Date (date-time)
 a¦ *servicingHost* +
-_required_
+required
 a¦ [markdown]
 --
 IP address and port number of the node where the query was executed.
@@ -1221,7 +1221,7 @@ IP address and port number of the node where the query was executed.
 {blank}
 a¦ String
 a¦ *phaseCounts* +
-_required_
+required
 a¦ [markdown]
 --
 Count of documents processed at selective phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
@@ -1232,7 +1232,7 @@ Count of documents processed at selective phases involved in the query execution
 {blank}
 a¦ Object
 a¦ *phaseOperators* +
-_required_
+required
 a¦ [markdown]
 --
 Indicates the numbers of each kind of query operator involved in different phases of the query processing.
@@ -1249,7 +1249,7 @@ This is in essence the count of all the operators in the `executionTimings` obje
 {blank}
 a¦ Object
 a¦ *phaseTimes* +
-_required_
+required
 a¦ [markdown]
 --
 Cumulative execution times for various phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
@@ -1260,7 +1260,7 @@ Cumulative execution times for various phases involved in the query execution, s
 {blank}
 a¦ Object
 a¦ *executionTimings* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-Execution_Timings, opts=optional]
@@ -1270,7 +1270,7 @@ include::index.adoc[tag=desc-Execution_Timings, opts=optional]
 {blank}
 a¦ xref:Execution_Timings[]
 a¦ *ioTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 The total sum of [servTime](#serv_time) across all operators.
@@ -1282,7 +1282,7 @@ The total sum of [servTime](#serv_time) across all operators.
 {blank}
 a¦ String (duration)
 a¦ *waitTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 The total sum of [kernTime](#kern_time) across all operators.
@@ -1294,7 +1294,7 @@ The total sum of [kernTime](#kern_time) across all operators.
 {blank}
 a¦ String (duration)
 a¦ *cpuTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 The total sum of [execTime](#exec_time) across all operators.
@@ -1306,7 +1306,7 @@ The total sum of [execTime](#exec_time) across all operators.
 {blank}
 a¦ String (duration)
 a¦ *~analysis* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of text phrases that provide a basic analysis of the request execution.
@@ -1363,7 +1363,7 @@ include::{specDir}definitions/Request/definition-begin.adoc[opts=optional]
 
 a¦ [#args]
 *args* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1386,7 +1386,7 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 a¦ Any Type array
 a¦ [#atrcollection_req]
 *atrcollection* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1416,7 +1416,7 @@ The request-level parameter overrides the node-level setting.
 a¦ String
 a¦ [#auto_execute]
 *auto_execute* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1438,7 +1438,7 @@ Refer to [Auto-Execute][auto-execute] for more information.
 a¦ Boolean
 a¦ [#client_context_id]
 *client_context_id* +
-_optional_
+optional
 a¦ [markdown]
 --
 A piece of data supplied by the client that is echoed in the response, if present.
@@ -1453,7 +1453,7 @@ SQL++ is agnostic about the content of this parameter; it is just echoed in the 
 a¦ String
 a¦ [#compression]
 *compression* +
-_optional_
+optional
 a¦ [markdown]
 --
 Compression format to use for response data on the wire.
@@ -1469,7 +1469,7 @@ Values are case-insensitive.
 a¦ String
 a¦ [#controls_req]
 *controls* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1496,7 +1496,7 @@ The request-level parameter overrides the node-level setting.
 a¦ Boolean
 a¦ [#creds]
 *creds* +
-_optional_
+optional
 a¦ [markdown]
 --
 Specifies the login credentials.
@@ -1514,7 +1514,7 @@ If credentials are supplied in the request header, then HTTP Basic Authenticatio
 a¦ xref:Credentials[] array
 a¦ [#durability_level]
 *durability_level* +
-_optional_
+optional
 a¦ [markdown]
 --
 The level of [durability][durability] for mutations produced by the request.
@@ -1538,7 +1538,7 @@ Set the durability level to `"none"` or `""` to specify no durability.
 a¦ String
 a¦ [#encoded_plan]
 *encoded_plan* +
-_optional_
+optional
 a¦ [markdown]
 --
 In clusters running Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
@@ -1550,7 +1550,7 @@ It is included for compatibility with previous versions.
 a¦ String
 a¦ [#encoding]
 *encoding* +
-_optional_
+optional
 a¦ [markdown]
 --
 Desired character encoding for the query results.
@@ -1564,7 +1564,7 @@ Only possible value is `UTF-8` and is case-insensitive.
 a¦ String
 a¦ [#format]
 *format* +
-_optional_
+optional
 a¦ [markdown]
 --
 Desired format for the query results.
@@ -1580,7 +1580,7 @@ Values are case-insensitive.
 a¦ String
 a¦ [#kvtimeout]
 *kvtimeout* +
-_optional_
+optional
 a¦ [markdown]
 --
 The approximate time to wait for a KV get operation before timing out.
@@ -1610,7 +1610,7 @@ When disabled, no timeout is applied and the KV operation runs for however long 
 a¦ String
 a¦ [#max_parallelism_req]
 *max_parallelism* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1644,7 +1644,7 @@ To enable queries to run in parallel, you must specify the cluster-level `queryM
 a¦ Integer (int32)
 a¦ [#memory_quota_req]
 *memory_quota* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1683,7 +1683,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 a¦ Integer (int32)
 a¦ [#metrics]
 *metrics* +
-_optional_
+optional
 a¦ [markdown]
 --
 Specifies that metrics should be returned with query results.
@@ -1696,7 +1696,7 @@ Specifies that metrics should be returned with query results.
 a¦ Boolean
 a¦ [#namespace]
 *namespace* +
-_optional_
+optional
 a¦ [markdown]
 --
 Specifies the namespace to use.
@@ -1709,7 +1709,7 @@ Currently, only the `default` namespace is available.
 a¦ String
 a¦ [#natural]
 *natural* +
-_optional_
+optional
 a¦ [.status]##Couchbase Server 8.0##
 
 [markdown]
@@ -1737,7 +1737,7 @@ If you don't specify all four parameters, the Query Service returns an error.
 a¦ String
 a¦ [#natural_cred]
 *natural_cred* +
-_optional_
+optional
 a¦ [.status]##Couchbase Server 8.0##
 
 [markdown]
@@ -1760,7 +1760,7 @@ If you don't specify all four parameters, the Query Service returns an error.
 a¦ String (password)
 a¦ [#natural_orgid]
 *natural_orgid* +
-_optional_
+optional
 a¦ [.status]##Couchbase Server 8.0##
 
 [markdown]
@@ -1781,7 +1781,7 @@ If you don't specify all four parameters, the Query Service returns an error.
 a¦ UUID (uuid)
 a¦ [#natural_context]
 *natural_context* +
-_optional_
+optional
 a¦ [.status]##Couchbase Server 8.0##
 
 [markdown]
@@ -1815,7 +1815,7 @@ If you don't specify all four parameters, the Query Service returns an error.
 a¦ String
 a¦ [#natural_output]
 *natural_output* +
-_optional_
+optional
 a¦ [.status]##Couchbase Server 8.0##
 
 [markdown]
@@ -1844,7 +1844,7 @@ This parameter is available in clusters running Couchbase Server 8.0 and later.
 a¦ String
 a¦ [#numatrs_req]
 *numatrs* +
-_optional_
+optional
 a¦ [markdown]
 --
 Reserved for future use.
@@ -1856,7 +1856,7 @@ This parameter is ignored and has no effect.
 a¦ Integer (int32)
 a¦ [#pipeline_batch_req]
 *pipeline_batch* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1884,7 +1884,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 a¦ Integer (int32)
 a¦ [#pipeline_cap_req]
 *pipeline_cap* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1912,7 +1912,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 a¦ Integer (int32)
 a¦ [#prepared]
 *prepared* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1935,7 +1935,7 @@ If both `prepared` and `statement` are present and non-empty, an error is return
 a¦ String
 a¦ [#preserve_expiry]
 *preserve_expiry* +
-_optional_
+optional
 a¦ [markdown]
 --
 Specifies whether documents should keep their current expiration setting when modified by a DML statement.
@@ -1955,7 +1955,7 @@ Not supported for statements in a transaction.
 a¦ Boolean
 a¦ [#pretty_req]
 *pretty* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1978,7 +1978,7 @@ The request-level parameter overrides the node-level setting.
 a¦ Boolean
 a¦ [#profile_req]
 *profile* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -2015,7 +2015,7 @@ The request-level parameter overrides the node-level setting.
 a¦ String
 a¦ [#query_context]
 *query_context* +
-_optional_
+optional
 a¦ [markdown]
 --
 Specifies the namespace, bucket, and scope used to resolve partial keyspace references within the request.
@@ -2032,7 +2032,7 @@ If the namespace name is omitted, the default namespace in the current session i
 a¦ String
 a¦ [#readonly]
 *readonly* +
-_optional_
+optional
 a¦ [markdown]
 --
 Controls whether a query can change a resulting recordset.
@@ -2056,7 +2056,7 @@ When using GET requests, it's best to set `readonly` to `true`.
 a¦ Boolean
 a¦ [#scan_cap_req]
 *scan_cap* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -2088,7 +2088,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 a¦ Integer (int32)
 a¦ [#scan_consistency]
 *scan_consistency* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -2137,7 +2137,7 @@ Refer to [Transactional Scan Consistency][transactional-scan-consistency] for de
 a¦ String
 a¦ [#scan_vector]
 *scan_vector* +
-_optional_
+optional
 a¦ [markdown]
 --
 _Required_ if `scan_consistency` is `at_plus` and `scan_vectors` not provided.
@@ -2165,7 +2165,7 @@ For queries referencing multiple keyspaces, use `scan_vectors`.
 a¦ Object
 a¦ [#scan_vectors]
 *scan_vectors* +
-_optional_
+optional
 a¦ [markdown]
 --
 _Required_ if `scan_consistency` is `at_plus` and `scan_vector` not provided.
@@ -2181,7 +2181,7 @@ The scan vectors can be Full or Sparse.
 a¦ Object
 a¦ [#scan_wait]
 *scan_wait* +
-_optional_
+optional
 a¦ [markdown]
 --
 Can be supplied with `scan_consistency` values of `request_plus`, `statement_plus` and `at_plus`.
@@ -2211,7 +2211,7 @@ Specify `0` or a negative integer to disable.
 a¦ String (duration)
 a¦ [#signature]
 *signature* +
-_optional_
+optional
 a¦ [markdown]
 --
 Include a header for the results schema in the response.
@@ -2224,7 +2224,7 @@ Include a header for the results schema in the response.
 a¦ Boolean
 a¦ [#sort_projection]
 *sort_projection* +
-_optional_
+optional
 a¦ [markdown]
 --
 If `true`, causes statement projection terms to be sorted alphabetically.
@@ -2239,7 +2239,7 @@ If `false` (the default), statement projection terms are returned in the order s
 a¦ Boolean
 a¦ [#statement]
 *statement* +
-_optional_
+optional
 a¦ [markdown]
 --
 _Required_ if `prepared` or `natural` not provided.
@@ -2263,7 +2263,7 @@ This restriction does not apply when specifying the request parameters in JSON f
 a¦ String
 a¦ [#timeout_req]
 *timeout* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -2310,7 +2310,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 a¦ String (duration)
 a¦ [#txdata]
 *txdata* +
-_optional_
+optional
 a¦ [markdown]
 --
 Transaction data.
@@ -2322,7 +2322,7 @@ For internal use only.
 a¦ Object
 a¦ [#txid]
 *txid* +
-_optional_
+optional
 a¦ [markdown]
 --
 _Required_ for statements within a transaction.
@@ -2341,7 +2341,7 @@ The transaction must be active and non-expired.
 a¦ UUID (UUID)
 a¦ [#tximplicit]
 *tximplicit* +
-_optional_
+optional
 a¦ [markdown]
 --
 Specifies that a DML statement is a singleton transaction.
@@ -2360,7 +2360,7 @@ If the `txid` request-level parameter is set, the `tximplicit` parameter is igno
 a¦ Boolean
 a¦ [#txstmtnum]
 *txstmtnum* +
-_optional_
+optional
 a¦ [markdown]
 --
 Transaction statement number.
@@ -2374,7 +2374,7 @@ If the transaction statement number is lower than the transaction statement numb
 a¦ Integer (int32)
 a¦ [#txtimeout_req]
 *txtimeout* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -2425,7 +2425,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 a¦ String (duration)
 a¦ [#use_cbo_req]
 *use_cbo* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -2453,7 +2453,7 @@ When you change the cluster-level setting, the node-level setting is overwritten
 a¦ Boolean
 a¦ [#use_fts]
 *use_fts* +
-_optional_
+optional
 a¦ [.edition]##{enterprise}##
 
 [markdown]
@@ -2482,7 +2482,7 @@ Refer to [Flex Indexes][flex-indexes] for more information.
 a¦ Boolean
 a¦ [#use_replica_req]
 *use_replica* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -2529,8 +2529,8 @@ When you change the cluster-level setting, the node-level setting is overwritten
 a¦ String
 a¦ [#identifier]
 *<$identifier>* +
-_additional +
-property_
+additional +
+property
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -2559,7 +2559,7 @@ Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for d
 --
 
 [%hardbreaks]
-*Nullable:* `true`
+*Nullable:* yes
 *Example:* `LAX`
 {blank}
 a¦ Any Type
@@ -2613,7 +2613,7 @@ include::{specDir}definitions/Response/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *requestID* +
-_optional_
+optional
 a¦ [markdown]
 --
 A unique identifier for the response.
@@ -2623,7 +2623,7 @@ A unique identifier for the response.
 {blank}
 a¦ UUID (UUID)
 a¦ *clientContextID* +
-_optional_
+optional
 a¦ [markdown]
 --
 The client context ID of the request, if one was supplied &mdash; see `client_context_id` in the request parameters.
@@ -2633,7 +2633,7 @@ The client context ID of the request, if one was supplied &mdash; see `client_co
 {blank}
 a¦ String
 a¦ *generated_statement* +
-_optional_
+optional
 a¦ [.status]##Couchbase Server 8.0##
 
 [markdown]
@@ -2646,7 +2646,7 @@ The generated statement, if the request was a natural language prompt.
 {blank}
 a¦ String
 a¦ *signature* +
-_optional_
+optional
 a¦ [markdown]
 --
 The schema of the results.
@@ -2658,7 +2658,7 @@ Present only when the query completes successfully.
 {blank}
 a¦ Object
 a¦ *results* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of all the objects returned by the query.
@@ -2669,7 +2669,7 @@ An object can be any JSON value.
 {blank}
 a¦ Any Type array
 a¦ *status* +
-_optional_
+optional
 a¦ [markdown]
 --
 The status of the request.
@@ -2680,7 +2680,7 @@ The status of the request.
 {blank}
 a¦ String
 a¦ *errors* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of 0 or more error objects.
@@ -2691,7 +2691,7 @@ If an error occurred during processing of the request, it will be represented by
 {blank}
 a¦ xref:Conditions[] array
 a¦ *warnings* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of 0 or more warning objects.
@@ -2702,7 +2702,7 @@ If a warning occurred during processing of the request, it is represented by a w
 {blank}
 a¦ xref:Conditions[] array
 a¦ *metrics* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-Metrics, opts=optional]
@@ -2712,7 +2712,7 @@ include::index.adoc[tag=desc-Metrics, opts=optional]
 {blank}
 a¦ xref:Metrics[]
 a¦ *controls* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-Controls, opts=optional]
@@ -2722,7 +2722,7 @@ include::index.adoc[tag=desc-Controls, opts=optional]
 {blank}
 a¦ xref:Controls[]
 a¦ *profile* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-Profile, opts=optional]
@@ -2781,7 +2781,7 @@ include::{specDir}definitions/Statistics/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *#itemsIn* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of input documents to the operator.
@@ -2792,7 +2792,7 @@ Number of input documents to the operator.
 {blank}
 a¦ Integer (int32)
 a¦ *#itemsOut* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of output documents after the operator processing.
@@ -2803,7 +2803,7 @@ Number of output documents after the operator processing.
 {blank}
 a¦ Integer (int32)
 a¦ *#phaseSwitches* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of switches between executing, waiting for services, or waiting for the goroutine scheduler.
@@ -2815,7 +2815,7 @@ Number of switches between executing, waiting for services, or waiting for the g
 a¦ Integer (int32)
 a¦ [#exec_time]
 *execTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 Time spent executing the operator code inside SQL++ query engine.
@@ -2827,7 +2827,7 @@ Time spent executing the operator code inside SQL++ query engine.
 a¦ String (duration)
 a¦ [#kern_time]
 *kernTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 Time spent waiting to be scheduled for CPU time.
@@ -2839,7 +2839,7 @@ Time spent waiting to be scheduled for CPU time.
 a¦ String (duration)
 a¦ [#serv_time]
 *servTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 Time spent waiting for another service, such as index or data.
@@ -2905,7 +2905,7 @@ This method can only be used to provide a single credential.
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/Header/security-scheme-end.adoc[opts=optional]
 
@@ -2930,8 +2930,8 @@ This is the only method that can provide multiple credentials for a request.
 
 .API Key
 [%hardbreaks]
-__Key parameter__ : creds
-__Key in__ : query 
+*Key parameter:* creds
+*Key in:* query 
 
 include::{specDir}security/Parameter/security-scheme-end.adoc[opts=optional]
 

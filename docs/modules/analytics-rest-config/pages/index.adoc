@@ -32,7 +32,7 @@ This API enables you to configure Analytics nodes and clusters.
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+*Version:* 8.0
 
 [discrete#host]
 = Host information
@@ -161,7 +161,7 @@ include::{specDir}paths/get_node/operation-description-end.adoc[opts=optional]
 
 
 [#get_node-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -290,7 +290,7 @@ include::{specDir}paths/get_service/operation-description-end.adoc[opts=optional
 
 
 [#get_service-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -425,12 +425,12 @@ include::{specDir}paths/put_node/operation-description-end.adoc[opts=optional]
 
 
 [#put_node-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 * application/json
 * application/x-www-form-urlencoded
 
 [#put_node-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -449,7 +449,7 @@ include::{specDir}paths/put_node/operation-parameters-before.adoc[opts=optional]
 include::{specDir}paths/put_node/operation-parameters-begin.adoc[opts=optional]
 
 [#put_node-body]
-.Body Parameter
+.icon:file-lines[fw] Body Parameter
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -457,7 +457,7 @@ include::{specDir}paths/put_node/operation-parameters-begin.adoc[opts=optional]
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -604,12 +604,12 @@ include::{specDir}paths/put_service/operation-description-end.adoc[opts=optional
 
 
 [#put_service-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 * application/json
 * application/x-www-form-urlencoded
 
 [#put_service-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -628,7 +628,7 @@ include::{specDir}paths/put_service/operation-parameters-before.adoc[opts=option
 include::{specDir}paths/put_service/operation-parameters-begin.adoc[opts=optional]
 
 [#put_service-body]
-.Body Parameter
+.icon:file-lines[fw] Body Parameter
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -636,7 +636,7 @@ include::{specDir}paths/put_service/operation-parameters-begin.adoc[opts=optiona
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -809,7 +809,7 @@ include::{specDir}definitions/Errors/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *error* +
-_required_
+required
 a¦ [markdown]
 --
 An error message.
@@ -862,7 +862,7 @@ include::{specDir}definitions/Node/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *jvmArgs* +
-_optional_
+optional
 a¦ [markdown]
 --
 JVM arguments to pass to the Analytics Driver.
@@ -880,11 +880,11 @@ To pass arguments opaquely, you may use [Java command-line argument files][3].
 --
 
 [%hardbreaks]
-*Nullable:* `true`
+*Nullable:* yes
 {blank}
 a¦ String
 a¦ *storageBuffercacheSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 The size of memory allocated to the disk buffer cache.
@@ -897,7 +897,7 @@ The default is 1/4 of the allocated Analytics Service memory.
 {blank}
 a¦ Integer
 a¦ *storageMemorycomponentGlobalbudget* +
-_optional_
+optional
 a¦ [markdown]
 --
 The size of memory allocated to the memory components.
@@ -953,7 +953,7 @@ include::{specDir}definitions/Service/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *activeMemoryGlobalBudget* +
-_optional_
+optional
 a¦ [markdown]
 --
 The memory budget (in bytes) for the active runtime.
@@ -964,7 +964,7 @@ The memory budget (in bytes) for the active runtime.
 {blank}
 a¦ Integer (int32)
 a¦ *activeStopTimeout* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum time (in seconds) to wait for a graceful stop of an active runtime.
@@ -975,7 +975,7 @@ The maximum time (in seconds) to wait for a graceful stop of an active runtime.
 {blank}
 a¦ Integer (int32)
 a¦ *activeSuspendTimeout* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum time (in seconds) to wait for a graceful suspend of an active runtime.
@@ -986,7 +986,7 @@ The maximum time (in seconds) to wait for a graceful suspend of an active runtim
 {blank}
 a¦ Integer (int32)
 a¦ *analyticsBroadcastDcpStateMutationCount* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of processed mutations after which the DCP state is broadcast to storage
@@ -997,7 +997,7 @@ The number of processed mutations after which the DCP state is broadcast to stor
 {blank}
 a¦ Integer (int32)
 a¦ *analyticsHttpRequestQueueSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum number of HTTP requests to queue pending ability to execute.
@@ -1008,7 +1008,7 @@ The maximum number of HTTP requests to queue pending ability to execute.
 {blank}
 a¦ Integer (int32)
 a¦ *analyticsHttpThreadCount* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of threads to service HTTP requests.
@@ -1019,18 +1019,18 @@ The number of threads to service HTTP requests.
 {blank}
 a¦ Integer (int32)
 a¦ *bindAddress* +
-_optional_
+optional
 a¦ [markdown]
 --
 The bind address to use.
 --
 
 [%hardbreaks]
-*Nullable:* `true`
+*Nullable:* yes
 {blank}
 a¦ String
 a¦ *bindToHost* +
-_optional_
+optional
 a¦ [markdown]
 --
 Bind to configured hostname instead of wildcard address.
@@ -1041,7 +1041,7 @@ Bind to configured hostname instead of wildcard address.
 {blank}
 a¦ Boolean
 a¦ *clusterConnectRetries* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of attempts to contact CC before giving up.
@@ -1052,7 +1052,7 @@ Number of attempts to contact CC before giving up.
 {blank}
 a¦ Integer (int32)
 a¦ *collectDcpStateFromNodesTimeout* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum time to wait to collect DCP state from all nodes in seconds.
@@ -1063,7 +1063,7 @@ The maximum time to wait to collect DCP state from all nodes in seconds.
 {blank}
 a¦ Integer (int32)
 a¦ *compilerFramesize* +
-_optional_
+optional
 a¦ [markdown]
 --
 The page size (in bytes) for computation.
@@ -1074,7 +1074,7 @@ The page size (in bytes) for computation.
 {blank}
 a¦ Integer (int32)
 a¦ *compilerGroupmemory* +
-_optional_
+optional
 a¦ [markdown]
 --
 The memory budget (in bytes) for a group by operator instance in a partition.
@@ -1085,7 +1085,7 @@ The memory budget (in bytes) for a group by operator instance in a partition.
 {blank}
 a¦ Integer (int32)
 a¦ *compilerJoinmemory* +
-_optional_
+optional
 a¦ [markdown]
 --
 The memory budget (in bytes) for a join operator instance in a partition.
@@ -1096,7 +1096,7 @@ The memory budget (in bytes) for a join operator instance in a partition.
 {blank}
 a¦ Integer (int32)
 a¦ *compilerParallelism* +
-_optional_
+optional
 a¦ [markdown]
 --
 The degree of parallelism for query execution. Zero means to use the storage parallelism as the query execution parallelism, while other integer values dictate the number of query execution parallel partitions. The system will fall back to use the number of all available CPU cores in the cluster as the degree of parallelism if the number set by a user is too large or too small.
@@ -1108,7 +1108,7 @@ The degree of parallelism for query execution. Zero means to use the storage par
 {blank}
 a¦ Integer (int32)
 a¦ *compilerSortParallel* +
-_optional_
+optional
 a¦ [markdown]
 --
 Enables or disables full parallel sort.
@@ -1119,7 +1119,7 @@ Enables or disables full parallel sort.
 {blank}
 a¦ Boolean
 a¦ *compilerSortmemory* +
-_optional_
+optional
 a¦ [markdown]
 --
 The memory budget (in bytes) for a sort operator instance in a partition.
@@ -1130,7 +1130,7 @@ The memory budget (in bytes) for a sort operator instance in a partition.
 {blank}
 a¦ Integer (int32)
 a¦ *compilerWindowmemory* +
-_optional_
+optional
 a¦ [markdown]
 --
 The memory budget (in bytes) for a window operator instance in a partition.
@@ -1141,7 +1141,7 @@ The memory budget (in bytes) for a window operator instance in a partition.
 {blank}
 a¦ Integer (int32)
 a¦ *coresMultiplier* +
-_optional_
+optional
 a¦ [markdown]
 --
 The factor to multiply by the number of cores to determine maximum query concurrent execution level.
@@ -1152,7 +1152,7 @@ The factor to multiply by the number of cores to determine maximum query concurr
 {blank}
 a¦ Integer (int32)
 a¦ *dcpBufferAckWatermark* +
-_optional_
+optional
 a¦ [markdown]
 --
 The percentage of DCP connection buffer size at which to acknowledge bytes consumed to DCP producer.
@@ -1166,7 +1166,7 @@ The percentage of DCP connection buffer size at which to acknowledge bytes consu
 {blank}
 a¦ Integer (int32)
 a¦ *dcpChannelReconnectRemoteIdleSeconds* +
-_optional_
+optional
 a¦ [markdown]
 --
 Reconnect remote DCP channels that are idle for the specified number of seconds to ensure permissions have not been lost. A value of 0 disables reconnects on idle.
@@ -1178,7 +1178,7 @@ Reconnect remote DCP channels that are idle for the specified number of seconds 
 {blank}
 a¦ Integer (int32)
 a¦ *dcpConnectionBufferSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 DCP connection buffer size (in bytes).
@@ -1191,7 +1191,7 @@ Otherwise, the default is 1% of the JVM maximum heap size divided by the number 
 {blank}
 a¦ Integer (int32)
 a¦ *deadlockWatchdogHaltDelaySeconds* +
-_optional_
+optional
 a¦ [markdown]
 --
 The delay (in seconds) to wait for graceful shutdown due to deadlocked threads, before halting.
@@ -1202,7 +1202,7 @@ The delay (in seconds) to wait for graceful shutdown due to deadlocked threads, 
 {blank}
 a¦ Integer (int32)
 a¦ *deadlockWatchdogPollSeconds* +
-_optional_
+optional
 a¦ [markdown]
 --
 The frequency (in seconds) to scan for deadlocked threads.
@@ -1213,7 +1213,7 @@ The frequency (in seconds) to scan for deadlocked threads.
 {blank}
 a¦ Integer (int32)
 a¦ *jobHistorySize* +
-_optional_
+optional
 a¦ [markdown]
 --
 Limits the number of historical jobs remembered by the system to the specified value.
@@ -1224,7 +1224,7 @@ Limits the number of historical jobs remembered by the system to the specified v
 {blank}
 a¦ Integer (int32)
 a¦ *jobQueueCapacity* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum number of jobs to queue before rejecting new jobs.
@@ -1235,7 +1235,7 @@ The maximum number of jobs to queue before rejecting new jobs.
 {blank}
 a¦ Integer (int32)
 a¦ *jvmArgs* +
-_optional_
+optional
 a¦ [markdown]
 --
 JVM arguments to pass to the Analytics Driver.
@@ -1250,11 +1250,11 @@ To pass arguments opaquely, you may use [Java command-line argument files][3].
 --
 
 [%hardbreaks]
-*Nullable:* `true`
+*Nullable:* yes
 {blank}
 a¦ String
 a¦ *logLevel* +
-_optional_
+optional
 a¦ [markdown]
 --
 The logging level.
@@ -1265,7 +1265,7 @@ The logging level.
 {blank}
 a¦ String
 a¦ *maxWebRequestSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum accepted web request size in bytes.
@@ -1276,7 +1276,7 @@ The maximum accepted web request size in bytes.
 {blank}
 a¦ Integer (int32)
 a¦ *netBufferCount* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of network buffers per input/output channel.
@@ -1287,7 +1287,7 @@ Number of network buffers per input/output channel.
 {blank}
 a¦ Integer (int32)
 a¦ *netThreadCount* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of threads to use for Network I/O.
@@ -1298,7 +1298,7 @@ Number of threads to use for Network I/O.
 {blank}
 a¦ Integer (int32)
 a¦ *rebalancePullDatasetSizeFrequency* +
-_optional_
+optional
 a¦ [markdown]
 --
 The frequency at which the Analytics collection size is pulled from nodes during rebalance in seconds.
@@ -1309,7 +1309,7 @@ The frequency at which the Analytics collection size is pulled from nodes during
 {blank}
 a¦ Integer (int32)
 a¦ *remoteLinkConnectTimeoutSeconds* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum time (in seconds) to wait for a remote link connection to establish. A value of 0 disables timeout; a value of -1 sets timeout to the system default.
@@ -1321,7 +1321,7 @@ The maximum time (in seconds) to wait for a remote link connection to establish.
 {blank}
 a¦ Integer (int32)
 a¦ *remoteLinkSocketTimeoutSeconds* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum time (in seconds) to wait after establishing the connection for remote links; the maximum time of inactivity between two data packets. A value of 0 disables timeout; a value of -1 sets timeout to the system default.
@@ -1333,7 +1333,7 @@ The maximum time (in seconds) to wait after establishing the connection for remo
 {blank}
 a¦ Integer (int32)
 a¦ *requestsArchiveSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum number of archived requests to maintain.
@@ -1344,7 +1344,7 @@ The maximum number of archived requests to maintain.
 {blank}
 a¦ Integer (int32)
 a¦ *resultSweepThreshold* +
-_optional_
+optional
 a¦ [markdown]
 --
 The duration within which an instance of the result cleanup should be invoked in milliseconds.
@@ -1355,7 +1355,7 @@ The duration within which an instance of the result cleanup should be invoked in
 {blank}
 a¦ Integer (int32)
 a¦ *resultTtl* +
-_optional_
+optional
 a¦ [markdown]
 --
 Limits the amount of time results for asynchronous jobs should be retained by the system in milliseconds.
@@ -1366,7 +1366,7 @@ Limits the amount of time results for asynchronous jobs should be retained by th
 {blank}
 a¦ Integer (int32)
 a¦ *storageBuffercacheMaxopenfiles* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum number of open files in the buffer cache.
@@ -1377,7 +1377,7 @@ The maximum number of open files in the buffer cache.
 {blank}
 a¦ Integer (int32)
 a¦ *storageBuffercachePagesize* +
-_optional_
+optional
 a¦ [markdown]
 --
 The page size in bytes for pages in the buffer cache.
@@ -1388,7 +1388,7 @@ The page size in bytes for pages in the buffer cache.
 {blank}
 a¦ Integer (int32)
 a¦ *storageCompressionBlock* +
-_optional_
+optional
 a¦ [markdown]
 --
 The default compression scheme for the storage.
@@ -1399,7 +1399,7 @@ The default compression scheme for the storage.
 {blank}
 a¦ String
 a¦ *storageMemorycomponentNumcomponents* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of memory components to be used per LSM index.
@@ -1410,7 +1410,7 @@ The number of memory components to be used per LSM index.
 {blank}
 a¦ Integer (int32)
 a¦ *storageMemorycomponentPagesize* +
-_optional_
+optional
 a¦ [markdown]
 --
 The page size in bytes for pages allocated to memory components.
@@ -1421,7 +1421,7 @@ The page size in bytes for pages allocated to memory components.
 {blank}
 a¦ Integer (int32)
 a¦ *storageWriteRateLimit* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum disk write rate for each storage partition in bytes per second. Disabled if the provided value is less than or equal to 0.
@@ -1433,7 +1433,7 @@ The maximum disk write rate for each storage partition in bytes per second. Disa
 {blank}
 a¦ Long (int64)
 a¦ *threaddumpFrequencySeconds* +
-_optional_
+optional
 a¦ [markdown]
 --
 The frequency (in seconds) at which to log diagnostic thread dumps.
@@ -1444,7 +1444,7 @@ The frequency (in seconds) at which to log diagnostic thread dumps.
 {blank}
 a¦ Integer (int32)
 a¦ *threaddumpLogLevel* +
-_optional_
+optional
 a¦ [markdown]
 --
 The log level at which to emit diagnostic thread dumps.
@@ -1455,7 +1455,7 @@ The log level at which to emit diagnostic thread dumps.
 {blank}
 a¦ String
 a¦ *traceCategories* +
-_optional_
+optional
 a¦ [markdown]
 --
 Categories for tracing. The default is the empty array — no categories.
@@ -1467,7 +1467,7 @@ Categories for tracing. The default is the empty array — no categories.
 {blank}
 a¦ String array
 a¦ *txnDatasetCheckpointInterval* +
-_optional_
+optional
 a¦ [markdown]
 --
 The interval (in seconds) after which an Analytics collection is considered idle and persisted to disk.
@@ -1532,7 +1532,7 @@ Users must have one of the following RBAC roles:
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/AnalyticsManage/security-scheme-end.adoc[opts=optional]
 

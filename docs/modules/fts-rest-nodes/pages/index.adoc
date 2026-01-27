@@ -31,7 +31,7 @@ This API enables you to manage and monitor your Search nodes.
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+*Version:* 8.0
 
 [discrete#host]
 = Host information
@@ -163,7 +163,7 @@ include::{specDir}paths/getClusterConfig/operation-description-end.adoc[opts=opt
 
 
 [#getClusterConfig-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -404,7 +404,7 @@ include::{specDir}paths/managerMeta/operation-description-end.adoc[opts=optional
 
 
 [#managerMeta-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -917,7 +917,7 @@ include::{specDir}paths/getDiagnostics/operation-description-end.adoc[opts=optio
 
 
 [#getDiagnostics-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -1038,7 +1038,7 @@ include::{specDir}paths/getLogs/operation-description-end.adoc[opts=optional]
 
 
 [#getLogs-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -1160,7 +1160,7 @@ include::{specDir}paths/getRuntimeArgs/operation-description-end.adoc[opts=optio
 
 
 [#getRuntimeArgs-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -1281,7 +1281,7 @@ include::{specDir}paths/getRuntimeInfo/operation-description-end.adoc[opts=optio
 
 
 [#getRuntimeInfo-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -1562,7 +1562,7 @@ include::{specDir}paths/getMemoryStats/operation-description-end.adoc[opts=optio
 
 
 [#getMemoryStats-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -1683,7 +1683,7 @@ include::{specDir}paths/getRuntimeStats/operation-description-end.adoc[opts=opti
 
 
 [#getRuntimeStats-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -1850,7 +1850,7 @@ include::{specDir}definitions/clusterConfig/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *indexDefs* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-clusterConfigIndexes, opts=optional]
@@ -1860,7 +1860,7 @@ include::index.adoc[tag=desc-clusterConfigIndexes, opts=optional]
 {blank}
 a¦ xref:clusterConfigIndexes[]
 a¦ *indexDefsCAS* +
-_optional_
+optional
 a¦ [markdown]
 --
 Search index definition concurrency (compare and swap) value.
@@ -1870,18 +1870,18 @@ Search index definition concurrency (compare and swap) value.
 {blank}
 a¦ Integer
 a¦ *indexDefsErr* +
-_optional_
+optional
 a¦ [markdown]
 --
 Search index definition error.
 --
 
 [%hardbreaks]
-*Nullable:* `true`
+*Nullable:* yes
 {blank}
 a¦ String
 a¦ *nodeDefsKnown* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-clusterConfigNodesKnown, opts=optional]
@@ -1891,7 +1891,7 @@ include::index.adoc[tag=desc-clusterConfigNodesKnown, opts=optional]
 {blank}
 a¦ xref:clusterConfigNodesKnown[]
 a¦ *nodeDefsKnownCAS* +
-_optional_
+optional
 a¦ [markdown]
 --
 Known node definition concurrency (compare and swap) value.
@@ -1901,18 +1901,18 @@ Known node definition concurrency (compare and swap) value.
 {blank}
 a¦ Integer
 a¦ *nodeDefsKnownErr* +
-_optional_
+optional
 a¦ [markdown]
 --
 Known node definition error.
 --
 
 [%hardbreaks]
-*Nullable:* `true`
+*Nullable:* yes
 {blank}
 a¦ String
 a¦ *nodeDefsWanted* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-clusterConfigNodesWanted, opts=optional]
@@ -1922,7 +1922,7 @@ include::index.adoc[tag=desc-clusterConfigNodesWanted, opts=optional]
 {blank}
 a¦ xref:clusterConfigNodesWanted[]
 a¦ *nodeDefsWantedCAS* +
-_optional_
+optional
 a¦ [markdown]
 --
 Wanted node definition concurrency (compare and swap) value.
@@ -1932,18 +1932,18 @@ Wanted node definition concurrency (compare and swap) value.
 {blank}
 a¦ Integer
 a¦ *nodeDefsWantedErr* +
-_optional_
+optional
 a¦ [markdown]
 --
 Wanted node definition error.
 --
 
 [%hardbreaks]
-*Nullable:* `true`
+*Nullable:* yes
 {blank}
 a¦ String
 a¦ *planPIndexes* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-clusterConfigPlan, opts=optional]
@@ -1953,7 +1953,7 @@ include::index.adoc[tag=desc-clusterConfigPlan, opts=optional]
 {blank}
 a¦ xref:clusterConfigPlan[]
 a¦ *planPIndexesCAS* +
-_optional_
+optional
 a¦ [markdown]
 --
 Search index partition concurrency (compare and swap) value.
@@ -1963,18 +1963,18 @@ Search index partition concurrency (compare and swap) value.
 {blank}
 a¦ Integer
 a¦ *planPIndexesErr* +
-_optional_
+optional
 a¦ [markdown]
 --
 Search index partition error.
 --
 
 [%hardbreaks]
-*Nullable:* `true`
+*Nullable:* yes
 {blank}
 a¦ String
 a¦ *status* +
-_optional_
+optional
 a¦ [markdown]
 --
 The status of the operation.
@@ -2033,7 +2033,7 @@ include::{specDir}definitions/clusterConfigIndexes/definition-begin.adoc[opts=op
 ¦ Property ¦ ¦ Schema
 
 a¦ *implVersion* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2043,7 +2043,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *indexDefs* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-GetIndexesResponseIndexesWrapper, opts=optional]
@@ -2102,7 +2102,7 @@ include::{specDir}definitions/clusterConfigNodesKnown/definition-begin.adoc[opts
 ¦ Property ¦ ¦ Schema
 
 a¦ *implVersion* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2112,7 +2112,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *nodeDefs* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-clusterConfigNodesWrapper, opts=optional]
@@ -2122,7 +2122,7 @@ include::index.adoc[tag=desc-clusterConfigNodesWrapper, opts=optional]
 {blank}
 a¦ xref:clusterConfigNodesWrapper[]
 a¦ *uuid* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2181,7 +2181,7 @@ include::{specDir}definitions/clusterConfigNodesWanted/definition-begin.adoc[opt
 ¦ Property ¦ ¦ Schema
 
 a¦ *implVersion* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2191,7 +2191,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *nodeDefs* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-clusterConfigNodesWrapper, opts=optional]
@@ -2201,7 +2201,7 @@ include::index.adoc[tag=desc-clusterConfigNodesWrapper, opts=optional]
 {blank}
 a¦ xref:clusterConfigNodesWrapper[]
 a¦ *uuid* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2260,8 +2260,8 @@ include::{specDir}definitions/clusterConfigNodesWrapper/definition-begin.adoc[op
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-_additional +
-property_
+additional +
+property
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-clusterConfigNodesWrapperNode, opts=optional]
@@ -2321,7 +2321,7 @@ include::{specDir}definitions/clusterConfigNodesWrapperNode/definition-begin.ado
 ¦ Property ¦ ¦ Schema
 
 a¦ *container* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2331,7 +2331,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *extras* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2341,7 +2341,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *hostPort* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2351,7 +2351,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *implVersion* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2361,18 +2361,18 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *tags* +
-_optional_
+optional
 a¦ [markdown]
 --
 
 --
 
 [%hardbreaks]
-*Nullable:* `true`
+*Nullable:* yes
 {blank}
 a¦ String
 a¦ *uuid* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2382,7 +2382,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *weight* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2441,7 +2441,7 @@ include::{specDir}definitions/clusterConfigPlan/definition-begin.adoc[opts=optio
 ¦ Property ¦ ¦ Schema
 
 a¦ *implVersion* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2451,7 +2451,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *planPIndexes* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-clusterConfigPlanWrapper, opts=optional]
@@ -2461,7 +2461,7 @@ include::index.adoc[tag=desc-clusterConfigPlanWrapper, opts=optional]
 {blank}
 a¦ xref:clusterConfigPlanWrapper[]
 a¦ *uuid* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2471,7 +2471,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *warnings* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-GetIndexResponsePlanWrng, opts=optional]
@@ -2530,8 +2530,8 @@ include::{specDir}definitions/clusterConfigPlanWrapper/definition-begin.adoc[opt
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-_additional +
-property_
+additional +
+property
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-GetIndexResponsePIndex, opts=optional]
@@ -2590,7 +2590,7 @@ include::{specDir}definitions/GetIndexResponsePIndex/definition-begin.adoc[opts=
 ¦ Property ¦ ¦ Schema
 
 a¦ *indexName* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of the Search index.
@@ -2601,7 +2601,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *indexParams* +
-_optional_
+optional
 a¦ [markdown]
 --
 The Search index's type identifier, type mappings, and analyzers.
@@ -2612,7 +2612,7 @@ For more information, see [Params Object](../search/search-index-params.html#par
 {blank}
 a¦ Object
 a¦ *indexType* +
-_optional_
+optional
 a¦ [markdown]
 --
 The type of the Search index.
@@ -2623,7 +2623,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *indexUUID* +
-_optional_
+optional
 a¦ [markdown]
 --
 The UUID of the Search index.
@@ -2634,7 +2634,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *name* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of the Search index partition.
@@ -2644,7 +2644,7 @@ The name of the Search index partition.
 {blank}
 a¦ String
 a¦ *nodes* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-GetIndexResponsePIndexNodesWrapper, opts=optional]
@@ -2654,7 +2654,7 @@ include::index.adoc[tag=desc-GetIndexResponsePIndexNodesWrapper, opts=optional]
 {blank}
 a¦ xref:GetIndexResponsePIndexNodesWrapper[]
 a¦ *sourceName* +
-_optional_
+optional
 a¦ [markdown]
 --
 The name of the bucket where the Search index is stored.
@@ -2665,7 +2665,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *sourceParams* +
-_optional_
+optional
 a¦ [markdown]
 --
 Advanced settings for Search index behavior.
@@ -2676,7 +2676,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ Object
 a¦ *sourcePartitions* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2686,7 +2686,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *sourceType* +
-_optional_
+optional
 a¦ [markdown]
 --
 The type of the bucket where the Search index is stored.
@@ -2697,7 +2697,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *sourceUUID* +
-_optional_
+optional
 a¦ [markdown]
 --
 The UUID of the bucket where the Search index is stored.
@@ -2708,7 +2708,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *uuid* +
-_optional_
+optional
 a¦ [markdown]
 --
 The UUID of the Search index partition.
@@ -2767,8 +2767,8 @@ include::{specDir}definitions/GetIndexResponsePIndexNodesWrapper/definition-begi
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-_additional +
-property_
+additional +
+property
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-GetIndexResponsePIndexNodesWrapperNode, opts=optional]
@@ -2828,7 +2828,7 @@ include::{specDir}definitions/GetIndexResponsePIndexNodesWrapperNode/definition-
 ¦ Property ¦ ¦ Schema
 
 a¦ *canRead* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2838,7 +2838,7 @@ a¦ [markdown]
 {blank}
 a¦ Boolean
 a¦ *canWrite* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2848,7 +2848,7 @@ a¦ [markdown]
 {blank}
 a¦ Boolean
 a¦ *priority* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -2907,8 +2907,8 @@ include::{specDir}definitions/GetIndexResponsePlanWrng/definition-begin.adoc[opt
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-_additional +
-property_
+additional +
+property
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-GetIndexResponsePlanWrngIndex, opts=optional]
@@ -3016,8 +3016,8 @@ include::{specDir}definitions/GetIndexesResponseIndexesWrapper/definition-begin.
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-_additional +
-property_
+additional +
+property
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-IndexDefinition, opts=optional]
@@ -3077,7 +3077,7 @@ include::{specDir}definitions/IndexDefinition/definition-begin.adoc[opts=optiona
 ¦ Property ¦ ¦ Schema
 
 a¦ *name* +
-_required_
+required
 a¦ [markdown]
 --
 The name of the Search index.
@@ -3088,7 +3088,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *type* +
-_required_
+required
 a¦ [markdown]
 --
 The type of the Search index.
@@ -3099,7 +3099,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *sourceName* +
-_required_
+required
 a¦ [markdown]
 --
 The name of the bucket where the Search index is stored.
@@ -3110,7 +3110,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *sourceUUID* +
-_optional_
+optional
 a¦ [markdown]
 --
 The UUID of the bucket where the Search index is stored.
@@ -3121,7 +3121,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *sourceParams* +
-_optional_
+optional
 a¦ [markdown]
 --
 Advanced settings for Search index behavior.
@@ -3132,7 +3132,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ Object
 a¦ *sourceType* +
-_required_
+required
 a¦ [markdown]
 --
 The type of the bucket where the Search index is stored.
@@ -3143,7 +3143,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 {blank}
 a¦ String
 a¦ *params* +
-_required_
+required
 a¦ [markdown]
 --
 The Search index's type identifier, type mappings, and analyzers.
@@ -3154,7 +3154,7 @@ For more information, see [Params Object](../search/search-index-params.html#par
 {blank}
 a¦ Object
 a¦ *planParams* +
-_required_
+required
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-IndexDefinitionPlanParams, opts=optional]
@@ -3164,7 +3164,7 @@ include::index.adoc[tag=desc-IndexDefinitionPlanParams, opts=optional]
 {blank}
 a¦ xref:IndexDefinitionPlanParams[]
 a¦ *prevIndexUUID* +
-_optional_
+optional
 a¦ [markdown]
 --
 The UUID of the previous index.
@@ -3175,7 +3175,7 @@ Intended for clients that want to check that they are not overwriting the Search
 {blank}
 a¦ String
 a¦ *uuid* +
-_optional_
+optional
 a¦ [markdown]
 --
 The UUID of the Search index.
@@ -3236,18 +3236,18 @@ include::{specDir}definitions/IndexDefinitionPlanParams/definition-begin.adoc[op
 ¦ Property ¦ ¦ Schema
 
 a¦ *hierarchyRules* +
-_optional_
+optional
 a¦ [markdown]
 --
 
 --
 
 [%hardbreaks]
-*Nullable:* `true`
+*Nullable:* yes
 {blank}
 a¦ String
 a¦ *maxPartitionsPerPIndex* +
-_optional_
+optional
 a¦ [markdown]
 --
 This setting is deprecated.
@@ -3258,7 +3258,7 @@ Use `indexPartitions` instead.
 {blank}
 a¦ Integer
 a¦ *indexPartitions* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of partitions to split the Search index into, across the nodes you have available in your database with the Search Service enabled.
@@ -3268,18 +3268,18 @@ The number of partitions to split the Search index into, across the nodes you ha
 {blank}
 a¦ Integer
 a¦ *nodePlanParams* +
-_optional_
+optional
 a¦ [markdown]
 --
 
 --
 
 [%hardbreaks]
-*Nullable:* `true`
+*Nullable:* yes
 {blank}
 a¦ String
 a¦ *numReplicas* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of replicas the Search Service creates for the Search index to ensure high availability.
@@ -3289,7 +3289,7 @@ The number of replicas the Search Service creates for the Search index to ensure
 {blank}
 a¦ Integer
 a¦ *planFrozen* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -3342,7 +3342,7 @@ include::{specDir}definitions/logInfo/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *events* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -3352,7 +3352,7 @@ a¦ [markdown]
 {blank}
 a¦ Object array
 a¦ *messages* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -3405,7 +3405,7 @@ include::{specDir}definitions/runtimeInfo/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *arch* +
-_optional_
+optional
 a¦ [markdown]
 --
 The architecture of the node.
@@ -3415,7 +3415,7 @@ The architecture of the node.
 {blank}
 a¦ String
 a¦ *go* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-runtimeInfoGo, opts=optional]
@@ -3425,7 +3425,7 @@ include::index.adoc[tag=desc-runtimeInfoGo, opts=optional]
 {blank}
 a¦ xref:runtimeInfoGo[]
 a¦ *numCPU* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of CPUs on the node.
@@ -3435,7 +3435,7 @@ The number of CPUs on the node.
 {blank}
 a¦ Integer
 a¦ *os* +
-_optional_
+optional
 a¦ [markdown]
 --
 The operating system of the node.
@@ -3445,7 +3445,7 @@ The operating system of the node.
 {blank}
 a¦ String
 a¦ *versionData* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -3455,7 +3455,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *versionMain* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -3508,7 +3508,7 @@ include::{specDir}definitions/runtimeInfoGo/definition-begin.adoc[opts=optional]
 ¦ Property ¦ ¦ Schema
 
 a¦ *GOMAXPROCS* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -3518,7 +3518,7 @@ a¦ [markdown]
 {blank}
 a¦ Integer
 a¦ *GOROOT* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -3528,7 +3528,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *compiler* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -3538,7 +3538,7 @@ a¦ [markdown]
 {blank}
 a¦ String
 a¦ *version* +
-_optional_
+optional
 a¦ [markdown]
 --
 
@@ -3598,7 +3598,7 @@ You must have the **Full Admin** or **Cluster Admin** role, with permissions to 
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/manageCluster/security-scheme-end.adoc[opts=optional]
 
@@ -3621,7 +3621,7 @@ You must have the **Full Admin** or **Cluster Admin** role, with permission to r
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/readClusterSettings/security-scheme-end.adoc[opts=optional]
 
@@ -3644,7 +3644,7 @@ You must have the **Full Admin** or **Cluster Admin** role, with permission to r
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/readClusterLogs/security-scheme-end.adoc[opts=optional]
 
@@ -3667,7 +3667,7 @@ You must have the **Full Admin** or **Cluster Admin** role, with permission to w
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/writeClusterSettings/security-scheme-end.adoc[opts=optional]
 

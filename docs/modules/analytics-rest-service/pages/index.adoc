@@ -32,7 +32,7 @@ This API enables you to run Analytics queries and set request-level parameters.
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+*Version:* 8.0
 
 [discrete#host]
 = Host information
@@ -161,7 +161,7 @@ include::{specDir}paths/get_query/operation-description-end.adoc[opts=optional]
 
 
 [#get_query-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -180,7 +180,7 @@ include::{specDir}paths/get_query/operation-parameters-before.adoc[opts=optional
 include::{specDir}paths/get_query/operation-parameters-begin.adoc[opts=optional]
 
 [#get_query-query]
-.Query Parameters
+.icon:question[fw] Query Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -188,7 +188,7 @@ include::{specDir}paths/get_query/operation-parameters-begin.adoc[opts=optional]
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *body* +
-_required_
+required
 a¦ [markdown]
 --
 Specify the parameters in the query URL in URL-encoded format.
@@ -336,7 +336,7 @@ include::{specDir}paths/get_service/operation-description-end.adoc[opts=optional
 
 
 [#get_service-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -355,7 +355,7 @@ include::{specDir}paths/get_service/operation-parameters-before.adoc[opts=option
 include::{specDir}paths/get_service/operation-parameters-begin.adoc[opts=optional]
 
 [#get_service-query]
-.Query Parameters
+.icon:question[fw] Query Parameters
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -363,7 +363,7 @@ include::{specDir}paths/get_service/operation-parameters-begin.adoc[opts=optiona
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *body* +
-_required_
+required
 a¦ [markdown]
 --
 Specify the parameters in the query URL in URL-encoded format.
@@ -507,12 +507,12 @@ include::{specDir}paths/post_query/operation-description-end.adoc[opts=optional]
 
 
 [#post_query-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 * application/json
 * application/x-www-form-urlencoded
 
 [#post_query-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -531,7 +531,7 @@ include::{specDir}paths/post_query/operation-parameters-before.adoc[opts=optiona
 include::{specDir}paths/post_query/operation-parameters-begin.adoc[opts=optional]
 
 [#post_query-body]
-.Body Parameter
+.icon:file-lines[fw] Body Parameter
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -539,7 +539,7 @@ include::{specDir}paths/post_query/operation-parameters-begin.adoc[opts=optional
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_required_
+required
 a¦ [markdown]
 --
 
@@ -666,12 +666,12 @@ include::{specDir}paths/post_service/operation-description-end.adoc[opts=optiona
 
 
 [#post_service-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 * application/json
 * application/x-www-form-urlencoded
 
 [#post_service-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 * application/json
 
 
@@ -690,7 +690,7 @@ include::{specDir}paths/post_service/operation-parameters-before.adoc[opts=optio
 include::{specDir}paths/post_service/operation-parameters-begin.adoc[opts=optional]
 
 [#post_service-body]
-.Body Parameter
+.icon:file-lines[fw] Body Parameter
 {blank}
 
 [cols="20,60,20",separator=¦]
@@ -698,7 +698,7 @@ include::{specDir}paths/post_service/operation-parameters-begin.adoc[opts=option
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_required_
+required
 a¦ [markdown]
 --
 
@@ -888,7 +888,7 @@ include::index.adoc[tag=desc-ParametersCommon, opts=optional]
 {blank}
 a¦ xref:ParametersCommon[]
 
-a¦ _and_
+a¦ and
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-ParametersLocal, opts=optional]
@@ -944,7 +944,7 @@ include::{specDir}definitions/ParametersCommon/definition-begin.adoc[opts=option
 ¦ Property ¦ ¦ Schema
 
 a¦ *statement* +
-_required_
+required
 a¦ [markdown]
 --
 Specifies at least one valid SQL\+\+ for Analytics statement to run.
@@ -954,7 +954,7 @@ Specifies at least one valid SQL\+\+ for Analytics statement to run.
 {blank}
 a¦ String
 a¦ *client_context_id* +
-_optional_
+optional
 a¦ [markdown]
 --
 An identifier passed by the client that is returned verbatim in the query response. Useful for matching a particular query to a specific caller.
@@ -965,7 +965,7 @@ An identifier passed by the client that is returned verbatim in the query respon
 {blank}
 a¦ String
 a¦ *format* +
-_optional_
+optional
 a¦ [markdown]
 --
 Desired format for the query results.
@@ -980,7 +980,7 @@ Note that the only possible format is `JSON`.
 {blank}
 a¦ String
 a¦ *pretty* +
-_optional_
+optional
 a¦ [markdown]
 --
 If `true`, the result is indented.
@@ -991,7 +991,7 @@ If `true`, the result is indented.
 {blank}
 a¦ Boolean
 a¦ *query_context* +
-_optional_
+optional
 a¦ [markdown]
 --
 A scope for the statement. The value of this parameter must start with `default:`, followed by an Analytics scope name. The `default:` prefix is a dummy and is ignored when resolving an Analytics collection name or synonym name.
@@ -1003,7 +1003,7 @@ A scope for the statement. The value of this parameter must start with `default:
 {blank}
 a¦ String
 a¦ *readonly* +
-_optional_
+optional
 a¦ [markdown]
 --
 If `true`, then DDL statements are not allowed.
@@ -1014,7 +1014,7 @@ If `true`, then DDL statements are not allowed.
 {blank}
 a¦ Boolean
 a¦ *scan_consistency* +
-_optional_
+optional
 a¦ [markdown]
 --
 The consistency guarantee constraint for index scanning. If `not_bounded`, the query is executed immediately. If `request_plus`, the required datasets are updated with data available from the Data service at the time of the request before the query is executed.
@@ -1027,7 +1027,7 @@ The consistency guarantee constraint for index scanning. If `not_bounded`, the q
 {blank}
 a¦ String
 a¦ *scan_wait* +
-_optional_
+optional
 a¦ [markdown]
 --
 The maximum time to wait for datasets to be updated before the query is executed. The format includes an amount and a unit: `ns`, `us`, `ms`, `s`, `m`, or `h`. The default is `""` (no timeout).
@@ -1039,7 +1039,7 @@ The maximum time to wait for datasets to be updated before the query is executed
 {blank}
 a¦ String
 a¦ *timeout* +
-_optional_
+optional
 a¦ [markdown]
 --
 Maximum time to spend on the request before timing out. The format includes an amount and a unit: `ns`, `us`, `ms`, `s`, `m`, or `h`. The default is `""` (no timeout).
@@ -1051,7 +1051,7 @@ Maximum time to spend on the request before timing out. The format includes an a
 {blank}
 a¦ String
 a¦ *args* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of positional parameter values.
@@ -1061,15 +1061,15 @@ An array of positional parameter values.
 {blank}
 a¦ Any Type array
 a¦ *<$identifier>* +
-_additional +
-property_
+additional +
+property
 a¦ [markdown]
 --
 A named parameter value.
 --
 
 [%hardbreaks]
-*Nullable:* `true`
+*Nullable:* yes
 {blank}
 a¦ Any Type
 
@@ -1122,7 +1122,7 @@ include::{specDir}definitions/ParametersLocal/definition-begin.adoc[opts=optiona
 ¦ Property ¦ ¦ Schema
 
 a¦ *plan-format* +
-_optional_
+optional
 a¦ [markdown]
 --
 The plan format.
@@ -1134,7 +1134,7 @@ The plan format.
 {blank}
 a¦ String
 a¦ *logical-plan* +
-_optional_
+optional
 a¦ [markdown]
 --
 If `true`, the logical plan is included in the query response.
@@ -1145,7 +1145,7 @@ If `true`, the logical plan is included in the query response.
 {blank}
 a¦ Boolean
 a¦ *optimized-logical-plan* +
-_optional_
+optional
 a¦ [markdown]
 --
 If `true`, the optimized logical plan is included in the query response.
@@ -1156,7 +1156,7 @@ If `true`, the optimized logical plan is included in the query response.
 {blank}
 a¦ Boolean
 a¦ *expression-tree* +
-_optional_
+optional
 a¦ [markdown]
 --
 If `true`, the expression tree is included in the query response.
@@ -1167,7 +1167,7 @@ If `true`, the expression tree is included in the query response.
 {blank}
 a¦ Boolean
 a¦ *rewritten-expression-tree* +
-_optional_
+optional
 a¦ [markdown]
 --
 If `true`, the rewritten expression tree is included in the query response.
@@ -1178,7 +1178,7 @@ If `true`, the rewritten expression tree is included in the query response.
 {blank}
 a¦ Boolean
 a¦ *job* +
-_optional_
+optional
 a¦ [markdown]
 --
 If `true`, the job details are included in the query response.
@@ -1189,7 +1189,7 @@ If `true`, the job details are included in the query response.
 {blank}
 a¦ Boolean
 a¦ *max-warnings* +
-_optional_
+optional
 a¦ [markdown]
 --
 An integer specifying the maximum number of warning messages to be included in the query response.
@@ -1250,7 +1250,7 @@ include::index.adoc[tag=desc-ResponsesCommon, opts=optional]
 {blank}
 a¦ xref:ResponsesCommon[]
 
-a¦ _and_
+a¦ and
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponsesLocal, opts=optional]
@@ -1306,7 +1306,7 @@ include::{specDir}definitions/ResponsesCommon/definition-begin.adoc[opts=optiona
 ¦ Property ¦ ¦ Schema
 
 a¦ *requestID* +
-_optional_
+optional
 a¦ [markdown]
 --
 A unique identifier for the response.
@@ -1316,7 +1316,7 @@ A unique identifier for the response.
 {blank}
 a¦ UUID (UUID)
 a¦ *clientContextID* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1333,7 +1333,7 @@ refer to `client_context_id` in [Query Parameters][1].
 {blank}
 a¦ String
 a¦ *signature* +
-_optional_
+optional
 a¦ [markdown]
 --
 The schema of the results. Present only when the query completes successfully.
@@ -1344,7 +1344,7 @@ The schema of the results. Present only when the query completes successfully.
 {blank}
 a¦ Object
 a¦ *results* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of all the objects returned by the query. An object can be any JSON value.
@@ -1355,7 +1355,7 @@ An array of all the objects returned by the query. An object can be any JSON val
 {blank}
 a¦ Any Type array
 a¦ *status* +
-_optional_
+optional
 a¦ [markdown]
 --
 The status of the request.
@@ -1366,7 +1366,7 @@ The status of the request.
 {blank}
 a¦ String
 a¦ *errors* +
-_optional_
+optional
 a¦ [markdown]
 --
 An array of error objects. Present only if 1 or more errors are returned during processing of the request. Each error is represented by an object in this list.
@@ -1377,7 +1377,7 @@ An array of error objects. Present only if 1 or more errors are returned during 
 {blank}
 a¦ xref:ResponsesCommonErrors[] array
 a¦ *warnings* +
-_optional_
+optional
 a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
@@ -1399,7 +1399,7 @@ By default, no warnings are returned, even if warnings have occurred during proc
 {blank}
 a¦ xref:ResponsesCommonWarnings[] array
 a¦ *metrics* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponsesCommonYardsticks, opts=optional]
@@ -1452,7 +1452,7 @@ include::{specDir}definitions/ResponsesCommonErrors/definition-begin.adoc[opts=o
 ¦ Property ¦ ¦ Schema
 
 a¦ *code* +
-_optional_
+optional
 a¦ [markdown]
 --
 A number that identifies the error.
@@ -1462,7 +1462,7 @@ A number that identifies the error.
 {blank}
 a¦ Integer
 a¦ *msg* +
-_optional_
+optional
 a¦ [markdown]
 --
 A message describing the error in detail. Refer to [Error Codes](/server/8.0/analytics/error-codes.html).
@@ -1516,7 +1516,7 @@ include::{specDir}definitions/ResponsesCommonWarnings/definition-begin.adoc[opts
 ¦ Property ¦ ¦ Schema
 
 a¦ *code* +
-_optional_
+optional
 a¦ [markdown]
 --
 A number that identifies the warning.
@@ -1526,7 +1526,7 @@ A number that identifies the warning.
 {blank}
 a¦ Integer
 a¦ *msg* +
-_optional_
+optional
 a¦ [markdown]
 --
 A message describing the warning in detail.
@@ -1585,7 +1585,7 @@ include::{specDir}definitions/ResponsesCommonYardsticks/definition-begin.adoc[op
 ¦ Property ¦ ¦ Schema
 
 a¦ *elapsedTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 The total time taken for the request, that is the time from when the request was received until the results were returned.
@@ -1596,7 +1596,7 @@ The total time taken for the request, that is the time from when the request was
 {blank}
 a¦ String
 a¦ *executionTime* +
-_optional_
+optional
 a¦ [markdown]
 --
 The time taken for the execution of the request, that is the time from when query execution started until the results were returned.
@@ -1607,7 +1607,7 @@ The time taken for the execution of the request, that is the time from when quer
 {blank}
 a¦ String
 a¦ *resultCount* +
-_optional_
+optional
 a¦ [markdown]
 --
 The total number of objects in the results.
@@ -1617,7 +1617,7 @@ The total number of objects in the results.
 {blank}
 a¦ Integer (unsigned)
 a¦ *resultSize* +
-_optional_
+optional
 a¦ [markdown]
 --
 The total number of bytes in the results.
@@ -1627,7 +1627,7 @@ The total number of bytes in the results.
 {blank}
 a¦ Integer (unsigned)
 a¦ *errorCount* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of errors that occurred during the request.
@@ -1637,7 +1637,7 @@ The number of errors that occurred during the request.
 {blank}
 a¦ Integer (unsigned)
 a¦ *warningCount* +
-_optional_
+optional
 a¦ [markdown]
 --
 The number of warnings that occurred during the request.
@@ -1696,7 +1696,7 @@ include::{specDir}definitions/ResponsesLocal/definition-begin.adoc[opts=optional
 ¦ Property ¦ ¦ Schema
 
 a¦ *plans* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponsesLocalPlans, opts=optional]
@@ -1706,7 +1706,7 @@ include::index.adoc[tag=desc-ResponsesLocalPlans, opts=optional]
 {blank}
 a¦ xref:ResponsesLocalPlans[]
 a¦ *metrics* +
-_optional_
+optional
 a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponsesLocalYardsticks, opts=optional]
@@ -1765,7 +1765,7 @@ include::{specDir}definitions/ResponsesLocalPlans/definition-begin.adoc[opts=opt
 ¦ Property ¦ ¦ Schema
 
 a¦ *logicalPlan* +
-_optional_
+optional
 a¦ [markdown]
 --
 The logical plan.
@@ -1775,7 +1775,7 @@ The logical plan.
 {blank}
 a¦ Object
 a¦ *optimizedLogicalPlan* +
-_optional_
+optional
 a¦ [markdown]
 --
 The optimized logical plan.
@@ -1785,7 +1785,7 @@ The optimized logical plan.
 {blank}
 a¦ Object
 a¦ *rewrittenExpressionTree* +
-_optional_
+optional
 a¦ [markdown]
 --
 The rewritten expression tree.
@@ -1795,7 +1795,7 @@ The rewritten expression tree.
 {blank}
 a¦ String
 a¦ *expressionTree* +
-_optional_
+optional
 a¦ [markdown]
 --
 The expression tree.
@@ -1805,7 +1805,7 @@ The expression tree.
 {blank}
 a¦ String
 a¦ *job* +
-_optional_
+optional
 a¦ [markdown]
 --
 The job details.
@@ -1864,7 +1864,7 @@ include::{specDir}definitions/ResponsesLocalYardsticks/definition-begin.adoc[opt
 ¦ Property ¦ ¦ Schema
 
 a¦ *processedObjects* +
-_optional_
+optional
 a¦ [markdown]
 --
 Number of processed tuples during query execution.
@@ -1931,7 +1931,7 @@ Users must have one of the following RBAC roles:
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
 include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-end.adoc[opts=optional]
 
