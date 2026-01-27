@@ -345,10 +345,14 @@ endif::[]
 
 include::{specDir}definitions/Options/definition-before.adoc[opts=optional]
 
-ifndef::show-Options[]
-[discrete]
-endif::show-Options[]
+ifdef::show-Options[]
 [#Options]
+endif::show-Options[]
+ifndef::show-Options[]
+:leveloffset: +1
+
+[discrete#Options]
+endif::show-Options[]
 = Options
 
 :leveloffset: +1
@@ -389,14 +393,22 @@ include::{specDir}definitions/Options/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Options[]
+:leveloffset: -1
+endif::show-Options[]
+
 include::{specDir}definitions/Options/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Response/definition-before.adoc[opts=optional]
 
-ifndef::show-Response[]
-[discrete]
-endif::show-Response[]
+ifdef::show-Response[]
 [#Response]
+endif::show-Response[]
+ifndef::show-Response[]
+:leveloffset: +1
+
+[discrete#Response]
+endif::show-Response[]
 = Response
 
 :leveloffset: +1
@@ -445,6 +457,10 @@ a¦ String
 include::{specDir}definitions/Response/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-Response[]
+:leveloffset: -1
+endif::show-Response[]
 
 include::{specDir}definitions/Response/definition-after.adoc[opts=optional]
 

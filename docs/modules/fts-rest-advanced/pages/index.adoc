@@ -972,10 +972,14 @@ endif::[]
 
 include::{specDir}definitions/DocumentCount/definition-before.adoc[opts=optional]
 
-ifndef::show-DocumentCount[]
-[discrete]
-endif::show-DocumentCount[]
+ifdef::show-DocumentCount[]
 [#DocumentCount]
+endif::show-DocumentCount[]
+ifndef::show-DocumentCount[]
+:leveloffset: +1
+
+[discrete#DocumentCount]
+endif::show-DocumentCount[]
 = Document Count
 
 :leveloffset: +1
@@ -1023,14 +1027,22 @@ include::{specDir}definitions/DocumentCount/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-DocumentCount[]
+:leveloffset: -1
+endif::show-DocumentCount[]
+
 include::{specDir}definitions/DocumentCount/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/indexPartition/definition-before.adoc[opts=optional]
 
-ifndef::show-indexPartition[]
-[discrete]
-endif::show-indexPartition[]
+ifdef::show-indexPartition[]
 [#indexPartition]
+endif::show-indexPartition[]
+ifndef::show-indexPartition[]
+:leveloffset: +1
+
+[discrete#indexPartition]
+endif::show-indexPartition[]
 = Index Partitions
 
 :leveloffset: +1
@@ -1078,14 +1090,22 @@ include::{specDir}definitions/indexPartition/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-indexPartition[]
+:leveloffset: -1
+endif::show-indexPartition[]
+
 include::{specDir}definitions/indexPartition/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/indexPartitionPIndex/definition-before.adoc[opts=optional]
 
-ifndef::show-indexPartitionPIndex[]
-[discrete]
-endif::show-indexPartitionPIndex[]
+ifdef::show-indexPartitionPIndex[]
 [#indexPartitionPIndex]
+endif::show-indexPartitionPIndex[]
+ifndef::show-indexPartitionPIndex[]
+:leveloffset: +1
+
+[discrete#indexPartitionPIndex]
+endif::show-indexPartitionPIndex[]
 = Index Partitions Wrapper
 
 ifdef::model-descriptions[]
@@ -1130,14 +1150,22 @@ include::{specDir}definitions/indexPartitionPIndex/definition-end.adoc[opts=opti
 
 :leveloffset: -1
 
+ifndef::show-indexPartitionPIndex[]
+:leveloffset: -1
+endif::show-indexPartitionPIndex[]
+
 include::{specDir}definitions/indexPartitionPIndex/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/indexPartitionPIndexInner/definition-before.adoc[opts=optional]
 
-ifndef::show-indexPartitionPIndexInner[]
-[discrete]
-endif::show-indexPartitionPIndexInner[]
+ifdef::show-indexPartitionPIndexInner[]
 [#indexPartitionPIndexInner]
+endif::show-indexPartitionPIndexInner[]
+ifndef::show-indexPartitionPIndexInner[]
+:leveloffset: +1
+
+[discrete#indexPartitionPIndexInner]
+endif::show-indexPartitionPIndexInner[]
 = Index Partition
 
 ifdef::model-descriptions[]
@@ -1290,14 +1318,22 @@ include::{specDir}definitions/indexPartitionPIndexInner/definition-end.adoc[opts
 
 :leveloffset: -1
 
+ifndef::show-indexPartitionPIndexInner[]
+:leveloffset: -1
+endif::show-indexPartitionPIndexInner[]
+
 include::{specDir}definitions/indexPartitionPIndexInner/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/QueryRequest/definition-before.adoc[opts=optional]
 
-ifndef::show-QueryRequest[]
-[discrete]
-endif::show-QueryRequest[]
+ifdef::show-QueryRequest[]
 [#QueryRequest]
+endif::show-QueryRequest[]
+ifndef::show-QueryRequest[]
+:leveloffset: +1
+
+[discrete#QueryRequest]
+endif::show-QueryRequest[]
 = Query Request
 
 :leveloffset: +1
@@ -1481,14 +1517,22 @@ include::{specDir}definitions/QueryRequest/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-QueryRequest[]
+:leveloffset: -1
+endif::show-QueryRequest[]
+
 include::{specDir}definitions/QueryRequest/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/QueryResponse/definition-before.adoc[opts=optional]
 
-ifndef::show-QueryResponse[]
-[discrete]
-endif::show-QueryResponse[]
+ifdef::show-QueryResponse[]
 [#QueryResponse]
+endif::show-QueryResponse[]
+ifndef::show-QueryResponse[]
+:leveloffset: +1
+
+[discrete#QueryResponse]
+endif::show-QueryResponse[]
 = Query Response
 
 :leveloffset: +1
@@ -1535,6 +1579,10 @@ a¦ Object array
 include::{specDir}definitions/QueryResponse/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-QueryResponse[]
+:leveloffset: -1
+endif::show-QueryResponse[]
 
 include::{specDir}definitions/QueryResponse/definition-after.adoc[opts=optional]
 

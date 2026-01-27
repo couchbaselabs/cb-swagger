@@ -646,10 +646,14 @@ endif::[]
 
 include::{specDir}definitions/Conditions/definition-before.adoc[opts=optional]
 
-ifndef::show-Conditions[]
-[discrete]
-endif::show-Conditions[]
+ifdef::show-Conditions[]
 [#Conditions]
+endif::show-Conditions[]
+ifndef::show-Conditions[]
+:leveloffset: +1
+
+[discrete#Conditions]
+endif::show-Conditions[]
 = Conditions
 
 ifdef::model-descriptions[]
@@ -747,14 +751,22 @@ include::{specDir}definitions/Conditions/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Conditions[]
+:leveloffset: -1
+endif::show-Conditions[]
+
 include::{specDir}definitions/Conditions/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Controls/definition-before.adoc[opts=optional]
 
-ifndef::show-Controls[]
-[discrete]
-endif::show-Controls[]
+ifdef::show-Controls[]
 [#Controls]
+endif::show-Controls[]
+ifndef::show-Controls[]
+:leveloffset: +1
+
+[discrete#Controls]
+endif::show-Controls[]
 = Controls
 
 ifdef::model-descriptions[]
@@ -831,14 +843,22 @@ include::{specDir}definitions/Controls/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Controls[]
+:leveloffset: -1
+endif::show-Controls[]
+
 include::{specDir}definitions/Controls/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Credentials/definition-before.adoc[opts=optional]
 
-ifndef::show-Credentials[]
-[discrete]
-endif::show-Credentials[]
+ifdef::show-Credentials[]
 [#Credentials]
+endif::show-Credentials[]
+ifndef::show-Credentials[]
+:leveloffset: +1
+
+[discrete#Credentials]
+endif::show-Credentials[]
 = Credentials
 
 :leveloffset: +1
@@ -889,14 +909,22 @@ include::{specDir}definitions/Credentials/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Credentials[]
+:leveloffset: -1
+endif::show-Credentials[]
+
 include::{specDir}definitions/Credentials/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Execution_Timings/definition-before.adoc[opts=optional]
 
-ifndef::show-Execution_Timings[]
-[discrete]
-endif::show-Execution_Timings[]
+ifdef::show-Execution_Timings[]
 [#Execution_Timings]
+endif::show-Execution_Timings[]
+ifndef::show-Execution_Timings[]
+:leveloffset: +1
+
+[discrete#Execution_Timings]
+endif::show-Execution_Timings[]
 = Execution Timings
 
 ifdef::model-descriptions[]
@@ -963,14 +991,22 @@ include::{specDir}definitions/Execution_Timings/definition-end.adoc[opts=optiona
 
 :leveloffset: -1
 
+ifndef::show-Execution_Timings[]
+:leveloffset: -1
+endif::show-Execution_Timings[]
+
 include::{specDir}definitions/Execution_Timings/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Metrics/definition-before.adoc[opts=optional]
 
-ifndef::show-Metrics[]
-[discrete]
-endif::show-Metrics[]
+ifdef::show-Metrics[]
 [#Metrics]
+endif::show-Metrics[]
+ifndef::show-Metrics[]
+:leveloffset: +1
+
+[discrete#Metrics]
+endif::show-Metrics[]
 = Metrics
 
 ifdef::model-descriptions[]
@@ -1125,14 +1161,22 @@ include::{specDir}definitions/Metrics/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Metrics[]
+:leveloffset: -1
+endif::show-Metrics[]
+
 include::{specDir}definitions/Metrics/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Profile/definition-before.adoc[opts=optional]
 
-ifndef::show-Profile[]
-[discrete]
-endif::show-Profile[]
+ifdef::show-Profile[]
 [#Profile]
+endif::show-Profile[]
+ifndef::show-Profile[]
+:leveloffset: +1
+
+[discrete#Profile]
+endif::show-Profile[]
 = Profile
 
 ifdef::model-descriptions[]
@@ -1285,14 +1329,22 @@ include::{specDir}definitions/Profile/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Profile[]
+:leveloffset: -1
+endif::show-Profile[]
+
 include::{specDir}definitions/Profile/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Request/definition-before.adoc[opts=optional]
 
-ifndef::show-Request[]
-[discrete]
-endif::show-Request[]
+ifdef::show-Request[]
 [#Request]
+endif::show-Request[]
+ifndef::show-Request[]
+:leveloffset: +1
+
+[discrete#Request]
+endif::show-Request[]
 = Request Parameters
 
 :leveloffset: +1
@@ -2522,14 +2574,22 @@ include::{specDir}definitions/Request/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Request[]
+:leveloffset: -1
+endif::show-Request[]
+
 include::{specDir}definitions/Request/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Response/definition-before.adoc[opts=optional]
 
-ifndef::show-Response[]
-[discrete]
-endif::show-Response[]
+ifdef::show-Response[]
 [#Response]
+endif::show-Response[]
+ifndef::show-Response[]
+:leveloffset: +1
+
+[discrete#Response]
+endif::show-Response[]
 = Response Body
 
 ifdef::model-descriptions[]
@@ -2682,14 +2742,22 @@ include::{specDir}definitions/Response/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Response[]
+:leveloffset: -1
+endif::show-Response[]
+
 include::{specDir}definitions/Response/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Statistics/definition-before.adoc[opts=optional]
 
-ifndef::show-Statistics[]
-[discrete]
-endif::show-Statistics[]
+ifdef::show-Statistics[]
 [#Statistics]
+endif::show-Statistics[]
+ifndef::show-Statistics[]
+:leveloffset: +1
+
+[discrete#Statistics]
+endif::show-Statistics[]
 = Statistics
 
 ifdef::model-descriptions[]
@@ -2795,6 +2863,10 @@ a¦ String (duration)
 include::{specDir}definitions/Statistics/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-Statistics[]
+:leveloffset: -1
+endif::show-Statistics[]
 
 include::{specDir}definitions/Statistics/definition-after.adoc[opts=optional]
 

@@ -742,10 +742,14 @@ endif::[]
 
 include::{specDir}definitions/Access/definition-before.adoc[opts=optional]
 
-ifndef::show-Access[]
-[discrete]
-endif::show-Access[]
+ifdef::show-Access[]
 [#Access]
+endif::show-Access[]
+ifndef::show-Access[]
+:leveloffset: +1
+
+[discrete#Access]
+endif::show-Access[]
 = Access
 
 ifdef::model-descriptions[]
@@ -826,14 +830,22 @@ include::{specDir}definitions/Access/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Access[]
+:leveloffset: -1
+endif::show-Access[]
+
 include::{specDir}definitions/Access/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Settings/definition-before.adoc[opts=optional]
 
-ifndef::show-Settings[]
-[discrete]
-endif::show-Settings[]
+ifdef::show-Settings[]
 [#Settings]
+endif::show-Settings[]
+ifndef::show-Settings[]
+:leveloffset: +1
+
+[discrete#Settings]
+endif::show-Settings[]
 = Settings
 
 :leveloffset: +1
@@ -1631,6 +1643,10 @@ a¦ xref:Access[]
 include::{specDir}definitions/Settings/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-Settings[]
+:leveloffset: -1
+endif::show-Settings[]
 
 include::{specDir}definitions/Settings/definition-after.adoc[opts=optional]
 

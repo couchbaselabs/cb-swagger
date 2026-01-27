@@ -856,10 +856,14 @@ endif::[]
 
 include::{specDir}definitions/Parameters/definition-before.adoc[opts=optional]
 
-ifndef::show-Parameters[]
-[discrete]
-endif::show-Parameters[]
+ifdef::show-Parameters[]
 [#Parameters]
+endif::show-Parameters[]
+ifndef::show-Parameters[]
+:leveloffset: +1
+
+[discrete#Parameters]
+endif::show-Parameters[]
 = Query Parameters
 
 :leveloffset: +1
@@ -901,14 +905,22 @@ include::{specDir}definitions/Parameters/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Parameters[]
+:leveloffset: -1
+endif::show-Parameters[]
+
 include::{specDir}definitions/Parameters/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ParametersCommon/definition-before.adoc[opts=optional]
 
-ifndef::show-ParametersCommon[]
-[discrete]
-endif::show-ParametersCommon[]
+ifdef::show-ParametersCommon[]
 [#ParametersCommon]
+endif::show-ParametersCommon[]
+ifndef::show-ParametersCommon[]
+:leveloffset: +1
+
+[discrete#ParametersCommon]
+endif::show-ParametersCommon[]
 = Common Parameters
 
 ifdef::model-descriptions[]
@@ -1071,14 +1083,22 @@ include::{specDir}definitions/ParametersCommon/definition-end.adoc[opts=optional
 
 :leveloffset: -1
 
+ifndef::show-ParametersCommon[]
+:leveloffset: -1
+endif::show-ParametersCommon[]
+
 include::{specDir}definitions/ParametersCommon/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ParametersLocal/definition-before.adoc[opts=optional]
 
-ifndef::show-ParametersLocal[]
-[discrete]
-endif::show-ParametersLocal[]
+ifdef::show-ParametersLocal[]
 [#ParametersLocal]
+endif::show-ParametersLocal[]
+ifndef::show-ParametersLocal[]
+:leveloffset: +1
+
+[discrete#ParametersLocal]
+endif::show-ParametersLocal[]
 = Analytics Parameters
 
 ifdef::model-descriptions[]
@@ -1190,14 +1210,22 @@ include::{specDir}definitions/ParametersLocal/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-ParametersLocal[]
+:leveloffset: -1
+endif::show-ParametersLocal[]
+
 include::{specDir}definitions/ParametersLocal/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Responses/definition-before.adoc[opts=optional]
 
-ifndef::show-Responses[]
-[discrete]
-endif::show-Responses[]
+ifdef::show-Responses[]
 [#Responses]
+endif::show-Responses[]
+ifndef::show-Responses[]
+:leveloffset: +1
+
+[discrete#Responses]
+endif::show-Responses[]
 = Query Responses
 
 :leveloffset: +1
@@ -1239,14 +1267,22 @@ include::{specDir}definitions/Responses/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Responses[]
+:leveloffset: -1
+endif::show-Responses[]
+
 include::{specDir}definitions/Responses/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponsesCommon/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponsesCommon[]
-[discrete]
-endif::show-ResponsesCommon[]
+ifdef::show-ResponsesCommon[]
 [#ResponsesCommon]
+endif::show-ResponsesCommon[]
+ifndef::show-ResponsesCommon[]
+:leveloffset: +1
+
+[discrete#ResponsesCommon]
+endif::show-ResponsesCommon[]
 = Common Responses
 
 ifdef::model-descriptions[]
@@ -1383,14 +1419,22 @@ include::{specDir}definitions/ResponsesCommon/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-ResponsesCommon[]
+:leveloffset: -1
+endif::show-ResponsesCommon[]
+
 include::{specDir}definitions/ResponsesCommon/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponsesCommonErrors/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponsesCommonErrors[]
-[discrete]
-endif::show-ResponsesCommonErrors[]
+ifdef::show-ResponsesCommonErrors[]
 [#ResponsesCommonErrors]
+endif::show-ResponsesCommonErrors[]
+ifndef::show-ResponsesCommonErrors[]
+:leveloffset: +1
+
+[discrete#ResponsesCommonErrors]
+endif::show-ResponsesCommonErrors[]
 = Errors
 
 :leveloffset: +1
@@ -1439,14 +1483,22 @@ include::{specDir}definitions/ResponsesCommonErrors/definition-end.adoc[opts=opt
 
 :leveloffset: -1
 
+ifndef::show-ResponsesCommonErrors[]
+:leveloffset: -1
+endif::show-ResponsesCommonErrors[]
+
 include::{specDir}definitions/ResponsesCommonErrors/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponsesCommonWarnings/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponsesCommonWarnings[]
-[discrete]
-endif::show-ResponsesCommonWarnings[]
+ifdef::show-ResponsesCommonWarnings[]
 [#ResponsesCommonWarnings]
+endif::show-ResponsesCommonWarnings[]
+ifndef::show-ResponsesCommonWarnings[]
+:leveloffset: +1
+
+[discrete#ResponsesCommonWarnings]
+endif::show-ResponsesCommonWarnings[]
 = Warnings
 
 :leveloffset: +1
@@ -1494,14 +1546,22 @@ include::{specDir}definitions/ResponsesCommonWarnings/definition-end.adoc[opts=o
 
 :leveloffset: -1
 
+ifndef::show-ResponsesCommonWarnings[]
+:leveloffset: -1
+endif::show-ResponsesCommonWarnings[]
+
 include::{specDir}definitions/ResponsesCommonWarnings/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponsesCommonYardsticks/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponsesCommonYardsticks[]
-[discrete]
-endif::show-ResponsesCommonYardsticks[]
+ifdef::show-ResponsesCommonYardsticks[]
 [#ResponsesCommonYardsticks]
+endif::show-ResponsesCommonYardsticks[]
+ifndef::show-ResponsesCommonYardsticks[]
+:leveloffset: +1
+
+[discrete#ResponsesCommonYardsticks]
+endif::show-ResponsesCommonYardsticks[]
 = Common Metrics
 
 ifdef::model-descriptions[]
@@ -1597,14 +1657,22 @@ include::{specDir}definitions/ResponsesCommonYardsticks/definition-end.adoc[opts
 
 :leveloffset: -1
 
+ifndef::show-ResponsesCommonYardsticks[]
+:leveloffset: -1
+endif::show-ResponsesCommonYardsticks[]
+
 include::{specDir}definitions/ResponsesCommonYardsticks/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponsesLocal/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponsesLocal[]
-[discrete]
-endif::show-ResponsesLocal[]
+ifdef::show-ResponsesLocal[]
 [#ResponsesLocal]
+endif::show-ResponsesLocal[]
+ifndef::show-ResponsesLocal[]
+:leveloffset: +1
+
+[discrete#ResponsesLocal]
+endif::show-ResponsesLocal[]
 = Analytics Responses
 
 ifdef::model-descriptions[]
@@ -1658,14 +1726,22 @@ include::{specDir}definitions/ResponsesLocal/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-ResponsesLocal[]
+:leveloffset: -1
+endif::show-ResponsesLocal[]
+
 include::{specDir}definitions/ResponsesLocal/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponsesLocalPlans/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponsesLocalPlans[]
-[discrete]
-endif::show-ResponsesLocalPlans[]
+ifdef::show-ResponsesLocalPlans[]
 [#ResponsesLocalPlans]
+endif::show-ResponsesLocalPlans[]
+ifndef::show-ResponsesLocalPlans[]
+:leveloffset: +1
+
+[discrete#ResponsesLocalPlans]
+endif::show-ResponsesLocalPlans[]
 = Plans
 
 ifdef::model-descriptions[]
@@ -1749,14 +1825,22 @@ include::{specDir}definitions/ResponsesLocalPlans/definition-end.adoc[opts=optio
 
 :leveloffset: -1
 
+ifndef::show-ResponsesLocalPlans[]
+:leveloffset: -1
+endif::show-ResponsesLocalPlans[]
+
 include::{specDir}definitions/ResponsesLocalPlans/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponsesLocalYardsticks/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponsesLocalYardsticks[]
-[discrete]
-endif::show-ResponsesLocalYardsticks[]
+ifdef::show-ResponsesLocalYardsticks[]
 [#ResponsesLocalYardsticks]
+endif::show-ResponsesLocalYardsticks[]
+ifndef::show-ResponsesLocalYardsticks[]
+:leveloffset: +1
+
+[discrete#ResponsesLocalYardsticks]
+endif::show-ResponsesLocalYardsticks[]
 = Analytics Metrics
 
 ifdef::model-descriptions[]
@@ -1799,6 +1883,10 @@ a¦ Long (int64)
 include::{specDir}definitions/ResponsesLocalYardsticks/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-ResponsesLocalYardsticks[]
+:leveloffset: -1
+endif::show-ResponsesLocalYardsticks[]
 
 include::{specDir}definitions/ResponsesLocalYardsticks/definition-after.adoc[opts=optional]
 

@@ -1000,10 +1000,14 @@ endif::[]
 
 include::{specDir}definitions/Functions/definition-before.adoc[opts=optional]
 
-ifndef::show-Functions[]
-[discrete]
-endif::show-Functions[]
+ifdef::show-Functions[]
 [#Functions]
+endif::show-Functions[]
+ifndef::show-Functions[]
+:leveloffset: +1
+
+[discrete#Functions]
+endif::show-Functions[]
 = Functions
 
 :leveloffset: +1
@@ -1045,14 +1049,22 @@ include::{specDir}definitions/Functions/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Functions[]
+:leveloffset: -1
+endif::show-Functions[]
+
 include::{specDir}definitions/Functions/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Libraries/definition-before.adoc[opts=optional]
 
-ifndef::show-Libraries[]
-[discrete]
-endif::show-Libraries[]
+ifdef::show-Libraries[]
 [#Libraries]
+endif::show-Libraries[]
+ifndef::show-Libraries[]
+:leveloffset: +1
+
+[discrete#Libraries]
+endif::show-Libraries[]
 = Library
 
 :leveloffset: +1
@@ -1125,6 +1137,10 @@ a¦ String
 include::{specDir}definitions/Libraries/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-Libraries[]
+:leveloffset: -1
+endif::show-Libraries[]
 
 include::{specDir}definitions/Libraries/definition-after.adoc[opts=optional]
 

@@ -809,10 +809,14 @@ endif::[]
 
 include::{specDir}definitions/NodeIdx/definition-before.adoc[opts=optional]
 
-ifndef::show-NodeIdx[]
-[discrete]
-endif::show-NodeIdx[]
+ifdef::show-NodeIdx[]
 [#NodeIdx]
+endif::show-NodeIdx[]
+ifndef::show-NodeIdx[]
+:leveloffset: +1
+
+[discrete#NodeIdx]
+endif::show-NodeIdx[]
 = Node and Indexes
 
 :leveloffset: +1
@@ -854,14 +858,22 @@ include::{specDir}definitions/NodeIdx/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-NodeIdx[]
+:leveloffset: -1
+endif::show-NodeIdx[]
+
 include::{specDir}definitions/NodeIdx/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/NodeIdxNode/definition-before.adoc[opts=optional]
 
-ifndef::show-NodeIdxNode[]
-[discrete]
-endif::show-NodeIdxNode[]
+ifdef::show-NodeIdxNode[]
 [#NodeIdxNode]
+endif::show-NodeIdxNode[]
+ifndef::show-NodeIdxNode[]
+:leveloffset: +1
+
+[discrete#NodeIdxNode]
+endif::show-NodeIdxNode[]
 = Nodes
 
 ifdef::model-descriptions[]
@@ -905,14 +917,22 @@ include::{specDir}definitions/NodeIdxNode/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-NodeIdxNode[]
+:leveloffset: -1
+endif::show-NodeIdxNode[]
+
 include::{specDir}definitions/NodeIdxNode/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/NodeIdxNodeIndexer/definition-before.adoc[opts=optional]
 
-ifndef::show-NodeIdxNodeIndexer[]
-[discrete]
-endif::show-NodeIdxNodeIndexer[]
+ifdef::show-NodeIdxNodeIndexer[]
 [#NodeIdxNodeIndexer]
+endif::show-NodeIdxNodeIndexer[]
+ifndef::show-NodeIdxNodeIndexer[]
+:leveloffset: +1
+
+[discrete#NodeIdxNodeIndexer]
+endif::show-NodeIdxNodeIndexer[]
 = Node
 
 ifdef::model-descriptions[]
@@ -1008,14 +1028,22 @@ include::{specDir}definitions/NodeIdxNodeIndexer/definition-end.adoc[opts=option
 
 :leveloffset: -1
 
+ifndef::show-NodeIdxNodeIndexer[]
+:leveloffset: -1
+endif::show-NodeIdxNodeIndexer[]
+
 include::{specDir}definitions/NodeIdxNodeIndexer/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/PartIdx/definition-before.adoc[opts=optional]
 
-ifndef::show-PartIdx[]
-[discrete]
-endif::show-PartIdx[]
+ifdef::show-PartIdx[]
 [#PartIdx]
+endif::show-PartIdx[]
+ifndef::show-PartIdx[]
+:leveloffset: +1
+
+[discrete#PartIdx]
+endif::show-PartIdx[]
 = Index and Partitions
 
 :leveloffset: +1
@@ -1057,14 +1085,22 @@ include::{specDir}definitions/PartIdx/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-PartIdx[]
+:leveloffset: -1
+endif::show-PartIdx[]
+
 include::{specDir}definitions/PartIdx/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/PartIdxIndexes/definition-before.adoc[opts=optional]
 
-ifndef::show-PartIdxIndexes[]
-[discrete]
-endif::show-PartIdxIndexes[]
+ifdef::show-PartIdxIndexes[]
 [#PartIdxIndexes]
+endif::show-PartIdxIndexes[]
+ifndef::show-PartIdxIndexes[]
+:leveloffset: +1
+
+[discrete#PartIdxIndexes]
+endif::show-PartIdxIndexes[]
 = Indexes
 
 ifdef::model-descriptions[]
@@ -1109,14 +1145,22 @@ include::{specDir}definitions/PartIdxIndexes/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-PartIdxIndexes[]
+:leveloffset: -1
+endif::show-PartIdxIndexes[]
+
 include::{specDir}definitions/PartIdxIndexes/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/PartIdxPartitions/definition-before.adoc[opts=optional]
 
-ifndef::show-PartIdxPartitions[]
-[discrete]
-endif::show-PartIdxPartitions[]
+ifdef::show-PartIdxPartitions[]
 [#PartIdxPartitions]
+endif::show-PartIdxPartitions[]
+ifndef::show-PartIdxPartitions[]
+:leveloffset: +1
+
+[discrete#PartIdxPartitions]
+endif::show-PartIdxPartitions[]
 = Partitions
 
 ifdef::model-descriptions[]
@@ -1161,14 +1205,22 @@ include::{specDir}definitions/PartIdxPartitions/definition-end.adoc[opts=optiona
 
 :leveloffset: -1
 
+ifndef::show-PartIdxPartitions[]
+:leveloffset: -1
+endif::show-PartIdxPartitions[]
+
 include::{specDir}definitions/PartIdxPartitions/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/PartIdxPartitionsIndex/definition-before.adoc[opts=optional]
 
-ifndef::show-PartIdxPartitionsIndex[]
-[discrete]
-endif::show-PartIdxPartitionsIndex[]
+ifdef::show-PartIdxPartitionsIndex[]
 [#PartIdxPartitionsIndex]
+endif::show-PartIdxPartitionsIndex[]
+ifndef::show-PartIdxPartitionsIndex[]
+:leveloffset: +1
+
+[discrete#PartIdxPartitionsIndex]
+endif::show-PartIdxPartitionsIndex[]
 = Index
 
 ifdef::model-descriptions[]
@@ -1514,6 +1566,10 @@ a¦ Integer
 include::{specDir}definitions/PartIdxPartitionsIndex/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-PartIdxPartitionsIndex[]
+:leveloffset: -1
+endif::show-PartIdxPartitionsIndex[]
 
 include::{specDir}definitions/PartIdxPartitionsIndex/definition-after.adoc[opts=optional]
 

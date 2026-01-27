@@ -468,10 +468,14 @@ endif::[]
 
 include::{specDir}definitions/Settings/definition-before.adoc[opts=optional]
 
-ifndef::show-Settings[]
-[discrete]
-endif::show-Settings[]
+ifdef::show-Settings[]
 [#Settings]
+endif::show-Settings[]
+ifndef::show-Settings[]
+:leveloffset: +1
+
+[discrete#Settings]
+endif::show-Settings[]
 = Settings
 
 :leveloffset: +1
@@ -511,6 +515,10 @@ a¦ Integer
 include::{specDir}definitions/Settings/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-Settings[]
+:leveloffset: -1
+endif::show-Settings[]
 
 include::{specDir}definitions/Settings/definition-after.adoc[opts=optional]
 

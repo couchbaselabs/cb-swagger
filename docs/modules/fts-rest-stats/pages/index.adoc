@@ -473,10 +473,14 @@ endif::[]
 
 include::{specDir}definitions/allStats/definition-before.adoc[opts=optional]
 
-ifndef::show-allStats[]
-[discrete]
-endif::show-allStats[]
+ifdef::show-allStats[]
 [#allStats]
+endif::show-allStats[]
+ifndef::show-allStats[]
+:leveloffset: +1
+
+[discrete#allStats]
+endif::show-allStats[]
 = Service Statistics
 
 :leveloffset: +1
@@ -518,14 +522,22 @@ include::{specDir}definitions/allStats/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-allStats[]
+:leveloffset: -1
+endif::show-allStats[]
+
 include::{specDir}definitions/allStats/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/clusterStats/definition-before.adoc[opts=optional]
 
-ifndef::show-clusterStats[]
-[discrete]
-endif::show-clusterStats[]
+ifdef::show-clusterStats[]
 [#clusterStats]
+endif::show-clusterStats[]
+ifndef::show-clusterStats[]
+:leveloffset: +1
+
+[discrete#clusterStats]
+endif::show-clusterStats[]
 = Cluster Statistics
 
 ifdef::model-descriptions[]
@@ -1314,14 +1326,22 @@ include::{specDir}definitions/clusterStats/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-clusterStats[]
+:leveloffset: -1
+endif::show-clusterStats[]
+
 include::{specDir}definitions/clusterStats/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/indexStats/definition-before.adoc[opts=optional]
 
-ifndef::show-indexStats[]
-[discrete]
-endif::show-indexStats[]
+ifdef::show-indexStats[]
 [#indexStats]
+endif::show-indexStats[]
+ifndef::show-indexStats[]
+:leveloffset: +1
+
+[discrete#indexStats]
+endif::show-indexStats[]
 = Index Statistics
 
 ifdef::model-descriptions[]
@@ -2100,6 +2120,10 @@ a¦ Integer
 include::{specDir}definitions/indexStats/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-indexStats[]
+:leveloffset: -1
+endif::show-indexStats[]
 
 include::{specDir}definitions/indexStats/definition-after.adoc[opts=optional]
 

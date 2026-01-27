@@ -688,10 +688,14 @@ endif::[]
 
 include::{specDir}definitions/ActiveResponse/definition-before.adoc[opts=optional]
 
-ifndef::show-ActiveResponse[]
-[discrete]
-endif::show-ActiveResponse[]
+ifdef::show-ActiveResponse[]
 [#ActiveResponse]
+endif::show-ActiveResponse[]
+ifndef::show-ActiveResponse[]
+:leveloffset: +1
+
+[discrete#ActiveResponse]
+endif::show-ActiveResponse[]
 = Active Response
 
 :leveloffset: +1
@@ -759,14 +763,22 @@ include::{specDir}definitions/ActiveResponse/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-ActiveResponse[]
+:leveloffset: -1
+endif::show-ActiveResponse[]
+
 include::{specDir}definitions/ActiveResponse/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ActiveResponseFilter/definition-before.adoc[opts=optional]
 
-ifndef::show-ActiveResponseFilter[]
-[discrete]
-endif::show-ActiveResponseFilter[]
+ifdef::show-ActiveResponseFilter[]
 [#ActiveResponseFilter]
+endif::show-ActiveResponseFilter[]
+ifndef::show-ActiveResponseFilter[]
+:leveloffset: +1
+
+[discrete#ActiveResponseFilter]
+endif::show-ActiveResponseFilter[]
 = Filtered Active Queries
 
 ifdef::model-descriptions[]
@@ -842,14 +854,22 @@ include::{specDir}definitions/ActiveResponseFilter/definition-end.adoc[opts=opti
 
 :leveloffset: -1
 
+ifndef::show-ActiveResponseFilter[]
+:leveloffset: -1
+endif::show-ActiveResponseFilter[]
+
 include::{specDir}definitions/ActiveResponseFilter/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ActiveResponseFilterMap/definition-before.adoc[opts=optional]
 
-ifndef::show-ActiveResponseFilterMap[]
-[discrete]
-endif::show-ActiveResponseFilterMap[]
+ifdef::show-ActiveResponseFilterMap[]
 [#ActiveResponseFilterMap]
+endif::show-ActiveResponseFilterMap[]
+ifndef::show-ActiveResponseFilterMap[]
+:leveloffset: +1
+
+[discrete#ActiveResponseFilterMap]
+endif::show-ActiveResponseFilterMap[]
 = Query Map
 
 ifdef::model-descriptions[]
@@ -894,14 +914,22 @@ include::{specDir}definitions/ActiveResponseFilterMap/definition-end.adoc[opts=o
 
 :leveloffset: -1
 
+ifndef::show-ActiveResponseFilterMap[]
+:leveloffset: -1
+endif::show-ActiveResponseFilterMap[]
+
 include::{specDir}definitions/ActiveResponseFilterMap/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ActiveResponseFilterMapItem/definition-before.adoc[opts=optional]
 
-ifndef::show-ActiveResponseFilterMapItem[]
-[discrete]
-endif::show-ActiveResponseFilterMapItem[]
+ifdef::show-ActiveResponseFilterMapItem[]
 [#ActiveResponseFilterMapItem]
+endif::show-ActiveResponseFilterMapItem[]
+ifndef::show-ActiveResponseFilterMapItem[]
+:leveloffset: +1
+
+[discrete#ActiveResponseFilterMapItem]
+endif::show-ActiveResponseFilterMapItem[]
 = Query Map Item
 
 ifdef::model-descriptions[]
@@ -956,14 +984,22 @@ include::{specDir}definitions/ActiveResponseFilterMapItem/definition-end.adoc[op
 
 :leveloffset: -1
 
+ifndef::show-ActiveResponseFilterMapItem[]
+:leveloffset: -1
+endif::show-ActiveResponseFilterMapItem[]
+
 include::{specDir}definitions/ActiveResponseFilterMapItem/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ActiveResponseFilterMapItemContext/definition-before.adoc[opts=optional]
 
-ifndef::show-ActiveResponseFilterMapItemContext[]
-[discrete]
-endif::show-ActiveResponseFilterMapItemContext[]
+ifdef::show-ActiveResponseFilterMapItemContext[]
 [#ActiveResponseFilterMapItemContext]
+endif::show-ActiveResponseFilterMapItemContext[]
+ifndef::show-ActiveResponseFilterMapItemContext[]
+:leveloffset: +1
+
+[discrete#ActiveResponseFilterMapItemContext]
+endif::show-ActiveResponseFilterMapItemContext[]
 = Query Context
 
 ifdef::model-descriptions[]
@@ -1051,14 +1087,22 @@ include::{specDir}definitions/ActiveResponseFilterMapItemContext/definition-end.
 
 :leveloffset: -1
 
+ifndef::show-ActiveResponseFilterMapItemContext[]
+:leveloffset: -1
+endif::show-ActiveResponseFilterMapItemContext[]
+
 include::{specDir}definitions/ActiveResponseFilterMapItemContext/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ActiveResponseStats/definition-before.adoc[opts=optional]
 
-ifndef::show-ActiveResponseStats[]
-[discrete]
-endif::show-ActiveResponseStats[]
+ifdef::show-ActiveResponseStats[]
 [#ActiveResponseStats]
+endif::show-ActiveResponseStats[]
+ifndef::show-ActiveResponseStats[]
+:leveloffset: +1
+
+[discrete#ActiveResponseStats]
+endif::show-ActiveResponseStats[]
 = Stats
 
 ifdef::model-descriptions[]
@@ -1114,14 +1158,22 @@ include::{specDir}definitions/ActiveResponseStats/definition-end.adoc[opts=optio
 
 :leveloffset: -1
 
+ifndef::show-ActiveResponseStats[]
+:leveloffset: -1
+endif::show-ActiveResponseStats[]
+
 include::{specDir}definitions/ActiveResponseStats/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/CancelRequest/definition-before.adoc[opts=optional]
 
-ifndef::show-CancelRequest[]
-[discrete]
-endif::show-CancelRequest[]
+ifdef::show-CancelRequest[]
 [#CancelRequest]
+endif::show-CancelRequest[]
+ifndef::show-CancelRequest[]
+:leveloffset: +1
+
+[discrete#CancelRequest]
+endif::show-CancelRequest[]
 = Cancellation Request
 
 :leveloffset: +1
@@ -1160,14 +1212,22 @@ include::{specDir}definitions/CancelRequest/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-CancelRequest[]
+:leveloffset: -1
+endif::show-CancelRequest[]
+
 include::{specDir}definitions/CancelRequest/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/CancelResponse/definition-before.adoc[opts=optional]
 
-ifndef::show-CancelResponse[]
-[discrete]
-endif::show-CancelResponse[]
+ifdef::show-CancelResponse[]
 [#CancelResponse]
+endif::show-CancelResponse[]
+ifndef::show-CancelResponse[]
+:leveloffset: +1
+
+[discrete#CancelResponse]
+endif::show-CancelResponse[]
 = Cancellation Response
 
 :leveloffset: +1
@@ -1214,6 +1274,10 @@ a¦ String
 include::{specDir}definitions/CancelResponse/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-CancelResponse[]
+:leveloffset: -1
+endif::show-CancelResponse[]
 
 include::{specDir}definitions/CancelResponse/definition-after.adoc[opts=optional]
 

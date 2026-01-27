@@ -1825,10 +1825,14 @@ endif::[]
 
 include::{specDir}definitions/clusterConfig/definition-before.adoc[opts=optional]
 
-ifndef::show-clusterConfig[]
-[discrete]
-endif::show-clusterConfig[]
+ifdef::show-clusterConfig[]
 [#clusterConfig]
+endif::show-clusterConfig[]
+ifndef::show-clusterConfig[]
+:leveloffset: +1
+
+[discrete#clusterConfig]
+endif::show-clusterConfig[]
 = Cluster Configuration
 
 :leveloffset: +1
@@ -1990,14 +1994,22 @@ include::{specDir}definitions/clusterConfig/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-clusterConfig[]
+:leveloffset: -1
+endif::show-clusterConfig[]
+
 include::{specDir}definitions/clusterConfig/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/clusterConfigIndexes/definition-before.adoc[opts=optional]
 
-ifndef::show-clusterConfigIndexes[]
-[discrete]
-endif::show-clusterConfigIndexes[]
+ifdef::show-clusterConfigIndexes[]
 [#clusterConfigIndexes]
+endif::show-clusterConfigIndexes[]
+ifndef::show-clusterConfigIndexes[]
+:leveloffset: +1
+
+[discrete#clusterConfigIndexes]
+endif::show-clusterConfigIndexes[]
 = Index Definitions
 
 ifdef::model-descriptions[]
@@ -2051,14 +2063,22 @@ include::{specDir}definitions/clusterConfigIndexes/definition-end.adoc[opts=opti
 
 :leveloffset: -1
 
+ifndef::show-clusterConfigIndexes[]
+:leveloffset: -1
+endif::show-clusterConfigIndexes[]
+
 include::{specDir}definitions/clusterConfigIndexes/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/clusterConfigNodesKnown/definition-before.adoc[opts=optional]
 
-ifndef::show-clusterConfigNodesKnown[]
-[discrete]
-endif::show-clusterConfigNodesKnown[]
+ifdef::show-clusterConfigNodesKnown[]
 [#clusterConfigNodesKnown]
+endif::show-clusterConfigNodesKnown[]
+ifndef::show-clusterConfigNodesKnown[]
+:leveloffset: +1
+
+[discrete#clusterConfigNodesKnown]
+endif::show-clusterConfigNodesKnown[]
 = Known Nodes
 
 ifdef::model-descriptions[]
@@ -2122,14 +2142,22 @@ include::{specDir}definitions/clusterConfigNodesKnown/definition-end.adoc[opts=o
 
 :leveloffset: -1
 
+ifndef::show-clusterConfigNodesKnown[]
+:leveloffset: -1
+endif::show-clusterConfigNodesKnown[]
+
 include::{specDir}definitions/clusterConfigNodesKnown/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/clusterConfigNodesWanted/definition-before.adoc[opts=optional]
 
-ifndef::show-clusterConfigNodesWanted[]
-[discrete]
-endif::show-clusterConfigNodesWanted[]
+ifdef::show-clusterConfigNodesWanted[]
 [#clusterConfigNodesWanted]
+endif::show-clusterConfigNodesWanted[]
+ifndef::show-clusterConfigNodesWanted[]
+:leveloffset: +1
+
+[discrete#clusterConfigNodesWanted]
+endif::show-clusterConfigNodesWanted[]
 = Wanted Nodes
 
 ifdef::model-descriptions[]
@@ -2193,14 +2221,22 @@ include::{specDir}definitions/clusterConfigNodesWanted/definition-end.adoc[opts=
 
 :leveloffset: -1
 
+ifndef::show-clusterConfigNodesWanted[]
+:leveloffset: -1
+endif::show-clusterConfigNodesWanted[]
+
 include::{specDir}definitions/clusterConfigNodesWanted/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/clusterConfigNodesWrapper/definition-before.adoc[opts=optional]
 
-ifndef::show-clusterConfigNodesWrapper[]
-[discrete]
-endif::show-clusterConfigNodesWrapper[]
+ifdef::show-clusterConfigNodesWrapper[]
 [#clusterConfigNodesWrapper]
+endif::show-clusterConfigNodesWrapper[]
+ifndef::show-clusterConfigNodesWrapper[]
+:leveloffset: +1
+
+[discrete#clusterConfigNodesWrapper]
+endif::show-clusterConfigNodesWrapper[]
 = Node Definitions Wrapper
 
 ifdef::model-descriptions[]
@@ -2245,14 +2281,22 @@ include::{specDir}definitions/clusterConfigNodesWrapper/definition-end.adoc[opts
 
 :leveloffset: -1
 
+ifndef::show-clusterConfigNodesWrapper[]
+:leveloffset: -1
+endif::show-clusterConfigNodesWrapper[]
+
 include::{specDir}definitions/clusterConfigNodesWrapper/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/clusterConfigNodesWrapperNode/definition-before.adoc[opts=optional]
 
-ifndef::show-clusterConfigNodesWrapperNode[]
-[discrete]
-endif::show-clusterConfigNodesWrapperNode[]
+ifdef::show-clusterConfigNodesWrapperNode[]
 [#clusterConfigNodesWrapperNode]
+endif::show-clusterConfigNodesWrapperNode[]
+ifndef::show-clusterConfigNodesWrapperNode[]
+:leveloffset: +1
+
+[discrete#clusterConfigNodesWrapperNode]
+endif::show-clusterConfigNodesWrapperNode[]
 = Node Definition
 
 ifdef::model-descriptions[]
@@ -2358,14 +2402,22 @@ include::{specDir}definitions/clusterConfigNodesWrapperNode/definition-end.adoc[
 
 :leveloffset: -1
 
+ifndef::show-clusterConfigNodesWrapperNode[]
+:leveloffset: -1
+endif::show-clusterConfigNodesWrapperNode[]
+
 include::{specDir}definitions/clusterConfigNodesWrapperNode/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/clusterConfigPlan/definition-before.adoc[opts=optional]
 
-ifndef::show-clusterConfigPlan[]
-[discrete]
-endif::show-clusterConfigPlan[]
+ifdef::show-clusterConfigPlan[]
 [#clusterConfigPlan]
+endif::show-clusterConfigPlan[]
+ifndef::show-clusterConfigPlan[]
+:leveloffset: +1
+
+[discrete#clusterConfigPlan]
+endif::show-clusterConfigPlan[]
 = Plan Partitions
 
 ifdef::model-descriptions[]
@@ -2439,14 +2491,22 @@ include::{specDir}definitions/clusterConfigPlan/definition-end.adoc[opts=optiona
 
 :leveloffset: -1
 
+ifndef::show-clusterConfigPlan[]
+:leveloffset: -1
+endif::show-clusterConfigPlan[]
+
 include::{specDir}definitions/clusterConfigPlan/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/clusterConfigPlanWrapper/definition-before.adoc[opts=optional]
 
-ifndef::show-clusterConfigPlanWrapper[]
-[discrete]
-endif::show-clusterConfigPlanWrapper[]
+ifdef::show-clusterConfigPlanWrapper[]
 [#clusterConfigPlanWrapper]
+endif::show-clusterConfigPlanWrapper[]
+ifndef::show-clusterConfigPlanWrapper[]
+:leveloffset: +1
+
+[discrete#clusterConfigPlanWrapper]
+endif::show-clusterConfigPlanWrapper[]
 = Plan Partitions Wrapper
 
 ifdef::model-descriptions[]
@@ -2491,14 +2551,22 @@ include::{specDir}definitions/clusterConfigPlanWrapper/definition-end.adoc[opts=
 
 :leveloffset: -1
 
+ifndef::show-clusterConfigPlanWrapper[]
+:leveloffset: -1
+endif::show-clusterConfigPlanWrapper[]
+
 include::{specDir}definitions/clusterConfigPlanWrapper/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/GetIndexResponsePIndex/definition-before.adoc[opts=optional]
 
-ifndef::show-GetIndexResponsePIndex[]
-[discrete]
-endif::show-GetIndexResponsePIndex[]
+ifdef::show-GetIndexResponsePIndex[]
 [#GetIndexResponsePIndex]
+endif::show-GetIndexResponsePIndex[]
+ifndef::show-GetIndexResponsePIndex[]
+:leveloffset: +1
+
+[discrete#GetIndexResponsePIndex]
+endif::show-GetIndexResponsePIndex[]
 = Plan Partition
 
 ifdef::model-descriptions[]
@@ -2660,14 +2728,22 @@ include::{specDir}definitions/GetIndexResponsePIndex/definition-end.adoc[opts=op
 
 :leveloffset: -1
 
+ifndef::show-GetIndexResponsePIndex[]
+:leveloffset: -1
+endif::show-GetIndexResponsePIndex[]
+
 include::{specDir}definitions/GetIndexResponsePIndex/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/GetIndexResponsePIndexNodesWrapper/definition-before.adoc[opts=optional]
 
-ifndef::show-GetIndexResponsePIndexNodesWrapper[]
-[discrete]
-endif::show-GetIndexResponsePIndexNodesWrapper[]
+ifdef::show-GetIndexResponsePIndexNodesWrapper[]
 [#GetIndexResponsePIndexNodesWrapper]
+endif::show-GetIndexResponsePIndexNodesWrapper[]
+ifndef::show-GetIndexResponsePIndexNodesWrapper[]
+:leveloffset: +1
+
+[discrete#GetIndexResponsePIndexNodesWrapper]
+endif::show-GetIndexResponsePIndexNodesWrapper[]
 = Partition Nodes Wrapper
 
 ifdef::model-descriptions[]
@@ -2712,14 +2788,22 @@ include::{specDir}definitions/GetIndexResponsePIndexNodesWrapper/definition-end.
 
 :leveloffset: -1
 
+ifndef::show-GetIndexResponsePIndexNodesWrapper[]
+:leveloffset: -1
+endif::show-GetIndexResponsePIndexNodesWrapper[]
+
 include::{specDir}definitions/GetIndexResponsePIndexNodesWrapper/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/GetIndexResponsePIndexNodesWrapperNode/definition-before.adoc[opts=optional]
 
-ifndef::show-GetIndexResponsePIndexNodesWrapperNode[]
-[discrete]
-endif::show-GetIndexResponsePIndexNodesWrapperNode[]
+ifdef::show-GetIndexResponsePIndexNodesWrapperNode[]
 [#GetIndexResponsePIndexNodesWrapperNode]
+endif::show-GetIndexResponsePIndexNodesWrapperNode[]
+ifndef::show-GetIndexResponsePIndexNodesWrapperNode[]
+:leveloffset: +1
+
+[discrete#GetIndexResponsePIndexNodesWrapperNode]
+endif::show-GetIndexResponsePIndexNodesWrapperNode[]
 = Partition Node
 
 ifdef::model-descriptions[]
@@ -2784,14 +2868,22 @@ include::{specDir}definitions/GetIndexResponsePIndexNodesWrapperNode/definition-
 
 :leveloffset: -1
 
+ifndef::show-GetIndexResponsePIndexNodesWrapperNode[]
+:leveloffset: -1
+endif::show-GetIndexResponsePIndexNodesWrapperNode[]
+
 include::{specDir}definitions/GetIndexResponsePIndexNodesWrapperNode/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/GetIndexResponsePlanWrng/definition-before.adoc[opts=optional]
 
-ifndef::show-GetIndexResponsePlanWrng[]
-[discrete]
-endif::show-GetIndexResponsePlanWrng[]
+ifdef::show-GetIndexResponsePlanWrng[]
 [#GetIndexResponsePlanWrng]
+endif::show-GetIndexResponsePlanWrng[]
+ifndef::show-GetIndexResponsePlanWrng[]
+:leveloffset: +1
+
+[discrete#GetIndexResponsePlanWrng]
+endif::show-GetIndexResponsePlanWrng[]
 = Plan Warnings Wrapper
 
 ifdef::model-descriptions[]
@@ -2836,14 +2928,22 @@ include::{specDir}definitions/GetIndexResponsePlanWrng/definition-end.adoc[opts=
 
 :leveloffset: -1
 
+ifndef::show-GetIndexResponsePlanWrng[]
+:leveloffset: -1
+endif::show-GetIndexResponsePlanWrng[]
+
 include::{specDir}definitions/GetIndexResponsePlanWrng/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/GetIndexResponsePlanWrngIndex/definition-before.adoc[opts=optional]
 
-ifndef::show-GetIndexResponsePlanWrngIndex[]
-[discrete]
-endif::show-GetIndexResponsePlanWrngIndex[]
+ifdef::show-GetIndexResponsePlanWrngIndex[]
 [#GetIndexResponsePlanWrngIndex]
+endif::show-GetIndexResponsePlanWrngIndex[]
+ifndef::show-GetIndexResponsePlanWrngIndex[]
+:leveloffset: +1
+
+[discrete#GetIndexResponsePlanWrngIndex]
+endif::show-GetIndexResponsePlanWrngIndex[]
 = Plan Warnings
 
 ifdef::model-descriptions[]
@@ -2877,14 +2977,22 @@ include::{specDir}definitions/GetIndexResponsePlanWrngIndex/definition-end.adoc[
 
 :leveloffset: -1
 
+ifndef::show-GetIndexResponsePlanWrngIndex[]
+:leveloffset: -1
+endif::show-GetIndexResponsePlanWrngIndex[]
+
 include::{specDir}definitions/GetIndexResponsePlanWrngIndex/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/GetIndexesResponseIndexesWrapper/definition-before.adoc[opts=optional]
 
-ifndef::show-GetIndexesResponseIndexesWrapper[]
-[discrete]
-endif::show-GetIndexesResponseIndexesWrapper[]
+ifdef::show-GetIndexesResponseIndexesWrapper[]
 [#GetIndexesResponseIndexesWrapper]
+endif::show-GetIndexesResponseIndexesWrapper[]
+ifndef::show-GetIndexesResponseIndexesWrapper[]
+:leveloffset: +1
+
+[discrete#GetIndexesResponseIndexesWrapper]
+endif::show-GetIndexesResponseIndexesWrapper[]
 = Index Definitions Wrapper
 
 ifdef::model-descriptions[]
@@ -2929,14 +3037,22 @@ include::{specDir}definitions/GetIndexesResponseIndexesWrapper/definition-end.ad
 
 :leveloffset: -1
 
+ifndef::show-GetIndexesResponseIndexesWrapper[]
+:leveloffset: -1
+endif::show-GetIndexesResponseIndexesWrapper[]
+
 include::{specDir}definitions/GetIndexesResponseIndexesWrapper/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/IndexDefinition/definition-before.adoc[opts=optional]
 
-ifndef::show-IndexDefinition[]
-[discrete]
-endif::show-IndexDefinition[]
+ifdef::show-IndexDefinition[]
 [#IndexDefinition]
+endif::show-IndexDefinition[]
+ifndef::show-IndexDefinition[]
+:leveloffset: +1
+
+[discrete#IndexDefinition]
+endif::show-IndexDefinition[]
 = Index Definition
 
 ifdef::model-descriptions[]
@@ -3080,14 +3196,22 @@ include::{specDir}definitions/IndexDefinition/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-IndexDefinition[]
+:leveloffset: -1
+endif::show-IndexDefinition[]
+
 include::{specDir}definitions/IndexDefinition/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/IndexDefinitionPlanParams/definition-before.adoc[opts=optional]
 
-ifndef::show-IndexDefinitionPlanParams[]
-[discrete]
-endif::show-IndexDefinitionPlanParams[]
+ifdef::show-IndexDefinitionPlanParams[]
 [#IndexDefinitionPlanParams]
+endif::show-IndexDefinitionPlanParams[]
+ifndef::show-IndexDefinitionPlanParams[]
+:leveloffset: +1
+
+[discrete#IndexDefinitionPlanParams]
+endif::show-IndexDefinitionPlanParams[]
 = Plan Parameters
 
 ifdef::model-descriptions[]
@@ -3185,14 +3309,22 @@ include::{specDir}definitions/IndexDefinitionPlanParams/definition-end.adoc[opts
 
 :leveloffset: -1
 
+ifndef::show-IndexDefinitionPlanParams[]
+:leveloffset: -1
+endif::show-IndexDefinitionPlanParams[]
+
 include::{specDir}definitions/IndexDefinitionPlanParams/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/logInfo/definition-before.adoc[opts=optional]
 
-ifndef::show-logInfo[]
-[discrete]
-endif::show-logInfo[]
+ifdef::show-logInfo[]
 [#logInfo]
+endif::show-logInfo[]
+ifndef::show-logInfo[]
+:leveloffset: +1
+
+[discrete#logInfo]
+endif::show-logInfo[]
 = Log Messages
 
 :leveloffset: +1
@@ -3240,14 +3372,22 @@ include::{specDir}definitions/logInfo/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-logInfo[]
+:leveloffset: -1
+endif::show-logInfo[]
+
 include::{specDir}definitions/logInfo/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/runtimeInfo/definition-before.adoc[opts=optional]
 
-ifndef::show-runtimeInfo[]
-[discrete]
-endif::show-runtimeInfo[]
+ifdef::show-runtimeInfo[]
 [#runtimeInfo]
+endif::show-runtimeInfo[]
+ifndef::show-runtimeInfo[]
+:leveloffset: +1
+
+[discrete#runtimeInfo]
+endif::show-runtimeInfo[]
 = Runtime Information
 
 :leveloffset: +1
@@ -3335,14 +3475,22 @@ include::{specDir}definitions/runtimeInfo/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-runtimeInfo[]
+:leveloffset: -1
+endif::show-runtimeInfo[]
+
 include::{specDir}definitions/runtimeInfo/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/runtimeInfoGo/definition-before.adoc[opts=optional]
 
-ifndef::show-runtimeInfoGo[]
-[discrete]
-endif::show-runtimeInfoGo[]
+ifdef::show-runtimeInfoGo[]
 [#runtimeInfoGo]
+endif::show-runtimeInfoGo[]
+ifndef::show-runtimeInfoGo[]
+:leveloffset: +1
+
+[discrete#runtimeInfoGo]
+endif::show-runtimeInfoGo[]
 = Go Runtime Information
 
 :leveloffset: +1
@@ -3409,6 +3557,10 @@ a¦ String
 include::{specDir}definitions/runtimeInfoGo/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-runtimeInfoGo[]
+:leveloffset: -1
+endif::show-runtimeInfoGo[]
 
 include::{specDir}definitions/runtimeInfoGo/definition-after.adoc[opts=optional]
 

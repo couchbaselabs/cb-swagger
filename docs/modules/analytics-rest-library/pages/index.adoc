@@ -705,10 +705,14 @@ endif::[]
 
 include::{specDir}definitions/Errors/definition-before.adoc[opts=optional]
 
-ifndef::show-Errors[]
-[discrete]
-endif::show-Errors[]
+ifdef::show-Errors[]
 [#Errors]
+endif::show-Errors[]
+ifndef::show-Errors[]
+:leveloffset: +1
+
+[discrete#Errors]
+endif::show-Errors[]
 = Errors
 
 :leveloffset: +1
@@ -746,14 +750,22 @@ include::{specDir}definitions/Errors/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Errors[]
+:leveloffset: -1
+endif::show-Errors[]
+
 include::{specDir}definitions/Errors/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Libraries/definition-before.adoc[opts=optional]
 
-ifndef::show-Libraries[]
-[discrete]
-endif::show-Libraries[]
+ifdef::show-Libraries[]
 [#Libraries]
+endif::show-Libraries[]
+ifndef::show-Libraries[]
+:leveloffset: +1
+
+[discrete#Libraries]
+endif::show-Libraries[]
 = Libraries
 
 :leveloffset: +1
@@ -815,6 +827,10 @@ a¦ String
 include::{specDir}definitions/Libraries/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-Libraries[]
+:leveloffset: -1
+endif::show-Libraries[]
 
 include::{specDir}definitions/Libraries/definition-after.adoc[opts=optional]
 

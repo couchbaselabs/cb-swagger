@@ -3046,10 +3046,14 @@ endif::[]
 include::{specDir}definitions/CommonType/definition-before.adoc[opts=optional]
 
 ifdef::enum-definitions[]
-ifndef::show-CommonType[]
-[discrete]
-endif::show-CommonType[]
+ifdef::show-CommonType[]
 [#CommonType]
+endif::show-CommonType[]
+ifndef::show-CommonType[]
+:leveloffset: +1
+
+[discrete#CommonType]
+endif::show-CommonType[]
 = Create Request Type
 
 ifdef::model-descriptions[]
@@ -3093,6 +3097,10 @@ include::{specDir}definitions/CommonType/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-CommonType[]
+:leveloffset: -1
+endif::show-CommonType[]
+
 endif::enum-definitions[]
 
 include::{specDir}definitions/CommonType/definition-after.adoc[opts=optional]
@@ -3100,10 +3108,14 @@ include::{specDir}definitions/CommonType/definition-after.adoc[opts=optional]
 include::{specDir}definitions/CommonTypeEdit/definition-before.adoc[opts=optional]
 
 ifdef::enum-definitions[]
-ifndef::show-CommonTypeEdit[]
-[discrete]
-endif::show-CommonTypeEdit[]
+ifdef::show-CommonTypeEdit[]
 [#CommonTypeEdit]
+endif::show-CommonTypeEdit[]
+ifndef::show-CommonTypeEdit[]
+:leveloffset: +1
+
+[discrete#CommonTypeEdit]
+endif::show-CommonTypeEdit[]
 = Edit Request Type
 
 ifdef::model-descriptions[]
@@ -3139,16 +3151,24 @@ include::{specDir}definitions/CommonTypeEdit/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-CommonTypeEdit[]
+:leveloffset: -1
+endif::show-CommonTypeEdit[]
+
 endif::enum-definitions[]
 
 include::{specDir}definitions/CommonTypeEdit/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponseAll/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponseAll[]
-[discrete]
-endif::show-ResponseAll[]
+ifdef::show-ResponseAll[]
 [#ResponseAll]
+endif::show-ResponseAll[]
+ifndef::show-ResponseAll[]
+:leveloffset: +1
+
+[discrete#ResponseAll]
+endif::show-ResponseAll[]
 = Links
 
 ifdef::model-descriptions[]
@@ -3241,14 +3261,22 @@ include::{specDir}definitions/ResponseAll/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-ResponseAll[]
+:leveloffset: -1
+endif::show-ResponseAll[]
+
 include::{specDir}definitions/ResponseAll/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponseAzureBlob/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponseAzureBlob[]
-[discrete]
-endif::show-ResponseAzureBlob[]
+ifdef::show-ResponseAzureBlob[]
 [#ResponseAzureBlob]
+endif::show-ResponseAzureBlob[]
+ifndef::show-ResponseAzureBlob[]
+:leveloffset: +1
+
+[discrete#ResponseAzureBlob]
+endif::show-ResponseAzureBlob[]
 = Azure Blob Response
 
 ifdef::model-descriptions[]
@@ -3296,14 +3324,22 @@ include::{specDir}definitions/ResponseAzureBlob/definition-end.adoc[opts=optiona
 
 :leveloffset: -1
 
+ifndef::show-ResponseAzureBlob[]
+:leveloffset: -1
+endif::show-ResponseAzureBlob[]
+
 include::{specDir}definitions/ResponseAzureBlob/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponseAzureBlobSpecific/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponseAzureBlobSpecific[]
-[discrete]
-endif::show-ResponseAzureBlobSpecific[]
+ifdef::show-ResponseAzureBlobSpecific[]
 [#ResponseAzureBlobSpecific]
+endif::show-ResponseAzureBlobSpecific[]
+ifndef::show-ResponseAzureBlobSpecific[]
+:leveloffset: +1
+
+[discrete#ResponseAzureBlobSpecific]
+endif::show-ResponseAzureBlobSpecific[]
 = Azure Blob Specific Response
 
 ifdef::model-descriptions[]
@@ -3464,14 +3500,22 @@ include::{specDir}definitions/ResponseAzureBlobSpecific/definition-end.adoc[opts
 
 :leveloffset: -1
 
+ifndef::show-ResponseAzureBlobSpecific[]
+:leveloffset: -1
+endif::show-ResponseAzureBlobSpecific[]
+
 include::{specDir}definitions/ResponseAzureBlobSpecific/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponseCouchbase/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponseCouchbase[]
-[discrete]
-endif::show-ResponseCouchbase[]
+ifdef::show-ResponseCouchbase[]
 [#ResponseCouchbase]
+endif::show-ResponseCouchbase[]
+ifndef::show-ResponseCouchbase[]
+:leveloffset: +1
+
+[discrete#ResponseCouchbase]
+endif::show-ResponseCouchbase[]
 = Couchbase Response
 
 ifdef::model-descriptions[]
@@ -3519,14 +3563,22 @@ include::{specDir}definitions/ResponseCouchbase/definition-end.adoc[opts=optiona
 
 :leveloffset: -1
 
+ifndef::show-ResponseCouchbase[]
+:leveloffset: -1
+endif::show-ResponseCouchbase[]
+
 include::{specDir}definitions/ResponseCouchbase/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponseCouchbaseSpecific/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponseCouchbaseSpecific[]
-[discrete]
-endif::show-ResponseCouchbaseSpecific[]
+ifdef::show-ResponseCouchbaseSpecific[]
 [#ResponseCouchbaseSpecific]
+endif::show-ResponseCouchbaseSpecific[]
+ifndef::show-ResponseCouchbaseSpecific[]
+:leveloffset: +1
+
+[discrete#ResponseCouchbaseSpecific]
+endif::show-ResponseCouchbaseSpecific[]
 = Couchbase Specific Response
 
 ifdef::model-descriptions[]
@@ -3704,14 +3756,22 @@ include::{specDir}definitions/ResponseCouchbaseSpecific/definition-end.adoc[opts
 
 :leveloffset: -1
 
+ifndef::show-ResponseCouchbaseSpecific[]
+:leveloffset: -1
+endif::show-ResponseCouchbaseSpecific[]
+
 include::{specDir}definitions/ResponseCouchbaseSpecific/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponseCouchbaseSpecificNode[]
-[discrete]
-endif::show-ResponseCouchbaseSpecificNode[]
+ifdef::show-ResponseCouchbaseSpecificNode[]
 [#ResponseCouchbaseSpecificNode]
+endif::show-ResponseCouchbaseSpecificNode[]
+ifndef::show-ResponseCouchbaseSpecificNode[]
+:leveloffset: +1
+
+[discrete#ResponseCouchbaseSpecificNode]
+endif::show-ResponseCouchbaseSpecificNode[]
 = Nodes
 
 :leveloffset: +1
@@ -3773,14 +3833,22 @@ include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-end.adoc[
 
 :leveloffset: -1
 
+ifndef::show-ResponseCouchbaseSpecificNode[]
+:leveloffset: -1
+endif::show-ResponseCouchbaseSpecificNode[]
+
 include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponseCouchbaseSpecificNodeServices[]
-[discrete]
-endif::show-ResponseCouchbaseSpecificNodeServices[]
+ifdef::show-ResponseCouchbaseSpecificNodeServices[]
 [#ResponseCouchbaseSpecificNodeServices]
+endif::show-ResponseCouchbaseSpecificNodeServices[]
+ifndef::show-ResponseCouchbaseSpecificNodeServices[]
+:leveloffset: +1
+
+[discrete#ResponseCouchbaseSpecificNodeServices]
+endif::show-ResponseCouchbaseSpecificNodeServices[]
 = Services
 
 ifdef::model-descriptions[]
@@ -3880,14 +3948,22 @@ include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-e
 
 :leveloffset: -1
 
+ifndef::show-ResponseCouchbaseSpecificNodeServices[]
+:leveloffset: -1
+endif::show-ResponseCouchbaseSpecificNodeServices[]
+
 include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponseGCS/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponseGCS[]
-[discrete]
-endif::show-ResponseGCS[]
+ifdef::show-ResponseGCS[]
 [#ResponseGCS]
+endif::show-ResponseGCS[]
+ifndef::show-ResponseGCS[]
+:leveloffset: +1
+
+[discrete#ResponseGCS]
+endif::show-ResponseGCS[]
 = GCS Response
 
 ifdef::model-descriptions[]
@@ -3935,14 +4011,22 @@ include::{specDir}definitions/ResponseGCS/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-ResponseGCS[]
+:leveloffset: -1
+endif::show-ResponseGCS[]
+
 include::{specDir}definitions/ResponseGCS/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponseGCSSpecific/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponseGCSSpecific[]
-[discrete]
-endif::show-ResponseGCSSpecific[]
+ifdef::show-ResponseGCSSpecific[]
 [#ResponseGCSSpecific]
+endif::show-ResponseGCSSpecific[]
+ifndef::show-ResponseGCSSpecific[]
+:leveloffset: +1
+
+[discrete#ResponseGCSSpecific]
+endif::show-ResponseGCSSpecific[]
 = GCS Specific Response
 
 ifdef::model-descriptions[]
@@ -4016,14 +4100,22 @@ include::{specDir}definitions/ResponseGCSSpecific/definition-end.adoc[opts=optio
 
 :leveloffset: -1
 
+ifndef::show-ResponseGCSSpecific[]
+:leveloffset: -1
+endif::show-ResponseGCSSpecific[]
+
 include::{specDir}definitions/ResponseGCSSpecific/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponseS3/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponseS3[]
-[discrete]
-endif::show-ResponseS3[]
+ifdef::show-ResponseS3[]
 [#ResponseS3]
+endif::show-ResponseS3[]
+ifndef::show-ResponseS3[]
+:leveloffset: +1
+
+[discrete#ResponseS3]
+endif::show-ResponseS3[]
 = S3 Response
 
 ifdef::model-descriptions[]
@@ -4071,14 +4163,22 @@ include::{specDir}definitions/ResponseS3/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-ResponseS3[]
+:leveloffset: -1
+endif::show-ResponseS3[]
+
 include::{specDir}definitions/ResponseS3/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/ResponseS3Specific/definition-before.adoc[opts=optional]
 
-ifndef::show-ResponseS3Specific[]
-[discrete]
-endif::show-ResponseS3Specific[]
+ifdef::show-ResponseS3Specific[]
 [#ResponseS3Specific]
+endif::show-ResponseS3Specific[]
+ifndef::show-ResponseS3Specific[]
+:leveloffset: +1
+
+[discrete#ResponseS3Specific]
+endif::show-ResponseS3Specific[]
 = S3 Specific Response
 
 ifdef::model-descriptions[]
@@ -4171,14 +4271,22 @@ include::{specDir}definitions/ResponseS3Specific/definition-end.adoc[opts=option
 
 :leveloffset: -1
 
+ifndef::show-ResponseS3Specific[]
+:leveloffset: -1
+endif::show-ResponseS3Specific[]
+
 include::{specDir}definitions/ResponseS3Specific/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Wrong/definition-before.adoc[opts=optional]
 
-ifndef::show-Wrong[]
-[discrete]
-endif::show-Wrong[]
+ifdef::show-Wrong[]
 [#Wrong]
+endif::show-Wrong[]
+ifndef::show-Wrong[]
+:leveloffset: +1
+
+[discrete#Wrong]
+endif::show-Wrong[]
 = Errors
 
 :leveloffset: +1
@@ -4215,6 +4323,10 @@ a¦ String
 include::{specDir}definitions/Wrong/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-Wrong[]
+:leveloffset: -1
+endif::show-Wrong[]
 
 include::{specDir}definitions/Wrong/definition-after.adoc[opts=optional]
 

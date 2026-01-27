@@ -784,10 +784,14 @@ endif::[]
 
 include::{specDir}definitions/Errors/definition-before.adoc[opts=optional]
 
-ifndef::show-Errors[]
-[discrete]
-endif::show-Errors[]
+ifdef::show-Errors[]
 [#Errors]
+endif::show-Errors[]
+ifndef::show-Errors[]
+:leveloffset: +1
+
+[discrete#Errors]
+endif::show-Errors[]
 = Errors
 
 :leveloffset: +1
@@ -825,14 +829,22 @@ include::{specDir}definitions/Errors/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Errors[]
+:leveloffset: -1
+endif::show-Errors[]
+
 include::{specDir}definitions/Errors/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Node/definition-before.adoc[opts=optional]
 
-ifndef::show-Node[]
-[discrete]
-endif::show-Node[]
+ifdef::show-Node[]
 [#Node]
+endif::show-Node[]
+ifndef::show-Node[]
+:leveloffset: +1
+
+[discrete#Node]
+endif::show-Node[]
 = Node
 
 :leveloffset: +1
@@ -908,14 +920,22 @@ include::{specDir}definitions/Node/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+ifndef::show-Node[]
+:leveloffset: -1
+endif::show-Node[]
+
 include::{specDir}definitions/Node/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Service/definition-before.adoc[opts=optional]
 
-ifndef::show-Service[]
-[discrete]
-endif::show-Service[]
+ifdef::show-Service[]
 [#Service]
+endif::show-Service[]
+ifndef::show-Service[]
+:leveloffset: +1
+
+[discrete#Service]
+endif::show-Service[]
 = Service
 
 :leveloffset: +1
@@ -1467,6 +1487,10 @@ a¦ Integer (int32)
 include::{specDir}definitions/Service/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-Service[]
+:leveloffset: -1
+endif::show-Service[]
 
 include::{specDir}definitions/Service/definition-after.adoc[opts=optional]
 
