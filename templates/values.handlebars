@@ -26,7 +26,10 @@
 *Maximum items:* `{{{this}}}`
 {{/with}}
 {{~#if uniqueItems ~}}
-*Unique items:* `{{{this}}}`
+*Unique items:* `{{uniqueItems}}`
+{{/if}}
+{{~#if isNullable ~}}
+*Nullable:* `{{isNullable}}`
 {{/if}}
 {{~#if vendorExtensions.x-has-example ~}}
 *Example:* `{{#if isString}}+++"{{/if}}{{{example}}}{{#if isString}}"+++{{/if}}`
