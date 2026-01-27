@@ -188,14 +188,14 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-description-end.adoc[o
 {{! *** OPERATION CONSUMES / PRODUCES *** }}
 {{#if hasConsumes ~}}
 [#{{operationIdOriginal}}-consumes]
-.Consumes
+.icon:arrow-right-to-bracket[fw] Consumes
 {{#each consumes ~}}
 * {{{mediaType}}}
 {{/each}}
 {{~/if}}
 {{#if hasProduces ~}}
 [#{{operationIdOriginal}}-produces]
-.Produces
+.icon:arrow-right-from-bracket[fw] Produces
 {{#each produces ~}}
 * {{{mediaType}}}
 {{/each}}
@@ -383,7 +383,7 @@ include::{specDir}security/{{name}}/security-scheme-begin.adoc[opts=optional]
 [%hardbreaks]
 *Type:* {{type}}
 *Scheme:* {{scheme}}
-{{#with bearerFormat}}__Format__: {{this}}{{/with}}
+{{#with bearerFormat}}*Format:* {{this}}{{/with}}
 {{~/if}}
 {{~else if isOAuth ~}}
 .OAuth
