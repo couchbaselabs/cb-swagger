@@ -44,10 +44,14 @@ include::{specDir}definitions/{{name}}/definition-before.adoc[opts=optional]
 {{#if isEnum ~}}
 ifdef::enum-definitions[]{{! omit enums from model list. Probably going to regret this }}
 {{/if~}}
-ifndef::show-{{name}}[]
-[discrete]
-endif::show-{{name}}[]
+ifdef::show-{{name}}[]
 [#{{name}}]
+endif::show-{{name}}[]
+ifndef::show-{{name}}[]
+:leveloffset: +1
+
+[discrete#{{name}}]
+endif::show-{{name}}[]
 = {{#with title}}{{this}}{{else}}{{classname}}{{/with}}
 
 {{#with description ~}}
@@ -143,6 +147,10 @@ a¦ {{>schemas}}
 include::{specDir}definitions/{{name}}/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
+
+ifndef::show-{{name}}[]
+:leveloffset: -1
+endif::show-{{name}}[]
 
 {{#if isEnum ~}}
 endif::enum-definitions[]
