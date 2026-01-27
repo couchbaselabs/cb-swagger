@@ -1,9 +1,7 @@
 {{#if isEnumRef}}
 include::index.adoc[tag=type-{{dataType}}, opts=optional]
-{{~else ~}}
-{{~#if isArray ~}}
+{{~else if isArray ~}}
 {{#with items}}{{>schema}}{{/with}} array
 {{~else ~}}
 {{>schema}}
-{{~/if}}
 {{~/if}}

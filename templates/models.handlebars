@@ -1,6 +1,4 @@
-{{! include partial before definitions }}
 include::{specDir}definitions/document-before.adoc[opts=optional]
-
 
 [#models]
 = Definitions
@@ -14,12 +12,10 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 {{~/unless}}
 {{~/with}}
 {{~/each}}
-
 :leveloffset: +1
-{{! include partial before definitions body }}
+
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
-{{! Table of contents }}
 This section describes the properties consumed and returned by this REST API.
 
 ifeval::[{count-models} > 0]
@@ -33,66 +29,46 @@ endif::collapse-models[]
 ifdef::enum-definitions[]
 xref:{{name}}[]
 endif::enum-definitions[]
-{{else ~}}
+{{~else ~}}
 xref:{{name}}[]
-{{/if}}
+{{~/if}}
 {{~/with}}
-{{~/each}}
+{{/each ~}}
 endif::[]
 
 {{! *** DEFINITION *** }}
 {{#each models ~}}
 {{#with model ~}}
-{{! include partial before definition }}
 include::{specDir}definitions/{{name}}/definition-before.adoc[opts=optional]
 
 {{! omit enums from model list. Probably going to regret this }}
 {{#if isEnum ~}}
 ifdef::enum-definitions[]
-[#{{name}}]
-= {{#with title}}{{this}}{{else}}{{classname}}{{/with}}
-
-.icon:menu[fw] Enumeration
-{blank}
-
-{{#with description ~}}
-//tag::desc-{{name}}[]
-{{{unescapedDescription}}}
-//end::desc-{{name}}[]
-
-{{~/with}}
-.Schema
-//tag::type-{{name}}[]
-{{>schemas}}
-//end::type-{{name}}[]
-endif::enum-definitions[]
-{{~else ~}}
+{{/if~}}
 ifdef::collapse-models[]
 [discrete]
 endif::collapse-models[]
 [#{{name}}]
 = {{#with title}}{{this}}{{else}}{{classname}}{{/with}}
 
-:leveloffset: +1
-{{! include partial before definition body }}
-include::{specDir}definitions/{{name}}/definition-begin.adoc[opts=optional]
-
-{{#with composedSchemas ~}}
-.icon:bars[fw] Composite Schema
-{blank}
-
-{{! tag for partial}}
-//tag::{{name}}[]
-
-{{! Create partial model description }}
 {{#with description ~}}
 ifdef::model-descriptions[]
 //tag::desc-{{name}}[]
 {{{unescapedDescription}}}
 //end::desc-{{name}}[]
 endif::model-descriptions[]
-{{~/with}}
 
+{{/with~}}
+
+:leveloffset: +1
+
+include::{specDir}definitions/{{name}}/definition-begin.adoc[opts=optional]
+
+{{#with composedSchemas ~}}
+.icon:bars[fw] Composite Schema
+{blank}
+
+//tag::{{name}}[]
 {{#each oneOf ~}}
 {{#if @first ~}}
 [cols="25,55,20",separator=¦]
@@ -132,24 +108,27 @@ a¦ {{>schemas}}
 |===
 {{/if}}
 {{~/each}}
-
-{{! end tag for partial}}
 //end::{{name}}[]
-{{~else ~}}
+{{~else ~}}{{! composedSchemas }}
 {{#if hasVars ~}}
-{{>model ~}}
-{{~else ~}}
-{{#if isMap ~}}
-{{>model ~}}
-{{~/if}}
-{{~/if}}
-{{~#if isString ~}}
+{{>model}}
+{{~else if isMap ~}}
+{{>model}}
+{{~else if isEnum ~}}
+.icon:menu[fw] Enumeration
+{blank}
+
+{{>property}}
+.Schema
+//tag::type-{{name}}[]
+{{>schemas}}
+//end::type-{{name}}[]
+{{~else if isString ~}}
 .icon:quote-left[fw] String
 {blank}
 
 {{>property}}
-{{~/if}}
-{{~#if isArray ~}}
+{{~else if isArray ~}}
 .icon:brackets[fw] Array
 {blank}
 
@@ -159,22 +138,24 @@ a¦ {{>schemas}}
 .Schema
 {{>schema}} array
 {{~/with}}
-{{~/if}}
-{{~/with}} {{! composedSchemas }}
-{{! include partial after definition body }}
+{{~/if}}{{! hasVars }}
+{{~/with}}{{! composedSchemas }}
+
 include::{specDir}definitions/{{name}}/definition-end.adoc[opts=optional]
-{{~/if}}{{! isEnum }}
 
-{{! include partial after definition }}
 :leveloffset: -1
+
+{{#if isEnum ~}}
+endif::enum-definitions[]
+
+{{/if~}}
+
 include::{specDir}definitions/{{name}}/definition-after.adoc[opts=optional]
+{{/with}}{{! model }}
+{{/each}}{{! models }}
 
-{{~/with}}{{! model }}
-{{~/each}}{{! models }}
-
-{{! include partial after definitions body }}
 include::{specDir}definitions/document-end.adoc[opts=optional]
 
-{{! include partial after definitions }}
 :leveloffset: -1
+
 include::{specDir}definitions/document-after.adoc[opts=optional]

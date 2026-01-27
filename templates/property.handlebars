@@ -1,6 +1,9 @@
-{{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{/with ~}}
-{{#with vendorExtensions.x-desc-status}}[.status]##{{this}}##{{/with}}
+{{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{#unless vendorExtensions.x-desc-status}}
 
+{{/unless}}{{/with ~}}
+{{#with vendorExtensions.x-desc-status}}[.status]##{{this}}##
+
+{{/with~}}
 [markdown]
 --
 {{#with vendorExtensions.x-desc-refs ~}}
@@ -9,7 +12,9 @@ ifdef::alt-markdown-links[]
 
 endif::alt-markdown-links[]
 {{/with ~}}
-{{#with description~}}
+{{#with ref ~}}
+include::index.adoc[tag=desc-{{dataType}}, opts=optional]
+{{~else with description~}}
 {{{unescapedDescription}}}
 {{~/with}}
 {{~#with vendorExtensions.x-desc-more}}
@@ -17,11 +22,7 @@ endif::alt-markdown-links[]
 // tag::desc-more[]
 {{{this}}}
 // end::desc-more[]
-{{/with ~}}
-{{! if ref is present, fetch remote description}}
-{{~#with ref ~}}
-include::index.adoc[tag=desc-{{dataType}}, opts=optional]
-{{/with}}
+{{~/with}}
 --
 {{~#with vendorExtensions ~}}
 {{#each x-enumDescriptions ~}}
@@ -34,8 +35,7 @@ include::index.adoc[tag=desc-{{dataType}}, opts=optional]
 {{~/with}}
 
 [%hardbreaks]
-{{! values}}
-{{~#if isEnum ~}}
+{{#if isEnum ~}}
 {{#with allowableValues ~}}
 *Values:* {{#each values}}`{{#if isString}}"{{/if}}{{this}}{{#if isString}}"{{/if}}`{{#unless @last}}, {{/unless}}{{/each}}
 {{~/with}}

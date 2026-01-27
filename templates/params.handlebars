@@ -3,7 +3,7 @@
 = Parameters
 
 :leveloffset: +1
-{{! include partial before operation parameters body }}
+
 include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-begin.adoc[opts=optional]
 
 {{#if hasPathParams ~}}
@@ -101,7 +101,7 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-begin.adoc[
 |===
 {{/if}}
 
-{{! include partial after operation parameters body }}
 include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-end.adoc[opts=optional]
+
 :leveloffset: -1
-{{~/if}}
+{{~/if}}{{! hasParams }}

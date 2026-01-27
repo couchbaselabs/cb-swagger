@@ -1,31 +1,23 @@
 .icon:brackets-curly[fw] Object
 {blank}
-{{! tag for partial}}
+
 //tag::{{name}}[]
 
-{{! Create partial model description }}
-{{~#with description ~}}
-ifdef::model-descriptions[]
-//tag::desc-{{name}}[]
-{{{unescapedDescription}}}
-//end::desc-{{name}}[]
-endif::model-descriptions[]
-
-{{~/with}}
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
+
 {{#each vars ~}}
-{{! DEFINITION NAME }}
-a¦ {{#with vendorExtensions.x-desc-name}}[#{{this}}]{{/with}}
+a¦ {{#with vendorExtensions.x-desc-name}}[#{{this}}]
+{{/with ~}}
 {{#with vendorExtensions.x-alt-title}}*{{{this}}}*{{else}}*{{baseName}}*{{/with}} +
 _{{#with required}}required{{else}}optional{{/with}}_
 a¦ {{>property}}
 a¦ {{>schemas}}
 {{/each}}
 {{~#with additionalProperties ~}}
-{{! ADDITIONAL PROPERTY NAME }}
-a¦ {{#with vendorExtensions.x-desc-name}}[#{{this}}]{{/with}}
+a¦ {{#with vendorExtensions.x-desc-name}}[#{{this}}]
+{{/with ~}}
 {{#with vendorExtensions.x-additionalPropertiesName}}*<{{this}}>* +{{/with}}
 _additional +
 property_
@@ -33,7 +25,7 @@ a¦ {{>property}}
 a¦ {{>schemas}}
 {{/with}}
 |===
-{{! end tag for partial}}
+
 //end::{{name}}[]
 
 {{! Polymorphism}}
@@ -49,7 +41,7 @@ This schema has alternative properties, depending on the value of *{{discriminat
 a| `{{mappingName}}`
 a| {{{model.unescapedDescription}}}
 a| xref:{{modelName}}[]
-{{~/each}}
+{{/each}}
 |===
 {{~/with}}
 {{~/if}}
