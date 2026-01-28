@@ -24,15 +24,14 @@ include::index.adoc[tag=desc-{{dataType}}, opts=optional]
 // end::desc-more[]
 {{~/with}}
 --
-{{~#with vendorExtensions ~}}
-{{#each x-enumDescriptions ~}}
+{{~#each vendorExtensions.x-enumDescriptions ~}}
+{{#if @first}}
 
-.Enum Descriptions
-....
+[horizontal.enum]
+{{/if~}}
+`{{#if isString}}"{{/if}}{{@key}}{{#if isString}}"{{/if}}`::{{! FIXME: Update CSS no bold for hdlist1 in enum }}
 {{{this}}}
-....
-{{~/each}}
-{{~/with}}
+{{/each}}
 
 [%hardbreaks]
 {{#if isEnum ~}}
