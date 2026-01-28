@@ -7,5 +7,5 @@ xref:{{dataType}}[]
 {{~else if isAnyType ~}}
 Any Type
 {{~else ~}}
-{{#with lambda.uncamelize}}{{dataType}}{{/with}}{{#with dataFormat}} ({{{.}}}){{/with}}
+{{dataType}}{{#with dataFormat}} ({{{this}}}){{/with}}
 {{~/with}}
