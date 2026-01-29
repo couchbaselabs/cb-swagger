@@ -1,0 +1,168 @@
+include::{specDir}definitions/document-before.adoc[opts=optional]
+
+[#models]
+= Definitions
+
+{{#each models ~}}
+{{#with model ~}}
+{{#unless isEnum ~}}
+{{#if @last ~}}
+:count-models: {{@index}}
+{{~/if}}
+{{~/unless}}
+{{~/with}}
+{{~/each}}
+:leveloffset: +1
+
+include::{specDir}definitions/document-begin.adoc[opts=optional]
+
+This section describes the properties consumed and returned by this REST API.
+
+ifeval::[{count-models} > 0]
+ifeval::[{count-models} > 8]
+[.two-columns]
+endif::[]
+[%hardbreaks]
+{{#each models ~}}
+{{#with model ~}}
+{{#if isEnum ~}}
+ifdef::enum-definitions[]
+xref:{{name}}[]
+endif::enum-definitions[]
+{{~else ~}}
+xref:{{name}}[]
+{{~/if}}
+{{~/with}}
+{{/each ~}}
+endif::[]
+
+{{! *** DEFINITION *** }}
+{{#each models ~}}
+{{#with model ~}}
+include::{specDir}definitions/{{name}}/definition-before.adoc[opts=optional]
+
+{{#if isEnum ~}}
+ifdef::enum-definitions[]{{! omit enums from model list. Probably going to regret this }}
+{{/if~}}
+ifdef::show-{{name}}[]
+[#{{name}}]
+endif::show-{{name}}[]
+ifndef::show-{{name}}[]
+:leveloffset: +1
+
+[discrete#{{name}}]
+endif::show-{{name}}[]
+= {{#with title}}{{this}}{{else}}{{classname}}{{/with}}
+
+{{#with description ~}}
+ifdef::model-descriptions[]
+//tag::desc-{{name}}[]
+{{{unescapedDescription}}}
+//end::desc-{{name}}[]
+endif::model-descriptions[]
+
+{{/with~}}
+
+:leveloffset: +1
+
+include::{specDir}definitions/{{name}}/definition-begin.adoc[opts=optional]
+
+{{#with composedSchemas ~}}
+.icon:bars[fw] Composite Schema
+{blank}
+
+//tag::{{name}}[]
+{{#each oneOf ~}}
+{{#if @first ~}}
+[cols="25,55,20",separator=¦]
+|===
+¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
+{{/if}}
+a¦ {{#unless @first}}or{{/unless}}
+a¦ {{>property}}
+a¦ {{>schemas}}
+{{#if @last ~}}
+|===
+{{/if}}
+{{~/each}}
+{{~#each anyOf ~}}
+{{#if @first }}
+[cols="25,55,20",separator=¦]
+|===
+¦ Any{nbsp}of{nbsp}... ¦ ¦ Schema
+{{/if}}
+a¦ {{#unless @first}}and{nbsp}/ or{{/unless}}
+a¦ {{>property}}
+a¦ {{>schemas}}
+{{#if @last ~}}
+|===
+{{/if}}
+{{~/each}}
+{{~#each allOf ~}}
+{{#if @first ~}}
+[cols="25,55,20",separator=¦]
+|===
+¦ All{nbsp}of{nbsp}... ¦ ¦ Schema
+{{/if}}
+a¦ {{#unless @first}}and{{/unless}}
+a¦ {{>property}}
+a¦ {{>schemas}}
+{{#if @last ~}}
+|===
+{{/if}}
+{{~/each}}
+//end::{{name}}[]
+{{~else ~}}{{! composedSchemas }}
+{{#if hasVars ~}}
+{{>model}}
+{{~else if isMap ~}}
+{{>model}}
+{{~else if isEnum ~}}
+.icon:menu[fw] Enumeration
+{blank}
+
+{{>property}}
+.Schema
+//tag::type-{{name}}[]
+{{>schemas}}
+//end::type-{{name}}[]
+{{~else if isString ~}}
+.icon:quote-left[fw] String
+{blank}
+
+{{>property}}
+{{~else if isArray ~}}
+.icon:brackets[fw] Array
+{blank}
+
+{{>property}}
+
+{{#with items ~}}
+.Schema
+{{>schema}} array
+{{~/with}}
+{{~/if}}{{! hasVars }}
+{{~/with}}{{! composedSchemas }}
+
+include::{specDir}definitions/{{name}}/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-{{name}}[]
+:leveloffset: -1
+endif::show-{{name}}[]
+
+{{#if isEnum ~}}
+endif::enum-definitions[]
+
+{{/if~}}
+
+include::{specDir}definitions/{{name}}/definition-after.adoc[opts=optional]
+{{/with}}{{! model }}
+{{/each}}{{! models }}
+
+include::{specDir}definitions/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}definitions/document-after.adoc[opts=optional]
