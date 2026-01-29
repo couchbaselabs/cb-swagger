@@ -12,16 +12,15 @@ DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
 
 :leveloffset: 1
 
-include::{specDir}overview/document-before.adoc[opts=optional]
 
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 [[overview]]
 = Overview
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
-
+include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -32,7 +31,7 @@ This API enables you to get Index service statistics.
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 7.6
+*Version:* 7.6
 
 [discrete#host]
 = Host information
@@ -67,7 +66,6 @@ The host name or IP address of a node running the Index Service.
 --
 
 [%hardbreaks]
-
 *Example:* `+++localhost+++`
 // end
 
@@ -83,31 +81,26 @@ The Index Service REST port. Use `19102` for secure access.
 
 |===
 
-
-// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
-
+include::{specDir}overview/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
-
+include::{specDir}paths/document-before.adoc[opts=optional]
 
 [[resources]]
 = Resources
 
-:count-apis: 1
-
+:count-apis: 0
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
@@ -115,18 +108,14 @@ xref:tag-Default[]
 endif::[]
 
 
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 [#tag-Default]
 = Default
 :leveloffset: +1
 
-ifeval::["" != ""]
-
-endif::[]
-ifeval::["" == ""]
 **{toc-title}**
 endif::[]
-endif::[]
+
 
 [%hardbreaks]
 xref:get_index_stats[]
@@ -134,44 +123,38 @@ xref:get_keyspace_stats[]
 xref:get_node_stats[]
 
 
+
 //tag::get_index_stats[]
 
-
-// markup not found, no include::{specDir}paths/get_index_stats/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/get_index_stats/operation-before.adoc[opts=optional]
 
 [#get_index_stats]
 = Get Statistics for an Index
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_index_stats/operation-begin.adoc[opts=optional]
 
 ....
 GET /api/v1/stats/{keyspace}/{index}
 ....
 
 
-
-// markup not found, no include::{specDir}paths/get_index_stats/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/get_index_stats/operation-description-before.adoc[opts=optional]
 
 [#get_index_stats-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_index_stats/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Returns statistics for an index.
 --
 
-
-// markup not found, no include::{specDir}paths/get_index_stats/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/get_index_stats/operation-description-end.adoc[opts=optional]
 
 
 
@@ -179,23 +162,20 @@ Returns statistics for an index.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_index_stats/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/get_index_stats/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/get_index_stats/operation-parameters-before.adoc[opts=optional]
 
 [#get_index_stats-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-parameters-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_index_stats/operation-parameters-begin.adoc[opts=optional]
 
 [#get_index_stats-path]
 .Path Parameters
@@ -206,11 +186,8 @@ Returns statistics for an index.
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *keyspace* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of a keyspace.
 This must contain a bucket name, which may be followed by an optional scope name and an optional collection name, separated by dots.
@@ -226,13 +203,9 @@ For example, `` `bucket.1`.scope.collection ``.
 {blank}
 
 a¦ String
-
 a¦ *index* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of an index.
 --
@@ -243,7 +216,6 @@ The name of an index.
 a¦ String
 
 |===
-
 [#get_index_stats-query]
 .Query Parameters
 {blank}
@@ -253,11 +225,8 @@ a¦ String
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *pretty* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 Whether the output should be formatted with indentations and newlines.
 --
@@ -267,13 +236,9 @@ Whether the output should be formatted with indentations and newlines.
 {blank}
 
 a¦ Boolean
-
 a¦ *partition* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 Whether statistics for index partitions should be included.
 --
@@ -283,13 +248,9 @@ Whether statistics for index partitions should be included.
 {blank}
 
 a¦ Boolean
-
 a¦ *redact* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 Whether keyspace and index names should be redacted in the output.
 
@@ -300,13 +261,9 @@ Whether keyspace and index names should be redacted in the output.
 {blank}
 
 a¦ Boolean
-
 a¦ *skipEmpty* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 Whether empty, null, or zero statistics should be omitted from the output.
 --
@@ -320,29 +277,24 @@ a¦ Boolean
 |===
 
 
-
-
-
 include::{specDir}paths/get_index_stats/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/get_index_stats/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_index_stats/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/get_index_stats/operation-responses-before.adoc[opts=optional]
 
 [#get_index_stats-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_index_stats/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -364,103 +316,84 @@ a|
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_index_stats/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/get_index_stats/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-PartIdx:
 
 
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/get_index_stats/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_index_stats/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/get_index_stats/operation-security-before.adoc[opts=optional]
 
 [#get_index_stats-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_index_stats/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_index_stats/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-indexStatistics[]
+| xref:security-IndexStatistics[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_index_stats/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/get_index_stats/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_index_stats/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/get_index_stats/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_index_stats/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}get_index_stats/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/get_index_stats/operation-end.adoc[opts=optional]
+include::{specDir}paths/get_index_stats/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_index_stats/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/get_index_stats/operation-after.adoc[opts=optional]
 
 //end::get_index_stats[]
 
-
 //tag::get_keyspace_stats[]
 
-
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/get_keyspace_stats/operation-before.adoc[opts=optional]
 
 [#get_keyspace_stats]
 = Get Statistics for Indexes in a Keyspace
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_keyspace_stats/operation-begin.adoc[opts=optional]
 
 ....
 GET /api/v1/stats/{keyspace}
 ....
 
 
-
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/get_keyspace_stats/operation-description-before.adoc[opts=optional]
 
 [#get_keyspace_stats-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_keyspace_stats/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Returns statistics for all indexes within a bucket, scope, or collection.
 --
 
-
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/get_keyspace_stats/operation-description-end.adoc[opts=optional]
 
 
 
@@ -468,23 +401,20 @@ Returns statistics for all indexes within a bucket, scope, or collection.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/get_keyspace_stats/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/get_keyspace_stats/operation-parameters-before.adoc[opts=optional]
 
 [#get_keyspace_stats-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-parameters-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_keyspace_stats/operation-parameters-begin.adoc[opts=optional]
 
 [#get_keyspace_stats-path]
 .Path Parameters
@@ -495,11 +425,8 @@ Returns statistics for all indexes within a bucket, scope, or collection.
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *keyspace* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of a keyspace.
 This must contain a bucket name, which may be followed by an optional scope name and an optional collection name, separated by dots.
@@ -517,7 +444,6 @@ For example, `` `bucket.1`.scope.collection ``.
 a¦ String
 
 |===
-
 [#get_keyspace_stats-query]
 .Query Parameters
 {blank}
@@ -527,11 +453,8 @@ a¦ String
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *pretty* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 Whether the output should be formatted with indentations and newlines.
 --
@@ -541,13 +464,9 @@ Whether the output should be formatted with indentations and newlines.
 {blank}
 
 a¦ Boolean
-
 a¦ *redact* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 Whether keyspace and index names should be redacted in the output.
 
@@ -558,13 +477,9 @@ Whether keyspace and index names should be redacted in the output.
 {blank}
 
 a¦ Boolean
-
 a¦ *skipEmpty* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 Whether empty, null, or zero statistics should be omitted from the output.
 --
@@ -578,29 +493,24 @@ a¦ Boolean
 |===
 
 
-
-
-
 include::{specDir}paths/get_keyspace_stats/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/get_keyspace_stats/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/get_keyspace_stats/operation-responses-before.adoc[opts=optional]
 
 [#get_keyspace_stats-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_keyspace_stats/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -622,103 +532,84 @@ a|
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/get_keyspace_stats/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-PartIdxIndexes:
 
 
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/get_keyspace_stats/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/get_keyspace_stats/operation-security-before.adoc[opts=optional]
 
 [#get_keyspace_stats-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_keyspace_stats/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-indexStatistics[]
+| xref:security-IndexStatistics[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/get_keyspace_stats/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/get_keyspace_stats/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_keyspace_stats/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}get_keyspace_stats/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-end.adoc[opts=optional]
+include::{specDir}paths/get_keyspace_stats/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_keyspace_stats/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/get_keyspace_stats/operation-after.adoc[opts=optional]
 
 //end::get_keyspace_stats[]
 
-
 //tag::get_node_stats[]
 
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/get_node_stats/operation-before.adoc[opts=optional]
 
 [#get_node_stats]
 = Get Statistics for an Index Node
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_node_stats/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_node_stats/operation-begin.adoc[opts=optional]
 
 ....
 GET /api/v1/stats
 ....
 
 
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/get_node_stats/operation-description-before.adoc[opts=optional]
 
 [#get_node_stats-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_node_stats/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_node_stats/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Returns statistics for an index node, and for all indexes on that node.
 --
 
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/get_node_stats/operation-description-end.adoc[opts=optional]
 
 
 
@@ -726,24 +617,20 @@ Returns statistics for an index node, and for all indexes on that node.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/get_node_stats/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/get_node_stats/operation-parameters-before.adoc[opts=optional]
 
 [#get_node_stats-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-begin.adoc[opts=optional]
-
-
+include::{specDir}paths/get_node_stats/operation-parameters-begin.adoc[opts=optional]
 
 [#get_node_stats-query]
 .Query Parameters
@@ -754,11 +641,8 @@ Returns statistics for an index node, and for all indexes on that node.
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *pretty* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 Whether the output should be formatted with indentations and newlines.
 --
@@ -768,13 +652,9 @@ Whether the output should be formatted with indentations and newlines.
 {blank}
 
 a¦ Boolean
-
 a¦ *redact* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 Whether keyspace and index names should be redacted in the output.
 
@@ -785,13 +665,9 @@ Whether keyspace and index names should be redacted in the output.
 {blank}
 
 a¦ Boolean
-
 a¦ *skipEmpty* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 Whether empty, null, or zero statistics should be omitted from the output.
 --
@@ -805,29 +681,24 @@ a¦ Boolean
 |===
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/get_node_stats/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/get_node_stats/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/get_node_stats/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/get_node_stats/operation-responses-before.adoc[opts=optional]
 
 [#get_node_stats-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_node_stats/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_node_stats/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -840,104 +711,91 @@ Success. Returns an object containing a nested `indexer` object, and usually one
 --
 a| xref:NodeIdx[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/get_node_stats/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-NodeIdx:
 
 
 
-// markup not found, no include::{specDir}paths/get_node_stats/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/get_node_stats/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/get_node_stats/operation-security-before.adoc[opts=optional]
 
 [#get_node_stats-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_node_stats/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_node_stats/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-indexStatistics[]
+| xref:security-IndexStatistics[]
+
+
+
 | http (basic)
-| xref:security-nodeStatistics[]
+| xref:security-NodeStatistics[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/get_node_stats/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/get_node_stats/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_node_stats/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}get_node_stats/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-end.adoc[opts=optional]
+include::{specDir}paths/get_node_stats/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_node_stats/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/get_node_stats/operation-after.adoc[opts=optional]
 
 //end::get_node_stats[]
 
 
-ifeval::[{count-apis} > 1]
+
+ifeval::[{count-apis} > 0]
 :leveloffset: -1
 endif::[]
 
 
 
-// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+include::{specDir}paths/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
-
+include::{specDir}paths/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
-
+include::{specDir}definitions/document-before.adoc[opts=optional]
 
 [#models]
 = Definitions
 
-:count-models: 7
-
+:count-models: 6
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
-
+include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 1]
-ifdef::collapse-models[]
+ifeval::[{count-models} > 0]
+ifeval::[{count-models} > 8]
 [.two-columns]
-endif::collapse-models[]
+endif::[]
 [%hardbreaks]
 xref:NodeIdx[]
 xref:NodeIdxNode[]
@@ -949,35 +807,32 @@ xref:PartIdxPartitionsIndex[]
 endif::[]
 
 
+include::{specDir}definitions/NodeIdx/definition-before.adoc[opts=optional]
 
-// markup not found, no include::{specDir}definitions/NodeIdx/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-NodeIdx[]
 [#NodeIdx]
+endif::show-NodeIdx[]
+ifndef::show-NodeIdx[]
+:leveloffset: +1
+
+[discrete#NodeIdx]
+endif::show-NodeIdx[]
 = Node and Indexes
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/NodeIdx/definition-begin.adoc[opts=optional]
-
+include::{specDir}definitions/NodeIdx/definition-begin.adoc[opts=optional]
 
 .icon:bars[fw] Composite Schema
 {blank}
 
 //tag::NodeIdx[]
-
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ All{nbsp}of{nbsp}... ¦ ¦ Schema
 
 a¦ 
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-NodeIdxNode, opts=optional]
 --
@@ -986,10 +841,8 @@ include::index.adoc[tag=desc-NodeIdxNode, opts=optional]
 {blank}
 a¦ xref:NodeIdxNode[]
 
-a¦ _and_
-a¦ 
-
-[markdown]
+a¦ and
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-PartIdxIndexes, opts=optional]
 --
@@ -997,40 +850,31 @@ include::index.adoc[tag=desc-PartIdxIndexes, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:PartIdxIndexes[]
-
 |===
 
 //end::NodeIdx[]
 
-
-// markup not found, no include::{specDir}definitions/NodeIdx/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/NodeIdx/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/NodeIdx/definition-after.adoc[opts=optional]
+ifndef::show-NodeIdx[]
+:leveloffset: -1
+endif::show-NodeIdx[]
 
+include::{specDir}definitions/NodeIdx/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/NodeIdxNode/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/NodeIdxNode/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-NodeIdxNode[]
 [#NodeIdxNode]
-= Nodes
-
+endif::show-NodeIdxNode[]
+ifndef::show-NodeIdxNode[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/NodeIdxNode/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::NodeIdxNode[]
+[discrete#NodeIdxNode]
+endif::show-NodeIdxNode[]
+= Nodes
 
 ifdef::model-descriptions[]
 //tag::desc-NodeIdxNode[]
@@ -1038,16 +882,23 @@ Node statistics.
 //end::desc-NodeIdxNode[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/NodeIdxNode/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::NodeIdxNode[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*indexer* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *indexer* +
+required
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-NodeIdxNodeIndexer, opts=optional]
 --
@@ -1062,34 +913,27 @@ a¦ xref:NodeIdxNodeIndexer[]
 
 
 
-// markup not found, no include::{specDir}definitions/NodeIdxNode/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/NodeIdxNode/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/NodeIdxNode/definition-after.adoc[opts=optional]
+ifndef::show-NodeIdxNode[]
+:leveloffset: -1
+endif::show-NodeIdxNode[]
 
+include::{specDir}definitions/NodeIdxNode/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/NodeIdxNodeIndexer/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/NodeIdxNodeIndexer/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-NodeIdxNodeIndexer[]
 [#NodeIdxNodeIndexer]
-= Node
-
+endif::show-NodeIdxNodeIndexer[]
+ifndef::show-NodeIdxNodeIndexer[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/NodeIdxNodeIndexer/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::NodeIdxNodeIndexer[]
+[discrete#NodeIdxNodeIndexer]
+endif::show-NodeIdxNodeIndexer[]
+= Node
 
 ifdef::model-descriptions[]
 //tag::desc-NodeIdxNodeIndexer[]
@@ -1097,16 +941,23 @@ A nested object containing statistics for the current index node.
 //end::desc-NodeIdxNodeIndexer[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/NodeIdxNodeIndexer/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::NodeIdxNodeIndexer[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*indexer_state* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer_state* +
+optional
+a¦ [markdown]
 --
 Current state of the Index service on this node.
 --
@@ -1116,13 +967,9 @@ Current state of the Index service on this node.
 *Example:* `+++"Active"+++`
 {blank}
 a¦ String
-
-a¦ 
-*memory_quota* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *memory_quota* +
+optional
+a¦ [markdown]
 --
 Memory quota assigned to the Index service on this node by user configuration (bytes).
 --
@@ -1133,10 +980,8 @@ Memory quota assigned to the Index service on this node by user configuration (b
 *Example:* `536870912`
 {blank}
 a¦ Long (int64)
-
-a¦ 
-*memory_total_storage* +
-_optional_
+a¦ *memory_total_storage* +
+optional
 a¦ [.edition]##{enterprise}##
 
 [markdown]
@@ -1150,13 +995,9 @@ This also accounts for memory fragmentation.
 *Example:* `71794688`
 {blank}
 a¦ Integer
-
-a¦ 
-*memory_used* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *memory_used* +
+optional
+a¦ [markdown]
 --
 Amount of memory used by the Index service on this node (bytes).
 --
@@ -1165,13 +1006,9 @@ Amount of memory used by the Index service on this node (bytes).
 *Example:* `360192000`
 {blank}
 a¦ Integer
-
-a¦ 
-*total_indexer_gc_pause_ns* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_indexer_gc_pause_ns* +
+optional
+a¦ [markdown]
 --
 The total time the indexer has spent in GC pause since last startup (ns).
 --
@@ -1187,44 +1024,42 @@ a¦ Integer
 
 
 
-// markup not found, no include::{specDir}definitions/NodeIdxNodeIndexer/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/NodeIdxNodeIndexer/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/NodeIdxNodeIndexer/definition-after.adoc[opts=optional]
+ifndef::show-NodeIdxNodeIndexer[]
+:leveloffset: -1
+endif::show-NodeIdxNodeIndexer[]
 
+include::{specDir}definitions/NodeIdxNodeIndexer/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/PartIdx/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/PartIdx/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-PartIdx[]
 [#PartIdx]
+endif::show-PartIdx[]
+ifndef::show-PartIdx[]
+:leveloffset: +1
+
+[discrete#PartIdx]
+endif::show-PartIdx[]
 = Index and Partitions
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/PartIdx/definition-begin.adoc[opts=optional]
-
+include::{specDir}definitions/PartIdx/definition-begin.adoc[opts=optional]
 
 .icon:bars[fw] Composite Schema
 {blank}
 
 //tag::PartIdx[]
-
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ All{nbsp}of{nbsp}... ¦ ¦ Schema
 
 a¦ 
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-PartIdxIndexes, opts=optional]
 --
@@ -1233,10 +1068,8 @@ include::index.adoc[tag=desc-PartIdxIndexes, opts=optional]
 {blank}
 a¦ xref:PartIdxIndexes[]
 
-a¦ _and_
-a¦ 
-
-[markdown]
+a¦ and
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-PartIdxPartitions, opts=optional]
 --
@@ -1244,40 +1077,31 @@ include::index.adoc[tag=desc-PartIdxPartitions, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:PartIdxPartitions[]
-
 |===
 
 //end::PartIdx[]
 
-
-// markup not found, no include::{specDir}definitions/PartIdx/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/PartIdx/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/PartIdx/definition-after.adoc[opts=optional]
+ifndef::show-PartIdx[]
+:leveloffset: -1
+endif::show-PartIdx[]
 
+include::{specDir}definitions/PartIdx/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/PartIdxIndexes/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/PartIdxIndexes/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-PartIdxIndexes[]
 [#PartIdxIndexes]
-= Indexes
-
+endif::show-PartIdxIndexes[]
+ifndef::show-PartIdxIndexes[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/PartIdxIndexes/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::PartIdxIndexes[]
+[discrete#PartIdxIndexes]
+endif::show-PartIdxIndexes[]
+= Indexes
 
 ifdef::model-descriptions[]
 //tag::desc-PartIdxIndexes[]
@@ -1285,17 +1109,24 @@ Index statistics.
 //end::desc-PartIdxIndexes[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/PartIdxIndexes/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::PartIdxIndexes[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-
-_additional +
-property_
-a¦ 
-
-[markdown]
+additional +
+property
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
 --
@@ -1312,32 +1143,25 @@ a¦ xref:PartIdxPartitionsIndex[]
 
 include::{specDir}definitions/PartIdxIndexes/definition-end.adoc[opts=optional]
 
-
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/PartIdxIndexes/definition-after.adoc[opts=optional]
+ifndef::show-PartIdxIndexes[]
+:leveloffset: -1
+endif::show-PartIdxIndexes[]
 
+include::{specDir}definitions/PartIdxIndexes/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/PartIdxPartitions/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/PartIdxPartitions/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-PartIdxPartitions[]
 [#PartIdxPartitions]
-= Partitions
-
+endif::show-PartIdxPartitions[]
+ifndef::show-PartIdxPartitions[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/PartIdxPartitions/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::PartIdxPartitions[]
+[discrete#PartIdxPartitions]
+endif::show-PartIdxPartitions[]
+= Partitions
 
 ifdef::model-descriptions[]
 //tag::desc-PartIdxPartitions[]
@@ -1345,17 +1169,24 @@ Index partition statistics.
 //end::desc-PartIdxPartitions[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/PartIdxPartitions/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::PartIdxPartitions[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
 a¦ 
-
-_additional +
-property_
-a¦ 
-
-[markdown]
+additional +
+property
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
 --
@@ -1372,32 +1203,25 @@ a¦ xref:PartIdxPartitionsIndex[]
 
 include::{specDir}definitions/PartIdxPartitions/definition-end.adoc[opts=optional]
 
-
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/PartIdxPartitions/definition-after.adoc[opts=optional]
+ifndef::show-PartIdxPartitions[]
+:leveloffset: -1
+endif::show-PartIdxPartitions[]
 
+include::{specDir}definitions/PartIdxPartitions/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/PartIdxPartitionsIndex/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/PartIdxPartitionsIndex/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-PartIdxPartitionsIndex[]
 [#PartIdxPartitionsIndex]
-= Index
-
+endif::show-PartIdxPartitionsIndex[]
+ifndef::show-PartIdxPartitionsIndex[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/PartIdxPartitionsIndex/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::PartIdxPartitionsIndex[]
+[discrete#PartIdxPartitionsIndex]
+endif::show-PartIdxPartitionsIndex[]
+= Index
 
 ifdef::model-descriptions[]
 //tag::desc-PartIdxPartitionsIndex[]
@@ -1405,16 +1229,23 @@ A nested object containing statistics for an index or index partition.
 //end::desc-PartIdxPartitionsIndex[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/PartIdxPartitionsIndex/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::PartIdxPartitionsIndex[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*avg_array_length* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *avg_array_length* +
+optional
+a¦ [markdown]
 --
 (Array indexes only.)
 The average number of items indexed per document.
@@ -1424,13 +1255,9 @@ The average number of items indexed per document.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*avg_drain_rate* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *avg_drain_rate* +
+optional
+a¦ [markdown]
 --
 Average number of items flushed from memory to disk storage per second.
 --
@@ -1438,13 +1265,9 @@ Average number of items flushed from memory to disk storage per second.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*avg_item_size* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *avg_item_size* +
+optional
+a¦ [markdown]
 --
 Average size of the keys.
 --
@@ -1452,13 +1275,9 @@ Average size of the keys.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*avg_scan_latency* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *avg_scan_latency* +
+optional
+a¦ [markdown]
 --
 Average time to serve a scan request (nanoseconds).
 --
@@ -1466,10 +1285,8 @@ Average time to serve a scan request (nanoseconds).
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*cache_hit_percent* +
-_optional_
+a¦ *cache_hit_percent* +
+optional
 a¦ [.edition]##{enterprise}##
 
 [markdown]
@@ -1480,13 +1297,9 @@ Percentage of memory accesses that were served from the managed cache.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*cache_hits* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *cache_hits* +
+optional
+a¦ [markdown]
 --
 Accesses to this index data from RAM.
 --
@@ -1494,13 +1307,9 @@ Accesses to this index data from RAM.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*cache_misses* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *cache_misses* +
+optional
+a¦ [markdown]
 --
 Accesses to this index data from disk.
 --
@@ -1508,13 +1317,9 @@ Accesses to this index data from disk.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*data_size* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *data_size* +
+optional
+a¦ [markdown]
 --
 The size of indexable data that is maintained for the index or partition (bytes).
 --
@@ -1523,13 +1328,9 @@ The size of indexable data that is maintained for the index or partition (bytes)
 *Example:* `95728`
 {blank}
 a¦ Integer
-
-a¦ 
-*disk_size* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *disk_size* +
+optional
+a¦ [markdown]
 --
 Total disk file size consumed by the index or partition.
 --
@@ -1538,13 +1339,9 @@ Total disk file size consumed by the index or partition.
 *Example:* `889054`
 {blank}
 a¦ Integer
-
-a¦ 
-*docid_count* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *docid_count* +
+optional
+a¦ [markdown]
 --
 (Array indexes only.)
 The number of documents currently indexed.
@@ -1554,13 +1351,9 @@ The number of documents currently indexed.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*frag_percent* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *frag_percent* +
+optional
+a¦ [markdown]
 --
 Percentage fragmentation of the index.
 
@@ -1571,13 +1364,9 @@ TIP: At small index sizes of less than a hundred kB, the static overhead of the 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*initial_build_progress* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *initial_build_progress* +
+optional
+a¦ [markdown]
 --
 Percentage initial build progress for the index.
 When initial build is completed, the value is `100`.
@@ -1590,13 +1379,9 @@ For an index partition, the value is listed as `0`.
 *Example:* `100`
 {blank}
 a¦ Integer
-
-a¦ 
-*items_count* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *items_count* +
+optional
+a¦ [markdown]
 --
 The number of items currently indexed.
 --
@@ -1605,13 +1390,9 @@ The number of items currently indexed.
 *Example:* `2155`
 {blank}
 a¦ Integer
-
-a¦ 
-*last_known_scan_time* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *last_known_scan_time* +
+optional
+a¦ [markdown]
 --
 Time of the last scan request received for this index (Unix timestamp in nanoseconds).
 This may be useful for determining whether this index is currently unused.
@@ -1623,13 +1404,9 @@ NOTE: This statistic is persisted to disk every 15 minutes, so it is preserved w
 [%hardbreaks]
 {blank}
 a¦ Long (int64)
-
-a¦ 
-*num_docs_indexed* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_docs_indexed* +
+optional
+a¦ [markdown]
 --
 Number of documents indexed by the indexer since last startup.
 --
@@ -1637,13 +1414,9 @@ Number of documents indexed by the indexer since last startup.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_docs_pending* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_docs_pending* +
+optional
+a¦ [markdown]
 --
 Number of documents pending to be indexed.
 --
@@ -1651,13 +1424,9 @@ Number of documents pending to be indexed.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_docs_queued* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_docs_queued* +
+optional
+a¦ [markdown]
 --
 Number of documents queued to be indexed.
 --
@@ -1665,13 +1434,9 @@ Number of documents queued to be indexed.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_items_flushed* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_items_flushed* +
+optional
+a¦ [markdown]
 --
 Number of items flushed from memory to disk storage.
 --
@@ -1679,13 +1444,9 @@ Number of items flushed from memory to disk storage.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_pending_requests* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_pending_requests* +
+optional
+a¦ [markdown]
 --
 Number of requests received but not yet served by the indexer.
 --
@@ -1693,13 +1454,9 @@ Number of requests received but not yet served by the indexer.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_requests* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_requests* +
+optional
+a¦ [markdown]
 --
 Number of requests served by the indexer since last startup.
 --
@@ -1707,13 +1464,9 @@ Number of requests served by the indexer since last startup.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_rows_returned* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_rows_returned* +
+optional
+a¦ [markdown]
 --
 Total number of rows returned so far by the indexer.
 --
@@ -1721,13 +1474,9 @@ Total number of rows returned so far by the indexer.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_scan_errors* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_scan_errors* +
+optional
+a¦ [markdown]
 --
 Number of requests that failed due to errors other than timeout.
 --
@@ -1735,13 +1484,9 @@ Number of requests that failed due to errors other than timeout.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_scan_timeouts* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_scan_timeouts* +
+optional
+a¦ [markdown]
 --
 Number of requests that timed out, either waiting for snapshots or during scan in progress.
 --
@@ -1749,10 +1494,8 @@ Number of requests that timed out, either waiting for snapshots or during scan i
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*recs_in_mem* +
-_optional_
+a¦ *recs_in_mem* +
+optional
 a¦ [.edition]##{enterprise}##
 
 [markdown]
@@ -1767,10 +1510,8 @@ For memory-optimized index storage, this is the same as `items_count`.
 *Example:* `2155`
 {blank}
 a¦ Integer
-
-a¦ 
-*recs_on_disk* +
-_optional_
+a¦ *recs_on_disk* +
+optional
 a¦ [.edition]##{enterprise}##
 
 [markdown]
@@ -1782,10 +1523,8 @@ For memory-optimized index storage, this is `0`.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*resident_percent* +
-_optional_
+a¦ *resident_percent* +
+optional
 a¦ [.edition]##{enterprise}##
 
 [markdown]
@@ -1797,13 +1536,9 @@ Percentage of the data held in memory.
 *Example:* `100`
 {blank}
 a¦ Integer
-
-a¦ 
-*scan_bytes_read* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *scan_bytes_read* +
+optional
+a¦ [markdown]
 --
 Number of bytes read by a scan since last startup.
 --
@@ -1811,13 +1546,9 @@ Number of bytes read by a scan since last startup.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_scan_duration* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_scan_duration* +
+optional
+a¦ [markdown]
 --
 Total time spent by the indexer in scanning rows since last startup (nanoseconds).
 --
@@ -1832,26 +1563,26 @@ a¦ Integer
 
 
 
-// markup not found, no include::{specDir}definitions/PartIdxPartitionsIndex/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/PartIdxPartitionsIndex/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
-
+include::{specDir}definitions/PartIdxPartitionsIndex/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+ifndef::show-PartIdxPartitionsIndex[]
+:leveloffset: -1
+endif::show-PartIdxPartitionsIndex[]
+
+include::{specDir}definitions/PartIdxPartitionsIndex/definition-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
 
+include::{specDir}definitions/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+include::{specDir}security/document-before.adoc[opts=optional]
 
 [[security]]
 = Security
@@ -1861,18 +1592,14 @@ a¦ Integer
 include::{specDir}security/document-begin.adoc[opts=optional]
 
 
+include::{specDir}security/NodeStatistics/security-scheme-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}security/NodeStatistics/security-scheme-before.adoc[opts=optional]
-
-
-[[security-nodeStatistics]]
+[[security-NodeStatistics]]
 = Node Statistics
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/NodeStatistics/security-scheme-begin.adoc[opts=optional]
-
+include::{specDir}security/NodeStatistics/security-scheme-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -1881,29 +1608,22 @@ To get [Node statistics](#NodeIdxNodeIndexer), users must have the Query System 
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
-
-// markup not found, no include::{specDir}security/NodeStatistics/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/NodeStatistics/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+include::{specDir}security/NodeStatistics/security-scheme-after.adoc[opts=optional]
 
-// markup not found, no include::{specDir}security/NodeStatistics/security-scheme-after.adoc[opts=optional]
+include::{specDir}security/IndexStatistics/security-scheme-before.adoc[opts=optional]
 
-
-
-
-// markup not found, no include::{specDir}security/IndexStatistics/security-scheme-before.adoc[opts=optional]
-
-
-[[security-indexStatistics]]
+[[security-IndexStatistics]]
 = Index Statistics
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/IndexStatistics/security-scheme-begin.adoc[opts=optional]
-
+include::{specDir}security/IndexStatistics/security-scheme-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -1914,16 +1634,13 @@ To get [Index statistics](#PartIdxPartitionsIndex) for an individual index, user
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
-
-// markup not found, no include::{specDir}security/IndexStatistics/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/IndexStatistics/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}security/IndexStatistics/security-scheme-after.adoc[opts=optional]
-
+include::{specDir}security/IndexStatistics/security-scheme-after.adoc[opts=optional]
 
 
 
@@ -1931,8 +1648,6 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-
-// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+include::{specDir}security/document-after.adoc[opts=optional]
 
 

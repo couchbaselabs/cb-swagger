@@ -12,16 +12,15 @@ DO NOT EDIT! See https://github.com/couchbase/query
 
 :leveloffset: 1
 
-include::{specDir}overview/document-before.adoc[opts=optional]
 
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 [[overview]]
 = Overview
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
-
+include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -32,7 +31,7 @@ This API enables you to view or specify cluster-level Query settings.
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 7.6
+*Version:* 7.6
 
 [discrete#host]
 = Host information
@@ -67,7 +66,6 @@ The host name or IP address of any node in the Couchbase cluster.
 --
 
 [%hardbreaks]
-
 *Example:* `+++localhost+++`
 // end
 
@@ -83,31 +81,26 @@ The Cluster administration REST port. Use `18091` for secure access.  Note that 
 
 |===
 
-
 include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
-
+include::{specDir}overview/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
-
+include::{specDir}paths/document-before.adoc[opts=optional]
 
 [[resources]]
 = Resources
 
-:count-apis: 1
-
+:count-apis: 0
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
@@ -115,18 +108,14 @@ xref:tag-Default[]
 endif::[]
 
 
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 [#tag-Default]
 = Default
 :leveloffset: +1
 
-ifeval::["" != ""]
-
-endif::[]
-ifeval::["" == ""]
 **{toc-title}**
 endif::[]
-endif::[]
+
 
 [%hardbreaks]
 xref:get_access[]
@@ -135,44 +124,38 @@ xref:post_access[]
 xref:post_settings[]
 
 
+
 //tag::get_access[]
 
-
-// markup not found, no include::{specDir}paths/get_access/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/get_access/operation-before.adoc[opts=optional]
 
 [#get_access]
 = Retrieve CURL Access List
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_access/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_access/operation-begin.adoc[opts=optional]
 
 ....
 GET /settings/querySettings/curlWhitelist
 ....
 
 
-
-// markup not found, no include::{specDir}paths/get_access/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/get_access/operation-description-before.adoc[opts=optional]
 
 [#get_access-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_access/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_access/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Returns the cluster-level CURL access settings only.
 --
 
-
-// markup not found, no include::{specDir}paths/get_access/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/get_access/operation-description-end.adoc[opts=optional]
 
 
 
@@ -180,33 +163,29 @@ Returns the cluster-level CURL access settings only.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_access/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/get_access/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/get_access/operation-parameters-before.adoc[opts=optional]
+include::{specDir}paths/get_access/operation-parameters-before.adoc[opts=optional]
 
 
 
 
 
-// markup not found, no include::{specDir}paths/get_access/operation-parameters-after.adoc[opts=optional]
+include::{specDir}paths/get_access/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_access/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/get_access/operation-responses-before.adoc[opts=optional]
 
 [#get_access-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_access/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_access/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -219,106 +198,86 @@ An object determining which URLs may be accessed by the `CURL()` function.
 --
 a| xref:Access[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/get_access/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/get_access/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Access:
 
 
 
-// markup not found, no include::{specDir}paths/get_access/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/get_access/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_access/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/get_access/operation-security-before.adoc[opts=optional]
 
 [#get_access-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_access/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_access/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-default[]
+| xref:security-Default[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_access/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/get_access/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_access/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/get_access/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_access/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}get_access/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/get_access/operation-end.adoc[opts=optional]
+include::{specDir}paths/get_access/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_access/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/get_access/operation-after.adoc[opts=optional]
 
 //end::get_access[]
 
-
 //tag::get_settings[]
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-before.adoc[opts=optional]
 
 [#get_settings]
 = Retrieve Cluster-Level Query Settings
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_settings/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-begin.adoc[opts=optional]
 
 ....
 GET /settings/querySettings
 ....
 
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-description-before.adoc[opts=optional]
 
 [#get_settings-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_settings/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Returns all cluster-level query settings, including the CURL access settings.
 --
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/get_settings/operation-description-end.adoc[opts=optional]
 
 
 
@@ -326,33 +285,29 @@ Returns all cluster-level query settings, including the CURL access settings.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/get_settings/operation-parameters-before.adoc[opts=optional]
+include::{specDir}paths/get_settings/operation-parameters-before.adoc[opts=optional]
 
 
 
 
 
-// markup not found, no include::{specDir}paths/get_settings/operation-parameters-after.adoc[opts=optional]
+include::{specDir}paths/get_settings/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-responses-before.adoc[opts=optional]
 
 [#get_settings-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_settings/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -365,106 +320,86 @@ An object giving cluster-level query settings.
 --
 a| xref:Settings[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/get_settings/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Settings:
 
 
 
-// markup not found, no include::{specDir}paths/get_settings/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/get_settings/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-security-before.adoc[opts=optional]
 
 [#get_settings-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_settings/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-default[]
+| xref:security-Default[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/get_settings/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/get_settings/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_settings/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}get_settings/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/get_settings/operation-end.adoc[opts=optional]
+include::{specDir}paths/get_settings/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-after.adoc[opts=optional]
 
 //end::get_settings[]
 
-
 //tag::post_access[]
 
-
-// markup not found, no include::{specDir}paths/post_access/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/post_access/operation-before.adoc[opts=optional]
 
 [#post_access]
 = Update CURL Access List
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_access/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_access/operation-begin.adoc[opts=optional]
 
 ....
 POST /settings/querySettings/curlWhitelist
 ....
 
 
-
-// markup not found, no include::{specDir}paths/post_access/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/post_access/operation-description-before.adoc[opts=optional]
 
 [#post_access-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_access/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_access/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Updates the cluster-level CURL access settings only.
 --
 
-
-// markup not found, no include::{specDir}paths/post_access/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/post_access/operation-description-end.adoc[opts=optional]
 
 
 [#post_access-consumes]
@@ -476,27 +411,20 @@ Updates the cluster-level CURL access settings only.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_access/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/post_access/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/post_access/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/post_access/operation-parameters-before.adoc[opts=optional]
 
 [#post_access-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_access/operation-parameters-begin.adoc[opts=optional]
-
-
-
-
-
+include::{specDir}paths/post_access/operation-parameters-begin.adoc[opts=optional]
 
 [#post_access-body]
 .Body Parameter
@@ -507,13 +435,10 @@ Updates the cluster-level CURL access settings only.
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
-An object determining which URLs may be accessed by the `CURL()` function.
+
 --
 
 [%hardbreaks]
@@ -524,26 +449,25 @@ a¦ xref:Access[]
 |===
 
 
-// markup not found, no include::{specDir}paths/post_access/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/post_access/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Access:
 
 
 
-// markup not found, no include::{specDir}paths/post_access/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/post_access/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_access/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/post_access/operation-responses-before.adoc[opts=optional]
 
 [#post_access-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_access/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_access/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -563,106 +487,86 @@ Returns an error message if a parameter or value is incorrect.
 --
 a| Object
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/post_access/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/post_access/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Access:
 
 
 
-// markup not found, no include::{specDir}paths/post_access/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/post_access/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_access/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/post_access/operation-security-before.adoc[opts=optional]
 
 [#post_access-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_access/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_access/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-default[]
+| xref:security-Default[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/post_access/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/post_access/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_access/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/post_access/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}post_access/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}post_access/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/post_access/operation-end.adoc[opts=optional]
+include::{specDir}paths/post_access/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_access/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/post_access/operation-after.adoc[opts=optional]
 
 //end::post_access[]
 
-
 //tag::post_settings[]
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-before.adoc[opts=optional]
 
 [#post_settings]
 = Update Cluster-Level Query Settings
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_settings/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-begin.adoc[opts=optional]
 
 ....
 POST /settings/querySettings
 ....
 
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-description-before.adoc[opts=optional]
 
 [#post_settings-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_settings/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Updates cluster-level query settings, including the CURL access settings.
 --
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/post_settings/operation-description-end.adoc[opts=optional]
 
 
 [#post_settings-consumes]
@@ -674,27 +578,20 @@ Updates cluster-level query settings, including the CURL access settings.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/post_settings/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-parameters-before.adoc[opts=optional]
 
 [#post_settings-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_settings/operation-parameters-begin.adoc[opts=optional]
-
-
-
-
-
+include::{specDir}paths/post_settings/operation-parameters-begin.adoc[opts=optional]
 
 [#post_settings-body]
 .Body Parameter
@@ -705,13 +602,10 @@ Updates cluster-level query settings, including the CURL access settings.
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
-An object specifying cluster-level query settings.
+
 --
 
 [%hardbreaks]
@@ -722,26 +616,25 @@ a¦ xref:Settings[]
 |===
 
 
-// markup not found, no include::{specDir}paths/post_settings/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/post_settings/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Settings:
 
 
 
-// markup not found, no include::{specDir}paths/post_settings/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/post_settings/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-responses-before.adoc[opts=optional]
 
 [#post_settings-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_settings/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -761,127 +654,103 @@ Returns an error message if a parameter or value is incorrect.
 --
 a| Object
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/post_settings/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Settings:
 
 
 
-// markup not found, no include::{specDir}paths/post_settings/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/post_settings/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-security-before.adoc[opts=optional]
 
 [#post_settings-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_settings/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-default[]
+| xref:security-Default[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/post_settings/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/post_settings/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}post_settings/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}post_settings/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/post_settings/operation-end.adoc[opts=optional]
+include::{specDir}paths/post_settings/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-after.adoc[opts=optional]
 
 //end::post_settings[]
 
 
-ifeval::[{count-apis} > 1]
+
+ifeval::[{count-apis} > 0]
 :leveloffset: -1
 endif::[]
 
 
 
-// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+include::{specDir}paths/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
-
+include::{specDir}paths/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
-
+include::{specDir}definitions/document-before.adoc[opts=optional]
 
 [#models]
 = Definitions
 
-:count-models: 2
-
+:count-models: 1
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
-
+include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 1]
-ifdef::collapse-models[]
+ifeval::[{count-models} > 0]
+ifeval::[{count-models} > 8]
 [.two-columns]
-endif::collapse-models[]
+endif::[]
 [%hardbreaks]
 xref:Access[]
 xref:Settings[]
 endif::[]
 
 
+include::{specDir}definitions/Access/definition-before.adoc[opts=optional]
 
-// markup not found, no include::{specDir}definitions/Access/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-Access[]
 [#Access]
-= Access
-
+endif::show-Access[]
+ifndef::show-Access[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/Access/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Access[]
+[discrete#Access]
+endif::show-Access[]
+= Access
 
 ifdef::model-descriptions[]
 //tag::desc-Access[]
@@ -889,16 +758,23 @@ An object which determines which URLs may be accessed by the `CURL()` function.
 //end::desc-Access[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/Access/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Access[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*all_access* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *all_access* +
+required
+a¦ [markdown]
 --
 Defines whether the user has access to all URLs, or only URLs specified by the access list.
 
@@ -910,13 +786,9 @@ Setting this field to `true` enables access to all endpoints.
 [%hardbreaks]
 {blank}
 a¦ Boolean
-
-a¦ 
-*allowed_urls* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *allowed_urls* +
+optional
+a¦ [markdown]
 --
 An array of strings, each of which is a URL to which you wish to grant access.
 Each URL is a prefix match.
@@ -930,15 +802,10 @@ Note that each URL must include the port, protocol, and all other components of 
 
 [%hardbreaks]
 {blank}
-a¦ String
- array
-
-a¦ 
-*disallowed_urls* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ String array
+a¦ *disallowed_urls* +
+optional
+a¦ [markdown]
 --
 An array of strings, each of which is a URL that will be restricted for all roles.
 Each URL is a prefix match.
@@ -951,8 +818,7 @@ Note that each URL must include the port, protocol, and all other components of 
 
 [%hardbreaks]
 {blank}
-a¦ String
- array
+a¦ String array
 
 |===
 
@@ -960,28 +826,31 @@ a¦ String
 
 
 
-// markup not found, no include::{specDir}definitions/Access/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/Access/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Access/definition-after.adoc[opts=optional]
+ifndef::show-Access[]
+:leveloffset: -1
+endif::show-Access[]
 
+include::{specDir}definitions/Access/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Settings/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/Settings/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-Settings[]
 [#Settings]
+endif::show-Settings[]
+ifndef::show-Settings[]
+:leveloffset: +1
+
+[discrete#Settings]
+endif::show-Settings[]
 = Settings
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/Settings/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/Settings/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -989,17 +858,14 @@ endif::collapse-models[]
 
 //tag::Settings[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
 a¦ [#queryCleanupClientAttempts]
 *queryCleanupClientAttempts* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [cleanupclientattempts]: #cleanupclientattempts
@@ -1020,13 +886,10 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Example:* `false`
 {blank}
 a¦ Boolean
-
 a¦ [#queryCleanupLostAttempts]
 *queryCleanupLostAttempts* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [cleanuplostattempts]: #cleanuplostattempts
@@ -1047,13 +910,10 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Example:* `false`
 {blank}
 a¦ Boolean
-
 a¦ [#queryCleanupWindow]
 *queryCleanupWindow* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [cleanupwindow]: #cleanupwindow
@@ -1088,13 +948,10 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Example:* `+++"30s"+++`
 {blank}
 a¦ String (duration)
-
 a¦ [#queryCompletedLimit]
 *queryCompletedLimit* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [sys-completed-config]: monitoring-n1ql-query.html#sys-completed-config
@@ -1123,13 +980,10 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Example:* `7000`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryCompletedMaxPlanSize]
 *queryCompletedMaxPlanSize* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [sys-completed-config]: monitoring-n1ql-query.html#sys-completed-config
@@ -1160,13 +1014,10 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Maximum:* `20840448`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryCompletedThreshold]
 *queryCompletedThreshold* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [sys-completed-config]: monitoring-n1ql-query.html#sys-completed-config
@@ -1196,13 +1047,10 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Example:* `7000`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryLogLevel]
 *queryLogLevel* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [loglevel]: #loglevel
@@ -1246,13 +1094,10 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Example:* `+++"DEBUG"+++`
 {blank}
 a¦ String
-
 a¦ [#queryMaxParallelism]
 *queryMaxParallelism* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [max-parallelism]:  ../n1ql-language-reference/index-partitioning.html#max-parallelism
@@ -1292,13 +1137,10 @@ NOTE: To enable queries to run in parallel, you must specify the cluster-level `
 *Example:* `0`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryMemoryQuota]
 *queryMemoryQuota* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [memory-quota-srv]: #memory-quota-srv
@@ -1330,13 +1172,10 @@ If a request includes this parameter, it will be capped by the node-level `memor
 *Example:* `4`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryN1QLFeatCtrl]
 *queryN1QLFeatCtrl* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [n1ql-feat-ctrl]: #n1ql-feat-ctrl
@@ -1356,13 +1195,10 @@ When you change the cluster-level setting, the node-level setting is over-writte
 [%hardbreaks]
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryNodeQuota]
 *queryNodeQuota* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [node-quota]: #node-quota
@@ -1393,13 +1229,10 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `0`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryNodeQuotaValPercent]
 *queryNodeQuotaValPercent* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [node-quota-val-percent]: #node-quota-val-percent
@@ -1422,13 +1255,10 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Maximum:* `100`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryNumAtrs]
 *queryNumAtrs* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [numatrs-srv]: #numatrs-srv
@@ -1452,13 +1282,10 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Example:* `512`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryNumCpus]
 *queryNumCpus* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [num-cpus]: #num-cpus
@@ -1485,13 +1312,10 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Default:* `0`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryPipelineBatch]
 *queryPipelineBatch* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [pipeline-batch-srv]: #pipeline-batch-srv
@@ -1517,13 +1341,10 @@ The minimum of that and the node-level `pipeline-batch` setting is applied.
 *Example:* `64`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryPipelineCap]
 *queryPipelineCap* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [pipeline-cap-srv]: #pipeline-cap-srv
@@ -1549,13 +1370,10 @@ The minimum of that and the node-level `pipeline-cap` setting is applied.
 *Example:* `1024`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryPreparedLimit]
 *queryPreparedLimit* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [prepared-limit]: #prepared-limit
@@ -1577,13 +1395,10 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Example:* `65536`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryScanCap]
 *queryScanCap* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [scan-cap-srv]: #scan-cap-srv
@@ -1613,13 +1428,10 @@ The minimum of that and the node-level `scan-cap` setting is applied.
 *Example:* `1024`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryTimeout]
 *queryTimeout* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [timeout-srv]: #timeout-srv
@@ -1651,13 +1463,10 @@ The minimum of that and the node-level `timeout` setting is applied.
 *Example:* `500000000`
 {blank}
 a¦ Long (int64)
-
 a¦ [#queryTxTimeout]
 *queryTxTimeout* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [tximplicit]: #tximplicit
@@ -1702,13 +1511,10 @@ If a request includes this parameter, it will be capped by the node-level `txtim
 *Example:* `+++"0.5s"+++`
 {blank}
 a¦ String (duration)
-
 a¦ [#queryTmpSpaceDir]
 *queryTmpSpaceDir* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 The path to which the indexer writes temporary backfill files, to store any transient data during query processing.
 
@@ -1722,13 +1528,10 @@ The default path is `var/lib/couchbase/tmp` within the Couchbase Server installa
 *Example:* `+++"/opt/couchbase/var/lib/couchbase/tmp"+++`
 {blank}
 a¦ String
-
 a¦ [#queryTmpSpaceSize]
 *queryTmpSpaceSize* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 The maximum size of temporary backfill files (MB).
 
@@ -1743,13 +1546,10 @@ The maximum size is limited only by the available disk space.
 *Example:* `2048`
 {blank}
 a¦ Integer (int32)
-
 a¦ [#queryUseCBO]
 *queryUseCBO* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [use-cbo-srv]: #use-cbo-srv
@@ -1775,13 +1575,10 @@ If a request does not include this parameter, the node-level setting is used, wh
 *Example:* `false`
 {blank}
 a¦ Boolean
-
 a¦ [#queryUseReplica]
 *queryUseReplica* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [use-replica-srv]: #use-replica-srv
@@ -1824,13 +1621,10 @@ If the request-level parameter and the node-level setting are both `unset`, read
 *Example:* `+++"on"+++`
 {blank}
 a¦ String
-
 a¦ [#queryCurlWhitelist]
 *queryCurlWhitelist* +
-_optional_
-a¦ 
-
-[markdown]
+optional
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-Access, opts=optional]
 --
@@ -1845,26 +1639,26 @@ a¦ xref:Access[]
 
 
 
-// markup not found, no include::{specDir}definitions/Settings/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/Settings/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
-
+include::{specDir}definitions/Settings/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+ifndef::show-Settings[]
+:leveloffset: -1
+endif::show-Settings[]
+
+include::{specDir}definitions/Settings/definition-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
 
+include::{specDir}definitions/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+include::{specDir}security/document-before.adoc[opts=optional]
 
 [[security]]
 = Security
@@ -1874,18 +1668,14 @@ a¦ xref:Access[]
 include::{specDir}security/document-begin.adoc[opts=optional]
 
 
+include::{specDir}security/Default/security-scheme-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}security/Default/security-scheme-before.adoc[opts=optional]
-
-
-[[security-default]]
+[[security-Default]]
 = Default
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Default/security-scheme-begin.adoc[opts=optional]
-
+include::{specDir}security/Default/security-scheme-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -1896,24 +1686,19 @@ Users must have one of the following RBAC roles:
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
-
-// markup not found, no include::{specDir}security/Default/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/Default/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}security/Default/security-scheme-after.adoc[opts=optional]
-
+include::{specDir}security/Default/security-scheme-after.adoc[opts=optional]
 
 
 
 include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
-
-
 
 include::{specDir}security/document-after.adoc[opts=optional]
 

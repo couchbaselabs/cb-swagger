@@ -12,16 +12,15 @@ DO NOT EDIT! See https://github.com/couchbase/cbft
 
 :leveloffset: 1
 
-include::{specDir}overview/document-before.adoc[opts=optional]
 
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 [[overview]]
 = Overview
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
-
+include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -32,7 +31,7 @@ This API enables you to get statistics for the Search Service and your Search in
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 7.6
+*Version:* 7.6
 
 [discrete#host]
 = Host information
@@ -67,7 +66,6 @@ The host name or IP address of a node running the Search Service.
 --
 
 [%hardbreaks]
-
 *Example:* `+++localhost+++`
 // end
 
@@ -83,31 +81,26 @@ The Search Service REST port. Use `18094` for secure access.
 
 |===
 
-
-// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
-
+include::{specDir}overview/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
-
+include::{specDir}paths/document-before.adoc[opts=optional]
 
 [[resources]]
 = Resources
 
-:count-apis: 1
-
+:count-apis: 0
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
@@ -115,54 +108,45 @@ xref:tag-Default[]
 endif::[]
 
 
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 [#tag-Default]
 = Default
 :leveloffset: +1
 
-ifeval::["" != ""]
-
-endif::[]
-ifeval::["" == ""]
 **{toc-title}**
 endif::[]
-endif::[]
+
 
 [%hardbreaks]
 xref:g-api-nsstats[]
 xref:g-api-nsstats-index-name[]
 
 
+
 //tag::g-api-nsstats[]
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats/operation-before.adoc[opts=optional]
 
 [#g-api-nsstats]
 = Get Query, Mutation, and Partition Statistics for the Search Service
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats/operation-begin.adoc[opts=optional]
 
 ....
 GET /api/nsstats
 ....
 
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats/operation-description-before.adoc[opts=optional]
 
 [#g-api-nsstats-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -172,8 +156,7 @@ This endpoint returns statistics provided by the Cluster Manager.
 For additional statistics, including detailed partition information, see [Get Indexing and Data Metrics for All Indexes](../fts-rest-indexing/index.html#g-api-stats).
 --
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/g-api-nsstats/operation-description-end.adoc[opts=optional]
 
 
 
@@ -181,33 +164,29 @@ For additional statistics, including detailed partition information, see [Get In
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-parameters-before.adoc[opts=optional]
+include::{specDir}paths/g-api-nsstats/operation-parameters-before.adoc[opts=optional]
 
 
 
 
 
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-parameters-after.adoc[opts=optional]
+include::{specDir}paths/g-api-nsstats/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats/operation-responses-before.adoc[opts=optional]
 
 [#g-api-nsstats-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -226,12 +205,14 @@ a| [markdown]
 Object not found. The URI may be malformed.
 --
 a| 
+
 | 401
 a| [markdown]
 --
 Unauthorized. Failure to authenticate.
 --
 a| 
+
 | 403
 a| [markdown]
 --
@@ -241,95 +222,77 @@ a|
 
 |===
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/g-api-nsstats/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-allStats:
 
 
 
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/g-api-nsstats/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats/operation-security-before.adoc[opts=optional]
 
 [#g-api-nsstats-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-admin[]
+| xref:security-Admin[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/g-api-nsstats/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+include::{specDir}paths/g-api-nsstats/operation-security-after.adoc[opts=optional]
 
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-security-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{snippetDir}g-api-nsstats/http-request.adoc[opts=optional]
-
+include::{snippetDir}g-api-nsstats/http-request.adoc[opts=optional]
 
 include::{snippetDir}g-api-nsstats/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-end.adoc[opts=optional]
+include::{specDir}paths/g-api-nsstats/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats/operation-after.adoc[opts=optional]
 
 //end::g-api-nsstats[]
 
-
 //tag::g-api-nsstats-index-name[]
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats-index-name/operation-before.adoc[opts=optional]
 
 [#g-api-nsstats-index-name]
 = Get Query, Mutation, and Partition Statistics for an Index
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats-index-name/operation-begin.adoc[opts=optional]
 
 ....
 GET /api/nsstats/index/{INDEX_NAME}
 ....
 
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats-index-name/operation-description-before.adoc[opts=optional]
 
 [#g-api-nsstats-index-name-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats-index-name/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -339,8 +302,7 @@ This endpoint returns statistics provided by the Cluster Manager.
 For additional statistics, including detailed partition information, see [Get Indexing and Data Metrics for an Index](../fts-rest-indexing/index.html#g-api-stats-index-name).
 --
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/g-api-nsstats-index-name/operation-description-end.adoc[opts=optional]
 
 
 
@@ -348,23 +310,20 @@ For additional statistics, including detailed partition information, see [Get In
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats-index-name/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-before.adoc[opts=optional]
 
 [#g-api-nsstats-index-name-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-begin.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-begin.adoc[opts=optional]
 
 [#g-api-nsstats-index-name-path]
 .Path Parameters
@@ -375,11 +334,8 @@ For additional statistics, including detailed partition information, see [Get In
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *INDEX_NAME* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the Search index definition.
 You must use the fully qualified name for the index, which includes the bucket and scope.
@@ -398,30 +354,24 @@ a¦ String
 |===
 
 
-
-
-
-
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats-index-name/operation-responses-before.adoc[opts=optional]
 
 [#g-api-nsstats-index-name-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats-index-name/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -434,102 +384,86 @@ The Search Service returns statistics from the `nsstats` endpoint for the specif
 --
 a| xref:indexStats[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/g-api-nsstats-index-name/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-indexStats:
 
 
 
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/g-api-nsstats-index-name/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats-index-name/operation-security-before.adoc[opts=optional]
 
 [#g-api-nsstats-index-name-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats-index-name/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-statistics[]
+| xref:security-Statistics[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/g-api-nsstats-index-name/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+include::{specDir}paths/g-api-nsstats-index-name/operation-security-after.adoc[opts=optional]
 
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-security-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{snippetDir}g-api-nsstats-index-name/http-request.adoc[opts=optional]
-
+include::{snippetDir}g-api-nsstats-index-name/http-request.adoc[opts=optional]
 
 include::{snippetDir}g-api-nsstats-index-name/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-end.adoc[opts=optional]
+include::{specDir}paths/g-api-nsstats-index-name/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/g-api-nsstats-index-name/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/g-api-nsstats-index-name/operation-after.adoc[opts=optional]
 
 //end::g-api-nsstats-index-name[]
 
 
-ifeval::[{count-apis} > 1]
+
+ifeval::[{count-apis} > 0]
 :leveloffset: -1
 endif::[]
 
 
 
-// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+include::{specDir}paths/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
-
+include::{specDir}paths/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
-
+include::{specDir}definitions/document-before.adoc[opts=optional]
 
 [#models]
 = Definitions
 
-:count-models: 3
-
+:count-models: 2
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
-
+include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 1]
-ifdef::collapse-models[]
+ifeval::[{count-models} > 0]
+ifeval::[{count-models} > 8]
 [.two-columns]
-endif::collapse-models[]
+endif::[]
 [%hardbreaks]
 xref:allStats[]
 xref:clusterStats[]
@@ -537,35 +471,32 @@ xref:indexStats[]
 endif::[]
 
 
+include::{specDir}definitions/allStats/definition-before.adoc[opts=optional]
 
-// markup not found, no include::{specDir}definitions/allStats/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-allStats[]
 [#allStats]
+endif::show-allStats[]
+ifndef::show-allStats[]
+:leveloffset: +1
+
+[discrete#allStats]
+endif::show-allStats[]
 = Service Statistics
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/allStats/definition-begin.adoc[opts=optional]
-
+include::{specDir}definitions/allStats/definition-begin.adoc[opts=optional]
 
 .icon:bars[fw] Composite Schema
 {blank}
 
 //tag::allStats[]
-
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ All{nbsp}of{nbsp}... ¦ ¦ Schema
 
 a¦ 
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-clusterStats, opts=optional]
 --
@@ -574,10 +505,8 @@ include::index.adoc[tag=desc-clusterStats, opts=optional]
 {blank}
 a¦ xref:clusterStats[]
 
-a¦ _and_
-a¦ 
-
-[markdown]
+a¦ and
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-indexStats, opts=optional]
 --
@@ -585,40 +514,31 @@ include::index.adoc[tag=desc-indexStats, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:indexStats[]
-
 |===
 
 //end::allStats[]
 
-
-// markup not found, no include::{specDir}definitions/allStats/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/allStats/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/allStats/definition-after.adoc[opts=optional]
+ifndef::show-allStats[]
+:leveloffset: -1
+endif::show-allStats[]
 
+include::{specDir}definitions/allStats/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/clusterStats/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/clusterStats/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-clusterStats[]
 [#clusterStats]
-= Cluster Statistics
-
+endif::show-clusterStats[]
+ifndef::show-clusterStats[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/clusterStats/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::clusterStats[]
+[discrete#clusterStats]
+endif::show-clusterStats[]
+= Cluster Statistics
 
 ifdef::model-descriptions[]
 //tag::desc-clusterStats[]
@@ -626,30 +546,33 @@ Statistics for the entire cluster.
 //end::desc-clusterStats[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/clusterStats/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::clusterStats[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*avg_queries_latency* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *avg_queries_latency* +
+optional
+a¦ [markdown]
 --
 The average latency of all Search queries run on the cluster, in milliseconds.
 --
 
 [%hardbreaks]
 {blank}
-a¦ Big Decimal
-
-a¦ 
-*batch_bytes_added* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ BigDecimal
+a¦ *batch_bytes_added* +
+optional
+a¦ [markdown]
 --
 The total number of bytes in batches that have not yet been added to the Search index.
 
@@ -659,13 +582,9 @@ Batches are a data structure in the Search Service, used for processing data com
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*batch_bytes_removed* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *batch_bytes_removed* +
+optional
+a¦ [markdown]
 --
 The total number of bytes in batches that have been added to the Search index.
 
@@ -677,13 +596,9 @@ Batches are a data structure in the Search Service, used for processing data com
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*curr_batches_blocked_by_herder* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *curr_batches_blocked_by_herder* +
+optional
+a¦ [markdown]
 --
 The difference between the number of batches that have been indexed (`batch_bytes_removed`) and batches that have not yet been indexed (`batch_bytes_added`).
 
@@ -695,13 +610,9 @@ This statistic appears on the Server Web Console dashboard as **DCP Batches Bloc
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_batches_introduced* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_batches_introduced* +
+optional
+a¦ [markdown]
 --
 The total number of batches introduced as part of indexing operations.
 
@@ -711,13 +622,9 @@ Batches are a data structure in the Search Service, used for processing data com
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_bytes_ram_quota* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_bytes_ram_quota* +
+optional
+a¦ [markdown]
 --
 The total number of bytes set as the maximum usable memory for the Search Service on the cluster.
 
@@ -727,13 +634,9 @@ This statistic appears on the Server Web Console dashboard as **RAM Quota for Se
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_bytes_used_disk* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_bytes_used_disk* +
+optional
+a¦ [markdown]
 --
 The total number of bytes used on disk by Search indexes in the cluster.
 --
@@ -741,13 +644,9 @@ The total number of bytes used on disk by Search indexes in the cluster.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_bytes_used_ram* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_bytes_used_ram* +
+optional
+a¦ [markdown]
 --
 The number of bytes used in memory by the Search Service.
 
@@ -757,13 +656,9 @@ This statistic appears on the Server Web Console dashboard as **RAM Used by Sear
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_bytes_used_ram_c* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_bytes_used_ram_c* +
+optional
+a¦ [markdown]
 --
 The number of bytes used in memory by the Search Service's C language processes.
 
@@ -773,13 +668,9 @@ This amount is included as part of the total number of bytes used in memory, giv
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_files_on_disk* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_files_on_disk* +
+optional
+a¦ [markdown]
 --
 The total number of files on disk for all Search indexes.
 --
@@ -787,13 +678,9 @@ The total number of files on disk for all Search indexes.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_gocbcore_dcp_agents* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_gocbcore_dcp_agents* +
+optional
+a¦ [markdown]
 --
 The total number of Go SDK DCP agents used by the Search Service to establish DCP communication with the Data Service.
 
@@ -803,13 +690,9 @@ The number of Go SDK DCP agents should be less than or equal to the number of Se
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_gocbcore_stats_agents* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_gocbcore_stats_agents* +
+optional
+a¦ [markdown]
 --
 The total number of Go SDK agent pairs, used to retrieve statistics from the Data Service, that are present on a node.
 
@@ -819,13 +702,9 @@ Typically, the Search Service uses one agent pair for each bucket on a node.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*num_knn_search_requests* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *num_knn_search_requests* +
+optional
+a¦ [markdown]
 --
 The total number of [Vector Search](https://docs.couchbase.com/server/7.6/vector-search/vector-search.html) requests made across all Search indexes in the cluster.
 --
@@ -833,13 +712,9 @@ The total number of [Vector Search](https://docs.couchbase.com/server/7.6/vector
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*pct_cpu_gc* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *pct_cpu_gc* +
+optional
+a¦ [markdown]
 --
 The percentage of CPU time spent by a Search index in garbage collection.
 Garbage collection involves cleanup actions like removing unnecessary index entries.
@@ -847,14 +722,10 @@ Garbage collection involves cleanup actions like removing unnecessary index entr
 
 [%hardbreaks]
 {blank}
-a¦ Big Decimal
-
-a¦ 
-*pct_used_ram* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ BigDecimal
+a¦ *pct_used_ram* +
+optional
+a¦ [markdown]
 --
 The percentage of the available RAM quota used by the Search Service.
 
@@ -863,14 +734,10 @@ This statistic appears on the Server Web Console dashboard as **Pct RAM Used by 
 
 [%hardbreaks]
 {blank}
-a¦ Big Decimal
-
-a¦ 
-*tot_batches_flushed_on_maxops* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ BigDecimal
+a¦ *tot_batches_flushed_on_maxops* +
+optional
+a¦ [markdown]
 --
 The total number of batches executed due to the batch size being greater than the maximum number of operations per batch.
 
@@ -881,13 +748,9 @@ A batch is executed when it's flushed to disk.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_batches_flushed_on_timer* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_batches_flushed_on_timer* +
+optional
+a¦ [markdown]
 --
 The total number of batches executed at regular intervals.
 --
@@ -895,13 +758,9 @@ The total number of batches executed at regular intervals.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_batches_merged* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_batches_merged* +
+optional
+a¦ [markdown]
 --
 The number of batches that have been merged together before being sent to the disk write queue.
 
@@ -912,13 +771,9 @@ A batch is executed when it's flushed to disk.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_batches_new* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_batches_new* +
+optional
+a¦ [markdown]
 --
 The number of new batches that have been freshly introduced into the system.
 
@@ -928,13 +783,9 @@ Batches are a data structure in the Search Service, used for processing data com
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_bleve_dest_closed* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_bleve_dest_closed* +
+optional
+a¦ [markdown]
 --
 The total number of times a Search index partition closed to new Search requests.
 --
@@ -942,13 +793,9 @@ The total number of times a Search index partition closed to new Search requests
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_bleve_dest_opened* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_bleve_dest_opened* +
+optional
+a¦ [markdown]
 --
 The total number of times Search index partitions were created or reopened for new Search requests, or for ingesting data coming in from DCP.
 
@@ -958,13 +805,9 @@ Opening a Search index partition creates a file lock for concurrent access reque
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_grpc_listeners_closed* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_grpc_listeners_closed* +
+optional
+a¦ [markdown]
 --
 The total number of gRPC listeners closed.
 
@@ -976,13 +819,9 @@ The Search Service uses gRPC to manage scatter-gather operations across nodes wh
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_grpc_listeners_opened* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_grpc_listeners_opened* +
+optional
+a¦ [markdown]
 --
 The total number of gRPC listeners opened.
 
@@ -994,13 +833,9 @@ The Search Service uses gRPC to manage scatter-gather operations across nodes wh
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_grpc_queryreject_on_memquota* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_grpc_queryreject_on_memquota* +
+optional
+a¦ [markdown]
 --
 The total number of gRPC queries rejected because of the available memory quota for the Search Service being less than the estimated memory required for merging search results from all partitions.
 
@@ -1012,13 +847,9 @@ The Search Service uses gRPC to manage scatter-gather operations across nodes wh
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_grpcs_listeners_closed* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_grpcs_listeners_closed* +
+optional
+a¦ [markdown]
 --
 The total number of gRPC SSL listeners closed.
 
@@ -1030,13 +861,9 @@ The Search Service uses gRPC to manage scatter-gather operations across nodes wh
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_grpcs_listeners_opened* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_grpcs_listeners_opened* +
+optional
+a¦ [markdown]
 --
 The total number of gRPC SSL listeners opened.
 
@@ -1048,13 +875,9 @@ The Search Service uses gRPC to manage scatter-gather operations across nodes wh
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_http_limitlisteners_closed* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_http_limitlisteners_closed* +
+optional
+a¦ [markdown]
 --
 The total number of HTTP limit listeners closed.
 
@@ -1064,13 +887,9 @@ HTTP limit listeners manage limits on incoming HTTP requests to the Search Servi
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_http_limitlisteners_opened* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_http_limitlisteners_opened* +
+optional
+a¦ [markdown]
 --
 The total number of HTTP limit listeners opened.
 
@@ -1080,13 +899,9 @@ HTTP limit listeners manage limits on incoming HTTP requests to the Search Servi
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_https_limitlisteners_closed* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_https_limitlisteners_closed* +
+optional
+a¦ [markdown]
 --
 The total number of HTTPS limit listeners closed.
 
@@ -1096,13 +911,9 @@ HTTPS limit listeners manage limits on incoming HTTPS requests to the Search Ser
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_https_limitlisteners_opened* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_https_limitlisteners_opened* +
+optional
+a¦ [markdown]
 --
 The total number of HTTPS limit listeners opened.
 
@@ -1112,13 +923,9 @@ HTTPS limit listeners manage limits on incoming HTTPS requests to the Search Ser
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_queryreject_on_memquota* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_queryreject_on_memquota* +
+optional
+a¦ [markdown]
 --
 The total number of Search queries rejected because of the available memory quota for the Search Service being less than the estimated memory required for merging search results from all partitions.
 
@@ -1128,13 +935,9 @@ For more information about how to set the Search Service's quota, see [ftsMemory
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_remote_grpc* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_remote_grpc* +
+optional
+a¦ [markdown]
 --
 The total number of remote gRPC requests made to the Search Service.
 
@@ -1144,13 +947,9 @@ A request is remote if it comes from a different node in the cluster.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_remote_grpc_ssl* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_remote_grpc_ssl* +
+optional
+a¦ [markdown]
 --
 The total number of gRPC scatter-gather requests made to the Search Service over SSL.
 
@@ -1160,13 +959,9 @@ A request is remote if it comes from a different node in the cluster.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_remote_grpc_tls* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_remote_grpc_tls* +
+optional
+a¦ [markdown]
 --
 This metric is deprecated.
 --
@@ -1174,13 +969,9 @@ This metric is deprecated.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_remote_http* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_remote_http* +
+optional
+a¦ [markdown]
 --
 The total number of remote HTTP requests made to the Search Service.
 
@@ -1193,13 +984,9 @@ Use gRPC requests, instead.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_remote_http2* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_remote_http2* +
+optional
+a¦ [markdown]
 --
 The total number of remote HTTPS requests made to the Search Service.
 
@@ -1212,13 +999,9 @@ Use gRPC requests, instead.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_remote_http_ssl* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_remote_http_ssl* +
+optional
+a¦ [markdown]
 --
 The total number of remote HTTP SSL requests made to the Search Service.
 
@@ -1231,13 +1014,9 @@ Use gRPC requests, instead.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_rollback_full* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_rollback_full* +
+optional
+a¦ [markdown]
 --
 The total number of full rollbacks that occurred on a Search index partition.
 
@@ -1250,13 +1029,9 @@ If the Search Service's index snapshots are too far ahead of the Data Service's 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*tot_rollback_partial* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tot_rollback_partial* +
+optional
+a¦ [markdown]
 --
 The total number of partial rollbacks that occurred on a Search index partition.
 
@@ -1269,13 +1044,9 @@ If the Search Service's index snapshots are too far ahead of the Data Service's 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_bytes_query_results* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_bytes_query_results* +
+optional
+a¦ [markdown]
 --
 The size of all results returned for Search queries.
 This includes the size of all JSON sent.
@@ -1284,13 +1055,9 @@ This includes the size of all JSON sent.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_create_index_bad_request_error* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_create_index_bad_request_error* +
+optional
+a¦ [markdown]
 --
 The total number of bad request errors returned for requests to create new Search indexes on the cluster.
 --
@@ -1298,13 +1065,9 @@ The total number of bad request errors returned for requests to create new Searc
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_create_index_internal_server_error* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_create_index_internal_server_error* +
+optional
+a¦ [markdown]
 --
 The total number of internal server errors returned for requests to create new Search indexes on the cluster.
 --
@@ -1312,13 +1075,9 @@ The total number of internal server errors returned for requests to create new S
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_create_index_request* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_create_index_request* +
+optional
+a¦ [markdown]
 --
 The total number of requests received by the Search Service for creating new Search indexes.
 --
@@ -1326,13 +1085,9 @@ The total number of requests received by the Search Service for creating new Sea
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_create_index_request_ok* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_create_index_request_ok* +
+optional
+a¦ [markdown]
 --
 The total number of requests received by the Search Service for creating new Search indexes that were successful.
 --
@@ -1340,13 +1095,9 @@ The total number of requests received by the Search Service for creating new Sea
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_delete_index_bad_request_error* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_delete_index_bad_request_error* +
+optional
+a¦ [markdown]
 --
 The total number of bad request errors returned for requests to delete Search indexes on the cluster.
 --
@@ -1354,13 +1105,9 @@ The total number of bad request errors returned for requests to delete Search in
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_delete_index_internal_server_error* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_delete_index_internal_server_error* +
+optional
+a¦ [markdown]
 --
 The total number of internal server errors returned for requests to delete Search indexes on the cluster.
 --
@@ -1368,13 +1115,9 @@ The total number of internal server errors returned for requests to delete Searc
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_delete_index_request* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_delete_index_request* +
+optional
+a¦ [markdown]
 --
 The total number of requests received by the Search Service to delete Search indexes.
 --
@@ -1382,13 +1125,9 @@ The total number of requests received by the Search Service to delete Search ind
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_delete_index_request_ok* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_delete_index_request_ok* +
+optional
+a¦ [markdown]
 --
 The total number of requests received by the Search Service to delete Search indexes that were successful.
 --
@@ -1396,13 +1135,9 @@ The total number of requests received by the Search Service to delete Search ind
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_gc* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_gc* +
+optional
+a¦ [markdown]
 --
 The total number of garbage collection events triggered by the Search Service.
 
@@ -1412,13 +1147,9 @@ Garbage collection events include removing unnecessary index entries.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_internal_queries* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_internal_queries* +
+optional
+a¦ [markdown]
 --
 The number of internal queries from the coordinating node for a Search query to other nodes running the Search Service.
 
@@ -1430,13 +1161,9 @@ The coordinating node applies filters to the results from all Search index parti
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_queries* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_queries* +
+optional
+a¦ [markdown]
 --
 The total number of Search queries per second across all Search indexes in the cluster.
 --
@@ -1444,13 +1171,9 @@ The total number of Search queries per second across all Search indexes in the c
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_queries_bad_request_error* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_queries_bad_request_error* +
+optional
+a¦ [markdown]
 --
 The total number of bad request errors returned for Search queries on the cluster.
 --
@@ -1458,13 +1181,9 @@ The total number of bad request errors returned for Search queries on the cluste
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_queries_consistency_error* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_queries_consistency_error* +
+optional
+a¦ [markdown]
 --
 The total number of Search queries that encountered consistency errors on the cluster.
 
@@ -1474,13 +1193,9 @@ For more information about consistency in Search queries, see [Search Request JS
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_queries_error* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_queries_error* +
+optional
+a¦ [markdown]
 --
 The total number of Search queries that encountered an error on the cluster.
 --
@@ -1488,13 +1203,9 @@ The total number of Search queries that encountered an error on the cluster.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_queries_max_result_window_exceeded_error* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_queries_max_result_window_exceeded_error* +
+optional
+a¦ [markdown]
 --
 The total number of Search queries that exceeded the [bleveMaxResultWindow](https://docs.couchbase.com/server/7.6/fts/fts-advanced-settings-bleveMaxResultWindow.html) setting.
 --
@@ -1502,13 +1213,9 @@ The total number of Search queries that exceeded the [bleveMaxResultWindow](http
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_queries_partial_results_error* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_queries_partial_results_error* +
+optional
+a¦ [markdown]
 --
 The total number of Search queries that could only return partial results.
 
@@ -1518,13 +1225,9 @@ A Search query can return partial results if it times out before all partitions 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_queries_rejected_by_herder* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_queries_rejected_by_herder* +
+optional
+a¦ [markdown]
 --
 The total number of queries rejected by the Search Service when the memory used approaches or exceeds the quota set for a query.
 
@@ -1536,13 +1239,9 @@ This statistic appears on the Server Web Console dashboard as **Rejected Queries
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_queries_search_in_context_error* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_queries_search_in_context_error* +
+optional
+a¦ [markdown]
 --
 The total number of Search queries that returned an error when running through the `SearchInContext` API.
 
@@ -1552,13 +1251,9 @@ These errors are typically internal server errors.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_queries_slow* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_queries_slow* +
+optional
+a¦ [markdown]
 --
 The total number of Search queries that were added to the slow query log.
 --
@@ -1566,13 +1261,9 @@ The total number of Search queries that were added to the slow query log.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_queries_timeout* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_queries_timeout* +
+optional
+a¦ [markdown]
 --
 The total number of Search queries that timed out.
 
@@ -1582,13 +1273,9 @@ You can set the timeout for a query with the [ctl object](https://docs.couchbase
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_queries_validation_error* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_queries_validation_error* +
+optional
+a¦ [markdown]
 --
 The total number of queries that encountered a validation error, when the query request included a `validate` property in the `ctl` object.
 
@@ -1598,13 +1285,9 @@ For more information, see the [validate property](https://docs.couchbase.com/ser
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*total_request_time* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *total_request_time* +
+optional
+a¦ [markdown]
 --
 The total time, in nanoseconds, spent processing Search queries across the cluster.
 --
@@ -1619,34 +1302,27 @@ a¦ Integer
 
 
 
-// markup not found, no include::{specDir}definitions/clusterStats/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/clusterStats/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/clusterStats/definition-after.adoc[opts=optional]
+ifndef::show-clusterStats[]
+:leveloffset: -1
+endif::show-clusterStats[]
 
+include::{specDir}definitions/clusterStats/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/indexStats/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/indexStats/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-indexStats[]
 [#indexStats]
-= Index Statistics
-
+endif::show-indexStats[]
+ifndef::show-indexStats[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/indexStats/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::indexStats[]
+[discrete#indexStats]
+endif::show-indexStats[]
+= Index Statistics
 
 ifdef::model-descriptions[]
 //tag::desc-indexStats[]
@@ -1654,16 +1330,23 @@ Statistics for a single Search index.
 //end::desc-indexStats[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/indexStats/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::indexStats[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*BUCKET:INDEX:avg_grpc_internal_queries_latency* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:avg_grpc_internal_queries_latency* +
+optional
+a¦ [markdown]
 --
 The average time taken for a Search query's scatter-gather requests between the coordinator and other nodes running the Search Service.
 
@@ -1674,13 +1357,9 @@ The coordinator is the Search node that receives the Search request and scatters
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:avg_grpc_queries_latency* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:avg_grpc_queries_latency* +
+optional
+a¦ [markdown]
 --
 The average time taken for each Search query that uses gRPC, in milliseconds for the given Search index.
 
@@ -1690,13 +1369,9 @@ The Search Service uses gRPC to manage scatter-gather operations across nodes wh
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:avg_internal_queries_latency* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:avg_internal_queries_latency* +
+optional
+a¦ [markdown]
 --
 The average latency, in milliseconds, for inter-node queries for the given Search index.
 --
@@ -1704,13 +1379,9 @@ The average latency, in milliseconds, for inter-node queries for the given Searc
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:avg_queries_latency* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:avg_queries_latency* +
+optional
+a¦ [markdown]
 --
 The average latency, in milliseconds, for all Search queries on the given Search index.
 
@@ -1720,13 +1391,9 @@ This statistic appears on the Server Web Console dashboard as **Search Query Lat
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:doc_count* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:doc_count* +
+optional
+a¦ [markdown]
 --
 The total number of documents in the given Search index.
 
@@ -1736,13 +1403,9 @@ This statistic appears on the Server Web Console dashboard as **Search Docs**.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:last_access_time* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:last_access_time* +
+optional
+a¦ [markdown]
 --
 The last date and time that a query ran against the given Search index.
 --
@@ -1750,13 +1413,9 @@ The last date and time that a query ran against the given Search index.
 [%hardbreaks]
 {blank}
 a¦ Date (date-time)
-
-a¦ 
-*BUCKET:INDEX:num_bytes_read_at_query_time* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_bytes_read_at_query_time* +
+optional
+a¦ [markdown]
 --
 The total number of bytes read by all queries against the given Search index.
 --
@@ -1764,13 +1423,9 @@ The total number of bytes read by all queries against the given Search index.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_bytes_used_disk* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_bytes_used_disk* +
+optional
+a¦ [markdown]
 --
 The total number of bytes used on disk by the given Search index.
 
@@ -1780,13 +1435,9 @@ This statistic appears on the Server Web Console dashboard as **Search Disk Size
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_bytes_used_disk_by_root* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_bytes_used_disk_by_root* +
+optional
+a¦ [markdown]
 --
 The total number of bytes used on disk by the root segment of the given Search index.
 
@@ -1800,13 +1451,9 @@ The `num_bytes_used_disk_by_root` value will be less than the `num_bytes_used_di
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_bytes_used_disk_by_root_reclaimable* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_bytes_used_disk_by_root_reclaimable* +
+optional
+a¦ [markdown]
 --
 The total number of bytes used on disk by the latest root index segment snapshot, which can potentially be reclaimed by a file merge operation.
 
@@ -1818,13 +1465,9 @@ Stale segments are deleted when they're not used by any new queries.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_bytes_written_at_index_time* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_bytes_written_at_index_time* +
+optional
+a¦ [markdown]
 --
 The total cumulative number of bytes written to disk as part of introducing segments, or files.
 --
@@ -1832,13 +1475,9 @@ The total cumulative number of bytes written to disk as part of introducing segm
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_file_merge_ops* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_file_merge_ops* +
+optional
+a¦ [markdown]
 --
 The number of merge operations completed by the merger routine, over persisted files.
 
@@ -1852,13 +1491,9 @@ The persister and merger interact to continuously flush and merge new in-memory 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_files_on_disk* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_files_on_disk* +
+optional
+a¦ [markdown]
 --
 The total number of files on disk for the given Search index.
 
@@ -1868,13 +1503,9 @@ This statistic appears on the Server Web Console dashboard as **Search Disk File
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_mem_merge_ops* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_mem_merge_ops* +
+optional
+a¦ [markdown]
 --
 The number of merge operations completed by the merger routine, over in-memory segments.
 
@@ -1888,13 +1519,9 @@ The persister and merger interact to continuously flush and merge new in-memory 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_mutations_to_index* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_mutations_to_index* +
+optional
+a¦ [markdown]
 --
 The DCP sequence numbers of changes that have not yet been indexed for the given Search index.
 
@@ -1904,13 +1531,9 @@ This statistic appears on the Server Web Console dashboard as **Search Mutations
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_persister_nap_merger_break* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_persister_nap_merger_break* +
+optional
+a¦ [markdown]
 --
 The number of times the persister was interrupted by the merger during a nap period.
 
@@ -1924,13 +1547,9 @@ The persister and merger interact to continuously flush and merge new in-memory 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_persister_nap_pause_completed* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_persister_nap_pause_completed* +
+optional
+a¦ [markdown]
 --
 The number of times the persister completed its configured nap period before flushing content to disk, without being interrupted by the merger.
 
@@ -1944,13 +1563,9 @@ The persister and merger interact to continuously flush and merge new in-memory 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_pindexes_actual* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_pindexes_actual* +
+optional
+a¦ [markdown]
 --
 The total number of partitions currently in the given Search index.
 
@@ -1960,13 +1575,9 @@ This statistic appears on the Server Web Console dashboard as **Search Partition
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_pindexes_target* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_pindexes_target* +
+optional
+a¦ [markdown]
 --
 The total number of planned or expected partitions for the given Search index.
 
@@ -1976,13 +1587,9 @@ This statistic appears on the Server Web Console dashboard as **Search Partition
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_recs_to_persist* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_recs_to_persist* +
+optional
+a¦ [markdown]
 --
 The total number of entries, including terms, records, and dictionary rows, that have not yet been persisted to disk.
 
@@ -1992,13 +1599,9 @@ This statistic appears on the Server Web Console dashboard as **Search Records t
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_root_filesegments* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_root_filesegments* +
+optional
+a¦ [markdown]
 --
 The total number of file segments in the root segment.
 
@@ -2010,13 +1613,9 @@ This statistic appears on the Server Web Console dashboard as **Search Disk Segm
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:num_root_memorysegments* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:num_root_memorysegments* +
+optional
+a¦ [markdown]
 --
 The total number of memory segments in the root segment.
 
@@ -2028,13 +1627,9 @@ This statistic appears on the Server Web Console dashboard as **Search Memory Se
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:timer_batch_store_count* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:timer_batch_store_count* +
+optional
+a¦ [markdown]
 --
 The total number of times batches were executed against the given Search index.
 
@@ -2045,13 +1640,9 @@ A batch is executed when it's flushed to disk.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:timer_data_delete_count* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:timer_data_delete_count* +
+optional
+a¦ [markdown]
 --
 The total number of delete operations received from DCP for the given Search index.
 --
@@ -2059,13 +1650,9 @@ The total number of delete operations received from DCP for the given Search ind
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:timer_data_update_count* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:timer_data_update_count* +
+optional
+a¦ [markdown]
 --
 The total number of create or update operations received from DCP for the given Search index.
 --
@@ -2073,13 +1660,9 @@ The total number of create or update operations received from DCP for the given 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:timer_opaque_get_count* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:timer_opaque_get_count* +
+optional
+a¦ [markdown]
 --
 The total number of times the DCP consumer had to retrieve stored metadata to aid in reconnection for the given Search index.
 
@@ -2089,13 +1672,9 @@ If the DCP connection closes, the Search Service can use this stored metadata to
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:timer_opaque_set_count* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:timer_opaque_set_count* +
+optional
+a¦ [markdown]
 --
 The total number of times the DCP consumer updated stored metadata, based on changes to Snapshot markers or the failover log, for the given Search index.
 --
@@ -2103,13 +1682,9 @@ The total number of times the DCP consumer updated stored metadata, based on cha
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:timer_rollback_count* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:timer_rollback_count* +
+optional
+a¦ [markdown]
 --
 The total number of DCP Rollback messages received for the given Search index.
 --
@@ -2117,13 +1692,9 @@ The total number of DCP Rollback messages received for the given Search index.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:timer_snapshot_start_count* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:timer_snapshot_start_count* +
+optional
+a¦ [markdown]
 --
 The total number of DCP Snapshot markers received for the given Search index.
 
@@ -2133,13 +1704,9 @@ Snapshots contain a representation of document mutations on either a write queue
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:tot_seq_received* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:tot_seq_received* +
+optional
+a¦ [markdown]
 --
 This metric is no longer used and will soon be deprecated.
 --
@@ -2147,13 +1714,9 @@ This metric is no longer used and will soon be deprecated.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_bytes_indexed* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_bytes_indexed* +
+optional
+a¦ [markdown]
 --
 The rate, in bytes per second, of content indexed in the given Search index.
 
@@ -2163,13 +1726,9 @@ This statistic appears on the Server Web Console dashboard as **Search Index Rat
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_bytes_query_results* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_bytes_query_results* +
+optional
+a¦ [markdown]
 --
 The size of results returned for Search queries on the given Search index.
 This includes the size of all JSON sent.
@@ -2180,13 +1739,9 @@ This statistic appears on the Server Web Console dashboard as **Search Result Ra
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_compaction_written_bytes* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_compaction_written_bytes* +
+optional
+a¦ [markdown]
 --
 The total number of bytes written to disk as a result of compaction operations on the given Search index.
 
@@ -2196,13 +1751,9 @@ This statistic appears on the Server Web Console dashboard as **Search Compactio
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_grpc_internal_queries* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_grpc_internal_queries* +
+optional
+a¦ [markdown]
 --
 The total number of internal gRPC requests from the coordinating node for a Search query to other nodes running the Search Service, for the given Search index.
 
@@ -2214,13 +1765,9 @@ The coordinating node applies filters to the results from all Search index parti
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_grpc_queries* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_grpc_queries* +
+optional
+a¦ [markdown]
 --
 The total number of queries, using gRPC for streaming, for the given Search index.
 --
@@ -2228,13 +1775,9 @@ The total number of queries, using gRPC for streaming, for the given Search inde
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_grpc_queries_error* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_grpc_queries_error* +
+optional
+a¦ [markdown]
 --
 The total number of queries that resulted in an error that used gRPC for streaming on the given Search index.
 --
@@ -2242,13 +1785,9 @@ The total number of queries that resulted in an error that used gRPC for streami
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_grpc_queries_slow* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_grpc_queries_slow* +
+optional
+a¦ [markdown]
 --
 The total number of queries added to the slow query log that used gRPC for streaming on the given Search index.
 --
@@ -2256,13 +1795,9 @@ The total number of queries added to the slow query log that used gRPC for strea
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_grpc_queries_timeout* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_grpc_queries_timeout* +
+optional
+a¦ [markdown]
 --
 The total number of queries that timed out that used gRPC for streaming on the given Search index.
 --
@@ -2270,13 +1805,9 @@ The total number of queries that timed out that used gRPC for streaming on the g
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_grpc_request_time* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_grpc_request_time* +
+optional
+a¦ [markdown]
 --
 The total time, in nanoseconds, for internal scatter-gather requests.
 
@@ -2288,13 +1819,9 @@ The coordinating node applies filters to the results from all Search index parti
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_internal_queries* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_internal_queries* +
+optional
+a¦ [markdown]
 --
 The number of internal queries from the coordinating node for a Search query to other nodes running the Search Service, for the given Search index.
 
@@ -2306,13 +1833,9 @@ The coordinating node applies filters to the results from all Search index parti
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_knn_searches* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_knn_searches* +
+optional
+a¦ [markdown]
 --
 The total number of [Vector Search](https://docs.couchbase.com/server/7.6/vector-search/vector-search.html) requests made to the given Search index.
 --
@@ -2320,13 +1843,9 @@ The total number of [Vector Search](https://docs.couchbase.com/server/7.6/vector
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_queries* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_queries* +
+optional
+a¦ [markdown]
 --
 The total number of Search queries per second on the given Search index.
 --
@@ -2334,13 +1853,9 @@ The total number of Search queries per second on the given Search index.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_queries_error* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_queries_error* +
+optional
+a¦ [markdown]
 --
 The total number of Search queries on the given Search index that resulted in an error.
 
@@ -2350,13 +1865,9 @@ This statistic appears on the Server Web Console dashboard as **Search Query Err
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_queries_slow* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_queries_slow* +
+optional
+a¦ [markdown]
 --
 The total number of Search queries on the given Search index in the slow query log.
 
@@ -2368,13 +1879,9 @@ This statistic appears on the Server Web Console dashboard as **Search Slow Quer
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_queries_timeout* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_queries_timeout* +
+optional
+a¦ [markdown]
 --
 The total number of Search queries on the given Search index that timed out.
 
@@ -2384,13 +1891,9 @@ This statistic appears on the Server Web Console dashboard as **Search Query Tim
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_request_time* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_request_time* +
+optional
+a¦ [markdown]
 --
 The total time, in nanoseconds, spent processing Search query requests for the given Search index.
 --
@@ -2398,13 +1901,9 @@ The total time, in nanoseconds, spent processing Search query requests for the g
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_term_searchers* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_term_searchers* +
+optional
+a¦ [markdown]
 --
 The total number of term searchers for the given Search index.
 
@@ -2419,13 +1918,9 @@ This statistic appears on the Server Web Console dashboard as **Term Searchers S
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_term_searchers_finished* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_term_searchers_finished* +
+optional
+a¦ [markdown]
 --
 The total number of term searchers on the given Search index that have finished serving a Search query.
 --
@@ -2433,13 +1928,9 @@ The total number of term searchers on the given Search index that have finished 
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*BUCKET:INDEX:total_vectors* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *BUCKET:INDEX:total_vectors* +
+optional
+a¦ [markdown]
 --
 The total number of vectors inside the given Search index, across all indexed fields.
 
@@ -2456,26 +1947,26 @@ a¦ Integer
 
 
 
-// markup not found, no include::{specDir}definitions/indexStats/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/indexStats/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
-
+include::{specDir}definitions/indexStats/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+ifndef::show-indexStats[]
+:leveloffset: -1
+endif::show-indexStats[]
+
+include::{specDir}definitions/indexStats/definition-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
 
+include::{specDir}definitions/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+include::{specDir}security/document-before.adoc[opts=optional]
 
 [[security]]
 = Security
@@ -2485,18 +1976,14 @@ a¦ Integer
 include::{specDir}security/document-begin.adoc[opts=optional]
 
 
+include::{specDir}security/Admin/security-scheme-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}security/Admin/security-scheme-before.adoc[opts=optional]
-
-
-[[security-admin]]
+[[security-Admin]]
 = Admin
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Admin/security-scheme-begin.adoc[opts=optional]
-
+include::{specDir}security/Admin/security-scheme-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -2504,29 +1991,22 @@ You must have the **Full Admin**, **Cluster Admin**, or **Bucket Admin** role, w
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
-
-// markup not found, no include::{specDir}security/Admin/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/Admin/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+include::{specDir}security/Admin/security-scheme-after.adoc[opts=optional]
 
-// markup not found, no include::{specDir}security/Admin/security-scheme-after.adoc[opts=optional]
+include::{specDir}security/Statistics/security-scheme-before.adoc[opts=optional]
 
-
-
-
-// markup not found, no include::{specDir}security/Statistics/security-scheme-before.adoc[opts=optional]
-
-
-[[security-statistics]]
+[[security-Statistics]]
 = Statistics
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Statistics/security-scheme-begin.adoc[opts=optional]
-
+include::{specDir}security/Statistics/security-scheme-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -2534,16 +2014,13 @@ You must have the **Search Admin** role, with Stats Read permissions on the requ
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
-
-// markup not found, no include::{specDir}security/Statistics/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/Statistics/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}security/Statistics/security-scheme-after.adoc[opts=optional]
-
+include::{specDir}security/Statistics/security-scheme-after.adoc[opts=optional]
 
 
 
@@ -2551,8 +2028,6 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-
-// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+include::{specDir}security/document-after.adoc[opts=optional]
 
 

@@ -1,0 +1,47 @@
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::{{name}}[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+{{#each vars ~}}
+a¦ {{#with vendorExtensions.x-desc-name}}[#{{this}}]
+{{/with ~}}
+{{#with vendorExtensions.x-alt-title}}*{{{this}}}*{{else}}*{{baseName}}*{{/with}} +
+{{#with required}}required{{else}}optional{{/with}}
+a¦ {{>property}}
+a¦ {{>schemas}}
+{{/each}}
+{{~#with additionalProperties ~}}
+a¦ {{#with vendorExtensions.x-desc-name}}[#{{this}}]
+{{/with ~}}
+{{#with vendorExtensions.x-additionalPropertiesName}}*<{{this}}>* +{{/with}}
+additional +
+property
+a¦ {{>property}}
+a¦ {{>schemas}}
+{{/with}}
+|===
+
+//end::{{name}}[]
+
+{{! Polymorphism}}
+{{~#if hasDiscriminatorWithNonEmptyMapping ~}}
+This schema has alternative properties, depending on the value of *{{discriminatorName}}*:
+{{#with discriminator ~}}
+
+[cols="25,55,20"]
+|===
+| Value | | Schema
+{{#each mappedModels ~}}
+
+a| `{{mappingName}}`
+a| {{{model.unescapedDescription}}}
+a| xref:{{modelName}}[]
+{{/each}}
+|===
+{{~/with}}
+{{~/if}}
