@@ -298,7 +298,7 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-begin.adoc[op
 {{~/if}}{{! @first }}
 
 | {{type}}{{#with scheme}} ({{this}}){{/with}}
-| xref:security-{{#cut name " "}}{{/cut}}[]
+| xref:security-{{name}}[]
 
 {{#if @last ~}}
 |===
@@ -361,7 +361,7 @@ include::{specDir}security/document-begin.adoc[opts=optional]
 {{#each authMethods~}}
 include::{specDir}security/{{name}}/security-scheme-before.adoc[opts=optional]
 
-[[security-{{#cut name " "}}{{/cut}}]]
+[[security-{{name}}]]
 = {{name}}
 
 :leveloffset: +1
