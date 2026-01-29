@@ -12,16 +12,15 @@ DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
 
 :leveloffset: 1
 
-include::{specDir}overview/document-before.adoc[opts=optional]
 
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 [[overview]]
 = Overview
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
-
+include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -36,7 +35,7 @@ Unless otherwise noted, you should only change the Index Service settings when a
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+*Version:* 8.0
 
 [discrete#host]
 = Host information
@@ -71,7 +70,6 @@ The host name or IP address of a node running the Index Service.
 --
 
 [%hardbreaks]
-
 *Example:* `+++localhost+++`
 // end
 
@@ -87,31 +85,26 @@ The Index Service REST port. Use `19102` for secure access.
 
 |===
 
-
 include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
-
+include::{specDir}overview/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
-
+include::{specDir}paths/document-before.adoc[opts=optional]
 
 [[resources]]
 = Resources
 
-:count-apis: 1
-
+:count-apis: 0
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
@@ -119,62 +112,52 @@ xref:tag-Default[]
 endif::[]
 
 
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 [#tag-Default]
 = Default
 :leveloffset: +1
 
-ifeval::["" != ""]
-
-endif::[]
-ifeval::["" == ""]
 **{toc-title}**
 endif::[]
-endif::[]
+
 
 [%hardbreaks]
 xref:get_settings[]
 xref:post_settings[]
 
 
+
 //tag::get_settings[]
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-before.adoc[opts=optional]
 
 [#get_settings]
 = Retrieve Index Settings
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_settings/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-begin.adoc[opts=optional]
 
 ....
 GET /settings
 ....
 
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-description-before.adoc[opts=optional]
 
 [#get_settings-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_settings/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Returns Index Service settings.
 --
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/get_settings/operation-description-end.adoc[opts=optional]
 
 
 
@@ -182,33 +165,29 @@ Returns Index Service settings.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/get_settings/operation-parameters-before.adoc[opts=optional]
+include::{specDir}paths/get_settings/operation-parameters-before.adoc[opts=optional]
 
 
 
 
 
-// markup not found, no include::{specDir}paths/get_settings/operation-parameters-after.adoc[opts=optional]
+include::{specDir}paths/get_settings/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-responses-before.adoc[opts=optional]
 
 [#get_settings-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_settings/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -227,6 +206,7 @@ a| [markdown]
 Not found. The URL may be specified incorrectly.
 --
 a| 
+
 | 401
 a| [markdown]
 --
@@ -236,103 +216,84 @@ a|
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/get_settings/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Settings:
 
 
 
-// markup not found, no include::{specDir}paths/get_settings/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/get_settings/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-security-before.adoc[opts=optional]
 
 [#get_settings-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_settings/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-default[]
+| xref:security-Default[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/get_settings/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/get_settings/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_settings/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}get_settings/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/get_settings/operation-end.adoc[opts=optional]
+include::{specDir}paths/get_settings/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_settings/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/get_settings/operation-after.adoc[opts=optional]
 
 //end::get_settings[]
 
-
 //tag::post_settings[]
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-before.adoc[opts=optional]
 
 [#post_settings]
 = Update Index Settings
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_settings/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-begin.adoc[opts=optional]
 
 ....
 POST /settings
 ....
 
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-description-before.adoc[opts=optional]
 
 [#post_settings-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_settings/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Updates Index Service settings.
 --
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/post_settings/operation-description-end.adoc[opts=optional]
 
 
 [#post_settings-consumes]
@@ -340,27 +301,20 @@ Updates Index Service settings.
 * application/json
 
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/post_settings/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-parameters-before.adoc[opts=optional]
 
 [#post_settings-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_settings/operation-parameters-begin.adoc[opts=optional]
-
-
-
-
-
+include::{specDir}paths/post_settings/operation-parameters-begin.adoc[opts=optional]
 
 [#post_settings-body]
 .Body Parameter
@@ -371,13 +325,10 @@ Updates Index Service settings.
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
-An object specifying Index Service settings. You only need to specify the settings you want to change; settings which are not specified are left unchanged.
+
 --
 
 [%hardbreaks]
@@ -388,26 +339,25 @@ a¦ xref:Settings[]
 |===
 
 
-// markup not found, no include::{specDir}paths/post_settings/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/post_settings/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Settings:
 
 
 
-// markup not found, no include::{specDir}paths/post_settings/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/post_settings/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-responses-before.adoc[opts=optional]
 
 [#post_settings-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_settings/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -419,12 +369,14 @@ a| [markdown]
 Success. Returns `OK` and no object.
 --
 a| 
+
 | 401
 a| [markdown]
 --
 Unauthorized. Failure to authenticate.
 --
 a| 
+
 | 404
 a| [markdown]
 --
@@ -434,117 +386,103 @@ a|
 
 |===
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/post_settings/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/post_settings/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/post_settings/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-security-before.adoc[opts=optional]
 
 [#post_settings-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_settings/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-default[]
+| xref:security-Default[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/post_settings/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/post_settings/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}post_settings/http-request.adoc[opts=optional]
 
+include::{snippetDir}post_settings/http-response.adoc[opts=optional]
 
-// markup not found, no include::{snippetDir}post_settings/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/post_settings/operation-end.adoc[opts=optional]
+include::{specDir}paths/post_settings/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_settings/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/post_settings/operation-after.adoc[opts=optional]
 
 //end::post_settings[]
 
 
-ifeval::[{count-apis} > 1]
+
+ifeval::[{count-apis} > 0]
 :leveloffset: -1
 endif::[]
 
 
 
-// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+include::{specDir}paths/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
-
+include::{specDir}paths/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
-
+include::{specDir}definitions/document-before.adoc[opts=optional]
 
 [#models]
 = Definitions
 
-:count-models: 1
-
+:count-models: 0
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
-
+include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 1]
-ifdef::collapse-models[]
+ifeval::[{count-models} > 0]
+ifeval::[{count-models} > 8]
 [.two-columns]
-endif::collapse-models[]
+endif::[]
 [%hardbreaks]
 xref:Settings[]
 endif::[]
 
 
+include::{specDir}definitions/Settings/definition-before.adoc[opts=optional]
 
-// markup not found, no include::{specDir}definitions/Settings/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-Settings[]
 [#Settings]
+endif::show-Settings[]
+ifndef::show-Settings[]
+:leveloffset: +1
+
+[discrete#Settings]
+endif::show-Settings[]
 = Settings
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/Settings/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/Settings/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -552,17 +490,13 @@ endif::collapse-models[]
 
 //tag::Settings[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*indexer.&#8203;plasma.&#8203;LSSSegmentFileSize* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;plasma.&#8203;LSSSegmentFileSize* +
+optional
+a¦ [markdown]
 --
 For standard indexes using Plasma, the maximum size for Log Structured Store segment files, in bytes.
 Index compaction and space reclamation are triggered when the segment file size reaches this value.
@@ -580,13 +514,9 @@ For more information, see [Standard Index Storage](/server/8.0/indexes/storage-m
 *Example:* `67108864`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;rebalance.&#8203;transferBatchSize* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;rebalance.&#8203;transferBatchSize* +
+optional
+a¦ [markdown]
 --
 Sets the batch size Couchbase Server uses when rebuilding index files during rebalance.
 This setting has no effect on file-based rebalance.
@@ -603,13 +533,9 @@ For an overview of rebalance as it affects the Index Service, including an overv
 *Example:* `7`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;allow_large_keys* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;allow_large_keys* +
+optional
+a¦ [markdown]
 --
 Whether the size of index keys is unlimited.
 
@@ -623,13 +549,9 @@ In Couchbase Server 6.5 and later, the Index Service does not need to restart wh
 *Default:* `true`
 {blank}
 a¦ Boolean
-
-a¦ 
-*indexer.&#8203;settings.&#8203;bufferPoolBlockSize* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;bufferPoolBlockSize* +
+optional
+a¦ [markdown]
 --
 Buffer pool block size.
 --
@@ -638,13 +560,9 @@ Buffer pool block size.
 *Default:* `16384`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;build.&#8203;batch_size* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;build.&#8203;batch_size* +
+optional
+a¦ [markdown]
 --
 Build batch size.
 --
@@ -653,13 +571,9 @@ Build batch size.
 *Default:* `5`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;compaction.&#8203;abort_exceed_interval* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;abort_exceed_interval* +
+optional
+a¦ [markdown]
 --
 Whether to abort index compaction if it's still running after the end of the index compaction interval.
 --
@@ -668,13 +582,9 @@ Whether to abort index compaction if it's still running after the end of the ind
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*indexer.&#8203;settings.&#8203;compaction.&#8203;check_period* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;check_period* +
+optional
+a¦ [markdown]
 --
 An interval, specifying how frequently the Index Service checks whether the compaction threshold has been reached (seconds).
 --
@@ -683,13 +593,9 @@ An interval, specifying how frequently the Index Service checks whether the comp
 *Default:* `30`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;compaction.&#8203;compaction_mode* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;compaction_mode* +
+optional
+a¦ [markdown]
 --
 The compaction mode for indexes.
 --
@@ -699,13 +605,9 @@ The compaction mode for indexes.
 *Default:* `+++"circular"+++`
 {blank}
 a¦ String
-
-a¦ 
-*indexer.&#8203;settings.&#8203;compaction.&#8203;days_of_week* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;days_of_week* +
+optional
+a¦ [markdown]
 --
 The days of the week on which circular compaction is to run, if specified.
 Individual values must be day-names, each specified with an initial capital, and otherwise lower-case.
@@ -717,13 +619,9 @@ Multiple values must be separated by a single comma, with no spaces.
 *Example:* `+++"Saturday,Sunday"+++`
 {blank}
 a¦ String
-
-a¦ 
-*indexer.&#8203;settings.&#8203;compaction.&#8203;interval* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;interval* +
+optional
+a¦ [markdown]
 --
 A string in the form `fromHour:fromMinute,toHour:toMinute`, specifying the interval during which index compaction can run.
 
@@ -744,13 +642,9 @@ The default value means any time.
 *Example:* `+++"01:00,05:59"+++`
 {blank}
 a¦ String
-
-a¦ 
-*indexer.&#8203;settings.&#8203;compaction.&#8203;min_frag* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;min_frag* +
+optional
+a¦ [markdown]
 --
 The minimum fragmentation threshold to trigger compaction (percentage).
 --
@@ -760,13 +654,9 @@ The minimum fragmentation threshold to trigger compaction (percentage).
 *Minimum:* `5`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;compaction.&#8203;min_size* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;min_size* +
+optional
+a¦ [markdown]
 --
 Compaction minimum file size.
 --
@@ -775,13 +665,9 @@ Compaction minimum file size.
 *Default:* `524288000`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;compaction.&#8203;plasma.&#8203;manual* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;plasma.&#8203;manual* +
+optional
+a¦ [markdown]
 --
 For standard indexes using Plasma, whether compaction should be triggered manually.
 --
@@ -790,13 +676,9 @@ For standard indexes using Plasma, whether compaction should be triggered manual
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*indexer.&#8203;settings.&#8203;compaction.&#8203;plasma.&#8203;optional.&#8203;decrement* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;plasma.&#8203;optional.&#8203;decrement* +
+optional
+a¦ [markdown]
 --
 For standard indexes using Plasma, the optional decrement.
 --
@@ -805,13 +687,9 @@ For standard indexes using Plasma, the optional decrement.
 *Default:* `5`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;compaction.&#8203;plasma.&#8203;optional.&#8203;min_frag* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;plasma.&#8203;optional.&#8203;min_frag* +
+optional
+a¦ [markdown]
 --
 For standard indexes using Plasma, the minimum fragmentation threshold to trigger compaction (percentage).
 --
@@ -820,13 +698,9 @@ For standard indexes using Plasma, the minimum fragmentation threshold to trigge
 *Default:* `20`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;compaction.&#8203;plasma.&#8203;optional.&#8203;quota* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;compaction.&#8203;plasma.&#8203;optional.&#8203;quota* +
+optional
+a¦ [markdown]
 --
 For standard indexes using Plasma, the optional quota.
 --
@@ -835,13 +709,9 @@ For standard indexes using Plasma, the optional quota.
 *Default:* `25`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;corrupt_index_num_backups* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;corrupt_index_num_backups* +
+optional
+a¦ [markdown]
 --
 Corrupt index number of backups.
 --
@@ -850,13 +720,9 @@ Corrupt index number of backups.
 *Default:* `1`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;cpuProfDir* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;cpuProfDir* +
+optional
+a¦ [markdown]
 --
 The name of the directory where local CPU usage profiling information is captured.
 --
@@ -864,13 +730,9 @@ The name of the directory where local CPU usage profiling information is capture
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*indexer.&#8203;settings.&#8203;cpuProfile* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;cpuProfile* +
+optional
+a¦ [markdown]
 --
 Whether the Index Service should capture local CPU usage profiling information.
 --
@@ -879,13 +741,9 @@ Whether the Index Service should capture local CPU usage profiling information.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*indexer.&#8203;settings.&#8203;defer_build* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;defer_build* +
+optional
+a¦ [markdown]
 --
 The default setting for the `defer_build` option for index creation.
 
@@ -899,13 +757,9 @@ You can override this setting by specifying the `defer_build` option when you cr
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*indexer.&#8203;settings.&#8203;eTagPeriod* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;eTagPeriod* +
+optional
+a¦ [markdown]
 --
 The ETag (entity tag) period.
 --
@@ -914,13 +768,9 @@ The ETag (entity tag) period.
 *Default:* `240`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;enable_corrupt_index_backup* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;enable_corrupt_index_backup* +
+optional
+a¦ [markdown]
 --
 Whether corrupt index backup is enabled.
 --
@@ -929,13 +779,9 @@ Whether corrupt index backup is enabled.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*indexer.&#8203;settings.&#8203;enable_page_bloom_filter* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;enable_page_bloom_filter* +
+optional
+a¦ [markdown]
 --
 Whether Bloom filters are enabled for memory management.
 
@@ -946,13 +792,9 @@ For more information, see [Per Page Bloom Filters](/server/8.0/indexes/storage-m
 *Default:* `true`
 {blank}
 a¦ Boolean
-
-a¦ 
-*indexer.&#8203;settings.&#8203;enable_shard_affinity* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;enable_shard_affinity* +
+optional
+a¦ [markdown]
 --
 Selects the index rebalance method.
 See [Index Rebalance Methods](/server/8.0/learn/clusters-and-availability/rebalance.html#index-rebalance-methods).
@@ -969,13 +811,9 @@ However, when you alter an index, you cannot use the `WITH` clause to specify wh
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*indexer.&#8203;settings.&#8203;fast_flush_mode* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;fast_flush_mode* +
+optional
+a¦ [markdown]
 --
 Whether fast flush mode is enabled.
 --
@@ -984,13 +822,9 @@ Whether fast flush mode is enabled.
 *Default:* `true`
 {blank}
 a¦ Boolean
-
-a¦ 
-*indexer.&#8203;settings.&#8203;gc_percent* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;gc_percent* +
+optional
+a¦ [markdown]
 --
 Garbage collection percentage.
 --
@@ -999,13 +833,9 @@ Garbage collection percentage.
 *Default:* `100`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;inmemory_snapshot.&#8203;fdb.&#8203;interval* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;inmemory_snapshot.&#8203;fdb.&#8203;interval* +
+optional
+a¦ [markdown]
 --
 For standard indexes using Forestdb, the in-memory snapshot interval (ms).
 This determines the earliest possibility of a scan seeing a given KV mutation.
@@ -1016,13 +846,9 @@ This determines the earliest possibility of a scan seeing a given KV mutation.
 *Minimum:* `1` (exclusive)
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;inmemory_snapshot.&#8203;interval* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;inmemory_snapshot.&#8203;interval* +
+optional
+a¦ [markdown]
 --
 The in-memory snapshot interval (ms).
 This determines the earliest possibility of a scan seeing a given KV mutation.
@@ -1033,13 +859,9 @@ This determines the earliest possibility of a scan seeing a given KV mutation.
 *Minimum:* `1` (exclusive)
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;inmemory_snapshot.&#8203;moi.&#8203;interval* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;inmemory_snapshot.&#8203;moi.&#8203;interval* +
+optional
+a¦ [markdown]
 --
 For memory-optimized indexes, the in-memory snapshot interval (ms).
 This determines the earliest possibility of a scan seeing a given KV mutation.
@@ -1050,13 +872,9 @@ This determines the earliest possibility of a scan seeing a given KV mutation.
 *Minimum:* `1` (exclusive)
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;largeSnapshotThreshold* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;largeSnapshotThreshold* +
+optional
+a¦ [markdown]
 --
 The large snapshot threshold.
 --
@@ -1065,13 +883,9 @@ The large snapshot threshold.
 *Default:* `200`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;log_level* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;log_level* +
+optional
+a¦ [markdown]
 --
 Indexer logging level.
 --
@@ -1081,13 +895,9 @@ Indexer logging level.
 *Default:* `+++"info"+++`
 {blank}
 a¦ String
-
-a¦ 
-*indexer.&#8203;settings.&#8203;maxNumPartitions* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;maxNumPartitions* +
+optional
+a¦ [markdown]
 --
 Maximum number of partitions.
 --
@@ -1096,13 +906,9 @@ Maximum number of partitions.
 *Default:* `64`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;maxVbQueueLength* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;maxVbQueueLength* +
+optional
+a¦ [markdown]
 --
 Maximum vBucket queue length.
 --
@@ -1111,13 +917,9 @@ Maximum vBucket queue length.
 *Default:* `0`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;max_array_seckey_size* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;max_array_seckey_size* +
+optional
+a¦ [markdown]
 --
 If `indexer.settings.allow_large_keys` is false, this setting specifies the maximum size for array index keys.
 
@@ -1128,13 +930,9 @@ In Couchbase Server 6.5 and later, the Index Service does not need to restart wh
 *Default:* `10240`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;max_cpu_percent* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;max_cpu_percent* +
+optional
+a¦ [markdown]
 --
 The CPU capacity that the Index Service should use (percentage).
 If set to `0`, the indexer will use all CPUs.
@@ -1144,13 +942,9 @@ If set to `0`, the indexer will use all CPUs.
 *Default:* `0`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;max_seckey_size* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;max_seckey_size* +
+optional
+a¦ [markdown]
 --
 If `indexer.settings.allow_large_keys` is false, this setting specifies the maximum size for index keys.
 
@@ -1161,13 +955,9 @@ In Couchbase Server 6.5 and later, the Index Service does not need to restart wh
 *Default:* `4608`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;max_writer_lock_prob* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;max_writer_lock_prob* +
+optional
+a¦ [markdown]
 --
 Maximum writer lock prob.
 --
@@ -1176,13 +966,9 @@ Maximum writer lock prob.
 *Default:* `20`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;memProfDir* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;memProfDir* +
+optional
+a¦ [markdown]
 --
 The name of the directory where local memory usage profiling information is captured.
 --
@@ -1190,13 +976,9 @@ The name of the directory where local memory usage profiling information is capt
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*indexer.&#8203;settings.&#8203;memProfile* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;memProfile* +
+optional
+a¦ [markdown]
 --
 Whether the Index Service should capture local memory usage profiling information.
 --
@@ -1205,13 +987,9 @@ Whether the Index Service should capture local memory usage profiling informatio
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*indexer.&#8203;settings.&#8203;memory_quota* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;memory_quota* +
+optional
+a¦ [markdown]
 --
 How much RAM is allocated to the Index Service for the current node.
 --
@@ -1220,13 +998,9 @@ How much RAM is allocated to the Index Service for the current node.
 *Default:* `536870912`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;minVbQueueLength* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;minVbQueueLength* +
+optional
+a¦ [markdown]
 --
 Minimum vBucket queue length.
 --
@@ -1235,13 +1009,9 @@ Minimum vBucket queue length.
 *Default:* `30`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;moi.&#8203;debug* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;moi.&#8203;debug* +
+optional
+a¦ [markdown]
 --
 Debug memory-optimized index storage.
 --
@@ -1250,13 +1020,9 @@ Debug memory-optimized index storage.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*indexer.&#8203;settings.&#8203;moi.&#8203;persistence_threads* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;moi.&#8203;persistence_threads* +
+optional
+a¦ [markdown]
 --
 For memory-optimized index storage, the number of persistence threads.
 --
@@ -1265,13 +1031,9 @@ For memory-optimized index storage, the number of persistence threads.
 *Default:* `4`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;moi.&#8203;recovery.&#8203;max_rollbacks* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;moi.&#8203;recovery.&#8203;max_rollbacks* +
+optional
+a¦ [markdown]
 --
 For memory-optimized index storage, the maximum number of committed rollback points.
 --
@@ -1280,13 +1042,9 @@ For memory-optimized index storage, the maximum number of committed rollback poi
 *Default:* `2`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;moi.&#8203;recovery_threads* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;moi.&#8203;recovery_threads* +
+optional
+a¦ [markdown]
 --
 For memory-optimized index storage, the number of recovery threads.
 --
@@ -1295,13 +1053,9 @@ For memory-optimized index storage, the number of recovery threads.
 *Default:* `8`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;num_replica* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;num_replica* +
+optional
+a¦ [markdown]
 --
 The default number of index replicas to be created by the Index Service whenever `CREATE INDEX` is invoked.
 --
@@ -1311,13 +1065,9 @@ The default number of index replicas to be created by the Index Service whenever
 *Example:* `2`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;percentage_memory_quota* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;percentage_memory_quota* +
+optional
+a¦ [markdown]
 --
 Percentage memory quota.
 --
@@ -1326,13 +1076,9 @@ Percentage memory quota.
 *Default:* `0`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;persisted_snapshot.&#8203;fdb.&#8203;interval* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;persisted_snapshot.&#8203;fdb.&#8203;interval* +
+optional
+a¦ [markdown]
 --
 For standard indexes using Forestdb, the persisted snapshot interval (ms).
 This must be a multiple of the in-memory snapshot interval.
@@ -1343,13 +1089,9 @@ This must be a multiple of the in-memory snapshot interval.
 *Minimum:* `100`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;persisted_snapshot.interval* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;persisted_snapshot.interval* +
+optional
+a¦ [markdown]
 --
 The persisted snapshot interval (ms).
 This must be a multiple of the in-memory snapshot interval.
@@ -1360,13 +1102,9 @@ This must be a multiple of the in-memory snapshot interval.
 *Minimum:* `100`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;persisted_snapshot.&#8203;moi.&#8203;interval* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;persisted_snapshot.&#8203;moi.&#8203;interval* +
+optional
+a¦ [markdown]
 --
 For memory-optimized indexes, the persisted snapshot interval (ms).
 This must be a multiple of the in-memory snapshot interval.
@@ -1377,13 +1115,9 @@ This must be a multiple of the in-memory snapshot interval.
 *Minimum:* `100`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;persisted_snapshot_init_build.&#8203;fdb.&#8203;interval* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;persisted_snapshot_init_build.&#8203;fdb.&#8203;interval* +
+optional
+a¦ [markdown]
 --
 For standard indexes using Forestdb, the persisted snapshot interval for the initial build (ms).
 --
@@ -1392,13 +1126,9 @@ For standard indexes using Forestdb, the persisted snapshot interval for the ini
 *Default:* `5000`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;persisted_snapshot_init_build.&#8203;interval* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;persisted_snapshot_init_build.&#8203;interval* +
+optional
+a¦ [markdown]
 --
 The persisted snapshot interval for the initial build (ms).
 --
@@ -1407,13 +1137,9 @@ The persisted snapshot interval for the initial build (ms).
 *Default:* `5000`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;persisted_snapshot_init_build.&#8203;moi.&#8203;interval* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;persisted_snapshot_init_build.&#8203;moi.&#8203;interval* +
+optional
+a¦ [markdown]
 --
 For memory-optimized indexes, the persisted snapshot interval for the initial build (ms).
 --
@@ -1422,13 +1148,9 @@ For memory-optimized indexes, the persisted snapshot interval for the initial bu
 *Default:* `600000`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;plasma.&#8203;recovery.&#8203;max_rollbacks* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;plasma.&#8203;recovery.&#8203;max_rollbacks* +
+optional
+a¦ [markdown]
 --
 For standard indexes using Plasma, the maximum number of committed rollback points.
 --
@@ -1437,13 +1159,9 @@ For standard indexes using Plasma, the maximum number of committed rollback poin
 *Default:* `2`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;rebalance.&#8203;blob_storage_bucket* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;rebalance.&#8203;blob_storage_bucket* +
+optional
+a¦ [markdown]
 --
 Rebalance blob storage bucket.
 --
@@ -1452,13 +1170,9 @@ Rebalance blob storage bucket.
 *Default:* `+++""+++`
 {blank}
 a¦ String
-
-a¦ 
-*indexer.&#8203;settings.&#8203;rebalance.&#8203;blob_storage_prefix* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;rebalance.&#8203;blob_storage_prefix* +
+optional
+a¦ [markdown]
 --
 Rebalance blob storage prefix.
 --
@@ -1467,13 +1181,9 @@ Rebalance blob storage prefix.
 *Default:* `+++""+++`
 {blank}
 a¦ String
-
-a¦ 
-*indexer.&#8203;settings.&#8203;rebalance.&#8203;blob_storage_region* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;rebalance.&#8203;blob_storage_region* +
+optional
+a¦ [markdown]
 --
 Rebalance blob storage region.
 --
@@ -1482,13 +1192,9 @@ Rebalance blob storage region.
 *Default:* `+++""+++`
 {blank}
 a¦ String
-
-a¦ 
-*indexer.&#8203;settings.&#8203;rebalance.&#8203;blob_storage_scheme* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;rebalance.&#8203;blob_storage_scheme* +
+optional
+a¦ [markdown]
 --
 Rebalance blob storage scheme.
 --
@@ -1497,13 +1203,9 @@ Rebalance blob storage scheme.
 *Default:* `+++""+++`
 {blank}
 a¦ String
-
-a¦ 
-*indexer.&#8203;settings.&#8203;rebalance.&#8203;redistribute_indexes* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;rebalance.&#8203;redistribute_indexes* +
+optional
+a¦ [markdown]
 --
 Whether to redistribute indexes on rebalance.
 
@@ -1518,13 +1220,9 @@ For more information, see [Rebalance](/server/8.0/learn/clusters-and-availabilit
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*indexer.&#8203;settings.&#8203;recovery.&#8203;max_rollbacks* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;recovery.&#8203;max_rollbacks* +
+optional
+a¦ [markdown]
 --
 The maximum number of committed rollback points.
 --
@@ -1533,13 +1231,9 @@ The maximum number of committed rollback points.
 *Default:* `2`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;scan_getseqnos_retries* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;scan_getseqnos_retries* +
+optional
+a¦ [markdown]
 --
 Scan get sequence numbers retries.
 --
@@ -1548,13 +1242,9 @@ Scan get sequence numbers retries.
 *Default:* `30`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;scan_timeout* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;scan_timeout* +
+optional
+a¦ [markdown]
 --
 The default timeout for the indexer, in milliseconds.
 This is distinct from the Query Service timeout.
@@ -1567,13 +1257,9 @@ An index scan may time out if the Index Service timeout is lower than the Query 
 *Default:* `120000`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;send_buffer_size* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;send_buffer_size* +
+optional
+a¦ [markdown]
 --
 Send buffer size.
 --
@@ -1582,13 +1268,9 @@ Send buffer size.
 *Default:* `1024`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;serverless.&#8203;indexLimit* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;serverless.&#8203;indexLimit* +
+optional
+a¦ [markdown]
 --
 Serverless index limit.
 --
@@ -1597,13 +1279,9 @@ Serverless index limit.
 *Default:* `201`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;sliceBufSize* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;sliceBufSize* +
+optional
+a¦ [markdown]
 --
 Slice buffer size.
 --
@@ -1612,13 +1290,9 @@ Slice buffer size.
 *Default:* `1600`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;smallSnapshotThreshold* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;smallSnapshotThreshold* +
+optional
+a¦ [markdown]
 --
 Small snapshot threshold.
 --
@@ -1627,13 +1301,9 @@ Small snapshot threshold.
 *Default:* `30`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;snapshotListeners* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;snapshotListeners* +
+optional
+a¦ [markdown]
 --
 Snapshot listeners.
 --
@@ -1642,13 +1312,9 @@ Snapshot listeners.
 *Default:* `4`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;snapshotRequestWorkers* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;snapshotRequestWorkers* +
+optional
+a¦ [markdown]
 --
 Snapshot request workers.
 --
@@ -1657,13 +1323,9 @@ Snapshot request workers.
 *Default:* `4`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;statsLogDumpInterval* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;statsLogDumpInterval* +
+optional
+a¦ [markdown]
 --
 Statistics log dump interval.
 --
@@ -1672,13 +1334,9 @@ Statistics log dump interval.
 *Default:* `60`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;storage_mode* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;storage_mode* +
+optional
+a¦ [markdown]
 --
 The storage mode to be used for the Index Service on this node.
 
@@ -1704,13 +1362,9 @@ If you're using Couchbase Server Community Edition, the default (and only) value
 *Values:* `"plasma"`, `"memory_optimized"`, `"forestdb"`
 {blank}
 a¦ String
-
-a¦ 
-*indexer.&#8203;settings.&#8203;storage_mode.&#8203;disable_upgrade* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;storage_mode.&#8203;disable_upgrade* +
+optional
+a¦ [markdown]
 --
 Whether upgrade of the index storage mode is disabled.
 --
@@ -1719,13 +1373,9 @@ Whether upgrade of the index storage mode is disabled.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*indexer.&#8203;settings.&#8203;thresholds.&#8203;mem_high* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;thresholds.&#8203;mem_high* +
+optional
+a¦ [markdown]
 --
 High memory threshold.
 --
@@ -1734,13 +1384,9 @@ High memory threshold.
 *Default:* `70`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;thresholds.&#8203;mem_low* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;thresholds.&#8203;mem_low* +
+optional
+a¦ [markdown]
 --
 Low memory threshold.
 --
@@ -1749,13 +1395,9 @@ Low memory threshold.
 *Default:* `50`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;thresholds.&#8203;units_high* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;thresholds.&#8203;units_high* +
+optional
+a¦ [markdown]
 --
 High units threshold.
 --
@@ -1764,13 +1406,9 @@ High units threshold.
 *Default:* `60`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;thresholds.&#8203;units_low* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;thresholds.&#8203;units_low* +
+optional
+a¦ [markdown]
 --
 Low units threshold.
 --
@@ -1779,13 +1417,9 @@ Low units threshold.
 *Default:* `40`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;units_quota* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;units_quota* +
+optional
+a¦ [markdown]
 --
 Units quota.
 --
@@ -1794,13 +1428,9 @@ Units quota.
 *Default:* `10000`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*indexer.&#8203;settings.&#8203;wal_size* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *indexer.&#8203;settings.&#8203;wal_size* +
+optional
+a¦ [markdown]
 --
 Write-ahead log size.
 --
@@ -1809,13 +1439,9 @@ Write-ahead log size.
 *Default:* `4096`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*projector.&#8203;settings.&#8203;log_level* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *projector.&#8203;settings.&#8203;log_level* +
+optional
+a¦ [markdown]
 --
 Projector logging level.
 --
@@ -1824,13 +1450,9 @@ Projector logging level.
 *Default:* `+++"info"+++`
 {blank}
 a¦ String
-
-a¦ 
-*queryport.&#8203;client.&#8203;settings.&#8203;backfillLimit* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *queryport.&#8203;client.&#8203;settings.&#8203;backfillLimit* +
+optional
+a¦ [markdown]
 --
 The maximum size of the backfill file (MB).
 
@@ -1844,13 +1466,9 @@ The maximum size is limited only by the available disk space.
 *Default:* `5120`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*queryport.&#8203;client.&#8203;settings.&#8203;closeActiveConnections* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *queryport.&#8203;client.&#8203;settings.&#8203;closeActiveConnections* +
+optional
+a¦ [markdown]
 --
 Whether to close active connections.
 --
@@ -1859,13 +1477,9 @@ Whether to close active connections.
 *Default:* `true`
 {blank}
 a¦ Boolean
-
-a¦ 
-*queryport.&#8203;client.&#8203;settings.&#8203;minPoolSizeWM* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *queryport.&#8203;client.&#8203;settings.&#8203;minPoolSizeWM* +
+optional
+a¦ [markdown]
 --
 Minimum pool size.
 --
@@ -1874,13 +1488,9 @@ Minimum pool size.
 *Default:* `1000`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*queryport.&#8203;client.&#8203;settings.&#8203;poolOverflow* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *queryport.&#8203;client.&#8203;settings.&#8203;poolOverflow* +
+optional
+a¦ [markdown]
 --
 Maximum number of connections in a pool.
 --
@@ -1889,13 +1499,9 @@ Maximum number of connections in a pool.
 *Default:* `30`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*queryport.&#8203;client.&#8203;settings.&#8203;poolSize* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *queryport.&#8203;client.&#8203;settings.&#8203;poolSize* +
+optional
+a¦ [markdown]
 --
 Number of simultaneous active connections in a pool.
 --
@@ -1904,13 +1510,9 @@ Number of simultaneous active connections in a pool.
 *Default:* `5000`
 {blank}
 a¦ Integer (int32)
-
-a¦ 
-*queryport.&#8203;client.&#8203;settings.&#8203;relConnBatchSize* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *queryport.&#8203;client.&#8203;settings.&#8203;relConnBatchSize* +
+optional
+a¦ [markdown]
 --
 Connection batch size.
 --
@@ -1926,26 +1528,26 @@ a¦ Integer (int32)
 
 
 
-// markup not found, no include::{specDir}definitions/Settings/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/Settings/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
-
+include::{specDir}definitions/Settings/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+ifndef::show-Settings[]
+:leveloffset: -1
+endif::show-Settings[]
+
+include::{specDir}definitions/Settings/definition-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
 
+include::{specDir}definitions/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+include::{specDir}security/document-before.adoc[opts=optional]
 
 [[security]]
 = Security
@@ -1955,18 +1557,14 @@ a¦ Integer (int32)
 include::{specDir}security/document-begin.adoc[opts=optional]
 
 
+include::{specDir}security/Default/security-scheme-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}security/Default/security-scheme-before.adoc[opts=optional]
-
-
-[[security-default]]
+[[security-Default]]
 = Default
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/Default/security-scheme-begin.adoc[opts=optional]
-
+include::{specDir}security/Default/security-scheme-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -1974,16 +1572,13 @@ Users must have the Full Admin or Cluster Admin role, with Cluster Read and Buck
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
-
-// markup not found, no include::{specDir}security/Default/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/Default/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}security/Default/security-scheme-after.adoc[opts=optional]
-
+include::{specDir}security/Default/security-scheme-after.adoc[opts=optional]
 
 
 
@@ -1991,8 +1586,6 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-
-// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+include::{specDir}security/document-after.adoc[opts=optional]
 
 

@@ -12,16 +12,15 @@ DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
 
 :leveloffset: 1
 
-include::{specDir}overview/document-before.adoc[opts=optional]
 
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 [[overview]]
 = Overview
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
-
+include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -32,7 +31,7 @@ This API enables you to manage the links to remote Couchbase clusters and extern
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+*Version:* 8.0
 
 [discrete#host]
 = Host information
@@ -67,7 +66,6 @@ The host name or IP address of a node running the Analytics Service.
 --
 
 [%hardbreaks]
-
 *Example:* `+++localhost+++`
 // end
 
@@ -83,31 +81,26 @@ The Analytics Service REST port. Use `18095` for secure access.
 
 |===
 
-
-// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
-
+include::{specDir}overview/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
-
+include::{specDir}paths/document-before.adoc[opts=optional]
 
 [[resources]]
 = Resources
 
-:count-apis: 3
-
+:count-apis: 2
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
@@ -117,18 +110,14 @@ xref:tag-SingleLinks[]
 endif::[]
 
 
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 [#tag-LegacyMethods]
 = Legacy Methods
 :leveloffset: +1
 
-ifeval::["" != ""]
-
-endif::[]
-ifeval::["" == ""]
 **{toc-title}**
 endif::[]
-endif::[]
+
 
 [%hardbreaks]
 xref:delete_alt[]
@@ -136,19 +125,17 @@ xref:post_alt[]
 xref:put_alt[]
 
 
+
 //tag::delete_alt[]
 
-
-// markup not found, no include::{specDir}paths/delete_alt/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/delete_alt/operation-before.adoc[opts=optional]
 
 [#delete_alt]
 = Delete Link (Alternative)
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/delete_alt/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/delete_alt/operation-begin.adoc[opts=optional]
 
 ....
 DELETE /analytics/link
@@ -157,16 +144,14 @@ DELETE /analytics/link
 CAUTION: This operation is deprecated, and will be removed in a future release.
 
 
-// markup not found, no include::{specDir}paths/delete_alt/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/delete_alt/operation-description-before.adoc[opts=optional]
 
 [#delete_alt-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/delete_alt/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/delete_alt/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -174,8 +159,7 @@ An alternative endpoint for [deleting a link](#delete_link), provided for backwa
 
 --
 
-
-// markup not found, no include::{specDir}paths/delete_alt/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/delete_alt/operation-description-end.adoc[opts=optional]
 
 
 [#delete_alt-consumes]
@@ -186,26 +170,20 @@ An alternative endpoint for [deleting a link](#delete_link), provided for backwa
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/delete_alt/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/delete_alt/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/delete_alt/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/delete_alt/operation-parameters-before.adoc[opts=optional]
 
 [#delete_alt-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/delete_alt/operation-parameters-begin.adoc[opts=optional]
-
-
-
-
+include::{specDir}paths/delete_alt/operation-parameters-begin.adoc[opts=optional]
 
 [#delete_alt-form]
 .Form Parameters
@@ -216,11 +194,8 @@ An alternative endpoint for [deleting a link](#delete_link), provided for backwa
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *dataverse* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the Analytics scope containing the link.  With this parameter, the scope name may only contain a single identifier. 
 --
@@ -229,13 +204,9 @@ The name of the Analytics scope containing the link.  With this parameter, the s
 {blank}
 
 a¦ String
-
 a¦ *name* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the link.
 --
@@ -248,27 +219,24 @@ a¦ String
 |===
 
 
-
-// markup not found, no include::{specDir}paths/delete_alt/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/delete_alt/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/delete_alt/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/delete_alt/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/delete_alt/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/delete_alt/operation-responses-before.adoc[opts=optional]
 
 [#delete_alt-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/delete_alt/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/delete_alt/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -280,6 +248,7 @@ a| [markdown]
 The operation was successful.
 --
 a| 
+
 | 400
 a| [markdown]
 --
@@ -294,81 +263,66 @@ Internal Server Error. Incorrect path or port number, incorrect credentials, bad
 --
 a| xref:Wrong[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/delete_alt/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/delete_alt/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Wrong:
+:show-Wrong:
 
 
 
-// markup not found, no include::{specDir}paths/delete_alt/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/delete_alt/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/delete_alt/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/delete_alt/operation-security-before.adoc[opts=optional]
 
 [#delete_alt-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/delete_alt/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/delete_alt/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManage[]
+| xref:security-AnalyticsManage[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/delete_alt/operation-security-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}paths/delete_alt/operation-security-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{snippetDir}delete_alt/http-request.adoc[opts=optional]
-
-
-// markup not found, no include::{snippetDir}delete_alt/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/delete_alt/operation-end.adoc[opts=optional]
+include::{specDir}paths/delete_alt/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+include::{specDir}paths/delete_alt/operation-security-after.adoc[opts=optional]
 
-// markup not found, no include::{specDir}paths/delete_alt/operation-after.adoc[opts=optional]
+include::{snippetDir}delete_alt/http-request.adoc[opts=optional]
 
+include::{snippetDir}delete_alt/http-response.adoc[opts=optional]
+
+include::{specDir}paths/delete_alt/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/delete_alt/operation-after.adoc[opts=optional]
 
 //end::delete_alt[]
 
-
 //tag::post_alt[]
 
-
-// markup not found, no include::{specDir}paths/post_alt/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/post_alt/operation-before.adoc[opts=optional]
 
 [#post_alt]
 = Create Link (Alternative)
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_alt/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_alt/operation-begin.adoc[opts=optional]
 
 ....
 POST /analytics/link
@@ -377,24 +331,21 @@ POST /analytics/link
 CAUTION: This operation is deprecated, and will be removed in a future release.
 
 
-// markup not found, no include::{specDir}paths/post_alt/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/post_alt/operation-description-before.adoc[opts=optional]
 
 [#post_alt-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_alt/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_alt/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 An alternative endpoint for [creating a link](#post_link), provided for backward compatibility.
 --
 
-
-// markup not found, no include::{specDir}paths/post_alt/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/post_alt/operation-description-end.adoc[opts=optional]
 
 
 [#post_alt-consumes]
@@ -405,26 +356,20 @@ An alternative endpoint for [creating a link](#post_link), provided for backward
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_alt/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/post_alt/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/post_alt/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/post_alt/operation-parameters-before.adoc[opts=optional]
 
 [#post_alt-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_alt/operation-parameters-begin.adoc[opts=optional]
-
-
-
-
+include::{specDir}paths/post_alt/operation-parameters-begin.adoc[opts=optional]
 
 [#post_alt-form]
 .Form Parameters
@@ -435,11 +380,8 @@ An alternative endpoint for [creating a link](#post_link), provided for backward
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *dataverse* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the Analytics scope containing the link.  With this parameter, the scope name may only contain a single identifier. 
 --
@@ -448,13 +390,9 @@ The name of the Analytics scope containing the link.  With this parameter, the s
 {blank}
 
 a¦ String
-
 a¦ *name* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the link.
 --
@@ -463,15 +401,10 @@ The name of the link.
 {blank}
 
 a¦ String
-
 a¦ *type* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
-
 include::index.adoc[tag=desc-CommonType, opts=optional]
 --
 
@@ -481,13 +414,9 @@ include::index.adoc[tag=desc-CommonType, opts=optional]
 
 a¦ 
 include::index.adoc[tag=type-CommonType, opts=optional]
-
 a¦ *hostname* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For Couchbase links only. The remote hostname. 
 --
@@ -496,13 +425,9 @@ For Couchbase links only. The remote hostname.
 {blank}
 
 a¦ String
-
 a¦ *username* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -511,13 +436,9 @@ For Couchbase links only. The remote username. Required for links with no encryp
 {blank}
 
 a¦ String
-
 a¦ *password* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -526,13 +447,9 @@ For Couchbase links only. The remote password. Required for links with no encryp
 {blank}
 
 a¦ String
-
 a¦ *encryption* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For Couchbase links only. The type of encryption used by the link.  For details, see [encryption](#encryption).
 --
@@ -542,13 +459,9 @@ For Couchbase links only. The type of encryption used by the link.  For details,
 {blank}
 
 a¦ String
-
 a¦ *certificate* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.  You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines. 
 --
@@ -557,13 +470,9 @@ For Couchbase links only. The content of the target cluster root certificate. Re
 {blank}
 
 a¦ String
-
 a¦ *clientCertificate* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
 --
@@ -572,13 +481,9 @@ For Couchbase links, this is the content of the client certificate. Required for
 {blank}
 
 a¦ String
-
 a¦ *clientKey* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -587,13 +492,9 @@ For Couchbase links only. The content of the client key. Required for links with
 {blank}
 
 a¦ String
-
 a¦ *accessKeyId* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 access key ID. 
 --
@@ -602,13 +503,9 @@ For S3 links only. The Amazon S3 access key ID.
 {blank}
 
 a¦ String
-
 a¦ *secretAccessKey* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 secret access key.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -617,13 +514,9 @@ For S3 links only. The Amazon S3 secret access key.  You should URL-encode this 
 {blank}
 
 a¦ String
-
 a¦ *sessionToken* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.  Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid. 
 --
@@ -632,13 +525,9 @@ For S3 links only. The Amazon S3 session token. Use this parameter if you want t
 {blank}
 
 a¦ String
-
 a¦ *region* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 region. 
 --
@@ -647,13 +536,9 @@ For S3 links only. The Amazon S3 region.
 {blank}
 
 a¦ String
-
 a¦ *serviceEndpoint* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 service endpoint. 
 --
@@ -662,13 +547,9 @@ For S3 links only. The Amazon S3 service endpoint.
 {blank}
 
 a¦ String
-
 a¦ *endpoint* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links.
 --
@@ -677,13 +558,9 @@ For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required
 {blank}
 
 a¦ String
-
 a¦ *accountName* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -692,13 +569,9 @@ For Azure Blob links only. The account name. Used for shared key authentication.
 {blank}
 
 a¦ String
-
 a¦ *accountKey* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -707,13 +580,9 @@ For Azure Blob links only. The account key. Used for shared key authentication. 
 {blank}
 
 a¦ String
-
 a¦ *sharedAccessSignature* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -722,13 +591,9 @@ For Azure Blob links only. A token that can be used for authentication. Used for
 {blank}
 
 a¦ String
-
 a¦ *managedIdentityId* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -737,13 +602,9 @@ For Azure Blob links only. The managed identity ID. Used for managed identity au
 {blank}
 
 a¦ String
-
 a¦ *clientId* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -752,13 +613,9 @@ For Azure Blob links only. The client ID for the registered application. Used fo
 {blank}
 
 a¦ String
-
 a¦ *tenantId* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -767,13 +624,9 @@ For Azure Blob links only. The tenant ID where the registered application is cre
 {blank}
 
 a¦ String
-
 a¦ *clientSecret* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -782,13 +635,9 @@ For Azure Blob links only. The client secret for the registered application. Use
 {blank}
 
 a¦ String
-
 a¦ *clientCertificatePassword* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -797,13 +646,9 @@ For Azure Blob links only. The client certificate password for the registered ap
 {blank}
 
 a¦ String
-
 a¦ *jsonCredentials* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Google Cloud Storage links only. The JSON credentials of the link.  This parameter is not allowed if `applicationDefaultCredentials` is provided. 
 --
@@ -812,13 +657,9 @@ For Google Cloud Storage links only. The JSON credentials of the link.  This par
 {blank}
 
 a¦ String
-
 a¦ *applicationDefaultCredentials* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
 --
@@ -832,27 +673,24 @@ a¦ String
 |===
 
 
-
-// markup not found, no include::{specDir}paths/post_alt/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/post_alt/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/post_alt/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/post_alt/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_alt/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/post_alt/operation-responses-before.adoc[opts=optional]
 
 [#post_alt-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_alt/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_alt/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -864,6 +702,7 @@ a| [markdown]
 The operation was successful.
 --
 a| 
+
 | 400
 a| [markdown]
 --
@@ -878,81 +717,66 @@ Internal Server Error. Incorrect path or port number, incorrect credentials, bad
 --
 a| xref:Wrong[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/post_alt/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/post_alt/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Wrong:
+:show-Wrong:
 
 
 
-// markup not found, no include::{specDir}paths/post_alt/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/post_alt/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_alt/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/post_alt/operation-security-before.adoc[opts=optional]
 
 [#post_alt-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_alt/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_alt/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManage[]
+| xref:security-AnalyticsManage[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/post_alt/operation-security-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}paths/post_alt/operation-security-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{snippetDir}post_alt/http-request.adoc[opts=optional]
-
-
-// markup not found, no include::{snippetDir}post_alt/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/post_alt/operation-end.adoc[opts=optional]
+include::{specDir}paths/post_alt/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+include::{specDir}paths/post_alt/operation-security-after.adoc[opts=optional]
 
-// markup not found, no include::{specDir}paths/post_alt/operation-after.adoc[opts=optional]
+include::{snippetDir}post_alt/http-request.adoc[opts=optional]
 
+include::{snippetDir}post_alt/http-response.adoc[opts=optional]
+
+include::{specDir}paths/post_alt/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/post_alt/operation-after.adoc[opts=optional]
 
 //end::post_alt[]
 
-
 //tag::put_alt[]
 
-
-// markup not found, no include::{specDir}paths/put_alt/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/put_alt/operation-before.adoc[opts=optional]
 
 [#put_alt]
 = Edit Link (Alternative)
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/put_alt/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/put_alt/operation-begin.adoc[opts=optional]
 
 ....
 PUT /analytics/link
@@ -961,16 +785,14 @@ PUT /analytics/link
 CAUTION: This operation is deprecated, and will be removed in a future release.
 
 
-// markup not found, no include::{specDir}paths/put_alt/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/put_alt/operation-description-before.adoc[opts=optional]
 
 [#put_alt-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/put_alt/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/put_alt/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -978,8 +800,7 @@ An alternative endpoint for [editing a link](#put_link), provided for backward c
 
 --
 
-
-// markup not found, no include::{specDir}paths/put_alt/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/put_alt/operation-description-end.adoc[opts=optional]
 
 
 [#put_alt-consumes]
@@ -990,26 +811,20 @@ An alternative endpoint for [editing a link](#put_link), provided for backward c
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/put_alt/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/put_alt/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/put_alt/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/put_alt/operation-parameters-before.adoc[opts=optional]
 
 [#put_alt-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/put_alt/operation-parameters-begin.adoc[opts=optional]
-
-
-
-
+include::{specDir}paths/put_alt/operation-parameters-begin.adoc[opts=optional]
 
 [#put_alt-form]
 .Form Parameters
@@ -1020,11 +835,8 @@ An alternative endpoint for [editing a link](#put_link), provided for backward c
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *dataverse* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the Analytics scope containing the link.  With this parameter, the scope name may only contain a single identifier. 
 --
@@ -1033,13 +845,9 @@ The name of the Analytics scope containing the link.  With this parameter, the s
 {blank}
 
 a¦ String
-
 a¦ *name* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the link.
 --
@@ -1048,15 +856,10 @@ The name of the link.
 {blank}
 
 a¦ String
-
 a¦ *type* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
-
 include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 --
 
@@ -1066,13 +869,9 @@ include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 
 a¦ 
 include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
-
 a¦ *hostname* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For Couchbase links only. The remote hostname. 
 --
@@ -1081,13 +880,9 @@ For Couchbase links only. The remote hostname.
 {blank}
 
 a¦ String
-
 a¦ *username* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -1096,13 +891,9 @@ For Couchbase links only. The remote username. Required for links with no encryp
 {blank}
 
 a¦ String
-
 a¦ *password* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -1111,13 +902,9 @@ For Couchbase links only. The remote password. Required for links with no encryp
 {blank}
 
 a¦ String
-
 a¦ *encryption* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For Couchbase links only. The type of encryption used by the link.  For details, see [encryption](#encryption).
 --
@@ -1127,13 +914,9 @@ For Couchbase links only. The type of encryption used by the link.  For details,
 {blank}
 
 a¦ String
-
 a¦ *certificate* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.  You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines. 
 --
@@ -1142,13 +925,9 @@ For Couchbase links only. The content of the target cluster root certificate. Re
 {blank}
 
 a¦ String
-
 a¦ *clientCertificate* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
 --
@@ -1157,13 +936,9 @@ For Couchbase links, this is the content of the client certificate. Required for
 {blank}
 
 a¦ String
-
 a¦ *clientKey* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -1172,13 +947,9 @@ For Couchbase links only. The content of the client key. Required for links with
 {blank}
 
 a¦ String
-
 a¦ *accessKeyId* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 access key ID. 
 --
@@ -1187,13 +958,9 @@ For S3 links only. The Amazon S3 access key ID.
 {blank}
 
 a¦ String
-
 a¦ *secretAccessKey* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 secret access key.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -1202,13 +969,9 @@ For S3 links only. The Amazon S3 secret access key.  You should URL-encode this 
 {blank}
 
 a¦ String
-
 a¦ *sessionToken* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.  Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid. 
 --
@@ -1217,13 +980,9 @@ For S3 links only. The Amazon S3 session token. Use this parameter if you want t
 {blank}
 
 a¦ String
-
 a¦ *region* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 region. 
 --
@@ -1232,13 +991,9 @@ For S3 links only. The Amazon S3 region.
 {blank}
 
 a¦ String
-
 a¦ *serviceEndpoint* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 service endpoint. 
 --
@@ -1247,13 +1002,9 @@ For S3 links only. The Amazon S3 service endpoint.
 {blank}
 
 a¦ String
-
 a¦ *endpoint* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links.
 --
@@ -1262,13 +1013,9 @@ For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required
 {blank}
 
 a¦ String
-
 a¦ *accountName* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -1277,13 +1024,9 @@ For Azure Blob links only. The account name. Used for shared key authentication.
 {blank}
 
 a¦ String
-
 a¦ *accountKey* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -1292,13 +1035,9 @@ For Azure Blob links only. The account key. Used for shared key authentication. 
 {blank}
 
 a¦ String
-
 a¦ *sharedAccessSignature* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -1307,13 +1046,9 @@ For Azure Blob links only. A token that can be used for authentication. Used for
 {blank}
 
 a¦ String
-
 a¦ *managedIdentityId* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -1322,13 +1057,9 @@ For Azure Blob links only. The managed identity ID. Used for managed identity au
 {blank}
 
 a¦ String
-
 a¦ *clientId* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -1337,13 +1068,9 @@ For Azure Blob links only. The client ID for the registered application. Used fo
 {blank}
 
 a¦ String
-
 a¦ *tenantId* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -1352,13 +1079,9 @@ For Azure Blob links only. The tenant ID where the registered application is cre
 {blank}
 
 a¦ String
-
 a¦ *clientSecret* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -1367,13 +1090,9 @@ For Azure Blob links only. The client secret for the registered application. Use
 {blank}
 
 a¦ String
-
 a¦ *clientCertificatePassword* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -1382,13 +1101,9 @@ For Azure Blob links only. The client certificate password for the registered ap
 {blank}
 
 a¦ String
-
 a¦ *jsonCredentials* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Google Cloud Storage links only. The JSON credentials of the link.  This parameter is not allowed if `applicationDefaultCredentials` is provided. 
 --
@@ -1397,13 +1112,9 @@ For Google Cloud Storage links only. The JSON credentials of the link.  This par
 {blank}
 
 a¦ String
-
 a¦ *applicationDefaultCredentials* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
 --
@@ -1417,27 +1128,24 @@ a¦ String
 |===
 
 
-
-// markup not found, no include::{specDir}paths/put_alt/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/put_alt/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/put_alt/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/put_alt/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/put_alt/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/put_alt/operation-responses-before.adoc[opts=optional]
 
 [#put_alt-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/put_alt/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/put_alt/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -1449,6 +1157,7 @@ a| [markdown]
 The operation was successful.
 --
 a| 
+
 | 400
 a| [markdown]
 --
@@ -1463,129 +1172,108 @@ Internal Server Error. Incorrect path or port number, incorrect credentials, bad
 --
 a| xref:Wrong[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/put_alt/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/put_alt/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Wrong:
+:show-Wrong:
 
 
 
-// markup not found, no include::{specDir}paths/put_alt/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/put_alt/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/put_alt/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/put_alt/operation-security-before.adoc[opts=optional]
 
 [#put_alt-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/put_alt/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/put_alt/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManage[]
+| xref:security-AnalyticsManage[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/put_alt/operation-security-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}paths/put_alt/operation-security-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{snippetDir}put_alt/http-request.adoc[opts=optional]
-
-
-// markup not found, no include::{snippetDir}put_alt/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/put_alt/operation-end.adoc[opts=optional]
+include::{specDir}paths/put_alt/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+include::{specDir}paths/put_alt/operation-security-after.adoc[opts=optional]
 
-// markup not found, no include::{specDir}paths/put_alt/operation-after.adoc[opts=optional]
+include::{snippetDir}put_alt/http-request.adoc[opts=optional]
 
+include::{snippetDir}put_alt/http-response.adoc[opts=optional]
+
+include::{specDir}paths/put_alt/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/put_alt/operation-after.adoc[opts=optional]
 
 //end::put_alt[]
 
 
-ifeval::[{count-apis} > 1]
+
+ifeval::[{count-apis} > 0]
 :leveloffset: -1
 endif::[]
 
-
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 [#tag-MultipleLinks]
 = Multiple Links
 :leveloffset: +1
 
-ifeval::["" != ""]
-
-endif::[]
-ifeval::["" == ""]
 **{toc-title}**
 endif::[]
-endif::[]
+
 
 [%hardbreaks]
 xref:get_all[]
 xref:get_scope[]
 
 
+
 //tag::get_all[]
 
-
-// markup not found, no include::{specDir}paths/get_all/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/get_all/operation-before.adoc[opts=optional]
 
 [#get_all]
 = Query All Links
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_all/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_all/operation-begin.adoc[opts=optional]
 
 ....
 GET /analytics/link
 ....
 
 
-
-// markup not found, no include::{specDir}paths/get_all/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/get_all/operation-description-before.adoc[opts=optional]
 
 [#get_all-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_all/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_all/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Returns information about all links in all Analytics scopes.
 --
 
-
-// markup not found, no include::{specDir}paths/get_all/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/get_all/operation-description-end.adoc[opts=optional]
 
 
 
@@ -1593,24 +1281,20 @@ Returns information about all links in all Analytics scopes.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_all/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/get_all/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/get_all/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/get_all/operation-parameters-before.adoc[opts=optional]
 
 [#get_all-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_all/operation-parameters-begin.adoc[opts=optional]
-
-
+include::{specDir}paths/get_all/operation-parameters-begin.adoc[opts=optional]
 
 [#get_all-query]
 .Query Parameters
@@ -1621,11 +1305,8 @@ Returns information about all links in all Analytics scopes.
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *dataverse* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 The name of an Analytics scope. When this parameter is included, the request only returns information about links in the specified scope.
 
@@ -1639,13 +1320,9 @@ This parameter is provided for backward compatibility. Note that it is deprecate
 {blank}
 
 a¦ String
-
 a¦ *name* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 The name of a link. When this parameter is included, the request only returns information about the specified link. If specified, the `dataverse` parameter must be specified also.
 
@@ -1657,13 +1334,9 @@ This parameter is provided for backward compatibility. Note that it is deprecate
 {blank}
 
 a¦ String
-
 a¦ *type* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 The type of the link. If this parameter is omitted, all link types are retrieved, excluding the `Local` link.
 
@@ -1678,29 +1351,24 @@ a¦ String
 |===
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_all/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/get_all/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/get_all/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/get_all/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_all/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/get_all/operation-responses-before.adoc[opts=optional]
 
 [#get_all-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_all/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_all/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -1711,8 +1379,7 @@ a| [markdown]
 --
 Success. Returns an array of objects, each of which contains information about a link. 
 --
-a| xref:ResponseAll[]
- array
+a| xref:ResponseAll[] array
 
 | 400
 a| [markdown]
@@ -1728,106 +1395,88 @@ Internal Server Error. Incorrect path or port number, incorrect credentials, bad
 --
 a| xref:Wrong[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/get_all/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/get_all/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-ResponseAll:
+:show-Wrong:
+:show-Wrong:
 
 
 
-// markup not found, no include::{specDir}paths/get_all/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/get_all/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_all/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/get_all/operation-security-before.adoc[opts=optional]
 
 [#get_all-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_all/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_all/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManage[]
+| xref:security-AnalyticsManage[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_all/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/get_all/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_all/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/get_all/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_all/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}get_all/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/get_all/operation-end.adoc[opts=optional]
+include::{specDir}paths/get_all/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_all/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/get_all/operation-after.adoc[opts=optional]
 
 //end::get_all[]
 
-
 //tag::get_scope[]
 
-
-// markup not found, no include::{specDir}paths/get_scope/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/get_scope/operation-before.adoc[opts=optional]
 
 [#get_scope]
 = Query Scope Links
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_scope/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_scope/operation-begin.adoc[opts=optional]
 
 ....
 GET /analytics/link/{scope}
 ....
 
 
-
-// markup not found, no include::{specDir}paths/get_scope/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/get_scope/operation-description-before.adoc[opts=optional]
 
 [#get_scope-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_scope/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_scope/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Returns information about all links in the specified Analytics scope.
 --
 
-
-// markup not found, no include::{specDir}paths/get_scope/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/get_scope/operation-description-end.adoc[opts=optional]
 
 
 
@@ -1835,23 +1484,20 @@ Returns information about all links in the specified Analytics scope.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_scope/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/get_scope/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/get_scope/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/get_scope/operation-parameters-before.adoc[opts=optional]
 
 [#get_scope-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_scope/operation-parameters-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_scope/operation-parameters-begin.adoc[opts=optional]
 
 [#get_scope-path]
 .Path Parameters
@@ -1862,11 +1508,8 @@ Returns information about all links in the specified Analytics scope.
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *scope* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the Analytics scope.
 
@@ -1880,7 +1523,6 @@ With this parameter, the scope name may contain one or two identifiers, separate
 a¦ String
 
 |===
-
 [#get_scope-query]
 .Query Parameters
 {blank}
@@ -1890,11 +1532,8 @@ a¦ String
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *type* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 The type of the link. If this parameter is omitted, all link types are retrieved, excluding the `Local` link.
 
@@ -1909,29 +1548,24 @@ a¦ String
 |===
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_scope/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/get_scope/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/get_scope/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/get_scope/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_scope/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/get_scope/operation-responses-before.adoc[opts=optional]
 
 [#get_scope-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_scope/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_scope/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -1942,8 +1576,7 @@ a| [markdown]
 --
 Success. Returns an array of objects, each of which contains information about a link. 
 --
-a| xref:ResponseAll[]
- array
+a| xref:ResponseAll[] array
 
 | 400
 a| [markdown]
@@ -1959,85 +1592,71 @@ Internal Server Error. Incorrect path or port number, incorrect credentials, bad
 --
 a| xref:Wrong[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/get_scope/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/get_scope/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-ResponseAll:
+:show-Wrong:
+:show-Wrong:
 
 
 
-// markup not found, no include::{specDir}paths/get_scope/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/get_scope/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_scope/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/get_scope/operation-security-before.adoc[opts=optional]
 
 [#get_scope-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_scope/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_scope/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManage[]
+| xref:security-AnalyticsManage[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_scope/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/get_scope/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_scope/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/get_scope/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_scope/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}get_scope/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/get_scope/operation-end.adoc[opts=optional]
+include::{specDir}paths/get_scope/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_scope/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/get_scope/operation-after.adoc[opts=optional]
 
 //end::get_scope[]
 
 
-ifeval::[{count-apis} > 1]
+
+ifeval::[{count-apis} > 0]
 :leveloffset: -1
 endif::[]
 
-
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 [#tag-SingleLinks]
 = Single Links
 :leveloffset: +1
 
-ifeval::["" != ""]
-
-endif::[]
-ifeval::["" == ""]
 **{toc-title}**
 endif::[]
-endif::[]
+
 
 [%hardbreaks]
 xref:delete_link[]
@@ -2046,36 +1665,31 @@ xref:post_link[]
 xref:put_link[]
 
 
+
 //tag::delete_link[]
 
-
-// markup not found, no include::{specDir}paths/delete_link/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/delete_link/operation-before.adoc[opts=optional]
 
 [#delete_link]
 = Delete Link
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/delete_link/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/delete_link/operation-begin.adoc[opts=optional]
 
 ....
 DELETE /analytics/link/{scope}/{name}
 ....
 
 
-
-// markup not found, no include::{specDir}paths/delete_link/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/delete_link/operation-description-before.adoc[opts=optional]
 
 [#delete_link-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/delete_link/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/delete_link/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -2083,8 +1697,7 @@ Deletes a link in the specified Analytics scope. The link cannot be deleted if a
 
 --
 
-
-// markup not found, no include::{specDir}paths/delete_link/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/delete_link/operation-description-end.adoc[opts=optional]
 
 
 
@@ -2092,23 +1705,20 @@ Deletes a link in the specified Analytics scope. The link cannot be deleted if a
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/delete_link/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/delete_link/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/delete_link/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/delete_link/operation-parameters-before.adoc[opts=optional]
 
 [#delete_link-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/delete_link/operation-parameters-begin.adoc[opts=optional]
-
+include::{specDir}paths/delete_link/operation-parameters-begin.adoc[opts=optional]
 
 [#delete_link-path]
 .Path Parameters
@@ -2119,11 +1729,8 @@ Deletes a link in the specified Analytics scope. The link cannot be deleted if a
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *scope* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the Analytics scope.
 
@@ -2135,13 +1742,9 @@ With this parameter, the scope name may contain one or two identifiers, separate
 {blank}
 
 a¦ String
-
 a¦ *name* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the link.
 --
@@ -2154,30 +1757,24 @@ a¦ String
 |===
 
 
-
-
-
-
-// markup not found, no include::{specDir}paths/delete_link/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/delete_link/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/delete_link/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/delete_link/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/delete_link/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/delete_link/operation-responses-before.adoc[opts=optional]
 
 [#delete_link-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/delete_link/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/delete_link/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -2189,6 +1786,7 @@ a| [markdown]
 The operation was successful.
 --
 a| 
+
 | 400
 a| [markdown]
 --
@@ -2203,106 +1801,87 @@ Internal Server Error. Incorrect path or port number, incorrect credentials, bad
 --
 a| xref:Wrong[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/delete_link/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/delete_link/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Wrong:
+:show-Wrong:
 
 
 
-// markup not found, no include::{specDir}paths/delete_link/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/delete_link/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/delete_link/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/delete_link/operation-security-before.adoc[opts=optional]
 
 [#delete_link-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/delete_link/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/delete_link/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManage[]
+| xref:security-AnalyticsManage[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/delete_link/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/delete_link/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/delete_link/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/delete_link/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}delete_link/http-request.adoc[opts=optional]
 
+include::{snippetDir}delete_link/http-response.adoc[opts=optional]
 
-// markup not found, no include::{snippetDir}delete_link/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/delete_link/operation-end.adoc[opts=optional]
+include::{specDir}paths/delete_link/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/delete_link/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/delete_link/operation-after.adoc[opts=optional]
 
 //end::delete_link[]
 
-
 //tag::get_link[]
 
-
-// markup not found, no include::{specDir}paths/get_link/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/get_link/operation-before.adoc[opts=optional]
 
 [#get_link]
 = Query Link
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_link/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_link/operation-begin.adoc[opts=optional]
 
 ....
 GET /analytics/link/{scope}/{name}
 ....
 
 
-
-// markup not found, no include::{specDir}paths/get_link/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/get_link/operation-description-before.adoc[opts=optional]
 
 [#get_link-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_link/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_link/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Returns information about a link in the specified Analytics scope.
 --
 
-
-// markup not found, no include::{specDir}paths/get_link/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/get_link/operation-description-end.adoc[opts=optional]
 
 
 
@@ -2310,23 +1889,20 @@ Returns information about a link in the specified Analytics scope.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_link/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/get_link/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/get_link/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/get_link/operation-parameters-before.adoc[opts=optional]
 
 [#get_link-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_link/operation-parameters-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_link/operation-parameters-begin.adoc[opts=optional]
 
 [#get_link-path]
 .Path Parameters
@@ -2337,11 +1913,8 @@ Returns information about a link in the specified Analytics scope.
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *scope* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the Analytics scope.
 
@@ -2353,13 +1926,9 @@ With this parameter, the scope name may contain one or two identifiers, separate
 {blank}
 
 a¦ String
-
 a¦ *name* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the link.
 --
@@ -2370,7 +1939,6 @@ The name of the link.
 a¦ String
 
 |===
-
 [#get_link-query]
 .Query Parameters
 {blank}
@@ -2380,13 +1948,9 @@ a¦ String
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *type* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
-
 include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 --
 
@@ -2400,29 +1964,24 @@ include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
 |===
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_link/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/get_link/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/get_link/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/get_link/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_link/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/get_link/operation-responses-before.adoc[opts=optional]
 
 [#get_link-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_link/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_link/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -2433,8 +1992,7 @@ a| [markdown]
 --
 Success. Returns an array of objects, each of which contains information about a link. 
 --
-a| xref:ResponseAll[]
- array
+a| xref:ResponseAll[] array
 
 | 400
 a| [markdown]
@@ -2450,106 +2008,88 @@ Internal Server Error. Incorrect path or port number, incorrect credentials, bad
 --
 a| xref:Wrong[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/get_link/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/get_link/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-ResponseAll:
+:show-Wrong:
+:show-Wrong:
 
 
 
-// markup not found, no include::{specDir}paths/get_link/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/get_link/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_link/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/get_link/operation-security-before.adoc[opts=optional]
 
 [#get_link-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_link/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_link/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManage[]
+| xref:security-AnalyticsManage[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_link/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/get_link/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_link/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/get_link/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_link/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}get_link/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/get_link/operation-end.adoc[opts=optional]
+include::{specDir}paths/get_link/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_link/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/get_link/operation-after.adoc[opts=optional]
 
 //end::get_link[]
 
-
 //tag::post_link[]
 
-
-// markup not found, no include::{specDir}paths/post_link/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/post_link/operation-before.adoc[opts=optional]
 
 [#post_link]
 = Create Link
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_link/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_link/operation-begin.adoc[opts=optional]
 
 ....
 POST /analytics/link/{scope}/{name}
 ....
 
 
-
-// markup not found, no include::{specDir}paths/post_link/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/post_link/operation-description-before.adoc[opts=optional]
 
 [#post_link-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_link/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_link/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 Creates a link in the specified Analytics scope.
 --
 
-
-// markup not found, no include::{specDir}paths/post_link/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/post_link/operation-description-end.adoc[opts=optional]
 
 
 [#post_link-consumes]
@@ -2560,23 +2100,20 @@ Creates a link in the specified Analytics scope.
 .Produces
 * application/json
 
-:leveloffset: -1
 
+:leveloffset: -1
 
 include::{specDir}paths/post_link/operation-description-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_link/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/post_link/operation-parameters-before.adoc[opts=optional]
 
 [#post_link-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_link/operation-parameters-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_link/operation-parameters-begin.adoc[opts=optional]
 
 [#post_link-path]
 .Path Parameters
@@ -2587,11 +2124,8 @@ include::{specDir}paths/post_link/operation-description-after.adoc[opts=optional
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *scope* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the Analytics scope.
 
@@ -2603,13 +2137,9 @@ With this parameter, the scope name may contain one or two identifiers, separate
 {blank}
 
 a¦ String
-
 a¦ *name* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the link.
 --
@@ -2620,9 +2150,6 @@ The name of the link.
 a¦ String
 
 |===
-
-
-
 [#post_link-form]
 .Form Parameters
 {blank}
@@ -2632,13 +2159,9 @@ a¦ String
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *type* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
-
 include::index.adoc[tag=desc-CommonType, opts=optional]
 --
 
@@ -2648,13 +2171,9 @@ include::index.adoc[tag=desc-CommonType, opts=optional]
 
 a¦ 
 include::index.adoc[tag=type-CommonType, opts=optional]
-
 a¦ *hostname* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For Couchbase links only. The remote hostname. 
 --
@@ -2663,13 +2182,9 @@ For Couchbase links only. The remote hostname.
 {blank}
 
 a¦ String
-
 a¦ *username* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -2678,13 +2193,9 @@ For Couchbase links only. The remote username. Required for links with no encryp
 {blank}
 
 a¦ String
-
 a¦ *password* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -2693,13 +2204,9 @@ For Couchbase links only. The remote password. Required for links with no encryp
 {blank}
 
 a¦ String
-
 a¦ *encryption* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For Couchbase links only. The type of encryption used by the link.  For details, see [encryption](#encryption).
 --
@@ -2709,13 +2216,9 @@ For Couchbase links only. The type of encryption used by the link.  For details,
 {blank}
 
 a¦ String
-
 a¦ *certificate* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.  You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines. 
 --
@@ -2724,13 +2227,9 @@ For Couchbase links only. The content of the target cluster root certificate. Re
 {blank}
 
 a¦ String
-
 a¦ *clientCertificate* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
 --
@@ -2739,13 +2238,9 @@ For Couchbase links, this is the content of the client certificate. Required for
 {blank}
 
 a¦ String
-
 a¦ *clientKey* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -2754,13 +2249,9 @@ For Couchbase links only. The content of the client key. Required for links with
 {blank}
 
 a¦ String
-
 a¦ *accessKeyId* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 access key ID. 
 --
@@ -2769,13 +2260,9 @@ For S3 links only. The Amazon S3 access key ID.
 {blank}
 
 a¦ String
-
 a¦ *secretAccessKey* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 secret access key.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -2784,13 +2271,9 @@ For S3 links only. The Amazon S3 secret access key.  You should URL-encode this 
 {blank}
 
 a¦ String
-
 a¦ *sessionToken* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.  Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid. 
 --
@@ -2799,13 +2282,9 @@ For S3 links only. The Amazon S3 session token. Use this parameter if you want t
 {blank}
 
 a¦ String
-
 a¦ *region* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 region. 
 --
@@ -2814,13 +2293,9 @@ For S3 links only. The Amazon S3 region.
 {blank}
 
 a¦ String
-
 a¦ *serviceEndpoint* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 service endpoint. 
 --
@@ -2829,13 +2304,9 @@ For S3 links only. The Amazon S3 service endpoint.
 {blank}
 
 a¦ String
-
 a¦ *endpoint* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links.
 --
@@ -2844,13 +2315,9 @@ For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required
 {blank}
 
 a¦ String
-
 a¦ *accountName* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -2859,13 +2326,9 @@ For Azure Blob links only. The account name. Used for shared key authentication.
 {blank}
 
 a¦ String
-
 a¦ *accountKey* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -2874,13 +2337,9 @@ For Azure Blob links only. The account key. Used for shared key authentication. 
 {blank}
 
 a¦ String
-
 a¦ *sharedAccessSignature* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -2889,13 +2348,9 @@ For Azure Blob links only. A token that can be used for authentication. Used for
 {blank}
 
 a¦ String
-
 a¦ *managedIdentityId* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -2904,13 +2359,9 @@ For Azure Blob links only. The managed identity ID. Used for managed identity au
 {blank}
 
 a¦ String
-
 a¦ *clientId* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -2919,13 +2370,9 @@ For Azure Blob links only. The client ID for the registered application. Used fo
 {blank}
 
 a¦ String
-
 a¦ *tenantId* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -2934,13 +2381,9 @@ For Azure Blob links only. The tenant ID where the registered application is cre
 {blank}
 
 a¦ String
-
 a¦ *clientSecret* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -2949,13 +2392,9 @@ For Azure Blob links only. The client secret for the registered application. Use
 {blank}
 
 a¦ String
-
 a¦ *clientCertificatePassword* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -2964,13 +2403,9 @@ For Azure Blob links only. The client certificate password for the registered ap
 {blank}
 
 a¦ String
-
 a¦ *jsonCredentials* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Google Cloud Storage links only. The JSON credentials of the link.  This parameter is not allowed if `applicationDefaultCredentials` is provided. 
 --
@@ -2979,13 +2414,9 @@ For Google Cloud Storage links only. The JSON credentials of the link.  This par
 {blank}
 
 a¦ String
-
 a¦ *applicationDefaultCredentials* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
 --
@@ -2999,27 +2430,24 @@ a¦ String
 |===
 
 
-
-// markup not found, no include::{specDir}paths/post_link/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/post_link/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/post_link/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/post_link/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_link/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/post_link/operation-responses-before.adoc[opts=optional]
 
 [#post_link-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_link/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_link/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -3031,6 +2459,7 @@ a| [markdown]
 The operation was successful.
 --
 a| 
+
 | 400
 a| [markdown]
 --
@@ -3045,98 +2474,80 @@ Internal Server Error. Incorrect path or port number, incorrect credentials, bad
 --
 a| xref:Wrong[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/post_link/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/post_link/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Wrong:
+:show-Wrong:
 
 
 
-// markup not found, no include::{specDir}paths/post_link/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/post_link/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_link/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/post_link/operation-security-before.adoc[opts=optional]
 
 [#post_link-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_link/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_link/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManage[]
+| xref:security-AnalyticsManage[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/post_link/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/post_link/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_link/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/post_link/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}post_link/http-request.adoc[opts=optional]
 
+include::{snippetDir}post_link/http-response.adoc[opts=optional]
 
-// markup not found, no include::{snippetDir}post_link/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/post_link/operation-end.adoc[opts=optional]
+include::{specDir}paths/post_link/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_link/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/post_link/operation-after.adoc[opts=optional]
 
 //end::post_link[]
 
-
 //tag::put_link[]
 
-
-// markup not found, no include::{specDir}paths/put_link/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/put_link/operation-before.adoc[opts=optional]
 
 [#put_link]
 = Edit Link
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/put_link/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/put_link/operation-begin.adoc[opts=optional]
 
 ....
 PUT /analytics/link/{scope}/{name}
 ....
 
 
-
-// markup not found, no include::{specDir}paths/put_link/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/put_link/operation-description-before.adoc[opts=optional]
 
 [#put_link-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/put_link/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/put_link/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -3144,8 +2555,7 @@ Edits an existing link in the specified Analytics scope. The link name, type, an
 
 --
 
-
-// markup not found, no include::{specDir}paths/put_link/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/put_link/operation-description-end.adoc[opts=optional]
 
 
 [#put_link-consumes]
@@ -3156,23 +2566,20 @@ Edits an existing link in the specified Analytics scope. The link name, type, an
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/put_link/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/put_link/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/put_link/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/put_link/operation-parameters-before.adoc[opts=optional]
 
 [#put_link-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/put_link/operation-parameters-begin.adoc[opts=optional]
-
+include::{specDir}paths/put_link/operation-parameters-begin.adoc[opts=optional]
 
 [#put_link-path]
 .Path Parameters
@@ -3183,11 +2590,8 @@ Edits an existing link in the specified Analytics scope. The link name, type, an
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *scope* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the Analytics scope.
 
@@ -3199,13 +2603,9 @@ With this parameter, the scope name may contain one or two identifiers, separate
 {blank}
 
 a¦ String
-
 a¦ *name* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 The name of the link.
 --
@@ -3216,9 +2616,6 @@ The name of the link.
 a¦ String
 
 |===
-
-
-
 [#put_link-form]
 .Form Parameters
 {blank}
@@ -3228,13 +2625,9 @@ a¦ String
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *type* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
-
 include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 --
 
@@ -3244,13 +2637,9 @@ include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
 
 a¦ 
 include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
-
 a¦ *hostname* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For Couchbase links only. The remote hostname. 
 --
@@ -3259,13 +2648,9 @@ For Couchbase links only. The remote hostname.
 {blank}
 
 a¦ String
-
 a¦ *username* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The remote username. Required for links with no encryption or half encryption. Required for links with full encryption if using a password.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -3274,13 +2659,9 @@ For Couchbase links only. The remote username. Required for links with no encryp
 {blank}
 
 a¦ String
-
 a¦ *password* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The remote password. Required for links with no encryption or half encryption. Required for links with full encryption if using a username.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -3289,13 +2670,9 @@ For Couchbase links only. The remote password. Required for links with no encryp
 {blank}
 
 a¦ String
-
 a¦ *encryption* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For Couchbase links only. The type of encryption used by the link.  For details, see [encryption](#encryption).
 --
@@ -3305,13 +2682,9 @@ For Couchbase links only. The type of encryption used by the link.  For details,
 {blank}
 
 a¦ String
-
 a¦ *certificate* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The content of the target cluster root certificate. Required for links with full encryption.  You should URL-encode this parameter to escape any special characters. If required, this parameter may contain multiple certificates, separated by new lines. 
 --
@@ -3320,13 +2693,9 @@ For Couchbase links only. The content of the target cluster root certificate. Re
 {blank}
 
 a¦ String
-
 a¦ *clientCertificate* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links, this is the content of the client certificate. Required for links with full encryption if using a client key.  For Azure Blob links, this is the client certificate for the registered application. Used for Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters.
 --
@@ -3335,13 +2704,9 @@ For Couchbase links, this is the content of the client certificate. Required for
 {blank}
 
 a¦ String
-
 a¦ *clientKey* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Couchbase links only. The content of the client key. Required for links with full encryption if using a client certificate.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -3350,13 +2715,9 @@ For Couchbase links only. The content of the client key. Required for links with
 {blank}
 
 a¦ String
-
 a¦ *accessKeyId* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 access key ID. 
 --
@@ -3365,13 +2726,9 @@ For S3 links only. The Amazon S3 access key ID.
 {blank}
 
 a¦ String
-
 a¦ *secretAccessKey* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 secret access key.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -3380,13 +2737,9 @@ For S3 links only. The Amazon S3 secret access key.  You should URL-encode this 
 {blank}
 
 a¦ String
-
 a¦ *sessionToken* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 session token. Use this parameter if you want the link to have temporary access.  Passing this parameter indicates that the `accessKeyId` and `secretAccessKey` are temporary credentials. The Amazon S3 service validates the session token with each request to check whether the provided credentials have expired or are still valid. 
 --
@@ -3395,13 +2748,9 @@ For S3 links only. The Amazon S3 session token. Use this parameter if you want t
 {blank}
 
 a¦ String
-
 a¦ *region* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 region. 
 --
@@ -3410,13 +2759,9 @@ For S3 links only. The Amazon S3 region.
 {blank}
 
 a¦ String
-
 a¦ *serviceEndpoint* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For S3 links only. The Amazon S3 service endpoint. 
 --
@@ -3425,13 +2770,9 @@ For S3 links only. The Amazon S3 service endpoint.
 {blank}
 
 a¦ String
-
 a¦ *endpoint* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required for Azure Blob links; optional for Google Cloud Storage links.
 --
@@ -3440,13 +2781,9 @@ For Azure Blob links and Google Cloud Storage links. The endpoint URI.  Required
 {blank}
 
 a¦ String
-
 a¦ *accountName* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The account name. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -3455,13 +2792,9 @@ For Azure Blob links only. The account name. Used for shared key authentication.
 {blank}
 
 a¦ String
-
 a¦ *accountKey* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The account key. Used for shared key authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -3470,13 +2803,9 @@ For Azure Blob links only. The account key. Used for shared key authentication. 
 {blank}
 
 a¦ String
-
 a¦ *sharedAccessSignature* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. A token that can be used for authentication. Used for shared access signature authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -3485,13 +2814,9 @@ For Azure Blob links only. A token that can be used for authentication. Used for
 {blank}
 
 a¦ String
-
 a¦ *managedIdentityId* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The managed identity ID. Used for managed identity authentication. Only available if the application is running on an Azure instance, e.g. an Azure virtual machine.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -3500,13 +2825,9 @@ For Azure Blob links only. The managed identity ID. Used for managed identity au
 {blank}
 
 a¦ String
-
 a¦ *clientId* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -3515,13 +2836,9 @@ For Azure Blob links only. The client ID for the registered application. Used fo
 {blank}
 
 a¦ String
-
 a¦ *tenantId* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -3530,13 +2847,9 @@ For Azure Blob links only. The tenant ID where the registered application is cre
 {blank}
 
 a¦ String
-
 a¦ *clientSecret* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The client secret for the registered application. Used for Azure Active Directory client secret authentication.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -3545,13 +2858,9 @@ For Azure Blob links only. The client secret for the registered application. Use
 {blank}
 
 a¦ String
-
 a¦ *clientCertificatePassword* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Azure Blob links only. The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected.  You should URL-encode this parameter to escape any special characters. 
 --
@@ -3560,13 +2869,9 @@ For Azure Blob links only. The client certificate password for the registered ap
 {blank}
 
 a¦ String
-
 a¦ *jsonCredentials* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Google Cloud Storage links only. The JSON credentials of the link.  This parameter is not allowed if `applicationDefaultCredentials` is provided. 
 --
@@ -3575,13 +2880,9 @@ For Google Cloud Storage links only. The JSON credentials of the link.  This par
 {blank}
 
 a¦ String
-
 a¦ *applicationDefaultCredentials* +
-_optional_
-a¦ 
-
-
-[markdown]
+optional
+a¦ [markdown]
 --
 For Google Cloud Storage links only. If present, indicates that the link should use the Google Application Default Credentials for authenticating.
 --
@@ -3595,27 +2896,24 @@ a¦ String
 |===
 
 
-
-// markup not found, no include::{specDir}paths/put_link/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/put_link/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 
 
 
-// markup not found, no include::{specDir}paths/put_link/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/put_link/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/put_link/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/put_link/operation-responses-before.adoc[opts=optional]
 
 [#put_link-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/put_link/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/put_link/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -3627,6 +2925,7 @@ a| [markdown]
 The operation was successful.
 --
 a| 
+
 | 400
 a| [markdown]
 --
@@ -3641,102 +2940,87 @@ Internal Server Error. Incorrect path or port number, incorrect credentials, bad
 --
 a| xref:Wrong[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/put_link/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/put_link/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Wrong:
+:show-Wrong:
 
 
 
-// markup not found, no include::{specDir}paths/put_link/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/put_link/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/put_link/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/put_link/operation-security-before.adoc[opts=optional]
 
 [#put_link-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/put_link/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/put_link/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManage[]
+| xref:security-AnalyticsManage[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/put_link/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/put_link/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/put_link/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/put_link/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}put_link/http-request.adoc[opts=optional]
 
+include::{snippetDir}put_link/http-response.adoc[opts=optional]
 
-// markup not found, no include::{snippetDir}put_link/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/put_link/operation-end.adoc[opts=optional]
+include::{specDir}paths/put_link/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/put_link/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/put_link/operation-after.adoc[opts=optional]
 
 //end::put_link[]
 
 
-ifeval::[{count-apis} > 1]
+
+ifeval::[{count-apis} > 0]
 :leveloffset: -1
 endif::[]
 
 
 
-// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+include::{specDir}paths/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
-
+include::{specDir}paths/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
-
+include::{specDir}definitions/document-before.adoc[opts=optional]
 
 [#models]
 = Definitions
 
-:count-models: 14
-
+:count-models: 13
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
-
+include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 1]
-ifdef::collapse-models[]
+ifeval::[{count-models} > 0]
+ifeval::[{count-models} > 8]
 [.two-columns]
-endif::collapse-models[]
+endif::[]
 [%hardbreaks]
 ifdef::enum-definitions[]
 xref:CommonType[]
@@ -3758,13 +3042,21 @@ xref:ResponseS3Specific[]
 xref:Wrong[]
 endif::[]
 
+
+include::{specDir}definitions/CommonType/definition-before.adoc[opts=optional]
+
 ifdef::enum-definitions[]
+ifdef::show-CommonType[]
 [#CommonType]
+endif::show-CommonType[]
+ifndef::show-CommonType[]
+:leveloffset: +1
+
+[discrete#CommonType]
+endif::show-CommonType[]
 = Create Request Type
 
-.icon:menu[fw] Enumeration
-{blank}
-
+ifdef::model-descriptions[]
 //tag::desc-CommonType[]
 The type of the link.
 
@@ -3773,49 +3065,111 @@ The type of the link.
 * `azureblob`: A link to Azure Blob Storage.
 * `gcs`: A link to Google Cloud Storage.
 //end::desc-CommonType[]
+endif::model-descriptions[]
 
-.Schema
-//tag::type-CommonType[]
-String
-//end::type-CommonType[]
-endif::enum-definitions[]
-ifdef::enum-definitions[]
-[#CommonTypeEdit]
-= Edit Request Type
+:leveloffset: +1
+
+include::{specDir}definitions/CommonType/definition-begin.adoc[opts=optional]
+
 
 .icon:menu[fw] Enumeration
 {blank}
 
+[markdown]
+--
+The type of the link.
+
+* `couchbase`: A link to a remote Couchbase cluster.
+* `s3`: A link to the Amazon S3 service.
+* `azureblob`: A link to Azure Blob Storage.
+* `gcs`: A link to Google Cloud Storage.
+--
+
+[%hardbreaks]
+*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+{blank}
+.Schema
+//tag::type-CommonType[]
+string
+//end::type-CommonType[]
+
+include::{specDir}definitions/CommonType/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CommonType[]
+:leveloffset: -1
+endif::show-CommonType[]
+
+endif::enum-definitions[]
+
+include::{specDir}definitions/CommonType/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/CommonTypeEdit/definition-before.adoc[opts=optional]
+
+ifdef::enum-definitions[]
+ifdef::show-CommonTypeEdit[]
+[#CommonTypeEdit]
+endif::show-CommonTypeEdit[]
+ifndef::show-CommonTypeEdit[]
+:leveloffset: +1
+
+[discrete#CommonTypeEdit]
+endif::show-CommonTypeEdit[]
+= Edit Request Type
+
+ifdef::model-descriptions[]
 //tag::desc-CommonTypeEdit[]
 The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.
 
 //end::desc-CommonTypeEdit[]
-
-.Schema
-//tag::type-CommonTypeEdit[]
-String
-//end::type-CommonTypeEdit[]
-endif::enum-definitions[]
-
-
-// markup not found, no include::{specDir}definitions/ResponseAll/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
-[#ResponseAll]
-= Links
+endif::model-descriptions[]
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponseAll/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/CommonTypeEdit/definition-begin.adoc[opts=optional]
 
 
-.icon:brackets-curly[fw] Object
+.icon:menu[fw] Enumeration
 {blank}
 
-//tag::ResponseAll[]
+[markdown]
+--
+The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.
+
+--
+
+[%hardbreaks]
+*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
+{blank}
+.Schema
+//tag::type-CommonTypeEdit[]
+string
+//end::type-CommonTypeEdit[]
+
+include::{specDir}definitions/CommonTypeEdit/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CommonTypeEdit[]
+:leveloffset: -1
+endif::show-CommonTypeEdit[]
+
+endif::enum-definitions[]
+
+include::{specDir}definitions/CommonTypeEdit/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/ResponseAll/definition-before.adoc[opts=optional]
+
+ifdef::show-ResponseAll[]
+[#ResponseAll]
+endif::show-ResponseAll[]
+ifndef::show-ResponseAll[]
+:leveloffset: +1
+
+[discrete#ResponseAll]
+endif::show-ResponseAll[]
+= Links
 
 ifdef::model-descriptions[]
 //tag::desc-ResponseAll[]
@@ -3823,16 +3177,23 @@ Properties common to all links.
 //end::desc-ResponseAll[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseAll/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponseAll[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*scope* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *scope* +
+required
+a¦ [markdown]
 --
 The name of the Analytics scope containing the link.
 
@@ -3844,13 +3205,9 @@ The scope name may contain one or two identifiers, separated by a slash (/).
 *Example:* `+++"travel-sample/inventory"+++`
 {blank}
 a¦ String
-
-a¦ 
-*name* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *name* +
+required
+a¦ [markdown]
 --
 The name of the link.
 --
@@ -3859,13 +3216,10 @@ The name of the link.
 *Example:* `+++"myLink"+++`
 {blank}
 a¦ String
-
 a¦ [#type]
 *type* +
-_required_
-a¦ 
-
-[markdown]
+required
+a¦ [markdown]
 --
 The type of the link.
 
@@ -3885,57 +3239,45 @@ a¦ String
 //end::ResponseAll[]
 
 This schema has alternative properties, depending on the value of *type*:
-
 [cols="25,55,20"]
 |===
 | Value | | Schema
-
 a| `azureblob`
 a| These properties are returned for Azure Blob links.
 a| xref:ResponseAzureBlob[]
-
 a| `couchbase`
 a| These properties are returned for remote Couchbase links.
 a| xref:ResponseCouchbase[]
-
 a| `gcs`
 a| These properties are returned for Google Cloud Storage links.
 a| xref:ResponseGCS[]
-
 a| `s3`
 a| These properties are returned for S3 links.
 a| xref:ResponseS3[]
+
 |===
 
-
-// markup not found, no include::{specDir}definitions/ResponseAll/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponseAll/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponseAll/definition-after.adoc[opts=optional]
+ifndef::show-ResponseAll[]
+:leveloffset: -1
+endif::show-ResponseAll[]
 
+include::{specDir}definitions/ResponseAll/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponseAzureBlob/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponseAzureBlob/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponseAzureBlob[]
 [#ResponseAzureBlob]
-= Azure Blob Response
-
+endif::show-ResponseAzureBlob[]
+ifndef::show-ResponseAzureBlob[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponseAzureBlob/definition-begin.adoc[opts=optional]
-
-
-.icon:bars[fw] Composite Schema
-{blank}
-
-//tag::ResponseAzureBlob[]
+[discrete#ResponseAzureBlob]
+endif::show-ResponseAzureBlob[]
+= Azure Blob Response
 
 ifdef::model-descriptions[]
 //tag::desc-ResponseAzureBlob[]
@@ -3943,14 +3285,20 @@ These properties are returned for Azure Blob links.
 //end::desc-ResponseAzureBlob[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseAzureBlob/definition-begin.adoc[opts=optional]
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+//tag::ResponseAzureBlob[]
 [cols="25,55,20",separator=¦]
 |===
 ¦ All{nbsp}of{nbsp}... ¦ ¦ Schema
 
 a¦ 
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponseAll, opts=optional]
 --
@@ -3959,10 +3307,8 @@ include::index.adoc[tag=desc-ResponseAll, opts=optional]
 {blank}
 a¦ xref:ResponseAll[]
 
-a¦ _and_
-a¦ 
-
-[markdown]
+a¦ and
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponseAzureBlobSpecific, opts=optional]
 --
@@ -3970,40 +3316,31 @@ include::index.adoc[tag=desc-ResponseAzureBlobSpecific, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:ResponseAzureBlobSpecific[]
-
 |===
 
 //end::ResponseAzureBlob[]
 
-
-// markup not found, no include::{specDir}definitions/ResponseAzureBlob/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponseAzureBlob/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponseAzureBlob/definition-after.adoc[opts=optional]
+ifndef::show-ResponseAzureBlob[]
+:leveloffset: -1
+endif::show-ResponseAzureBlob[]
 
+include::{specDir}definitions/ResponseAzureBlob/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponseAzureBlobSpecific/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponseAzureBlobSpecific/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponseAzureBlobSpecific[]
 [#ResponseAzureBlobSpecific]
-= Azure Blob Specific Response
-
+endif::show-ResponseAzureBlobSpecific[]
+ifndef::show-ResponseAzureBlobSpecific[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponseAzureBlobSpecific/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::ResponseAzureBlobSpecific[]
+[discrete#ResponseAzureBlobSpecific]
+endif::show-ResponseAzureBlobSpecific[]
+= Azure Blob Specific Response
 
 ifdef::model-descriptions[]
 //tag::desc-ResponseAzureBlobSpecific[]
@@ -4011,80 +3348,75 @@ Properties specific to Azure Blob links.
 //end::desc-ResponseAzureBlobSpecific[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseAzureBlobSpecific/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponseAzureBlobSpecific[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*accountKey* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *accountKey* +
+optional
+a¦ [markdown]
 --
 The account key. Used for shared key authentication. This is redacted for the sake of security. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 *Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
 a¦ String
-
-a¦ 
-*accountName* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *accountName* +
+optional
+a¦ [markdown]
 --
 The account name. Used for shared key authentication. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 *Example:* `+++"myAccountName"+++`
 {blank}
 a¦ String
-
-a¦ 
-*clientCertificate* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *clientCertificate* +
+optional
+a¦ [markdown]
 --
 The client certificate for the registered application. Used for Azure Active Directory client certificate authentication. This is redacted for the sake of security. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 *Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
 a¦ String
-
-a¦ 
-*clientCertificatePassword* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *clientCertificatePassword* +
+optional
+a¦ [markdown]
 --
 The client certificate password for the registered application. Used for Azure Active Directory client certificate authentication, if the client certificate is password-protected. This is redacted for the sake of security. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 *Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
 a¦ String
-
-a¦ 
-*clientId* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *clientId* +
+optional
+a¦ [markdown]
 --
 The client ID for the registered application. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication. If not set, this property returns `null`.
 
@@ -4094,29 +3426,22 @@ The client ID for the registered application. Used for Azure Active Directory cl
 *Example:* `+++"myClientID"+++`
 {blank}
 a¦ String
-
-a¦ 
-*clientSecret* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *clientSecret* +
+optional
+a¦ [markdown]
 --
 The client secret for the registered application. Used for Azure Active Directory client secret authentication. This is redacted for the sake of security. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 *Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
 a¦ String
-
-a¦ 
-*endpoint* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *endpoint* +
+required
+a¦ [markdown]
 --
 The endpoint URI.
 --
@@ -4125,51 +3450,42 @@ The endpoint URI.
 *Example:* `+++"my.endpoint.uri"+++`
 {blank}
 a¦ String
-
-a¦ 
-*managedIdentityId* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *managedIdentityId* +
+optional
+a¦ [markdown]
 --
 The managed identity ID. Used for managed identity authentication. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 *Example:* `+++"myManagedIdentityID"+++`
 {blank}
 a¦ String
-
-a¦ 
-*sharedAccessSignature* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *sharedAccessSignature* +
+optional
+a¦ [markdown]
 --
 A token that can be used for authentication. Used for shared access signature authentication. This is redacted for the sake of security. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 *Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
 a¦ String
-
-a¦ 
-*tenantId* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *tenantId* +
+optional
+a¦ [markdown]
 --
 The tenant ID where the registered application is created. Used for Azure Active Directory client secret authentication, or Azure Active Directory client certificate authentication. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 *Example:* `+++"myTenantID"+++`
 {blank}
 a¦ String
@@ -4180,34 +3496,27 @@ a¦ String
 
 
 
-// markup not found, no include::{specDir}definitions/ResponseAzureBlobSpecific/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponseAzureBlobSpecific/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponseAzureBlobSpecific/definition-after.adoc[opts=optional]
+ifndef::show-ResponseAzureBlobSpecific[]
+:leveloffset: -1
+endif::show-ResponseAzureBlobSpecific[]
 
+include::{specDir}definitions/ResponseAzureBlobSpecific/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponseCouchbase/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponseCouchbase/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponseCouchbase[]
 [#ResponseCouchbase]
-= Couchbase Response
-
+endif::show-ResponseCouchbase[]
+ifndef::show-ResponseCouchbase[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponseCouchbase/definition-begin.adoc[opts=optional]
-
-
-.icon:bars[fw] Composite Schema
-{blank}
-
-//tag::ResponseCouchbase[]
+[discrete#ResponseCouchbase]
+endif::show-ResponseCouchbase[]
+= Couchbase Response
 
 ifdef::model-descriptions[]
 //tag::desc-ResponseCouchbase[]
@@ -4215,14 +3524,20 @@ These properties are returned for remote Couchbase links.
 //end::desc-ResponseCouchbase[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseCouchbase/definition-begin.adoc[opts=optional]
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+//tag::ResponseCouchbase[]
 [cols="25,55,20",separator=¦]
 |===
 ¦ All{nbsp}of{nbsp}... ¦ ¦ Schema
 
 a¦ 
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponseAll, opts=optional]
 --
@@ -4231,10 +3546,8 @@ include::index.adoc[tag=desc-ResponseAll, opts=optional]
 {blank}
 a¦ xref:ResponseAll[]
 
-a¦ _and_
-a¦ 
-
-[markdown]
+a¦ and
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponseCouchbaseSpecific, opts=optional]
 --
@@ -4242,40 +3555,31 @@ include::index.adoc[tag=desc-ResponseCouchbaseSpecific, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:ResponseCouchbaseSpecific[]
-
 |===
 
 //end::ResponseCouchbase[]
 
-
-// markup not found, no include::{specDir}definitions/ResponseCouchbase/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponseCouchbase/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponseCouchbase/definition-after.adoc[opts=optional]
+ifndef::show-ResponseCouchbase[]
+:leveloffset: -1
+endif::show-ResponseCouchbase[]
 
+include::{specDir}definitions/ResponseCouchbase/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponseCouchbaseSpecific/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecific/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponseCouchbaseSpecific[]
 [#ResponseCouchbaseSpecific]
-= Couchbase Specific Response
-
+endif::show-ResponseCouchbaseSpecific[]
+ifndef::show-ResponseCouchbaseSpecific[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecific/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::ResponseCouchbaseSpecific[]
+[discrete#ResponseCouchbaseSpecific]
+endif::show-ResponseCouchbaseSpecific[]
+= Couchbase Specific Response
 
 ifdef::model-descriptions[]
 //tag::desc-ResponseCouchbaseSpecific[]
@@ -4283,16 +3587,23 @@ Properties specific to remote Couchbase links.
 //end::desc-ResponseCouchbaseSpecific[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseCouchbaseSpecific/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponseCouchbaseSpecific[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*activeHostname* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *activeHostname* +
+required
+a¦ [markdown]
 --
 The remote hostname.
 --
@@ -4301,13 +3612,9 @@ The remote hostname.
 *Example:* `+++"remoteHostName:8091"+++`
 {blank}
 a¦ String
-
-a¦ 
-*bootstrapAlternateAddress* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *bootstrapAlternateAddress* +
+required
+a¦ [markdown]
 --
 Specifies whether the provided (bootstrap) hostname is an alternative address.
 --
@@ -4316,13 +3623,9 @@ Specifies whether the provided (bootstrap) hostname is an alternative address.
 *Example:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*bootstrapHostname* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *bootstrapHostname* +
+required
+a¦ [markdown]
 --
 The provided (bootstrap) hostname.
 --
@@ -4331,58 +3634,45 @@ The provided (bootstrap) hostname.
 *Example:* `+++"remoteHostName:8091"+++`
 {blank}
 a¦ String
-
-a¦ 
-*certificate* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *certificate* +
+required
+a¦ [markdown]
 --
 The content of the target cluster root certificate. Only set for links with full encryption. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 {blank}
 a¦ String
-
-a¦ 
-*clientCertificate* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *clientCertificate* +
+required
+a¦ [markdown]
 --
 The content of the client certificate. Only set for links with full encryption using client certificate and client key. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 {blank}
 a¦ String
-
-a¦ 
-*clientKey* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *clientKey* +
+required
+a¦ [markdown]
 --
 The content of the client key. Only set for links with full encryption using client certificate and client key. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 {blank}
 a¦ String
-
-a¦ 
-*clusterCompatibility* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *clusterCompatibility* +
+required
+a¦ [markdown]
 --
 For internal use only.
 --
@@ -4391,13 +3681,10 @@ For internal use only.
 *Example:* `393221`
 {blank}
 a¦ Integer
-
 a¦ [#encryption]
 *encryption* +
-_required_
-a¦ 
-
-[markdown]
+required
+a¦ [markdown]
 --
 The type of encryption used by the link.
 
@@ -4411,60 +3698,45 @@ The type of encryption used by the link.
 *Values:* `"none"`, `"half"`, `"full"`
 {blank}
 a¦ String
-
-a¦ 
-*nodes* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *nodes* +
+required
+a¦ [markdown]
 --
 An array of objects, each of which contains information about a node in the target cluster.
 --
 
 [%hardbreaks]
 {blank}
-a¦ xref:ResponseCouchbaseSpecificNode[]
- array
-
-a¦ 
-*password* +
-_required_
-a¦ 
-
-[markdown]
+a¦ xref:ResponseCouchbaseSpecificNode[] array
+a¦ *password* +
+required
+a¦ [markdown]
 --
 The password used to connect to the link. This is redacted for the sake of security. Not set for links with full encryption using client certificate and client key. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 *Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
 a¦ String
-
-a¦ 
-*username* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *username* +
+required
+a¦ [markdown]
 --
 The remote username. Not set for links with full encryption using client certificate and client key. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 *Example:* `+++"remote.user"+++`
 {blank}
 a¦ String
-
-a¦ 
-*uuid* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *uuid* +
+required
+a¦ [markdown]
 --
 A UUID uniquely identifying the link.
 --
@@ -4480,28 +3752,31 @@ a¦ UUID (UUID)
 
 
 
-// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecific/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponseCouchbaseSpecific/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecific/definition-after.adoc[opts=optional]
+ifndef::show-ResponseCouchbaseSpecific[]
+:leveloffset: -1
+endif::show-ResponseCouchbaseSpecific[]
 
+include::{specDir}definitions/ResponseCouchbaseSpecific/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponseCouchbaseSpecificNode[]
 [#ResponseCouchbaseSpecificNode]
+endif::show-ResponseCouchbaseSpecificNode[]
+ifndef::show-ResponseCouchbaseSpecificNode[]
+:leveloffset: +1
+
+[discrete#ResponseCouchbaseSpecificNode]
+endif::show-ResponseCouchbaseSpecificNode[]
 = Nodes
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -4509,47 +3784,37 @@ endif::collapse-models[]
 
 //tag::ResponseCouchbaseSpecificNode[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*alternateAddresses* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *alternateAddresses* +
+optional
+a¦ [markdown]
 --
 The alternate address defined on the node, if any. If not defined, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 {blank}
 a¦ String
-
-a¦ 
-*hostname* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *hostname* +
+optional
+a¦ [markdown]
 --
 The hostname of the node. If not defined, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 {blank}
 a¦ String
-
-a¦ 
-*services* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *services* +
+optional
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponseCouchbaseSpecificNodeServices, opts=optional]
 --
@@ -4564,34 +3829,27 @@ a¦ xref:ResponseCouchbaseSpecificNodeServices[]
 
 
 
-// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-after.adoc[opts=optional]
+ifndef::show-ResponseCouchbaseSpecificNode[]
+:leveloffset: -1
+endif::show-ResponseCouchbaseSpecificNode[]
 
+include::{specDir}definitions/ResponseCouchbaseSpecificNode/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponseCouchbaseSpecificNodeServices[]
 [#ResponseCouchbaseSpecificNodeServices]
-= Services
-
+endif::show-ResponseCouchbaseSpecificNodeServices[]
+ifndef::show-ResponseCouchbaseSpecificNodeServices[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::ResponseCouchbaseSpecificNodeServices[]
+[discrete#ResponseCouchbaseSpecificNodeServices]
+endif::show-ResponseCouchbaseSpecificNodeServices[]
+= Services
 
 ifdef::model-descriptions[]
 //tag::desc-ResponseCouchbaseSpecificNodeServices[]
@@ -4599,16 +3857,23 @@ An object giving information about the services and ports configured on this nod
 //end::desc-ResponseCouchbaseSpecificNodeServices[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponseCouchbaseSpecificNodeServices[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*cbas* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *cbas* +
+optional
+a¦ [markdown]
 --
 The port number for a connection to the Analytics service.
 --
@@ -4617,13 +3882,9 @@ The port number for a connection to the Analytics service.
 *Example:* `8095`
 {blank}
 a¦ Integer
-
-a¦ 
-*cbasSSL* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *cbasSSL* +
+optional
+a¦ [markdown]
 --
 The port number for an encrypted connection to the Analytics service.
 --
@@ -4632,13 +3893,9 @@ The port number for an encrypted connection to the Analytics service.
 *Example:* `18095`
 {blank}
 a¦ Integer
-
-a¦ 
-*kv* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *kv* +
+optional
+a¦ [markdown]
 --
 The port number for a connection to the Data service.
 --
@@ -4647,13 +3904,9 @@ The port number for a connection to the Data service.
 *Example:* `11210`
 {blank}
 a¦ Integer
-
-a¦ 
-*kvSSL* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *kvSSL* +
+optional
+a¦ [markdown]
 --
 The port number for an encrypted connection to the Data service.
 --
@@ -4662,13 +3915,9 @@ The port number for an encrypted connection to the Data service.
 *Example:* `11207`
 {blank}
 a¦ Integer
-
-a¦ 
-*mgmt* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *mgmt* +
+optional
+a¦ [markdown]
 --
 The port number for a connection to the Cluster Manager service.
 --
@@ -4677,13 +3926,9 @@ The port number for a connection to the Cluster Manager service.
 *Example:* `8091`
 {blank}
 a¦ Integer
-
-a¦ 
-*mgmtSSL* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *mgmtSSL* +
+optional
+a¦ [markdown]
 --
 The port number for an encrypted connection to the Cluster Manager service.
 --
@@ -4699,34 +3944,27 @@ a¦ Integer
 
 
 
-// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-after.adoc[opts=optional]
+ifndef::show-ResponseCouchbaseSpecificNodeServices[]
+:leveloffset: -1
+endif::show-ResponseCouchbaseSpecificNodeServices[]
 
+include::{specDir}definitions/ResponseCouchbaseSpecificNodeServices/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponseGCS/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponseGCS/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponseGCS[]
 [#ResponseGCS]
-= GCS Response
-
+endif::show-ResponseGCS[]
+ifndef::show-ResponseGCS[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponseGCS/definition-begin.adoc[opts=optional]
-
-
-.icon:bars[fw] Composite Schema
-{blank}
-
-//tag::ResponseGCS[]
+[discrete#ResponseGCS]
+endif::show-ResponseGCS[]
+= GCS Response
 
 ifdef::model-descriptions[]
 //tag::desc-ResponseGCS[]
@@ -4734,14 +3972,20 @@ These properties are returned for Google Cloud Storage links.
 //end::desc-ResponseGCS[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseGCS/definition-begin.adoc[opts=optional]
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+//tag::ResponseGCS[]
 [cols="25,55,20",separator=¦]
 |===
 ¦ All{nbsp}of{nbsp}... ¦ ¦ Schema
 
 a¦ 
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponseAll, opts=optional]
 --
@@ -4750,10 +3994,8 @@ include::index.adoc[tag=desc-ResponseAll, opts=optional]
 {blank}
 a¦ xref:ResponseAll[]
 
-a¦ _and_
-a¦ 
-
-[markdown]
+a¦ and
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponseGCSSpecific, opts=optional]
 --
@@ -4761,40 +4003,31 @@ include::index.adoc[tag=desc-ResponseGCSSpecific, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:ResponseGCSSpecific[]
-
 |===
 
 //end::ResponseGCS[]
 
-
-// markup not found, no include::{specDir}definitions/ResponseGCS/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponseGCS/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponseGCS/definition-after.adoc[opts=optional]
+ifndef::show-ResponseGCS[]
+:leveloffset: -1
+endif::show-ResponseGCS[]
 
+include::{specDir}definitions/ResponseGCS/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponseGCSSpecific/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponseGCSSpecific/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponseGCSSpecific[]
 [#ResponseGCSSpecific]
-= GCS Specific Response
-
+endif::show-ResponseGCSSpecific[]
+ifndef::show-ResponseGCSSpecific[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponseGCSSpecific/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::ResponseGCSSpecific[]
+[discrete#ResponseGCSSpecific]
+endif::show-ResponseGCSSpecific[]
+= GCS Specific Response
 
 ifdef::model-descriptions[]
 //tag::desc-ResponseGCSSpecific[]
@@ -4802,16 +4035,23 @@ Properties specific to Google Cloud Storage links.
 //end::desc-ResponseGCSSpecific[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseGCSSpecific/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponseGCSSpecific[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*applicationDefaultCredentials* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *applicationDefaultCredentials* +
+required
+a¦ [markdown]
 --
 If present, indicates that the link should use the Google Application Default Credentials for authenticating. If not set, this property returns `null`.
 
@@ -4819,38 +4059,33 @@ If present, indicates that the link should use the Google Application Default Cr
 
 [%hardbreaks]
 *Values:* `"true"`
+*Nullable:* yes
 *Example:* `+++"true"+++`
 {blank}
 a¦ String
-
-a¦ 
-*endpoint* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *endpoint* +
+required
+a¦ [markdown]
 --
 The endpoint URI. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 *Example:* `+++"https://storage.googleapis.com"+++`
 {blank}
 a¦ String
-
-a¦ 
-*jsonCredentials* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *jsonCredentials* +
+required
+a¦ [markdown]
 --
 The JSON credentials of the link. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 *Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
 a¦ String
@@ -4861,34 +4096,27 @@ a¦ String
 
 
 
-// markup not found, no include::{specDir}definitions/ResponseGCSSpecific/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponseGCSSpecific/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponseGCSSpecific/definition-after.adoc[opts=optional]
+ifndef::show-ResponseGCSSpecific[]
+:leveloffset: -1
+endif::show-ResponseGCSSpecific[]
 
+include::{specDir}definitions/ResponseGCSSpecific/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponseS3/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponseS3/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponseS3[]
 [#ResponseS3]
-= S3 Response
-
+endif::show-ResponseS3[]
+ifndef::show-ResponseS3[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponseS3/definition-begin.adoc[opts=optional]
-
-
-.icon:bars[fw] Composite Schema
-{blank}
-
-//tag::ResponseS3[]
+[discrete#ResponseS3]
+endif::show-ResponseS3[]
+= S3 Response
 
 ifdef::model-descriptions[]
 //tag::desc-ResponseS3[]
@@ -4896,14 +4124,20 @@ These properties are returned for S3 links.
 //end::desc-ResponseS3[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseS3/definition-begin.adoc[opts=optional]
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+//tag::ResponseS3[]
 [cols="25,55,20",separator=¦]
 |===
 ¦ All{nbsp}of{nbsp}... ¦ ¦ Schema
 
 a¦ 
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponseAll, opts=optional]
 --
@@ -4912,10 +4146,8 @@ include::index.adoc[tag=desc-ResponseAll, opts=optional]
 {blank}
 a¦ xref:ResponseAll[]
 
-a¦ _and_
-a¦ 
-
-[markdown]
+a¦ and
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponseS3Specific, opts=optional]
 --
@@ -4923,40 +4155,31 @@ include::index.adoc[tag=desc-ResponseS3Specific, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:ResponseS3Specific[]
-
 |===
 
 //end::ResponseS3[]
 
-
-// markup not found, no include::{specDir}definitions/ResponseS3/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponseS3/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponseS3/definition-after.adoc[opts=optional]
+ifndef::show-ResponseS3[]
+:leveloffset: -1
+endif::show-ResponseS3[]
 
+include::{specDir}definitions/ResponseS3/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponseS3Specific/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponseS3Specific/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponseS3Specific[]
 [#ResponseS3Specific]
-= S3 Specific Response
-
+endif::show-ResponseS3Specific[]
+ifndef::show-ResponseS3Specific[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponseS3Specific/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::ResponseS3Specific[]
+[discrete#ResponseS3Specific]
+endif::show-ResponseS3Specific[]
+= S3 Specific Response
 
 ifdef::model-descriptions[]
 //tag::desc-ResponseS3Specific[]
@@ -4964,16 +4187,23 @@ Properties specific to S3 links.
 //end::desc-ResponseS3Specific[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseS3Specific/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponseS3Specific[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*accessKeyId* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *accessKeyId* +
+required
+a¦ [markdown]
 --
 The Amazon S3 access key ID.
 --
@@ -4982,13 +4212,9 @@ The Amazon S3 access key ID.
 *Example:* `+++"myAccessKey"+++`
 {blank}
 a¦ String
-
-a¦ 
-*region* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *region* +
+required
+a¦ [markdown]
 --
 The Amazon S3 region.
 --
@@ -4997,13 +4223,9 @@ The Amazon S3 region.
 *Example:* `+++"us-east-1"+++`
 {blank}
 a¦ String
-
-a¦ 
-*secretAccessKey* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *secretAccessKey* +
+required
+a¦ [markdown]
 --
 The Amazon S3 secret access key. This is redacted for the sake of security.
 
@@ -5013,13 +4235,9 @@ The Amazon S3 secret access key. This is redacted for the sake of security.
 *Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
 a¦ String
-
-a¦ 
-*sessionToken* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *sessionToken* +
+optional
+a¦ [markdown]
 --
 The Amazon S3 session token. Indicates that the link has temporary access, and that the `accessKeyId` and `secretAccessKey` are temporary credentials. This is redacted for the sake of security.
 
@@ -5029,19 +4247,16 @@ The Amazon S3 session token. Indicates that the link has temporary access, and t
 *Example:* `+++"<redacted sensitive entry>"+++`
 {blank}
 a¦ String
-
-a¦ 
-*serviceEndpoint* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *serviceEndpoint* +
+required
+a¦ [markdown]
 --
 Amazon S3 service endpoint. If not set, this property returns `null`.
 
 --
 
 [%hardbreaks]
+*Nullable:* yes
 *Example:* `+++"my.endpoint.uri"+++`
 {blank}
 a¦ String
@@ -5052,28 +4267,31 @@ a¦ String
 
 
 
-// markup not found, no include::{specDir}definitions/ResponseS3Specific/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponseS3Specific/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponseS3Specific/definition-after.adoc[opts=optional]
+ifndef::show-ResponseS3Specific[]
+:leveloffset: -1
+endif::show-ResponseS3Specific[]
 
+include::{specDir}definitions/ResponseS3Specific/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Wrong/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/Wrong/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-Wrong[]
 [#Wrong]
+endif::show-Wrong[]
+ifndef::show-Wrong[]
+:leveloffset: +1
+
+[discrete#Wrong]
+endif::show-Wrong[]
 = Errors
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/Wrong/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/Wrong/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -5081,17 +4299,13 @@ endif::collapse-models[]
 
 //tag::Wrong[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*error* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *error* +
+required
+a¦ [markdown]
 --
 An error message.
 --
@@ -5106,26 +4320,26 @@ a¦ String
 
 
 
-// markup not found, no include::{specDir}definitions/Wrong/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/Wrong/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
-
+include::{specDir}definitions/Wrong/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+ifndef::show-Wrong[]
+:leveloffset: -1
+endif::show-Wrong[]
+
+include::{specDir}definitions/Wrong/definition-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
 
+include::{specDir}definitions/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+include::{specDir}security/document-before.adoc[opts=optional]
 
 [[security]]
 = Security
@@ -5135,18 +4349,14 @@ a¦ String
 include::{specDir}security/document-begin.adoc[opts=optional]
 
 
+include::{specDir}security/AnalyticsManage/security-scheme-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-before.adoc[opts=optional]
-
-
-[[security-analyticsManage]]
+[[security-AnalyticsManage]]
 = Analytics Manage
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-begin.adoc[opts=optional]
-
+include::{specDir}security/AnalyticsManage/security-scheme-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -5158,16 +4368,13 @@ Users must have one of the following RBAC roles:
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
-
-// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/AnalyticsManage/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}security/AnalyticsManage/security-scheme-after.adoc[opts=optional]
-
+include::{specDir}security/AnalyticsManage/security-scheme-after.adoc[opts=optional]
 
 
 
@@ -5175,8 +4382,6 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-
-// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+include::{specDir}security/document-after.adoc[opts=optional]
 
 

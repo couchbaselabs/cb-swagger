@@ -1,0 +1,37 @@
+{{#if vendorExtensions.x-has-default ~}}
+*Default:* `{{#if isString}}+++"{{/if}}{{{defaultValue}}}{{#if isString}}"+++{{/if}}`
+{{/if}}
+{{~#with pattern ~}}
+*Pattern:* `+++{{{this}}}+++`
+{{/with}}
+{{~#with minimum ~}}
+*Minimum:* `{{{this}}}`{{#if exclusiveMinimum}} (exclusive){{/if}}
+{{/with}}
+{{~#with maximum ~}}
+*Maximum:* `{{{this}}}`{{#if exclusiveMaximum}} (exclusive){{/if}}
+{{/with}}
+{{~#with multipleOf ~}}
+*Multiple of:* `{{{this}}}`
+{{/with}}
+{{~#with minLength ~}}
+*Minimum length:* `{{{this}}}`
+{{/with}}
+{{~#with maxLength ~}}
+*Maximum length:* `{{{this}}}`
+{{/with}}
+{{~#with minItems ~}}
+*Minimum items:* `{{{this}}}`
+{{/with}}
+{{~#with maxItems ~}}
+*Maximum items:* `{{{this}}}`
+{{/with}}
+{{~#if uniqueItems ~}}
+*Unique items:* yes
+{{/if}}
+{{~#if isNullable ~}}
+*Nullable:* yes
+{{/if}}
+{{~#if vendorExtensions.x-has-example ~}}
+*Example:* `{{#if isString}}+++"{{/if}}{{{example}}}{{#if isString}}"+++{{/if}}`
+{{/if ~}}
+{{! OpenAPI generator doesn't support externalDocs in schemas, so don't try }}
