@@ -12,16 +12,15 @@ DO NOT EDIT! See https://github.com/couchbaselabs/cb-swagger
 
 :leveloffset: 1
 
-include::{specDir}overview/document-before.adoc[opts=optional]
 
+include::{specDir}overview/document-before.adoc[opts=optional]
 
 [[overview]]
 = Overview
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}overview/document-begin.adoc[opts=optional]
-
+include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -33,7 +32,7 @@ This API enables you to run Analytics queries and set request-level parameters.
 [discrete#version]
 = Version information
 [%hardbreaks]
-__Version__ : 8.0
+*Version:* 8.0
 
 [discrete#host]
 = Host information
@@ -68,7 +67,6 @@ The host name or IP address of a node running the Analytics Service.
 --
 
 [%hardbreaks]
-
 *Example:* `+++localhost+++`
 // end
 
@@ -84,31 +82,26 @@ The Analytics Service REST port. Use `18095` for secure access.
 
 |===
 
-
-// markup not found, no include::{specDir}overview/document-end.adoc[opts=optional]
+include::{specDir}overview/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}overview/document-after.adoc[opts=optional]
-
+include::{specDir}overview/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/document-before.adoc[opts=optional]
-
+include::{specDir}paths/document-before.adoc[opts=optional]
 
 [[resources]]
 = Resources
 
-:count-apis: 1
-
+:count-apis: 0
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/document-begin.adoc[opts=optional]
+include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
@@ -116,18 +109,14 @@ xref:tag-Default[]
 endif::[]
 
 
-ifeval::[{count-apis} > 1]
+ifeval::[{count-apis} > 0]
 [#tag-Default]
 = Default
 :leveloffset: +1
 
-ifeval::["" != ""]
-
-endif::[]
-ifeval::["" == ""]
 **{toc-title}**
 endif::[]
-endif::[]
+
 
 [%hardbreaks]
 xref:get_query[]
@@ -136,44 +125,38 @@ xref:post_query[]
 xref:post_service[]
 
 
+
 //tag::get_query[]
 
-
-// markup not found, no include::{specDir}paths/get_query/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/get_query/operation-before.adoc[opts=optional]
 
 [#get_query]
 = Read-Only Query Service (Alternative)
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_query/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_query/operation-begin.adoc[opts=optional]
 
 ....
 GET /query/service
 ....
 
 
-
-// markup not found, no include::{specDir}paths/get_query/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/get_query/operation-description-before.adoc[opts=optional]
 
 [#get_query-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_query/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_query/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 An alternative endpoint for the [Read-Only Query Service](#get_service), provided for tools compatibility.
 --
 
-
-// markup not found, no include::{specDir}paths/get_query/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/get_query/operation-description-end.adoc[opts=optional]
 
 
 
@@ -181,24 +164,20 @@ An alternative endpoint for the [Read-Only Query Service](#get_service), provide
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_query/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/get_query/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/get_query/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/get_query/operation-parameters-before.adoc[opts=optional]
 
 [#get_query-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_query/operation-parameters-begin.adoc[opts=optional]
-
-
+include::{specDir}paths/get_query/operation-parameters-begin.adoc[opts=optional]
 
 [#get_query-query]
 .Query Parameters
@@ -209,11 +188,8 @@ An alternative endpoint for the [Read-Only Query Service](#get_service), provide
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *body* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 Specify the parameters in the query URL in URL-encoded format.
 --
@@ -226,29 +202,25 @@ a¦ xref:Parameters[]
 |===
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_query/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/get_query/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Parameters:
 
 
 
-// markup not found, no include::{specDir}paths/get_query/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/get_query/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_query/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/get_query/operation-responses-before.adoc[opts=optional]
 
 [#get_query-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_query/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_query/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -275,98 +247,81 @@ Unauthorized. The user name or password may be incorrect.
 --
 a| xref:Responses[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/get_query/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/get_query/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Responses:
+:show-Responses:
+:show-Responses:
 
 
 
-// markup not found, no include::{specDir}paths/get_query/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/get_query/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_query/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/get_query/operation-security-before.adoc[opts=optional]
 
 [#get_query-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_query/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_query/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManageAnalyticsSelect[]
+| xref:security-AnalyticsManageAnalyticsSelect[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_query/operation-security-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}paths/get_query/operation-security-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{snippetDir}get_query/http-request.adoc[opts=optional]
-
-
-// markup not found, no include::{snippetDir}get_query/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/get_query/operation-end.adoc[opts=optional]
+include::{specDir}paths/get_query/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
+include::{specDir}paths/get_query/operation-security-after.adoc[opts=optional]
 
-// markup not found, no include::{specDir}paths/get_query/operation-after.adoc[opts=optional]
+include::{snippetDir}get_query/http-request.adoc[opts=optional]
 
+include::{snippetDir}get_query/http-response.adoc[opts=optional]
+
+include::{specDir}paths/get_query/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/get_query/operation-after.adoc[opts=optional]
 
 //end::get_query[]
 
-
 //tag::get_service[]
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-before.adoc[opts=optional]
 
 [#get_service]
 = Read-Only Query Service
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_service/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-begin.adoc[opts=optional]
 
 ....
 GET /analytics/service
 ....
 
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-description-before.adoc[opts=optional]
 
 [#get_service-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_service/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -376,8 +331,7 @@ This is intended for situations where use of the `POST` method is restricted.
 
 --
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/get_service/operation-description-end.adoc[opts=optional]
 
 
 
@@ -385,24 +339,20 @@ This is intended for situations where use of the `POST` method is restricted.
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/get_service/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-parameters-before.adoc[opts=optional]
 
 [#get_service-parameters]
 = Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_service/operation-parameters-begin.adoc[opts=optional]
-
-
+include::{specDir}paths/get_service/operation-parameters-begin.adoc[opts=optional]
 
 [#get_service-query]
 .Query Parameters
@@ -413,11 +363,8 @@ This is intended for situations where use of the `POST` method is restricted.
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *body* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
 Specify the parameters in the query URL in URL-encoded format.
 --
@@ -430,29 +377,25 @@ a¦ xref:Parameters[]
 |===
 
 
-
-
-
-// markup not found, no include::{specDir}paths/get_service/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/get_service/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Parameters:
 
 
 
-// markup not found, no include::{specDir}paths/get_service/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/get_service/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-responses-before.adoc[opts=optional]
 
 [#get_service-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_service/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -479,106 +422,88 @@ Unauthorized. The user name or password may be incorrect.
 --
 a| xref:Responses[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/get_service/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Responses:
+:show-Responses:
+:show-Responses:
 
 
 
-// markup not found, no include::{specDir}paths/get_service/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/get_service/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-security-before.adoc[opts=optional]
 
 [#get_service-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/get_service/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManageAnalyticsSelect[]
+| xref:security-AnalyticsManageAnalyticsSelect[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/get_service/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/get_service/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_service/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}get_service/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/get_service/operation-end.adoc[opts=optional]
+include::{specDir}paths/get_service/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/get_service/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/get_service/operation-after.adoc[opts=optional]
 
 //end::get_service[]
 
-
 //tag::post_query[]
 
-
-// markup not found, no include::{specDir}paths/post_query/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/post_query/operation-before.adoc[opts=optional]
 
 [#post_query]
 = Query Service (Alternative)
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_query/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_query/operation-begin.adoc[opts=optional]
 
 ....
 POST /query/service
 ....
 
 
-
-// markup not found, no include::{specDir}paths/post_query/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/post_query/operation-description-before.adoc[opts=optional]
 
 [#post_query-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_query/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_query/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
 An alternative endpoint for the [Query Service](#post_service), provided for tools compatibility.
 --
 
-
-// markup not found, no include::{specDir}paths/post_query/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/post_query/operation-description-end.adoc[opts=optional]
 
 
 [#post_query-consumes]
@@ -590,15 +515,13 @@ An alternative endpoint for the [Query Service](#post_service), provided for too
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_query/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/post_query/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/post_query/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/post_query/operation-parameters-before.adoc[opts=optional]
 
 [#post_query-parameters]
 = Parameters
@@ -606,11 +529,6 @@ An alternative endpoint for the [Query Service](#post_service), provided for too
 :leveloffset: +1
 
 include::{specDir}paths/post_query/operation-parameters-begin.adoc[opts=optional]
-
-
-
-
-
 
 [#post_query-body]
 .Body Parameter
@@ -621,13 +539,10 @@ include::{specDir}paths/post_query/operation-parameters-begin.adoc[opts=optional
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
-An object specifying one or more query parameters.
+
 --
 
 [%hardbreaks]
@@ -638,26 +553,25 @@ a¦ xref:Parameters[]
 |===
 
 
-// markup not found, no include::{specDir}paths/post_query/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/post_query/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Parameters:
 
 
 
-// markup not found, no include::{specDir}paths/post_query/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/post_query/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_query/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/post_query/operation-responses-before.adoc[opts=optional]
 
 [#post_query-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_query/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_query/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -684,79 +598,63 @@ Unauthorized. The user name or password may be incorrect.
 --
 a| xref:Responses[]
 
-
 |===
 
+include::{specDir}paths/post_query/operation-responses-end.adoc[opts=optional]
 
-// markup not found, no include::{specDir}paths/post_query/operation-responses-end.adoc[opts=optional]
+:leveloffset: -1
+:show-Responses:
+:show-Responses:
+:show-Responses:
+
+
+
+
+include::{specDir}paths/post_query/operation-responses-after.adoc[opts=optional]
+
+
+include::{specDir}paths/post_query/operation-security-before.adoc[opts=optional]
+
+
+
+include::{specDir}paths/post_query/operation-security-after.adoc[opts=optional]
+
+include::{snippetDir}post_query/http-request.adoc[opts=optional]
+
+include::{snippetDir}post_query/http-response.adoc[opts=optional]
+
+include::{specDir}paths/post_query/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-
-// markup not found, no include::{specDir}paths/post_query/operation-responses-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/post_query/operation-security-before.adoc[opts=optional]
-
-
-
-
-
-
-// markup not found, no include::{specDir}paths/post_query/operation-security-after.adoc[opts=optional]
-
-
-
-// markup not found, no include::{snippetDir}post_query/http-request.adoc[opts=optional]
-
-
-// markup not found, no include::{snippetDir}post_query/http-response.adoc[opts=optional]
-
-
-
-// markup not found, no include::{specDir}paths/post_query/operation-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-
-// markup not found, no include::{specDir}paths/post_query/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/post_query/operation-after.adoc[opts=optional]
 
 //end::post_query[]
 
-
 //tag::post_service[]
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-before.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-before.adoc[opts=optional]
 
 [#post_service]
 = Query Service
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_service/operation-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-begin.adoc[opts=optional]
 
 ....
 POST /analytics/service
 ....
 
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-description-before.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-description-before.adoc[opts=optional]
 
 [#post_service-description]
 = Description
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_service/operation-description-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-description-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -764,8 +662,7 @@ Enables you to execute a SQL\+\+ for Analytics statement. This method allows you
 
 --
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-description-end.adoc[opts=optional]
+include::{specDir}paths/post_service/operation-description-end.adoc[opts=optional]
 
 
 [#post_service-consumes]
@@ -777,15 +674,13 @@ Enables you to execute a SQL\+\+ for Analytics statement. This method allows you
 .Produces
 * application/json
 
+
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-description-after.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-description-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}paths/post_service/operation-parameters-before.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-parameters-before.adoc[opts=optional]
 
 [#post_service-parameters]
 = Parameters
@@ -793,11 +688,6 @@ Enables you to execute a SQL\+\+ for Analytics statement. This method allows you
 :leveloffset: +1
 
 include::{specDir}paths/post_service/operation-parameters-begin.adoc[opts=optional]
-
-
-
-
-
 
 [#post_service-body]
 .Body Parameter
@@ -808,13 +698,10 @@ include::{specDir}paths/post_service/operation-parameters-begin.adoc[opts=option
 ¦ Name ¦ Description ¦ Schema
 
 a¦ *Body* +
-_required_
-a¦ 
-
-
-[markdown]
+required
+a¦ [markdown]
 --
-An object specifying one or more query parameters.
+
 --
 
 [%hardbreaks]
@@ -825,26 +712,25 @@ a¦ xref:Parameters[]
 |===
 
 
-// markup not found, no include::{specDir}paths/post_service/operation-parameters-end.adoc[opts=optional]
+include::{specDir}paths/post_service/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Parameters:
 
 
 
-// markup not found, no include::{specDir}paths/post_service/operation-parameters-after.adoc[opts=optional]
+
+include::{specDir}paths/post_service/operation-parameters-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-responses-before.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-responses-before.adoc[opts=optional]
 
 [#post_service-responses]
 = Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_service/operation-responses-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-responses-begin.adoc[opts=optional]
 
 [cols="20,60,20"]
 |===
@@ -871,102 +757,88 @@ Unauthorized. The user name or password may be incorrect.
 --
 a| xref:Responses[]
 
-
 |===
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-responses-end.adoc[opts=optional]
+include::{specDir}paths/post_service/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
+:show-Responses:
+:show-Responses:
+:show-Responses:
 
 
 
-// markup not found, no include::{specDir}paths/post_service/operation-responses-after.adoc[opts=optional]
+
+include::{specDir}paths/post_service/operation-responses-after.adoc[opts=optional]
 
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-security-before.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-security-before.adoc[opts=optional]
 
 [#post_service-security]
 = Security
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}paths/post_service/operation-security-begin.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-security-begin.adoc[opts=optional]
 
 [cols="20,80"]
 |===
 | Type | Name
 
 | http (basic)
-| xref:security-analyticsManageAnalyticsSelect[]
+| xref:security-AnalyticsManageAnalyticsSelect[]
 
 |===
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-security-end.adoc[opts=optional]
+include::{specDir}paths/post_service/operation-security-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-security-after.adoc[opts=optional]
-
-
+include::{specDir}paths/post_service/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}post_service/http-request.adoc[opts=optional]
 
-
 include::{snippetDir}post_service/http-response.adoc[opts=optional]
 
-
-
-// markup not found, no include::{specDir}paths/post_service/operation-end.adoc[opts=optional]
+include::{specDir}paths/post_service/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/post_service/operation-after.adoc[opts=optional]
-
+include::{specDir}paths/post_service/operation-after.adoc[opts=optional]
 
 //end::post_service[]
 
 
-ifeval::[{count-apis} > 1]
+
+ifeval::[{count-apis} > 0]
 :leveloffset: -1
 endif::[]
 
 
 
-// markup not found, no include::{specDir}paths/document-end.adoc[opts=optional]
+include::{specDir}paths/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}paths/document-after.adoc[opts=optional]
-
+include::{specDir}paths/document-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}definitions/document-before.adoc[opts=optional]
-
+include::{specDir}definitions/document-before.adoc[opts=optional]
 
 [#models]
 = Definitions
 
-:count-models: 11
-
+:count-models: 10
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/document-begin.adoc[opts=optional]
-
+include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 1]
-ifdef::collapse-models[]
+ifeval::[{count-models} > 0]
+ifeval::[{count-models} > 8]
 [.two-columns]
-endif::collapse-models[]
+endif::[]
 [%hardbreaks]
 xref:Parameters[]
 xref:ParametersCommon[]
@@ -982,35 +854,32 @@ xref:ResponsesLocalYardsticks[]
 endif::[]
 
 
+include::{specDir}definitions/Parameters/definition-before.adoc[opts=optional]
 
-// markup not found, no include::{specDir}definitions/Parameters/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-Parameters[]
 [#Parameters]
+endif::show-Parameters[]
+ifndef::show-Parameters[]
+:leveloffset: +1
+
+[discrete#Parameters]
+endif::show-Parameters[]
 = Query Parameters
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/Parameters/definition-begin.adoc[opts=optional]
-
+include::{specDir}definitions/Parameters/definition-begin.adoc[opts=optional]
 
 .icon:bars[fw] Composite Schema
 {blank}
 
 //tag::Parameters[]
-
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ All{nbsp}of{nbsp}... ¦ ¦ Schema
 
 a¦ 
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ParametersCommon, opts=optional]
 --
@@ -1019,10 +888,8 @@ include::index.adoc[tag=desc-ParametersCommon, opts=optional]
 {blank}
 a¦ xref:ParametersCommon[]
 
-a¦ _and_
-a¦ 
-
-[markdown]
+a¦ and
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ParametersLocal, opts=optional]
 --
@@ -1030,40 +897,31 @@ include::index.adoc[tag=desc-ParametersLocal, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:ParametersLocal[]
-
 |===
 
 //end::Parameters[]
 
-
-// markup not found, no include::{specDir}definitions/Parameters/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/Parameters/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Parameters/definition-after.adoc[opts=optional]
+ifndef::show-Parameters[]
+:leveloffset: -1
+endif::show-Parameters[]
 
+include::{specDir}definitions/Parameters/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ParametersCommon/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ParametersCommon/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ParametersCommon[]
 [#ParametersCommon]
-= Common Parameters
-
+endif::show-ParametersCommon[]
+ifndef::show-ParametersCommon[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ParametersCommon/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::ParametersCommon[]
+[discrete#ParametersCommon]
+endif::show-ParametersCommon[]
+= Common Parameters
 
 ifdef::model-descriptions[]
 //tag::desc-ParametersCommon[]
@@ -1071,16 +929,23 @@ Parameters common with the Query Service.
 //end::desc-ParametersCommon[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ParametersCommon/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ParametersCommon[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*statement* +
-_required_
-a¦ 
-
-[markdown]
+a¦ *statement* +
+required
+a¦ [markdown]
 --
 Specifies at least one valid SQL\+\+ for Analytics statement to run.
 --
@@ -1088,13 +953,9 @@ Specifies at least one valid SQL\+\+ for Analytics statement to run.
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*client_context_id* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *client_context_id* +
+optional
+a¦ [markdown]
 --
 An identifier passed by the client that is returned verbatim in the query response. Useful for matching a particular query to a specific caller.
 
@@ -1103,13 +964,9 @@ An identifier passed by the client that is returned verbatim in the query respon
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*format* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *format* +
+optional
+a¦ [markdown]
 --
 Desired format for the query results.
 
@@ -1122,13 +979,9 @@ Note that the only possible format is `JSON`.
 *Default:* `+++"JSON"+++`
 {blank}
 a¦ String
-
-a¦ 
-*pretty* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *pretty* +
+optional
+a¦ [markdown]
 --
 If `true`, the result is indented.
 --
@@ -1137,13 +990,9 @@ If `true`, the result is indented.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*query_context* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *query_context* +
+optional
+a¦ [markdown]
 --
 A scope for the statement. The value of this parameter must start with `default:`, followed by an Analytics scope name. The `default:` prefix is a dummy and is ignored when resolving an Analytics collection name or synonym name.
 
@@ -1153,13 +1002,9 @@ A scope for the statement. The value of this parameter must start with `default:
 *Default:* `+++"default:Default"+++`
 {blank}
 a¦ String
-
-a¦ 
-*readonly* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *readonly* +
+optional
+a¦ [markdown]
 --
 If `true`, then DDL statements are not allowed.
 --
@@ -1168,13 +1013,9 @@ If `true`, then DDL statements are not allowed.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*scan_consistency* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *scan_consistency* +
+optional
+a¦ [markdown]
 --
 The consistency guarantee constraint for index scanning. If `not_bounded`, the query is executed immediately. If `request_plus`, the required datasets are updated with data available from the Data service at the time of the request before the query is executed.
 
@@ -1185,13 +1026,9 @@ The consistency guarantee constraint for index scanning. If `not_bounded`, the q
 *Default:* `+++"not_bounded"+++`
 {blank}
 a¦ String
-
-a¦ 
-*scan_wait* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *scan_wait* +
+optional
+a¦ [markdown]
 --
 The maximum time to wait for datasets to be updated before the query is executed. The format includes an amount and a unit: `ns`, `us`, `ms`, `s`, `m`, or `h`. The default is `""` (no timeout).
 
@@ -1201,13 +1038,9 @@ The maximum time to wait for datasets to be updated before the query is executed
 *Default:* `+++""+++`
 {blank}
 a¦ String
-
-a¦ 
-*timeout* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *timeout* +
+optional
+a¦ [markdown]
 --
 Maximum time to spend on the request before timing out. The format includes an amount and a unit: `ns`, `us`, `ms`, `s`, `m`, or `h`. The default is `""` (no timeout).
 
@@ -1217,34 +1050,26 @@ Maximum time to spend on the request before timing out. The format includes an a
 *Default:* `+++""+++`
 {blank}
 a¦ String
-
-a¦ 
-*args* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *args* +
+optional
+a¦ [markdown]
 --
 An array of positional parameter values.
 --
 
 [%hardbreaks]
 {blank}
-a¦ Any Type
- array
-
-a¦ 
-*<$identifier>* +
-_additional +
-property_
-a¦ 
-
-[markdown]
+a¦ Any Type array
+a¦ *<$identifier>* +
+additional +
+property
+a¦ [markdown]
 --
 A named parameter value.
 --
 
 [%hardbreaks]
+*Nullable:* yes
 {blank}
 a¦ Any Type
 
@@ -1254,34 +1079,27 @@ a¦ Any Type
 
 
 
-// markup not found, no include::{specDir}definitions/ParametersCommon/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ParametersCommon/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ParametersCommon/definition-after.adoc[opts=optional]
+ifndef::show-ParametersCommon[]
+:leveloffset: -1
+endif::show-ParametersCommon[]
 
+include::{specDir}definitions/ParametersCommon/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ParametersLocal/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ParametersLocal/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ParametersLocal[]
 [#ParametersLocal]
-= Analytics Parameters
-
+endif::show-ParametersLocal[]
+ifndef::show-ParametersLocal[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ParametersLocal/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::ParametersLocal[]
+[discrete#ParametersLocal]
+endif::show-ParametersLocal[]
+= Analytics Parameters
 
 ifdef::model-descriptions[]
 //tag::desc-ParametersLocal[]
@@ -1289,16 +1107,23 @@ Parameters specific to the Analytics Service.
 //end::desc-ParametersLocal[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ParametersLocal/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ParametersLocal[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*plan-format* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *plan-format* +
+optional
+a¦ [markdown]
 --
 The plan format.
 --
@@ -1308,13 +1133,9 @@ The plan format.
 *Default:* `+++"JSON"+++`
 {blank}
 a¦ String
-
-a¦ 
-*logical-plan* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *logical-plan* +
+optional
+a¦ [markdown]
 --
 If `true`, the logical plan is included in the query response.
 --
@@ -1323,13 +1144,9 @@ If `true`, the logical plan is included in the query response.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*optimized-logical-plan* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *optimized-logical-plan* +
+optional
+a¦ [markdown]
 --
 If `true`, the optimized logical plan is included in the query response.
 --
@@ -1338,13 +1155,9 @@ If `true`, the optimized logical plan is included in the query response.
 *Default:* `true`
 {blank}
 a¦ Boolean
-
-a¦ 
-*expression-tree* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *expression-tree* +
+optional
+a¦ [markdown]
 --
 If `true`, the expression tree is included in the query response.
 --
@@ -1353,13 +1166,9 @@ If `true`, the expression tree is included in the query response.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*rewritten-expression-tree* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *rewritten-expression-tree* +
+optional
+a¦ [markdown]
 --
 If `true`, the rewritten expression tree is included in the query response.
 --
@@ -1368,13 +1177,9 @@ If `true`, the rewritten expression tree is included in the query response.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*job* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *job* +
+optional
+a¦ [markdown]
 --
 If `true`, the job details are included in the query response.
 --
@@ -1383,13 +1188,9 @@ If `true`, the job details are included in the query response.
 *Default:* `false`
 {blank}
 a¦ Boolean
-
-a¦ 
-*max-warnings* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *max-warnings* +
+optional
+a¦ [markdown]
 --
 An integer specifying the maximum number of warning messages to be included in the query response.
 --
@@ -1405,44 +1206,42 @@ a¦ Integer (int32)
 
 
 
-// markup not found, no include::{specDir}definitions/ParametersLocal/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ParametersLocal/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ParametersLocal/definition-after.adoc[opts=optional]
+ifndef::show-ParametersLocal[]
+:leveloffset: -1
+endif::show-ParametersLocal[]
 
+include::{specDir}definitions/ParametersLocal/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/Responses/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/Responses/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-Responses[]
 [#Responses]
+endif::show-Responses[]
+ifndef::show-Responses[]
+:leveloffset: +1
+
+[discrete#Responses]
+endif::show-Responses[]
 = Query Responses
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/Responses/definition-begin.adoc[opts=optional]
-
+include::{specDir}definitions/Responses/definition-begin.adoc[opts=optional]
 
 .icon:bars[fw] Composite Schema
 {blank}
 
 //tag::Responses[]
-
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ All{nbsp}of{nbsp}... ¦ ¦ Schema
 
 a¦ 
-a¦ 
-
-[markdown]
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponsesCommon, opts=optional]
 --
@@ -1451,10 +1250,8 @@ include::index.adoc[tag=desc-ResponsesCommon, opts=optional]
 {blank}
 a¦ xref:ResponsesCommon[]
 
-a¦ _and_
-a¦ 
-
-[markdown]
+a¦ and
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponsesLocal, opts=optional]
 --
@@ -1462,40 +1259,31 @@ include::index.adoc[tag=desc-ResponsesLocal, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:ResponsesLocal[]
-
 |===
 
 //end::Responses[]
 
-
-// markup not found, no include::{specDir}definitions/Responses/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/Responses/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/Responses/definition-after.adoc[opts=optional]
+ifndef::show-Responses[]
+:leveloffset: -1
+endif::show-Responses[]
 
+include::{specDir}definitions/Responses/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponsesCommon/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponsesCommon/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponsesCommon[]
 [#ResponsesCommon]
-= Common Responses
-
+endif::show-ResponsesCommon[]
+ifndef::show-ResponsesCommon[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponsesCommon/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::ResponsesCommon[]
+[discrete#ResponsesCommon]
+endif::show-ResponsesCommon[]
+= Common Responses
 
 ifdef::model-descriptions[]
 //tag::desc-ResponsesCommon[]
@@ -1503,16 +1291,23 @@ Responses common with the Query Service.
 //end::desc-ResponsesCommon[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponsesCommon/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponsesCommon[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*requestID* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *requestID* +
+optional
+a¦ [markdown]
 --
 A unique identifier for the response.
 --
@@ -1520,13 +1315,9 @@ A unique identifier for the response.
 [%hardbreaks]
 {blank}
 a¦ UUID (UUID)
-
-a¦ 
-*clientContextID* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *clientContextID* +
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [1]: query-params.html
@@ -1541,13 +1332,9 @@ refer to `client_context_id` in [Query Parameters][1].
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*signature* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *signature* +
+optional
+a¦ [markdown]
 --
 The schema of the results. Present only when the query completes successfully.
 
@@ -1556,13 +1343,9 @@ The schema of the results. Present only when the query completes successfully.
 [%hardbreaks]
 {blank}
 a¦ Object
-
-a¦ 
-*results* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *results* +
+optional
+a¦ [markdown]
 --
 An array of all the objects returned by the query. An object can be any JSON value.
 
@@ -1570,15 +1353,10 @@ An array of all the objects returned by the query. An object can be any JSON val
 
 [%hardbreaks]
 {blank}
-a¦ Any Type
- array
-
-a¦ 
-*status* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ Any Type array
+a¦ *status* +
+optional
+a¦ [markdown]
 --
 The status of the request.
 --
@@ -1587,13 +1365,9 @@ The status of the request.
 *Values:* `"success"`, `"running"`, `"failed"`, `"timeout"`, `"fatal"`
 {blank}
 a¦ String
-
-a¦ 
-*errors* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *errors* +
+optional
+a¦ [markdown]
 --
 An array of error objects. Present only if 1 or more errors are returned during processing of the request. Each error is represented by an object in this list.
 
@@ -1601,15 +1375,10 @@ An array of error objects. Present only if 1 or more errors are returned during 
 
 [%hardbreaks]
 {blank}
-a¦ xref:ResponsesCommonErrors[]
- array
-
-a¦ 
-*warnings* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ xref:ResponsesCommonErrors[] array
+a¦ *warnings* +
+optional
+a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [1]: query-params.html
@@ -1628,15 +1397,10 @@ By default, no warnings are returned, even if warnings have occurred during proc
 
 [%hardbreaks]
 {blank}
-a¦ xref:ResponsesCommonWarnings[]
- array
-
-a¦ 
-*metrics* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ xref:ResponsesCommonWarnings[] array
+a¦ *metrics* +
+optional
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponsesCommonYardsticks, opts=optional]
 --
@@ -1651,28 +1415,31 @@ a¦ xref:ResponsesCommonYardsticks[]
 
 
 
-// markup not found, no include::{specDir}definitions/ResponsesCommon/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponsesCommon/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponsesCommon/definition-after.adoc[opts=optional]
+ifndef::show-ResponsesCommon[]
+:leveloffset: -1
+endif::show-ResponsesCommon[]
 
+include::{specDir}definitions/ResponsesCommon/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponsesCommonErrors/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponsesCommonErrors/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponsesCommonErrors[]
 [#ResponsesCommonErrors]
+endif::show-ResponsesCommonErrors[]
+ifndef::show-ResponsesCommonErrors[]
+:leveloffset: +1
+
+[discrete#ResponsesCommonErrors]
+endif::show-ResponsesCommonErrors[]
 = Errors
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponsesCommonErrors/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/ResponsesCommonErrors/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -1680,17 +1447,13 @@ endif::collapse-models[]
 
 //tag::ResponsesCommonErrors[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*code* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *code* +
+optional
+a¦ [markdown]
 --
 A number that identifies the error.
 --
@@ -1698,13 +1461,9 @@ A number that identifies the error.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*msg* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *msg* +
+optional
+a¦ [markdown]
 --
 A message describing the error in detail. Refer to [Error Codes](/cloud/analytics/error-codes.html).
 
@@ -1720,28 +1479,31 @@ a¦ String
 
 
 
-// markup not found, no include::{specDir}definitions/ResponsesCommonErrors/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponsesCommonErrors/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponsesCommonErrors/definition-after.adoc[opts=optional]
+ifndef::show-ResponsesCommonErrors[]
+:leveloffset: -1
+endif::show-ResponsesCommonErrors[]
 
+include::{specDir}definitions/ResponsesCommonErrors/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponsesCommonWarnings/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponsesCommonWarnings/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponsesCommonWarnings[]
 [#ResponsesCommonWarnings]
+endif::show-ResponsesCommonWarnings[]
+ifndef::show-ResponsesCommonWarnings[]
+:leveloffset: +1
+
+[discrete#ResponsesCommonWarnings]
+endif::show-ResponsesCommonWarnings[]
 = Warnings
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponsesCommonWarnings/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/ResponsesCommonWarnings/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
@@ -1749,17 +1511,13 @@ endif::collapse-models[]
 
 //tag::ResponsesCommonWarnings[]
 
-
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*code* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *code* +
+optional
+a¦ [markdown]
 --
 A number that identifies the warning.
 --
@@ -1767,13 +1525,9 @@ A number that identifies the warning.
 [%hardbreaks]
 {blank}
 a¦ Integer
-
-a¦ 
-*msg* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *msg* +
+optional
+a¦ [markdown]
 --
 A message describing the warning in detail.
 --
@@ -1788,34 +1542,27 @@ a¦ String
 
 
 
-// markup not found, no include::{specDir}definitions/ResponsesCommonWarnings/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponsesCommonWarnings/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponsesCommonWarnings/definition-after.adoc[opts=optional]
+ifndef::show-ResponsesCommonWarnings[]
+:leveloffset: -1
+endif::show-ResponsesCommonWarnings[]
 
+include::{specDir}definitions/ResponsesCommonWarnings/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponsesCommonYardsticks/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponsesCommonYardsticks/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponsesCommonYardsticks[]
 [#ResponsesCommonYardsticks]
-= Common Metrics
-
+endif::show-ResponsesCommonYardsticks[]
+ifndef::show-ResponsesCommonYardsticks[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponsesCommonYardsticks/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::ResponsesCommonYardsticks[]
+[discrete#ResponsesCommonYardsticks]
+endif::show-ResponsesCommonYardsticks[]
+= Common Metrics
 
 ifdef::model-descriptions[]
 //tag::desc-ResponsesCommonYardsticks[]
@@ -1823,16 +1570,23 @@ An object containing metrics about the request.
 //end::desc-ResponsesCommonYardsticks[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponsesCommonYardsticks/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponsesCommonYardsticks[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*elapsedTime* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *elapsedTime* +
+optional
+a¦ [markdown]
 --
 The total time taken for the request, that is the time from when the request was received until the results were returned.
 
@@ -1841,13 +1595,9 @@ The total time taken for the request, that is the time from when the request was
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*executionTime* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *executionTime* +
+optional
+a¦ [markdown]
 --
 The time taken for the execution of the request, that is the time from when query execution started until the results were returned.
 
@@ -1856,13 +1606,9 @@ The time taken for the execution of the request, that is the time from when quer
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*resultCount* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *resultCount* +
+optional
+a¦ [markdown]
 --
 The total number of objects in the results.
 --
@@ -1870,13 +1616,9 @@ The total number of objects in the results.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
-
-a¦ 
-*resultSize* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *resultSize* +
+optional
+a¦ [markdown]
 --
 The total number of bytes in the results.
 --
@@ -1884,13 +1626,9 @@ The total number of bytes in the results.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
-
-a¦ 
-*errorCount* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *errorCount* +
+optional
+a¦ [markdown]
 --
 The number of errors that occurred during the request.
 --
@@ -1898,13 +1636,9 @@ The number of errors that occurred during the request.
 [%hardbreaks]
 {blank}
 a¦ Integer (unsigned)
-
-a¦ 
-*warningCount* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *warningCount* +
+optional
+a¦ [markdown]
 --
 The number of warnings that occurred during the request.
 --
@@ -1919,34 +1653,27 @@ a¦ Integer (unsigned)
 
 
 
-// markup not found, no include::{specDir}definitions/ResponsesCommonYardsticks/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponsesCommonYardsticks/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponsesCommonYardsticks/definition-after.adoc[opts=optional]
+ifndef::show-ResponsesCommonYardsticks[]
+:leveloffset: -1
+endif::show-ResponsesCommonYardsticks[]
 
+include::{specDir}definitions/ResponsesCommonYardsticks/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponsesLocal/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponsesLocal/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponsesLocal[]
 [#ResponsesLocal]
-= Analytics Responses
-
+endif::show-ResponsesLocal[]
+ifndef::show-ResponsesLocal[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponsesLocal/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::ResponsesLocal[]
+[discrete#ResponsesLocal]
+endif::show-ResponsesLocal[]
+= Analytics Responses
 
 ifdef::model-descriptions[]
 //tag::desc-ResponsesLocal[]
@@ -1954,16 +1681,23 @@ Responses specific to the Analytics Service.
 //end::desc-ResponsesLocal[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponsesLocal/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponsesLocal[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*plans* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *plans* +
+optional
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponsesLocalPlans, opts=optional]
 --
@@ -1971,13 +1705,9 @@ include::index.adoc[tag=desc-ResponsesLocalPlans, opts=optional]
 [%hardbreaks]
 {blank}
 a¦ xref:ResponsesLocalPlans[]
-
-a¦ 
-*metrics* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *metrics* +
+optional
+a¦ [markdown]
 --
 include::index.adoc[tag=desc-ResponsesLocalYardsticks, opts=optional]
 --
@@ -1992,34 +1722,27 @@ a¦ xref:ResponsesLocalYardsticks[]
 
 
 
-// markup not found, no include::{specDir}definitions/ResponsesLocal/definition-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponsesLocal/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponsesLocal/definition-after.adoc[opts=optional]
+ifndef::show-ResponsesLocal[]
+:leveloffset: -1
+endif::show-ResponsesLocal[]
 
+include::{specDir}definitions/ResponsesLocal/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponsesLocalPlans/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponsesLocalPlans/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponsesLocalPlans[]
 [#ResponsesLocalPlans]
-= Plans
-
+endif::show-ResponsesLocalPlans[]
+ifndef::show-ResponsesLocalPlans[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponsesLocalPlans/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::ResponsesLocalPlans[]
+[discrete#ResponsesLocalPlans]
+endif::show-ResponsesLocalPlans[]
+= Plans
 
 ifdef::model-descriptions[]
 //tag::desc-ResponsesLocalPlans[]
@@ -2027,16 +1750,23 @@ An object containing the query plans, if requested.
 //end::desc-ResponsesLocalPlans[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponsesLocalPlans/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponsesLocalPlans[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*logicalPlan* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *logicalPlan* +
+optional
+a¦ [markdown]
 --
 The logical plan.
 --
@@ -2044,13 +1774,9 @@ The logical plan.
 [%hardbreaks]
 {blank}
 a¦ Object
-
-a¦ 
-*optimizedLogicalPlan* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *optimizedLogicalPlan* +
+optional
+a¦ [markdown]
 --
 The optimized logical plan.
 --
@@ -2058,13 +1784,9 @@ The optimized logical plan.
 [%hardbreaks]
 {blank}
 a¦ Object
-
-a¦ 
-*rewrittenExpressionTree* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *rewrittenExpressionTree* +
+optional
+a¦ [markdown]
 --
 The rewritten expression tree.
 --
@@ -2072,13 +1794,9 @@ The rewritten expression tree.
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*expressionTree* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *expressionTree* +
+optional
+a¦ [markdown]
 --
 The expression tree.
 --
@@ -2086,13 +1804,9 @@ The expression tree.
 [%hardbreaks]
 {blank}
 a¦ String
-
-a¦ 
-*job* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *job* +
+optional
+a¦ [markdown]
 --
 The job details.
 --
@@ -2109,32 +1823,25 @@ a¦ Object
 
 include::{specDir}definitions/ResponsesLocalPlans/definition-end.adoc[opts=optional]
 
-
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/ResponsesLocalPlans/definition-after.adoc[opts=optional]
+ifndef::show-ResponsesLocalPlans[]
+:leveloffset: -1
+endif::show-ResponsesLocalPlans[]
 
+include::{specDir}definitions/ResponsesLocalPlans/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/ResponsesLocalYardsticks/definition-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}definitions/ResponsesLocalYardsticks/definition-before.adoc[opts=optional]
-
-
-ifdef::collapse-models[]
-[discrete]
-endif::collapse-models[]
+ifdef::show-ResponsesLocalYardsticks[]
 [#ResponsesLocalYardsticks]
-= Analytics Metrics
-
+endif::show-ResponsesLocalYardsticks[]
+ifndef::show-ResponsesLocalYardsticks[]
 :leveloffset: +1
 
-// markup not found, no include::{specDir}definitions/ResponsesLocalYardsticks/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::ResponsesLocalYardsticks[]
+[discrete#ResponsesLocalYardsticks]
+endif::show-ResponsesLocalYardsticks[]
+= Analytics Metrics
 
 ifdef::model-descriptions[]
 //tag::desc-ResponsesLocalYardsticks[]
@@ -2142,16 +1849,23 @@ An object containing metrics about the request.
 //end::desc-ResponsesLocalYardsticks[]
 endif::model-descriptions[]
 
+:leveloffset: +1
+
+include::{specDir}definitions/ResponsesLocalYardsticks/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponsesLocalYardsticks[]
+
 [cols="25,55,20",separator=¦]
 |===
 ¦ Property ¦ ¦ Schema
 
-a¦ 
-*processedObjects* +
-_optional_
-a¦ 
-
-[markdown]
+a¦ *processedObjects* +
+optional
+a¦ [markdown]
 --
 Number of processed tuples during query execution.
 --
@@ -2166,26 +1880,26 @@ a¦ Long (int64)
 
 
 
-// markup not found, no include::{specDir}definitions/ResponsesLocalYardsticks/definition-end.adoc[opts=optional]
-
-
-:leveloffset: -1
-
-// markup not found, no include::{specDir}definitions/ResponsesLocalYardsticks/definition-after.adoc[opts=optional]
-
-
-
-
-// markup not found, no include::{specDir}definitions/document-end.adoc[opts=optional]
-
+include::{specDir}definitions/ResponsesLocalYardsticks/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-// markup not found, no include::{specDir}definitions/document-after.adoc[opts=optional]
+ifndef::show-ResponsesLocalYardsticks[]
+:leveloffset: -1
+endif::show-ResponsesLocalYardsticks[]
+
+include::{specDir}definitions/ResponsesLocalYardsticks/definition-after.adoc[opts=optional]
 
 
-// markup not found, no include::{specDir}security/document-before.adoc[opts=optional]
 
+include::{specDir}definitions/document-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}definitions/document-after.adoc[opts=optional]
+
+
+include::{specDir}security/document-before.adoc[opts=optional]
 
 [[security]]
 = Security
@@ -2195,18 +1909,14 @@ a¦ Long (int64)
 include::{specDir}security/document-begin.adoc[opts=optional]
 
 
+include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-before.adoc[opts=optional]
 
-
-// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-before.adoc[opts=optional]
-
-
-[[security-analyticsManageAnalyticsSelect]]
-= Analytics Manage Analytics Select
+[[security-AnalyticsManageAnalyticsSelect]]
+= Analytics Manage / Analytics Select
 
 :leveloffset: +1
 
-// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-begin.adoc[opts=optional]
-
+include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-begin.adoc[opts=optional]
 
 [markdown]
 --
@@ -2221,16 +1931,13 @@ Users must have one of the following RBAC roles:
 --
 
 [%hardbreaks]
-__Type__ : http
+*Type:* http
 
-
-// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-end.adoc[opts=optional]
+include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-// markup not found, no include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-after.adoc[opts=optional]
-
+include::{specDir}security/AnalyticsManageAnalyticsSelect/security-scheme-after.adoc[opts=optional]
 
 
 
@@ -2238,8 +1945,6 @@ include::{specDir}security/document-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-
-
-// markup not found, no include::{specDir}security/document-after.adoc[opts=optional]
+include::{specDir}security/document-after.adoc[opts=optional]
 
 

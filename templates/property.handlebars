@@ -1,0 +1,43 @@
+{{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{#unless vendorExtensions.x-desc-status}}
+
+{{/unless}}{{/with ~}}
+{{#with vendorExtensions.x-desc-status}}[.status]##{{this}}##
+
+{{/with~}}
+[markdown]
+--
+{{#with vendorExtensions.x-desc-refs ~}}
+ifdef::alt-markdown-links[]
+{{this}}
+
+endif::alt-markdown-links[]
+{{/with ~}}
+{{#with ref ~}}
+include::index.adoc[tag=desc-{{dataType}}, opts=optional]
+{{~else with description~}}
+{{{unescapedDescription}}}
+{{~/with}}
+{{~#with vendorExtensions.x-desc-more}}
+
+// tag::desc-more[]
+{{{this}}}
+// end::desc-more[]
+{{~/with}}
+--
+{{~#each vendorExtensions.x-enumDescriptions ~}}
+{{#if @first}}
+
+[horizontal.enum]
+{{/if~}}
+`{{#if isString}}"{{/if}}{{@key}}{{#if isString}}"{{/if}}`::{{! FIXME: Update CSS no bold for hdlist1 in enum }}
+{{{this}}}
+{{/each}}
+
+[%hardbreaks]
+{{#if isEnum ~}}
+{{#with allowableValues ~}}
+*Values:* {{#each values}}`{{#if isString}}"{{/if}}{{this}}{{#if isString}}"{{/if}}`{{#unless @last}}, {{/unless}}{{/each}}
+{{~/with}}
+{{/if ~}}
+{{>values ~}}
+{blank}
