@@ -1,25 +1,5 @@
-= Example HTTP Request
-
-The following example disables the creation of new partitions by means of file transfer.
-
-====
-.curl request
-[source,sh]
-----
-include::example$file-xfer-disable.sh[]
-----
-====
-
+The <<put_options-ex-req-disable>> request disables the creation of new partitions by means of file transfer.
 From this point, Search Service index partitions are built on the new nodes assigned to them during rebalance.
 
-The following example re-enables the creation of new partitions by means of file transfer:
-
-====
-.curl request
-[source,sh]
-----
-include::example$file-xfer-enable.sh[]
-----
-====
-
+The <<put_options-ex-req-enable>> request re-enables the creation of new partitions by means of file transfer.
 From this point, Search Service index partitions are again created by file transfer, on the new nodes assigned to them during rebalance.
