@@ -342,6 +342,7 @@ include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 {{#with content.[application/json] ~}}
 {{#with example ~}}
 
+[#{{operationIdOriginal}}-ex-response-{{code}}]
 .Response {{#if code}}{{code}}{{else}}(default){{/if}}
 ====
 [source,json]
@@ -352,10 +353,12 @@ include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 {{else each examples ~}}
 {{#if @first ~}}
 
+[#{{operationIdOriginal}}-ex-response-{{code}}]
 .Response {{#if code}}{{code}}{{else}}(default){{/if}}
 ====
 {{/if ~}}
 {{#with summary~}}
+[#{{operationIdOriginal}}-ex-response-{{code}}-{{#slugify}}{{this}}{{/slugify}}]
 .{{{this}}}
 {{~/with}}
 [source,json]
@@ -369,6 +372,7 @@ include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 {{~else with content.[text/html] ~}}
 {{#with example ~}}
 
+[#{{operationIdOriginal}}-ex-response-{{code}}]
 .Response {{code}}
 ====
 [source,html]
@@ -379,10 +383,12 @@ include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 {{else each examples ~}}
 {{#if @first ~}}
 
+[#{{operationIdOriginal}}-ex-response-{{code}}]
 .Response {{code}}
 ====
 {{/if ~}}
 {{#with summary~}}
+[#{{operationIdOriginal}}-ex-response-{{code}}-{{#slugify}}{{this}}{{/slugify}}]
 .{{{this}}}
 {{~/with}}
 [source,html]
