@@ -315,43 +315,86 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 {{!~ Include partials for operation sample requests and responses }}
 {{!~ The partials should have a level 1 title; the level offset pushes the title down to the correct section level. }}
 
+{{#each vendorExtensions.x-codeSamples ~}}
+{{#if @first ~}}
+[#{{operationIdOriginal}}-ex-req]
+= Example HTTP Request
+
+====
+{{/if ~}}
+{{#with label~}}
+[#{{operationIdOriginal}}-ex-req-{{#slugify}}{{this}}{{/slugify}}]
+.{{{this}}}
+{{~/with}}
+[source,sh]{{!-- FIXME: {{#with lang}},{{#lower}}{{this}}{{/lower}}{{/with}} --}}
+----
+{{{source}}}
+----
+{{#if @last ~}}
+====
+{{/if}}
+{{/each}}
+
 include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 
-{{#responses.content.application/json.example}}
-= Example HTTP Response
-{{/responses.content.application/json.example}}
-{{#responses}}
-{{#content}}
-{{#application/json}}
-{{#examples}}
+// FIXME: Response examples
+{{#each responses ~}}
+{{#with content.[application/json] ~}}
+{{#with example ~}}
+
+.Response {{#if code}}{{code}}{{else}}(default){{/if}}
+====
+[source,json]
+----
+{{#json pretty=true}}{{{this}}}{{/json}}
+----
+====
+{{else each examples ~}}
+{{#if @first ~}}
+
+.Response {{#if code}}{{code}}{{else}}(default){{/if}}
+====
+{{/if ~}}
+{{#with summary~}}
+.{{{this}}}
+{{~/with}}
+[source,json]
+----
+{{#with value}}{{#json pretty=true}}{{{this}}}{{/json}}{{/with}}
+----
+{{#if @last ~}}
+====
+{{/if}}
+{{/with}}{{! example }}
+{{~else with content.[text/html] ~}}
+{{#with example ~}}
+
+.Response {{code}}
+====
+[source,html]
+----
 {{{this}}}
+----
+====
+{{else each examples ~}}
+{{#if @first ~}}
 
 .Response {{code}}
 ====
-{{#summary}}
-.{{{summary}}}
-{{/summary}}
-[source,json]
+{{/if ~}}
+{{#with summary~}}
+.{{{this}}}
+{{~/with}}
+[source,html]
 ----
-{{{value}}}
+{{#with value}}{{{this}}}{{/with}}
 ----
+{{#if @last ~}}
 ====
-{{/examples}}
-{{#example}}
-{{#-first}}
-
-.Response {{code}}
-====
-[source,json]
-----
-{{{example}}}
-----
-====
-{{/-first}}
-{{/example}}
-{{/application/json}}
-{{/content}}
-{{/responses}}
+{{/if}}
+{{/with}}{{! example }}
+{{~/with}}{{! content.[application/json] }}
+{{~/each}}{{! responses }}
 
 include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
 
