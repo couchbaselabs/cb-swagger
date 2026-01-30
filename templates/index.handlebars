@@ -317,13 +317,13 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 
 {{#each vendorExtensions.x-codeSamples ~}}
 {{#if @first ~}}
-[#{{operationIdOriginal}}-ex-req]
+[#{{operationIdOriginal}}-ex-curl]
 = Example HTTP Request
 
 ====
 {{/if ~}}
 {{#with label~}}
-[#{{operationIdOriginal}}-ex-req-{{#slugify}}{{this}}{{/slugify}}]
+[#{{operationIdOriginal}}-ex-curl-{{#slugify}}{{this}}{{/slugify}}]
 .{{{this}}}
 {{~/with}}
 [source,sh]{{!-- FIXME: {{#with lang}},{{#lower}}{{this}}{{/lower}}{{/with}} --}}
@@ -334,6 +334,42 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 ====
 {{/if}}
 {{/each}}
+
+include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
+
+{{#with bodyParam ~}}
+{{#with content.[application/json] ~}}
+{{#with example ~}}
+[#{{operationIdOriginal}}-ex-request]
+= Example Request Body
+
+====
+[source,json]
+----
+{{#json pretty=true}}{{{this}}}{{/json}}
+----
+====
+{{else each examples ~}}
+{{#if @first ~}}
+[#{{operationIdOriginal}}-ex-request]
+= Example Request Body
+
+====
+{{/if ~}}
+{{#with summary~}}
+[#{{operationIdOriginal}}-ex-request-{{#slugify}}{{this}}{{/slugify}}]
+.{{{this}}}
+{{~/with}}
+[source,json]
+----
+{{#with value}}{{#json pretty=true}}{{{this}}}{{/json}}{{/with}}
+----
+{{#if @last ~}}
+====
+{{/if}}
+{{/with}}{{! example }}
+{{~/with}}{{! content.[application/json] }}
+{{~/with}}{{! bodyParam }}
 
 include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 
