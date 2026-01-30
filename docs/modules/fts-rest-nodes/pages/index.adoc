@@ -238,7 +238,111 @@ include::{specDir}paths/getClusterConfig/operation-security-end.adoc[opts=option
 
 include::{specDir}paths/getClusterConfig/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}getClusterConfig/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+.Response 200
+====
+[source,json]
+----
+{
+  "indexDefs" : {
+    "implVersion" : "4.0.0",
+    "indexDefs" : {
+      "myFirstIndex" : {
+        "name" : "myFirstIndex",
+        "params" : "",
+        "planParams" : {
+          "hierarchyRules" : null,
+          "maxPartitionsPerPIndex" : 0,
+          "nodePlanParams" : null,
+          "numReplicas" : 0,
+          "planFrozen" : false
+        },
+        "sourceName" : "",
+        "sourceParams" : "",
+        "sourceType" : "nil",
+        "sourceUUID" : "",
+        "type" : "blackhole",
+        "uuid" : "6cc599ab7a85bf3b"
+      }
+    },
+    "uuid" : "6cc599ab7a85bf3b"
+  },
+  "indexDefsCAS" : 3,
+  "indexDefsErr" : null,
+  "nodeDefsKnown" : {
+    "implVersion" : "4.0.0",
+    "nodeDefs" : {
+      "78fc2ffac2fd9401" : {
+        "container" : "",
+        "extras" : "",
+        "hostPort" : "0.0.0.0:8094",
+        "implVersion" : "4.0.0",
+        "tags" : null,
+        "uuid" : "78fc2ffac2fd9401",
+        "weight" : 1
+      }
+    },
+    "uuid" : "2f0d18fb750b2d4a"
+  },
+  "nodeDefsKnownCAS" : 1,
+  "nodeDefsKnownErr" : null,
+  "nodeDefsWanted" : {
+    "implVersion" : "4.0.0",
+    "nodeDefs" : {
+      "78fc2ffac2fd9401" : {
+        "container" : "",
+        "extras" : "",
+        "hostPort" : "0.0.0.0:8094",
+        "implVersion" : "4.0.0",
+        "tags" : null,
+        "uuid" : "78fc2ffac2fd9401",
+        "weight" : 1
+      }
+    },
+    "uuid" : "72d6750878551451"
+  },
+  "nodeDefsWantedCAS" : 2,
+  "nodeDefsWantedErr" : null,
+  "planPIndexes" : {
+    "implVersion" : "4.0.0",
+    "planPIndexes" : {
+      "myFirstIndex_6cc599ab7a85bf3b_0" : {
+        "indexName" : "myFirstIndex",
+        "indexParams" : "",
+        "indexType" : "blackhole",
+        "indexUUID" : "6cc599ab7a85bf3b",
+        "name" : "myFirstIndex_6cc599ab7a85bf3b_0",
+        "nodes" : {
+          "78fc2ffac2fd9401" : {
+            "canRead" : true,
+            "canWrite" : true,
+            "priority" : 0
+          }
+        },
+        "sourceName" : "",
+        "sourceParams" : "",
+        "sourcePartitions" : "",
+        "sourceType" : "nil",
+        "sourceUUID" : "",
+        "uuid" : "64bed6e2edf354c3"
+      }
+    },
+    "uuid" : "6327debf817a5ec7",
+    "warnings" : {
+      "myFirstIndex" : [ ]
+    }
+  },
+  "planPIndexesCAS" : 5,
+  "planPIndexesErr" : null,
+  "status" : "ok"
+}
+----
+====
+
 
 include::{snippetDir}getClusterConfig/http-response.adoc[opts=optional]
 
@@ -356,7 +460,12 @@ include::{specDir}paths/managerKick/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/managerKick/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}managerKick/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+
 
 include::{snippetDir}managerKick/http-response.adoc[opts=optional]
 
@@ -478,7 +587,12 @@ include::{specDir}paths/managerMeta/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/managerMeta/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}managerMeta/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+
 
 include::{snippetDir}managerMeta/http-response.adoc[opts=optional]
 
@@ -596,7 +710,12 @@ include::{specDir}paths/refreshClusterConfig/operation-security-end.adoc[opts=op
 
 include::{specDir}paths/refreshClusterConfig/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}refreshClusterConfig/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+
 
 include::{snippetDir}refreshClusterConfig/http-response.adoc[opts=optional]
 
@@ -739,7 +858,12 @@ include::{specDir}paths/captureCpuProfile/operation-security-end.adoc[opts=optio
 
 include::{specDir}paths/captureCpuProfile/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}captureCpuProfile/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+
 
 include::{snippetDir}captureCpuProfile/http-response.adoc[opts=optional]
 
@@ -857,7 +981,12 @@ include::{specDir}paths/captureMemoryProfile/operation-security-end.adoc[opts=op
 
 include::{specDir}paths/captureMemoryProfile/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}captureMemoryProfile/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+
 
 include::{snippetDir}captureMemoryProfile/http-response.adoc[opts=optional]
 
@@ -991,7 +1120,12 @@ include::{specDir}paths/getDiagnostics/operation-security-end.adoc[opts=optional
 
 include::{specDir}paths/getDiagnostics/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}getDiagnostics/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+
 
 include::{snippetDir}getDiagnostics/http-response.adoc[opts=optional]
 
@@ -1113,7 +1247,22 @@ include::{specDir}paths/getLogs/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/getLogs/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}getLogs/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+.Response 200
+====
+[source,json]
+----
+{
+  "events" : [ ],
+  "messages" : [ ]
+}
+----
+====
+
 
 include::{snippetDir}getLogs/http-response.adoc[opts=optional]
 
@@ -1234,7 +1383,12 @@ include::{specDir}paths/getRuntimeArgs/operation-security-end.adoc[opts=optional
 
 include::{specDir}paths/getRuntimeArgs/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}getRuntimeArgs/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+
 
 include::{snippetDir}getRuntimeArgs/http-response.adoc[opts=optional]
 
@@ -1356,7 +1510,31 @@ include::{specDir}paths/getRuntimeInfo/operation-security-end.adoc[opts=optional
 
 include::{specDir}paths/getRuntimeInfo/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}getRuntimeInfo/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+.Response 200
+====
+[source,json]
+----
+{
+  "arch" : "amd64",
+  "go" : {
+    "GOMAXPROCS" : 1,
+    "GOROOT" : "/usr/local/go",
+    "compiler" : "gc",
+    "version" : "go1.4"
+  },
+  "numCPU" : 8,
+  "os" : "darwin",
+  "versionData" : "4.0.0",
+  "versionMain" : "v0.3.1"
+}
+----
+====
+
 
 include::{snippetDir}getRuntimeInfo/http-response.adoc[opts=optional]
 
@@ -1494,7 +1672,12 @@ include::{specDir}paths/performGC/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/performGC/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}performGC/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+
 
 include::{snippetDir}performGC/http-response.adoc[opts=optional]
 
@@ -1636,7 +1819,12 @@ include::{specDir}paths/getMemoryStats/operation-security-end.adoc[opts=optional
 
 include::{specDir}paths/getMemoryStats/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}getMemoryStats/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+
 
 include::{snippetDir}getMemoryStats/http-response.adoc[opts=optional]
 
@@ -1757,7 +1945,12 @@ include::{specDir}paths/getRuntimeStats/operation-security-end.adoc[opts=optiona
 
 include::{specDir}paths/getRuntimeStats/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}getRuntimeStats/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+
 
 include::{snippetDir}getRuntimeStats/http-response.adoc[opts=optional]
 

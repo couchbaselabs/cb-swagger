@@ -294,7 +294,56 @@ include::{specDir}paths/put_options/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/put_options/operation-security-after.adoc[opts=optional]
 
+[#put_options-ex-req]
+= Example HTTP Request
+
+====
+[#put_options-ex-req-disable]
+.Disable
+[source,sh]
+----
+curl -X PUT http://$HOST:8094/api/managerOptions \
+-u $USER:$PASSWORD \
+-H "Content-type:application/json" \
+-d '{"disableFileTransferRebalance": "true" }'
+----
+
+[#put_options-ex-req-enable]
+.Enable
+[source,sh]
+----
+curl -X PUT http://$HOST:8094/api/managerOptions \
+-u $USER:$PASSWORD \
+-H "Content-type:application/json" \
+-d '{"disableFileTransferRebalance": "false" }'
+----
+====
+
+
+
 include::{snippetDir}put_options/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+.Response 200
+====
+[source,json]
+----
+{
+  "status" : "ok"
+}
+----
+====
+.Response 405
+====
+[source,json]
+----
+{
+  "error" : "Method not allowed for endpoint",
+  "status" : "fail"
+}
+----
+====
+
 
 include::{snippetDir}put_options/http-response.adoc[opts=optional]
 

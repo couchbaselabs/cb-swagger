@@ -320,7 +320,12 @@ include::{specDir}paths/delete_library/operation-security-end.adoc[opts=optional
 
 include::{specDir}paths/delete_library/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}delete_library/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+
 
 include::{snippetDir}delete_library/http-response.adoc[opts=optional]
 
@@ -504,7 +509,42 @@ include::{specDir}paths/get_collection/operation-security-end.adoc[opts=optional
 
 include::{specDir}paths/get_collection/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}get_collection/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+.Response 200
+====
+.All Libraries
+[source,json]
+----
+[ {
+  "name" : "math",
+  "bucket" : "",
+  "scope" : "",
+  "code" : "function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"
+}, {
+  "name" : "science",
+  "bucket" : "travel-sample",
+  "scope" : "inventory",
+  "code" : "function f2c(f) { return (5/9)*(f-32); }"
+} ]
+----
+
+.Scoped Libraries
+[source,json]
+----
+[ {
+  "name" : "science",
+  "bucket" : "travel-sample",
+  "scope" : "inventory",
+  "code" : "function f2c(f) { return (5/9)*(f-32); }"
+} ]
+----
+====
+
+
 
 include::{snippetDir}get_collection/http-response.adoc[opts=optional]
 
@@ -716,7 +756,31 @@ include::{specDir}paths/get_library/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/get_library/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}get_library/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+.Response 200
+====
+.Global Library
+[source,json]
+----
+{
+  "math" : "function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"
+}
+----
+
+.Scoped Library
+[source,json]
+----
+{
+  "science" : "function f2c(f) { return (5/9)*(f-32); }"
+}
+----
+====
+
+
 
 include::{snippetDir}get_library/http-response.adoc[opts=optional]
 
@@ -949,7 +1013,12 @@ include::{specDir}paths/post_library/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/post_library/operation-security-after.adoc[opts=optional]
 
+
+
 include::{snippetDir}post_library/http-request.adoc[opts=optional]
+
+// FIXME: Response examples
+
 
 include::{snippetDir}post_library/http-response.adoc[opts=optional]
 
