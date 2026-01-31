@@ -237,9 +237,14 @@ include::{specDir}paths/get_access/operation-security-after.adoc[opts=optional]
 
 
 
+include::{snippetDir}get_access/curl-request.adoc[opts=optional]
+
+
+
 include::{snippetDir}get_access/http-request.adoc[opts=optional]
 
 // FIXME: Response examples
+[#get_access-ex-response-200]
 .Response 200
 ====
 [source,json]
@@ -375,9 +380,14 @@ include::{specDir}paths/get_settings/operation-security-after.adoc[opts=optional
 
 
 
+include::{snippetDir}get_settings/curl-request.adoc[opts=optional]
+
+
+
 include::{snippetDir}get_settings/http-request.adoc[opts=optional]
 
 // FIXME: Response examples
+[#get_settings-ex-response-200]
 .Response 200
 ====
 [source,json]
@@ -582,9 +592,27 @@ include::{specDir}paths/post_access/operation-security-after.adoc[opts=optional]
 
 
 
+include::{snippetDir}post_access/curl-request.adoc[opts=optional]
+
+[#post_access-ex-request]
+= Example Request Body
+
+====
+[source,json]
+----
+{
+  "all_access" : false,
+  "allowed_urls" : [ "https://company1.com" ],
+  "disallowed_urls" : [ "https://company2.com" ]
+}
+----
+====
+
+
 include::{snippetDir}post_access/http-request.adoc[opts=optional]
 
 // FIXME: Response examples
+[#post_access-ex-response-200]
 .Response 200
 ====
 [source,json]
@@ -765,9 +793,67 @@ include::{specDir}paths/post_settings/operation-security-after.adoc[opts=optiona
 
 
 
+include::{snippetDir}post_settings/curl-request.adoc[opts=optional]
+
+[#post_settings-ex-request]
+= Example Request Body
+
+====
+[#post_settings-ex-request-partial-settings]
+.Partial Settings
+[source,json]
+----
+{
+  "queryTmpSpaceDir" : "/tmp",
+  "queryTmpSpaceSize" : 2048,
+  "queryCurlWhitelist" : {
+    "all_access" : false
+  }
+}
+----
+
+[#post_settings-ex-request-all-settings]
+.All Settings
+[source,json]
+----
+{
+  "queryTmpSpaceDir" : "/tmp",
+  "queryTmpSpaceSize" : 2048,
+  "queryPipelineBatch" : 16,
+  "queryPipelineCap" : 512,
+  "queryScanCap" : 512,
+  "queryTimeout" : 0,
+  "queryPreparedLimit" : 16384,
+  "queryCompletedLimit" : 4000,
+  "queryCompletedThreshold" : 1000,
+  "queryLogLevel" : "info",
+  "queryMaxParallelism" : 1,
+  "queryTxTimeout" : "0ms",
+  "queryMemoryQuota" : 0,
+  "queryUseCBO" : true,
+  "queryCleanupClientAttempts" : true,
+  "queryCleanupLostAttempts" : true,
+  "queryCleanupWindow" : "60s",
+  "queryNumAtrs" : 1024,
+  "queryNodeQuota" : 0,
+  "queryUseReplica" : "unset",
+  "queryNodeQuotaValPercent" : 67,
+  "queryNumCpus" : 0,
+  "queryCompletedMaxPlanSize" : 262144,
+  "queryN1QLFeatCtrl" : 76,
+  "queryCurlWhitelist" : {
+    "all_access" : false
+  }
+}
+----
+====
+
+
+
 include::{snippetDir}post_settings/http-request.adoc[opts=optional]
 
 // FIXME: Response examples
+[#post_settings-ex-response-200]
 .Response 200
 ====
 [source,json]

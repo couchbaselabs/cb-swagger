@@ -294,11 +294,11 @@ include::{specDir}paths/put_options/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/put_options/operation-security-after.adoc[opts=optional]
 
-[#put_options-ex-req]
+[#put_options-ex-curl]
 = Example HTTP Request
 
 ====
-[#put_options-ex-req-disable]
+[#put_options-ex-curl-disable]
 .Disable
 [source,sh]
 ----
@@ -308,7 +308,7 @@ curl -X PUT http://$HOST:8094/api/managerOptions \
 -d '{"disableFileTransferRebalance": "true" }'
 ----
 
-[#put_options-ex-req-enable]
+[#put_options-ex-curl-enable]
 .Enable
 [source,sh]
 ----
@@ -321,9 +321,14 @@ curl -X PUT http://$HOST:8094/api/managerOptions \
 
 
 
+include::{snippetDir}put_options/curl-request.adoc[opts=optional]
+
+
+
 include::{snippetDir}put_options/http-request.adoc[opts=optional]
 
 // FIXME: Response examples
+[#put_options-ex-response-200]
 .Response 200
 ====
 [source,json]
@@ -333,6 +338,7 @@ include::{snippetDir}put_options/http-request.adoc[opts=optional]
 }
 ----
 ====
+[#put_options-ex-response-405]
 .Response 405
 ====
 [source,json]

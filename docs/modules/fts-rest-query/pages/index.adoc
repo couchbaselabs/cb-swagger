@@ -270,11 +270,11 @@ include::{specDir}paths/api-query/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/api-query/operation-security-after.adoc[opts=optional]
 
-[#api-query-ex-req]
+[#api-query-ex-curl]
 = Example HTTP Request
 
 ====
-[#api-query-ex-req-all]
+[#api-query-ex-curl-all]
 .All
 [source,sh]
 ----
@@ -283,7 +283,7 @@ curl -XGET -H "Content-Type: application/json" \
   "http://$HOST:8094/api/query"
 ----
 
-[#api-query-ex-req-filtered]
+[#api-query-ex-curl-filtered]
 .Filtered
 [source,sh]
 ----
@@ -295,11 +295,17 @@ curl -XGET -H "Content-Type: application/json" \
 
 
 
+include::{snippetDir}api-query/curl-request.adoc[opts=optional]
+
+
+
 include::{snippetDir}api-query/http-request.adoc[opts=optional]
 
 // FIXME: Response examples
+[#api-query-ex-response-200]
 .Response 200
 ====
+[#api-query-ex-response-200-all-active-node-queries]
 .All active node queries
 [source,json]
 ----
@@ -366,6 +372,7 @@ include::{snippetDir}api-query/http-request.adoc[opts=optional]
 }
 ----
 
+[#api-query-ex-response-200-all-active-node-queries-filtered]
 .All active node queries (filtered)
 [source,json]
 ----
@@ -580,7 +587,7 @@ include::{specDir}paths/api-query-cancel/operation-security-end.adoc[opts=option
 
 include::{specDir}paths/api-query-cancel/operation-security-after.adoc[opts=optional]
 
-[#api-query-cancel-ex-req]
+[#api-query-cancel-ex-curl]
 = Example HTTP Request
 
 ====
@@ -595,9 +602,25 @@ curl -X POST -H "Content-Type: application/json" -u $USER:$PASSWORD \
 
 
 
+include::{snippetDir}api-query-cancel/curl-request.adoc[opts=optional]
+
+[#api-query-cancel-ex-request]
+= Example Request Body
+
+====
+[source,json]
+----
+{
+  "uuid" : "b91d75480470f979f65f04e8f20a1f7b"
+}
+----
+====
+
+
 include::{snippetDir}api-query-cancel/http-request.adoc[opts=optional]
 
 // FIXME: Response examples
+[#api-query-cancel-ex-response-200]
 .Response 200
 ====
 [source,json]
@@ -787,7 +810,7 @@ include::{specDir}paths/api-query-index/operation-security-end.adoc[opts=optiona
 
 include::{specDir}paths/api-query-index/operation-security-after.adoc[opts=optional]
 
-[#api-query-index-ex-req]
+[#api-query-index-ex-curl]
 = Example HTTP Request
 
 ====
@@ -802,9 +825,14 @@ curl -XGET -H "Content-Type: application/json" \
 
 
 
+include::{snippetDir}api-query-index/curl-request.adoc[opts=optional]
+
+
+
 include::{snippetDir}api-query-index/http-request.adoc[opts=optional]
 
 // FIXME: Response examples
+[#api-query-index-ex-response-200]
 .Response 200
 ====
 [source,json]
