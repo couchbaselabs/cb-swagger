@@ -348,43 +348,31 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 {{/if}}
 {{/each}}
 
-include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
-
+{{#*inline "requestBodyHeading" ~}}
+[#{{operationIdOriginal}}-ex-request]
+= Example Request Body
+{{~/inline ~}}
 {{#with bodyParam ~}}
 {{#with content.[application/json] ~}}
-{{#with example ~}}
-[#{{operationIdOriginal}}-ex-request]
-= Example Request Body
-
-====
-[source,json]
-----
-{{#json pretty=true}}{{{this}}}{{/json}}
-----
-====
-{{else each examples ~}}
-{{#if @first ~}}
-[#{{operationIdOriginal}}-ex-request]
-= Example Request Body
-
-====
-{{/if ~}}
-{{#with summary~}}
-[#{{operationIdOriginal}}-ex-request-{{#slugify}}{{this}}{{/slugify}}]
-.{{{this}}}
-{{~/with}}
-[source,json]
-----
-{{#with value}}{{#json pretty=true}}{{{this}}}{{/json}}{{/with}}
-----
-{{#if @last ~}}
-====
-{{/if}}
-{{/with}}{{! example }}
+{{#if example ~}}
+{{> requestBodyHeading }}
+{{~else if examples ~}}
+{{> requestBodyHeading }}
+{{~/if}}
 {{~/with}}{{! content.[application/json] }}
 {{~/with}}{{! bodyParam }}
 
 include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
+
+{{#with bodyParam ~}}
+{{#with content.[application/json] ~}}
+{{#with example ~}}
+{{>request language="json" isJson=true}}
+{{else each examples ~}}
+{{>requests language="json" isJson=true}}
+{{/with}}
+{{~/with}}{{! content.[application/json] }}
+{{~/with}}{{! bodyParam }}
 
 ifeval::["
 {{~#each responses ~}}
