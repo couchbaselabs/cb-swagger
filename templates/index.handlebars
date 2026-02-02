@@ -118,8 +118,10 @@ endif::[]
 
 ifeval::[{count-apis} > 0]
 [#tag-{{baseName}}]
-= {{#with operations.operation.[0].tags.[0].name ~}}
-{{#capitalize}}{{this}}{{/capitalize}}{{! FIXME: assumes first tag in first operation is the same as this API }}
+= {{#with operations.operation.[0].tags.[0].x-displayName ~}}
+{{this}}{{! FIXME: assumes first tag in first operation is the same as this API }}
+{{~ else with operations.operation.[0].tags.[0].name ~}}
+{{#capitalize}}{{this}}{{/capitalize}}
 {{~ else ~}}
 {{baseName}}
 {{~/with}}
@@ -244,7 +246,7 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-responses-begin.adoc[o
 |===
 | HTTP Code | Description | Schema
 {{/if}}{{! @first }}
-| {{code}}
+| {{#if isDefault}}Default{{else}}{{code}}{{/if}}
 a| [markdown]
 --
 {{{message}}}
@@ -379,7 +381,7 @@ include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 {{#with example ~}}
 
 [#{{operationIdOriginal}}-ex-response-{{code}}]
-.Response {{#if code}}{{code}}{{else}}(default){{/if}}
+.{{#if isDefault}}Default Response{{else}}Response {{code}}{{/if}}
 ====
 [source,json]
 ----
@@ -390,7 +392,7 @@ include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 {{#if @first ~}}
 
 [#{{operationIdOriginal}}-ex-response-{{code}}]
-.Response {{#if code}}{{code}}{{else}}(default){{/if}}
+.{{#if isDefault}}Default Response{{else}}Response {{code}}{{/if}}
 ====
 {{/if ~}}
 {{#with summary~}}
@@ -409,7 +411,7 @@ include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 {{#with example ~}}
 
 [#{{operationIdOriginal}}-ex-response-{{code}}]
-.Response {{code}}
+.{{#if isDefault}}Default Response{{else}}Response {{code}}{{/if}}
 ====
 [source,html]
 ----
@@ -420,7 +422,7 @@ include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 {{#if @first ~}}
 
 [#{{operationIdOriginal}}-ex-response-{{code}}]
-.Response {{code}}
+.{{#if isDefault}}Default Response{{else}}Response {{code}}{{/if}}
 ====
 {{/if ~}}
 {{#with summary~}}
