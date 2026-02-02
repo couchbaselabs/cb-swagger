@@ -389,71 +389,23 @@ yes
 = Example HTTP Response
 endif::[]
 
+include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
+
 {{#each responses ~}}
 {{#with content.[application/json] ~}}
 {{#with example ~}}
-
-[#{{operationIdOriginal}}-ex-response-{{code}}]
-.{{#if isDefault}}Default Response{{else}}Response {{code}}{{/if}}
-====
-[source,json]
-----
-{{#json pretty=true}}{{{this}}}{{/json}}
-----
-====
+{{>response language="json" isJson=true}}
 {{else each examples ~}}
-{{#if @first ~}}
-
-[#{{operationIdOriginal}}-ex-response-{{code}}]
-.{{#if isDefault}}Default Response{{else}}Response {{code}}{{/if}}
-====
-{{/if ~}}
-{{#with summary~}}
-[#{{operationIdOriginal}}-ex-response-{{code}}-{{#slugify}}{{this}}{{/slugify}}]
-.{{{this}}}
-{{~/with}}
-[source,json]
-----
-{{#with value}}{{#json pretty=true}}{{{this}}}{{/json}}{{/with}}
-----
-{{#if @last ~}}
-====
-{{/if}}
-{{/with}}{{! example }}
+{{>responses language="json" isJson=true}}
+{{/with}}
 {{~else with content.[text/html] ~}}
 {{#with example ~}}
-
-[#{{operationIdOriginal}}-ex-response-{{code}}]
-.{{#if isDefault}}Default Response{{else}}Response {{code}}{{/if}}
-====
-[source,html]
-----
-{{{this}}}
-----
-====
+{{> response language="html"}}
 {{else each examples ~}}
-{{#if @first ~}}
-
-[#{{operationIdOriginal}}-ex-response-{{code}}]
-.{{#if isDefault}}Default Response{{else}}Response {{code}}{{/if}}
-====
-{{/if ~}}
-{{#with summary~}}
-[#{{operationIdOriginal}}-ex-response-{{code}}-{{#slugify}}{{this}}{{/slugify}}]
-.{{{this}}}
-{{~/with}}
-[source,html]
-----
-{{#with value}}{{{this}}}{{/with}}
-----
-{{#if @last ~}}
-====
-{{/if}}
-{{/with}}{{! example }}
+{{> responses language="html"}}
+{{/with}}
 {{~/with}}{{! content.[application/json] }}
 {{~/each}}{{! responses }}
-
-include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
 
 include::{specDir}paths/{{operationIdOriginal}}/operation-end.adoc[opts=optional]
 

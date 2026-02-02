@@ -1,0 +1,15 @@
+{{#if @first ~}}
+
+[#{{operationIdOriginal}}-ex-response-{{code}}]
+.{{#if isDefault}}Default Response{{else}}Response {{code}}{{/if}}
+====
+{{/if ~}}
+[#{{operationIdOriginal}}-ex-response-{{code}}-{{@index}}]
+.{{#with summary}}{{{this}}}{{else}}Example {{@index}}{{/with}}
+[source,{{language}}]
+----
+{{#with value}}{{#if isJson}}{{#json pretty=true}}{{{this}}}{{/json}}{{else}}{{{this}}}{{/if}}{{/with}}
+----
+{{#if @last ~}}
+====
+{{/if}}
