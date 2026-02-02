@@ -375,7 +375,21 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 
 include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["
+{{~#each responses ~}}
+{{#each content ~}}
+{{#with example ~}}
+yes
+{{~else each examples ~}}
+yes
+{{~/with}}
+{{~/each}}
+{{~/each~}}
+" != ""]
+[#{{operationIdOriginal}}-ex-response]
+= Example HTTP Response
+endif::[]
+
 {{#each responses ~}}
 {{#with content.[application/json] ~}}
 {{#with example ~}}
