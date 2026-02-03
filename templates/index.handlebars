@@ -320,7 +320,8 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 {{#if vendorExtensions.x-codeSamples ~}}
 [#{{operationIdOriginal}}-ex-curl]
 = Example HTTP Request
-{{~/if}}
+{{! example HTTP request heading}}
+{{/if~}}
 
 include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 
@@ -332,13 +333,9 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 {{#if @first ~}}
 ====
 {{/if ~}}
-{{#if @last ~}}
-{{#if @index ~}}
-{{> curlTitle}}{{! show label if more than 1 example }}
-{{/if}}
-{{~else ~}}
-{{> curlTitle}}
-{{/if}}
+{{#if @last}}{{#if @index}}{{> curlTitle}}
+{{/if}}{{else}}{{> curlTitle}}
+{{/if ~}}
 [source,sh]
 ----
 {{{source}}}
@@ -346,7 +343,7 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 {{#if @last ~}}
 ====
 {{/if}}
-{{/each}}
+{{/each ~}}
 
 {{#*inline "requestBodyHeading" ~}}
 [#{{operationIdOriginal}}-ex-request]
@@ -354,9 +351,11 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 {{~/inline ~}}
 {{#with bodyParam ~}}
 {{#with content.[application/json] ~}}
-{{#if example ~}}
+{{#if example}}
+{{! single request body example heading }}
 {{> requestBodyHeading }}
-{{~else if examples ~}}
+{{~else if examples}}
+{{! multiple request body example heading }}
 {{> requestBodyHeading }}
 {{~/if}}
 {{~/with}}{{! content.[application/json] }}
@@ -364,11 +363,13 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 
 include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 
-{{#with bodyParam ~}}
+{{~#with bodyParam ~}}
 {{#with content.[application/json] ~}}
-{{#with example ~}}
+{{#with example}}
+{{! single request body example }}
 {{>request language="json" isJson=true}}
-{{else each examples ~}}
+{{else each examples}}
+{{! multiple request body examples }}
 {{>requests language="json" isJson=true}}
 {{/with}}
 {{~/with}}{{! content.[application/json] }}
@@ -391,17 +392,21 @@ endif::[]
 
 include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
 
-{{#each responses ~}}
+{{~#each responses ~}}
 {{#with content.[application/json] ~}}
-{{#with example ~}}
+{{#with example}}
+{{! single JSON response example }}
 {{>response language="json" isJson=true}}
-{{else each examples ~}}
+{{else each examples}}
+{{! multiple JSON response examples }}
 {{>responses language="json" isJson=true}}
 {{/with}}
 {{~else with content.[text/html] ~}}
-{{#with example ~}}
+{{#with example}}
+{{! single HTML response example }}
 {{> response language="html"}}
-{{else each examples ~}}
+{{else each examples}}
+{{! multiple HTML response examples }}
 {{> responses language="html"}}
 {{/with}}
 {{~/with}}{{! content.[application/json] }}
