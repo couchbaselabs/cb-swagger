@@ -1,20 +1,56 @@
 = Couchbase Swagger Project
 
-This proof-of-concept attempts to build inline examples into the AsciiDoc output using external example files referenced by the spec.
+This project uses the https://openapi-generator.tech/docs/plugins/#gradle[OpenAPI Generator Gradle Plugin] to convert the OpenAPI specifications for Couchbase Server Developer REST APIs into AsciiDoctor documentation.
 
-The process needs to handle single examples using the `example` key and multiple examples using the `examples` key, in both the request body and the responses.
+== Usage guide
 
-* [x] The examples must be bundled into the spec.
-      OpenAPI Generator does not do this.
-      The Gradle build uses Redocly to bundle the examples.
-* [x] OpenAPI continues to generate examples, even if inline examples are provided.
-      The generated examples are stored in a different part of OpenAPI Generator's internal representation of the spec.
-      Continue to set `skipExamples` to `true` so the generated examples are not included.
-* [x] The inline examples are placed in the output in the same location where included example AsciiDoc file are placed by the OpenAPI Generator templates.
-* [x] The OpenAPI Generator templates remove all line breaks and white space from the inline examples.
-      The external example files should use the `jsonc` extension, so that line breaks are preserved in the output doc.
-* [x] Multiple examples using the `examples` key should use the `externalValue` to reference the external example files.
-      Otherwise, Redocly does not bundle the external example into the spec.
-* [x] The templates cannot work with multiple examples, because Mustache has no way of parsing an object whose keys are not known.
-      To fix this issue, try migrating the templates to Handlebars.
-      This is beyond the scope of this proof-of-concept.
+This repository handles several OpenAPI subprojects.
+Each subproject is stored in its own subfolder within the `docs/modules` folder.
+
+=== Build Script
+
+Within each subproject there is a gradle build script with a `.gradle` extension.
+The gradle build script specifies the locations of the OpenAPI source file, any additional AsciiDoc content, and the output AsciiDoc files.
+
+The `build.gradle` script in the root project folder calls the gradle build scripts from each subproject.
+
+Some subprojects are not currently ready to be built.
+These do not have a gradle build script.
+
+=== OpenAPI Specification
+
+Within each subproject, the OpenAPI Specification (JSON or YAML) is stored in a folder called `attachments`.
+(For some subprojects, the OpenAPI specification file may be stored remotely, i.e. alongside the development source files.)
+
+=== AsciiDoc Content
+
+Within each subproject, the generated AsciiDoc page is stored in the `pages` folder.
+(In Antora terms, each generated AsciiDoc page is stored in its own module.)
+For each subproject, additional AsciiDoc content may be stored in the `partials` folder and its subfolders.
+
+=== Convert a single subproject
+
+[subs="normal"]
+----
+./gradlew _project_:openApiGenerate --rerun-tasks
+----
+
+Where `_project_` is the subproject that you want to convert, for example, `admin`.
+
+=== Convert all projects
+
+[subs="normal"]
+----
+./gradlew --rerun-tasks
+----
+
+== Acknowledgements
+
+This project is based on the https://openapi-generator.tech/[OpenAPI Generator] project.
+
+== Licensing
+
+The Couchbase Developer REST API Documentation © 2025 by Couchbase Inc. is licensed under various licenses.
+The Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) is one such license.
+See the LICENSE file for details.
+All licenses used in this repository can be found in the top-level `licenses` directory.
