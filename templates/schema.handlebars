@@ -1,11 +1,9 @@
 {{#with ref ~}}
 xref:{{dataType}}[]
-{{~else if hasVars ~}}
-{{#if isModel ~}}
+{{~else if isModel ~}}
 xref:{{dataType}}[]
 {{~else if isMap ~}}
 xref:{{dataType}}[]
-{{~/if}}{{! hasVars ~}}
 {{~else if isAnyType ~}}
 Any Type
 {{~else ~}}
