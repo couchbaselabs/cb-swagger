@@ -349,15 +349,20 @@ include::{specDir}paths/get_service/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/get_service/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_service/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}get_service/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yesyesyesyesyes" != ""]
+[#get_service-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}get_service/http-response.adoc[opts=optional]
+
+
 [#get_service-ex-response-200]
 .Response 200
 ====
@@ -382,10 +387,12 @@ include::{snippetDir}get_service/http-request.adoc[opts=optional]
 }
 ----
 ====
+
+
 [#get_service-ex-response-400]
 .Response 400
 ====
-[#get_service-ex-response-400-sql-error]
+[#get_service-ex-response-400-0]
 .SQL++ Error
 [source,json]
 ----
@@ -407,7 +414,8 @@ include::{snippetDir}get_service/http-request.adoc[opts=optional]
 }
 ----
 
-[#get_service-ex-response-400-request-error]
+
+[#get_service-ex-response-400-1]
 .Request Error
 [source,json]
 ----
@@ -429,6 +437,8 @@ include::{snippetDir}get_service/http-request.adoc[opts=optional]
 }
 ----
 ====
+
+
 
 [#get_service-ex-response-404]
 .Response 404
@@ -453,6 +463,9 @@ include::{snippetDir}get_service/http-request.adoc[opts=optional]
 }
 ----
 ====
+
+
+
 [#get_service-ex-response-503]
 .Response 503
 ====
@@ -478,8 +491,6 @@ include::{snippetDir}get_service/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}get_service/http-response.adoc[opts=optional]
 
 include::{specDir}paths/get_service/operation-end.adoc[opts=optional]
 
@@ -559,7 +570,7 @@ a¦ *Body* +
 required
 a¦ [markdown]
 --
-
+An object specifying one or more query parameters.
 --
 
 [%hardbreaks]
@@ -716,15 +727,20 @@ include::{specDir}paths/post_service/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/post_service/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}post_service/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}post_service/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yesyesyesyesyes" != ""]
+[#post_service-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}post_service/http-response.adoc[opts=optional]
+
+
 [#post_service-ex-response-200]
 .Response 200
 ====
@@ -749,10 +765,12 @@ include::{snippetDir}post_service/http-request.adoc[opts=optional]
 }
 ----
 ====
+
+
 [#post_service-ex-response-400]
 .Response 400
 ====
-[#post_service-ex-response-400-sql-error]
+[#post_service-ex-response-400-0]
 .SQL++ Error
 [source,json]
 ----
@@ -774,7 +792,8 @@ include::{snippetDir}post_service/http-request.adoc[opts=optional]
 }
 ----
 
-[#post_service-ex-response-400-request-error]
+
+[#post_service-ex-response-400-1]
 .Request Error
 [source,json]
 ----
@@ -796,6 +815,8 @@ include::{snippetDir}post_service/http-request.adoc[opts=optional]
 }
 ----
 ====
+
+
 
 [#post_service-ex-response-404]
 .Response 404
@@ -820,6 +841,9 @@ include::{snippetDir}post_service/http-request.adoc[opts=optional]
 }
 ----
 ====
+
+
+
 [#post_service-ex-response-503]
 .Response 503
 ====
@@ -845,8 +869,6 @@ include::{snippetDir}post_service/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}post_service/http-response.adoc[opts=optional]
 
 include::{specDir}paths/post_service/operation-end.adoc[opts=optional]
 

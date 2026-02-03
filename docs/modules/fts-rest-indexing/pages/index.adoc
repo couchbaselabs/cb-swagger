@@ -244,7 +244,7 @@ The Search Service returns a response that includes the status `ok`.
 --
 a| xref:DeleteIndexResponse[]
 
-| 0
+| Default
 a| [markdown]
 --
 The Search Service returns a non-200 HTTP error code when a request fails.
@@ -288,15 +288,20 @@ include::{specDir}paths/d-api-index-name/operation-security-end.adoc[opts=option
 
 include::{specDir}paths/d-api-index-name/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}d-api-index-name/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}d-api-index-name/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yesyes" != ""]
+[#d-api-index-name-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}d-api-index-name/http-response.adoc[opts=optional]
+
+
 [#d-api-index-name-ex-response-200]
 .Response 200
 ====
@@ -308,8 +313,11 @@ include::{snippetDir}d-api-index-name/http-request.adoc[opts=optional]
 }
 ----
 ====
+
+
+
 [#d-api-index-name-ex-response-0]
-.Response 0
+.Default Response
 ====
 [source,json]
 ----
@@ -321,8 +329,6 @@ include::{snippetDir}d-api-index-name/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}d-api-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/d-api-index-name/operation-end.adoc[opts=optional]
 
@@ -462,7 +468,7 @@ A JSON object indicating the status of the operation.
 --
 a| xref:DeleteIndexResponse[]
 
-| 0
+| Default
 a| [markdown]
 --
 The Search Service returns a non-200 HTTP error code when a request fails.
@@ -506,15 +512,20 @@ include::{specDir}paths/d-api-scoped-index-name/operation-security-end.adoc[opts
 
 include::{specDir}paths/d-api-scoped-index-name/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}d-api-scoped-index-name/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}d-api-scoped-index-name/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yesyes" != ""]
+[#d-api-scoped-index-name-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}d-api-scoped-index-name/http-response.adoc[opts=optional]
+
+
 [#d-api-scoped-index-name-ex-response-200]
 .Response 200
 ====
@@ -526,8 +537,11 @@ include::{snippetDir}d-api-scoped-index-name/http-request.adoc[opts=optional]
 }
 ----
 ====
+
+
+
 [#d-api-scoped-index-name-ex-response-0]
-.Response 0
+.Default Response
 ====
 [source,json]
 ----
@@ -539,8 +553,6 @@ include::{snippetDir}d-api-scoped-index-name/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}d-api-scoped-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/d-api-scoped-index-name/operation-end.adoc[opts=optional]
 
@@ -660,15 +672,20 @@ include::{specDir}paths/g-api-index/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/g-api-index/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}g-api-index/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}g-api-index/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#g-api-index-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}g-api-index/http-response.adoc[opts=optional]
+
+
 [#g-api-index-ex-response-200]
 .Response 200
 ====
@@ -703,8 +720,6 @@ include::{snippetDir}g-api-index/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}g-api-index/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-index/operation-end.adoc[opts=optional]
 
@@ -863,15 +878,20 @@ include::{specDir}paths/g-api-index-name/operation-security-end.adoc[opts=option
 
 include::{specDir}paths/g-api-index-name/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}g-api-index-name/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}g-api-index-name/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#g-api-index-name-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}g-api-index-name/http-response.adoc[opts=optional]
+
+
 [#g-api-index-name-ex-response-200]
 .Response 200
 ====
@@ -921,8 +941,6 @@ include::{snippetDir}g-api-index-name/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}g-api-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-index-name/operation-end.adoc[opts=optional]
 
@@ -1086,15 +1104,20 @@ include::{specDir}paths/g-api-scoped-index/operation-security-end.adoc[opts=opti
 
 include::{specDir}paths/g-api-scoped-index/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}g-api-scoped-index/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}g-api-scoped-index/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#g-api-scoped-index-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}g-api-scoped-index/http-response.adoc[opts=optional]
+
+
 [#g-api-scoped-index-ex-response-200]
 .Response 200
 ====
@@ -1219,8 +1242,6 @@ include::{snippetDir}g-api-scoped-index/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}g-api-scoped-index/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-scoped-index/operation-end.adoc[opts=optional]
 
@@ -1397,15 +1418,20 @@ include::{specDir}paths/g-api-scoped-index-name/operation-security-end.adoc[opts
 
 include::{specDir}paths/g-api-scoped-index-name/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}g-api-scoped-index-name/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}g-api-scoped-index-name/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#g-api-scoped-index-name-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}g-api-scoped-index-name/http-response.adoc[opts=optional]
+
+
 [#g-api-scoped-index-name-ex-response-200]
 .Response 200
 ====
@@ -1572,8 +1598,6 @@ include::{snippetDir}g-api-scoped-index-name/http-request.adoc[opts=optional]
 ====
 
 
-include::{snippetDir}g-api-scoped-index-name/http-response.adoc[opts=optional]
-
 include::{specDir}paths/g-api-scoped-index-name/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
@@ -1678,7 +1702,7 @@ a¦ *Body* +
 required
 a¦ [markdown]
 --
-
+The full Search index definition. For a detailed list of all parameters for the request body, see [Search Index JSON Properties](../search/search-index-params.html).
 --
 
 [%hardbreaks]
@@ -1720,7 +1744,7 @@ A JSON object indicating the status of the operation.
 --
 a| xref:PutIndexResponse[]
 
-| 0
+| Default
 a| [markdown]
 --
 The Search Service returns a non-200 HTTP error code when a request fails.
@@ -1764,15 +1788,20 @@ include::{specDir}paths/p-api-index-name/operation-security-end.adoc[opts=option
 
 include::{specDir}paths/p-api-index-name/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}p-api-index-name/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}p-api-index-name/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yesyes" != ""]
+[#p-api-index-name-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}p-api-index-name/http-response.adoc[opts=optional]
+
+
 [#p-api-index-name-ex-response-200]
 .Response 200
 ====
@@ -1785,8 +1814,11 @@ include::{snippetDir}p-api-index-name/http-request.adoc[opts=optional]
 }
 ----
 ====
+
+
+
 [#p-api-index-name-ex-response-0]
-.Response 0
+.Default Response
 ====
 [source,json]
 ----
@@ -1798,8 +1830,6 @@ include::{snippetDir}p-api-index-name/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}p-api-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-index-name/operation-end.adoc[opts=optional]
 
@@ -1923,7 +1953,7 @@ a¦ *Body* +
 required
 a¦ [markdown]
 --
-
+The full Search index definition. For a detailed list of all parameters for the request body, see [Search Index JSON Properties](../search/search-index-params.html).
 --
 
 [%hardbreaks]
@@ -1965,7 +1995,7 @@ A JSON object indicating the status of the operation.
 --
 a| xref:PutIndexResponse[]
 
-| 0
+| Default
 a| [markdown]
 --
 The Search Service returns a non-200 HTTP error code when a request fails.
@@ -2009,15 +2039,20 @@ include::{specDir}paths/p-api-scoped-index-name/operation-security-end.adoc[opts
 
 include::{specDir}paths/p-api-scoped-index-name/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}p-api-scoped-index-name/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}p-api-scoped-index-name/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yesyes" != ""]
+[#p-api-scoped-index-name-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}p-api-scoped-index-name/http-response.adoc[opts=optional]
+
+
 [#p-api-scoped-index-name-ex-response-200]
 .Response 200
 ====
@@ -2030,8 +2065,11 @@ include::{snippetDir}p-api-scoped-index-name/http-request.adoc[opts=optional]
 }
 ----
 ====
+
+
+
 [#p-api-scoped-index-name-ex-response-0]
-.Response 0
+.Default Response
 ====
 [source,json]
 ----
@@ -2043,8 +2081,6 @@ include::{snippetDir}p-api-scoped-index-name/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}p-api-scoped-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-scoped-index-name/operation-end.adoc[opts=optional]
 
@@ -2242,15 +2278,20 @@ include::{specDir}paths/p-api-idx-name-ingestcontrol/operation-security-end.adoc
 
 include::{specDir}paths/p-api-idx-name-ingestcontrol/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}p-api-idx-name-ingestcontrol/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}p-api-idx-name-ingestcontrol/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#p-api-idx-name-ingestcontrol-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}p-api-idx-name-ingestcontrol/http-response.adoc[opts=optional]
+
+
 [#p-api-idx-name-ingestcontrol-ex-response-200]
 .Response 200
 ====
@@ -2262,8 +2303,6 @@ include::{snippetDir}p-api-idx-name-ingestcontrol/http-request.adoc[opts=optiona
 ----
 ====
 
-
-include::{snippetDir}p-api-idx-name-ingestcontrol/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-idx-name-ingestcontrol/operation-end.adoc[opts=optional]
 
@@ -2436,15 +2475,20 @@ include::{specDir}paths/p-api-idx-name-planfreezecontrol/operation-security-end.
 
 include::{specDir}paths/p-api-idx-name-planfreezecontrol/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}p-api-idx-name-planfreezecontrol/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}p-api-idx-name-planfreezecontrol/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#p-api-idx-name-planfreezecontrol-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}p-api-idx-name-planfreezecontrol/http-response.adoc[opts=optional]
+
+
 [#p-api-idx-name-planfreezecontrol-ex-response-200]
 .Response 200
 ====
@@ -2456,8 +2500,6 @@ include::{snippetDir}p-api-idx-name-planfreezecontrol/http-request.adoc[opts=opt
 ----
 ====
 
-
-include::{snippetDir}p-api-idx-name-planfreezecontrol/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-idx-name-planfreezecontrol/operation-end.adoc[opts=optional]
 
@@ -2630,15 +2672,20 @@ include::{specDir}paths/p-api-idx-name-querycontrol/operation-security-end.adoc[
 
 include::{specDir}paths/p-api-idx-name-querycontrol/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}p-api-idx-name-querycontrol/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}p-api-idx-name-querycontrol/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#p-api-idx-name-querycontrol-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}p-api-idx-name-querycontrol/http-response.adoc[opts=optional]
+
+
 [#p-api-idx-name-querycontrol-ex-response-200]
 .Response 200
 ====
@@ -2650,8 +2697,6 @@ include::{snippetDir}p-api-idx-name-querycontrol/http-request.adoc[opts=optional
 ----
 ====
 
-
-include::{snippetDir}p-api-idx-name-querycontrol/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-idx-name-querycontrol/operation-end.adoc[opts=optional]
 
@@ -2842,15 +2887,20 @@ include::{specDir}paths/p-api-scoped-ingestcontrol/operation-security-end.adoc[o
 
 include::{specDir}paths/p-api-scoped-ingestcontrol/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}p-api-scoped-ingestcontrol/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}p-api-scoped-ingestcontrol/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#p-api-scoped-ingestcontrol-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}p-api-scoped-ingestcontrol/http-response.adoc[opts=optional]
+
+
 [#p-api-scoped-ingestcontrol-ex-response-200]
 .Response 200
 ====
@@ -2862,8 +2912,6 @@ include::{snippetDir}p-api-scoped-ingestcontrol/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}p-api-scoped-ingestcontrol/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-scoped-ingestcontrol/operation-end.adoc[opts=optional]
 
@@ -3054,15 +3102,20 @@ include::{specDir}paths/p-api-scoped-planfreezecontrol/operation-security-end.ad
 
 include::{specDir}paths/p-api-scoped-planfreezecontrol/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}p-api-scoped-planfreezecontrol/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}p-api-scoped-planfreezecontrol/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#p-api-scoped-planfreezecontrol-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}p-api-scoped-planfreezecontrol/http-response.adoc[opts=optional]
+
+
 [#p-api-scoped-planfreezecontrol-ex-response-200]
 .Response 200
 ====
@@ -3074,8 +3127,6 @@ include::{snippetDir}p-api-scoped-planfreezecontrol/http-request.adoc[opts=optio
 ----
 ====
 
-
-include::{snippetDir}p-api-scoped-planfreezecontrol/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-scoped-planfreezecontrol/operation-end.adoc[opts=optional]
 
@@ -3266,15 +3317,20 @@ include::{specDir}paths/p-api-scoped-querycontrol/operation-security-end.adoc[op
 
 include::{specDir}paths/p-api-scoped-querycontrol/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}p-api-scoped-querycontrol/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}p-api-scoped-querycontrol/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#p-api-scoped-querycontrol-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}p-api-scoped-querycontrol/http-response.adoc[opts=optional]
+
+
 [#p-api-scoped-querycontrol-ex-response-200]
 .Response 200
 ====
@@ -3286,8 +3342,6 @@ include::{snippetDir}p-api-scoped-querycontrol/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}p-api-scoped-querycontrol/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-scoped-querycontrol/operation-end.adoc[opts=optional]
 
@@ -3487,15 +3541,20 @@ include::{specDir}paths/g-api-scoped-status/operation-security-end.adoc[opts=opt
 
 include::{specDir}paths/g-api-scoped-status/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}g-api-scoped-status/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}g-api-scoped-status/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#g-api-scoped-status-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}g-api-scoped-status/http-response.adoc[opts=optional]
+
+
 [#g-api-scoped-status-ex-response-200]
 .Response 200
 ====
@@ -3508,8 +3567,6 @@ include::{snippetDir}g-api-scoped-status/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}g-api-scoped-status/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-scoped-status/operation-end.adoc[opts=optional]
 
@@ -3632,15 +3689,20 @@ include::{specDir}paths/g-api-stats/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/g-api-stats/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}g-api-stats/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}g-api-stats/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#g-api-stats-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}g-api-stats/http-response.adoc[opts=optional]
+
+
 [#g-api-stats-ex-response-200]
 .Response 200
 ====
@@ -3690,8 +3752,6 @@ include::{snippetDir}g-api-stats/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}g-api-stats/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-stats/operation-end.adoc[opts=optional]
 
@@ -3853,15 +3913,20 @@ include::{specDir}paths/g-api-stats-index-name/operation-security-end.adoc[opts=
 
 include::{specDir}paths/g-api-stats-index-name/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}g-api-stats-index-name/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}g-api-stats-index-name/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#g-api-stats-index-name-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}g-api-stats-index-name/http-response.adoc[opts=optional]
+
+
 [#g-api-stats-index-name-ex-response-200]
 .Response 200
 ====
@@ -4030,8 +4095,6 @@ include::{snippetDir}g-api-stats-index-name/http-request.adoc[opts=optional]
 ====
 
 
-include::{snippetDir}g-api-stats-index-name/http-response.adoc[opts=optional]
-
 include::{specDir}paths/g-api-stats-index-name/operation-end.adoc[opts=optional]
 
 :leveloffset: -1
@@ -4136,7 +4199,7 @@ a¦ *Body* +
 required
 a¦ [markdown]
 --
-
+Add any valid JSON document to the request body.
 --
 
 [%hardbreaks]
@@ -4215,12 +4278,14 @@ include::{specDir}paths/g-api-stats-index-name-analyzeDoc/operation-security-end
 
 include::{specDir}paths/g-api-stats-index-name-analyzeDoc/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}g-api-stats-index-name-analyzeDoc/curl-request.adoc[opts=optional]
+
+
 
 [#g-api-stats-index-name-analyzeDoc-ex-request]
 = Example Request Body
+
+include::{snippetDir}g-api-stats-index-name-analyzeDoc/http-request.adoc[opts=optional]
 
 ====
 [source,json]
@@ -4233,9 +4298,14 @@ include::{snippetDir}g-api-stats-index-name-analyzeDoc/curl-request.adoc[opts=op
 ====
 
 
-include::{snippetDir}g-api-stats-index-name-analyzeDoc/http-request.adoc[opts=optional]
+ifeval::["yes" != ""]
+[#g-api-stats-index-name-analyzeDoc-ex-response]
+= Example HTTP Response
+endif::[]
 
-// FIXME: Response examples
+include::{snippetDir}g-api-stats-index-name-analyzeDoc/http-response.adoc[opts=optional]
+
+
 [#g-api-stats-index-name-analyzeDoc-ex-response-200]
 .Response 200
 ====
@@ -4340,8 +4410,6 @@ include::{snippetDir}g-api-stats-index-name-analyzeDoc/http-request.adoc[opts=op
 ----
 ====
 
-
-include::{snippetDir}g-api-stats-index-name-analyzeDoc/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-stats-index-name-analyzeDoc/operation-end.adoc[opts=optional]
 
@@ -4524,15 +4592,20 @@ include::{specDir}paths/g-api-index-name-count/operation-security-end.adoc[opts=
 
 include::{specDir}paths/g-api-index-name-count/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}g-api-index-name-count/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}g-api-index-name-count/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#g-api-index-name-count-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}g-api-index-name-count/http-response.adoc[opts=optional]
+
+
 [#g-api-index-name-count-ex-response-200]
 .Response 200
 ====
@@ -4545,8 +4618,6 @@ include::{snippetDir}g-api-index-name-count/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}g-api-index-name-count/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-index-name-count/operation-end.adoc[opts=optional]
 
@@ -4653,7 +4724,7 @@ a¦ *Body* +
 required
 a¦ [markdown]
 --
-
+A JSON object to define the settings for your Search query. For more information about how to create a Search query JSON object, see [Search Request JSON Properties](../search/search-request-params.html).
 --
 
 [%hardbreaks]
@@ -4732,15 +4803,17 @@ include::{specDir}paths/p-api-index-name-query/operation-security-end.adoc[opts=
 
 include::{specDir}paths/p-api-index-name-query/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}p-api-index-name-query/curl-request.adoc[opts=optional]
+
+
 
 [#p-api-index-name-query-ex-request]
 = Example Request Body
 
+include::{snippetDir}p-api-index-name-query/http-request.adoc[opts=optional]
+
 ====
-[#p-api-index-name-query-ex-request-regular-query]
+[#p-api-index-name-query-ex-request-0]
 .Regular Query
 [source,json]
 ----
@@ -4758,7 +4831,8 @@ include::{snippetDir}p-api-index-name-query/curl-request.adoc[opts=optional]
 }
 ----
 
-[#p-api-index-name-query-ex-request-query-with-options]
+
+[#p-api-index-name-query-ex-request-1]
 .Query with Options
 [source,json]
 ----
@@ -4791,7 +4865,8 @@ include::{snippetDir}p-api-index-name-query/curl-request.adoc[opts=optional]
 }
 ----
 
-[#p-api-index-name-query-ex-request-hybrid-query]
+
+[#p-api-index-name-query-ex-request-2]
 .Hybrid Query
 [source,json]
 ----
@@ -4815,11 +4890,10 @@ include::{snippetDir}p-api-index-name-query/curl-request.adoc[opts=optional]
 ====
 
 
-
-include::{snippetDir}p-api-index-name-query/http-request.adoc[opts=optional]
-
-// FIXME: Response examples
-
+ifeval::["" != ""]
+[#p-api-index-name-query-ex-response]
+= Example HTTP Response
+endif::[]
 
 include::{snippetDir}p-api-index-name-query/http-response.adoc[opts=optional]
 
@@ -4945,7 +5019,7 @@ a¦ *Body* +
 required
 a¦ [markdown]
 --
-
+A valid JSON object that contains the docID property, with a value that matches the document ID for a document in the Search index.
 --
 
 [%hardbreaks]
@@ -5024,12 +5098,14 @@ include::{specDir}paths/p-api-pindex-lookup/operation-security-end.adoc[opts=opt
 
 include::{specDir}paths/p-api-pindex-lookup/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}p-api-pindex-lookup/curl-request.adoc[opts=optional]
+
+
 
 [#p-api-pindex-lookup-ex-request]
 = Example Request Body
+
+include::{snippetDir}p-api-pindex-lookup/http-request.adoc[opts=optional]
 
 ====
 [source,json]
@@ -5041,9 +5117,14 @@ include::{snippetDir}p-api-pindex-lookup/curl-request.adoc[opts=optional]
 ====
 
 
-include::{snippetDir}p-api-pindex-lookup/http-request.adoc[opts=optional]
+ifeval::["yes" != ""]
+[#p-api-pindex-lookup-ex-response]
+= Example HTTP Response
+endif::[]
 
-// FIXME: Response examples
+include::{snippetDir}p-api-pindex-lookup/http-response.adoc[opts=optional]
+
+
 [#p-api-pindex-lookup-ex-response-200]
 .Response 200
 ====
@@ -5060,8 +5141,6 @@ include::{snippetDir}p-api-pindex-lookup/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}p-api-pindex-lookup/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-pindex-lookup/operation-end.adoc[opts=optional]
 
@@ -5186,7 +5265,7 @@ a¦ *Body* +
 required
 a¦ [markdown]
 --
-
+A JSON object to define the settings for your Search query. For more information about how to create a Search query JSON object, see [Search Request JSON Properties](../search/search-request-params.html).
 --
 
 [%hardbreaks]
@@ -5228,7 +5307,7 @@ The response object has a status section that must be checked for every request.
 --
 a| xref:QueryResponse[]
 
-| 0
+| Default
 a| [markdown]
 --
 The Search Service returns a non-200 HTTP error code when a request fails.
@@ -5272,19 +5351,23 @@ include::{specDir}paths/p-api-scoped-query/operation-security-end.adoc[opts=opti
 
 include::{specDir}paths/p-api-scoped-query/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}p-api-scoped-query/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}p-api-scoped-query/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yesyesyes" != ""]
+[#p-api-scoped-query-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}p-api-scoped-query/http-response.adoc[opts=optional]
+
 [#p-api-scoped-query-ex-response-200]
 .Response 200
 ====
-[#p-api-scoped-query-ex-response-200-success-response-for-a-regular-query]
+[#p-api-scoped-query-ex-response-200-0]
 .Success Response for a Regular Query
 [source,json]
 ----
@@ -5475,7 +5558,8 @@ include::{snippetDir}p-api-scoped-query/http-request.adoc[opts=optional]
 }
 ----
 
-[#p-api-scoped-query-ex-response-200-success-response-for-a-hybrid-query]
+
+[#p-api-scoped-query-ex-response-200-1]
 .Success Response for a Hybrid Query
 [source,json]
 ----
@@ -5522,8 +5606,10 @@ include::{snippetDir}p-api-scoped-query/http-request.adoc[opts=optional]
 ----
 ====
 
+
+
 [#p-api-scoped-query-ex-response-0]
-.Response 0
+.Default Response
 ====
 [source,json]
 ----
@@ -5570,8 +5656,6 @@ include::{snippetDir}p-api-scoped-query/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}p-api-scoped-query/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-scoped-query/operation-end.adoc[opts=optional]
 

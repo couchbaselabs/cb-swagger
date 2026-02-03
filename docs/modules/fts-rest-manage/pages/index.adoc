@@ -191,7 +191,7 @@ a¦ *Body* +
 optional
 a¦ [markdown]
 --
-
+An object specifying Search manager options.
 --
 
 [%hardbreaks]
@@ -297,8 +297,10 @@ include::{specDir}paths/put_options/operation-security-after.adoc[opts=optional]
 [#put_options-ex-curl]
 = Example HTTP Request
 
+include::{snippetDir}put_options/curl-request.adoc[opts=optional]
+
 ====
-[#put_options-ex-curl-disable]
+[#put_options-ex-curl-0]
 .Disable
 [source,sh]
 ----
@@ -308,7 +310,7 @@ curl -X PUT http://$HOST:8094/api/managerOptions \
 -d '{"disableFileTransferRebalance": "true" }'
 ----
 
-[#put_options-ex-curl-enable]
+[#put_options-ex-curl-1]
 .Enable
 [source,sh]
 ----
@@ -321,13 +323,16 @@ curl -X PUT http://$HOST:8094/api/managerOptions \
 
 
 
-include::{snippetDir}put_options/curl-request.adoc[opts=optional]
-
-
-
 include::{snippetDir}put_options/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yesyes" != ""]
+[#put_options-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}put_options/http-response.adoc[opts=optional]
+
+
 [#put_options-ex-response-200]
 .Response 200
 ====
@@ -338,6 +343,9 @@ include::{snippetDir}put_options/http-request.adoc[opts=optional]
 }
 ----
 ====
+
+
+
 [#put_options-ex-response-405]
 .Response 405
 ====
@@ -350,8 +358,6 @@ include::{snippetDir}put_options/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}put_options/http-response.adoc[opts=optional]
 
 include::{specDir}paths/put_options/operation-end.adoc[opts=optional]
 

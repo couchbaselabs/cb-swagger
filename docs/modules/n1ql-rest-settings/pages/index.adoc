@@ -235,15 +235,20 @@ include::{specDir}paths/get_access/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/get_access/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_access/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}get_access/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#get_access-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}get_access/http-response.adoc[opts=optional]
+
+
 [#get_access-ex-response-200]
 .Response 200
 ====
@@ -257,8 +262,6 @@ include::{snippetDir}get_access/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}get_access/http-response.adoc[opts=optional]
 
 include::{specDir}paths/get_access/operation-end.adoc[opts=optional]
 
@@ -378,15 +381,20 @@ include::{specDir}paths/get_settings/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/get_settings/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_settings/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}get_settings/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yes" != ""]
+[#get_settings-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}get_settings/http-response.adoc[opts=optional]
+
+
 [#get_settings-ex-response-200]
 .Response 200
 ====
@@ -424,8 +432,6 @@ include::{snippetDir}get_settings/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}get_settings/http-response.adoc[opts=optional]
 
 include::{specDir}paths/get_settings/operation-end.adoc[opts=optional]
 
@@ -504,7 +510,7 @@ a¦ *Body* +
 optional
 a¦ [markdown]
 --
-
+An object determining which URLs may be accessed by the `CURL()` function.
 --
 
 [%hardbreaks]
@@ -590,12 +596,14 @@ include::{specDir}paths/post_access/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/post_access/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}post_access/curl-request.adoc[opts=optional]
+
+
 
 [#post_access-ex-request]
 = Example Request Body
+
+include::{snippetDir}post_access/http-request.adoc[opts=optional]
 
 ====
 [source,json]
@@ -609,9 +617,14 @@ include::{snippetDir}post_access/curl-request.adoc[opts=optional]
 ====
 
 
-include::{snippetDir}post_access/http-request.adoc[opts=optional]
+ifeval::["yes" != ""]
+[#post_access-ex-response]
+= Example HTTP Response
+endif::[]
 
-// FIXME: Response examples
+include::{snippetDir}post_access/http-response.adoc[opts=optional]
+
+
 [#post_access-ex-response-200]
 .Response 200
 ====
@@ -625,8 +638,6 @@ include::{snippetDir}post_access/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}post_access/http-response.adoc[opts=optional]
 
 include::{specDir}paths/post_access/operation-end.adoc[opts=optional]
 
@@ -705,7 +716,7 @@ a¦ *Body* +
 optional
 a¦ [markdown]
 --
-
+An object specifying cluster-level query settings.
 --
 
 [%hardbreaks]
@@ -791,15 +802,17 @@ include::{specDir}paths/post_settings/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/post_settings/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}post_settings/curl-request.adoc[opts=optional]
+
+
 
 [#post_settings-ex-request]
 = Example Request Body
 
+include::{snippetDir}post_settings/http-request.adoc[opts=optional]
+
 ====
-[#post_settings-ex-request-partial-settings]
+[#post_settings-ex-request-0]
 .Partial Settings
 [source,json]
 ----
@@ -812,7 +825,8 @@ include::{snippetDir}post_settings/curl-request.adoc[opts=optional]
 }
 ----
 
-[#post_settings-ex-request-all-settings]
+
+[#post_settings-ex-request-1]
 .All Settings
 [source,json]
 ----
@@ -849,10 +863,14 @@ include::{snippetDir}post_settings/curl-request.adoc[opts=optional]
 ====
 
 
+ifeval::["yes" != ""]
+[#post_settings-ex-response]
+= Example HTTP Response
+endif::[]
 
-include::{snippetDir}post_settings/http-request.adoc[opts=optional]
+include::{snippetDir}post_settings/http-response.adoc[opts=optional]
 
-// FIXME: Response examples
+
 [#post_settings-ex-response-200]
 .Response 200
 ====
@@ -890,8 +908,6 @@ include::{snippetDir}post_settings/http-request.adoc[opts=optional]
 ----
 ====
 
-
-include::{snippetDir}post_settings/http-response.adoc[opts=optional]
 
 include::{specDir}paths/post_settings/operation-end.adoc[opts=optional]
 

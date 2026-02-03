@@ -320,16 +320,16 @@ include::{specDir}paths/delete_library/operation-security-end.adoc[opts=optional
 
 include::{specDir}paths/delete_library/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}delete_library/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}delete_library/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
-
+ifeval::["" != ""]
+[#delete_library-ex-response]
+= Example HTTP Response
+endif::[]
 
 include::{snippetDir}delete_library/http-response.adoc[opts=optional]
 
@@ -513,19 +513,23 @@ include::{specDir}paths/get_collection/operation-security-end.adoc[opts=optional
 
 include::{specDir}paths/get_collection/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_collection/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}get_collection/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yesyes" != ""]
+[#get_collection-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}get_collection/http-response.adoc[opts=optional]
+
 [#get_collection-ex-response-200]
 .Response 200
 ====
-[#get_collection-ex-response-200-all-libraries]
+[#get_collection-ex-response-200-0]
 .All Libraries
 [source,json]
 ----
@@ -542,7 +546,8 @@ include::{snippetDir}get_collection/http-request.adoc[opts=optional]
 } ]
 ----
 
-[#get_collection-ex-response-200-scoped-libraries]
+
+[#get_collection-ex-response-200-1]
 .Scoped Libraries
 [source,json]
 ----
@@ -555,9 +560,6 @@ include::{snippetDir}get_collection/http-request.adoc[opts=optional]
 ----
 ====
 
-
-
-include::{snippetDir}get_collection/http-response.adoc[opts=optional]
 
 include::{specDir}paths/get_collection/operation-end.adoc[opts=optional]
 
@@ -767,19 +769,23 @@ include::{specDir}paths/get_library/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/get_library/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_library/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}get_library/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
+ifeval::["yesyes" != ""]
+[#get_library-ex-response]
+= Example HTTP Response
+endif::[]
+
+include::{snippetDir}get_library/http-response.adoc[opts=optional]
+
 [#get_library-ex-response-200]
 .Response 200
 ====
-[#get_library-ex-response-200-global-library]
+[#get_library-ex-response-200-0]
 .Global Library
 [source,json]
 ----
@@ -788,7 +794,8 @@ include::{snippetDir}get_library/http-request.adoc[opts=optional]
 }
 ----
 
-[#get_library-ex-response-200-scoped-library]
+
+[#get_library-ex-response-200-1]
 .Scoped Library
 [source,json]
 ----
@@ -798,9 +805,6 @@ include::{snippetDir}get_library/http-request.adoc[opts=optional]
 ----
 ====
 
-
-
-include::{snippetDir}get_library/http-response.adoc[opts=optional]
 
 include::{specDir}paths/get_library/operation-end.adoc[opts=optional]
 
@@ -935,7 +939,7 @@ a¦ *Body* +
 required
 a¦ [markdown]
 --
-
+The JavaScript code for all functions in the library.
 --
 
 [%hardbreaks]
@@ -1031,16 +1035,16 @@ include::{specDir}paths/post_library/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/post_library/operation-security-after.adoc[opts=optional]
 
-
-
 include::{snippetDir}post_library/curl-request.adoc[opts=optional]
 
 
 
 include::{snippetDir}post_library/http-request.adoc[opts=optional]
 
-// FIXME: Response examples
-
+ifeval::["" != ""]
+[#post_library-ex-response]
+= Example HTTP Response
+endif::[]
 
 include::{snippetDir}post_library/http-response.adoc[opts=optional]
 
