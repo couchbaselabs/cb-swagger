@@ -320,7 +320,16 @@ include::{specDir}paths/delete_library/operation-security-end.adoc[opts=optional
 
 include::{specDir}paths/delete_library/operation-security-after.adoc[opts=optional]
 
+include::{snippetDir}delete_library/curl-request.adoc[opts=optional]
+
+
+
 include::{snippetDir}delete_library/http-request.adoc[opts=optional]
+
+ifeval::["" != ""]
+[#delete_library-ex-response]
+= Example HTTP Response
+endif::[]
 
 include::{snippetDir}delete_library/http-response.adoc[opts=optional]
 
@@ -504,9 +513,53 @@ include::{specDir}paths/get_collection/operation-security-end.adoc[opts=optional
 
 include::{specDir}paths/get_collection/operation-security-after.adoc[opts=optional]
 
+include::{snippetDir}get_collection/curl-request.adoc[opts=optional]
+
+
+
 include::{snippetDir}get_collection/http-request.adoc[opts=optional]
 
+ifeval::["yesyes" != ""]
+[#get_collection-ex-response]
+= Example HTTP Response
+endif::[]
+
 include::{snippetDir}get_collection/http-response.adoc[opts=optional]
+
+[#get_collection-ex-response-200]
+.Response 200
+====
+[#get_collection-ex-response-200-0]
+.All Libraries
+[source,json]
+----
+[ {
+  "name" : "math",
+  "bucket" : "",
+  "scope" : "",
+  "code" : "function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"
+}, {
+  "name" : "science",
+  "bucket" : "travel-sample",
+  "scope" : "inventory",
+  "code" : "function f2c(f) { return (5/9)*(f-32); }"
+} ]
+----
+
+
+[#get_collection-ex-response-200-1]
+.Scoped Libraries
+[source,json]
+----
+[ {
+  "name" : "science",
+  "bucket" : "travel-sample",
+  "scope" : "inventory",
+  "code" : "function f2c(f) { return (5/9)*(f-32); }"
+} ]
+----
+====
+
 
 include::{specDir}paths/get_collection/operation-end.adoc[opts=optional]
 
@@ -716,9 +769,42 @@ include::{specDir}paths/get_library/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/get_library/operation-security-after.adoc[opts=optional]
 
+include::{snippetDir}get_library/curl-request.adoc[opts=optional]
+
+
+
 include::{snippetDir}get_library/http-request.adoc[opts=optional]
 
+ifeval::["yesyes" != ""]
+[#get_library-ex-response]
+= Example HTTP Response
+endif::[]
+
 include::{snippetDir}get_library/http-response.adoc[opts=optional]
+
+[#get_library-ex-response-200]
+.Response 200
+====
+[#get_library-ex-response-200-0]
+.Global Library
+[source,json]
+----
+{
+  "math" : "function add(a, b) { return a + b; } function mul(a, b) { return a * b; }"
+}
+----
+
+
+[#get_library-ex-response-200-1]
+.Scoped Library
+[source,json]
+----
+{
+  "science" : "function f2c(f) { return (5/9)*(f-32); }"
+}
+----
+====
+
 
 include::{specDir}paths/get_library/operation-end.adoc[opts=optional]
 
@@ -853,7 +939,7 @@ a¦ *Body* +
 required
 a¦ [markdown]
 --
-
+The JavaScript code for all functions in the library.
 --
 
 [%hardbreaks]
@@ -949,7 +1035,16 @@ include::{specDir}paths/post_library/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/post_library/operation-security-after.adoc[opts=optional]
 
+include::{snippetDir}post_library/curl-request.adoc[opts=optional]
+
+
+
 include::{snippetDir}post_library/http-request.adoc[opts=optional]
+
+ifeval::["" != ""]
+[#post_library-ex-response]
+= Example HTTP Response
+endif::[]
 
 include::{snippetDir}post_library/http-response.adoc[opts=optional]
 

@@ -1,21 +1,20 @@
+plugins {
+  id "com.github.node-gradle.node" version "7.1.0"
+}
+
 apply plugin: 'org.openapi.generator'
 
-tasks.register('getExamples') {
-  doLast {
-    ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/stats/examples")
-    ant.echo("Fetching from ${ant.srcUrl}")
-    ant.get(dest: "examples", ignoreerrors: "true") {
-      ant.url(url: "${ant.srcUrl}/g-api-nsstats-200.json")
-      ant.url(url: "${ant.srcUrl}/g-api-nsstats-403.json")
-      ant.url(url: "${ant.srcUrl}/g-api-nsstats-index-name.json")
-    }
-  }
+task bundleSpec(type: NpxTask) {
+  command = '@redocly/cli'
+  args = [
+    'bundle',
+    'https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/stats/stats.yaml',
+    '-o', 'build/bundle/stats.yaml']
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/stats/stats.yaml"
+    inputSpec = file("build/bundle/stats.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/fts-rest-stats/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cbft"
@@ -36,4 +35,4 @@ openApiGenerate {
     engine = "handlebars"
 }
 
-tasks.openApiGenerate.dependsOn(getExamples)
+tasks.openApiGenerate.dependsOn(bundleSpec)

@@ -1,45 +1,20 @@
+plugins {
+  id "com.github.node-gradle.node" version "7.1.0"
+}
+
 apply plugin: 'org.openapi.generator'
 
-tasks.register('getExamples') {
-  doLast {
-    ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/index/examples")
-    ant.echo("Fetching from ${ant.srcUrl}")
-    ant.get(dest: "examples", ignoreerrors: "true") {
-      ant.url(url: "${ant.srcUrl}/d-api-index-name-200.json")
-      ant.url(url: "${ant.srcUrl}/d-api-index-name-default.json")
-      ant.url(url: "${ant.srcUrl}/d-api-scoped-index-name-200.json")
-      ant.url(url: "${ant.srcUrl}/d-api-scoped-index-name-default.json")
-      ant.url(url: "${ant.srcUrl}/fts-sample-index-def-response.json")
-      ant.url(url: "${ant.srcUrl}/fts-sample-success-response-vector-search.json")
-      ant.url(url: "${ant.srcUrl}/fts-sample-success-response.json")
-      ant.url(url: "${ant.srcUrl}/g-api-index-name-count.json")
-      ant.url(url: "${ant.srcUrl}/g-api-index-name.json")
-      ant.url(url: "${ant.srcUrl}/g-api-index.json")
-      ant.url(url: "${ant.srcUrl}/g-api-scoped-indexes.json")
-      ant.url(url: "${ant.srcUrl}/g-api-scoped-status.json")
-      ant.url(url: "${ant.srcUrl}/g-api-stats-index-name-analyzeDoc-200.json")
-      ant.url(url: "${ant.srcUrl}/g-api-stats-index-name-analyzeDoc-body.json")
-      ant.url(url: "${ant.srcUrl}/g-api-stats-index-name.json")
-      ant.url(url: "${ant.srcUrl}/g-api-stats.json")
-      ant.url(url: "${ant.srcUrl}/p-api-index-name-200.json")
-      ant.url(url: "${ant.srcUrl}/p-api-index-name-default.json")
-      ant.url(url: "${ant.srcUrl}/p-api-index-name-query-hybrid.json")
-      ant.url(url: "${ant.srcUrl}/p-api-index-name-query-options.json")
-      ant.url(url: "${ant.srcUrl}/p-api-index-name-query-regular.json")
-      ant.url(url: "${ant.srcUrl}/p-api-pindex-lookup-200.json")
-      ant.url(url: "${ant.srcUrl}/p-api-pindex-lookup-body.json")
-      ant.url(url: "${ant.srcUrl}/p-api-scoped-index-name-200.json")
-      ant.url(url: "${ant.srcUrl}/p-api-scoped-index-name-default.json")
-      ant.url(url: "${ant.srcUrl}/p-api-scoped-query-default.json")
-      ant.url(url: "${ant.srcUrl}/response-200.json")
-    }
-  }
+task bundleSpec(type: NpxTask) {
+  command = '@redocly/cli'
+  args = [
+    'bundle',
+    'https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/index/index.yaml',
+    '-o', 'build/bundle/index.yaml']
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/index/index.yaml"
+    inputSpec = file("build/bundle/index.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/fts-rest-indexing/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cbft"
@@ -60,4 +35,4 @@ openApiGenerate {
     engine = "handlebars"
 }
 
-tasks.openApiGenerate.dependsOn(getExamples)
+tasks.openApiGenerate.dependsOn(bundleSpec)

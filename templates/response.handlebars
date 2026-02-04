@@ -1,0 +1,9 @@
+
+[#{{operationIdOriginal}}-ex-response-{{code}}]
+.{{#if isDefault}}Default Response{{else}}Response {{code}}{{/if}}
+====
+[source,{{language}}]
+----
+{{#if isJson}}{{#json pretty=true}}{{{this}}}{{/json}}{{else}}{{{this}}}{{/if}}
+----
+====
