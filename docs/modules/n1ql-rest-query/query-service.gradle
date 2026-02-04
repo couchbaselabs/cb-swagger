@@ -1,46 +1,19 @@
 plugins {
+  id "com.github.node-gradle.node" version "7.1.0"
+}
+
+plugins {
     id("io.datapith.jayOverlay").version("0.1.11")
 }
 
 apply plugin: 'org.openapi.generator'
 
-tasks.register('getExamples') {
-  doLast {
-    ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/query/refs/heads/morpheus/docs/spec/service/examples")
-    ant.echo("Fetching from ${ant.srcUrl}")
-    ant.get(dest: "examples", ignoreerrors: "true") {
-      ant.url(url: "${ant.srcUrl}/exformdata.sh")
-      ant.url(url: "${ant.srcUrl}/exn1qlerror.json")
-      ant.url(url: "${ant.srcUrl}/exnamed.json")
-      ant.url(url: "${ant.srcUrl}/exnamed.sh")
-      ant.url(url: "${ant.srcUrl}/exnotfound.json")
-      ant.url(url: "${ant.srcUrl}/exnumbered.json")
-      ant.url(url: "${ant.srcUrl}/exnumbered.sh")
-      ant.url(url: "${ant.srcUrl}/expositional.json")
-      ant.url(url: "${ant.srcUrl}/expositional.sh")
-      ant.url(url: "${ant.srcUrl}/exreadonly.sh")
-      ant.url(url: "${ant.srcUrl}/exrequesterror.json")
-      ant.url(url: "${ant.srcUrl}/exserviceerror.json")
-      ant.url(url: "${ant.srcUrl}/exsuccessful.json")
-      ant.url(url: "${ant.srcUrl}/exsuccessful.sh")
-      ant.url(url: "${ant.srcUrl}/exwildcard.json")
-      ant.url(url: "${ant.srcUrl}/exwildcard.sh")
-    }
-  }
-}
-
-task bundleSpec(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
-    generatorName = "openapi-yaml"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/query/refs/heads/morpheus/docs/spec/service/service.yaml"
-    outputDir = "${projectDir}/build/bundle"
-    globalProperties = [
-            generateAliasAsModel: "true"
-    ]
-    additionalProperties = [
-            outputFile: "service.yaml",
-    ]
-    generateAliasAsModel = true
+task bundleSpec(type: NpxTask) {
+  command = '@redocly/cli'
+  args = [
+    'bundle',
+    'https://raw.githubusercontent.com/couchbase/query/refs/heads/morpheus/docs/spec/service/service.yaml',
+    '-o', 'build/bundle/service.yaml']
 }
 
 jayOverlay {
@@ -72,6 +45,5 @@ openApiGenerate {
     engine = "handlebars"
 }
 
-tasks.bundleSpec.dependsOn(getExamples)
 tasks.applyOverlay.dependsOn(bundleSpec)
 tasks.openApiGenerate.dependsOn(applyOverlay)

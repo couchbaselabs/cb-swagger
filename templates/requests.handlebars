@@ -1,0 +1,12 @@
+{{#if @first ~}}
+====
+{{/if ~}}
+[#{{operationIdOriginal}}-ex-request-{{@index}}]
+.{{#with summary}}{{{this}}}{{else}}Example {{@index}}{{/with}}
+[source,{{language}}]
+----
+{{#with value}}{{#if isJson}}{{#json pretty=true}}{{{this}}}{{/json}}{{else}}{{{this}}}{{/if}}{{/with}}
+----
+{{~#if @last}}
+====
+{{~/if}}
