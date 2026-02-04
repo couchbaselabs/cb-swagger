@@ -1,33 +1,20 @@
+plugins {
+  id "com.github.node-gradle.node" version "7.1.0"
+}
+
 apply plugin: 'org.openapi.generator'
 
-tasks.register('getExamples') {
-  doLast {
-    ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/functions/examples")
-    ant.echo("Fetching from ${ant.srcUrl}")
-    ant.get(dest: "examples", ignoreerrors: "true") {
-      ant.url(url: "${ant.srcUrl}/delete_library_global.sh")
-      ant.url(url: "${ant.srcUrl}/delete_library_scope.sh")
-      ant.url(url: "${ant.srcUrl}/get_collection_all.sh")
-      ant.url(url: "${ant.srcUrl}/get_collection_all.json")
-      ant.url(url: "${ant.srcUrl}/get_collection_scope.sh")
-      ant.url(url: "${ant.srcUrl}/get_collection_scope.json")
-      ant.url(url: "${ant.srcUrl}/get_library_global.sh")
-      ant.url(url: "${ant.srcUrl}/get_library_global.json")
-      ant.url(url: "${ant.srcUrl}/get_library_scope.sh")
-      ant.url(url: "${ant.srcUrl}/get_library_scope.json")
-      ant.url(url: "${ant.srcUrl}/post_library_global_add.sh")
-      ant.url(url: "${ant.srcUrl}/post_library_global_create.sh")
-      ant.url(url: "${ant.srcUrl}/post_library_global_delete.sh")
-      ant.url(url: "${ant.srcUrl}/post_library_global_edit.sh")
-      ant.url(url: "${ant.srcUrl}/post_library_scope.sh")
-    }
-  }
+task bundleSpec(type: NpxTask) {
+  command = '@redocly/cli'
+  args = [
+    'bundle',
+    'https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/functions/functions.yaml',
+    '-o', 'build/bundle/functions.yaml']
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/functions/functions.yaml"
+    inputSpec = file("build/bundle/functions.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/n1ql-rest-functions/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "query"
@@ -48,4 +35,4 @@ openApiGenerate {
     engine = "handlebars"
 }
 
-tasks.openApiGenerate.dependsOn(getExamples)
+tasks.openApiGenerate.dependsOn(bundleSpec)

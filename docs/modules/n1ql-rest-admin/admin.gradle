@@ -1,22 +1,20 @@
+plugins {
+  id "com.github.node-gradle.node" version "7.1.0"
+}
+
 apply plugin: 'org.openapi.generator'
 
-tasks.register('getExamples') {
-  doLast {
-    ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/admin/examples")
-    ant.echo("Fetching from ${ant.srcUrl}")
-    ant.get(dest: "examples", ignoreerrors: "true") {
-      ant.url(url: "${ant.srcUrl}/get_debug_vars.html")
-      ant.url(url: "${ant.srcUrl}/get_gc.json")
-      ant.url(url: "${ant.srcUrl}/get_ping.json")
-      ant.url(url: "${ant.srcUrl}/post_gc.json")
-    }
-  }
+task bundleSpec(type: NpxTask) {
+  command = '@redocly/cli'
+  args = [
+    'bundle',
+    'https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/admin/admin.yaml',
+    '-o', 'build/bundle/admin.yaml']
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/admin/admin.yaml"
+    inputSpec = file("build/bundle/admin.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/n1ql-rest-admin/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "query"
@@ -37,4 +35,4 @@ openApiGenerate {
     engine = "handlebars"
 }
 
-tasks.openApiGenerate.dependsOn(getExamples)
+tasks.openApiGenerate.dependsOn(bundleSpec)

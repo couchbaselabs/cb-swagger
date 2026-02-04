@@ -118,8 +118,10 @@ endif::[]
 
 ifeval::[{count-apis} > 0]
 [#tag-{{baseName}}]
-= {{#with operations.operation.[0].tags.[0].name ~}}
-{{#capitalize}}{{this}}{{/capitalize}}{{! FIXME: assumes first tag in first operation is the same as this API }}
+= {{#with operations.operation.[0].tags.[0].x-displayName ~}}
+{{this}}{{! FIXME: assumes first tag in first operation is the same as this API }}
+{{~ else with operations.operation.[0].tags.[0].name ~}}
+{{#capitalize}}{{this}}{{/capitalize}}
 {{~ else ~}}
 {{baseName}}
 {{~/with}}
@@ -244,7 +246,7 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-responses-begin.adoc[o
 |===
 | HTTP Code | Description | Schema
 {{/if}}{{! @first }}
-| {{code}}
+| {{#if isDefault}}Default{{else}}{{code}}{{/if}}
 a| [markdown]
 --
 {{{message}}}
@@ -315,9 +317,100 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 {{!~ Include partials for operation sample requests and responses }}
 {{!~ The partials should have a level 1 title; the level offset pushes the title down to the correct section level. }}
 
+{{#if vendorExtensions.x-codeSamples ~}}
+[#{{operationIdOriginal}}-ex-curl]
+= Example HTTP Request
+{{! example HTTP request heading}}
+{{/if~}}
+
+include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
+
+{{#*inline "curlTitle" ~}}
+[#{{operationIdOriginal}}-ex-curl-{{@index}}]
+.{{#with label}}{{{this}}}{{else}}curl request {{@index}}{{/with}}
+{{~/inline ~}}
+{{#each vendorExtensions.x-codeSamples ~}}
+{{#if @first ~}}
+====
+{{/if ~}}
+{{#if @last}}{{#if @index}}{{> curlTitle}}
+{{/if}}{{else}}{{> curlTitle}}
+{{/if ~}}
+[source,sh]
+----
+{{{source}}}
+----
+{{#if @last ~}}
+====
+{{/if}}
+{{/each ~}}
+
+{{#*inline "requestBodyHeading" ~}}
+[#{{operationIdOriginal}}-ex-request]
+= Example Request Body
+{{~/inline ~}}
+{{#with bodyParam ~}}
+{{#with content.[application/json] ~}}
+{{#if example}}
+{{! single request body example heading }}
+{{> requestBodyHeading }}
+{{~else if examples}}
+{{! multiple request body example heading }}
+{{> requestBodyHeading }}
+{{~/if}}
+{{~/with}}{{! content.[application/json] }}
+{{~/with}}{{! bodyParam }}
+
 include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 
+{{~#with bodyParam ~}}
+{{#with content.[application/json] ~}}
+{{#with example}}
+{{! single request body example }}
+{{>request language="json" isJson=true}}
+{{else each examples}}
+{{! multiple request body examples }}
+{{>requests language="json" isJson=true}}
+{{/with}}
+{{~/with}}{{! content.[application/json] }}
+{{~/with}}{{! bodyParam }}
+
+ifeval::["
+{{~#each responses ~}}
+{{#each content ~}}
+{{#with example ~}}
+yes
+{{~else each examples ~}}
+yes
+{{~/with}}
+{{~/each}}
+{{~/each~}}
+" != ""]
+[#{{operationIdOriginal}}-ex-response]
+= Example HTTP Response
+endif::[]
+
 include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
+
+{{~#each responses ~}}
+{{#with content.[application/json] ~}}
+{{#with example}}
+{{! single JSON response example }}
+{{>response language="json" isJson=true}}
+{{else each examples}}
+{{! multiple JSON response examples }}
+{{>responses language="json" isJson=true}}
+{{/with}}
+{{~else with content.[text/html] ~}}
+{{#with example}}
+{{! single HTML response example }}
+{{> response language="html"}}
+{{else each examples}}
+{{! multiple HTML response examples }}
+{{> responses language="html"}}
+{{/with}}
+{{~/with}}{{! content.[application/json] }}
+{{~/each}}{{! responses }}
 
 include::{specDir}paths/{{operationIdOriginal}}/operation-end.adoc[opts=optional]
 

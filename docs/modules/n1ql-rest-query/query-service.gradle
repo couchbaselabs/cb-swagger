@@ -1,34 +1,20 @@
+plugins {
+  id "com.github.node-gradle.node" version "7.1.0"
+}
+
 apply plugin: 'org.openapi.generator'
 
-tasks.register('getExamples') {
-  doLast {
-    ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/service/examples")
-    ant.echo("Fetching from ${ant.srcUrl}")
-    ant.get(dest: "examples", ignoreerrors: "true") {
-      ant.url(url: "${ant.srcUrl}/exformdata.sh")
-      ant.url(url: "${ant.srcUrl}/exn1qlerror.json")
-      ant.url(url: "${ant.srcUrl}/exnamed.json")
-      ant.url(url: "${ant.srcUrl}/exnamed.sh")
-      ant.url(url: "${ant.srcUrl}/exnotfound.json")
-      ant.url(url: "${ant.srcUrl}/exnumbered.json")
-      ant.url(url: "${ant.srcUrl}/exnumbered.sh")
-      ant.url(url: "${ant.srcUrl}/expositional.json")
-      ant.url(url: "${ant.srcUrl}/expositional.sh")
-      ant.url(url: "${ant.srcUrl}/exreadonly.sh")
-      ant.url(url: "${ant.srcUrl}/exrequesterror.json")
-      ant.url(url: "${ant.srcUrl}/exserviceerror.json")
-      ant.url(url: "${ant.srcUrl}/exsuccessful.json")
-      ant.url(url: "${ant.srcUrl}/exsuccessful.sh")
-      ant.url(url: "${ant.srcUrl}/exwildcard.json")
-      ant.url(url: "${ant.srcUrl}/exwildcard.sh")
-    }
-  }
+task bundleSpec(type: NpxTask) {
+  command = '@redocly/cli'
+  args = [
+    'bundle',
+    'https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/service/service.yaml',
+    '-o', 'build/bundle/service.yaml']
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/service/service.yaml"
+    inputSpec = file("build/bundle/service.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/n1ql-rest-query/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "query"
@@ -49,4 +35,4 @@ openApiGenerate {
     engine = "handlebars"
 }
 
-tasks.openApiGenerate.dependsOn(getExamples)
+tasks.openApiGenerate.dependsOn(bundleSpec)

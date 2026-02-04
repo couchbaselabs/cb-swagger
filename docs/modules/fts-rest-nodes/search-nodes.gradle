@@ -1,21 +1,20 @@
+plugins {
+  id "com.github.node-gradle.node" version "7.1.0"
+}
+
 apply plugin: 'org.openapi.generator'
 
-tasks.register('getExamples') {
-  doLast {
-    ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/master/docs/spec/nodes/examples")
-    ant.echo("Fetching from ${ant.srcUrl}")
-    ant.get(dest: "examples", ignoreerrors: "true") {
-      ant.url(url: "${ant.srcUrl}/get-cluster-config.json")
-      ant.url(url: "${ant.srcUrl}/get-logs.json")
-      ant.url(url: "${ant.srcUrl}/get-runtime-info.json")
-    }
-  }
+task bundleSpec(type: NpxTask) {
+  command = '@redocly/cli'
+  args = [
+    'bundle',
+    'https://raw.githubusercontent.com/couchbase/cbft/refs/heads/master/docs/spec/nodes/nodes.yaml',
+    '-o', 'build/bundle/nodes.yaml']
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/master/docs/spec/nodes/nodes.yaml"
+    inputSpec = file("build/bundle/nodes.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/fts-rest-nodes/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cbft"
@@ -36,4 +35,4 @@ openApiGenerate {
     engine = "handlebars"
 }
 
-tasks.openApiGenerate.dependsOn(getExamples)
+tasks.openApiGenerate.dependsOn(bundleSpec)

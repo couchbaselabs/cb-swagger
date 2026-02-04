@@ -1,27 +1,20 @@
+plugins {
+  id "com.github.node-gradle.node" version "7.1.0"
+}
+
 apply plugin: 'org.openapi.generator'
 
-tasks.register('getExamples') {
-  doLast {
-    ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/settings/examples")
-    ant.echo("Fetching from ${ant.srcUrl}")
-    ant.get(dest: "examples", ignoreerrors: "true") {
-      ant.url(url: "${ant.srcUrl}/query-settings-get-access.json")
-      ant.url(url: "${ant.srcUrl}/query-settings-get-access.sh")
-      ant.url(url: "${ant.srcUrl}/query-settings-get-settings.json")
-      ant.url(url: "${ant.srcUrl}/query-settings-get-settings.sh")
-      ant.url(url: "${ant.srcUrl}/query-settings-post-access.json")
-      ant.url(url: "${ant.srcUrl}/query-settings-post-access.sh")
-      ant.url(url: "${ant.srcUrl}/query-settings-post-settings.json")
-      ant.url(url: "${ant.srcUrl}/query-settings-post-settings.sh")
-      ant.url(url: "${ant.srcUrl}/query-settings-post-snippet.json")
-    }
-  }
+task bundleSpec(type: NpxTask) {
+  command = '@redocly/cli'
+  args = [
+    'bundle',
+    'https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/settings/settings.yaml',
+    '-o', 'build/bundle/settings.yaml']
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/query/refs/heads/master/docs/spec/settings/settings.yaml"
+    inputSpec = file("build/bundle/settings.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/n1ql-rest-settings/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "query"
@@ -42,4 +35,4 @@ openApiGenerate {
     engine = "handlebars"
 }
 
-tasks.openApiGenerate.dependsOn(getExamples)
+tasks.openApiGenerate.dependsOn(bundleSpec)
