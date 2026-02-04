@@ -1,26 +1,20 @@
+plugins {
+  id "com.github.node-gradle.node" version "7.1.0"
+}
+
 apply plugin: 'org.openapi.generator'
 
-tasks.register('getExamples') {
-  doLast {
-    ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/trinity/docs/spec/query/examples")
-    ant.echo("Fetching from ${ant.srcUrl}")
-    ant.get(dest: "examples", ignoreerrors: "true") {
-      ant.url(url: "${ant.srcUrl}/api-query-all.json")
-      ant.url(url: "${ant.srcUrl}/api-query-all.sh")
-      ant.url(url: "${ant.srcUrl}/api-query-cancel.json")
-      ant.url(url: "${ant.srcUrl}/api-query-cancel.sh")
-      ant.url(url: "${ant.srcUrl}/api-query-filter.json")
-      ant.url(url: "${ant.srcUrl}/api-query-filter.sh")
-      ant.url(url: "${ant.srcUrl}/api-query-index.json")
-      ant.url(url: "${ant.srcUrl}/api-query-index.sh")
-    }
-  }
+task bundleSpec(type: NpxTask) {
+  command = '@redocly/cli'
+  args = [
+    'bundle',
+    'https://raw.githubusercontent.com/couchbase/cbft/refs/heads/trinity/docs/spec/query/query.yaml',
+    '-o', 'build/bundle/query.yaml']
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/trinity/docs/spec/query/query.yaml"
+    inputSpec = file("build/bundle/query.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/fts-rest-query/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cbft"
@@ -41,4 +35,4 @@ openApiGenerate {
     engine = "handlebars"
 }
 
-tasks.openApiGenerate.dependsOn(getExamples)
+tasks.openApiGenerate.dependsOn(bundleSpec)

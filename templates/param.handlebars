@@ -10,6 +10,8 @@ a¦ {{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{#unless ven
 --
 {{#with unescapedDescription ~}}
 {{{this}}}
+{{~ else with description ~}}
+{{{this}}}
 {{~/with ~}}
 {{~#if isEnumRef ~}}
 include::index.adoc[tag=desc-{{dataType}}, opts=optional]{{! if this is an enum reference, fetch remote description}}

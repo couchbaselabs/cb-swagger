@@ -1,21 +1,3 @@
-= Example HTTP Response
+A successful response returns an object like <<g-api-nsstats-ex-response-200>>, which contains statistics on 2 indexes, `travel-sample-index` and `color-test`.
 
-A successful response returns an object like the following, which contains statistics on 2 indexes, `travel-sample-index` and `color-test`.
-
-====
-.Response 200
-[source,json]
-----
-include::example$g-api-nsstats-200.json[]
-----
-====
-
-If a user authenticates but does not have the appropriate permissions, the API returns a `403 Forbidden` response with an object similar to the following.
-
-====
-.Response 403
-[source,json]
-----
-include::example$g-api-nsstats-403.json[]
-----
-====
+If a user authenticates but does not have the appropriate permissions, the API returns a `403 Forbidden` response with an object similar to <<g-api-nsstats-ex-response-403>>.

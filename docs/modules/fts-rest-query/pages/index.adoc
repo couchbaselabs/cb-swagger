@@ -270,9 +270,146 @@ include::{specDir}paths/api-query/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/api-query/operation-security-after.adoc[opts=optional]
 
+[#api-query-ex-curl]
+= Example HTTP Request
+
+include::{snippetDir}api-query/curl-request.adoc[opts=optional]
+
+====
+[#api-query-ex-curl-0]
+.All
+[source,sh]
+----
+curl -XGET -H "Content-Type: application/json" \
+  -u $USER:$PASSWORD \
+  "http://$HOST:8094/api/query"
+----
+
+[#api-query-ex-curl-1]
+.Filtered
+[source,sh]
+----
+curl -XGET -H "Content-Type: application/json" \
+  -u $USER:$PASSWORD \
+  "http://$HOST:8094/api/query?longerThan=7s"
+----
+====
+
+
+
 include::{snippetDir}api-query/http-request.adoc[opts=optional]
 
+ifeval::["yesyes" != ""]
+[#api-query-ex-response]
+= Example HTTP Response
+endif::[]
+
 include::{snippetDir}api-query/http-response.adoc[opts=optional]
+
+[#api-query-ex-response-200]
+.Response 200
+====
+[#api-query-ex-response-200-0]
+.All active node queries
+[source,json]
+----
+{
+  "status" : "ok",
+  "stats" : {
+    "total" : 3,
+    "successful" : 3
+  },
+  "totalActiveQueryCount" : 4,
+  "filteredActiveQueries" : {
+    "queryCount" : 4,
+    "queryMap" : {
+      "b91d75480470f979f65f04e8f20a1f7b-17" : {
+        "QueryContext" : {
+          "query" : {
+            "query" : "good restaurants in france"
+          },
+          "size" : 10,
+          "from" : 0,
+          "timeout" : 120000,
+          "index" : "DemoIndex1"
+        },
+        "executionTime" : "2.144802122s"
+      },
+      "b91d75480470f979f65f04e8f20a1f7b-18" : {
+        "QueryContext" : {
+          "query" : {
+            "query" : "decent hotel with a pool in italy"
+          },
+          "size" : 10,
+          "from" : 0,
+          "timeout" : 120000,
+          "index" : "DemoIndex2"
+        },
+        "executionTime" : "2.144712787s"
+      },
+      "b91d75480470f979f65f04e8f20a1f7b-19" : {
+        "QueryContext" : {
+          "query" : {
+            "query" : "germany"
+          },
+          "size" : 10,
+          "from" : 0,
+          "timeout" : 120000,
+          "index" : "DemoIndex2"
+        },
+        "executionTime" : "2.143957727s"
+      },
+      "f76b2d51397feee28c1e757ed426ef93-3" : {
+        "QueryContext" : {
+          "query" : {
+            "query" : "mexican food in england"
+          },
+          "size" : 10,
+          "from" : 0,
+          "timeout" : 120000,
+          "index" : "DemoIndex1"
+        },
+        "executionTime" : "2.14286421s"
+      }
+    }
+  }
+}
+----
+
+
+[#api-query-ex-response-200-1]
+.All active node queries (filtered)
+[source,json]
+----
+{
+  "status" : "ok",
+  "stats" : {
+    "total" : 3,
+    "successful" : 3
+  },
+  "totalActiveQueryCount" : 3,
+  "filteredActiveQueries" : {
+    "longerThan" : "7s",
+    "queryCount" : 1,
+    "queryMap" : {
+      "b91d75480470f979f65f04e8f20a1f7b-21" : {
+        "QueryContext" : {
+          "query" : {
+            "query" : "decent hotel with a pool in italy"
+          },
+          "size" : 10,
+          "from" : 0,
+          "timeout" : 120000,
+          "index" : "DemoIndex1"
+        },
+        "executionTime" : "10.541956741s"
+      }
+    }
+  }
+}
+----
+====
+
 
 include::{specDir}paths/api-query/operation-end.adoc[opts=optional]
 
@@ -373,7 +510,7 @@ a¦ *Body* +
 optional
 a¦ [markdown]
 --
-
+The body contains the UUID of the node where the query is running. This is optional and allows cancellation of queries on specific nodes.
 --
 
 [%hardbreaks]
@@ -452,9 +589,57 @@ include::{specDir}paths/api-query-cancel/operation-security-end.adoc[opts=option
 
 include::{specDir}paths/api-query-cancel/operation-security-after.adoc[opts=optional]
 
+[#api-query-cancel-ex-curl]
+= Example HTTP Request
+
+include::{snippetDir}api-query-cancel/curl-request.adoc[opts=optional]
+
+====
+[source,sh]
+----
+curl -X POST -H "Content-Type: application/json" -u $USER:$PASSWORD \
+  "http://$HOST:8094/api/query/24/cancel" -d \
+  '{ "uuid": "b91d75480470f979f65f04e8f20a1f7b" }'
+----
+====
+
+
+
+[#api-query-cancel-ex-request]
+= Example Request Body
+
 include::{snippetDir}api-query-cancel/http-request.adoc[opts=optional]
 
+====
+[source,json]
+----
+{
+  "uuid" : "b91d75480470f979f65f04e8f20a1f7b"
+}
+----
+====
+
+
+ifeval::["yes" != ""]
+[#api-query-cancel-ex-response]
+= Example HTTP Response
+endif::[]
+
 include::{snippetDir}api-query-cancel/http-response.adoc[opts=optional]
+
+
+[#api-query-cancel-ex-response-200]
+.Response 200
+====
+[source,json]
+----
+{
+  "status" : "ok",
+  "msg" : "query with ID '24' on node 'b91d75480470f979f65f04e8f20a1f7b' was aborted!"
+}
+----
+====
+
 
 include::{specDir}paths/api-query-cancel/operation-end.adoc[opts=optional]
 
@@ -631,9 +816,79 @@ include::{specDir}paths/api-query-index/operation-security-end.adoc[opts=optiona
 
 include::{specDir}paths/api-query-index/operation-security-after.adoc[opts=optional]
 
+[#api-query-index-ex-curl]
+= Example HTTP Request
+
+include::{snippetDir}api-query-index/curl-request.adoc[opts=optional]
+
+====
+[source,sh]
+----
+curl -XGET -H "Content-Type: application/json" \
+-u $USER:$PASSWORD \
+"http://$HOST:8094/api/query/index/DemoIndex1?longerThan=1ms"
+----
+====
+
+
+
 include::{snippetDir}api-query-index/http-request.adoc[opts=optional]
 
+ifeval::["yes" != ""]
+[#api-query-index-ex-response]
+= Example HTTP Response
+endif::[]
+
 include::{snippetDir}api-query-index/http-response.adoc[opts=optional]
+
+
+[#api-query-index-ex-response-200]
+.Response 200
+====
+[source,json]
+----
+{
+  "status" : "ok",
+  "stats" : {
+    "total" : 3,
+    "successful" : 3
+  },
+  "totalActiveQueryCount" : 4,
+  "filteredActiveQueries" : {
+    "indexName" : "DemoIndex1",
+    "longerThan" : "1ms",
+    "queryCount" : 2,
+    "queryMap" : {
+      "b91d75480470f979f65f04e8f20a1f7b-16" : {
+        "QueryContext" : {
+          "query" : {
+            "query" : "good restaurants in france"
+          },
+          "size" : 10,
+          "from" : 0,
+          "timeout" : 120000,
+          "index" : "DemoIndex1"
+        },
+        "executionTime" : "1.059754811s"
+      },
+      "f76b2d51397feee28c1e757ed426ef93-2" : {
+        "QueryContext" : {
+          "query" : {
+            "query" : "mexican food in england"
+          },
+          "size" : 10,
+          "from" : 0,
+          "timeout" : 120000,
+          "index" : "DemoIndex1"
+        },
+        "executionTime" : "1.058247896s"
+      }
+    }
+  }
+}
+----
+====
+
 
 include::{specDir}paths/api-query-index/operation-end.adoc[opts=optional]
 

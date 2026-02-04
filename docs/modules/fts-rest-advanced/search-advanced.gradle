@@ -1,19 +1,20 @@
+plugins {
+  id "com.github.node-gradle.node" version "7.1.0"
+}
+
 apply plugin: 'org.openapi.generator'
 
-tasks.register('getExamples') {
-  doLast {
-    ant.property(name: "srcUrl",
-                value: "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/trinity/docs/spec/advanced/examples")
-    ant.echo("Fetching from ${ant.srcUrl}")
-    ant.get(dest: "examples", ignoreerrors: "true") {
-      ant.url(url: "${ant.srcUrl}/get-partition.json")
-    }
-  }
+task bundleSpec(type: NpxTask) {
+  command = '@redocly/cli'
+  args = [
+    'bundle',
+    'https://raw.githubusercontent.com/couchbase/cbft/refs/heads/trinity/docs/spec/advanced/advanced.yaml',
+    '-o', 'build/bundle/advanced.yaml']
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    remoteInputSpec = "https://raw.githubusercontent.com/couchbase/cbft/refs/heads/trinity/docs/spec/advanced/advanced.yaml"
+    inputSpec = file("build/bundle/advanced.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/fts-rest-advanced/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cbft"
@@ -34,4 +35,4 @@ openApiGenerate {
     engine = "handlebars"
 }
 
-tasks.openApiGenerate.dependsOn(getExamples)
+tasks.openApiGenerate.dependsOn(bundleSpec)
