@@ -9,17 +9,18 @@ task bundleSpec(type: NpxTask) {
   args = [
     'bundle',
     'https://raw.githubusercontent.com/couchbase/cbft/refs/heads/trinity/docs/spec/index/index.yaml',
-    '-o', 'build/bundle/index.yaml']
+    '-o', 'attachments/${name}.bundle.yaml']
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    inputSpec = file("build/bundle/index.yaml").getAbsolutePath().toString()
+    inputSpec = file("attachments/${name}.bundle.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/fts-rest-indexing/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cbft"
     gitUserId = "couchbase"
     additionalProperties = [
+            projectName: "${name}",
             specDir: "${rootDir}/docs/modules/fts-rest-indexing/partials/",
             snippetDir: "${rootDir}/docs/modules/fts-rest-indexing/partials/paths/",
             headerAttributes: "true",

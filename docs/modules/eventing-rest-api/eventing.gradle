@@ -3,34 +3,35 @@ plugins {
 }
 
 jayOverlay {
-    targetFile.set("${projectDir}/build/bundle/eventing.yaml")
+    targetFile.set("${projectDir}/build/${name}.bundle.yaml")
     overlayFile.set("${projectDir}/attachments/_overlay.json")
-    outputDir.set("${projectDir}/build/overlay")
+    outputDir.set("${projectDir}/attachments")
 }
 
 apply plugin: 'org.openapi.generator'
 
 task bundleSpec(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
     generatorName = "openapi-yaml"
-    inputSpec = file("attachments/eventing.yaml").getAbsolutePath().toString()
-    outputDir = "${projectDir}/build/bundle"
+    inputSpec = file("attachments/_${name}.yaml").getAbsolutePath().toString()
+    outputDir = "${projectDir}/build"
     globalProperties = [
             generateAliasAsModel: "true"
     ]
     additionalProperties = [
-            outputFile: "eventing.yaml",
+            outputFile: "${name}.bundle.yaml",
     ]
     generateAliasAsModel = true
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    inputSpec = file("build/overlay/eventing.yaml").getAbsolutePath().toString()
+    inputSpec = file("attachments/${name}.overlaid.yaml").getAbsolutePath().toString()
     outputDir = "${rootDir}/docs/modules/eventing-rest-api/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cb-swagger"
     gitUserId = "couchbaselabs"
     additionalProperties = [
+            projectName: "${name}",
             specDir: "${rootDir}/docs/modules/eventing-rest-api/partials/",
             snippetDir: "${rootDir}/docs/modules/eventing-rest-api/partials/paths/",
             headerAttributes: "true",
