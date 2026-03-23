@@ -26,14 +26,14 @@ task bundleSpec(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTas
 openApiGenerate {
     generatorName = "asciidoc"
     inputSpec = file("attachments/${name}.overlaid.yaml").getAbsolutePath().toString()
-    outputDir = "${rootDir}/docs/modules/eventing-rest-api/pages"
+    outputDir = "${projectDir}/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cb-swagger"
     gitUserId = "couchbaselabs"
     additionalProperties = [
             serviceDesc: "${name}.overlaid.yaml",
-            specDir: "${rootDir}/docs/modules/eventing-rest-api/partials/",
-            snippetDir: "${rootDir}/docs/modules/eventing-rest-api/partials/paths/",
+            specDir: "${projectDir}/partials/",
+            snippetDir: "${projectDir}/partials/paths/",
             headerAttributes: "true",
             useIntroduction: "true",
             useTableTitles: "true",

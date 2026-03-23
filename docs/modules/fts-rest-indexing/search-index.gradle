@@ -15,14 +15,14 @@ task bundleSpec(type: NpxTask) {
 openApiGenerate {
     generatorName = "asciidoc"
     inputSpec = file("attachments/${name}.bundle.yaml").getAbsolutePath().toString()
-    outputDir = "${rootDir}/docs/modules/fts-rest-indexing/pages"
+    outputDir = "${projectDir}/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cbft"
     gitUserId = "couchbase"
     additionalProperties = [
             serviceDesc: "${name}.bundle.yaml",
-            specDir: "${rootDir}/docs/modules/fts-rest-indexing/partials/",
-            snippetDir: "${rootDir}/docs/modules/fts-rest-indexing/partials/paths/",
+            specDir: "${projectDir}/partials/",
+            snippetDir: "${projectDir}/partials/paths/",
             headerAttributes: "true",
             useIntroduction: "true",
             useTableTitles: "true",
