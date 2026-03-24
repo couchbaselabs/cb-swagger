@@ -2,36 +2,41 @@ plugins {
     id("io.datapith.jayOverlay").version("0.1.11")
 }
 
-jayOverlay {
-    targetFile.set("${projectDir}/build/${name}.bundle.yaml")
-    overlayFile.set("${projectDir}/attachments/_overlay.json")
-    outputDir.set("${projectDir}/attachments")
-}
-
 apply plugin: 'org.openapi.generator'
 
 task bundleSpec(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
     generatorName = "openapi-yaml"
-    inputSpec = file("attachments/_${name}.yaml").getAbsolutePath().toString()
+    inputSpec = file("attachments/_${project.name}.yaml").getAbsolutePath().toString()
     outputDir = "${projectDir}/build"
     globalProperties = [
             generateAliasAsModel: "true"
     ]
     additionalProperties = [
-            outputFile: "${name}.bundle.yaml",
+            outputFile: "${project.name}.bundle.yaml",
     ]
     generateAliasAsModel = true
 }
 
+jayOverlay {
+    targetFile.set("${projectDir}/build/${project.name}.bundle.yaml")
+    overlayFile.set("${projectDir}/attachments/_overlay.json")
+    outputDir.set("${projectDir}/attachments")
+}
+
+tasks.applyOverlay.doLast {
+    ant.move(file:   "${projectDir}/attachments/${project.name}.bundle.yaml",
+             tofile: "${projectDir}/attachments/${project.name}.overlaid.yaml")
+}
+
 openApiGenerate {
     generatorName = "asciidoc"
-    inputSpec = file("attachments/${name}.overlaid.yaml").getAbsolutePath().toString()
+    inputSpec = file("attachments/${project.name}.overlaid.yaml").getAbsolutePath().toString()
     outputDir = "${projectDir}/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cb-swagger"
     gitUserId = "couchbaselabs"
     additionalProperties = [
-            serviceDesc: "${name}.overlaid.yaml",
+            serviceDesc: "${project.name}.overlaid.yaml",
             specDir: "${projectDir}/partials/",
             snippetDir: "${projectDir}/partials/paths/",
             headerAttributes: "true",
