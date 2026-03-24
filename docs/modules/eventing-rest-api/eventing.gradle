@@ -25,7 +25,8 @@ jayOverlay {
 
 tasks.applyOverlay.doLast {
     ant.move(file:   "${projectDir}/attachments/${project.name}.bundle.yaml",
-             tofile: "${projectDir}/attachments/${project.name}.overlaid.yaml")
+             tofile: "${projectDir}/attachments/${project.name}.overlaid.yaml",
+             overwrite: "true")
 }
 
 openApiGenerate {
