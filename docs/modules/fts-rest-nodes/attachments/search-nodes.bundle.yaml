@@ -1,0 +1,717 @@
+openapi: 3.0.3
+info:
+  title: Couchbase Search Node API
+  description: |-
+    The Search Node Configuration REST API is provided by the Search service.
+    This API enables you to manage and monitor your Search nodes.
+  version: '7.6'
+servers:
+  - url: '{scheme}://{host}:{port}'
+    description: The URL scheme, host, and port are as follows.
+    variables:
+      scheme:
+        default: http
+        description: |-
+          The URL scheme.
+          Use `https` for secure access.
+        enum:
+          - http
+          - https
+      host:
+        default: localhost
+        description: The host name or IP address of a node running the Search Service.
+      port:
+        default: '8094'
+        description: |-
+          The Search Service REST port.
+          Use `18094` for secure access.
+        enum:
+          - '8094'
+          - '18094'
+tags:
+  - name: configuration
+    x-displayName: Node Configuration
+    description: Operations for node configuration.
+  - name: diagnostics
+    x-displayName: Node Diagnostics
+    description: Operations for node diagnostics.
+  - name: management
+    x-displayName: Node Management
+    description: Operations for node management.
+  - name: monitoring
+    x-displayName: Node Monitoring
+    description: Operations for node monitoring.
+paths:
+  /api/cfg:
+    get:
+      operationId: getClusterConfig
+      summary: Get Cluster Configuration
+      description: Returns the node's current view of the cluster's configuration as JSON.
+      tags:
+        - configuration
+      responses:
+        '200':
+          description: A JSON object containing the node's configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/clusterConfig'
+              example:
+                indexDefs:
+                  implVersion: 4.0.0
+                  indexDefs:
+                    myFirstIndex:
+                      name: myFirstIndex
+                      params: ''
+                      planParams:
+                        hierarchyRules: null
+                        maxPartitionsPerPIndex: 0
+                        nodePlanParams: null
+                        numReplicas: 0
+                        planFrozen: false
+                      sourceName: ''
+                      sourceParams: ''
+                      sourceType: nil
+                      sourceUUID: ''
+                      type: blackhole
+                      uuid: 6cc599ab7a85bf3b
+                  uuid: 6cc599ab7a85bf3b
+                indexDefsCAS: 3
+                indexDefsErr: null
+                nodeDefsKnown:
+                  implVersion: 4.0.0
+                  nodeDefs:
+                    78fc2ffac2fd9401:
+                      container: ''
+                      extras: ''
+                      hostPort: 0.0.0.0:8094
+                      implVersion: 4.0.0
+                      tags: null
+                      uuid: 78fc2ffac2fd9401
+                      weight: 1
+                  uuid: 2f0d18fb750b2d4a
+                nodeDefsKnownCAS: 1
+                nodeDefsKnownErr: null
+                nodeDefsWanted:
+                  implVersion: 4.0.0
+                  nodeDefs:
+                    78fc2ffac2fd9401:
+                      container: ''
+                      extras: ''
+                      hostPort: 0.0.0.0:8094
+                      implVersion: 4.0.0
+                      tags: null
+                      uuid: 78fc2ffac2fd9401
+                      weight: 1
+                  uuid: 72d6750878551451
+                nodeDefsWantedCAS: 2
+                nodeDefsWantedErr: null
+                planPIndexes:
+                  implVersion: 4.0.0
+                  planPIndexes:
+                    myFirstIndex_6cc599ab7a85bf3b_0:
+                      indexName: myFirstIndex
+                      indexParams: ''
+                      indexType: blackhole
+                      indexUUID: 6cc599ab7a85bf3b
+                      name: myFirstIndex_6cc599ab7a85bf3b_0
+                      nodes:
+                        78fc2ffac2fd9401:
+                          canRead: true
+                          canWrite: true
+                          priority: 0
+                      sourceName: ''
+                      sourceParams: ''
+                      sourcePartitions: ''
+                      sourceType: nil
+                      sourceUUID: ''
+                      uuid: 64bed6e2edf354c3
+                  uuid: 6327debf817a5ec7
+                  warnings:
+                    myFirstIndex: []
+                planPIndexesCAS: 5
+                planPIndexesErr: null
+                status: ok
+      security:
+        - readClusterSettings: []
+  /api/cfgRefresh:
+    post:
+      operationId: refreshClusterConfig
+      summary: Refresh Node Configuration
+      description: Requests the node to refresh its configuration from the configuration provider.
+      tags:
+        - configuration
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+      security:
+        - writeClusterSettings: []
+  /api/managerKick:
+    post:
+      operationId: managerKick
+      summary: Replan Resource Assignments
+      description: Forces the node to replan resource assignments, (by running the planner, if enabled) and update its runtime state to reflect the latest plan (by running the janitor, if enabled).
+      tags:
+        - configuration
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+      security:
+        - writeClusterSettings: []
+  /api/managerMeta:
+    get:
+      operationId: managerMeta
+      summary: Get Node Capabilities
+      description: |-
+        Returns information on the node's capabilities, including available indexing and storage options as JSON.
+        This operation is intended to help management tools and web UIs to be more dynamically metadata driven.
+      tags:
+        - configuration
+      responses:
+        '200':
+          description: A JSON object containing the node's capabilities.
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+        - writeClusterSettings: []
+  /api/diag:
+    get:
+      operationId: getDiagnostics
+      summary: Get Diagnostics
+      description: |-
+        Returns the full set of diagnostic information from the node as JSON.
+        The response is the union of the responses from the node's other REST API diagnostic and monitoring endpoints.
+
+        For example, for a 3 node cluster, you could capture diagnostics for each node with something like:
+
+        ```shell
+        curl http://cbft-01:8094/api/diag > cbft-01.json
+        curl http://cbft-02:8094/api/diag > cbft-02.json
+        curl http://cbft-03:8094/api/diag > cbft-03.json
+        ```
+
+        The response JSON object can be quite large, 100s of KB or much more.
+
+        The motivation for this operation is to simplify working with the Couchbase community, forums, technical support, and other engineers, by making data capture from each Search node a single step.
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          description: A JSON object containing the node's diagnostics.
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+        - readClusterLogs: []
+  /api/log:
+    get:
+      operationId: getLogs
+      summary: Get Node Logs
+      description: Returns recent log messages and key events for the node as JSON.
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          description: A JSON object containing the node's logs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/logInfo'
+              example:
+                events: []
+                messages: []
+      security:
+        - readClusterLogs: []
+  /api/runtime:
+    get:
+      operationId: getRuntimeInfo
+      summary: Get Node Runtime Information
+      description: Returns information on the node's software, such as version strings and slow-changing runtime settings, as JSON.
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          description: A JSON object containing the node's runtime information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeInfo'
+              example:
+                arch: amd64
+                go:
+                  GOMAXPROCS: 1
+                  GOROOT: /usr/local/go
+                  compiler: gc
+                  version: go1.4
+                numCPU: 8
+                os: darwin
+                versionData: 4.0.0
+                versionMain: v0.3.1
+      security:
+        - readClusterSettings: []
+  /api/runtime/args:
+    get:
+      operationId: getRuntimeArgs
+      summary: Get Node Runtime Arguments
+      description: Returns information on the node's command-line, parameters, environment variables, and OS process values as JSON.
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          description: A JSON object containing the node's runtime arguments.
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+        - readClusterSettings: []
+  /api/runtime/profile/cpu:
+    post:
+      operationId: captureCpuProfile
+      summary: Capture CPU Profiling Information
+      description: Requests the node to capture local CPU usage profiling information.
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+      security:
+        - manageCluster: []
+  /api/runtime/profile/memory:
+    post:
+      operationId: captureMemoryProfile
+      summary: Capture Memory Profiling Information
+      description: Requests the node to capture local memory usage profiling information.
+      tags:
+        - diagnostics
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+      security:
+        - manageCluster: []
+  /api/runtime/gc:
+    post:
+      operationId: performGC
+      summary: Perform Garbage Collection
+      description: Requests the node to perform a garbage collection.
+      tags:
+        - management
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+      security:
+        - manageCluster: []
+  /api/runtime/stats:
+    get:
+      operationId: getRuntimeStats
+      summary: Get Runtime Statistics
+      description: Returns information on the node's low-level runtime stats as JSON.
+      tags:
+        - monitoring
+      responses:
+        '200':
+          description: A JSON object containing the node's low-level runtime statistics.
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+        - manageCluster: []
+  /api/runtime/statsMem:
+    get:
+      operationId: getMemoryStats
+      summary: Get Memory Statistics
+      description: Returns information on the node's low-level garbage collection and memory-related runtime stats as JSON.
+      tags:
+        - monitoring
+      responses:
+        '200':
+          description: A JSON object containing the node's memory statistics.
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+        - manageCluster: []
+components:
+  responses:
+    OK:
+      description: Success.
+  schemas:
+    clusterConfig:
+      title: Cluster Configuration
+      type: object
+      properties:
+        indexDefs:
+          $ref: '#/components/schemas/clusterConfigIndexes'
+        indexDefsCAS:
+          type: integer
+          description: Search index definition concurrency (compare and swap) value.
+        indexDefsErr:
+          type: string
+          description: Search index definition error.
+          nullable: true
+        nodeDefsKnown:
+          $ref: '#/components/schemas/clusterConfigNodesKnown'
+        nodeDefsKnownCAS:
+          type: integer
+          description: Known node definition concurrency (compare and swap) value.
+        nodeDefsKnownErr:
+          type: string
+          description: Known node definition error.
+          nullable: true
+        nodeDefsWanted:
+          $ref: '#/components/schemas/clusterConfigNodesWanted'
+        nodeDefsWantedCAS:
+          type: integer
+          description: Wanted node definition concurrency (compare and swap) value.
+        nodeDefsWantedErr:
+          type: string
+          description: Wanted node definition error.
+          nullable: true
+        planPIndexes:
+          $ref: '#/components/schemas/clusterConfigPlan'
+        planPIndexesCAS:
+          type: integer
+          description: Search index partition concurrency (compare and swap) value.
+        planPIndexesErr:
+          type: string
+          description: Search index partition error.
+          nullable: true
+        status:
+          type: string
+          description: The status of the operation.
+    clusterConfigIndexes:
+      title: Index Definitions
+      type: object
+      description: An object containing Search index definitions and related information.
+      properties:
+        implVersion:
+          type: string
+        indexDefs:
+          $ref: '#/components/schemas/GetIndexesResponseIndexesWrapper'
+    clusterConfigNodesKnown:
+      title: Known Nodes
+      type: object
+      description: An object containing known node definitions and related information.
+      properties:
+        implVersion:
+          type: string
+        nodeDefs:
+          $ref: '#/components/schemas/clusterConfigNodesWrapper'
+        uuid:
+          type: string
+    clusterConfigNodesWanted:
+      title: Wanted Nodes
+      type: object
+      description: An object containing wanted node definitions and related information.
+      properties:
+        implVersion:
+          type: string
+        nodeDefs:
+          $ref: '#/components/schemas/clusterConfigNodesWrapper'
+        uuid:
+          type: string
+    clusterConfigNodesWrapper:
+      title: Node Definitions Wrapper
+      type: object
+      description: An object containing the definitions of 1 or more nodes.
+      additionalProperties:
+        x-additionalPropertiesName: Node UUID
+        $ref: '#/components/schemas/clusterConfigNodesWrapperNode'
+    clusterConfigNodesWrapperNode:
+      title: Node Definition
+      type: object
+      description: |-
+        An object containing the definition of a single node.
+        The name of the property is the UUID of the node.
+      properties:
+        container:
+          type: string
+        extras:
+          type: string
+        hostPort:
+          type: string
+        implVersion:
+          type: string
+        tags:
+          type: string
+          nullable: true
+        uuid:
+          type: string
+        weight:
+          type: integer
+    clusterConfigPlan:
+      type: object
+      title: Plan Partitions
+      description: An object containing Search index partitions and related information.
+      properties:
+        implVersion:
+          type: string
+        planPIndexes:
+          $ref: '#/components/schemas/clusterConfigPlanWrapper'
+        uuid:
+          type: string
+        warnings:
+          $ref: '#/components/schemas/GetIndexResponsePlanWrng'
+    clusterConfigPlanWrapper:
+      type: object
+      title: Plan Partitions Wrapper
+      description: An object containing information about 1 or more Search index partitions.
+      additionalProperties:
+        x-additionalPropertiesName: Partition Name
+        $ref: '#/components/schemas/GetIndexResponsePIndex'
+    GetIndexResponsePlanWrng:
+      type: object
+      title: Plan Warnings Wrapper
+      description: An object containing 0, 1, or more nested objects, each containing warnings that apply to a Search index.
+      additionalProperties:
+        x-additionalPropertiesName: Index Name
+        $ref: '#/components/schemas/GetIndexResponsePlanWrngIndex'
+    GetIndexResponsePlanWrngIndex:
+      type: array
+      title: Plan Warnings
+      description: |-
+        An array of warnings.
+        The name of the property is the name of the Search index.
+      items:
+        type: string
+    runtimeInfo:
+      title: Runtime Information
+      type: object
+      properties:
+        arch:
+          type: string
+          description: The architecture of the node.
+        go:
+          $ref: '#/components/schemas/runtimeInfoGo'
+        numCPU:
+          type: integer
+          description: The number of CPUs on the node.
+        os:
+          type: string
+          description: The operating system of the node.
+        versionData:
+          type: string
+        versionMain:
+          type: string
+    runtimeInfoGo:
+      type: object
+      title: Go Runtime Information
+      properties:
+        GOMAXPROCS:
+          type: integer
+        GOROOT:
+          type: string
+        compiler:
+          type: string
+        version:
+          type: string
+    logInfo:
+      type: object
+      title: Log Messages
+      properties:
+        events:
+          type: array
+          items:
+            type: object
+        messages:
+          type: array
+          items:
+            type: object
+    CommonIndexName:
+      type: string
+      title: Index Name
+      description: |-
+        The name of the Search index.
+        For more information, see [Initial Settings](../search/search-index-params.html#initial).
+    CommonIndexType:
+      type: string
+      title: Index Type
+      description: |-
+        The type of the Search index.
+        For more information, see [Initial Settings](../search/search-index-params.html#initial).
+    CommonSourceName:
+      type: string
+      title: Source Name
+      description: |-
+        The name of the bucket where the Search index is stored.
+        For more information, see [Initial Settings](../search/search-index-params.html#initial).
+    CommonSourceUUID:
+      type: string
+      title: Source UUID
+      description: |-
+        The UUID of the bucket where the Search index is stored.
+        For more information, see [Initial Settings](../search/search-index-params.html#initial).
+    CommonSourceParams:
+      type: object
+      title: Source Parameters
+      description: |-
+        Advanced settings for Search index behavior.
+        For more information, see [Initial Settings](../search/search-index-params.html#initial).
+    CommonSourceType:
+      type: string
+      title: Source Type
+      description: |-
+        The type of the bucket where the Search index is stored.
+        For more information, see [Initial Settings](../search/search-index-params.html#initial).
+    CommonIndexParams:
+      type: object
+      title: Index Parameters
+      description: |-
+        The Search index's type identifier, type mappings, and analyzers.
+        For more information, see [Params Object](../search/search-index-params.html#params).
+    IndexDefinitionPlanParams:
+      title: Plan Parameters
+      type: object
+      description: |-
+        The Search index's partitioning and replication settings.
+        For more information, see [Plan Params Object](../search/search-index-params.html#planParams).
+      properties:
+        hierarchyRules:
+          type: string
+          nullable: true
+        maxPartitionsPerPIndex:
+          type: integer
+          description: |-
+            This setting is deprecated.
+            Use `indexPartitions` instead.
+        indexPartitions:
+          type: integer
+          description: The number of partitions to split the Search index into, across the nodes you have available in your database with the Search Service enabled.
+        nodePlanParams:
+          type: string
+          nullable: true
+        numReplicas:
+          type: integer
+          description: The number of replicas the Search Service creates for the Search index to ensure high availability.
+        planFrozen:
+          type: boolean
+    CommonIndexUUID:
+      type: string
+      title: Index UUID
+      description: |-
+        The UUID of the Search index.
+        For more information, see [Initial Settings](../search/search-index-params.html#initial).
+    IndexDefinition:
+      type: object
+      title: Index Definition
+      description: |-
+        The full Search index definition.
+        For a detailed list of all parameters, see [Search Index JSON Properties](../search/search-index-params.html).
+      properties:
+        name:
+          $ref: '#/components/schemas/CommonIndexName'
+        type:
+          $ref: '#/components/schemas/CommonIndexType'
+        sourceName:
+          $ref: '#/components/schemas/CommonSourceName'
+        sourceUUID:
+          $ref: '#/components/schemas/CommonSourceUUID'
+        sourceParams:
+          $ref: '#/components/schemas/CommonSourceParams'
+        sourceType:
+          $ref: '#/components/schemas/CommonSourceType'
+        params:
+          $ref: '#/components/schemas/CommonIndexParams'
+        planParams:
+          $ref: '#/components/schemas/IndexDefinitionPlanParams'
+        prevIndexUUID:
+          type: string
+          writeOnly: true
+          description: |-
+            The UUID of the previous index.
+            Intended for clients that want to check that they are not overwriting the Search index definition updates of concurrent clients.
+        uuid:
+          $ref: '#/components/schemas/CommonIndexUUID'
+      required:
+        - name
+        - type
+        - sourceName
+        - sourceType
+        - params
+        - planParams
+    GetIndexesResponseIndexesWrapper:
+      title: Index Definitions Wrapper
+      type: object
+      description: An object containing 1 or more Search index definitions.
+      additionalProperties:
+        x-additionalPropertiesName: Index Name
+        $ref: '#/components/schemas/IndexDefinition'
+    CommonPIndexName:
+      type: string
+      title: Partition Name
+      description: The name of the Search index partition.
+    GetIndexResponsePIndexNodesWrapperNode:
+      type: object
+      title: Partition Node
+      description: |-
+        An object containing information about a single Search index partition node.
+        The name of the property is the node UUID.
+      properties:
+        canRead:
+          type: boolean
+        canWrite:
+          type: boolean
+        priority:
+          type: integer
+    GetIndexResponsePIndexNodesWrapper:
+      type: object
+      title: Partition Nodes Wrapper
+      description: An object containing information about 1 or more Search index partition nodes.
+      additionalProperties:
+        x-additionalPropertiesName: Node UUID
+        $ref: '#/components/schemas/GetIndexResponsePIndexNodesWrapperNode'
+    CommonPIndexUUID:
+      type: string
+      title: Partition UUID
+      description: The UUID of the Search index partition.
+    GetIndexResponsePIndex:
+      type: object
+      title: Plan Partition
+      description: An object containing information about a single Search index partition.
+      properties:
+        indexName:
+          $ref: '#/components/schemas/CommonIndexName'
+        indexParams:
+          $ref: '#/components/schemas/CommonIndexParams'
+        indexType:
+          $ref: '#/components/schemas/CommonIndexType'
+        indexUUID:
+          $ref: '#/components/schemas/CommonIndexUUID'
+        name:
+          $ref: '#/components/schemas/CommonPIndexName'
+        nodes:
+          $ref: '#/components/schemas/GetIndexResponsePIndexNodesWrapper'
+        sourceName:
+          $ref: '#/components/schemas/CommonSourceName'
+        sourceParams:
+          $ref: '#/components/schemas/CommonSourceParams'
+        sourcePartitions:
+          type: string
+        sourceType:
+          $ref: '#/components/schemas/CommonSourceType'
+        sourceUUID:
+          $ref: '#/components/schemas/CommonSourceUUID'
+        uuid:
+          $ref: '#/components/schemas/CommonPIndexUUID'
+  securitySchemes:
+    manageCluster:
+      type: http
+      scheme: basic
+      description: You must have the **Full Admin** or **Cluster Admin** role, with permissions to manage the cluster.
+    readClusterSettings:
+      type: http
+      scheme: basic
+      description: You must have the **Full Admin** or **Cluster Admin** role, with permission to read cluster settings.
+    readClusterLogs:
+      type: http
+      scheme: basic
+      description: You must have the **Full Admin** or **Cluster Admin** role, with permission to read cluster logs.
+    writeClusterSettings:
+      type: http
+      scheme: basic
+      description: You must have the **Full Admin** or **Cluster Admin** role, with permission to write cluster settings.
