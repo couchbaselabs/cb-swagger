@@ -1,0 +1,2082 @@
+openapi: "3.0.3"
+info:
+  description: "The Eventing REST API provides methods to work with and manipulate\
+    \ Couchbase Eventing functions."
+  license:
+    name: "Business Source License 1.1"
+    url: "https://github.com/couchbaselabs/cb-swagger/blob/capella/licenses/BSL-Couchbase.txt"
+  title: "Eventing REST API"
+  version: "8.0"
+servers:
+- description: "The URL scheme, host, and port are as follows."
+  url: "{scheme}://{host}:{port}"
+  variables:
+    scheme:
+      default: "http"
+      description: "The URL scheme.\nUse `https` for secure access."
+      enum:
+      - "http"
+      - "https"
+    host:
+      default: "localhost"
+      description: "The host name or IP address of a node running the Eventing Service."
+    port:
+      default: "8096"
+      description: "The Eventing Service REST port.\nUse `18096` for secure access."
+      enum:
+      - "8096"
+      - "18096"
+paths:
+  /api/v1/functions/{function}/deploy:
+    post:
+      description: "Deploys an undeployed function.\nThis is the preferred invocation."
+      operationId: "basic_deploy"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          description: "Success."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Deploy a Function"
+      tags:
+      - "activation"
+  /api/v1/functions/{function}/undeploy:
+    post:
+      description: "Undeploys a function.\nThis is the preferred invocation."
+      operationId: "basic_undeploy"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          description: "Success."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Undeploy a Function"
+      tags:
+      - "activation"
+  /api/v1/functions/{function}/pause:
+    post:
+      description: "Pauses a function and creates a DCP checkpoint such that on a\
+        \ subsequent resume no mutations will be lost.\nThis is the preferred invocation."
+      operationId: "basic_pause"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          description: "Success."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Pause a Function"
+      tags:
+      - "activation"
+  /api/v1/functions/(function}/resume:
+    post:
+      description: "Resumes a paused function from its paused DCP checkpoint.\nThis\
+        \ is the preferred invocation."
+      operationId: "basic_resume"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Resume a Function"
+      tags:
+      - "activation"
+  /api/v1/functions/{function}:
+    delete:
+      description: "Deletes a specific function from the cluster.\n\nUse this API\
+        \ with caution, as it's irreversible."
+      operationId: "adv_function_zap"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Delete Function"
+      tags:
+      - "advanced"
+    get:
+      description: "Provides a listing of a complete function definition available\
+        \ in the cluster.\nThe function could be in any state: deployed, undeployed,\
+        \ or paused.\nIf saved to a file the function definition can be imported into\
+        \ the cluster or a different cluster.\nHowever any changes to the function\
+        \ definition made to the file outside the UI are discouraged."
+      operationId: "adv_function_view"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/handler_schema"
+          description: "Returns a single function definition object."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "View a Function"
+      tags:
+      - "advanced"
+    post:
+      description: "Creates or imports a single function."
+      operationId: "adv_function_import"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddFunction"
+        description: "A single function definition object, or an array containing\
+          \ a single function definition object.\nThe function name in the definition\
+          \ object must match that given by the path parameter."
+        required: true
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Create or Import a Function"
+      tags:
+      - "advanced"
+  /api/v1/functions:
+    delete:
+      description: "Deletes **all functions** from the cluster.\nUse this API with\
+        \ caution, as it's irreversible.\n\nIf this API is run as a non-Administrator\
+        \ the deleted set will be filtered via RBAC to include only the function scopes\
+        \ the user has access to."
+      operationId: "adv_function_zap_all"
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Unscoped: []
+      summary: "Delete Multiple Functions"
+      tags:
+      - "advanced"
+    get:
+      description: "Provides an array of definitions of all functions available in\
+        \ the cluster.\nThe functions may be in any state: deployed, undeployed, or\
+        \ paused.\nIf saved to a file the function definitions can be imported into\
+        \ the cluster or a different cluster.\nHowever any changes to the function\
+        \ definition made to the file outside the UI are discouraged.\n\nIf this API\
+        \ is run as a non-Administrator, the results are filtered via RBAC to include\
+        \ only the function scopes the user has access to."
+      operationId: "adv_function_view_all"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/handler_schema"
+                type: "array"
+          description: "Returns an array containing one or more function definition\
+            \ objects."
+        "404":
+          description: "Failure."
+      security:
+      - Unscoped: []
+      summary: "View Multiple Functions"
+      tags:
+      - "advanced"
+    post:
+      description: "Creates or imports multiple functions.\n\nIf any function's `language_compatibility`\
+        \ field is missing, the value will be set to the highest version supported\
+        \ by the server, unlike [Import Multiple Functions](#adv_multiple_import)."
+      operationId: "adv_function_import_all"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddFunctions"
+        description: "A single function definition object, or an array containing\
+          \ one or more function definition objects.\n\nFunction names must be unique.\n\
+          When multiple functions have the same name, an error is reported."
+        required: true
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Unscoped: []
+      summary: "Create or Import Multiple Functions"
+      tags:
+      - "advanced"
+  /api/v1/import:
+    post:
+      description: "Imports multiple functions.\n\nIf any function's `language_compatibility`\
+        \ field is missing, the value will be set to 6.0.0, unlike [Create or Import\
+        \ Multiple Functions](#adv_function_import_all)."
+      operationId: "adv_multiple_import"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddFunctions"
+        description: "A single function definition object, or an array containing\
+          \ one or more function definition objects.\n\nFunction names must be unique.\n\
+          When multiple functions have the same name, an error is reported."
+        required: true
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Unscoped: []
+      summary: "Import Multiple Functions"
+      tags:
+      - "advanced"
+  /api/v1/export:
+    get:
+      description: "This is a convenience method to export all function definitions.\n\
+        Exported functions are always set to the undeployed state at the time of export,\
+        \ regardless of their state in the cluster.\nIf saved to a file the function\
+        \ definitions can be imported into the cluster or a different cluster.\nHowever\
+        \ any changes to the function definition made to the file outside the UI are\
+        \ discouraged.\n\nIf this API is run as a non-Administrator the results are\
+        \ filtered via RBAC to include only the function scopes the user has access\
+        \ to."
+      operationId: "adv_multiple_export"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/handler_schema"
+                type: "array"
+          description: "Returns an array containing one or more function definition\
+            \ objects."
+        "404":
+          description: "Failure."
+      security:
+      - Unscoped: []
+      summary: "Export Multiple Functions"
+      tags:
+      - "advanced"
+  /api/v1/functions/{function}/settings:
+    get:
+      description: "Return or export the full settings for one eventing function in\
+        \ the cluster.\nThe settings can be subsequently imported.\nHowever any changes\
+        \ to the function settings made to the file outside the UI are discouraged."
+      operationId: "adv_settings_get"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/settings_schema"
+          description: "Returns an object showing settings for the specified function."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "View Function Settings"
+      tags:
+      - "advanced"
+    post:
+      description: "Updates an undeployed or paused function with the provided settings.\n\
+        You can only alter settings when the function is paused or undeployed; attempting\
+        \ to adjust a deployed function will result in an error.\nDuring an edit,\
+        \ settings provided are merged.\nUnspecified attributes retain their prior\
+        \ values.\n\nYou must always specify `deployment_status` and `processing_status`\
+        \ when using this REST endpoint to update any option or set of options.\n\
+        To get the current values of `deployment_status` and `processing_status`,\
+        \ see [View All Functions Status](#status_all) or [View Function Status](#status_function).\n\
+        \nBy adjusting `deployment_status` and `processing_status` this command can\
+        \ also deploy or resume a function; however, it cannot pause or undeploy a\
+        \ function."
+      operationId: "adv_settings_update"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/settings_schema"
+        description: "An object providing settings for the specified function."
+        required: true
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Update Function Settings"
+      tags:
+      - "advanced"
+  /api/v1/functions/{function}/config:
+    get:
+      description: "Export or return the configuration of the source keyspace and\
+        \ the eventing storage (metadata) keyspace for the specified function.\nThe\
+        \ definition can be subsequently imported.\nHowever any changes to the function\
+        \ definition made to the file outside the UI are discouraged."
+      operationId: "adv_structure_get"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/depcfg_schema"
+          description: "Returns an object showing the configuration of the specified\
+            \ function."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "View Function Config"
+      tags:
+      - "advanced"
+    post:
+      description: "Import the configuration and alter the source keyspace and the\
+        \ eventing storage (metadata) keyspace for the specified function.\nYou can\
+        \ only change these values if a function is in the undeployed state and the\
+        \ two keyspaces exist."
+      operationId: "adv_structure_update"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/depcfg_schema"
+        description: "An object providing the configuration for the specified function."
+        required: true
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Update Function Config"
+      tags:
+      - "advanced"
+  /api/v1/functions/{function}/appcode:
+    get:
+      description: "Export only the JavaScript code for the specified function.\n\
+        Unlike [View a Function](#adv_function_view), the JavaScript is not escaped,\
+        \ and the code is runnable in other environments.\nThe JavaScript code can\
+        \ be subsequently imported.\nHowever any changes to the function definition\
+        \ made to the file outside the UI are discouraged."
+      operationId: "adv_text_get"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppCode"
+          description: "Returns a string showing the code for the specified function."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "View Function Code"
+      tags:
+      - "advanced"
+    post:
+      description: "Import only the JavaScript code for the specified function.\n\
+        Unlike [Create or Import Function](#adv_function_import), the JavaScript is\
+        \ not escaped and could come from other environments.\nIt is highly recommended\
+        \ that you use the flag `--data-binary` or `--upload-file` when importing\
+        \ your JavaScript appcode fragments to avoid potential encoding issues due\
+        \ to string escaping."
+      operationId: "adv_text_update"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AppCode"
+        description: "A string providing the code for the specified function."
+        required: true
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Update Function Code"
+      tags:
+      - "advanced"
+  /api/v1/status:
+    get:
+      description: "Returns a list (array) of all eventing functions, showing their\
+        \ corresponding `composite_status`.\nA function's status can have one of the\
+        \ following values: undeployed, deploying, deployed, undeploying, paused,\
+        \ and pausing.\nThere's no value of resuming; when resuming a paused eventing\
+        \ function, the `composite_status` returns `deploying` until it reaches the\
+        \ deployed state.\n\nIf this API is run as a non-Administrator, the results\
+        \ are filtered via RBAC to include only the function scopes the user has access\
+        \ to."
+      operationId: "status_all"
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Unscoped: []
+      summary: "View All Functions Status"
+      tags:
+      - "status"
+  /api/v1/status/{function}:
+    get:
+      description: "Returns the specified function, showing its corresponding `composite_status`.\n\
+        It can have one of the following values: undeployed, deploying, deployed,\
+        \ undeploying, paused, and pausing.\nThere's no value of resuming; when resuming\
+        \ a paused eventing function, the `composite_status` returns `deploying` until\
+        \ it reaches the deployed state."
+      operationId: "status_function"
+      parameters:
+      - description: "The name of a function."
+        explode: false
+        in: "path"
+        name: "function"
+        required: true
+        schema:
+          type: "string"
+        style: "simple"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "View Function Status"
+      tags:
+      - "status"
+  /getAppLog:
+    get:
+      description: "Returns the most recent application log messages for the specified\
+        \ function."
+      operationId: "log_view"
+      parameters:
+      - description: "The name of a function."
+        explode: true
+        in: "query"
+        name: "name"
+        required: true
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "If `false`, the API accesses a single Eventing node.\nIf `true`,\
+          \ the API accesses all Eventing nodes."
+        explode: true
+        x-has-default: true
+        in: "query"
+        name: "aggregate"
+        required: false
+        schema:
+          default: false
+          type: "boolean"
+        style: "form"
+      - description: "The approximate amount of logging information returned.\nWhen\
+          \ fetching from more than one Eventing node, the amount of logging information\
+          \ returned from each node is the `size` divided by the number of nodes."
+        explode: true
+        x-has-default: true
+        in: "query"
+        name: "size"
+        required: false
+        schema:
+          default: 40960
+          type: "integer"
+        style: "form"
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Get Log for a Function"
+      tags:
+      - "logging"
+  /api/v1/list/functions:
+    get:
+      description: "Returns a list (array) of the names of all Eventing functions\
+        \ in the cluster.\nThe returned list can also be filtered &mdash; see [List\
+        \ Filtered Functions](#list_query).\n\nIf this API is run as a non-Administrator\
+        \ the results are filtered via RBAC to include only the function scopes the\
+        \ user has access to."
+      operationId: "list_all"
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Unscoped: []
+      summary: "List All Functions"
+      tags:
+      - "list"
+  /api/v1/list/functions/query:
+    get:
+      description: "Returns a list (array) of the names of all Eventing functions\
+        \ in the cluster.\nThe returned list can be filtered by the following:\n\n\
+        - Deployed status : in this case, paused is considered deployed.\n- Source\
+        \ bucket: the listen to keyspace.\n- Function type: whether the function modifies\
+        \ its own listen to keyspace.\n\nIf this API is run as a non-Administrator\
+        \ the results are filtered via RBAC to include only the function scopes the\
+        \ user has access to."
+      operationId: "list_query"
+      parameters:
+      - description: "If `true`, returns the names of all deployed (or paused) functions.\n\
+          If `false`, returns the names of all undeployed functions."
+        explode: true
+        in: "query"
+        name: "deployed"
+        required: false
+        schema:
+          default: false
+          type: "boolean"
+        style: "form"
+      - description: "The name of a bucket.\nReturns the names of Eventing functions\
+          \ in the cluster that have a source keyspace under the specified bucket."
+        explode: true
+        in: "query"
+        name: "source_bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "The function type.\n\n- `sbm`: Returns the names of Eventing\
+          \ functions in the cluster that modify their own source keyspace.\n- `notsbm`:\
+          \ Returns the names of Eventing functions in the cluster that do not modify\
+          \ their own source keyspace."
+        explode: true
+        in: "query"
+        name: "function_type"
+        required: false
+        schema:
+          enum:
+          - "sbm"
+          - "notsbm"
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Unscoped: []
+      summary: "List Filtered Functions"
+      tags:
+      - "list"
+  /api/v1/config:
+    get:
+      description: "Shows all service configuration settings.\n\nIn Couchbase Server\
+        \ 8.0 and later, you can list service configuration settings globally, or\
+        \ at the function scope level.\nWhen you list settings at the function scope\
+        \ level, the settings apply only to functions within that function scope.\n\
+        Some service configuration settings are only available globally.\n\nService\
+        \ configuration settings at the function scope level take precedence over\
+        \ global service configuration settings.\nIf a setting is not specified at\
+        \ the function scope level, the Eventing service checks at the bucket level,\
+        \ and then falls back to the global level.\n\nYou can also see the current\
+        \ values of the `enable_debugger` and `ram_quota` settings via the UI."
+      operationId: "config_get"
+      parameters:
+      - description: "For scoped configuration settings only.\nThe bucket to which\
+          \ the configuration settings apply."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped configuration settings only.\nThe scope to which\
+          \ the configuration settings apply."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnivConfig"
+          description: "Returns an object showing the service configuration settings."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "List Service Config"
+      tags:
+      - "service config"
+    post:
+      description: "Modify service configuration settings.\nDuring an edit, settings\
+        \ provided are merged.\nUnspecified attributes retain their prior values.\n\
+        The response indicates whether the Eventing service must be restarted for\
+        \ the new changes to take effect.\n\nIn Couchbase Server 8.0 and later, you\
+        \ can modify service configuration settings globally, or at the function scope\
+        \ level.\nWhen you modify settings at the function scope level, the settings\
+        \ apply only to functions within that function scope.\nSome service configuration\
+        \ settings are only available globally.\n\nService configuration settings\
+        \ at the function scope level take precedence over global service configuration\
+        \ settings.\nIf a setting is not specified at the function scope level, the\
+        \ Eventing service checks at the bucket level, and then falls back to the\
+        \ global level.\n\nYou can also modify the `enable_debugger` and `ram_quota`\
+        \ settings via the UI."
+      operationId: "config_update"
+      parameters:
+      - description: "For scoped configuration settings only.\nThe bucket to which\
+          \ the configuration settings apply."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped configuration settings only.\nThe scope to which\
+          \ the configuration settings apply."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UnivConfig"
+        description: "An object providing the service configuration settings."
+        required: true
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Modify Service Config"
+      tags:
+      - "service config"
+  /api/v1/stats:
+    get:
+      description: "Retrieve all statistics for the node.\n\n\nIf this API is run\
+        \ as a non-Administrator the results are filtered via RBAC to include only\
+        \ the function scopes the user has access to."
+      operationId: "stats_all"
+      parameters:
+      - description: "Including this parameter returns the full statistics set, inclusive\
+          \ of events processing, events remaining, execution, failure, latency, worker\
+          \ PIDs and sequence processed.\n\nOmitting this parameter excludes `dcp_event_backlog_per_vb`,\
+          \ `doc_timer_debug_stats`, `latency_stats`, `plasma_stats`, and `seqs_processed`\
+          \ from the response."
+        explode: true
+        in: "query"
+        name: "type"
+        required: false
+        schema:
+          enum:
+          - "full"
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Unscoped: []
+      summary: "Get All Statistics"
+      tags:
+      - "statistics"
+  /getExecutionStats:
+    get:
+      description: "Retrieve only execution statistics.\nThis returns the subset of\
+        \ statistics for the node."
+      operationId: "stats_execution"
+      parameters:
+      - description: "The name of a function."
+        explode: true
+        in: "query"
+        name: "name"
+        required: true
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Get Execution Statistics"
+      tags:
+      - "statistics"
+  /getLatencyStats:
+    get:
+      description: "Retrieve only latency statistics.\nThis returns the subset of\
+        \ statistics for the node."
+      operationId: "stats_latency"
+      parameters:
+      - description: "The name of a function."
+        explode: true
+        in: "query"
+        name: "name"
+        required: true
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Get Latency Statistics"
+      tags:
+      - "statistics"
+  /getFailureStats:
+    get:
+      description: "Retrieve only failure statistics.\nThis returns the subset of\
+        \ statistics for the node."
+      operationId: "stats_failure"
+      parameters:
+      - description: "The name of a function."
+        explode: true
+        in: "query"
+        name: "name"
+        required: true
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Get Failure Statistics"
+      tags:
+      - "statistics"
+  /resetStatsCounters:
+    get:
+      description: "Resets statistics for the specified function."
+      operationId: "stats_reset"
+      parameters:
+      - description: "For scoped functions only.\nThe bucket to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "bucket"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "For scoped functions only.\nThe scope to which the function\
+          \ belongs."
+        explode: true
+        in: "query"
+        name: "scope"
+        required: false
+        schema:
+          type: "string"
+        style: "form"
+      - description: "The name of a function."
+        explode: true
+        in: "query"
+        name: "appName"
+        required: true
+        schema:
+          type: "string"
+        style: "form"
+      responses:
+        "200":
+          description: "Success."
+        "404":
+          description: "Failure."
+      security:
+      - Global: []
+      - Scoped: []
+      summary: "Reset Statistics"
+      tags:
+      - "statistics"
+components:
+  parameters:
+    PathFunction:
+      description: "The name of a function."
+      explode: false
+      in: "path"
+      name: "function"
+      required: true
+      schema:
+        type: "string"
+      style: "simple"
+    QueryBucket:
+      description: "For scoped functions only.\nThe bucket to which the function belongs."
+      explode: true
+      in: "query"
+      name: "bucket"
+      required: false
+      schema:
+        type: "string"
+      style: "form"
+    QueryScope:
+      description: "For scoped functions only.\nThe scope to which the function belongs."
+      explode: true
+      in: "query"
+      name: "scope"
+      required: false
+      schema:
+        type: "string"
+      style: "form"
+    QueryFunction:
+      description: "The name of a function."
+      explode: true
+      in: "query"
+      name: "name"
+      required: true
+      schema:
+        type: "string"
+      style: "form"
+    QueryAggregate:
+      description: "If `false`, the API accesses a single Eventing node.\nIf `true`,\
+        \ the API accesses all Eventing nodes."
+      explode: true
+      x-has-default: true
+      in: "query"
+      name: "aggregate"
+      required: false
+      schema:
+        default: false
+        type: "boolean"
+      style: "form"
+    QuerySize:
+      description: "The approximate amount of logging information returned.\nWhen\
+        \ fetching from more than one Eventing node, the amount of logging information\
+        \ returned from each node is the `size` divided by the number of nodes."
+      explode: true
+      x-has-default: true
+      in: "query"
+      name: "size"
+      required: false
+      schema:
+        default: 40960
+        type: "integer"
+      style: "form"
+  responses:
+    OK:
+      description: "Success."
+    Goof:
+      description: "Failure."
+  schemas:
+    settings_schema:
+      additionalProperties: false
+      example:
+        n1ql_prepare_all: false
+        high_seq_check_interval: 5
+        bucket_cache_age: 1
+        description: "description"
+        sock_batch_size: 1
+        user_prefix: "eventing"
+        cursor_aware: false
+        max_unacked_count: 9
+        cpp_worker_thread_count: 1
+        lcb_inst_capacity: 1
+        on_deploy_timeout: 1
+        handler_headers:
+        - "handler_headers"
+        - "handler_headers"
+        language_compatibility: "7.2.0"
+        handler_footers:
+        - "handler_footers"
+        - "handler_footers"
+        app_log_dir: "app_log_dir"
+        curl_max_allowed_resp_size: 4
+        processing_status: false
+        cursor_checkpoint_timeout: 1
+        app_log_max_files: 1
+        bucket_cache_size: 20971520
+        execution_timeout: 1
+        lcb_retry_count: 0
+        max_unacked_bytes: 9
+        allow_transaction_mutations: false
+        max_parallel_vb: 8
+        worker_count: 1
+        timer_context_size: 15490161
+        enable_applog_rotation: true
+        log_level: "INFO"
+        deployment_status: false
+        n1ql_consistency: "none"
+        checkpoint_interval: 1
+        message_flush_time: 6
+        num_timer_partitions: 3
+        dcp_stream_boundary: "everything"
+        lcb_timeout: 1
+        tick_duration: 4
+        allow_sync_documents: false
+        app_log_max_size: 1024
+      properties:
+        cpp_worker_thread_count:
+          default: 2
+          description: "number of threads each worker utilizes"
+          minimum: 1
+          type: "integer"
+        dcp_stream_boundary:
+          default: "everything"
+          description: "indicates where to start dcp stream from (beginning of time,\
+            \ present point) 'from_prior' is deprecated in 6.6.2"
+          enum:
+          - "everything"
+          - "from_now"
+          type: "string"
+        deployment_status:
+          default: false
+          description: "indicates if the function is deployed. true=deployed, false=undeployed"
+          type: "boolean"
+        description:
+          description: "free form text for user to describe the handler. no functional\
+            \ role"
+          type: "string"
+        execution_timeout:
+          default: 60
+          description: "maximum time the handler can run before it is forcefully terminated\
+            \ (in seconds)"
+          minimum: 1
+          type: "integer"
+        cursor_checkpoint_timeout:
+          default: 60
+          description: "The maximum time the checkpoint writer can run before it's\
+            \ forcefully terminated (in seconds)."
+          minimum: 1
+          type: "integer"
+        on_deploy_timeout:
+          default: 60
+          description: "maximum time the OnDeploy handler can run before it is terminated\
+            \ (in seconds)"
+          minimum: 1
+          type: "integer"
+        language_compatibility:
+          default: "7.2.0"
+          description: "eventing language version this handler assumes in terms of\
+            \ syntax and behavior"
+          enum:
+          - "6.6.2"
+          - "6.0.0"
+          - "6.5.0"
+          - "7.2.0"
+          type: "string"
+        lcb_inst_capacity:
+          default: 10
+          description: "maximum number of libcouchbase connections that may be opened\
+            \ and pooled"
+          minimum: 1
+          type: "integer"
+        lcb_retry_count:
+          default: 0
+          description: "number of retries of retriable libcouchbase failures. 0 keeps\
+            \ trying till execution_timeout"
+          minimum: 0
+          type: "integer"
+        lcb_timeout:
+          default: 5
+          description: "maximum time the lcb command is waited until completion before\
+            \ we terminate the request(in seconds)"
+          minimum: 1
+          type: "integer"
+        log_level:
+          default: "INFO"
+          description: "level of detail in system logging"
+          enum:
+          - "INFO"
+          - "ERROR"
+          - "WARNING"
+          - "DEBUG"
+          - "TRACE"
+          type: "string"
+        n1ql_consistency:
+          default: "none"
+          description: "consistency level used by n1ql statements in the handler"
+          enum:
+          - "none"
+          - "request"
+          type: "string"
+        num_timer_partitions:
+          description: "number of timer shards. defaults to number of vbuckets"
+          enum:
+          - 1
+          - 2
+          - 4
+          - 8
+          - 16
+          - 32
+          - 64
+          - 128
+          - 256
+          - 512
+          - 1024
+          type: "integer"
+        processing_status:
+          default: false
+          description: "indicates if the function is running (i.e., not paused). true=running,\
+            \ false=paused"
+          type: "boolean"
+        sock_batch_size:
+          description: "batch size for messages from producer to consumer. normally,\
+            \ this must not be specified"
+          minimum: 1
+          type: "integer"
+        tick_duration:
+          default: 60000
+          description: "duration to log stats from this handler, in milliseconds"
+          type: "integer"
+        timer_context_size:
+          default: 1024
+          description: "size limit of timer context object"
+          maximum: 20971520
+          minimum: 20
+          type: "integer"
+        user_prefix:
+          default: "eventing"
+          description: "key prefix for all data stored in metadata by this handler"
+          minLength: 1
+          type: "string"
+        worker_count:
+          default: 1
+          description: "number of worker processes handler utilizes on each eventing\
+            \ node"
+          minimum: 1
+          type: "integer"
+        n1ql_prepare_all:
+          default: false
+          description: "automatically prepare all n1ql statements in the handler"
+          type: "boolean"
+        handler_headers:
+          description: "code to automatically prepend to top of handler code"
+          items:
+            type: "string"
+          type: "array"
+        handler_footers:
+          description: "code to automatically append to bottom of handler code"
+          items:
+            type: "string"
+          type: "array"
+        enable_applog_rotation:
+          default: true
+          description: "enable rotating this handlers log() message files"
+          type: "boolean"
+        app_log_dir:
+          description: "directory to write content of log() message files"
+          type: "string"
+        app_log_max_size:
+          default: 41943040
+          description: "rotate logs when file grows to this size in bytes approximately"
+          minimum: 1024
+          type: "integer"
+        app_log_max_files:
+          default: 10
+          description: "number of log() message files to retain when rotating"
+          minimum: 1
+          type: "integer"
+        checkpoint_interval:
+          default: 60
+          description: "number of seconds before writing a progress checkpoint"
+          minimum: 1
+          type: "integer"
+        bucket_cache_size:
+          default: 67108864
+          description: "maximum size in bytes the bucket cache can grow to"
+          minimum: 20971520
+          type: "integer"
+        bucket_cache_age:
+          default: 1000
+          description: "time in milliseconds after which a cached bucket object is\
+            \ considered stale"
+          minimum: 1
+          type: "integer"
+        curl_max_allowed_resp_size:
+          default: 100
+          description: "maximum allowable curl call response in 'MegaBytes'. Setting\
+            \ the value to 0 lifts the upper limit off. This parameters affects v8\
+            \ engine stability since it defines the maximum amount of heap space acquired\
+            \ by a curl call"
+          type: "integer"
+        allow_transaction_mutations:
+          default: false
+          description: "allow staged transaction mutations"
+          type: "boolean"
+        allow_sync_documents:
+          default: false
+          description: "Specifies whether the function allows Sync Gateway mutations.\n\
+            \n* By default, this setting is `true`, for compatibility with previous\
+            \ versions of Couchbase Server.\n\n* When this setting is `false`, the\
+            \ specified function skips all internal Sync Gateway documents, whose\
+            \ IDs are prefixed with `_sync`.\nThis enables the function to work with\
+            \ Sync Gateway.\n\nYou must ensure that none of the documents which contain\
+            \ your own working data have IDs which are prefixed with `_sync`.\n(Internal\
+            \ Sync Gateway attachment documents, whose IDs are prefixed with `_sync:att`,\
+            \ are still processed by the specified function.)"
+          type: "boolean"
+        cursor_aware:
+          default: false
+          description: "Specifies whether the function suppresses potential duplicate\
+            \ mutations caused by App Services or Sync Gateway book-keeping.\n\nEnabling\
+            \ this setting guarantees that the Eventing function will only trigger\
+            \ once for any given mutation received from App Services or Sync Gateway.\n\
+            \nEnabling this setting may have a noticeable effect on the performance\
+            \ of the Eventing function."
+          type: "boolean"
+        high_seq_check_interval:
+          default: 50
+          description: "number of milliseconds before checking for high seq number"
+          type: "integer"
+        max_unacked_bytes:
+          default: 61
+          description: "max MBs to wait to send more bytes to c++ side"
+          type: "integer"
+        max_unacked_count:
+          default: 100000
+          description: "max number of messages on c++ side"
+          type: "integer"
+        message_flush_time:
+          default: 50
+          description: "number of milliseconds before sending message to c++ side"
+          type: "integer"
+        max_parallel_vb:
+          default: 5
+          description: "number of parallel vb request per cpp thread"
+          type: "integer"
+      type: "object"
+    depcfg_schema:
+      additionalProperties: false
+      description: "deployment configuration"
+      example:
+        curl:
+        - hostname: "https://openapi-generator.tech"
+          auth_type: "no-auth"
+          password: ""
+          allow_cookies: true
+          bearer_key: ""
+          value: "value"
+          validate_ssl_certificate: true
+          username: ""
+        - hostname: "https://openapi-generator.tech"
+          auth_type: "no-auth"
+          password: ""
+          allow_cookies: true
+          bearer_key: ""
+          value: "value"
+          validate_ssl_certificate: true
+          username: ""
+        buckets:
+        - access: "rw"
+          bucket_name: "bucket_name"
+          alias: "alias"
+          scope_name: "_default"
+          collection_name: "_default"
+        - access: "rw"
+          bucket_name: "bucket_name"
+          alias: "alias"
+          scope_name: "_default"
+          collection_name: "_default"
+        metadata_collection: "_default"
+        metadata_bucket: "metadata_bucket"
+        source_bucket: "source_bucket"
+        source_scope: "_default"
+        constants:
+        - value: "value"
+          literal: "literal"
+        - value: "value"
+          literal: "literal"
+        metadata_scope: "_default"
+        source_collection: "_default"
+      properties:
+        buckets:
+          items:
+            $ref: "#/components/schemas/depcfg_schema_buckets_inner"
+          type: "array"
+        curl:
+          items:
+            $ref: "#/components/schemas/depcfg_schema_curl_inner"
+          type: "array"
+        metadata_bucket:
+          description: "bucket to store eventing checkpoints and timers"
+          minLength: 1
+          type: "string"
+        metadata_scope:
+          default: "_default"
+          description: "scope to store eventing checkpoints and timers"
+          type: "string"
+        metadata_collection:
+          default: "_default"
+          description: "collection to store eventing checkpoints and timers"
+          type: "string"
+        source_bucket:
+          description: "bucket to listen to for document mutations"
+          minLength: 1
+          type: "string"
+        source_scope:
+          default: "_default"
+          description: "scope to listen to for document mutations"
+          type: "string"
+        source_collection:
+          default: "_default"
+          description: "collection to listen to for document mutations"
+          type: "string"
+        constants:
+          items:
+            $ref: "#/components/schemas/depcfg_schema_constants_inner"
+          type: "array"
+      required:
+      - "metadata_bucket"
+      - "source_bucket"
+      type: "object"
+    handler_schema:
+      additionalProperties: false
+      example:
+        settings:
+          n1ql_prepare_all: false
+          high_seq_check_interval: 5
+          bucket_cache_age: 1
+          description: "description"
+          sock_batch_size: 1
+          user_prefix: "eventing"
+          cursor_aware: false
+          max_unacked_count: 9
+          cpp_worker_thread_count: 1
+          lcb_inst_capacity: 1
+          on_deploy_timeout: 1
+          handler_headers:
+          - "handler_headers"
+          - "handler_headers"
+          language_compatibility: "7.2.0"
+          handler_footers:
+          - "handler_footers"
+          - "handler_footers"
+          app_log_dir: "app_log_dir"
+          curl_max_allowed_resp_size: 4
+          processing_status: false
+          cursor_checkpoint_timeout: 1
+          app_log_max_files: 1
+          bucket_cache_size: 20971520
+          execution_timeout: 1
+          lcb_retry_count: 0
+          max_unacked_bytes: 9
+          allow_transaction_mutations: false
+          max_parallel_vb: 8
+          worker_count: 1
+          timer_context_size: 15490161
+          enable_applog_rotation: true
+          log_level: "INFO"
+          deployment_status: false
+          n1ql_consistency: "none"
+          checkpoint_interval: 1
+          message_flush_time: 6
+          num_timer_partitions: 3
+          dcp_stream_boundary: "everything"
+          lcb_timeout: 1
+          tick_duration: 4
+          allow_sync_documents: false
+          app_log_max_size: 1024
+        function_scope:
+          bucket: "*"
+          scope: "*"
+        handleruuid: 0
+        function_instance_id: ""
+        appname: "appname"
+        appcode: "appcode"
+        depcfg:
+          curl:
+          - hostname: "https://openapi-generator.tech"
+            auth_type: "no-auth"
+            password: ""
+            allow_cookies: true
+            bearer_key: ""
+            value: "value"
+            validate_ssl_certificate: true
+            username: ""
+          - hostname: "https://openapi-generator.tech"
+            auth_type: "no-auth"
+            password: ""
+            allow_cookies: true
+            bearer_key: ""
+            value: "value"
+            validate_ssl_certificate: true
+            username: ""
+          buckets:
+          - access: "rw"
+            bucket_name: "bucket_name"
+            alias: "alias"
+            scope_name: "_default"
+            collection_name: "_default"
+          - access: "rw"
+            bucket_name: "bucket_name"
+            alias: "alias"
+            scope_name: "_default"
+            collection_name: "_default"
+          metadata_collection: "_default"
+          metadata_bucket: "metadata_bucket"
+          source_bucket: "source_bucket"
+          source_scope: "_default"
+          constants:
+          - value: "value"
+            literal: "literal"
+          - value: "value"
+            literal: "literal"
+          metadata_scope: "_default"
+          source_collection: "_default"
+        version: "version"
+        enforce_schema: false
+      properties:
+        appcode:
+          description: "handler code"
+          minLength: 1
+          type: "string"
+        depcfg:
+          $ref: "#/components/schemas/depcfg_schema"
+        version:
+          description: "authoring tool. use 'external' if authored or edited outside\
+            \ eventing ui"
+          pattern: "^evt-[5-7].[0-9]+.[0-9]+-[0-9]{4}-(ee|ce)$"
+          type: "string"
+        enforce_schema:
+          default: false
+          description: "enforces stricter validation for all settings and configuration\
+            \ fields."
+          type: "boolean"
+        handleruuid:
+          default: 0
+          description: "unique id of the the handler. generated by server"
+          minimum: 0
+          type: "integer"
+        function_instance_id:
+          default: ""
+          description: "unique id of the deployment of the handler. generated by server"
+          minLength: 0
+          type: "string"
+        appname:
+          maxLength: 100
+          minLength: 1
+          pattern: "^[a-zA-Z0-9][a-zA-Z0-9_-]*$"
+          type: "string"
+        settings:
+          $ref: "#/components/schemas/settings_schema"
+        function_scope:
+          $ref: "#/components/schemas/function_scope_schema"
+      required:
+      - "appcode"
+      - "appname"
+      - "depcfg"
+      - "settings"
+      - "version"
+      type: "object"
+      description: "An object which defines a function."
+    AppCode:
+      example: "function OnUpdate(doc, meta) { log(\"id\",meta.id); }"
+      x-has-example: true
+      type: "string"
+    AddFunction:
+      oneOf:
+      - $ref: "#/components/schemas/handler_schema"
+      - description: "An array containing a single function definition object."
+        items:
+          $ref: "#/components/schemas/handler_schema"
+        maxItems: 1
+        minItems: 1
+        type: "array"
+      title: "Function Request"
+    AddFunctions:
+      oneOf:
+      - $ref: "#/components/schemas/handler_schema"
+      - description: "An array containing one or more function definition objects."
+        items:
+          $ref: "#/components/schemas/handler_schema"
+        minItems: 1
+        type: "array"
+      title: "Functions Request"
+    UnivConfig:
+      example:
+        cursor_limit: 2
+        enable_curl: true
+        enable_debugger: false
+        ram_quota: 512
+        num_nodes_running: 3
+      properties:
+        ram_quota:
+          default: 256
+          description: "The memory allocation for the Eventing Service, per node.\n\
+            \nThis setting is only available globally."
+          example: 512
+          x-has-example: true
+          x-has-default: true
+          type: "integer"
+        enable_curl:
+          description: "Enables the Eventing curl function.\nFor details, see [cURL](/cloud/eventing/eventing-curl-spec.html).\n\
+            \nThis setting is available globally or at the function scope level."
+          type: "boolean"
+        enable_debugger:
+          default: false
+          description: "Enables the Eventing service debugger.\nFor details, see [Debugging\
+            \ and Diagnosability](/cloud/eventing/eventing-debugging-and-diagnosability.html).\n\
+            \nThis setting is available globally or at the function scope level."
+          x-has-default: true
+          type: "boolean"
+        cursor_limit:
+          default: 5
+          description: "The maximum number of cursor-aware Eventing functions that\
+            \ can coexist on a given source keyspace.\n(A cursor-aware Eventing function\
+            \ is one for which the `cursor_aware` setting is `true`.)\n\nIncreasing\
+            \ this setting enables more cursor-aware Eventing functions to register\
+            \ and listen to any given collection.\n\nDecreasing this setting prevents\
+            \ further cursor-aware Eventing functions from being registered on any\
+            \ given collection; however, it does not unregister already registered\
+            \ cursor-aware Eventing functions.\n\nThis setting is only available globally."
+          x-has-default: true
+          maximum: 20
+          minimum: 1
+          type: "integer"
+        num_nodes_running:
+          description: "The number of Eventing nodes on which the functions in scope\
+            \ execute.\n\nBy default, all Eventing functions run on all Eventing nodes.\n\
+            If this setting is specified, the Evening Service attempts to run the\
+            \ functions in scope on the specified number of nodes.\nIf fewer nodes\
+            \ are available, the functions run on all available nodes.\n\nThis setting\
+            \ is available globally or at the function scope level."
+          example: 3
+          x-has-example: true
+          x-desc-status: "Couchbase Server 8.0"
+          type: "integer"
+      title: "Service Config"
+      type: "object"
+    function_scope_schema:
+      additionalProperties: false
+      description: "function scope"
+      example:
+        bucket: "*"
+        scope: "*"
+      properties:
+        bucket:
+          default: "*"
+          description: "bucket to which function belongs"
+          minLength: 1
+          type: "string"
+        scope:
+          default: "*"
+          description: "scope to which function belongs"
+          minLength: 1
+          type: "string"
+      required:
+      - "bucket"
+      - "scope"
+      type: "object"
+    depcfg_schema_buckets_inner:
+      additionalProperties: false
+      example:
+        access: "rw"
+        bucket_name: "bucket_name"
+        alias: "alias"
+        scope_name: "_default"
+        collection_name: "_default"
+      properties:
+        alias:
+          description: "symbolic name used in code to refer to this binding"
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z_$][a-zA-Z0-9_$]*$"
+          type: "string"
+        bucket_name:
+          description: "name of the bucket this binding maps to"
+          minLength: 1
+          type: "string"
+        scope_name:
+          default: "_default"
+          description: "name of the scope this binding maps to"
+          type: "string"
+        collection_name:
+          default: "_default"
+          description: "name of the collection this binding maps to"
+          type: "string"
+        access:
+          default: "rw"
+          description: "bucket access level (read or read+write)"
+          enum:
+          - "r"
+          - "rw"
+          type: "string"
+      required:
+      - "access"
+      - "alias"
+      - "bucket_name"
+      type: "object"
+    depcfg_schema_curl_inner:
+      additionalProperties: false
+      example:
+        hostname: "https://openapi-generator.tech"
+        auth_type: "no-auth"
+        password: ""
+        allow_cookies: true
+        bearer_key: ""
+        value: "value"
+        validate_ssl_certificate: true
+        username: ""
+      properties:
+        hostname:
+          description: "full URL (including any path) that this binding connects"
+          format: "uri"
+          minLength: 1
+          pattern: "^https?://"
+          type: "string"
+        value:
+          description: "symbolic name used in code to refer to this binding"
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z_$][a-zA-Z0-9_$]*$"
+          type: "string"
+        auth_type:
+          default: "no-auth"
+          description: "http authentication method to use with this endpoint"
+          enum:
+          - "no-auth"
+          - "basic"
+          - "bearer"
+          - "digest"
+          type: "string"
+        username:
+          default: ""
+          description: "username for http auth methods that use it"
+          type: "string"
+        password:
+          default: ""
+          description: "password for http auth methods that use it"
+          type: "string"
+        bearer_key:
+          default: ""
+          description: "bearer key for bearer auth"
+          type: "string"
+        allow_cookies:
+          default: true
+          description: "allow cookies on the session"
+          type: "boolean"
+        validate_ssl_certificate:
+          description: "validate remote server certificate using OS mechanisms"
+          type: "boolean"
+      required:
+      - "allow_cookies"
+      - "auth_type"
+      - "hostname"
+      - "validate_ssl_certificate"
+      - "value"
+      type: "object"
+    depcfg_schema_constants_inner:
+      additionalProperties: false
+      example:
+        value: "value"
+        literal: "literal"
+      properties:
+        value:
+          description: "alias name of the constant binding"
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z_$][a-zA-Z0-9_$]*$"
+          type: "string"
+        literal:
+          description: "literal value bound to the alias name"
+          minLength: 1
+          type: "string"
+      required:
+      - "literal"
+      - "value"
+      type: "object"
+  securitySchemes:
+    Global:
+      description: "Global functions and service configuration settings with a function\
+        \ scope of ``*.*`` can only be made or managed by users with the Full Admin\
+        \ or Eventing Full Admin role.\nFor global functions and service configuration\
+        \ settings, you do not need to pass the `bucket` and `scope` query parameters\
+        \ to specify the function scope.\nThe credentials must be an administrator\
+        \ username and password.\n\nThis is the default function scope for all functions\
+        \ after an upgrade from a prior version."
+      scheme: "basic"
+      type: "http"
+    Scoped:
+      description: "For scoped functions and service configuration settings, you must\
+        \ pass the `bucket` and `scope` query parameters to specify the function scope.\n\
+        The credentials are the username and password of any authorized user.\n\n\
+        You can quote the REST call on the command line to escape the `&` and `?`\
+        \ characters."
+      scheme: "basic"
+      type: "http"
+    Unscoped:
+      description: "Unscoped REST API calls do not require you to specify the function\
+        \ scope.\nThe action is fully determined by the username and password credentials\
+        \ passed to the REST call."
+      scheme: "basic"
+      type: "http"

@@ -1,8 +1,5 @@
 plugins {
-  id "com.github.node-gradle.node" version "7.1.0"
-}
-
-plugins {
+    id "com.github.node-gradle.node" version "7.1.0"
     id("io.datapith.jayOverlay").version("0.1.11")
 }
 
@@ -13,25 +10,32 @@ task bundleSpec(type: NpxTask) {
   args = [
     'bundle',
     'https://raw.githubusercontent.com/couchbase/query/refs/heads/morpheus/docs/spec/service/service.yaml',
-    '-o', 'build/bundle/service.yaml']
+    '-o', "build/${project.name}.bundle.yaml"]
 }
 
 jayOverlay {
-    targetFile.set("${projectDir}/build/bundle/service.yaml")
+    targetFile.set("${projectDir}/build/${project.name}.bundle.yaml")
     overlayFile.set("${projectDir}/attachments/_overlay.json")
-    outputDir.set("${projectDir}/build/overlay")
+    outputDir.set("${projectDir}/attachments")
+}
+
+tasks.applyOverlay.doLast {
+    ant.move(file:   "${projectDir}/attachments/${project.name}.bundle.yaml",
+             tofile: "${projectDir}/attachments/_${project.name}.overlaid.yaml",
+             overwrite: "true")
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    inputSpec = file("build/overlay/service.yaml").getAbsolutePath().toString()
-    outputDir = "${rootDir}/docs/modules/n1ql-rest-query/pages"
+    inputSpec = file("attachments/_${project.name}.overlaid.yaml").getAbsolutePath().toString()
+    outputDir = "${projectDir}/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "query"
     gitUserId = "couchbase"
     additionalProperties = [
-            specDir: "${rootDir}/docs/modules/n1ql-rest-query/partials/",
-            snippetDir: "${rootDir}/docs/modules/n1ql-rest-query/partials/paths/",
+            serviceDesc: "_${project.name}.overlaid.yaml",
+            specDir: "${projectDir}/partials/",
+            snippetDir: "${projectDir}/partials/paths/",
             headerAttributes: "true",
             useIntroduction: "true",
             useTableTitles: "true",
