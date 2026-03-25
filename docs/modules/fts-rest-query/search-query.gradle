@@ -9,19 +9,20 @@ task bundleSpec(type: NpxTask) {
   args = [
     'bundle',
     'https://raw.githubusercontent.com/couchbase/cbft/refs/heads/morpheus/docs/spec/query/query.yaml',
-    '-o', 'build/bundle/query.yaml']
+    '-o', "attachments/${project.name}.bundle.yaml"]
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    inputSpec = file("build/bundle/query.yaml").getAbsolutePath().toString()
-    outputDir = "${rootDir}/docs/modules/fts-rest-query/pages"
+    inputSpec = file("attachments/${project.name}.bundle.yaml").getAbsolutePath().toString()
+    outputDir = "${projectDir}/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cbft"
     gitUserId = "couchbase"
     additionalProperties = [
-            specDir: "${rootDir}/docs/modules/fts-rest-query/partials/",
-            snippetDir: "${rootDir}/docs/modules/fts-rest-query/partials/paths/",
+            serviceDesc: "${project.name}.bundle.yaml",
+            specDir: "${projectDir}/partials/",
+            snippetDir: "${projectDir}/partials/paths/",
             headerAttributes: "true",
             useIntroduction: "true",
             useTableTitles: "true",
