@@ -5,7 +5,7 @@
 .curl request
 [source,sh]
 ----
-curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function"
+curl -X GET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function"
 ----
 ====
 
@@ -14,7 +14,7 @@ curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function"
 .curl request
 [source,sh]
 ----
-curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function?bucket=bulk&scope=data"
+curl -X GET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function?bucket=bulk&scope=data"
 ----
 ====
 
@@ -23,7 +23,7 @@ curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function?bucke
 .curl request
 [source,sh]
 ----
-curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function" \
+curl -X GET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function" \
   -o my_function.json
 ----
 ====
@@ -33,7 +33,7 @@ curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function" \
 .curl request
 [source,sh]
 ----
-curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function?bucket=bulk&scope=data" \
+curl -X GET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function?bucket=bulk&scope=data" \
   -o my_function.json
 ----
 ====

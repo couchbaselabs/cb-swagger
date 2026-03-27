@@ -5,7 +5,7 @@
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
+curl -X POST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
   -d '{"ram_quota": 512}'
 ----
 ====
@@ -15,7 +15,7 @@ curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
+curl -X POST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
   -d '{"enable_debugger": true}'
 ----
 ====
@@ -27,7 +27,7 @@ curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
+curl -X POST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
   -d '{"cursor_limit": 10}'
 ----
 ====
