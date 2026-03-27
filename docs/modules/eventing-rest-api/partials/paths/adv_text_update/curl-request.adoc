@@ -5,7 +5,7 @@
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode" \
+curl -X POST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode" \
   --data-binary 'function OnUpdate(doc, meta) { log("id",meta.id); }'
 ----
 ====
@@ -15,7 +15,7 @@ curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/app
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode?bucket=bulk&scope=data" \
+curl -X POST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/appcode?bucket=bulk&scope=data" \
   --data-binary 'function OnUpdate(doc, meta) { log("id",meta.id); }'
 ----
 ====
@@ -28,7 +28,7 @@ Do not use `-d`.
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/import" \
+curl -X POST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/import" \
   --data-binary @./my_function.json
 ----
 ====
@@ -41,7 +41,7 @@ Do not use `-d`.
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/import?bucket=bulk&scope=data" \
+curl -X POST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/import?bucket=bulk&scope=data" \
   --data-binary @./my_function.json
 ----
 ====
@@ -53,7 +53,7 @@ This example uses the `--upload-file` option.
 .curl request
 [source,sh]
 ----
-curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/import" \
+curl -X GET "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/import" \
   --upload-file ./my_function.json
 ----
 ====
@@ -65,7 +65,7 @@ This example uses the `--upload-file` option.
 .curl request
 [source,sh]
 ----
-curl -XGET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/import?bucket=bulk&scope=data" \
+curl -X GET "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/import?bucket=bulk&scope=data" \
   --upload-file ./my_function.json
 ----
 ====
