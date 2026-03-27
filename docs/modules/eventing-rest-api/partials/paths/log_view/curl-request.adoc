@@ -5,7 +5,7 @@
 .curl request
 [source,sh]
 ----
-curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/getAppLog?name=my_function"
+curl -X GET "http://$ADMIN:$PASSWORD@$HOST:8096/getAppLog?name=my_function"
 ----
 ====
 
@@ -14,7 +14,7 @@ curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/getAppLog?name=my_function"
 .curl request
 [source,sh]
 ----
-curl -XGET "http://$USER:$PASSWORD@$HOST:8096/getAppLog?name=my_function&bucket=bulk&scope=data"
+curl -X GET "http://$USER:$PASSWORD@$HOST:8096/getAppLog?name=my_function&bucket=bulk&scope=data"
 ----
 ====
 
@@ -23,7 +23,7 @@ curl -XGET "http://$USER:$PASSWORD@$HOST:8096/getAppLog?name=my_function&bucket=
 .curl request
 [source,sh]
 ----
-curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/getAppLog?name=my_function&aggregate=true"
+curl -X GET "http://$ADMIN:$PASSWORD@$HOST:8096/getAppLog?name=my_function&aggregate=true"
 ----
 ====
 
@@ -32,7 +32,7 @@ curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/getAppLog?name=my_function&aggreg
 .curl request
 [source,sh]
 ----
-curl -XGET "http://$USER:$PASSWORD@$HOST:8096/getAppLog?name=my_function&aggregate=true&bucket=bulk&scope=data"
+curl -X GET "http://$USER:$PASSWORD@$HOST:8096/getAppLog?name=my_function&aggregate=true&bucket=bulk&scope=data"
 ----
 ====
 
@@ -43,7 +43,7 @@ This example fetches recent Application log info from all Eventing nodes, limite
 .curl request
 [source,sh]
 ----
-curl -XGET "http://$ADMIN:$PASSWORD@$HOST:8096/getAppLog?name=my_function&aggregate=true&size=2048"
+curl -X GET "http://$ADMIN:$PASSWORD@$HOST:8096/getAppLog?name=my_function&aggregate=true&size=2048"
 ----
 ====
 
@@ -54,6 +54,6 @@ This example fetches recent Application log info from all Eventing nodes, limite
 .curl request
 [source,sh]
 ----
-curl -XGET "http://$USER:$PASSWORD@$HOST:8096/getAppLog?name=my_function&aggregate=true&size=2048&bucket=bulk&scope=data"
+curl -X GET "http://$USER:$PASSWORD@$HOST:8096/getAppLog?name=my_function&aggregate=true&size=2048&bucket=bulk&scope=data"
 ----
 ====

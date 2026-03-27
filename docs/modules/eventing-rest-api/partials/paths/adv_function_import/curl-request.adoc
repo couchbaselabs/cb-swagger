@@ -5,7 +5,7 @@
 .curl request
 [source,sh]
 ----
-curl -XPOST -d @./my_function.json \
+curl -X POST -d @./my_function.json \
   "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function"
 ----
 ====
@@ -15,7 +15,7 @@ curl -XPOST -d @./my_function.json \
 .curl request
 [source,sh]
 ----
-curl -XPOST -d @./my_function.json \
+curl -X POST -d @./my_function.json \
   "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function?bucket=bulk&scope=data"
 ----
 ====
