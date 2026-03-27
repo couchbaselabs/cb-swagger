@@ -5,7 +5,7 @@
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/pause"
+curl -X POST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/pause"
 ----
 ====
 
@@ -14,6 +14,6 @@ curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/pau
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/pause?bucket=bulk&scope=data"
+curl -X POST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/pause?bucket=bulk&scope=data"
 ----
 ====

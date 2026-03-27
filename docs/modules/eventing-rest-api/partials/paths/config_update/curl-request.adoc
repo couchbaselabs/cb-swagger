@@ -5,7 +5,7 @@
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
+curl -X POST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
   -d '{"ram_quota": 512}'
 ----
 ====
@@ -15,7 +15,7 @@ curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
+curl -X POST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
   -d '{"enable_debugger": true}'
 ----
 ====
@@ -25,7 +25,7 @@ curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
+curl -X POST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config" \
   -d '{"cursor_limit": 10}'
 ----
 ====
@@ -38,7 +38,7 @@ If fewer than 3 nodes are available, the functions will run on all Eventing node
 .Curl request
 [source,sh]
 ----
-curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config?bucket=bulk&scope=data" \
+curl -X POST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/config?bucket=bulk&scope=data" \
   -d '{"num_nodes_running": 3}'
 ----
 ====
