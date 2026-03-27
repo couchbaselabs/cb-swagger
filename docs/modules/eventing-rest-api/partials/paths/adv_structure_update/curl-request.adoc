@@ -7,7 +7,7 @@ This example alters the source and eventing storage keyspaces.
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config" \
+curl -X POST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config" \
   -d '{
   "source_bucket": "bulk",
   "source_scope": "orders",
@@ -26,7 +26,7 @@ This example alters the source and eventing storage keyspaces.
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config?bucket=bulk&scope=data"\
+curl -X POST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config?bucket=bulk&scope=data"\
   -d '{
   "source_bucket": "bulk",
   "source_scope": "orders",
@@ -45,7 +45,7 @@ This example alters the source and eventing storage keyspaces from a file.
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config" \
+curl -X POST "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config" \
   -d @./my_function.json
 ----
 ====
@@ -57,7 +57,7 @@ This example alters the source and eventing storage keyspaces from a file.
 .curl request
 [source,sh]
 ----
-curl -XPOST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config?bucket=bulk&scope=data" \
+curl -X POST "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/config?bucket=bulk&scope=data" \
   -d @./my_function.json
 ----
 ====
