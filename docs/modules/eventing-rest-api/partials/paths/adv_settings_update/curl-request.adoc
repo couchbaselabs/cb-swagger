@@ -7,7 +7,7 @@ This example updates the `worker_count` setting.
 .curl request
 [source,sh]
 ----
-curl -XPOST -d '{
+curl -X POST -d '{
   "deployment_status": false,
   "processing_status": false,
   "worker_count": 6
@@ -22,7 +22,7 @@ This example updates the `worker_count` setting.
 .curl request
 [source,sh]
 ----
-curl -XPOST -d '{
+curl -X POST -d '{
   "deployment_status": false,
   "processing_status": false,
   "worker_count": 6
@@ -38,7 +38,7 @@ The function is currently undeployed.
 .curl request
 [source,sh]
 ----
-curl -XPOST -d '{
+curl -X POST -d '{
   "deployment_status": false,
   "processing_status": false,
   "app_log_max_files": 5
@@ -55,7 +55,7 @@ The function is currently undeployed.
 .curl request
 [source,sh]
 ----
-curl -XPOST -d '{
+curl -X POST -d '{
   "deployment_status": false,
   "processing_status": false,
   "app_log_max_files": 5,
@@ -72,7 +72,7 @@ The function is currently paused.
 .curl request
 [source,sh]
 ----
-curl -XPOST -d '{
+curl -X POST -d '{
   "deployment_status": true,
   "processing_status": false,
   "timer_context_size": 2048
@@ -88,7 +88,7 @@ The function is currently paused.
 .curl request
 [source,sh]
 ----
-curl -XPOST -d '{
+curl -X POST -d '{
   "deployment_status": true,
   "processing_status": false,
   "timer_context_size": 2048
@@ -104,7 +104,7 @@ The function is currently paused.
 .curl request
 [source,sh]
 ----
-curl -XPOST -d '{
+curl -X POST -d '{
   "deployment_status": true,
   "processing_status": true,
   "worker_count": 8
@@ -120,7 +120,7 @@ The function is currently paused.
 .curl request
 [source,sh]
 ----
-curl -XPOST -d '{
+curl -X POST -d '{
   "deployment_status": true,
   "processing_status": true,
   "worker_count": 8
@@ -137,7 +137,7 @@ The function is currently paused.
 .curl request
 [source,sh]
 ----
-curl -XPOST -d '{
+curl -X POST -d '{
   "deployment_status": true,
   "processing_status": false,
   "allow_sync_documents": false
@@ -156,7 +156,7 @@ The function is currently paused.
 .curl request
 [source,sh]
 ----
-curl -XPOST -d '{
+curl -X POST -d '{
   "deployment_status": true,
   "processing_status": false,
   "allow_sync_documents": false
@@ -171,7 +171,7 @@ For details, see xref:sync-gateway::server-compatibility-eventing.adoc[].
 .curl request
 [source,sh]
 ----
-curl -XPOST -d '{
+curl -X POST -d '{
   "deployment_status": true,
   "processing_status": true
 }' "http://$ADMIN:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings"
@@ -186,7 +186,7 @@ See <<basic_deploy>> for the preferred invocation.
 .curl request
 [source,sh]
 ----
-curl -XPOST -d '{
+curl -X POST -d '{
   "deployment_status": true,
   "processing_status": true
 }' "http://$USER:$PASSWORD@$HOST:8096/api/v1/functions/my_function/settings?bucket=bulk&scope=data"
