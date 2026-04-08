@@ -6,6 +6,9 @@
 {{/if ~}}
 [#{{operationIdOriginal}}-ex-response-{{code}}-{{@index}}]
 .{{#with summary}}{{{this}}}{{else}}Example {{@index}}{{/with}}
+{{~#with description}}
+{{{this}}}
+{{/with}}
 [source,{{language}}]
 ----
 {{#with value}}{{#if isJson}}{{#json pretty=true}}{{{this}}}{{/json}}{{else}}{{{this}}}{{/if}}{{/with}}
