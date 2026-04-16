@@ -420,6 +420,14 @@ include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
 {{/with}}
 {{~/with}}{{! content.[application/json] }}
 {{~/each}}{{! responses }}
+{{~#with externalDocs}}
+
+{{! *** OPERATION EXTERNAL DOCS *** }}
+[#{{operationIdOriginal}}-see-also]
+= See Also
+
+* link:{{url}}[{{description}}]
+{{~/with}}
 
 include::{specDir}paths/{{operationIdOriginal}}/operation-end.adoc[opts=optional]
 
@@ -515,9 +523,9 @@ include::{specDir}security/document-end.adoc[opts=optional]
 include::{specDir}security/document-after.adoc[opts=optional]
 
 {{! *** EXTERNAL DOCS *** }}
-{{#each externalDocs ~}}
+{{#with externalDocs ~}}
 [[see-also]]
 = See Also
 
 * link:{{url}}[{{description}}]
-{{~/each}}
+{{~/with}}
