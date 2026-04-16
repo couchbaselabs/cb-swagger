@@ -6,6 +6,9 @@
 :page-toclevels: 2
 :page-service-desc: _attachments/{{{serviceDesc}}}
 :page-service-desc-type: application/vnd.oai.openapi+yaml
+{{~#with appSummary}}
+:description: {{{this}}}
+{{~/with}}
 {{! If headerAttributes is true, include document attributes from the named partial}}
 {{~#if headerAttributes ~}}
 include::partial$header-attributes.adoc[opts=optional]
