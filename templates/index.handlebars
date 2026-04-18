@@ -217,22 +217,6 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-before.adoc
 
 {{> params}}
 
-{{#unless skipExamples ~}}
-{{#if hasBodyParam ~}}
-{{#each requestBodyExamples ~}}
-.Request Body Example
-====
-{{#with example ~}}
-[source,json]
-----
-{{{this}}}
-----
-{{~/with}}
-====
-{{~/each}}
-{{~/if}}
-{{~/unless}}
-
 include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-after.adoc[opts=optional]
 
 {{! *** OPERATION RESPONSES *** }}
@@ -268,22 +252,6 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-responses-end.adoc[opt
 {{#each responses ~}}
 {{#with returnProperty}}{{>tocs}}{{/with}}
 {{~/each}}
-
-{{#unless skipExamples ~}}
-{{#if hasExamples ~}}
-{{#each examples ~}}
-.Response Examples
-====
-{{#with example ~}}
-[source,json]
-----
-{{{this}}}
-----
-{{~/with}}
-====
-{{~/each}}
-{{~/if}}
-{{~/unless}}{{! skipExamples }}
 
 include::{specDir}paths/{{operationIdOriginal}}/operation-responses-after.adoc[opts=optional]
 
@@ -328,8 +296,7 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 {{! example HTTP request heading}}
 {{/if~}}
 
-include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
-
+{{#unless skipExamples ~}}
 {{#*inline "curlTitle" ~}}
 [#{{operationIdOriginal}}-ex-curl-{{@index}}]
 .{{#with label}}{{{this}}}{{else}}curl request {{@index}}{{/with}}
@@ -353,27 +320,21 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 ====
 {{/if}}
 {{/each ~}}
+{{/unless ~}}
 
+include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
+
+{{#unless skipExamples ~}}
 {{#*inline "requestBodyHeading" ~}}
 [#{{operationIdOriginal}}-ex-request]
 = Example Request Body
 {{~/inline ~}}
 {{#with bodyParam ~}}
 {{#with content.[application/json] ~}}
-{{#if example}}
-{{! single request body example heading }}
+{{#or example examples}}
+{{! request body example heading }}
 {{> requestBodyHeading }}
-{{~else if examples}}
-{{! multiple request body example heading }}
-{{> requestBodyHeading }}
-{{~/if}}
-{{~/with}}{{! content.[application/json] }}
-{{~/with}}{{! bodyParam }}
-
-include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
-
-{{~#with bodyParam ~}}
-{{#with content.[application/json] ~}}
+{{~/or}}
 {{#with example}}
 {{! single request body example }}
 {{>request language="json" isJson=true}}
@@ -383,25 +344,45 @@ include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 {{/with}}
 {{~/with}}{{! content.[application/json] }}
 {{~/with}}{{! bodyParam }}
-
-ifeval::["
-{{~#each responses ~}}
-{{#each content ~}}
+{{#unless (or bodyParam.content.[application/json].example
+              bodyParam.content.[application/json].examples) ~}}
+{{#if requestBodyExamples ~}}
+{{> requestBodyHeading }}
+{{~/if}}
+{{#each requestBodyExamples ~}}
+{{#if (eq generatedContentType "application/json")}}
+FIXME: Auto-Generated
+====
 {{#with example ~}}
-yes
-{{~else each examples ~}}
-yes
+[source,json]
+----
+{{{this}}}
+----
 {{~/with}}
-{{~/each}}
-{{~/each~}}
-" != ""]
+====
+{{/if}}{{! (eq ...) }}
+{{~/each}}{{! requestBodyExamples }}
+{{~/unless}}{{! (or ...) }}
+{{~/unless}}{{! skipExamples ~}}
+
+include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
+
+{{#unless skipExamples ~}}
+{{#*inline "responseHeading" ~}}
 [#{{operationIdOriginal}}-ex-response]
 = Example HTTP Response
+{{~/inline ~}}
+{{#*inline "providedResponses" ~}}
+{{#each responses ~}}
+{{#each content ~}}
+{{#or example examples}}yes{{/or}}
+{{~/each}}
+{{~/each}}
+{{~/inline ~}}
+ifeval::["{{> providedResponses}}" != ""]
+{{> responseHeading }}
 endif::[]
-
-include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
-
-{{~#each responses ~}}
+{{#each responses ~}}
 {{#with content.[application/json] ~}}
 {{#with example}}
 {{! single JSON response example }}
@@ -420,6 +401,25 @@ include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
 {{/with}}
 {{~/with}}{{! content.[application/json] }}
 {{~/each}}{{! responses }}
+{{#if hasExamples ~}}
+ifeval::["{{> providedResponses}}" == ""]
+{{> responseHeading }}
+{{#each examples}}
+.Response {{statusCode}} FIXME: Auto-Generated
+====
+{{#with example ~}}
+[source,json]
+----
+{{{this}}}
+----
+{{~/with}}
+====
+{{~/each}}{{! examples }}
+endif::[]
+{{~/if}}{{! hasExamples }}
+{{~/unless}}{{! skipExamples }}
+
+include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
 {{~#with externalDocs}}
 
 {{! *** OPERATION EXTERNAL DOCS *** }}
