@@ -8,7 +8,7 @@ task bundleSpec(type: NpxTask) {
   command = '@redocly/cli'
   args = [
     'bundle',
-    'https://raw.githubusercontent.com/couchbase/query/refs/heads/trinity/docs/spec/service/service.yaml',
+    "${queryServiceSpec}",
     '-o', "attachments/${project.name}.bundle.yaml"]
 }
 
