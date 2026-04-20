@@ -8,7 +8,7 @@ task bundleSpec(type: NpxTask) {
   command = '@redocly/cli'
   args = [
     'bundle',
-    "${searchQuerySpec}",
+    "${searchQueryBase}/query.yaml",
     '-o', "attachments/${project.name}.bundle.yaml"]
 }
 
