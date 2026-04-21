@@ -302,12 +302,10 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 .{{#with label}}{{{this}}}{{else}}curl request {{@index}}{{/with}}
 {{~/inline ~}}
 {{#each vendorExtensions.x-codeSamples ~}}
-{{#if @first ~}}
-====
-{{/if ~}}
 {{#if @last}}{{#if @index}}{{> curlTitle}}
 {{/if}}{{else}}{{> curlTitle}}
 {{/if ~}}
+====
 {{#with description~}}
 {{{this}}}
 
@@ -316,9 +314,7 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 ----
 {{{source}}}
 ----
-{{#if @last ~}}
 ====
-{{/if}}
 {{/each ~}}
 {{/unless ~}}
 
@@ -337,10 +333,10 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 {{~/or}}
 {{#with example}}
 {{! single request body example }}
-{{>request language="json" isJson=true}}
+{{>request language="json"}}
 {{else each examples}}
 {{! multiple request body examples }}
-{{>requests language="json" isJson=true}}
+{{>requests language="json"}}
 {{/with}}
 {{~/with}}{{! content.[application/json] }}
 {{~/with}}{{! bodyParam }}
