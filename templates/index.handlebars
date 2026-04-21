@@ -351,7 +351,7 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 {{~/if}}
 {{#each requestBodyExamples ~}}
 {{#if (eq generatedContentType "application/json")}}
-FIXME: Auto-Generated
+{{! auto-generated request body example }}
 ====
 {{#with example ~}}
 [source,json]
@@ -404,8 +404,9 @@ endif::[]
 {{#if hasExamples ~}}
 ifeval::["{{> providedResponses}}" == ""]
 {{> responseHeading }}
-{{#each examples}}
-.Response {{statusCode}} FIXME: Auto-Generated
+{{#each examples ~}}
+{{! auto-generated response example }}
+.Response {{statusCode}}
 ====
 {{#with example ~}}
 [source,json]
