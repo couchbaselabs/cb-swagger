@@ -3,28 +3,29 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-{{#each models ~}}
-{{#with model ~}}
-{{#unless isEnum ~}}
-{{#if @last ~}}
-:count-models: {{@index}}
-{{~/if}}
-{{~/unless}}
-{{~/with}}
-{{~/each}}
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
-[.two-columns]
-endif::[]
-[%hardbreaks]
 {{#each models ~}}
 {{#with model ~}}
+{{#unless isEnum ~}}
+{{#if @last ~}}
+{{#gt @index 8 ~}}
+[.two-columns]
+{{/gt}}
+{{~/if}}
+{{~/unless}}
+{{~/with}}
+{{~/each ~}}
+{{#each models ~}}
+{{#with model ~}}
+{{#unless (and @first @last) ~}}
+{{#if @first ~}}
+[%hardbreaks]
+{{/if ~}}
 {{#if isEnum ~}}
 ifdef::enum-definitions[]
 xref:{{name}}[]
@@ -32,9 +33,9 @@ endif::enum-definitions[]
 {{~else ~}}
 xref:{{name}}[]
 {{~/if}}
+{{~/unless}}
 {{~/with}}
 {{/each ~}}
-endif::[]
 
 {{! *** DEFINITION *** }}
 {{#each models ~}}
