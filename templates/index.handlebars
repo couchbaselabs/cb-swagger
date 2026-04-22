@@ -290,21 +290,20 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 {{!~ Include partials for operation sample requests and responses }}
 {{!~ The partials should have a level 1 title; the level offset pushes the title down to the correct section level. }}
 
+{{#unless skipExamples ~}}
 {{#if vendorExtensions.x-codeSamples ~}}
 [#{{operationIdOriginal}}-ex-curl]
 = Example HTTP Request
 {{! example HTTP request heading}}
 {{/if~}}
 
-{{#unless skipExamples ~}}
-{{#*inline "curlTitle" ~}}
-[#{{operationIdOriginal}}-ex-curl-{{@index}}]
-.{{#with label}}{{{this}}}{{else}}curl request {{@index}}{{/with}}
-{{~/inline ~}}
 {{#each vendorExtensions.x-codeSamples ~}}
-{{#if @last}}{{#if @index}}{{> curlTitle}}
-{{/if}}{{else}}{{> curlTitle}}
-{{/if ~}}
+[#{{operationIdOriginal}}-ex-curl-{{@index}}]
+{{#with label ~}}
+.{{{this}}}
+{{~else unless (and @first @last) ~}}
+.curl request {{@index}}
+{{~/with}}
 ====
 {{#with description~}}
 {{{this}}}
@@ -346,7 +345,7 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 {{> requestBodyHeading }}
 {{~/if}}
 {{#each requestBodyExamples ~}}
-{{#if (eq generatedContentType "application/json")}}
+{{#eq generatedContentType "application/json"}}
 {{! auto-generated request body example }}
 ====
 {{#with example ~}}
@@ -356,7 +355,7 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 ----
 {{~/with}}
 ====
-{{/if}}{{! (eq ...) }}
+{{/eq}}
 {{~/each}}{{! requestBodyExamples }}
 {{~/unless}}{{! (or ...) }}
 {{~/unless}}{{! skipExamples ~}}
@@ -382,10 +381,10 @@ endif::[]
 {{#with content.[application/json] ~}}
 {{#with example}}
 {{! single JSON response example }}
-{{>response language="json" isJson=true}}
+{{>response language="json"}}
 {{else each examples}}
 {{! multiple JSON response examples }}
-{{>responses language="json" isJson=true}}
+{{>responses language="json"}}
 {{/with}}
 {{~else with content.[text/html] ~}}
 {{#with example}}

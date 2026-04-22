@@ -4,6 +4,6 @@
 ====
 [source,{{language}}]
 ----
-{{#if isJson}}{{#json pretty=true}}{{{this}}}{{/json}}{{else}}{{{this}}}{{/if}}
+{{#eq language "json"}}{{#json pretty=true}}{{{this}}}{{/json}}{{else}}{{{this}}}{{/eq}}
 ----
 ====
