@@ -94,34 +94,29 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-{{#with apiInfo ~}}
-{{#each apis ~}}
-{{#if @last ~}}
-:count-apis: {{@index}}
-{{~/if}}
-{{~/each}}
-{{~/with}}
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 {{! Table of contents for endpoints }}
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
+{{#with apiInfo ~}}
+{{#each apis ~}}
+{{#unless (and @first @last) ~}}
+{{#if @first ~}}
 The operations are grouped in the following categories.
 
 [%hardbreaks]
-{{#with apiInfo ~}}
-{{#each apis ~}}
+{{~/if}}
 xref:tag-{{baseName}}[]
-{{/each}}{{~/with ~}}
-endif::[]
+{{~/unless}}
+{{~/each}}
+{{~/with}}
 
 {{! Endpoint body }}
 {{#with apiInfo ~}}
 {{#each apis ~}}
-
-ifeval::[{count-apis} > 0]
+{{#unless (and @first @last) ~}}
 [#tag-{{baseName}}]
 = {{#with operations.operation.[0].tags.[0].x-displayName ~}}
 {{this}}{{! FIXME: assumes first tag in first operation is the same as this API }}
@@ -137,7 +132,7 @@ ifeval::[{count-apis} > 0]
 {{~ else ~}}
 **{toc-title}**
 {{~/with}}
-endif::[]
+{{~/unless}}{{! (and ...) }}
 
 {{! Table of contents for operations }}
 {{#with operations ~}}
@@ -436,9 +431,9 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-after.adoc[opts=option
 {{/each}}{{! operation }}
 {{~/with}}{{! operations }}
 
-ifeval::[{count-apis} > 0]
+{{#unless (and @first @last) ~}}
 :leveloffset: -1
-endif::[]
+{{~/unless}}
 
 {{/each}}{{! apis }}
 {{~/with}}{{! apiInfo }}
