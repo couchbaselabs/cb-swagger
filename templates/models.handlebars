@@ -26,13 +26,9 @@ This section describes the properties consumed and returned by this REST API.
 {{#if @first ~}}
 [%hardbreaks]
 {{/if ~}}
-{{#if isEnum ~}}
-ifdef::enum-definitions[]
+{{#unless (and isEnum not(enumDefinitions)) ~}}
 xref:{{name}}[]
-endif::enum-definitions[]
-{{~else ~}}
-xref:{{name}}[]
-{{~/if}}
+{{~/unless}}
 {{~/unless}}
 {{~/with}}
 {{/each ~}}
@@ -41,10 +37,9 @@ xref:{{name}}[]
 {{#each models ~}}
 {{#with model ~}}
 include::{specDir}definitions/{{name}}/definition-before.adoc[opts=optional]
+{{! omit enums from model list. Probably going to regret this }}
+{{#unless (and isEnum not(enumDefinitions)) ~}}
 
-{{#if isEnum ~}}
-ifdef::enum-definitions[]{{! omit enums from model list. Probably going to regret this }}
-{{/if~}}
 ifdef::show-{{name}}[]
 [#{{name}}]
 endif::show-{{name}}[]
@@ -153,10 +148,7 @@ ifndef::show-{{name}}[]
 :leveloffset: -1
 endif::show-{{name}}[]
 
-{{#if isEnum ~}}
-endif::enum-definitions[]
-
-{{/if~}}
+{{/unless ~}}{{! (and isEnum not(enumDefinitions)) ~}}
 
 include::{specDir}definitions/{{name}}/definition-after.adoc[opts=optional]
 {{/with}}{{! model }}

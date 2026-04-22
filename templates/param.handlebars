@@ -8,14 +8,29 @@ a¦ {{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{#unless ven
 {{/with~}}
 [markdown]
 --
+{{#*inline "paramDescription" ~}}
 {{#with unescapedDescription ~}}
 {{{this}}}
 {{~ else with description ~}}
 {{{this}}}
-{{~/with ~}}
-{{~#if isEnumRef ~}}
-include::index.adoc[tag=desc-{{dataType}}, opts=optional]{{! if this is an enum reference, fetch remote description}}
+{{~/with}}
+{{~/inline ~}}
+{{#*inline "enumDescription" ~}}
+{{#with @root ~}}
+{{#each models ~}}
+{{#with model ~}}
+{{#if (eq name currentType) ~}}
+{{>paramDescription ~}}
 {{~/if}}
+{{~/with}}
+{{~/each}}
+{{~/with}}
+{{~/inline ~}}
+{{~#if isEnumRef ~}}
+{{>enumDescription currentType=dataType}}
+{{~else ~}}
+{{>paramDescription}}
+{{~/if}}{{! isEnumRef }}
 --
 
 [%hardbreaks]
