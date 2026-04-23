@@ -50,14 +50,11 @@ ifndef::show-{{name}}[]
 endif::show-{{name}}[]
 = {{#with title}}{{this}}{{else}}{{classname}}{{/with}}
 
+{{#if modelDescriptions ~}}
 {{#with description ~}}
-ifdef::model-descriptions[]
-//tag::desc-{{name}}[]
 {{{unescapedDescription}}}
-//end::desc-{{name}}[]
-endif::model-descriptions[]
-
-{{/with~}}
+{{/with}}
+{{/if ~}}
 
 :leveloffset: +1
 
@@ -119,9 +116,7 @@ a¦ {{>schemas}}
 
 {{>property}}
 .Schema
-//tag::type-{{name}}[]
 {{>schemas}}
-//end::type-{{name}}[]
 {{~else if isString ~}}
 .icon:quote-left[fw] String
 {blank}

@@ -1,3 +1,17 @@
+{{#*inline "modelDescription" ~}}
+{{#with @root ~}}
+{{#each models ~}}
+{{#with model ~}}
+{{#eq name currentType ~}}
+{{#with description~}}
+{{{unescapedDescription}}}
+{{~/with}}
+{{~/eq}}
+{{~/with}}
+{{~/each}}
+{{~/with}}
+{{~/inline ~}}
+
 {{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{#unless vendorExtensions.x-desc-status}}
 
 {{/unless}}{{/with ~}}
@@ -13,7 +27,7 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 {{/with ~}}
 {{#with ref ~}}
-include::index.adoc[tag=desc-{{dataType}}, opts=optional]
+{{>modelDescription currentType=dataType}}
 {{~else with description~}}
 {{{unescapedDescription}}}
 {{~/with}}
