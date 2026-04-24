@@ -296,9 +296,9 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 [#{{operationIdOriginal}}-ex-curl-{{@index}}]
 {{#with label ~}}
 .{{{this}}}
-{{~else unless (and @first @last) ~}}
+{{else unless (and @first @last) ~}}
 .curl request {{@index}}
-{{~/with}}
+{{/with ~}}
 ====
 {{#with description~}}
 {{{this}}}
@@ -309,8 +309,9 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 {{{source}}}
 ----
 ====
-{{/each ~}}
-{{/unless ~}}
+
+{{/each}}{{! vendorExtensions.x-codeSamples }}
+{{~/unless ~}}
 
 include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 
@@ -322,7 +323,7 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 {{#with bodyParam ~}}
 {{#with content.[application/json] ~}}
 {{#or example examples}}
-{{! request body example heading }}
+{{! request body example heading ~}}
 {{> requestBodyHeading }}
 {{~/or}}
 {{#with example}}
@@ -350,6 +351,7 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 ----
 {{~/with}}
 ====
+
 {{/eq}}
 {{~/each}}{{! requestBodyExamples }}
 {{~/unless}}{{! (or ...) }}
@@ -393,8 +395,8 @@ endif::[]
 {{~/each}}{{! responses }}
 {{#if hasExamples ~}}
 ifeval::["{{> providedResponses}}" == ""]
-{{> responseHeading }}
-{{#each examples ~}}
+{{> responseHeading ~}}
+{{#each examples }}
 {{! auto-generated response example }}
 .Response {{statusCode}}
 ====
@@ -407,8 +409,9 @@ ifeval::["{{> providedResponses}}" == ""]
 ====
 {{~/each}}{{! examples }}
 endif::[]
-{{~/if}}{{! hasExamples }}
-{{~/unless}}{{! skipExamples }}
+
+{{/if}}{{! hasExamples }}
+{{~/unless}}{{! skipExamples ~}}
 
 include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
 {{~#with externalDocs}}
@@ -434,7 +437,6 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-after.adoc[opts=option
 {{#unless (and @first @last) ~}}
 :leveloffset: -1
 {{~/unless}}
-
 {{/each}}{{! apis }}
 {{~/with}}{{! apiInfo }}
 
