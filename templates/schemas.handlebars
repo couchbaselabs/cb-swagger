@@ -28,7 +28,7 @@ xref:{{dataType}}[]
 {{~else if isAnyType ~}}
 Any Type
 {{~else ~}}
-{{dataType}}{{#with dataFormat}} ({{{this}}}){{/with}}
+{{#with dataType}}{{#capitalize}}{{this}}{{/capitalize}}{{/with}}{{#with dataFormat}} ({{{this}}}){{/with}}
 {{~/with}}
 {{~/inline ~}}
 
