@@ -293,61 +293,10 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 
 include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 
-{{#unless skipExamples ~}}
-{{#*inline "responseHeading" ~}}
-[#{{operationIdOriginal}}-ex-response]
-= Example HTTP Response
-{{~/inline ~}}
-{{#*inline "providedResponses" ~}}
-{{#each responses ~}}
-{{#each content ~}}
-{{#or example examples}}yes{{/or}}
-{{~/each}}
-{{~/each}}
-{{~/inline ~}}
-ifeval::["{{> providedResponses}}" != ""]
-{{> responseHeading }}
-endif::[]
-{{#each responses ~}}
-{{#with content.[application/json] ~}}
-{{#with example}}
-{{! single JSON response example }}
-{{>response language="json"}}
-{{else each examples}}
-{{! multiple JSON response examples }}
-{{>responses language="json"}}
-{{/with}}
-{{~else with content.[text/html] ~}}
-{{#with example}}
-{{! single HTML response example }}
-{{> response language="html"}}
-{{else each examples}}
-{{! multiple HTML response examples }}
-{{> responses language="html"}}
-{{/with}}
-{{~/with}}{{! content.[application/json] }}
-{{~/each}}{{! responses }}
-{{#if hasExamples ~}}
-ifeval::["{{> providedResponses}}" == ""]
-{{> responseHeading ~}}
-{{#each examples }}
-{{! auto-generated response example }}
-.Response {{statusCode}}
-====
-{{#with example ~}}
-[source,json]
-----
-{{{this}}}
-----
-{{~/with}}
-====
-{{~/each}}{{! examples }}
-endif::[]
-
-{{/if}}{{! hasExamples }}
-{{~/unless}}{{! skipExamples ~}}
+{{>responses ~}}
 
 include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
+
 {{~#with externalDocs}}
 
 {{! *** OPERATION EXTERNAL DOCS *** }}
