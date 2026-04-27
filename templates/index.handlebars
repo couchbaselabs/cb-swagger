@@ -285,33 +285,7 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 {{!~ Include partials for operation sample requests and responses }}
 {{!~ The partials should have a level 1 title; the level offset pushes the title down to the correct section level. }}
 
-{{#unless skipExamples ~}}
-{{#if vendorExtensions.x-codeSamples ~}}
-[#{{operationIdOriginal}}-ex-curl]
-= Example HTTP Request
-{{! example HTTP request heading}}
-{{/if~}}
-
-{{#each vendorExtensions.x-codeSamples ~}}
-[#{{operationIdOriginal}}-ex-curl-{{@index}}]
-{{#with label ~}}
-.{{{this}}}
-{{else unless (and @first @last) ~}}
-.curl request {{@index}}
-{{/with ~}}
-====
-{{#with description~}}
-{{{this}}}
-
-{{/with~}}
-[source,sh]
-----
-{{{source}}}
-----
-====
-
-{{/each}}{{! vendorExtensions.x-codeSamples }}
-{{~/unless ~}}
+{{>samples ~}}
 
 include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 
