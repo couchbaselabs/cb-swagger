@@ -26,7 +26,7 @@ This section describes the properties consumed and returned by this REST API.
 {{#if @first ~}}
 [%hardbreaks]
 {{/if ~}}
-{{#unless isEnum ~}}{{! FIXME: enumDefinitions ~}}
+{{#unless isEnum ~}}{{! TODO: enumDefinitions ~}}
 xref:{{name}}[]
 {{/unless}}
 {{~/unless}}
@@ -38,7 +38,7 @@ xref:{{name}}[]
 {{#with model ~}}
 include::{specDir}definitions/{{name}}/definition-before.adoc[opts=optional]
 {{! omit enums from model list. Probably going to regret this }}
-{{#unless isEnum ~}}{{! FIXME: enumDefinitions ~}}
+{{#unless isEnum ~}}{{! TODO: enumDefinitions ~}}
 
 ifdef::show-{{name}}[]
 [#{{name}}]
@@ -126,12 +126,23 @@ a¦ {{>schemas}}
 .icon:brackets[fw] Array
 {blank}
 
-{{>property}}
+//tag::{{name}}[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Item ¦ ¦ Schema
 
 {{#with items ~}}
-.Schema
-{{>schema}} array
-{{~/with}}
+a¦ {{#with vendorExtensions.x-desc-name}}[#{{this}}]
+{{/with ~}}
+...
+a¦ {{>property}}
+a¦ {{>schemas}}
+{{/with}}
+|===
+
+//end::{{name}}[]
+
 {{~/if}}{{! hasVars }}
 {{~/with}}{{! composedSchemas }}
 
@@ -143,7 +154,7 @@ ifndef::show-{{name}}[]
 :leveloffset: -1
 endif::show-{{name}}[]
 
-{{/unless ~}}{{! isEnum FIXME: enumDefinitions ~}}
+{{/unless ~}}{{! isEnum ~}}
 
 include::{specDir}definitions/{{name}}/definition-after.adoc[opts=optional]
 {{/with}}{{! model }}
