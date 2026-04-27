@@ -1,17 +1,16 @@
-{{#*inline "modelDescription" ~}}
+{{#*inline "nestedModel" ~}}
 {{#with @root ~}}
 {{#each models ~}}
 {{#with model ~}}
 {{#eq name currentType ~}}
-{{#with description~}}
-{{{unescapedDescription}}}
-{{~/with}}
+{{>modelDescription}}
 {{~/eq}}
 {{~/with}}
 {{~/each}}
 {{~/with}}
 {{~/inline ~}}
 
+{{#*inline "modelDescription" ~}}
 {{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{#unless vendorExtensions.x-desc-status}}
 
 {{/unless}}{{/with ~}}
@@ -26,9 +25,7 @@ ifdef::alt-markdown-links[]
 
 endif::alt-markdown-links[]
 {{/with ~}}
-{{#with ref ~}}
-{{>modelDescription currentType=dataType}}
-{{~else with description~}}
+{{#with description ~}}
 {{{unescapedDescription}}}
 {{~/with}}
 {{~#with vendorExtensions.x-desc-more}}
@@ -55,3 +52,10 @@ endif::alt-markdown-links[]
 {{/if ~}}
 {{>values ~}}
 {blank}
+{{~/inline ~}}
+
+{{#with ref ~}}
+{{>nestedModel currentType=dataType}}
+{{~else ~}}
+{{>modelDescription }}
+{{~/with}}
