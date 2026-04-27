@@ -1,3 +1,18 @@
+{{#*inline "requestBodyHeading" ~}}
+[#{{operationIdOriginal}}-ex-request]
+= Example Request Body
+{{~/inline ~}}
+
+{{#*inline "request" ~}}
+====
+[source,{{language}}]
+----
+{{#eq language "json"}}{{#json pretty=true}}{{{this}}}{{/json}}{{/eq}}
+----
+====
+{{~/inline ~}}
+
+{{#*inline "requestMultiple" ~}}
 [#{{operationIdOriginal}}-ex-request-{{@index}}]
 .{{#with summary}}{{{this}}}{{else}}Example {{@index}}{{/with}}
 ====
@@ -9,3 +24,42 @@
 {{#with value}}{{#eq language "json"}}{{#json pretty=true}}{{{this}}}{{/json}}{{else}}{{{this}}}{{/eq}}{{/with}}
 ----
 ====
+{{~/inline ~}}
+
+{{#unless skipExamples ~}}
+{{#with bodyParam ~}}
+{{#with content.[application/json] ~}}
+{{#or example examples}}
+{{! request body example heading ~}}
+{{>requestBodyHeading }}
+{{~/or}}
+{{#with example}}
+{{! single request body example }}
+{{>request language="json"}}
+{{else each examples}}
+{{! multiple request body examples }}
+{{>requestMultiple language="json"}}
+{{/with}}
+{{~/with}}{{! content.[application/json] }}
+{{~/with}}{{! bodyParam }}
+{{#unless (or bodyParam.content.[application/json].example
+              bodyParam.content.[application/json].examples) ~}}
+{{#if requestBodyExamples ~}}
+{{>requestBodyHeading }}
+{{~/if}}
+{{#each requestBodyExamples ~}}
+{{#eq generatedContentType "application/json"}}
+{{! auto-generated request body example }}
+====
+{{#with example ~}}
+[source,json]
+----
+{{{this}}}
+----
+{{~/with}}
+====
+
+{{/eq}}
+{{~/each}}{{! requestBodyExamples }}
+{{~/unless}}{{! (or ...) }}
+{{~/unless}}{{! skipExamples ~}}

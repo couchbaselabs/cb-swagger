@@ -289,47 +289,7 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 
 include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 
-{{#unless skipExamples ~}}
-{{#*inline "requestBodyHeading" ~}}
-[#{{operationIdOriginal}}-ex-request]
-= Example Request Body
-{{~/inline ~}}
-{{#with bodyParam ~}}
-{{#with content.[application/json] ~}}
-{{#or example examples}}
-{{! request body example heading ~}}
-{{> requestBodyHeading }}
-{{~/or}}
-{{#with example}}
-{{! single request body example }}
-{{>request language="json"}}
-{{else each examples}}
-{{! multiple request body examples }}
-{{>requests language="json"}}
-{{/with}}
-{{~/with}}{{! content.[application/json] }}
-{{~/with}}{{! bodyParam }}
-{{#unless (or bodyParam.content.[application/json].example
-              bodyParam.content.[application/json].examples) ~}}
-{{#if requestBodyExamples ~}}
-{{> requestBodyHeading }}
-{{~/if}}
-{{#each requestBodyExamples ~}}
-{{#eq generatedContentType "application/json"}}
-{{! auto-generated request body example }}
-====
-{{#with example ~}}
-[source,json]
-----
-{{{this}}}
-----
-{{~/with}}
-====
-
-{{/eq}}
-{{~/each}}{{! requestBodyExamples }}
-{{~/unless}}{{! (or ...) }}
-{{~/unless}}{{! skipExamples ~}}
+{{>requests ~}}
 
 include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 
