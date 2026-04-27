@@ -1,11 +1,3 @@
-{{#*inline "paramType" ~}}
-{{#if isArray ~}}
-{{#with items}}{{>schema}}{{/with}} array
-{{~else ~}}
-{{>schema}}
-{{~/if}}
-{{~/inline ~}}
-
 {{#*inline "enumType" ~}}
 {{#with @root ~}}
 {{#each models ~}}
@@ -15,6 +7,28 @@
 {{~/eq}}
 {{~/with}}
 {{~/each}}
+{{~/with}}
+{{~/inline ~}}
+
+{{#*inline "paramType" ~}}
+{{#if isArray ~}}
+{{#with items}}{{>schema}}{{/with}} array
+{{~else ~}}
+{{>schema}}
+{{~/if}}
+{{~/inline ~}}
+
+{{#*inline "schema" ~}}
+{{#with ref ~}}
+xref:{{dataType}}[]
+{{~else if isModel ~}}
+xref:{{dataType}}[]
+{{~else if isMap ~}}
+xref:{{dataType}}[]
+{{~else if isAnyType ~}}
+Any Type
+{{~else ~}}
+{{dataType}}{{#with dataFormat}} ({{{this}}}){{/with}}
 {{~/with}}
 {{~/inline ~}}
 

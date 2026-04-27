@@ -1,13 +1,3 @@
-a¦ *{{#if isBodyParam}}Body{{else}}{{baseName}}{{/if}}* +
-{{#if required}}required{{else}}optional{{/if}}
-a¦ {{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{#unless vendorExtensions.x-desc-status}}
-
-{{/unless}}{{/with ~}}
-{{#with vendorExtensions.x-desc-status}}[.status]##{{this}}##
-
-{{/with~}}
-[markdown]
---
 {{#*inline "paramDescription" ~}}
 {{#with unescapedDescription ~}}
 {{{this}}}
@@ -15,6 +5,7 @@ a¦ {{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{#unless ven
 {{{this}}}
 {{~/with}}
 {{~/inline ~}}
+
 {{#*inline "enumDescription" ~}}
 {{#with @root ~}}
 {{#each models ~}}
@@ -26,7 +17,18 @@ a¦ {{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{#unless ven
 {{~/each}}
 {{~/with}}
 {{~/inline ~}}
-{{~#if isEnumRef ~}}
+
+a¦ *{{#if isBodyParam}}Body{{else}}{{baseName}}{{/if}}* +
+{{#if required}}required{{else}}optional{{/if}}
+a¦ {{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{#unless vendorExtensions.x-desc-status}}
+
+{{/unless}}{{/with ~}}
+{{#with vendorExtensions.x-desc-status}}[.status]##{{this}}##
+
+{{/with~}}
+[markdown]
+--
+{{#if isEnumRef ~}}
 {{>enumDescription currentType=dataType}}
 {{~else ~}}
 {{>paramDescription}}
