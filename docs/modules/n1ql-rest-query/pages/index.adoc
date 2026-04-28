@@ -95,28 +95,16 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-:count-apis: 0
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
-The operations are grouped in the following categories.
-
-[%hardbreaks]
-xref:tag-Default[]
-endif::[]
 
 
-ifeval::[{count-apis} > 0]
-[#tag-Default]
-= Default
-:leveloffset: +1
 
-**{toc-title}**
-endif::[]
+
 
 
 [%hardbreaks]
@@ -209,8 +197,6 @@ include::{specDir}paths/get_service/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
 :show-Request:
-
-
 
 
 include::{specDir}paths/get_service/operation-parameters-after.adoc[opts=optional]
@@ -317,8 +303,6 @@ include::{specDir}paths/get_service/operation-responses-end.adoc[opts=optional]
 :show-Response:
 
 
-
-
 include::{specDir}paths/get_service/operation-responses-after.adoc[opts=optional]
 
 
@@ -357,12 +341,10 @@ include::{snippetDir}get_service/curl-request.adoc[opts=optional]
 
 include::{snippetDir}get_service/http-request.adoc[opts=optional]
 
-ifeval::["yesyesyesyesyes" != ""]
+ifeval::["yesyesyesyes" != ""]
 [#get_service-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}get_service/http-response.adoc[opts=optional]
 
 
 [#get_service-ex-response-200]
@@ -441,7 +423,6 @@ include::{snippetDir}get_service/http-response.adoc[opts=optional]
 ====
 
 
-
 [#get_service-ex-response-404]
 .Response 404
 ====
@@ -465,7 +446,6 @@ include::{snippetDir}get_service/http-response.adoc[opts=optional]
 }
 ----
 ====
-
 
 
 [#get_service-ex-response-503]
@@ -493,6 +473,384 @@ include::{snippetDir}get_service/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yesyesyesyes" == ""]
+[#get_service-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "clientContextID" : "clientContextID",
+  "controls" : {
+    "stmtType" : "SELECT",
+    "use_cbo" : true,
+    "memoryQuota" : 2,
+    "scan_consistency" : "scan_consistency"
+  },
+  "signature" : {
+    "id" : "json"
+  },
+  "requestID" : "requestID",
+  "warnings" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "profile" : {
+    "requestTime" : "2000-01-23T04:56:07.000+00:00",
+    "servicingHost" : "servicingHost",
+    "phaseOperators" : {
+      "authorize" : 1,
+      "fetch" : 1,
+      "indexScan" : 2
+    },
+    "phaseCounts" : {
+      "fetch" : 16,
+      "indexScan" : 187
+    },
+    "executionTimings" : {
+      "#operator" : "Fetch",
+      "#stats" : {
+        "#phaseSwitches" : 413,
+        "kernTime" : "15.027879ms",
+        "execTime" : "128.434µs",
+        "servTime" : "1.590934ms",
+        "#itemsOut" : 16,
+        "#itemsIn" : 187
+      },
+      "~child" : "{}"
+    },
+    "phaseTimes" : {
+      "authorize" : "823.631µs",
+      "fetch" : "656.873µs",
+      "indexScan" : "29.146543ms",
+      "instantiate" : "236.221µs",
+      "parse" : "826.382µs",
+      "plan" : "11.831101ms",
+      "run" : "16.892181ms"
+    }
+  },
+  "metrics" : {
+    "executionTime" : "executionTime",
+    "resultCount" : 1,
+    "usedMemory" : 7,
+    "resultSize" : 5,
+    "warningCount" : 3,
+    "mutationCount" : 5,
+    "sortCount" : 2,
+    "errorCount" : 9,
+    "elapsedTime" : "elapsedTime"
+  },
+  "results" : [ "", "" ],
+  "errors" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "status" : "success"
+}
+----
+====
+
+.Response 400
+====
+[source,json]
+----
+{
+  "clientContextID" : "clientContextID",
+  "controls" : {
+    "stmtType" : "SELECT",
+    "use_cbo" : true,
+    "memoryQuota" : 2,
+    "scan_consistency" : "scan_consistency"
+  },
+  "signature" : {
+    "id" : "json"
+  },
+  "requestID" : "requestID",
+  "warnings" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "profile" : {
+    "requestTime" : "2000-01-23T04:56:07.000+00:00",
+    "servicingHost" : "servicingHost",
+    "phaseOperators" : {
+      "authorize" : 1,
+      "fetch" : 1,
+      "indexScan" : 2
+    },
+    "phaseCounts" : {
+      "fetch" : 16,
+      "indexScan" : 187
+    },
+    "executionTimings" : {
+      "#operator" : "Fetch",
+      "#stats" : {
+        "#phaseSwitches" : 413,
+        "kernTime" : "15.027879ms",
+        "execTime" : "128.434µs",
+        "servTime" : "1.590934ms",
+        "#itemsOut" : 16,
+        "#itemsIn" : 187
+      },
+      "~child" : "{}"
+    },
+    "phaseTimes" : {
+      "authorize" : "823.631µs",
+      "fetch" : "656.873µs",
+      "indexScan" : "29.146543ms",
+      "instantiate" : "236.221µs",
+      "parse" : "826.382µs",
+      "plan" : "11.831101ms",
+      "run" : "16.892181ms"
+    }
+  },
+  "metrics" : {
+    "executionTime" : "executionTime",
+    "resultCount" : 1,
+    "usedMemory" : 7,
+    "resultSize" : 5,
+    "warningCount" : 3,
+    "mutationCount" : 5,
+    "sortCount" : 2,
+    "errorCount" : 9,
+    "elapsedTime" : "elapsedTime"
+  },
+  "results" : [ "", "" ],
+  "errors" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "status" : "success"
+}
+----
+====
+
+.Response 404
+====
+[source,json]
+----
+{
+  "clientContextID" : "clientContextID",
+  "controls" : {
+    "stmtType" : "SELECT",
+    "use_cbo" : true,
+    "memoryQuota" : 2,
+    "scan_consistency" : "scan_consistency"
+  },
+  "signature" : {
+    "id" : "json"
+  },
+  "requestID" : "requestID",
+  "warnings" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "profile" : {
+    "requestTime" : "2000-01-23T04:56:07.000+00:00",
+    "servicingHost" : "servicingHost",
+    "phaseOperators" : {
+      "authorize" : 1,
+      "fetch" : 1,
+      "indexScan" : 2
+    },
+    "phaseCounts" : {
+      "fetch" : 16,
+      "indexScan" : 187
+    },
+    "executionTimings" : {
+      "#operator" : "Fetch",
+      "#stats" : {
+        "#phaseSwitches" : 413,
+        "kernTime" : "15.027879ms",
+        "execTime" : "128.434µs",
+        "servTime" : "1.590934ms",
+        "#itemsOut" : 16,
+        "#itemsIn" : 187
+      },
+      "~child" : "{}"
+    },
+    "phaseTimes" : {
+      "authorize" : "823.631µs",
+      "fetch" : "656.873µs",
+      "indexScan" : "29.146543ms",
+      "instantiate" : "236.221µs",
+      "parse" : "826.382µs",
+      "plan" : "11.831101ms",
+      "run" : "16.892181ms"
+    }
+  },
+  "metrics" : {
+    "executionTime" : "executionTime",
+    "resultCount" : 1,
+    "usedMemory" : 7,
+    "resultSize" : 5,
+    "warningCount" : 3,
+    "mutationCount" : 5,
+    "sortCount" : 2,
+    "errorCount" : 9,
+    "elapsedTime" : "elapsedTime"
+  },
+  "results" : [ "", "" ],
+  "errors" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "status" : "success"
+}
+----
+====
+
+.Response 503
+====
+[source,json]
+----
+{
+  "clientContextID" : "clientContextID",
+  "controls" : {
+    "stmtType" : "SELECT",
+    "use_cbo" : true,
+    "memoryQuota" : 2,
+    "scan_consistency" : "scan_consistency"
+  },
+  "signature" : {
+    "id" : "json"
+  },
+  "requestID" : "requestID",
+  "warnings" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "profile" : {
+    "requestTime" : "2000-01-23T04:56:07.000+00:00",
+    "servicingHost" : "servicingHost",
+    "phaseOperators" : {
+      "authorize" : 1,
+      "fetch" : 1,
+      "indexScan" : 2
+    },
+    "phaseCounts" : {
+      "fetch" : 16,
+      "indexScan" : 187
+    },
+    "executionTimings" : {
+      "#operator" : "Fetch",
+      "#stats" : {
+        "#phaseSwitches" : 413,
+        "kernTime" : "15.027879ms",
+        "execTime" : "128.434µs",
+        "servTime" : "1.590934ms",
+        "#itemsOut" : 16,
+        "#itemsIn" : 187
+      },
+      "~child" : "{}"
+    },
+    "phaseTimes" : {
+      "authorize" : "823.631µs",
+      "fetch" : "656.873µs",
+      "indexScan" : "29.146543ms",
+      "instantiate" : "236.221µs",
+      "parse" : "826.382µs",
+      "plan" : "11.831101ms",
+      "run" : "16.892181ms"
+    }
+  },
+  "metrics" : {
+    "executionTime" : "executionTime",
+    "resultCount" : 1,
+    "usedMemory" : 7,
+    "resultSize" : 5,
+    "warningCount" : 3,
+    "mutationCount" : 5,
+    "sortCount" : 2,
+    "errorCount" : 9,
+    "elapsedTime" : "elapsedTime"
+  },
+  "results" : [ "", "" ],
+  "errors" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "status" : "success"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}get_service/http-response.adoc[opts=optional]
 
 include::{specDir}paths/get_service/operation-end.adoc[opts=optional]
 
@@ -587,8 +945,6 @@ include::{specDir}paths/post_service/operation-parameters-end.adoc[opts=optional
 
 :leveloffset: -1
 :show-Request:
-
-
 
 
 include::{specDir}paths/post_service/operation-parameters-after.adoc[opts=optional]
@@ -695,8 +1051,6 @@ include::{specDir}paths/post_service/operation-responses-end.adoc[opts=optional]
 :show-Response:
 
 
-
-
 include::{specDir}paths/post_service/operation-responses-after.adoc[opts=optional]
 
 
@@ -733,14 +1087,75 @@ include::{snippetDir}post_service/curl-request.adoc[opts=optional]
 
 
 
+[#post_service-ex-request]
+= Example Request Body
+
+
+====
+[source,json]
+----
+{
+  "scan_wait" : "30m",
+  "kvtimeout" : "10ms",
+  "controls" : true,
+  "signature" : false,
+  "prepared" : "[127.0.0.1:8091]pricy_hotel",
+  "memory_quota" : 4,
+  "use_cbo" : true,
+  "atrcollection" : "default:`travel-sample`.transaction.test",
+  "creds" : [ {
+    "user" : "local:bucket-name",
+    "pass" : "password"
+  }, {
+    "user" : "admin:admin-name",
+    "pass" : "password"
+  } ],
+  "timeout" : "30m",
+  "use_replica" : "on",
+  "durability_level" : "none",
+  "txdata" : "{}",
+  "auto_execute" : true,
+  "readonly" : true,
+  "pipeline_batch" : 64,
+  "sort_projection" : true,
+  "tximplicit" : true,
+  "statement" : "SELECT * FROM `travel-sample`.inventory.hotel LIMIT 1",
+  "scan_vector" : {
+    "5" : [ 5409393, "VB5ID" ],
+    "19" : [ 47574574, "VB19ID" ]
+  },
+  "txstmtnum" : 10,
+  "use_fts" : true,
+  "scan_cap" : 1024,
+  "pretty" : false,
+  "txtimeout" : "30m",
+  "scan_vectors" : "{}",
+  "profile" : "phases",
+  "format" : "XML",
+  "max_parallelism" : 3,
+  "txid" : "d81d9b4a-b758-4f98-b007-87ba262d3a51",
+  "client_context_id" : "client_context_id",
+  "encoding" : "UTF-8",
+  "preserve_expiry" : true,
+  "query_context" : "default:travel-sample.inventory",
+  "scan_consistency" : "at_plus",
+  "args" : [ "LAX", 6 ],
+  "pipeline_cap" : 1024,
+  "encoded_plan" : "encoded_plan",
+  "namespace" : "default",
+  "numatrs" : 0,
+  "metrics" : false,
+  "compression" : "zip"
+}
+----
+====
+
 include::{snippetDir}post_service/http-request.adoc[opts=optional]
 
-ifeval::["yesyesyesyesyes" != ""]
+ifeval::["yesyesyesyes" != ""]
 [#post_service-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}post_service/http-response.adoc[opts=optional]
 
 
 [#post_service-ex-response-200]
@@ -819,7 +1234,6 @@ include::{snippetDir}post_service/http-response.adoc[opts=optional]
 ====
 
 
-
 [#post_service-ex-response-404]
 .Response 404
 ====
@@ -843,7 +1257,6 @@ include::{snippetDir}post_service/http-response.adoc[opts=optional]
 }
 ----
 ====
-
 
 
 [#post_service-ex-response-503]
@@ -871,6 +1284,384 @@ include::{snippetDir}post_service/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yesyesyesyes" == ""]
+[#post_service-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "clientContextID" : "clientContextID",
+  "controls" : {
+    "stmtType" : "SELECT",
+    "use_cbo" : true,
+    "memoryQuota" : 2,
+    "scan_consistency" : "scan_consistency"
+  },
+  "signature" : {
+    "id" : "json"
+  },
+  "requestID" : "requestID",
+  "warnings" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "profile" : {
+    "requestTime" : "2000-01-23T04:56:07.000+00:00",
+    "servicingHost" : "servicingHost",
+    "phaseOperators" : {
+      "authorize" : 1,
+      "fetch" : 1,
+      "indexScan" : 2
+    },
+    "phaseCounts" : {
+      "fetch" : 16,
+      "indexScan" : 187
+    },
+    "executionTimings" : {
+      "#operator" : "Fetch",
+      "#stats" : {
+        "#phaseSwitches" : 413,
+        "kernTime" : "15.027879ms",
+        "execTime" : "128.434µs",
+        "servTime" : "1.590934ms",
+        "#itemsOut" : 16,
+        "#itemsIn" : 187
+      },
+      "~child" : "{}"
+    },
+    "phaseTimes" : {
+      "authorize" : "823.631µs",
+      "fetch" : "656.873µs",
+      "indexScan" : "29.146543ms",
+      "instantiate" : "236.221µs",
+      "parse" : "826.382µs",
+      "plan" : "11.831101ms",
+      "run" : "16.892181ms"
+    }
+  },
+  "metrics" : {
+    "executionTime" : "executionTime",
+    "resultCount" : 1,
+    "usedMemory" : 7,
+    "resultSize" : 5,
+    "warningCount" : 3,
+    "mutationCount" : 5,
+    "sortCount" : 2,
+    "errorCount" : 9,
+    "elapsedTime" : "elapsedTime"
+  },
+  "results" : [ "", "" ],
+  "errors" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "status" : "success"
+}
+----
+====
+
+.Response 400
+====
+[source,json]
+----
+{
+  "clientContextID" : "clientContextID",
+  "controls" : {
+    "stmtType" : "SELECT",
+    "use_cbo" : true,
+    "memoryQuota" : 2,
+    "scan_consistency" : "scan_consistency"
+  },
+  "signature" : {
+    "id" : "json"
+  },
+  "requestID" : "requestID",
+  "warnings" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "profile" : {
+    "requestTime" : "2000-01-23T04:56:07.000+00:00",
+    "servicingHost" : "servicingHost",
+    "phaseOperators" : {
+      "authorize" : 1,
+      "fetch" : 1,
+      "indexScan" : 2
+    },
+    "phaseCounts" : {
+      "fetch" : 16,
+      "indexScan" : 187
+    },
+    "executionTimings" : {
+      "#operator" : "Fetch",
+      "#stats" : {
+        "#phaseSwitches" : 413,
+        "kernTime" : "15.027879ms",
+        "execTime" : "128.434µs",
+        "servTime" : "1.590934ms",
+        "#itemsOut" : 16,
+        "#itemsIn" : 187
+      },
+      "~child" : "{}"
+    },
+    "phaseTimes" : {
+      "authorize" : "823.631µs",
+      "fetch" : "656.873µs",
+      "indexScan" : "29.146543ms",
+      "instantiate" : "236.221µs",
+      "parse" : "826.382µs",
+      "plan" : "11.831101ms",
+      "run" : "16.892181ms"
+    }
+  },
+  "metrics" : {
+    "executionTime" : "executionTime",
+    "resultCount" : 1,
+    "usedMemory" : 7,
+    "resultSize" : 5,
+    "warningCount" : 3,
+    "mutationCount" : 5,
+    "sortCount" : 2,
+    "errorCount" : 9,
+    "elapsedTime" : "elapsedTime"
+  },
+  "results" : [ "", "" ],
+  "errors" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "status" : "success"
+}
+----
+====
+
+.Response 404
+====
+[source,json]
+----
+{
+  "clientContextID" : "clientContextID",
+  "controls" : {
+    "stmtType" : "SELECT",
+    "use_cbo" : true,
+    "memoryQuota" : 2,
+    "scan_consistency" : "scan_consistency"
+  },
+  "signature" : {
+    "id" : "json"
+  },
+  "requestID" : "requestID",
+  "warnings" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "profile" : {
+    "requestTime" : "2000-01-23T04:56:07.000+00:00",
+    "servicingHost" : "servicingHost",
+    "phaseOperators" : {
+      "authorize" : 1,
+      "fetch" : 1,
+      "indexScan" : 2
+    },
+    "phaseCounts" : {
+      "fetch" : 16,
+      "indexScan" : 187
+    },
+    "executionTimings" : {
+      "#operator" : "Fetch",
+      "#stats" : {
+        "#phaseSwitches" : 413,
+        "kernTime" : "15.027879ms",
+        "execTime" : "128.434µs",
+        "servTime" : "1.590934ms",
+        "#itemsOut" : 16,
+        "#itemsIn" : 187
+      },
+      "~child" : "{}"
+    },
+    "phaseTimes" : {
+      "authorize" : "823.631µs",
+      "fetch" : "656.873µs",
+      "indexScan" : "29.146543ms",
+      "instantiate" : "236.221µs",
+      "parse" : "826.382µs",
+      "plan" : "11.831101ms",
+      "run" : "16.892181ms"
+    }
+  },
+  "metrics" : {
+    "executionTime" : "executionTime",
+    "resultCount" : 1,
+    "usedMemory" : 7,
+    "resultSize" : 5,
+    "warningCount" : 3,
+    "mutationCount" : 5,
+    "sortCount" : 2,
+    "errorCount" : 9,
+    "elapsedTime" : "elapsedTime"
+  },
+  "results" : [ "", "" ],
+  "errors" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "status" : "success"
+}
+----
+====
+
+.Response 503
+====
+[source,json]
+----
+{
+  "clientContextID" : "clientContextID",
+  "controls" : {
+    "stmtType" : "SELECT",
+    "use_cbo" : true,
+    "memoryQuota" : 2,
+    "scan_consistency" : "scan_consistency"
+  },
+  "signature" : {
+    "id" : "json"
+  },
+  "requestID" : "requestID",
+  "warnings" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "profile" : {
+    "requestTime" : "2000-01-23T04:56:07.000+00:00",
+    "servicingHost" : "servicingHost",
+    "phaseOperators" : {
+      "authorize" : 1,
+      "fetch" : 1,
+      "indexScan" : 2
+    },
+    "phaseCounts" : {
+      "fetch" : 16,
+      "indexScan" : 187
+    },
+    "executionTimings" : {
+      "#operator" : "Fetch",
+      "#stats" : {
+        "#phaseSwitches" : 413,
+        "kernTime" : "15.027879ms",
+        "execTime" : "128.434µs",
+        "servTime" : "1.590934ms",
+        "#itemsOut" : 16,
+        "#itemsIn" : 187
+      },
+      "~child" : "{}"
+    },
+    "phaseTimes" : {
+      "authorize" : "823.631µs",
+      "fetch" : "656.873µs",
+      "indexScan" : "29.146543ms",
+      "instantiate" : "236.221µs",
+      "parse" : "826.382µs",
+      "plan" : "11.831101ms",
+      "run" : "16.892181ms"
+    }
+  },
+  "metrics" : {
+    "executionTime" : "executionTime",
+    "resultCount" : 1,
+    "usedMemory" : 7,
+    "resultSize" : 5,
+    "warningCount" : 3,
+    "mutationCount" : 5,
+    "sortCount" : 2,
+    "errorCount" : 9,
+    "elapsedTime" : "elapsedTime"
+  },
+  "results" : [ "", "" ],
+  "errors" : [ {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  }, {
+    "msg" : "msg",
+    "temp" : true,
+    "code" : 0,
+    "sev" : 6,
+    "name" : "indexing.scan.io_failure"
+  } ],
+  "status" : "success"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}post_service/http-response.adoc[opts=optional]
 
 include::{specDir}paths/post_service/operation-end.adoc[opts=optional]
 
@@ -882,9 +1673,6 @@ include::{specDir}paths/post_service/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
-:leveloffset: -1
-endif::[]
 
 
 
@@ -900,17 +1688,12 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 8
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
-[.two-columns]
-endif::[]
 [%hardbreaks]
 xref:Conditions[]
 xref:Controls[]
@@ -921,8 +1704,6 @@ xref:Profile[]
 xref:Request[]
 xref:Response[]
 xref:Statistics[]
-endif::[]
-
 
 include::{specDir}definitions/Conditions/definition-before.adoc[opts=optional]
 
@@ -935,12 +1716,6 @@ ifndef::show-Conditions[]
 [discrete#Conditions]
 endif::show-Conditions[]
 = Conditions
-
-ifdef::model-descriptions[]
-//tag::desc-Conditions[]
-Errors and warnings have the following format.
-//end::desc-Conditions[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -1048,13 +1823,6 @@ ifndef::show-Controls[]
 [discrete#Controls]
 endif::show-Controls[]
 = Controls
-
-ifdef::model-descriptions[]
-//tag::desc-Controls[]
-An object containing runtime information provided along with the request.
-Present only if `controls` was set to true in the request parameters.
-//end::desc-Controls[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -1207,14 +1975,6 @@ ifndef::show-Execution_Timings[]
 endif::show-Execution_Timings[]
 = Execution Timings
 
-ifdef::model-descriptions[]
-//tag::desc-Execution_Timings[]
-Present only if `profile` was set to `"timings"` in the request parameters.
-
-The execution details for various phases involved in the query execution, such as kernel and service execution times, number of documents processed at each query operator in each phase, and number of phase switches.
-//end::desc-Execution_Timings[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/Execution_Timings/definition-begin.adoc[opts=optional]
@@ -1244,7 +2004,7 @@ a¦ *#stats* +
 required
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-Statistics, opts=optional]
+Statistics collected for the operator.
 --
 
 [%hardbreaks]
@@ -1288,12 +2048,6 @@ ifndef::show-Metrics[]
 [discrete#Metrics]
 endif::show-Metrics[]
 = Metrics
-
-ifdef::model-descriptions[]
-//tag::desc-Metrics[]
-An object containing metrics about the request.
-//end::desc-Metrics[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -1432,13 +2186,6 @@ ifndef::show-Profile[]
 endif::show-Profile[]
 = Profile
 
-ifdef::model-descriptions[]
-//tag::desc-Profile[]
-An object containing monitoring and profiling information about the request.
-Present only if `profile` was set to `"phases"` or `"timings"` in the request parameters.
-//end::desc-Profile[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/Profile/definition-begin.adoc[opts=optional]
@@ -1516,7 +2263,9 @@ a¦ *executionTimings* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-Execution_Timings, opts=optional]
+Present only if `profile` was set to `"timings"` in the request parameters.
+
+The execution details for various phases involved in the query execution, such as kernel and service execution times, number of documents processed at each query operator in each phase, and number of phase switches.
 --
 
 [%hardbreaks]
@@ -2656,12 +3405,6 @@ ifndef::show-Response[]
 endif::show-Response[]
 = Response Body
 
-ifdef::model-descriptions[]
-//tag::desc-Response[]
-The response body has the following structure.
-//end::desc-Response[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/Response/definition-begin.adoc[opts=optional]
@@ -2756,7 +3499,7 @@ a¦ *metrics* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-Metrics, opts=optional]
+An object containing metrics about the request.
 --
 
 [%hardbreaks]
@@ -2766,7 +3509,8 @@ a¦ *controls* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-Controls, opts=optional]
+An object containing runtime information provided along with the request.
+Present only if `controls` was set to true in the request parameters.
 --
 
 [%hardbreaks]
@@ -2776,7 +3520,8 @@ a¦ *profile* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-Profile, opts=optional]
+An object containing monitoring and profiling information about the request.
+Present only if `profile` was set to `"phases"` or `"timings"` in the request parameters.
 --
 
 [%hardbreaks]
@@ -2810,12 +3555,6 @@ ifndef::show-Statistics[]
 [discrete#Statistics]
 endif::show-Statistics[]
 = Statistics
-
-ifdef::model-descriptions[]
-//tag::desc-Statistics[]
-Statistics collected for the operator.
-//end::desc-Statistics[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 

@@ -95,28 +95,16 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-:count-apis: 0
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
-The operations are grouped in the following categories.
-
-[%hardbreaks]
-xref:tag-Default[]
-endif::[]
 
 
-ifeval::[{count-apis} > 0]
-[#tag-Default]
-= Default
-:leveloffset: +1
 
-**{toc-title}**
-endif::[]
+
 
 
 [%hardbreaks]
@@ -242,8 +230,6 @@ include::{specDir}paths/delete_library/operation-parameters-end.adoc[opts=option
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/delete_library/operation-parameters-after.adoc[opts=optional]
 
 
@@ -286,8 +272,6 @@ a|
 include::{specDir}paths/delete_library/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
-
-
 
 
 include::{specDir}paths/delete_library/operation-responses-after.adoc[opts=optional]
@@ -441,8 +425,6 @@ include::{specDir}paths/get_collection/operation-parameters-end.adoc[opts=option
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/get_collection/operation-parameters-after.adoc[opts=optional]
 
 
@@ -479,8 +461,6 @@ include::{specDir}paths/get_collection/operation-responses-end.adoc[opts=optiona
 
 :leveloffset: -1
 :show-Libraries:
-
-
 
 
 include::{specDir}paths/get_collection/operation-responses-after.adoc[opts=optional]
@@ -521,12 +501,11 @@ include::{snippetDir}get_collection/curl-request.adoc[opts=optional]
 
 include::{snippetDir}get_collection/http-request.adoc[opts=optional]
 
-ifeval::["yesyes" != ""]
+ifeval::["yes" != ""]
 [#get_collection-ex-response]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}get_collection/http-response.adoc[opts=optional]
 
 [#get_collection-ex-response-200]
 .Response 200
@@ -562,6 +541,30 @@ include::{snippetDir}get_collection/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#get_collection-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+[ {
+  "bucket" : "travel-sample",
+  "code" : "function add(a, b) { return a + b; } function mul(a, b) { return a * b; }",
+  "scope" : "inventory",
+  "name" : "math"
+}, {
+  "bucket" : "travel-sample",
+  "code" : "function add(a, b) { return a + b; } function mul(a, b) { return a * b; }",
+  "scope" : "inventory",
+  "name" : "math"
+} ]
+----
+====
+endif::[]
+
+include::{snippetDir}get_collection/http-response.adoc[opts=optional]
 
 include::{specDir}paths/get_collection/operation-end.adoc[opts=optional]
 
@@ -690,8 +693,6 @@ include::{specDir}paths/get_library/operation-parameters-end.adoc[opts=optional]
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/get_library/operation-parameters-after.adoc[opts=optional]
 
 
@@ -737,8 +738,6 @@ include::{specDir}paths/get_library/operation-responses-end.adoc[opts=optional]
 :show-Functions:
 
 
-
-
 include::{specDir}paths/get_library/operation-responses-after.adoc[opts=optional]
 
 
@@ -777,12 +776,11 @@ include::{snippetDir}get_library/curl-request.adoc[opts=optional]
 
 include::{snippetDir}get_library/http-request.adoc[opts=optional]
 
-ifeval::["yesyes" != ""]
+ifeval::["yes" != ""]
 [#get_library-ex-response]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}get_library/http-response.adoc[opts=optional]
 
 [#get_library-ex-response-200]
 .Response 200
@@ -807,6 +805,20 @@ include::{snippetDir}get_library/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#get_library-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+null
+----
+====
+endif::[]
+
+include::{snippetDir}get_library/http-response.adoc[opts=optional]
 
 include::{specDir}paths/get_library/operation-end.adoc[opts=optional]
 
@@ -957,8 +969,6 @@ include::{specDir}paths/post_library/operation-parameters-end.adoc[opts=optional
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/post_library/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1003,8 +1013,6 @@ include::{specDir}paths/post_library/operation-responses-end.adoc[opts=optional]
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/post_library/operation-responses-after.adoc[opts=optional]
 
 
@@ -1041,6 +1049,8 @@ include::{snippetDir}post_library/curl-request.adoc[opts=optional]
 
 
 
+[#post_library-ex-request]
+= Example Request Body
 include::{snippetDir}post_library/http-request.adoc[opts=optional]
 
 ifeval::["" != ""]
@@ -1060,9 +1070,6 @@ include::{specDir}paths/post_library/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
-:leveloffset: -1
-endif::[]
 
 
 
@@ -1078,22 +1085,15 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 1
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
-[.two-columns]
-endif::[]
 [%hardbreaks]
 xref:Functions[]
 xref:Libraries[]
-endif::[]
-
 
 include::{specDir}definitions/Functions/definition-before.adoc[opts=optional]
 

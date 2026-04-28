@@ -96,28 +96,16 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-:count-apis: 0
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
-The operations are grouped in the following categories.
-
-[%hardbreaks]
-xref:tag-Default[]
-endif::[]
 
 
-ifeval::[{count-apis} > 0]
-[#tag-Default]
-= Default
-:leveloffset: +1
 
-**{toc-title}**
-endif::[]
+
 
 
 [%hardbreaks]
@@ -176,8 +164,6 @@ include::{specDir}paths/get_node/operation-parameters-before.adoc[opts=optional]
 
 
 
-
-
 include::{specDir}paths/get_node/operation-parameters-after.adoc[opts=optional]
 
 
@@ -216,8 +202,6 @@ include::{specDir}paths/get_node/operation-responses-end.adoc[opts=optional]
 :show-Node:
 
 
-
-
 include::{specDir}paths/get_node/operation-responses-after.adoc[opts=optional]
 
 
@@ -247,14 +231,7 @@ include::{specDir}paths/get_node/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_node/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_node/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#get_node-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}get_node/http-response.adoc[opts=optional]
 
@@ -314,8 +291,6 @@ include::{specDir}paths/get_service/operation-parameters-before.adoc[opts=option
 
 
 
-
-
 include::{specDir}paths/get_service/operation-parameters-after.adoc[opts=optional]
 
 
@@ -354,8 +329,6 @@ include::{specDir}paths/get_service/operation-responses-end.adoc[opts=optional]
 :show-Service:
 
 
-
-
 include::{specDir}paths/get_service/operation-responses-after.adoc[opts=optional]
 
 
@@ -385,14 +358,7 @@ include::{specDir}paths/get_service/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_service/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_service/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#get_service-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}get_service/http-response.adoc[opts=optional]
 
@@ -497,8 +463,6 @@ include::{specDir}paths/put_node/operation-parameters-end.adoc[opts=optional]
 :show-Node:
 
 
-
-
 include::{specDir}paths/put_node/operation-parameters-after.adoc[opts=optional]
 
 
@@ -544,8 +508,6 @@ include::{specDir}paths/put_node/operation-responses-end.adoc[opts=optional]
 :show-Errors:
 
 
-
-
 include::{specDir}paths/put_node/operation-responses-after.adoc[opts=optional]
 
 
@@ -575,14 +537,7 @@ include::{specDir}paths/put_node/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}put_node/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}put_node/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#put_node-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}put_node/http-response.adoc[opts=optional]
 
@@ -685,8 +640,6 @@ include::{specDir}paths/put_service/operation-parameters-end.adoc[opts=optional]
 :show-Service:
 
 
-
-
 include::{specDir}paths/put_service/operation-parameters-after.adoc[opts=optional]
 
 
@@ -732,8 +685,6 @@ include::{specDir}paths/put_service/operation-responses-end.adoc[opts=optional]
 :show-Errors:
 
 
-
-
 include::{specDir}paths/put_service/operation-responses-after.adoc[opts=optional]
 
 
@@ -763,14 +714,7 @@ include::{specDir}paths/put_service/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}put_service/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}put_service/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#put_service-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}put_service/http-response.adoc[opts=optional]
 
@@ -784,9 +728,6 @@ include::{specDir}paths/put_service/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
-:leveloffset: -1
-endif::[]
 
 
 
@@ -802,23 +743,16 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 2
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
-[.two-columns]
-endif::[]
 [%hardbreaks]
 xref:Errors[]
 xref:Node[]
 xref:Service[]
-endif::[]
-
 
 include::{specDir}definitions/Errors/definition-before.adoc[opts=optional]
 

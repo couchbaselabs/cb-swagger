@@ -95,30 +95,25 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-:count-apis: 2
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
 xref:tag-LegacyMethods[]
 xref:tag-MultipleLinks[]
 xref:tag-SingleLinks[]
-endif::[]
 
 
-ifeval::[{count-apis} > 0]
 [#tag-LegacyMethods]
 = Legacy Methods
 :leveloffset: +1
 
 **{toc-title}**
-endif::[]
 
 
 [%hardbreaks]
@@ -226,8 +221,6 @@ include::{specDir}paths/delete_alt/operation-parameters-end.adoc[opts=optional]
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/delete_alt/operation-parameters-after.adoc[opts=optional]
 
 
@@ -274,8 +267,6 @@ include::{specDir}paths/delete_alt/operation-responses-end.adoc[opts=optional]
 :show-Wrong:
 
 
-
-
 include::{specDir}paths/delete_alt/operation-responses-after.adoc[opts=optional]
 
 
@@ -305,14 +296,7 @@ include::{specDir}paths/delete_alt/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}delete_alt/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}delete_alt/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#delete_alt-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}delete_alt/http-response.adoc[opts=optional]
 
@@ -416,15 +400,19 @@ a¦ *type* +
 required
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-CommonType, opts=optional]
+The type of the link.
+
+* `couchbase`: A link to a remote Couchbase cluster.
+* `s3`: A link to the Amazon S3 service.
+* `azureblob`: A link to Azure Blob Storage.
+* `gcs`: A link to Google Cloud Storage.
 --
 
 [%hardbreaks]
 *Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-a¦ 
-include::index.adoc[tag=type-CommonType, opts=optional]
+a¦ String
 a¦ *hostname* +
 required
 a¦ [markdown]
@@ -689,8 +677,6 @@ include::{specDir}paths/post_alt/operation-parameters-end.adoc[opts=optional]
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/post_alt/operation-parameters-after.adoc[opts=optional]
 
 
@@ -737,8 +723,6 @@ include::{specDir}paths/post_alt/operation-responses-end.adoc[opts=optional]
 :show-Wrong:
 
 
-
-
 include::{specDir}paths/post_alt/operation-responses-after.adoc[opts=optional]
 
 
@@ -768,14 +752,7 @@ include::{specDir}paths/post_alt/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}post_alt/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}post_alt/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#post_alt-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}post_alt/http-response.adoc[opts=optional]
 
@@ -880,15 +857,15 @@ a¦ *type* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
+The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.
+
 --
 
 [%hardbreaks]
 *Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-a¦ 
-include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
+a¦ String
 a¦ *hostname* +
 required
 a¦ [markdown]
@@ -1153,8 +1130,6 @@ include::{specDir}paths/put_alt/operation-parameters-end.adoc[opts=optional]
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/put_alt/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1201,8 +1176,6 @@ include::{specDir}paths/put_alt/operation-responses-end.adoc[opts=optional]
 :show-Wrong:
 
 
-
-
 include::{specDir}paths/put_alt/operation-responses-after.adoc[opts=optional]
 
 
@@ -1232,14 +1205,7 @@ include::{specDir}paths/put_alt/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}put_alt/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}put_alt/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#put_alt-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}put_alt/http-response.adoc[opts=optional]
 
@@ -1253,17 +1219,12 @@ include::{specDir}paths/put_alt/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
 :leveloffset: -1
-endif::[]
-
-ifeval::[{count-apis} > 0]
 [#tag-MultipleLinks]
 = Multiple Links
 :leveloffset: +1
 
 **{toc-title}**
-endif::[]
 
 
 [%hardbreaks]
@@ -1385,8 +1346,6 @@ include::{specDir}paths/get_all/operation-parameters-end.adoc[opts=optional]
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/get_all/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1434,8 +1393,6 @@ include::{specDir}paths/get_all/operation-responses-end.adoc[opts=optional]
 :show-Wrong:
 
 
-
-
 include::{specDir}paths/get_all/operation-responses-after.adoc[opts=optional]
 
 
@@ -1465,14 +1422,7 @@ include::{specDir}paths/get_all/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_all/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_all/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#get_all-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}get_all/http-response.adoc[opts=optional]
 
@@ -1591,8 +1541,6 @@ include::{specDir}paths/get_scope/operation-parameters-end.adoc[opts=optional]
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/get_scope/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1640,8 +1588,6 @@ include::{specDir}paths/get_scope/operation-responses-end.adoc[opts=optional]
 :show-Wrong:
 
 
-
-
 include::{specDir}paths/get_scope/operation-responses-after.adoc[opts=optional]
 
 
@@ -1671,14 +1617,7 @@ include::{specDir}paths/get_scope/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_scope/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_scope/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#get_scope-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}get_scope/http-response.adoc[opts=optional]
 
@@ -1692,17 +1631,12 @@ include::{specDir}paths/get_scope/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
 :leveloffset: -1
-endif::[]
-
-ifeval::[{count-apis} > 0]
 [#tag-SingleLinks]
 = Single Links
 :leveloffset: +1
 
 **{toc-title}**
-endif::[]
 
 
 [%hardbreaks]
@@ -1809,8 +1743,6 @@ include::{specDir}paths/delete_link/operation-parameters-end.adoc[opts=optional]
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/delete_link/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1857,8 +1789,6 @@ include::{specDir}paths/delete_link/operation-responses-end.adoc[opts=optional]
 :show-Wrong:
 
 
-
-
 include::{specDir}paths/delete_link/operation-responses-after.adoc[opts=optional]
 
 
@@ -1888,14 +1818,7 @@ include::{specDir}paths/delete_link/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}delete_link/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}delete_link/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#delete_link-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}delete_link/http-response.adoc[opts=optional]
 
@@ -2007,15 +1930,15 @@ a¦ *type* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
+The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.
+
 --
 
 [%hardbreaks]
 *Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-a¦ 
-include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
+a¦ String
 
 |===
 
@@ -2023,8 +1946,6 @@ include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
 include::{specDir}paths/get_link/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-
-
 
 
 include::{specDir}paths/get_link/operation-parameters-after.adoc[opts=optional]
@@ -2074,8 +1995,6 @@ include::{specDir}paths/get_link/operation-responses-end.adoc[opts=optional]
 :show-Wrong:
 
 
-
-
 include::{specDir}paths/get_link/operation-responses-after.adoc[opts=optional]
 
 
@@ -2105,14 +2024,7 @@ include::{specDir}paths/get_link/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_link/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_link/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#get_link-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}get_link/http-response.adoc[opts=optional]
 
@@ -2227,15 +2139,19 @@ a¦ *type* +
 required
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-CommonType, opts=optional]
+The type of the link.
+
+* `couchbase`: A link to a remote Couchbase cluster.
+* `s3`: A link to the Amazon S3 service.
+* `azureblob`: A link to Azure Blob Storage.
+* `gcs`: A link to Google Cloud Storage.
 --
 
 [%hardbreaks]
 *Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-a¦ 
-include::index.adoc[tag=type-CommonType, opts=optional]
+a¦ String
 a¦ *hostname* +
 required
 a¦ [markdown]
@@ -2500,8 +2416,6 @@ include::{specDir}paths/post_link/operation-parameters-end.adoc[opts=optional]
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/post_link/operation-parameters-after.adoc[opts=optional]
 
 
@@ -2548,8 +2462,6 @@ include::{specDir}paths/post_link/operation-responses-end.adoc[opts=optional]
 :show-Wrong:
 
 
-
-
 include::{specDir}paths/post_link/operation-responses-after.adoc[opts=optional]
 
 
@@ -2579,14 +2491,7 @@ include::{specDir}paths/post_link/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}post_link/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}post_link/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#post_link-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}post_link/http-response.adoc[opts=optional]
 
@@ -2702,15 +2607,15 @@ a¦ *type* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-CommonTypeEdit, opts=optional]
+The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.
+
 --
 
 [%hardbreaks]
 *Values:* `&quot;couchbase&quot;`, `&quot;s3&quot;`, `&quot;azureblob&quot;`, `&quot;gcs&quot;`
 {blank}
 
-a¦ 
-include::index.adoc[tag=type-CommonTypeEdit, opts=optional]
+a¦ String
 a¦ *hostname* +
 required
 a¦ [markdown]
@@ -2975,8 +2880,6 @@ include::{specDir}paths/put_link/operation-parameters-end.adoc[opts=optional]
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/put_link/operation-parameters-after.adoc[opts=optional]
 
 
@@ -3023,8 +2926,6 @@ include::{specDir}paths/put_link/operation-responses-end.adoc[opts=optional]
 :show-Wrong:
 
 
-
-
 include::{specDir}paths/put_link/operation-responses-after.adoc[opts=optional]
 
 
@@ -3054,14 +2955,7 @@ include::{specDir}paths/put_link/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}put_link/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}put_link/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#put_link-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}put_link/http-response.adoc[opts=optional]
 
@@ -3075,10 +2969,7 @@ include::{specDir}paths/put_link/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
 :leveloffset: -1
-endif::[]
-
 
 
 include::{specDir}paths/document-end.adoc[opts=optional]
@@ -3093,24 +2984,14 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 13
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
 [.two-columns]
-endif::[]
 [%hardbreaks]
-ifdef::enum-definitions[]
-xref:CommonType[]
-endif::enum-definitions[]
-ifdef::enum-definitions[]
-xref:CommonTypeEdit[]
-endif::enum-definitions[]
 xref:ResponseAll[]
 xref:ResponseAzureBlob[]
 xref:ResponseAzureBlobSpecific[]
@@ -3123,122 +3004,12 @@ xref:ResponseGCSSpecific[]
 xref:ResponseS3[]
 xref:ResponseS3Specific[]
 xref:Wrong[]
-endif::[]
-
 
 include::{specDir}definitions/CommonType/definition-before.adoc[opts=optional]
-
-ifdef::enum-definitions[]
-ifdef::show-CommonType[]
-[#CommonType]
-endif::show-CommonType[]
-ifndef::show-CommonType[]
-:leveloffset: +1
-
-[discrete#CommonType]
-endif::show-CommonType[]
-= Create Request Type
-
-ifdef::model-descriptions[]
-//tag::desc-CommonType[]
-The type of the link.
-
-* `couchbase`: A link to a remote Couchbase cluster.
-* `s3`: A link to the Amazon S3 service.
-* `azureblob`: A link to Azure Blob Storage.
-* `gcs`: A link to Google Cloud Storage.
-//end::desc-CommonType[]
-endif::model-descriptions[]
-
-:leveloffset: +1
-
-include::{specDir}definitions/CommonType/definition-begin.adoc[opts=optional]
-
-
-.icon:menu[fw] Enumeration
-{blank}
-
-[markdown]
---
-The type of the link.
-
-* `couchbase`: A link to a remote Couchbase cluster.
-* `s3`: A link to the Amazon S3 service.
-* `azureblob`: A link to Azure Blob Storage.
-* `gcs`: A link to Google Cloud Storage.
---
-
-[%hardbreaks]
-*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
-{blank}
-.Schema
-//tag::type-CommonType[]
-string
-//end::type-CommonType[]
-
-include::{specDir}definitions/CommonType/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-CommonType[]
-:leveloffset: -1
-endif::show-CommonType[]
-
-endif::enum-definitions[]
 
 include::{specDir}definitions/CommonType/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/CommonTypeEdit/definition-before.adoc[opts=optional]
-
-ifdef::enum-definitions[]
-ifdef::show-CommonTypeEdit[]
-[#CommonTypeEdit]
-endif::show-CommonTypeEdit[]
-ifndef::show-CommonTypeEdit[]
-:leveloffset: +1
-
-[discrete#CommonTypeEdit]
-endif::show-CommonTypeEdit[]
-= Edit Request Type
-
-ifdef::model-descriptions[]
-//tag::desc-CommonTypeEdit[]
-The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.
-
-//end::desc-CommonTypeEdit[]
-endif::model-descriptions[]
-
-:leveloffset: +1
-
-include::{specDir}definitions/CommonTypeEdit/definition-begin.adoc[opts=optional]
-
-
-.icon:menu[fw] Enumeration
-{blank}
-
-[markdown]
---
-The type of the link. If this parameter is specified, the value must match the type that was set when the link was created.
-
---
-
-[%hardbreaks]
-*Values:* `"couchbase"`, `"s3"`, `"azureblob"`, `"gcs"`
-{blank}
-.Schema
-//tag::type-CommonTypeEdit[]
-string
-//end::type-CommonTypeEdit[]
-
-include::{specDir}definitions/CommonTypeEdit/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-CommonTypeEdit[]
-:leveloffset: -1
-endif::show-CommonTypeEdit[]
-
-endif::enum-definitions[]
 
 include::{specDir}definitions/CommonTypeEdit/definition-after.adoc[opts=optional]
 
@@ -3253,12 +3024,6 @@ ifndef::show-ResponseAll[]
 [discrete#ResponseAll]
 endif::show-ResponseAll[]
 = Links
-
-ifdef::model-descriptions[]
-//tag::desc-ResponseAll[]
-Properties common to all links.
-//end::desc-ResponseAll[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -3322,18 +3087,23 @@ a¦ String
 //end::ResponseAll[]
 
 This schema has alternative properties, depending on the value of *type*:
+
 [cols="25,55,20"]
 |===
 | Value | | Schema
+
 a| `azureblob`
 a| These properties are returned for Azure Blob links.
 a| xref:ResponseAzureBlob[]
+
 a| `couchbase`
 a| These properties are returned for remote Couchbase links.
 a| xref:ResponseCouchbase[]
+
 a| `gcs`
 a| These properties are returned for Google Cloud Storage links.
 a| xref:ResponseGCS[]
+
 a| `s3`
 a| These properties are returned for S3 links.
 a| xref:ResponseS3[]
@@ -3362,12 +3132,6 @@ ifndef::show-ResponseAzureBlob[]
 endif::show-ResponseAzureBlob[]
 = Azure Blob Response
 
-ifdef::model-descriptions[]
-//tag::desc-ResponseAzureBlob[]
-These properties are returned for Azure Blob links.
-//end::desc-ResponseAzureBlob[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/ResponseAzureBlob/definition-begin.adoc[opts=optional]
@@ -3383,7 +3147,7 @@ include::{specDir}definitions/ResponseAzureBlob/definition-begin.adoc[opts=optio
 a¦ 
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ResponseAll, opts=optional]
+Properties common to all links.
 --
 
 [%hardbreaks]
@@ -3393,7 +3157,7 @@ a¦ xref:ResponseAll[]
 a¦ and
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ResponseAzureBlobSpecific, opts=optional]
+Properties specific to Azure Blob links.
 --
 
 [%hardbreaks]
@@ -3424,12 +3188,6 @@ ifndef::show-ResponseAzureBlobSpecific[]
 [discrete#ResponseAzureBlobSpecific]
 endif::show-ResponseAzureBlobSpecific[]
 = Azure Blob Specific Response
-
-ifdef::model-descriptions[]
-//tag::desc-ResponseAzureBlobSpecific[]
-Properties specific to Azure Blob links.
-//end::desc-ResponseAzureBlobSpecific[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -3601,12 +3359,6 @@ ifndef::show-ResponseCouchbase[]
 endif::show-ResponseCouchbase[]
 = Couchbase Response
 
-ifdef::model-descriptions[]
-//tag::desc-ResponseCouchbase[]
-These properties are returned for remote Couchbase links.
-//end::desc-ResponseCouchbase[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/ResponseCouchbase/definition-begin.adoc[opts=optional]
@@ -3622,7 +3374,7 @@ include::{specDir}definitions/ResponseCouchbase/definition-begin.adoc[opts=optio
 a¦ 
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ResponseAll, opts=optional]
+Properties common to all links.
 --
 
 [%hardbreaks]
@@ -3632,7 +3384,7 @@ a¦ xref:ResponseAll[]
 a¦ and
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ResponseCouchbaseSpecific, opts=optional]
+Properties specific to remote Couchbase links.
 --
 
 [%hardbreaks]
@@ -3663,12 +3415,6 @@ ifndef::show-ResponseCouchbaseSpecific[]
 [discrete#ResponseCouchbaseSpecific]
 endif::show-ResponseCouchbaseSpecific[]
 = Couchbase Specific Response
-
-ifdef::model-descriptions[]
-//tag::desc-ResponseCouchbaseSpecific[]
-Properties specific to remote Couchbase links.
-//end::desc-ResponseCouchbaseSpecific[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -3899,7 +3645,7 @@ a¦ *services* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ResponseCouchbaseSpecificNodeServices, opts=optional]
+An object giving information about the services and ports configured on this node.
 --
 
 [%hardbreaks]
@@ -3933,12 +3679,6 @@ ifndef::show-ResponseCouchbaseSpecificNodeServices[]
 [discrete#ResponseCouchbaseSpecificNodeServices]
 endif::show-ResponseCouchbaseSpecificNodeServices[]
 = Services
-
-ifdef::model-descriptions[]
-//tag::desc-ResponseCouchbaseSpecificNodeServices[]
-An object giving information about the services and ports configured on this node.
-//end::desc-ResponseCouchbaseSpecificNodeServices[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -4049,12 +3789,6 @@ ifndef::show-ResponseGCS[]
 endif::show-ResponseGCS[]
 = GCS Response
 
-ifdef::model-descriptions[]
-//tag::desc-ResponseGCS[]
-These properties are returned for Google Cloud Storage links.
-//end::desc-ResponseGCS[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/ResponseGCS/definition-begin.adoc[opts=optional]
@@ -4070,7 +3804,7 @@ include::{specDir}definitions/ResponseGCS/definition-begin.adoc[opts=optional]
 a¦ 
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ResponseAll, opts=optional]
+Properties common to all links.
 --
 
 [%hardbreaks]
@@ -4080,7 +3814,7 @@ a¦ xref:ResponseAll[]
 a¦ and
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ResponseGCSSpecific, opts=optional]
+Properties specific to Google Cloud Storage links.
 --
 
 [%hardbreaks]
@@ -4111,12 +3845,6 @@ ifndef::show-ResponseGCSSpecific[]
 [discrete#ResponseGCSSpecific]
 endif::show-ResponseGCSSpecific[]
 = GCS Specific Response
-
-ifdef::model-descriptions[]
-//tag::desc-ResponseGCSSpecific[]
-Properties specific to Google Cloud Storage links.
-//end::desc-ResponseGCSSpecific[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -4201,12 +3929,6 @@ ifndef::show-ResponseS3[]
 endif::show-ResponseS3[]
 = S3 Response
 
-ifdef::model-descriptions[]
-//tag::desc-ResponseS3[]
-These properties are returned for S3 links.
-//end::desc-ResponseS3[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/ResponseS3/definition-begin.adoc[opts=optional]
@@ -4222,7 +3944,7 @@ include::{specDir}definitions/ResponseS3/definition-begin.adoc[opts=optional]
 a¦ 
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ResponseAll, opts=optional]
+Properties common to all links.
 --
 
 [%hardbreaks]
@@ -4232,7 +3954,7 @@ a¦ xref:ResponseAll[]
 a¦ and
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ResponseS3Specific, opts=optional]
+Properties specific to S3 links.
 --
 
 [%hardbreaks]
@@ -4263,12 +3985,6 @@ ifndef::show-ResponseS3Specific[]
 [discrete#ResponseS3Specific]
 endif::show-ResponseS3Specific[]
 = S3 Specific Response
-
-ifdef::model-descriptions[]
-//tag::desc-ResponseS3Specific[]
-Properties specific to S3 links.
-//end::desc-ResponseS3Specific[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 

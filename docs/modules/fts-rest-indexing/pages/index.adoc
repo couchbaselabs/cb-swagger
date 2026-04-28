@@ -95,14 +95,12 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-:count-apis: 3
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
@@ -110,16 +108,13 @@ xref:tag-Definitions[]
 xref:tag-Management[]
 xref:tag-Monitoring[]
 xref:tag-Querying[]
-endif::[]
 
 
-ifeval::[{count-apis} > 0]
 [#tag-Definitions]
 = Definitions
 :leveloffset: +1
 
 Use the following APIs to retrieve Search index definitions, create new Search indexes, or delete an existing Search index.
-endif::[]
 
 
 [%hardbreaks]
@@ -221,8 +216,6 @@ include::{specDir}paths/d-api-index-name/operation-parameters-end.adoc[opts=opti
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/d-api-index-name/operation-parameters-after.adoc[opts=optional]
 
 
@@ -259,8 +252,6 @@ include::{specDir}paths/d-api-index-name/operation-responses-end.adoc[opts=optio
 
 :leveloffset: -1
 :show-DeleteIndexResponse:
-
-
 
 
 include::{specDir}paths/d-api-index-name/operation-responses-after.adoc[opts=optional]
@@ -301,8 +292,6 @@ ifeval::["yesyes" != ""]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}d-api-index-name/http-response.adoc[opts=optional]
-
 
 [#d-api-index-name-ex-response-200]
 .Response 200
@@ -315,7 +304,6 @@ include::{snippetDir}d-api-index-name/http-response.adoc[opts=optional]
 }
 ----
 ====
-
 
 
 [#d-api-index-name-ex-response-0]
@@ -331,6 +319,23 @@ include::{snippetDir}d-api-index-name/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yesyes" == ""]
+[#d-api-index-name-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "uuid" : "uuid",
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}d-api-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/d-api-index-name/operation-end.adoc[opts=optional]
 
@@ -445,8 +450,6 @@ include::{specDir}paths/d-api-scoped-index-name/operation-parameters-end.adoc[op
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/d-api-scoped-index-name/operation-parameters-after.adoc[opts=optional]
 
 
@@ -483,8 +486,6 @@ include::{specDir}paths/d-api-scoped-index-name/operation-responses-end.adoc[opt
 
 :leveloffset: -1
 :show-DeleteIndexResponse:
-
-
 
 
 include::{specDir}paths/d-api-scoped-index-name/operation-responses-after.adoc[opts=optional]
@@ -525,8 +526,6 @@ ifeval::["yesyes" != ""]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}d-api-scoped-index-name/http-response.adoc[opts=optional]
-
 
 [#d-api-scoped-index-name-ex-response-200]
 .Response 200
@@ -539,7 +538,6 @@ include::{snippetDir}d-api-scoped-index-name/http-response.adoc[opts=optional]
 }
 ----
 ====
-
 
 
 [#d-api-scoped-index-name-ex-response-0]
@@ -555,6 +553,23 @@ include::{snippetDir}d-api-scoped-index-name/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yesyes" == ""]
+[#d-api-scoped-index-name-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "uuid" : "uuid",
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}d-api-scoped-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/d-api-scoped-index-name/operation-end.adoc[opts=optional]
 
@@ -612,8 +627,6 @@ include::{specDir}paths/g-api-index/operation-parameters-before.adoc[opts=option
 
 
 
-
-
 include::{specDir}paths/g-api-index/operation-parameters-after.adoc[opts=optional]
 
 
@@ -643,8 +656,6 @@ include::{specDir}paths/g-api-index/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 :show-GetIndexesResponse:
-
-
 
 
 include::{specDir}paths/g-api-index/operation-responses-after.adoc[opts=optional]
@@ -685,8 +696,6 @@ ifeval::["yes" != ""]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}g-api-index/http-response.adoc[opts=optional]
-
 
 [#g-api-index-ex-response-200]
 .Response 200
@@ -722,6 +731,26 @@ include::{snippetDir}g-api-index/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#g-api-index-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "indexDefs" : {
+    "implVersion" : "implVersion",
+    "uuid" : "uuid"
+  },
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}g-api-index/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-index/operation-end.adoc[opts=optional]
 
@@ -818,8 +847,6 @@ include::{specDir}paths/g-api-index-name/operation-parameters-end.adoc[opts=opti
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/g-api-index-name/operation-parameters-after.adoc[opts=optional]
 
 
@@ -849,8 +876,6 @@ include::{specDir}paths/g-api-index-name/operation-responses-end.adoc[opts=optio
 
 :leveloffset: -1
 :show-GetIndexResponse:
-
-
 
 
 include::{specDir}paths/g-api-index-name/operation-responses-after.adoc[opts=optional]
@@ -890,8 +915,6 @@ ifeval::["yes" != ""]
 [#g-api-index-name-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}g-api-index-name/http-response.adoc[opts=optional]
 
 
 [#g-api-index-name-ex-response-200]
@@ -943,6 +966,67 @@ include::{snippetDir}g-api-index-name/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#g-api-index-name-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "planPIndexes" : [ {
+    "indexParams" : "{}",
+    "indexType" : "indexType",
+    "indexUUID" : "indexUUID",
+    "sourceType" : "sourceType",
+    "indexName" : "indexName",
+    "sourceUUID" : "sourceUUID",
+    "name" : "name",
+    "sourceName" : "sourceName",
+    "sourceParams" : "{}",
+    "sourcePartitions" : "sourcePartitions",
+    "uuid" : "uuid"
+  }, {
+    "indexParams" : "{}",
+    "indexType" : "indexType",
+    "indexUUID" : "indexUUID",
+    "sourceType" : "sourceType",
+    "indexName" : "indexName",
+    "sourceUUID" : "sourceUUID",
+    "name" : "name",
+    "sourceName" : "sourceName",
+    "sourceParams" : "{}",
+    "sourcePartitions" : "sourcePartitions",
+    "uuid" : "uuid"
+  } ],
+  "indexDef" : {
+    "planParams" : {
+      "hierarchyRules" : "hierarchyRules",
+      "numReplicas" : 1,
+      "planFrozen" : true,
+      "indexPartitions" : 6,
+      "maxPartitionsPerPIndex" : 0,
+      "nodePlanParams" : "nodePlanParams"
+    },
+    "sourceType" : "sourceType",
+    "sourceUUID" : "sourceUUID",
+    "name" : "name",
+    "prevIndexUUID" : "prevIndexUUID",
+    "sourceName" : "sourceName",
+    "sourceParams" : "{}",
+    "type" : "type",
+    "params" : "{}",
+    "uuid" : "uuid"
+  },
+  "warnings" : [ "warnings", "warnings" ],
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}g-api-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-index-name/operation-end.adoc[opts=optional]
 
@@ -1044,8 +1128,6 @@ include::{specDir}paths/g-api-scoped-index/operation-parameters-end.adoc[opts=op
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/g-api-scoped-index/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1075,8 +1157,6 @@ include::{specDir}paths/g-api-scoped-index/operation-responses-end.adoc[opts=opt
 
 :leveloffset: -1
 :show-GetIndexesResponse:
-
-
 
 
 include::{specDir}paths/g-api-scoped-index/operation-responses-after.adoc[opts=optional]
@@ -1116,8 +1196,6 @@ ifeval::["yes" != ""]
 [#g-api-scoped-index-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}g-api-scoped-index/http-response.adoc[opts=optional]
 
 
 [#g-api-scoped-index-ex-response-200]
@@ -1244,6 +1322,26 @@ include::{snippetDir}g-api-scoped-index/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#g-api-scoped-index-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "indexDefs" : {
+    "implVersion" : "implVersion",
+    "uuid" : "uuid"
+  },
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}g-api-scoped-index/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-scoped-index/operation-end.adoc[opts=optional]
 
@@ -1358,8 +1456,6 @@ include::{specDir}paths/g-api-scoped-index-name/operation-parameters-end.adoc[op
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/g-api-scoped-index-name/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1389,8 +1485,6 @@ include::{specDir}paths/g-api-scoped-index-name/operation-responses-end.adoc[opt
 
 :leveloffset: -1
 :show-GetIndexResponse:
-
-
 
 
 include::{specDir}paths/g-api-scoped-index-name/operation-responses-after.adoc[opts=optional]
@@ -1430,8 +1524,6 @@ ifeval::["yes" != ""]
 [#g-api-scoped-index-name-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}g-api-scoped-index-name/http-response.adoc[opts=optional]
 
 
 [#g-api-scoped-index-name-ex-response-200]
@@ -1599,6 +1691,67 @@ include::{snippetDir}g-api-scoped-index-name/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#g-api-scoped-index-name-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "planPIndexes" : [ {
+    "indexParams" : "{}",
+    "indexType" : "indexType",
+    "indexUUID" : "indexUUID",
+    "sourceType" : "sourceType",
+    "indexName" : "indexName",
+    "sourceUUID" : "sourceUUID",
+    "name" : "name",
+    "sourceName" : "sourceName",
+    "sourceParams" : "{}",
+    "sourcePartitions" : "sourcePartitions",
+    "uuid" : "uuid"
+  }, {
+    "indexParams" : "{}",
+    "indexType" : "indexType",
+    "indexUUID" : "indexUUID",
+    "sourceType" : "sourceType",
+    "indexName" : "indexName",
+    "sourceUUID" : "sourceUUID",
+    "name" : "name",
+    "sourceName" : "sourceName",
+    "sourceParams" : "{}",
+    "sourcePartitions" : "sourcePartitions",
+    "uuid" : "uuid"
+  } ],
+  "indexDef" : {
+    "planParams" : {
+      "hierarchyRules" : "hierarchyRules",
+      "numReplicas" : 1,
+      "planFrozen" : true,
+      "indexPartitions" : 6,
+      "maxPartitionsPerPIndex" : 0,
+      "nodePlanParams" : "nodePlanParams"
+    },
+    "sourceType" : "sourceType",
+    "sourceUUID" : "sourceUUID",
+    "name" : "name",
+    "prevIndexUUID" : "prevIndexUUID",
+    "sourceName" : "sourceName",
+    "sourceParams" : "{}",
+    "type" : "type",
+    "params" : "{}",
+    "uuid" : "uuid"
+  },
+  "warnings" : [ "warnings", "warnings" ],
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}g-api-scoped-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-scoped-index-name/operation-end.adoc[opts=optional]
 
@@ -1721,8 +1874,6 @@ include::{specDir}paths/p-api-index-name/operation-parameters-end.adoc[opts=opti
 :show-IndexDefinition:
 
 
-
-
 include::{specDir}paths/p-api-index-name/operation-parameters-after.adoc[opts=optional]
 
 
@@ -1761,8 +1912,6 @@ include::{specDir}paths/p-api-index-name/operation-responses-end.adoc[opts=optio
 :show-PutIndexResponse:
 
 
-
-
 include::{specDir}paths/p-api-index-name/operation-responses-after.adoc[opts=optional]
 
 
@@ -1794,14 +1943,41 @@ include::{snippetDir}p-api-index-name/curl-request.adoc[opts=optional]
 
 
 
+[#p-api-index-name-ex-request]
+= Example Request Body
+
+
+====
+[source,json]
+----
+{
+  "planParams" : {
+    "hierarchyRules" : "hierarchyRules",
+    "numReplicas" : 1,
+    "planFrozen" : true,
+    "indexPartitions" : 6,
+    "maxPartitionsPerPIndex" : 0,
+    "nodePlanParams" : "nodePlanParams"
+  },
+  "sourceType" : "sourceType",
+  "sourceUUID" : "sourceUUID",
+  "name" : "name",
+  "prevIndexUUID" : "prevIndexUUID",
+  "sourceName" : "sourceName",
+  "sourceParams" : "{}",
+  "type" : "type",
+  "params" : "{}",
+  "uuid" : "uuid"
+}
+----
+====
+
 include::{snippetDir}p-api-index-name/http-request.adoc[opts=optional]
 
 ifeval::["yesyes" != ""]
 [#p-api-index-name-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}p-api-index-name/http-response.adoc[opts=optional]
 
 
 [#p-api-index-name-ex-response-200]
@@ -1818,7 +1994,6 @@ include::{snippetDir}p-api-index-name/http-response.adoc[opts=optional]
 ====
 
 
-
 [#p-api-index-name-ex-response-0]
 .Default Response
 ====
@@ -1832,6 +2007,24 @@ include::{snippetDir}p-api-index-name/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yesyes" == ""]
+[#p-api-index-name-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "name" : "name",
+  "uuid" : "uuid",
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}p-api-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-index-name/operation-end.adoc[opts=optional]
 
@@ -1972,8 +2165,6 @@ include::{specDir}paths/p-api-scoped-index-name/operation-parameters-end.adoc[op
 :show-IndexDefinition:
 
 
-
-
 include::{specDir}paths/p-api-scoped-index-name/operation-parameters-after.adoc[opts=optional]
 
 
@@ -2012,8 +2203,6 @@ include::{specDir}paths/p-api-scoped-index-name/operation-responses-end.adoc[opt
 :show-PutIndexResponse:
 
 
-
-
 include::{specDir}paths/p-api-scoped-index-name/operation-responses-after.adoc[opts=optional]
 
 
@@ -2045,14 +2234,41 @@ include::{snippetDir}p-api-scoped-index-name/curl-request.adoc[opts=optional]
 
 
 
+[#p-api-scoped-index-name-ex-request]
+= Example Request Body
+
+
+====
+[source,json]
+----
+{
+  "planParams" : {
+    "hierarchyRules" : "hierarchyRules",
+    "numReplicas" : 1,
+    "planFrozen" : true,
+    "indexPartitions" : 6,
+    "maxPartitionsPerPIndex" : 0,
+    "nodePlanParams" : "nodePlanParams"
+  },
+  "sourceType" : "sourceType",
+  "sourceUUID" : "sourceUUID",
+  "name" : "name",
+  "prevIndexUUID" : "prevIndexUUID",
+  "sourceName" : "sourceName",
+  "sourceParams" : "{}",
+  "type" : "type",
+  "params" : "{}",
+  "uuid" : "uuid"
+}
+----
+====
+
 include::{snippetDir}p-api-scoped-index-name/http-request.adoc[opts=optional]
 
 ifeval::["yesyes" != ""]
 [#p-api-scoped-index-name-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}p-api-scoped-index-name/http-response.adoc[opts=optional]
 
 
 [#p-api-scoped-index-name-ex-response-200]
@@ -2069,7 +2285,6 @@ include::{snippetDir}p-api-scoped-index-name/http-response.adoc[opts=optional]
 ====
 
 
-
 [#p-api-scoped-index-name-ex-response-0]
 .Default Response
 ====
@@ -2083,6 +2298,24 @@ include::{snippetDir}p-api-scoped-index-name/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yesyes" == ""]
+[#p-api-scoped-index-name-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "name" : "name",
+  "uuid" : "uuid",
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}p-api-scoped-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-scoped-index-name/operation-end.adoc[opts=optional]
 
@@ -2094,17 +2327,12 @@ include::{specDir}paths/p-api-scoped-index-name/operation-after.adoc[opts=option
 
 
 
-ifeval::[{count-apis} > 0]
 :leveloffset: -1
-endif::[]
-
-ifeval::[{count-apis} > 0]
 [#tag-Management]
 = Management
 :leveloffset: +1
 
 Use the following endpoints to manage index controls, such as document ingestion, partition assignment, and queries.
-endif::[]
 
 
 [%hardbreaks]
@@ -2218,8 +2446,6 @@ include::{specDir}paths/p-api-idx-name-ingestcontrol/operation-parameters-end.ad
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/p-api-idx-name-ingestcontrol/operation-parameters-after.adoc[opts=optional]
 
 
@@ -2249,8 +2475,6 @@ include::{specDir}paths/p-api-idx-name-ingestcontrol/operation-responses-end.ado
 
 :leveloffset: -1
 :show-MgmtResponse:
-
-
 
 
 include::{specDir}paths/p-api-idx-name-ingestcontrol/operation-responses-after.adoc[opts=optional]
@@ -2291,8 +2515,6 @@ ifeval::["yes" != ""]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}p-api-idx-name-ingestcontrol/http-response.adoc[opts=optional]
-
 
 [#p-api-idx-name-ingestcontrol-ex-response-200]
 .Response 200
@@ -2305,6 +2527,22 @@ include::{snippetDir}p-api-idx-name-ingestcontrol/http-response.adoc[opts=option
 ----
 ====
 
+ifeval::["yes" == ""]
+[#p-api-idx-name-ingestcontrol-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}p-api-idx-name-ingestcontrol/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-idx-name-ingestcontrol/operation-end.adoc[opts=optional]
 
@@ -2415,8 +2653,6 @@ include::{specDir}paths/p-api-idx-name-planfreezecontrol/operation-parameters-en
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/p-api-idx-name-planfreezecontrol/operation-parameters-after.adoc[opts=optional]
 
 
@@ -2446,8 +2682,6 @@ include::{specDir}paths/p-api-idx-name-planfreezecontrol/operation-responses-end
 
 :leveloffset: -1
 :show-MgmtResponse:
-
-
 
 
 include::{specDir}paths/p-api-idx-name-planfreezecontrol/operation-responses-after.adoc[opts=optional]
@@ -2488,8 +2722,6 @@ ifeval::["yes" != ""]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}p-api-idx-name-planfreezecontrol/http-response.adoc[opts=optional]
-
 
 [#p-api-idx-name-planfreezecontrol-ex-response-200]
 .Response 200
@@ -2502,6 +2734,22 @@ include::{snippetDir}p-api-idx-name-planfreezecontrol/http-response.adoc[opts=op
 ----
 ====
 
+ifeval::["yes" == ""]
+[#p-api-idx-name-planfreezecontrol-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}p-api-idx-name-planfreezecontrol/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-idx-name-planfreezecontrol/operation-end.adoc[opts=optional]
 
@@ -2612,8 +2860,6 @@ include::{specDir}paths/p-api-idx-name-querycontrol/operation-parameters-end.ado
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/p-api-idx-name-querycontrol/operation-parameters-after.adoc[opts=optional]
 
 
@@ -2643,8 +2889,6 @@ include::{specDir}paths/p-api-idx-name-querycontrol/operation-responses-end.adoc
 
 :leveloffset: -1
 :show-MgmtResponse:
-
-
 
 
 include::{specDir}paths/p-api-idx-name-querycontrol/operation-responses-after.adoc[opts=optional]
@@ -2685,8 +2929,6 @@ ifeval::["yes" != ""]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}p-api-idx-name-querycontrol/http-response.adoc[opts=optional]
-
 
 [#p-api-idx-name-querycontrol-ex-response-200]
 .Response 200
@@ -2699,6 +2941,22 @@ include::{snippetDir}p-api-idx-name-querycontrol/http-response.adoc[opts=optiona
 ----
 ====
 
+ifeval::["yes" == ""]
+[#p-api-idx-name-querycontrol-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}p-api-idx-name-querycontrol/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-idx-name-querycontrol/operation-end.adoc[opts=optional]
 
@@ -2827,8 +3085,6 @@ include::{specDir}paths/p-api-scoped-ingestcontrol/operation-parameters-end.adoc
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/p-api-scoped-ingestcontrol/operation-parameters-after.adoc[opts=optional]
 
 
@@ -2858,8 +3114,6 @@ include::{specDir}paths/p-api-scoped-ingestcontrol/operation-responses-end.adoc[
 
 :leveloffset: -1
 :show-MgmtResponse:
-
-
 
 
 include::{specDir}paths/p-api-scoped-ingestcontrol/operation-responses-after.adoc[opts=optional]
@@ -2900,8 +3154,6 @@ ifeval::["yes" != ""]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}p-api-scoped-ingestcontrol/http-response.adoc[opts=optional]
-
 
 [#p-api-scoped-ingestcontrol-ex-response-200]
 .Response 200
@@ -2914,6 +3166,22 @@ include::{snippetDir}p-api-scoped-ingestcontrol/http-response.adoc[opts=optional
 ----
 ====
 
+ifeval::["yes" == ""]
+[#p-api-scoped-ingestcontrol-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}p-api-scoped-ingestcontrol/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-scoped-ingestcontrol/operation-end.adoc[opts=optional]
 
@@ -3042,8 +3310,6 @@ include::{specDir}paths/p-api-scoped-planfreezecontrol/operation-parameters-end.
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/p-api-scoped-planfreezecontrol/operation-parameters-after.adoc[opts=optional]
 
 
@@ -3073,8 +3339,6 @@ include::{specDir}paths/p-api-scoped-planfreezecontrol/operation-responses-end.a
 
 :leveloffset: -1
 :show-MgmtResponse:
-
-
 
 
 include::{specDir}paths/p-api-scoped-planfreezecontrol/operation-responses-after.adoc[opts=optional]
@@ -3115,8 +3379,6 @@ ifeval::["yes" != ""]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}p-api-scoped-planfreezecontrol/http-response.adoc[opts=optional]
-
 
 [#p-api-scoped-planfreezecontrol-ex-response-200]
 .Response 200
@@ -3129,6 +3391,22 @@ include::{snippetDir}p-api-scoped-planfreezecontrol/http-response.adoc[opts=opti
 ----
 ====
 
+ifeval::["yes" == ""]
+[#p-api-scoped-planfreezecontrol-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}p-api-scoped-planfreezecontrol/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-scoped-planfreezecontrol/operation-end.adoc[opts=optional]
 
@@ -3257,8 +3535,6 @@ include::{specDir}paths/p-api-scoped-querycontrol/operation-parameters-end.adoc[
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/p-api-scoped-querycontrol/operation-parameters-after.adoc[opts=optional]
 
 
@@ -3288,8 +3564,6 @@ include::{specDir}paths/p-api-scoped-querycontrol/operation-responses-end.adoc[o
 
 :leveloffset: -1
 :show-MgmtResponse:
-
-
 
 
 include::{specDir}paths/p-api-scoped-querycontrol/operation-responses-after.adoc[opts=optional]
@@ -3330,8 +3604,6 @@ ifeval::["yes" != ""]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}p-api-scoped-querycontrol/http-response.adoc[opts=optional]
-
 
 [#p-api-scoped-querycontrol-ex-response-200]
 .Response 200
@@ -3344,6 +3616,22 @@ include::{snippetDir}p-api-scoped-querycontrol/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#p-api-scoped-querycontrol-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}p-api-scoped-querycontrol/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-scoped-querycontrol/operation-end.adoc[opts=optional]
 
@@ -3355,17 +3643,12 @@ include::{specDir}paths/p-api-scoped-querycontrol/operation-after.adoc[opts=opti
 
 
 
-ifeval::[{count-apis} > 0]
 :leveloffset: -1
-endif::[]
-
-ifeval::[{count-apis} > 0]
 [#tag-Monitoring]
 = Monitoring
 :leveloffset: +1
 
 Use the following endpoints to get statistics about Search indexes for monitoring and debugging.
-endif::[]
 
 
 [%hardbreaks]
@@ -3481,8 +3764,6 @@ include::{specDir}paths/g-api-scoped-status/operation-parameters-end.adoc[opts=o
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/g-api-scoped-status/operation-parameters-after.adoc[opts=optional]
 
 
@@ -3512,8 +3793,6 @@ include::{specDir}paths/g-api-scoped-status/operation-responses-end.adoc[opts=op
 
 :leveloffset: -1
 :show-StatusResponse:
-
-
 
 
 include::{specDir}paths/g-api-scoped-status/operation-responses-after.adoc[opts=optional]
@@ -3554,8 +3833,6 @@ ifeval::["yes" != ""]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}g-api-scoped-status/http-response.adoc[opts=optional]
-
 
 [#g-api-scoped-status-ex-response-200]
 .Response 200
@@ -3569,6 +3846,23 @@ include::{snippetDir}g-api-scoped-status/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#g-api-scoped-status-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "indexStatus" : "indexStatus",
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}g-api-scoped-status/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-scoped-status/operation-end.adoc[opts=optional]
 
@@ -3629,8 +3923,6 @@ include::{specDir}paths/g-api-stats/operation-parameters-before.adoc[opts=option
 
 
 
-
-
 include::{specDir}paths/g-api-stats/operation-parameters-after.adoc[opts=optional]
 
 
@@ -3660,8 +3952,6 @@ include::{specDir}paths/g-api-stats/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 :show-StatsNodeResponse:
-
-
 
 
 include::{specDir}paths/g-api-stats/operation-responses-after.adoc[opts=optional]
@@ -3701,8 +3991,6 @@ ifeval::["yes" != ""]
 [#g-api-stats-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}g-api-stats/http-response.adoc[opts=optional]
 
 
 [#g-api-stats-ex-response-200]
@@ -3754,6 +4042,50 @@ include::{snippetDir}g-api-stats/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#g-api-stats-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "manager" : {
+    "TotBatchDelete" : 9,
+    "TotDeleteIndex" : 6,
+    "TotUpdateIndex" : 1,
+    "TotBatchUpdate" : 2,
+    "TotBleveDestDelete" : 5,
+    "TotBleveDestDeleteFail" : 9,
+    "TotBleveDestStop" : 7,
+    "TotBleveDestRemove" : 1,
+    "TotBleveDestStart" : 4,
+    "TotBatchGet" : 2,
+    "TotBleveDestUpdate" : 1,
+    "TotBleveDestIntroFail" : 7,
+    "TotQuery" : 8,
+    "TotBatchDeleteFail" : 3,
+    "TotCreateIndex" : 0,
+    "TotBleveDestBatchFail" : 4,
+    "TotBleveDestIntro" : 6,
+    "TotBleveDestBatch" : 1,
+    "TotBatchIntro" : 5,
+    "TotBatchUpdateFail" : 7,
+    "TotBleveDestCloseFail" : 6,
+    "TotBatchIntroFail" : 5,
+    "TotBleveDestClose" : 9,
+    "TotBleveDestUpdateFail" : 1,
+    "TotQueryFail" : 9
+  },
+  "pindexes" : "{}",
+  "feeds" : "{}"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}g-api-stats/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-stats/operation-end.adoc[opts=optional]
 
@@ -3853,8 +4185,6 @@ include::{specDir}paths/g-api-stats-index-name/operation-parameters-end.adoc[opt
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/g-api-stats-index-name/operation-parameters-after.adoc[opts=optional]
 
 
@@ -3884,8 +4214,6 @@ include::{specDir}paths/g-api-stats-index-name/operation-responses-end.adoc[opts
 
 :leveloffset: -1
 :show-StatsIndexResponse:
-
-
 
 
 include::{specDir}paths/g-api-stats-index-name/operation-responses-after.adoc[opts=optional]
@@ -3925,8 +4253,6 @@ ifeval::["yes" != ""]
 [#g-api-stats-index-name-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}g-api-stats-index-name/http-response.adoc[opts=optional]
 
 
 [#g-api-stats-index-name-ex-response-200]
@@ -4096,6 +4422,23 @@ include::{snippetDir}g-api-stats-index-name/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#g-api-stats-index-name-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "pindexes" : "{}",
+  "feeds" : "{}"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}g-api-stats-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-stats-index-name/operation-end.adoc[opts=optional]
 
@@ -4218,8 +4561,6 @@ include::{specDir}paths/g-api-stats-index-name-analyzeDoc/operation-parameters-e
 :show-Object:
 
 
-
-
 include::{specDir}paths/g-api-stats-index-name-analyzeDoc/operation-parameters-after.adoc[opts=optional]
 
 
@@ -4251,8 +4592,6 @@ include::{specDir}paths/g-api-stats-index-name-analyzeDoc/operation-responses-en
 :show-DocumentAnalysis:
 
 
-
-
 include::{specDir}paths/g-api-stats-index-name-analyzeDoc/operation-responses-after.adoc[opts=optional]
 
 
@@ -4282,12 +4621,9 @@ include::{specDir}paths/g-api-stats-index-name-analyzeDoc/operation-security-aft
 
 include::{snippetDir}g-api-stats-index-name-analyzeDoc/curl-request.adoc[opts=optional]
 
-
-
 [#g-api-stats-index-name-analyzeDoc-ex-request]
 = Example Request Body
 
-include::{snippetDir}g-api-stats-index-name-analyzeDoc/http-request.adoc[opts=optional]
 
 ====
 [source,json]
@@ -4299,13 +4635,12 @@ include::{snippetDir}g-api-stats-index-name-analyzeDoc/http-request.adoc[opts=op
 ----
 ====
 
+include::{snippetDir}g-api-stats-index-name-analyzeDoc/http-request.adoc[opts=optional]
 
 ifeval::["yes" != ""]
 [#g-api-stats-index-name-analyzeDoc-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}g-api-stats-index-name-analyzeDoc/http-response.adoc[opts=optional]
 
 
 [#g-api-stats-index-name-analyzeDoc-ex-response-200]
@@ -4412,6 +4747,23 @@ include::{snippetDir}g-api-stats-index-name-analyzeDoc/http-response.adoc[opts=o
 ----
 ====
 
+ifeval::["yes" == ""]
+[#g-api-stats-index-name-analyzeDoc-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "analyzed" : [ null, null ],
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}g-api-stats-index-name-analyzeDoc/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-stats-index-name-analyzeDoc/operation-end.adoc[opts=optional]
 
@@ -4423,17 +4775,12 @@ include::{specDir}paths/g-api-stats-index-name-analyzeDoc/operation-after.adoc[o
 
 
 
-ifeval::[{count-apis} > 0]
 :leveloffset: -1
-endif::[]
-
-ifeval::[{count-apis} > 0]
 [#tag-Querying]
 = Querying
 :leveloffset: +1
 
 Use the following endpoints to query the contents of a Search index.
-endif::[]
 
 
 [%hardbreaks]
@@ -4532,8 +4879,6 @@ include::{specDir}paths/g-api-index-name-count/operation-parameters-end.adoc[opt
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/g-api-index-name-count/operation-parameters-after.adoc[opts=optional]
 
 
@@ -4563,8 +4908,6 @@ include::{specDir}paths/g-api-index-name-count/operation-responses-end.adoc[opts
 
 :leveloffset: -1
 :show-DocumentCount:
-
-
 
 
 include::{specDir}paths/g-api-index-name-count/operation-responses-after.adoc[opts=optional]
@@ -4605,8 +4948,6 @@ ifeval::["yes" != ""]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}g-api-index-name-count/http-response.adoc[opts=optional]
-
 
 [#g-api-index-name-count-ex-response-200]
 .Response 200
@@ -4620,6 +4961,23 @@ include::{snippetDir}g-api-index-name-count/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#g-api-index-name-count-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "count" : 0,
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}g-api-index-name-count/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-index-name-count/operation-end.adoc[opts=optional]
 
@@ -4743,8 +5101,6 @@ include::{specDir}paths/p-api-index-name-query/operation-parameters-end.adoc[opt
 :show-QueryRequest:
 
 
-
-
 include::{specDir}paths/p-api-index-name-query/operation-parameters-after.adoc[opts=optional]
 
 
@@ -4776,8 +5132,6 @@ include::{specDir}paths/p-api-index-name-query/operation-responses-end.adoc[opts
 :show-QueryResponse:
 
 
-
-
 include::{specDir}paths/p-api-index-name-query/operation-responses-after.adoc[opts=optional]
 
 
@@ -4807,16 +5161,13 @@ include::{specDir}paths/p-api-index-name-query/operation-security-after.adoc[opt
 
 include::{snippetDir}p-api-index-name-query/curl-request.adoc[opts=optional]
 
-
-
 [#p-api-index-name-query-ex-request]
 = Example Request Body
 
-include::{snippetDir}p-api-index-name-query/http-request.adoc[opts=optional]
 
-====
 [#p-api-index-name-query-ex-request-0]
 .Regular Query
+====
 [source,json]
 ----
 {
@@ -4832,10 +5183,12 @@ include::{snippetDir}p-api-index-name-query/http-request.adoc[opts=optional]
   "explain" : false
 }
 ----
+====
 
 
 [#p-api-index-name-query-ex-request-1]
 .Query with Options
+====
 [source,json]
 ----
 {
@@ -4866,10 +5219,12 @@ include::{snippetDir}p-api-index-name-query/http-request.adoc[opts=optional]
   "explain" : true
 }
 ----
+====
 
 
 [#p-api-index-name-query-ex-request-2]
 .Hybrid Query
+====
 [source,json]
 ----
 {
@@ -4891,10 +5246,27 @@ include::{snippetDir}p-api-index-name-query/http-request.adoc[opts=optional]
 ----
 ====
 
+include::{snippetDir}p-api-index-name-query/http-request.adoc[opts=optional]
 
 ifeval::["" != ""]
 [#p-api-index-name-query-ex-response]
 = Example HTTP Response
+endif::[]
+
+ifeval::["" == ""]
+[#p-api-index-name-query-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "results" : [ "{}", "{}" ],
+  "status" : "status"
+}
+----
+====
 endif::[]
 
 include::{snippetDir}p-api-index-name-query/http-response.adoc[opts=optional]
@@ -5038,8 +5410,6 @@ include::{specDir}paths/p-api-pindex-lookup/operation-parameters-end.adoc[opts=o
 :show-LookupRequest:
 
 
-
-
 include::{specDir}paths/p-api-pindex-lookup/operation-parameters-after.adoc[opts=optional]
 
 
@@ -5071,8 +5441,6 @@ include::{specDir}paths/p-api-pindex-lookup/operation-responses-end.adoc[opts=op
 :show-LookupResponse:
 
 
-
-
 include::{specDir}paths/p-api-pindex-lookup/operation-responses-after.adoc[opts=optional]
 
 
@@ -5102,12 +5470,9 @@ include::{specDir}paths/p-api-pindex-lookup/operation-security-after.adoc[opts=o
 
 include::{snippetDir}p-api-pindex-lookup/curl-request.adoc[opts=optional]
 
-
-
 [#p-api-pindex-lookup-ex-request]
 = Example Request Body
 
-include::{snippetDir}p-api-pindex-lookup/http-request.adoc[opts=optional]
 
 ====
 [source,json]
@@ -5118,13 +5483,12 @@ include::{snippetDir}p-api-pindex-lookup/http-request.adoc[opts=optional]
 ----
 ====
 
+include::{snippetDir}p-api-pindex-lookup/http-request.adoc[opts=optional]
 
 ifeval::["yes" != ""]
 [#p-api-pindex-lookup-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}p-api-pindex-lookup/http-response.adoc[opts=optional]
 
 
 [#p-api-pindex-lookup-ex-response-200]
@@ -5143,6 +5507,22 @@ include::{snippetDir}p-api-pindex-lookup/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#p-api-pindex-lookup-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}p-api-pindex-lookup/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-pindex-lookup/operation-end.adoc[opts=optional]
 
@@ -5284,8 +5664,6 @@ include::{specDir}paths/p-api-scoped-query/operation-parameters-end.adoc[opts=op
 :show-QueryRequest:
 
 
-
-
 include::{specDir}paths/p-api-scoped-query/operation-parameters-after.adoc[opts=optional]
 
 
@@ -5324,8 +5702,6 @@ include::{specDir}paths/p-api-scoped-query/operation-responses-end.adoc[opts=opt
 :show-QueryResponse:
 
 
-
-
 include::{specDir}paths/p-api-scoped-query/operation-responses-after.adoc[opts=optional]
 
 
@@ -5357,14 +5733,40 @@ include::{snippetDir}p-api-scoped-query/curl-request.adoc[opts=optional]
 
 
 
+[#p-api-scoped-query-ex-request]
+= Example Request Body
+
+
+====
+[source,json]
+----
+{
+  "explain" : true,
+  "query" : "{}",
+  "knn" : [ "{}", "{}" ],
+  "sort" : [ "", "" ],
+  "includeLocations" : true,
+  "facets" : "{}",
+  "highlight" : "{}",
+  "score" : "score",
+  "search_after" : [ "search_after", "search_after" ],
+  "size" : 0,
+  "collections" : [ "collections", "collections" ],
+  "ctl" : "{}",
+  "from" : 6,
+  "fields" : [ "fields", "fields" ],
+  "search_before" : [ "search_before", "search_before" ]
+}
+----
+====
+
 include::{snippetDir}p-api-scoped-query/http-request.adoc[opts=optional]
 
-ifeval::["yesyesyes" != ""]
+ifeval::["yesyes" != ""]
 [#p-api-scoped-query-ex-response]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}p-api-scoped-query/http-response.adoc[opts=optional]
 
 [#p-api-scoped-query-ex-response-200]
 .Response 200
@@ -5609,7 +6011,6 @@ include::{snippetDir}p-api-scoped-query/http-response.adoc[opts=optional]
 ====
 
 
-
 [#p-api-scoped-query-ex-response-0]
 .Default Response
 ====
@@ -5658,6 +6059,23 @@ include::{snippetDir}p-api-scoped-query/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yesyes" == ""]
+[#p-api-scoped-query-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "results" : [ "{}", "{}" ],
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}p-api-scoped-query/http-response.adoc[opts=optional]
 
 include::{specDir}paths/p-api-scoped-query/operation-end.adoc[opts=optional]
 
@@ -5669,10 +6087,7 @@ include::{specDir}paths/p-api-scoped-query/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
 :leveloffset: -1
-endif::[]
-
 
 
 include::{specDir}paths/document-end.adoc[opts=optional]
@@ -5687,17 +6102,13 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 26
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
 [.two-columns]
-endif::[]
 [%hardbreaks]
 xref:DeleteIndexResponse[]
 xref:DocumentAnalysis[]
@@ -5726,8 +6137,6 @@ xref:StatsIndexResponse[]
 xref:StatsNodeResponse[]
 xref:StatsNodeResponseMgr[]
 xref:StatusResponse[]
-endif::[]
-
 
 include::{specDir}definitions/DeleteIndexResponse/definition-before.adoc[opts=optional]
 
@@ -5868,12 +6277,6 @@ ifndef::show-DocumentAnalysisItem[]
 endif::show-DocumentAnalysisItem[]
 = Analysis Item
 
-ifdef::model-descriptions[]
-//tag::desc-DocumentAnalysisItem[]
-An object containing 1 or more search terms or tokens from the analyzed document.
-//end::desc-DocumentAnalysisItem[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/DocumentAnalysisItem/definition-begin.adoc[opts=optional]
@@ -5893,7 +6296,8 @@ additional +
 property
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-DocumentAnalysisItemToken, opts=optional]
+An object containing the analysis of a single search term or token from the analyzed document.
+The name of the property is the search term or token.
 --
 
 [%hardbreaks]
@@ -5927,13 +6331,6 @@ ifndef::show-DocumentAnalysisItemToken[]
 [discrete#DocumentAnalysisItemToken]
 endif::show-DocumentAnalysisItemToken[]
 = Analysis Token
-
-ifdef::model-descriptions[]
-//tag::desc-DocumentAnalysisItemToken[]
-An object containing the analysis of a single search term or token from the analyzed document.
-The name of the property is the search term or token.
-//end::desc-DocumentAnalysisItemToken[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -5997,12 +6394,6 @@ ifndef::show-DocumentAnalysisItemTokenLocation[]
 [discrete#DocumentAnalysisItemTokenLocation]
 endif::show-DocumentAnalysisItemTokenLocation[]
 = Analysis Token Location
-
-ifdef::model-descriptions[]
-//tag::desc-DocumentAnalysisItemTokenLocation[]
-An object describing the location of a single instance of the search term or token in the analyzed document.
-//end::desc-DocumentAnalysisItemTokenLocation[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -6178,7 +6569,8 @@ a¦ *indexDef* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-IndexDefinition, opts=optional]
+The full Search index definition.
+For a detailed list of all parameters, see [Search Index JSON Properties](../search/search-index-params.html).
 --
 
 [%hardbreaks]
@@ -6242,12 +6634,6 @@ ifndef::show-GetIndexResponsePIndex[]
 [discrete#GetIndexResponsePIndex]
 endif::show-GetIndexResponsePIndex[]
 = Plan Partition
-
-ifdef::model-descriptions[]
-//tag::desc-GetIndexResponsePIndex[]
-An object containing information about a single Search index partition.
-//end::desc-GetIndexResponsePIndex[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -6321,7 +6707,7 @@ a¦ *nodes* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-GetIndexResponsePIndexNodesWrapper, opts=optional]
+An object containing information about 1 or more Search index partition nodes.
 --
 
 [%hardbreaks]
@@ -6420,12 +6806,6 @@ ifndef::show-GetIndexResponsePIndexNodesWrapper[]
 endif::show-GetIndexResponsePIndexNodesWrapper[]
 = Partition Nodes Wrapper
 
-ifdef::model-descriptions[]
-//tag::desc-GetIndexResponsePIndexNodesWrapper[]
-An object containing information about 1 or more Search index partition nodes.
-//end::desc-GetIndexResponsePIndexNodesWrapper[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/GetIndexResponsePIndexNodesWrapper/definition-begin.adoc[opts=optional]
@@ -6445,7 +6825,8 @@ additional +
 property
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-GetIndexResponsePIndexNodesWrapperNode, opts=optional]
+An object containing information about a single Search index partition node.
+The name of the property is the node UUID.
 --
 
 [%hardbreaks]
@@ -6479,13 +6860,6 @@ ifndef::show-GetIndexResponsePIndexNodesWrapperNode[]
 [discrete#GetIndexResponsePIndexNodesWrapperNode]
 endif::show-GetIndexResponsePIndexNodesWrapperNode[]
 = Partition Node
-
-ifdef::model-descriptions[]
-//tag::desc-GetIndexResponsePIndexNodesWrapperNode[]
-An object containing information about a single Search index partition node.
-The name of the property is the node UUID.
-//end::desc-GetIndexResponsePIndexNodesWrapperNode[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -6578,7 +6952,7 @@ a¦ *indexDefs* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-GetIndexesResponseIndexes, opts=optional]
+An object containing Search index definitions and related information.
 --
 
 [%hardbreaks]
@@ -6623,12 +6997,6 @@ ifndef::show-GetIndexesResponseIndexes[]
 endif::show-GetIndexesResponseIndexes[]
 = Index Definitions
 
-ifdef::model-descriptions[]
-//tag::desc-GetIndexesResponseIndexes[]
-An object containing Search index definitions and related information.
-//end::desc-GetIndexesResponseIndexes[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/GetIndexesResponseIndexes/definition-begin.adoc[opts=optional]
@@ -6657,7 +7025,7 @@ a¦ *indexDefs* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-GetIndexesResponseIndexesWrapper, opts=optional]
+An object containing 1 or more Search index definitions.
 --
 
 [%hardbreaks]
@@ -6702,12 +7070,6 @@ ifndef::show-GetIndexesResponseIndexesWrapper[]
 endif::show-GetIndexesResponseIndexesWrapper[]
 = Index Definitions Wrapper
 
-ifdef::model-descriptions[]
-//tag::desc-GetIndexesResponseIndexesWrapper[]
-An object containing 1 or more Search index definitions.
-//end::desc-GetIndexesResponseIndexesWrapper[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/GetIndexesResponseIndexesWrapper/definition-begin.adoc[opts=optional]
@@ -6727,7 +7089,8 @@ additional +
 property
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-IndexDefinition, opts=optional]
+The full Search index definition.
+For a detailed list of all parameters, see [Search Index JSON Properties](../search/search-index-params.html).
 --
 
 [%hardbreaks]
@@ -6761,13 +7124,6 @@ ifndef::show-IndexDefinition[]
 [discrete#IndexDefinition]
 endif::show-IndexDefinition[]
 = Index Definition
-
-ifdef::model-descriptions[]
-//tag::desc-IndexDefinition[]
-The full Search index definition.
-For a detailed list of all parameters, see [Search Index JSON Properties](../search/search-index-params.html).
-//end::desc-IndexDefinition[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -6864,7 +7220,8 @@ a¦ *planParams* +
 required
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-IndexDefinitionPlanParams, opts=optional]
+The Search index's partitioning and replication settings.
+For more information, see [Plan Params Object](../search/search-index-params.html#planParams).
 --
 
 [%hardbreaks]
@@ -6920,13 +7277,6 @@ ifndef::show-IndexDefinitionPlanParams[]
 [discrete#IndexDefinitionPlanParams]
 endif::show-IndexDefinitionPlanParams[]
 = Plan Parameters
-
-ifdef::model-descriptions[]
-//tag::desc-IndexDefinitionPlanParams[]
-The Search index's partitioning and replication settings.
-For more information, see [Plan Params Object](../search/search-index-params.html#planParams).
-//end::desc-IndexDefinitionPlanParams[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -7115,7 +7465,7 @@ a¦ *pindexes* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-LookupResponsePartitions, opts=optional]
+An object containing information about 1 or more Search index partitions.
 --
 
 [%hardbreaks]
@@ -7150,12 +7500,6 @@ ifndef::show-LookupResponsePartitions[]
 endif::show-LookupResponsePartitions[]
 = Lookup Partition Wrapper
 
-ifdef::model-descriptions[]
-//tag::desc-LookupResponsePartitions[]
-An object containing information about 1 or more Search index partitions.
-//end::desc-LookupResponsePartitions[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/LookupResponsePartitions/definition-begin.adoc[opts=optional]
@@ -7175,7 +7519,8 @@ additional +
 property
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-LookupResponsePartitionsID, opts=optional]
+An object containing information about a single Search index partition.
+The name of the property is the Search index partition name.
 --
 
 [%hardbreaks]
@@ -7209,13 +7554,6 @@ ifndef::show-LookupResponsePartitionsID[]
 [discrete#LookupResponsePartitionsID]
 endif::show-LookupResponsePartitionsID[]
 = Lookup Partition
-
-ifdef::model-descriptions[]
-//tag::desc-LookupResponsePartitionsID[]
-An object containing information about a single Search index partition.
-The name of the property is the Search index partition name.
-//end::desc-LookupResponsePartitionsID[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -7751,7 +8089,7 @@ a¦ *manager* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-StatsNodeResponseMgr, opts=optional]
+
 --
 
 [%hardbreaks]
