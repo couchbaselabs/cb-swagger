@@ -26,7 +26,7 @@ include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
-The Analytics Configuration REST API is provided by the Analytics service.
+The Analytics Configuration REST API is provided by the Analytics Service.
 This API enables you to configure Analytics nodes and clusters.
 
 --
@@ -190,7 +190,7 @@ a| xref:Node[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html).
 --
 a| Object
 
@@ -270,7 +270,7 @@ include::{specDir}paths/get_service/operation-description-begin.adoc[opts=option
 
 [markdown]
 --
-Views service-level parameters, which apply to all nodes running the Analytics service.
+Shows service-level parameters, which apply to all nodes running the Analytics Service.
 --
 
 include::{specDir}paths/get_service/operation-description-end.adoc[opts=optional]
@@ -317,7 +317,7 @@ a| xref:Service[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html).
 --
 a| Object
 
@@ -496,7 +496,7 @@ a| xref:Errors[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html).
 --
 a| Object
 
@@ -576,7 +576,7 @@ include::{specDir}paths/put_service/operation-description-begin.adoc[opts=option
 
 [markdown]
 --
-Modifies service-level parameters, which apply to all nodes running the Analytics service.
+Modifies service-level parameters, which apply to all nodes running the Analytics Service.
 
 IMPORTANT: For the configuration changes to take effect,
 you must restart the Analytics cluster using the [Cluster Restart API][1].
@@ -673,7 +673,7 @@ a| xref:Errors[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html).
 --
 a| Object
 
@@ -843,7 +843,7 @@ The default is undefined (null).
 Node-specific JVM arguments are appended to service-level JVM arguments.
 If the same JVM argument appears in both the service-level arguments and the node-specific arguments, the node-specific argument takes priority.
 
-Note that JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
+JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
 To pass arguments opaquely, you may use [Java command-line argument files][3].
 
 [1]: /server/7.6/cli/cbcollect-info-tool.html
@@ -1155,7 +1155,7 @@ a¦ [markdown]
 --
 DCP connection buffer size (in bytes).
 
-If the JVM maximum heap size is less than 8GB, the default for this parameter is 10 MB divided by the number of IO Devices on the node.
+If the JVM maximum heap size is less than 8&nbsp;GB, the default for this parameter is 10 MB divided by the number of IO Devices on the node.
 Otherwise, the default is 1% of the JVM maximum heap size divided by the number of IO Devices on the node.
 --
 
@@ -1213,7 +1213,7 @@ a¦ [markdown]
 JVM arguments to pass to the Analytics Driver.
 The default is undefined (null).
 
-Note that JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
+JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
 To pass arguments opaquely, you may use [Java command-line argument files][3].
 
 [1]: /server/7.6/cli/cbcollect-info-tool.html

@@ -26,8 +26,8 @@ include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
-The Analytics Administration REST APIs are provided by the Analytics service.
-These APIs enables you to manage and monitor the Analytics service.
+The Analytics Administration REST APIs are provided by the Analytics Service.
+These APIs enables you to manage and monitor the Analytics Service.
 
 --
 
@@ -188,7 +188,7 @@ a¦ *client_context_id* +
 required
 a¦ [markdown]
 --
-Identifier passed by the client that is used to identify an active request to be cancelled.
+Identifier passed by the client that's used to identify an active request to be cancelled.
 --
 
 [%hardbreaks]
@@ -237,7 +237,7 @@ a|
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html). 
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html). 
 --
 a| Object
 
@@ -370,7 +370,7 @@ a| xref:Status[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html). 
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html). 
 --
 a| Object
 
@@ -504,7 +504,7 @@ a| xref:Request[] array
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html). 
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html). 
 --
 a| Object
 
@@ -591,7 +591,7 @@ include::{specDir}paths/ingestion_status/operation-description-begin.adoc[opts=o
 
 [markdown]
 --
-Shows the progress of ingestion by the Analytics service, for each Analytics collection.
+Shows the progress of ingestion by the Analytics Service, for each Analytics collection.
 --
 
 include::{specDir}paths/ingestion_status/operation-description-end.adoc[opts=optional]
@@ -638,7 +638,7 @@ a| xref:Ingestion[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html). 
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html). 
 --
 a| Object
 
@@ -727,7 +727,7 @@ include::{specDir}paths/monitor_node/operation-description-begin.adoc[opts=optio
 
 [markdown]
 --
-Shows the number of mutations in the DCP queue that have not yet been ingested by the Analytics service, for each Analytics collection.
+Shows the number of mutations in the DCP queue that have not yet been ingested by the Analytics Service, for each Analytics collection.
 
 NOTE: This endpoint may not return meaningful results in Couchbase Server 7.0 and later. The reported number of mutations may be different to the actual number of mutations in the Analytics collection. For this reason, this endpoint has been deprecated, and you should use the [Ingestion Status](#ingestion_status) endpoint instead.
 
@@ -777,7 +777,7 @@ a| xref:Mutations[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html). 
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html). 
 --
 a| Object
 
@@ -911,7 +911,7 @@ a| Object
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html). 
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html). 
 --
 a| Object
 
@@ -1044,7 +1044,7 @@ a| Object
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html). 
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html). 
 --
 a| Object
 
@@ -1177,7 +1177,7 @@ a| xref:Request[] array
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html). 
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html). 
 --
 a| Object
 
@@ -1486,9 +1486,9 @@ a¦ *itemsProcessed* +
 optional
 a¦ [markdown]
 --
-The number of items ingested since last connect; that is, the total number of mutations and deletions processed. Only displayed for Analytics collections that are not fully ingested.
+The number of items ingested since last connect; in other words, the total number of mutations and deletions processed. Only displayed for Analytics collections that are not fully ingested.
 
-Note that this value is reset on connect, so it may appear to get smaller.
+This value is reset on connect, so it may appear to get smaller.
 
 --
 
