@@ -26,7 +26,7 @@ include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
-The Query Functions REST API is a secondary API provided by the Query service.
+The Query Functions REST API is a secondary API provided by the Query Service.
 This API enables you to manage the JavaScript libraries and objects that are used to create SQL++ user-defined functions.
 --
 
@@ -322,7 +322,34 @@ include::{specDir}paths/delete_library/operation-security-end.adoc[opts=optional
 
 include::{specDir}paths/delete_library/operation-security-after.adoc[opts=optional]
 
+[#delete_library-ex-curl]
+= Example HTTP Request
+
 include::{snippetDir}delete_library/curl-request.adoc[opts=optional]
+
+====
+[#delete_library-ex-curl-0]
+.Global
+Delete a global library entirely.
+
+[source,sh]
+----
+curl -X DELETE \
+"$BASEPATH/evaluator/v1/libraries/math" \
+-u $USER:$PASSWORD
+----
+
+[#delete_library-ex-curl-1]
+.Scoped
+Delete a scoped library entirely.
+
+[source,sh]
+----
+curl -X DELETE \
+"$BASEPATH/evaluator/v1/libraries/science?bucket=travel-sample&scope=inventory" \
+-u $USER:$PASSWORD
+----
+====
 
 
 
@@ -515,7 +542,34 @@ include::{specDir}paths/get_collection/operation-security-end.adoc[opts=optional
 
 include::{specDir}paths/get_collection/operation-security-after.adoc[opts=optional]
 
+[#get_collection-ex-curl]
+= Example HTTP Request
+
 include::{snippetDir}get_collection/curl-request.adoc[opts=optional]
+
+====
+[#get_collection-ex-curl-0]
+.All
+Fetch all defined libraries.
+
+[source,sh]
+----
+curl -X GET \
+"$BASEPATH/evaluator/v1/libraries" \
+-u $USER:$PASSWORD
+----
+
+[#get_collection-ex-curl-1]
+.Scoped
+Fetch all defined libraries in the specified scope.
+
+[source,sh]
+----
+curl -X GET \
+"$BASEPATH/evaluator/v1/libraries?bucket=travel-sample&scope=inventory" \
+-u $USER:$PASSWORD
+----
+====
 
 
 
@@ -771,7 +825,34 @@ include::{specDir}paths/get_library/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/get_library/operation-security-after.adoc[opts=optional]
 
+[#get_library-ex-curl]
+= Example HTTP Request
+
 include::{snippetDir}get_library/curl-request.adoc[opts=optional]
+
+====
+[#get_library-ex-curl-0]
+.Global
+Get all functions in the specified global library.
+
+[source,sh]
+----
+curl -X GET \
+"$BASEPATH/evaluator/v1/libraries/math" \
+-u $USER:$PASSWORD
+----
+
+[#get_library-ex-curl-1]
+.Scoped
+Get all functions in the specified scoped library.
+
+[source,sh]
+----
+curl -X GET \
+"$BASEPATH/evaluator/v1/libraries/science?bucket=travel-sample&scope=inventory" \
+-u $USER:$PASSWORD
+----
+====
 
 
 
@@ -1037,11 +1118,101 @@ include::{specDir}paths/post_library/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/post_library/operation-security-after.adoc[opts=optional]
 
+[#post_library-ex-curl]
+= Example HTTP Request
+
 include::{snippetDir}post_library/curl-request.adoc[opts=optional]
 
+====
+[#post_library-ex-curl-0]
+.Global
+Create or update a global library called `math`.
+The library contains two functions, `add` and `sub`.
 
+[source,sh]
+----
+curl -X POST \
+"$BASEPATH/evaluator/v1/libraries/math" \
+-u $USER:$PASSWORD \
+-H 'content-type: application/json' \
+-d 'function add(a, b) { let data = a + b; return data; }
+    function sub(a, b) { let data = a - b; return data; }'
+----
+
+[#post_library-ex-curl-1]
+.Add
+Add a function called `mul` to the global library, leaving the other functions unchanged.
+
+[source,sh]
+----
+curl -X POST \
+"$BASEPATH/evaluator/v1/libraries/math" \
+-u $USER:$PASSWORD \
+-H 'content-type: application/json' \
+-d 'function add(a, b) { let data = a + b; return data; }
+    function sub(a, b) { let data = a - b; return data; }
+    function mul(a, b) { let data = a * b; return data; }'
+----
+
+[#post_library-ex-curl-2]
+.Edit
+Edit the function called sub to use a helper function called `helper`, leaving the other functions unchanged.
+
+[source,sh]
+----
+curl -X POST \
+"$BASEPATH/evaluator/v1/libraries/math" \
+-u $USER:$PASSWORD \
+-H 'content-type: application/json' \
+-d 'function add(a, b) { let data = a + b; return data; }
+    function mul(a, b) { let data = a * b; return data; }
+    function sub(a, b) { return helper(a, b); }
+    function helper(a, b) { return a - b; }'
+----
+
+[#post_library-ex-curl-3]
+.Delete
+Remove the function called `sub` and the helper function called `helper`, leaving the other functions unchanged.
+
+[source,sh]
+----
+curl -X POST \
+"$BASEPATH/evaluator/v1/libraries/math" \
+-u $USER:$PASSWORD \
+-H 'content-type: application/json' \
+-d 'function add(a, b) { let data = a + b; return data; }
+    function mul(a, b) { let data = a * b; return data; }'
+----
+
+[#post_library-ex-curl-4]
+.Scoped
+Create or update a scoped library called `science`.
+The library contains one function, `f2c`.
+
+[source,sh]
+----
+curl -X POST \
+"$BASEPATH/evaluator/v1/libraries/science?bucket=travel-sample&scope=inventory" \
+-u $USER:$PASSWORD \
+-H 'content-type: application/json' \
+-d 'function f2c(f) { return (5/9)*(f-32); }'
+----
+====
+
+
+
+[#post_library-ex-request]
+= Example Request Body
 
 include::{snippetDir}post_library/http-request.adoc[opts=optional]
+
+====
+[source,json]
+----
+"function f2c(f) { return (5/9)*(f-32); }"
+----
+====
+
 
 ifeval::["" != ""]
 [#post_library-ex-response]

@@ -26,7 +26,7 @@ include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
-The Query Settings REST API is provided by the Query service.
+The Query Settings REST API is provided by the Query Service.
 This API enables you to view or specify cluster-level Query settings.
 --
 
@@ -74,7 +74,7 @@ The host name or IP address of any node in the Couchbase cluster.
 a| *port*
 a| [markdown]
 --
-The Cluster administration REST port. Use `18091` for secure access.  Note that the port numbers for this REST API are different to the port numbers used by the other Query REST APIs.
+The Cluster administration REST port. Use `18091` for secure access.  The port numbers for this REST API are different to the port numbers used by the other Query REST APIs.
 --
 
 [%hardbreaks]
@@ -132,7 +132,7 @@ xref:post_settings[]
 include::{specDir}paths/get_access/operation-before.adoc[opts=optional]
 
 [#get_access]
-= Retrieve CURL Access List
+= Retrieve curl Access List
 
 :leveloffset: +1
 
@@ -154,7 +154,7 @@ include::{specDir}paths/get_access/operation-description-begin.adoc[opts=optiona
 
 [markdown]
 --
-Returns the cluster-level CURL access settings only.
+Returns the cluster-level curl access settings only.
 --
 
 include::{specDir}paths/get_access/operation-description-end.adoc[opts=optional]
@@ -237,7 +237,20 @@ include::{specDir}paths/get_access/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/get_access/operation-security-after.adoc[opts=optional]
 
+[#get_access-ex-curl]
+= Example HTTP Request
+
 include::{snippetDir}get_access/curl-request.adoc[opts=optional]
+
+====
+This example gets the current cluster-level curl access settings.
+
+[source,sh]
+----
+curl -v -u $USER:$PASSWORD \
+  $BASEPATH/settings/querySettings/curlWhitelist
+----
+====
 
 
 
@@ -300,7 +313,7 @@ include::{specDir}paths/get_settings/operation-description-begin.adoc[opts=optio
 
 [markdown]
 --
-Returns all cluster-level query settings, including the CURL access settings.
+Returns all cluster-level query settings, including the curl access settings.
 --
 
 include::{specDir}paths/get_settings/operation-description-end.adoc[opts=optional]
@@ -383,7 +396,20 @@ include::{specDir}paths/get_settings/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/get_settings/operation-security-after.adoc[opts=optional]
 
+[#get_settings-ex-curl]
+= Example HTTP Request
+
 include::{snippetDir}get_settings/curl-request.adoc[opts=optional]
+
+====
+This example gets the current cluster-level curl query settings.
+
+[source,sh]
+----
+curl -v -u $USER:$PASSWORD \
+  $BASEPATH/settings/querySettings
+----
+====
 
 
 
@@ -448,7 +474,7 @@ include::{specDir}paths/get_settings/operation-after.adoc[opts=optional]
 include::{specDir}paths/post_access/operation-before.adoc[opts=optional]
 
 [#post_access]
-= Update CURL Access List
+= Update curl Access List
 
 :leveloffset: +1
 
@@ -470,7 +496,7 @@ include::{specDir}paths/post_access/operation-description-begin.adoc[opts=option
 
 [markdown]
 --
-Updates the cluster-level CURL access settings only.
+Updates the cluster-level curl access settings only.
 --
 
 include::{specDir}paths/post_access/operation-description-end.adoc[opts=optional]
@@ -598,7 +624,24 @@ include::{specDir}paths/post_access/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/post_access/operation-security-after.adoc[opts=optional]
 
+[#post_access-ex-curl]
+= Example HTTP Request
+
 include::{snippetDir}post_access/curl-request.adoc[opts=optional]
+
+====
+This example specifies that `https://company1.com` is allowed, and `https://company2.com` is disallowed.
+
+[source,sh]
+----
+curl -v -X POST -u $USER:$PASSWORD \
+  $BASEPATH/settings/querySettings/curlWhitelist \
+  -H 'Content-Type: application/json' \
+  -d '{"all_access": false,
+       "allowed_urls": ["https://company1.com"],
+       "disallowed_urls": ["https://company2.com"]}'
+----
+====
 
 
 
@@ -676,7 +719,7 @@ include::{specDir}paths/post_settings/operation-description-begin.adoc[opts=opti
 
 [markdown]
 --
-Updates cluster-level query settings, including the CURL access settings.
+Updates cluster-level query settings, including the curl access settings.
 --
 
 include::{specDir}paths/post_settings/operation-description-end.adoc[opts=optional]
@@ -804,7 +847,22 @@ include::{specDir}paths/post_settings/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/post_settings/operation-security-after.adoc[opts=optional]
 
+[#post_settings-ex-curl]
+= Example HTTP Request
+
 include::{snippetDir}post_settings/curl-request.adoc[opts=optional]
+
+====
+This example changes the temp file directory to `/tmp` and the temp file size to 2048 MB.
+
+[source,sh]
+----
+curl -v -X POST -u $USER:$PASSWORD \
+  $BASEPATH/settings/querySettings \
+  -d 'queryTmpSpaceDir=/tmp' \
+  -d 'queryTmpSpaceSize=2048'
+----
+====
 
 
 
@@ -1013,7 +1071,7 @@ The CURL() function will allow any URL that starts with this value.
 For example, if you wish to allow access to all Google APIs, add the URL `https://maps.googleapis.com` to the array.
 To allow complete access to `localhost`, use `http://localhost`.
 
-Note that each URL must include the port, protocol, and all other components of the URL.
+Each URL must include the port, protocol, and all other components of the URL.
 --
 
 [%hardbreaks]
@@ -1029,7 +1087,7 @@ The CURL() function will disallow any URL that starts with this value.
 
 If both `allowed_urls` and `disallowed_urls` fields are populated, the `disallowed_urls` field takes precedence over `allowed_urls`.
 
-Note that each URL must include the port, protocol, and all other components of the URL.
+Each URL must include the port, protocol, and all other components of the URL.
 --
 
 [%hardbreaks]
@@ -1087,7 +1145,7 @@ ifdef::alt-markdown-links[]
 [cleanupclientattempts]: #cleanupclientattempts
 
 endif::alt-markdown-links[]
-When enabled, the Query service preferentially aims to clean up just transactions that it has created, leaving transactions for the distributed cleanup process only when it is forced to.
+When enabled, the Query Service preferentially aims to clean up just transactions that it has created, leaving transactions for the distributed cleanup process only when it's forced to.
 
 // tag::desc-more[]
 The [node-level][cleanupclientattempts] `cleanupclientattempts` setting specifies this property for a single node.
@@ -1111,7 +1169,7 @@ ifdef::alt-markdown-links[]
 [cleanuplostattempts]: #cleanuplostattempts
 
 endif::alt-markdown-links[]
-When enabled, the Query service takes part in the distributed cleanup process, and cleans up expired transactions created by any client.
+When enabled, the Query Service takes part in the distributed cleanup process, and cleans up expired transactions created by any client.
 
 // tag::desc-more[]
 The [node-level][cleanuplostattempts] `cleanuplostattempts` setting specifies this property for a single node.
@@ -1135,7 +1193,7 @@ ifdef::alt-markdown-links[]
 [cleanupwindow]: #cleanupwindow
 
 endif::alt-markdown-links[]
-Specifies how frequently the Query service checks its subset of [active transaction records][additional-storage-use] for cleanup.
+Specifies how frequently the Query Service checks its subset of [active transaction records][additional-storage-use] for cleanup.
 Decreasing this setting causes expiration transactions to be found more swiftly, with the tradeoff of increasing the number of reads per second used for the scanning process.
 
 The value for this setting is a string.
@@ -1179,7 +1237,7 @@ As new completed requests are added, old ones are removed.
 
 Increase this when the completed request keyspace is not big enough to track the slow requests, such as when you want a larger sample of slow requests.
 
-Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
+For more information and examples, see [Configure the Completed Requests][sys-completed-config].
 
 [sys-completed-config]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 
@@ -1212,7 +1270,7 @@ Values larger than the maximum limit are silently treated as the maximum limit.
 Queries with plans larger than this are not logged.
 You must obtain execution plans for such queries via profiling or using the EXPLAIN statement.
 
-Refer to [Configure the Completed Requests][sys-completed-config] for more information.
+For more information, see [Configure the Completed Requests][sys-completed-config].
 
 [sys-completed-config]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 
@@ -1246,7 +1304,7 @@ All completed queries lasting longer than this threshold are logged in the compl
 Specify `0` to track all requests, independent of duration.
 Specify any negative number to track none.
 
-Refer to [Configure the Completed Requests][sys-completed-config] for more information and examples.
+For more information and examples, see [Configure the Completed Requests][sys-completed-config].
 
 [sys-completed-config]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
 
@@ -1294,7 +1352,7 @@ Only errors to be fixed.
 * `SEVERE` &mdash; For admin.
 Major items, like crashes.
 
-* `NONE` &mdash; Doesn't write anything.
+* `NONE` &mdash; Does not write anything.
 
 // tag::desc-more[]
 The [node-level][loglevel] `loglevel` setting specifies this property for a single node.
@@ -1327,10 +1385,10 @@ If the value is zero or negative, the maximum parallelism is restricted to the n
 Similarly, if the value is greater than the number of allowed cores, the maximum parallelism is restricted to the number of allowed cores.
 
 (The number of allowed cores is the same as the number of logical CPUs.
-In Community Edition, the number of allowed cores cannot be greater than 4.
-In Enterprise Edition, there is no limit to the number of allowed cores.)
+In Couchbase Server Community Edition, the number of allowed cores cannot be greater than 4.
+In Couchbase Server Enterprise Edition, there is no limit to the number of allowed cores.)
 
-Refer to [Max Parallelism][max-parallelism] for more information.
+For more information, see [Max Parallelism][max-parallelism].
 
 [max-parallelism]: ../n1ql/n1ql-language-reference/index-partitioning.html#max-parallelism
 
@@ -1420,12 +1478,12 @@ ifdef::alt-markdown-links[]
 [node-quota]: #node-quota
 
 endif::alt-markdown-links[]
-Sets the soft memory limit for the Query service on every Query node in the cluster, in MB.
+Sets the soft memory limit for the Query Service on every Query node in the cluster, in MB.
 The garbage collector tries to keep below this target.
-It is not a hard, absolute limit, and memory usage may exceed this value.
+It's not a hard, absolute limit, and memory usage may exceed this value.
 
-When set to `0` (the default), the Query service sets a default soft memory limit for every node.
-To do this, the Query service calculates the difference between the total system RAM and 90% of the total system RAM:
+When set to `0` (the default), the Query Service sets a default soft memory limit for every node.
+To do this, the Query Service calculates the difference between the total system RAM and 90% of the total system RAM:
 
 `Total System RAM - (0.9 * Total System RAM)`
 
@@ -1454,7 +1512,7 @@ ifdef::alt-markdown-links[]
 [node-quota-val-percent]: #node-quota-val-percent
 
 endif::alt-markdown-links[]
-The percentage of the `queryNodeQuota` that is dedicated to tracked value content memory across all active requests for every Query node in the cluster.
+The percentage of the `queryNodeQuota` that's dedicated to tracked value content memory across all active requests for every Query node in the cluster.
 (The `queryMemoryQuota` setting specifies the maximum amount of document memory an individual request may use on any Query node in the cluster.)
 
 // tag::desc-more[]
@@ -1507,14 +1565,14 @@ ifdef::alt-markdown-links[]
 [num-cpus]: #num-cpus
 
 endif::alt-markdown-links[]
-The number of CPUs the Query service can use on any Query node in the cluster.
-Note that this setting requires a restart of the Query service to take effect.
+The number of CPUs the Query Service can use on any Query node in the cluster.
+This setting requires a restart of the Query Service to take effect.
 
-When set to `0` (the default), the Query service can use all available CPUs, up to the limits described below.
+When set to `0` (the default), the Query Service can use all available CPUs, up to the limits described below.
 
 The number of CPUs can never be greater than the number of logical CPUs.
-In Community Edition, the number of allowed CPUs cannot be greater than 4.
-In Enterprise Edition, there is no limit to the number of allowed CPUs.
+In Couchbase Server Community Edition, the number of allowed CPUs cannot be greater than 4.
+In Couchbase Server Enterprise Edition, there is no limit to the number of allowed CPUs.
 
 // tag::desc-more[]
 The [node-level][num-cpus] `num-cpus` setting specifies this property for a single node.
@@ -1621,7 +1679,7 @@ ifdef::alt-markdown-links[]
 [scan_cap_req]: #scan_cap_req
 
 endif::alt-markdown-links[]
-Maximum buffered channel size between the indexer client and the query service for index scans.
+Maximum buffered channel size between the indexer client and the Query Service for index scans.
 This parameter controls when to use scan backfill.
 
 Use `0` or a negative number to disable.
@@ -1692,7 +1750,7 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 Maximum time to spend on a transaction before timing out.
 This setting only applies to requests containing the `BEGIN TRANSACTION` statement, or to requests where the [tximplicit][tximplicit] parameter is set.
-For all other requests, it is ignored.
+For all other requests, it's ignored.
 
 The value for this setting is a string.
 Its format includes an amount and a mandatory unit, e.g. `10ms` (10 milliseconds) or `0.5s` (half a second).
@@ -1815,7 +1873,7 @@ Only SELECT queries that are not within a transaction can read from replica.
 
 Reading from replica is only possible if the cluster uses Couchbase Server 7.6.0 or later.
 
-Note that KV range scans cannot currently be started on a replica vBucket.
+You cannot currently start KV range scans on a replica vBucket.
 If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
 
 // tag::desc-more[]

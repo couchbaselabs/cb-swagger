@@ -26,7 +26,7 @@ include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
-The Query Service REST API is provided by the Query service.
+The Query Service REST API is provided by the Query Service.
 This API enables you to run SQL++ queries and set request-level parameters.
 --
 
@@ -130,7 +130,7 @@ xref:post_service[]
 include::{specDir}paths/get_service/operation-before.adoc[opts=optional]
 
 [#get_service]
-= Read-Only Query Service
+= GET-Only Query Service
 
 :leveloffset: +1
 
@@ -153,7 +153,7 @@ include::{specDir}paths/get_service/operation-description-begin.adoc[opts=option
 [markdown]
 --
 Enables you to execute a SQL++ statement.
-This method allows you to run SELECT queries, and specify query parameters.
+This method allows you to run SELECT queries and other DML statements, and specify query parameters.
 
 This endpoint is intended for situations where use of the `POST` method is restricted.
 --
@@ -253,7 +253,7 @@ a|
 | 403
 a| [markdown]
 --
-Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement.
+Forbidden. A read-only violation occurred. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement.
 --
 a| 
 
@@ -274,7 +274,7 @@ a|
 | 409
 a| [markdown]
 --
-Conflict. There is an attempt to create an object (keyspace or index) that already exists.
+Conflict. The request attempted to create an object (keyspace or index) that already exists.
 --
 a| 
 
@@ -295,14 +295,14 @@ a|
 | 500
 a| [markdown]
 --
-Internal server error. There was an unforeseen problem processing the request.
+Internal server error. An unforeseen problem occurred processing the request.
 --
 a| 
 
 | 503
 a| [markdown]
 --
-Service unavailable. There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible.
+Service unavailable. An issue (that's possibly temporary) is preventing the request being processed; the request queue is full or the data store is not accessible.
 --
 a| xref:Response[]
 
@@ -351,7 +351,18 @@ include::{specDir}paths/get_service/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/get_service/operation-security-after.adoc[opts=optional]
 
+[#get_service-ex-curl]
+= Example HTTP Request
+
 include::{snippetDir}get_service/curl-request.adoc[opts=optional]
+
+====
+[source,sh]
+----
+curl -v $BASEPATH/query/service?statement=SELECT%20name%20FROM%20%60travel-sample%60.inventory.hotel%20LIMIT%201%3B \
+     -u $USER:$PASSWORD
+----
+====
 
 
 
@@ -631,7 +642,7 @@ a|
 | 403
 a| [markdown]
 --
-Forbidden. There is a read-only violation. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement.
+Forbidden. A read-only violation occurred. Either there was an attempt to create or update in a GET request or a POST request where `readonly` is set, or the client does not have the authorization to modify an object (index, keyspace or namespace) in the statement.
 --
 a| 
 
@@ -652,7 +663,7 @@ a|
 | 409
 a| [markdown]
 --
-Conflict. There is an attempt to create an object (keyspace or index) that already exists.
+Conflict. The request attempted to create an object (keyspace or index) that already exists.
 --
 a| 
 
@@ -673,14 +684,14 @@ a|
 | 500
 a| [markdown]
 --
-Internal server error. There was an unforeseen problem processing the request.
+Internal server error. An unforeseen problem occurred processing the request.
 --
 a| 
 
 | 503
 a| [markdown]
 --
-Service unavailable. There is an issue (that is possibly temporary) preventing the request being processed; the request queue is full or the data store is not accessible.
+Service unavailable. An issue (that's possibly temporary) is preventing the request being processed; the request queue is full or the data store is not accessible.
 --
 a| xref:Response[]
 
@@ -729,11 +740,136 @@ include::{specDir}paths/post_service/operation-security-end.adoc[opts=optional]
 
 include::{specDir}paths/post_service/operation-security-after.adoc[opts=optional]
 
+[#post_service-ex-curl]
+= Example HTTP Request
+
 include::{snippetDir}post_service/curl-request.adoc[opts=optional]
 
+====
+[#post_service-ex-curl-0]
+.Form Data
+Because it's sent as form data, the statement in this example avoids using a semicolon.
 
+[source,sh]
+----
+curl -v $BASEPATH/query/service \
+     -d 'statement=SELECT name FROM `travel-sample`.inventory.hotel LIMIT 1' \
+     -u $USER:$PASSWORD
+----
+
+[#post_service-ex-curl-1]
+.JSON
+Because it's sent as a JSON object, the statement in this example can contain a semicolon.
+
+[source,sh]
+----
+curl -v $BASEPATH/query/service \
+     -H 'Content-Type: application/json' \
+     -d '{ "statement": "SELECT name FROM `travel-sample`.inventory.hotel LIMIT 1;" }' \
+     -u $USER:$PASSWORD
+----
+====
+
+
+
+[#post_service-ex-request]
+= Example Request Body
 
 include::{snippetDir}post_service/http-request.adoc[opts=optional]
+
+====
+[#post_service-ex-request-0]
+.Named Parameters
+This request uses named parameters.
+
+[source,json]
+----
+{
+  "statement" : "SELECT airline FROM `travel-sample`.inventory.route WHERE sourceairport = $aval AND distance > $dval",
+  "$aval" : "LAX",
+  "$dval" : 13000
+}
+----
+
+
+[#post_service-ex-request-1]
+.Numbered Positional Parameters
+This request uses numbered positional parameters.
+
+[source,json]
+----
+{
+  "statement" : "SELECT airline FROM `travel-sample`.inventory.route WHERE sourceairport = $1 AND distance > $2",
+  "args" : [ "LAX", 13000 ]
+}
+----
+
+
+[#post_service-ex-request-2]
+.Unnumbered Positional Parameters
+This request uses unnumbered positional parameters.
+
+[source,json]
+----
+{
+  "statement" : "SELECT airline FROM `travel-sample`.inventory.route WHERE sourceairport = ? AND distance > ?",
+  "args" : [ "LAX", 13000 ]
+}
+----
+
+
+[#post_service-ex-request-3]
+.Wildcards
+This request uses a wildcard.
+
+The `%` symbol is the escape character in URIs, so when using `%` as a wildcard in a query, you may need to escape it by replacing it with its corresponding ASCII code `%25`.
+
+[source,json]
+----
+{
+  "statement" : "SELECT meta().id FROM `travel-sample`.inventory.hotel WHERE meta().id LIKE $pattern",
+  "$pattern" : "hotel_1002%"
+}
+----
+
+
+[#post_service-ex-request-4]
+.Authentication Parameter
+This request authenticates using a request parameter.
+You must use this method of authentication if a request requires more than one set of credentials.
+
+[source,json]
+----
+{
+  "statement" : "SELECT hotel.name, airport.airportname FROM `travel-sample`.inventory.hotel JOIN `travel-sample`.inventory.airport ON hotel.city = airport.city LIMIT 1",
+  "creds" : [ {
+    "user" : "local:User",
+    "pass" : "password"
+  }, {
+    "user" : "admin:Administrator",
+    "pass" : "password"
+  } ]
+}
+----
+
+
+[#post_service-ex-request-5]
+.Bounded Consistency with a Scan Vector
+This request uses `at_plus` consistency with a sparse scan vector.
+
+[source,json]
+----
+{
+  "statement" : "SELECT name FROM `travel-sample`.inventory.hotel LIMIT 1;",
+  "scan_consistency" : "at_plus",
+  "scan_vector" : {
+    "5" : [ 5409393, "VB5ID" ],
+    "19" : [ 47574574, "VB19ID" ]
+  }
+}
+----
+====
+
 
 ifeval::["yesyesyesyesyes" != ""]
 [#post_service-ex-response]
@@ -900,7 +1036,7 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 8
+:count-models: 13
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
@@ -912,632 +1048,22 @@ ifeval::[{count-models} > 8]
 [.two-columns]
 endif::[]
 [%hardbreaks]
-xref:Conditions[]
-xref:Controls[]
-xref:Credentials[]
-xref:Execution_Timings[]
-xref:Metrics[]
-xref:Profile[]
 xref:Request[]
+xref:RequestCredentials[]
+xref:RequestScanVector[]
+xref:RequestScanVectorFull[]
+xref:RequestScanVectorSparse[]
+xref:RequestScanVectorValueGuard[]
+xref:RequestScanVectors[]
 xref:Response[]
-xref:Statistics[]
+xref:ResponseConditions[]
+xref:ResponseControls[]
+xref:ResponseMetrics[]
+xref:ResponseProfile[]
+xref:ResponseProfileTiming[]
+xref:ResponseProfileTimingStats[]
 endif::[]
 
-
-include::{specDir}definitions/Conditions/definition-before.adoc[opts=optional]
-
-ifdef::show-Conditions[]
-[#Conditions]
-endif::show-Conditions[]
-ifndef::show-Conditions[]
-:leveloffset: +1
-
-[discrete#Conditions]
-endif::show-Conditions[]
-= Conditions
-
-ifdef::model-descriptions[]
-//tag::desc-Conditions[]
-Errors and warnings have the following format.
-//end::desc-Conditions[]
-endif::model-descriptions[]
-
-:leveloffset: +1
-
-include::{specDir}definitions/Conditions/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Conditions[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *code* +
-required
-a¦ [markdown]
---
-A unique number that identifies the error or warning.
-The code ranges are partitioned by component.
-The codes can also include parts that indicate severity and transience.
-This property is always present in every condition returned in the Query REST API or captured in a log.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-a¦ *msg* +
-required
-a¦ [markdown]
---
-A message describing the error or warning in detail.
-This property is always present in every condition returned in the Query REST API or captured in a log.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *name* +
-optional
-a¦ [markdown]
---
-Unique name that has a 1:1 mapping to the code.
-Uniquely identifies the condition.
-This property is helpful for pattern matching and can have meaning, making it more memorable than the code.
-The name should be fully qualified.
---
-
-[%hardbreaks]
-*Example:* `+++"indexing.scan.io_failure"+++`
-{blank}
-a¦ String
-a¦ *sev* +
-optional
-a¦ [markdown]
---
-One of the following SQL++ severity levels, listed in order of severity:
-
- 1. Severe
- 2. Error
- 3. Warn
- 4. Info
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-a¦ *temp* +
-optional
-a¦ [markdown]
---
-Indicates if the condition is transient &mdash; for example, the queue is full.
-If the value is `false`, it tells clients and users that a retry without modification produces the same condition.
---
-
-[%hardbreaks]
-{blank}
-a¦ Boolean
-
-|===
-
-//end::Conditions[]
-
-
-
-include::{specDir}definitions/Conditions/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-Conditions[]
-:leveloffset: -1
-endif::show-Conditions[]
-
-include::{specDir}definitions/Conditions/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/Controls/definition-before.adoc[opts=optional]
-
-ifdef::show-Controls[]
-[#Controls]
-endif::show-Controls[]
-ifndef::show-Controls[]
-:leveloffset: +1
-
-[discrete#Controls]
-endif::show-Controls[]
-= Controls
-
-ifdef::model-descriptions[]
-//tag::desc-Controls[]
-An object containing runtime information provided along with the request.
-Present only if `controls` was set to true in the request parameters.
-//end::desc-Controls[]
-endif::model-descriptions[]
-
-:leveloffset: +1
-
-include::{specDir}definitions/Controls/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Controls[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *scan_consistency* +
-optional
-a¦ [markdown]
---
-The value of the query setting Scan Consistency used for the query.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *use_cbo* +
-optional
-a¦ [markdown]
---
-Whether the cost-based optimizer was enabled for the query.
---
-
-[%hardbreaks]
-{blank}
-a¦ Boolean
-a¦ *memoryQuota* +
-optional
-a¦ [markdown]
---
-The memory quota for the request, in MB.
-This property is only returned if a memory quota was set for the query.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer (unsigned)
-a¦ *stmtType* +
-optional
-a¦ [markdown]
---
-The type of query statement.
---
-
-[%hardbreaks]
-*Example:* `+++"SELECT"+++`
-{blank}
-a¦ String
-
-|===
-
-//end::Controls[]
-
-
-
-include::{specDir}definitions/Controls/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-Controls[]
-:leveloffset: -1
-endif::show-Controls[]
-
-include::{specDir}definitions/Controls/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/Credentials/definition-before.adoc[opts=optional]
-
-ifdef::show-Credentials[]
-[#Credentials]
-endif::show-Credentials[]
-ifndef::show-Credentials[]
-:leveloffset: +1
-
-[discrete#Credentials]
-endif::show-Credentials[]
-= Credentials
-
-:leveloffset: +1
-
-include::{specDir}definitions/Credentials/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Credentials[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *user* +
-optional
-a¦ [markdown]
---
-An identity for authentication.
-Note that bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
---
-
-[%hardbreaks]
-*Example:* `+++"local:bucket-name"+++`
-{blank}
-a¦ String
-a¦ *pass* +
-optional
-a¦ [markdown]
---
-A password for authentication.
---
-
-[%hardbreaks]
-*Example:* `+++"password"+++`
-{blank}
-a¦ String
-
-|===
-
-//end::Credentials[]
-
-
-
-include::{specDir}definitions/Credentials/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-Credentials[]
-:leveloffset: -1
-endif::show-Credentials[]
-
-include::{specDir}definitions/Credentials/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/Execution_Timings/definition-before.adoc[opts=optional]
-
-ifdef::show-Execution_Timings[]
-[#Execution_Timings]
-endif::show-Execution_Timings[]
-ifndef::show-Execution_Timings[]
-:leveloffset: +1
-
-[discrete#Execution_Timings]
-endif::show-Execution_Timings[]
-= Execution Timings
-
-ifdef::model-descriptions[]
-//tag::desc-Execution_Timings[]
-Present only if `profile` was set to `"timings"` in the request parameters.
-
-The execution details for various phases involved in the query execution, such as kernel and service execution times, number of documents processed at each query operator in each phase, and number of phase switches.
-//end::desc-Execution_Timings[]
-endif::model-descriptions[]
-
-:leveloffset: +1
-
-include::{specDir}definitions/Execution_Timings/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Execution_Timings[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *#operator* +
-required
-a¦ [markdown]
---
-Name of the operator.
---
-
-[%hardbreaks]
-*Example:* `+++"Fetch"+++`
-{blank}
-a¦ String
-a¦ *#stats* +
-required
-a¦ [markdown]
---
-include::index.adoc[tag=desc-Statistics, opts=optional]
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:Statistics[]
-a¦ *~child* +
-optional
-a¦ [markdown]
---
-Further nested operators, each with their own execution timings.
---
-
-[%hardbreaks]
-{blank}
-a¦ Object
-
-|===
-
-//end::Execution_Timings[]
-
-
-
-include::{specDir}definitions/Execution_Timings/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-Execution_Timings[]
-:leveloffset: -1
-endif::show-Execution_Timings[]
-
-include::{specDir}definitions/Execution_Timings/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/Metrics/definition-before.adoc[opts=optional]
-
-ifdef::show-Metrics[]
-[#Metrics]
-endif::show-Metrics[]
-ifndef::show-Metrics[]
-:leveloffset: +1
-
-[discrete#Metrics]
-endif::show-Metrics[]
-= Metrics
-
-ifdef::model-descriptions[]
-//tag::desc-Metrics[]
-An object containing metrics about the request.
-//end::desc-Metrics[]
-endif::model-descriptions[]
-
-:leveloffset: +1
-
-include::{specDir}definitions/Metrics/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Metrics[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *elapsedTime* +
-required
-a¦ [markdown]
---
-The total time taken for the request, that is the time from when the request was received until the results were returned.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *executionTime* +
-required
-a¦ [markdown]
---
-The time taken for the execution of the request, that is the time from when query execution started until the results were returned.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *resultCount* +
-required
-a¦ [markdown]
---
-The total number of objects in the results.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer (unsigned)
-a¦ *resultSize* +
-required
-a¦ [markdown]
---
-The total number of bytes in the results.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer (unsigned)
-a¦ *mutationCount* +
-optional
-a¦ [markdown]
---
-The number of mutations that were made during the request.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer (unsigned)
-a¦ *sortCount* +
-optional
-a¦ [markdown]
---
-The number of objects that were sorted.
-Present only if the request includes `ORDER BY`.
-
-If a query includes ORDER BY, LIMIT, or OFFSET clauses, an application can use the `sortCount` value to give the overall number of results in a message such as `"page 1 of N"`.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer (unsigned)
-a¦ *usedMemory* +
-optional
-a¦ [markdown]
---
-The amount of document memory used to execute the request.
-This property is only returned if a memory quota was set for the query.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer (unsigned)
-a¦ *errorCount* +
-optional
-a¦ [markdown]
---
-The number of errors that occurred during the request.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer (unsigned)
-a¦ *warningCount* +
-optional
-a¦ [markdown]
---
-The number of warnings that occurred during the request.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer (unsigned)
-
-|===
-
-//end::Metrics[]
-
-
-
-include::{specDir}definitions/Metrics/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-Metrics[]
-:leveloffset: -1
-endif::show-Metrics[]
-
-include::{specDir}definitions/Metrics/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/Profile/definition-before.adoc[opts=optional]
-
-ifdef::show-Profile[]
-[#Profile]
-endif::show-Profile[]
-ifndef::show-Profile[]
-:leveloffset: +1
-
-[discrete#Profile]
-endif::show-Profile[]
-= Profile
-
-ifdef::model-descriptions[]
-//tag::desc-Profile[]
-An object containing monitoring and profiling information about the request.
-Present only if `profile` was set to `"phases"` or `"timings"` in the request parameters.
-//end::desc-Profile[]
-endif::model-descriptions[]
-
-:leveloffset: +1
-
-include::{specDir}definitions/Profile/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Profile[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *requestTime* +
-required
-a¦ [markdown]
---
-Timestamp when the query was received.
---
-
-[%hardbreaks]
-{blank}
-a¦ Date (date-time)
-a¦ *servicingHost* +
-required
-a¦ [markdown]
---
-IP address and port number of the node where the query was executed.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *phaseCounts* +
-required
-a¦ [markdown]
---
-Count of documents processed at selective phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
---
-
-[%hardbreaks]
-*Example:* `{"fetch":16,"indexScan":187}`
-{blank}
-a¦ Object
-a¦ *phaseOperators* +
-required
-a¦ [markdown]
---
-Indicates the numbers of each kind of query operator involved in different phases of the query processing.
-
-For instance, a non-covering index path might involve one index scan and one fetch operator.
-A join would probably involve two or more fetches, one per keyspace.
-A union select would have twice as many operator counts, one per each branch of the union.
-
-This is in essence the count of all the operators in the `executionTimings` object.
---
-
-[%hardbreaks]
-*Example:* `{"authorize":1,"fetch":1,"indexScan":2}`
-{blank}
-a¦ Object
-a¦ *phaseTimes* +
-required
-a¦ [markdown]
---
-Cumulative execution times for various phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
---
-
-[%hardbreaks]
-*Example:* `{"authorize":"823.631µs","fetch":"656.873µs","indexScan":"29.146543ms","instantiate":"236.221µs","parse":"826.382µs","plan":"11.831101ms","run":"16.892181ms"}`
-{blank}
-a¦ Object
-a¦ *executionTimings* +
-optional
-a¦ [markdown]
---
-include::index.adoc[tag=desc-Execution_Timings, opts=optional]
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:Execution_Timings[]
-
-|===
-
-//end::Profile[]
-
-
-
-include::{specDir}definitions/Profile/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-Profile[]
-:leveloffset: -1
-endif::show-Profile[]
-
-include::{specDir}definitions/Profile/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Request/definition-before.adoc[opts=optional]
 
@@ -1579,7 +1105,7 @@ Applicable if the statement or prepared statement contains 1 or more positional 
 
 The value is an array of JSON values, one for each positional parameter in the statement.
 
-Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
+For more information, see [Named Parameters and Positional Parameters][section_srh_tlm_n1b].
 
 [section_srh_tlm_n1b]: ../n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
 --
@@ -1627,10 +1153,10 @@ ifdef::alt-markdown-links[]
 [auto-execute]: ../n1ql-language-reference/prepare.html#auto-execute
 
 endif::alt-markdown-links[]
-Specifies that prepared statements should be executed automatically as soon as they are created.
+Specifies that prepared statements should be executed automatically as soon as they're created.
 This saves you from having to make two separate requests in cases where you want to prepare a statement and execute it immediately.
 
-Refer to [Auto-Execute][auto-execute] for more information.
+For more information, see [Auto-Execute][auto-execute].
 
 [auto-execute]: ../n1ql/n1ql-language-reference/prepare.html#auto-execute
 --
@@ -1645,8 +1171,8 @@ a¦ [#client_context_id]
 optional
 a¦ [markdown]
 --
-A piece of data supplied by the client that is echoed in the response, if present.
-SQL++ is agnostic about the content of this parameter; it is just echoed in the response.
+A piece of data supplied by the client that's echoed in the response, if present.
+SQL++ is agnostic about the content of this parameter; it's just echoed in the response.
 
 * Maximum allowed size is 64 characters; all others will be cut.
 * If it contains an escape character `/` or quote `"`, it will be rejected as error code 1110.
@@ -1715,7 +1241,7 @@ If credentials are supplied in the request header, then HTTP Basic Authenticatio
 [%hardbreaks]
 *Example:* `[{"user":"local:bucket-name","pass":"password"},{"user":"admin:admin-name","pass":"password"}]`
 {blank}
-a¦ xref:Credentials[] array
+a¦ xref:RequestCredentials[] array
 a¦ [#durability_level]
 *durability_level* +
 optional
@@ -1746,7 +1272,7 @@ optional
 a¦ [markdown]
 --
 In Couchbase Server 6.5 and later, this parameter is ignored and has no effect.
-It is included for compatibility with previous versions of Couchbase Server.
+It's included for compatibility with previous versions of Couchbase Server.
 --
 
 [%hardbreaks]
@@ -1988,10 +1514,10 @@ ifdef::alt-markdown-links[]
 [execute]: ../n1ql-language-reference/execute.html
 
 endif::alt-markdown-links[]
-_Required_ if `statement` not provided.
+Required if `statement` not provided.
 
 The name of the prepared SQL++ statement to be executed.
-Refer to [EXECUTE][execute] for examples.
+For examples, see [EXECUTE][execute].
 
 If both `prepared` and `statement` are present and non-empty, an error is returned.
 
@@ -2089,7 +1615,7 @@ a¦ [markdown]
 --
 Specifies the namespace, bucket, and scope used to resolve partial keyspace references within the request.
 
-The query context may be a _full path_, containing namespace, bucket, and scope; or a _relative path_, containing just the bucket and scope.
+The query context may be a full path, containing namespace, bucket, and scope; or a relative path, containing just the bucket and scope.
 Currently, only the `default` namespace is available.
 If the namespace name is omitted, the default namespace in the current session is used.
 --
@@ -2133,7 +1659,7 @@ ifdef::alt-markdown-links[]
 [queryScanCap]: #queryScanCap
 
 endif::alt-markdown-links[]
-Maximum buffered channel size between the indexer client and the query service for index scans.
+Maximum buffered channel size between the indexer client and the Query Service for index scans.
 This parameter controls when to use scan backfill.
 
 Use `0` or a negative number to disable.
@@ -2173,8 +1699,9 @@ This is the fastest mode, because it avoids the costs of obtaining the vector an
 
 * `at_plus` &mdash;
 This implements bounded consistency.
-The request includes a `scan_vector` parameter and value, which is used as a lower bound.
-This can be used to implement read-your-own-writes (RYOW).
+When scan consistency is set to `at_plus`, you must also specify the `scan_vector` parameter for queries using a single keyspace, or the `scan_vectors` parameter for queries using multiple keyspaces.
+This is used as a lower bound for the statements in the request.
+You can use this setting to implement read-your-own-writes (RYOW).
 
 * `request_plus` &mdash;
 This implements strong consistency per request.
@@ -2189,11 +1716,11 @@ Before processing each statement, a current vector is obtained and used as a low
 
 Values are case-insensitive.
 
-For multi-statement requests, the default behavior is RYOW within each request.
-If you want to disable RYOW within a request, add a separate `request_consistency` parameter that can be set to `not_bounded`.
-
 If the request contains a `BEGIN TRANSACTION` statement, or a DML statement with the `tximplicit` parameter set to `true`, then this parameter sets the transactional scan consistency.
-Refer to [Transactional Scan Consistency][transactional-scan-consistency] for details.
+For more information, see [Transactional Scan Consistency][transactional-scan-consistency].
+
+The default transactional scan consistency is RYOW for each statement within the transaction.
+If you want to disable RYOW for a statement within the transaction, set `scan_consistency` for that statement to `not_bounded`.
 
 [transactional-scan-consistency]: ../n1ql/n1ql-manage/query-settings.html#transactional-scan-consistency
 --
@@ -2209,45 +1736,23 @@ a¦ [#scan_vector]
 optional
 a¦ [markdown]
 --
-_Required_ if `scan_consistency` is `at_plus` and `scan_vectors` not provided.
-
-Specify the lower bound vector timestamp for one keyspace when using `at_plus` scan consistency.
-
-Scan vectors are built of two-element [`value`, `guard`] entries:
-
-* `value`: a vBucket's sequence number (a JSON number)
-* `guard`: a vBucket's UUID (a string)
-
-Scan vectors have two forms:
-
-1. Full: an array of [`value`, `guard`] entries, giving an entry for every vBucket in the system.
-2. Sparse: an object providing entries for specific vBuckets, mapping a vBucket number (a string) to each [`value`, `guard`] entry.
-
-Note that `scan_vector` can only be used if the query uses at most one keyspace; if it is used for a query referencing more than one keyspace, the query will fail with an error.
-
-For queries referencing multiple keyspaces, use `scan_vectors`.
+include::index.adoc[tag=desc-RequestScanVector, opts=optional]
 --
 
 [%hardbreaks]
-*Example:* `{"5":[5409393,"VB5ID"],"19":[47574574,"VB19ID"]}`
 {blank}
-a¦ Object
+a¦ xref:RequestScanVector[]
 a¦ [#scan_vectors]
 *scan_vectors* +
 optional
 a¦ [markdown]
 --
-_Required_ if `scan_consistency` is `at_plus` and `scan_vector` not provided.
-
-A map from keyspace names to scan vectors.
-See `scan_vector`.
-
-The scan vectors can be Full or Sparse.
+include::index.adoc[tag=desc-RequestScanVectors, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-a¦ Object
+a¦ xref:RequestScanVectors[]
 a¦ [#scan_wait]
 *scan_wait* +
 optional
@@ -2258,7 +1763,7 @@ Can be supplied with `scan_consistency` values of `request_plus`, `statement_plu
 Specifies the maximum time the client is willing to wait for an index to catch up to the vector timestamp in the request.
 
 Specifies how much time the client is willing to wait for the indexer to satisfy the required `scan_consistency` and `scan_vector` criteria.
-After receiving the scan request, if the indexer is unable to catch up within the `scan_wait` time and initiate the scan, the indexer aborts with an error and the scan fails.
+After receiving the scan request, if the indexer is unable to catch up within the `scan_wait` time and start the scan, the indexer aborts with an error and the scan fails.
 
 Its format includes an amount and a mandatory unit, e.g. `10ms` (10 milliseconds) or `0.5s` (half a second).
 Valid units are:
@@ -2311,7 +1816,7 @@ a¦ [#statement]
 optional
 a¦ [markdown]
 --
-_Required_ if `prepared` not provided.
+Required if `prepared` not provided.
 
 Any valid SQL++ statement for a POST request, or a read-only SQL++ statement (SELECT, EXPLAIN) for a GET request.
 
@@ -2394,7 +1899,7 @@ a¦ [#txid]
 optional
 a¦ [markdown]
 --
-_Required_ for statements within a transaction.
+Required for statements within a transaction.
 
 Transaction ID.
 Specifies the transaction to which a statement belongs.
@@ -2415,8 +1920,8 @@ a¦ [markdown]
 --
 Specifies that a DML statement is a singleton transaction.
 
-When this parameter is true, the Query service starts a transaction and executes the statement.
-If execution is successful, the Query service commits the transaction; otherwise the transaction is rolled back.
+When this parameter is true, the Query Service starts a transaction and executes the statement.
+If execution is successful, the Query Service commits the transaction; otherwise the transaction is rolled back.
 
 The statement may not be part of an ongoing transaction.
 If the `txid` request-level parameter is set, the `tximplicit` parameter is ignored.
@@ -2453,7 +1958,7 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 Maximum time to spend on a transaction before timing out.
 Only applies to `BEGIN TRANSACTION` statements, or DML statements for which `tximplicit` is set.
-For other statements, it is ignored.
+For other statements, it's ignored.
 
 Within a transaction, the request-level `timeout` parameter is ignored.
 The transaction timeout clock starts when the `BEGIN WORK` statement is successful.
@@ -2536,10 +2041,10 @@ Specifies that the query should use a Search index.
 If the query contains a `USING FTS` hint, that takes priority over this parameter.
 
 If the query does not contain a `USING FTS` hint, and this parameter is set to true, all Search indexes are considered for the query.
-If a qualified Search index is available, it is selected for the query.
+If a qualified Search index is available, it's selected for the query.
 If none of the available Search indexes are qualified, the available GSI indexes are considered instead.
 
-Refer to [Flex Indexes][flex-indexes] for more information.
+For more information, see [Flex Indexes][flex-indexes].
 
 [flex-indexes]: ../n1ql/n1ql-language-reference/flex-indexes.html
 --
@@ -2574,7 +2079,7 @@ Only SELECT queries that are not within a transaction can read from replica.
 
 Reading from replica is only possible if the cluster uses Couchbase Server 7.6.0 or later.
 
-Note that KV range scans cannot currently be started on a replica vBucket.
+You cannot currently start KV range scans on a replica vBucket.
 If a query uses sequential scan and a data node becomes unavailable, the query might return an error, even if read from replica is enabled for the request.
 
 // tag::desc-more[]
@@ -2617,7 +2122,7 @@ The name of this property consists of two parts:
 
 The value of the named parameter can be any JSON value.
 
-Refer to [Named Parameters and Positional Parameters][section_srh_tlm_n1b] for details.
+For more information, see [Named Parameters and Positional Parameters][section_srh_tlm_n1b].
 
 [section_srh_tlm_n1b]: ../n1ql/n1ql-manage/query-settings.html#section_srh_tlm_n1b
 --
@@ -2643,6 +2148,362 @@ ifndef::show-Request[]
 endif::show-Request[]
 
 include::{specDir}definitions/Request/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/RequestCredentials/definition-before.adoc[opts=optional]
+
+ifdef::show-RequestCredentials[]
+[#RequestCredentials]
+endif::show-RequestCredentials[]
+ifndef::show-RequestCredentials[]
+:leveloffset: +1
+
+[discrete#RequestCredentials]
+endif::show-RequestCredentials[]
+= Credentials
+
+:leveloffset: +1
+
+include::{specDir}definitions/RequestCredentials/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::RequestCredentials[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *user* +
+optional
+a¦ [markdown]
+--
+An identity for authentication.
+Bucket names may be prefixed with `local:`, and admin names may be prefixed with `admin:`.
+--
+
+[%hardbreaks]
+*Example:* `+++"local:bucket-name"+++`
+{blank}
+a¦ String
+a¦ *pass* +
+optional
+a¦ [markdown]
+--
+A password for authentication.
+--
+
+[%hardbreaks]
+*Example:* `+++"password"+++`
+{blank}
+a¦ String (password)
+
+|===
+
+//end::RequestCredentials[]
+
+
+
+include::{specDir}definitions/RequestCredentials/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-RequestCredentials[]
+:leveloffset: -1
+endif::show-RequestCredentials[]
+
+include::{specDir}definitions/RequestCredentials/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/RequestScanVector/definition-before.adoc[opts=optional]
+
+ifdef::show-RequestScanVector[]
+[#RequestScanVector]
+endif::show-RequestScanVector[]
+ifndef::show-RequestScanVector[]
+:leveloffset: +1
+
+[discrete#RequestScanVector]
+endif::show-RequestScanVector[]
+= Scan Vector
+
+ifdef::model-descriptions[]
+//tag::desc-RequestScanVector[]
+Specifies the lower bound vector timestamp for a single keyspace when using `at_plus` scan consistency.
+
+The scan vector may be full or sparse.
+
+* A full scan vector is an array of [`value`, `guard`] entries, giving an entry for every vBucket in the system.
+
+* A sparse scan vector is an object mapping [`value`, `guard`] entries to specific vBuckets.
+The name of each property in the object is a vBucket number (a string).
+//end::desc-RequestScanVector[]
+endif::model-descriptions[]
+
+:leveloffset: +1
+
+include::{specDir}definitions/RequestScanVector/definition-begin.adoc[opts=optional]
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+//tag::RequestScanVector[]
+[cols="25,55,20",separator=¦]
+|===
+¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
+
+a¦ 
+a¦ [markdown]
+--
+include::index.adoc[tag=desc-RequestScanVectorFull, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:RequestScanVectorFull[]
+
+a¦ or
+a¦ [markdown]
+--
+include::index.adoc[tag=desc-RequestScanVectorSparse, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:RequestScanVectorSparse[]
+|===
+
+//end::RequestScanVector[]
+
+include::{specDir}definitions/RequestScanVector/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-RequestScanVector[]
+:leveloffset: -1
+endif::show-RequestScanVector[]
+
+include::{specDir}definitions/RequestScanVector/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/RequestScanVectorFull/definition-before.adoc[opts=optional]
+
+ifdef::show-RequestScanVectorFull[]
+[#RequestScanVectorFull]
+endif::show-RequestScanVectorFull[]
+ifndef::show-RequestScanVectorFull[]
+:leveloffset: +1
+
+[discrete#RequestScanVectorFull]
+endif::show-RequestScanVectorFull[]
+= Full Scan Vector
+
+ifdef::model-descriptions[]
+//tag::desc-RequestScanVectorFull[]
+An array of [`value`, `guard`] entries, giving an entry for every vBucket in the system.
+//end::desc-RequestScanVectorFull[]
+endif::model-descriptions[]
+
+:leveloffset: +1
+
+include::{specDir}definitions/RequestScanVectorFull/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets[fw] Array
+{blank}
+
+[markdown]
+--
+An array of [`value`, `guard`] entries, giving an entry for every vBucket in the system.
+--
+
+[%hardbreaks]
+{blank}
+
+.Schema
+xref:RequestScanVectorValueGuard[] array
+
+include::{specDir}definitions/RequestScanVectorFull/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-RequestScanVectorFull[]
+:leveloffset: -1
+endif::show-RequestScanVectorFull[]
+
+include::{specDir}definitions/RequestScanVectorFull/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/RequestScanVectorSparse/definition-before.adoc[opts=optional]
+
+ifdef::show-RequestScanVectorSparse[]
+[#RequestScanVectorSparse]
+endif::show-RequestScanVectorSparse[]
+ifndef::show-RequestScanVectorSparse[]
+:leveloffset: +1
+
+[discrete#RequestScanVectorSparse]
+endif::show-RequestScanVectorSparse[]
+= Sparse Scan Vector
+
+ifdef::model-descriptions[]
+//tag::desc-RequestScanVectorSparse[]
+An object providing entries for specific vBuckets, mapping a vBucket number (a string) to each [`value`, `guard`] entry.
+//end::desc-RequestScanVectorSparse[]
+endif::model-descriptions[]
+
+:leveloffset: +1
+
+include::{specDir}definitions/RequestScanVectorSparse/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::RequestScanVectorSparse[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *<vBucket>* +
+additional +
+property
+a¦ [markdown]
+--
+include::index.adoc[tag=desc-RequestScanVectorValueGuard, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:RequestScanVectorValueGuard[]
+
+|===
+
+//end::RequestScanVectorSparse[]
+
+
+
+include::{specDir}definitions/RequestScanVectorSparse/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-RequestScanVectorSparse[]
+:leveloffset: -1
+endif::show-RequestScanVectorSparse[]
+
+include::{specDir}definitions/RequestScanVectorSparse/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/RequestScanVectorValueGuard/definition-before.adoc[opts=optional]
+
+ifdef::show-RequestScanVectorValueGuard[]
+[#RequestScanVectorValueGuard]
+endif::show-RequestScanVectorValueGuard[]
+ifndef::show-RequestScanVectorValueGuard[]
+:leveloffset: +1
+
+[discrete#RequestScanVectorValueGuard]
+endif::show-RequestScanVectorValueGuard[]
+= Value-Guard Entry
+
+ifdef::model-descriptions[]
+//tag::desc-RequestScanVectorValueGuard[]
+A nested array containing two elements, the `value` and the `guard`.
+//end::desc-RequestScanVectorValueGuard[]
+endif::model-descriptions[]
+
+:leveloffset: +1
+
+include::{specDir}definitions/RequestScanVectorValueGuard/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets[fw] Array
+{blank}
+
+[markdown]
+--
+A nested array containing two elements, the `value` and the `guard`.
+--
+
+[%hardbreaks]
+*Minimum items:* `2`
+*Maximum items:* `2`
+{blank}
+
+.Schema
+Any Type array
+
+include::{specDir}definitions/RequestScanVectorValueGuard/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-RequestScanVectorValueGuard[]
+:leveloffset: -1
+endif::show-RequestScanVectorValueGuard[]
+
+include::{specDir}definitions/RequestScanVectorValueGuard/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/RequestScanVectors/definition-before.adoc[opts=optional]
+
+ifdef::show-RequestScanVectors[]
+[#RequestScanVectors]
+endif::show-RequestScanVectors[]
+ifndef::show-RequestScanVectors[]
+:leveloffset: +1
+
+[discrete#RequestScanVectors]
+endif::show-RequestScanVectors[]
+= Scan Vectors
+
+ifdef::model-descriptions[]
+//tag::desc-RequestScanVectors[]
+Specifies the lower bound vector timestamps for multiple keyspaces when using `at_plus` scan consistency.
+
+An object mapping scan vectors to keyspaces.
+The name of each property in the object is a keyspace name.
+//end::desc-RequestScanVectors[]
+endif::model-descriptions[]
+
+:leveloffset: +1
+
+include::{specDir}definitions/RequestScanVectors/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::RequestScanVectors[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ [#scan_vector]
+*<keyspace>* +
+additional +
+property
+a¦ [markdown]
+--
+include::index.adoc[tag=desc-RequestScanVector, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:RequestScanVector[]
+
+|===
+
+//end::RequestScanVectors[]
+
+
+
+include::{specDir}definitions/RequestScanVectors/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-RequestScanVectors[]
+:leveloffset: -1
+endif::show-RequestScanVectors[]
+
+include::{specDir}definitions/RequestScanVectors/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Response/definition-before.adoc[opts=optional]
 
@@ -2740,48 +2601,48 @@ If an error occurred during processing of the request, it will be represented by
 
 [%hardbreaks]
 {blank}
-a¦ xref:Conditions[] array
+a¦ xref:ResponseConditions[] array
 a¦ *warnings* +
 optional
 a¦ [markdown]
 --
 An array of 0 or more warning objects.
-If a warning occurred during processing of the request, it is represented by a warning object in this list.
+If a warning occurred during processing of the request, it's represented by a warning object in this list.
 --
 
 [%hardbreaks]
 {blank}
-a¦ xref:Conditions[] array
+a¦ xref:ResponseConditions[] array
 a¦ *metrics* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-Metrics, opts=optional]
+include::index.adoc[tag=desc-ResponseMetrics, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-a¦ xref:Metrics[]
+a¦ xref:ResponseMetrics[]
 a¦ *controls* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-Controls, opts=optional]
+include::index.adoc[tag=desc-ResponseControls, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-a¦ xref:Controls[]
+a¦ xref:ResponseControls[]
 a¦ *profile* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-Profile, opts=optional]
+include::index.adoc[tag=desc-ResponseProfile, opts=optional]
 --
 
 [%hardbreaks]
 {blank}
-a¦ xref:Profile[]
+a¦ xref:ResponseProfile[]
 
 |===
 
@@ -2799,33 +2660,582 @@ endif::show-Response[]
 
 include::{specDir}definitions/Response/definition-after.adoc[opts=optional]
 
-include::{specDir}definitions/Statistics/definition-before.adoc[opts=optional]
+include::{specDir}definitions/ResponseConditions/definition-before.adoc[opts=optional]
 
-ifdef::show-Statistics[]
-[#Statistics]
-endif::show-Statistics[]
-ifndef::show-Statistics[]
+ifdef::show-ResponseConditions[]
+[#ResponseConditions]
+endif::show-ResponseConditions[]
+ifndef::show-ResponseConditions[]
 :leveloffset: +1
 
-[discrete#Statistics]
-endif::show-Statistics[]
-= Statistics
+[discrete#ResponseConditions]
+endif::show-ResponseConditions[]
+= Conditions
 
 ifdef::model-descriptions[]
-//tag::desc-Statistics[]
-Statistics collected for the operator.
-//end::desc-Statistics[]
+//tag::desc-ResponseConditions[]
+Errors and warnings have the following format.
+//end::desc-ResponseConditions[]
 endif::model-descriptions[]
 
 :leveloffset: +1
 
-include::{specDir}definitions/Statistics/definition-begin.adoc[opts=optional]
+include::{specDir}definitions/ResponseConditions/definition-begin.adoc[opts=optional]
 
 
 .icon:brackets-curly[fw] Object
 {blank}
 
-//tag::Statistics[]
+//tag::ResponseConditions[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *code* +
+required
+a¦ [markdown]
+--
+A unique number that identifies the error or warning.
+The code ranges are partitioned by component.
+The codes can also include parts that indicate severity and transience.
+This property is always present in every condition returned in the Query REST API or captured in a log.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+a¦ *msg* +
+required
+a¦ [markdown]
+--
+A message describing the error or warning in detail.
+This property is always present in every condition returned in the Query REST API or captured in a log.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *name* +
+optional
+a¦ [markdown]
+--
+Unique name that has a 1:1 mapping to the code.
+Uniquely identifies the condition.
+This property is helpful for pattern matching and can have meaning, making it more memorable than the code.
+The name should be fully qualified.
+--
+
+[%hardbreaks]
+*Example:* `+++"indexing.scan.io_failure"+++`
+{blank}
+a¦ String
+a¦ *sev* +
+optional
+a¦ [markdown]
+--
+One of the following SQL++ severity levels, listed in order of severity:
+
+ 1. Severe
+ 2. Error
+ 3. Warn
+ 4. Info
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+a¦ *temp* +
+optional
+a¦ [markdown]
+--
+Indicates if the condition is transient &mdash; for example, the queue is full.
+If the value is `false`, it tells clients and users that a retry without modification produces the same condition.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+|===
+
+//end::ResponseConditions[]
+
+
+
+include::{specDir}definitions/ResponseConditions/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-ResponseConditions[]
+:leveloffset: -1
+endif::show-ResponseConditions[]
+
+include::{specDir}definitions/ResponseConditions/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/ResponseControls/definition-before.adoc[opts=optional]
+
+ifdef::show-ResponseControls[]
+[#ResponseControls]
+endif::show-ResponseControls[]
+ifndef::show-ResponseControls[]
+:leveloffset: +1
+
+[discrete#ResponseControls]
+endif::show-ResponseControls[]
+= Controls
+
+ifdef::model-descriptions[]
+//tag::desc-ResponseControls[]
+An object containing runtime information provided along with the request.
+Present only if `controls` was set to true in the request parameters.
+//end::desc-ResponseControls[]
+endif::model-descriptions[]
+
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseControls/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponseControls[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *scan_consistency* +
+optional
+a¦ [markdown]
+--
+The value of the query setting Scan Consistency used for the query.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *use_cbo* +
+optional
+a¦ [markdown]
+--
+Whether the cost-based optimizer was enabled for the query.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+a¦ *memoryQuota* +
+optional
+a¦ [markdown]
+--
+The memory quota for the request, in MB.
+This property is only returned if a memory quota was set for the query.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (unsigned)
+a¦ *stmtType* +
+optional
+a¦ [markdown]
+--
+The type of query statement.
+--
+
+[%hardbreaks]
+*Example:* `+++"SELECT"+++`
+{blank}
+a¦ String
+
+|===
+
+//end::ResponseControls[]
+
+
+
+include::{specDir}definitions/ResponseControls/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-ResponseControls[]
+:leveloffset: -1
+endif::show-ResponseControls[]
+
+include::{specDir}definitions/ResponseControls/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/ResponseMetrics/definition-before.adoc[opts=optional]
+
+ifdef::show-ResponseMetrics[]
+[#ResponseMetrics]
+endif::show-ResponseMetrics[]
+ifndef::show-ResponseMetrics[]
+:leveloffset: +1
+
+[discrete#ResponseMetrics]
+endif::show-ResponseMetrics[]
+= Metrics
+
+ifdef::model-descriptions[]
+//tag::desc-ResponseMetrics[]
+An object containing metrics about the request.
+//end::desc-ResponseMetrics[]
+endif::model-descriptions[]
+
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseMetrics/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponseMetrics[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *elapsedTime* +
+required
+a¦ [markdown]
+--
+The total time taken for the request &mdash; in other words, the time from when the request was received until the results were returned.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *executionTime* +
+required
+a¦ [markdown]
+--
+The time taken for the execution of the request &mdash; in other words, the time from when query execution started until the results were returned.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *resultCount* +
+required
+a¦ [markdown]
+--
+The total number of objects in the results.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (unsigned)
+a¦ *resultSize* +
+required
+a¦ [markdown]
+--
+The total number of bytes in the results.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (unsigned)
+a¦ *mutationCount* +
+optional
+a¦ [markdown]
+--
+The number of mutations that were made during the request.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (unsigned)
+a¦ *sortCount* +
+optional
+a¦ [markdown]
+--
+The number of objects that were sorted.
+Present only if the request includes `ORDER BY`.
+
+If a query includes ORDER BY, LIMIT, or OFFSET clauses, an application can use the `sortCount` value to give the overall number of results in a message such as `"page 1 of N"`.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (unsigned)
+a¦ *usedMemory* +
+optional
+a¦ [markdown]
+--
+The amount of document memory used to execute the request.
+This property is only returned if a memory quota was set for the query.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (unsigned)
+a¦ *errorCount* +
+optional
+a¦ [markdown]
+--
+The number of errors that occurred during the request.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (unsigned)
+a¦ *warningCount* +
+optional
+a¦ [markdown]
+--
+The number of warnings that occurred during the request.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (unsigned)
+
+|===
+
+//end::ResponseMetrics[]
+
+
+
+include::{specDir}definitions/ResponseMetrics/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-ResponseMetrics[]
+:leveloffset: -1
+endif::show-ResponseMetrics[]
+
+include::{specDir}definitions/ResponseMetrics/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/ResponseProfile/definition-before.adoc[opts=optional]
+
+ifdef::show-ResponseProfile[]
+[#ResponseProfile]
+endif::show-ResponseProfile[]
+ifndef::show-ResponseProfile[]
+:leveloffset: +1
+
+[discrete#ResponseProfile]
+endif::show-ResponseProfile[]
+= Profile
+
+ifdef::model-descriptions[]
+//tag::desc-ResponseProfile[]
+An object containing monitoring and profiling information about the request.
+Present only if `profile` was set to `"phases"` or `"timings"` in the request parameters.
+//end::desc-ResponseProfile[]
+endif::model-descriptions[]
+
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseProfile/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponseProfile[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *requestTime* +
+required
+a¦ [markdown]
+--
+Timestamp when the query was received.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Date (date-time)
+a¦ *servicingHost* +
+required
+a¦ [markdown]
+--
+IP address and port number of the node where the query was executed.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *phaseCounts* +
+required
+a¦ [markdown]
+--
+Count of documents processed at selective phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
+--
+
+[%hardbreaks]
+*Example:* `{"fetch":16,"indexScan":187}`
+{blank}
+a¦ Object
+a¦ *phaseOperators* +
+required
+a¦ [markdown]
+--
+Indicates the numbers of each kind of query operator involved in different phases of the query processing.
+
+For instance, a non-covering index path might involve one index scan and one fetch operator.
+A join would probably involve two or more fetches, one per keyspace.
+A union select would have twice as many operator counts, one per each branch of the union.
+
+This is in essence the count of all the operators in the `executionTimings` object.
+--
+
+[%hardbreaks]
+*Example:* `{"authorize":1,"fetch":1,"indexScan":2}`
+{blank}
+a¦ Object
+a¦ *phaseTimes* +
+required
+a¦ [markdown]
+--
+Cumulative execution times for various phases involved in the query execution, such as authorize, index scan, fetch, parse, plan, run, etc.
+--
+
+[%hardbreaks]
+*Example:* `{"authorize":"823.631µs","fetch":"656.873µs","indexScan":"29.146543ms","instantiate":"236.221µs","parse":"826.382µs","plan":"11.831101ms","run":"16.892181ms"}`
+{blank}
+a¦ Object
+a¦ *executionTimings* +
+optional
+a¦ [markdown]
+--
+include::index.adoc[tag=desc-ResponseProfileTiming, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:ResponseProfileTiming[]
+
+|===
+
+//end::ResponseProfile[]
+
+
+
+include::{specDir}definitions/ResponseProfile/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-ResponseProfile[]
+:leveloffset: -1
+endif::show-ResponseProfile[]
+
+include::{specDir}definitions/ResponseProfile/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/ResponseProfileTiming/definition-before.adoc[opts=optional]
+
+ifdef::show-ResponseProfileTiming[]
+[#ResponseProfileTiming]
+endif::show-ResponseProfileTiming[]
+ifndef::show-ResponseProfileTiming[]
+:leveloffset: +1
+
+[discrete#ResponseProfileTiming]
+endif::show-ResponseProfileTiming[]
+= Execution Timings
+
+ifdef::model-descriptions[]
+//tag::desc-ResponseProfileTiming[]
+Present only if `profile` was set to `"timings"` in the request parameters.
+
+The execution details for various phases involved in the query execution, such as kernel and service execution times, number of documents processed at each query operator in each phase, and number of phase switches.
+//end::desc-ResponseProfileTiming[]
+endif::model-descriptions[]
+
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseProfileTiming/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponseProfileTiming[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *#operator* +
+required
+a¦ [markdown]
+--
+Name of the operator.
+--
+
+[%hardbreaks]
+*Example:* `+++"Fetch"+++`
+{blank}
+a¦ String
+a¦ *#stats* +
+required
+a¦ [markdown]
+--
+include::index.adoc[tag=desc-ResponseProfileTimingStats, opts=optional]
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:ResponseProfileTimingStats[]
+a¦ *~child* +
+optional
+a¦ [markdown]
+--
+Further nested operators, each with their own execution timings.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+
+|===
+
+//end::ResponseProfileTiming[]
+
+
+
+include::{specDir}definitions/ResponseProfileTiming/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-ResponseProfileTiming[]
+:leveloffset: -1
+endif::show-ResponseProfileTiming[]
+
+include::{specDir}definitions/ResponseProfileTiming/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/ResponseProfileTimingStats/definition-before.adoc[opts=optional]
+
+ifdef::show-ResponseProfileTimingStats[]
+[#ResponseProfileTimingStats]
+endif::show-ResponseProfileTimingStats[]
+ifndef::show-ResponseProfileTimingStats[]
+:leveloffset: +1
+
+[discrete#ResponseProfileTimingStats]
+endif::show-ResponseProfileTimingStats[]
+= Statistics
+
+ifdef::model-descriptions[]
+//tag::desc-ResponseProfileTimingStats[]
+Statistics collected for the operator.
+//end::desc-ResponseProfileTimingStats[]
+endif::model-descriptions[]
+
+:leveloffset: +1
+
+include::{specDir}definitions/ResponseProfileTimingStats/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ResponseProfileTimingStats[]
 
 [cols="25,55,20",separator=¦]
 |===
@@ -2892,9 +3302,9 @@ a¦ [markdown]
 --
 Time spent waiting for another service, such as index or data.
 
-For index scan, it is time spent waiting for GSI/indexer.
+For index scan, it's time spent waiting for GSI/indexer.
 
-For fetch, it is time spent waiting on the KV store.
+For fetch, it's time spent waiting on the KV store.
 --
 
 [%hardbreaks]
@@ -2904,19 +3314,19 @@ a¦ String (duration)
 
 |===
 
-//end::Statistics[]
+//end::ResponseProfileTimingStats[]
 
 
 
-include::{specDir}definitions/Statistics/definition-end.adoc[opts=optional]
+include::{specDir}definitions/ResponseProfileTimingStats/definition-end.adoc[opts=optional]
 
 :leveloffset: -1
 
-ifndef::show-Statistics[]
+ifndef::show-ResponseProfileTimingStats[]
 :leveloffset: -1
-endif::show-Statistics[]
+endif::show-ResponseProfileTimingStats[]
 
-include::{specDir}definitions/Statistics/definition-after.adoc[opts=optional]
+include::{specDir}definitions/ResponseProfileTimingStats/definition-after.adoc[opts=optional]
 
 
 
