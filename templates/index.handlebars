@@ -6,6 +6,9 @@
 :page-toclevels: 2
 :page-service-desc: _attachments/{{{serviceDesc}}}
 :page-service-desc-type: application/vnd.oai.openapi+yaml
+{{~#with appSummary}}
+:description: {{{this}}}
+{{~/with}}
 {{! If headerAttributes is true, include document attributes from the named partial}}
 {{~#if headerAttributes ~}}
 include::partial$header-attributes.adoc[opts=optional]
@@ -91,34 +94,29 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-{{#with apiInfo ~}}
-{{#each apis ~}}
-{{#if @last ~}}
-:count-apis: {{@index}}
-{{~/if}}
-{{~/each}}
-{{~/with}}
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 {{! Table of contents for endpoints }}
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
+{{#with apiInfo ~}}
+{{#each apis ~}}
+{{#unless (and @first @last) ~}}
+{{#if @first ~}}
 The operations are grouped in the following categories.
 
 [%hardbreaks]
-{{#with apiInfo ~}}
-{{#each apis ~}}
+{{~/if}}
 xref:tag-{{baseName}}[]
-{{/each}}{{~/with ~}}
-endif::[]
+{{~/unless}}
+{{~/each}}
+{{~/with}}
 
 {{! Endpoint body }}
 {{#with apiInfo ~}}
 {{#each apis ~}}
-
-ifeval::[{count-apis} > 0]
+{{#unless (and @first @last) ~}}
 [#tag-{{baseName}}]
 = {{#with operations.operation.[0].tags.[0].x-displayName ~}}
 {{this}}{{! FIXME: assumes first tag in first operation is the same as this API }}
@@ -134,7 +132,7 @@ ifeval::[{count-apis} > 0]
 {{~ else ~}}
 **{toc-title}**
 {{~/with}}
-endif::[]
+{{~/unless}}{{! (and ...) }}
 
 {{! Table of contents for operations }}
 {{#with operations ~}}
@@ -214,22 +212,6 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-before.adoc
 
 {{> params}}
 
-{{#unless skipExamples ~}}
-{{#if hasBodyParam ~}}
-{{#each requestBodyExamples ~}}
-.Request Body Example
-====
-{{#with example ~}}
-[source,json]
-----
-{{{this}}}
-----
-{{~/with}}
-====
-{{~/each}}
-{{~/if}}
-{{~/unless}}
-
 include::{specDir}paths/{{operationIdOriginal}}/operation-parameters-after.adoc[opts=optional]
 
 {{! *** OPERATION RESPONSES *** }}
@@ -265,22 +247,6 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-responses-end.adoc[opt
 {{#each responses ~}}
 {{#with returnProperty}}{{>tocs}}{{/with}}
 {{~/each}}
-
-{{#unless skipExamples ~}}
-{{#if hasExamples ~}}
-{{#each examples ~}}
-.Response Examples
-====
-{{#with example ~}}
-[source,json]
-----
-{{{this}}}
-----
-{{~/with}}
-====
-{{~/each}}
-{{~/if}}
-{{~/unless}}{{! skipExamples }}
 
 include::{specDir}paths/{{operationIdOriginal}}/operation-responses-after.adoc[opts=optional]
 
@@ -319,104 +285,26 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-security-after.adoc[op
 {{!~ Include partials for operation sample requests and responses }}
 {{!~ The partials should have a level 1 title; the level offset pushes the title down to the correct section level. }}
 
-{{#if vendorExtensions.x-codeSamples ~}}
-[#{{operationIdOriginal}}-ex-curl]
-= Example HTTP Request
-{{! example HTTP request heading}}
-{{/if~}}
+{{>samples ~}}
 
 include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 
-{{#*inline "curlTitle" ~}}
-[#{{operationIdOriginal}}-ex-curl-{{@index}}]
-.{{#with label}}{{{this}}}{{else}}curl request {{@index}}{{/with}}
-{{~/inline ~}}
-{{#each vendorExtensions.x-codeSamples ~}}
-{{#if @first ~}}
-====
-{{/if ~}}
-{{#if @last}}{{#if @index}}{{> curlTitle}}
-{{/if}}{{else}}{{> curlTitle}}
-{{/if ~}}
-{{#with description~}}
-{{{this}}}
-
-{{/with~}}
-[source,sh]
-----
-{{{source}}}
-----
-{{#if @last ~}}
-====
-{{/if}}
-{{/each ~}}
-
-{{#*inline "requestBodyHeading" ~}}
-[#{{operationIdOriginal}}-ex-request]
-= Example Request Body
-{{~/inline ~}}
-{{#with bodyParam ~}}
-{{#with content.[application/json] ~}}
-{{#if example}}
-{{! single request body example heading }}
-{{> requestBodyHeading }}
-{{~else if examples}}
-{{! multiple request body example heading }}
-{{> requestBodyHeading }}
-{{~/if}}
-{{~/with}}{{! content.[application/json] }}
-{{~/with}}{{! bodyParam }}
+{{>requests ~}}
 
 include::{snippetDir}{{operationIdOriginal}}/http-request.adoc[opts=optional]
 
-{{~#with bodyParam ~}}
-{{#with content.[application/json] ~}}
-{{#with example}}
-{{! single request body example }}
-{{>request language="json" isJson=true}}
-{{else each examples}}
-{{! multiple request body examples }}
-{{>requests language="json" isJson=true}}
-{{/with}}
-{{~/with}}{{! content.[application/json] }}
-{{~/with}}{{! bodyParam }}
-
-ifeval::["
-{{~#each responses ~}}
-{{#each content ~}}
-{{#with example ~}}
-yes
-{{~else each examples ~}}
-yes
-{{~/with}}
-{{~/each}}
-{{~/each~}}
-" != ""]
-[#{{operationIdOriginal}}-ex-response]
-= Example HTTP Response
-endif::[]
+{{>responses ~}}
 
 include::{snippetDir}{{operationIdOriginal}}/http-response.adoc[opts=optional]
 
-{{~#each responses ~}}
-{{#with content.[application/json] ~}}
-{{#with example}}
-{{! single JSON response example }}
-{{>response language="json" isJson=true}}
-{{else each examples}}
-{{! multiple JSON response examples }}
-{{>responses language="json" isJson=true}}
-{{/with}}
-{{~else with content.[text/html] ~}}
-{{#with example}}
-{{! single HTML response example }}
-{{> response language="html"}}
-{{else each examples}}
-{{! multiple HTML response examples }}
-{{> responses language="html"}}
-{{/with}}
-{{~/with}}{{! content.[application/json] }}
-{{~/each}}{{! responses }}
+{{~#with externalDocs}}
+
+{{! *** OPERATION EXTERNAL DOCS *** }}
+[#{{operationIdOriginal}}-see-also]
+= See Also
+
+* link:{{url}}[{{description}}]
+{{~/with}}
 
 include::{specDir}paths/{{operationIdOriginal}}/operation-end.adoc[opts=optional]
 
@@ -429,10 +317,9 @@ include::{specDir}paths/{{operationIdOriginal}}/operation-after.adoc[opts=option
 {{/each}}{{! operation }}
 {{~/with}}{{! operations }}
 
-ifeval::[{count-apis} > 0]
+{{#unless (and @first @last) ~}}
 :leveloffset: -1
-endif::[]
-
+{{~/unless}}
 {{/each}}{{! apis }}
 {{~/with}}{{! apiInfo }}
 
@@ -512,9 +399,9 @@ include::{specDir}security/document-end.adoc[opts=optional]
 include::{specDir}security/document-after.adoc[opts=optional]
 
 {{! *** EXTERNAL DOCS *** }}
-{{#each externalDocs ~}}
+{{#with externalDocs ~}}
 [[see-also]]
 = See Also
 
 * link:{{url}}[{{description}}]
-{{~/each}}
+{{~/with}}

@@ -95,28 +95,16 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-:count-apis: 0
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
-The operations are grouped in the following categories.
-
-[%hardbreaks]
-xref:tag-Default[]
-endif::[]
 
 
-ifeval::[{count-apis} > 0]
-[#tag-Default]
-= Default
-:leveloffset: +1
 
-**{toc-title}**
-endif::[]
+
 
 
 [%hardbreaks]
@@ -176,8 +164,6 @@ include::{specDir}paths/g-api-nsstats/operation-parameters-before.adoc[opts=opti
 
 
 
-
-
 include::{specDir}paths/g-api-nsstats/operation-parameters-after.adoc[opts=optional]
 
 
@@ -230,8 +216,6 @@ include::{specDir}paths/g-api-nsstats/operation-responses-end.adoc[opts=optional
 :show-allStats:
 
 
-
-
 include::{specDir}paths/g-api-nsstats/operation-responses-after.adoc[opts=optional]
 
 
@@ -269,8 +253,6 @@ ifeval::["yesyes" != ""]
 [#g-api-nsstats-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}g-api-nsstats/http-response.adoc[opts=optional]
 
 
 [#g-api-nsstats-ex-response-200]
@@ -485,7 +467,6 @@ include::{snippetDir}g-api-nsstats/http-response.adoc[opts=optional]
 ====
 
 
-
 [#g-api-nsstats-ex-response-403]
 .Response 403
 ====
@@ -498,6 +479,151 @@ include::{snippetDir}g-api-nsstats/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yesyes" == ""]
+[#g-api-nsstats-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "tot_remote_grpc" : 6,
+  "total_queries_timeout" : 5,
+  "curr_batches_blocked_by_herder" : 5,
+  "pct_used_ram" : 7.457744773683766,
+  "BUCKET:INDEX:total_queries_timeout" : 9,
+  "BUCKET:INDEX:avg_grpc_internal_queries_latency" : 8,
+  "BUCKET:INDEX:timer_data_delete_count" : 0,
+  "BUCKET:INDEX:total_request_time" : 1,
+  "num_vector_indexes" : 1.4894159098541704,
+  "BUCKET:INDEX:timer_rollback_count" : 6,
+  "BUCKET:INDEX:doc_count" : 2,
+  "num_files_on_disk" : 2,
+  "total_bytes_query_results" : 4,
+  "total_queries_search_in_context_error" : 0,
+  "BUCKET:INDEX:total_term_searchers" : 4,
+  "num_indexes" : 1.2315135367772556,
+  "BUCKET:INDEX:num_mem_merge_ops" : 9,
+  "tot_remote_http2" : 0,
+  "tot_https_limitlisteners_opened" : 6,
+  "BUCKET:INDEX:num_bytes_written_at_index_time" : 7,
+  "avg_queries_latency" : 0.8008281904610115,
+  "total_internal_queries" : 6,
+  "tot_grpc_queryreject_on_memquota" : 6,
+  "BUCKET:INDEX:timer_opaque_set_count" : 4,
+  "BUCKET:INDEX:total_grpc_request_time" : 1,
+  "BUCKET:INDEX:total_queries_error" : 7,
+  "batch_bytes_removed" : 1,
+  "tot_remote_grpc_ssl" : 3,
+  "BUCKET:INDEX:num_persister_nap_pause_completed" : 0,
+  "BUCKET:INDEX:total_term_searchers_finished" : 3,
+  "BUCKET:INDEX:global_query_timer_median_ns" : 6.623518433804886,
+  "total_queries_slow" : 7,
+  "BUCKET:INDEX:avg_grpc_queries_latency" : 4,
+  "BUCKET:INDEX:num_root_filesegments" : 8,
+  "tot_remote_grpc_tls" : 3,
+  "total_queries" : 4,
+  "BUCKET:INDEX:total_queries_slow" : 7,
+  "BUCKET:INDEX:global_query_timer_mean_ns" : 8.28965939814297,
+  "total_request_time" : 6,
+  "num_gocbcore_stats_agents" : 7,
+  "tot_grpcs_listeners_closed" : 3,
+  "total_queries_partial_results_error" : 0,
+  "BUCKET:INDEX:total_vectors" : 8,
+  "BUCKET:INDEX:global_query_timer_p99_ns" : 8.863729185622827,
+  "BUCKET:INDEX:num_bytes_used_disk_by_root_reclaimable" : 8,
+  "tot_grpc_listeners_closed" : 8,
+  "BUCKET:INDEX:total_vector_indexes_in_cpu" : 9,
+  "BUCKET:INDEX:timer_opaque_get_count" : 6,
+  "BUCKET:INDEX:total_vector_indexes_in_gpu" : 2,
+  "tot_remote_http_ssl" : 7,
+  "batch_bytes_added" : 6,
+  "total_queries_bad_request_error" : 1,
+  "tot_remote_http" : 7,
+  "BUCKET:INDEX:total_grpc_queries" : 4,
+  "BUCKET:INDEX:scoped_query_timer_p80_ns" : 4.332304821875894,
+  "BUCKET:INDEX:total_internal_queries" : 3,
+  "num_bytes_ram_quota" : 2,
+  "BUCKET:INDEX:total_grpc_queries_timeout" : 3,
+  "BUCKET:INDEX:total_queries" : 7,
+  "tot_rollback_partial" : 0,
+  "BUCKET:INDEX:grpc_query_timer_mean_ns" : 1.8268702177058116,
+  "BUCKET:INDEX:num_persister_nap_merger_break" : 7,
+  "tot_batches_merged" : 5,
+  "total_queries_consistency_error" : 4,
+  "tot_http_limitlisteners_closed" : 1,
+  "BUCKET:INDEX:global_query_timer_p80_ns" : 4.573936264232251,
+  "total_create_index_internal_server_error" : 7,
+  "tot_http_limitlisteners_opened" : 2,
+  "BUCKET:INDEX:grpc_query_timer_median_ns" : 3.502657762086401,
+  "tot_batches_flushed_on_maxops" : 1,
+  "total_queries_error" : 7,
+  "tot_batches_flushed_on_timer" : 4,
+  "BUCKET:INDEX:timer_batch_store_count" : 9,
+  "pct_cpu_gc" : 6.84685269835264,
+  "tot_grpcs_listeners_opened" : 6,
+  "BUCKET:INDEX:total_grpc_queries_error" : 5,
+  "BUCKET:INDEX:scoped_query_timer_p99_ns" : 2.7977867356748476,
+  "total_create_index_bad_request_error" : 8,
+  "tot_bleve_dest_closed" : 9,
+  "BUCKET:INDEX:num_pindexes_actual" : 3,
+  "BUCKET:INDEX:total_compaction_written_bytes" : 5,
+  "tot_https_limitlisteners_closed" : 6,
+  "BUCKET:INDEX:num_root_memorysegments" : 4,
+  "BUCKET:INDEX:total_bytes_indexed" : 1,
+  "BUCKET:INDEX:avg_queries_latency" : 0,
+  "total_delete_index_internal_server_error" : 5,
+  "total_queries_max_result_window_exceeded_error" : 9,
+  "BUCKET:INDEX:global_query_timer_count" : 1.7325933120207193,
+  "BUCKET:INDEX:scoped_query_timer_mean_ns" : 0.35262192099236644,
+  "num_bytes_used_disk" : 7,
+  "num_gocbcore_dcp_agents" : 4,
+  "total_queries_validation_error" : 4,
+  "BUCKET:INDEX:num_mutations_to_index" : 5,
+  "tot_queryreject_on_memquota" : 5,
+  "total_delete_index_request_ok" : 4,
+  "total_delete_index_request" : 3,
+  "BUCKET:INDEX:scoped_query_timer_count" : 0.4833312865174044,
+  "BUCKET:INDEX:tot_seq_received" : 1,
+  "BUCKET:INDEX:num_bytes_used_disk_by_root" : 5,
+  "BUCKET:INDEX:num_files_on_disk" : 3,
+  "BUCKET:INDEX:grpc_query_timer_p80_ns" : 9.183123594773994,
+  "tot_batches_new" : 9,
+  "total_create_index_request_ok" : 3,
+  "BUCKET:INDEX:avg_internal_queries_latency" : 3,
+  "BUCKET:INDEX:num_file_merge_ops" : 3,
+  "BUCKET:INDEX:total_knn_searches" : 9,
+  "tot_bleve_dest_opened" : 6,
+  "BUCKET:INDEX:num_bytes_read_at_query_time" : 0,
+  "num_knn_search_requests" : 1,
+  "BUCKET:INDEX:num_bytes_used_disk" : 5,
+  "total_gc" : 0,
+  "BUCKET:INDEX:timer_snapshot_start_count" : 9,
+  "num_bytes_used_ram" : 9,
+  "num_batches_introduced" : 5,
+  "BUCKET:INDEX:grpc_query_timer_count" : 9.254183946267839,
+  "BUCKET:INDEX:timer_data_update_count" : 2,
+  "total_queries_rejected_by_herder" : 9,
+  "num_bytes_used_ram_c" : 3,
+  "tot_grpc_listeners_opened" : 9,
+  "tot_rollback_full" : 6,
+  "BUCKET:INDEX:scoped_query_timer_median_ns" : 7.203794749804894,
+  "BUCKET:INDEX:num_recs_to_persist" : 3,
+  "BUCKET:INDEX:last_access_time" : "2000-01-23T04:56:07.000+00:00",
+  "BUCKET:INDEX:total_grpc_queries_slow" : 5,
+  "BUCKET:INDEX:grpc_query_timer_p99_ns" : 8.761432466225475,
+  "BUCKET:INDEX:num_pindexes_target" : 2,
+  "total_delete_index_bad_request_error" : 7,
+  "BUCKET:INDEX:total_bytes_query_results" : 3,
+  "total_create_index_request" : 3,
+  "BUCKET:INDEX:total_grpc_internal_queries" : 1
+}
+----
+====
+endif::[]
+
+include::{snippetDir}g-api-nsstats/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-nsstats/operation-end.adoc[opts=optional]
 
@@ -597,8 +723,6 @@ include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-end.adoc[o
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-after.adoc[opts=optional]
 
 
@@ -628,8 +752,6 @@ include::{specDir}paths/g-api-nsstats-index-name/operation-responses-end.adoc[op
 
 :leveloffset: -1
 :show-indexStats:
-
-
 
 
 include::{specDir}paths/g-api-nsstats-index-name/operation-responses-after.adoc[opts=optional]
@@ -669,8 +791,6 @@ ifeval::["yes" != ""]
 [#g-api-nsstats-index-name-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}g-api-nsstats-index-name/http-response.adoc[opts=optional]
 
 
 [#g-api-nsstats-index-name-ex-response-200]
@@ -751,6 +871,87 @@ include::{snippetDir}g-api-nsstats-index-name/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#g-api-nsstats-index-name-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "BUCKET:INDEX:global_query_timer_p80_ns" : 3.616076749251911,
+  "BUCKET:INDEX:grpc_query_timer_median_ns" : 1.2315135367772556,
+  "BUCKET:INDEX:total_queries_timeout" : 9,
+  "BUCKET:INDEX:avg_grpc_internal_queries_latency" : 0,
+  "BUCKET:INDEX:timer_data_delete_count" : 0,
+  "BUCKET:INDEX:timer_batch_store_count" : 7,
+  "BUCKET:INDEX:total_request_time" : 0,
+  "BUCKET:INDEX:timer_rollback_count" : 4,
+  "BUCKET:INDEX:doc_count" : 5,
+  "BUCKET:INDEX:total_term_searchers" : 7,
+  "BUCKET:INDEX:num_mem_merge_ops" : 6,
+  "BUCKET:INDEX:total_grpc_queries_error" : 4,
+  "BUCKET:INDEX:num_bytes_written_at_index_time" : 5,
+  "BUCKET:INDEX:scoped_query_timer_p99_ns" : 3.0937452626664474,
+  "BUCKET:INDEX:timer_opaque_set_count" : 0,
+  "BUCKET:INDEX:total_grpc_request_time" : 4,
+  "BUCKET:INDEX:num_pindexes_actual" : 3,
+  "BUCKET:INDEX:total_queries_error" : 9,
+  "BUCKET:INDEX:total_compaction_written_bytes" : 7,
+  "BUCKET:INDEX:num_root_memorysegments" : 6,
+  "BUCKET:INDEX:total_bytes_indexed" : 3,
+  "BUCKET:INDEX:avg_queries_latency" : 5,
+  "BUCKET:INDEX:num_persister_nap_pause_completed" : 6,
+  "BUCKET:INDEX:total_term_searchers_finished" : 5,
+  "BUCKET:INDEX:global_query_timer_median_ns" : 9.301444243932576,
+  "BUCKET:INDEX:global_query_timer_count" : 2.3021358869347655,
+  "BUCKET:INDEX:scoped_query_timer_mean_ns" : 5.944895607614016,
+  "BUCKET:INDEX:avg_grpc_queries_latency" : 6,
+  "BUCKET:INDEX:num_root_filesegments" : 2,
+  "BUCKET:INDEX:total_queries_slow" : 0,
+  "BUCKET:INDEX:num_mutations_to_index" : 8,
+  "BUCKET:INDEX:global_query_timer_mean_ns" : 7.061401241503109,
+  "BUCKET:INDEX:total_vectors" : 4,
+  "BUCKET:INDEX:global_query_timer_p99_ns" : 2.027123023002322,
+  "BUCKET:INDEX:num_bytes_used_disk_by_root_reclaimable" : 4,
+  "BUCKET:INDEX:scoped_query_timer_count" : 6.878052220127876,
+  "BUCKET:INDEX:tot_seq_received" : 7,
+  "BUCKET:INDEX:total_vector_indexes_in_cpu" : 8,
+  "BUCKET:INDEX:num_bytes_used_disk_by_root" : 1,
+  "BUCKET:INDEX:timer_opaque_get_count" : 6,
+  "BUCKET:INDEX:num_files_on_disk" : 9,
+  "BUCKET:INDEX:grpc_query_timer_p80_ns" : 1.0246457001441578,
+  "BUCKET:INDEX:avg_internal_queries_latency" : 1,
+  "BUCKET:INDEX:num_file_merge_ops" : 9,
+  "BUCKET:INDEX:total_knn_searches" : 4,
+  "BUCKET:INDEX:num_bytes_read_at_query_time" : 6,
+  "BUCKET:INDEX:total_vector_indexes_in_gpu" : 6,
+  "BUCKET:INDEX:num_bytes_used_disk" : 7,
+  "BUCKET:INDEX:timer_snapshot_start_count" : 8,
+  "BUCKET:INDEX:grpc_query_timer_count" : 4.145608029883936,
+  "BUCKET:INDEX:timer_data_update_count" : 7,
+  "BUCKET:INDEX:total_grpc_queries" : 3,
+  "BUCKET:INDEX:scoped_query_timer_p80_ns" : 3.353193347011243,
+  "BUCKET:INDEX:total_internal_queries" : 1,
+  "BUCKET:INDEX:total_grpc_queries_timeout" : 6,
+  "BUCKET:INDEX:total_queries" : 7,
+  "BUCKET:INDEX:scoped_query_timer_median_ns" : 6.704019297950036,
+  "BUCKET:INDEX:num_recs_to_persist" : 1,
+  "BUCKET:INDEX:grpc_query_timer_mean_ns" : 7.386281948385884,
+  "BUCKET:INDEX:last_access_time" : "2000-01-23T04:56:07.000+00:00",
+  "BUCKET:INDEX:total_grpc_queries_slow" : 0,
+  "BUCKET:INDEX:num_persister_nap_merger_break" : 9,
+  "BUCKET:INDEX:grpc_query_timer_p99_ns" : 1.4894159098541704,
+  "BUCKET:INDEX:num_pindexes_target" : 6,
+  "BUCKET:INDEX:total_bytes_query_results" : 3,
+  "BUCKET:INDEX:total_grpc_internal_queries" : 5
+}
+----
+====
+endif::[]
+
+include::{snippetDir}g-api-nsstats-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-nsstats-index-name/operation-end.adoc[opts=optional]
 
@@ -762,9 +963,6 @@ include::{specDir}paths/g-api-nsstats-index-name/operation-after.adoc[opts=optio
 
 
 
-ifeval::[{count-apis} > 0]
-:leveloffset: -1
-endif::[]
 
 
 
@@ -780,23 +978,16 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 2
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
-[.two-columns]
-endif::[]
 [%hardbreaks]
 xref:allStats[]
 xref:clusterStats[]
 xref:indexStats[]
-endif::[]
-
 
 include::{specDir}definitions/allStats/definition-before.adoc[opts=optional]
 
@@ -825,7 +1016,7 @@ include::{specDir}definitions/allStats/definition-begin.adoc[opts=optional]
 a¦ 
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-clusterStats, opts=optional]
+Statistics for the entire cluster.
 --
 
 [%hardbreaks]
@@ -835,7 +1026,7 @@ a¦ xref:clusterStats[]
 a¦ and
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-indexStats, opts=optional]
+Statistics for a single Search index.
 --
 
 [%hardbreaks]
@@ -866,12 +1057,6 @@ ifndef::show-clusterStats[]
 [discrete#clusterStats]
 endif::show-clusterStats[]
 = Cluster Statistics
-
-ifdef::model-descriptions[]
-//tag::desc-clusterStats[]
-Statistics for the entire cluster.
-//end::desc-clusterStats[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -1671,12 +1856,6 @@ ifndef::show-indexStats[]
 endif::show-indexStats[]
 = Index Statistics
 
-ifdef::model-descriptions[]
-//tag::desc-indexStats[]
-Statistics for a single Search index.
-//end::desc-indexStats[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/indexStats/definition-begin.adoc[opts=optional]
@@ -2432,6 +2611,30 @@ a¦ [markdown]
 The total number of vectors inside the given Search index, across all indexed fields.
 
 If there are no vectors inside the Search index, the REST API does not return this statistic.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+a¦ *BUCKET:INDEX:total_vector_indexes_in_gpu* +
+optional
+a¦ [markdown]
+--
+The total number of segmented vector indexes currently loaded in GPU memory, across all indexed fields.
+
+If there are no indexes in GPU memory, the REST API does not return this statistic.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+a¦ *BUCKET:INDEX:total_vector_indexes_in_cpu* +
+optional
+a¦ [markdown]
+--
+The total number of segmented vector indexes currently loaded in CPU memory, across all indexed fields.
+
+If there are no indexes in CPU memory, the REST API does not return this statistic.
 --
 
 [%hardbreaks]
