@@ -26,7 +26,7 @@ include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
-The Analytics Configuration REST API is provided by the Analytics service.
+The Analytics Configuration REST API is provided by the Analytics Service.
 This API enables you to configure Analytics nodes and clusters.
 
 --
@@ -96,28 +96,16 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-:count-apis: 0
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
-The operations are grouped in the following categories.
-
-[%hardbreaks]
-xref:tag-Default[]
-endif::[]
 
 
-ifeval::[{count-apis} > 0]
-[#tag-Default]
-= Default
-:leveloffset: +1
 
-**{toc-title}**
-endif::[]
+
 
 
 [%hardbreaks]
@@ -176,8 +164,6 @@ include::{specDir}paths/get_node/operation-parameters-before.adoc[opts=optional]
 
 
 
-
-
 include::{specDir}paths/get_node/operation-parameters-after.adoc[opts=optional]
 
 
@@ -204,7 +190,7 @@ a| xref:Node[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html).
 --
 a| Object
 
@@ -214,8 +200,6 @@ include::{specDir}paths/get_node/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 :show-Node:
-
-
 
 
 include::{specDir}paths/get_node/operation-responses-after.adoc[opts=optional]
@@ -247,14 +231,7 @@ include::{specDir}paths/get_node/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_node/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_node/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#get_node-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}get_node/http-response.adoc[opts=optional]
 
@@ -293,7 +270,7 @@ include::{specDir}paths/get_service/operation-description-begin.adoc[opts=option
 
 [markdown]
 --
-Views service-level parameters, which apply to all nodes running the Analytics service.
+Shows service-level parameters, which apply to all nodes running the Analytics Service.
 --
 
 include::{specDir}paths/get_service/operation-description-end.adoc[opts=optional]
@@ -311,8 +288,6 @@ include::{specDir}paths/get_service/operation-description-after.adoc[opts=option
 
 
 include::{specDir}paths/get_service/operation-parameters-before.adoc[opts=optional]
-
-
 
 
 
@@ -342,7 +317,7 @@ a| xref:Service[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html).
 --
 a| Object
 
@@ -352,8 +327,6 @@ include::{specDir}paths/get_service/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 :show-Service:
-
-
 
 
 include::{specDir}paths/get_service/operation-responses-after.adoc[opts=optional]
@@ -385,14 +358,7 @@ include::{specDir}paths/get_service/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}get_service/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_service/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#get_service-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}get_service/http-response.adoc[opts=optional]
 
@@ -497,8 +463,6 @@ include::{specDir}paths/put_node/operation-parameters-end.adoc[opts=optional]
 :show-Node:
 
 
-
-
 include::{specDir}paths/put_node/operation-parameters-after.adoc[opts=optional]
 
 
@@ -532,7 +496,7 @@ a| xref:Errors[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html).
 --
 a| Object
 
@@ -542,8 +506,6 @@ include::{specDir}paths/put_node/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 :show-Errors:
-
-
 
 
 include::{specDir}paths/put_node/operation-responses-after.adoc[opts=optional]
@@ -575,14 +537,7 @@ include::{specDir}paths/put_node/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}put_node/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}put_node/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#put_node-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}put_node/http-response.adoc[opts=optional]
 
@@ -621,7 +576,7 @@ include::{specDir}paths/put_service/operation-description-begin.adoc[opts=option
 
 [markdown]
 --
-Modifies service-level parameters, which apply to all nodes running the Analytics service.
+Modifies service-level parameters, which apply to all nodes running the Analytics Service.
 
 IMPORTANT: For the configuration changes to take effect,
 you must restart the Analytics cluster using the [Cluster Restart API][1].
@@ -685,8 +640,6 @@ include::{specDir}paths/put_service/operation-parameters-end.adoc[opts=optional]
 :show-Service:
 
 
-
-
 include::{specDir}paths/put_service/operation-parameters-after.adoc[opts=optional]
 
 
@@ -720,7 +673,7 @@ a| xref:Errors[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/7.6/analytics/error-codes.html).
 --
 a| Object
 
@@ -730,8 +683,6 @@ include::{specDir}paths/put_service/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 :show-Errors:
-
-
 
 
 include::{specDir}paths/put_service/operation-responses-after.adoc[opts=optional]
@@ -763,14 +714,7 @@ include::{specDir}paths/put_service/operation-security-after.adoc[opts=optional]
 
 include::{snippetDir}put_service/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}put_service/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#put_service-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}put_service/http-response.adoc[opts=optional]
 
@@ -784,9 +728,6 @@ include::{specDir}paths/put_service/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
-:leveloffset: -1
-endif::[]
 
 
 
@@ -802,23 +743,16 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 2
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
-[.two-columns]
-endif::[]
 [%hardbreaks]
 xref:Errors[]
 xref:Node[]
 xref:Service[]
-endif::[]
-
 
 include::{specDir}definitions/Errors/definition-before.adoc[opts=optional]
 
@@ -909,7 +843,7 @@ The default is undefined (null).
 Node-specific JVM arguments are appended to service-level JVM arguments.
 If the same JVM argument appears in both the service-level arguments and the node-specific arguments, the node-specific argument takes priority.
 
-Note that JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
+JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
 To pass arguments opaquely, you may use [Java command-line argument files][3].
 
 [1]: /server/7.6/cli/cbcollect-info-tool.html
@@ -1221,7 +1155,7 @@ a¦ [markdown]
 --
 DCP connection buffer size (in bytes).
 
-If the JVM maximum heap size is less than 8GB, the default for this parameter is 10 MB divided by the number of IO Devices on the node.
+If the JVM maximum heap size is less than 8&nbsp;GB, the default for this parameter is 10 MB divided by the number of IO Devices on the node.
 Otherwise, the default is 1% of the JVM maximum heap size divided by the number of IO Devices on the node.
 --
 
@@ -1279,7 +1213,7 @@ a¦ [markdown]
 JVM arguments to pass to the Analytics Driver.
 The default is undefined (null).
 
-Note that JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
+JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
 To pass arguments opaquely, you may use [Java command-line argument files][3].
 
 [1]: /server/7.6/cli/cbcollect-info-tool.html

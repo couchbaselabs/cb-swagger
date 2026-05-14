@@ -95,30 +95,25 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-:count-apis: 2
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
 The operations are grouped in the following categories.
 
 [%hardbreaks]
 xref:tag-Definition[]
 xref:tag-Query[]
 xref:tag-Quota[]
-endif::[]
 
 
-ifeval::[{count-apis} > 0]
 [#tag-Definition]
 = Definition
 :leveloffset: +1
 
 Operations for Search index partition definition.
-endif::[]
 
 
 [%hardbreaks]
@@ -175,8 +170,6 @@ include::{specDir}paths/getPartition/operation-parameters-before.adoc[opts=optio
 
 
 
-
-
 include::{specDir}paths/getPartition/operation-parameters-after.adoc[opts=optional]
 
 
@@ -206,8 +199,6 @@ include::{specDir}paths/getPartition/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 :show-indexPartition:
-
-
 
 
 include::{specDir}paths/getPartition/operation-responses-after.adoc[opts=optional]
@@ -248,8 +239,6 @@ ifeval::["yes" != ""]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}getPartition/http-response.adoc[opts=optional]
-
 
 [#getPartition-ex-response-200]
 .Response 200
@@ -277,6 +266,22 @@ include::{snippetDir}getPartition/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#getPartition-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}getPartition/http-response.adoc[opts=optional]
 
 include::{specDir}paths/getPartition/operation-end.adoc[opts=optional]
 
@@ -364,8 +369,6 @@ include::{specDir}paths/getPartitionName/operation-parameters-end.adoc[opts=opti
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/getPartitionName/operation-parameters-after.adoc[opts=optional]
 
 
@@ -394,8 +397,6 @@ a|
 include::{specDir}paths/getPartitionName/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
-
-
 
 
 include::{specDir}paths/getPartitionName/operation-responses-after.adoc[opts=optional]
@@ -448,17 +449,12 @@ include::{specDir}paths/getPartitionName/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
 :leveloffset: -1
-endif::[]
-
-ifeval::[{count-apis} > 0]
 [#tag-Query]
 = Query
 :leveloffset: +1
 
 Operations for querying Search index partitions.
-endif::[]
 
 
 [%hardbreaks]
@@ -548,8 +544,6 @@ include::{specDir}paths/getPartitionCount/operation-parameters-end.adoc[opts=opt
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/getPartitionCount/operation-parameters-after.adoc[opts=optional]
 
 
@@ -579,8 +573,6 @@ include::{specDir}paths/getPartitionCount/operation-responses-end.adoc[opts=opti
 
 :leveloffset: -1
 :show-DocumentCount:
-
-
 
 
 include::{specDir}paths/getPartitionCount/operation-responses-after.adoc[opts=optional]
@@ -619,6 +611,22 @@ include::{snippetDir}getPartitionCount/http-request.adoc[opts=optional]
 ifeval::["" != ""]
 [#getPartitionCount-ex-response]
 = Example HTTP Response
+endif::[]
+
+ifeval::["" == ""]
+[#getPartitionCount-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "count" : 0,
+  "status" : "status"
+}
+----
+====
 endif::[]
 
 include::{snippetDir}getPartitionCount/http-response.adoc[opts=optional]
@@ -737,8 +745,6 @@ include::{specDir}paths/queryPartition/operation-parameters-end.adoc[opts=option
 :show-QueryRequest:
 
 
-
-
 include::{specDir}paths/queryPartition/operation-parameters-after.adoc[opts=optional]
 
 
@@ -768,8 +774,6 @@ include::{specDir}paths/queryPartition/operation-responses-end.adoc[opts=optiona
 
 :leveloffset: -1
 :show-QueryResponse:
-
-
 
 
 include::{specDir}paths/queryPartition/operation-responses-after.adoc[opts=optional]
@@ -803,11 +807,54 @@ include::{snippetDir}queryPartition/curl-request.adoc[opts=optional]
 
 
 
+[#queryPartition-ex-request]
+= Example Request Body
+
+
+====
+[source,json]
+----
+{
+  "explain" : true,
+  "query" : "{}",
+  "knn" : [ "{}", "{}" ],
+  "sort" : [ "", "" ],
+  "includeLocations" : true,
+  "facets" : "{}",
+  "highlight" : "{}",
+  "score" : "score",
+  "search_after" : [ "search_after", "search_after" ],
+  "size" : 0,
+  "collections" : [ "collections", "collections" ],
+  "ctl" : "{}",
+  "from" : 6,
+  "fields" : [ "fields", "fields" ],
+  "search_before" : [ "search_before", "search_before" ]
+}
+----
+====
+
 include::{snippetDir}queryPartition/http-request.adoc[opts=optional]
 
 ifeval::["" != ""]
 [#queryPartition-ex-response]
 = Example HTTP Response
+endif::[]
+
+ifeval::["" == ""]
+[#queryPartition-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "results" : [ "{}", "{}" ],
+  "status" : "status"
+}
+----
+====
 endif::[]
 
 include::{snippetDir}queryPartition/http-response.adoc[opts=optional]
@@ -822,17 +869,12 @@ include::{specDir}paths/queryPartition/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
 :leveloffset: -1
-endif::[]
-
-ifeval::[{count-apis} > 0]
 [#tag-Quota]
 = Quota
 :leveloffset: +1
 
 Operations for managing Search memory quota.
-endif::[]
 
 
 [%hardbreaks]
@@ -922,8 +964,6 @@ include::{specDir}paths/setFtsMemoryQuota/operation-parameters-end.adoc[opts=opt
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/setFtsMemoryQuota/operation-parameters-after.adoc[opts=optional]
 
 
@@ -952,8 +992,6 @@ a|
 include::{specDir}paths/setFtsMemoryQuota/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
-
-
 
 
 include::{specDir}paths/setFtsMemoryQuota/operation-responses-after.adoc[opts=optional]
@@ -1006,10 +1044,7 @@ include::{specDir}paths/setFtsMemoryQuota/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
 :leveloffset: -1
-endif::[]
-
 
 
 include::{specDir}paths/document-end.adoc[opts=optional]
@@ -1024,17 +1059,12 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 5
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
-[.two-columns]
-endif::[]
 [%hardbreaks]
 xref:DocumentCount[]
 xref:indexPartition[]
@@ -1042,8 +1072,6 @@ xref:indexPartitionPIndex[]
 xref:indexPartitionPIndexInner[]
 xref:QueryRequest[]
 xref:QueryResponse[]
-endif::[]
-
 
 include::{specDir}definitions/DocumentCount/definition-before.adoc[opts=optional]
 
@@ -1138,7 +1166,7 @@ a¦ *pindexes* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-indexPartitionPIndex, opts=optional]
+An object containing information about 1 or more Search index partitions.
 --
 
 [%hardbreaks]
@@ -1183,12 +1211,6 @@ ifndef::show-indexPartitionPIndex[]
 endif::show-indexPartitionPIndex[]
 = Index Partitions Wrapper
 
-ifdef::model-descriptions[]
-//tag::desc-indexPartitionPIndex[]
-An object containing information about 1 or more Search index partitions.
-//end::desc-indexPartitionPIndex[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/indexPartitionPIndex/definition-begin.adoc[opts=optional]
@@ -1208,7 +1230,8 @@ additional +
 property
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-indexPartitionPIndexInner, opts=optional]
+An object containing information about a single Search index partition.
+The name of the property is the name of the Search index partition.
 --
 
 [%hardbreaks]
@@ -1242,13 +1265,6 @@ ifndef::show-indexPartitionPIndexInner[]
 [discrete#indexPartitionPIndexInner]
 endif::show-indexPartitionPIndexInner[]
 = Index Partition
-
-ifdef::model-descriptions[]
-//tag::desc-indexPartitionPIndexInner[]
-An object containing information about a single Search index partition.
-The name of the property is the name of the Search index partition.
-//end::desc-indexPartitionPIndexInner[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 

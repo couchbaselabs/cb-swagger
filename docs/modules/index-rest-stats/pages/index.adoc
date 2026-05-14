@@ -95,28 +95,16 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-:count-apis: 0
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
-The operations are grouped in the following categories.
-
-[%hardbreaks]
-xref:tag-Default[]
-endif::[]
 
 
-ifeval::[{count-apis} > 0]
-[#tag-Default]
-= Default
-:leveloffset: +1
 
-**{toc-title}**
-endif::[]
+
 
 
 [%hardbreaks]
@@ -284,8 +272,6 @@ include::{specDir}paths/get_index_stats/operation-parameters-end.adoc[opts=optio
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/get_index_stats/operation-parameters-after.adoc[opts=optional]
 
 
@@ -324,8 +310,6 @@ include::{specDir}paths/get_index_stats/operation-responses-end.adoc[opts=option
 :show-PartIdx:
 
 
-
-
 include::{specDir}paths/get_index_stats/operation-responses-after.adoc[opts=optional]
 
 
@@ -355,14 +339,7 @@ include::{specDir}paths/get_index_stats/operation-security-after.adoc[opts=optio
 
 include::{snippetDir}get_index_stats/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_index_stats/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#get_index_stats-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}get_index_stats/http-response.adoc[opts=optional]
 
@@ -509,8 +486,6 @@ include::{specDir}paths/get_keyspace_stats/operation-parameters-end.adoc[opts=op
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/get_keyspace_stats/operation-parameters-after.adoc[opts=optional]
 
 
@@ -549,8 +524,6 @@ include::{specDir}paths/get_keyspace_stats/operation-responses-end.adoc[opts=opt
 :show-PartIdxIndexes:
 
 
-
-
 include::{specDir}paths/get_keyspace_stats/operation-responses-after.adoc[opts=optional]
 
 
@@ -580,14 +553,7 @@ include::{specDir}paths/get_keyspace_stats/operation-security-after.adoc[opts=op
 
 include::{snippetDir}get_keyspace_stats/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_keyspace_stats/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#get_keyspace_stats-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}get_keyspace_stats/http-response.adoc[opts=optional]
 
@@ -706,8 +672,6 @@ include::{specDir}paths/get_node_stats/operation-parameters-end.adoc[opts=option
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/get_node_stats/operation-parameters-after.adoc[opts=optional]
 
 
@@ -737,8 +701,6 @@ include::{specDir}paths/get_node_stats/operation-responses-end.adoc[opts=optiona
 
 :leveloffset: -1
 :show-NodeIdx:
-
-
 
 
 include::{specDir}paths/get_node_stats/operation-responses-after.adoc[opts=optional]
@@ -775,14 +737,7 @@ include::{specDir}paths/get_node_stats/operation-security-after.adoc[opts=option
 
 include::{snippetDir}get_node_stats/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_node_stats/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#get_node_stats-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}get_node_stats/http-response.adoc[opts=optional]
 
@@ -796,9 +751,6 @@ include::{specDir}paths/get_node_stats/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
-:leveloffset: -1
-endif::[]
 
 
 
@@ -814,17 +766,12 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 6
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
-[.two-columns]
-endif::[]
 [%hardbreaks]
 xref:NodeIdx[]
 xref:NodeIdxNode[]
@@ -833,8 +780,6 @@ xref:PartIdx[]
 xref:PartIdxIndexes[]
 xref:PartIdxPartitions[]
 xref:PartIdxPartitionsIndex[]
-endif::[]
-
 
 include::{specDir}definitions/NodeIdx/definition-before.adoc[opts=optional]
 
@@ -863,7 +808,7 @@ include::{specDir}definitions/NodeIdx/definition-begin.adoc[opts=optional]
 a¦ 
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-NodeIdxNode, opts=optional]
+Node statistics.
 --
 
 [%hardbreaks]
@@ -873,7 +818,7 @@ a¦ xref:NodeIdxNode[]
 a¦ and
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-PartIdxIndexes, opts=optional]
+Index statistics.
 --
 
 [%hardbreaks]
@@ -905,12 +850,6 @@ ifndef::show-NodeIdxNode[]
 endif::show-NodeIdxNode[]
 = Nodes
 
-ifdef::model-descriptions[]
-//tag::desc-NodeIdxNode[]
-Node statistics.
-//end::desc-NodeIdxNode[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/NodeIdxNode/definition-begin.adoc[opts=optional]
@@ -929,7 +868,7 @@ a¦ *indexer* +
 required
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-NodeIdxNodeIndexer, opts=optional]
+A nested object containing statistics for the current index node.
 --
 
 [%hardbreaks]
@@ -963,12 +902,6 @@ ifndef::show-NodeIdxNodeIndexer[]
 [discrete#NodeIdxNodeIndexer]
 endif::show-NodeIdxNodeIndexer[]
 = Node
-
-ifdef::model-descriptions[]
-//tag::desc-NodeIdxNodeIndexer[]
-A nested object containing statistics for the current index node.
-//end::desc-NodeIdxNodeIndexer[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -1090,7 +1023,7 @@ include::{specDir}definitions/PartIdx/definition-begin.adoc[opts=optional]
 a¦ 
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-PartIdxIndexes, opts=optional]
+Index statistics.
 --
 
 [%hardbreaks]
@@ -1100,7 +1033,7 @@ a¦ xref:PartIdxIndexes[]
 a¦ and
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-PartIdxPartitions, opts=optional]
+Index partition statistics.
 --
 
 [%hardbreaks]
@@ -1132,12 +1065,6 @@ ifndef::show-PartIdxIndexes[]
 endif::show-PartIdxIndexes[]
 = Indexes
 
-ifdef::model-descriptions[]
-//tag::desc-PartIdxIndexes[]
-Index statistics.
-//end::desc-PartIdxIndexes[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/PartIdxIndexes/definition-begin.adoc[opts=optional]
@@ -1157,7 +1084,7 @@ additional +
 property
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
+A nested object containing statistics for an index or index partition.
 --
 
 [%hardbreaks]
@@ -1192,12 +1119,6 @@ ifndef::show-PartIdxPartitions[]
 endif::show-PartIdxPartitions[]
 = Partitions
 
-ifdef::model-descriptions[]
-//tag::desc-PartIdxPartitions[]
-Index partition statistics.
-//end::desc-PartIdxPartitions[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/PartIdxPartitions/definition-begin.adoc[opts=optional]
@@ -1217,7 +1138,7 @@ additional +
 property
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-PartIdxPartitionsIndex, opts=optional]
+A nested object containing statistics for an index or index partition.
 --
 
 [%hardbreaks]
@@ -1251,12 +1172,6 @@ ifndef::show-PartIdxPartitionsIndex[]
 [discrete#PartIdxPartitionsIndex]
 endif::show-PartIdxPartitionsIndex[]
 = Index
-
-ifdef::model-descriptions[]
-//tag::desc-PartIdxPartitionsIndex[]
-A nested object containing statistics for an index or index partition.
-//end::desc-PartIdxPartitionsIndex[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -1350,7 +1265,7 @@ a¦ *data_size* +
 optional
 a¦ [markdown]
 --
-The size of indexable data that is maintained for the index or partition (bytes).
+The size of indexable data that's maintained for the index or partition (bytes).
 --
 
 [%hardbreaks]
@@ -1426,7 +1341,7 @@ a¦ [markdown]
 Time of the last scan request received for this index (Unix timestamp in nanoseconds).
 This may be useful for determining whether this index is currently unused.
 
-NOTE: This statistic is persisted to disk every 15 minutes, so it is preserved when the indexer restarts.
+This statistic is persisted to disk every 15 minutes, so it's preserved when the indexer restarts.
 
 --
 

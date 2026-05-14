@@ -6,7 +6,7 @@ info:
     name: Business Source License 1.1
     url: https://github.com/couchbaselabs/cb-swagger/blob/release/7.6/licenses/BSL-Couchbase.txt
   description: |
-    The Analytics Service REST API is provided by the Analytics service.
+    The Analytics Service REST API is provided by the Analytics Service.
     This API enables you to run Analytics queries and set request-level parameters.
 
 servers:
@@ -146,7 +146,7 @@ components:
       client_context_id:
         type: string
         description: >
-          An identifier passed by the client that is returned verbatim in the query response.
+          An identifier passed by the client that's returned verbatim in the query response.
           Useful for matching a particular query to a specific caller.
       format:
         type: string
@@ -155,7 +155,7 @@ components:
         description: |
           Desired format for the query results.
           
-          Note that the only possible format is `JSON`.
+          The only possible format is `JSON`.
         enum:
           - JSON
       pretty:
@@ -208,6 +208,7 @@ components:
         description: An array of positional parameter values.
         items: {}
     additionalProperties:
+        x-additionalPropertiesName: $identifier
         description: A named parameter value.
 
   # For the Query Parameters page
@@ -278,8 +279,8 @@ components:
           clientContextID:
             type: string
             description: |-
-              The client context ID of the request, if one was supplied —
-              refer to `client_context_id` in [Query Parameters][1].
+              The client context ID of the request, if supplied.
+              For more information, see `client_context_id` in [Query Parameters][1].
 
               [1]: #Parameters
             x-desc-refs: |-
@@ -319,8 +320,8 @@ components:
               Present only if 1 or more warnings are returned during processing of the request.
               Each warning is represented by an object in this list.
 
-              Note that you can specify the maximum number of warning messages to be returned in the query response —
-              refer to `max-warnings` in [Query Parameters][1].
+              You can specify the maximum number of warning messages to be returned in the query response.
+              For more information, see `max-warnings` in [Query Parameters][1].
               By default, no warnings are returned, even if warnings have occurred during processing.
 
               [1]: #Parameters
@@ -354,7 +355,7 @@ components:
         type: string
         description: >
           A message describing the error in detail.
-          Refer to [Error Codes](/server/7.6/analytics/error-codes.html).
+          For more information, see [Error Codes](/server/7.6/analytics/error-codes.html).
 
   # For the Query Responses page
   ResponsesCommonWarnings:
@@ -399,13 +400,13 @@ components:
       elapsedTime:
         type: string
         description: >
-          The total time taken for the request,
-          that is the time from when the request was received until the results were returned.
+          The total time taken for the request.
+          In other words, the time from when the request was received until the results were returned.
       executionTime:
         type: string
         description: >
-          The time taken for the execution of the request,
-          that is the time from when query execution started until the results were returned.
+          The time taken for the execution of the request.
+          In other words, the time from when query execution started until the results were returned.
       resultCount:
         type: integer
         format: unsigned

@@ -95,28 +95,16 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-:count-apis: 0
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
-The operations are grouped in the following categories.
-
-[%hardbreaks]
-xref:tag-Default[]
-endif::[]
 
 
-ifeval::[{count-apis} > 0]
-[#tag-Default]
-= Default
-:leveloffset: +1
 
-**{toc-title}**
-endif::[]
+
 
 
 [%hardbreaks]
@@ -210,8 +198,6 @@ include::{specDir}paths/api-query/operation-parameters-end.adoc[opts=optional]
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/api-query/operation-parameters-after.adoc[opts=optional]
 
 
@@ -241,8 +227,6 @@ include::{specDir}paths/api-query/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
 :show-ActiveResponse:
-
-
 
 
 include::{specDir}paths/api-query/operation-responses-after.adoc[opts=optional]
@@ -275,20 +259,20 @@ include::{specDir}paths/api-query/operation-security-after.adoc[opts=optional]
 [#api-query-ex-curl]
 = Example HTTP Request
 
-include::{snippetDir}api-query/curl-request.adoc[opts=optional]
-
-====
 [#api-query-ex-curl-0]
 .All
+====
 [source,sh]
 ----
 curl -XGET -H "Content-Type: application/json" \
   -u $USER:$PASSWORD \
   "http://$HOST:8094/api/query"
 ----
+====
 
 [#api-query-ex-curl-1]
 .Filtered
+====
 [source,sh]
 ----
 curl -XGET -H "Content-Type: application/json" \
@@ -297,16 +281,17 @@ curl -XGET -H "Content-Type: application/json" \
 ----
 ====
 
+include::{snippetDir}api-query/curl-request.adoc[opts=optional]
+
 
 
 include::{snippetDir}api-query/http-request.adoc[opts=optional]
 
-ifeval::["yesyes" != ""]
+ifeval::["yes" != ""]
 [#api-query-ex-response]
 = Example HTTP Response
 endif::[]
 
-include::{snippetDir}api-query/http-response.adoc[opts=optional]
 
 [#api-query-ex-response-200]
 .Response 200
@@ -416,6 +401,32 @@ All queries across the cluster running for longer than 7&nbsp;s.
 ----
 ====
 
+ifeval::["yes" == ""]
+[#api-query-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "filteredActiveQueries" : {
+    "indexName" : "indexName",
+    "longerThan" : "longerThan",
+    "queryCount" : 6
+  },
+  "stats" : {
+    "total" : 3,
+    "successful" : 3
+  },
+  "totalActiveQueryCount" : 0,
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}api-query/http-response.adoc[opts=optional]
 
 include::{specDir}paths/api-query/operation-end.adoc[opts=optional]
 
@@ -533,8 +544,6 @@ include::{specDir}paths/api-query-cancel/operation-parameters-end.adoc[opts=opti
 :show-CancelRequest:
 
 
-
-
 include::{specDir}paths/api-query-cancel/operation-parameters-after.adoc[opts=optional]
 
 
@@ -564,8 +573,6 @@ include::{specDir}paths/api-query-cancel/operation-responses-end.adoc[opts=optio
 
 :leveloffset: -1
 :show-CancelResponse:
-
-
 
 
 include::{specDir}paths/api-query-cancel/operation-responses-after.adoc[opts=optional]
@@ -598,8 +605,7 @@ include::{specDir}paths/api-query-cancel/operation-security-after.adoc[opts=opti
 [#api-query-cancel-ex-curl]
 = Example HTTP Request
 
-include::{snippetDir}api-query-cancel/curl-request.adoc[opts=optional]
-
+[#api-query-cancel-ex-curl-0]
 ====
 [source,sh]
 ----
@@ -609,12 +615,11 @@ curl -X POST -H "Content-Type: application/json" -u $USER:$PASSWORD \
 ----
 ====
 
-
+include::{snippetDir}api-query-cancel/curl-request.adoc[opts=optional]
 
 [#api-query-cancel-ex-request]
 = Example Request Body
 
-include::{snippetDir}api-query-cancel/http-request.adoc[opts=optional]
 
 ====
 [source,json]
@@ -625,13 +630,12 @@ include::{snippetDir}api-query-cancel/http-request.adoc[opts=optional]
 ----
 ====
 
+include::{snippetDir}api-query-cancel/http-request.adoc[opts=optional]
 
 ifeval::["yes" != ""]
 [#api-query-cancel-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}api-query-cancel/http-response.adoc[opts=optional]
 
 
 [#api-query-cancel-ex-response-200]
@@ -646,6 +650,23 @@ include::{snippetDir}api-query-cancel/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#api-query-cancel-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "msg" : "msg",
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}api-query-cancel/http-response.adoc[opts=optional]
 
 include::{specDir}paths/api-query-cancel/operation-end.adoc[opts=optional]
 
@@ -760,8 +781,6 @@ include::{specDir}paths/api-query-index/operation-parameters-end.adoc[opts=optio
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/api-query-index/operation-parameters-after.adoc[opts=optional]
 
 
@@ -791,8 +810,6 @@ include::{specDir}paths/api-query-index/operation-responses-end.adoc[opts=option
 
 :leveloffset: -1
 :show-ActiveResponse:
-
-
 
 
 include::{specDir}paths/api-query-index/operation-responses-after.adoc[opts=optional]
@@ -825,8 +842,7 @@ include::{specDir}paths/api-query-index/operation-security-after.adoc[opts=optio
 [#api-query-index-ex-curl]
 = Example HTTP Request
 
-include::{snippetDir}api-query-index/curl-request.adoc[opts=optional]
-
+[#api-query-index-ex-curl-0]
 ====
 [source,sh]
 ----
@@ -836,6 +852,8 @@ curl -XGET -H "Content-Type: application/json" \
 ----
 ====
 
+include::{snippetDir}api-query-index/curl-request.adoc[opts=optional]
+
 
 
 include::{snippetDir}api-query-index/http-request.adoc[opts=optional]
@@ -844,8 +862,6 @@ ifeval::["yes" != ""]
 [#api-query-index-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}api-query-index/http-response.adoc[opts=optional]
 
 
 [#api-query-index-ex-response-200]
@@ -895,6 +911,32 @@ include::{snippetDir}api-query-index/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#api-query-index-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "filteredActiveQueries" : {
+    "indexName" : "indexName",
+    "longerThan" : "longerThan",
+    "queryCount" : 6
+  },
+  "stats" : {
+    "total" : 3,
+    "successful" : 3
+  },
+  "totalActiveQueryCount" : 0,
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}api-query-index/http-response.adoc[opts=optional]
 
 include::{specDir}paths/api-query-index/operation-end.adoc[opts=optional]
 
@@ -906,9 +948,6 @@ include::{specDir}paths/api-query-index/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
-:leveloffset: -1
-endif::[]
 
 
 
@@ -924,17 +963,12 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 7
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
-[.two-columns]
-endif::[]
 [%hardbreaks]
 xref:ActiveResponse[]
 xref:ActiveResponseFilter[]
@@ -944,8 +978,6 @@ xref:ActiveResponseFilterMapItemContext[]
 xref:ActiveResponseStats[]
 xref:CancelRequest[]
 xref:CancelResponse[]
-endif::[]
-
 
 include::{specDir}definitions/ActiveResponse/definition-before.adoc[opts=optional]
 
@@ -987,7 +1019,7 @@ a¦ *stats* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ActiveResponseStats, opts=optional]
+An object containing request statistics.
 --
 
 [%hardbreaks]
@@ -1007,7 +1039,7 @@ a¦ *filteredActiveQueries* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ActiveResponseFilter, opts=optional]
+An object containing details of the filtered active queries.
 --
 
 [%hardbreaks]
@@ -1041,12 +1073,6 @@ ifndef::show-ActiveResponseFilter[]
 [discrete#ActiveResponseFilter]
 endif::show-ActiveResponseFilter[]
 = Filtered Active Queries
-
-ifdef::model-descriptions[]
-//tag::desc-ActiveResponseFilter[]
-An object containing details of the filtered active queries.
-//end::desc-ActiveResponseFilter[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -1098,7 +1124,7 @@ a¦ *queryMap* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ActiveResponseFilterMap, opts=optional]
+Contains 1 or more nested objects, each containing the details of a single active query.
 --
 
 [%hardbreaks]
@@ -1133,12 +1159,6 @@ ifndef::show-ActiveResponseFilterMap[]
 endif::show-ActiveResponseFilterMap[]
 = Query Map
 
-ifdef::model-descriptions[]
-//tag::desc-ActiveResponseFilterMap[]
-Contains 1 or more nested objects, each containing the details of a single active query.
-//end::desc-ActiveResponseFilterMap[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/ActiveResponseFilterMap/definition-begin.adoc[opts=optional]
@@ -1158,7 +1178,8 @@ additional +
 property
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ActiveResponseFilterMapItem, opts=optional]
+The details of a single active query.
+The name of the property is the UUID of the node on which the query is running, and the ID of the query on that node, separated by a hyphen.
 --
 
 [%hardbreaks]
@@ -1193,13 +1214,6 @@ ifndef::show-ActiveResponseFilterMapItem[]
 endif::show-ActiveResponseFilterMapItem[]
 = Query Map Item
 
-ifdef::model-descriptions[]
-//tag::desc-ActiveResponseFilterMapItem[]
-The details of a single active query.
-The name of the property is the UUID of the node on which the query is running, and the ID of the query on that node, separated by a hyphen.
-//end::desc-ActiveResponseFilterMapItem[]
-endif::model-descriptions[]
-
 :leveloffset: +1
 
 include::{specDir}definitions/ActiveResponseFilterMapItem/definition-begin.adoc[opts=optional]
@@ -1218,7 +1232,7 @@ a¦ *QueryContext* +
 optional
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-ActiveResponseFilterMapItemContext, opts=optional]
+The query context.
 --
 
 [%hardbreaks]
@@ -1262,12 +1276,6 @@ ifndef::show-ActiveResponseFilterMapItemContext[]
 [discrete#ActiveResponseFilterMapItemContext]
 endif::show-ActiveResponseFilterMapItemContext[]
 = Query Context
-
-ifdef::model-descriptions[]
-//tag::desc-ActiveResponseFilterMapItemContext[]
-The query context.
-//end::desc-ActiveResponseFilterMapItemContext[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -1365,12 +1373,6 @@ ifndef::show-ActiveResponseStats[]
 [discrete#ActiveResponseStats]
 endif::show-ActiveResponseStats[]
 = Stats
-
-ifdef::model-descriptions[]
-//tag::desc-ActiveResponseStats[]
-An object containing request statistics.
-//end::desc-ActiveResponseStats[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 

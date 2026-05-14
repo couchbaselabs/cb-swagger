@@ -8,7 +8,7 @@ task bundleSpec(type: NpxTask) {
   command = '@redocly/cli'
   args = [
     'bundle',
-    'https://raw.githubusercontent.com/couchbase/cbft/refs/heads/trinity/docs/spec/nodes/nodes.yaml',
+    "${searchNodesSpec}",
     '-o', "attachments/${project.name}.bundle.yaml"]
 }
 
@@ -26,7 +26,7 @@ openApiGenerate {
             headerAttributes: "true",
             useIntroduction: "true",
             useTableTitles: "true",
-            skipExamples: "true",
+            skipExamples: "false",
             legacyDiscriminatorBehavior: "true"
     ]
     globalProperties = [

@@ -95,28 +95,16 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-:count-apis: 0
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
-The operations are grouped in the following categories.
-
-[%hardbreaks]
-xref:tag-Default[]
-endif::[]
 
 
-ifeval::[{count-apis} > 0]
-[#tag-Default]
-= Default
-:leveloffset: +1
 
-**{toc-title}**
-endif::[]
+
 
 
 [%hardbreaks]
@@ -176,8 +164,6 @@ include::{specDir}paths/g-api-nsstats/operation-parameters-before.adoc[opts=opti
 
 
 
-
-
 include::{specDir}paths/g-api-nsstats/operation-parameters-after.adoc[opts=optional]
 
 
@@ -230,8 +216,6 @@ include::{specDir}paths/g-api-nsstats/operation-responses-end.adoc[opts=optional
 :show-allStats:
 
 
-
-
 include::{specDir}paths/g-api-nsstats/operation-responses-after.adoc[opts=optional]
 
 
@@ -269,8 +253,6 @@ ifeval::["yesyes" != ""]
 [#g-api-nsstats-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}g-api-nsstats/http-response.adoc[opts=optional]
 
 
 [#g-api-nsstats-ex-response-200]
@@ -446,7 +428,6 @@ include::{snippetDir}g-api-nsstats/http-response.adoc[opts=optional]
 ====
 
 
-
 [#g-api-nsstats-ex-response-403]
 .Response 403
 ====
@@ -459,6 +440,132 @@ include::{snippetDir}g-api-nsstats/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yesyes" == ""]
+[#g-api-nsstats-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "tot_remote_grpc" : 6,
+  "total_queries_timeout" : 0,
+  "curr_batches_blocked_by_herder" : 5,
+  "pct_used_ram" : 1.4894159098541704,
+  "BUCKET:INDEX:total_queries_timeout" : 6,
+  "BUCKET:INDEX:avg_grpc_internal_queries_latency" : 4,
+  "BUCKET:INDEX:timer_data_delete_count" : 3,
+  "BUCKET:INDEX:total_request_time" : 9,
+  "BUCKET:INDEX:timer_rollback_count" : 7,
+  "BUCKET:INDEX:doc_count" : 3,
+  "num_files_on_disk" : 2,
+  "total_bytes_query_results" : 6,
+  "total_queries_search_in_context_error" : 0,
+  "BUCKET:INDEX:total_term_searchers" : 1,
+  "BUCKET:INDEX:num_mem_merge_ops" : 9,
+  "tot_remote_http2" : 3,
+  "tot_https_limitlisteners_opened" : 2,
+  "BUCKET:INDEX:num_bytes_written_at_index_time" : 6,
+  "avg_queries_latency" : 0.8008281904610115,
+  "total_internal_queries" : 4,
+  "tot_grpc_queryreject_on_memquota" : 8,
+  "BUCKET:INDEX:timer_opaque_set_count" : 5,
+  "BUCKET:INDEX:total_grpc_request_time" : 2,
+  "BUCKET:INDEX:total_queries_error" : 6,
+  "batch_bytes_removed" : 1,
+  "tot_remote_grpc_ssl" : 5,
+  "BUCKET:INDEX:num_persister_nap_pause_completed" : 9,
+  "BUCKET:INDEX:total_term_searchers_finished" : 1,
+  "total_queries_slow" : 9,
+  "BUCKET:INDEX:avg_grpc_queries_latency" : 6,
+  "BUCKET:INDEX:num_root_filesegments" : 5,
+  "tot_remote_grpc_tls" : 6,
+  "total_queries" : 0,
+  "BUCKET:INDEX:total_queries_slow" : 4,
+  "total_request_time" : 5,
+  "num_gocbcore_stats_agents" : 7,
+  "tot_grpcs_listeners_closed" : 9,
+  "total_queries_partial_results_error" : 7,
+  "BUCKET:INDEX:total_vectors" : 3,
+  "BUCKET:INDEX:num_bytes_used_disk_by_root_reclaimable" : 8,
+  "tot_grpc_listeners_closed" : 9,
+  "BUCKET:INDEX:timer_opaque_get_count" : 9,
+  "tot_remote_http_ssl" : 7,
+  "batch_bytes_added" : 6,
+  "total_queries_bad_request_error" : 6,
+  "tot_remote_http" : 3,
+  "BUCKET:INDEX:total_grpc_queries" : 0,
+  "BUCKET:INDEX:total_internal_queries" : 9,
+  "num_bytes_ram_quota" : 2,
+  "BUCKET:INDEX:total_grpc_queries_timeout" : 4,
+  "BUCKET:INDEX:total_queries" : 2,
+  "tot_rollback_partial" : 7,
+  "BUCKET:INDEX:num_persister_nap_merger_break" : 3,
+  "tot_batches_merged" : 1,
+  "total_queries_consistency_error" : 4,
+  "tot_http_limitlisteners_closed" : 3,
+  "total_create_index_internal_server_error" : 4,
+  "tot_http_limitlisteners_opened" : 6,
+  "tot_batches_flushed_on_maxops" : 6,
+  "total_queries_error" : 1,
+  "tot_batches_flushed_on_timer" : 7,
+  "BUCKET:INDEX:timer_batch_store_count" : 7,
+  "pct_cpu_gc" : 1.0246457001441578,
+  "tot_grpcs_listeners_opened" : 6,
+  "BUCKET:INDEX:total_grpc_queries_error" : 0,
+  "total_create_index_bad_request_error" : 0,
+  "tot_bleve_dest_closed" : 5,
+  "BUCKET:INDEX:num_pindexes_actual" : 8,
+  "BUCKET:INDEX:total_compaction_written_bytes" : 8,
+  "tot_https_limitlisteners_closed" : 1,
+  "BUCKET:INDEX:num_root_memorysegments" : 8,
+  "BUCKET:INDEX:total_bytes_indexed" : 2,
+  "BUCKET:INDEX:avg_queries_latency" : 4,
+  "total_delete_index_internal_server_error" : 3,
+  "total_queries_max_result_window_exceeded_error" : 4,
+  "num_bytes_used_disk" : 7,
+  "num_gocbcore_dcp_agents" : 4,
+  "total_queries_validation_error" : 7,
+  "BUCKET:INDEX:num_mutations_to_index" : 1,
+  "tot_queryreject_on_memquota" : 6,
+  "total_delete_index_request_ok" : 5,
+  "total_delete_index_request" : 7,
+  "BUCKET:INDEX:tot_seq_received" : 3,
+  "BUCKET:INDEX:num_bytes_used_disk_by_root" : 1,
+  "BUCKET:INDEX:num_files_on_disk" : 8,
+  "tot_batches_new" : 4,
+  "total_create_index_request_ok" : 7,
+  "BUCKET:INDEX:avg_internal_queries_latency" : 8,
+  "BUCKET:INDEX:num_file_merge_ops" : 4,
+  "BUCKET:INDEX:total_knn_searches" : 0,
+  "tot_bleve_dest_opened" : 9,
+  "BUCKET:INDEX:num_bytes_read_at_query_time" : 0,
+  "num_knn_search_requests" : 1,
+  "BUCKET:INDEX:num_bytes_used_disk" : 2,
+  "total_gc" : 3,
+  "BUCKET:INDEX:timer_snapshot_start_count" : 0,
+  "num_bytes_used_ram" : 9,
+  "num_batches_introduced" : 5,
+  "BUCKET:INDEX:timer_data_update_count" : 3,
+  "total_queries_rejected_by_herder" : 9,
+  "num_bytes_used_ram_c" : 3,
+  "tot_grpc_listeners_opened" : 6,
+  "tot_rollback_full" : 0,
+  "BUCKET:INDEX:num_recs_to_persist" : 5,
+  "BUCKET:INDEX:last_access_time" : "2000-01-23T04:56:07.000+00:00",
+  "BUCKET:INDEX:total_grpc_queries_slow" : 7,
+  "BUCKET:INDEX:num_pindexes_target" : 0,
+  "total_delete_index_bad_request_error" : 3,
+  "BUCKET:INDEX:total_bytes_query_results" : 3,
+  "total_create_index_request" : 8,
+  "BUCKET:INDEX:total_grpc_internal_queries" : 4
+}
+----
+====
+endif::[]
+
+include::{snippetDir}g-api-nsstats/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-nsstats/operation-end.adoc[opts=optional]
 
@@ -558,8 +665,6 @@ include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-end.adoc[o
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/g-api-nsstats-index-name/operation-parameters-after.adoc[opts=optional]
 
 
@@ -589,8 +694,6 @@ include::{specDir}paths/g-api-nsstats-index-name/operation-responses-end.adoc[op
 
 :leveloffset: -1
 :show-indexStats:
-
-
 
 
 include::{specDir}paths/g-api-nsstats-index-name/operation-responses-after.adoc[opts=optional]
@@ -630,8 +733,6 @@ ifeval::["yes" != ""]
 [#g-api-nsstats-index-name-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}g-api-nsstats-index-name/http-response.adoc[opts=optional]
 
 
 [#g-api-nsstats-index-name-ex-response-200]
@@ -699,6 +800,70 @@ include::{snippetDir}g-api-nsstats-index-name/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yes" == ""]
+[#g-api-nsstats-index-name-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "BUCKET:INDEX:total_queries_timeout" : 7,
+  "BUCKET:INDEX:avg_grpc_internal_queries_latency" : 0,
+  "BUCKET:INDEX:timer_data_delete_count" : 6,
+  "BUCKET:INDEX:timer_batch_store_count" : 9,
+  "BUCKET:INDEX:total_request_time" : 3,
+  "BUCKET:INDEX:timer_rollback_count" : 3,
+  "BUCKET:INDEX:doc_count" : 5,
+  "BUCKET:INDEX:total_term_searchers" : 3,
+  "BUCKET:INDEX:num_mem_merge_ops" : 1,
+  "BUCKET:INDEX:total_grpc_queries_error" : 3,
+  "BUCKET:INDEX:num_bytes_written_at_index_time" : 2,
+  "BUCKET:INDEX:timer_opaque_set_count" : 6,
+  "BUCKET:INDEX:total_grpc_request_time" : 0,
+  "BUCKET:INDEX:num_pindexes_actual" : 7,
+  "BUCKET:INDEX:total_queries_error" : 4,
+  "BUCKET:INDEX:total_compaction_written_bytes" : 6,
+  "BUCKET:INDEX:num_root_memorysegments" : 9,
+  "BUCKET:INDEX:total_bytes_indexed" : 2,
+  "BUCKET:INDEX:avg_queries_latency" : 5,
+  "BUCKET:INDEX:num_persister_nap_pause_completed" : 6,
+  "BUCKET:INDEX:total_term_searchers_finished" : 7,
+  "BUCKET:INDEX:avg_grpc_queries_latency" : 6,
+  "BUCKET:INDEX:num_root_filesegments" : 5,
+  "BUCKET:INDEX:total_queries_slow" : 8,
+  "BUCKET:INDEX:num_mutations_to_index" : 1,
+  "BUCKET:INDEX:total_vectors" : 5,
+  "BUCKET:INDEX:num_bytes_used_disk_by_root_reclaimable" : 3,
+  "BUCKET:INDEX:tot_seq_received" : 1,
+  "BUCKET:INDEX:num_bytes_used_disk_by_root" : 9,
+  "BUCKET:INDEX:timer_opaque_get_count" : 9,
+  "BUCKET:INDEX:num_files_on_disk" : 7,
+  "BUCKET:INDEX:avg_internal_queries_latency" : 1,
+  "BUCKET:INDEX:num_file_merge_ops" : 4,
+  "BUCKET:INDEX:total_knn_searches" : 6,
+  "BUCKET:INDEX:num_bytes_read_at_query_time" : 2,
+  "BUCKET:INDEX:num_bytes_used_disk" : 7,
+  "BUCKET:INDEX:timer_snapshot_start_count" : 6,
+  "BUCKET:INDEX:timer_data_update_count" : 8,
+  "BUCKET:INDEX:total_grpc_queries" : 6,
+  "BUCKET:INDEX:total_internal_queries" : 7,
+  "BUCKET:INDEX:total_grpc_queries_timeout" : 7,
+  "BUCKET:INDEX:total_queries" : 0,
+  "BUCKET:INDEX:num_recs_to_persist" : 4,
+  "BUCKET:INDEX:last_access_time" : "2000-01-23T04:56:07.000+00:00",
+  "BUCKET:INDEX:total_grpc_queries_slow" : 3,
+  "BUCKET:INDEX:num_persister_nap_merger_break" : 1,
+  "BUCKET:INDEX:num_pindexes_target" : 1,
+  "BUCKET:INDEX:total_bytes_query_results" : 6,
+  "BUCKET:INDEX:total_grpc_internal_queries" : 5
+}
+----
+====
+endif::[]
+
+include::{snippetDir}g-api-nsstats-index-name/http-response.adoc[opts=optional]
 
 include::{specDir}paths/g-api-nsstats-index-name/operation-end.adoc[opts=optional]
 
@@ -710,9 +875,6 @@ include::{specDir}paths/g-api-nsstats-index-name/operation-after.adoc[opts=optio
 
 
 
-ifeval::[{count-apis} > 0]
-:leveloffset: -1
-endif::[]
 
 
 
@@ -728,23 +890,16 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 2
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
-[.two-columns]
-endif::[]
 [%hardbreaks]
 xref:allStats[]
 xref:clusterStats[]
 xref:indexStats[]
-endif::[]
-
 
 include::{specDir}definitions/allStats/definition-before.adoc[opts=optional]
 
@@ -773,7 +928,7 @@ include::{specDir}definitions/allStats/definition-begin.adoc[opts=optional]
 a¦ 
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-clusterStats, opts=optional]
+Statistics for the entire cluster.
 --
 
 [%hardbreaks]
@@ -783,7 +938,7 @@ a¦ xref:clusterStats[]
 a¦ and
 a¦ [markdown]
 --
-include::index.adoc[tag=desc-indexStats, opts=optional]
+Statistics for a single Search index.
 --
 
 [%hardbreaks]
@@ -814,12 +969,6 @@ ifndef::show-clusterStats[]
 [discrete#clusterStats]
 endif::show-clusterStats[]
 = Cluster Statistics
-
-ifdef::model-descriptions[]
-//tag::desc-clusterStats[]
-Statistics for the entire cluster.
-//end::desc-clusterStats[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 
@@ -1598,12 +1747,6 @@ ifndef::show-indexStats[]
 [discrete#indexStats]
 endif::show-indexStats[]
 = Index Statistics
-
-ifdef::model-descriptions[]
-//tag::desc-indexStats[]
-Statistics for a single Search index.
-//end::desc-indexStats[]
-endif::model-descriptions[]
 
 :leveloffset: +1
 

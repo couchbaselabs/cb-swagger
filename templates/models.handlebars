@@ -3,47 +3,43 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-{{#each models ~}}
-{{#with model ~}}
-{{#unless isEnum ~}}
-{{#if @last ~}}
-:count-models: {{@index}}
-{{~/if}}
-{{~/unless}}
-{{~/with}}
-{{~/each}}
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
-[.two-columns]
-endif::[]
-[%hardbreaks]
 {{#each models ~}}
 {{#with model ~}}
-{{#if isEnum ~}}
-ifdef::enum-definitions[]
-xref:{{name}}[]
-endif::enum-definitions[]
-{{~else ~}}
-xref:{{name}}[]
+{{#unless isEnum ~}}
+{{#if @last ~}}
+{{#gt @index 8 ~}}
+[.two-columns]
+{{/gt}}
 {{~/if}}
+{{~/unless}}
 {{~/with}}
-{{/each ~}}
-endif::[]
+{{~/each ~}}
+{{#each models ~}}
+{{#with model ~}}
+{{#unless (and @first @last) ~}}
+{{#if @first ~}}
+[%hardbreaks]
+{{/if ~}}
+{{#unless isEnum ~}}{{! TODO: enumDefinitions ~}}
+xref:{{name}}[]
+{{/unless}}
+{{~/unless}}
+{{~/with}}
+{{~/each ~}}
 
 {{! *** DEFINITION *** }}
 {{#each models ~}}
 {{#with model ~}}
 include::{specDir}definitions/{{name}}/definition-before.adoc[opts=optional]
+{{! omit enums from model list. }}
+{{#unless isEnum ~}}{{! TODO: enumDefinitions ~}}
 
-{{#if isEnum ~}}
-ifdef::enum-definitions[]{{! omit enums from model list. Probably going to regret this }}
-{{/if~}}
 ifdef::show-{{name}}[]
 [#{{name}}]
 endif::show-{{name}}[]
@@ -54,14 +50,11 @@ ifndef::show-{{name}}[]
 endif::show-{{name}}[]
 = {{#with title}}{{this}}{{else}}{{classname}}{{/with}}
 
+{{#if modelDescriptions ~}}
 {{#with description ~}}
-ifdef::model-descriptions[]
-//tag::desc-{{name}}[]
 {{{unescapedDescription}}}
-//end::desc-{{name}}[]
-endif::model-descriptions[]
-
-{{/with~}}
+{{/with}}
+{{/if ~}}
 
 :leveloffset: +1
 
@@ -123,9 +116,7 @@ a¦ {{>schemas}}
 
 {{>property}}
 .Schema
-//tag::type-{{name}}[]
 {{>schemas}}
-//end::type-{{name}}[]
 {{~else if isString ~}}
 .icon:quote-left[fw] String
 {blank}
@@ -135,12 +126,23 @@ a¦ {{>schemas}}
 .icon:brackets[fw] Array
 {blank}
 
-{{>property}}
+//tag::{{name}}[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Item ¦ ¦ Schema
 
 {{#with items ~}}
-.Schema
-{{>schema}} array
-{{~/with}}
+a¦ {{#with vendorExtensions.x-desc-name}}[#{{this}}]
+{{/with ~}}
+...
+a¦ {{>property}}
+a¦ {{>schemas}}
+{{/with}}
+|===
+
+//end::{{name}}[]
+
 {{~/if}}{{! hasVars }}
 {{~/with}}{{! composedSchemas }}
 
@@ -152,10 +154,7 @@ ifndef::show-{{name}}[]
 :leveloffset: -1
 endif::show-{{name}}[]
 
-{{#if isEnum ~}}
-endif::enum-definitions[]
-
-{{/if~}}
+{{/unless ~}}{{! isEnum ~}}
 
 include::{specDir}definitions/{{name}}/definition-after.adoc[opts=optional]
 {{/with}}{{! model }}

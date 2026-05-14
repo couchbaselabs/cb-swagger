@@ -26,7 +26,7 @@ include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
-The Analytics Settings REST API is provided by the Analytics service.
+The Analytics Settings REST API is provided by the Analytics Service.
 This API enables you to view or set cluster-level Analytics settings.
 
 --
@@ -75,7 +75,7 @@ The host name or IP address of a node running the Analytics Service.
 a| *port*
 a| [markdown]
 --
-The Cluster administration REST port. Use `18091` for secure access.  Note that the port numbers for this REST API are different to the port numbers used by the other Analytics REST APIs.
+The Cluster administration REST port. Use `18091` for secure access.  The port numbers for this REST API are different to the port numbers used by the other Analytics REST APIs.
 --
 
 [%hardbreaks]
@@ -96,28 +96,16 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-:count-apis: 0
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
-The operations are grouped in the following categories.
-
-[%hardbreaks]
-xref:tag-Default[]
-endif::[]
 
 
-ifeval::[{count-apis} > 0]
-[#tag-Default]
-= Default
-:leveloffset: +1
 
-**{toc-title}**
-endif::[]
+
 
 
 [%hardbreaks]
@@ -153,7 +141,7 @@ include::{specDir}paths/get_settings/operation-description-begin.adoc[opts=optio
 
 [markdown]
 --
-Retrieves cluster-level Analytics settings. Note that only one setting is available: `numReplicas`.
+Retrieves cluster-level Analytics settings. Only one setting is available: `numReplicas`.
 
 --
 
@@ -172,8 +160,6 @@ include::{specDir}paths/get_settings/operation-description-after.adoc[opts=optio
 
 
 include::{specDir}paths/get_settings/operation-parameters-before.adoc[opts=optional]
-
-
 
 
 
@@ -215,8 +201,6 @@ include::{specDir}paths/get_settings/operation-responses-end.adoc[opts=optional]
 :show-Settings:
 
 
-
-
 include::{specDir}paths/get_settings/operation-responses-after.adoc[opts=optional]
 
 
@@ -246,14 +230,7 @@ include::{specDir}paths/get_settings/operation-security-after.adoc[opts=optional
 
 include::{snippetDir}get_settings/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}get_settings/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#get_settings-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}get_settings/http-response.adoc[opts=optional]
 
@@ -292,7 +269,7 @@ include::{specDir}paths/post_settings/operation-description-begin.adoc[opts=opti
 
 [markdown]
 --
-Sets cluster-level Analytics settings. Note that only one setting is available: `numReplicas`.
+Sets cluster-level Analytics settings. Only one setting is available: `numReplicas`.
 
 --
 
@@ -353,8 +330,6 @@ include::{specDir}paths/post_settings/operation-parameters-end.adoc[opts=optiona
 :leveloffset: -1
 
 
-
-
 include::{specDir}paths/post_settings/operation-parameters-after.adoc[opts=optional]
 
 
@@ -400,8 +375,6 @@ include::{specDir}paths/post_settings/operation-responses-end.adoc[opts=optional
 :show-Settings:
 
 
-
-
 include::{specDir}paths/post_settings/operation-responses-after.adoc[opts=optional]
 
 
@@ -431,14 +404,7 @@ include::{specDir}paths/post_settings/operation-security-after.adoc[opts=optiona
 
 include::{snippetDir}post_settings/curl-request.adoc[opts=optional]
 
-
-
 include::{snippetDir}post_settings/http-request.adoc[opts=optional]
-
-ifeval::["" != ""]
-[#post_settings-ex-response]
-= Example HTTP Response
-endif::[]
 
 include::{snippetDir}post_settings/http-response.adoc[opts=optional]
 
@@ -452,9 +418,6 @@ include::{specDir}paths/post_settings/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
-:leveloffset: -1
-endif::[]
 
 
 
@@ -470,20 +433,11 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 0
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
-
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
-[.two-columns]
-endif::[]
-[%hardbreaks]
-xref:Settings[]
-endif::[]
 
 
 include::{specDir}definitions/Settings/definition-before.adoc[opts=optional]

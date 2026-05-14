@@ -95,28 +95,16 @@ include::{specDir}paths/document-before.adoc[opts=optional]
 [[resources]]
 = Resources
 
-:count-apis: 0
 :leveloffset: +1
 
 include::{specDir}paths/document-begin.adoc[opts=optional]
 
 
 This section describes the operations available with this REST API.
-ifeval::[{count-apis} > 0]
-The operations are grouped in the following categories.
-
-[%hardbreaks]
-xref:tag-Default[]
-endif::[]
 
 
-ifeval::[{count-apis} > 0]
-[#tag-Default]
-= Default
-:leveloffset: +1
 
-**{toc-title}**
-endif::[]
+
 
 
 [%hardbreaks]
@@ -210,8 +198,6 @@ include::{specDir}paths/put_options/operation-parameters-end.adoc[opts=optional]
 :show-Options:
 
 
-
-
 include::{specDir}paths/put_options/operation-parameters-after.adoc[opts=optional]
 
 
@@ -267,8 +253,6 @@ include::{specDir}paths/put_options/operation-responses-end.adoc[opts=optional]
 :show-Response:
 
 
-
-
 include::{specDir}paths/put_options/operation-responses-after.adoc[opts=optional]
 
 
@@ -299,11 +283,9 @@ include::{specDir}paths/put_options/operation-security-after.adoc[opts=optional]
 [#put_options-ex-curl]
 = Example HTTP Request
 
-include::{snippetDir}put_options/curl-request.adoc[opts=optional]
-
-====
 [#put_options-ex-curl-0]
 .Disable
+====
 [source,sh]
 ----
 curl -X PUT http://$HOST:8094/api/managerOptions \
@@ -311,9 +293,11 @@ curl -X PUT http://$HOST:8094/api/managerOptions \
 -H "Content-type:application/json" \
 -d '{"disableFileTransferRebalance": "true" }'
 ----
+====
 
 [#put_options-ex-curl-1]
 .Enable
+====
 [source,sh]
 ----
 curl -X PUT http://$HOST:8094/api/managerOptions \
@@ -323,7 +307,22 @@ curl -X PUT http://$HOST:8094/api/managerOptions \
 ----
 ====
 
+include::{snippetDir}put_options/curl-request.adoc[opts=optional]
 
+
+
+[#put_options-ex-request]
+= Example Request Body
+
+
+====
+[source,json]
+----
+{
+  "disableFileTransferRebalance" : false
+}
+----
+====
 
 include::{snippetDir}put_options/http-request.adoc[opts=optional]
 
@@ -331,8 +330,6 @@ ifeval::["yesyes" != ""]
 [#put_options-ex-response]
 = Example HTTP Response
 endif::[]
-
-include::{snippetDir}put_options/http-response.adoc[opts=optional]
 
 
 [#put_options-ex-response-200]
@@ -347,7 +344,6 @@ include::{snippetDir}put_options/http-response.adoc[opts=optional]
 ====
 
 
-
 [#put_options-ex-response-405]
 .Response 405
 ====
@@ -360,6 +356,56 @@ include::{snippetDir}put_options/http-response.adoc[opts=optional]
 ----
 ====
 
+ifeval::["yesyes" == ""]
+[#put_options-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "error" : "error",
+  "status" : "status"
+}
+----
+====
+
+.Response 401
+====
+[source,json]
+----
+{
+  "error" : "error",
+  "status" : "status"
+}
+----
+====
+
+.Response 404
+====
+[source,json]
+----
+{
+  "error" : "error",
+  "status" : "status"
+}
+----
+====
+
+.Response 405
+====
+[source,json]
+----
+{
+  "error" : "error",
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}put_options/http-response.adoc[opts=optional]
 
 include::{specDir}paths/put_options/operation-end.adoc[opts=optional]
 
@@ -371,9 +417,6 @@ include::{specDir}paths/put_options/operation-after.adoc[opts=optional]
 
 
 
-ifeval::[{count-apis} > 0]
-:leveloffset: -1
-endif::[]
 
 
 
@@ -389,22 +432,15 @@ include::{specDir}definitions/document-before.adoc[opts=optional]
 [#models]
 = Definitions
 
-:count-models: 1
 :leveloffset: +1
 
 include::{specDir}definitions/document-begin.adoc[opts=optional]
 
 This section describes the properties consumed and returned by this REST API.
 
-ifeval::[{count-models} > 0]
-ifeval::[{count-models} > 8]
-[.two-columns]
-endif::[]
 [%hardbreaks]
 xref:Options[]
 xref:Response[]
-endif::[]
-
 
 include::{specDir}definitions/Options/definition-before.adoc[opts=optional]
 
