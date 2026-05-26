@@ -338,6 +338,10 @@ include::{snippetDir}{{operationIdOriginal}}/curl-request.adoc[opts=optional]
 {{#if @last}}{{#if @index}}{{> curlTitle}}
 {{/if}}{{else}}{{> curlTitle}}
 {{/if ~}}
+{{#with description~}}
+{{{this}}}
+
+{{/with~}}
 [source,sh]
 ----
 {{{source}}}
