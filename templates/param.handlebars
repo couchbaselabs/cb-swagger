@@ -1,3 +1,23 @@
+{{#*inline "paramDescription" ~}}
+{{#with unescapedDescription ~}}
+{{{this}}}
+{{~ else with description ~}}
+{{{this}}}
+{{~/with}}
+{{~/inline ~}}
+
+{{#*inline "enumDescription" ~}}
+{{#with @root ~}}
+{{#each models ~}}
+{{#with model ~}}
+{{#if (eq name currentType) ~}}
+{{>paramDescription ~}}
+{{~/if}}
+{{~/with}}
+{{~/each}}
+{{~/with}}
+{{~/inline ~}}
+
 a¦ *{{#if isBodyParam}}Body{{else}}{{baseName}}{{/if}}* +
 {{#if required}}required{{else}}optional{{/if}}
 a¦ {{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{#unless vendorExtensions.x-desc-status}}
@@ -8,14 +28,11 @@ a¦ {{#with vendorExtensions.x-desc-edition}}[.edition]##{{this}}##{{#unless ven
 {{/with~}}
 [markdown]
 --
-{{#with unescapedDescription ~}}
-{{{this}}}
-{{~ else with description ~}}
-{{{this}}}
-{{~/with ~}}
-{{~#if isEnumRef ~}}
-include::index.adoc[tag=desc-{{dataType}}, opts=optional]{{! if this is an enum reference, fetch remote description}}
-{{~/if}}
+{{#if isEnumRef ~}}
+{{>enumDescription currentType=dataType}}
+{{~else ~}}
+{{>paramDescription}}
+{{~/if}}{{! isEnumRef }}
 --
 
 [%hardbreaks]

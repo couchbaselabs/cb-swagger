@@ -17,15 +17,18 @@
     },
     {
       "description": "Remove `Credentials` schema",
-      "target": "components.schemas.Credentials",
+      "target": "components.schemas.RequestCredentials",
+      "remove": true
+    },
+    {
+      "description": "Remove authentication request example",
+      "target": "paths.\"/query/service\".post.requestBody.content.\"application/json\".examples.authrequest",
       "remove": true
     },
     {
       "description": "Remove badge from `use_fts` parameter",
-      "target": "components.schemas.Request.properties.use_fts",
-      "update": {
-        "x-desc-edition": false
-      }
+      "target": "components.schemas.Request.properties.use_fts.\"x-desc-edition\"",
+      "remove": true
     }
   ]
 }

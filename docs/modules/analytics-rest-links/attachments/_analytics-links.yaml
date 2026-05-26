@@ -6,7 +6,7 @@ info:
     name: Business Source License 1.1
     url: https://github.com/couchbaselabs/cb-swagger/blob/capella/licenses/BSL-Couchbase.txt
   description: |-
-    The Analytics Links REST API is provided by the Analytics service.
+    The Analytics Links REST API is provided by the Analytics Service.
     This API enables you to manage the links to remote Couchbase clusters and external data sources.
 
 servers:
@@ -99,8 +99,8 @@ paths:
             With this parameter, the scope name may only contain a single identifier.
 
 
-            This parameter is provided for backward compatibility.
-            Note that it is deprecated, and will be removed in a future release.
+            This parameter is deprecated, and will be removed in a future release.
+            It's provided for backward compatibility.
         - name: name
           schema:
             type: string
@@ -112,8 +112,8 @@ paths:
             If specified, the `dataverse` parameter must be specified also.
 
 
-            This parameter is provided for backward compatibility.
-            Note that it is deprecated, and will be removed in a future release.
+            This parameter is deprecated, and will be removed in a future release.
+            It's provided for backward compatibility.
         - $ref: "#/components/parameters/CommonTypeQuery"
       security:
         - AnalyticsManage: []
@@ -1019,12 +1019,12 @@ components:
                   properties:
                     cbas:
                       type: integer
-                      description: The port number for a connection to the Analytics service.
+                      description: The port number for a connection to the Analytics Service.
                       x-has-example: true
                       example: 8095
                     cbasSSL:
                       type: integer
-                      description: The port number for an encrypted connection to the Analytics service.
+                      description: The port number for an encrypted connection to the Analytics Service.
                       x-has-example: true
                       example: 18095
                     kv:

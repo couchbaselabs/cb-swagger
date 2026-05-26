@@ -9,7 +9,7 @@ task bundleSpec(type: NpxTask) {
   command = '@redocly/cli'
   args = [
     'bundle',
-    'https://raw.githubusercontent.com/couchbase/query/refs/heads/morpheus/docs/spec/service/service.yaml',
+    "${queryServiceSpec}",
     '-o', "build/${project.name}.bundle.yaml"]
 }
 
@@ -39,7 +39,7 @@ openApiGenerate {
             headerAttributes: "true",
             useIntroduction: "true",
             useTableTitles: "true",
-            skipExamples: "true",
+            skipExamples: "false",
             legacyDiscriminatorBehavior: "true"
     ]
     globalProperties = [

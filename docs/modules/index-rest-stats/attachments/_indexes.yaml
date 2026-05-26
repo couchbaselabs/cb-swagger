@@ -262,7 +262,7 @@ components:
         description: Accesses to this index data from disk.
       data_size:
         type: integer
-        description: The size of indexable data that is maintained for the index or partition (bytes).
+        description: The size of indexable data that's maintained for the index or partition (bytes).
         x-has-example: true
         example: 95728
       disk_size:
@@ -302,7 +302,7 @@ components:
           Time of the last scan request received for this index (Unix timestamp in nanoseconds).
           This may be useful for determining whether this index is currently unused.
 
-          NOTE: This statistic is persisted to disk every 15 minutes, so it is preserved when the indexer restarts.
+          This statistic is persisted to disk every 15 minutes, so it's preserved when the indexer restarts.
       num_docs_indexed:
         type: integer
         description: Number of documents indexed by the indexer since last startup.
