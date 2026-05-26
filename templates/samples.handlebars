@@ -1,0 +1,27 @@
+{{#unless skipExamples ~}}
+{{#if vendorExtensions.x-codeSamples ~}}
+[#{{operationIdOriginal}}-ex-curl]
+= Example HTTP Request
+{{! example HTTP request heading}}
+{{/if~}}
+
+{{#each vendorExtensions.x-codeSamples ~}}
+[#{{operationIdOriginal}}-ex-curl-{{@index}}]
+{{#with label ~}}
+.{{{this}}}
+{{else unless (and @first @last) ~}}
+.curl request {{@index}}
+{{/with ~}}
+====
+{{#with description~}}
+{{{this}}}
+
+{{/with~}}
+[source,sh]
+----
+{{{source}}}
+----
+====
+
+{{/each}}{{! vendorExtensions.x-codeSamples }}
+{{~/unless ~}}

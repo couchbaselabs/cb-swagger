@@ -1,3 +1,13 @@
+{{#*inline "toc" ~}}
+{{#with ref ~}}
+:show-{{dataType}}:
+{{else if isModel ~}}
+:show-{{dataType}}:
+{{else if isMap ~}}
+:show-{{dataType}}:
+{{/with ~}}
+{{~/inline ~}}
+
 {{#unless isEnumRef ~}}
 {{#if isArray ~}}
 {{#with items}}{{>toc}}{{/with}}

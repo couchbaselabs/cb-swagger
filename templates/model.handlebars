@@ -31,13 +31,11 @@ a¦ {{>schemas}}
 {{! Polymorphism}}
 {{~#if hasDiscriminatorWithNonEmptyMapping ~}}
 This schema has alternative properties, depending on the value of *{{discriminatorName}}*:
-{{#with discriminator ~}}
-
+{{#with discriminator}}
 [cols="25,55,20"]
 |===
 | Value | | Schema
-{{#each mappedModels ~}}
-
+{{#each mappedModels}}
 a| `{{mappingName}}`
 a| {{{model.unescapedDescription}}}
 a| xref:{{modelName}}[]

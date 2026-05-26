@@ -6,7 +6,7 @@ info:
     name: Business Source License 1.1
     url: https://github.com/couchbaselabs/cb-swagger/blob/release/8.0/licenses/BSL-Couchbase.txt
   description: |
-    The Analytics Settings REST API is provided by the Analytics service.
+    The Analytics Settings REST API is provided by the Analytics Service.
     This API enables you to view or set cluster-level Analytics settings.
 
 servers:
@@ -30,7 +30,7 @@ servers:
           The Cluster administration REST port.
           Use `18091` for secure access.
 
-          Note that the port numbers for this REST API are different to the port numbers used by the other Analytics REST APIs.
+          The port numbers for this REST API are different to the port numbers used by the other Analytics REST APIs.
         enum:
           - "8091"
           - "18091"
@@ -42,7 +42,7 @@ paths:
       summary: View Analytics Settings
       description: >
         Retrieves cluster-level Analytics settings.
-        Note that only one setting is available: `numReplicas`.
+        Only one setting is available: `numReplicas`.
       security:
         - ClusterReadPoolsRead: []
       responses:
@@ -55,7 +55,7 @@ paths:
       summary: Modify Analytics Settings
       description: >
         Sets cluster-level Analytics settings.
-        Note that only one setting is available: `numReplicas`.
+        Only one setting is available: `numReplicas`.
       requestBody:
         content:
           application/x-www-form-urlencoded:

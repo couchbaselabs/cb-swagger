@@ -1,7 +1,39 @@
-{{#if isEnumRef}}
-include::index.adoc[tag=type-{{dataType}}, opts=optional]
-{{~else if isArray ~}}
+{{#*inline "enumType" ~}}
+{{#with @root ~}}
+{{#each models ~}}
+{{#with model ~}}
+{{#eq name currentType ~}}
+{{>paramType ~}}
+{{~/eq}}
+{{~/with}}
+{{~/each}}
+{{~/with}}
+{{~/inline ~}}
+
+{{#*inline "paramType" ~}}
+{{#if isArray ~}}
 {{#with items}}{{>schema}}{{/with}} array
 {{~else ~}}
 {{>schema}}
+{{~/if}}
+{{~/inline ~}}
+
+{{#*inline "schema" ~}}
+{{#with ref ~}}
+xref:{{dataType}}[]
+{{~else if isModel ~}}
+xref:{{dataType}}[]
+{{~else if isMap ~}}
+xref:{{dataType}}[]
+{{~else if isAnyType ~}}
+Any Type
+{{~else ~}}
+{{#with dataType}}{{#capitalize}}{{this}}{{/capitalize}}{{/with}}{{#with dataFormat}} ({{{this}}}){{/with}}
+{{~/with}}
+{{~/inline ~}}
+
+{{#if isEnumRef ~}}
+{{>enumType currentType=dataType}}
+{{~else ~}}
+{{>paramType}}
 {{~/if}}
