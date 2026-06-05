@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Couchbase Search Index Management and Monitoring API
   description: |-
-    The Search Indexing REST API is provided by the Search service.
+    The Search Indexing REST API is provided by the Search Service.
     This API enables you to manage and monitor your Search indexes.
   version: '7.6'
 servers:
@@ -292,6 +292,56 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/IndexDefinition'
+            example:
+              type: fulltext-index
+              name: landmark-content-index
+              sourceType: gocbcore
+              sourceName: travel-sample
+              planParams:
+                maxPartitionsPerPIndex: 1024
+                indexPartitions: 1
+              params:
+                doc_config:
+                  docid_prefix_delim: ''
+                  docid_regexp: ''
+                  mode: scope.collection.type_field
+                  type_field: type
+                mapping:
+                  analysis: {}
+                  default_analyzer: standard
+                  default_datetime_parser: dateTimeOptional
+                  default_field: _all
+                  default_mapping:
+                    dynamic: true
+                    enabled: false
+                  default_type: _default
+                  docvalues_dynamic: false
+                  index_dynamic: true
+                  store_dynamic: false
+                  type_field: _type
+                  types:
+                    inventory.landmark:
+                      dynamic: false
+                      enabled: true
+                      properties:
+                        _$xattrs:
+                          dynamic: true
+                          enabled: true
+                        content:
+                          dynamic: false
+                          enabled: true
+                          fields:
+                            - docvalues: true
+                              include_in_all: true
+                              include_term_vectors: true
+                              index: true
+                              name: content
+                              store: true
+                              type: text
+                store:
+                  indexType: scorch
+                  segmentVersion: 15
+              sourceParams: {}
       responses:
         '200':
           description: A JSON object indicating the status of the operation.
@@ -301,7 +351,7 @@ paths:
                 $ref: '#/components/schemas/PutIndexResponse'
               example:
                 status: ok
-                name: travel-test
+                name: landmark-content-index
                 uuid: 565ca041af3baf9d
         default:
           description: The Search Service returns a non-200 HTTP error code when a request fails.
@@ -486,6 +536,56 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/IndexDefinition'
+            example:
+              type: fulltext-index
+              name: landmark-content-index
+              sourceType: gocbcore
+              sourceName: travel-sample
+              planParams:
+                maxPartitionsPerPIndex: 1024
+                indexPartitions: 1
+              params:
+                doc_config:
+                  docid_prefix_delim: ''
+                  docid_regexp: ''
+                  mode: scope.collection.type_field
+                  type_field: type
+                mapping:
+                  analysis: {}
+                  default_analyzer: standard
+                  default_datetime_parser: dateTimeOptional
+                  default_field: _all
+                  default_mapping:
+                    dynamic: true
+                    enabled: false
+                  default_type: _default
+                  docvalues_dynamic: false
+                  index_dynamic: true
+                  store_dynamic: false
+                  type_field: _type
+                  types:
+                    inventory.landmark:
+                      dynamic: false
+                      enabled: true
+                      properties:
+                        _$xattrs:
+                          dynamic: true
+                          enabled: true
+                        content:
+                          dynamic: false
+                          enabled: true
+                          fields:
+                            - docvalues: true
+                              include_in_all: true
+                              include_term_vectors: true
+                              index: true
+                              name: content
+                              store: true
+                              type: text
+                store:
+                  indexType: scorch
+                  segmentVersion: 15
+              sourceParams: {}
       responses:
         '200':
           description: A JSON object indicating the status of the operation.
@@ -495,8 +595,8 @@ paths:
                 $ref: '#/components/schemas/PutIndexResponse'
               example:
                 status: ok
-                name: travel-sample.inventory.travel-test
-                uuid: 654cb62baebf2d26
+                name: travel-sample.inventory.landmark-content-index
+                uuid: 49563a96ea6d3686
         default:
           description: The Search Service returns a non-200 HTTP error code when a request fails.
           content:
@@ -661,7 +761,7 @@ paths:
       description: |-
         Returns indexing and data-related metrics, timings, counters, and detailed partition information for all Search indexes, from the node running the Search Service.
 
-        This endpoint returns statistics provided by the Search service.
+        This endpoint returns statistics provided by the Search Service.
         For additional statistics, see [Get Query, Mutation, and Partition Statistics for the Search Service](../fts-rest-stats/index.html#g-api-nsstats).
       tags:
         - Monitoring
@@ -718,7 +818,7 @@ paths:
       description: |-
         Returns indexing and data-related metrics, timings, counters, and detailed partition information for the Search index specified in the endpoint URL.
 
-        This endpoint returns statistics provided by the Search service.
+        This endpoint returns statistics provided by the Search Service.
         For additional statistics, see [Get Query, Mutation, and Partition Statistics for an Index](../fts-rest-stats/index.html#g-api-nsstats-index-name).
       tags:
         - Monitoring
@@ -921,8 +1021,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              title: Request Body
+              $ref: '#/components/schemas/Document'
             example:
               name: hello world
               title: couchbase blr
@@ -1089,61 +1188,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/QueryRequest'
-            examples:
-              regular:
-                summary: Regular Query
-                value:
-                  query:
-                    query: a sample query
-                    boost: 1
-                  size: 10
-                  from: 0
-                  highlight: null
-                  fields: null
-                  facets: null
-                  explain: false
-              options:
-                summary: Query with Options
-                value:
-                  ctl:
-                    timeout: 10000
-                    consistency:
-                      level: at_plus
-                      vectors:
-                        customerIndex:
-                          '0': 123
-                          1/a0b1c2: 234
-                  query:
-                    query: alice smith
-                    boost: 1
-                  size: 10
-                  from: 20
-                  highlight:
-                    style: null
-                    fields: null
-                  fields:
-                    - '*'
-                  facets: null
-                  explain: true
-              hybrid:
-                summary: Hybrid Query
-                value:
-                  fields:
-                    - '*'
-                  query:
-                    min: 70
-                    max: 80
-                    inclusive_min: false
-                    inclusive_max: true
-                    field: brightness
-                  knn:
-                    - k: 10
-                      field: colorvect_dot
-                      vector:
-                        - 0.707106781186548
-                        - 0
-                        - 0.707106781186548
-                  size: 10
       responses:
         '200':
           description: |-
@@ -1178,6 +1222,67 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/QueryRequest'
+            examples:
+              regular:
+                summary: Regular Query
+                description: This request searches for the text `a sample query` in the documents included in the Search index.
+                value:
+                  query:
+                    query: a sample query
+                    boost: 1
+                  size: 10
+                  from: 0
+                  highlight: null
+                  fields: null
+                  facets: null
+                  explain: false
+              options:
+                summary: Query with Options
+                description: |-
+                  This request uses from/size for results paging, with `ctl` for a timeout and the `"at_plus"` consistency level.
+
+                  On consistency, the index must have incorporated at least mutation sequence-number 123 for partition (vBucket) 0 and mutation sequence-number 234 for partition (vBucket) 1, where vBucket 1 should have a `vbucketUUID` of `a0b1c2`.
+                value:
+                  ctl:
+                    timeout: 10000
+                    consistency:
+                      level: at_plus
+                      vectors:
+                        customerIndex:
+                          '0': 123
+                          1/a0b1c2: 234
+                  query:
+                    query: alice smith
+                    boost: 1
+                  size: 10
+                  from: 20
+                  highlight:
+                    style: null
+                    fields: null
+                  fields:
+                    - '*'
+                  facets: null
+                  explain: true
+              hybrid:
+                summary: Hybrid Query
+                description: This request searches for a specified normalized color vector in `colorvect_dot`, but uses regular query parameters to limit the `brightness` value of the returned color to the range of `70-80`.
+                value:
+                  fields:
+                    - '*'
+                  query:
+                    min: 70
+                    max: 80
+                    inclusive_min: false
+                    inclusive_max: true
+                    field: brightness
+                  knn:
+                    - k: 10
+                      field: colorvect_dot
+                      vector:
+                        - 0.707106781186548
+                        - 0
+                        - 0.707106781186548
+                  size: 10
       responses:
         '200':
           description: |-
@@ -1722,6 +1827,10 @@ components:
           $ref: '#/components/schemas/CommonIndexName'
         uuid:
           $ref: '#/components/schemas/CommonIndexUUID'
+    Document:
+      type: object
+      additionalProperties:
+        description: Any valid JSON value.
     DocumentAnalysis:
       type: object
       title: Document Analysis
@@ -1808,10 +1917,11 @@ components:
           $ref: '#/components/schemas/IndexDefinitionPlanParams'
         prevIndexUUID:
           type: string
+          format: UUID
           writeOnly: true
           description: |-
             The UUID of the previous index.
-            Intended for clients that want to check that they are not overwriting the Search index definition updates of concurrent clients.
+            Intended for clients that want to check that they're not overwriting the Search index definition updates of concurrent clients.
         uuid:
           $ref: '#/components/schemas/CommonIndexUUID'
       required:
@@ -1919,6 +2029,13 @@ components:
           description: An array of strings that specify the collections where you want to run the query.
           items:
             type: string
+      example:
+        fields:
+          - '*'
+        query:
+          query: +view +food +beach
+        size: 10
+        from: 0
     QueryResponse:
       type: object
       title: Query Response
@@ -1930,6 +2047,38 @@ components:
           description: The results of the Search query.
           items:
             type: object
+      example:
+        status:
+          total: 1
+          failed: 0
+          successful: 1
+        hits:
+          - index: travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584
+            id: landmark_4428
+            score: 2.425509689250102
+            sort:
+              - _score
+            fields:
+              content: serves fresh food at very reasonable prices - view of stoney beach with herons
+          - index: travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584
+            id: landmark_26385
+            score: 1.6270812956011347
+            sort:
+              - _score
+            fields:
+              content: Burgers, seafood, and other simple but tasty meals right at the harbor. You can take your food around the corner to sit on the beach or the sea wall and enjoy the ocean view while you eat.
+          - index: travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584
+            id: landmark_38035
+            score: 1.1962539437368078
+            sort:
+              - _score
+            fields:
+              content: Famous for &quot;the Blue Lady&quot;, a ghost rumored to haunt the premises, the Moss Beach distillery offers a full menu, Sunday brunch, drinks, and a tremendous ocean view with comfortable fire pits. Happy hour Mon-Fri from 5PM to 7PM offers half-priced drinks and a discounted food menu.
+        total_hits: 3
+        cost: 150479
+        max_score: 2.425509689250102
+        took: 1441203
+        facets: null
     MgmtResponse:
       type: object
       title: Management Response
@@ -1949,6 +2098,7 @@ components:
       type: string
       title: Status
       description: The status of the operation.
+      example: ok
     CommonIndexName:
       type: string
       title: Index Name
@@ -1967,9 +2117,14 @@ components:
       description: |-
         The type of the Search index.
         For more information, see [Initial Settings](../search/search-index-params.html#initial).
+      enum:
+        - fulltext-index
+        - fulltext-alias
     CommonIndexUUID:
       type: string
+      format: UUID
       title: Index UUID
+      readOnly: true
       description: |-
         The UUID of the Search index.
         For more information, see [Initial Settings](../search/search-index-params.html#initial).
@@ -1994,6 +2149,8 @@ components:
     CommonSourceUUID:
       type: string
       title: Source UUID
+      format: UUID
+      readOnly: true
       description: |-
         The UUID of the bucket where the Search index is stored.
         For more information, see [Initial Settings](../search/search-index-params.html#initial).

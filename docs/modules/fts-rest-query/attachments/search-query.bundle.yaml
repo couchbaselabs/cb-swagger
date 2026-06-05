@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Couchbase Search Active Queries REST API
   description: |-
-    The Search Active Queries REST API is provided by the Search service.
+    The Search Active Queries REST API is provided by the Search Service.
     This API enables you to get information about active Search queries.
   version: '7.6'
 servers:
@@ -39,10 +39,11 @@ paths:
         - $ref: '#/components/parameters/queryLongerThan'
       x-codeSamples:
         - lang: Shell
+          description: Find queries on the index `DemoIndex1` that have been running for longer than 1&nbsp;ms.
           source: |-
             curl -XGET -H "Content-Type: application/json" \
             -u $USER:$PASSWORD \
-            "http://$HOST:8094/api/query/index/DemoIndex1?longerThan=1ms"
+            "$BASEPATH/api/query/index/DemoIndex1?longerThan=1ms"
       security:
         - Default: []
       responses:
@@ -91,16 +92,18 @@ paths:
       x-codeSamples:
         - lang: Shell
           label: All
+          description: Find all active queries across all nodes in the cluster running the Search Service.
           source: |-
             curl -XGET -H "Content-Type: application/json" \
               -u $USER:$PASSWORD \
-              "http://$HOST:8094/api/query"
+              "$BASEPATH/api/query"
         - lang: Shell
           label: Filtered
+          description: Find all queries across cluster that have been running for longer than 7&nbsp;s.
           source: |-
             curl -XGET -H "Content-Type: application/json" \
               -u $USER:$PASSWORD \
-              "http://$HOST:8094/api/query?longerThan=7s"
+              "$BASEPATH/api/query?longerThan=7s"
       security:
         - Default: []
       responses:
@@ -113,7 +116,7 @@ paths:
               examples:
                 all:
                   summary: All active node queries
-                  description: All active queries across the Search cluster.
+                  description: All active queries across all nodes in the cluster running the Search Service.
                   value:
                     status: ok
                     stats:
@@ -203,9 +206,10 @@ paths:
               uuid: b91d75480470f979f65f04e8f20a1f7b
       x-codeSamples:
         - lang: Shell
+          description: Cancel a long running query with query ID `24` whose coordinator node has a UUID `b91d75480470f979f65f04e8f20a1f7b`.
           source: |-
             curl -X POST -H "Content-Type: application/json" -u $USER:$PASSWORD \
-              "http://$HOST:8094/api/query/24/cancel" -d \
+              "$BASEPATH/api/query/24/cancel" -d \
               '{ "uuid": "b91d75480470f979f65f04e8f20a1f7b" }'
       security:
         - Default: []

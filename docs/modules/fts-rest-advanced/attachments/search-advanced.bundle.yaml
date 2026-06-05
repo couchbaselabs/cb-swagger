@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Couchbase Search Advanced API
   description: |-
-    The Advanced Search REST APIs are provided by the Search service.
+    The Advanced Search REST APIs are provided by the Search Service.
     These APIs enable you to manage and query Search index partitions and to specify advanced settings.
   version: '7.6'
 servers:
@@ -162,7 +162,7 @@ paths:
               properties:
                 ftsMemoryQuota:
                   type: integer
-                  description: The memory quota for the Search service.
+                  description: The memory quota for the Search Service.
                   example: 512
                   x-has-example: true
       responses:
@@ -235,9 +235,14 @@ components:
       description: |-
         The type of the Search index.
         For more information, see [Initial Settings](../search/search-index-params.html#initial).
+      enum:
+        - fulltext-index
+        - fulltext-alias
     CommonIndexUUID:
       type: string
+      format: UUID
       title: Index UUID
+      readOnly: true
       description: |-
         The UUID of the Search index.
         For more information, see [Initial Settings](../search/search-index-params.html#initial).
@@ -266,6 +271,8 @@ components:
     CommonSourceUUID:
       type: string
       title: Source UUID
+      format: UUID
+      readOnly: true
       description: |-
         The UUID of the bucket where the Search index is stored.
         For more information, see [Initial Settings](../search/search-index-params.html#initial).
@@ -277,6 +284,7 @@ components:
       type: string
       title: Status
       description: The status of the operation.
+      example: ok
     DocumentCount:
       type: object
       title: Document Count
@@ -358,6 +366,13 @@ components:
           description: An array of strings that specify the collections where you want to run the query.
           items:
             type: string
+      example:
+        fields:
+          - '*'
+        query:
+          query: +view +food +beach
+        size: 10
+        from: 0
     QueryResponse:
       type: object
       title: Query Response
@@ -369,6 +384,38 @@ components:
           description: The results of the Search query.
           items:
             type: object
+      example:
+        status:
+          total: 1
+          failed: 0
+          successful: 1
+        hits:
+          - index: travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584
+            id: landmark_4428
+            score: 2.425509689250102
+            sort:
+              - _score
+            fields:
+              content: serves fresh food at very reasonable prices - view of stoney beach with herons
+          - index: travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584
+            id: landmark_26385
+            score: 1.6270812956011347
+            sort:
+              - _score
+            fields:
+              content: Burgers, seafood, and other simple but tasty meals right at the harbor. You can take your food around the corner to sit on the beach or the sea wall and enjoy the ocean view while you eat.
+          - index: travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584
+            id: landmark_38035
+            score: 1.1962539437368078
+            sort:
+              - _score
+            fields:
+              content: Famous for &quot;the Blue Lady&quot;, a ghost rumored to haunt the premises, the Moss Beach distillery offers a full menu, Sunday brunch, drinks, and a tremendous ocean view with comfortable fire pits. Happy hour Mon-Fri from 5PM to 7PM offers half-priced drinks and a discounted food menu.
+        total_hits: 3
+        cost: 150479
+        max_score: 2.425509689250102
+        took: 1441203
+        facets: null
   securitySchemes:
     Manage:
       type: http
