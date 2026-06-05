@@ -56,15 +56,21 @@ paths:
       x-codeSamples:
         - lang: Shell
           label: Disable
+          description: |-
+            This request disables the creation of new partitions by means of file transfer.
+            From this point, Search Service index partitions are built on the new nodes assigned to them during rebalance.
           source: |-
-            curl -X PUT http://$HOST:8094/api/managerOptions \
+            curl -X PUT $BASEPATH/api/managerOptions \
             -u $USER:$PASSWORD \
             -H "Content-type:application/json" \
             -d '{"disableFileTransferRebalance": "true" }'
         - lang: Shell
           label: Enable
+          description: |-
+            This request re-enables the creation of new partitions by means of file transfer.
+            From this point, Search Service index partitions are again created by file transfer, on the new nodes assigned to them during rebalance.
           source: |-
-            curl -X PUT http://$HOST:8094/api/managerOptions \
+            curl -X PUT $BASEPATH/api/managerOptions \
             -u $USER:$PASSWORD \
             -H "Content-type:application/json" \
             -d '{"disableFileTransferRebalance": "false" }'

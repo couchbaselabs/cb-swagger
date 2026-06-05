@@ -26,7 +26,7 @@ include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
-The Search Indexing REST API is provided by the Search service.
+The Search Indexing REST API is provided by the Search Service.
 This API enables you to manage and monitor your Search indexes.
 --
 
@@ -329,7 +329,7 @@ ifeval::["yesyes" == ""]
 ----
 {
   "uuid" : "uuid",
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -563,7 +563,7 @@ ifeval::["yesyes" == ""]
 ----
 {
   "uuid" : "uuid",
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -744,7 +744,7 @@ ifeval::["yes" == ""]
     "implVersion" : "implVersion",
     "uuid" : "uuid"
   },
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -977,7 +977,6 @@ ifeval::["yes" == ""]
 {
   "planPIndexes" : [ {
     "indexParams" : "{}",
-    "indexType" : "indexType",
     "indexUUID" : "indexUUID",
     "sourceType" : "sourceType",
     "indexName" : "indexName",
@@ -989,7 +988,6 @@ ifeval::["yes" == ""]
     "uuid" : "uuid"
   }, {
     "indexParams" : "{}",
-    "indexType" : "indexType",
     "indexUUID" : "indexUUID",
     "sourceType" : "sourceType",
     "indexName" : "indexName",
@@ -1015,12 +1013,12 @@ ifeval::["yes" == ""]
     "prevIndexUUID" : "prevIndexUUID",
     "sourceName" : "sourceName",
     "sourceParams" : "{}",
-    "type" : "type",
+    "type" : "fulltext-index",
     "params" : "{}",
     "uuid" : "uuid"
   },
   "warnings" : [ "warnings", "warnings" ],
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -1335,7 +1333,7 @@ ifeval::["yes" == ""]
     "implVersion" : "implVersion",
     "uuid" : "uuid"
   },
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -1702,7 +1700,6 @@ ifeval::["yes" == ""]
 {
   "planPIndexes" : [ {
     "indexParams" : "{}",
-    "indexType" : "indexType",
     "indexUUID" : "indexUUID",
     "sourceType" : "sourceType",
     "indexName" : "indexName",
@@ -1714,7 +1711,6 @@ ifeval::["yes" == ""]
     "uuid" : "uuid"
   }, {
     "indexParams" : "{}",
-    "indexType" : "indexType",
     "indexUUID" : "indexUUID",
     "sourceType" : "sourceType",
     "indexName" : "indexName",
@@ -1740,12 +1736,12 @@ ifeval::["yes" == ""]
     "prevIndexUUID" : "prevIndexUUID",
     "sourceName" : "sourceName",
     "sourceParams" : "{}",
-    "type" : "type",
+    "type" : "fulltext-index",
     "params" : "{}",
     "uuid" : "uuid"
   },
   "warnings" : [ "warnings", "warnings" ],
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -1941,8 +1937,6 @@ include::{specDir}paths/p-api-index-name/operation-security-after.adoc[opts=opti
 
 include::{snippetDir}p-api-index-name/curl-request.adoc[opts=optional]
 
-
-
 [#p-api-index-name-ex-request]
 = Example Request Body
 
@@ -1951,23 +1945,67 @@ include::{snippetDir}p-api-index-name/curl-request.adoc[opts=optional]
 [source,json]
 ----
 {
+  "type" : "fulltext-index",
+  "name" : "landmark-content-index",
+  "sourceType" : "gocbcore",
+  "sourceName" : "travel-sample",
   "planParams" : {
-    "hierarchyRules" : "hierarchyRules",
-    "numReplicas" : 1,
-    "planFrozen" : true,
-    "indexPartitions" : 6,
-    "maxPartitionsPerPIndex" : 0,
-    "nodePlanParams" : "nodePlanParams"
+    "maxPartitionsPerPIndex" : 1024,
+    "indexPartitions" : 1
   },
-  "sourceType" : "sourceType",
-  "sourceUUID" : "sourceUUID",
-  "name" : "name",
-  "prevIndexUUID" : "prevIndexUUID",
-  "sourceName" : "sourceName",
-  "sourceParams" : "{}",
-  "type" : "type",
-  "params" : "{}",
-  "uuid" : "uuid"
+  "params" : {
+    "doc_config" : {
+      "docid_prefix_delim" : "",
+      "docid_regexp" : "",
+      "mode" : "scope.collection.type_field",
+      "type_field" : "type"
+    },
+    "mapping" : {
+      "analysis" : { },
+      "default_analyzer" : "standard",
+      "default_datetime_parser" : "dateTimeOptional",
+      "default_field" : "_all",
+      "default_mapping" : {
+        "dynamic" : true,
+        "enabled" : false
+      },
+      "default_type" : "_default",
+      "docvalues_dynamic" : false,
+      "index_dynamic" : true,
+      "store_dynamic" : false,
+      "type_field" : "_type",
+      "types" : {
+        "inventory.landmark" : {
+          "dynamic" : false,
+          "enabled" : true,
+          "properties" : {
+            "_$xattrs" : {
+              "dynamic" : true,
+              "enabled" : true
+            },
+            "content" : {
+              "dynamic" : false,
+              "enabled" : true,
+              "fields" : [ {
+                "docvalues" : true,
+                "include_in_all" : true,
+                "include_term_vectors" : true,
+                "index" : true,
+                "name" : "content",
+                "store" : true,
+                "type" : "text"
+              } ]
+            }
+          }
+        }
+      }
+    },
+    "store" : {
+      "indexType" : "scorch",
+      "segmentVersion" : 15
+    }
+  },
+  "sourceParams" : { }
 }
 ----
 ====
@@ -1987,7 +2025,7 @@ endif::[]
 ----
 {
   "status" : "ok",
-  "name" : "travel-test",
+  "name" : "landmark-content-index",
   "uuid" : "565ca041af3baf9d"
 }
 ----
@@ -2018,7 +2056,7 @@ ifeval::["yesyes" == ""]
 {
   "name" : "name",
   "uuid" : "uuid",
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -2232,8 +2270,6 @@ include::{specDir}paths/p-api-scoped-index-name/operation-security-after.adoc[op
 
 include::{snippetDir}p-api-scoped-index-name/curl-request.adoc[opts=optional]
 
-
-
 [#p-api-scoped-index-name-ex-request]
 = Example Request Body
 
@@ -2242,23 +2278,67 @@ include::{snippetDir}p-api-scoped-index-name/curl-request.adoc[opts=optional]
 [source,json]
 ----
 {
+  "type" : "fulltext-index",
+  "name" : "landmark-content-index",
+  "sourceType" : "gocbcore",
+  "sourceName" : "travel-sample",
   "planParams" : {
-    "hierarchyRules" : "hierarchyRules",
-    "numReplicas" : 1,
-    "planFrozen" : true,
-    "indexPartitions" : 6,
-    "maxPartitionsPerPIndex" : 0,
-    "nodePlanParams" : "nodePlanParams"
+    "maxPartitionsPerPIndex" : 1024,
+    "indexPartitions" : 1
   },
-  "sourceType" : "sourceType",
-  "sourceUUID" : "sourceUUID",
-  "name" : "name",
-  "prevIndexUUID" : "prevIndexUUID",
-  "sourceName" : "sourceName",
-  "sourceParams" : "{}",
-  "type" : "type",
-  "params" : "{}",
-  "uuid" : "uuid"
+  "params" : {
+    "doc_config" : {
+      "docid_prefix_delim" : "",
+      "docid_regexp" : "",
+      "mode" : "scope.collection.type_field",
+      "type_field" : "type"
+    },
+    "mapping" : {
+      "analysis" : { },
+      "default_analyzer" : "standard",
+      "default_datetime_parser" : "dateTimeOptional",
+      "default_field" : "_all",
+      "default_mapping" : {
+        "dynamic" : true,
+        "enabled" : false
+      },
+      "default_type" : "_default",
+      "docvalues_dynamic" : false,
+      "index_dynamic" : true,
+      "store_dynamic" : false,
+      "type_field" : "_type",
+      "types" : {
+        "inventory.landmark" : {
+          "dynamic" : false,
+          "enabled" : true,
+          "properties" : {
+            "_$xattrs" : {
+              "dynamic" : true,
+              "enabled" : true
+            },
+            "content" : {
+              "dynamic" : false,
+              "enabled" : true,
+              "fields" : [ {
+                "docvalues" : true,
+                "include_in_all" : true,
+                "include_term_vectors" : true,
+                "index" : true,
+                "name" : "content",
+                "store" : true,
+                "type" : "text"
+              } ]
+            }
+          }
+        }
+      }
+    },
+    "store" : {
+      "indexType" : "scorch",
+      "segmentVersion" : 15
+    }
+  },
+  "sourceParams" : { }
 }
 ----
 ====
@@ -2278,8 +2358,8 @@ endif::[]
 ----
 {
   "status" : "ok",
-  "name" : "travel-sample.inventory.travel-test",
-  "uuid" : "654cb62baebf2d26"
+  "name" : "travel-sample.inventory.landmark-content-index",
+  "uuid" : "49563a96ea6d3686"
 }
 ----
 ====
@@ -2309,7 +2389,7 @@ ifeval::["yesyes" == ""]
 {
   "name" : "name",
   "uuid" : "uuid",
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -2536,7 +2616,7 @@ ifeval::["yes" == ""]
 [source,json]
 ----
 {
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -2743,7 +2823,7 @@ ifeval::["yes" == ""]
 [source,json]
 ----
 {
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -2950,7 +3030,7 @@ ifeval::["yes" == ""]
 [source,json]
 ----
 {
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -3175,7 +3255,7 @@ ifeval::["yes" == ""]
 [source,json]
 ----
 {
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -3400,7 +3480,7 @@ ifeval::["yes" == ""]
 [source,json]
 ----
 {
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -3625,7 +3705,7 @@ ifeval::["yes" == ""]
 [source,json]
 ----
 {
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -3856,7 +3936,7 @@ ifeval::["yes" == ""]
 ----
 {
   "indexStatus" : "indexStatus",
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -3901,7 +3981,7 @@ include::{specDir}paths/g-api-stats/operation-description-begin.adoc[opts=option
 --
 Returns indexing and data-related metrics, timings, counters, and detailed partition information for all Search indexes, from the node running the Search Service.
 
-This endpoint returns statistics provided by the Search service.
+This endpoint returns statistics provided by the Search Service.
 For additional statistics, see [Get Query, Mutation, and Partition Statistics for the Search Service](../fts-rest-stats/index.html#g-api-nsstats).
 --
 
@@ -4124,7 +4204,7 @@ include::{specDir}paths/g-api-stats-index-name/operation-description-begin.adoc[
 --
 Returns indexing and data-related metrics, timings, counters, and detailed partition information for the Search index specified in the endpoint URL.
 
-This endpoint returns statistics provided by the Search service.
+This endpoint returns statistics provided by the Search Service.
 For additional statistics, see [Get Query, Mutation, and Partition Statistics for an Index](../fts-rest-stats/index.html#g-api-nsstats-index-name).
 --
 
@@ -4550,7 +4630,7 @@ Add any valid JSON document to the request body.
 [%hardbreaks]
 {blank}
 
-a¦ xref:Object[]
+a¦ xref:Document[]
 
 |===
 
@@ -4558,7 +4638,7 @@ a¦ xref:Object[]
 include::{specDir}paths/g-api-stats-index-name-analyzeDoc/operation-parameters-end.adoc[opts=optional]
 
 :leveloffset: -1
-:show-Object:
+:show-Document:
 
 
 include::{specDir}paths/g-api-stats-index-name-analyzeDoc/operation-parameters-after.adoc[opts=optional]
@@ -4757,7 +4837,7 @@ ifeval::["yes" == ""]
 ----
 {
   "analyzed" : [ null, null ],
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -4971,7 +5051,7 @@ ifeval::["yes" == ""]
 ----
 {
   "count" : 0,
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -5161,87 +5241,22 @@ include::{specDir}paths/p-api-index-name-query/operation-security-after.adoc[opt
 
 include::{snippetDir}p-api-index-name-query/curl-request.adoc[opts=optional]
 
+
+
 [#p-api-index-name-query-ex-request]
 = Example Request Body
 
 
-[#p-api-index-name-query-ex-request-0]
-.Regular Query
-====
-[source,json]
-----
-{
-  "query" : {
-    "query" : "a sample query",
-    "boost" : 1
-  },
-  "size" : 10,
-  "from" : 0,
-  "highlight" : null,
-  "fields" : null,
-  "facets" : null,
-  "explain" : false
-}
-----
-====
-
-
-[#p-api-index-name-query-ex-request-1]
-.Query with Options
-====
-[source,json]
-----
-{
-  "ctl" : {
-    "timeout" : 10000,
-    "consistency" : {
-      "level" : "at_plus",
-      "vectors" : {
-        "customerIndex" : {
-          "0" : 123,
-          "1/a0b1c2" : 234
-        }
-      }
-    }
-  },
-  "query" : {
-    "query" : "alice smith",
-    "boost" : 1
-  },
-  "size" : 10,
-  "from" : 20,
-  "highlight" : {
-    "style" : null,
-    "fields" : null
-  },
-  "fields" : [ "*" ],
-  "facets" : null,
-  "explain" : true
-}
-----
-====
-
-
-[#p-api-index-name-query-ex-request-2]
-.Hybrid Query
 ====
 [source,json]
 ----
 {
   "fields" : [ "*" ],
   "query" : {
-    "min" : 70,
-    "max" : 80,
-    "inclusive_min" : false,
-    "inclusive_max" : true,
-    "field" : "brightness"
+    "query" : "+view +food +beach"
   },
-  "knn" : [ {
-    "k" : 10,
-    "field" : "colorvect_dot",
-    "vector" : [ 0.707106781186548, 0, 0.707106781186548 ]
-  } ],
-  "size" : 10
+  "size" : 10,
+  "from" : 0
 }
 ----
 ====
@@ -5262,8 +5277,41 @@ ifeval::["" == ""]
 [source,json]
 ----
 {
-  "results" : [ "{}", "{}" ],
-  "status" : "status"
+  "status" : {
+    "total" : 1,
+    "failed" : 0,
+    "successful" : 1
+  },
+  "hits" : [ {
+    "index" : "travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584",
+    "id" : "landmark_4428",
+    "score" : 2.425509689250102,
+    "sort" : [ "_score" ],
+    "fields" : {
+      "content" : "serves fresh food at very reasonable prices - view of stoney beach with herons"
+    }
+  }, {
+    "index" : "travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584",
+    "id" : "landmark_26385",
+    "score" : 1.6270812956011347,
+    "sort" : [ "_score" ],
+    "fields" : {
+      "content" : "Burgers, seafood, and other simple but tasty meals right at the harbor. You can take your food around the corner to sit on the beach or the sea wall and enjoy the ocean view while you eat."
+    }
+  }, {
+    "index" : "travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584",
+    "id" : "landmark_38035",
+    "score" : 1.1962539437368078,
+    "sort" : [ "_score" ],
+    "fields" : {
+      "content" : "Famous for &quot;the Blue Lady&quot;, a ghost rumored to haunt the premises, the Moss Beach distillery offers a full menu, Sunday brunch, drinks, and a tremendous ocean view with comfortable fire pits. Happy hour Mon-Fri from 5PM to 7PM offers half-priced drinks and a discounted food menu."
+    }
+  } ],
+  "total_hits" : 3,
+  "cost" : 150479,
+  "max_score" : 2.425509689250102,
+  "took" : 1441203,
+  "facets" : null
 }
 ----
 ====
@@ -5516,7 +5564,7 @@ ifeval::["yes" == ""]
 [source,json]
 ----
 {
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -5731,31 +5779,95 @@ include::{specDir}paths/p-api-scoped-query/operation-security-after.adoc[opts=op
 
 include::{snippetDir}p-api-scoped-query/curl-request.adoc[opts=optional]
 
-
-
 [#p-api-scoped-query-ex-request]
 = Example Request Body
 
 
+[#p-api-scoped-query-ex-request-0]
+.Regular Query
 ====
+This request searches for the text `a sample query` in the documents included in the Search index.
+
 [source,json]
 ----
 {
-  "explain" : true,
-  "query" : "{}",
-  "knn" : [ "{}", "{}" ],
-  "sort" : [ "", "" ],
-  "includeLocations" : true,
-  "facets" : "{}",
-  "highlight" : "{}",
-  "score" : "score",
-  "search_after" : [ "search_after", "search_after" ],
-  "size" : 0,
-  "collections" : [ "collections", "collections" ],
-  "ctl" : "{}",
-  "from" : 6,
-  "fields" : [ "fields", "fields" ],
-  "search_before" : [ "search_before", "search_before" ]
+  "query" : {
+    "query" : "a sample query",
+    "boost" : 1
+  },
+  "size" : 10,
+  "from" : 0,
+  "highlight" : null,
+  "fields" : null,
+  "facets" : null,
+  "explain" : false
+}
+----
+====
+
+
+[#p-api-scoped-query-ex-request-1]
+.Query with Options
+====
+This request uses from/size for results paging, with `ctl` for a timeout and the `"at_plus"` consistency level.
+
+On consistency, the index must have incorporated at least mutation sequence-number 123 for partition (vBucket) 0 and mutation sequence-number 234 for partition (vBucket) 1, where vBucket 1 should have a `vbucketUUID` of `a0b1c2`.
+
+[source,json]
+----
+{
+  "ctl" : {
+    "timeout" : 10000,
+    "consistency" : {
+      "level" : "at_plus",
+      "vectors" : {
+        "customerIndex" : {
+          "0" : 123,
+          "1/a0b1c2" : 234
+        }
+      }
+    }
+  },
+  "query" : {
+    "query" : "alice smith",
+    "boost" : 1
+  },
+  "size" : 10,
+  "from" : 20,
+  "highlight" : {
+    "style" : null,
+    "fields" : null
+  },
+  "fields" : [ "*" ],
+  "facets" : null,
+  "explain" : true
+}
+----
+====
+
+
+[#p-api-scoped-query-ex-request-2]
+.Hybrid Query
+====
+This request searches for a specified normalized color vector in `colorvect_dot`, but uses regular query parameters to limit the `brightness` value of the returned color to the range of `70-80`.
+
+[source,json]
+----
+{
+  "fields" : [ "*" ],
+  "query" : {
+    "min" : 70,
+    "max" : 80,
+    "inclusive_min" : false,
+    "inclusive_max" : true,
+    "field" : "brightness"
+  },
+  "knn" : [ {
+    "k" : 10,
+    "field" : "colorvect_dot",
+    "vector" : [ 0.707106781186548, 0, 0.707106781186548 ]
+  } ],
+  "size" : 10
 }
 ----
 ====
@@ -6068,8 +6180,41 @@ ifeval::["yesyes" == ""]
 [source,json]
 ----
 {
-  "results" : [ "{}", "{}" ],
-  "status" : "status"
+  "status" : {
+    "total" : 1,
+    "failed" : 0,
+    "successful" : 1
+  },
+  "hits" : [ {
+    "index" : "travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584",
+    "id" : "landmark_4428",
+    "score" : 2.425509689250102,
+    "sort" : [ "_score" ],
+    "fields" : {
+      "content" : "serves fresh food at very reasonable prices - view of stoney beach with herons"
+    }
+  }, {
+    "index" : "travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584",
+    "id" : "landmark_26385",
+    "score" : 1.6270812956011347,
+    "sort" : [ "_score" ],
+    "fields" : {
+      "content" : "Burgers, seafood, and other simple but tasty meals right at the harbor. You can take your food around the corner to sit on the beach or the sea wall and enjoy the ocean view while you eat."
+    }
+  }, {
+    "index" : "travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584",
+    "id" : "landmark_38035",
+    "score" : 1.1962539437368078,
+    "sort" : [ "_score" ],
+    "fields" : {
+      "content" : "Famous for &quot;the Blue Lady&quot;, a ghost rumored to haunt the premises, the Moss Beach distillery offers a full menu, Sunday brunch, drinks, and a tremendous ocean view with comfortable fire pits. Happy hour Mon-Fri from 5PM to 7PM offers half-priced drinks and a discounted food menu."
+    }
+  } ],
+  "total_hits" : 3,
+  "cost" : 150479,
+  "max_score" : 2.425509689250102,
+  "took" : 1441203,
+  "facets" : null
 }
 ----
 ====
@@ -6111,6 +6256,7 @@ This section describes the properties consumed and returned by this REST API.
 [.two-columns]
 [%hardbreaks]
 xref:DeleteIndexResponse[]
+xref:Document[]
 xref:DocumentAnalysis[]
 xref:DocumentAnalysisItem[]
 xref:DocumentAnalysisItemToken[]
@@ -6137,6 +6283,10 @@ xref:StatsIndexResponse[]
 xref:StatsNodeResponse[]
 xref:StatsNodeResponseMgr[]
 xref:StatusResponse[]
+
+include::{specDir}definitions/CommonIndexType/definition-before.adoc[opts=optional]
+
+include::{specDir}definitions/CommonIndexType/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/DeleteIndexResponse/definition-before.adoc[opts=optional]
 
@@ -6184,7 +6334,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 
 |===
 
@@ -6201,6 +6351,61 @@ ifndef::show-DeleteIndexResponse[]
 endif::show-DeleteIndexResponse[]
 
 include::{specDir}definitions/DeleteIndexResponse/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/Document/definition-before.adoc[opts=optional]
+
+ifdef::show-Document[]
+[#Document]
+endif::show-Document[]
+ifndef::show-Document[]
+:leveloffset: +1
+
+[discrete#Document]
+endif::show-Document[]
+= Document
+
+:leveloffset: +1
+
+include::{specDir}definitions/Document/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Document[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ 
+additional +
+property
+a¦ [markdown]
+--
+Any valid JSON value.
+--
+
+[%hardbreaks]
+*Nullable:* yes
+{blank}
+a¦ Any Type
+
+|===
+
+//end::Document[]
+
+
+
+include::{specDir}definitions/Document/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-Document[]
+:leveloffset: -1
+endif::show-Document[]
+
+include::{specDir}definitions/Document/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/DocumentAnalysis/definition-before.adoc[opts=optional]
 
@@ -6680,6 +6885,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 --
 
 [%hardbreaks]
+*Values:* `"fulltext-index"`, `"fulltext-alias"`
 {blank}
 a¦ String
 a¦ *indexUUID* +
@@ -6692,7 +6898,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 a¦ *name* +
 optional
 a¦ [markdown]
@@ -6766,7 +6972,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 a¦ *uuid* +
 optional
 a¦ [markdown]
@@ -7159,6 +7365,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 --
 
 [%hardbreaks]
+*Values:* `"fulltext-index"`, `"fulltext-alias"`
 {blank}
 a¦ String
 a¦ *sourceName* +
@@ -7182,7 +7389,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 a¦ *sourceParams* +
 optional
 a¦ [markdown]
@@ -7232,12 +7439,12 @@ optional
 a¦ [markdown]
 --
 The UUID of the previous index.
-Intended for clients that want to check that they are not overwriting the Search index definition updates of concurrent clients.
+Intended for clients that want to check that they're not overwriting the Search index definition updates of concurrent clients.
 --
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 a¦ *uuid* +
 optional
 a¦ [markdown]
@@ -7248,7 +7455,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 
 |===
 
@@ -7706,7 +7913,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 
 |===
 

@@ -26,7 +26,7 @@ include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
-The Advanced Search REST APIs are provided by the Search service.
+The Advanced Search REST APIs are provided by the Search Service.
 These APIs enable you to manage and query Search index partitions and to specify advanced settings.
 --
 
@@ -623,7 +623,7 @@ ifeval::["" == ""]
 ----
 {
   "count" : 0,
-  "status" : "status"
+  "status" : "ok"
 }
 ----
 ====
@@ -815,21 +815,12 @@ include::{snippetDir}queryPartition/curl-request.adoc[opts=optional]
 [source,json]
 ----
 {
-  "explain" : true,
-  "query" : "{}",
-  "knn" : [ "{}", "{}" ],
-  "sort" : [ "", "" ],
-  "includeLocations" : true,
-  "facets" : "{}",
-  "highlight" : "{}",
-  "score" : "score",
-  "search_after" : [ "search_after", "search_after" ],
-  "size" : 0,
-  "collections" : [ "collections", "collections" ],
-  "ctl" : "{}",
-  "from" : 6,
-  "fields" : [ "fields", "fields" ],
-  "search_before" : [ "search_before", "search_before" ]
+  "fields" : [ "*" ],
+  "query" : {
+    "query" : "+view +food +beach"
+  },
+  "size" : 10,
+  "from" : 0
 }
 ----
 ====
@@ -850,8 +841,41 @@ ifeval::["" == ""]
 [source,json]
 ----
 {
-  "results" : [ "{}", "{}" ],
-  "status" : "status"
+  "status" : {
+    "total" : 1,
+    "failed" : 0,
+    "successful" : 1
+  },
+  "hits" : [ {
+    "index" : "travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584",
+    "id" : "landmark_4428",
+    "score" : 2.425509689250102,
+    "sort" : [ "_score" ],
+    "fields" : {
+      "content" : "serves fresh food at very reasonable prices - view of stoney beach with herons"
+    }
+  }, {
+    "index" : "travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584",
+    "id" : "landmark_26385",
+    "score" : 1.6270812956011347,
+    "sort" : [ "_score" ],
+    "fields" : {
+      "content" : "Burgers, seafood, and other simple but tasty meals right at the harbor. You can take your food around the corner to sit on the beach or the sea wall and enjoy the ocean view while you eat."
+    }
+  }, {
+    "index" : "travel-sample.inventory.landmark-content-index_49563a96ea6d3686_4c1c5584",
+    "id" : "landmark_38035",
+    "score" : 1.1962539437368078,
+    "sort" : [ "_score" ],
+    "fields" : {
+      "content" : "Famous for &quot;the Blue Lady&quot;, a ghost rumored to haunt the premises, the Moss Beach distillery offers a full menu, Sunday brunch, drinks, and a tremendous ocean view with comfortable fire pits. Happy hour Mon-Fri from 5PM to 7PM offers half-priced drinks and a discounted food menu."
+    }
+  } ],
+  "total_hits" : 3,
+  "cost" : 150479,
+  "max_score" : 2.425509689250102,
+  "took" : 1441203,
+  "facets" : null
 }
 ----
 ====
@@ -947,7 +971,7 @@ a¦ *ftsMemoryQuota* +
 optional
 a¦ [markdown]
 --
-The memory quota for the Search service.
+The memory quota for the Search Service.
 --
 
 [%hardbreaks]
@@ -1072,6 +1096,10 @@ xref:indexPartitionPIndex[]
 xref:indexPartitionPIndexInner[]
 xref:QueryRequest[]
 xref:QueryResponse[]
+
+include::{specDir}definitions/CommonIndexType/definition-before.adoc[opts=optional]
+
+include::{specDir}definitions/CommonIndexType/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/DocumentCount/definition-before.adoc[opts=optional]
 
@@ -1311,6 +1339,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 --
 
 [%hardbreaks]
+*Values:* `"fulltext-index"`, `"fulltext-alias"`
 {blank}
 a¦ String
 a¦ *indexUUID* +
@@ -1323,7 +1352,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 a¦ *name* +
 optional
 a¦ [markdown]
@@ -1387,7 +1416,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 a¦ *uuid* +
 optional
 a¦ [markdown]
