@@ -26,7 +26,7 @@ include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
-The Search Node Configuration REST API is provided by the Search service.
+The Search Node Configuration REST API is provided by the Search Service.
 This API enables you to manage and monitor your Search nodes.
 --
 
@@ -1061,14 +1061,6 @@ include::{specDir}paths/getDiagnostics/operation-description-begin.adoc[opts=opt
 Returns the full set of diagnostic information from the node as JSON.
 The response is the union of the responses from the node's other REST API diagnostic and monitoring endpoints.
 
-For example, for a 3 node cluster, you could capture diagnostics for each node with something like:
-
-```shell
-curl http://cbft-01:8094/api/diag > cbft-01.json
-curl http://cbft-02:8094/api/diag > cbft-02.json
-curl http://cbft-03:8094/api/diag > cbft-03.json
-```
-
 The response JSON object can be quite large, 100s of KB or much more.
 
 The motivation for this operation is to simplify working with the Couchbase community, forums, technical support, and other engineers, by making data capture from each Search node a single step.
@@ -1148,6 +1140,26 @@ include::{specDir}paths/getDiagnostics/operation-security-end.adoc[opts=optional
 :leveloffset: -1
 
 include::{specDir}paths/getDiagnostics/operation-security-after.adoc[opts=optional]
+
+[#getDiagnostics-ex-curl]
+= Example HTTP Request
+
+[#getDiagnostics-ex-curl-0]
+====
+Capture diagnostics for each node in a 3 node cluster.
+
+[source,sh]
+----
+curl -X GET -u $USER:$PASSWORD \
+  "http://$NODE1:8094/api/diag" > cbft-01.json
+
+curl -X GET -u $USER:$PASSWORD \
+  "http://$NODE2:8094/api/diag" > cbft-02.json
+
+curl -X GET -u $USER:$PASSWORD \
+  "http://$NODE3:8094/api/diag" > cbft-03.json
+----
+====
 
 include::{snippetDir}getDiagnostics/curl-request.adoc[opts=optional]
 
@@ -2117,7 +2129,7 @@ a¦ *indexDefsCAS* +
 optional
 a¦ [markdown]
 --
-Search index definition concurrency (compare and swap) value.
+Search index definition concurrency (Compare and Swap) value.
 --
 
 [%hardbreaks]
@@ -2148,7 +2160,7 @@ a¦ *nodeDefsKnownCAS* +
 optional
 a¦ [markdown]
 --
-Known node definition concurrency (compare and swap) value.
+Known node definition concurrency (Compare and Swap) value.
 --
 
 [%hardbreaks]
@@ -2179,7 +2191,7 @@ a¦ *nodeDefsWantedCAS* +
 optional
 a¦ [markdown]
 --
-Wanted node definition concurrency (compare and swap) value.
+Wanted node definition concurrency (Compare and Swap) value.
 --
 
 [%hardbreaks]
@@ -2210,7 +2222,7 @@ a¦ *planPIndexesCAS* +
 optional
 a¦ [markdown]
 --
-Search index partition concurrency (compare and swap) value.
+Search index partition concurrency (Compare and Swap) value.
 --
 
 [%hardbreaks]
@@ -2769,6 +2781,10 @@ endif::show-clusterConfigPlanWrapper[]
 
 include::{specDir}definitions/clusterConfigPlanWrapper/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/CommonIndexType/definition-before.adoc[opts=optional]
+
+include::{specDir}definitions/CommonIndexType/definition-after.adoc[opts=optional]
+
 include::{specDir}definitions/GetIndexResponsePIndex/definition-before.adoc[opts=optional]
 
 ifdef::show-GetIndexResponsePIndex[]
@@ -2826,6 +2842,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 --
 
 [%hardbreaks]
+*Values:* `"fulltext-index"`, `"fulltext-alias"`
 {blank}
 a¦ String
 a¦ *indexUUID* +
@@ -2838,7 +2855,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 a¦ *name* +
 optional
 a¦ [markdown]
@@ -2912,7 +2929,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 a¦ *uuid* +
 optional
 a¦ [markdown]
@@ -3274,6 +3291,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 --
 
 [%hardbreaks]
+*Values:* `"fulltext-index"`, `"fulltext-alias"`
 {blank}
 a¦ String
 a¦ *sourceName* +
@@ -3297,7 +3315,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 a¦ *sourceParams* +
 optional
 a¦ [markdown]
@@ -3347,12 +3365,12 @@ optional
 a¦ [markdown]
 --
 The UUID of the previous index.
-Intended for clients that want to check that they are not overwriting the Search index definition updates of concurrent clients.
+Intended for clients that want to check that they're not overwriting the Search index definition updates of concurrent clients.
 --
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 a¦ *uuid* +
 optional
 a¦ [markdown]
@@ -3363,7 +3381,7 @@ For more information, see [Initial Settings](../search/search-index-params.html#
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ UUID (UUID)
 
 |===
 

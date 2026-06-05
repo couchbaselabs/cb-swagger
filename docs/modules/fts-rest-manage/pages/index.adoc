@@ -286,9 +286,12 @@ include::{specDir}paths/put_options/operation-security-after.adoc[opts=optional]
 [#put_options-ex-curl-0]
 .Disable
 ====
+This request disables the creation of new partitions by means of file transfer.
+From this point, Search Service index partitions are built on the new nodes assigned to them during rebalance.
+
 [source,sh]
 ----
-curl -X PUT http://$HOST:8094/api/managerOptions \
+curl -X PUT $BASEPATH/api/managerOptions \
 -u $USER:$PASSWORD \
 -H "Content-type:application/json" \
 -d '{"disableFileTransferRebalance": "true" }'
@@ -298,9 +301,12 @@ curl -X PUT http://$HOST:8094/api/managerOptions \
 [#put_options-ex-curl-1]
 .Enable
 ====
+This request re-enables the creation of new partitions by means of file transfer.
+From this point, Search Service index partitions are again created by file transfer, on the new nodes assigned to them during rebalance.
+
 [source,sh]
 ----
-curl -X PUT http://$HOST:8094/api/managerOptions \
+curl -X PUT $BASEPATH/api/managerOptions \
 -u $USER:$PASSWORD \
 -H "Content-type:application/json" \
 -d '{"disableFileTransferRebalance": "false" }'

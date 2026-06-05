@@ -26,7 +26,7 @@ include::{specDir}overview/document-begin.adoc[opts=optional]
 
 [markdown]
 --
-The Search Active Queries REST API is provided by the Search service.
+The Search Active Queries REST API is provided by the Search Service.
 This API enables you to get information about active Search queries.
 --
 
@@ -262,22 +262,26 @@ include::{specDir}paths/api-query/operation-security-after.adoc[opts=optional]
 [#api-query-ex-curl-0]
 .All
 ====
+Find all active queries across all nodes in the cluster running the Search Service.
+
 [source,sh]
 ----
 curl -XGET -H "Content-Type: application/json" \
   -u $USER:$PASSWORD \
-  "http://$HOST:8094/api/query"
+  "$BASEPATH/api/query"
 ----
 ====
 
 [#api-query-ex-curl-1]
 .Filtered
 ====
+Find all queries across cluster that have been running for longer than 7&nbsp;s.
+
 [source,sh]
 ----
 curl -XGET -H "Content-Type: application/json" \
   -u $USER:$PASSWORD \
-  "http://$HOST:8094/api/query?longerThan=7s"
+  "$BASEPATH/api/query?longerThan=7s"
 ----
 ====
 
@@ -298,7 +302,7 @@ endif::[]
 ====
 [#api-query-ex-response-200-0]
 .All active node queries
-All active queries across the Search cluster.
+All active queries across all nodes in the cluster running the Search Service.
 
 [source,json]
 ----
@@ -607,10 +611,12 @@ include::{specDir}paths/api-query-cancel/operation-security-after.adoc[opts=opti
 
 [#api-query-cancel-ex-curl-0]
 ====
+Cancel a long running query with query ID `24` whose coordinator node has a UUID `b91d75480470f979f65f04e8f20a1f7b`.
+
 [source,sh]
 ----
 curl -X POST -H "Content-Type: application/json" -u $USER:$PASSWORD \
-  "http://$HOST:8094/api/query/24/cancel" -d \
+  "$BASEPATH/api/query/24/cancel" -d \
   '{ "uuid": "b91d75480470f979f65f04e8f20a1f7b" }'
 ----
 ====
@@ -844,11 +850,13 @@ include::{specDir}paths/api-query-index/operation-security-after.adoc[opts=optio
 
 [#api-query-index-ex-curl-0]
 ====
+Find queries on the index `DemoIndex1` that have been running for longer than 1&nbsp;ms.
+
 [source,sh]
 ----
 curl -XGET -H "Content-Type: application/json" \
 -u $USER:$PASSWORD \
-"http://$HOST:8094/api/query/index/DemoIndex1?longerThan=1ms"
+"$BASEPATH/api/query/index/DemoIndex1?longerThan=1ms"
 ----
 ====
 
