@@ -1998,11 +1998,132 @@ Other operations.
 
 
 [%hardbreaks]
+xref:get_encryption_at_rest[]
 xref:get_gc[]
 xref:get_ping[]
 xref:post_gc[]
 
 
+
+//tag::get_encryption_at_rest[]
+
+include::{specDir}paths/get_encryption_at_rest/operation-before.adoc[opts=optional]
+
+[#get_encryption_at_rest]
+= Retrieve Encryption-At-Rest Information
+
+:leveloffset: +1
+
+include::{specDir}paths/get_encryption_at_rest/operation-begin.adoc[opts=optional]
+
+....
+GET /admin/encryption_at_rest
+....
+
+
+include::{specDir}paths/get_encryption_at_rest/operation-description-before.adoc[opts=optional]
+
+[#get_encryption_at_rest-description]
+= Description
+
+:leveloffset: +1
+
+include::{specDir}paths/get_encryption_at_rest/operation-description-begin.adoc[opts=optional]
+
+[markdown]
+--
+Get information about encryption-at-rest on the Query Service.
+--
+
+include::{specDir}paths/get_encryption_at_rest/operation-description-end.adoc[opts=optional]
+
+
+
+[#get_encryption_at_rest-produces]
+.Produces
+* application/json
+
+
+:leveloffset: -1
+
+include::{specDir}paths/get_encryption_at_rest/operation-description-after.adoc[opts=optional]
+
+
+include::{specDir}paths/get_encryption_at_rest/operation-parameters-before.adoc[opts=optional]
+
+
+
+include::{specDir}paths/get_encryption_at_rest/operation-parameters-after.adoc[opts=optional]
+
+
+include::{specDir}paths/get_encryption_at_rest/operation-responses-before.adoc[opts=optional]
+
+[#get_encryption_at_rest-responses]
+= Responses
+
+:leveloffset: +1
+
+include::{specDir}paths/get_encryption_at_rest/operation-responses-begin.adoc[opts=optional]
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+An object containing information about encryption-at-rest on the Query Service.
+--
+a| xref:EncryptionAtRest[]
+
+|===
+
+include::{specDir}paths/get_encryption_at_rest/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+:show-EncryptionAtRest:
+
+
+include::{specDir}paths/get_encryption_at_rest/operation-responses-after.adoc[opts=optional]
+
+
+include::{specDir}paths/get_encryption_at_rest/operation-security-before.adoc[opts=optional]
+
+[#get_encryption_at_rest-security]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}paths/get_encryption_at_rest/operation-security-begin.adoc[opts=optional]
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| xref:security-Default[]
+
+|===
+
+include::{specDir}paths/get_encryption_at_rest/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/get_encryption_at_rest/operation-security-after.adoc[opts=optional]
+
+include::{snippetDir}get_encryption_at_rest/curl-request.adoc[opts=optional]
+
+include::{snippetDir}get_encryption_at_rest/http-request.adoc[opts=optional]
+
+include::{snippetDir}get_encryption_at_rest/http-response.adoc[opts=optional]
+
+include::{specDir}paths/get_encryption_at_rest/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/get_encryption_at_rest/operation-after.adoc[opts=optional]
+
+//end::get_encryption_at_rest[]
 
 //tag::get_gc[]
 
@@ -3773,6 +3894,8 @@ This section describes the properties consumed and returned by this REST API.
 [.two-columns]
 [%hardbreaks]
 xref:Clusters[]
+xref:EncryptionAtRest[]
+xref:EncryptionKeys[]
 xref:Garbage[]
 xref:Logging_Parameters[]
 xref:Logging_Parameters_Plan[]
@@ -3877,6 +4000,117 @@ ifndef::show-Clusters[]
 endif::show-Clusters[]
 
 include::{specDir}definitions/Clusters/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/EncryptionAtRest/definition-before.adoc[opts=optional]
+
+ifdef::show-EncryptionAtRest[]
+[#EncryptionAtRest]
+endif::show-EncryptionAtRest[]
+ifndef::show-EncryptionAtRest[]
+:leveloffset: +1
+
+[discrete#EncryptionAtRest]
+endif::show-EncryptionAtRest[]
+= Encryption-At-Rest Information
+
+:leveloffset: +1
+
+include::{specDir}definitions/EncryptionAtRest/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::EncryptionAtRest[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *keys.in_use* +
+required
+a¦ [markdown]
+--
+An object containing the data encryption keys (DEKs) currently in use, grouped by encryption type.
+Each field name is an encryption type, and its value is an array of DEK IDs being used to encrypt data of that type.
+The array may include the special DEK ID `""` (an empty string), indicating the presence of unencrypted data on disk.
+When encryption-at-rest is enabled for an encryption type, the array always includes the current active key's ID.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:EncryptionKeys[]
+
+|===
+
+//end::EncryptionAtRest[]
+
+
+
+include::{specDir}definitions/EncryptionAtRest/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-EncryptionAtRest[]
+:leveloffset: -1
+endif::show-EncryptionAtRest[]
+
+include::{specDir}definitions/EncryptionAtRest/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/EncryptionKeys/definition-before.adoc[opts=optional]
+
+ifdef::show-EncryptionKeys[]
+[#EncryptionKeys]
+endif::show-EncryptionKeys[]
+ifndef::show-EncryptionKeys[]
+:leveloffset: +1
+
+[discrete#EncryptionKeys]
+endif::show-EncryptionKeys[]
+= Keys in Use
+
+:leveloffset: +1
+
+include::{specDir}definitions/EncryptionKeys/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::EncryptionKeys[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *<encryption type>* +
+additional +
+property
+a¦ [markdown]
+--
+An array of DEK IDs currently in use for this encryption type.
+A DEK ID may be an empty string, indicating the presence of unencrypted data on disk.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String array
+
+|===
+
+//end::EncryptionKeys[]
+
+
+
+include::{specDir}definitions/EncryptionKeys/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-EncryptionKeys[]
+:leveloffset: -1
+endif::show-EncryptionKeys[]
+
+include::{specDir}definitions/EncryptionKeys/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Garbage/definition-before.adoc[opts=optional]
 
