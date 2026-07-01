@@ -13,6 +13,7 @@ tasks.register('getExamples') {
     ant.echo("Fetching from ${ant.srcUrl}")
     ant.get(dest: "examples", ignoreerrors: "true") {
       ant.url(url: "${ant.srcUrl}/get_debug_vars.html")
+      ant.url(url: "${ant.srcUrl}/get_encryption_at_rest.json")
       ant.url(url: "${ant.srcUrl}/get_gc.json")
       ant.url(url: "${ant.srcUrl}/get_ping.json")
       ant.url(url: "${ant.srcUrl}/post_gc.json")
