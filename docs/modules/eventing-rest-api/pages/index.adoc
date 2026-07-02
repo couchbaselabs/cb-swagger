@@ -3900,6 +3900,8 @@ include::{specDir}paths/log_view/operation-description-begin.adoc[opts=optional]
 [markdown]
 --
 Returns the most recent application log messages for the specified function.
+Use this endpoint to view Eventing application logs when encryption at rest is enabled.
+For more information, see [Native Encryption at Rest](../learn/security/native-encryption-at-rest-overview.html).
 --
 
 include::{specDir}paths/log_view/operation-description-end.adoc[opts=optional]
@@ -6824,7 +6826,9 @@ a¦ *enable_applog_rotation* +
 optional
 a¦ [markdown]
 --
-enable rotating this handlers log() message files
+Enable rotation for this handler's log() message files.
+
+Do not disable log rotation when encryption at rest is active, as this could compromise security or lead to unexpected behavior.
 --
 
 [%hardbreaks]
