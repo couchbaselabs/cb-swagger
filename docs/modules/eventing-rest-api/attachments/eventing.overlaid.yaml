@@ -833,7 +833,8 @@ paths:
   /getAppLog:
     get:
       description: "Returns the most recent application log messages for the specified\
-        \ function."
+        \ function.\nUse this endpoint to view Eventing application logs when encryption\
+        \ at rest is enabled.\nFor more information, see [Native Encryption at Rest](../learn/security/native-encryption-at-rest-overview.html)."
       operationId: "log_view"
       parameters:
       - description: "The name of a function."
@@ -1531,7 +1532,9 @@ components:
           type: "array"
         enable_applog_rotation:
           default: true
-          description: "enable rotating this handlers log() message files"
+          description: "Enable rotation for this handler's log() message files.\n\n\
+            Do not disable log rotation when encryption at rest is active, as this\
+            \ could compromise security or lead to unexpected behavior."
           type: "boolean"
         app_log_dir:
           description: "directory to write content of log() message files"
