@@ -1838,6 +1838,7 @@ This section describes the properties consumed and returned by this REST API.
 [%hardbreaks]
 xref:Request[]
 xref:RequestCredentials[]
+xref:Request_natural_config[]
 xref:RequestScanVector[]
 xref:RequestScanVectorFull[]
 xref:RequestScanVectorSparse[]
@@ -2297,6 +2298,25 @@ If you don't specify all four parameters, the Query Service returns an error.
 [%hardbreaks]
 {blank}
 a¦ UUID (uuid)
+a¦ [#natural_config]
+*natural_config* +
+optional
+a¦ [.status]##Couchbase Server 8.1##
+
+[markdown]
+--
+The configuration for a natural language request that talks directly to an LLM provider, instead of using the Couchbase Capella iQ service.
+It selects the LLM provider that generates the SQL++ statement and supplies its credentials and options.
+
+Supply either `cred_id` or `api_key`, unless the provider authenticates from the node's ambient environment (for example, Amazon Bedrock via the AWS default credential chain) or a custom `endpoint` is supplied.
+
+This is an alternative to the Capella `natural_cred`/`natural_orgid` parameters. If either `natural_cred` or `natural_orgid` is present, the request is served by the Capella iQ path (and both parameters are then required); `natural_config` is used only when neither is present. To use this parameter, you must also specify the `natural` and `natural_context` parameters.
+--
+
+[%hardbreaks]
+*Example:* ``
+{blank}
+a¦ xref:Request_natural_config[]
 a¦ [#natural_context]
 *natural_context* +
 optional
@@ -3152,6 +3172,129 @@ ifndef::show-RequestCredentials[]
 endif::show-RequestCredentials[]
 
 include::{specDir}definitions/RequestCredentials/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/Request_natural_config/definition-before.adoc[opts=optional]
+
+ifdef::show-Request_natural_config[]
+[#Request_natural_config]
+endif::show-Request_natural_config[]
+ifndef::show-Request_natural_config[]
+:leveloffset: +1
+
+[discrete#Request_natural_config]
+endif::show-Request_natural_config[]
+= RequestNaturalConfig
+
+:leveloffset: +1
+
+include::{specDir}definitions/Request_natural_config/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Request_natural_config[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *provider* +
+optional
+a¦ [markdown]
+--
+The LLM provider. Supported values are `openai`, `bedrock`, `gemini`, and `slm`. Defaults to `openai`. The `slm` provider is for a self-hosted model and always requires `endpoint`.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *model* +
+optional
+a¦ [markdown]
+--
+The provider-specific model identifier. Defaults to the provider's default model.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *cred_id* +
+optional
+a¦ [markdown]
+--
+A reference to a stored credential. Supply either `cred_id` or `api_key`.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *api_key* +
+optional
+a¦ [markdown]
+--
+An API key for inline authentication. Supply either `api_key` or `cred_id`. Do not expose it in logs.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String (password)
+a¦ *endpoint* +
+optional
+a¦ [markdown]
+--
+A custom endpoint URL for a self-hosted or proxied deployment. Must be permitted by the cluster's URL allow list.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *region* +
+optional
+a¦ [markdown]
+--
+The provider region. For Amazon Bedrock, this is the AWS region.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *output_token_limit* +
+optional
+a¦ [markdown]
+--
+Caps the number of tokens the provider may generate. If omitted, the provider's default applies.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer (int32)
+a¦ *moderation* +
+optional
+a¦ [markdown]
+--
+Whether to run content moderation on the request before generating the statement. Defaults to `true`. Set to `false` for OpenAI-compatible endpoints that do not implement a moderations API (for example, Amazon Bedrock's OpenAI-compatible surface).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+
+|===
+
+//end::Request_natural_config[]
+
+
+
+include::{specDir}definitions/Request_natural_config/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-Request_natural_config[]
+:leveloffset: -1
+endif::show-Request_natural_config[]
+
+include::{specDir}definitions/Request_natural_config/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/RequestScanVector/definition-before.adoc[opts=optional]
 

@@ -34,7 +34,7 @@ This API enables you to configure Analytics nodes and clusters.
 [discrete#version]
 = Version information
 [%hardbreaks]
-*Version:* 8.1
+*Version:* 8.5
 
 [discrete#host]
 = Host information
@@ -190,7 +190,7 @@ a| xref:Node[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/8.1/analytics/error-codes.html).
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/8.5/analytics/error-codes.html).
 --
 a| Object
 
@@ -317,7 +317,7 @@ a| xref:Service[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/8.1/analytics/error-codes.html).
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/8.5/analytics/error-codes.html).
 --
 a| Object
 
@@ -403,8 +403,8 @@ IMPORTANT: For the configuration changes to take effect,
 you must restart the node using the [Node Restart API][1],
 or restart the Analytics cluster using the [Cluster Restart API][2].
 
-[1]: /server/8.1/analytics-rest-admin.html#restart_node
-[2]: /server/8.1/analytics-rest-admin.html#restart_cluster
+[1]: /server/8.5/analytics-rest-admin.html#restart_node
+[2]: /server/8.5/analytics-rest-admin.html#restart_cluster
 --
 
 include::{specDir}paths/put_node/operation-description-end.adoc[opts=optional]
@@ -496,7 +496,7 @@ a| xref:Errors[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/8.1/analytics/error-codes.html).
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/8.5/analytics/error-codes.html).
 --
 a| Object
 
@@ -581,7 +581,7 @@ Modifies service-level parameters, which apply to all nodes running the Analytic
 IMPORTANT: For the configuration changes to take effect,
 you must restart the Analytics cluster using the [Cluster Restart API][1].
 
-[1]: /server/8.1/analytics-rest-admin.html#restart_cluster
+[1]: /server/8.5/analytics-rest-admin.html#restart_cluster
 --
 
 include::{specDir}paths/put_service/operation-description-end.adoc[opts=optional]
@@ -673,7 +673,7 @@ a| xref:Errors[]
 | 401
 a| [markdown]
 --
-Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/8.1/analytics/error-codes.html).
+Unauthorized. The user name or password may be incorrect.  Returns an object containing an error message. For more information, see [Error Codes](/server/8.5/analytics/error-codes.html).
 --
 a| Object
 
@@ -846,8 +846,8 @@ If the same JVM argument appears in both the service-level arguments and the nod
 JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
 To pass arguments opaquely, you may use [Java command-line argument files][3].
 
-[1]: /server/8.1/cli/cbcollect-info-tool.html
-[2]: /server/8.1/learn/clusters-and-availability/system-events.html
+[1]: /server/8.5/cli/cbcollect-info-tool.html
+[2]: /server/8.5/learn/clusters-and-availability/system-events.html
 [3]: https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-4856361B-8BFD-4964-AE84-121F5F6CF111
 --
 
@@ -1216,8 +1216,8 @@ The default is undefined (null).
 JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
 To pass arguments opaquely, you may use [Java command-line argument files][3].
 
-[1]: /server/8.1/cli/cbcollect-info-tool.html
-[2]: /server/8.1/learn/clusters-and-availability/system-events.html
+[1]: /server/8.5/cli/cbcollect-info-tool.html
+[2]: /server/8.5/learn/clusters-and-availability/system-events.html
 [3]: https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-4856361B-8BFD-4964-AE84-121F5F6CF111
 --
 

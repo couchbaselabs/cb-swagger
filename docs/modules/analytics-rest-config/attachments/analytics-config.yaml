@@ -1,10 +1,10 @@
 openapi: 3.0.3
 info:
   title: Analytics Configuration REST API
-  version: '8.1'
+  version: '8.5'
   license:
     name: Business Source License 1.1
-    url: https://github.com/couchbaselabs/cb-swagger/blob/release/8.1/licenses/BSL-Couchbase.txt
+    url: https://github.com/couchbaselabs/cb-swagger/blob/release/8.5/licenses/BSL-Couchbase.txt
   description: |
     The Analytics Configuration REST API is provided by the Analytics Service.
     This API enables you to configure Analytics nodes and clusters.
@@ -61,7 +61,7 @@ paths:
         IMPORTANT: For the configuration changes to take effect,
         you must restart the Analytics cluster using the [Cluster Restart API][1].
 
-        [1]: /server/8.1/analytics-rest-admin.html#restart_cluster
+        [1]: /server/8.5/analytics-rest-admin.html#restart_cluster
       requestBody:
         description: An object specifying one or more of the configurable service-level parameters.
         content:
@@ -109,8 +109,8 @@ paths:
         you must restart the node using the [Node Restart API][1],
         or restart the Analytics cluster using the [Cluster Restart API][2].
 
-        [1]: /server/8.1/analytics-rest-admin.html#restart_node
-        [2]: /server/8.1/analytics-rest-admin.html#restart_cluster
+        [1]: /server/8.5/analytics-rest-admin.html#restart_node
+        [2]: /server/8.5/analytics-rest-admin.html#restart_cluster
       requestBody:
         description: An object specifying one or more of the configurable node-level parameters on this node.
         content:
@@ -301,8 +301,8 @@ components:
           JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
           To pass arguments opaquely, you may use [Java command-line argument files][3].
 
-          [1]: /server/8.1/cli/cbcollect-info-tool.html
-          [2]: /server/8.1/learn/clusters-and-availability/system-events.html
+          [1]: /server/8.5/cli/cbcollect-info-tool.html
+          [2]: /server/8.5/learn/clusters-and-availability/system-events.html
           [3]: https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-4856361B-8BFD-4964-AE84-121F5F6CF111
         type: string
         nullable: true
@@ -450,8 +450,8 @@ components:
           JVM arguments are generally not secure, and are exposed by [cbcollect_info][1] and the [System Event][2] log.
           To pass arguments opaquely, you may use [Java command-line argument files][3].
 
-          [1]: /server/8.1/cli/cbcollect-info-tool.html
-          [2]: /server/8.1/learn/clusters-and-availability/system-events.html
+          [1]: /server/8.5/cli/cbcollect-info-tool.html
+          [2]: /server/8.5/learn/clusters-and-availability/system-events.html
           [3]: https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-4856361B-8BFD-4964-AE84-121F5F6CF111
         type: string
         nullable: true
@@ -500,7 +500,7 @@ components:
       The user name or password may be incorrect.
 
       Returns an object containing an error message.
-      For more information, see [Error Codes](/server/8.1/analytics/error-codes.html).
+      For more information, see [Error Codes](/server/8.5/analytics/error-codes.html).
     content:
       application/json:
         schema:

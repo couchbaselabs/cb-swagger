@@ -32,7 +32,7 @@ The Eventing REST API provides methods to work with and manipulate Couchbase Eve
 [discrete#version]
 = Version information
 [%hardbreaks]
-*Version:* 8.1
+*Version:* 8.5
 
 [discrete#host]
 = Host information
@@ -6859,7 +6859,7 @@ a¦ *app_log_max_files* +
 optional
 a¦ [markdown]
 --
-number of log() message files to retain when rotating
+The number of log() message files to retain when rotating. App log files are also rotated automatically whenever encryption at rest is switched on or off, regardless of this setting.
 --
 
 [%hardbreaks]
@@ -7063,7 +7063,7 @@ optional
 a¦ [markdown]
 --
 Enables the Eventing curl function.
-For details, see [cURL](/server/8.1/eventing/eventing-curl-spec.html).
+For details, see [cURL](/server/8.5/eventing/eventing-curl-spec.html).
 
 This setting is available globally or at the function scope level.
 --
@@ -7076,7 +7076,7 @@ optional
 a¦ [markdown]
 --
 Enables the Eventing service debugger.
-For details, see [Debugging and Diagnosability](/server/8.1/eventing/eventing-debugging-and-diagnosability.html).
+For details, see [Debugging and Diagnosability](/server/8.5/eventing/eventing-debugging-and-diagnosability.html).
 
 This setting is available globally or at the function scope level.
 --
