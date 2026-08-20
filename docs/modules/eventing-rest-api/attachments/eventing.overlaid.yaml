@@ -4,9 +4,9 @@ info:
     \ Couchbase Eventing functions."
   license:
     name: "Business Source License 1.1"
-    url: "https://github.com/couchbaselabs/cb-swagger/blob/release/8.1/licenses/BSL-Couchbase.txt"
+    url: "https://github.com/couchbaselabs/cb-swagger/blob/release/8.5/licenses/BSL-Couchbase.txt"
   title: "Eventing REST API"
-  version: "8.1"
+  version: "8.5"
 servers:
 - description: "The URL scheme, host, and port are as follows."
   url: "{scheme}://{host}:{port}"
@@ -1546,7 +1546,9 @@ components:
           type: "integer"
         app_log_max_files:
           default: 10
-          description: "number of log() message files to retain when rotating"
+          description: "The number of log() message files to retain when rotating.\
+            \ App log files are also rotated automatically whenever encryption at\
+            \ rest is switched on or off, regardless of this setting."
           minimum: 1
           type: "integer"
         checkpoint_interval:
@@ -1882,13 +1884,13 @@ components:
           x-has-default: true
           type: "integer"
         enable_curl:
-          description: "Enables the Eventing curl function.\nFor details, see [cURL](/server/8.1/eventing/eventing-curl-spec.html).\n\
+          description: "Enables the Eventing curl function.\nFor details, see [cURL](/server/8.5/eventing/eventing-curl-spec.html).\n\
             \nThis setting is available globally or at the function scope level."
           type: "boolean"
         enable_debugger:
           default: false
           description: "Enables the Eventing service debugger.\nFor details, see [Debugging\
-            \ and Diagnosability](/server/8.1/eventing/eventing-debugging-and-diagnosability.html).\n\
+            \ and Diagnosability](/server/8.5/eventing/eventing-debugging-and-diagnosability.html).\n\
             \nThis setting is available globally or at the function scope level."
           x-has-default: true
           type: "boolean"
