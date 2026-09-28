@@ -244,6 +244,44 @@ components:
         format: int32
         x-has-default: true
         default: 3
+      crlCacheMaxTtlMillis:
+        type: integer
+        description: >
+          The maximum time (in milliseconds) for which any certificate revocation verdict is cached,
+          even one that the Cluster Manager reports as never expiring.
+          This bounds how long a stale verdict can survive if a change to the certificate revocation lists does not reach the Analytics Service.
+          A value of 0 removes the limit.
+        format: int32
+        minimum: 0
+        maximum: 3600000
+        x-has-default: true
+        default: 300000
+      crlCacheSize:
+        type: integer
+        description: >
+          The maximum number of certificate revocation verdicts to cache.
+          The Analytics Service caches the result of checking a certificate chain against the certificate revocation lists,
+          for clients that authenticate with a client certificate and for node-to-node connections,
+          so that the same chain is not rechecked with the Cluster Manager on every connection.
+          When the cache is full, the oldest verdict is evicted.
+          A value of 0 disables the cache.
+        format: int32
+        minimum: 0
+        maximum: 65536
+        x-has-default: true
+        default: 1024
+      crlUndeterminedCacheTtlMillis:
+        type: integer
+        description: >
+          The maximum time (in milliseconds) for which to cache a revocation status that could not be established,
+          such as an undetermined or failed check.
+          Such conditions are usually transient, so this limit applies however long the accompanying expiration says the status is valid for.
+          A value of 0 disables caching of these statuses.
+        format: int32
+        minimum: 0
+        maximum: 60000
+        x-has-default: true
+        default: 1000
       dcpBufferAckWatermark:
         type: integer
         description: >
@@ -269,6 +307,27 @@ components:
           If the JVM maximum heap size is less than 8&nbsp;GB, the default for this parameter is 10 MB divided by the number of IO Devices on the node.
           Otherwise, the default is 1% of the JVM maximum heap size divided by the number of IO Devices on the node.
         format: int32
+      dcpStreamAllocationStrategy:
+        type: string
+        description: |-
+          How DCP streams are allocated for an ingestion.
+
+          * `STARTING_POSITION` allocates one stream per distinct starting position, so Analytics collections that have caught up to one another share a stream, and streams are merged as they converge.
+          * `KV_COLLECTION` allocates one stream per KV collection, so all Analytics collections on a KV collection share a single stream, and an established Analytics collection advances no further until a newly created one has caught up to it.
+
+          `KV_COLLECTION` is always used for a bucket that does not support collections, such as a remote bucket on a server earlier than 7.0.
+        enum:
+          - STARTING_POSITION
+          - KV_COLLECTION
+        x-has-default: true
+        default: STARTING_POSITION
+      dcpStreamRequestIncludePurgeSeqnos:
+        type: boolean
+        description: >
+          Whether the DCP client includes the purge sequence number in stream requests,
+          if the producer supports it.
+        x-has-default: true
+        default: true
       deadlockWatchdogHaltDelaySeconds:
         description: The delay (in seconds) to wait for graceful shutdown due to deadlocked threads, before halting.
         type: integer
