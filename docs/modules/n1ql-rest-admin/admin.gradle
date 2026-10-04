@@ -51,6 +51,23 @@ openApiGenerate {
     ]
     generateAliasAsModel = true
     engine = "handlebars"
+    inlineSchemaNameMappings = [
+            get_catalogs_200_response: "CatalogResponse",
+            Catalog_metadata: "CatalogMetadata"
+    ]
+    modelNameMappings = [
+            CatalogResponse: "External Catalogs",
+            Catalog: "External Catalogs Item",
+            CatalogMetadata: "External Metadata",
+            CatalogNamespace: "External Namespace",
+            CatalogTable: "External Namespace Table",
+            CatalogColumn: "External Namespace Table 1",
+            CatalogSnapshot: "External Namespace Table 2",
+            CatalogFile: "External Namespace Table 3",
+            Logging_Parameters: "Settings Log",
+            Logging_Parameters_Plan: "Settings Log Plan",
+            Logging_Parameters_Plan_Pairs: "Settings Log Plan Pairs"
+    ]
 }
 
 tasks.bundleSpec.dependsOn(getExamples)
