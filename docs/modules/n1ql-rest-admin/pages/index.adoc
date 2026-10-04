@@ -108,6 +108,7 @@ xref:tag-ActiveRequests[]
 xref:tag-CompletedRequests[]
 xref:tag-Configuration[]
 xref:tag-Default[]
+xref:tag-ExternalCatalogs[]
 xref:tag-PreparedStatements[]
 xref:tag-Settings[]
 xref:tag-Statistics[]
@@ -2487,6 +2488,193 @@ include::{specDir}paths/post_gc/operation-after.adoc[opts=optional]
 
 
 :leveloffset: -1
+[#tag-ExternalCatalogs]
+= External Catalogs
+:leveloffset: +1
+
+**{toc-title}**
+
+
+[%hardbreaks]
+xref:get_catalogs[]
+
+
+
+//tag::get_catalogs[]
+
+include::{specDir}paths/get_catalogs/operation-before.adoc[opts=optional]
+
+[#get_catalogs]
+= Retrieve External Catalogs
+
+:leveloffset: +1
+
+include::{specDir}paths/get_catalogs/operation-begin.adoc[opts=optional]
+
+....
+GET /admin/catalogs
+....
+
+
+include::{specDir}paths/get_catalogs/operation-description-before.adoc[opts=optional]
+
+[#get_catalogs-description]
+= Description
+
+:leveloffset: +1
+
+include::{specDir}paths/get_catalogs/operation-description-begin.adoc[opts=optional]
+
+[markdown]
+--
+Returns information about the external (federated) catalogs configured on the cluster, such as the Iceberg catalogs used by external collections.
+--
+
+include::{specDir}paths/get_catalogs/operation-description-end.adoc[opts=optional]
+
+
+
+[#get_catalogs-produces]
+.Produces
+* application/json
+
+
+:leveloffset: -1
+
+include::{specDir}paths/get_catalogs/operation-description-after.adoc[opts=optional]
+
+
+include::{specDir}paths/get_catalogs/operation-parameters-before.adoc[opts=optional]
+
+[#get_catalogs-parameters]
+= Parameters
+
+:leveloffset: +1
+
+include::{specDir}paths/get_catalogs/operation-parameters-begin.adoc[opts=optional]
+
+[#get_catalogs-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *name* +
+optional
+a¦ [markdown]
+--
+The name of a single external catalog to retrieve.
+If omitted, all configured catalogs are returned.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+a¦ *infoFlags* +
+optional
+a¦ [markdown]
+--
+A bitmask selecting additional metadata to load from the external catalog itself and include in the `metadata` property of the response.
+
+* `1` -- load column schema information.
+* `2` -- load snapshot history.
+* `4` -- load the data file list.
+* `7` -- load all of the above.
+
+If `0` (the default), no additional metadata is loaded, and only the catalog's own configuration is returned.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ Integer
+
+|===
+
+
+include::{specDir}paths/get_catalogs/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+include::{specDir}paths/get_catalogs/operation-parameters-after.adoc[opts=optional]
+
+
+include::{specDir}paths/get_catalogs/operation-responses-before.adoc[opts=optional]
+
+[#get_catalogs-responses]
+= Responses
+
+:leveloffset: +1
+
+include::{specDir}paths/get_catalogs/operation-responses-begin.adoc[opts=optional]
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+An object describing the specified external catalog, or an array of such objects if `name` wasn't specified.
+--
+a| xref:get_catalogs_200_response[]
+
+|===
+
+include::{specDir}paths/get_catalogs/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+:show-get_catalogs_200_response:
+
+
+include::{specDir}paths/get_catalogs/operation-responses-after.adoc[opts=optional]
+
+
+include::{specDir}paths/get_catalogs/operation-security-before.adoc[opts=optional]
+
+[#get_catalogs-security]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}paths/get_catalogs/operation-security-begin.adoc[opts=optional]
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| xref:security-Default[]
+
+|===
+
+include::{specDir}paths/get_catalogs/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/get_catalogs/operation-security-after.adoc[opts=optional]
+
+include::{snippetDir}get_catalogs/curl-request.adoc[opts=optional]
+
+include::{snippetDir}get_catalogs/http-request.adoc[opts=optional]
+
+include::{snippetDir}get_catalogs/http-response.adoc[opts=optional]
+
+include::{specDir}paths/get_catalogs/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/get_catalogs/operation-after.adoc[opts=optional]
+
+//end::get_catalogs[]
+
+
+
+:leveloffset: -1
 [#tag-PreparedStatements]
 = Prepared Statements
 :leveloffset: +1
@@ -3893,10 +4081,18 @@ This section describes the properties consumed and returned by this REST API.
 
 [.two-columns]
 [%hardbreaks]
+xref:Catalog[]
+xref:CatalogColumn[]
+xref:CatalogFile[]
+xref:Catalog_metadata[]
+xref:CatalogNamespace[]
+xref:CatalogSnapshot[]
+xref:CatalogTable[]
 xref:Clusters[]
 xref:EncryptionAtRest[]
 xref:EncryptionKeys[]
 xref:Garbage[]
+xref:get_catalogs_200_response[]
 xref:Logging_Parameters[]
 xref:Logging_Parameters_Plan[]
 xref:Logging_Parameters_Plan_Pairs[]
@@ -3907,6 +4103,675 @@ xref:Settings[]
 xref:Statements[]
 xref:Statistics[]
 xref:Vitals[]
+
+include::{specDir}definitions/Catalog/definition-before.adoc[opts=optional]
+
+ifdef::show-Catalog[]
+[#Catalog]
+endif::show-Catalog[]
+ifndef::show-Catalog[]
+:leveloffset: +1
+
+[discrete#Catalog]
+endif::show-Catalog[]
+= External Catalog
+
+:leveloffset: +1
+
+include::{specDir}definitions/Catalog/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Catalog[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *name* +
+required
+a¦ [markdown]
+--
+The name of the external catalog.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *catalogType* +
+required
+a¦ [markdown]
+--
+The type of the external catalog.
+--
+
+[%hardbreaks]
+*Values:* `"ICEBERG"`
+{blank}
+a¦ String
+a¦ *catalogSource* +
+required
+a¦ [markdown]
+--
+The source (implementation) backing the external catalog.
+--
+
+[%hardbreaks]
+*Values:* `"AWS_GLUE"`, `"AWS_GLUE_REST"`, `"S3_TABLES"`, `"BIGLAKE_METASTORE"`, `"NESSIE"`, `"REST"`, `"NESSIE_REST"`, `"UNITY_CATALOG"`, `"SQL"`
+{blank}
+a¦ String
+a¦ *credentialId* +
+optional
+a¦ [markdown]
+--
+The identifier of the credential used to access the external catalog.
+It's not returned for the `SQL` source unless a credential was configured.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *rev* +
+optional
+a¦ [markdown]
+--
+The revision number of the catalog definition, incremented each time it's changed.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+a¦ *uid* +
+optional
+a¦ [markdown]
+--
+A unique identifier assigned to the catalog definition when it was created.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *uri* +
+optional
+a¦ [markdown]
+--
+The URI of the external catalog service.
+It's not returned for sources that don't require one.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *warehouse* +
+optional
+a¦ [markdown]
+--
+The warehouse location or identifier used by the external catalog.
+It's only returned for sources that use one.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *sigv4SigningName* +
+optional
+a¦ [markdown]
+--
+The AWS SigV4 signing name used to authenticate to the external catalog.
+It's only returned for sources that use it.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *sigv4SigningRegion* +
+optional
+a¦ [markdown]
+--
+The AWS SigV4 signing region used to authenticate to the external catalog.
+It's only returned for sources that use it.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *quotaProjectId* +
+optional
+a¦ [markdown]
+--
+The Google Cloud quota project ID used when accessing the external catalog.
+It's only returned for the `BIGLAKE_METASTORE` source.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *sqlDialect* +
+optional
+a¦ [markdown]
+--
+The SQL dialect used by the external catalog.
+It's only returned for the `SQL` source.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *branch* +
+optional
+a¦ [markdown]
+--
+The branch used by the external catalog.
+It's only returned for the `NESSIE` source.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *metadata* +
+optional
+a¦ [markdown]
+--
+Metadata loaded from the external catalog itself.
+It's only returned when the `infoFlags` query parameter was non-zero and a credential is configured for the catalog.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:Catalog_metadata[]
+
+|===
+
+//end::Catalog[]
+
+
+
+include::{specDir}definitions/Catalog/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-Catalog[]
+:leveloffset: -1
+endif::show-Catalog[]
+
+include::{specDir}definitions/Catalog/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/CatalogColumn/definition-before.adoc[opts=optional]
+
+ifdef::show-CatalogColumn[]
+[#CatalogColumn]
+endif::show-CatalogColumn[]
+ifndef::show-CatalogColumn[]
+:leveloffset: +1
+
+[discrete#CatalogColumn]
+endif::show-CatalogColumn[]
+= External Catalog Table Column
+
+:leveloffset: +1
+
+include::{specDir}definitions/CatalogColumn/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::CatalogColumn[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *name* +
+optional
+a¦ [markdown]
+--
+The name of the column.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *type* +
+optional
+a¦ [markdown]
+--
+The Iceberg data type of the column.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *required* +
+optional
+a¦ [markdown]
+--
+Indicates the column is required (not nullable).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+a¦ *added_in_schema* +
+optional
+a¦ [markdown]
+--
+The schema ID in which the column was added.
+It's only returned when the column wasn't present in the table's earliest schema.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::CatalogColumn[]
+
+
+
+include::{specDir}definitions/CatalogColumn/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CatalogColumn[]
+:leveloffset: -1
+endif::show-CatalogColumn[]
+
+include::{specDir}definitions/CatalogColumn/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/CatalogFile/definition-before.adoc[opts=optional]
+
+ifdef::show-CatalogFile[]
+[#CatalogFile]
+endif::show-CatalogFile[]
+ifndef::show-CatalogFile[]
+:leveloffset: +1
+
+[discrete#CatalogFile]
+endif::show-CatalogFile[]
+= External Catalog Data File
+
+:leveloffset: +1
+
+include::{specDir}definitions/CatalogFile/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::CatalogFile[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *path* +
+optional
+a¦ [markdown]
+--
+The path of the data file.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *record_count* +
+optional
+a¦ [markdown]
+--
+The number of records in the data file.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::CatalogFile[]
+
+
+
+include::{specDir}definitions/CatalogFile/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CatalogFile[]
+:leveloffset: -1
+endif::show-CatalogFile[]
+
+include::{specDir}definitions/CatalogFile/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/Catalog_metadata/definition-before.adoc[opts=optional]
+
+ifdef::show-Catalog_metadata[]
+[#Catalog_metadata]
+endif::show-Catalog_metadata[]
+ifndef::show-Catalog_metadata[]
+:leveloffset: +1
+
+[discrete#Catalog_metadata]
+endif::show-Catalog_metadata[]
+= CatalogMetadata
+
+:leveloffset: +1
+
+include::{specDir}definitions/Catalog_metadata/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Catalog_metadata[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *namespaces* +
+optional
+a¦ [markdown]
+--
+The namespaces (databases) in the external catalog.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:CatalogNamespace[] array
+a¦ *row_count* +
+optional
+a¦ [markdown]
+--
+The total number of rows across all tables in all namespaces.
+It's only returned when the `infoFlags` query parameter requested file information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::Catalog_metadata[]
+
+
+
+include::{specDir}definitions/Catalog_metadata/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-Catalog_metadata[]
+:leveloffset: -1
+endif::show-Catalog_metadata[]
+
+include::{specDir}definitions/Catalog_metadata/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/CatalogNamespace/definition-before.adoc[opts=optional]
+
+ifdef::show-CatalogNamespace[]
+[#CatalogNamespace]
+endif::show-CatalogNamespace[]
+ifndef::show-CatalogNamespace[]
+:leveloffset: +1
+
+[discrete#CatalogNamespace]
+endif::show-CatalogNamespace[]
+= External Catalog Namespace
+
+:leveloffset: +1
+
+include::{specDir}definitions/CatalogNamespace/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::CatalogNamespace[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *name* +
+optional
+a¦ [markdown]
+--
+The name of the namespace.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *tables* +
+optional
+a¦ [markdown]
+--
+The tables in the namespace.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:CatalogTable[] array
+a¦ *row_count* +
+optional
+a¦ [markdown]
+--
+The total number of rows across all tables in the namespace.
+It's only returned when the `infoFlags` query parameter requested file information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::CatalogNamespace[]
+
+
+
+include::{specDir}definitions/CatalogNamespace/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CatalogNamespace[]
+:leveloffset: -1
+endif::show-CatalogNamespace[]
+
+include::{specDir}definitions/CatalogNamespace/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/CatalogSnapshot/definition-before.adoc[opts=optional]
+
+ifdef::show-CatalogSnapshot[]
+[#CatalogSnapshot]
+endif::show-CatalogSnapshot[]
+ifndef::show-CatalogSnapshot[]
+:leveloffset: +1
+
+[discrete#CatalogSnapshot]
+endif::show-CatalogSnapshot[]
+= External Catalog Table Snapshot
+
+:leveloffset: +1
+
+include::{specDir}definitions/CatalogSnapshot/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::CatalogSnapshot[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *snapshot_id* +
+optional
+a¦ [markdown]
+--
+The identifier of the snapshot.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+a¦ *timestamp_ms* +
+optional
+a¦ [markdown]
+--
+The time the snapshot was created, in milliseconds since the epoch.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::CatalogSnapshot[]
+
+
+
+include::{specDir}definitions/CatalogSnapshot/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CatalogSnapshot[]
+:leveloffset: -1
+endif::show-CatalogSnapshot[]
+
+include::{specDir}definitions/CatalogSnapshot/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/CatalogTable/definition-before.adoc[opts=optional]
+
+ifdef::show-CatalogTable[]
+[#CatalogTable]
+endif::show-CatalogTable[]
+ifndef::show-CatalogTable[]
+:leveloffset: +1
+
+[discrete#CatalogTable]
+endif::show-CatalogTable[]
+= External Catalog Table
+
+:leveloffset: +1
+
+include::{specDir}definitions/CatalogTable/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::CatalogTable[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *name* +
+optional
+a¦ [markdown]
+--
+The name of the table.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *location* +
+optional
+a¦ [markdown]
+--
+The storage location of the table.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *format* +
+optional
+a¦ [markdown]
+--
+The data file format used by the table (for example, `parquet`).
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *current_schema* +
+optional
+a¦ [markdown]
+--
+The schema ID of the table's current schema.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+a¦ *schema* +
+optional
+a¦ [markdown]
+--
+The columns of the table's current schema.
+It's only returned when the `infoFlags` query parameter requested schema information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:CatalogColumn[] array
+a¦ *snapshots* +
+optional
+a¦ [markdown]
+--
+The table's snapshot history (at most the 8 most recent snapshots).
+It's only returned when the `infoFlags` query parameter requested snapshot information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:CatalogSnapshot[] array
+a¦ *files* +
+optional
+a¦ [markdown]
+--
+The data files backing the table's current snapshot.
+It's only returned when the `infoFlags` query parameter requested file information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:CatalogFile[] array
+a¦ *row_count* +
+optional
+a¦ [markdown]
+--
+The total number of rows in the table's current snapshot.
+It's only returned when the `infoFlags` query parameter requested file information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::CatalogTable[]
+
+
+
+include::{specDir}definitions/CatalogTable/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CatalogTable[]
+:leveloffset: -1
+endif::show-CatalogTable[]
+
+include::{specDir}definitions/CatalogTable/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Clusters/definition-before.adoc[opts=optional]
 
@@ -4185,6 +5050,63 @@ ifndef::show-Garbage[]
 endif::show-Garbage[]
 
 include::{specDir}definitions/Garbage/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/get_catalogs_200_response/definition-before.adoc[opts=optional]
+
+ifdef::show-get_catalogs_200_response[]
+[#get_catalogs_200_response]
+endif::show-get_catalogs_200_response[]
+ifndef::show-get_catalogs_200_response[]
+:leveloffset: +1
+
+[discrete#get_catalogs_200_response]
+endif::show-get_catalogs_200_response[]
+= GetCatalogs200Response
+
+:leveloffset: +1
+
+include::{specDir}definitions/get_catalogs_200_response/definition-begin.adoc[opts=optional]
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+//tag::get_catalogs_200_response[]
+[cols="25,55,20",separator=¦]
+|===
+¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
+
+a¦ 
+a¦ [markdown]
+--
+
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:Catalog[]
+
+a¦ or
+a¦ [markdown]
+--
+
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:Catalog[] array
+|===
+
+//end::get_catalogs_200_response[]
+
+include::{specDir}definitions/get_catalogs_200_response/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-get_catalogs_200_response[]
+:leveloffset: -1
+endif::show-get_catalogs_200_response[]
+
+include::{specDir}definitions/get_catalogs_200_response/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Logging_Parameters/definition-before.adoc[opts=optional]
 
@@ -6277,6 +7199,40 @@ include::{specDir}definitions/Statements/definition-begin.adoc[opts=optional]
 |===
 ¦ Property ¦ ¦ Schema
 
+a¦ *adHocStatement* +
+optional
+a¦ [markdown]
+--
+Indicates the statement was prepared as an ad hoc (unnamed) statement.
+It's only returned when true.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+a¦ *autoPrepared* +
+optional
+a¦ [markdown]
+--
+Indicates that the prepared statement was cached automatically by auto prepare, rather than created by an explicit `PREPARE` statement.
+
+This property is only returned when the value is `true`.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+a¦ *creatingUserAgent* +
+optional
+a¦ [markdown]
+--
+The user agent of the client that originally created this prepared statement.
+It's only returned when the statement has since been re-prepared and the original creating user agent is known.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
 a¦ *encoded_plan* +
 required
 a¦ [markdown]
@@ -6309,6 +7265,28 @@ It's only returned when retrieving a specific prepared statement, not when retri
 [%hardbreaks]
 {blank}
 a¦ Integer
+a¦ *indexScanKeyspaces* +
+optional
+a¦ [markdown]
+--
+The keyspaces scanned using an index by this prepared statement's plan.
+It's only returned when there is at least one such keyspace.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String array
+a¦ *keyspaceReferences* +
+optional
+a¦ [markdown]
+--
+The keyspaces referenced by this prepared statement's plan.
+It's only returned when there is at least one such keyspace.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String array
 a¦ *name* +
 required
 a¦ [markdown]
@@ -6326,6 +7304,8 @@ a¦ [markdown]
 --
 The namespace in which the prepared statement is stored.
 Currently, only the `default` namespace is available.
+
+This property applies to the `system:prepareds` keyspace representation of the statement; it isn't returned by this REST endpoint.
 --
 
 [%hardbreaks]
@@ -6336,6 +7316,94 @@ optional
 a¦ [markdown]
 --
 The node on which the prepared statement is stored.
+
+This property applies to the `system:prepareds` keyspace representation of the statement; it isn't returned by this REST endpoint.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *optimizer_hints* +
+optional
+a¦ [markdown]
+--
+The optimizer hints (for example, `/*+ ... */`) that were specified when the statement was prepared.
+It's only returned when optimizer hints were specified.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+a¦ *persist* +
+optional
+a¦ [markdown]
+--
+Indicates the statement was prepared with the `SAVE` keyword, so its plan is persisted for plan stability.
+It's only returned when true.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+a¦ *plan* +
+optional
+a¦ [markdown]
+--
+This property is provided for technical support only.
+It's only returned for requests made with the POST method (i.e. when profiling), and contains the plan and any subquery plans.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+a¦ *planPreparedTime* +
+optional
+a¦ [markdown]
+--
+Date and time the plan was last prepared or re-prepared.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Date (date-time)
+a¦ *planVersion* +
+optional
+a¦ [markdown]
+--
+This property is provided for technical support only.
+It's only returned for requests made with the POST method (i.e. when profiling).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+a¦ *queryContext* +
+optional
+a¦ [markdown]
+--
+The query context in effect when the statement was prepared.
+It's only returned when a non-default query context was used.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *remoteAddr* +
+optional
+a¦ [markdown]
+--
+The remote address of the client that most recently used this prepared statement.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *sanitized_statement* +
+optional
+a¦ [markdown]
+--
+A sanitized (redacted) form of the statement text.
+It's returned in place of `statement` when redaction of the response is requested and the statement can be sanitized.
 --
 
 [%hardbreaks]
@@ -6351,6 +7419,60 @@ The text of the query.
 [%hardbreaks]
 {blank}
 a¦ String
+a¦ *subqueryPlans* +
+optional
+a¦ [markdown]
+--
+This property is provided for technical support only.
+It's only returned for requests made with the POST method (i.e. when profiling), and only when the plan contains subqueries.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+a¦ *txPlans* +
+optional
+a¦ [markdown]
+--
+This property is provided for technical support only.
+It's only returned when the prepared statement has associated transaction-scoped prepared statements.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Object
+a¦ *txPrepareds* +
+optional
+a¦ [markdown]
+--
+The names of transaction-scoped prepared statements associated with this prepared statement.
+It's only returned when there is at least one such prepared statement.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String array
+a¦ *userAgent* +
+optional
+a¦ [markdown]
+--
+The user agent of the client that created this prepared statement.
+It's only returned when the statement hasn't since been re-prepared.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *users* +
+optional
+a¦ [markdown]
+--
+The user(s) associated with this prepared statement.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
 a¦ *uses* +
 required
 a¦ [markdown]
@@ -6361,6 +7483,28 @@ The count of times the prepared statement has been executed.
 [%hardbreaks]
 {blank}
 a¦ Integer
+a¦ *verificationErrorCount* +
+optional
+a¦ [markdown]
+--
+The number of non-fatal errors encountered verifying the plan (plan stability).
+It's only returned when this count is non-zero.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+a¦ *verificationFatalError* +
+optional
+a¦ [markdown]
+--
+Indicates plan verification (plan stability) encountered a fatal error.
+It's only returned when true.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
 a¦ *avgElapsedTime* +
 optional
 a¦ [markdown]
