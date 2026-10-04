@@ -2621,14 +2621,14 @@ a| [markdown]
 --
 An object describing the specified external catalog, or an array of such objects if `name` wasn't specified.
 --
-a| xref:get_catalogs_200_response[]
+a| xref:CatalogResponse[]
 
 |===
 
 include::{specDir}paths/get_catalogs/operation-responses-end.adoc[opts=optional]
 
 :leveloffset: -1
-:show-get_catalogs_200_response:
+:show-CatalogResponse:
 
 
 include::{specDir}paths/get_catalogs/operation-responses-after.adoc[opts=optional]
@@ -4081,697 +4081,28 @@ This section describes the properties consumed and returned by this REST API.
 
 [.two-columns]
 [%hardbreaks]
-xref:Catalog[]
-xref:CatalogColumn[]
-xref:CatalogFile[]
-xref:Catalog_metadata[]
-xref:CatalogNamespace[]
-xref:CatalogSnapshot[]
-xref:CatalogTable[]
 xref:Clusters[]
 xref:EncryptionAtRest[]
 xref:EncryptionKeys[]
+xref:CatalogResponse[]
+xref:Catalog[]
+xref:CatalogMetadata[]
+xref:CatalogNamespace[]
+xref:CatalogTable[]
+xref:CatalogColumn[]
+xref:CatalogSnapshot[]
+xref:CatalogFile[]
 xref:Garbage[]
-xref:get_catalogs_200_response[]
-xref:Logging_Parameters[]
-xref:Logging_Parameters_Plan[]
-xref:Logging_Parameters_Plan_Pairs[]
 xref:Metrics[]
 xref:Nodes[]
 xref:Requests[]
 xref:Settings[]
+xref:Logging_Parameters[]
+xref:Logging_Parameters_Plan[]
+xref:Logging_Parameters_Plan_Pairs[]
 xref:Statements[]
 xref:Statistics[]
 xref:Vitals[]
-
-include::{specDir}definitions/Catalog/definition-before.adoc[opts=optional]
-
-ifdef::show-Catalog[]
-[#Catalog]
-endif::show-Catalog[]
-ifndef::show-Catalog[]
-:leveloffset: +1
-
-[discrete#Catalog]
-endif::show-Catalog[]
-= External Catalog
-
-:leveloffset: +1
-
-include::{specDir}definitions/Catalog/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Catalog[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *name* +
-required
-a¦ [markdown]
---
-The name of the external catalog.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *catalogType* +
-required
-a¦ [markdown]
---
-The type of the external catalog.
---
-
-[%hardbreaks]
-*Values:* `"ICEBERG"`
-{blank}
-a¦ String
-a¦ *catalogSource* +
-required
-a¦ [markdown]
---
-The source (implementation) backing the external catalog.
---
-
-[%hardbreaks]
-*Values:* `"AWS_GLUE"`, `"AWS_GLUE_REST"`, `"S3_TABLES"`, `"BIGLAKE_METASTORE"`, `"NESSIE"`, `"REST"`, `"NESSIE_REST"`, `"UNITY_CATALOG"`, `"SQL"`
-{blank}
-a¦ String
-a¦ *credentialId* +
-optional
-a¦ [markdown]
---
-The identifier of the credential used to access the external catalog.
-It's not returned for the `SQL` source unless a credential was configured.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *rev* +
-optional
-a¦ [markdown]
---
-The revision number of the catalog definition, incremented each time it's changed.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-a¦ *uid* +
-optional
-a¦ [markdown]
---
-A unique identifier assigned to the catalog definition when it was created.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *uri* +
-optional
-a¦ [markdown]
---
-The URI of the external catalog service.
-It's not returned for sources that don't require one.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *warehouse* +
-optional
-a¦ [markdown]
---
-The warehouse location or identifier used by the external catalog.
-It's only returned for sources that use one.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *sigv4SigningName* +
-optional
-a¦ [markdown]
---
-The AWS SigV4 signing name used to authenticate to the external catalog.
-It's only returned for sources that use it.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *sigv4SigningRegion* +
-optional
-a¦ [markdown]
---
-The AWS SigV4 signing region used to authenticate to the external catalog.
-It's only returned for sources that use it.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *quotaProjectId* +
-optional
-a¦ [markdown]
---
-The Google Cloud quota project ID used when accessing the external catalog.
-It's only returned for the `BIGLAKE_METASTORE` source.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *sqlDialect* +
-optional
-a¦ [markdown]
---
-The SQL dialect used by the external catalog.
-It's only returned for the `SQL` source.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *branch* +
-optional
-a¦ [markdown]
---
-The branch used by the external catalog.
-It's only returned for the `NESSIE` source.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *metadata* +
-optional
-a¦ [markdown]
---
-Metadata loaded from the external catalog itself.
-It's only returned when the `infoFlags` query parameter was non-zero and a credential is configured for the catalog.
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:Catalog_metadata[]
-
-|===
-
-//end::Catalog[]
-
-
-
-include::{specDir}definitions/Catalog/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-Catalog[]
-:leveloffset: -1
-endif::show-Catalog[]
-
-include::{specDir}definitions/Catalog/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/CatalogColumn/definition-before.adoc[opts=optional]
-
-ifdef::show-CatalogColumn[]
-[#CatalogColumn]
-endif::show-CatalogColumn[]
-ifndef::show-CatalogColumn[]
-:leveloffset: +1
-
-[discrete#CatalogColumn]
-endif::show-CatalogColumn[]
-= External Catalog Table Column
-
-:leveloffset: +1
-
-include::{specDir}definitions/CatalogColumn/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::CatalogColumn[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *name* +
-optional
-a¦ [markdown]
---
-The name of the column.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *type* +
-optional
-a¦ [markdown]
---
-The Iceberg data type of the column.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *required* +
-optional
-a¦ [markdown]
---
-Indicates the column is required (not nullable).
---
-
-[%hardbreaks]
-{blank}
-a¦ Boolean
-a¦ *added_in_schema* +
-optional
-a¦ [markdown]
---
-The schema ID in which the column was added.
-It's only returned when the column wasn't present in the table's earliest schema.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-|===
-
-//end::CatalogColumn[]
-
-
-
-include::{specDir}definitions/CatalogColumn/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-CatalogColumn[]
-:leveloffset: -1
-endif::show-CatalogColumn[]
-
-include::{specDir}definitions/CatalogColumn/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/CatalogFile/definition-before.adoc[opts=optional]
-
-ifdef::show-CatalogFile[]
-[#CatalogFile]
-endif::show-CatalogFile[]
-ifndef::show-CatalogFile[]
-:leveloffset: +1
-
-[discrete#CatalogFile]
-endif::show-CatalogFile[]
-= External Catalog Data File
-
-:leveloffset: +1
-
-include::{specDir}definitions/CatalogFile/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::CatalogFile[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *path* +
-optional
-a¦ [markdown]
---
-The path of the data file.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *record_count* +
-optional
-a¦ [markdown]
---
-The number of records in the data file.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-|===
-
-//end::CatalogFile[]
-
-
-
-include::{specDir}definitions/CatalogFile/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-CatalogFile[]
-:leveloffset: -1
-endif::show-CatalogFile[]
-
-include::{specDir}definitions/CatalogFile/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/Catalog_metadata/definition-before.adoc[opts=optional]
-
-ifdef::show-Catalog_metadata[]
-[#Catalog_metadata]
-endif::show-Catalog_metadata[]
-ifndef::show-Catalog_metadata[]
-:leveloffset: +1
-
-[discrete#Catalog_metadata]
-endif::show-Catalog_metadata[]
-= CatalogMetadata
-
-:leveloffset: +1
-
-include::{specDir}definitions/Catalog_metadata/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Catalog_metadata[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *namespaces* +
-optional
-a¦ [markdown]
---
-The namespaces (databases) in the external catalog.
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:CatalogNamespace[] array
-a¦ *row_count* +
-optional
-a¦ [markdown]
---
-The total number of rows across all tables in all namespaces.
-It's only returned when the `infoFlags` query parameter requested file information.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-|===
-
-//end::Catalog_metadata[]
-
-
-
-include::{specDir}definitions/Catalog_metadata/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-Catalog_metadata[]
-:leveloffset: -1
-endif::show-Catalog_metadata[]
-
-include::{specDir}definitions/Catalog_metadata/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/CatalogNamespace/definition-before.adoc[opts=optional]
-
-ifdef::show-CatalogNamespace[]
-[#CatalogNamespace]
-endif::show-CatalogNamespace[]
-ifndef::show-CatalogNamespace[]
-:leveloffset: +1
-
-[discrete#CatalogNamespace]
-endif::show-CatalogNamespace[]
-= External Catalog Namespace
-
-:leveloffset: +1
-
-include::{specDir}definitions/CatalogNamespace/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::CatalogNamespace[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *name* +
-optional
-a¦ [markdown]
---
-The name of the namespace.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *tables* +
-optional
-a¦ [markdown]
---
-The tables in the namespace.
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:CatalogTable[] array
-a¦ *row_count* +
-optional
-a¦ [markdown]
---
-The total number of rows across all tables in the namespace.
-It's only returned when the `infoFlags` query parameter requested file information.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-|===
-
-//end::CatalogNamespace[]
-
-
-
-include::{specDir}definitions/CatalogNamespace/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-CatalogNamespace[]
-:leveloffset: -1
-endif::show-CatalogNamespace[]
-
-include::{specDir}definitions/CatalogNamespace/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/CatalogSnapshot/definition-before.adoc[opts=optional]
-
-ifdef::show-CatalogSnapshot[]
-[#CatalogSnapshot]
-endif::show-CatalogSnapshot[]
-ifndef::show-CatalogSnapshot[]
-:leveloffset: +1
-
-[discrete#CatalogSnapshot]
-endif::show-CatalogSnapshot[]
-= External Catalog Table Snapshot
-
-:leveloffset: +1
-
-include::{specDir}definitions/CatalogSnapshot/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::CatalogSnapshot[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *snapshot_id* +
-optional
-a¦ [markdown]
---
-The identifier of the snapshot.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-a¦ *timestamp_ms* +
-optional
-a¦ [markdown]
---
-The time the snapshot was created, in milliseconds since the epoch.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-|===
-
-//end::CatalogSnapshot[]
-
-
-
-include::{specDir}definitions/CatalogSnapshot/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-CatalogSnapshot[]
-:leveloffset: -1
-endif::show-CatalogSnapshot[]
-
-include::{specDir}definitions/CatalogSnapshot/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/CatalogTable/definition-before.adoc[opts=optional]
-
-ifdef::show-CatalogTable[]
-[#CatalogTable]
-endif::show-CatalogTable[]
-ifndef::show-CatalogTable[]
-:leveloffset: +1
-
-[discrete#CatalogTable]
-endif::show-CatalogTable[]
-= External Catalog Table
-
-:leveloffset: +1
-
-include::{specDir}definitions/CatalogTable/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::CatalogTable[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *name* +
-optional
-a¦ [markdown]
---
-The name of the table.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *location* +
-optional
-a¦ [markdown]
---
-The storage location of the table.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *format* +
-optional
-a¦ [markdown]
---
-The data file format used by the table (for example, `parquet`).
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *current_schema* +
-optional
-a¦ [markdown]
---
-The schema ID of the table's current schema.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-a¦ *schema* +
-optional
-a¦ [markdown]
---
-The columns of the table's current schema.
-It's only returned when the `infoFlags` query parameter requested schema information.
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:CatalogColumn[] array
-a¦ *snapshots* +
-optional
-a¦ [markdown]
---
-The table's snapshot history (at most the 8 most recent snapshots).
-It's only returned when the `infoFlags` query parameter requested snapshot information.
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:CatalogSnapshot[] array
-a¦ *files* +
-optional
-a¦ [markdown]
---
-The data files backing the table's current snapshot.
-It's only returned when the `infoFlags` query parameter requested file information.
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:CatalogFile[] array
-a¦ *row_count* +
-optional
-a¦ [markdown]
---
-The total number of rows in the table's current snapshot.
-It's only returned when the `infoFlags` query parameter requested file information.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-|===
-
-//end::CatalogTable[]
-
-
-
-include::{specDir}definitions/CatalogTable/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-CatalogTable[]
-:leveloffset: -1
-endif::show-CatalogTable[]
-
-include::{specDir}definitions/CatalogTable/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Clusters/definition-before.adoc[opts=optional]
 
@@ -4977,6 +4308,732 @@ endif::show-EncryptionKeys[]
 
 include::{specDir}definitions/EncryptionKeys/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/CatalogResponse/definition-before.adoc[opts=optional]
+
+ifdef::show-CatalogResponse[]
+[#CatalogResponse]
+endif::show-CatalogResponse[]
+ifndef::show-CatalogResponse[]
+:leveloffset: +1
+
+[discrete#CatalogResponse]
+endif::show-CatalogResponse[]
+= External Catalogs
+
+:leveloffset: +1
+
+include::{specDir}definitions/CatalogResponse/definition-begin.adoc[opts=optional]
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+//tag::CatalogResponse[]
+[cols="25,55,20",separator=¦]
+|===
+¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
+
+a¦ 
+a¦ [markdown]
+--
+
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:Catalog[]
+
+a¦ or
+a¦ [markdown]
+--
+
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:Catalog[] array
+|===
+
+//end::CatalogResponse[]
+
+include::{specDir}definitions/CatalogResponse/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CatalogResponse[]
+:leveloffset: -1
+endif::show-CatalogResponse[]
+
+include::{specDir}definitions/CatalogResponse/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/Catalog/definition-before.adoc[opts=optional]
+
+ifdef::show-Catalog[]
+[#Catalog]
+endif::show-Catalog[]
+ifndef::show-Catalog[]
+:leveloffset: +1
+
+[discrete#Catalog]
+endif::show-Catalog[]
+= External Catalog
+
+:leveloffset: +1
+
+include::{specDir}definitions/Catalog/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Catalog[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *name* +
+required
+a¦ [markdown]
+--
+The name of the external catalog.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *catalogType* +
+required
+a¦ [markdown]
+--
+The type of the external catalog.
+--
+
+[%hardbreaks]
+*Values:* `"ICEBERG"`
+{blank}
+a¦ String
+a¦ *catalogSource* +
+required
+a¦ [markdown]
+--
+The source (implementation) backing the external catalog.
+--
+
+[%hardbreaks]
+*Values:* `"AWS_GLUE"`, `"AWS_GLUE_REST"`, `"S3_TABLES"`, `"BIGLAKE_METASTORE"`, `"NESSIE"`, `"REST"`, `"NESSIE_REST"`, `"UNITY_CATALOG"`, `"SQL"`
+{blank}
+a¦ String
+a¦ *credentialId* +
+optional
+a¦ [markdown]
+--
+The identifier of the credential used to access the external catalog.
+It's not returned for the `SQL` source unless a credential was configured.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *rev* +
+optional
+a¦ [markdown]
+--
+The revision number of the catalog definition, incremented each time it's changed.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+a¦ *uid* +
+optional
+a¦ [markdown]
+--
+A unique identifier assigned to the catalog definition when it was created.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *uri* +
+optional
+a¦ [markdown]
+--
+The URI of the external catalog service.
+It's not returned for sources that don't require one.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *warehouse* +
+optional
+a¦ [markdown]
+--
+The warehouse location or identifier used by the external catalog.
+It's only returned for sources that use one.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *sigv4SigningName* +
+optional
+a¦ [markdown]
+--
+The AWS SigV4 signing name used to authenticate to the external catalog.
+It's only returned for sources that use it.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *sigv4SigningRegion* +
+optional
+a¦ [markdown]
+--
+The AWS SigV4 signing region used to authenticate to the external catalog.
+It's only returned for sources that use it.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *quotaProjectId* +
+optional
+a¦ [markdown]
+--
+The Google Cloud quota project ID used when accessing the external catalog.
+It's only returned for the `BIGLAKE_METASTORE` source.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *sqlDialect* +
+optional
+a¦ [markdown]
+--
+The SQL dialect used by the external catalog.
+It's only returned for the `SQL` source.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *branch* +
+optional
+a¦ [markdown]
+--
+The branch used by the external catalog.
+It's only returned for the `NESSIE` source.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *metadata* +
+optional
+a¦ [markdown]
+--
+Metadata loaded from the external catalog itself.
+It's only returned when the `infoFlags` query parameter was non-zero and a credential is configured for the catalog.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:CatalogMetadata[]
+
+|===
+
+//end::Catalog[]
+
+
+
+include::{specDir}definitions/Catalog/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-Catalog[]
+:leveloffset: -1
+endif::show-Catalog[]
+
+include::{specDir}definitions/Catalog/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/CatalogMetadata/definition-before.adoc[opts=optional]
+
+ifdef::show-CatalogMetadata[]
+[#CatalogMetadata]
+endif::show-CatalogMetadata[]
+ifndef::show-CatalogMetadata[]
+:leveloffset: +1
+
+[discrete#CatalogMetadata]
+endif::show-CatalogMetadata[]
+= External Metadata
+
+:leveloffset: +1
+
+include::{specDir}definitions/CatalogMetadata/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::CatalogMetadata[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *namespaces* +
+optional
+a¦ [markdown]
+--
+The namespaces (databases) in the external catalog.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:CatalogNamespace[] array
+a¦ *row_count* +
+optional
+a¦ [markdown]
+--
+The total number of rows across all tables in all namespaces.
+It's only returned when the `infoFlags` query parameter requested file information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::CatalogMetadata[]
+
+
+
+include::{specDir}definitions/CatalogMetadata/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CatalogMetadata[]
+:leveloffset: -1
+endif::show-CatalogMetadata[]
+
+include::{specDir}definitions/CatalogMetadata/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/CatalogNamespace/definition-before.adoc[opts=optional]
+
+ifdef::show-CatalogNamespace[]
+[#CatalogNamespace]
+endif::show-CatalogNamespace[]
+ifndef::show-CatalogNamespace[]
+:leveloffset: +1
+
+[discrete#CatalogNamespace]
+endif::show-CatalogNamespace[]
+= External Catalog Namespace
+
+:leveloffset: +1
+
+include::{specDir}definitions/CatalogNamespace/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::CatalogNamespace[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *name* +
+optional
+a¦ [markdown]
+--
+The name of the namespace.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *tables* +
+optional
+a¦ [markdown]
+--
+The tables in the namespace.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:CatalogTable[] array
+a¦ *row_count* +
+optional
+a¦ [markdown]
+--
+The total number of rows across all tables in the namespace.
+It's only returned when the `infoFlags` query parameter requested file information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::CatalogNamespace[]
+
+
+
+include::{specDir}definitions/CatalogNamespace/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CatalogNamespace[]
+:leveloffset: -1
+endif::show-CatalogNamespace[]
+
+include::{specDir}definitions/CatalogNamespace/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/CatalogTable/definition-before.adoc[opts=optional]
+
+ifdef::show-CatalogTable[]
+[#CatalogTable]
+endif::show-CatalogTable[]
+ifndef::show-CatalogTable[]
+:leveloffset: +1
+
+[discrete#CatalogTable]
+endif::show-CatalogTable[]
+= External Catalog Table
+
+:leveloffset: +1
+
+include::{specDir}definitions/CatalogTable/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::CatalogTable[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *name* +
+optional
+a¦ [markdown]
+--
+The name of the table.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *location* +
+optional
+a¦ [markdown]
+--
+The storage location of the table.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *format* +
+optional
+a¦ [markdown]
+--
+The data file format used by the table (for example, `parquet`).
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *current_schema* +
+optional
+a¦ [markdown]
+--
+The schema ID of the table's current schema.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+a¦ *schema* +
+optional
+a¦ [markdown]
+--
+The columns of the table's current schema.
+It's only returned when the `infoFlags` query parameter requested schema information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:CatalogColumn[] array
+a¦ *snapshots* +
+optional
+a¦ [markdown]
+--
+The table's snapshot history (at most the 8 most recent snapshots).
+It's only returned when the `infoFlags` query parameter requested snapshot information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:CatalogSnapshot[] array
+a¦ *files* +
+optional
+a¦ [markdown]
+--
+The data files backing the table's current snapshot.
+It's only returned when the `infoFlags` query parameter requested file information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:CatalogFile[] array
+a¦ *row_count* +
+optional
+a¦ [markdown]
+--
+The total number of rows in the table's current snapshot.
+It's only returned when the `infoFlags` query parameter requested file information.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::CatalogTable[]
+
+
+
+include::{specDir}definitions/CatalogTable/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CatalogTable[]
+:leveloffset: -1
+endif::show-CatalogTable[]
+
+include::{specDir}definitions/CatalogTable/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/CatalogColumn/definition-before.adoc[opts=optional]
+
+ifdef::show-CatalogColumn[]
+[#CatalogColumn]
+endif::show-CatalogColumn[]
+ifndef::show-CatalogColumn[]
+:leveloffset: +1
+
+[discrete#CatalogColumn]
+endif::show-CatalogColumn[]
+= External Catalog Table Column
+
+:leveloffset: +1
+
+include::{specDir}definitions/CatalogColumn/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::CatalogColumn[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *name* +
+optional
+a¦ [markdown]
+--
+The name of the column.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *type* +
+optional
+a¦ [markdown]
+--
+The Iceberg data type of the column.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *required* +
+optional
+a¦ [markdown]
+--
+Indicates the column is required (not nullable).
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
+a¦ *added_in_schema* +
+optional
+a¦ [markdown]
+--
+The schema ID in which the column was added.
+It's only returned when the column wasn't present in the table's earliest schema.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::CatalogColumn[]
+
+
+
+include::{specDir}definitions/CatalogColumn/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CatalogColumn[]
+:leveloffset: -1
+endif::show-CatalogColumn[]
+
+include::{specDir}definitions/CatalogColumn/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/CatalogSnapshot/definition-before.adoc[opts=optional]
+
+ifdef::show-CatalogSnapshot[]
+[#CatalogSnapshot]
+endif::show-CatalogSnapshot[]
+ifndef::show-CatalogSnapshot[]
+:leveloffset: +1
+
+[discrete#CatalogSnapshot]
+endif::show-CatalogSnapshot[]
+= External Catalog Table Snapshot
+
+:leveloffset: +1
+
+include::{specDir}definitions/CatalogSnapshot/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::CatalogSnapshot[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *snapshot_id* +
+optional
+a¦ [markdown]
+--
+The identifier of the snapshot.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+a¦ *timestamp_ms* +
+optional
+a¦ [markdown]
+--
+The time the snapshot was created, in milliseconds since the epoch.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::CatalogSnapshot[]
+
+
+
+include::{specDir}definitions/CatalogSnapshot/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CatalogSnapshot[]
+:leveloffset: -1
+endif::show-CatalogSnapshot[]
+
+include::{specDir}definitions/CatalogSnapshot/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/CatalogFile/definition-before.adoc[opts=optional]
+
+ifdef::show-CatalogFile[]
+[#CatalogFile]
+endif::show-CatalogFile[]
+ifndef::show-CatalogFile[]
+:leveloffset: +1
+
+[discrete#CatalogFile]
+endif::show-CatalogFile[]
+= External Catalog Data File
+
+:leveloffset: +1
+
+include::{specDir}definitions/CatalogFile/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::CatalogFile[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *path* +
+optional
+a¦ [markdown]
+--
+The path of the data file.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *record_count* +
+optional
+a¦ [markdown]
+--
+The number of records in the data file.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::CatalogFile[]
+
+
+
+include::{specDir}definitions/CatalogFile/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-CatalogFile[]
+:leveloffset: -1
+endif::show-CatalogFile[]
+
+include::{specDir}definitions/CatalogFile/definition-after.adoc[opts=optional]
+
 include::{specDir}definitions/Garbage/definition-before.adoc[opts=optional]
 
 ifdef::show-Garbage[]
@@ -5050,373 +5107,6 @@ ifndef::show-Garbage[]
 endif::show-Garbage[]
 
 include::{specDir}definitions/Garbage/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/get_catalogs_200_response/definition-before.adoc[opts=optional]
-
-ifdef::show-get_catalogs_200_response[]
-[#get_catalogs_200_response]
-endif::show-get_catalogs_200_response[]
-ifndef::show-get_catalogs_200_response[]
-:leveloffset: +1
-
-[discrete#get_catalogs_200_response]
-endif::show-get_catalogs_200_response[]
-= GetCatalogs200Response
-
-:leveloffset: +1
-
-include::{specDir}definitions/get_catalogs_200_response/definition-begin.adoc[opts=optional]
-
-.icon:bars[fw] Composite Schema
-{blank}
-
-//tag::get_catalogs_200_response[]
-[cols="25,55,20",separator=¦]
-|===
-¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
-
-a¦ 
-a¦ [markdown]
---
-
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:Catalog[]
-
-a¦ or
-a¦ [markdown]
---
-
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:Catalog[] array
-|===
-
-//end::get_catalogs_200_response[]
-
-include::{specDir}definitions/get_catalogs_200_response/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-get_catalogs_200_response[]
-:leveloffset: -1
-endif::show-get_catalogs_200_response[]
-
-include::{specDir}definitions/get_catalogs_200_response/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/Logging_Parameters/definition-before.adoc[opts=optional]
-
-ifdef::show-Logging_Parameters[]
-[#Logging_Parameters]
-endif::show-Logging_Parameters[]
-ifndef::show-Logging_Parameters[]
-:leveloffset: +1
-
-[discrete#Logging_Parameters]
-endif::show-Logging_Parameters[]
-= Logging Parameters
-
-:leveloffset: +1
-
-include::{specDir}definitions/Logging_Parameters/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Logging_Parameters[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *aborted* +
-optional
-a¦ [markdown]
---
-If true, all requests that generate a panic are logged.
---
-
-[%hardbreaks]
-*Default:* `null`
-*Nullable:* yes
-*Example:* `true`
-{blank}
-a¦ Boolean
-a¦ *client* +
-optional
-a¦ [markdown]
---
-The IP address of the client.
-If specified, all completed requests from this IP address are logged.
---
-
-[%hardbreaks]
-*Default:* `+++""+++`
-*Example:* `+++"172.1.2.3"+++`
-{blank}
-a¦ String
-a¦ *context* +
-optional
-a¦ [markdown]
---
-ifdef::alt-markdown-links[]
-[client_context_id]: #client_context_id
-
-endif::alt-markdown-links[]
-The opaque ID or context provided by the client.
-If specified, all completed requests with this client context ID are logged.
-
-// tag::desc-more[]
-For more information, see the [request-level][client_context_id] `client_context_id` parameter.
-
-[client_context_id]: ../n1ql-rest-query/index.html#client_context_id
-// end::desc-more[]
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *error* +
-optional
-a¦ [markdown]
---
-An error number.
-If specified, all completed queries returning this error number are logged.
---
-
-[%hardbreaks]
-*Default:* `null`
-*Nullable:* yes
-*Example:* `12003`
-{blank}
-a¦ Integer (int32)
-a¦ *tag* +
-optional
-a¦ [markdown]
---
-ifdef::alt-markdown-links[]
-[sys-completed-config]: monitoring-n1ql-query.html#sys-completed-config
-
-endif::alt-markdown-links[]
-A unique string which tags a set of qualifiers.
-
-For more information, see [Configure Completed Requests][sys-completed-config].
-
-[sys-completed-config]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
---
-
-[%hardbreaks]
-*Default:* `+++""+++`
-*Example:* `+++"both_user_and_error"+++`
-{blank}
-a¦ String
-a¦ *threshold* +
-optional
-a¦ [markdown]
---
-A duration in milliseconds.
-If specified, all completed queries lasting longer than this threshold are logged.
-
-This is another way of specifying the `completed-threshold` setting.
---
-
-[%hardbreaks]
-*Default:* `1000`
-*Example:* `7000`
-{blank}
-a¦ Integer (int32)
-a¦ *user* +
-optional
-a¦ [markdown]
---
-A user name, as given in the request credentials.
-If specified, all completed queries with this user name are logged.
---
-
-[%hardbreaks]
-*Default:* `+++""+++`
-*Example:* `+++"marco"+++`
-{blank}
-a¦ String
-a¦ *statement* +
-optional
-a¦ [markdown]
---
-A LIKE search pattern to match against the query text.
-If specified, all completed queries where the pattern is found are logged.
---
-
-[%hardbreaks]
-*Default:* `+++""+++`
-*Example:* `+++"%FIND USER%"+++`
-{blank}
-a¦ String
-a¦ *plan* +
-optional
-a¦ [markdown]
---
-An object, or an array of objects, containing one or more field:value pairs to match against the query plan.
-Each pair describes a field in the query plan and the value it must have.
-All completed queries where the specified field:value pairs are found in the plan are logged.
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:Logging_Parameters_Plan[]
-a¦ *errors* +
-optional
-a¦ [markdown]
---
-The number of errors.
-If specified, all completed queries that return at least this many errors are logged.
-Queries with fewer errors are not logged.
---
-
-[%hardbreaks]
-*Example:* `5`
-{blank}
-a¦ Integer (int32)
-
-|===
-
-//end::Logging_Parameters[]
-
-
-
-include::{specDir}definitions/Logging_Parameters/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-Logging_Parameters[]
-:leveloffset: -1
-endif::show-Logging_Parameters[]
-
-include::{specDir}definitions/Logging_Parameters/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/Logging_Parameters_Plan/definition-before.adoc[opts=optional]
-
-ifdef::show-Logging_Parameters_Plan[]
-[#Logging_Parameters_Plan]
-endif::show-Logging_Parameters_Plan[]
-ifndef::show-Logging_Parameters_Plan[]
-:leveloffset: +1
-
-[discrete#Logging_Parameters_Plan]
-endif::show-Logging_Parameters_Plan[]
-= Plan Qualifier
-
-:leveloffset: +1
-
-include::{specDir}definitions/Logging_Parameters_Plan/definition-begin.adoc[opts=optional]
-
-.icon:bars[fw] Composite Schema
-{blank}
-
-//tag::Logging_Parameters_Plan[]
-[cols="25,55,20",separator=¦]
-|===
-¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
-
-a¦ 
-a¦ [markdown]
---
-An object containing one or more field:value pairs.
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:Logging_Parameters_Plan_Pairs[]
-
-a¦ or
-a¦ [markdown]
---
-An array of objects, each containing one or more field:value pairs.
---
-
-[%hardbreaks]
-{blank}
-a¦ xref:Logging_Parameters_Plan_Pairs[] array
-|===
-
-//end::Logging_Parameters_Plan[]
-
-include::{specDir}definitions/Logging_Parameters_Plan/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-Logging_Parameters_Plan[]
-:leveloffset: -1
-endif::show-Logging_Parameters_Plan[]
-
-include::{specDir}definitions/Logging_Parameters_Plan/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/Logging_Parameters_Plan_Pairs/definition-before.adoc[opts=optional]
-
-ifdef::show-Logging_Parameters_Plan_Pairs[]
-[#Logging_Parameters_Plan_Pairs]
-endif::show-Logging_Parameters_Plan_Pairs[]
-ifndef::show-Logging_Parameters_Plan_Pairs[]
-:leveloffset: +1
-
-[discrete#Logging_Parameters_Plan_Pairs]
-endif::show-Logging_Parameters_Plan_Pairs[]
-= Field:Value Pairs
-
-:leveloffset: +1
-
-include::{specDir}definitions/Logging_Parameters_Plan_Pairs/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::Logging_Parameters_Plan_Pairs[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *<field>* +
-additional +
-property
-a¦ [markdown]
---
-A field:value pair describing a field in the query plan, and the value that the field must have for the request to be logged.
-The name of the property is the name of the field in the query plan.
-The value may be a string, number, array, or any other JSON value.
-
-Within a single JSON object, if multiple field:value pairs are specified, then all pairs must be matched (using AND).
-For example, `{"index": "ix1", "#operator": "IntersectScan"}` specifies that if the query plan has an `index` field with the value `"ix1"` AND has an `IntersectScan` operator, then the request should be logged.
-
-Within an array of JSON objects, each field:value pair must be unique, but fields can be repeated.
-For example, `[{"index": "ix1"}, {"index": "ix2"}]` specifies that if the query plan has an `index` field with the value `"ix1"` AND another `index` field with the value `"ix2"`, then the request should be logged.
---
-
-[%hardbreaks]
-*Nullable:* yes
-{blank}
-a¦ Any Type
-
-|===
-
-//end::Logging_Parameters_Plan_Pairs[]
-
-
-
-include::{specDir}definitions/Logging_Parameters_Plan_Pairs/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-Logging_Parameters_Plan_Pairs[]
-:leveloffset: -1
-endif::show-Logging_Parameters_Plan_Pairs[]
-
-include::{specDir}definitions/Logging_Parameters_Plan_Pairs/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Metrics/definition-before.adoc[opts=optional]
 
@@ -7172,6 +6862,316 @@ ifndef::show-Settings[]
 endif::show-Settings[]
 
 include::{specDir}definitions/Settings/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/Logging_Parameters/definition-before.adoc[opts=optional]
+
+ifdef::show-Logging_Parameters[]
+[#Logging_Parameters]
+endif::show-Logging_Parameters[]
+ifndef::show-Logging_Parameters[]
+:leveloffset: +1
+
+[discrete#Logging_Parameters]
+endif::show-Logging_Parameters[]
+= Logging Parameters
+
+:leveloffset: +1
+
+include::{specDir}definitions/Logging_Parameters/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Logging_Parameters[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *aborted* +
+optional
+a¦ [markdown]
+--
+If true, all requests that generate a panic are logged.
+--
+
+[%hardbreaks]
+*Default:* `null`
+*Nullable:* yes
+*Example:* `true`
+{blank}
+a¦ Boolean
+a¦ *client* +
+optional
+a¦ [markdown]
+--
+The IP address of the client.
+If specified, all completed requests from this IP address are logged.
+--
+
+[%hardbreaks]
+*Default:* `+++""+++`
+*Example:* `+++"172.1.2.3"+++`
+{blank}
+a¦ String
+a¦ *context* +
+optional
+a¦ [markdown]
+--
+ifdef::alt-markdown-links[]
+[client_context_id]: #client_context_id
+
+endif::alt-markdown-links[]
+The opaque ID or context provided by the client.
+If specified, all completed requests with this client context ID are logged.
+
+// tag::desc-more[]
+For more information, see the [request-level][client_context_id] `client_context_id` parameter.
+
+[client_context_id]: ../n1ql-rest-query/index.html#client_context_id
+// end::desc-more[]
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *error* +
+optional
+a¦ [markdown]
+--
+An error number.
+If specified, all completed queries returning this error number are logged.
+--
+
+[%hardbreaks]
+*Default:* `null`
+*Nullable:* yes
+*Example:* `12003`
+{blank}
+a¦ Integer (int32)
+a¦ *tag* +
+optional
+a¦ [markdown]
+--
+ifdef::alt-markdown-links[]
+[sys-completed-config]: monitoring-n1ql-query.html#sys-completed-config
+
+endif::alt-markdown-links[]
+A unique string which tags a set of qualifiers.
+
+For more information, see [Configure Completed Requests][sys-completed-config].
+
+[sys-completed-config]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-completed-config
+--
+
+[%hardbreaks]
+*Default:* `+++""+++`
+*Example:* `+++"both_user_and_error"+++`
+{blank}
+a¦ String
+a¦ *threshold* +
+optional
+a¦ [markdown]
+--
+A duration in milliseconds.
+If specified, all completed queries lasting longer than this threshold are logged.
+
+This is another way of specifying the `completed-threshold` setting.
+--
+
+[%hardbreaks]
+*Default:* `1000`
+*Example:* `7000`
+{blank}
+a¦ Integer (int32)
+a¦ *user* +
+optional
+a¦ [markdown]
+--
+A user name, as given in the request credentials.
+If specified, all completed queries with this user name are logged.
+--
+
+[%hardbreaks]
+*Default:* `+++""+++`
+*Example:* `+++"marco"+++`
+{blank}
+a¦ String
+a¦ *statement* +
+optional
+a¦ [markdown]
+--
+A LIKE search pattern to match against the query text.
+If specified, all completed queries where the pattern is found are logged.
+--
+
+[%hardbreaks]
+*Default:* `+++""+++`
+*Example:* `+++"%FIND USER%"+++`
+{blank}
+a¦ String
+a¦ *plan* +
+optional
+a¦ [markdown]
+--
+An object, or an array of objects, containing one or more field:value pairs to match against the query plan.
+Each pair describes a field in the query plan and the value it must have.
+All completed queries where the specified field:value pairs are found in the plan are logged.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:Logging_Parameters_Plan[]
+a¦ *errors* +
+optional
+a¦ [markdown]
+--
+The number of errors.
+If specified, all completed queries that return at least this many errors are logged.
+Queries with fewer errors are not logged.
+--
+
+[%hardbreaks]
+*Example:* `5`
+{blank}
+a¦ Integer (int32)
+
+|===
+
+//end::Logging_Parameters[]
+
+
+
+include::{specDir}definitions/Logging_Parameters/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-Logging_Parameters[]
+:leveloffset: -1
+endif::show-Logging_Parameters[]
+
+include::{specDir}definitions/Logging_Parameters/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/Logging_Parameters_Plan/definition-before.adoc[opts=optional]
+
+ifdef::show-Logging_Parameters_Plan[]
+[#Logging_Parameters_Plan]
+endif::show-Logging_Parameters_Plan[]
+ifndef::show-Logging_Parameters_Plan[]
+:leveloffset: +1
+
+[discrete#Logging_Parameters_Plan]
+endif::show-Logging_Parameters_Plan[]
+= Plan Qualifier
+
+:leveloffset: +1
+
+include::{specDir}definitions/Logging_Parameters_Plan/definition-begin.adoc[opts=optional]
+
+.icon:bars[fw] Composite Schema
+{blank}
+
+//tag::Logging_Parameters_Plan[]
+[cols="25,55,20",separator=¦]
+|===
+¦ One{nbsp}of{nbsp}... ¦ ¦ Schema
+
+a¦ 
+a¦ [markdown]
+--
+An object containing one or more field:value pairs.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:Logging_Parameters_Plan_Pairs[]
+
+a¦ or
+a¦ [markdown]
+--
+An array of objects, each containing one or more field:value pairs.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:Logging_Parameters_Plan_Pairs[] array
+|===
+
+//end::Logging_Parameters_Plan[]
+
+include::{specDir}definitions/Logging_Parameters_Plan/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-Logging_Parameters_Plan[]
+:leveloffset: -1
+endif::show-Logging_Parameters_Plan[]
+
+include::{specDir}definitions/Logging_Parameters_Plan/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/Logging_Parameters_Plan_Pairs/definition-before.adoc[opts=optional]
+
+ifdef::show-Logging_Parameters_Plan_Pairs[]
+[#Logging_Parameters_Plan_Pairs]
+endif::show-Logging_Parameters_Plan_Pairs[]
+ifndef::show-Logging_Parameters_Plan_Pairs[]
+:leveloffset: +1
+
+[discrete#Logging_Parameters_Plan_Pairs]
+endif::show-Logging_Parameters_Plan_Pairs[]
+= Field:Value Pairs
+
+:leveloffset: +1
+
+include::{specDir}definitions/Logging_Parameters_Plan_Pairs/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::Logging_Parameters_Plan_Pairs[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *<field>* +
+additional +
+property
+a¦ [markdown]
+--
+A field:value pair describing a field in the query plan, and the value that the field must have for the request to be logged.
+The name of the property is the name of the field in the query plan.
+The value may be a string, number, array, or any other JSON value.
+
+Within a single JSON object, if multiple field:value pairs are specified, then all pairs must be matched (using AND).
+For example, `{"index": "ix1", "#operator": "IntersectScan"}` specifies that if the query plan has an `index` field with the value `"ix1"` AND has an `IntersectScan` operator, then the request should be logged.
+
+Within an array of JSON objects, each field:value pair must be unique, but fields can be repeated.
+For example, `[{"index": "ix1"}, {"index": "ix2"}]` specifies that if the query plan has an `index` field with the value `"ix1"` AND another `index` field with the value `"ix2"`, then the request should be logged.
+--
+
+[%hardbreaks]
+*Nullable:* yes
+{blank}
+a¦ Any Type
+
+|===
+
+//end::Logging_Parameters_Plan_Pairs[]
+
+
+
+include::{specDir}definitions/Logging_Parameters_Plan_Pairs/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-Logging_Parameters_Plan_Pairs[]
+:leveloffset: -1
+endif::show-Logging_Parameters_Plan_Pairs[]
+
+include::{specDir}definitions/Logging_Parameters_Plan_Pairs/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/Statements/definition-before.adoc[opts=optional]
 
