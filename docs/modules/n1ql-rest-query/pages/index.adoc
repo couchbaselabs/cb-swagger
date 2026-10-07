@@ -2736,6 +2736,27 @@ Specify `0` or a negative integer to disable.
 *Example:* `+++"30m"+++`
 {blank}
 a¦ String (duration)
+a¦ [#scanreport_wait]
+*scanreport_wait* +
+optional
+a¦ [markdown]
+--
+Specifies how long each index scan waits, after it finishes, for the Index Service to send its scan report.
+A value greater than 0 also requests the detailed scan report, with timings and counts for each index node.
+
+The report is included in the response only when `profile` is set to `timings`.
+Index scan reports must be turned on with the `generateScanReport` index setting.
+
+Its format includes an amount and a mandatory unit, e.g. `10ms` (10 milliseconds) or `0.5s` (half a second).
+The value must be from `0` to `15s`.
+Specify `0` to get the concise scan report only.
+--
+
+[%hardbreaks]
+*Default:* `+++"0s"+++`
+*Example:* `+++"100ms"+++`
+{blank}
+a¦ String (duration)
 a¦ [#signature]
 *signature* +
 optional
