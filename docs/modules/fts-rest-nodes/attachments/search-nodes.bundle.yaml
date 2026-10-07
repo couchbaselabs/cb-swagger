@@ -336,6 +336,26 @@ paths:
                 type: object
       security:
         - manageCluster: []
+  /api/encryption/keysInUse:
+    get:
+      operationId: getEncryptionKeysInUse
+      summary: Get Encryption Keys In Use
+      description: |-
+        Returns the IDs of the encryption keys currently in use by the Search Service on this node, as JSON.
+        This endpoint is available only in Couchbase Server Enterprise Edition.
+      tags:
+        - monitoring
+      responses:
+        '200':
+          description: A JSON object containing the encryption key IDs in use.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/keysInUse'
+        '500':
+          description: The Search Service could not retrieve the encryption keys in use.
+      security:
+        - readClusterSettings: []
 components:
   responses:
     OK:
@@ -522,6 +542,19 @@ components:
           type: array
           items:
             type: object
+    keysInUse:
+      type: object
+      title: Encryption Keys In Use
+      description: |-
+        An object containing the encryption key IDs in use.
+        The name of each property is the key type and the bucket UUID, separated by a space, such as `service_bucket 4f3a1c2e`.
+        For keys that do not belong to a bucket, the name of the property is `other`, followed by a space.
+        An empty key ID indicates data that is not encrypted.
+      additionalProperties:
+        x-additionalPropertiesName: Key Type and Bucket UUID
+        type: array
+        items:
+          type: string
     CommonIndexName:
       type: string
       title: Index Name
@@ -619,6 +652,13 @@ components:
           $ref: '#/components/schemas/CommonIndexParams'
         planParams:
           $ref: '#/components/schemas/IndexDefinitionPlanParams'
+        appInfo:
+          description: |-
+            Optional application metadata for the Search index.
+            The value can be any valid JSON value.
+            The Search Service stores the value with the Search index definition and returns it when you retrieve the definition, but does not otherwise use it.
+
+            You cannot set `appInfo` until all nodes in the cluster are running Couchbase Server 8.5 or later.
         prevIndexUUID:
           type: string
           writeOnly: true

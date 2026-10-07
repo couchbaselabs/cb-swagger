@@ -820,14 +820,20 @@ include::{snippetDir}queryPartition/curl-request.adoc[opts=optional]
   "knn" : [ "{}", "{}" ],
   "sort" : [ "", "" ],
   "includeLocations" : true,
+  "params" : {
+    "score_rank_constant" : 5,
+    "score_window_size" : 1
+  },
   "facets" : "{}",
   "highlight" : "{}",
-  "score" : "score",
+  "score" : "none",
   "search_after" : [ "search_after", "search_after" ],
-  "size" : 0,
+  "size" : 6,
   "collections" : [ "collections", "collections" ],
-  "ctl" : "{}",
-  "from" : 6,
+  "ctl" : {
+    "bleveMaxTerms" : 0
+  },
+  "from" : 1,
   "fields" : [ "fields", "fields" ],
   "search_before" : [ "search_before", "search_before" ]
 }
@@ -1071,6 +1077,8 @@ xref:indexPartition[]
 xref:indexPartitionPIndex[]
 xref:indexPartitionPIndexInner[]
 xref:QueryRequest[]
+xref:QueryRequest_ctl[]
+xref:QueryRequestParams[]
 xref:QueryResponse[]
 
 include::{specDir}definitions/DocumentCount/definition-before.adoc[opts=optional]
@@ -1473,7 +1481,7 @@ For more information, see [Ctl Object](../search/search-request-params.html#ctl)
 
 [%hardbreaks]
 {blank}
-a¦ Object
+a¦ xref:QueryRequest_ctl[]
 a¦ *size* +
 optional
 a¦ [markdown]
@@ -1561,17 +1569,37 @@ a¦ *score* +
 optional
 a¦ [markdown]
 --
-Whether to include document relevancy scoring in search results.
+Controls document relevancy scoring in search results.
+
+- `none`: do not score search results.
+- `rrf`: combine the results of the `query` and `knn` components using Reciprocal Rank Fusion.
+- `rsf`: combine the results of the `query` and `knn` components using Relative Score Fusion.
+
+If you omit this property, the Search Service scores search results as normal.
+--
+
+[%hardbreaks]
+*Values:* `"none"`, `"rrf"`, `"rsf"`
+{blank}
+a¦ String
+a¦ *params* +
+optional
+a¦ [markdown]
+--
+Parameters for score fusion.
+Only used if `score` is `rrf` or `rsf`.
 --
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ xref:QueryRequestParams[]
 a¦ *search_after* +
 optional
 a¦ [markdown]
 --
 Use to control pagination in search results.
+Contains one value for each entry in `sort`.
+Specify numeric and geo distance values as decimal strings, and date values as RFC 3339 strings.
 --
 
 [%hardbreaks]
@@ -1582,6 +1610,8 @@ optional
 a¦ [markdown]
 --
 Use to control pagination in search results.
+Contains one value for each entry in `sort`.
+Specify numeric and geo distance values as decimal strings, and date values as RFC 3339 strings.
 --
 
 [%hardbreaks]
@@ -1613,6 +1643,131 @@ ifndef::show-QueryRequest[]
 endif::show-QueryRequest[]
 
 include::{specDir}definitions/QueryRequest/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/QueryRequest_ctl/definition-before.adoc[opts=optional]
+
+ifdef::show-QueryRequest_ctl[]
+[#QueryRequest_ctl]
+endif::show-QueryRequest_ctl[]
+ifndef::show-QueryRequest_ctl[]
+:leveloffset: +1
+
+[discrete#QueryRequest_ctl]
+endif::show-QueryRequest_ctl[]
+= QueryRequestCtl
+
+:leveloffset: +1
+
+include::{specDir}definitions/QueryRequest_ctl/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::QueryRequest_ctl[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *bleveMaxTerms* +
+optional
+a¦ [markdown]
+--
+The maximum number of term searchers this query can use on each index partition.
+Overrides the `bleveMaxTerms` manager option for this query.
+A value of `0` or less disables the limit for this query.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::QueryRequest_ctl[]
+
+
+
+include::{specDir}definitions/QueryRequest_ctl/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-QueryRequest_ctl[]
+:leveloffset: -1
+endif::show-QueryRequest_ctl[]
+
+include::{specDir}definitions/QueryRequest_ctl/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/QueryRequestParams/definition-before.adoc[opts=optional]
+
+ifdef::show-QueryRequestParams[]
+[#QueryRequestParams]
+endif::show-QueryRequestParams[]
+ifndef::show-QueryRequestParams[]
+:leveloffset: +1
+
+[discrete#QueryRequestParams]
+endif::show-QueryRequestParams[]
+= Score Fusion Parameters
+
+:leveloffset: +1
+
+include::{specDir}definitions/QueryRequestParams/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::QueryRequestParams[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *score_window_size* +
+optional
+a¦ [markdown]
+--
+The number of results to take from each of the `query` and `knn` result lists before combining them.
+The default is the value of `from` plus `size`.
+
+The value must be greater than or equal to `size`, and less than or equal to the maximum result window for the Search Service.
+Pagination cannot go beyond this number of results.
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+a¦ *score_rank_constant* +
+optional
+a¦ [markdown]
+--
+The rank constant used by Reciprocal Rank Fusion.
+Only used if `score` is `rrf`.
+--
+
+[%hardbreaks]
+*Default:* `60`
+{blank}
+a¦ Integer
+
+|===
+
+//end::QueryRequestParams[]
+
+
+
+include::{specDir}definitions/QueryRequestParams/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-QueryRequestParams[]
+:leveloffset: -1
+endif::show-QueryRequestParams[]
+
+include::{specDir}definitions/QueryRequestParams/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/QueryResponse/definition-before.adoc[opts=optional]
 

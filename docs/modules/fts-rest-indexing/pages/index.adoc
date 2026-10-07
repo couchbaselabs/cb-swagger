@@ -1011,6 +1011,7 @@ ifeval::["yes" == ""]
     },
     "sourceType" : "sourceType",
     "sourceUUID" : "sourceUUID",
+    "appInfo" : "",
     "name" : "name",
     "prevIndexUUID" : "prevIndexUUID",
     "sourceName" : "sourceName",
@@ -1736,6 +1737,7 @@ ifeval::["yes" == ""]
     },
     "sourceType" : "sourceType",
     "sourceUUID" : "sourceUUID",
+    "appInfo" : "",
     "name" : "name",
     "prevIndexUUID" : "prevIndexUUID",
     "sourceName" : "sourceName",
@@ -1961,6 +1963,7 @@ include::{snippetDir}p-api-index-name/curl-request.adoc[opts=optional]
   },
   "sourceType" : "sourceType",
   "sourceUUID" : "sourceUUID",
+  "appInfo" : "",
   "name" : "name",
   "prevIndexUUID" : "prevIndexUUID",
   "sourceName" : "sourceName",
@@ -2252,6 +2255,7 @@ include::{snippetDir}p-api-scoped-index-name/curl-request.adoc[opts=optional]
   },
   "sourceType" : "sourceType",
   "sourceUUID" : "sourceUUID",
+  "appInfo" : "",
   "name" : "name",
   "prevIndexUUID" : "prevIndexUUID",
   "sourceName" : "sourceName",
@@ -3656,6 +3660,8 @@ xref:g-api-scoped-status[]
 xref:g-api-stats[]
 xref:g-api-stats-index-name[]
 xref:g-api-stats-index-name-analyzeDoc[]
+xref:p-api-index-name-insights[]
+xref:p-api-scoped-insights[]
 
 
 
@@ -4773,6 +4779,677 @@ include::{specDir}paths/g-api-stats-index-name-analyzeDoc/operation-after.adoc[o
 
 //end::g-api-stats-index-name-analyzeDoc[]
 
+//tag::p-api-index-name-insights[]
+
+include::{specDir}paths/p-api-index-name-insights/operation-before.adoc[opts=optional]
+
+[#p-api-index-name-insights]
+= Get Index Insights
+
+:leveloffset: +1
+
+include::{specDir}paths/p-api-index-name-insights/operation-begin.adoc[opts=optional]
+
+....
+POST /api/index/{INDEX_NAME}/insights
+....
+
+
+include::{specDir}paths/p-api-index-name-insights/operation-description-before.adoc[opts=optional]
+
+[#p-api-index-name-insights-description]
+= Description
+
+:leveloffset: +1
+
+include::{specDir}paths/p-api-index-name-insights/operation-description-begin.adoc[opts=optional]
+
+[markdown]
+--
+Returns insights into the contents of a field in the Search index specified in the endpoint URL: either the most or least frequent terms in a field, or the cardinalities of the centroids of a vector field.
+
+This operation is read-only.
+By default, the Search Service gathers insights from all partitions of the index across the cluster.
+This endpoint is available only in Couchbase Server Enterprise Edition.
+--
+
+include::{specDir}paths/p-api-index-name-insights/operation-description-end.adoc[opts=optional]
+
+
+[#p-api-index-name-insights-consumes]
+.Consumes
+* application/json
+
+[#p-api-index-name-insights-produces]
+.Produces
+* application/json
+
+
+:leveloffset: -1
+
+include::{specDir}paths/p-api-index-name-insights/operation-description-after.adoc[opts=optional]
+
+
+include::{specDir}paths/p-api-index-name-insights/operation-parameters-before.adoc[opts=optional]
+
+[#p-api-index-name-insights-parameters]
+= Parameters
+
+:leveloffset: +1
+
+include::{specDir}paths/p-api-index-name-insights/operation-parameters-begin.adoc[opts=optional]
+
+[#p-api-index-name-insights-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *INDEX_NAME* +
+required
+a¦ [markdown]
+--
+The name of the Search index definition.
+You must use the fully qualified name for the index, which includes the bucket and scope.
+
+To view the full, scoped name for an index for use with this endpoint:
+
+1. Go to the **Search** tab in the Couchbase Server Web Console.
+2. Point to the **Index Name** for an index.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+
+|===
+[#p-api-index-name-insights-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *Body* +
+required
+a¦ [markdown]
+--
+
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ xref:InsightsRequest[]
+
+|===
+
+
+include::{specDir}paths/p-api-index-name-insights/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+:show-InsightsRequest:
+
+
+include::{specDir}paths/p-api-index-name-insights/operation-parameters-after.adoc[opts=optional]
+
+
+include::{specDir}paths/p-api-index-name-insights/operation-responses-before.adoc[opts=optional]
+
+[#p-api-index-name-insights-responses]
+= Responses
+
+:leveloffset: +1
+
+include::{specDir}paths/p-api-index-name-insights/operation-responses-begin.adoc[opts=optional]
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A JSON object containing the requested insight.
+--
+a| xref:InsightsResponse[]
+
+| 400
+a| [markdown]
+--
+The request was not valid. The request body may be malformed, the `field` may be empty, or the `insight` may not be supported.
+--
+a| xref:ErrorResponse[]
+
+| 500
+a| [markdown]
+--
+The Search Service could not compute the requested insight.
+--
+a| xref:ErrorResponse[]
+
+| 501
+a| [markdown]
+--
+Insights are not supported for this Search index or on this cluster. The Search Service returns this response in Couchbase Server Community Edition.
+--
+a| xref:ErrorResponse[]
+
+|===
+
+include::{specDir}paths/p-api-index-name-insights/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+:show-InsightsResponse:
+:show-ErrorResponse:
+:show-ErrorResponse:
+:show-ErrorResponse:
+
+
+include::{specDir}paths/p-api-index-name-insights/operation-responses-after.adoc[opts=optional]
+
+
+include::{specDir}paths/p-api-index-name-insights/operation-security-before.adoc[opts=optional]
+
+[#p-api-index-name-insights-security]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}paths/p-api-index-name-insights/operation-security-begin.adoc[opts=optional]
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| xref:security-Read[]
+
+|===
+
+include::{specDir}paths/p-api-index-name-insights/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/p-api-index-name-insights/operation-security-after.adoc[opts=optional]
+
+include::{snippetDir}p-api-index-name-insights/curl-request.adoc[opts=optional]
+
+[#p-api-index-name-insights-ex-request]
+= Example Request Body
+
+
+[#p-api-index-name-insights-ex-request-0]
+.Term Frequencies
+====
+[source,json]
+----
+{
+  "field" : "description",
+  "insight" : "termFrequencies",
+  "limit" : 10,
+  "descending" : true
+}
+----
+====
+
+
+[#p-api-index-name-insights-ex-request-1]
+.Centroid Cardinalities
+====
+[source,json]
+----
+{
+  "field" : "embedding",
+  "insight" : "centroidCardinalities",
+  "limit" : 5
+}
+----
+====
+
+include::{snippetDir}p-api-index-name-insights/http-request.adoc[opts=optional]
+
+ifeval::["yes" != ""]
+[#p-api-index-name-insights-ex-response]
+= Example HTTP Response
+endif::[]
+
+
+[#p-api-index-name-insights-ex-response-400]
+.Response 400
+====
+[source,json]
+----
+{
+  "status" : "fail",
+  "error" : "indexInsights, supported insights: 'termFrequencies'/'centroidCardinalities'"
+}
+----
+====
+
+ifeval::["yes" == ""]
+[#p-api-index-name-insights-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "request" : {
+    "insight" : "termFrequencies",
+    "field" : "field",
+    "limit" : 0,
+    "local-only" : false,
+    "descending" : true
+  },
+  "termFrequencies" : [ {
+    "term" : "term",
+    "frequency" : 6
+  }, {
+    "term" : "term",
+    "frequency" : 6
+  } ],
+  "centroidCardinalities" : [ {
+    "centroid" : [ 1.4658129, 1.4658129 ],
+    "index" : "index",
+    "cardinality" : 5
+  }, {
+    "centroid" : [ 1.4658129, 1.4658129 ],
+    "index" : "index",
+    "cardinality" : 5
+  } ],
+  "status" : "status"
+}
+----
+====
+
+.Response 400
+====
+[source,json]
+----
+{
+  "error" : "error",
+  "status" : "status"
+}
+----
+====
+
+.Response 500
+====
+[source,json]
+----
+{
+  "error" : "error",
+  "status" : "status"
+}
+----
+====
+
+.Response 501
+====
+[source,json]
+----
+{
+  "error" : "error",
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}p-api-index-name-insights/http-response.adoc[opts=optional]
+
+include::{specDir}paths/p-api-index-name-insights/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/p-api-index-name-insights/operation-after.adoc[opts=optional]
+
+//end::p-api-index-name-insights[]
+
+//tag::p-api-scoped-insights[]
+
+include::{specDir}paths/p-api-scoped-insights/operation-before.adoc[opts=optional]
+
+[#p-api-scoped-insights]
+= Get Index Insights (Scoped)
+
+:leveloffset: +1
+
+include::{specDir}paths/p-api-scoped-insights/operation-begin.adoc[opts=optional]
+
+....
+POST /api/bucket/{BUCKET_NAME}/scope/{SCOPE_NAME}/index/{INDEX_NAME}/insights
+....
+
+
+include::{specDir}paths/p-api-scoped-insights/operation-description-before.adoc[opts=optional]
+
+[#p-api-scoped-insights-description]
+= Description
+
+:leveloffset: +1
+
+include::{specDir}paths/p-api-scoped-insights/operation-description-begin.adoc[opts=optional]
+
+[markdown]
+--
+Returns insights into the contents of a field in the Search index specified in the endpoint URL: either the most or least frequent terms in a field, or the cardinalities of the centroids of a vector field.
+
+This operation is read-only.
+By default, the Search Service gathers insights from all partitions of the index across the cluster.
+This endpoint is available only in Couchbase Server Enterprise Edition.
+This endpoint is scoped and does not require a fully qualified `{INDEX_NAME}` value.
+--
+
+include::{specDir}paths/p-api-scoped-insights/operation-description-end.adoc[opts=optional]
+
+
+[#p-api-scoped-insights-consumes]
+.Consumes
+* application/json
+
+[#p-api-scoped-insights-produces]
+.Produces
+* application/json
+
+
+:leveloffset: -1
+
+include::{specDir}paths/p-api-scoped-insights/operation-description-after.adoc[opts=optional]
+
+
+include::{specDir}paths/p-api-scoped-insights/operation-parameters-before.adoc[opts=optional]
+
+[#p-api-scoped-insights-parameters]
+= Parameters
+
+:leveloffset: +1
+
+include::{specDir}paths/p-api-scoped-insights/operation-parameters-begin.adoc[opts=optional]
+
+[#p-api-scoped-insights-path]
+.Path Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *BUCKET_NAME* +
+required
+a¦ [markdown]
+--
+The name of the bucket containing the Search index definition.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+a¦ *SCOPE_NAME* +
+required
+a¦ [markdown]
+--
+The name of the scope containing the Search index definition.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+a¦ *INDEX_NAME* +
+required
+a¦ [markdown]
+--
+The name of the Search index definition.
+--
+
+[%hardbreaks]
+*Pattern:* `+++/^[A-Za-z][0-9A-Za-z_\-]*$/+++`
+{blank}
+
+a¦ String
+
+|===
+[#p-api-scoped-insights-body]
+.Body Parameter
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *Body* +
+required
+a¦ [markdown]
+--
+
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ xref:InsightsRequest[]
+
+|===
+
+
+include::{specDir}paths/p-api-scoped-insights/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+:show-InsightsRequest:
+
+
+include::{specDir}paths/p-api-scoped-insights/operation-parameters-after.adoc[opts=optional]
+
+
+include::{specDir}paths/p-api-scoped-insights/operation-responses-before.adoc[opts=optional]
+
+[#p-api-scoped-insights-responses]
+= Responses
+
+:leveloffset: +1
+
+include::{specDir}paths/p-api-scoped-insights/operation-responses-begin.adoc[opts=optional]
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A JSON object containing the requested insight.
+--
+a| xref:InsightsResponse[]
+
+| 400
+a| [markdown]
+--
+The request was not valid. The request body may be malformed, the `field` may be empty, or the `insight` may not be supported.
+--
+a| xref:ErrorResponse[]
+
+| 500
+a| [markdown]
+--
+The Search Service could not compute the requested insight.
+--
+a| xref:ErrorResponse[]
+
+| 501
+a| [markdown]
+--
+Insights are not supported for this Search index or on this cluster. The Search Service returns this response in Couchbase Server Community Edition.
+--
+a| xref:ErrorResponse[]
+
+|===
+
+include::{specDir}paths/p-api-scoped-insights/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+:show-InsightsResponse:
+:show-ErrorResponse:
+:show-ErrorResponse:
+:show-ErrorResponse:
+
+
+include::{specDir}paths/p-api-scoped-insights/operation-responses-after.adoc[opts=optional]
+
+
+include::{specDir}paths/p-api-scoped-insights/operation-security-before.adoc[opts=optional]
+
+[#p-api-scoped-insights-security]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}paths/p-api-scoped-insights/operation-security-begin.adoc[opts=optional]
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| xref:security-Read[]
+
+|===
+
+include::{specDir}paths/p-api-scoped-insights/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/p-api-scoped-insights/operation-security-after.adoc[opts=optional]
+
+include::{snippetDir}p-api-scoped-insights/curl-request.adoc[opts=optional]
+
+
+
+[#p-api-scoped-insights-ex-request]
+= Example Request Body
+
+
+====
+[source,json]
+----
+{
+  "insight" : "termFrequencies",
+  "field" : "field",
+  "limit" : 0,
+  "local-only" : false,
+  "descending" : true
+}
+----
+====
+
+include::{snippetDir}p-api-scoped-insights/http-request.adoc[opts=optional]
+
+ifeval::["yes" != ""]
+[#p-api-scoped-insights-ex-response]
+= Example HTTP Response
+endif::[]
+
+
+[#p-api-scoped-insights-ex-response-400]
+.Response 400
+====
+[source,json]
+----
+{
+  "status" : "fail",
+  "error" : "indexInsights, supported insights: 'termFrequencies'/'centroidCardinalities'"
+}
+----
+====
+
+ifeval::["yes" == ""]
+[#p-api-scoped-insights-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "request" : {
+    "insight" : "termFrequencies",
+    "field" : "field",
+    "limit" : 0,
+    "local-only" : false,
+    "descending" : true
+  },
+  "termFrequencies" : [ {
+    "term" : "term",
+    "frequency" : 6
+  }, {
+    "term" : "term",
+    "frequency" : 6
+  } ],
+  "centroidCardinalities" : [ {
+    "centroid" : [ 1.4658129, 1.4658129 ],
+    "index" : "index",
+    "cardinality" : 5
+  }, {
+    "centroid" : [ 1.4658129, 1.4658129 ],
+    "index" : "index",
+    "cardinality" : 5
+  } ],
+  "status" : "status"
+}
+----
+====
+
+.Response 400
+====
+[source,json]
+----
+{
+  "error" : "error",
+  "status" : "status"
+}
+----
+====
+
+.Response 500
+====
+[source,json]
+----
+{
+  "error" : "error",
+  "status" : "status"
+}
+----
+====
+
+.Response 501
+====
+[source,json]
+----
+{
+  "error" : "error",
+  "status" : "status"
+}
+----
+====
+endif::[]
+
+include::{snippetDir}p-api-scoped-insights/http-response.adoc[opts=optional]
+
+include::{specDir}paths/p-api-scoped-insights/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/p-api-scoped-insights/operation-after.adoc[opts=optional]
+
+//end::p-api-scoped-insights[]
+
 
 
 :leveloffset: -1
@@ -5746,14 +6423,20 @@ include::{snippetDir}p-api-scoped-query/curl-request.adoc[opts=optional]
   "knn" : [ "{}", "{}" ],
   "sort" : [ "", "" ],
   "includeLocations" : true,
+  "params" : {
+    "score_rank_constant" : 5,
+    "score_window_size" : 1
+  },
   "facets" : "{}",
   "highlight" : "{}",
-  "score" : "score",
+  "score" : "none",
   "search_after" : [ "search_after", "search_after" ],
-  "size" : 0,
+  "size" : 6,
   "collections" : [ "collections", "collections" ],
-  "ctl" : "{}",
-  "from" : 6,
+  "ctl" : {
+    "bleveMaxTerms" : 0
+  },
+  "from" : 1,
   "fields" : [ "fields", "fields" ],
   "search_before" : [ "search_before", "search_before" ]
 }
@@ -6116,6 +6799,7 @@ xref:DocumentAnalysisItem[]
 xref:DocumentAnalysisItemToken[]
 xref:DocumentAnalysisItemTokenLocation[]
 xref:DocumentCount[]
+xref:ErrorResponse[]
 xref:GetIndexResponse[]
 xref:GetIndexResponsePIndex[]
 xref:GetIndexResponsePIndexNodesWrapper[]
@@ -6125,6 +6809,10 @@ xref:GetIndexesResponseIndexes[]
 xref:GetIndexesResponseIndexesWrapper[]
 xref:IndexDefinition[]
 xref:IndexDefinitionPlanParams[]
+xref:InsightsCentroidCardinality[]
+xref:InsightsRequest[]
+xref:InsightsResponse[]
+xref:InsightsTermFrequency[]
 xref:LookupRequest[]
 xref:LookupResponse[]
 xref:LookupResponsePartitions[]
@@ -6132,6 +6820,8 @@ xref:LookupResponsePartitionsID[]
 xref:MgmtResponse[]
 xref:PutIndexResponse[]
 xref:QueryRequest[]
+xref:QueryRequest_ctl[]
+xref:QueryRequestParams[]
 xref:QueryResponse[]
 xref:StatsIndexResponse[]
 xref:StatsNodeResponse[]
@@ -6538,6 +7228,69 @@ ifndef::show-DocumentCount[]
 endif::show-DocumentCount[]
 
 include::{specDir}definitions/DocumentCount/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/ErrorResponse/definition-before.adoc[opts=optional]
+
+ifdef::show-ErrorResponse[]
+[#ErrorResponse]
+endif::show-ErrorResponse[]
+ifndef::show-ErrorResponse[]
+:leveloffset: +1
+
+[discrete#ErrorResponse]
+endif::show-ErrorResponse[]
+= Error Response
+
+:leveloffset: +1
+
+include::{specDir}definitions/ErrorResponse/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::ErrorResponse[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *status* +
+optional
+a¦ [markdown]
+--
+The status of the operation.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *error* +
+optional
+a¦ [markdown]
+--
+The error message.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+
+|===
+
+//end::ErrorResponse[]
+
+
+
+include::{specDir}definitions/ErrorResponse/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-ErrorResponse[]
+:leveloffset: -1
+endif::show-ErrorResponse[]
+
+include::{specDir}definitions/ErrorResponse/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/GetIndexResponse/definition-before.adoc[opts=optional]
 
@@ -7227,6 +7980,21 @@ For more information, see [Plan Params Object](../search/search-index-params.htm
 [%hardbreaks]
 {blank}
 a¦ xref:IndexDefinitionPlanParams[]
+a¦ *appInfo* +
+optional
+a¦ [markdown]
+--
+Optional application metadata for the Search index.
+The value can be any valid JSON value.
+The Search Service stores the value with the Search index definition and returns it when you retrieve the definition, but does not otherwise use it.
+
+You cannot set `appInfo` until all nodes in the cluster are running Couchbase Server 8.5 or later.
+--
+
+[%hardbreaks]
+*Nullable:* yes
+{blank}
+a¦ Any Type
 a¦ *prevIndexUUID* +
 optional
 a¦ [markdown]
@@ -7371,6 +8139,329 @@ ifndef::show-IndexDefinitionPlanParams[]
 endif::show-IndexDefinitionPlanParams[]
 
 include::{specDir}definitions/IndexDefinitionPlanParams/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/InsightsCentroidCardinality/definition-before.adoc[opts=optional]
+
+ifdef::show-InsightsCentroidCardinality[]
+[#InsightsCentroidCardinality]
+endif::show-InsightsCentroidCardinality[]
+ifndef::show-InsightsCentroidCardinality[]
+:leveloffset: +1
+
+[discrete#InsightsCentroidCardinality]
+endif::show-InsightsCentroidCardinality[]
+= Centroid Cardinality
+
+:leveloffset: +1
+
+include::{specDir}definitions/InsightsCentroidCardinality/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::InsightsCentroidCardinality[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *index* +
+optional
+a¦ [markdown]
+--
+The name of the index partition containing the centroid.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *centroid* +
+optional
+a¦ [markdown]
+--
+The centroid vector. The length of the array is equal to the `dims` of the vector field.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Float (float) array
+a¦ *cardinality* +
+optional
+a¦ [markdown]
+--
+The number of vectors assigned to the centroid.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Long (int64)
+
+|===
+
+//end::InsightsCentroidCardinality[]
+
+
+
+include::{specDir}definitions/InsightsCentroidCardinality/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-InsightsCentroidCardinality[]
+:leveloffset: -1
+endif::show-InsightsCentroidCardinality[]
+
+include::{specDir}definitions/InsightsCentroidCardinality/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/InsightsRequest/definition-before.adoc[opts=optional]
+
+ifdef::show-InsightsRequest[]
+[#InsightsRequest]
+endif::show-InsightsRequest[]
+ifndef::show-InsightsRequest[]
+:leveloffset: +1
+
+[discrete#InsightsRequest]
+endif::show-InsightsRequest[]
+= Insights Request
+
+:leveloffset: +1
+
+include::{specDir}definitions/InsightsRequest/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::InsightsRequest[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *field* +
+required
+a¦ [markdown]
+--
+The name of the field to get insights for.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *insight* +
+required
+a¦ [markdown]
+--
+The type of insight to return.
+
+- `termFrequencies`: the terms in the field and the number of times each term occurs.
+- `centroidCardinalities`: the centroids of a vector field and the number of vectors assigned to each centroid.
+  Applies only to vector fields that use an IVF index.
+--
+
+[%hardbreaks]
+*Values:* `"termFrequencies"`, `"centroidCardinalities"`
+{blank}
+a¦ String
+a¦ *limit* +
+optional
+a¦ [markdown]
+--
+The maximum number of terms or centroids to return.
+--
+
+[%hardbreaks]
+*Default:* `1`
+{blank}
+a¦ Integer
+a¦ *descending* +
+optional
+a¦ [markdown]
+--
+If `true`, the Search Service returns the terms or centroids with the highest frequency or cardinality first.
+If `false`, the Search Service returns the lowest first.
+--
+
+[%hardbreaks]
+*Default:* `true`
+{blank}
+a¦ Boolean
+a¦ *local-only* +
+optional
+a¦ [markdown]
+--
+If `true`, the Search Service gathers insights only from the index partitions on the node that receives the request.
+If `false`, the Search Service gathers insights from all index partitions across the cluster.
+--
+
+[%hardbreaks]
+*Default:* `false`
+{blank}
+a¦ Boolean
+
+|===
+
+//end::InsightsRequest[]
+
+
+
+include::{specDir}definitions/InsightsRequest/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-InsightsRequest[]
+:leveloffset: -1
+endif::show-InsightsRequest[]
+
+include::{specDir}definitions/InsightsRequest/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/InsightsResponse/definition-before.adoc[opts=optional]
+
+ifdef::show-InsightsResponse[]
+[#InsightsResponse]
+endif::show-InsightsResponse[]
+ifndef::show-InsightsResponse[]
+:leveloffset: +1
+
+[discrete#InsightsResponse]
+endif::show-InsightsResponse[]
+= Insights Response
+
+:leveloffset: +1
+
+include::{specDir}definitions/InsightsResponse/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::InsightsResponse[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *status* +
+optional
+a¦ [markdown]
+--
+The status of the operation.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *request* +
+optional
+a¦ [markdown]
+--
+
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:InsightsRequest[]
+a¦ *termFrequencies* +
+optional
+a¦ [markdown]
+--
+Only returned if `insight` is `termFrequencies`.
+The frequency of each term is summed across all index partitions.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:InsightsTermFrequency[] array
+a¦ *centroidCardinalities* +
+optional
+a¦ [markdown]
+--
+Only returned if `insight` is `centroidCardinalities`.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:InsightsCentroidCardinality[] array
+
+|===
+
+//end::InsightsResponse[]
+
+
+
+include::{specDir}definitions/InsightsResponse/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-InsightsResponse[]
+:leveloffset: -1
+endif::show-InsightsResponse[]
+
+include::{specDir}definitions/InsightsResponse/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/InsightsTermFrequency/definition-before.adoc[opts=optional]
+
+ifdef::show-InsightsTermFrequency[]
+[#InsightsTermFrequency]
+endif::show-InsightsTermFrequency[]
+ifndef::show-InsightsTermFrequency[]
+:leveloffset: +1
+
+[discrete#InsightsTermFrequency]
+endif::show-InsightsTermFrequency[]
+= Term Frequency
+
+:leveloffset: +1
+
+include::{specDir}definitions/InsightsTermFrequency/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::InsightsTermFrequency[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *term* +
+optional
+a¦ [markdown]
+--
+The term.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *frequency* +
+optional
+a¦ [markdown]
+--
+The number of times the term occurs in the field.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Long (int64)
+
+|===
+
+//end::InsightsTermFrequency[]
+
+
+
+include::{specDir}definitions/InsightsTermFrequency/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-InsightsTermFrequency[]
+:leveloffset: -1
+endif::show-InsightsTermFrequency[]
+
+include::{specDir}definitions/InsightsTermFrequency/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/LookupRequest/definition-before.adoc[opts=optional]
 
@@ -7782,7 +8873,7 @@ For more information, see [Ctl Object](../search/search-request-params.html#ctl)
 
 [%hardbreaks]
 {blank}
-a¦ Object
+a¦ xref:QueryRequest_ctl[]
 a¦ *size* +
 optional
 a¦ [markdown]
@@ -7870,17 +8961,37 @@ a¦ *score* +
 optional
 a¦ [markdown]
 --
-Whether to include document relevancy scoring in search results.
+Controls document relevancy scoring in search results.
+
+- `none`: do not score search results.
+- `rrf`: combine the results of the `query` and `knn` components using Reciprocal Rank Fusion.
+- `rsf`: combine the results of the `query` and `knn` components using Relative Score Fusion.
+
+If you omit this property, the Search Service scores search results as normal.
+--
+
+[%hardbreaks]
+*Values:* `"none"`, `"rrf"`, `"rsf"`
+{blank}
+a¦ String
+a¦ *params* +
+optional
+a¦ [markdown]
+--
+Parameters for score fusion.
+Only used if `score` is `rrf` or `rsf`.
 --
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ xref:QueryRequestParams[]
 a¦ *search_after* +
 optional
 a¦ [markdown]
 --
 Use to control pagination in search results.
+Contains one value for each entry in `sort`.
+Specify numeric and geo distance values as decimal strings, and date values as RFC 3339 strings.
 --
 
 [%hardbreaks]
@@ -7891,6 +9002,8 @@ optional
 a¦ [markdown]
 --
 Use to control pagination in search results.
+Contains one value for each entry in `sort`.
+Specify numeric and geo distance values as decimal strings, and date values as RFC 3339 strings.
 --
 
 [%hardbreaks]
@@ -7922,6 +9035,131 @@ ifndef::show-QueryRequest[]
 endif::show-QueryRequest[]
 
 include::{specDir}definitions/QueryRequest/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/QueryRequest_ctl/definition-before.adoc[opts=optional]
+
+ifdef::show-QueryRequest_ctl[]
+[#QueryRequest_ctl]
+endif::show-QueryRequest_ctl[]
+ifndef::show-QueryRequest_ctl[]
+:leveloffset: +1
+
+[discrete#QueryRequest_ctl]
+endif::show-QueryRequest_ctl[]
+= QueryRequestCtl
+
+:leveloffset: +1
+
+include::{specDir}definitions/QueryRequest_ctl/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::QueryRequest_ctl[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *bleveMaxTerms* +
+optional
+a¦ [markdown]
+--
+The maximum number of term searchers this query can use on each index partition.
+Overrides the `bleveMaxTerms` manager option for this query.
+A value of `0` or less disables the limit for this query.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::QueryRequest_ctl[]
+
+
+
+include::{specDir}definitions/QueryRequest_ctl/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-QueryRequest_ctl[]
+:leveloffset: -1
+endif::show-QueryRequest_ctl[]
+
+include::{specDir}definitions/QueryRequest_ctl/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/QueryRequestParams/definition-before.adoc[opts=optional]
+
+ifdef::show-QueryRequestParams[]
+[#QueryRequestParams]
+endif::show-QueryRequestParams[]
+ifndef::show-QueryRequestParams[]
+:leveloffset: +1
+
+[discrete#QueryRequestParams]
+endif::show-QueryRequestParams[]
+= Score Fusion Parameters
+
+:leveloffset: +1
+
+include::{specDir}definitions/QueryRequestParams/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::QueryRequestParams[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *score_window_size* +
+optional
+a¦ [markdown]
+--
+The number of results to take from each of the `query` and `knn` result lists before combining them.
+The default is the value of `from` plus `size`.
+
+The value must be greater than or equal to `size`, and less than or equal to the maximum result window for the Search Service.
+Pagination cannot go beyond this number of results.
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+a¦ *score_rank_constant* +
+optional
+a¦ [markdown]
+--
+The rank constant used by Reciprocal Rank Fusion.
+Only used if `score` is `rrf`.
+--
+
+[%hardbreaks]
+*Default:* `60`
+{blank}
+a¦ Integer
+
+|===
+
+//end::QueryRequestParams[]
+
+
+
+include::{specDir}definitions/QueryRequestParams/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-QueryRequestParams[]
+:leveloffset: -1
+endif::show-QueryRequestParams[]
+
+include::{specDir}definitions/QueryRequestParams/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/QueryResponse/definition-before.adoc[opts=optional]
 

@@ -140,7 +140,8 @@ include::{specDir}paths/put_options/operation-description-begin.adoc[opts=option
 [markdown]
 --
 Sets Search manager options.
-Note that only one setting is available: `disableFileTransferRebalance`.
+The options you specify are merged with the existing options, so you only need to include the options you want to change.
+Specify all option values as strings.
 --
 
 include::{specDir}paths/put_options/operation-description-end.adoc[opts=optional]
@@ -319,7 +320,16 @@ include::{snippetDir}put_options/curl-request.adoc[opts=optional]
 [source,json]
 ----
 {
-  "disableFileTransferRebalance" : false
+  "numSamplesPerCentroid" : "39",
+  "searchHistoryEnabled" : "false",
+  "searchHistoryMaxRecords" : "8000",
+  "disableFileTransferRebalance" : false,
+  "scanPlusNumWorkers" : "10",
+  "scanPlusNumRetries" : "5",
+  "bleveMaxTerms" : "1024",
+  "customScriptQueriesEnabled" : "false",
+  "collectionsLimitPerIndex" : "100",
+  "enableLazyIndexUpdate" : "enableLazyIndexUpdate"
 }
 ----
 ====
@@ -481,6 +491,123 @@ If the value is `true`, partitions are created by means of partition build, from
 *Default:* `false`
 {blank}
 a¦ Boolean
+a¦ *customScriptQueriesEnabled* +
+optional
+a¦ [markdown]
+--
+Whether Search queries can use the `custom_filter` and `custom_score` query types, which run user-supplied JavaScript functions.
+This option applies to the whole cluster and is available only in Couchbase Server Enterprise Edition.
+
+If the value is `false` (the default), any Search query that uses these query types fails.
+--
+
+[%hardbreaks]
+*Values:* `"true"`, `"false"`
+*Default:* `+++"false"+++`
+{blank}
+a¦ String
+a¦ *searchHistoryEnabled* +
+optional
+a¦ [markdown]
+--
+Whether the Search Service records Search requests in the search history.
+Use the View Search History API to retrieve recorded requests.
+--
+
+[%hardbreaks]
+*Values:* `"true"`, `"false"`
+*Default:* `+++"false"+++`
+{blank}
+a¦ String
+a¦ *searchHistoryMaxRecords* +
+optional
+a¦ [markdown]
+--
+The maximum number of Search requests recorded in the search history on each node.
+The value must be between `1` and `20000`.
+--
+
+[%hardbreaks]
+*Default:* `+++"8000"+++`
+{blank}
+a¦ String
+a¦ *collectionsLimitPerIndex* +
+optional
+a¦ [markdown]
+--
+The maximum number of source collections for a single Search index.
+A collection with more than one type mapping counts once for each type mapping.
+
+The Search Service rejects any request to create or update a Search index that exceeds this limit.
+--
+
+[%hardbreaks]
+*Default:* `+++"100"+++`
+{blank}
+a¦ String
+a¦ *scanPlusNumWorkers* +
+optional
+a¦ [markdown]
+--
+The number of workers each node uses to fetch sequence numbers from the Data Service for Search queries with `scan_plus` consistency.
+The value must be `1` or greater.
+--
+
+[%hardbreaks]
+*Default:* `+++"10"+++`
+{blank}
+a¦ String
+a¦ *scanPlusNumRetries* +
+optional
+a¦ [markdown]
+--
+The number of times the Search Service retries a failed request to fetch sequence numbers from the Data Service for Search queries with `scan_plus` consistency.
+The value must be `1` or greater.
+--
+
+[%hardbreaks]
+*Default:* `+++"5"+++`
+{blank}
+a¦ String
+a¦ *numSamplesPerCentroid* +
+optional
+a¦ [markdown]
+--
+The number of training samples per centroid for vector indexes that have `vector_index_fast_merge` enabled.
+Values less than `39` are treated as `39`, and values greater than `256` are treated as `256`.
+--
+
+[%hardbreaks]
+*Default:* `+++"39"+++`
+{blank}
+a¦ String
+a¦ *enableLazyIndexUpdate* +
+optional
+a¦ [markdown]
+--
+Whether the Search Service can update an existing Search index in place, without rebuilding it, when an index definition update deletes or modifies fields.
+Set the value to `True` to enable in-place updates.
+Any other value disables them.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *bleveMaxTerms* +
+optional
+a¦ [markdown]
+--
+The maximum number of term searchers a Search query can use on each index partition.
+A query that exceeds this limit fails.
+You can override this limit for a single query with the `bleveMaxTerms` property in the `ctl` object.
+
+A value of `0` or less disables the limit.
+--
+
+[%hardbreaks]
+*Default:* `+++"1024"+++`
+{blank}
+a¦ String
 
 |===
 

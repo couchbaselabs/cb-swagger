@@ -286,6 +286,29 @@ components:
         count:
           type: integer
           description: The document count for the specified index.
+    QueryRequestParams:
+      type: object
+      title: Score Fusion Parameters
+      description: |-
+        Parameters for score fusion.
+        Only used if `score` is `rrf` or `rsf`.
+      properties:
+        score_window_size:
+          type: integer
+          minimum: 1
+          description: |-
+            The number of results to take from each of the `query` and `knn` result lists before combining them.
+            The default is the value of `from` plus `size`.
+
+            The value must be greater than or equal to `size`, and less than or equal to the maximum result window for the Search Service.
+            Pagination cannot go beyond this number of results.
+        score_rank_constant:
+          type: integer
+          default: 60
+          x-has-default: true
+          description: |-
+            The rank constant used by Reciprocal Rank Fusion.
+            Only used if `score` is `rrf`.
     QueryRequest:
       type: object
       title: Query Request
@@ -307,6 +330,13 @@ components:
           description: |-
             An object that contains properties for query consistency.
             For more information, see [Ctl Object](../search/search-request-params.html#ctl).
+          properties:
+            bleveMaxTerms:
+              type: integer
+              description: |-
+                The maximum number of term searchers this query can use on each index partition.
+                Overrides the `bleveMaxTerms` manager option for this query.
+                A value of `0` or less disables the limit for this query.
         size:
           type: integer
           description: Set the total number of results to return for a single page of search results.
@@ -342,15 +372,34 @@ components:
           description: Whether to return the position of each occurrence of a search term inside a document.
         score:
           type: string
-          description: Whether to include document relevancy scoring in search results.
+          enum:
+            - none
+            - rrf
+            - rsf
+          description: |-
+            Controls document relevancy scoring in search results.
+
+            - `none`: do not score search results.
+            - `rrf`: combine the results of the `query` and `knn` components using Reciprocal Rank Fusion.
+            - `rsf`: combine the results of the `query` and `knn` components using Relative Score Fusion.
+
+            If you omit this property, the Search Service scores search results as normal.
+        params:
+          $ref: '#/components/schemas/QueryRequestParams'
         search_after:
           type: array
-          description: Use to control pagination in search results.
+          description: |-
+            Use to control pagination in search results.
+            Contains one value for each entry in `sort`.
+            Specify numeric and geo distance values as decimal strings, and date values as RFC 3339 strings.
           items:
             type: string
         search_before:
           type: array
-          description: Use to control pagination in search results.
+          description: |-
+            Use to control pagination in search results.
+            Contains one value for each entry in `sort`.
+            Specify numeric and geo distance values as decimal strings, and date values as RFC 3339 strings.
           items:
             type: string
         collections:
