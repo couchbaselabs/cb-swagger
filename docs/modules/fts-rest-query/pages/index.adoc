@@ -112,6 +112,7 @@ xref:api-pindex-query[]
 xref:api-query[]
 xref:api-query-cancel[]
 xref:api-query-index[]
+xref:api-search-history[]
 
 
 
@@ -298,14 +299,20 @@ include::{snippetDir}api-pindex-query/curl-request.adoc[opts=optional]
   "knn" : [ "{}", "{}" ],
   "sort" : [ "", "" ],
   "includeLocations" : true,
+  "params" : {
+    "score_rank_constant" : 5,
+    "score_window_size" : 1
+  },
   "facets" : "{}",
   "highlight" : "{}",
-  "score" : "score",
+  "score" : "none",
   "search_after" : [ "search_after", "search_after" ],
-  "size" : 0,
+  "size" : 6,
   "collections" : [ "collections", "collections" ],
-  "ctl" : "{}",
-  "from" : 6,
+  "ctl" : {
+    "bleveMaxTerms" : 0
+  },
+  "from" : 1,
   "fields" : [ "fields", "fields" ],
   "search_before" : [ "search_before", "search_before" ]
 }
@@ -1177,6 +1184,268 @@ include::{specDir}paths/api-query-index/operation-after.adoc[opts=optional]
 
 //end::api-query-index[]
 
+//tag::api-search-history[]
+
+include::{specDir}paths/api-search-history/operation-before.adoc[opts=optional]
+
+[#api-search-history]
+= View Search History
+
+:leveloffset: +1
+
+include::{specDir}paths/api-search-history/operation-begin.adoc[opts=optional]
+
+....
+GET /api/searchHistory
+....
+
+
+include::{specDir}paths/api-search-history/operation-description-before.adoc[opts=optional]
+
+[#api-search-history-description]
+= Description
+
+:leveloffset: +1
+
+include::{specDir}paths/api-search-history/operation-description-begin.adoc[opts=optional]
+
+[markdown]
+--
+Gets the Search requests recently recorded by the Search node that receives the request.
+To get the search history for the whole cluster, send this request to every node running the Search Service.
+
+The Search Service records Search requests only if the `searchHistoryEnabled` manager option is `true`.
+Search requests made through SQL++ are not recorded.
+In each recorded request, the values of the `vector` and `vector_base64` properties are redacted.
+--
+
+include::{specDir}paths/api-search-history/operation-description-end.adoc[opts=optional]
+
+
+
+[#api-search-history-produces]
+.Produces
+* application/json
+
+
+:leveloffset: -1
+
+include::{specDir}paths/api-search-history/operation-description-after.adoc[opts=optional]
+
+
+include::{specDir}paths/api-search-history/operation-parameters-before.adoc[opts=optional]
+
+[#api-search-history-parameters]
+= Parameters
+
+:leveloffset: +1
+
+include::{specDir}paths/api-search-history/operation-parameters-begin.adoc[opts=optional]
+
+[#api-search-history-query]
+.Query Parameters
+{blank}
+
+[cols="20,60,20",separator=¦]
+|===
+¦ Name ¦ Description ¦ Schema
+
+a¦ *limit* +
+optional
+a¦ [markdown]
+--
+The maximum number of recorded requests to return.
+--
+
+[%hardbreaks]
+*Default:* `100`
+*Minimum:* `1`
+*Maximum:* `8000`
+{blank}
+
+a¦ Integer
+a¦ *offset* +
+optional
+a¦ [markdown]
+--
+The number of recorded requests to skip, for pagination.
+--
+
+[%hardbreaks]
+*Default:* `0`
+*Minimum:* `0`
+{blank}
+
+a¦ Integer
+a¦ *index* +
+optional
+a¦ [markdown]
+--
+Returns only requests made against the specified Search index.
+For a scoped index, use the fully qualified name, in the form `BUCKET.SCOPE.INDEX`.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+a¦ *minDuration* +
+optional
+a¦ [markdown]
+--
+Returns only requests that took at least the specified time.
+Specify a duration string, such as `750ms` or `1.5s`, or an integer number of milliseconds.
+--
+
+[%hardbreaks]
+{blank}
+
+a¦ String
+a¦ *status* +
+optional
+a¦ [markdown]
+--
+Returns only requests that succeeded or failed.
+--
+
+[%hardbreaks]
+*Values:* `&quot;success&quot;`, `&quot;failed&quot;`
+{blank}
+
+a¦ String
+
+|===
+
+
+include::{specDir}paths/api-search-history/operation-parameters-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+
+include::{specDir}paths/api-search-history/operation-parameters-after.adoc[opts=optional]
+
+
+include::{specDir}paths/api-search-history/operation-responses-before.adoc[opts=optional]
+
+[#api-search-history-responses]
+= Responses
+
+:leveloffset: +1
+
+include::{specDir}paths/api-search-history/operation-responses-begin.adoc[opts=optional]
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A list of recorded Search requests, newest first.
+--
+a| xref:HistoryResponse[]
+
+| 500
+a| [markdown]
+--
+The Search Service could not read the search history.
+--
+a| 
+
+| 503
+a| [markdown]
+--
+The search history is not available on this node.
+--
+a| 
+
+|===
+
+include::{specDir}paths/api-search-history/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+:show-HistoryResponse:
+
+
+include::{specDir}paths/api-search-history/operation-responses-after.adoc[opts=optional]
+
+
+include::{specDir}paths/api-search-history/operation-security-before.adoc[opts=optional]
+
+[#api-search-history-security]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}paths/api-search-history/operation-security-begin.adoc[opts=optional]
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| xref:security-ReadSettings[]
+
+|===
+
+include::{specDir}paths/api-search-history/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/api-search-history/operation-security-after.adoc[opts=optional]
+
+include::{snippetDir}api-search-history/curl-request.adoc[opts=optional]
+
+
+
+include::{snippetDir}api-search-history/http-request.adoc[opts=optional]
+
+ifeval::["" != ""]
+[#api-search-history-ex-response]
+= Example HTTP Response
+endif::[]
+
+ifeval::["" == ""]
+[#api-search-history-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+{
+  "total" : 5,
+  "count" : 1,
+  "results" : [ {
+    "request" : "{\"query\":{\"field\":\"description\",\"match\":\"coffee\"},\"size\":10}",
+    "totalHits" : 6,
+    "index" : "index",
+    "timestamp" : "2000-01-23T04:56:07.000+00:00",
+    "tookMs" : 0,
+    "status" : "success"
+  }, {
+    "request" : "{\"query\":{\"field\":\"description\",\"match\":\"coffee\"},\"size\":10}",
+    "totalHits" : 6,
+    "index" : "index",
+    "timestamp" : "2000-01-23T04:56:07.000+00:00",
+    "tookMs" : 0,
+    "status" : "success"
+  } ]
+}
+----
+====
+endif::[]
+
+include::{snippetDir}api-search-history/http-response.adoc[opts=optional]
+
+include::{specDir}paths/api-search-history/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/api-search-history/operation-after.adoc[opts=optional]
+
+//end::api-search-history[]
+
 
 
 
@@ -1210,7 +1479,11 @@ xref:ActiveResponseFilterMapItemContext[]
 xref:ActiveResponseStats[]
 xref:CancelRequest[]
 xref:CancelResponse[]
+xref:HistoryResponse[]
+xref:HistoryResponseRecord[]
 xref:QueryRequest[]
+xref:QueryRequest_ctl[]
+xref:QueryRequestParams[]
 xref:QueryResponse[]
 
 include::{specDir}definitions/ActiveResponse/definition-before.adoc[opts=optional]
@@ -1778,6 +2051,185 @@ endif::show-CancelResponse[]
 
 include::{specDir}definitions/CancelResponse/definition-after.adoc[opts=optional]
 
+include::{specDir}definitions/HistoryResponse/definition-before.adoc[opts=optional]
+
+ifdef::show-HistoryResponse[]
+[#HistoryResponse]
+endif::show-HistoryResponse[]
+ifndef::show-HistoryResponse[]
+:leveloffset: +1
+
+[discrete#HistoryResponse]
+endif::show-HistoryResponse[]
+= History Response
+
+:leveloffset: +1
+
+include::{specDir}definitions/HistoryResponse/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::HistoryResponse[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *results* +
+optional
+a¦ [markdown]
+--
+The recorded Search requests, newest first.
+--
+
+[%hardbreaks]
+{blank}
+a¦ xref:HistoryResponseRecord[] array
+a¦ *count* +
+optional
+a¦ [markdown]
+--
+The number of recorded requests in this response.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+a¦ *total* +
+optional
+a¦ [markdown]
+--
+The total number of recorded requests on this node that match the filters, before pagination.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::HistoryResponse[]
+
+
+
+include::{specDir}definitions/HistoryResponse/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-HistoryResponse[]
+:leveloffset: -1
+endif::show-HistoryResponse[]
+
+include::{specDir}definitions/HistoryResponse/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/HistoryResponseRecord/definition-before.adoc[opts=optional]
+
+ifdef::show-HistoryResponseRecord[]
+[#HistoryResponseRecord]
+endif::show-HistoryResponseRecord[]
+ifndef::show-HistoryResponseRecord[]
+:leveloffset: +1
+
+[discrete#HistoryResponseRecord]
+endif::show-HistoryResponseRecord[]
+= History Record
+
+:leveloffset: +1
+
+include::{specDir}definitions/HistoryResponseRecord/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::HistoryResponseRecord[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *timestamp* +
+optional
+a¦ [markdown]
+--
+The time the request started, in UTC.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Date (date-time)
+a¦ *index* +
+optional
+a¦ [markdown]
+--
+The name of the Search index.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *request* +
+optional
+a¦ [markdown]
+--
+The Search request, as a JSON-encoded string.
+For more information, see [Search Request JSON Properties](../search/search-request-params.html).
+--
+
+[%hardbreaks]
+*Example:* `+++"{"query":{"field":"description","match":"coffee"},"size":10}"+++`
+{blank}
+a¦ String
+a¦ *tookMs* +
+optional
+a¦ [markdown]
+--
+The time taken to execute the request, in milliseconds.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Long (int64)
+a¦ *totalHits* +
+optional
+a¦ [markdown]
+--
+The total number of hits for the request.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Long (int64)
+a¦ *status* +
+optional
+a¦ [markdown]
+--
+Whether the request succeeded or failed.
+--
+
+[%hardbreaks]
+*Values:* `"success"`, `"failed"`
+{blank}
+a¦ String
+
+|===
+
+//end::HistoryResponseRecord[]
+
+
+
+include::{specDir}definitions/HistoryResponseRecord/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-HistoryResponseRecord[]
+:leveloffset: -1
+endif::show-HistoryResponseRecord[]
+
+include::{specDir}definitions/HistoryResponseRecord/definition-after.adoc[opts=optional]
+
 include::{specDir}definitions/QueryRequest/definition-before.adoc[opts=optional]
 
 ifdef::show-QueryRequest[]
@@ -1836,7 +2288,7 @@ For more information, see [Ctl Object](../search/search-request-params.html#ctl)
 
 [%hardbreaks]
 {blank}
-a¦ Object
+a¦ xref:QueryRequest_ctl[]
 a¦ *size* +
 optional
 a¦ [markdown]
@@ -1924,17 +2376,37 @@ a¦ *score* +
 optional
 a¦ [markdown]
 --
-Whether to include document relevancy scoring in search results.
+Controls document relevancy scoring in search results.
+
+- `none`: do not score search results.
+- `rrf`: combine the results of the `query` and `knn` components using Reciprocal Rank Fusion.
+- `rsf`: combine the results of the `query` and `knn` components using Relative Score Fusion.
+
+If you omit this property, the Search Service scores search results as normal.
+--
+
+[%hardbreaks]
+*Values:* `"none"`, `"rrf"`, `"rsf"`
+{blank}
+a¦ String
+a¦ *params* +
+optional
+a¦ [markdown]
+--
+Parameters for score fusion.
+Only used if `score` is `rrf` or `rsf`.
 --
 
 [%hardbreaks]
 {blank}
-a¦ String
+a¦ xref:QueryRequestParams[]
 a¦ *search_after* +
 optional
 a¦ [markdown]
 --
 Use to control pagination in search results.
+Contains one value for each entry in `sort`.
+Specify numeric and geo distance values as decimal strings, and date values as RFC 3339 strings.
 --
 
 [%hardbreaks]
@@ -1945,6 +2417,8 @@ optional
 a¦ [markdown]
 --
 Use to control pagination in search results.
+Contains one value for each entry in `sort`.
+Specify numeric and geo distance values as decimal strings, and date values as RFC 3339 strings.
 --
 
 [%hardbreaks]
@@ -1976,6 +2450,131 @@ ifndef::show-QueryRequest[]
 endif::show-QueryRequest[]
 
 include::{specDir}definitions/QueryRequest/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/QueryRequest_ctl/definition-before.adoc[opts=optional]
+
+ifdef::show-QueryRequest_ctl[]
+[#QueryRequest_ctl]
+endif::show-QueryRequest_ctl[]
+ifndef::show-QueryRequest_ctl[]
+:leveloffset: +1
+
+[discrete#QueryRequest_ctl]
+endif::show-QueryRequest_ctl[]
+= QueryRequestCtl
+
+:leveloffset: +1
+
+include::{specDir}definitions/QueryRequest_ctl/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::QueryRequest_ctl[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *bleveMaxTerms* +
+optional
+a¦ [markdown]
+--
+The maximum number of term searchers this query can use on each index partition.
+Overrides the `bleveMaxTerms` manager option for this query.
+A value of `0` or less disables the limit for this query.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::QueryRequest_ctl[]
+
+
+
+include::{specDir}definitions/QueryRequest_ctl/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-QueryRequest_ctl[]
+:leveloffset: -1
+endif::show-QueryRequest_ctl[]
+
+include::{specDir}definitions/QueryRequest_ctl/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/QueryRequestParams/definition-before.adoc[opts=optional]
+
+ifdef::show-QueryRequestParams[]
+[#QueryRequestParams]
+endif::show-QueryRequestParams[]
+ifndef::show-QueryRequestParams[]
+:leveloffset: +1
+
+[discrete#QueryRequestParams]
+endif::show-QueryRequestParams[]
+= Score Fusion Parameters
+
+:leveloffset: +1
+
+include::{specDir}definitions/QueryRequestParams/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::QueryRequestParams[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *score_window_size* +
+optional
+a¦ [markdown]
+--
+The number of results to take from each of the `query` and `knn` result lists before combining them.
+The default is the value of `from` plus `size`.
+
+The value must be greater than or equal to `size`, and less than or equal to the maximum result window for the Search Service.
+Pagination cannot go beyond this number of results.
+--
+
+[%hardbreaks]
+*Minimum:* `1`
+{blank}
+a¦ Integer
+a¦ *score_rank_constant* +
+optional
+a¦ [markdown]
+--
+The rank constant used by Reciprocal Rank Fusion.
+Only used if `score` is `rrf`.
+--
+
+[%hardbreaks]
+*Default:* `60`
+{blank}
+a¦ Integer
+
+|===
+
+//end::QueryRequestParams[]
+
+
+
+include::{specDir}definitions/QueryRequestParams/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-QueryRequestParams[]
+:leveloffset: -1
+endif::show-QueryRequestParams[]
+
+include::{specDir}definitions/QueryRequestParams/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/QueryResponse/definition-before.adoc[opts=optional]
 
@@ -2078,6 +2677,29 @@ include::{specDir}security/Default/security-scheme-end.adoc[opts=optional]
 :leveloffset: -1
 
 include::{specDir}security/Default/security-scheme-after.adoc[opts=optional]
+
+include::{specDir}security/ReadSettings/security-scheme-before.adoc[opts=optional]
+
+[[security-ReadSettings]]
+= ReadSettings
+
+:leveloffset: +1
+
+include::{specDir}security/ReadSettings/security-scheme-begin.adoc[opts=optional]
+
+[markdown]
+--
+You must have the **Full Admin** or **Cluster Admin** role, with permission to read Search cluster settings (`cluster.settings.fts!read`).
+--
+
+[%hardbreaks]
+*Type:* http
+
+include::{specDir}security/ReadSettings/security-scheme-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}security/ReadSettings/security-scheme-after.adoc[opts=optional]
 
 
 

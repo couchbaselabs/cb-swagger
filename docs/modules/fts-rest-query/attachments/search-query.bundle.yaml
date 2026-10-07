@@ -249,6 +249,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryResponse'
+  /api/searchHistory:
+    get:
+      operationId: api-search-history
+      summary: View Search History
+      description: |-
+        Gets the Search requests recently recorded by the Search node that receives the request.
+        To get the search history for the whole cluster, send this request to every node running the Search Service.
+
+        The Search Service records Search requests only if the `searchHistoryEnabled` manager option is `true`.
+        Search requests made through SQL++ are not recorded.
+        In each recorded request, the values of the `vector` and `vector_base64` properties are redacted.
+      parameters:
+        - $ref: '#/components/parameters/queryHistoryLimit'
+        - $ref: '#/components/parameters/queryHistoryOffset'
+        - $ref: '#/components/parameters/queryHistoryIndex'
+        - $ref: '#/components/parameters/queryHistoryMinDuration'
+        - $ref: '#/components/parameters/queryHistoryStatus'
+      security:
+        - ReadSettings: []
+      responses:
+        '200':
+          description: A list of recorded Search requests, newest first.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoryResponse'
+        '500':
+          description: The Search Service could not read the search history.
+        '503':
+          description: The search history is not available on this node.
 components:
   parameters:
     pathIndexName:
@@ -286,6 +316,55 @@ components:
       schema:
         type: string
         format: duration
+    queryHistoryLimit:
+      name: limit
+      in: query
+      required: false
+      description: The maximum number of recorded requests to return.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 8000
+        default: 100
+        x-has-default: true
+    queryHistoryOffset:
+      name: offset
+      in: query
+      required: false
+      description: The number of recorded requests to skip, for pagination.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+        x-has-default: true
+    queryHistoryIndex:
+      name: index
+      in: query
+      required: false
+      description: |-
+        Returns only requests made against the specified Search index.
+        For a scoped index, use the fully qualified name, in the form `BUCKET.SCOPE.INDEX`.
+      schema:
+        type: string
+    queryHistoryMinDuration:
+      name: minDuration
+      in: query
+      required: false
+      description: |-
+        Returns only requests that took at least the specified time.
+        Specify a duration string, such as `750ms` or `1.5s`, or an integer number of milliseconds.
+      schema:
+        type: string
+    queryHistoryStatus:
+      name: status
+      in: query
+      required: false
+      description: Returns only requests that succeeded or failed.
+      schema:
+        type: string
+        enum:
+          - success
+          - failed
   schemas:
     ActiveResponse:
       type: object
@@ -399,6 +478,77 @@ components:
         msg:
           type: string
           description: The response message, giving details of the node UUID and query ID.
+    HistoryResponse:
+      type: object
+      title: History Response
+      properties:
+        results:
+          type: array
+          description: The recorded Search requests, newest first.
+          items:
+            $ref: '#/components/schemas/HistoryResponseRecord'
+        count:
+          type: integer
+          description: The number of recorded requests in this response.
+        total:
+          type: integer
+          description: The total number of recorded requests on this node that match the filters, before pagination.
+    HistoryResponseRecord:
+      type: object
+      title: History Record
+      description: The details of a single recorded Search request.
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: The time the request started, in UTC.
+        index:
+          type: string
+          description: The name of the Search index.
+        request:
+          type: string
+          description: |-
+            The Search request, as a JSON-encoded string.
+            For more information, see [Search Request JSON Properties](../search/search-request-params.html).
+          example: '{"query":{"field":"description","match":"coffee"},"size":10}'
+          x-has-example: true
+        tookMs:
+          type: integer
+          format: int64
+          description: The time taken to execute the request, in milliseconds.
+        totalHits:
+          type: integer
+          format: int64
+          description: The total number of hits for the request.
+        status:
+          type: string
+          enum:
+            - success
+            - failed
+          description: Whether the request succeeded or failed.
+    QueryRequestParams:
+      type: object
+      title: Score Fusion Parameters
+      description: |-
+        Parameters for score fusion.
+        Only used if `score` is `rrf` or `rsf`.
+      properties:
+        score_window_size:
+          type: integer
+          minimum: 1
+          description: |-
+            The number of results to take from each of the `query` and `knn` result lists before combining them.
+            The default is the value of `from` plus `size`.
+
+            The value must be greater than or equal to `size`, and less than or equal to the maximum result window for the Search Service.
+            Pagination cannot go beyond this number of results.
+        score_rank_constant:
+          type: integer
+          default: 60
+          x-has-default: true
+          description: |-
+            The rank constant used by Reciprocal Rank Fusion.
+            Only used if `score` is `rrf`.
     QueryRequest:
       type: object
       title: Query Request
@@ -420,6 +570,13 @@ components:
           description: |-
             An object that contains properties for query consistency.
             For more information, see [Ctl Object](../search/search-request-params.html#ctl).
+          properties:
+            bleveMaxTerms:
+              type: integer
+              description: |-
+                The maximum number of term searchers this query can use on each index partition.
+                Overrides the `bleveMaxTerms` manager option for this query.
+                A value of `0` or less disables the limit for this query.
         size:
           type: integer
           description: Set the total number of results to return for a single page of search results.
@@ -455,15 +612,34 @@ components:
           description: Whether to return the position of each occurrence of a search term inside a document.
         score:
           type: string
-          description: Whether to include document relevancy scoring in search results.
+          enum:
+            - none
+            - rrf
+            - rsf
+          description: |-
+            Controls document relevancy scoring in search results.
+
+            - `none`: do not score search results.
+            - `rrf`: combine the results of the `query` and `knn` components using Reciprocal Rank Fusion.
+            - `rsf`: combine the results of the `query` and `knn` components using Relative Score Fusion.
+
+            If you omit this property, the Search Service scores search results as normal.
+        params:
+          $ref: '#/components/schemas/QueryRequestParams'
         search_after:
           type: array
-          description: Use to control pagination in search results.
+          description: |-
+            Use to control pagination in search results.
+            Contains one value for each entry in `sort`.
+            Specify numeric and geo distance values as decimal strings, and date values as RFC 3339 strings.
           items:
             type: string
         search_before:
           type: array
-          description: Use to control pagination in search results.
+          description: |-
+            Use to control pagination in search results.
+            Contains one value for each entry in `sort`.
+            Specify numeric and geo distance values as decimal strings, and date values as RFC 3339 strings.
           items:
             type: string
         collections:
@@ -490,3 +666,7 @@ components:
     Default:
       type: http
       scheme: basic
+    ReadSettings:
+      type: http
+      scheme: basic
+      description: You must have the **Full Admin** or **Cluster Admin** role, with permission to read Search cluster settings (`cluster.settings.fts!read`).

@@ -1775,10 +1775,159 @@ Operations for node monitoring.
 
 
 [%hardbreaks]
+xref:getEncryptionKeysInUse[]
 xref:getMemoryStats[]
 xref:getRuntimeStats[]
 
 
+
+//tag::getEncryptionKeysInUse[]
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-before.adoc[opts=optional]
+
+[#getEncryptionKeysInUse]
+= Get Encryption Keys In Use
+
+:leveloffset: +1
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-begin.adoc[opts=optional]
+
+....
+GET /api/encryption/keysInUse
+....
+
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-description-before.adoc[opts=optional]
+
+[#getEncryptionKeysInUse-description]
+= Description
+
+:leveloffset: +1
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-description-begin.adoc[opts=optional]
+
+[markdown]
+--
+Returns the IDs of the encryption keys currently in use by the Search Service on this node, as JSON.
+This endpoint is available only in Couchbase Server Enterprise Edition.
+--
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-description-end.adoc[opts=optional]
+
+
+
+[#getEncryptionKeysInUse-produces]
+.Produces
+* application/json
+
+
+:leveloffset: -1
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-description-after.adoc[opts=optional]
+
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-parameters-before.adoc[opts=optional]
+
+
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-parameters-after.adoc[opts=optional]
+
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-responses-before.adoc[opts=optional]
+
+[#getEncryptionKeysInUse-responses]
+= Responses
+
+:leveloffset: +1
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-responses-begin.adoc[opts=optional]
+
+[cols="20,60,20"]
+|===
+| HTTP Code | Description | Schema
+
+| 200
+a| [markdown]
+--
+A JSON object containing the encryption key IDs in use.
+--
+a| xref:keysInUse[]
+
+| 500
+a| [markdown]
+--
+The Search Service could not retrieve the encryption keys in use.
+--
+a| 
+
+|===
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-responses-end.adoc[opts=optional]
+
+:leveloffset: -1
+:show-keysInUse:
+
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-responses-after.adoc[opts=optional]
+
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-security-before.adoc[opts=optional]
+
+[#getEncryptionKeysInUse-security]
+= Security
+
+:leveloffset: +1
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-security-begin.adoc[opts=optional]
+
+[cols="20,80"]
+|===
+| Type | Name
+
+| http (basic)
+| xref:security-readClusterSettings[]
+
+|===
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-security-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-security-after.adoc[opts=optional]
+
+include::{snippetDir}getEncryptionKeysInUse/curl-request.adoc[opts=optional]
+
+
+
+include::{snippetDir}getEncryptionKeysInUse/http-request.adoc[opts=optional]
+
+ifeval::["" != ""]
+[#getEncryptionKeysInUse-ex-response]
+= Example HTTP Response
+endif::[]
+
+ifeval::["" == ""]
+[#getEncryptionKeysInUse-ex-response]
+= Example HTTP Response
+
+.Response 200
+====
+[source,json]
+----
+null
+----
+====
+endif::[]
+
+include::{snippetDir}getEncryptionKeysInUse/http-response.adoc[opts=optional]
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+include::{specDir}paths/getEncryptionKeysInUse/operation-after.adoc[opts=optional]
+
+//end::getEncryptionKeysInUse[]
 
 //tag::getMemoryStats[]
 
@@ -2073,6 +2222,7 @@ xref:GetIndexResponsePlanWrngIndex[]
 xref:GetIndexesResponseIndexesWrapper[]
 xref:IndexDefinition[]
 xref:IndexDefinitionPlanParams[]
+xref:keysInUse[]
 xref:logInfo[]
 xref:runtimeInfo[]
 xref:runtimeInfoGo[]
@@ -3342,6 +3492,21 @@ For more information, see [Plan Params Object](../search/search-index-params.htm
 [%hardbreaks]
 {blank}
 a¦ xref:IndexDefinitionPlanParams[]
+a¦ *appInfo* +
+optional
+a¦ [markdown]
+--
+Optional application metadata for the Search index.
+The value can be any valid JSON value.
+The Search Service stores the value with the Search index definition and returns it when you retrieve the definition, but does not otherwise use it.
+
+You cannot set `appInfo` until all nodes in the cluster are running Couchbase Server 8.5 or later.
+--
+
+[%hardbreaks]
+*Nullable:* yes
+{blank}
+a¦ Any Type
 a¦ *prevIndexUUID* +
 optional
 a¦ [markdown]
@@ -3486,6 +3651,60 @@ ifndef::show-IndexDefinitionPlanParams[]
 endif::show-IndexDefinitionPlanParams[]
 
 include::{specDir}definitions/IndexDefinitionPlanParams/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/keysInUse/definition-before.adoc[opts=optional]
+
+ifdef::show-keysInUse[]
+[#keysInUse]
+endif::show-keysInUse[]
+ifndef::show-keysInUse[]
+:leveloffset: +1
+
+[discrete#keysInUse]
+endif::show-keysInUse[]
+= Encryption Keys In Use
+
+:leveloffset: +1
+
+include::{specDir}definitions/keysInUse/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::keysInUse[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *<Key Type and Bucket UUID>* +
+additional +
+property
+a¦ [markdown]
+--
+
+--
+
+[%hardbreaks]
+{blank}
+a¦ String array
+
+|===
+
+//end::keysInUse[]
+
+
+
+include::{specDir}definitions/keysInUse/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-keysInUse[]
+:leveloffset: -1
+endif::show-keysInUse[]
+
+include::{specDir}definitions/keysInUse/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/logInfo/definition-before.adoc[opts=optional]
 
