@@ -33,7 +33,7 @@ This API enables you to run SQL++ queries and set request-level parameters.
 [discrete#version]
 = Version information
 [%hardbreaks]
-*Version:* 8.0
+*Version:* 8.5
 
 [discrete#host]
 = Host information
@@ -1917,7 +1917,7 @@ If not specified, the ATR is stored in the default collection in the default sco
 The value must be a string in the form `"bucket.scope.collection"` or `"namespace:bucket.scope.collection"`.
 If any part of the path contains a special character, that part of the path must be delimited in backticks &grave;&grave;.
 
-[additional-storage-use]: /server/8.0/learn/data/transactions.html#active-transaction-record-entries
+[additional-storage-use]: /server/8.5/learn/data/transactions.html#active-transaction-record-entries
 
 // tag::desc-more[]
 The [node-level][atrcollection-srv] `atrcollection` setting specifies the default for this parameter for a single node.
@@ -1995,9 +1995,9 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 Specifies if there should be a controls section returned with the request results.
 
-When set to `true`, the query response document includes a controls section with runtime information provided along with the request, such as positional and named parameters or settings.
+When set to `true`, the query response document includes a controls section with runtime information provided along with the request.
 
-If the request qualifies for caching, these values will also be cached in the `completed_requests` system keyspace.
+If the request qualifies for caching, these values will also be cached in the `active_requests` system keyspace.
 
 // tag::desc-more[]
 The [node-level][controls-srv] `controls` setting specifies the default for this parameter for a single node.
@@ -2044,7 +2044,7 @@ In this case, the `kvtimeout` parameter is used as the durability timeout.
 If not specified, the default durability level is `"majority"`.
 Set the durability level to `"none"` or `""` to specify no durability.
 
-[durability]: /server/8.0/learn/data/durability.html
+[durability]: /server/8.5/learn/data/durability.html
 --
 
 [%hardbreaks]
@@ -2227,9 +2227,7 @@ a¦ String
 a¦ [#natural]
 *natural* +
 optional
-a¦ [.status]##Couchbase Server 8.0##
-
-[markdown]
+a¦ [markdown]
 --
 The prompt for a natural language request.
 The Query Service uses the prompt to generate a SQL++ statement.
@@ -2255,9 +2253,7 @@ a¦ String
 a¦ [#natural_cred]
 *natural_cred* +
 optional
-a¦ [.status]##Couchbase Server 8.0##
-
-[markdown]
+a¦ [markdown]
 --
 The Couchbase Capella user account credentials for a natural language request, in the form `username:password`.
 Be careful not to expose the credentials in log files or other output.
@@ -2280,9 +2276,7 @@ a¦ String (password)
 a¦ [#natural_orgid]
 *natural_orgid* +
 optional
-a¦ [.status]##Couchbase Server 8.0##
-
-[markdown]
+a¦ [markdown]
 --
 The Couchbase Capella organization ID for a natural language request.
 
@@ -2301,7 +2295,7 @@ a¦ UUID (uuid)
 a¦ [#natural_config]
 *natural_config* +
 optional
-a¦ [.status]##Couchbase Server 8.1##
+a¦ [.status]##Couchbase Server 8.5##
 
 [markdown]
 --
@@ -2320,9 +2314,7 @@ a¦ xref:Request_natural_config[]
 a¦ [#natural_context]
 *natural_context* +
 optional
-a¦ [.status]##Couchbase Server 8.0##
-
-[markdown]
+a¦ [markdown]
 --
 A list of paths specifying keyspaces for a natural language request.
 The Query Service infers the schema of each keyspace, in order to give more precise responses from the natural language request.
@@ -2354,9 +2346,7 @@ a¦ String
 a¦ [#natural_output]
 *natural_output* +
 optional
-a¦ [.status]##Couchbase Server 8.0##
-
-[markdown]
+a¦ [markdown]
 --
 Specifies the required output for a natural language request.
 
@@ -3207,6 +3197,7 @@ The LLM provider. Supported values are `openai`, `bedrock`, `gemini`, and `slm`.
 --
 
 [%hardbreaks]
+*Default:* `+++"openai"+++`
 {blank}
 a¦ String
 a¦ *model* +
@@ -3277,6 +3268,7 @@ Whether to run content moderation on the request before generating the statement
 --
 
 [%hardbreaks]
+*Default:* `true`
 {blank}
 a¦ Boolean
 
@@ -3626,9 +3618,7 @@ The client context ID of the request, if one was supplied &mdash; see `client_co
 a¦ String
 a¦ *generated_statement* +
 optional
-a¦ [.status]##Couchbase Server 8.0##
-
-[markdown]
+a¦ [markdown]
 --
 The generated statement, if the request was a natural language prompt.
 --
