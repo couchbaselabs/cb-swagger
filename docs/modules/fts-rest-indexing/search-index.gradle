@@ -1,5 +1,6 @@
 plugins {
   id "com.github.node-gradle.node" version "7.1.0"
+  id("io.datapith.jayOverlay").version("0.1.11")
 }
 
 apply plugin: 'org.openapi.generator'
@@ -9,18 +10,30 @@ task bundleSpec(type: NpxTask) {
   args = [
     'bundle',
     "${searchIndexSpec}",
-    '-o', "attachments/${project.name}.bundle.yaml"]
+    '-o', "build/${project.name}.bundle.yaml"]
+}
+
+jayOverlay {
+    targetFile.set("${projectDir}/build/${project.name}.bundle.yaml")
+    overlayFile.set("${projectDir}/attachments/_overlay.json")
+    outputDir.set("${projectDir}/attachments")
+}
+
+tasks.applyOverlay.doLast {
+    ant.move(file:   "${projectDir}/attachments/${project.name}.bundle.yaml",
+             tofile: "${projectDir}/attachments/${project.name}.overlaid.yaml",
+             overwrite: "true")
 }
 
 openApiGenerate {
     generatorName = "asciidoc"
-    inputSpec = file("attachments/${project.name}.bundle.yaml").getAbsolutePath().toString()
+    inputSpec = file("attachments/${project.name}.overlaid.yaml").getAbsolutePath().toString()
     outputDir = "${projectDir}/pages"
     templateDir = "${rootDir}/templates"
     gitRepoId = "cbft"
     gitUserId = "couchbase"
     additionalProperties = [
-            serviceDesc: "${project.name}.bundle.yaml",
+            serviceDesc: "${project.name}.overlaid.yaml",
             specDir: "${projectDir}/partials/",
             snippetDir: "${projectDir}/partials/paths/",
             headerAttributes: "true",
@@ -34,6 +47,11 @@ openApiGenerate {
     ]
     generateAliasAsModel = true
     engine = "handlebars"
+    modelNameMappings = [
+            InsightsTermFrequency: "InsightsResponse1",
+            InsightsCentroidCardinality: "InsightsResponse2"
+    ]
 }
 
-tasks.openApiGenerate.dependsOn(bundleSpec)
+tasks.applyOverlay.dependsOn(bundleSpec)
+tasks.openApiGenerate.dependsOn(applyOverlay)

@@ -4,7 +4,7 @@
 :snippetDir: partial$paths/
 :page-topic-type: reference
 :page-toclevels: 2
-:page-service-desc: _attachments/search-index.bundle.yaml
+:page-service-desc: _attachments/search-index.overlaid.yaml
 :page-service-desc-type: application/vnd.oai.openapi+yaml
 include::partial$header-attributes.adoc[opts=optional]
 
@@ -6431,12 +6431,10 @@ include::{snippetDir}p-api-scoped-query/curl-request.adoc[opts=optional]
   "highlight" : "{}",
   "score" : "none",
   "search_after" : [ "search_after", "search_after" ],
-  "size" : 6,
+  "size" : 0,
   "collections" : [ "collections", "collections" ],
-  "ctl" : {
-    "bleveMaxTerms" : 0
-  },
-  "from" : 1,
+  "ctl" : "{}",
+  "from" : 6,
   "fields" : [ "fields", "fields" ],
   "search_before" : [ "search_before", "search_before" ]
 }
@@ -6809,10 +6807,10 @@ xref:GetIndexesResponseIndexes[]
 xref:GetIndexesResponseIndexesWrapper[]
 xref:IndexDefinition[]
 xref:IndexDefinitionPlanParams[]
-xref:InsightsCentroidCardinality[]
 xref:InsightsRequest[]
 xref:InsightsResponse[]
 xref:InsightsTermFrequency[]
+xref:InsightsCentroidCardinality[]
 xref:LookupRequest[]
 xref:LookupResponse[]
 xref:LookupResponsePartitions[]
@@ -6820,7 +6818,6 @@ xref:LookupResponsePartitionsID[]
 xref:MgmtResponse[]
 xref:PutIndexResponse[]
 xref:QueryRequest[]
-xref:QueryRequest_ctl[]
 xref:QueryRequestParams[]
 xref:QueryResponse[]
 xref:StatsIndexResponse[]
@@ -8140,79 +8137,6 @@ endif::show-IndexDefinitionPlanParams[]
 
 include::{specDir}definitions/IndexDefinitionPlanParams/definition-after.adoc[opts=optional]
 
-include::{specDir}definitions/InsightsCentroidCardinality/definition-before.adoc[opts=optional]
-
-ifdef::show-InsightsCentroidCardinality[]
-[#InsightsCentroidCardinality]
-endif::show-InsightsCentroidCardinality[]
-ifndef::show-InsightsCentroidCardinality[]
-:leveloffset: +1
-
-[discrete#InsightsCentroidCardinality]
-endif::show-InsightsCentroidCardinality[]
-= Centroid Cardinality
-
-:leveloffset: +1
-
-include::{specDir}definitions/InsightsCentroidCardinality/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::InsightsCentroidCardinality[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *index* +
-optional
-a¦ [markdown]
---
-The name of the index partition containing the centroid.
---
-
-[%hardbreaks]
-{blank}
-a¦ String
-a¦ *centroid* +
-optional
-a¦ [markdown]
---
-The centroid vector. The length of the array is equal to the `dims` of the vector field.
---
-
-[%hardbreaks]
-{blank}
-a¦ Float (float) array
-a¦ *cardinality* +
-optional
-a¦ [markdown]
---
-The number of vectors assigned to the centroid.
---
-
-[%hardbreaks]
-{blank}
-a¦ Long (int64)
-
-|===
-
-//end::InsightsCentroidCardinality[]
-
-
-
-include::{specDir}definitions/InsightsCentroidCardinality/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-InsightsCentroidCardinality[]
-:leveloffset: -1
-endif::show-InsightsCentroidCardinality[]
-
-include::{specDir}definitions/InsightsCentroidCardinality/definition-after.adoc[opts=optional]
-
 include::{specDir}definitions/InsightsRequest/definition-before.adoc[opts=optional]
 
 ifdef::show-InsightsRequest[]
@@ -8462,6 +8386,79 @@ ifndef::show-InsightsTermFrequency[]
 endif::show-InsightsTermFrequency[]
 
 include::{specDir}definitions/InsightsTermFrequency/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/InsightsCentroidCardinality/definition-before.adoc[opts=optional]
+
+ifdef::show-InsightsCentroidCardinality[]
+[#InsightsCentroidCardinality]
+endif::show-InsightsCentroidCardinality[]
+ifndef::show-InsightsCentroidCardinality[]
+:leveloffset: +1
+
+[discrete#InsightsCentroidCardinality]
+endif::show-InsightsCentroidCardinality[]
+= Centroid Cardinality
+
+:leveloffset: +1
+
+include::{specDir}definitions/InsightsCentroidCardinality/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::InsightsCentroidCardinality[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *index* +
+optional
+a¦ [markdown]
+--
+The name of the index partition containing the centroid.
+--
+
+[%hardbreaks]
+{blank}
+a¦ String
+a¦ *centroid* +
+optional
+a¦ [markdown]
+--
+The centroid vector. The length of the array is equal to the `dims` of the vector field.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Float (float) array
+a¦ *cardinality* +
+optional
+a¦ [markdown]
+--
+The number of vectors assigned to the centroid.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Long (int64)
+
+|===
+
+//end::InsightsCentroidCardinality[]
+
+
+
+include::{specDir}definitions/InsightsCentroidCardinality/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-InsightsCentroidCardinality[]
+:leveloffset: -1
+endif::show-InsightsCentroidCardinality[]
+
+include::{specDir}definitions/InsightsCentroidCardinality/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/LookupRequest/definition-before.adoc[opts=optional]
 
@@ -8873,7 +8870,7 @@ For more information, see [Ctl Object](../search/search-request-params.html#ctl)
 
 [%hardbreaks]
 {blank}
-a¦ xref:QueryRequest_ctl[]
+a¦ Object
 a¦ *size* +
 optional
 a¦ [markdown]
@@ -9035,61 +9032,6 @@ ifndef::show-QueryRequest[]
 endif::show-QueryRequest[]
 
 include::{specDir}definitions/QueryRequest/definition-after.adoc[opts=optional]
-
-include::{specDir}definitions/QueryRequest_ctl/definition-before.adoc[opts=optional]
-
-ifdef::show-QueryRequest_ctl[]
-[#QueryRequest_ctl]
-endif::show-QueryRequest_ctl[]
-ifndef::show-QueryRequest_ctl[]
-:leveloffset: +1
-
-[discrete#QueryRequest_ctl]
-endif::show-QueryRequest_ctl[]
-= QueryRequestCtl
-
-:leveloffset: +1
-
-include::{specDir}definitions/QueryRequest_ctl/definition-begin.adoc[opts=optional]
-
-
-.icon:brackets-curly[fw] Object
-{blank}
-
-//tag::QueryRequest_ctl[]
-
-[cols="25,55,20",separator=¦]
-|===
-¦ Property ¦ ¦ Schema
-
-a¦ *bleveMaxTerms* +
-optional
-a¦ [markdown]
---
-The maximum number of term searchers this query can use on each index partition.
-Overrides the `bleveMaxTerms` manager option for this query.
-A value of `0` or less disables the limit for this query.
---
-
-[%hardbreaks]
-{blank}
-a¦ Integer
-
-|===
-
-//end::QueryRequest_ctl[]
-
-
-
-include::{specDir}definitions/QueryRequest_ctl/definition-end.adoc[opts=optional]
-
-:leveloffset: -1
-
-ifndef::show-QueryRequest_ctl[]
-:leveloffset: -1
-endif::show-QueryRequest_ctl[]
-
-include::{specDir}definitions/QueryRequest_ctl/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/QueryRequestParams/definition-before.adoc[opts=optional]
 

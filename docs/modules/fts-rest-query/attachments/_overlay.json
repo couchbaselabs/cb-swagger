@@ -1,0 +1,29 @@
+{
+  "overlay": "1.0.0",
+  "info": {
+    "title": "Overlay for Search Active Query Schema",
+    "version": 1.0
+  },
+  "actions": [
+    {
+      "description": "Remove duplicate Query Index Partition method",
+      "target": "paths.\"/api/pindex/{pindexName}/query\"",
+      "remove": true
+    },
+    {
+      "description": "Remove unneeded Query Request schema",
+      "target": "components.schemas.QueryRequest",
+      "remove": true
+    },
+    {
+      "description": "Remove unneeded Score Fusion Parameters schema",
+      "target": "components.schemas.QueryRequestParams",
+      "remove": true
+    },
+    {
+      "description": "Remove unneeded Query Response schema",
+      "target": "components.schemas.QueryResponse",
+      "remove": true
+    }
+  ]
+}
