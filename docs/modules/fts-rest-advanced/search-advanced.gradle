@@ -47,6 +47,9 @@ openApiGenerate {
     ]
     generateAliasAsModel = true
     engine = "handlebars"
+    inlineSchemaNameMappings = [
+            Ctl: "QueryRequestCtl"
+    ]
 }
 
 tasks.applyOverlay.dependsOn(bundleSpec)
