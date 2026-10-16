@@ -4,7 +4,6 @@ info:
   description: "The Search Indexing REST API is provided by the Search service.\n\
     This API enables you to manage and monitor your Search indexes."
   version: "8.0"
-  x-overlaid: true
 servers:
 - url: "{scheme}://{host}:{port}"
   description: "The URL scheme, host, and port are as follows."
@@ -2114,6 +2113,7 @@ components:
                 \ on each index partition.\nOverrides the `bleveMaxTerms` manager\
                 \ option for this query.\nA value of `0` or less disables the limit\
                 \ for this query."
+          title: "Ctl"
         size:
           type: "integer"
           description: "Set the total number of results to return for a single page\
