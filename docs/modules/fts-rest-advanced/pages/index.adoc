@@ -828,10 +828,12 @@ include::{snippetDir}queryPartition/curl-request.adoc[opts=optional]
   "highlight" : "{}",
   "score" : "none",
   "search_after" : [ "search_after", "search_after" ],
-  "size" : 0,
+  "size" : 6,
   "collections" : [ "collections", "collections" ],
-  "ctl" : "{}",
-  "from" : 6,
+  "ctl" : {
+    "bleveMaxTerms" : 0
+  },
+  "from" : 1,
   "fields" : [ "fields", "fields" ],
   "search_before" : [ "search_before", "search_before" ]
 }
@@ -1075,6 +1077,7 @@ xref:indexPartition[]
 xref:indexPartitionPIndex[]
 xref:indexPartitionPIndexInner[]
 xref:QueryRequest[]
+xref:QueryRequest_ctl[]
 xref:QueryRequestParams[]
 xref:QueryResponse[]
 
@@ -1478,7 +1481,7 @@ For more information, see [Ctl Object](../search/search-request-params.html#ctl)
 
 [%hardbreaks]
 {blank}
-a¦ Object
+a¦ xref:QueryRequest_ctl[]
 a¦ *size* +
 optional
 a¦ [markdown]
@@ -1640,6 +1643,61 @@ ifndef::show-QueryRequest[]
 endif::show-QueryRequest[]
 
 include::{specDir}definitions/QueryRequest/definition-after.adoc[opts=optional]
+
+include::{specDir}definitions/QueryRequest_ctl/definition-before.adoc[opts=optional]
+
+ifdef::show-QueryRequest_ctl[]
+[#QueryRequest_ctl]
+endif::show-QueryRequest_ctl[]
+ifndef::show-QueryRequest_ctl[]
+:leveloffset: +1
+
+[discrete#QueryRequest_ctl]
+endif::show-QueryRequest_ctl[]
+= QueryRequestCtl
+
+:leveloffset: +1
+
+include::{specDir}definitions/QueryRequest_ctl/definition-begin.adoc[opts=optional]
+
+
+.icon:brackets-curly[fw] Object
+{blank}
+
+//tag::QueryRequest_ctl[]
+
+[cols="25,55,20",separator=¦]
+|===
+¦ Property ¦ ¦ Schema
+
+a¦ *bleveMaxTerms* +
+optional
+a¦ [markdown]
+--
+The maximum number of term searchers this query can use on each index partition.
+Overrides the `bleveMaxTerms` manager option for this query.
+A value of `0` or less disables the limit for this query.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Integer
+
+|===
+
+//end::QueryRequest_ctl[]
+
+
+
+include::{specDir}definitions/QueryRequest_ctl/definition-end.adoc[opts=optional]
+
+:leveloffset: -1
+
+ifndef::show-QueryRequest_ctl[]
+:leveloffset: -1
+endif::show-QueryRequest_ctl[]
+
+include::{specDir}definitions/QueryRequest_ctl/definition-after.adoc[opts=optional]
 
 include::{specDir}definitions/QueryRequestParams/definition-before.adoc[opts=optional]
 

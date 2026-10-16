@@ -5,6 +5,7 @@ info:
     These APIs enable you to manage and query Search index partitions and to specify\
     \ advanced settings."
   version: "8.0"
+  x-overlaid: true
 servers:
 - url: "{scheme}://{host}:{port}"
   description: "The URL scheme, host, and port are as follows."
@@ -314,6 +315,13 @@ components:
           type: "object"
           description: "An object that contains properties for query consistency.\n\
             For more information, see [Ctl Object](../search/search-request-params.html#ctl)."
+          properties:
+            bleveMaxTerms:
+              type: "integer"
+              description: "The maximum number of term searchers this query can use\
+                \ on each index partition.\nOverrides the `bleveMaxTerms` manager\
+                \ option for this query.\nA value of `0` or less disables the limit\
+                \ for this query."
         size:
           type: "integer"
           description: "Set the total number of results to return for a single page\
