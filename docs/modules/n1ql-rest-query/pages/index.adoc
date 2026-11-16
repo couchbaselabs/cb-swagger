@@ -2110,7 +2110,8 @@ ifdef::alt-markdown-links[]
 endif::alt-markdown-links[]
 Specifies the maximum parallelism for the query.
 
-The default value is the same as the number of partitions of the index selected for the query.
+If omitted, the default is `1` (serial).
+For GSI scan concurrency with partitioned indexes, the default parallelism is the same as the number of partitions of the index selected for the query.
 
 // tag::desc-more[]
 The [node-level][max-parallelism-srv] `max-parallelism` setting specifies the ceiling for this parameter for a single node.
@@ -2129,6 +2130,7 @@ To enable queries to run in parallel, you must specify the cluster-level `queryM
 --
 
 [%hardbreaks]
+*Default:* `1`
 *Example:* `3`
 {blank}
 a¦ Integer (int32)
@@ -2527,16 +2529,22 @@ a¦ [#readonly]
 optional
 a¦ [markdown]
 --
-Controls whether a query can change a resulting recordset.
+Controls whether a query can write data, and create or modify database objects.
 
 If `readonly` is `true`, then the following statements are not allowed:
 
-* CREATE INDEX
-* DROP INDEX
-* INSERT
-* MERGE
-* UPDATE
-* UPSERT
+* DML statements: DELETE, INSERT, MERGE, UPDATE, and UPSERT.
+* DCL statements: GRANT and REVOKE.
+* DDL statements.
+* Transactions.
+* EXECUTE FUNCTION: even if the function body only reads.
+* Sequences: for example, the NEXTVAL and PREVVAL operators.
+* EXECUTE: of a prepared statement whose plan falls into any of these categories.
+
+Everything else is allowed: SELECT, EXPLAIN, PREPARE, ADVISE, INFER, and UDFs called from within a SELECT.
+However, if a UDF definition contains a prohibited statement, the execution of the UDF is halted with an error.
+
+UPDATE STATISTICS is also allowed, even though it writes optimizer statistics into the relevant bucket's `_system._query` collection.
 
 When using GET requests, it's best to set `readonly` to `true`.
 --
