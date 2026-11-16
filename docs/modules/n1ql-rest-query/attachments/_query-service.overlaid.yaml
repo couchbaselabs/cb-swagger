@@ -471,9 +471,10 @@ components:
           type: "integer"
           format: "int32"
           x-desc-name: "max_parallelism_req"
-          description: "Specifies the maximum parallelism for the query.\n\nThe default\
-            \ value is the same as the number of partitions of the index selected\
-            \ for the query."
+          description: "Specifies the maximum parallelism for the query.\n\nIf omitted,\
+            \ the default is `1` (serial).\nFor GSI scan concurrency with partitioned\
+            \ indexes, the default parallelism is the same as the number of partitions\
+            \ of the index selected for the query."
           x-desc-more: "The [node-level][max-parallelism-srv] `max-parallelism` setting\
             \ specifies the ceiling for this parameter for a single node.\nIf the\
             \ request-level parameter is zero or negative, the parallelism for the\
@@ -493,6 +494,8 @@ components:
             \ #queryMaxParallelism"
           x-has-example: true
           example: 3
+          x-has-default: true
+          default: 1
         memory_quota:
           type: "integer"
           format: "int32"
@@ -747,10 +750,20 @@ components:
         readonly:
           type: "boolean"
           x-desc-name: "readonly"
-          description: "Controls whether a query can change a resulting recordset.\n\
-            \nIf `readonly` is `true`, then the following statements are not allowed:\n\
-            \n* CREATE INDEX\n* DROP INDEX\n* INSERT\n* MERGE\n* UPDATE\n* UPSERT\n\
-            \nWhen using GET requests, it's best to set `readonly` to `true`."
+          description: "Controls whether a query can write data, and create or modify\
+            \ database objects.\n\nIf `readonly` is `true`, then the following statements\
+            \ are not allowed:\n\n* DML statements: DELETE, INSERT, MERGE, UPDATE,\
+            \ and UPSERT.\n* DCL statements: GRANT and REVOKE.\n* DDL statements.\n\
+            * Transactions.\n* EXECUTE FUNCTION: even if the function body only reads.\n\
+            * Sequences: for example, the NEXTVAL and PREVVAL operators.\n* EXECUTE:\
+            \ of a prepared statement whose plan falls into any of these categories.\n\
+            \nEverything else is allowed: SELECT, EXPLAIN, PREPARE, ADVISE, INFER,\
+            \ and UDFs called from within a SELECT.\nHowever, if a UDF definition\
+            \ contains a prohibited statement, the execution of the UDF is halted\
+            \ with an error.\n\nUPDATE STATISTICS is also allowed, even though it\
+            \ writes optimizer statistics into the relevant bucket's `_system._query`\
+            \ collection.\n\nWhen using GET requests, it's best to set `readonly`\
+            \ to `true`."
           x-has-default: true
           x-has-example: true
           default: false

@@ -1543,7 +1543,9 @@ components:
           type: "integer"
         app_log_max_files:
           default: 10
-          description: "number of log() message files to retain when rotating"
+          description: "The number of log() message files to retain when rotating.\
+            \ App log files are also rotated automatically whenever encryption at\
+            \ rest is switched on or off, regardless of this setting."
           minimum: 1
           type: "integer"
         checkpoint_interval:

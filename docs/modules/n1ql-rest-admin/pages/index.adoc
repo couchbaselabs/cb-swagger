@@ -5166,12 +5166,14 @@ a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [sys-history]: monitoring-n1ql-query.html#sys-history
+[queryCompletedStreamSize]: #queryCompletedStreamSize
 
 endif::alt-markdown-links[]
 A file size in MiB.
 When specified, completed requests are saved to the Couchbase Server `logs` directory.
 Completed requests are saved to GZIP archives with the prefix `local_request_log`.
-The value of this property determines the size of the data to retain, per node.
+The value of this property determines the approximate size of the data to retain, per node.
+This limit is maintained by the automatic removal of (generally) the oldest retained data.
 
 Specify `0` (the default) to disable completed request streaming.
 
@@ -5180,11 +5182,19 @@ Completed request streaming is available in Couchbase Server 7.6.4 and later.
 For more information and examples, see [Stream Completed Requests][sys-history].
 
 [sys-history]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-history
+
+// tag::desc-more[]
+The [cluster-level][queryCompletedStreamSize] `queryCompletedStreamSize` setting specifies this property for the whole cluster.
+When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
+
+[queryCompletedStreamSize]: ../n1ql-rest-settings/index.html#queryCompletedStreamSize
+// end::desc-more[]
 --
 
 [%hardbreaks]
+*Default:* `0`
 {blank}
-a¦ Integer (int32)
+a¦ Long (int64)
 a¦ [#completed-threshold]
 *completed-threshold* +
 optional
@@ -6043,6 +6053,18 @@ include::{specDir}definitions/Statements/definition-begin.adoc[opts=optional]
 |===
 ¦ Property ¦ ¦ Schema
 
+a¦ *autoPrepared* +
+optional
+a¦ [markdown]
+--
+Indicates that the prepared statement was cached automatically by auto prepare, rather than created by an explicit `PREPARE` statement.
+
+This property is only returned when the value is `true`.
+--
+
+[%hardbreaks]
+{blank}
+a¦ Boolean
 a¦ *encoded_plan* +
 required
 a¦ [markdown]
