@@ -5430,6 +5430,19 @@ include::{specDir}definitions/Requests/definition-begin.adoc[opts=optional]
 |===
 ¦ Property ¦ ¦ Schema
 
+a¦ *chatId* +
+optional
+a¦ [.status]##Couchbase Server 8.5##
+
+[markdown]
+--
+The chat ID, for requests that specified a natural language chat ID.
+For example, a USING AI request that is part of a chat, or a PAUSE CHAT, END CHAT, or RESUME CHAT statement.
+--
+
+[%hardbreaks]
+{blank}
+a¦ UUID (uuid)
 a¦ *clientContextID* +
 optional
 a¦ [markdown]
@@ -5441,7 +5454,7 @@ endif::alt-markdown-links[]
 The opaque ID or context provided by the client.
 
 // tag::desc-more[]
-For more information, see the [request-level][client_context_id] `client_context_id` parameter..
+For more information, see the [request-level][client_context_id] `client_context_id` parameter.
 
 [client_context_id]: ../n1ql-rest-query/index.html#client_context_id
 // end::desc-more[]
@@ -5508,6 +5521,72 @@ This property is only returned if a memory quota is set for the query.
 [%hardbreaks]
 {blank}
 a¦ Integer
+a¦ *naturalLanguageContext* +
+optional
+a¦ [.status]##Couchbase Server 8.5##
+
+[markdown]
+--
+A comma-separated list of the keyspaces provided.
+Only for one-shot USING AI requests or the BEGIN CHAT statement.
+--
+
+[%hardbreaks]
+*Example:* `+++"travel-sample.inventory.hotel,travel-sample.inventory.airport"+++`
+{blank}
+a¦ String
+a¦ *naturalLanguageHint* +
+optional
+a¦ [.status]##Couchbase Server 8.5##
+
+[markdown]
+--
+A natural language domain or ontology hint provided with the USING AI statement.
+--
+
+[%hardbreaks]
+*Example:* `+++"ICAO codes represent airports"+++`
+{blank}
+a¦ String
+a¦ *naturalLanguageProcessingTime* +
+optional
+a¦ [.status]##Couchbase Server 8.5##
+
+[markdown]
+--
+The time spent processing the natural language request to generate a SQL++ statement.
+--
+
+[%hardbreaks]
+*Example:* `+++"1.648338876s"+++`
+{blank}
+a¦ String (duration)
+a¦ *naturalLanguagePrompt* +
+optional
+a¦ [.status]##Couchbase Server 8.5##
+
+[markdown]
+--
+The natural language prompt given via the USING AI command.
+--
+
+[%hardbreaks]
+*Example:* `+++"List the names of all hotels in the same city as an airport"+++`
+{blank}
+a¦ String
+a¦ *naturalLanguageOutput* +
+optional
+a¦ [.status]##Couchbase Server 8.5##
+
+[markdown]
+--
+The type of output specified for the USING AI statement request.
+--
+
+[%hardbreaks]
+*Values:* `"SQL"`, `"JSUDF"`, `"FTSSQL"`
+{blank}
+a¦ String
 a¦ *node* +
 optional
 a¦ [markdown]
@@ -5738,6 +5817,17 @@ These phrases highlight notable aspects of the execution, such as high document 
 *Example:* `["High IO time","High primary scan document count"]`
 {blank}
 a¦ String array
+a¦ *~qualifier* +
+optional
+a¦ [markdown]
+--
+The qualifier that was met in order to log this request.
+--
+
+[%hardbreaks]
+*Example:* `+++"threshold"+++`
+{blank}
+a¦ String
 
 |===
 
@@ -6012,12 +6102,14 @@ a¦ [markdown]
 --
 ifdef::alt-markdown-links[]
 [sys-history]: monitoring-n1ql-query.html#sys-history
+[queryCompletedStreamSize]: #queryCompletedStreamSize
 
 endif::alt-markdown-links[]
 A file size in MiB.
 When specified, completed requests are saved to the Couchbase Server `logs` directory.
 Completed requests are saved to GZIP archives with the prefix `local_request_log`.
-The value of this property determines the size of the data to retain, per node.
+The value of this property determines the approximate size of the data to retain, per node.
+This limit is maintained by the automatic removal of (generally) the oldest retained data.
 
 Specify `0` (the default) to disable completed request streaming.
 
@@ -6026,11 +6118,19 @@ Completed request streaming is available in Couchbase Server 7.6.4 and later.
 For more information and examples, see [Stream Completed Requests][sys-history].
 
 [sys-history]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-history
+
+// tag::desc-more[]
+The [cluster-level][queryCompletedStreamSize] `queryCompletedStreamSize` setting specifies this property for the whole cluster.
+When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
+
+[queryCompletedStreamSize]: ../n1ql-rest-settings/index.html#queryCompletedStreamSize
+// end::desc-more[]
 --
 
 [%hardbreaks]
+*Default:* `0`
 {blank}
-a¦ Integer (int32)
+a¦ Long (int64)
 a¦ [#completed-threshold]
 *completed-threshold* +
 optional
