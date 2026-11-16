@@ -470,13 +470,14 @@ ifeval::["yes" == ""]
   "queryTimeout" : 500000000,
   "queryScanCap" : 1024,
   "queryPreparedLimit" : 65536,
+  "queryCompletedStreamSize" : 6,
   "queryPipelineCap" : 1024,
   "queryNumAtrs" : 512,
   "queryUseReplica" : "on",
   "queryCompletedMaxPlanSize" : 1668961,
   "queryLogLevel" : "DEBUG",
   "queryPipelineBatch" : 64,
-  "queryNodeQuotaValPercent" : 59,
+  "queryNodeQuotaValPercent" : 56,
   "queryCurlWhitelist" : {
     "allowed_urls" : [ "allowed_urls", "allowed_urls" ],
     "disallowed_urls" : [ "disallowed_urls", "disallowed_urls" ],
@@ -487,11 +488,11 @@ ifeval::["yes" == ""]
   "queryCleanupWindow" : "30s",
   "queryTmpSpaceDir" : "/opt/couchbase/var/lib/couchbase/tmp",
   "queryCompletedThreshold" : 7000,
-  "queryN1QLFeatCtrl" : 6,
+  "queryN1QLFeatCtrl" : 1,
   "queryTmpSpaceSize" : 2048,
-  "queryNodeQuota" : 1,
+  "queryNodeQuota" : 5,
   "queryMaxParallelism" : 0,
-  "queryNumCpus" : 5,
+  "queryNumCpus" : 2,
   "queryUseCBO" : false,
   "queryMemoryQuota" : 4
 }
@@ -1028,13 +1029,14 @@ ifeval::["yes" == ""]
   "queryTimeout" : 500000000,
   "queryScanCap" : 1024,
   "queryPreparedLimit" : 65536,
+  "queryCompletedStreamSize" : 6,
   "queryPipelineCap" : 1024,
   "queryNumAtrs" : 512,
   "queryUseReplica" : "on",
   "queryCompletedMaxPlanSize" : 1668961,
   "queryLogLevel" : "DEBUG",
   "queryPipelineBatch" : 64,
-  "queryNodeQuotaValPercent" : 59,
+  "queryNodeQuotaValPercent" : 56,
   "queryCurlWhitelist" : {
     "allowed_urls" : [ "allowed_urls", "allowed_urls" ],
     "disallowed_urls" : [ "disallowed_urls", "disallowed_urls" ],
@@ -1045,11 +1047,11 @@ ifeval::["yes" == ""]
   "queryCleanupWindow" : "30s",
   "queryTmpSpaceDir" : "/opt/couchbase/var/lib/couchbase/tmp",
   "queryCompletedThreshold" : 7000,
-  "queryN1QLFeatCtrl" : 6,
+  "queryN1QLFeatCtrl" : 1,
   "queryTmpSpaceSize" : 2048,
-  "queryNodeQuota" : 1,
+  "queryNodeQuota" : 5,
   "queryMaxParallelism" : 0,
-  "queryNumCpus" : 5,
+  "queryNumCpus" : 2,
   "queryUseCBO" : false,
   "queryMemoryQuota" : 4
 }
@@ -1362,6 +1364,42 @@ When you change the cluster-level setting, the node-level setting is over-writte
 *Maximum:* `20840448`
 {blank}
 a¦ Integer (int32)
+a¦ [#queryCompletedStreamSize]
+*queryCompletedStreamSize* +
+optional
+a¦ [markdown]
+--
+ifdef::alt-markdown-links[]
+[sys-history]: monitoring-n1ql-query.html#sys-history
+[completed-stream-size]: #completed-stream-size
+
+endif::alt-markdown-links[]
+A file size in MiB.
+When specified, completed requests are saved to the Couchbase Server `logs` directory.
+Completed requests are saved to GZIP archives with the prefix `local_request_log`.
+The value of this property determines the approximate size of the data to retain, per node.
+This limit is maintained by the automatic removal of (generally) the oldest retained data.
+
+Specify `0` (the default) to disable completed request streaming.
+
+Completed request streaming is available in Couchbase Server 7.6.4 and later.
+
+For more information and examples, see [Stream Completed Requests][sys-history].
+
+[sys-history]: ../n1ql/n1ql-manage/monitoring-n1ql-query.html#sys-history
+
+// tag::desc-more[]
+The [node-level][completed-stream-size] `completed-stream-size` setting specifies this property for a single node.
+When you change the cluster-level setting, the node-level setting is over-written for all nodes in the cluster.
+
+[completed-stream-size]: ../n1ql-rest-admin/index.html#completed-stream-size
+// end::desc-more[]
+--
+
+[%hardbreaks]
+*Default:* `0`
+{blank}
+a¦ Long (int64)
 a¦ [#queryCompletedThreshold]
 *queryCompletedThreshold* +
 optional
